@@ -1,8 +1,15 @@
 ﻿<Window x:Class="Elysium.Platform.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
+        AllowsTransparency="True"
+        Background="{StaticResource Semitransparent}"
+        Left="0" Top="0"
+        ShowInTaskbar="False"
+        Width="{Binding Source={x:Static SystemParameters.PrimaryScreenWidth}}"
+        Height="{Binding Source={x:Static SystemParameters.PrimaryScreenHeight}}"
+        WindowStyle="None">
+    <Grid x:Name="LayoutRoot"
+          Background="{StaticResource Transparent}">
         
     </Grid>
 </Window>
