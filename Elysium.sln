@@ -24,22 +24,22 @@ Global
 		SccLocalPath3 = Theme
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Release|Mixed Platforms = Release|Mixed Platforms
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D1030D16-1A89-4071-BBC2-A290F6F3266A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D1030D16-1A89-4071-BBC2-A290F6F3266A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D1030D16-1A89-4071-BBC2-A290F6F3266A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D1030D16-1A89-4071-BBC2-A290F6F3266A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A1DC7050-81A2-4BE3-948D-6F7F4570F9D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1DC7050-81A2-4BE3-948D-6F7F4570F9D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1DC7050-81A2-4BE3-948D-6F7F4570F9D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1DC7050-81A2-4BE3-948D-6F7F4570F9D4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1030D16-1A89-4071-BBC2-A290F6F3266A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D1030D16-1A89-4071-BBC2-A290F6F3266A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D1030D16-1A89-4071-BBC2-A290F6F3266A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D1030D16-1A89-4071-BBC2-A290F6F3266A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A1DC7050-81A2-4BE3-948D-6F7F4570F9D4}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{A1DC7050-81A2-4BE3-948D-6F7F4570F9D4}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{A1DC7050-81A2-4BE3-948D-6F7F4570F9D4}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{A1DC7050-81A2-4BE3-948D-6F7F4570F9D4}.Release|Mixed Platforms.Build.0 = Release|x86
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

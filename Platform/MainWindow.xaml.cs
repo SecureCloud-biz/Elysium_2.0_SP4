@@ -17,12 +17,12 @@ namespace Elysium.Platform
 
             Loaded += (sender, e) =>
                           {
-                              WindowManager.RemoveFromAltTab(_helper.Handle);
-                              WindowManager.RemoveFromAeroPeek(_helper.Handle);
-                              WindowManager.RemoveFromFlip3D(_helper.Handle);
+                              Window.RemoveFromAltTab(_helper.Handle);
+                              Window.RemoveFromAeroPeek(_helper.Handle);
+                              Window.RemoveFromFlip3D(_helper.Handle);
                           };
 
-            Activated += (sender, e) => WindowManager.SetBottomMost(_helper.Handle);
+            Activated += (sender, e) => Window.SetFullScreenAndBottomMost(_helper.Handle);
 
             ThemeManager.Instance.Dark(AccentColors.Blue);
         }
