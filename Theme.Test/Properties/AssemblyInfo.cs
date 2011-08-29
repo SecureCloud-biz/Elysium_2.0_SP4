@@ -2,8 +2,8 @@
 using System.Runtime.InteropServices;
 using System.Windows;
 
-[assembly: AssemblyTitle("Theme")]
-[assembly: AssemblyDescription("Elysium: Theme assembly")]
+[assembly: AssemblyTitle("Theme test")]
+[assembly: AssemblyDescription("Elysium: Theme.Test assembly")]
 [assembly: AssemblyProduct("Elysium")]
 [assembly: AssemblyCopyright("Copyright © Alex F. Sherman & Codeplex Community 2011")]
 

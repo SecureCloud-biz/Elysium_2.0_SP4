@@ -7,9 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Platform", "Platform\Platfo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theme", "Theme\Theme.csproj", "{5A65DA67-130D-43D8-9224-4559B523B6D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theme.Test", "Theme.Test\Theme.Test.csproj", "{0B85401E-33FA-41EE-9627-8C17DA21505C}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
+		SccNumberOfProjects = 5
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs34
 		SccLocalPath0 = .
@@ -22,24 +24,43 @@ Global
 		SccProjectUniqueName3 = Theme\\Theme.csproj
 		SccProjectName3 = Theme
 		SccLocalPath3 = Theme
+		SccProjectUniqueName4 = Theme.Test\\Theme.Test.csproj
+		SccProjectName4 = Theme.Test
+		SccLocalPath4 = Theme.Test
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
 		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D1030D16-1A89-4071-BBC2-A290F6F3266A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{D1030D16-1A89-4071-BBC2-A290F6F3266A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D1030D16-1A89-4071-BBC2-A290F6F3266A}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{D1030D16-1A89-4071-BBC2-A290F6F3266A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{D1030D16-1A89-4071-BBC2-A290F6F3266A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D1030D16-1A89-4071-BBC2-A290F6F3266A}.Release|x86.ActiveCfg = Release|Any CPU
 		{A1DC7050-81A2-4BE3-948D-6F7F4570F9D4}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{A1DC7050-81A2-4BE3-948D-6F7F4570F9D4}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{A1DC7050-81A2-4BE3-948D-6F7F4570F9D4}.Debug|x86.ActiveCfg = Debug|x86
+		{A1DC7050-81A2-4BE3-948D-6F7F4570F9D4}.Debug|x86.Build.0 = Debug|x86
 		{A1DC7050-81A2-4BE3-948D-6F7F4570F9D4}.Release|Mixed Platforms.ActiveCfg = Release|x86
 		{A1DC7050-81A2-4BE3-948D-6F7F4570F9D4}.Release|Mixed Platforms.Build.0 = Release|x86
+		{A1DC7050-81A2-4BE3-948D-6F7F4570F9D4}.Release|x86.ActiveCfg = Release|x86
+		{A1DC7050-81A2-4BE3-948D-6F7F4570F9D4}.Release|x86.Build.0 = Release|x86
 		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Release|x86.ActiveCfg = Release|Any CPU
+		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

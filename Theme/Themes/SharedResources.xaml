@@ -44,6 +44,10 @@
     <System:Double x:Key="DefaultThicknessValue">1</System:Double>
     <Thickness x:Key="BoldThickness">1.5</Thickness>
     <System:Double x:Key="BoldThicknessValue">1.5</System:Double>
+    <Thickness x:Key="DefaultPadding">2</Thickness>
+    <System:Double x:Key="DefaultPaddingValue">2</System:Double>
+    <Thickness x:Key="BoldPadding">5</Thickness>
+    <System:Double x:Key="BoldPaddingValue">5</System:Double>
     
     <FontFamily x:Key="FontFamily">Segoe UI, Tahoma</FontFamily>
 

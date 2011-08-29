@@ -4,6 +4,9 @@
     
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Theme;component/Themes/SharedResources.xaml"/>
+        <ResourceDictionary Source="/Theme;component/Themes/Buttons/Button.xaml"/>
+        <ResourceDictionary Source="/Theme;component/Themes/Buttons/RepeatButton.xaml"/>
+        <ResourceDictionary Source="/Theme;component/Themes/Buttons/ToggleButton.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
 </ResourceDictionary>
