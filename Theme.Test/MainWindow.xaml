@@ -30,5 +30,14 @@
                       Grid.Row="2"
                       Margin="15"
                       Content="ToggleButton"/>
+        <CheckBox Grid.Column="0"
+                  Grid.Row="3"
+                  Margin="10"
+                  Content="CheckBox"
+                  IsThreeState="True"/>
+        <RadioButton Grid.Column="0"
+                     Grid.Row="4"
+                     Margin="10"
+                     Content="RadioButton"/>
     </Grid>
 </Window>
