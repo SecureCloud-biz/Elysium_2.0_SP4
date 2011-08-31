@@ -6,6 +6,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type CheckBox}">
+        
         <Setter Property="Background" Value="{StaticResource Transparent}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
         <Setter Property="BorderThickness" Value="{StaticResource DefaultThickness}"/>
@@ -14,31 +15,14 @@
         <Setter Property="FontSize" Value="9pt"/>
         <Setter Property="FontWeight" Value="Normal"/>
 
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}"/>
+
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="{StaticResource BoldPadding}"/>
 
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
-
-        <Setter Property="FocusVisualStyle">
-            <Setter.Value>
-                <Style>
-                    <Setter Property="Control.Template">
-                        <Setter.Value>
-                            <ControlTemplate>
-                                <Rectangle Margin="{StaticResource DefaultPadding}" 
-                                           Fill="{StaticResource Transparent}"
-                                           Stroke="{StaticResource Foreground}"
-                                           StrokeThickness="{StaticResource DefaultThicknessValue}"
-                                           StrokeDashArray="2 1"
-                                           RenderOptions.EdgeMode="Aliased"/>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Setter.Value>
-        </Setter>
 
         <Setter Property="Template">
             <Setter.Value>
@@ -74,7 +58,6 @@
                                     </Path>
                                     <Path x:Name="IndeterminateBullet"
                                           Fill="{StaticResource ForegroundLowlight}"
-                                          Stroke="{StaticResource Transparent}"
                                           StrokeThickness="0"
                                           Visibility="Collapsed"
                                           HorizontalAlignment="Center" VerticalAlignment="Center"
@@ -145,6 +128,7 @@
             </Trigger>
 
         </Style.Triggers>
+        
     </Style>
 
 </ResourceDictionary>

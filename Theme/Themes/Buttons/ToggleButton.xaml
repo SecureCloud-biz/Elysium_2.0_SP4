@@ -6,7 +6,7 @@
         <ResourceDictionary Source="/Theme;component/Themes/Buttons/ButtonBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource {x:Type ButtonBase}}">
+    <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ButtonsBase}">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Style.Triggers>

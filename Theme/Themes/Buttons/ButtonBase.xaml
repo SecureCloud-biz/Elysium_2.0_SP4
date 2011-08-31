@@ -5,7 +5,8 @@
         <ResourceDictionary Source="/Theme;component/Themes/SharedResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
-    <Style TargetType="{x:Type ButtonBase}">
+    <Style x:Key="ButtonsBase" TargetType="{x:Type ButtonBase}">
+        
         <Setter Property="Background" Value="{StaticResource ForegroundHighlight}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
         <Setter Property="BorderThickness" Value="{StaticResource DefaultThickness}"/>
@@ -13,6 +14,8 @@
         <Setter Property="FontFamily" Value="{StaticResource FontFamily}"/>
         <Setter Property="FontSize" Value="10pt"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
+
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}"/>
         
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -20,25 +23,6 @@
         
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
-        
-        <Setter Property="FocusVisualStyle">
-            <Setter.Value>
-                <Style>
-                    <Setter Property="Control.Template">
-                        <Setter.Value>
-                            <ControlTemplate>
-                                <Rectangle Margin="{StaticResource DefaultPadding}" 
-                                           Fill="{StaticResource Transparent}"
-                                           Stroke="{StaticResource Foreground}"
-                                           StrokeThickness="{StaticResource DefaultThicknessValue}"
-                                           StrokeDashArray="2 1"
-                                           RenderOptions.EdgeMode="Aliased"/>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Setter.Value>
-        </Setter>
         
         <Setter Property="Template">
             <Setter.Value>
@@ -84,6 +68,7 @@
             </Trigger>
 
         </Style.Triggers>
+        
     </Style>
     
 </ResourceDictionary>

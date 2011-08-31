@@ -6,9 +6,9 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="125"/>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="125"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -39,5 +39,51 @@
                      Grid.Row="4"
                      Margin="10"
                      Content="RadioButton"/>
+        <TextBox Grid.Column="1"
+                 Grid.Row="0"
+                 Margin="15"
+                 Text="TextBox"/>
+        <PasswordBox Grid.Column="1"
+                     Grid.Row="1"
+                     Margin="15"
+                     Password="PasswordBox"/>
+        <RichTextBox Grid.Column="1"
+                     Grid.Row="2"
+                     Margin="15">
+            <FlowDocument>
+                <Paragraph>
+                    Paragraph
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <ComboBox Grid.Column="2"
+                  Grid.Row="0"
+                  Margin="15"
+                 SelectedIndex="0">
+            <ComboBoxItem>Default item</ComboBoxItem>
+            <ComboBoxItem>Item 1</ComboBoxItem>
+            <ComboBoxItem>Item 2</ComboBoxItem>
+        </ComboBox>
+        <ListBox Grid.Column="2"
+                 Grid.Row="1"
+                 Grid.RowSpan="2"
+                 Margin="15"
+                 SelectedIndex="0">
+            <ListBoxItem>Default item</ListBoxItem>
+            <ListBoxItem>Item 1</ListBoxItem>
+            <ListBoxItem>Item 2</ListBoxItem>
+        </ListBox>
+        <Slider Grid.Column="3"
+                Grid.Row="0"
+                Value="50"
+                Maximum="100"
+                Minimum="0"
+                Margin="15"/>
+        <ProgressBar Grid.Column="3"
+                     Grid.Row="1"
+                     Value="50"
+                     Maximum="100"
+                     Minimum="0"
+                     Margin="15"/>
     </Grid>
 </Window>

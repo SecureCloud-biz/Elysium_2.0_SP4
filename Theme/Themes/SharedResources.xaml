@@ -39,6 +39,8 @@
     <SolidColorBrush x:Key="LightForegroundMiddlelight" Color="{x:Static Theme:LightColors.ForegroundMiddlelight}"/>
     <SolidColorBrush x:Key="LightForegroundLowlight" Color="{x:Static Theme:LightColors.ForegroundLowlight}"/>
     <SolidColorBrush x:Key="LightDisabled" Color="{x:Static Theme:LightColors.Disabled}"/-->
+    
+    <FontFamily x:Key="FontFamily">Segoe UI, Tahoma</FontFamily>
 
     <Thickness x:Key="DefaultThickness">1</Thickness>
     <System:Double x:Key="DefaultThicknessValue">1</System:Double>
@@ -48,11 +50,24 @@
     <System:Double x:Key="DefaultPaddingValue">2</System:Double>
     <Thickness x:Key="BoldPadding">5</Thickness>
     <System:Double x:Key="BoldPaddingValue">5</System:Double>
-    
-    <FontFamily x:Key="FontFamily">Segoe UI, Tahoma</FontFamily>
 
     <Duration x:Key="DefaultDuration">00:00:00.0</Duration>
     <Duration x:Key="MinimumDuration">00:00:00.1</Duration>
     <Duration x:Key="MaximumDuration">00:00:00.5</Duration>
-    
+
+    <Style x:Key="FocusVisualStyle">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="{StaticResource DefaultPadding}" 
+                               Fill="{StaticResource Transparent}"
+                               Stroke="{StaticResource Foreground}"
+                               StrokeThickness="{StaticResource DefaultThicknessValue}"
+                               StrokeDashArray="2 1"
+                               RenderOptions.EdgeMode="Aliased"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

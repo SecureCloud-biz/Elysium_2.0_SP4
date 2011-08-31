@@ -6,9 +6,7 @@
         <ResourceDictionary Source="/Theme;component/Themes/Buttons/ButtonBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type ButtonBase}}">
-        <Setter Property="OverridesDefaultStyle" Value="True"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonsBase}">        
         <Style.Triggers>
             <Trigger Property="IsDefault" Value="True">
                 <Setter Property="Background" Value="{StaticResource ForegroundHighlight}"/>

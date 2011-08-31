@@ -9,6 +9,9 @@
         <ResourceDictionary Source="/Theme;component/Themes/Buttons/ToggleButton.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/Buttons/CheckBox.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/Buttons/RadioButton.xaml"/>
+        <ResourceDictionary Source="/Theme;component/Themes/TextBoxes/TextBox.xaml"/>
+        <ResourceDictionary Source="/Theme;component/Themes/TextBoxes/PasswordBox.xaml"/>
+        <ResourceDictionary Source="/Theme;component/Themes/TextBoxes/RichTextBox.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
 </ResourceDictionary>

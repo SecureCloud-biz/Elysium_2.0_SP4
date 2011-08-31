@@ -3,9 +3,9 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Theme;component/Themes/SharedResources.xaml"/>
-        <ResourceDictionary Source="/Theme;component/Themes/Buttons/ButtonBase.xaml"/>
+        <ResourceDictionary Source="/Theme;component/Themes/TextBoxes/TextBoxBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-    
-    <Style TargetType="{x:Type RepeatButton}" BasedOn="{StaticResource ButtonsBase}"/>
+
+    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource TextBoxesBase}"/>
 
 </ResourceDictionary>
