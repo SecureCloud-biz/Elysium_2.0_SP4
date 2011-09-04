@@ -6,13 +6,10 @@
         <ResourceDictionary Source="/Theme;component/Themes/Buttons/ButtonBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonsBase}">        
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonsBaseStyle}">        
         <Style.Triggers>
             <Trigger Property="IsDefault" Value="True">
-                <Setter Property="Background" Value="{StaticResource ForegroundHighlight}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource Accent}"/>
-                <Setter Property="BorderThickness" Value="{StaticResource DefaultThickness}"/>
-                <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
             </Trigger>
         </Style.Triggers>        
     </Style>

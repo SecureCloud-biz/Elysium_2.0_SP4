@@ -6,6 +6,6 @@
         <ResourceDictionary Source="/Theme;component/Themes/Buttons/ButtonBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
-    <Style TargetType="{x:Type RepeatButton}" BasedOn="{StaticResource ButtonsBase}"/>
+    <Style TargetType="{x:Type RepeatButton}" BasedOn="{StaticResource ButtonsBaseStyle}"/>
 
 </ResourceDictionary>

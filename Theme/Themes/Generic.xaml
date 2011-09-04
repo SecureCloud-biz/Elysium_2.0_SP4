@@ -12,6 +12,8 @@
         <ResourceDictionary Source="/Theme;component/Themes/TextBoxes/TextBox.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/TextBoxes/PasswordBox.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/TextBoxes/RichTextBox.xaml"/>
+        <ResourceDictionary Source="/Theme;component/Themes/Scrolls/ScrollBar.xaml"/>
+        <ResourceDictionary Source="/Theme;component/Themes/Scrolls/ScrollViewer.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
 </ResourceDictionary>

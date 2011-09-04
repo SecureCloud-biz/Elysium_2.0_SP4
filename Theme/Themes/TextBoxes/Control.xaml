@@ -5,9 +5,9 @@
         <ResourceDictionary Source="/Theme;component/Themes/SharedResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="BoxesBase" TargetType="{x:Type Control}">
+    <Style x:Key="BoxesBaseStyle" TargetType="{x:Type Control}">
         
-        <Setter Property="Background" Value="{StaticResource Background}"/>
+        <Setter Property="Background" Value="{StaticResource ForegroundHighlight}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
         <Setter Property="BorderThickness" Value="{StaticResource DefaultThickness}"/>
         <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
@@ -45,14 +45,12 @@
         <Style.Triggers>
 
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{StaticResource Background}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource Accent}"/>
                 <Setter Property="BorderThickness" Value="{StaticResource DefaultThickness}"/>
                 <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
             </Trigger>
 
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="{StaticResource Background}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource Disabled}"/>
                 <Setter Property="BorderThickness" Value="{StaticResource DefaultThickness}"/>
                 <Setter Property="Foreground" Value="{StaticResource Disabled}"/>

@@ -3,6 +3,12 @@ using System.Windows.Media;
 
 namespace Elysium.Theme
 {
+    public enum Theme
+    {
+        Dark,
+        Light
+    }
+
     public sealed class ThemeManager : INotifyPropertyChanged
     {
         public static readonly ThemeManager Instance = new ThemeManager();
@@ -14,31 +20,58 @@ namespace Elysium.Theme
 
         public void Dark(Color accent)
         {
-            Accent = accent;
-            Transparent = DarkColors.Transparent;
-            Semitransparent = DarkColors.Semitransparent;
-            Background = DarkColors.Background;
-            Foreground = DarkColors.Foreground;
-            ForegroundContrast = DarkColors.ForegroundContrast;
-            ForegroundHighlight = DarkColors.ForegroundHighlight;
-            ForegroundMiddlelight = DarkColors.ForegroundMiddlelight;
-            ForegroundLowlight = DarkColors.ForegroundLowlight;
-            Disabled = DarkColors.Disabled;
+            try
+            {
+
+                Accent = accent;
+                Transparent = DarkColors.Transparent;
+                Semitransparent = DarkColors.Semitransparent;
+                Background = DarkColors.Background;
+                Foreground = DarkColors.Foreground;
+                ForegroundContrast = DarkColors.ForegroundContrast;
+                ForegroundHighlight = DarkColors.ForegroundHighlight;
+                ForegroundMiddlelight = DarkColors.ForegroundMiddlelight;
+                ForegroundLowlight = DarkColors.ForegroundLowlight;
+                Disabled = DarkColors.Disabled;
+            }
+            finally
+            {
+                Theme = Theme.Dark;
+            }
         }
 
         public void Light(Color accent)
         {
-            Accent = accent;
-            Transparent = LightColors.Transparent;
-            Semitransparent = LightColors.Semitransparent;
-            Background = LightColors.Background;
-            Foreground = LightColors.Foreground;
-            ForegroundContrast = LightColors.ForegroundContrast;
-            ForegroundHighlight = LightColors.ForegroundHighlight;
-            ForegroundMiddlelight = LightColors.ForegroundMiddlelight;
-            ForegroundLowlight = LightColors.ForegroundLowlight;
-            Disabled = LightColors.Disabled;
+            try
+            {
+                Accent = accent;
+                Transparent = LightColors.Transparent;
+                Semitransparent = LightColors.Semitransparent;
+                Background = LightColors.Background;
+                Foreground = LightColors.Foreground;
+                ForegroundContrast = LightColors.ForegroundContrast;
+                ForegroundHighlight = LightColors.ForegroundHighlight;
+                ForegroundMiddlelight = LightColors.ForegroundMiddlelight;
+                ForegroundLowlight = LightColors.ForegroundLowlight;
+                Disabled = LightColors.Disabled;
+            }
+            finally
+            {
+                Theme = Theme.Light;
+            }
         }
+
+        public Theme Theme
+        {
+            get { return _theme; }
+            private set
+            {
+                _theme = value;
+                OnPropertyChanged("Theme");
+            }
+        }
+
+        private Theme _theme;
 
         public Color Accent
         {

@@ -1,10 +1,14 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:System="clr-namespace:System;assembly=mscorlib">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Theme;component/Themes/SharedResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
+    <System:Double x:Key="BulletSize">10</System:Double>
+    <System:Double x:Key="BulletBorderSize">14</System:Double>
+    
     <Style TargetType="{x:Type CheckBox}">
         
         <Setter Property="Background" Value="{StaticResource Transparent}"/>
@@ -38,7 +42,7 @@
                                          FlowDirection="{TemplateBinding FlowDirection}">
                             <BulletDecorator.Bullet>
                                 <Grid Background="{StaticResource Transparent}"
-                                      Width="14" Height="14">
+                                      Width="{StaticResource BulletBorderSize}" Height="{StaticResource BulletBorderSize}">
                                     <Border Background="{TemplateBinding Background}"
                                             BorderBrush="{TemplateBinding BorderBrush}"
                                             BorderThickness="{TemplateBinding BorderThickness}"/>
@@ -48,7 +52,7 @@
                                           StrokeThickness="{StaticResource BoldThicknessValue}"
                                           Visibility="Collapsed"
                                           HorizontalAlignment="Center" VerticalAlignment="Center"
-                                          Width="10" Height="10">
+                                          Width="{StaticResource BulletSize}" Height="{StaticResource BulletSize}">
                                         <Path.Data>
                                             <GeometryGroup>
                                                 <LineGeometry StartPoint="1,4" EndPoint="5,9"/>
@@ -61,7 +65,7 @@
                                           StrokeThickness="0"
                                           Visibility="Collapsed"
                                           HorizontalAlignment="Center" VerticalAlignment="Center"
-                                          Width="10" Height="10">
+                                          Width="{StaticResource BulletSize}" Height="{StaticResource BulletSize}">
                                         <Path.Data>
                                             <GeometryGroup>
                                                 <RectangleGeometry Rect="1,1,8,8"/>
@@ -109,21 +113,16 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{StaticResource ForegroundHighlight}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
-                <Setter Property="BorderThickness" Value="{StaticResource DefaultThickness}"/>
-                <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
             </Trigger>
 
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Background" Value="{StaticResource ForegroundHighlight}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource ForegroundLowlight}"/>
-                <Setter Property="BorderThickness" Value="{StaticResource DefaultThickness}"/>
-                <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
             </Trigger>
 
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Background" Value="{StaticResource Transparent}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource Disabled}"/>
-                <Setter Property="BorderThickness" Value="{StaticResource DefaultThickness}"/>
                 <Setter Property="Foreground" Value="{StaticResource Disabled}"/>
             </Trigger>
 

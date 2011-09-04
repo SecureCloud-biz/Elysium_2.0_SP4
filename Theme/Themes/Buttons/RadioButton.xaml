@@ -1,9 +1,13 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:System="clr-namespace:System;assembly=mscorlib">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Theme;component/Themes/SharedResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
+
+    <System:Double x:Key="BulletSize">8</System:Double>
+    <System:Double x:Key="BulletBorderSize">14</System:Double>
 
     <Style TargetType="{x:Type RadioButton}">
         
@@ -38,7 +42,7 @@
                                          FlowDirection="{TemplateBinding FlowDirection}">
                             <BulletDecorator.Bullet>
                                 <Grid Background="{StaticResource Transparent}"
-                                      Width="14" Height="14">
+                                      Width="{StaticResource BulletBorderSize}" Height="{StaticResource BulletBorderSize}">
                                     <Ellipse Fill="{TemplateBinding Background}"
                                              Stroke="{TemplateBinding BorderBrush}"
                                              StrokeThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness.Left}"/>
@@ -47,7 +51,7 @@
                                              StrokeThickness="0"
                                              Visibility="Collapsed"
                                              HorizontalAlignment="Center" VerticalAlignment="Center"
-                                             Width="8" Height="8">
+                                             Width="{StaticResource BulletSize}" Height="{StaticResource BulletSize}">
                                     </Ellipse>
                                 </Grid>
                             </BulletDecorator.Bullet>
@@ -79,21 +83,16 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{StaticResource ForegroundHighlight}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
-                <Setter Property="BorderThickness" Value="{StaticResource DefaultThickness}"/>
-                <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
             </Trigger>
 
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Background" Value="{StaticResource ForegroundHighlight}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource ForegroundLowlight}"/>
-                <Setter Property="BorderThickness" Value="{StaticResource DefaultThickness}"/>
-                <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
             </Trigger>
 
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Background" Value="{StaticResource Transparent}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource Disabled}"/>
-                <Setter Property="BorderThickness" Value="{StaticResource DefaultThickness}"/>
                 <Setter Property="Foreground" Value="{StaticResource Disabled}"/>
             </Trigger>
 

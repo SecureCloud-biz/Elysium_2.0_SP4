@@ -5,7 +5,7 @@
         <ResourceDictionary Source="/Theme;component/Themes/SharedResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
-    <Style x:Key="ButtonsBase" TargetType="{x:Type ButtonBase}">
+    <Style x:Key="ButtonsBaseStyle" TargetType="{x:Type ButtonBase}">
         
         <Setter Property="Background" Value="{StaticResource ForegroundHighlight}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
@@ -49,21 +49,18 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{StaticResource ForegroundMiddlelight}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
-                <Setter Property="BorderThickness" Value="{StaticResource DefaultThickness}"/>
                 <Setter Property="Foreground" Value="{StaticResource ForegroundContrast}"/>
             </Trigger>
 
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Background" Value="{StaticResource ForegroundLowlight}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource ForegroundLowlight}"/>
-                <Setter Property="BorderThickness" Value="{StaticResource DefaultThickness}"/>
                 <Setter Property="Foreground" Value="{StaticResource ForegroundContrast}"/>
             </Trigger>
 
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Background" Value="{StaticResource Transparent}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource Disabled}"/>
-                <Setter Property="BorderThickness" Value="{StaticResource DefaultThickness}"/>
                 <Setter Property="Foreground" Value="{StaticResource Disabled}"/>
             </Trigger>
 

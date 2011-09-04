@@ -6,7 +6,7 @@
         <ResourceDictionary Source="/Theme;component/Themes/TextBoxes/TextBoxBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type RichTextBox}" BasedOn="{StaticResource TextBoxesBase}">
+    <Style TargetType="{x:Type RichTextBox}" BasedOn="{StaticResource TextBoxesBaseStyle}">
         <Style.Resources>
             <Style x:Key="{x:Type FlowDocument}" TargetType="{x:Type FlowDocument}">
                 <Setter Property="OverridesDefaultStyle" Value="True"/>

@@ -23,7 +23,7 @@ namespace Elysium.Theme
         public static readonly Color Background = Color.FromArgb(0xFF, 0x11, 0x11, 0x11);
         public static readonly Color Foreground = Color.FromArgb(0xDE, 0xFF, 0xFF, 0xFF);
         public static readonly Color ForegroundContrast = Color.FromArgb(0xFF, 0x11, 0x11, 0x11);
-        public static readonly Color ForegroundHighlight = Color.FromArgb(0x11, 0xFF, 0xFF, 0xFF);
+        public static readonly Color ForegroundHighlight = Color.FromArgb(0x1F, 0xFF, 0xFF, 0xFF);
         public static readonly Color ForegroundMiddlelight = Color.FromArgb(0xBF, 0xFF, 0xFF, 0xFF);
         public static readonly Color ForegroundLowlight = Color.FromArgb(0xDE, 0xFF, 0xFF, 0xFF);
         public static readonly Color Disabled = Color.FromArgb(0x66, 0xFF, 0xFF, 0xFF);
@@ -38,7 +38,7 @@ namespace Elysium.Theme
         public static readonly Color Foreground = Color.FromArgb(0xDE, 0x00, 0x00, 0x00);
         public static readonly Color ForegroundContrast = Color.FromArgb(0xFF, 0xFF, 0xFF, 0xFF);
         public static readonly Color ForegroundHighlight = Color.FromArgb(0x11, 0x00, 0x00, 0x00);
-        public static readonly Color ForegroundMiddlelight = Color.FromArgb(0x99, 0x00, 0x00, 0x00);
+        public static readonly Color ForegroundMiddlelight = Color.FromArgb(0x88, 0x00, 0x00, 0x00);
         public static readonly Color ForegroundLowlight = Color.FromArgb(0xBF, 0x00, 0x00, 0x00);
         public static readonly Color Disabled = Color.FromArgb(0x4D, 0x00, 0x00, 0x00);
     }
