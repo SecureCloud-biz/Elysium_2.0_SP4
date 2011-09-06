@@ -269,10 +269,6 @@
         <Setter Property="Background" Value="{StaticResource Transparent}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ForegroundHighlight}"/>
         <Setter Property="BorderThickness" Value="{StaticResource DefaultThickness}"/>
-        <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
-        <Setter Property="FontFamily" Value="{StaticResource FontFamily}"/>
-        <Setter Property="FontSize" Value="9pt"/>
-        <Setter Property="FontWeight" Value="Light"/>
 
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Focusable" Value="False"/>
