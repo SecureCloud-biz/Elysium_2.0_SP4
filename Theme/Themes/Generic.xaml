@@ -14,6 +14,7 @@
         <ResourceDictionary Source="/Theme;component/Themes/TextBoxes/RichTextBox.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/Scrolls/ScrollBar.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/Scrolls/ScrollViewer.xaml"/>
+        <ResourceDictionary Source="/Theme;component/Themes/Ranges/Slider.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
 </ResourceDictionary>

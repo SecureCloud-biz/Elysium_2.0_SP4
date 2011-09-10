@@ -7,10 +7,8 @@
     </ResourceDictionary.MergedDictionaries>
 
     <System:Double x:Key="HorizontalScrollBarHeight">10</System:Double>
-    <GridLength x:Key="HorizontalScrollBarGridLength">0</GridLength>
     
     <System:Double x:Key="VerticalScrollBarWidth">10</System:Double>
-    <GridLength x:Key="VerticalScrollBarGridLength">0</GridLength>
     
     <Style x:Key="ScrollBarLineButtonStyle" TargetType="{x:Type RepeatButton}">
         
@@ -152,14 +150,16 @@
             </Border>
             <Grid Background="{StaticResource Transparent}">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="{StaticResource HorizontalScrollBarGridLength}"/>
+                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="{StaticResource HorizontalScrollBarGridLength}"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <RepeatButton Grid.Column="0"
                               Command="{x:Static ScrollBar.LineLeftCommand}"
                               IsEnabled="{TemplateBinding IsEnabled}"
-                              Style="{StaticResource ScrollBarLineButtonStyle}">
+                              Style="{StaticResource ScrollBarLineButtonStyle}"
+                              Height="{StaticResource HorizontalScrollBarHeight}"
+                              Visibility="Collapsed">
                     <RepeatButton.Content>
                         <PointCollection>
                             <Point X="6" Y="0"/>
@@ -189,7 +189,9 @@
                 <RepeatButton Grid.Column="2"
                               Command="{x:Static ScrollBar.LineRightCommand}"
                               IsEnabled="{TemplateBinding IsEnabled}"
-                              Style="{StaticResource ScrollBarLineButtonStyle}">
+                              Style="{StaticResource ScrollBarLineButtonStyle}"
+                              Height="{StaticResource HorizontalScrollBarHeight}"
+                              Visibility="Collapsed">
                     <RepeatButton.Content>
                         <PointCollection>
                             <Point X="0" Y="0"/>
@@ -213,14 +215,16 @@
             </Border>
             <Grid Background="{StaticResource Transparent}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="{StaticResource VerticalScrollBarGridLength}"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="{StaticResource VerticalScrollBarGridLength}"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <RepeatButton Grid.Row="0"
                               Command="{x:Static ScrollBar.LineUpCommand}"
                               IsEnabled="{TemplateBinding IsEnabled}"
-                              Style="{StaticResource ScrollBarLineButtonStyle}">
+                              Style="{StaticResource ScrollBarLineButtonStyle}"
+                              Height="{StaticResource VerticalScrollBarWidth}"
+                              Visibility="Collapsed">
                     <RepeatButton.Content>
                         <PointCollection>
                             <Point X="0" Y="6"/>
@@ -251,7 +255,9 @@
                 <RepeatButton Grid.Row="2"
                               Command="{x:Static ScrollBar.LineDownCommand}"
                               IsEnabled="{TemplateBinding IsEnabled}"
-                              Style="{StaticResource ScrollBarLineButtonStyle}">
+                              Style="{StaticResource ScrollBarLineButtonStyle}"
+                              Height="{StaticResource VerticalScrollBarWidth}"
+                              Visibility="Collapsed">
                     <RepeatButton.Content>
                         <PointCollection>
                             <Point X="0" Y="0"/>
@@ -277,9 +283,6 @@
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False"/>
         
         <Setter Property="Margin" Value="{StaticResource DefaultPadding}"/>
-
-        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="Padding" Value="{StaticResource DefaultPadding}"/>
 
         <Setter Property="OverridesDefaultStyle" Value="True"/>
@@ -308,7 +311,6 @@
             </Trigger>
 
         </Style.Triggers>
-        
         
     </Style>
 

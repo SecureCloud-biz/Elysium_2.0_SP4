@@ -12,6 +12,7 @@
             <ColumnDefinition Width="125"/>
             <ColumnDefinition Width="125"/>
             <ColumnDefinition Width="125"/>
+            <ColumnDefinition Width="125"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -79,19 +80,7 @@
             <ListBoxItem>Item 1</ListBoxItem>
             <ListBoxItem>Item 2</ListBoxItem>
         </ListBox>
-        <Slider Grid.Column="3"
-                Grid.Row="0"
-                Value="50"
-                Maximum="100"
-                Minimum="0"
-                Margin="15"/>
-        <ProgressBar Grid.Column="3"
-                     Grid.Row="1"
-                     Value="50"
-                     Maximum="100"
-                     Minimum="0"
-                     Margin="15"/>
-        <ScrollViewer Grid.Column="4"
+        <ScrollViewer Grid.Column="3"
                       Grid.Row="0"
                       Grid.RowSpan="2"
                       HorizontalScrollBarVisibility="Visible"
@@ -101,5 +90,21 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </TextBlock>
         </ScrollViewer>
+        <Slider Grid.Column="4"
+                Grid.Row="0"
+                Orientation="Horizontal"
+                Minimum="0" Value="50" Maximum="100"
+                Margin="15"/>
+        <Slider Grid.Column="4"
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                Orientation="Vertical"
+                Minimum="0" Value="50" Maximum="100"
+                Margin="15"
+                HorizontalAlignment="Center"/>
+        <ProgressBar Grid.Column="5"
+                     Grid.Row="0"
+                     Minimum="0" Value="50" Maximum="100"
+                     Margin="15"/>
     </Grid>
 </Window>

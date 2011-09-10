@@ -1,0 +1,250 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:System="clr-namespace:System;assembly=mscorlib">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Theme;component/Themes/SharedResources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+    <System:Double x:Key="HorizontalSliderMinHeight">12</System:Double>
+    <System:Double x:Key="HorizontalSliderHeight">20</System:Double>
+    <System:Double x:Key="HorizontalSliderMaxHeight">20</System:Double>
+    
+    <Thickness x:Key="SliderElementThickness">4</Thickness>
+    <System:Double x:Key="SliderElementThicknessValue">4</System:Double>
+    <System:Double x:Key="SliderThumbThicknessValue">6</System:Double>
+
+    <System:Double x:Key="VerticalSliderMinWidth">12</System:Double>
+    <System:Double x:Key="VerticalSliderWidth">20</System:Double>
+    <System:Double x:Key="VerticalSliderMaxWidth">20</System:Double>
+
+    <Style x:Key="SliderRepeatButtonStyle" TargetType="{x:Type RepeatButton}">
+
+        <Setter Property="Background" Value="{StaticResource ForegroundMiddlelight}"/>
+
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Focusable" Value="False"/>
+
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False"/>
+
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Rectangle Fill="{TemplateBinding Background}"
+                               StrokeThickness="0"
+                               Width="{TemplateBinding Width}"
+                               Height="{TemplateBinding Height}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        
+        <Style.Triggers>
+            
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource Disabled}"/>
+            </Trigger>
+            
+        </Style.Triggers>
+        
+    </Style>
+    
+    <Style x:Key="SliderRepeatButtonValuableStyle" TargetType="{x:Type RepeatButton}" BasedOn="{StaticResource SliderRepeatButtonStyle}">
+        <Setter Property="Background" Value="{StaticResource Accent}"/>
+    </Style>
+
+    <Style x:Key="SliderThumbStyle" TargetType="{x:Type Thumb}">
+        
+        <Setter Property="Background" Value="{StaticResource ForegroundMiddlelight}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Background}"/>
+
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Focusable" Value="False"/>
+
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False"/>
+
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        
+        <Style.Triggers>
+
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource ForegroundLowlight}"/>
+            </Trigger>
+
+            <Trigger Property="IsDragging" Value="True">
+                <Setter Property="Background" Value="{StaticResource ForegroundLowlight}"/>
+            </Trigger>
+
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource Disabled}"/>
+            </Trigger>
+            
+        </Style.Triggers>
+
+    </Style>
+
+    <ControlTemplate x:Key="HorizontalSliderTemplate" TargetType="{x:Type Slider}">
+        <Grid Background="{TemplateBinding Background}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"
+                               MinHeight="{StaticResource HorizontalSliderMinHeight}"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TickBar Grid.Row="0"
+                     Fill="{TemplateBinding BorderBrush}"
+                     Placement="Top"
+                     Height="{StaticResource SliderElementThicknessValue}"
+                     Visibility="Collapsed"/>
+            <Rectangle x:Name="PART_SelectionRange"
+                       Grid.Row="1"
+                       Fill="{StaticResource Foreground}"
+                       StrokeThickness="0"
+                       Height="{StaticResource SliderElementThicknessValue}"
+                       Visibility="Hidden"/>
+            <Track x:Name="PART_Track"
+                   Grid.Row="1"
+                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Track.DecreaseRepeatButton>
+                    <RepeatButton Command="{x:Static Slider.DecreaseLarge}"
+                                  IsEnabled="{TemplateBinding IsEnabled}"
+                                  Height="{StaticResource SliderElementThicknessValue}"
+                                  Style="{StaticResource SliderRepeatButtonValuableStyle}"/>
+                </Track.DecreaseRepeatButton>
+                <Track.Thumb>
+                    <Thumb IsEnabled="{TemplateBinding IsEnabled}"
+                           BorderThickness="0,0,1,0"
+                           Width="{StaticResource SliderThumbThicknessValue}"
+                           Height="{StaticResource HorizontalSliderMinHeight}"
+                           Style="{StaticResource SliderThumbStyle}"/>
+                </Track.Thumb>
+                <Track.IncreaseRepeatButton>
+                    <RepeatButton Command="{x:Static Slider.IncreaseLarge}"
+                                  IsEnabled="{TemplateBinding IsEnabled}"
+                                  Height="{StaticResource SliderElementThicknessValue}"
+                                  Style="{StaticResource SliderRepeatButtonStyle}"/>
+                </Track.IncreaseRepeatButton>
+            </Track>
+            <TickBar Grid.Row="2"
+                     Fill="{TemplateBinding BorderBrush}"
+                     Placement="Bottom"
+                     Height="{StaticResource SliderElementThicknessValue}"
+                     Visibility="Collapsed"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="VerticalSliderTemplate" TargetType="{x:Type Slider}">
+        <Grid Background="{TemplateBinding Background}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"
+                                  MinWidth="{StaticResource VerticalSliderMinWidth}"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TickBar Grid.Column="0"
+                     Fill="{TemplateBinding BorderBrush}"
+                     Placement="Top"
+                     Width="{StaticResource SliderElementThicknessValue}"
+                     Visibility="Collapsed"/>
+            <Rectangle x:Name="PART_SelectionRange"
+                       Grid.Column="1"
+                       Fill="{StaticResource Foreground}"
+                       StrokeThickness="0"
+                       Width="{StaticResource SliderElementThicknessValue}"
+                       Visibility="Hidden"/>
+            <Track x:Name="PART_Track"
+                   Grid.Column="1"
+                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Track.DecreaseRepeatButton>
+                    <RepeatButton Command="{x:Static Slider.DecreaseLarge}"
+                                  IsEnabled="{TemplateBinding IsEnabled}"
+                                  Width="{StaticResource SliderElementThicknessValue}"
+                                  Style="{StaticResource SliderRepeatButtonValuableStyle}"/>
+                </Track.DecreaseRepeatButton>
+                <Track.Thumb>
+                    <Thumb IsEnabled="{TemplateBinding IsEnabled}"
+                           BorderThickness="0,1,0,0"
+                           Width="{StaticResource HorizontalSliderMinHeight}"
+                           Height="{StaticResource SliderThumbThicknessValue}"
+                           Style="{StaticResource SliderThumbStyle}"/>
+                </Track.Thumb>
+                <Track.IncreaseRepeatButton>
+                    <RepeatButton Command="{x:Static Slider.IncreaseLarge}"
+                                  IsEnabled="{TemplateBinding IsEnabled}"
+                                  Width="{StaticResource SliderElementThicknessValue}"
+                                  Style="{StaticResource SliderRepeatButtonStyle}"/>
+                </Track.IncreaseRepeatButton>
+            </Track>
+            <TickBar Grid.Column="2"
+                     Fill="{TemplateBinding BorderBrush}"
+                     Placement="Bottom"
+                     Width="{StaticResource SliderElementThicknessValue}"
+                     Visibility="Collapsed"/>
+        </Grid>
+    </ControlTemplate>
+
+    <Style TargetType="{x:Type Slider}">
+
+        <Setter Property="Background" Value="{StaticResource Transparent}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
+        <Setter Property="BorderThickness" Value="{StaticResource SliderElementThickness}"/>
+
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Focusable" Value="False"/>
+        
+        <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False"/>
+
+        <Setter Property="Margin" Value="{StaticResource DefaultPadding}"/>
+        <Setter Property="Padding" Value="{StaticResource DefaultPadding}"/>
+
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+
+        <Style.Triggers>
+
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="BorderBrush" Value="{StaticResource Disabled}"/>
+            </Trigger>
+            
+            <Trigger Property="Orientation" Value="Horizontal">
+
+                <Setter Property="MinHeight" Value="{StaticResource HorizontalSliderMinHeight}"/>
+                <Setter Property="Height" Value="{StaticResource HorizontalSliderHeight}"/>
+                <Setter Property="MaxHeight" Value="{StaticResource HorizontalSliderMaxHeight}"/>
+
+                <Setter Property="Template" Value="{StaticResource HorizontalSliderTemplate}"/>
+
+            </Trigger>
+
+            <Trigger Property="Orientation" Value="Vertical">
+
+                <Setter Property="MinWidth" Value="{StaticResource VerticalSliderMinWidth}"/>
+                <Setter Property="Width" Value="{StaticResource VerticalSliderWidth}"/>
+                <Setter Property="MaxWidth" Value="{StaticResource VerticalSliderMaxWidth}"/>
+
+                <Setter Property="Template" Value="{StaticResource VerticalSliderTemplate}"/>
+
+            </Trigger>
+
+        </Style.Triggers>
+
+    </Style>
+
+</ResourceDictionary>
