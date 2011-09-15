@@ -70,4 +70,19 @@
         </Setter>
     </Style>
 
+    <!--Style x:Key="FocusVisualStyleContrast">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="{StaticResource DefaultPadding}" 
+                               Fill="{StaticResource Transparent}"
+                               Stroke="{StaticResource ForegroundContrast}"
+                               StrokeThickness="{StaticResource DefaultThicknessValue}"
+                               StrokeDashArray="2 1"
+                               RenderOptions.EdgeMode="Aliased"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style-->
+
 </ResourceDictionary>
