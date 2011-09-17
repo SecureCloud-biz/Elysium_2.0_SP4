@@ -27,19 +27,18 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ButtonBase}">                    
-                    <Grid Background="{StaticResource Transparent}"
-                          TextBlock.Foreground="{TemplateBinding Foreground}"
-                          TextBlock.FontFamily="{TemplateBinding FontFamily}"
-                          TextBlock.FontSize="{TemplateBinding FontSize}"
-                          TextBlock.FontWeight="{TemplateBinding FontWeight}">
-                        <Border Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"/>
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            TextBlock.Foreground="{TemplateBinding Foreground}"
+                            TextBlock.FontFamily="{TemplateBinding FontFamily}"
+                            TextBlock.FontSize="{TemplateBinding FontSize}"
+                            TextBlock.FontWeight="{TemplateBinding FontWeight}">
                         <ContentPresenter Margin="{TemplateBinding Padding}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           RecognizesAccessKey="True"/>
-                    </Grid>                    
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

@@ -6,13 +6,13 @@
         <ResourceDictionary Source="/Theme;component/Themes/Selectors/SelectorsItemsBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource SelectorsItemsBaseStyle}">
+    <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource SelectorsItemsBaseStyle}">
         <Style.Triggers>
-            <Trigger Property="IsSelected" Value="True">
+            <Trigger Property="IsHighlighted" Value="True">
                 <Setter Property="Background" Value="{StaticResource Accent}"/>
                 <Setter Property="Foreground" Value="{StaticResource ForegroundContrast}"/>
             </Trigger>
-        </Style.Triggers>
+        </Style.Triggers>        
     </Style>
-    
+
 </ResourceDictionary>

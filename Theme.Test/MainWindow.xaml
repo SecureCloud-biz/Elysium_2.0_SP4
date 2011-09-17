@@ -10,7 +10,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="125"/>
             <ColumnDefinition Width="125"/>
-            <ColumnDefinition Width="125"/>
+            <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="125"/>
             <ColumnDefinition Width="125"/>
             <ColumnDefinition Width="225"/>
@@ -67,7 +67,7 @@
         <ComboBox Grid.Column="2"
                   Grid.Row="0"
                   Margin="15"
-                 SelectedIndex="0">
+                  SelectedIndex="0">
             <ComboBoxItem>Default item</ComboBoxItem>
             <ComboBoxItem>Item 1</ComboBoxItem>
             <ComboBoxItem>Item 2</ComboBoxItem>

@@ -3,10 +3,10 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Theme;component/Themes/SharedResources.xaml"/>
-        <ResourceDictionary Source="/Theme;component/Themes/TextBoxes/Control.xaml"/>
+        <ResourceDictionary Source="/Theme;component/Themes/TextBoxes/TextBoxesBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="TextBoxesBaseStyle" TargetType="{x:Type TextBoxBase}" BasedOn="{StaticResource BoxesBaseStyle}">
+    <Style x:Key="TextBoxBaseStyle" TargetType="{x:Type TextBoxBase}" BasedOn="{StaticResource TextBoxesBaseStyle}">
         
         <Setter Property="CaretBrush" Value="{StaticResource Foreground}"/>
         <Setter Property="SelectionBrush" Value="{StaticResource ForegroundMiddlelight}"/>
@@ -19,7 +19,6 @@
                 </MultiTrigger.Conditions>
                 <MultiTrigger.Setters>
                     <Setter Property="BorderBrush" Value="{StaticResource Accent}"/>
-                    <Setter Property="BorderThickness" Value="{StaticResource BoldThickness}"/>
                     <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
                 </MultiTrigger.Setters>
             </MultiTrigger>

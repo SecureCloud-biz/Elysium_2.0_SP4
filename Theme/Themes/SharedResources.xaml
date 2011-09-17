@@ -23,29 +23,13 @@
                      Color="{Binding Source={x:Static Theme:ThemeManager.Instance}, Path=Transparent}"/>
     <SolidColorBrush x:Key="Semitransparent"
                      Color="{Binding Source={x:Static Theme:ThemeManager.Instance}, Path=Semitransparent}"/>
-
-    <!--SolidColorBrush x:Key="DarkBackground" Color="{x:Static Theme:DarkColors.Background}"/>
-    <SolidColorBrush x:Key="DarkForeground" Color="{x:Static Theme:DarkColors.Foreground}"/>
-    <SolidColorBrush x:Key="DarkForegroundContrast" Color="{x:Static Theme:DarkColors.ForegroundContrast}"/>
-    <SolidColorBrush x:Key="DarkForegroundHighlight" Color="{x:Static Theme:DarkColors.ForegroundHighlight}"/>
-    <SolidColorBrush x:Key="DarkForegroundMiddlelight" Color="{x:Static Theme:DarkColors.ForegroundMiddlelight}"/>
-    <SolidColorBrush x:Key="DarkForegroundLowlight" Color="{x:Static Theme:DarkColors.ForegroundLowlight}"/>
-    <SolidColorBrush x:Key="DarkDisabled" Color="{x:Static Theme:DarkColors.Disabled}"/>
-
-    <SolidColorBrush x:Key="LightBackground" Color="{x:Static Theme:LightColors.Background}"/>
-    <SolidColorBrush x:Key="LightForeground" Color="{x:Static Theme:LightColors.Foreground}"/>
-    <SolidColorBrush x:Key="LightForegroundContrast" Color="{x:Static Theme:LightColors.ForegroundContrast}"/>
-    <SolidColorBrush x:Key="LightForegroundHighlight" Color="{x:Static Theme:LightColors.ForegroundHighlight}"/>
-    <SolidColorBrush x:Key="LightForegroundMiddlelight" Color="{x:Static Theme:LightColors.ForegroundMiddlelight}"/>
-    <SolidColorBrush x:Key="LightForegroundLowlight" Color="{x:Static Theme:LightColors.ForegroundLowlight}"/>
-    <SolidColorBrush x:Key="LightDisabled" Color="{x:Static Theme:LightColors.Disabled}"/-->
     
     <FontFamily x:Key="FontFamily">Segoe UI, Tahoma</FontFamily>
 
     <Thickness x:Key="DefaultThickness">1</Thickness>
     <System:Double x:Key="DefaultThicknessValue">1</System:Double>
-    <Thickness x:Key="BoldThickness">1.5</Thickness>
-    <System:Double x:Key="BoldThicknessValue">1.5</System:Double>
+    <Thickness x:Key="BoldThickness">2</Thickness>
+    <System:Double x:Key="BoldThicknessValue">2</System:Double>
     <Thickness x:Key="DefaultPadding">2</Thickness>
     <System:Double x:Key="DefaultPaddingValue">2</System:Double>
     <Thickness x:Key="BoldPadding">5</Thickness>
@@ -54,6 +38,35 @@
     <Duration x:Key="DefaultDuration">00:00:00.0</Duration>
     <Duration x:Key="MinimumDuration">00:00:00.1</Duration>
     <Duration x:Key="MaximumDuration">00:00:00.5</Duration>
+
+    <System:Double x:Key="CheckBoxBulletSize">10</System:Double>
+    <System:Double x:Key="RadioButtonBulletSize">8</System:Double>
+    <System:Double x:Key="BulletBorderSize">14</System:Double>
+
+    <System:Double x:Key="HorizontalScrollBarHeight">10</System:Double>
+    <System:Double x:Key="VerticalScrollBarWidth">10</System:Double>
+    <System:Double x:Key="ScrollBarArrowSize">6</System:Double>
+    <System:Double x:Key="ScrollBarArrowSizeHalf">3</System:Double>
+    
+    <System:Double x:Key="ProgressBarThickness">4</System:Double>
+    <System:Double x:Key="ProgressBarLoadingElementPosition">-5</System:Double>
+
+    <System:Double x:Key="HorizontalSliderMinHeight">12</System:Double>
+    <System:Double x:Key="HorizontalSliderHeight">20</System:Double>
+    <System:Double x:Key="HorizontalSliderMaxHeight">20</System:Double>
+
+    <Thickness x:Key="SliderElementThickness">4</Thickness>
+    <System:Double x:Key="SliderElementThicknessValue">4</System:Double>
+    <System:Double x:Key="SliderThumbThicknessValue">6</System:Double>
+
+    <System:Double x:Key="VerticalSliderMinWidth">12</System:Double>
+    <System:Double x:Key="VerticalSliderWidth">20</System:Double>
+    <System:Double x:Key="VerticalSliderMaxWidth">20</System:Double>
+    
+    <GridLength x:Key="ComboBoxButtonWidth">14</GridLength>
+    <System:Double x:Key="ComboBoxArrowSize">6</System:Double>
+    <System:Double x:Key="ComboBoxArrowSizeHalf">3</System:Double>
+    <Thickness x:Key="ComboBoxArrowMargin">4</Thickness>
 
     <Style x:Key="FocusVisualStyle">
         <Setter Property="Control.Template">
@@ -69,20 +82,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-    <!--Style x:Key="FocusVisualStyleContrast">
-        <Setter Property="Control.Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Rectangle Margin="{StaticResource DefaultPadding}" 
-                               Fill="{StaticResource Transparent}"
-                               Stroke="{StaticResource ForegroundContrast}"
-                               StrokeThickness="{StaticResource DefaultThicknessValue}"
-                               StrokeDashArray="2 1"
-                               RenderOptions.EdgeMode="Aliased"/>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style-->
 
 </ResourceDictionary>

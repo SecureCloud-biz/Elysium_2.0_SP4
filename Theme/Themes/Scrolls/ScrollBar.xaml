@@ -1,14 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:System="clr-namespace:System;assembly=mscorlib">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Theme;component/Themes/SharedResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-
-    <System:Double x:Key="HorizontalScrollBarHeight">10</System:Double>
-    
-    <System:Double x:Key="VerticalScrollBarWidth">10</System:Double>
     
     <Style x:Key="ScrollBarLineButtonStyle" TargetType="{x:Type RepeatButton}">
         
@@ -36,7 +31,7 @@
                                  StrokeThickness="0"
                                  Stretch="None"
                                  HorizontalAlignment="Center" VerticalAlignment="Center"
-                                 Width="6" Height="6"/>
+                                 Width="{StaticResource ScrollBarArrowSize}" Height="{StaticResource ScrollBarArrowSize}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -140,14 +135,11 @@
     </Style>
     
     <ControlTemplate x:Key="HorizontalScrollBarTemplate" TargetType="{x:Type ScrollBar}">
-        <Grid Background="{StaticResource Transparent}">
-            <Border x:Name="ScrollBorder"
-                    Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}">
-                <Border.BorderThickness>
-                    <Thickness Left="0" Top="0" Right="0" Bottom="{StaticResource DefaultThicknessValue}"/>
-                </Border.BorderThickness>
-            </Border>
+        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}">
+            <Border.BorderThickness>
+                <Thickness Left="0" Top="0" Right="0" Bottom="{StaticResource DefaultThicknessValue}"/>
+            </Border.BorderThickness>
             <Grid Background="{StaticResource Transparent}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -162,9 +154,9 @@
                               Visibility="Collapsed">
                     <RepeatButton.Content>
                         <PointCollection>
-                            <Point X="6" Y="0"/>
-                            <Point X="0" Y="3"/>
-                            <Point X="6" Y="6"/>
+                            <Point X="{StaticResource ScrollBarArrowSize}" Y="0"/>
+                            <Point X="0" Y="{StaticResource ScrollBarArrowSizeHalf}"/>
+                            <Point X="{StaticResource ScrollBarArrowSize}" Y="{StaticResource ScrollBarArrowSize}"/>
                         </PointCollection>
                     </RepeatButton.Content>
                 </RepeatButton>
@@ -195,24 +187,21 @@
                     <RepeatButton.Content>
                         <PointCollection>
                             <Point X="0" Y="0"/>
-                            <Point X="6" Y="3"/>
-                            <Point X="0" Y="6"/>
+                            <Point X="{StaticResource ScrollBarArrowSize}" Y="{StaticResource ScrollBarArrowSizeHalf}"/>
+                            <Point X="0" Y="{StaticResource ScrollBarArrowSize}"/>
                         </PointCollection>
                     </RepeatButton.Content>
                 </RepeatButton>
             </Grid>
-        </Grid>
+        </Border>
     </ControlTemplate>
 
     <ControlTemplate x:Key="VerticalScrollBarTemplate" TargetType="{x:Type ScrollBar}">
-        <Grid Background="{StaticResource Transparent}">
-            <Border x:Name="ScrollBorder"
-                    Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}">
-                <Border.BorderThickness>
-                    <Thickness Left="0" Top="0" Right="{StaticResource DefaultThicknessValue}" Bottom="0"/>
-                </Border.BorderThickness>
-            </Border>
+        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}">
+            <Border.BorderThickness>
+                <Thickness Left="0" Top="0" Right="{StaticResource DefaultThicknessValue}" Bottom="0"/>
+            </Border.BorderThickness>
             <Grid Background="{StaticResource Transparent}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -227,9 +216,9 @@
                               Visibility="Collapsed">
                     <RepeatButton.Content>
                         <PointCollection>
-                            <Point X="0" Y="6"/>
-                            <Point X="3" Y="0"/>
-                            <Point X="6" Y="6"/>
+                            <Point X="0" Y="{StaticResource ScrollBarArrowSize}"/>
+                            <Point X="{StaticResource ScrollBarArrowSizeHalf}" Y="0"/>
+                            <Point X="{StaticResource ScrollBarArrowSize}" Y="{StaticResource ScrollBarArrowSize}"/>
                         </PointCollection>
                     </RepeatButton.Content>
                 </RepeatButton>
@@ -261,13 +250,13 @@
                     <RepeatButton.Content>
                         <PointCollection>
                             <Point X="0" Y="0"/>
-                            <Point X="3" Y="6"/>
-                            <Point X="6" Y="0"/>
+                            <Point X="{StaticResource ScrollBarArrowSizeHalf}" Y="{StaticResource ScrollBarArrowSize}"/>
+                            <Point X="{StaticResource ScrollBarArrowSize}" Y="0"/>
                         </PointCollection>
                     </RepeatButton.Content>
                 </RepeatButton>
             </Grid>
-        </Grid>
+        </Border>
     </ControlTemplate>
 
     <Style TargetType="{x:Type ScrollBar}">

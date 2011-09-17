@@ -5,18 +5,6 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Theme;component/Themes/SharedResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-    
-    <System:Double x:Key="HorizontalSliderMinHeight">12</System:Double>
-    <System:Double x:Key="HorizontalSliderHeight">20</System:Double>
-    <System:Double x:Key="HorizontalSliderMaxHeight">20</System:Double>
-    
-    <Thickness x:Key="SliderElementThickness">4</Thickness>
-    <System:Double x:Key="SliderElementThicknessValue">4</System:Double>
-    <System:Double x:Key="SliderThumbThicknessValue">6</System:Double>
-
-    <System:Double x:Key="VerticalSliderMinWidth">12</System:Double>
-    <System:Double x:Key="VerticalSliderWidth">20</System:Double>
-    <System:Double x:Key="VerticalSliderMaxWidth">20</System:Double>
 
     <Style x:Key="SliderRepeatButtonStyle" TargetType="{x:Type RepeatButton}">
 
@@ -130,10 +118,16 @@
                 </Track.DecreaseRepeatButton>
                 <Track.Thumb>
                     <Thumb IsEnabled="{TemplateBinding IsEnabled}"
-                           BorderThickness="0,0,1,0"
                            Width="{StaticResource SliderThumbThicknessValue}"
                            Height="{StaticResource HorizontalSliderMinHeight}"
-                           Style="{StaticResource SliderThumbStyle}"/>
+                           Style="{StaticResource SliderThumbStyle}">
+                        <Thumb.BorderThickness>
+                            <Thickness Left="0"
+                                       Top="0"
+                                       Right="{StaticResource DefaultThicknessValue}"
+                                       Bottom="0"/>
+                        </Thumb.BorderThickness>
+                    </Thumb>
                 </Track.Thumb>
                 <Track.IncreaseRepeatButton>
                     <RepeatButton Command="{x:Static Slider.IncreaseLarge}"
@@ -180,10 +174,16 @@
                 </Track.DecreaseRepeatButton>
                 <Track.Thumb>
                     <Thumb IsEnabled="{TemplateBinding IsEnabled}"
-                           BorderThickness="0,1,0,0"
                            Width="{StaticResource HorizontalSliderMinHeight}"
                            Height="{StaticResource SliderThumbThicknessValue}"
-                           Style="{StaticResource SliderThumbStyle}"/>
+                           Style="{StaticResource SliderThumbStyle}">
+                        <Thumb.BorderThickness>
+                            <Thickness Left="0"
+                                       Top="{StaticResource DefaultThicknessValue}"
+                                       Right="0"
+                                       Bottom="0"/>
+                        </Thumb.BorderThickness>
+                    </Thumb>
                 </Track.Thumb>
                 <Track.IncreaseRepeatButton>
                     <RepeatButton Command="{x:Static Slider.IncreaseLarge}"

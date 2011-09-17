@@ -25,12 +25,12 @@
                     <Canvas x:Name="PART_Track"
                             Background="{TemplateBinding Background}"
                             ClipToBounds="True"
-                            Height="4">
+                            Height="{StaticResource ProgressBarThickness}">
                         <Rectangle x:Name="PART_Indicator"
                                    Fill="{TemplateBinding Foreground}"
                                    StrokeThickness="0"
                                    Canvas.Left="0" Canvas.Top="0"
-                                   Width="{Binding ElementName=PART_Track, Path=ActualWidth}" Height="4">
+                                   Width="{Binding ElementName=PART_Track, Path=ActualWidth}" Height="{StaticResource ProgressBarThickness}">
                             <Rectangle.RenderTransform>
                                 <ScaleTransform ScaleX="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Percent}"/>
                             </Rectangle.RenderTransform>
@@ -38,28 +38,28 @@
                         <Canvas x:Name="PART_LoadingBar"
                                 Background="{StaticResource Background}"
                                 Canvas.Left="0" Canvas.Top="0"
-                                Width="{Binding ElementName=PART_Track, Path=ActualWidth}" Height="4"
+                                Width="{Binding ElementName=PART_Track, Path=ActualWidth}" Height="{StaticResource ProgressBarThickness}"
                                 Visibility="Collapsed">
                             <Ellipse Fill="{TemplateBinding Foreground}"
                                      StrokeThickness="0"
-                                     Canvas.Left="-5" Canvas.Top="0"
-                                     Width="4" Height="4"/>
+                                     Canvas.Left="{StaticResource ProgressBarLoadingElementPosition}" Canvas.Top="0"
+                                     Width="{StaticResource ProgressBarThickness}" Height="{StaticResource ProgressBarThickness}"/>
                             <Ellipse Fill="{TemplateBinding Foreground}"
                                      StrokeThickness="0"
-                                     Canvas.Left="-5" Canvas.Top="0"
-                                     Width="4" Height="4"/>
+                                     Canvas.Left="{StaticResource ProgressBarLoadingElementPosition}" Canvas.Top="0"
+                                     Width="{StaticResource ProgressBarThickness}" Height="{StaticResource ProgressBarThickness}"/>
                             <Ellipse Fill="{TemplateBinding Foreground}"
                                      StrokeThickness="0"
-                                     Canvas.Left="-5" Canvas.Top="0"
-                                     Width="4" Height="4"/>
+                                     Canvas.Left="{StaticResource ProgressBarLoadingElementPosition}" Canvas.Top="0"
+                                     Width="{StaticResource ProgressBarThickness}" Height="{StaticResource ProgressBarThickness}"/>
                             <Ellipse Fill="{TemplateBinding Foreground}"
                                      StrokeThickness="0"
-                                     Canvas.Left="-5" Canvas.Top="0"
-                                     Width="4" Height="4"/>
+                                     Canvas.Left="{StaticResource ProgressBarLoadingElementPosition}" Canvas.Top="0"
+                                     Width="{StaticResource ProgressBarThickness}" Height="{StaticResource ProgressBarThickness}"/>
                             <Ellipse Fill="{TemplateBinding Foreground}"
                                      StrokeThickness="0"
-                                     Canvas.Left="-5" Canvas.Top="0"
-                                     Width="4" Height="4"/>
+                                     Canvas.Left="{StaticResource ProgressBarLoadingElementPosition}" Canvas.Top="0"
+                                     Width="{StaticResource ProgressBarThickness}" Height="{StaticResource ProgressBarThickness}"/>
                         </Canvas>
                     </Canvas>
                     <ControlTemplate.Triggers>
