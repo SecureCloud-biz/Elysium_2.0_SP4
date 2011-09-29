@@ -6,6 +6,7 @@
         <ResourceDictionary Source="/Theme;component/Themes/Buttons/Button.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/Buttons/RepeatButton.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/Buttons/ToggleButton.xaml"/>
+        <ResourceDictionary Source="/Theme;component/Themes/Buttons/CommandButton.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/Buttons/CheckBox.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/Buttons/RadioButton.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/TextBoxes/TextBox.xaml"/>

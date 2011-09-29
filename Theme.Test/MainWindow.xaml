@@ -19,6 +19,7 @@
             <RowDefinition Height="60"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -34,13 +35,24 @@
                       Grid.Row="2"
                       Margin="15"
                       Content="ToggleButton"/>
+        <InternalControls:CommandButton Grid.Column="0"
+                                        Grid.Row="3"
+                                        Width="48"
+                                        Height="48">
+            <Grid Background="Transparent">
+                <Polygon Points="0,0 30,0"
+                         Stroke="Black"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"/>
+            </Grid>
+        </InternalControls:CommandButton>
         <CheckBox Grid.Column="0"
-                  Grid.Row="3"
+                  Grid.Row="4"
                   Margin="10"
                   Content="CheckBox"
                   IsThreeState="True"/>
         <RadioButton Grid.Column="0"
-                     Grid.Row="4"
+                     Grid.Row="5"
                      Margin="10"
                      Content="RadioButton"/>
         <TextBox Grid.Column="1"

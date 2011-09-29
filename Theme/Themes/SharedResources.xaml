@@ -43,30 +43,30 @@
     <System:Double x:Key="RadioButtonBulletSize">8</System:Double>
     <System:Double x:Key="BulletBorderSize">14</System:Double>
 
-    <System:Double x:Key="HorizontalScrollBarHeight">10</System:Double>
-    <System:Double x:Key="VerticalScrollBarWidth">10</System:Double>
-    <System:Double x:Key="ScrollBarArrowSize">6</System:Double>
-    <System:Double x:Key="ScrollBarArrowSizeHalf">3</System:Double>
+    <System:Double x:Key="HorizontalScrollBarHeight">12</System:Double>
+    <System:Double x:Key="VerticalScrollBarWidth">12</System:Double>
+    <System:Double x:Key="ScrollBarArrowSize">8</System:Double>
+    <System:Double x:Key="ScrollBarArrowSizeHalf">4</System:Double>
     
     <System:Double x:Key="ProgressBarThickness">4</System:Double>
     <System:Double x:Key="ProgressBarLoadingElementPosition">-5</System:Double>
 
-    <System:Double x:Key="HorizontalSliderMinHeight">12</System:Double>
-    <System:Double x:Key="HorizontalSliderHeight">20</System:Double>
-    <System:Double x:Key="HorizontalSliderMaxHeight">20</System:Double>
+    <System:Double x:Key="HorizontalSliderMinHeight">16</System:Double>
+    <System:Double x:Key="HorizontalSliderHeight">24</System:Double>
+    <System:Double x:Key="HorizontalSliderMaxHeight">24</System:Double>
 
     <Thickness x:Key="SliderElementThickness">4</Thickness>
     <System:Double x:Key="SliderElementThicknessValue">4</System:Double>
     <System:Double x:Key="SliderThumbThicknessValue">6</System:Double>
 
-    <System:Double x:Key="VerticalSliderMinWidth">12</System:Double>
-    <System:Double x:Key="VerticalSliderWidth">20</System:Double>
-    <System:Double x:Key="VerticalSliderMaxWidth">20</System:Double>
+    <System:Double x:Key="VerticalSliderMinWidth">14</System:Double>
+    <System:Double x:Key="VerticalSliderWidth">22</System:Double>
+    <System:Double x:Key="VerticalSliderMaxWidth">22</System:Double>
     
-    <GridLength x:Key="ComboBoxButtonWidth">14</GridLength>
-    <System:Double x:Key="ComboBoxArrowSize">6</System:Double>
-    <System:Double x:Key="ComboBoxArrowSizeHalf">3</System:Double>
-    <Thickness x:Key="ComboBoxArrowMargin">4</Thickness>
+    <GridLength x:Key="ComboBoxButtonWidth">18</GridLength>
+    <System:Double x:Key="ComboBoxArrowSize">8</System:Double>
+    <System:Double x:Key="ComboBoxArrowSizeHalf">4</System:Double>
+    <Thickness x:Key="ComboBoxArrowMargin">5</Thickness>
 
     <Style x:Key="FocusVisualStyle">
         <Setter Property="Control.Template">
