@@ -79,6 +79,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="PostBuildEvent">
-    <Exec Command="xcopy &quot;$(SolutionDir)Binary\$(ConfigurationName)\Theme\AnyCPU&quot; &quot;$(SolutionDir)Binary\$(ConfigurationName)\Theme.Test\AnyCPU&quot; /y" />
+    <Exec Command="xcopy &quot;$(SolutionDir)Binary\$(ConfigurationName)\Theme\AnyCPU&quot; &quot;$(SolutionDir)Binary\$(ConfigurationName)\Theme.Test\AnyCPU&quot; /e /y" />
   </Target>
 </Project>
