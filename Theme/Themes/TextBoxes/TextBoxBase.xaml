@@ -10,7 +10,9 @@
         
         <Setter Property="CaretBrush" Value="{StaticResource Foreground}"/>
         <Setter Property="SelectionBrush" Value="{StaticResource ForegroundMiddlelight}"/>
-        
+
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>

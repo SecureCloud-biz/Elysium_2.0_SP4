@@ -7,6 +7,13 @@
         <ResourceDictionary Source="/Theme;component/Themes/Buttons/CommandButtonsBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{x:Type Controls:CommandButton}" TargetType="{x:Type Controls:CommandButton}" BasedOn="{StaticResource CommandButtonsBaseStyle}"/>
+    <Style x:Key="{x:Type Controls:ToggleCommandButton}" TargetType="{x:Type Controls:ToggleCommandButton}" BasedOn="{StaticResource CommandButtonsBaseStyle}">        
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="BorderBrush" Value="{StaticResource Foreground}"/>
+                <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
+            </Trigger>
+        </Style.Triggers>        
+    </Style>
 
 </ResourceDictionary>

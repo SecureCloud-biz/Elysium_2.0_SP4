@@ -33,7 +33,8 @@
                             TextBlock.Foreground="{TemplateBinding Foreground}"
                             TextBlock.FontFamily="{TemplateBinding FontFamily}"
                             TextBlock.FontSize="{TemplateBinding FontSize}"
-                            TextBlock.FontWeight="{TemplateBinding FontWeight}">
+                            TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <ContentPresenter Margin="{TemplateBinding Padding}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -44,25 +45,21 @@
         </Setter>
 
         <Style.Triggers>
-
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{StaticResource ForegroundMiddlelight}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
                 <Setter Property="Foreground" Value="{StaticResource ForegroundContrast}"/>
             </Trigger>
-
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Background" Value="{StaticResource ForegroundLowlight}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource ForegroundLowlight}"/>
                 <Setter Property="Foreground" Value="{StaticResource ForegroundContrast}"/>
             </Trigger>
-
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Background" Value="{StaticResource Transparent}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource Disabled}"/>
                 <Setter Property="Foreground" Value="{StaticResource Disabled}"/>
             </Trigger>
-
         </Style.Triggers>
         
     </Style>

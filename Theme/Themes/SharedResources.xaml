@@ -30,6 +30,8 @@
     <System:Double x:Key="DefaultThicknessValue">1</System:Double>
     <Thickness x:Key="BoldThickness">2</Thickness>
     <System:Double x:Key="BoldThicknessValue">2</System:Double>
+    <Thickness x:Key="ThinPadding">1</Thickness>
+    <System:Double x:Key="ThinPaddingValue">1</System:Double>
     <Thickness x:Key="DefaultPadding">2</Thickness>
     <System:Double x:Key="DefaultPaddingValue">2</System:Double>
     <Thickness x:Key="BoldPadding">5</Thickness>
@@ -43,10 +45,11 @@
     <System:Double x:Key="RadioButtonBulletSize">8</System:Double>
     <System:Double x:Key="BulletBorderSize">14</System:Double>
 
-    <System:Double x:Key="HorizontalScrollBarHeight">12</System:Double>
-    <System:Double x:Key="VerticalScrollBarWidth">12</System:Double>
-    <System:Double x:Key="ScrollBarArrowSize">8</System:Double>
-    <System:Double x:Key="ScrollBarArrowSizeHalf">4</System:Double>
+    <System:Double x:Key="HorizontalScrollBarHeight">8</System:Double>
+    <System:Double x:Key="VerticalScrollBarWidth">8</System:Double>
+    <System:Double x:Key="ScrollBarArrowSize">6</System:Double>
+    <System:Double x:Key="ScrollBarArrowSizeHalf">3</System:Double>
+    <System:Double x:Key="ScrollViewerShadowSize">5</System:Double>
     
     <System:Double x:Key="ProgressBarThickness">4</System:Double>
     <System:Double x:Key="ProgressBarLoadingElementPosition">-5</System:Double>

@@ -3,6 +3,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Theme;component/Themes/SharedResources.xaml"/>
+        <ResourceDictionary Source="/Theme;component/Themes/Scrolls/ScrollBar.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
     <Style x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">        
@@ -11,7 +12,8 @@
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                     <Border Background="{StaticResource Transparent}"
                             BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <Polygon Fill="{StaticResource ForegroundMiddlelight}"
                                  StrokeThickness="0"
                                  Margin="{StaticResource ComboBoxArrowMargin}"
@@ -49,7 +51,8 @@
                 <ControlTemplate TargetType="{x:Type Control}">
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <ScrollViewer x:Name="PART_ContentHost"
                                       Margin="{TemplateBinding Padding}"/>
                     </Border>
@@ -92,7 +95,8 @@
                     <Border x:Name="LayoutRoot"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <Grid Background="{StaticResource Transparent}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -104,21 +108,24 @@
                                    IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
                                    Placement="Bottom"
                                    PlacementTarget="{Binding ElementName=LayoutRoot}">
-                                <Grid Background="{StaticResource Transparent}"
-                                      MinWidth="{Binding ActualWidth, ElementName=LayoutRoot}"
-                                      MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                    <ScrollViewer x:Name="DropDownScrollViewver"
-                                                  Background="{TemplateBinding Background}"
-                                                  BorderBrush="{StaticResource ForegroundLowlight}">
-                                        <ScrollViewer.BorderThickness>
-                                            <Thickness Left="{StaticResource DefaultThicknessValue}"
-                                                       Top="0"
-                                                       Right="{StaticResource DefaultThicknessValue}"
-                                                       Bottom="{StaticResource DefaultThicknessValue}"/>
-                                        </ScrollViewer.BorderThickness>
-                                        <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained"/>
-                                    </ScrollViewer>
-                                </Grid>
+                                <Popup.Resources>
+                                    <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource {x:Type ScrollBar}}">
+                                        <Setter Property="BorderBrush" Value="{StaticResource Transparent}"/>
+                                    </Style>
+                                </Popup.Resources>
+                                <ScrollViewer x:Name="DropDownScrollViewver"
+                                              Background="{StaticResource Background}"
+                                              BorderBrush="{StaticResource ForegroundLowlight}"
+                                              MinWidth="{Binding ActualWidth, ElementName=LayoutRoot}"
+                                              MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <ScrollViewer.BorderThickness>
+                                        <Thickness Left="{StaticResource DefaultThicknessValue}"
+                                                   Top="0"
+                                                   Right="{StaticResource DefaultThicknessValue}"
+                                                   Bottom="{StaticResource DefaultThicknessValue}"/>
+                                    </ScrollViewer.BorderThickness>
+                                    <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                </ScrollViewer>
                             </Popup>
                             <ToggleButton x:Name="Button"
                                           Grid.Column="0"
@@ -156,18 +163,15 @@
                     </Border>
 
                     <ControlTemplate.Triggers>
-
                         <Trigger Property="IsEditable" Value="True">
                             <Setter TargetName="Button" Property="Grid.Column" Value="1"/>
                             <Setter TargetName="Button" Property="Grid.ColumnSpan" Value="1"/>
                             <Setter TargetName="ContentPresenter" Property="Visibility" Value="Collapsed"/>
                             <Setter TargetName="TextBoxLayout" Property="Visibility" Value="Visible"/>
-                        </Trigger>
-                        
+                        </Trigger>                        
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="{StaticResource ForegroundHighlight}"/>
                         </Trigger>
-
                         <Trigger Property="IsDropDownOpen" Value="True">
                             <Setter Property="Background" Value="{StaticResource ForegroundHighlight}"/>
                             <Setter Property="BorderThickness">
@@ -179,24 +183,20 @@
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
-
                     </ControlTemplate.Triggers>
                     
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         
-        <Style.Triggers>
-            
+        <Style.Triggers>            
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="BorderBrush" Value="{StaticResource Disabled}"/>
                 <Setter Property="Foreground" Value="{StaticResource Disabled}"/>
             </Trigger>
-
             <Trigger Property="IsGrouping" Value="True">
                 <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
             </Trigger>
-
         </Style.Triggers>
         
     </Style>

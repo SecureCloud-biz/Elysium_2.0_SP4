@@ -179,8 +179,8 @@ namespace Elysium.Theme.Controls
 
         public static readonly DependencyProperty IndeterminateAnimationProperty =
             DependencyProperty.Register("IndeterminateAnimation", typeof(Storyboard), typeof(ProgressBar),
-                                        new FrameworkPropertyMetadata(new Storyboard
-                                                                          { Name = DefaultIndeterminateAnimationName, RepeatBehavior = RepeatBehavior.Forever }));
+                                        new UIPropertyMetadata(new Storyboard
+                                                                   { Name = DefaultIndeterminateAnimationName, RepeatBehavior = RepeatBehavior.Forever }));
 
         public Storyboard IndeterminateAnimation
         {
@@ -192,8 +192,8 @@ namespace Elysium.Theme.Controls
 
         public static readonly DependencyProperty LoadingAnimationProperty =
             DependencyProperty.Register("LoadingAnimation", typeof(Storyboard), typeof(ProgressBar),
-                                        new FrameworkPropertyMetadata(new Storyboard
-                                                                          { Name = DefaultLoadingAnimationName, RepeatBehavior = RepeatBehavior.Forever }));
+                                        new UIPropertyMetadata(new Storyboard
+                                                                   { Name = DefaultLoadingAnimationName, RepeatBehavior = RepeatBehavior.Forever }));
 
         public Storyboard LoadingAnimation
         {
@@ -203,7 +203,7 @@ namespace Elysium.Theme.Controls
 
         protected virtual void UpdateAnimations()
         {
-            if (IndeterminateAnimation != null && IndeterminateAnimation.Name == DefaultIndeterminateAnimationName)
+            if (IndeterminateAnimation != null && IndeterminateAnimation.Name == DefaultIndeterminateAnimationName && _track != null && _indicator != null)
             {
                 var isStarted = IsIndeterminate == true;
                 if (isStarted)
@@ -233,7 +233,7 @@ namespace Elysium.Theme.Controls
                 if (isStarted) IndeterminateAnimation.Begin(this, Template, true);
             }
 
-            if (LoadingAnimation != null && LoadingAnimation.Name == DefaultLoadingAnimationName)
+            if (LoadingAnimation != null && LoadingAnimation.Name == DefaultLoadingAnimationName && _track != null && _loadingBar != null)
             {
                 var isStarted = IsIndeterminate == null;
                 if (isStarted)

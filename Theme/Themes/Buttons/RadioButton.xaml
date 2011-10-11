@@ -27,9 +27,10 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
-
+                    
                     <Grid Background="{StaticResource Transparent}"
-                          Margin="{TemplateBinding Padding}">
+                          Margin="{TemplateBinding Padding}"
+                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <BulletDecorator Background="{StaticResource Transparent}"
                                          TextBlock.Foreground="{TemplateBinding Foreground}"
                                          TextBlock.FontFamily="{TemplateBinding FontFamily}"
@@ -63,42 +64,35 @@
                             </ContentPresenter>
                         </BulletDecorator>
                     </Grid>
-
-                    <ControlTemplate.Triggers>
-                        
+                    
+                    <ControlTemplate.Triggers>                        
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="CheckBullet" Property="Visibility" Value="Visible"/>
-                        </Trigger>
-                        
+                        </Trigger>                        
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="CheckBullet" Property="Ellipse.Fill" Value="{StaticResource Disabled}"/>
-                        </Trigger>
-                        
+                        </Trigger>                        
                     </ControlTemplate.Triggers>
                     
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         
-        <Style.Triggers>
-            
+        <Style.Triggers>            
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{StaticResource ForegroundHighlight}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
             </Trigger>
-
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Background" Value="{StaticResource ForegroundHighlight}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource ForegroundLowlight}"/>
             </Trigger>
-
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Background" Value="{StaticResource Transparent}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource Disabled}"/>
                 <Setter Property="Foreground" Value="{StaticResource Disabled}"/>
             </Trigger>
-
-        </Style.Triggers>
+        </Style.Triggers>  
         
     </Style>
 

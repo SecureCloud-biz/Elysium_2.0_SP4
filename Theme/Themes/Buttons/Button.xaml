@@ -6,12 +6,16 @@
         <ResourceDictionary Source="/Theme;component/Themes/Buttons/ButtonBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonsBaseStyle}">        
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonsBaseStyle}">
+        
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        
         <Style.Triggers>
             <Trigger Property="IsDefault" Value="True">
                 <Setter Property="BorderBrush" Value="{StaticResource Accent}"/>
             </Trigger>
-        </Style.Triggers>        
+        </Style.Triggers>
+        
     </Style>
     
 </ResourceDictionary>

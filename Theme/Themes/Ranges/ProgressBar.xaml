@@ -7,8 +7,9 @@
     </ResourceDictionary.MergedDictionaries>
     
     <Style x:Key="{x:Type InternalControls:ProgressBar}" TargetType="{x:Type InternalControls:ProgressBar}">
-        
+
         <Setter Property="Background" Value="{StaticResource ForegroundHighlight}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Foreground" Value="{StaticResource Accent}"/>
 
@@ -22,10 +23,12 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type InternalControls:ProgressBar}">
+                    
                     <Canvas x:Name="PART_Track"
                             Background="{TemplateBinding Background}"
                             ClipToBounds="True"
-                            Height="{StaticResource ProgressBarThickness}">
+                            Height="{StaticResource ProgressBarThickness}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <Rectangle x:Name="PART_Indicator"
                                    Fill="{TemplateBinding Foreground}"
                                    StrokeThickness="0"
@@ -62,16 +65,15 @@
                                      Width="{StaticResource ProgressBarThickness}" Height="{StaticResource ProgressBarThickness}"/>
                         </Canvas>
                     </Canvas>
-                    <ControlTemplate.Triggers>
-                        
+                    
+                    <ControlTemplate.Triggers>                        
                         <Trigger Property="Orientation" Value="Vertical">
                             <Setter TargetName="PART_Track" Property="LayoutTransform">
                                 <Setter.Value>
                                     <RotateTransform Angle="-90"/>
                                 </Setter.Value>
                             </Setter>
-                        </Trigger>
-                        
+                        </Trigger>                        
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsIndeterminate" Value="True"/>
@@ -85,7 +87,6 @@
                                 </Setter>
                             </MultiTrigger.Setters>
                         </MultiTrigger>
-
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsIndeterminate" Value="{x:Null}"/>
@@ -96,7 +97,6 @@
                                 <Setter TargetName="PART_LoadingBar" Property="Visibility" Value="Visible"/>
                             </MultiTrigger.Setters>
                         </MultiTrigger>
-
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

@@ -25,17 +25,16 @@
                     <Rectangle Fill="{TemplateBinding Background}"
                                StrokeThickness="0"
                                Width="{TemplateBinding Width}"
-                               Height="{TemplateBinding Height}"/>
+                               Height="{TemplateBinding Height}"
+                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         
-        <Style.Triggers>
-            
+        <Style.Triggers>            
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Background" Value="{StaticResource Disabled}"/>
-            </Trigger>
-            
+            </Trigger>            
         </Style.Triggers>
         
     </Style>
@@ -65,31 +64,29 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Width="{TemplateBinding Width}"
-                            Height="{TemplateBinding Height}"/>
+                            Height="{TemplateBinding Height}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         
         <Style.Triggers>
-
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{StaticResource ForegroundLowlight}"/>
             </Trigger>
-
             <Trigger Property="IsDragging" Value="True">
                 <Setter Property="Background" Value="{StaticResource ForegroundLowlight}"/>
             </Trigger>
-
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Background" Value="{StaticResource Disabled}"/>
-            </Trigger>
-            
+            </Trigger>            
         </Style.Triggers>
 
     </Style>
 
     <ControlTemplate x:Key="HorizontalSliderTemplate" TargetType="{x:Type Slider}">
-        <Grid Background="{TemplateBinding Background}">
+        <Grid Background="{TemplateBinding Background}"
+              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"
@@ -145,7 +142,8 @@
     </ControlTemplate>
 
     <ControlTemplate x:Key="VerticalSliderTemplate" TargetType="{x:Type Slider}">
-        <Grid Background="{TemplateBinding Background}">
+        <Grid Background="{TemplateBinding Background}"
+              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"
@@ -218,31 +216,31 @@
         <Setter Property="SnapsToDevicePixels" Value="True"/>
 
         <Style.Triggers>
-
+            
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="BorderBrush" Value="{StaticResource Disabled}"/>
             </Trigger>
             
             <Trigger Property="Orientation" Value="Horizontal">
-
+                
                 <Setter Property="MinHeight" Value="{StaticResource HorizontalSliderMinHeight}"/>
                 <Setter Property="Height" Value="{StaticResource HorizontalSliderHeight}"/>
                 <Setter Property="MaxHeight" Value="{StaticResource HorizontalSliderMaxHeight}"/>
-
+                
                 <Setter Property="Template" Value="{StaticResource HorizontalSliderTemplate}"/>
 
             </Trigger>
-
+            
             <Trigger Property="Orientation" Value="Vertical">
-
+                
                 <Setter Property="MinWidth" Value="{StaticResource VerticalSliderMinWidth}"/>
                 <Setter Property="Width" Value="{StaticResource VerticalSliderWidth}"/>
                 <Setter Property="MaxWidth" Value="{StaticResource VerticalSliderMaxWidth}"/>
-
-                <Setter Property="Template" Value="{StaticResource VerticalSliderTemplate}"/>
-
+                
+                <Setter Property="Template" Value="{StaticResource VerticalSliderTemplate}"/>   
+                
             </Trigger>
-
+            
         </Style.Triggers>
 
     </Style>

@@ -18,8 +18,8 @@ namespace Elysium.Theme
 
     public static class DarkColors
     {
-        public static readonly Color Transparent = Color.FromArgb(0x00, 0x00, 0x00, 0x00);
-        public static readonly Color Semitransparent = Color.FromArgb(0xAA, 0x00, 0x00, 0x00);
+        public static readonly Color Transparent = Color.FromArgb(0x00, 0x11, 0x11, 0x11);
+        public static readonly Color Semitransparent = Color.FromArgb(0xAA, 0x11, 0x11, 0x11);
         public static readonly Color Background = Color.FromArgb(0xFF, 0x11, 0x11, 0x11);
         public static readonly Color Foreground = Color.FromArgb(0xDE, 0xFF, 0xFF, 0xFF);
         public static readonly Color ForegroundContrast = Color.FromArgb(0xFF, 0x11, 0x11, 0x11);

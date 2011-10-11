@@ -2,24 +2,37 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
     <ResourceDictionary.MergedDictionaries>
+        
         <ResourceDictionary Source="/Theme;component/Themes/SharedResources.xaml"/>
+        
         <ResourceDictionary Source="/Theme;component/Themes/Buttons/Button.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/Buttons/RepeatButton.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/Buttons/ToggleButton.xaml"/>
+        
         <ResourceDictionary Source="/Theme;component/Themes/Buttons/CommandButton.xaml"/>
+        <ResourceDictionary Source="/Theme;component/Themes/Buttons/RepeatCommandButton.xaml"/>
+        <ResourceDictionary Source="/Theme;component/Themes/Buttons/ToggleCommandButton.xaml"/>
+        
         <ResourceDictionary Source="/Theme;component/Themes/Buttons/CheckBox.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/Buttons/RadioButton.xaml"/>
+        
         <ResourceDictionary Source="/Theme;component/Themes/TextBoxes/TextBox.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/TextBoxes/PasswordBox.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/TextBoxes/RichTextBox.xaml"/>
+        
         <ResourceDictionary Source="/Theme;component/Themes/Scrolls/ScrollBar.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/Scrolls/ScrollViewer.xaml"/>
+        
         <ResourceDictionary Source="/Theme;component/Themes/Ranges/Slider.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/Ranges/ProgressBar.xaml"/>
+        
         <ResourceDictionary Source="/Theme;component/Themes/Selectors/ListBox.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/Selectors/ListBoxItem.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/Selectors/ComboBox.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/Selectors/ComboBoxItem.xaml"/>
+        
+        <ResourceDictionary Source="/Theme;component/Themes/Windows/Window.xaml"/>
+        
     </ResourceDictionary.MergedDictionaries>
     
 </ResourceDictionary>

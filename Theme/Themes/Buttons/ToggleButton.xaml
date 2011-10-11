@@ -7,8 +7,10 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ButtonsBaseStyle}">
-        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        
+        <Setter Property="OverridesDefaultStyle" Value="True"/>        
         <Setter Property="SnapsToDevicePixels" Value="True"/>
+        
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
                 <Setter Property="Background" Value="{StaticResource ForegroundLowlight}"/>
@@ -16,6 +18,7 @@
                 <Setter Property="Foreground" Value="{StaticResource ForegroundContrast}"/>
             </Trigger>
         </Style.Triggers>
+        
     </Style>
 
 </ResourceDictionary>

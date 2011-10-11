@@ -6,6 +6,8 @@
         <ResourceDictionary Source="/Theme;component/Themes/TextBoxes/TextBoxBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource TextBoxBaseStyle}"/>
+    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource TextBoxBaseStyle}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>        
+    </Style>
 
 </ResourceDictionary>
