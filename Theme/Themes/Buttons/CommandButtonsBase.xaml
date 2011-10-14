@@ -10,7 +10,7 @@
         
         <Setter Property="Background" Value="{StaticResource Transparent}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
-        <Setter Property="BorderThickness" Value="{StaticResource BoldThickness}"/>
+        <Setter Property="BorderThickness" Value="{StaticResource SemiboldThickness}"/>
         <Setter Property="Foreground" Value="{StaticResource ForegroundMiddlelight}"/>
 
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}"/>

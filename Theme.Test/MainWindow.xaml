@@ -40,9 +40,9 @@
                                         HorizontalAlignment="Center"
                                         Width="30" Height="30">
             <Grid Background="Transparent">
-                <Path Data="M 10,0 L 10,20 M 0,10 L 20,10"
+                <Path Data="M 7,0 L 7,14 M 0,7 L 14,7"
                       Stroke="Black"
-                      StrokeThickness="3"/>
+                      StrokeThickness="2.5"/>
             </Grid>
         </InternalControls:CommandButton>
         <CheckBox Grid.Column="0"

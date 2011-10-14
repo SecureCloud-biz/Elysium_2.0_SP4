@@ -170,6 +170,11 @@
     </Compile>
     <Compile Include="ThemeManager.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Icons\Close.png" />
+    <Resource Include="Icons\Maximize.png" />
+    <Resource Include="Icons\Minimize.png" />
+    <Resource Include="Icons\Restore.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

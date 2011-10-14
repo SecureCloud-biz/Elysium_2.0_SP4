@@ -28,6 +28,8 @@
 
     <Thickness x:Key="DefaultThickness">1</Thickness>
     <System:Double x:Key="DefaultThicknessValue">1</System:Double>
+    <Thickness x:Key="SemiboldThickness">1.5</Thickness>
+    <System:Double x:Key="SemiboldThicknessValue">1.5</System:Double>
     <Thickness x:Key="BoldThickness">2</Thickness>
     <System:Double x:Key="BoldThicknessValue">2</System:Double>
     <Thickness x:Key="ThinPadding">1</Thickness>
