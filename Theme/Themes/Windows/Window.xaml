@@ -3,6 +3,7 @@
 					xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
 					xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
 					xmlns:Shell="clr-namespace:Microsoft.Windows.Shell;assembly=Microsoft.Windows.Shell"
+                    xmlns:Theme="clr-namespace:Elysium.Theme"
 					xmlns:InternalControls="clr-namespace:Elysium.Theme.Controls">
 
 	<ResourceDictionary.MergedDictionaries>
@@ -16,8 +17,8 @@
 		<Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
 		<Setter Property="BorderThickness" Value="0"/>
 		<Setter Property="Foreground" Value="{StaticResource Foreground}"/>
-		<Setter Property="FontFamily" Value="{StaticResource FontFamily}"/>
-		<Setter Property="FontSize" Value="9pt"/>
+		<Setter Property="FontFamily" Value="{x:Static Theme:Parameters.FontFamily}"/>
+        <Setter Property="FontSize" Value="{x:Static Theme:Parameters.TextFontSize}"/>
 		<Setter Property="FontWeight" Value="Normal"/>
 
 		<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -55,7 +56,7 @@
 									   StrokeThickness="0"
 									   VerticalAlignment="Top"
 									   Width="{TemplateBinding Width}"
-									   Height="{StaticResource BoldThicknessValue}"/>
+									   Height="2"/>
 							<Grid x:Name="PART_Caption"
 							  Grid.Row="0">
 								<Grid.ColumnDefinitions>
@@ -70,7 +71,7 @@
 										Visibility="{TemplateBinding TitleVisibility}">
 									<TextBlock Text="{TemplateBinding Title}"
 											   Foreground="{StaticResource ForegroundContrast}"
-											   FontSize="12pt"
+											   FontSize="{x:Static Theme:Parameters.HeaderFontSize}"
 											   FontWeight="Light"
 											   Margin="20,5"/>
 								</Border>

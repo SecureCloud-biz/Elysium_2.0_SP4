@@ -1,6 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:System="clr-namespace:System;assembly=mscorlib"
                     xmlns:Theme="clr-namespace:Elysium.Theme">
     
     <SolidColorBrush x:Key="Accent"
@@ -23,64 +22,15 @@
                      Color="{Binding Source={x:Static Theme:ThemeManager.Instance}, Path=Transparent}"/>
     <SolidColorBrush x:Key="Semitransparent"
                      Color="{Binding Source={x:Static Theme:ThemeManager.Instance}, Path=Semitransparent}"/>
-    
-    <FontFamily x:Key="FontFamily">Segoe UI, Tahoma</FontFamily>
-
-    <Thickness x:Key="DefaultThickness">1</Thickness>
-    <System:Double x:Key="DefaultThicknessValue">1</System:Double>
-    <Thickness x:Key="SemiboldThickness">1.5</Thickness>
-    <System:Double x:Key="SemiboldThicknessValue">1.5</System:Double>
-    <Thickness x:Key="BoldThickness">2</Thickness>
-    <System:Double x:Key="BoldThicknessValue">2</System:Double>
-    <Thickness x:Key="ThinPadding">1</Thickness>
-    <System:Double x:Key="ThinPaddingValue">1</System:Double>
-    <Thickness x:Key="DefaultPadding">2</Thickness>
-    <System:Double x:Key="DefaultPaddingValue">2</System:Double>
-    <Thickness x:Key="BoldPadding">5</Thickness>
-    <System:Double x:Key="BoldPaddingValue">5</System:Double>
-
-    <Duration x:Key="DefaultDuration">00:00:00.0</Duration>
-    <Duration x:Key="MinimumDuration">00:00:00.1</Duration>
-    <Duration x:Key="MaximumDuration">00:00:00.5</Duration>
-
-    <System:Double x:Key="CheckBoxBulletSize">10</System:Double>
-    <System:Double x:Key="RadioButtonBulletSize">8</System:Double>
-    <System:Double x:Key="BulletBorderSize">14</System:Double>
-
-    <System:Double x:Key="HorizontalScrollBarHeight">8</System:Double>
-    <System:Double x:Key="VerticalScrollBarWidth">8</System:Double>
-    <System:Double x:Key="ScrollBarArrowSize">6</System:Double>
-    <System:Double x:Key="ScrollBarArrowSizeHalf">3</System:Double>
-    <System:Double x:Key="ScrollViewerShadowSize">5</System:Double>
-    
-    <System:Double x:Key="ProgressBarThickness">4</System:Double>
-    <System:Double x:Key="ProgressBarLoadingElementPosition">-5</System:Double>
-
-    <System:Double x:Key="HorizontalSliderMinHeight">16</System:Double>
-    <System:Double x:Key="HorizontalSliderHeight">24</System:Double>
-    <System:Double x:Key="HorizontalSliderMaxHeight">24</System:Double>
-
-    <Thickness x:Key="SliderElementThickness">4</Thickness>
-    <System:Double x:Key="SliderElementThicknessValue">4</System:Double>
-    <System:Double x:Key="SliderThumbThicknessValue">6</System:Double>
-
-    <System:Double x:Key="VerticalSliderMinWidth">14</System:Double>
-    <System:Double x:Key="VerticalSliderWidth">22</System:Double>
-    <System:Double x:Key="VerticalSliderMaxWidth">22</System:Double>
-    
-    <GridLength x:Key="ComboBoxButtonWidth">18</GridLength>
-    <System:Double x:Key="ComboBoxArrowSize">8</System:Double>
-    <System:Double x:Key="ComboBoxArrowSizeHalf">4</System:Double>
-    <Thickness x:Key="ComboBoxArrowMargin">5</Thickness>
 
     <Style x:Key="FocusVisualStyle">
         <Setter Property="Control.Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Rectangle Margin="{StaticResource DefaultPadding}" 
+                    <Rectangle Margin="{x:Static Theme:Parameters.DefaultPadding}" 
                                Fill="{StaticResource Transparent}"
                                Stroke="{StaticResource Foreground}"
-                               StrokeThickness="{StaticResource DefaultThicknessValue}"
+                               StrokeThickness="{x:Static Theme:Parameters.DefaultStrokeThickness}"
                                StrokeDashArray="2 1"
                                RenderOptions.EdgeMode="Aliased"/>
                 </ControlTemplate>

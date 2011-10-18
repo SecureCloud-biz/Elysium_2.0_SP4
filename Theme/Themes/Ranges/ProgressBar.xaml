@@ -1,107 +1,191 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:InternalControls="clr-namespace:Elysium.Theme.Controls">
+                    xmlns:InternalControls="clr-namespace:Elysium.Theme.Controls"
+                    xmlns:Theme="clr-namespace:Elysium.Theme">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Theme;component/Themes/SharedResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-    
+
+    <ControlTemplate x:Key="HorizontalProgressBarTemplate" TargetType="{x:Type InternalControls:ProgressBar}">
+
+        <Grid x:Name="PART_Track"
+              Background="{TemplateBinding Background}"
+              ClipToBounds="True"
+              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+            <Rectangle x:Name="PART_Indicator"
+                       Fill="{StaticResource Accent}"
+                       StrokeThickness="0"
+                       HorizontalAlignment="Stretch"
+                       VerticalAlignment="Stretch">
+                <Rectangle.RenderTransform>
+                    <ScaleTransform ScaleX="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Percent}"/>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Canvas x:Name="PART_LoadingBar"
+                    Background="{StaticResource Background}"
+                    Visibility="Collapsed">
+                <Ellipse Fill="{StaticResource Accent}"
+                         StrokeThickness="0"
+                         Canvas.Left="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementStartPosition}" Canvas.Top="0"
+                         Width="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementSize}" Height="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementSize}"/>
+                <Ellipse Fill="{StaticResource Accent}"
+                         StrokeThickness="0"
+                         Canvas.Left="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementStartPosition}" Canvas.Top="0"
+                         Width="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementSize}" Height="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementSize}"/>
+                <Ellipse Fill="{StaticResource Accent}"
+                         StrokeThickness="0"
+                         Canvas.Left="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementStartPosition}" Canvas.Top="0"
+                         Width="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementSize}" Height="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementSize}"/>
+                <Ellipse Fill="{StaticResource Accent}"
+                         StrokeThickness="0"
+                         Canvas.Left="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementStartPosition}" Canvas.Top="0"
+                         Width="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementSize}" Height="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementSize}"/>
+                <Ellipse Fill="{StaticResource Accent}"
+                         StrokeThickness="0"
+                         Canvas.Left="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementStartPosition}" Canvas.Top="0"
+                         Width="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementSize}" Height="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementSize}"/>
+            </Canvas>
+        </Grid>
+
+        <ControlTemplate.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsIndeterminate" Value="True"/>
+                    <Condition Property="IsEnabled" Value="True"/>
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter TargetName="PART_Indicator" Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="0.3"/>
+                        </Setter.Value>
+                    </Setter>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsIndeterminate" Value="{x:Null}"/>
+                    <Condition Property="IsEnabled" Value="True"/>
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter TargetName="PART_Indicator" Property="Visibility" Value="Collapsed"/>
+                    <Setter TargetName="PART_LoadingBar" Property="Visibility" Value="Visible"/>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="VerticalProgressBarTemplate" TargetType="{x:Type InternalControls:ProgressBar}">
+
+        <Grid x:Name="PART_Track"
+              Background="{TemplateBinding Background}"
+              ClipToBounds="True"
+              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+            <Rectangle x:Name="PART_Indicator"
+                       Fill="{StaticResource Accent}"
+                       StrokeThickness="0"
+                       HorizontalAlignment="Stretch"
+                       VerticalAlignment="Stretch">
+                <Rectangle.RenderTransform>
+                    <ScaleTransform ScaleY="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Percent}"/>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Canvas x:Name="PART_LoadingBar"
+                    Background="{StaticResource Background}"
+                    Visibility="Collapsed">
+                <Ellipse Fill="{StaticResource Accent}"
+                         StrokeThickness="0"
+                         Canvas.Left="0" Canvas.Top="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementStartPosition}"
+                         Width="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementSize}" Height="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementSize}"/>
+                <Ellipse Fill="{StaticResource Accent}"
+                         StrokeThickness="0"
+                         Canvas.Left="0" Canvas.Top="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementStartPosition}"
+                         Width="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementSize}" Height="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementSize}"/>
+                <Ellipse Fill="{StaticResource Accent}"
+                         StrokeThickness="0"
+                         Canvas.Left="0" Canvas.Top="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementStartPosition}"
+                         Width="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementSize}" Height="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementSize}"/>
+                <Ellipse Fill="{StaticResource Accent}"
+                         StrokeThickness="0"
+                         Canvas.Left="0" Canvas.Top="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementStartPosition}"
+                         Width="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementSize}" Height="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementSize}"/>
+                <Ellipse Fill="{StaticResource Accent}"
+                         StrokeThickness="0"
+                         Canvas.Left="0" Canvas.Top="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementStartPosition}"
+                         Width="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementSize}" Height="{TemplateBinding Theme:Parameters.ProgressBarLoadingElementSize}"/>
+            </Canvas>
+        </Grid>
+
+        <ControlTemplate.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsIndeterminate" Value="True"/>
+                    <Condition Property="IsEnabled" Value="True"/>
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter TargetName="PART_Indicator" Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleY="0.3"/>
+                        </Setter.Value>
+                    </Setter>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsIndeterminate" Value="{x:Null}"/>
+                    <Condition Property="IsEnabled" Value="True"/>
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter TargetName="PART_Indicator" Property="Visibility" Value="Collapsed"/>
+                    <Setter TargetName="PART_LoadingBar" Property="Visibility" Value="Visible"/>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
     <Style x:Key="{x:Type InternalControls:ProgressBar}" TargetType="{x:Type InternalControls:ProgressBar}">
 
         <Setter Property="Background" Value="{StaticResource ForegroundHighlight}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{StaticResource Accent}"/>
-
+        <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
+        <Setter Property="FontFamily" Value="{x:Static Theme:Parameters.FontFamily}"/>
+        <Setter Property="FontSize" Value="{x:Static Theme:Parameters.TextFontSize}"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Focusable" Value="False"/>
 
-        <Setter Property="Margin" Value="{StaticResource DefaultPadding}"/>
-
         <Setter Property="SnapsToDevicePixels" Value="True"/>
-        
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type InternalControls:ProgressBar}">
-                    
-                    <Canvas x:Name="PART_Track"
-                            Background="{TemplateBinding Background}"
-                            ClipToBounds="True"
-                            Height="{StaticResource ProgressBarThickness}"
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                        <Rectangle x:Name="PART_Indicator"
-                                   Fill="{TemplateBinding Foreground}"
-                                   StrokeThickness="0"
-                                   Canvas.Left="0" Canvas.Top="0"
-                                   Width="{Binding ElementName=PART_Track, Path=ActualWidth}" Height="{StaticResource ProgressBarThickness}">
-                            <Rectangle.RenderTransform>
-                                <ScaleTransform ScaleX="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Percent}"/>
-                            </Rectangle.RenderTransform>
-                        </Rectangle>
-                        <Canvas x:Name="PART_LoadingBar"
-                                Background="{StaticResource Background}"
-                                Canvas.Left="0" Canvas.Top="0"
-                                Width="{Binding ElementName=PART_Track, Path=ActualWidth}" Height="{StaticResource ProgressBarThickness}"
-                                Visibility="Collapsed">
-                            <Ellipse Fill="{TemplateBinding Foreground}"
-                                     StrokeThickness="0"
-                                     Canvas.Left="{StaticResource ProgressBarLoadingElementPosition}" Canvas.Top="0"
-                                     Width="{StaticResource ProgressBarThickness}" Height="{StaticResource ProgressBarThickness}"/>
-                            <Ellipse Fill="{TemplateBinding Foreground}"
-                                     StrokeThickness="0"
-                                     Canvas.Left="{StaticResource ProgressBarLoadingElementPosition}" Canvas.Top="0"
-                                     Width="{StaticResource ProgressBarThickness}" Height="{StaticResource ProgressBarThickness}"/>
-                            <Ellipse Fill="{TemplateBinding Foreground}"
-                                     StrokeThickness="0"
-                                     Canvas.Left="{StaticResource ProgressBarLoadingElementPosition}" Canvas.Top="0"
-                                     Width="{StaticResource ProgressBarThickness}" Height="{StaticResource ProgressBarThickness}"/>
-                            <Ellipse Fill="{TemplateBinding Foreground}"
-                                     StrokeThickness="0"
-                                     Canvas.Left="{StaticResource ProgressBarLoadingElementPosition}" Canvas.Top="0"
-                                     Width="{StaticResource ProgressBarThickness}" Height="{StaticResource ProgressBarThickness}"/>
-                            <Ellipse Fill="{TemplateBinding Foreground}"
-                                     StrokeThickness="0"
-                                     Canvas.Left="{StaticResource ProgressBarLoadingElementPosition}" Canvas.Top="0"
-                                     Width="{StaticResource ProgressBarThickness}" Height="{StaticResource ProgressBarThickness}"/>
-                        </Canvas>
-                    </Canvas>
-                    
-                    <ControlTemplate.Triggers>                        
-                        <Trigger Property="Orientation" Value="Vertical">
-                            <Setter TargetName="PART_Track" Property="LayoutTransform">
-                                <Setter.Value>
-                                    <RotateTransform Angle="-90"/>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>                        
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsIndeterminate" Value="True"/>
-                                <Condition Property="IsEnabled" Value="True"/>
-                            </MultiTrigger.Conditions>
-                            <MultiTrigger.Setters>
-                                <Setter TargetName="PART_Indicator" Property="RenderTransform">
-                                    <Setter.Value>
-                                        <ScaleTransform ScaleX="0.3"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </MultiTrigger.Setters>
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsIndeterminate" Value="{x:Null}"/>
-                                <Condition Property="IsEnabled" Value="True"/>
-                            </MultiTrigger.Conditions>
-                            <MultiTrigger.Setters>
-                                <Setter TargetName="PART_Indicator" Property="Visibility" Value="Collapsed"/>
-                                <Setter TargetName="PART_LoadingBar" Property="Visibility" Value="Visible"/>
-                            </MultiTrigger.Setters>
-                        </MultiTrigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        
+
+        <Style.Triggers>
+
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="BorderBrush" Value="{StaticResource Disabled}"/>
+            </Trigger>
+
+            <Trigger Property="Orientation" Value="Horizontal">
+
+                <Setter Property="MinHeight" Value="4"/>
+                <Setter Property="Height" Value="4"/>
+                <Setter Property="MaxHeight" Value="8"/>
+                
+                <Setter Property="Template" Value="{StaticResource HorizontalProgressBarTemplate}"/>
+
+            </Trigger>
+
+            <Trigger Property="Orientation" Value="Vertical">
+                
+                <Setter Property="MinWidth" Value="4"/>
+                <Setter Property="Width" Value="4"/>
+                <Setter Property="MaxWidth" Value="8"/>
+
+                <Setter Property="Template" Value="{StaticResource VerticalProgressBarTemplate}"/>
+
+            </Trigger>
+
+        </Style.Triggers>
+
     </Style>
     
 </ResourceDictionary>

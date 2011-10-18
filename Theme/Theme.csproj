@@ -165,6 +165,7 @@
     <Compile Include="Controls\ProgressBar.cs" />
     <Compile Include="Controls\Window.cs" />
     <Compile Include="Converters\ThicknessToDoubleConverter.cs" />
+    <Compile Include="Parameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

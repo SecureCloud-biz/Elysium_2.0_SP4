@@ -214,18 +214,23 @@ namespace Elysium.Theme.Controls
 
                 IndeterminateAnimation = new Storyboard { Name = DefaultIndeterminateAnimationName, RepeatBehavior = RepeatBehavior.Forever };
 
-                var toStartAnimation = new DoubleAnimation(-(_indicator.Width + 1), new Duration(TimeSpan.Parse("00:00:00.0")));
+                var indicatorSize = Orientation == Orientation.Horizontal ? _indicator.ActualWidth : _indicator.ActualHeight;
+
+                var toStartAnimation = new DoubleAnimation(-(indicatorSize + 1), new Duration(TimeSpan.Parse("00:00:00.0")));
 
                 Storyboard.SetTarget(toStartAnimation, _indicator);
-                Storyboard.SetTargetProperty(toStartAnimation, new PropertyPath(Canvas.LeftProperty));
+                Storyboard.SetTargetProperty(toStartAnimation,
+                                             new PropertyPath(Orientation == Orientation.Horizontal ? Canvas.LeftProperty : Canvas.TopProperty));
 
-                var time = _track.ActualWidth / 100;
+                var trackSize = Orientation == Orientation.Horizontal ? _track.ActualWidth : _track.ActualHeight;
+
+                var time = trackSize / 100;
 
                 var motionAnimation = new DoubleAnimationUsingKeyFrames { Duration = new Duration(TimeSpan.FromSeconds(time + 0.5)) };
-                motionAnimation.KeyFrames.Add(new LinearDoubleKeyFrame(_track.ActualWidth + 1, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
+                motionAnimation.KeyFrames.Add(new LinearDoubleKeyFrame(trackSize + 1, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
 
                 Storyboard.SetTarget(motionAnimation, _indicator);
-                Storyboard.SetTargetProperty(motionAnimation, new PropertyPath(Canvas.LeftProperty));
+                Storyboard.SetTargetProperty(motionAnimation, new PropertyPath(Orientation == Orientation.Horizontal ? Canvas.LeftProperty : Canvas.TopProperty));
 
                 IndeterminateAnimation.Children.Add(toStartAnimation);
                 IndeterminateAnimation.Children.Add(motionAnimation);
@@ -258,16 +263,16 @@ namespace Elysium.Theme.Controls
 
                     var index = (_loadingBar.Children.Count - 1) / 2 - i;
 
-                    var center = _track.ActualWidth / 2;
-                    var margin = element.Width;
-                    var startPosition = element.Width - 1;
-                    var endPosition = center + index * (element.Width + margin);
+                    var center = (Orientation == Orientation.Horizontal ? _track.ActualWidth : _track.ActualHeight) / 2;
+                    var margin = Orientation == Orientation.Horizontal ? element.Width : element.Height;
+                    var startPosition = (Orientation == Orientation.Horizontal ? element.Width : element.Height) - 1;
+                    var endPosition = center + index * ((Orientation == Orientation.Horizontal ? element.Width : element.Height) + margin);
 
                     var duration = new Duration(TimeSpan.FromSeconds(durationTime));
                     var animation = new DoubleAnimation(startPosition, endPosition, duration)
                                         { BeginTime = TimeSpan.FromSeconds(i * beginTimeIncrement) };
                     Storyboard.SetTarget(animation, element);
-                    Storyboard.SetTargetProperty(animation, new PropertyPath(Canvas.LeftProperty));
+                    Storyboard.SetTargetProperty(animation, new PropertyPath(Orientation == Orientation.Horizontal ? Canvas.LeftProperty : Canvas.TopProperty));
                     loadingAnimations.Add(animation);
                 }
 
@@ -275,13 +280,14 @@ namespace Elysium.Theme.Controls
                 {
                     var element = _loadingBar.Children[_loadingBar.Children.Count - i - 1] as FrameworkElement;
 
-                    var endPosition = _track.ActualWidth + element.Width + 1;
+                    var endPosition = (Orientation == Orientation.Horizontal ? _track.ActualWidth : _track.ActualHeight) +
+                                      (Orientation == Orientation.Horizontal ? element.Width : element.Height) + 1;
 
                     var duration = new Duration(TimeSpan.FromSeconds(durationTime));
                     var animation = new DoubleAnimation(endPosition, duration)
                                         { BeginTime = TimeSpan.FromSeconds(partMotionTime + shortPauseTime + i * beginTimeIncrement) };
                     Storyboard.SetTarget(animation, element);
-                    Storyboard.SetTargetProperty(animation, new PropertyPath(Canvas.LeftProperty));
+                    Storyboard.SetTargetProperty(animation, new PropertyPath(Orientation == Orientation.Horizontal ? Canvas.LeftProperty : Canvas.TopProperty));
                     loadingAnimations.Add(animation);
                 }
 

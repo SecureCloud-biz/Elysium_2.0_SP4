@@ -77,7 +77,8 @@
                    Text="TextBlock"/>
         <ComboBox Grid.Column="2"
                   Grid.Row="0"
-                  Margin="15" MaxDropDownHeight="100"
+                  MaxDropDownHeight="125"
+                  Margin="15"
                   SelectedIndex="0">
             <ComboBoxItem>Default item</ComboBoxItem>
             <ComboBoxItem>Item 1</ComboBoxItem>
