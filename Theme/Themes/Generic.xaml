@@ -30,6 +30,9 @@
         <ResourceDictionary Source="/Theme;component/Themes/Selectors/ListBoxItem.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/Selectors/ComboBox.xaml"/>
         <ResourceDictionary Source="/Theme;component/Themes/Selectors/ComboBoxItem.xaml"/>
+
+        <ResourceDictionary Source="/Theme;component/Themes/Menus/ContextMenu.xaml"/>
+        <ResourceDictionary Source="/Theme;component/Themes/Menus/MenuItem.xaml"/>
         
         <ResourceDictionary Source="/Theme;component/Themes/Windows/Window.xaml"/>
         

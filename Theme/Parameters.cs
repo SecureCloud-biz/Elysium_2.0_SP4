@@ -313,5 +313,49 @@ namespace Elysium.Theme
         }
 
         #endregion
+
+        #region Menu
+
+        public static readonly DependencyProperty SubmenuItemBulletSizeProperty =
+            DependencyProperty.RegisterAttached("SubmenuItemBulletSize", typeof(double), typeof(Parameters), new UIPropertyMetadata(12.0));
+
+        public static double GetSubmenuItemBulletSize(DependencyObject obj)
+        {
+            return (double)obj.GetValue(SubmenuItemBulletSizeProperty);
+        }
+
+        public static void SetSubmenuItemBulletSize(DependencyObject obj, double value)
+        {
+            obj.SetValue(SubmenuItemBulletSizeProperty, value);
+        }
+
+        public static readonly DependencyProperty SubmenuHeaderArrowSizeProperty =
+            DependencyProperty.RegisterAttached("SubmenuHeaderArrowSize", typeof(double), typeof(Parameters), new UIPropertyMetadata(8.0));
+
+        public static double GetSubmenuHeaderArrowSize(DependencyObject obj)
+        {
+            return (double)obj.GetValue(SubmenuHeaderArrowSizeProperty);
+        }
+
+        public static void SetSubmenuHeaderArrowSize(DependencyObject obj, double value)
+        {
+            obj.SetValue(SubmenuHeaderArrowSizeProperty, value);
+        }
+
+        public static readonly DependencyProperty SubmenuHeaderArrowMarginProperty =
+            DependencyProperty.RegisterAttached("SubmenuHeaderArrowMargin", typeof(Thickness), typeof(Parameters),
+                                                new UIPropertyMetadata(new Thickness(3, 0, 3, 0)));
+
+        public static Thickness GetSubmenuHeaderArrowMargin(DependencyObject obj)
+        {
+            return (Thickness)obj.GetValue(SubmenuHeaderArrowMarginProperty);
+        }
+
+        public static void SetSubmenuHeaderArrowMargin(DependencyObject obj, Thickness value)
+        {
+            obj.SetValue(SubmenuHeaderArrowMarginProperty, value);
+        }
+
+        #endregion
     }
 } ;
