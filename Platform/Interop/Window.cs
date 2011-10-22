@@ -32,10 +32,12 @@ namespace Elysium.Platform.Interop
 
         public static void SetFullScreenAndBottomMost(IntPtr hwnd)
         {
-            var left = Taskbar.Instance.Position == TaskbarPosition.Left ? Taskbar.Instance.Width : 0;
-            var top = Taskbar.Instance.Position == TaskbarPosition.Top ? Taskbar.Instance.Height : 0;
-            var width = SystemParameters.PrimaryScreenWidth - (Taskbar.Instance.Position == TaskbarPosition.Right ? Taskbar.Instance.Width : 0);
-            var height = SystemParameters.PrimaryScreenHeight - (Taskbar.Instance.Position == TaskbarPosition.Bottom ? Taskbar.Instance.Height : 0);
+            var left = Taskbar.Instance.Position == TaskbarPosition.Left ? Taskbar.Instance.AutoHide ? 1 : Taskbar.Instance.Width : 0;
+            var top = Taskbar.Instance.Position == TaskbarPosition.Top ?Taskbar.Instance.AutoHide ? 1 : Taskbar.Instance.Height : 0;
+            var width = SystemParameters.PrimaryScreenWidth -
+                        (Taskbar.Instance.Position == TaskbarPosition.Right ? Taskbar.Instance.AutoHide ? 1 : Taskbar.Instance.Width : 0);
+            var height = SystemParameters.PrimaryScreenHeight -
+                         (Taskbar.Instance.Position == TaskbarPosition.Bottom ? Taskbar.Instance.AutoHide ? 1 : Taskbar.Instance.Height : 0);
             WinAPI.SetWindowPos(hwnd, WinAPI.HWND_BOTTOM, left, top, (int)width, (int)height, WinAPI.SWP_NOMOVE | WinAPI.SWP_NOACTIVATE);
         }
     }
