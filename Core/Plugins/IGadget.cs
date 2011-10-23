@@ -1,10 +1,15 @@
 ﻿using System;
+using Elysium.Core.Groups;
 
 namespace Elysium.Core.Plugins
 {
     public interface IGadget
     {
-        object GadgetPresenter { get; }
+        object TilePresenter { get; }
+
+        IPage Page { get; set; }
+
+        IGroup Group { get; set; }
 
         string Name { get; }
 
