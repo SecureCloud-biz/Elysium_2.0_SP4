@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media.Animation;
 
-namespace Elysium.Theme.Controls
+namespace Elysium.Theme.WPF.Controls
 {
     public class ProgressBarAutomationPeer : RangeBaseAutomationPeer, IRangeValueProvider
     {

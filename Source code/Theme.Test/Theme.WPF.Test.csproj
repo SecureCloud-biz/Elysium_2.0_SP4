@@ -8,8 +8,8 @@
     <ProjectGuid>{0B85401E-33FA-41EE-9627-8C17DA21505C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Elysium.Theme.Test</RootNamespace>
-    <AssemblyName>Theme.Test</AssemblyName>
+    <RootNamespace>Elysium.Theme.WPF.Test</RootNamespace>
+    <AssemblyName>Elysium.Theme.WPF.Test</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <ErrorReport>prompt</ErrorReport>
@@ -26,31 +26,28 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Binary\Debug\Theme.Test\AnyCPU\</OutputPath>
+    <OutputPath>..\Binary\Debug\Theme.WPF.Test\AnyCPU\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\Binary\Release\Theme.Test\AnyCPU\</OutputPath>
+    <OutputPath>..\Binary\Release\Theme.WPF.Test\AnyCPU\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WindowsBase" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Theme\Theme.csproj">
+    <ProjectReference Include="..\Theme\Theme.WPF.csproj">
       <Project>{5A65DA67-130D-43D8-9224-4559B523B6D4}</Project>
-      <Name>Theme</Name>
+      <Name>Theme.WPF</Name>
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
@@ -79,6 +76,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="PostBuildEvent">
-    <Exec Command="xcopy &quot;$(SolutionDir)Binary\$(ConfigurationName)\Theme\AnyCPU&quot; &quot;$(SolutionDir)Binary\$(ConfigurationName)\Theme.Test\AnyCPU&quot; /e /y" />
+    <Exec Command="xcopy &quot;$(SolutionDir)Binary\$(ConfigurationName)\Theme.WPF\AnyCPU&quot; &quot;$(SolutionDir)Binary\$(ConfigurationName)\Theme.WPF.Test\AnyCPU&quot; /e /y" />
   </Target>
 </Project>

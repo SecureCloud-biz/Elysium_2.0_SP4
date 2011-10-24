@@ -1,6 +1,5 @@
 ﻿using System.Windows.Interop;
 using Elysium.Platform.Interop;
-using Elysium.Theme;
 
 namespace Elysium.Platform
 {
@@ -23,8 +22,6 @@ namespace Elysium.Platform
                           };
 
             Activated += (sender, e) => Window.SetFullScreenAndBottomMost(_helper.Handle);
-
-            ThemeManager.Instance.Dark(AccentColors.Blue);
         }
     }
 } ;

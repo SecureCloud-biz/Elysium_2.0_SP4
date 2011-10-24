@@ -1,16 +1,16 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:Theme="clr-namespace:Elysium.Theme">
+                    xmlns:Root="clr-namespace:Elysium.Theme.WPF">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Theme;component/Themes/SharedResources.xaml"/>
+        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/SharedResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
     <Style x:Key="ScrollBarLineDownButtonStyle" TargetType="{x:Type RepeatButton}">
         
         <Setter Property="Background" Value="{StaticResource Transparent}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
-        <Setter Property="BorderThickness" Value="{x:Static Theme:Parameters.DefaultThickness}"/>
+        <Setter Property="BorderThickness" Value="{x:Static Root:Parameters.DefaultThickness}"/>
         
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Focusable" Value="False"/>
@@ -32,7 +32,7 @@
                                  Fill="{TemplateBinding BorderBrush}"
                                  StrokeThickness="0"
                                  Stretch="Uniform"
-                                 Width="{TemplateBinding Theme:Parameters.ScrollBarArrowSize}" Height="{TemplateBinding Theme:Parameters.ScrollBarArrowSize}"/>
+                                 Width="{TemplateBinding Root:Parameters.ScrollBarArrowSize}" Height="{TemplateBinding Root:Parameters.ScrollBarArrowSize}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -118,7 +118,7 @@
         
         <Setter Property="Padding">
             <Setter.Value>
-                <Thickness Left="{x:Static Theme:Parameters.DefaultPaddingValue}"
+                <Thickness Left="{x:Static Root:Parameters.DefaultPaddingValue}"
                            Top="0"
                            Right="0"
                            Bottom="0"/>
@@ -170,7 +170,7 @@
                 <RepeatButton Grid.Column="0"
                               Command="{x:Static ScrollBar.LineLeftCommand}"
                               IsEnabled="{TemplateBinding IsEnabled}"
-                              Theme:Parameters.ScrollBarArrowSize="{TemplateBinding Theme:Parameters.ScrollBarArrowSize}"
+                              Root:Parameters.ScrollBarArrowSize="{TemplateBinding Root:Parameters.ScrollBarArrowSize}"
                               Style="{StaticResource ScrollBarLineLeftButtonStyle}"
                               Visibility="Collapsed"/>
                 <Track x:Name="PART_Track"
@@ -193,7 +193,7 @@
                 <RepeatButton Grid.Column="2"
                               Command="{x:Static ScrollBar.LineRightCommand}"
                               IsEnabled="{TemplateBinding IsEnabled}"
-                              Theme:Parameters.ScrollBarArrowSize="{TemplateBinding Theme:Parameters.ScrollBarArrowSize}"
+                              Root:Parameters.ScrollBarArrowSize="{TemplateBinding Root:Parameters.ScrollBarArrowSize}"
                               Style="{StaticResource ScrollBarLineRightButtonStyle}"
                               Visibility="Collapsed"/>
             </Grid>
@@ -214,7 +214,7 @@
                 <RepeatButton Grid.Row="0"
                               Command="{x:Static ScrollBar.LineUpCommand}"
                               IsEnabled="{TemplateBinding IsEnabled}"
-                              Theme:Parameters.ScrollBarArrowSize="{TemplateBinding Theme:Parameters.ScrollBarArrowSize}"
+                              Root:Parameters.ScrollBarArrowSize="{TemplateBinding Root:Parameters.ScrollBarArrowSize}"
                               Style="{StaticResource ScrollBarLineUpButtonStyle}"
                               Visibility="Collapsed"/>
                 <Track x:Name="PART_Track"
@@ -238,7 +238,7 @@
                 <RepeatButton Grid.Row="2"
                               Command="{x:Static ScrollBar.LineDownCommand}"
                               IsEnabled="{TemplateBinding IsEnabled}"
-                              Theme:Parameters.ScrollBarArrowSize="{TemplateBinding Theme:Parameters.ScrollBarArrowSize}"
+                              Root:Parameters.ScrollBarArrowSize="{TemplateBinding Root:Parameters.ScrollBarArrowSize}"
                               Style="{StaticResource ScrollBarLineDownButtonStyle}"
                               Visibility="Collapsed"/>
             </Grid>
@@ -265,7 +265,7 @@
                 
                 <Setter Property="BorderThickness">
                     <Setter.Value>
-                        <Thickness Left="0" Top="0" Right="0" Bottom="{x:Static Theme:Parameters.DefaultStrokeThickness}"/>
+                        <Thickness Left="0" Top="0" Right="0" Bottom="{x:Static Root:Parameters.DefaultStrokeThickness}"/>
                     </Setter.Value>
                 </Setter>
 
@@ -281,7 +281,7 @@
 
                 <Setter Property="BorderThickness">
                     <Setter.Value>
-                        <Thickness Left="0" Top="0" Right="{x:Static Theme:Parameters.DefaultStrokeThickness}" Bottom="0"/>
+                        <Thickness Left="0" Top="0" Right="{x:Static Root:Parameters.DefaultStrokeThickness}" Bottom="0"/>
                     </Setter.Value>
                 </Setter>
 

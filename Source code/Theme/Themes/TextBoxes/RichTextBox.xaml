@@ -2,8 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Theme;component/Themes/SharedResources.xaml"/>
-        <ResourceDictionary Source="/Theme;component/Themes/TextBoxes/TextBoxBase.xaml"/>
+        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/SharedResources.xaml"/>
+        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/TextBoxes/TextBoxBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type RichTextBox}" BasedOn="{StaticResource TextBoxBaseStyle}">

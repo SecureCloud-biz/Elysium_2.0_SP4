@@ -8,8 +8,8 @@
     <ProjectGuid>{5A65DA67-130D-43D8-9224-4559B523B6D4}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Elysium.Theme</RootNamespace>
-    <AssemblyName>Theme</AssemblyName>
+    <RootNamespace>Elysium.Theme.WPF</RootNamespace>
+    <AssemblyName>Elysium.Theme.WPF</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <ErrorReport>prompt</ErrorReport>
@@ -25,16 +25,15 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Binary\Debug\Theme\AnyCPU\</OutputPath>
+    <OutputPath>..\Binary\Debug\Theme.WPF\AnyCPU\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\Binary\Release\Theme\AnyCPU\</OutputPath>
+    <OutputPath>..\Binary\Release\Theme.WPF\AnyCPU\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\Tools and Resources\Assembly dependencies\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
@@ -42,11 +41,9 @@
       <HintPath>..\..\Tools and Resources\Assembly dependencies\Microsoft.Windows.Shell.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\Tools and Resources\Assembly dependencies\System.Windows.Interactivity.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="UIAutomationProvider" />

@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Media;
 
-namespace Elysium.Theme
+namespace Elysium.Theme.WPF
 {
     public static class Parameters
     {

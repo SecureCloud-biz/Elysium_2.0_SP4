@@ -5,9 +5,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Platform", "Platform\Platform.csproj", "{A1DC7050-81A2-4BE3-948D-6F7F4570F9D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theme", "Theme\Theme.csproj", "{5A65DA67-130D-43D8-9224-4559B523B6D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theme.WPF", "Theme\Theme.WPF.csproj", "{5A65DA67-130D-43D8-9224-4559B523B6D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theme.Test", "Theme.Test\Theme.Test.csproj", "{0B85401E-33FA-41EE-9627-8C17DA21505C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theme.WPF.Test", "Theme.Test\Theme.WPF.Test.csproj", "{0B85401E-33FA-41EE-9627-8C17DA21505C}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -21,10 +21,10 @@ Global
 		SccProjectUniqueName2 = Platform\\Platform.csproj
 		SccProjectName2 = Platform
 		SccLocalPath2 = Platform
-		SccProjectUniqueName3 = Theme\\Theme.csproj
+		SccProjectUniqueName3 = Theme\\Theme.WPF.csproj
 		SccProjectName3 = Theme
 		SccLocalPath3 = Theme
-		SccProjectUniqueName4 = Theme.Test\\Theme.Test.csproj
+		SccProjectUniqueName4 = Theme.Test\\Theme.WPF.Test.csproj
 		SccProjectName4 = Theme.Test
 		SccLocalPath4 = Theme.Test
 	EndGlobalSection

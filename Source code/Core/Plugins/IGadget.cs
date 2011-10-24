@@ -7,10 +7,6 @@ namespace Elysium.Core.Plugins
     {
         object TilePresenter { get; }
 
-        IPage Page { get; set; }
-
-        IGroup Group { get; set; }
-
         string Name { get; }
 
         string Description { get; }
@@ -22,6 +18,8 @@ namespace Elysium.Core.Plugins
         Uri License { get; }
 
         Version Version { get; }
+
+        IGroup Group { get; set; }
 
         int Column { get; set; }
 

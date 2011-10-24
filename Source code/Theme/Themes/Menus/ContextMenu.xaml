@@ -1,24 +1,24 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:Theme="clr-namespace:Elysium.Theme">
+                    xmlns:Root="clr-namespace:Elysium.Theme.WPF">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Theme;component/Themes/SharedResources.xaml"/>
+        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/SharedResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
     <Style TargetType="{x:Type ContextMenu}">
         
         <Setter Property="Background" Value="{StaticResource Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ForegroundLowlight}"/>
-        <Setter Property="BorderThickness" Value="{x:Static Theme:Parameters.DefaultThickness}"/>
+        <Setter Property="BorderThickness" Value="{x:Static Root:Parameters.DefaultThickness}"/>
         <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
-        <Setter Property="FontFamily" Value="{x:Static Theme:Parameters.FontFamily}"/>
-        <Setter Property="FontSize" Value="{x:Static Theme:Parameters.TextFontSize}"/>
+        <Setter Property="FontFamily" Value="{x:Static Root:Parameters.FontFamily}"/>
+        <Setter Property="FontSize" Value="{x:Static Root:Parameters.TextFontSize}"/>
         <Setter Property="FontWeight" Value="Normal"/>
 
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-        <Setter Property="Padding" Value="{x:Static Theme:Parameters.BoldPadding}"/>
+        <Setter Property="Padding" Value="{x:Static Root:Parameters.BoldPadding}"/>
 
         <Setter Property="Grid.IsSharedSizeScope" Value="True"/>
         

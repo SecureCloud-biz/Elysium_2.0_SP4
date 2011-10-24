@@ -4,7 +4,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Input;
 
-namespace Elysium.Theme.Controls
+namespace Elysium.Theme.WPF.Controls
 {
     [TemplatePart(Name = TitleName, Type = typeof(FrameworkElement))]
     [TemplatePart(Name = CaptionName, Type = typeof(FrameworkElement))]

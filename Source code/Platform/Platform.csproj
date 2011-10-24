@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Elysium.Platform</RootNamespace>
-    <AssemblyName>Platform</AssemblyName>
+    <AssemblyName>Elysium.Platform</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <ErrorReport>prompt</ErrorReport>
@@ -82,10 +82,7 @@
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WindowsBase" />
@@ -99,9 +96,9 @@
       <Name>Core</Name>
       <Private>False</Private>
     </ProjectReference>
-    <ProjectReference Include="..\Theme\Theme.csproj">
+    <ProjectReference Include="..\Theme\Theme.WPF.csproj">
       <Project>{5A65DA67-130D-43D8-9224-4559B523B6D4}</Project>
-      <Name>Theme</Name>
+      <Name>Theme.WPF</Name>
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
@@ -117,6 +114,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -143,9 +145,16 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="PostBuildEvent">
     <Exec Command="xcopy &quot;$(SolutionDir)Binary\$(ConfigurationName)\Core\AnyCPU&quot; &quot;$(SolutionDir)Binary\$(ConfigurationName)\Platform\$(PlatformName)&quot; /e /y" />
-    <Exec Command="xcopy &quot;$(SolutionDir)Binary\$(ConfigurationName)\Theme\AnyCPU&quot; &quot;$(SolutionDir)Binary\$(ConfigurationName)\Platform\$(PlatformName)&quot; /e /y" />
+    <Exec Command="xcopy &quot;$(SolutionDir)Binary\$(ConfigurationName)\Theme.WPF\AnyCPU&quot; &quot;$(SolutionDir)Binary\$(ConfigurationName)\Platform\$(PlatformName)&quot; /e /y" />
   </Target>
 </Project>

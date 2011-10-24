@@ -5,5 +5,7 @@
         string Name { get; }
 
         string Description { get; }
+
+        IPage Page { get; set; }
     }
 } ;

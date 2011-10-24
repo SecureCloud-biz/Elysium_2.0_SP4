@@ -3,22 +3,22 @@
 					xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
 					xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
 					xmlns:Shell="clr-namespace:Microsoft.Windows.Shell;assembly=Microsoft.Windows.Shell"
-                    xmlns:Theme="clr-namespace:Elysium.Theme"
-					xmlns:InternalControls="clr-namespace:Elysium.Theme.Controls">
+					xmlns:Root="clr-namespace:Elysium.Theme.WPF"
+					xmlns:Controls="clr-namespace:Elysium.Theme.WPF.Controls">
 
 	<ResourceDictionary.MergedDictionaries>
-		<ResourceDictionary Source="/Theme;component/Themes/SharedResources.xaml"/>
-		<ResourceDictionary Source="/Theme;component/Themes/buttons/CommandButtonsBase.xaml"/>
+		<ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/SharedResources.xaml"/>
+		<ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/buttons/CommandButtonsBase.xaml"/>
 	</ResourceDictionary.MergedDictionaries>
 
-	<Style x:Key="{x:Type InternalControls:Window}" TargetType="{x:Type InternalControls:Window}">
+	<Style x:Key="{x:Type Controls:Window}" TargetType="{x:Type Controls:Window}">
 
 		<Setter Property="Background" Value="{StaticResource Background}"/>
 		<Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
 		<Setter Property="BorderThickness" Value="0"/>
 		<Setter Property="Foreground" Value="{StaticResource Foreground}"/>
-		<Setter Property="FontFamily" Value="{x:Static Theme:Parameters.FontFamily}"/>
-        <Setter Property="FontSize" Value="{x:Static Theme:Parameters.TextFontSize}"/>
+		<Setter Property="FontFamily" Value="{x:Static Root:Parameters.FontFamily}"/>
+		<Setter Property="FontSize" Value="{x:Static Root:Parameters.TextFontSize}"/>
 		<Setter Property="FontWeight" Value="Normal"/>
 
 		<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -29,7 +29,7 @@
 		
 		<Setter Property="Shell:WindowChrome.WindowChrome">
 			<Setter.Value>
-				<Shell:WindowChrome CaptionHeight="{Binding NonclientHeight, RelativeSource={RelativeSource AncestorType={x:Type InternalControls:Window}}}"
+				<Shell:WindowChrome CaptionHeight="{Binding RelativeSource={RelativeSource AncestorType={x:Type Controls:Window}}, Path=NonclientHeight}"
 									CornerRadius="0"
 									GlassFrameThickness="0,1,0,0"
 									NonClientFrameEdges="None"
@@ -40,7 +40,7 @@
 		
 		<Setter Property="Template">
 			<Setter.Value>
-				<ControlTemplate TargetType="{x:Type InternalControls:Window}">
+				<ControlTemplate TargetType="{x:Type Controls:Window}">
 					
 					<Border Background="{TemplateBinding Background}"
 							BorderBrush="{TemplateBinding BorderBrush}"
@@ -71,14 +71,14 @@
 										Visibility="{TemplateBinding TitleVisibility}">
 									<TextBlock Text="{TemplateBinding Title}"
 											   Foreground="{StaticResource ForegroundContrast}"
-											   FontSize="{x:Static Theme:Parameters.HeaderFontSize}"
+											   FontSize="{x:Static Root:Parameters.HeaderFontSize}"
 											   FontWeight="Light"
 											   Margin="20,5"/>
 								</Border>
 								<StackPanel Grid.Column="2"
 											Orientation="Horizontal"
 											Shell:WindowChrome.IsHitTestVisibleInChrome="True">
-									<InternalControls:CommandButton x:Name="PART_Minimize"
+									<Controls:CommandButton x:Name="PART_Minimize"
 																	BorderThickness="0"
 																	Width="30" Height="30">
 										<Image Source="pack://application:,,,/Theme;component/Icons/Minimize.png"
@@ -92,11 +92,11 @@
 																		 Value="{x:Static WindowState.Minimized}"/>
 											</i:EventTrigger>
 										</i:Interaction.Triggers>
-									</InternalControls:CommandButton>
-									<InternalControls:ToggleCommandButton x:Name="PART_MaximizeRestore"
+									</Controls:CommandButton>
+									<Controls:ToggleCommandButton x:Name="PART_MaximizeRestore"
 																		  BorderThickness="0"
 																		  Width="30" Height="30">
-										<InternalControls:ToggleCommandButton.Resources>
+										<Controls:ToggleCommandButton.Resources>
 											<Image x:Key="MaximizeIcon"
 												   Source="pack://application:,,,/Theme;component/Icons/Maximize.png"
 												   Stretch="None"
@@ -107,9 +107,9 @@
 												   Stretch="None"
 												   RenderOptions.BitmapScalingMode="NearestNeighbor"
 												   Width="10" Height="10"/>
-										</InternalControls:ToggleCommandButton.Resources>
-										<InternalControls:ToggleCommandButton.Style>
-											<Style TargetType="{x:Type InternalControls:ToggleCommandButton}" BasedOn="{StaticResource CommandButtonsBaseStyle}">
+										</Controls:ToggleCommandButton.Resources>
+										<Controls:ToggleCommandButton.Style>
+											<Style TargetType="{x:Type Controls:ToggleCommandButton}" BasedOn="{StaticResource CommandButtonsBaseStyle}">
 												<Setter Property="Content" Value="{StaticResource MaximizeIcon}"/>
 												<Style.Triggers>
 													<Trigger Property="IsChecked" Value="True">
@@ -117,7 +117,7 @@
 													</Trigger>
 												</Style.Triggers>
 											</Style>
-										</InternalControls:ToggleCommandButton.Style>
+										</Controls:ToggleCommandButton.Style>
 										<i:Interaction.Triggers>
 											<i:EventTrigger EventName="Click">
 												<ei:ChangePropertyAction TargetObject="{Binding RelativeSource={RelativeSource TemplatedParent}}"
@@ -129,8 +129,8 @@
 																		 IsEnabled="{Binding IsChecked, ElementName=PART_MaximizeRestore}"/>
 											</i:EventTrigger>
 										</i:Interaction.Triggers>
-									</InternalControls:ToggleCommandButton>
-									<InternalControls:CommandButton x:Name="PART_Close"
+									</Controls:ToggleCommandButton>
+									<Controls:CommandButton x:Name="PART_Close"
 																	Command="{x:Static ApplicationCommands.Close}"
 																	BorderThickness="0"
 																	Width="30" Height="30">
@@ -138,7 +138,7 @@
 											   Stretch="None"
 											   RenderOptions.BitmapScalingMode="NearestNeighbor"
 											   Width="10" Height="10"/>
-									</InternalControls:CommandButton>
+									</Controls:CommandButton>
 								</StackPanel>
 							</Grid>
 							<AdornerDecorator Grid.Row="1">
