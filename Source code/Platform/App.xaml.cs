@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Reflection;
+using System.Windows;
 using System.Windows.Media;
 using Elysium.Platform.Properties;
 using Elysium.Theme.WPF;
@@ -41,6 +42,25 @@ namespace Elysium.Platform
 
             Core.Parameters.Instance.AccentColor = Settings.Default.AccentColor;
             Core.Parameters.Instance.IsDarkTheme = Settings.Default.IsDarkTheme;
+
+            foreach (Assembly assembly in Settings.Default.CompositionAssemblies)
+            {
+                Core.Composer.Instance.LoadAssembly(assembly);
+            }
+
+            Core.Composer.Instance.AssemblyStatus += assembly => Settings.Default.CompositionAssemblies.Contains(assembly)
+                                                                     ? Core.Composer.RegistrationStatus.Registered
+                                                                     : Core.Composer.RegistrationStatus.Unregistered;
+            Core.Composer.Instance.AssemblyRegistered += assembly =>
+                                                             {
+                                                                 Settings.Default.CompositionAssemblies.Add(assembly);
+                                                                 Core.Composer.Instance.LoadAssembly(assembly);
+                                                             };
+            Core.Composer.Instance.AssemblyUnregistered += assembly =>
+                                                               {
+                                                                   Settings.Default.CompositionAssemblies.Remove(assembly);
+                                                                   Core.Composer.Instance.UnloadAssembly(assembly);
+                                                               };
         }
     }
 } ;

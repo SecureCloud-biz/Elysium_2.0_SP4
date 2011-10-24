@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Linq;
 using System.Reflection;
 using Elysium.Core.Plugins;
+using Elysium.Core.Properties;
 
 namespace Elysium.Core
 {
@@ -12,9 +14,15 @@ namespace Elysium.Core
     {
         public static readonly Composer Instance = new Composer();
 
+        #region Private members
+
         private readonly CompositionContainer _container;
 
         private readonly AggregateCatalog _catalog;
+
+        #endregion
+
+        #region Constructors
 
         public Composer()
         {
@@ -23,12 +31,57 @@ namespace Elysium.Core
             _container.ComposeParts(this);
         }
 
+        #endregion
+
+        #region Assemblies registration and loading
+
+        public enum RegistrationStatus
+        {
+            Registered,
+            Unregistered
+        }
+
+        public delegate void AssemblyRegistrationEventHandler(Assembly assembly);
+
+        public event AssemblyRegistrationEventHandler AssemblyRegistered;
+
+        public event AssemblyRegistrationEventHandler AssemblyUnregistered;
+
+        public delegate RegistrationStatus AssemblyStatusEventHandler(Assembly assembly);
+
+        public event AssemblyStatusEventHandler AssemblyStatus;
+
         public void RegisterAssembly(Assembly assembly)
+        {
+            if (AssemblyStatus != null && AssemblyStatus(assembly) == RegistrationStatus.Registered)
+                throw new ArgumentException(Resources.AssemblyAlreadyRegistered, "assembly");
+            if (AssemblyRegistered != null)
+                AssemblyRegistered(assembly);
+        }
+
+        public void UnregisterAssembly(Assembly assembly)
+        {
+            if (AssemblyStatus != null && AssemblyStatus(assembly) == RegistrationStatus.Unregistered)
+                throw new ArgumentException(Resources.AssemblyNotRegistered, "assembly");
+            if (AssemblyUnregistered != null)
+                AssemblyUnregistered(assembly);
+        }
+
+        public void LoadAssembly(Assembly assembly)
         {
             _catalog.Catalogs.Add(new AssemblyCatalog(assembly));
         }
 
-        public delegate void CollectionChangedEventHandler(IEnumerable deletedValues, IEnumerable addedValues);
+        public void UnloadAssembly(Assembly assembly)
+        {
+            _catalog.Catalogs.Remove(_catalog.Catalogs.OfType<AssemblyCatalog>().Where(x => x.Assembly.Equals(assembly)).First());
+        }
+
+        #endregion
+
+        #region Public members
+
+        public delegate void CollectionChangedEventHandler(object sender, IEnumerable deletedValues, IEnumerable addedValues);
 
         [ImportMany(typeof(IGadget), AllowRecomposition = true)]
         public IEnumerable<IGadget> Gadgets
@@ -40,11 +93,11 @@ namespace Elysium.Core
                 var addedValues = value.Intersect(_gadgets.Intersect(value));
                 _gadgets = value;
                 if (GadgetsRecomposed != null)
-                    GadgetsRecomposed(deletedValues, addedValues);
+                    GadgetsRecomposed(this, deletedValues, addedValues);
             }
         }
 
-        private IEnumerable<IGadget> _gadgets;
+        private IEnumerable<IGadget> _gadgets = Enumerable.Empty<IGadget>();
 
         public event CollectionChangedEventHandler GadgetsRecomposed;
 
@@ -58,11 +111,11 @@ namespace Elysium.Core
                 var addedValues = value.Intersect(_embeddedApplications.Intersect(value));
                 _embeddedApplications = value;
                 if (EmbeddedApplicationsRecomposed != null)
-                    EmbeddedApplicationsRecomposed(deletedValues, addedValues);
+                    EmbeddedApplicationsRecomposed(this, deletedValues, addedValues);
             }
         }
 
-        private IEnumerable<IEmbeddedApplication> _embeddedApplications;
+        private IEnumerable<IEmbeddedApplication> _embeddedApplications = Enumerable.Empty<IEmbeddedApplication>();
 
         public event CollectionChangedEventHandler EmbeddedApplicationsRecomposed;
 
@@ -76,14 +129,14 @@ namespace Elysium.Core
                 var addedValues = value.Intersect(_applications.Intersect(value));
                 _applications = value;
                 if (AplicationsRecomposed != null)
-                    AplicationsRecomposed(deletedValues, addedValues);
+                    AplicationsRecomposed(this, deletedValues, addedValues);
             }
         }
 
-        private IEnumerable<IApplication> _applications;
+        private IEnumerable<IApplication> _applications = Enumerable.Empty<IApplication>();
 
         public event CollectionChangedEventHandler AplicationsRecomposed;
 
-
+        #endregion
     }
 } ;

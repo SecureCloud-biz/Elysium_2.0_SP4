@@ -46,5 +46,18 @@ namespace Elysium.Platform.Properties {
                 this["IsDarkTheme"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfAnyType xmlns:xsi=\"http://www.w3" +
+            ".org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" />")]
+        public global::System.Collections.ArrayList CompositionAssemblies {
+            get {
+                return ((global::System.Collections.ArrayList)(this["CompositionAssemblies"]));
+            }
+            set {
+                this["CompositionAssemblies"] = value;
+            }
+        }
     }
 }

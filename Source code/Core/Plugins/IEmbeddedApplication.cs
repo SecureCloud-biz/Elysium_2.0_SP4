@@ -5,5 +5,7 @@
         object ApplicationPresenter { get; }
 
         bool IsExpanded { get; set; }
+
+        IGadget Gadget { get; }
     }
 } ;

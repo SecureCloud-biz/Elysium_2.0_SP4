@@ -6,6 +6,8 @@ namespace Elysium.Core
     {
         public static readonly Parameters Instance = new Parameters();
 
+        #region Public members
+
         public uint AccentColor
         {
             get { return _accentColor; }
@@ -30,6 +32,10 @@ namespace Elysium.Core
 
         private bool _isDarkTheme;
 
+        #endregion
+
+        #region INotifyPropertyChanged implementation
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string propertyName)
@@ -37,5 +43,7 @@ namespace Elysium.Core
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        #endregion
     }
 } ;
