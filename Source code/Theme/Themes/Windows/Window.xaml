@@ -20,11 +20,15 @@
 		<Setter Property="FontFamily" Value="{x:Static Root:Parameters.FontFamily}"/>
 		<Setter Property="FontSize" Value="{x:Static Root:Parameters.TextFontSize}"/>
 		<Setter Property="FontWeight" Value="Normal"/>
+		<Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+		<Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+		<Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
 
 		<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
 		<Setter Property="VerticalContentAlignment" Value="Stretch"/>
 		<Setter Property="Padding" Value="0"/>
 
+		<Setter Property="UseLayoutRounding" Value="True"/>
 		<Setter Property="SnapsToDevicePixels" Value="True"/>
 		
 		<Setter Property="Shell:WindowChrome.WindowChrome">
@@ -72,7 +76,7 @@
 									<TextBlock Text="{TemplateBinding Title}"
 											   Foreground="{StaticResource ForegroundContrast}"
 											   FontSize="{x:Static Root:Parameters.HeaderFontSize}"
-											   FontWeight="Light"
+											   FontWeight="Normal"
 											   Margin="20,5"/>
 								</Border>
 								<StackPanel Grid.Column="2"
@@ -81,7 +85,7 @@
 									<Controls:CommandButton x:Name="PART_Minimize"
 																	BorderThickness="0"
 																	Width="30" Height="30">
-										<Image Source="pack://application:,,,/Theme;component/Icons/Minimize.png"
+										<Image Source="pack://application:,,,/Elysium.Theme.WPF;component/Icons/Minimize.png"
 											   Stretch="None"
 											   RenderOptions.BitmapScalingMode="NearestNeighbor"
 											   Width="10" Height="10"/>
@@ -98,12 +102,12 @@
 																		  Width="30" Height="30">
 										<Controls:ToggleCommandButton.Resources>
 											<Image x:Key="MaximizeIcon"
-												   Source="pack://application:,,,/Theme;component/Icons/Maximize.png"
+												   Source="pack://application:,,,/Elysium.Theme.WPF;component/Icons/Maximize.png"
 												   Stretch="None"
 												   RenderOptions.BitmapScalingMode="NearestNeighbor"
 												   Width="10" Height="10"/>
 											<Image x:Key="RestoreIcon"
-												   Source="pack://application:,,,/Theme;component/Icons/Restore.png"
+												   Source="pack://application:,,,/Elysium.Theme.WPF;component/Icons/Restore.png"
 												   Stretch="None"
 												   RenderOptions.BitmapScalingMode="NearestNeighbor"
 												   Width="10" Height="10"/>
@@ -134,7 +138,7 @@
 																	Command="{x:Static ApplicationCommands.Close}"
 																	BorderThickness="0"
 																	Width="30" Height="30">
-										<Image Source="pack://application:,,,/Theme;component/Icons/Close.png"
+										<Image Source="pack://application:,,,/Elysium.Theme.WPF;component/Icons/Close.png"
 											   Stretch="None"
 											   RenderOptions.BitmapScalingMode="NearestNeighbor"
 											   Width="10" Height="10"/>

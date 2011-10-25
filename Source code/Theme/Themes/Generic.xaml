@@ -5,6 +5,14 @@
         
         <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/SharedResources.xaml"/>
         
+        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Windows/Window.xaml"/>
+
+        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Menus/ContextMenu.xaml"/>
+        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Menus/MenuItem.xaml"/>
+
+        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Tabs/TabControl.xaml"/>
+        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Tabs/TabItem.xaml"/>
+        
         <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Buttons/Button.xaml"/>
         <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Buttons/RepeatButton.xaml"/>
         <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Buttons/ToggleButton.xaml"/>
@@ -15,27 +23,23 @@
         
         <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Buttons/CheckBox.xaml"/>
         <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Buttons/RadioButton.xaml"/>
-        
-        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/TextBoxes/TextBox.xaml"/>
-        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/TextBoxes/PasswordBox.xaml"/>
-        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/TextBoxes/RichTextBox.xaml"/>
-        
-        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Scrolls/ScrollBar.xaml"/>
-        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Scrolls/ScrollViewer.xaml"/>
-        
-        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Ranges/Slider.xaml"/>
-        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Ranges/ProgressBar.xaml"/>
+
+        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Text/TextBlock.xaml"/>
+        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Text/TextBox.xaml"/>
+        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Text/PasswordBox.xaml"/>
+        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Text/RichTextBox.xaml"/>
         
         <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Selectors/ListBox.xaml"/>
         <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Selectors/ListBoxItem.xaml"/>
         <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Selectors/ComboBox.xaml"/>
         <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Selectors/ComboBoxItem.xaml"/>
+        
+        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Ranges/Slider.xaml"/>
+        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Ranges/ProgressBar.xaml"/>
+        
+        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Scrolls/ScrollBar.xaml"/>
+        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Scrolls/ScrollViewer.xaml"/>
 
-        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Menus/ContextMenu.xaml"/>
-        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Menus/MenuItem.xaml"/>
-        
-        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Windows/Window.xaml"/>
-        
     </ResourceDictionary.MergedDictionaries>
     
 </ResourceDictionary>

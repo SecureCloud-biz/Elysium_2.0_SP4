@@ -32,49 +32,49 @@ namespace Elysium.Theme.WPF
 
         #region Font
 
-        public static FontFamily FontFamily { get; private set; }
+        public static FontFamily FontFamily { get; set; }
 
-        public static double HeaderFontSize { get; private set; }
+        public static double HeaderFontSize { get; set; }
 
-        public static double ContentFontSize { get; private set; }
+        public static double ContentFontSize { get; set; }
 
-        public static double TextFontSize { get; private set; }
+        public static double TextFontSize { get; set; }
 
         #endregion
 
         #region Thickness
 
-        public static Thickness DefaultThickness { get; private set; }
+        public static Thickness DefaultThickness { get; set; }
 
-        public static Thickness SemiboldThickness { get; private set; }
+        public static Thickness SemiboldThickness { get; set; }
 
-        public static Thickness BoldThickness { get; private set; }
+        public static Thickness BoldThickness { get; set; }
 
         #endregion
 
         #region Stroke thickness
 
-        public static double DefaultStrokeThickness { get; private set; }
+        public static double DefaultStrokeThickness { get; set; }
 
-        public static double SemiboldStrokeThickness { get; private set; }
+        public static double SemiboldStrokeThickness { get; set; }
 
-        public static double BoldStrokeThickness { get; private set; }
+        public static double BoldStrokeThickness { get; set; }
 
         #endregion
 
         #region Padding
 
-        public static Thickness DefaultPadding { get; private set; }
+        public static Thickness DefaultPadding { get; set; }
 
-        public static Thickness SemiboldPadding { get; private set; }
+        public static Thickness SemiboldPadding { get; set; }
 
-        public static Thickness BoldPadding { get; private set; }
+        public static Thickness BoldPadding { get; set; }
 
-        public static double DefaultPaddingValue { get; private set; }
+        public static double DefaultPaddingValue { get; set; }
 
-        public static double SemiboldPaddingValue { get; private set; }
+        public static double SemiboldPaddingValue { get; set; }
 
-        public static double BoldPaddingValue { get; private set; }
+        public static double BoldPaddingValue { get; set; }
 
         #endregion
 

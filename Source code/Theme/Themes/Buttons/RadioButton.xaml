@@ -13,7 +13,7 @@
         <Setter Property="BorderThickness" Value="{x:Static Root:Parameters.DefaultThickness}"/>
         <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
         <Setter Property="FontFamily" Value="{x:Static Root:Parameters.FontFamily}"/>
-        <Setter Property="FontSize" Value="{x:Static Root:Parameters.TextFontSize}"/>
+        <Setter Property="FontSize" Value="{x:Static Root:Parameters.ContentFontSize}"/>
         <Setter Property="FontWeight" Value="Normal"/>
 
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}"/>
@@ -57,7 +57,7 @@
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                               RecognizesAccessKey="True">
                                 <ContentPresenter.Margin>
-                                    <Thickness Left="{x:Static Root:Parameters.SemiboldPaddingValue}"
+                                    <Thickness Left="{x:Static Root:Parameters.BoldPaddingValue}"
                                                Top="0"
                                                Right="0"
                                                Bottom="0"/>
