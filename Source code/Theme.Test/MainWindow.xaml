@@ -105,12 +105,31 @@
 					Grid.ColumnSpan="2"
 					Grid.Row="4"
 					Grid.RowSpan="3"
-					BorderThickness="{x:Static Theme:Parameters.DefaultThickness}"
 					TabStripPlacement="Top"
-					Margin="10">
-			<TabItem Header="TabItem 1"/>
-			<TabItem Header="TabItem 2"/>
-			<TabItem Header="TabItem 3"/>
+					HorizontalAlignment="Center"
+					VerticalAlignment="Top"
+					Width="250" Height="300">
+			<TabItem Header="first tab">
+				<Rectangle Width="300" Height="300">
+					<Rectangle.Fill>
+						<SolidColorBrush Color="{x:Static Theme:AccentColors.Red}"/>
+					</Rectangle.Fill>
+				</Rectangle>
+			</TabItem>
+			<TabItem Header="second tab">
+				<Rectangle Width="300" Height="300">
+					<Rectangle.Fill>
+						<SolidColorBrush Color="{x:Static Theme:AccentColors.Green}"/>
+					</Rectangle.Fill>
+				</Rectangle>
+			</TabItem>
+			<TabItem Header="third tab">
+				<Rectangle Width="300" Height="300">
+					<Rectangle.Fill>
+						<SolidColorBrush Color="{x:Static Theme:AccentColors.Blue}"/>
+					</Rectangle.Fill>
+				</Rectangle>
+			</TabItem>
 		</TabControl>
 		<ComboBox Grid.Column="2"
 				  Grid.Row="0"
@@ -154,12 +173,31 @@
 					Grid.ColumnSpan="2"
 					Grid.Row="4"
 					Grid.RowSpan="3"
-					BorderThickness="{x:Static Theme:Parameters.DefaultThickness}"
 					TabStripPlacement="Left"
-					Margin="10">
-			<TabItem Header="TabItem 1"/>
-			<TabItem Header="TabItem 2"/>
-			<TabItem Header="TabItem 3"/>
+					HorizontalAlignment="Center"
+					VerticalAlignment="Top"
+					Width="250" Height="300">
+			<TabItem Header="fist tab">
+				<Rectangle Width="300" Height="300">
+					<Rectangle.Fill>
+						<SolidColorBrush Color="{x:Static Theme:AccentColors.Red}"/>
+					</Rectangle.Fill>
+				</Rectangle>
+			</TabItem>
+			<TabItem Header="middle tab">
+				<Rectangle Width="300" Height="300">
+					<Rectangle.Fill>
+						<SolidColorBrush Color="{x:Static Theme:AccentColors.Green}"/>
+					</Rectangle.Fill>
+				</Rectangle>
+			</TabItem>
+			<TabItem Header="last tab">
+				<Rectangle Width="300" Height="300">
+					<Rectangle.Fill>
+						<SolidColorBrush Color="{x:Static Theme:AccentColors.Blue}"/>
+					</Rectangle.Fill>
+				</Rectangle>
+			</TabItem>
 		</TabControl>
 		<Slider Grid.Column="4"
 				Grid.Row="0"

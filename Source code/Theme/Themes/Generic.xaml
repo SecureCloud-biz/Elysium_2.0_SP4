@@ -24,10 +24,9 @@
         <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Buttons/CheckBox.xaml"/>
         <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Buttons/RadioButton.xaml"/>
 
-        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Text/TextBlock.xaml"/>
-        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Text/TextBox.xaml"/>
-        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Text/PasswordBox.xaml"/>
-        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Text/RichTextBox.xaml"/>
+        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/TextBoxes/TextBox.xaml"/>
+        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/TextBoxes/PasswordBox.xaml"/>
+        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/TextBoxes/RichTextBox.xaml"/>
         
         <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Selectors/ListBox.xaml"/>
         <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/Selectors/ListBoxItem.xaml"/>

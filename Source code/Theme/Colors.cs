@@ -21,12 +21,12 @@ namespace Elysium.Theme.WPF
         public static readonly Color Transparent = Color.FromArgb(0x00, 0x11, 0x11, 0x11);
         public static readonly Color Semitransparent = Color.FromArgb(0xAA, 0x11, 0x11, 0x11);
         public static readonly Color Background = Color.FromArgb(0xFF, 0x11, 0x11, 0x11);
-        public static readonly Color Foreground = Color.FromArgb(0xDE, 0xFF, 0xFF, 0xFF);
+        public static readonly Color Foreground = Color.FromArgb(0xFF, 0xFF, 0xFF, 0xFF);
         public static readonly Color ForegroundContrast = Color.FromArgb(0xFF, 0x11, 0x11, 0x11);
-        public static readonly Color ForegroundHighlight = Color.FromArgb(0x1F, 0xFF, 0xFF, 0xFF);
-        public static readonly Color ForegroundMiddlelight = Color.FromArgb(0xBF, 0xFF, 0xFF, 0xFF);
-        public static readonly Color ForegroundLowlight = Color.FromArgb(0xDE, 0xFF, 0xFF, 0xFF);
-        public static readonly Color Disabled = Color.FromArgb(0x66, 0xFF, 0xFF, 0xFF);
+        public static readonly Color ForegroundHighlight = Color.FromArgb(0xFF, 0x1F, 0x1F, 0x1F);
+        public static readonly Color ForegroundMiddlelight = Color.FromArgb(0xFF, 0xBF, 0xBF, 0xBF);
+        public static readonly Color ForegroundLowlight = Color.FromArgb(0xFF, 0xDE, 0xDE, 0xDE);
+        public static readonly Color Disabled = Color.FromArgb(0xFF, 0x66, 0x66, 0x66);
     }
 
     public static class LightColors
@@ -35,11 +35,11 @@ namespace Elysium.Theme.WPF
         public static readonly Color Transparent = Color.FromArgb(0x00, 0xFF, 0xFF, 0xFF);
         public static readonly Color Semitransparent = Color.FromArgb(0xAA, 0xFF, 0xFF, 0xFF);
         public static readonly Color Background = Color.FromArgb(0xFF, 0xFF, 0xFF, 0xFF);
-        public static readonly Color Foreground = Color.FromArgb(0xDE, 0x00, 0x00, 0x00);
+        public static readonly Color Foreground = Color.FromArgb(0xFF, 0x21, 0x21, 0x21);
         public static readonly Color ForegroundContrast = Color.FromArgb(0xFF, 0xFF, 0xFF, 0xFF);
-        public static readonly Color ForegroundHighlight = Color.FromArgb(0x11, 0x00, 0x00, 0x00);
-        public static readonly Color ForegroundMiddlelight = Color.FromArgb(0x88, 0x00, 0x00, 0x00);
-        public static readonly Color ForegroundLowlight = Color.FromArgb(0xBF, 0x00, 0x00, 0x00);
-        public static readonly Color Disabled = Color.FromArgb(0x4D, 0x00, 0x00, 0x00);
+        public static readonly Color ForegroundHighlight = Color.FromArgb(0xFF, 0xEE, 0xEE, 0xEE);
+        public static readonly Color ForegroundMiddlelight = Color.FromArgb(0xFF, 0x77, 0x77, 0x77);
+        public static readonly Color ForegroundLowlight = Color.FromArgb(0xFF, 0x40, 0x40, 0x40);
+        public static readonly Color Disabled = Color.FromArgb(0xFF, 0xB2, 0xB2, 0xB2);
     }
 } ;

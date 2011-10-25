@@ -10,7 +10,14 @@
 
         <Setter Property="Background" Value="{StaticResource Transparent}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
-        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderThickness">
+            <Setter.Value>
+                <Thickness Left="0"
+                           Top="0"
+                           Right="0"
+                           Bottom="{x:Static Root:Parameters.BoldStrokeThickness}"/>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
         <Setter Property="FontFamily" Value="{x:Static Root:Parameters.FontFamily}"/>
         <Setter Property="FontSize" Value="{x:Static Root:Parameters.TextFontSize}"/>
@@ -32,51 +39,57 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabControl}">
 
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            TextBlock.Foreground="{TemplateBinding Foreground}"
-                            TextBlock.FontFamily="{TemplateBinding FontFamily}"
-                            TextBlock.FontSize="{TemplateBinding FontSize}"
-                            TextBlock.FontWeight="{TemplateBinding FontWeight}"
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                        <Grid KeyboardNavigation.DirectionalNavigation="Local"
-                              ClipToBounds="{TemplateBinding ClipToBounds}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition x:Name="FirstColumnDefinition"
-                                                  Width="*"/>
-                                <ColumnDefinition x:Name="SecondColumnDefinition"
-                                                  Width="0"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition x:Name="FirstRowDefinition"
-                                               Height="Auto"/>
-                                <RowDefinition x:Name="SecondRowDefinition"
-                                               Height="*"/>
-                            </Grid.RowDefinitions>
-                            <TabPanel x:Name="HeaderPanel"
-                                      Grid.Column="0"
-                                      Grid.Row="0"
-                                      IsItemsHost="True"
-                                      KeyboardNavigation.TabIndex="1"
-                                      Panel.ZIndex="1"/>
-                            <ContentPresenter x:Name="PART_SelectedContentHost"
-                                              Grid.Column="0"
-                                              Grid.Row="1"
-                                              ContentSource="SelectedContent"
-                                              Margin="{TemplateBinding Padding}"
-                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                              KeyboardNavigation.DirectionalNavigation="Contained"
-                                              KeyboardNavigation.TabIndex="2"
-                                              KeyboardNavigation.TabNavigation="Local"/>
-                        </Grid>
-                    </Border>
+                    <Grid Background="{TemplateBinding Background}"
+                          TextBlock.Foreground="{TemplateBinding Foreground}"
+                          TextBlock.FontFamily="{TemplateBinding FontFamily}"
+                          TextBlock.FontSize="{TemplateBinding FontSize}"
+                          TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                          KeyboardNavigation.DirectionalNavigation="Local"
+                          ClipToBounds="{TemplateBinding ClipToBounds}"
+                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition x:Name="FirstColumnDefinition"
+                                              Width="*"/>
+                            <ColumnDefinition x:Name="SecondColumnDefinition"
+                                              Width="0"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition x:Name="FirstRowDefinition"
+                                           Height="Auto"/>
+                            <RowDefinition x:Name="SecondRowDefinition"
+                                           Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border x:Name="Border"
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Background="{StaticResource Transparent}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"/>
+                        <TabPanel x:Name="HeaderPanel"
+                                  Grid.Column="0"
+                                  Grid.Row="0"
+                                  Background="{StaticResource Transparent}"
+                                  IsItemsHost="True"
+                                  Grid.IsSharedSizeScope="True"
+                                  KeyboardNavigation.TabIndex="1"
+                                  Panel.ZIndex="1"/>
+                        <ContentPresenter x:Name="PART_SelectedContentHost"
+                                          Grid.Column="0"
+                                          Grid.Row="1"
+                                          ContentSource="SelectedContent"
+                                          Margin="{TemplateBinding Padding}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          KeyboardNavigation.DirectionalNavigation="Contained"
+                                          KeyboardNavigation.TabIndex="2"
+                                          KeyboardNavigation.TabNavigation="Local"/>
+                    </Grid>
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="TabStripPlacement" Value="Bottom">
                             <Setter TargetName="FirstRowDefinition" Property="Height" Value="*"/>
                             <Setter TargetName="SecondRowDefinition" Property="Height" Value="Auto"/>
+                            <Setter TargetName="Border" Property="Grid.Row" Value="1"/>
                             <Setter TargetName="HeaderPanel" Property="Grid.Row" Value="1"/>
                             <Setter TargetName="PART_SelectedContentHost" Property="Grid.Row" Value="0"/>
                         </Trigger>
@@ -85,32 +98,69 @@
                             <Setter TargetName="SecondColumnDefinition" Property="Width" Value="*"/>
                             <Setter TargetName="FirstRowDefinition" Property="Height" Value="*"/>
                             <Setter TargetName="SecondRowDefinition" Property="Height" Value="0"/>
-                            <Setter TargetName="HeaderPanel" Property="Grid.Row" Value="0"/>
-                            <Setter TargetName="PART_SelectedContentHost" Property="Grid.Row" Value="0"/>
+                            <Setter TargetName="Border" Property="Grid.Column" Value="0"/>
                             <Setter TargetName="HeaderPanel" Property="Grid.Column" Value="0"/>
                             <Setter TargetName="PART_SelectedContentHost" Property="Grid.Column" Value="1"/>
+                            <Setter TargetName="Border" Property="Grid.Row" Value="0"/>
+                            <Setter TargetName="HeaderPanel" Property="Grid.Row" Value="0"/>
+                            <Setter TargetName="PART_SelectedContentHost" Property="Grid.Row" Value="0"/>
                         </Trigger>
                         <Trigger Property="TabStripPlacement" Value="Right">
                             <Setter TargetName="FirstColumnDefinition" Property="Width" Value="*"/>
                             <Setter TargetName="SecondColumnDefinition" Property="Width" Value="Auto"/>
                             <Setter TargetName="FirstRowDefinition" Property="Height" Value="*"/>
                             <Setter TargetName="SecondRowDefinition" Property="Height" Value="0"/>
-                            <Setter TargetName="HeaderPanel" Property="Grid.Row" Value="0"/>
-                            <Setter TargetName="PART_SelectedContentHost" Property="Grid.Row" Value="0"/>
+                            <Setter TargetName="Border" Property="Grid.Column" Value="1"/>
                             <Setter TargetName="HeaderPanel" Property="Grid.Column" Value="1"/>
                             <Setter TargetName="PART_SelectedContentHost" Property="Grid.Column" Value="0"/>
+                            <Setter TargetName="Border" Property="Grid.Row" Value="0"/>
+                            <Setter TargetName="HeaderPanel" Property="Grid.Row" Value="0"/>
+                            <Setter TargetName="PART_SelectedContentHost" Property="Grid.Row" Value="0"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                     
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        
+
         <Style.Triggers>
+            
+            <Trigger Property="TabStripPlacement" Value="Bottom">
+                <Setter Property="BorderThickness">
+                    <Setter.Value>
+                        <Thickness Left="0"
+                                   Top="{x:Static Root:Parameters.BoldStrokeThickness}"
+                                   Right="0"
+                                   Bottom="0"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="TabStripPlacement" Value="Left">
+                <Setter Property="BorderThickness">
+                    <Setter.Value>
+                        <Thickness Left="0"
+                                   Top="0"
+                                   Right="{x:Static Root:Parameters.BoldStrokeThickness}"
+                                   Bottom="0"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="TabStripPlacement" Value="Right">
+                <Setter Property="BorderThickness">
+                    <Setter.Value>
+                        <Thickness Left="{x:Static Root:Parameters.BoldStrokeThickness}"
+                                   Top="0"
+                                   Right="0"
+                                   Bottom="0"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="BorderBrush" Value="{StaticResource Disabled}"/>
                 <Setter Property="Foreground" Value="{StaticResource Disabled}"/>
             </Trigger>
+            
         </Style.Triggers>
         
     </Style>
