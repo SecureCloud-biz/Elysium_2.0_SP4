@@ -14,7 +14,7 @@ namespace Elysium.Platform.Proxies
         SessionMode = SessionMode.Required)]
     public class Gadget
     {
-        /*[OperationContract]
+        [OperationContract]
         public Guid Register(bool isExpandable)
         {
             var id = Guid.NewGuid();
@@ -67,6 +67,6 @@ namespace Elysium.Platform.Proxies
                                               else if (e.PropertyName.Equals(gadget.IsVisible))
                                                   callback.VisibilityChanged(gadget.IsVisible);
                                           };
-        }*/
+        }
     }
 } ;

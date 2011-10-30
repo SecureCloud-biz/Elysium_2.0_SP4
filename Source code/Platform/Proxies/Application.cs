@@ -14,7 +14,7 @@ namespace Elysium.Platform.Proxies
         SessionMode = SessionMode.Required)]
     public class Application
     {
-        /*[OperationContract]
+        [OperationContract]
         public Guid Register(bool isAttachable)
         {
             var id = Guid.NewGuid();
@@ -65,6 +65,6 @@ namespace Elysium.Platform.Proxies
                                                    else if (e.PropertyName.Equals(application.IsVisible))
                                                        callback.VisibilityChanged(application.IsVisible);
                                                };
-        }*/
+        }
     }
 } ;
