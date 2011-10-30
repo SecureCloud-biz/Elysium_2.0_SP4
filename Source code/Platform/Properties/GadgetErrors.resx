@@ -117,13 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ObservableCollectionReentrancyNotAllowed" xml:space="preserve">
-    <value>ObservableCollection reentrancy not allowed.</value>
+  <data name="ColumnSpanValueMustBeGreaterThanZero" xml:space="preserve">
+    <value>ColumnSpan value must be greater than zero.</value>
   </data>
-  <data name="PartiallyTrusted" xml:space="preserve">
-    <value>Application is partially trusted, for normal work require full trust.</value>
+  <data name="ColumnSpanValueMustBeLessThanOrEqualToTwo" xml:space="preserve">
+    <value>ColumnSpan value must be less than or equal two.</value>
   </data>
-  <data name="XPError" xml:space="preserve">
-    <value>Windows XP doesn't supported. Please, use Windows Vista or later.</value>
+  <data name="ColumnValueMustBeGreaterThanOrEqualToZero" xml:space="preserve">
+    <value>Column value must be greater than or equal to zero.</value>
+  </data>
+  <data name="HostingFailed" xml:space="preserve">
+    <value>Cannot host gadgets.</value>
+  </data>
+  <data name="IsNotRegistered" xml:space="preserve">
+    <value>Gadget is not registered.</value>
+  </data>
+  <data name="RowValueMustBeGreaterThanOrEqualToZero" xml:space="preserve">
+    <value>Row value must be greater than or equal to zero.</value>
   </data>
 </root>

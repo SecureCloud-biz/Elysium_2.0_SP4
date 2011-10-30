@@ -1,4 +1,5 @@
-﻿using System.Windows.Interop;
+﻿using System.Security;
+using System.Windows.Interop;
 using Elysium.Platform.Interop;
 
 namespace Elysium.Platform
@@ -7,6 +8,7 @@ namespace Elysium.Platform
     {
         private readonly WindowInteropHelper _helper;
 
+        [SecurityCritical]
         public MainWindow()
         {
             InitializeComponent();

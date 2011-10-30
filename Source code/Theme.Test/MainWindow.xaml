@@ -1,7 +1,6 @@
 ﻿<Controls:Window x:Class="Elysium.Theme.WPF.Test.MainWindow"
 				 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 				 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-				 xmlns:Theme="clr-namespace:Elysium.Theme.WPF;assembly=Elysium.Theme.WPF"
 				 xmlns:Controls="clr-namespace:Elysium.Theme.WPF.Controls;assembly=Elysium.Theme.WPF"
 				 Title="MainWindow"
 				 Background="{StaticResource Background}"
@@ -97,7 +96,6 @@
 		</RichTextBox>
 		<TextBlock Grid.Column="1"
 				   Grid.Row="3"
-				   Margin="15"
 				   Text="TextBlock"
 				   HorizontalAlignment="Center"
 				   VerticalAlignment="Center"/>
@@ -105,31 +103,14 @@
 					Grid.ColumnSpan="2"
 					Grid.Row="4"
 					Grid.RowSpan="3"
+					Background="{StaticResource ForegroundHighlight}"
 					TabStripPlacement="Top"
 					HorizontalAlignment="Center"
 					VerticalAlignment="Top"
 					Width="250" Height="300">
-			<TabItem Header="first tab">
-				<Rectangle Width="300" Height="300">
-					<Rectangle.Fill>
-						<SolidColorBrush Color="{x:Static Theme:AccentColors.Red}"/>
-					</Rectangle.Fill>
-				</Rectangle>
-			</TabItem>
-			<TabItem Header="second tab">
-				<Rectangle Width="300" Height="300">
-					<Rectangle.Fill>
-						<SolidColorBrush Color="{x:Static Theme:AccentColors.Green}"/>
-					</Rectangle.Fill>
-				</Rectangle>
-			</TabItem>
-			<TabItem Header="third tab">
-				<Rectangle Width="300" Height="300">
-					<Rectangle.Fill>
-						<SolidColorBrush Color="{x:Static Theme:AccentColors.Blue}"/>
-					</Rectangle.Fill>
-				</Rectangle>
-			</TabItem>
+			<TabItem Header="first tab"/>
+			<TabItem Header="second tab"/>
+			<TabItem Header="third tab"/>
 		</TabControl>
 		<ComboBox Grid.Column="2"
 				  Grid.Row="0"
@@ -173,31 +154,14 @@
 					Grid.ColumnSpan="2"
 					Grid.Row="4"
 					Grid.RowSpan="3"
+					Background="{StaticResource ForegroundHighlight}"
 					TabStripPlacement="Left"
 					HorizontalAlignment="Center"
 					VerticalAlignment="Top"
 					Width="250" Height="300">
-			<TabItem Header="fist tab">
-				<Rectangle Width="300" Height="300">
-					<Rectangle.Fill>
-						<SolidColorBrush Color="{x:Static Theme:AccentColors.Red}"/>
-					</Rectangle.Fill>
-				</Rectangle>
-			</TabItem>
-			<TabItem Header="middle tab">
-				<Rectangle Width="300" Height="300">
-					<Rectangle.Fill>
-						<SolidColorBrush Color="{x:Static Theme:AccentColors.Green}"/>
-					</Rectangle.Fill>
-				</Rectangle>
-			</TabItem>
-			<TabItem Header="last tab">
-				<Rectangle Width="300" Height="300">
-					<Rectangle.Fill>
-						<SolidColorBrush Color="{x:Static Theme:AccentColors.Blue}"/>
-					</Rectangle.Fill>
-				</Rectangle>
-			</TabItem>
+			<TabItem Header="fist tab"/>
+			<TabItem Header="middle tab"/>
+			<TabItem Header="last tab"/>
 		</TabControl>
 		<Slider Grid.Column="4"
 				Grid.Row="0"

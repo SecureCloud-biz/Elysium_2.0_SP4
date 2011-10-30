@@ -27,11 +27,13 @@
     <Optimize>false</Optimize>
     <OutputPath>..\Binary\Debug\Theme.WPF\AnyCPU\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>..\Binary\Debug\Theme.WPF\AnyCPU\Elysium.Theme.WPF.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\Binary\Release\Theme.WPF\AnyCPU\</OutputPath>
+    <DocumentationFile>..\Binary\Release\Theme.WPF\AnyCPU\Elysium.Theme.WPF.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -180,15 +182,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Colors.cs" />
+    <Compile Include="Commands\CommandReference.cs" />
+    <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Controls\CommandButtons.cs" />
     <Compile Include="Controls\ProgressBar.cs" />
     <Compile Include="Controls\Window.cs" />
     <Compile Include="Converters\ThicknessToDoubleConverter.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Parameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ThemeManager.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\Close.png" />

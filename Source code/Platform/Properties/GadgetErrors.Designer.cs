@@ -22,14 +22,14 @@ namespace Elysium.Platform.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class GadgetErrors {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal GadgetErrors() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Elysium.Platform.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Elysium.Platform.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Elysium.Platform.Properties.GadgetErrors", typeof(GadgetErrors).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,29 +61,56 @@ namespace Elysium.Platform.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ObservableCollection reentrancy not allowed..
+        ///   Looks up a localized string similar to ColumnSpan value must be greater than zero..
         /// </summary>
-        internal static string ObservableCollectionReentrancyNotAllowed {
+        internal static string ColumnSpanValueMustBeGreaterThanZero {
             get {
-                return ResourceManager.GetString("ObservableCollectionReentrancyNotAllowed", resourceCulture);
+                return ResourceManager.GetString("ColumnSpanValueMustBeGreaterThanZero", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Application is partially trusted, for normal work require full trust..
+        ///   Looks up a localized string similar to ColumnSpan value must be less than or equal two..
         /// </summary>
-        internal static string PartiallyTrusted {
+        internal static string ColumnSpanValueMustBeLessThanOrEqualToTwo {
             get {
-                return ResourceManager.GetString("PartiallyTrusted", resourceCulture);
+                return ResourceManager.GetString("ColumnSpanValueMustBeLessThanOrEqualToTwo", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Windows XP doesn&apos;t supported. Please, use Windows Vista or later..
+        ///   Looks up a localized string similar to Column value must be greater than or equal to zero..
         /// </summary>
-        internal static string XPError {
+        internal static string ColumnValueMustBeGreaterThanOrEqualToZero {
             get {
-                return ResourceManager.GetString("XPError", resourceCulture);
+                return ResourceManager.GetString("ColumnValueMustBeGreaterThanOrEqualToZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot host gadgets..
+        /// </summary>
+        internal static string HostingFailed {
+            get {
+                return ResourceManager.GetString("HostingFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gadget is not registered..
+        /// </summary>
+        internal static string IsNotRegistered {
+            get {
+                return ResourceManager.GetString("IsNotRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Row value must be greater than or equal to zero..
+        /// </summary>
+        internal static string RowValueMustBeGreaterThanOrEqualToZero {
+            get {
+                return ResourceManager.GetString("RowValueMustBeGreaterThanOrEqualToZero", resourceCulture);
             }
         }
     }

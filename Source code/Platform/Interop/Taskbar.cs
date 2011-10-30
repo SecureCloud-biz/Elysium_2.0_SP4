@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Security;
 
 namespace Elysium.Platform.Interop
 {
-    public enum TaskbarPosition
+    internal enum TaskbarPosition
     {
         Left,
         Top,
@@ -11,10 +12,12 @@ namespace Elysium.Platform.Interop
         Bottom,
     }
 
-    public sealed class Taskbar
-    {
-        public static readonly Taskbar Instance = new Taskbar();
 
+    internal sealed class Taskbar
+    {
+        internal static readonly Taskbar Instance = new Taskbar();
+        
+        [SecurityCritical]
         private Taskbar()
         {
             Handle = WinAPI.FindWindow("Shell_TrayWnd", null);
@@ -39,30 +42,30 @@ namespace Elysium.Platform.Interop
             AutoHide = (state & WinAPI.ABS_AUTOHIDE) == WinAPI.ABS_AUTOHIDE;
         }
 
-        public IntPtr Handle { get; private set; }
+        internal IntPtr Handle { get; private set; }
 
-        public TaskbarPosition Position { get; private set; }
+        internal TaskbarPosition Position { get; private set; }
 
-        public int Left { get; private set; }
+        internal int Left { get; private set; }
 
-        public int Top { get; private set; }
+        internal int Top { get; private set; }
 
-        public int Right { get; private set; }
+        internal int Right { get; private set; }
 
-        public int Bottom { get; private set; }
+        internal int Bottom { get; private set; }
 
-        public int Width
+        internal int Width
         {
             get { return Right - Left; }
         }
 
-        public int Height
+        internal int Height
         {
             get { return Bottom - Top; }
         }
 
-        public bool AlwaysOnTop { get; private set; }
+        internal bool AlwaysOnTop { get; private set; }
 
-        public bool AutoHide { get; private set; }
+        internal bool AutoHide { get; private set; }
     }
 } ;

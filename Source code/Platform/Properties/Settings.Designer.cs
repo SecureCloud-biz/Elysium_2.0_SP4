@@ -25,10 +25,10 @@ namespace Elysium.Platform.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("4280000994")]
-        public uint AccentColor {
+        [global::System.Configuration.DefaultSettingValueAttribute("#FF1BA1E2")]
+        public global::System.Windows.Media.Color AccentColor {
             get {
-                return ((uint)(this["AccentColor"]));
+                return ((global::System.Windows.Media.Color)(this["AccentColor"]));
             }
             set {
                 this["AccentColor"] = value;
@@ -37,26 +37,41 @@ namespace Elysium.Platform.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool IsDarkTheme {
+        [global::System.Configuration.DefaultSettingValueAttribute("Dark")]
+        public global::Elysium.Theme.WPF.Theme Theme {
             get {
-                return ((bool)(this["IsDarkTheme"]));
+                return ((global::Elysium.Theme.WPF.Theme)(this["Theme"]));
             }
             set {
-                this["IsDarkTheme"] = value;
+                this["Theme"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfAnyType xmlns:xsi=\"http://www.w3" +
-            ".org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" />")]
-        public global::System.Collections.ArrayList CompositionAssemblies {
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ObservableDictionaryOfGuidGadget xmlns:" +
+            "xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/200" +
+            "1/XMLSchema\" />")]
+        public global::Elysium.Platform.Collections.ObservableDictionary<System.Guid, Elysium.Platform.Entities.Gadget> Gadgets {
             get {
-                return ((global::System.Collections.ArrayList)(this["CompositionAssemblies"]));
+                return ((global::Elysium.Platform.Collections.ObservableDictionary<System.Guid, Elysium.Platform.Entities.Gadget>)(this["Gadgets"]));
             }
             set {
-                this["CompositionAssemblies"] = value;
+                this["Gadgets"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ObservableDictionaryOfGuidApplication x" +
+            "mlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.or" +
+            "g/2001/XMLSchema\" />")]
+        public global::Elysium.Platform.Collections.ObservableDictionary<System.Guid, Elysium.Platform.Entities.Application> Applications {
+            get {
+                return ((global::Elysium.Platform.Collections.ObservableDictionary<System.Guid, Elysium.Platform.Entities.Application>)(this["Applications"]));
+            }
+            set {
+                this["Applications"] = value;
             }
         }
     }

@@ -117,13 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ObservableCollectionReentrancyNotAllowed" xml:space="preserve">
-    <value>ObservableCollection reentrancy not allowed.</value>
+  <data name="HostingFailed" xml:space="preserve">
+    <value>Cannot host applications.</value>
   </data>
-  <data name="PartiallyTrusted" xml:space="preserve">
-    <value>Application is partially trusted, for normal work require full trust.</value>
-  </data>
-  <data name="XPError" xml:space="preserve">
-    <value>Windows XP doesn't supported. Please, use Windows Vista or later.</value>
+  <data name="IsNotRegistered" xml:space="preserve">
+    <value>Application is not registered.</value>
   </data>
 </root>

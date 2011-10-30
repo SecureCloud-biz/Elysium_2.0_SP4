@@ -1,5 +1,5 @@
-﻿using System.ComponentModel;
-using System.Windows.Media;
+﻿using System.Windows.Media;
+using Elysium.Theme.WPF.ViewModels;
 
 namespace Elysium.Theme.WPF
 {
@@ -9,7 +9,7 @@ namespace Elysium.Theme.WPF
         Light
     }
 
-    public sealed class ThemeManager : INotifyPropertyChanged
+    public sealed class ThemeManager : ViewModelBase
     {
         public static readonly ThemeManager Instance = new ThemeManager();
 
@@ -195,12 +195,5 @@ namespace Elysium.Theme.WPF
         }
 
         private Color _disabled;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 } ;

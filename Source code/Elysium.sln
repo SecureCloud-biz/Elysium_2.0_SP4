@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{D1030D16-1A89-4071-BBC2-A290F6F3266A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Platform", "Platform\Platform.csproj", "{A1DC7050-81A2-4BE3-948D-6F7F4570F9D4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theme.WPF", "Theme\Theme.WPF.csproj", "{5A65DA67-130D-43D8-9224-4559B523B6D4}"
@@ -11,22 +9,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theme.WPF.Test", "Theme.Tes
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
+		SccNumberOfProjects = 4
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs34
 		SccLocalPath0 = .
-		SccProjectUniqueName1 = Core\\Core.csproj
-		SccProjectName1 = Core
-		SccLocalPath1 = Core
-		SccProjectUniqueName2 = Platform\\Platform.csproj
-		SccProjectName2 = Platform
-		SccLocalPath2 = Platform
-		SccProjectUniqueName3 = Theme\\Theme.WPF.csproj
-		SccProjectName3 = Theme
-		SccLocalPath3 = Theme
-		SccProjectUniqueName4 = Theme.Test\\Theme.WPF.Test.csproj
-		SccProjectName4 = Theme.Test
-		SccLocalPath4 = Theme.Test
+		SccProjectUniqueName1 = Platform\\Platform.csproj
+		SccProjectName1 = Platform
+		SccLocalPath1 = Platform
+		SccProjectUniqueName2 = Theme\\Theme.WPF.csproj
+		SccProjectName2 = Theme
+		SccLocalPath2 = Theme
+		SccProjectUniqueName3 = Theme.Test\\Theme.WPF.Test.csproj
+		SccProjectName3 = Theme.Test
+		SccLocalPath3 = Theme.Test
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -35,12 +30,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D1030D16-1A89-4071-BBC2-A290F6F3266A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{D1030D16-1A89-4071-BBC2-A290F6F3266A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{D1030D16-1A89-4071-BBC2-A290F6F3266A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{D1030D16-1A89-4071-BBC2-A290F6F3266A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{D1030D16-1A89-4071-BBC2-A290F6F3266A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{D1030D16-1A89-4071-BBC2-A290F6F3266A}.Release|x86.ActiveCfg = Release|Any CPU
 		{A1DC7050-81A2-4BE3-948D-6F7F4570F9D4}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{A1DC7050-81A2-4BE3-948D-6F7F4570F9D4}.Debug|Mixed Platforms.Build.0 = Debug|x86
 		{A1DC7050-81A2-4BE3-948D-6F7F4570F9D4}.Debug|x86.ActiveCfg = Debug|x86

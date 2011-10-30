@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Security;
 
 namespace Elysium.Platform.Interop
 {
+    [SecuritySafeCritical]
     public static class Windows
     {
         public static bool IsWindowsXP
