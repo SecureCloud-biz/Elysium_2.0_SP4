@@ -1,72 +1,48 @@
 ﻿using System;
-using System.ServiceModel;
-using System.ServiceModel.Description;
 using System.Windows;
-using Elysium.Platform.Properties;
-using Elysium.Theme.WPF;
+using Elysium.Theme;
 
 namespace Elysium.Platform
 {
-    public sealed partial class App
+    internal sealed partial class App
     {
-        public App()
+        internal App()
         {
-            // Checking OS version
-            if (Interop.Windows.IsWindowsXP)
-            {
-                MessageBox.Show(Platform.Properties.Resources.XPError);
-                Shutdown(0x47E); // 0x47E - This version of Windows not supported
-            }
-
             // Is application full-trusted?
             if (!AppDomain.CurrentDomain.IsFullyTrusted)
             {
-                MessageBox.Show(Platform.Properties.Resources.PartiallyTrusted);
+                MessageBox.Show(Platform.Resources.Default.PartiallyTrusted);
                 Shutdown();
             }
 
+            // Gets command line arguments
+            var args = Environment.GetCommandLineArgs();
+
+            var isSingleInstance = Communication.Helper.IsSingleInstance();
+            var hasArguments = args.Length > 1;
+
+            if (!isSingleInstance && !hasArguments)
+                Shutdown(0x480);
+            else
+            {
+                if (isSingleInstance)
+                {
+                    Communication.Helper.ExecuteServer();
+                }
+                if (hasArguments)
+                {
+                    Communication.Helper.ExecuteClient(args[1], args[2], args[3]);
+                }
+            }
+
             // Set theme
-            if (Settings.Default.Theme == Theme.WPF.Theme.Dark)
+            if (Settings.Default.Theme == Theme.Theme.Dark)
                 ThemeManager.Instance.Dark(Settings.Default.AccentColor);
             else ThemeManager.Instance.Light(Settings.Default.AccentColor);
 
             InitializeComponent();
 
-            // Hosting gadgets
-            var gadgetsHost = new ServiceHost(typeof(Proxies.Gadget), new Uri("http://localhost:8000/Elysium/Platform/Gadgets"));
-            try
-            {
-                gadgetsHost.AddServiceEndpoint(typeof(Proxies.Gadget), new NetNamedPipeBinding(NetNamedPipeSecurityMode.Transport),
-                                               "net.pipe://localhost/Elysium/Platform/Gadgets");
-                gadgetsHost.Description.Behaviors.Add(new ServiceMetadataBehavior { HttpGetEnabled = true });
-                gadgetsHost.Open();
-
-                Exit += (s, e) => gadgetsHost.Close();
-            }
-            catch (CommunicationException e)
-            {
-                MessageBox.Show(Platform.Properties.GadgetErrors.HostingFailed + Environment.NewLine + Environment.NewLine + e);
-                gadgetsHost.Abort();
-                Shutdown();
-            }
-
-            // Hosting applications
-            var applicationsHost = new ServiceHost(typeof(Proxies.Application), new Uri("http://localhost:8000/Elysium/Platform/Applications"));
-            try
-            {
-                applicationsHost.AddServiceEndpoint(typeof(Proxies.Application), new NetNamedPipeBinding(NetNamedPipeSecurityMode.Transport),
-                                                    "net.pipe://localhost/Elysium/Platform/Applications");
-                applicationsHost.Description.Behaviors.Add(new ServiceMetadataBehavior { HttpGetEnabled = true });
-                applicationsHost.Open();
-
-                Exit += (s, e) => applicationsHost.Close();
-            }
-            catch (CommunicationException e)
-            {
-                MessageBox.Show(Platform.Properties.ApplicationErrors.HostingFailed + Environment.NewLine + Environment.NewLine + e);
-                applicationsHost.Abort();
-                Shutdown();
-            }
+            Views.Locator.Main.Show();
         }
     }
 } ;

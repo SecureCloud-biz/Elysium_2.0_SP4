@@ -3,12 +3,12 @@
 					xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
 					xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
 					xmlns:Shell="clr-namespace:Microsoft.Windows.Shell;assembly=Microsoft.Windows.Shell"
-					xmlns:Root="clr-namespace:Elysium.Theme.WPF"
-					xmlns:Controls="clr-namespace:Elysium.Theme.WPF.Controls">
+					xmlns:Root="clr-namespace:Elysium.Theme"
+					xmlns:Controls="clr-namespace:Elysium.Theme.Controls">
 
 	<ResourceDictionary.MergedDictionaries>
-		<ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/SharedResources.xaml"/>
-		<ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/buttons/CommandButtonsBase.xaml"/>
+		<ResourceDictionary Source="/Elysium.Theme;component/Themes/SharedResources.xaml"/>
+		<ResourceDictionary Source="/Elysium.Theme;component/Themes/buttons/CommandButtonsBase.xaml"/>
 	</ResourceDictionary.MergedDictionaries>
 
 	<Style x:Key="{x:Type Controls:Window}" TargetType="{x:Type Controls:Window}">
@@ -23,6 +23,8 @@
 		<Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
 		<Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
 		<Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
+		
+		<Setter Property="ResizeMode" Value="CanResizeWithGrip"/>
 
 		<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
 		<Setter Property="VerticalContentAlignment" Value="Stretch"/>
@@ -85,7 +87,7 @@
 									<Controls:CommandButton x:Name="PART_Minimize"
 																	BorderThickness="0"
 																	Width="30" Height="30">
-										<Image Source="pack://application:,,,/Elysium.Theme.WPF;component/Icons/Minimize.png"
+										<Image Source="pack://application:,,,/Elysium.Theme;component/Icons/Minimize.png"
 											   Stretch="None"
 											   RenderOptions.BitmapScalingMode="NearestNeighbor"
 											   Width="10" Height="10"/>
@@ -102,12 +104,12 @@
 																		  Width="30" Height="30">
 										<Controls:ToggleCommandButton.Resources>
 											<Image x:Key="MaximizeIcon"
-												   Source="pack://application:,,,/Elysium.Theme.WPF;component/Icons/Maximize.png"
+												   Source="pack://application:,,,/Elysium.Theme;component/Icons/Maximize.png"
 												   Stretch="None"
 												   RenderOptions.BitmapScalingMode="NearestNeighbor"
 												   Width="10" Height="10"/>
 											<Image x:Key="RestoreIcon"
-												   Source="pack://application:,,,/Elysium.Theme.WPF;component/Icons/Restore.png"
+												   Source="pack://application:,,,/Elysium.Theme;component/Icons/Restore.png"
 												   Stretch="None"
 												   RenderOptions.BitmapScalingMode="NearestNeighbor"
 												   Width="10" Height="10"/>
@@ -138,7 +140,7 @@
 																	Command="{x:Static ApplicationCommands.Close}"
 																	BorderThickness="0"
 																	Width="30" Height="30">
-										<Image Source="pack://application:,,,/Elysium.Theme.WPF;component/Icons/Close.png"
+										<Image Source="pack://application:,,,/Elysium.Theme;component/Icons/Close.png"
 											   Stretch="None"
 											   RenderOptions.BitmapScalingMode="NearestNeighbor"
 											   Width="10" Height="10"/>
@@ -186,6 +188,15 @@
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
+        
+        <Style.Triggers>
+            <Trigger Property="WindowStyle" Value="{x:Static WindowStyle.None}">
+                <Setter Property="ResizeMode" Value="NoResize"/>
+            </Trigger>
+            <Trigger Property="WindowStyle" Value="{x:Static WindowStyle.ToolWindow}">
+                <Setter Property="ResizeMode" Value="NoResize"/>
+            </Trigger>            
+        </Style.Triggers>
 		
 	</Style>
 	

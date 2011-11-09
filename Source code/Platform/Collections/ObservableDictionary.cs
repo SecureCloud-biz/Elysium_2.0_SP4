@@ -12,15 +12,14 @@ using System.Threading;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
-using Elysium.Platform.Properties;
+using System.ComponentModel.Composition;
 
 namespace Elysium.Platform.Collections
 {
     [DebuggerDisplay("Count = {Count}")]
     [ComVisible(false)]
     [Serializable]
-    [XmlRoot]
-    public class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, IDictionary,
+    internal class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, IDictionary,
                                                       INotifyCollectionChanged, INotifyPropertyChanged,
                                                       ISerializable, IDeserializationCallback,
                                                       IXmlSerializable
@@ -59,7 +58,7 @@ namespace Elysium.Platform.Collections
         protected void CheckReentrancy()
         {
             if (_monitor.Busy && _collectionChanged != null && _collectionChanged.GetInvocationList().Length > 1)
-                throw new InvalidOperationException(Resources.ObservableCollectionReentrancyNotAllowed);
+                throw new InvalidOperationException(Resources.Default.ObservableDictionaryReentrancyNotAllowed);
         }
 
         #endregion
@@ -132,6 +131,7 @@ namespace Elysium.Platform.Collections
 
         int ICollection.Count
         {
+            [Pure]
             get { return ((ICollection)_dictionary).Count; }
         }
 
@@ -185,6 +185,7 @@ namespace Elysium.Platform.Collections
 
         int ICollection<KeyValuePair<TKey, TValue>>.Count
         {
+            [Pure]
             get { return ((ICollection<KeyValuePair<TKey, TValue>>)_dictionary).Count; }
         }
 
@@ -283,8 +284,10 @@ namespace Elysium.Platform.Collections
             get { return _dictionary.Comparer; }
         }
 
+        [Pure]
         public bool ContainsKey(TKey key)
         {
+            Contract.Ensures(!Contract.Result<bool>() || Count > 0);
             return _dictionary.ContainsKey(key);
         }
 
@@ -320,7 +323,8 @@ namespace Elysium.Platform.Collections
         public bool TryGetValue(TKey key, out TValue value)
         {
             Contract.Ensures(Contract.Result<bool>() == ContainsKey(key));
-            return _dictionary.TryGetValue(key, out value);
+            var result = _dictionary.TryGetValue(key, out value);
+            return result;
         }
 
         public bool Remove(TKey key)
@@ -336,17 +340,26 @@ namespace Elysium.Platform.Collections
 
         public int Count
         {
+            [Pure]
             get { return _dictionary.Count; }
         }
 
         public ICollection<TKey> Keys
         {
-            get { return _dictionary.Keys; }
+            get
+            {
+                Contract.Ensures(Contract.Result<ICollection<TKey>>() != null);
+                return _dictionary.Keys;
+            }
         }
 
         public ICollection<TValue> Values
         {
-            get { return _dictionary.Values; }
+            get
+            {
+                Contract.Ensures(Contract.Result<ICollection<TValue>>() != null);
+                return _dictionary.Values;
+            }
         }
 
         #endregion
@@ -472,7 +485,7 @@ namespace Elysium.Platform.Collections
             _dictionary.GetObjectData(info, context);
         }
 
-        [SecurityCritical]
+        [SecuritySafeCritical]
         public virtual void OnDeserialization(object sender)
         {
             _dictionary.OnDeserialization(sender);

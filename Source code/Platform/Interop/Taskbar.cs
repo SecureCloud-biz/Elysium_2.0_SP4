@@ -16,7 +16,7 @@ namespace Elysium.Platform.Interop
     internal sealed class Taskbar
     {
         internal static readonly Taskbar Instance = new Taskbar();
-        
+
         [SecurityCritical]
         private Taskbar()
         {

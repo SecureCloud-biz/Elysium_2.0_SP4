@@ -1,9 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:Root="clr-namespace:Elysium.Theme.WPF">
+                    xmlns:Root="clr-namespace:Elysium.Theme">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Elysium.Theme.WPF;component/Themes/SharedResources.xaml"/>
+        <ResourceDictionary Source="/Elysium.Theme;component/Themes/SharedResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
     <Style TargetType="{x:Type ContextMenu}">

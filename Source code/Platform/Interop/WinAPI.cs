@@ -82,7 +82,8 @@ namespace Elysium.Platform.Interop
             internal ABE uEdge;
             internal RECT rc;
 
-            [MarshalAs(UnmanagedType.SysInt)] internal IntPtr lParam;
+            [MarshalAs(UnmanagedType.SysInt)]
+            internal IntPtr lParam;
         }
 
 // ReSharper restore InconsistentNaming
@@ -119,11 +120,11 @@ namespace Elysium.Platform.Interop
                                                          uint cbAttribute);
 
 
-        [DllImport("user32.dll", SetLastError = true)]
+        [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
         internal static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
 
         [DllImport("shell32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.SysUInt)]
-        internal static extern UIntPtr SHAppBarMessage(uint dwMessage, [In, Out] ref APPBARDATA pData);
+        internal static extern UIntPtr SHAppBarMessage(uint dwMessage, [In] [Out] ref APPBARDATA pData);
     }
 } ;

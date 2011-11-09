@@ -1,4 +1,4 @@
-﻿namespace Elysium.Theme.WPF.Test
+﻿namespace Elysium.Theme.Test
 {
     public partial class MainWindow
     {

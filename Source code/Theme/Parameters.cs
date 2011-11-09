@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Media;
 
-namespace Elysium.Theme.WPF
+namespace Elysium.Theme
 {
     public static class Parameters
     {
@@ -96,7 +96,7 @@ namespace Elysium.Theme.WPF
 
         public static readonly DependencyProperty MinimumDurationProperty =
             DependencyProperty.RegisterAttached("MinimumDuration", typeof(Duration), typeof(Parameters),
-                                                new UIPropertyMetadata(new Duration(TimeSpan.Parse("00:00:00.1"))));
+                                                new UIPropertyMetadata(new Duration(TimeSpan.Parse("00:00:00.2"))));
 
         public static Duration GetMinimumDurationProperty(DependencyObject obj)
         {
@@ -310,6 +310,23 @@ namespace Elysium.Theme.WPF
         public static void SetScrollViewerShadowSize(DependencyObject obj, double value)
         {
             obj.SetValue(ScrollViewerShadowSizeProperty, value);
+        }
+
+        #endregion
+
+        #region TabControl
+
+        public static readonly DependencyProperty TabControlIndicatorThicknessProperty =
+            DependencyProperty.RegisterAttached("TabControlIndicatorThickness", typeof(Thickness), typeof(Parameters), new UIPropertyMetadata(new Thickness()));
+
+        public static Thickness GetTabControlIndicatorThickness(DependencyObject obj)
+        {
+            return (Thickness)obj.GetValue(TabControlIndicatorThicknessProperty);
+        }
+
+        public static void SetTabControlIndicatorThickness(DependencyObject obj, Thickness value)
+        {
+            obj.SetValue(TabControlIndicatorThicknessProperty, value);
         }
 
         #endregion

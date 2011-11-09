@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 
-namespace Elysium.Theme.WPF.Commands
+namespace Elysium.Theme.Commands
 {
     /// <summary>
     /// This class allows delegating the commanding logic to methods passed as parameters,

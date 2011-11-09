@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 
-namespace Elysium.Theme.WPF.Controls
+namespace Elysium.Theme.Controls
 {
     public class CommandButton : Button
     {

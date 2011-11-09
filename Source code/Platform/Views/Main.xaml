@@ -1,0 +1,14 @@
+﻿<Window x:Class="Elysium.Platform.Views.Main"
+        x:ClassModifier="internal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        AllowsTransparency="True"
+        Background="{StaticResource Semitransparent}"
+        Left="0" Top="0"
+        ShowInTaskbar="False"
+        WindowStyle="None">
+    <Grid x:Name="LayoutRoot"
+          Background="{StaticResource Transparent}">
+        
+    </Grid>
+</Window>

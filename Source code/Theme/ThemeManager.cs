@@ -1,7 +1,7 @@
 ﻿using System.Windows.Media;
-using Elysium.Theme.WPF.ViewModels;
+using Elysium.Theme.ViewModels;
 
-namespace Elysium.Theme.WPF
+namespace Elysium.Theme
 {
     public enum Theme
     {

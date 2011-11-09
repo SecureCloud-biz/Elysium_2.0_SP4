@@ -1,7 +1,7 @@
-﻿<Controls:Window x:Class="Elysium.Theme.WPF.Test.MainWindow"
+﻿<Controls:Window x:Class="Elysium.Theme.Test.MainWindow"
 				 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 				 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-				 xmlns:Controls="clr-namespace:Elysium.Theme.WPF.Controls;assembly=Elysium.Theme.WPF"
+				 xmlns:Controls="clr-namespace:Elysium.Theme.Controls;assembly=Elysium.Theme"
 				 Title="MainWindow"
 				 Background="{StaticResource Background}"
 				 MouseLeftButtonDown="WindowMouseLeftButtonDown"
@@ -28,7 +28,7 @@
 			<ContextMenu>
 				<MenuItem Header="Context menu item 1">
 					<MenuItem.Icon>
-						<Image Source="pack://application:,,,/Elysium.Theme.WPF;component/Icons/Close.png"
+						<Image Source="pack://application:,,,/Elysium.Theme;component/Icons/Close.png"
 							   Stretch="None"/>
 					</MenuItem.Icon>
 				</MenuItem>

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media;
 
-namespace Elysium.Theme.WPF
+namespace Elysium.Theme
 {
     public static class AccentColors
     {

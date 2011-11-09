@@ -2,9 +2,9 @@
 using System.Runtime.InteropServices;
 using System.Windows;
 
-[assembly: AssemblyTitle("Theme test")]
-[assembly: AssemblyDescription("Elysium: Theme.Test assembly")]
-[assembly: AssemblyProduct("Elysium")]
+[assembly: AssemblyTitle("Elysium: Theme.Test assembly")]
+[assembly: AssemblyDescription("WPF Metro-style theme test application")]
+[assembly: AssemblyProduct("Elysium Theme")]
 [assembly: AssemblyCopyright("Copyright © Alex F. Sherman & Codeplex Community 2011")]
 
 [assembly: ComVisible(false)]
