@@ -16,7 +16,8 @@ namespace Elysium.Platform.ViewModels
         internal Application(Models.Application model)
         {
             _model = model;
-            Communication.ApplicationHelper.Load(_model.ID, out _proxy);
+            if (!Communication.ApplicationHelper.Load(_model.ID, out _proxy))
+                Dispose();
         }
 
         internal string Assembly
