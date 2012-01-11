@@ -1,4 +1,5 @@
-﻿using System.Windows.Automation;
+﻿using System.Diagnostics.Contracts;
+using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 using System.Windows.Threading;
@@ -30,7 +31,9 @@ namespace Elysium.Theme.Controls.Automation
         void IInvokeProvider.Invoke()
         {
             if (!IsEnabled())
+            {
                 throw new ElementNotEnabledException();
+            }
 
             Dispatcher.BeginInvoke(DispatcherPriority.Input, new DispatcherOperationCallback(
                                                                  delegate

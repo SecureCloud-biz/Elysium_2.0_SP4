@@ -60,7 +60,7 @@
         <ControlTemplate.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsIndeterminate" Value="True"/>
+                    <Condition Property="State" Value="Indeterminate"/>
                     <Condition Property="IsEnabled" Value="True"/>
                 </MultiTrigger.Conditions>
                 <MultiTrigger.Setters>
@@ -74,7 +74,7 @@
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsIndeterminate" Value="{x:Null}"/>
+                    <Condition Property="State" Value="Loading"/>
                     <Condition Property="IsEnabled" Value="True"/>
                 </MultiTrigger.Conditions>
                 <MultiTrigger.Setters>
@@ -143,7 +143,7 @@
         <ControlTemplate.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsIndeterminate" Value="True"/>
+                    <Condition Property="State" Value="Indeterminate"/>
                     <Condition Property="IsEnabled" Value="True"/>
                 </MultiTrigger.Conditions>
                 <MultiTrigger.Setters>
@@ -157,7 +157,7 @@
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsIndeterminate" Value="{x:Null}"/>
+                    <Condition Property="State" Value="Loading"/>
                     <Condition Property="IsEnabled" Value="True"/>
                 </MultiTrigger.Conditions>
                 <MultiTrigger.Setters>
@@ -182,8 +182,8 @@
 
         <Style.Triggers>
 
-            <Trigger Property="IsIndeterminate" Value="{x:Null}">
-                <Setter Property="Background" Value="{StaticResource Background}"/>
+            <Trigger Property="State" Value="Loading">
+                <Setter Property="Background" Value="{StaticResource Transparent}"/>
             </Trigger>
             
             <Trigger Property="IsEnabled" Value="False">

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics.Contracts;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
@@ -51,11 +52,23 @@ namespace Elysium.Theme.Controls
 
         public static ApplicationBarDock GetDock(DependencyObject obj)
         {
-            return (ApplicationBarDock)obj.GetValue(DockProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(DockProperty);
+            Contract.Assume(value != null);
+            return (ApplicationBarDock)value;
         }
 
         public static void SetDock(DependencyObject obj, ApplicationBarDock value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(DockProperty, value);
         }
 
@@ -67,7 +80,12 @@ namespace Elysium.Theme.Controls
 
         public bool IsOpen
         {
-            get { return (bool)GetValue(IsOpenProperty); }
+            get
+            {
+                var value = GetValue(IsOpenProperty);
+                Contract.Assume(value != null);
+                return (bool)value;
+            }
             set { SetValue(IsOpenProperty, value); }
         }
 
@@ -75,7 +93,14 @@ namespace Elysium.Theme.Controls
 
         private static void OnIsOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (d == null)
+            {
+                throw new ArgumentNullException("d");
+            }
+            Contract.EndContractBlock();
             var instance = (ApplicationBar)d;
+            Contract.Assume(e.OldValue != null);
+            Contract.Assume(e.NewValue != null);
             instance.OnIsOpenChanged((bool)e.OldValue, (bool)e.NewValue);
         }
 
@@ -105,6 +130,7 @@ namespace Elysium.Theme.Controls
                             Storyboard.SetTargetProperty(animation, new PropertyPath("Height"));
                             break;
                     }
+                    Contract.Assume(storyboard.Children != null);
                     storyboard.Children.Add(animation);
                     storyboard.Completed += (sender, e) =>
                                                 {
@@ -143,6 +169,7 @@ namespace Elysium.Theme.Controls
                             Storyboard.SetTargetProperty(animation, new PropertyPath("Height"));
                             break;
                     }
+                    Contract.Assume(storyboard.Children != null);
                     storyboard.Children.Add(animation);
                     storyboard.Completed += (sender, e) =>
                                                 {
@@ -203,7 +230,12 @@ namespace Elysium.Theme.Controls
 
         public bool StaysOpen
         {
-            get { return (bool)GetValue(StaysOpenProperty); }
+            get
+            {
+                var value = GetValue(StaysOpenProperty);
+                Contract.Assume(value != null);
+                return (bool)value;
+            }
             set { SetValue(StaysOpenProperty, value); }
         }
 
@@ -213,7 +245,12 @@ namespace Elysium.Theme.Controls
 
         public ApplicationBarTransitionMode TransitionMode
         {
-            get { return (ApplicationBarTransitionMode)GetValue(TransitionModeProperty); }
+            get
+            {
+                var value = GetValue(TransitionModeProperty);
+                Contract.Assume(value != null);
+                return (ApplicationBarTransitionMode)value;
+            }
             set { SetValue(TransitionModeProperty, value); }
         }
 

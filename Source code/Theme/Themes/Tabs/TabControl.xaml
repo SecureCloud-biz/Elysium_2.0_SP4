@@ -72,9 +72,9 @@
                             <Border x:Name="ContentPanel"
                                     Grid.Column="0"
                                     Grid.Row="1"
-                                    Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.Background}"
-                                    BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.BorderBrush}"
-                                    BorderThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.BorderThickness}"
+                                    Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(TabItem.Background)}"
+                                    BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(TabItem.BorderBrush)}"
+                                    BorderThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(TabItem.BorderThickness)}"
                                     KeyboardNavigation.DirectionalNavigation="Contained"
                                     KeyboardNavigation.TabIndex="2"
                                     KeyboardNavigation.TabNavigation="Local">

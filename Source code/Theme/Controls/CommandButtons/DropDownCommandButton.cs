@@ -1,11 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics.Contracts;
 using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Input;
 
 using Elysium.Theme.Controls.Automation;
 using Elysium.Theme.Controls.Primitives;
@@ -27,7 +27,7 @@ namespace Elysium.Theme.Controls
 
         public static readonly DependencyProperty SubmenuProperty =
             DependencyProperty.Register("Submenu", typeof(Submenu), typeof(DropDownCommandButton),
-                                        new FrameworkPropertyMetadata((Submenu)null, OnSubmenuChanged));
+                                        new FrameworkPropertyMetadata(null, OnSubmenuChanged));
 
         [Bindable(true)]
         [Category("Content")]
@@ -40,6 +40,11 @@ namespace Elysium.Theme.Controls
 
         private static void OnSubmenuChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (d == null)
+            {
+                throw new ArgumentNullException("d");
+            }
+            Contract.EndContractBlock();
             var instance = (DropDownCommandButton)d;
             instance.OnSubmenuChanged((Submenu)e.OldValue, (Submenu)e.NewValue);
         }
@@ -63,13 +68,25 @@ namespace Elysium.Theme.Controls
         [Browsable(false)]
         public bool HasSubmenu
         {
-            get { return (bool)GetValue(HasSubmenuProperty); }
+            get
+            {
+                var value = GetValue(HasSubmenuProperty);
+                Contract.Assume(value != null);
+                return (bool)value;
+            }
             private set { SetValue(HasSubmenuPropertyKey, value); }
         }
 
         private static void OnHasSubmenuChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (d == null)
+            {
+                throw new ArgumentNullException("d");
+            }
+            Contract.EndContractBlock();
             var instance = (DropDownCommandButton)d;
+            Contract.Assume(e.OldValue != null);
+            Contract.Assume(e.NewValue != null);
             instance.OnHasSubmenuChanged((bool)e.OldValue, (bool)e.NewValue);
         }
 
@@ -93,13 +110,25 @@ namespace Elysium.Theme.Controls
         [Category("Appearance")]
         public bool IsDropDownOpen
         {
-            get { return (bool)GetValue(IsDropDownOpenProperty); }
+            get
+            {
+                var value = GetValue(IsDropDownOpenProperty);
+                Contract.Assume(value != null);
+                return (bool)value;
+            }
             set { SetValue(IsDropDownOpenProperty, value); }
         }
 
         private static void OnIsDropDownOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (d == null)
+            {
+                throw new ArgumentNullException("d");
+            }
+            Contract.EndContractBlock();
             var instance = (DropDownCommandButton)d;
+            Contract.Assume(e.OldValue != null);
+            Contract.Assume(e.NewValue != null);
             instance.OnIsDropDownOpenChanged((bool)e.OldValue, (bool)e.NewValue);
         }
 
@@ -128,7 +157,13 @@ namespace Elysium.Theme.Controls
 
         private static object CoerceIsDropDownOpen(DependencyObject d, object baseValue)
         {
+            if (d == null)
+            {
+                throw new ArgumentNullException("d");
+            }
+            Contract.EndContractBlock();
             var instance = (DropDownCommandButton)d;
+            Contract.Assume(baseValue != null);
             return instance.CoerceIsDropDownOpen((bool)baseValue);
         }
 
@@ -176,7 +211,12 @@ namespace Elysium.Theme.Controls
         [TypeConverter(typeof(LengthConverter))]
         public double MaxDropDownHeight
         {
-            get { return (double)GetValue(MaxDropDownHeightProperty); }
+            get
+            {
+                var value = GetValue(MaxDropDownHeightProperty);
+                Contract.Assume(value != null);
+                return (double)value;
+            }
             set { SetValue(MaxDropDownHeightProperty, value); }
         }
 
@@ -189,19 +229,28 @@ namespace Elysium.Theme.Controls
         {
             base.OnApplyTemplate();
 
-            if (_popup != null)
+            if (Template != null)
             {
-                _popup.CustomPopupPlacementCallback = null;
-                _popup.Opened -= OnDropDownOpened;
-                _popup.Closed -= OnDropDownClosed;
-            }
-            _popup = (Popup)Template.FindName(PopupName, this);
-            _popup.CustomPopupPlacementCallback = PlacePopup;
-            _popup.Opened += OnDropDownOpened;
-            _popup.Closed += OnDropDownClosed;
-            if (Submenu != null)
-            {
-                _popup.Child = Submenu;
+                if (_popup != null)
+                {
+                    _popup.CustomPopupPlacementCallback = null;
+                    _popup.Opened -= OnDropDownOpened;
+                    _popup.Closed -= OnDropDownClosed;
+                }
+                // NOTE: WPF doesn't declare contracts
+                Contract.Assume(Template != null);
+                _popup = (Popup)Template.FindName(PopupName, this);
+                if (_popup == null)
+                {
+                    throw new NullReferenceException("Invalid template. " + PopupName + " must be declared.");
+                }
+                _popup.CustomPopupPlacementCallback = PlacePopup;
+                _popup.Opened += OnDropDownOpened;
+                _popup.Closed += OnDropDownClosed;
+                if (Submenu != null)
+                {
+                    _popup.Child = Submenu;
+                }
             }
         }
 
@@ -226,6 +275,8 @@ namespace Elysium.Theme.Controls
             if (window != null)
             {
                 var transformToAncestor = TransformToAncestor(window);
+                // Because WPF doesn't include contracts
+                Contract.Assume(transformToAncestor != null);
                 var position = new Point(targetsize.Width / 2 - popupsize.Width / 2 + offset.X,
                                          -popupsize.Height + offset.Y - (Margin.Left + Margin.Top + Margin.Right + Margin.Bottom) / 2);
                 var relativePosition = transformToAncestor.Transform(position);
@@ -238,6 +289,8 @@ namespace Elysium.Theme.Controls
                     relativePosition.X = window.Width - popupsize.Width;
                 }
                 var transformToDescendant = window.TransformToDescendant(this);
+                // Because WPF doesn't include contracts
+                Contract.Assume(transformToDescendant != null);
                 position = transformToDescendant.Transform(relativePosition);
                 return new[]
                            {

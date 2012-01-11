@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
@@ -17,22 +18,25 @@ namespace Elysium.Theme.Converters
             }
 
             var fallbackValue = values[0];
-            var angle = values[1] as double?;
-            var areaWidth = values[2] as double?;
-            var areaHeight = values[3] as double?;
-
-            if (angle == null || angle < 0.0 || areaWidth == null || areaHeight == null)
+            if (!(values[1] is double) || !(values[2] is double) || !(values[3] is double))
             {
                 return fallbackValue;
             }
+            var angle = (double)values[1];
+            if (angle < 0.0)
+            {
+                return fallbackValue;
+            }
+            var areaWidth = (double)values[2];
+            var areaHeight = (double)values[3];
 
-            var width = values.Length > 3 ? values[4] as double? : null;
-            var height = values.Length > 3 ? values[5] as double? : null;
-            var radiusXCoordinate = values.Length > 6 ? values[5] as double? : areaWidth / 2;
-            var radiusYCoordinate = values.Length > 7 ? values[6] as double? : areaHeight / 2;
+            var width = values.Length > 4 ? (values[4] is double ? (double)values[4] : 0.0) : 0.0;
+            var height = values.Length > 5 ? (values[5] is double ? (double)values[5] : 0.0) : 0.0;
+            var radiusXCoordinate = values.Length > 6 ? (values[5] is double ? (double)values[5] : 0.0) : areaWidth / 2;
+            var radiusYCoordinate = values.Length > 7 ? (values[6] is double ? (double)values[6] : 0.0) : areaHeight / 2;
 
-            var length = Math.Max(width ?? 0.0, height ?? 0.0);
-            var radius = Math.Min(areaWidth.Value / 2, areaHeight.Value / 2) - length;
+            var length = Math.Max(width, height);
+            var radius = Math.Min(areaWidth / 2, areaHeight / 2) - length;
 
             try
             {
@@ -40,11 +44,11 @@ namespace Elysium.Theme.Converters
                 {
                     case "X":
                     case "x":
-                        var x = (radiusXCoordinate ?? 0.0) + radius * Math.Cos(angle.Value * Math.PI / 180);
+                        var x = radiusXCoordinate + radius * Math.Cos(angle * Math.PI / 180);
                         return x;
                     case "Y":
                     case "y":
-                        var y = (radiusYCoordinate ?? 0.0) + radius * Math.Sin(angle.Value * Math.PI / 180);
+                        var y = radiusYCoordinate + radius * Math.Sin(angle * Math.PI / 180);
                         return y;
                     default:
                         return fallbackValue;

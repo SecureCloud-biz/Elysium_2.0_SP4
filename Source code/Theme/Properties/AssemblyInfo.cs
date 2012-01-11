@@ -8,7 +8,7 @@ using System.Windows.Markup;
 [assembly: AssemblyTitle("Elysium: Theme assembly")]
 [assembly: AssemblyDescription("WPF Metro-style theme")]
 [assembly: AssemblyProduct("Elysium theme")]
-[assembly: AssemblyCopyright("Copyright © Alex F. Sherman & Codeplex Community 2011")]
+[assembly: AssemblyCopyright("Copyright © Alex F. Sherman & Codeplex Community 2011-2012")]
 
 [assembly: SecurityRules(SecurityRuleSet.Level2)]
 [assembly: AllowPartiallyTrustedCallers]
@@ -21,10 +21,14 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("http://schemas.codeplex.com/elysium/theme", "Elysium.Theme.Converters")]
 [assembly: XmlnsPrefix("http://schemas.codeplex.com/elysium/theme", "metro")]
 
+[assembly: XmlnsDefinition("http://schemas.codeplex.com/elysium/mvvm", "Elysium.Theme.Commands")]
+[assembly: XmlnsDefinition("http://schemas.codeplex.com/elysium/mvvm", "Elysium.Theme.ViewModels")]
+[assembly: XmlnsPrefix("http://schemas.codeplex.com/elysium/mvvm", "mvvm")]
+
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None,
     ResourceDictionaryLocation.SourceAssembly
 )]
 
-[assembly: AssemblyVersion("1.1.34.0")]
-[assembly: AssemblyFileVersion("1.1.34.0")]
+[assembly: AssemblyVersion("1.2.176.0")]
+[assembly: AssemblyFileVersion("1.2.176.0")]

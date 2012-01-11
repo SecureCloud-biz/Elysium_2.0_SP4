@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Diagnostics.Contracts;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -37,12 +38,17 @@ namespace Elysium.Theme.Controls.Primitives
         [Localizability(LocalizationCategory.Label)]
         public object Header
         {
-            get { return (object)GetValue(HeaderProperty); }
+            get { return GetValue(HeaderProperty); }
             set { SetValue(HeaderProperty, value); }
         }
 
         private static void OnHeaderChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (d == null)
+            {
+                throw new ArgumentNullException("d");
+            }
+            Contract.EndContractBlock();
             var control = (CommandButtonBase)d;
             control.HasHeader = e.NewValue != null;
         }
@@ -62,13 +68,18 @@ namespace Elysium.Theme.Controls.Primitives
         [Browsable(false)]
         public bool HasHeader
         {
-            get { return (bool)GetValue(HasHeaderProperty); }
+            get
+            {
+                var value = GetValue(HasHeaderProperty);
+                Contract.Assume(value != null);
+                return (bool)value;
+            }
             private set { SetValue(HasHeaderPropertyKey, value); }
         }
 
         public static readonly DependencyProperty HeaderStringFormatProperty =
             HeaderedContentControl.HeaderStringFormatProperty.AddOwner(typeof(CommandButtonBase),
-                                                                       new FrameworkPropertyMetadata((string)null, OnHeaderStringFormatChanged));
+                                                                       new FrameworkPropertyMetadata(null, OnHeaderStringFormatChanged));
 
         [Bindable(true)]
         [Category("Content")]
@@ -80,6 +91,11 @@ namespace Elysium.Theme.Controls.Primitives
 
         private static void OnHeaderStringFormatChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (d == null)
+            {
+                throw new ArgumentNullException("d");
+            }
+            Contract.EndContractBlock();
             var instance = (CommandButtonBase)d;
             instance.OnHeaderStringFormatChanged((string)e.OldValue, (string)e.NewValue);
         }
@@ -90,7 +106,7 @@ namespace Elysium.Theme.Controls.Primitives
 
         public static readonly DependencyProperty HeaderTemplateProperty =
             HeaderedContentControl.HeaderTemplateProperty.AddOwner(typeof(CommandButtonBase),
-                                                                   new FrameworkPropertyMetadata((DataTemplate)null, OnHeaderTemplateChanged));
+                                                                   new FrameworkPropertyMetadata(null, OnHeaderTemplateChanged));
 
         [Bindable(true)]
         [Category("Content")]
@@ -102,6 +118,11 @@ namespace Elysium.Theme.Controls.Primitives
 
         private static void OnHeaderTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (d == null)
+            {
+                throw new ArgumentNullException("d");
+            }
+            Contract.EndContractBlock();
             var instance = (CommandButtonBase)d;
             instance.OnHeaderTemplateChanged((DataTemplate)e.OldValue, (DataTemplate)e.NewValue);
         }
@@ -114,8 +135,7 @@ namespace Elysium.Theme.Controls.Primitives
 
         public static readonly DependencyProperty HeaderTemplateSelectorProperty =
             HeaderedContentControl.HeaderTemplateSelectorProperty.AddOwner(typeof(CommandButtonBase),
-                                                                           new FrameworkPropertyMetadata((DataTemplateSelector)null,
-                                                                                                         OnHeaderTemplateSelectorChanged));
+                                                                           new FrameworkPropertyMetadata(null, OnHeaderTemplateSelectorChanged));
 
         [Bindable(true)]
         [Category("Content")]
@@ -127,6 +147,11 @@ namespace Elysium.Theme.Controls.Primitives
 
         private static void OnHeaderTemplateSelectorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (d == null)
+            {
+                throw new ArgumentNullException("d");
+            }
+            Contract.EndContractBlock();
             var instance = (CommandButtonBase)d;
             instance.OnHeaderTemplateSelectorChanged((DataTemplateSelector)e.OldValue, (DataTemplateSelector)e.NewValue);
         }
@@ -144,8 +169,14 @@ namespace Elysium.Theme.Controls.Primitives
             if (Template != null)
             {
                 _decor = Template.FindName(DecorName, this) as Ellipse;
+                // Because WPF doesn't include contracts
+                Contract.Assume(Template != null);
                 _mask = Template.FindName(MaskName, this) as Ellipse;
+                // Because WPF doesn't include contracts
+                Contract.Assume(Template != null);
                 _headerHost = Template.FindName(HeaderHostName, this) as ContentPresenter;
+                // Because WPF doesn't include contracts
+                Contract.Assume(Template != null);
                 _contentHost = Template.FindName(ContentHostName, this) as ContentPresenter;
             }
         }
@@ -165,6 +196,9 @@ namespace Elysium.Theme.Controls.Primitives
 
                 var width = Math.Min(Math.Max(contentSize, _headerHost.DesiredSize.Width), constraintWidth);
                 var height = Math.Max(contentSize + _headerHost.DesiredSize.Height, constraintHeight);
+
+                Contract.Assume(width >= 0.0);
+                Contract.Assume(height >= 0.0);
 
                 var boxSize = Math.Min(width, height - _headerHost.DesiredSize.Height);
                 _decor.Width = boxSize;

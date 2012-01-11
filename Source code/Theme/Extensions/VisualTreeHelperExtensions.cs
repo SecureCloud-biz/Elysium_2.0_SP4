@@ -3,7 +3,7 @@ using System.Windows.Media;
 
 namespace Elysium.Theme.Extensions
 {
-    public class VisualTreeHelperExtensions
+    public static class VisualTreeHelperExtensions
     {
         public static T FindParent<T>(DependencyObject reference)
             where T : DependencyObject

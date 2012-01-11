@@ -543,45 +543,45 @@
 										 Grid.Row="0"
 										 IsEnabled="False"
 										 Orientation="Horizontal"
-										 IsIndeterminate="True"
+										 State="Indeterminate"
 										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
 				<metro:LinearProgressBar Grid.Column="4"
 										 Grid.Row="1"
 										 Orientation="Horizontal"
-										 IsIndeterminate="True"
+										 State="Indeterminate"
 										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
 				<metro:LinearProgressBar Grid.Column="4"
 										 Grid.Row="2"
 										 IsEnabled="False"
 										 Orientation="Vertical"
-										 IsIndeterminate="True"
+										 State="Indeterminate"
 										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
 				<metro:LinearProgressBar Grid.Column="4"
 										 Grid.Row="3"
 										 Orientation="Vertical"
-										 IsIndeterminate="True"
+										 State="Indeterminate"
 										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
 				<metro:LinearProgressBar Grid.Column="5"
 										 Grid.Row="0"
 										 IsEnabled="False"
 										 Orientation="Horizontal"
-										 IsIndeterminate="{x:Null}"
+										 State="Loading"
 										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
 				<metro:LinearProgressBar Grid.Column="5"
 										 Grid.Row="1"
 										 Orientation="Horizontal"
-										 IsIndeterminate="{x:Null}"
+										 State="Loading"
 										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
 				<metro:LinearProgressBar Grid.Column="5"
 										 Grid.Row="2"
 										 IsEnabled="False"
 										 Orientation="Vertical"
-										 IsIndeterminate="{x:Null}"
+										 State="Loading"
 										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
 				<metro:LinearProgressBar Grid.Column="5"
 										 Grid.Row="3"
 										 Orientation="Vertical"
-										 IsIndeterminate="{x:Null}"
+										 State="Loading"
 										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
 				<metro:CircularProgressBar Grid.Column="6"
 										   Grid.Row="0"
@@ -595,20 +595,20 @@
 				<metro:CircularProgressBar Grid.Column="7"
 										   Grid.Row="0"
 										   IsEnabled="False"
-										   IsIndeterminate="True"
+										   State="Indeterminate"
 										   Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
 				<metro:CircularProgressBar Grid.Column="7"
 										   Grid.Row="1"
-										   IsIndeterminate="True"
+										   State="Indeterminate"
 										   Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
 				<metro:CircularProgressBar Grid.Column="8"
 										   Grid.Row="0"
 										   IsEnabled="False"
-										   IsIndeterminate="{x:Null}"
+										   State="Loading"
 										   Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
 				<metro:CircularProgressBar Grid.Column="8"
 										   Grid.Row="1"
-										   IsIndeterminate="{x:Null}"
+										   State="Loading"
 										   Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
 			</Grid>
 		</TabItem>

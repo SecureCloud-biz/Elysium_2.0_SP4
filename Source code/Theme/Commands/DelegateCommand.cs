@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Windows.Input;
 
@@ -22,6 +23,7 @@ namespace Elysium.Theme.Commands
             {
                 throw new ArgumentNullException("executeMethod");
             }
+            Contract.EndContractBlock();
 
             _executeMethod = executeMethod;
             _canExecuteMethod = canExecuteMethod;
@@ -161,6 +163,7 @@ namespace Elysium.Theme.Commands
             {
                 throw new ArgumentNullException("executeMethod");
             }
+            Contract.EndContractBlock();
 
             _executeMethod = executeMethod;
             _canExecuteMethod = canExecuteMethod;
@@ -249,6 +252,11 @@ namespace Elysium.Theme.Commands
         {
             add
             {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("value");
+                }
+                Contract.EndContractBlock();
                 if (!_isAutomaticRequeryDisabled)
                 {
                     CommandManager.RequerySuggested += value;
@@ -257,6 +265,11 @@ namespace Elysium.Theme.Commands
             }
             remove
             {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("value");
+                }
+                Contract.EndContractBlock();
                 if (!_isAutomaticRequeryDisabled)
                 {
                     CommandManager.RequerySuggested -= value;
@@ -267,20 +280,17 @@ namespace Elysium.Theme.Commands
 
         bool ICommand.CanExecute(object parameter)
         {
-            // if T is of value type and the parameter is not
-            // set yet, then return false if CanExecute delegate
-            // exists, else return true
-            if (parameter == null &&
-                typeof(T).IsValueType)
+            if (parameter == null && typeof(T).IsValueType)
             {
                 return (_canExecuteMethod == null);
             }
+            Contract.Assume(parameter != null);
             return CanExecute((T)parameter);
         }
 
         void ICommand.Execute(object parameter)
         {
-            Execute((T)parameter);
+            Execute(parameter == null ? default(T) : (T)parameter);
         }
 
         #endregion
@@ -305,6 +315,7 @@ namespace Elysium.Theme.Commands
                 for (var i = handlers.Count - 1; i >= 0; i--)
                 {
                     var reference = handlers[i];
+                    Contract.Assume(reference != null);
                     var handler = reference.Target as EventHandler;
                     if (handler == null)
                     {
@@ -371,6 +382,7 @@ namespace Elysium.Theme.Commands
                 for (var i = handlers.Count - 1; i >= 0; i--)
                 {
                     var reference = handlers[i];
+                    Contract.Assume(reference != null);
                     var existingHandler = reference.Target as EventHandler;
                     if ((existingHandler == null) || (existingHandler == handler))
                     {

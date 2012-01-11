@@ -12,6 +12,11 @@ namespace Elysium.Theme.Converters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (!(value is double))
+            {
+                return DependencyProperty.UnsetValue;
+            }
+
             var parameters = parameter as string;
             if (parameters != null)
             {
@@ -28,19 +33,19 @@ namespace Elysium.Theme.Converters
                         {
                             case "Left":
                                 thickness.Left = (double)value;
-                                changed |= true;
+                                changed = true;
                                 break;
                             case "Top":
                                 thickness.Top = (double)value;
-                                changed |= true;
+                                changed = true;
                                 break;
                             case "Right":
                                 thickness.Right = (double)value;
-                                changed |= true;
+                                changed = true;
                                 break;
                             case "Bottom":
                                 thickness.Bottom = (double)value;
-                                changed |= true;
+                                changed = true;
                                 break;
                         }
                     }
@@ -57,6 +62,11 @@ namespace Elysium.Theme.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (!(value is Thickness))
+            {
+                return DependencyProperty.UnsetValue;
+            }
+
             var thickness = (Thickness)value;
 
             var propertyName = parameter as string;

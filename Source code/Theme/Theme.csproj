@@ -43,17 +43,16 @@
     <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
     <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
     <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
-    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsEmitXMLDocs>True</CodeContractsEmitXMLDocs>
     <CodeContractsCustomRewriterAssembly />
     <CodeContractsCustomRewriterClass />
     <CodeContractsLibPaths />
     <CodeContractsExtraRewriteOptions />
-    <CodeContractsExtraAnalysisOptions>
-    </CodeContractsExtraAnalysisOptions>
+    <CodeContractsExtraAnalysisOptions>-maxWarnings 2147483647</CodeContractsExtraAnalysisOptions>
     <CodeContractsBaseLineFile />
     <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
     <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
-    <CodeContractsReferenceAssembly>DoNotBuild</CodeContractsReferenceAssembly>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
     <CodeContractsAnalysisWarningLevel>2</CodeContractsAnalysisWarningLevel>
     <NoWarn>1591</NoWarn>
     <RunCodeAnalysis>false</RunCodeAnalysis>
@@ -78,7 +77,7 @@
     <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
     <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
     <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
-    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsEmitXMLDocs>True</CodeContractsEmitXMLDocs>
     <CodeContractsCustomRewriterAssembly />
     <CodeContractsCustomRewriterClass />
     <CodeContractsLibPaths />
@@ -88,7 +87,7 @@
     <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
     <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
     <CodeContractsAnalysisWarningLevel>2</CodeContractsAnalysisWarningLevel>
-    <CodeContractsReferenceAssembly>DoNotBuild</CodeContractsReferenceAssembly>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
     <DefineConstants>
     </DefineConstants>
     <RunCodeAnalysis>false</RunCodeAnalysis>
@@ -281,13 +280,13 @@
     <Compile Include="Controls\ProgressBars\CircularProgressBar.cs" />
     <Compile Include="Controls\ProgressBars\LinearProgressBar.cs" />
     <Compile Include="Controls\ProgressBars\Primitives\ProgressBarBase.cs" />
+    <Compile Include="Controls\ProgressBars\ProgressBarState.cs" />
     <Compile Include="Controls\ToastNotification\HorizontalPlacement.cs" />
     <Compile Include="Controls\ToastNotification\ToastNotification.cs" />
     <Compile Include="Controls\ToastNotification\ToastNotificationAnimation.cs" />
     <Compile Include="Controls\ToastNotification\VerticalPlacement.cs" />
     <Compile Include="Controls\Window.cs" />
     <Compile Include="Converters\AngleToCoordinateConverter.cs" />
-    <Compile Include="Converters\CenteringCoordinateConverter.cs" />
     <Compile Include="Converters\DoubleToGridLengthConverter.cs" />
     <Compile Include="Converters\DoubleToThicknessConverter.cs" />
     <Compile Include="Converters\GridLengthToDoubleConverter.cs" />
@@ -296,7 +295,6 @@
     <Compile Include="Converters\ThicknessToDoubleConverter.cs" />
     <Compile Include="Extensions\VisualTreeHelperExtensions.cs" />
     <Compile Include="Extensions\LogicalTreeHelperExtensions.cs" />
-    <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Parameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

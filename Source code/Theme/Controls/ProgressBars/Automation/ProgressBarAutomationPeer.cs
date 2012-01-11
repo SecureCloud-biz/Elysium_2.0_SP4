@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 
@@ -11,6 +12,7 @@ namespace Elysium.Theme.Controls.Automation
         public ProgressBarAutomationPeer(ProgressBarBase owner)
             : base(owner)
         {
+            Contract.Assume(Owner != null);
         }
 
         protected override string GetClassNameCore()
@@ -25,8 +27,11 @@ namespace Elysium.Theme.Controls.Automation
 
         public override object GetPattern(PatternInterface patternInterface)
         {
-            var isIndeterminate = ((ProgressBarBase)Owner).IsIndeterminate;
-            if (isIndeterminate != null && (patternInterface == PatternInterface.RangeValue && isIndeterminate.Value)) return null;
+            var state = ((ProgressBarBase)Owner).State;
+            if (patternInterface == PatternInterface.RangeValue && state == ProgressBarState.Indeterminate)
+            {
+                return null;
+            }
 
             return base.GetPattern(patternInterface);
         }
@@ -49,6 +54,13 @@ namespace Elysium.Theme.Controls.Automation
         double IRangeValueProvider.SmallChange
         {
             get { return double.NaN; }
+        }
+
+        [ContractInvariantMethod]
+        private void Invariants()
+        {
+            // NOTE: WPF doesn't declare contracts
+            Contract.Invariant(Owner != null);
         }
     }
 } ;

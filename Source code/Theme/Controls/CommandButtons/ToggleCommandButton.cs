@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
+using System.Diagnostics.Contracts;
 using System.Windows;
 using System.Windows.Automation.Peers;
 
@@ -26,14 +28,45 @@ namespace Elysium.Theme.Controls
         [Localizability(LocalizationCategory.None, Readability = Readability.Unreadable)]
         public bool? IsChecked
         {
-            get { return (bool?)GetValue(IsCheckedProperty); }
+            get
+            {
+                var value = GetValue(IsCheckedProperty);
+                if (value == null)
+                {
+                    return null;
+                }
+                return (bool)value;
+            }
             set { SetValue(IsCheckedProperty, value); }
         }
 
         private static void OnIsCheckedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (d == null)
+            {
+                throw new ArgumentNullException("d");
+            }
+            Contract.EndContractBlock();
             var instance = (ToggleCommandButton)d;
-            instance.OnIsCheckedChanged((bool?)e.OldValue, (bool?)e.NewValue);
+            bool? oldValue;
+            if (e.OldValue == null)
+            {
+                oldValue = null;
+            }
+            else
+            {
+                oldValue = (bool)e.OldValue;
+            }
+            bool? newValue;
+            if (e.NewValue == null)
+            {
+                newValue = null;
+            }
+            else
+            {
+                newValue = (bool)e.NewValue;
+            }
+            instance.OnIsCheckedChanged(oldValue, newValue);
         }
 
         protected virtual void OnIsCheckedChanged(bool? oldIsChecked, bool? newIsChecked)
@@ -116,7 +149,12 @@ namespace Elysium.Theme.Controls
         [Category("Behavior")]
         public bool IsThreeState
         {
-            get { return (bool)GetValue(IsThreeStateProperty); }
+            get
+            {
+                var value = GetValue(IsThreeStateProperty);
+                Contract.Assume(value != null);
+                return (bool)value;
+            }
             set { SetValue(IsThreeStateProperty, value); }
         }
 

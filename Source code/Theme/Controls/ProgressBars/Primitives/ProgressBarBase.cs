@@ -1,4 +1,6 @@
-﻿using System.Security;
+﻿using System;
+using System.Diagnostics.Contracts;
+using System.Security;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls.Primitives;
@@ -9,8 +11,8 @@ using ProgressBarAutomationPeer = Elysium.Theme.Controls.Automation.ProgressBarA
 namespace Elysium.Theme.Controls.Primitives
 {
     [TemplatePart(Name = TrackName, Type = typeof(FrameworkElement))]
+    [TemplateVisualState(Name = "Normal", GroupName = "CommonStates")]
     [TemplateVisualState(Name = "Indeterminate", GroupName = "CommonStates")]
-    [TemplateVisualState(Name = "Determinate", GroupName = "CommonStates")]
     [TemplateVisualState(Name = "Loading", GroupName = "CommonStates")]
     public abstract class ProgressBarBase : RangeBase
     {
@@ -31,31 +33,51 @@ namespace Elysium.Theme.Controls.Primitives
 
         public double Percent
         {
-            get { return (double)GetValue(PercentProperty); }
+            get
+            {
+                var value = GetValue(PercentProperty);
+                Contract.Assume(value != null);
+                return (double)value;
+            }
             private set { SetValue(PercentKey, value); }
         }
 
         private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (d == null)
+            {
+                throw new ArgumentNullException("d");
+            }
+            Contract.EndContractBlock();
             var progressBar = (ProgressBarBase)d;
-
-            progressBar.Percent = progressBar.IsIndeterminate != false || progressBar.Maximum <= progressBar.Minimum
+            progressBar.Percent = progressBar.State != ProgressBarState.Normal || progressBar.Maximum <= progressBar.Minimum
                                       ? double.NaN
                                       : (progressBar.Value - progressBar.Minimum) / (progressBar.Maximum - progressBar.Minimum);
         }
 
-        public static readonly DependencyProperty IsIndeterminateProperty =
-            DependencyProperty.Register("IsIndeterminate", typeof(bool?), typeof(ProgressBarBase),
-                                        new FrameworkPropertyMetadata(false, OnIsIndeterminateChanged));
+        public static readonly DependencyProperty StateProperty =
+            DependencyProperty.Register("State", typeof(ProgressBarState), typeof(ProgressBarBase),
+                                        new FrameworkPropertyMetadata(ProgressBarState.Normal, OnStateChanged));
 
-        public bool? IsIndeterminate
+        public ProgressBarState State
         {
-            get { return (bool?)GetValue(IsIndeterminateProperty); }
-            set { SetValue(IsIndeterminateProperty, value); }
+            get
+            {
+                var value = GetValue(StateProperty);
+                Contract.Assume(value != null);
+                return (ProgressBarState)value;
+            }
+            set { SetValue(StateProperty, value); }
         }
 
-        private static void OnIsIndeterminateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnStateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (d == null)
+            {
+                throw new ArgumentNullException("d");
+            }
+            Contract.EndContractBlock();
+
             var progressBar = (ProgressBarBase)d;
 
             var peer = UIElementAutomationPeer.FromElement(progressBar) as ProgressBarAutomationPeer;
@@ -64,24 +86,44 @@ namespace Elysium.Theme.Controls.Primitives
                 peer.InvalidatePeer();
             }
 
+            Contract.Assume(progressBar != null);
             if (progressBar.IsEnabled)
             {
-                switch ((bool?)e.NewValue)
+                Contract.Assume(e.NewValue != null);
+                switch ((ProgressBarState)e.NewValue)
                 {
-                    case null:
+                    case ProgressBarState.Loading:
                         VisualStateManager.GoToState(progressBar, "Loading", true);
-                        progressBar.IndeterminateAnimation.Stop(progressBar);
-                        progressBar.LoadingAnimation.Begin(progressBar, progressBar.Template, true);
+                        if (progressBar.IndeterminateAnimation != null)
+                        {
+                            progressBar.IndeterminateAnimation.Stop(progressBar);
+                        }
+                        if (progressBar.LoadingAnimation != null)
+                        {
+                            progressBar.LoadingAnimation.Begin(progressBar, progressBar.Template, true);
+                        }
                         break;
-                    case true:
+                    case ProgressBarState.Indeterminate:
                         VisualStateManager.GoToState(progressBar, "Indeterminate", true);
-                        progressBar.LoadingAnimation.Stop(progressBar);
-                        progressBar.IndeterminateAnimation.Begin(progressBar, progressBar.Template, true);
+                        if (progressBar.LoadingAnimation != null)
+                        {
+                            progressBar.LoadingAnimation.Stop(progressBar);
+                        }
+                        if (progressBar.IndeterminateAnimation != null)
+                        {
+                            progressBar.IndeterminateAnimation.Begin(progressBar, progressBar.Template, true);
+                        }
                         break;
-                    case false:
-                        VisualStateManager.GoToState(progressBar, "Determinate", true);
-                        progressBar.IndeterminateAnimation.Stop(progressBar);
-                        progressBar.LoadingAnimation.Stop(progressBar);
+                    case ProgressBarState.Normal:
+                        VisualStateManager.GoToState(progressBar, "Normal", true);
+                        if (progressBar.IndeterminateAnimation != null)
+                        {
+                            progressBar.IndeterminateAnimation.Stop(progressBar);
+                        }
+                        if (progressBar.LoadingAnimation != null)
+                        {
+                            progressBar.LoadingAnimation.Stop(progressBar);
+                        }
                         break;
                 }
             }
@@ -153,15 +195,18 @@ namespace Elysium.Theme.Controls.Primitives
         [SecuritySafeCritical]
         internal virtual void OnApplyTemplateInternal()
         {
-            Track = GetTemplateChild(TrackName) as FrameworkElement;
-
-            if (Track != null)
+            if (Template != null)
             {
-                Track.SizeChanged += (sender, e) =>
-                                         {
-                                             OnAnimationsUpdating(new RoutedEventArgs(AnimationsUpdatingEvent));
-                                             OnAnimationsUpdated(new RoutedEventArgs(AnimationsUpdatedEvent));
-                                         };
+                Track = Template.FindName(TrackName, this) as FrameworkElement;
+
+                if (Track != null)
+                {
+                    Track.SizeChanged += (sender, e) =>
+                                             {
+                                                 OnAnimationsUpdating(new RoutedEventArgs(AnimationsUpdatingEvent));
+                                                 OnAnimationsUpdated(new RoutedEventArgs(AnimationsUpdatedEvent));
+                                             };
+                }
             }
         }
 

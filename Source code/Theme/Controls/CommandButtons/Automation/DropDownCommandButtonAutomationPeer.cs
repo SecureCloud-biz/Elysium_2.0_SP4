@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
 using System.Windows.Automation;
 using System.Windows.Automation.Peers;
@@ -11,6 +12,7 @@ namespace Elysium.Theme.Controls.Automation
         public DropDownCommandButtonAutomationPeer(DropDownCommandButton owner)
             : base(owner)
         {
+            Contract.Assume(Owner != null);
         }
 
         protected override string GetClassNameCore()
@@ -72,6 +74,13 @@ namespace Elysium.Theme.Controls.Automation
             {
                 RaisePropertyChangedEvent(ExpandCollapsePatternIdentifiers.ExpandCollapseStateProperty, oldValue, newValue);
             }
+        }
+
+        [ContractInvariantMethod]
+        private void Invariants()
+        {
+            // NOTE: WPF doesn't declare contracts
+            Contract.Invariant(Owner != null);
         }
     }
 } ;

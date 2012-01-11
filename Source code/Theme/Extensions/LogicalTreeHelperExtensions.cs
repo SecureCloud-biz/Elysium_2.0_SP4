@@ -2,7 +2,7 @@
 
 namespace Elysium.Theme.Extensions
 {
-    public class LogicalTreeHelperExtensions
+    public static class LogicalTreeHelperExtensions
     {
         public static T FindParent<T>(DependencyObject current)
             where T : DependencyObject

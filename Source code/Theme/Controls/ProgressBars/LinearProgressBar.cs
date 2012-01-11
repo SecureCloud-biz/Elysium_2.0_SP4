@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics.Contracts;
 using System.Security;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,12 +33,18 @@ namespace Elysium.Theme.Controls
 
         public Orientation Orientation
         {
-            get { return (Orientation)GetValue(OrientationProperty); }
+            get
+            {
+                var value = GetValue(OrientationProperty);
+                Contract.Assume(value != null);
+                return (Orientation)value;
+            }
             set { SetValue(OrientationProperty, value); }
         }
 
         private static bool IsValidOrientation(object value)
         {
+            Contract.Assume(value != null);
             var orientation = (Orientation)value;
             return orientation == Orientation.Horizontal || orientation == Orientation.Vertical;
         }
@@ -45,8 +52,12 @@ namespace Elysium.Theme.Controls
         [SecuritySafeCritical]
         internal override void OnApplyTemplateInternal()
         {
-            _indicator = GetTemplateChild(IndicatorName) as Rectangle;
-            _loadingBar = GetTemplateChild(LoadingBarName) as Canvas;
+            if (Template != null)
+            {
+                _indicator = Template.FindName(IndicatorName, this) as Rectangle;
+                Contract.Assume(Template != null);
+                _loadingBar = Template.FindName(LoadingBarName, this) as Canvas;
+            }
 
             base.OnApplyTemplateInternal();
         }
@@ -57,7 +68,7 @@ namespace Elysium.Theme.Controls
 
             if (IndeterminateAnimation != null && IndeterminateAnimation.Name == DefaultIndeterminateAnimationName && Track != null && _indicator != null)
             {
-                var isStarted = IsIndeterminate == true && IsEnabled;
+                var isStarted = State == ProgressBarState.Indeterminate && IsEnabled;
                 if (isStarted)
                 {
                     IndeterminateAnimation.Stop(this);
@@ -73,6 +84,7 @@ namespace Elysium.Theme.Controls
                 var time = trackSize / 100;
 
                 var animation = new DoubleAnimationUsingKeyFrames { Duration = new Duration(TimeSpan.FromSeconds(time + 0.5)) };
+                Contract.Assume(animation.KeyFrames != null);
                 animation.KeyFrames.Add(new DiscreteDoubleKeyFrame(-indicatorSize - 1, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0))));
                 animation.KeyFrames.Add(new LinearDoubleKeyFrame(trackSize + 1, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
 
@@ -80,20 +92,28 @@ namespace Elysium.Theme.Controls
                 Storyboard.SetTargetProperty(animation,
                                              new PropertyPath(Orientation == Orientation.Horizontal ? Canvas.LeftProperty : Canvas.TopProperty));
 
+                // Bug in Code Contracts
+                Contract.Assume(IndeterminateAnimation != null);
+                Contract.Assume(IndeterminateAnimation.Children != null);
+
                 IndeterminateAnimation.Children.Add(animation);
 
                 if (isStarted)
+                {
                     IndeterminateAnimation.Begin(this, Template, true);
+                }
             }
 
             if (LoadingAnimation != null && LoadingAnimation.Name == DefaultLoadingAnimationName && Track != null && _loadingBar != null)
             {
-                var isStarted = IsIndeterminate == null && IsEnabled;
+                var isStarted = State == ProgressBarState.Loading && IsEnabled;
                 if (isStarted)
                 {
                     LoadingAnimation.Stop(this);
                     LoadingAnimation.Remove(this);
                 }
+
+                Contract.Assume(_loadingBar.Children != null);
 
                 LoadingAnimation = new Storyboard { Name = DefaultLoadingAnimationName, RepeatBehavior = RepeatBehavior.Forever };
 
@@ -113,53 +133,65 @@ namespace Elysium.Theme.Controls
                 {
                     var element = (FrameworkElement)_loadingBar.Children[_loadingBar.Children.Count - i - 1];
 
-                    var elementWidth = element.Width;
-                    var elementHeight = element.Height;
+                    if (element != null)
+                    {
+                        var elementWidth = element.Width;
+                        var elementHeight = element.Height;
 
-                    var index = (_loadingBar.Children.Count - 1) / 2 - i;
+                        var index = (_loadingBar.Children.Count - 1) / 2 - i;
 
-                    var center = (Orientation == Orientation.Horizontal ? width : height) / 2;
-                    var margin = Orientation == Orientation.Horizontal ? elementWidth : elementHeight;
+                        var center = (Orientation == Orientation.Horizontal ? width : height) / 2;
+                        var margin = Orientation == Orientation.Horizontal ? elementWidth : elementHeight;
 
-                    var startPosition = -(Orientation == Orientation.Horizontal ? elementWidth : elementHeight) - 1;
-                    var endPosition = center + index * ((Orientation == Orientation.Horizontal ? elementWidth : elementHeight) + margin);
+                        var startPosition = -(Orientation == Orientation.Horizontal ? elementWidth : elementHeight) - 1;
+                        var endPosition = center + index * ((Orientation == Orientation.Horizontal ? elementWidth : elementHeight) + margin);
 
-                    var duration = new Duration(TimeSpan.FromSeconds(durationTime));
-                    var animation = new DoubleAnimation(startPosition, endPosition, duration) { BeginTime = TimeSpan.FromSeconds(i * beginTimeIncrement) };
-                    Storyboard.SetTarget(animation, element);
-                    Storyboard.SetTargetProperty(animation, new PropertyPath(Orientation == Orientation.Horizontal ? Canvas.LeftProperty : Canvas.TopProperty));
+                        var duration = new Duration(TimeSpan.FromSeconds(durationTime));
+                        var animation = new DoubleAnimation(startPosition, endPosition, duration) { BeginTime = TimeSpan.FromSeconds(i * beginTimeIncrement) };
+                        Storyboard.SetTarget(animation, element);
+                        Storyboard.SetTargetProperty(animation,
+                                                     new PropertyPath(Orientation == Orientation.Horizontal ? Canvas.LeftProperty : Canvas.TopProperty));
 
-                    loadingAnimations.Add(animation);
+                        loadingAnimations.Add(animation);
+                    }
                 }
 
                 for (var i = 0; i < _loadingBar.Children.Count; i++)
                 {
                     var element = (FrameworkElement)_loadingBar.Children[_loadingBar.Children.Count - i - 1];
 
-                    var elementWidth = element.Width;
-                    var elementHeight = element.Height;
 
-                    var endPosition = (Orientation == Orientation.Horizontal ? width : height) +
-                                      (Orientation == Orientation.Horizontal ? elementWidth : elementHeight) + 1;
+                    if (element != null)
+                    {
+                        var elementWidth = element.Width;
+                        var elementHeight = element.Height;
 
-                    var duration = new Duration(TimeSpan.FromSeconds(durationTime));
-                    var animation = new DoubleAnimation(endPosition, duration)
-                                        { BeginTime = TimeSpan.FromSeconds(partMotionTime + shortPauseTime + i * beginTimeIncrement) };
-                    Storyboard.SetTarget(animation, element);
-                    Storyboard.SetTargetProperty(animation, new PropertyPath(Orientation == Orientation.Horizontal ? Canvas.LeftProperty : Canvas.TopProperty));
+                        var endPosition = (Orientation == Orientation.Horizontal ? width : height) +
+                                          (Orientation == Orientation.Horizontal ? elementWidth : elementHeight) + 1;
 
-                    loadingAnimations.Add(animation);
+                        var duration = new Duration(TimeSpan.FromSeconds(durationTime));
+                        var animation = new DoubleAnimation(endPosition, duration)
+                                            { BeginTime = TimeSpan.FromSeconds(partMotionTime + shortPauseTime + i * beginTimeIncrement) };
+                        Storyboard.SetTarget(animation, element);
+                        Storyboard.SetTargetProperty(animation,
+                                                     new PropertyPath(Orientation == Orientation.Horizontal ? Canvas.LeftProperty : Canvas.TopProperty));
+
+                        loadingAnimations.Add(animation);
+                    }
                 }
 
                 LoadingAnimation.Duration = new Duration(TimeSpan.FromSeconds(partMotionTime * 2 + shortPauseTime + longPauseTime));
 
+                Contract.Assume(LoadingAnimation.Children != null);
                 foreach (var animation in loadingAnimations)
                 {
                     LoadingAnimation.Children.Add(animation);
                 }
 
                 if (isStarted)
+                {
                     LoadingAnimation.Begin(this, Template, true);
+                }
             }
         }
     }

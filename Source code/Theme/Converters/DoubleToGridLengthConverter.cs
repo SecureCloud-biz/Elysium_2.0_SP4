@@ -12,6 +12,11 @@ namespace Elysium.Theme.Converters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (!(value is double))
+            {
+                return new GridLength(0.0, GridUnitType.Auto);
+            }
+
             var unitType = parameter as string;
 
             switch (unitType)
@@ -28,6 +33,11 @@ namespace Elysium.Theme.Converters
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var unitType = parameter as string;
+
+            if (!(value is GridLength))
+            {
+                return DependencyProperty.UnsetValue;
+            }
 
             var length = (GridLength)value;
             switch (unitType)

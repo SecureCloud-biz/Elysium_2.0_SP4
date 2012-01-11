@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 using System.Windows;
 using System.Windows.Media;
 
@@ -30,7 +31,12 @@ namespace Elysium.Theme
 
         public double TitleFontSize
         {
-            get { return (double)GetValue(TitleFontSizeProperty); }
+            get
+            {
+                var value = GetValue(TitleFontSizeProperty);
+                Contract.Assume(value != null);
+                return (double)value;
+            }
             set { SetValue(TitleFontSizeProperty, value); }
         }
 
@@ -42,7 +48,12 @@ namespace Elysium.Theme
 
         public double HeaderFontSize
         {
-            get { return (double)GetValue(HeaderFontSizeProperty); }
+            get
+            {
+                var value = GetValue(HeaderFontSizeProperty);
+                Contract.Assume(value != null);
+                return (double)value;
+            }
             set { SetValue(HeaderFontSizeProperty, value); }
         }
 
@@ -54,7 +65,12 @@ namespace Elysium.Theme
 
         public double ContentFontSize
         {
-            get { return (double)GetValue(ContentFontSizeProperty); }
+            get
+            {
+                var value = GetValue(ContentFontSizeProperty);
+                Contract.Assume(value != null);
+                return (double)value;
+            }
             set { SetValue(ContentFontSizeProperty, value); }
         }
 
@@ -66,7 +82,12 @@ namespace Elysium.Theme
 
         public double TextFontSize
         {
-            get { return (double)GetValue(TextFontSizeProperty); }
+            get
+            {
+                var value = GetValue(TextFontSizeProperty);
+                Contract.Assume(value != null);
+                return (double)value;
+            }
             set { SetValue(TextFontSizeProperty, value); }
         }
 
@@ -80,7 +101,12 @@ namespace Elysium.Theme
 
         public Thickness DefaultThickness
         {
-            get { return (Thickness)GetValue(DefaultThicknessProperty); }
+            get
+            {
+                var value = GetValue(DefaultThicknessProperty);
+                Contract.Assume(value != null);
+                return (Thickness)value;
+            }
             set { SetValue(DefaultThicknessProperty, value); }
         }
 
@@ -90,7 +116,12 @@ namespace Elysium.Theme
 
         public Thickness SemiboldThickness
         {
-            get { return (Thickness)GetValue(SemiboldThicknessProperty); }
+            get
+            {
+                var value = GetValue(SemiboldThicknessProperty);
+                Contract.Assume(value != null);
+                return (Thickness)value;
+            }
             set { SetValue(SemiboldThicknessProperty, value); }
         }
 
@@ -100,7 +131,12 @@ namespace Elysium.Theme
 
         public Thickness BoldThickness
         {
-            get { return (Thickness)GetValue(BoldThicknessProperty); }
+            get
+            {
+                var value = GetValue(BoldThicknessProperty);
+                Contract.Assume(value != null);
+                return (Thickness)value;
+            }
             set { SetValue(BoldThicknessProperty, value); }
         }
 
@@ -110,7 +146,12 @@ namespace Elysium.Theme
 
         public double DefaultThicknessValue
         {
-            get { return (double)GetValue(DefaultThicknessValueProperty); }
+            get
+            {
+                var value = GetValue(DefaultThicknessValueProperty);
+                Contract.Assume(value != null);
+                return (double)value;
+            }
             set { SetValue(DefaultThicknessValueProperty, value); }
         }
 
@@ -120,7 +161,12 @@ namespace Elysium.Theme
 
         public double SemiboldThicknessValue
         {
-            get { return (double)GetValue(SemiboldThicknessValueProperty); }
+            get
+            {
+                var value = GetValue(SemiboldThicknessValueProperty);
+                Contract.Assume(value != null);
+                return (double)value;
+            }
             set { SetValue(SemiboldThicknessValueProperty, value); }
         }
 
@@ -130,7 +176,12 @@ namespace Elysium.Theme
 
         public double BoldThicknessValue
         {
-            get { return (double)GetValue(BoldThicknessValueProperty); }
+            get
+            {
+                var value = GetValue(BoldThicknessValueProperty);
+                Contract.Assume(value != null);
+                return (double)value;
+            }
             set { SetValue(BoldThicknessValueProperty, value); }
         }
 
@@ -144,7 +195,12 @@ namespace Elysium.Theme
 
         public Thickness DefaultPadding
         {
-            get { return (Thickness)GetValue(DefaultPaddingProperty); }
+            get
+            {
+                var value = GetValue(DefaultPaddingProperty);
+                Contract.Assume(value != null);
+                return (Thickness)value;
+            }
             set { SetValue(DefaultPaddingProperty, value); }
         }
 
@@ -154,7 +210,12 @@ namespace Elysium.Theme
 
         public Thickness SemiboldPadding
         {
-            get { return (Thickness)GetValue(SemiboldPaddingProperty); }
+            get
+            {
+                var value = GetValue(SemiboldPaddingProperty);
+                Contract.Assume(value != null);
+                return (Thickness)value;
+            }
             set { SetValue(SemiboldPaddingProperty, value); }
         }
 
@@ -164,7 +225,12 @@ namespace Elysium.Theme
 
         public Thickness BoldPadding
         {
-            get { return (Thickness)GetValue(BoldPaddingProperty); }
+            get
+            {
+                var value = GetValue(BoldPaddingProperty);
+                Contract.Assume(value != null);
+                return (Thickness)value;
+            }
             set { SetValue(BoldPaddingProperty, value); }
         }
 
@@ -174,7 +240,12 @@ namespace Elysium.Theme
 
         public double DefaultPaddingValue
         {
-            get { return (double)GetValue(DefaultPaddingValueProperty); }
+            get
+            {
+                var value = GetValue(DefaultPaddingValueProperty);
+                Contract.Assume(value != null);
+                return (double)value;
+            }
             set { SetValue(DefaultPaddingValueProperty, value); }
         }
 
@@ -184,7 +255,12 @@ namespace Elysium.Theme
 
         public double SemiboldPaddingValue
         {
-            get { return (double)GetValue(SemiboldPaddingValueProperty); }
+            get
+            {
+                var value = GetValue(SemiboldPaddingValueProperty);
+                Contract.Assume(value != null);
+                return (double)value;
+            }
             set { SetValue(SemiboldPaddingValueProperty, value); }
         }
 
@@ -194,7 +270,12 @@ namespace Elysium.Theme
 
         public double BoldPaddingValue
         {
-            get { return (double)GetValue(BoldPaddingValueProperty); }
+            get
+            {
+                var value = GetValue(BoldPaddingValueProperty);
+                Contract.Assume(value != null);
+                return (double)value;
+            }
             set { SetValue(BoldPaddingValueProperty, value); }
         }
 
@@ -209,11 +290,23 @@ namespace Elysium.Theme
 
         public static Duration GetDefaultDuration(DependencyObject obj)
         {
-            return (Duration)obj.GetValue(DefaultDurationProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(DefaultDurationProperty);
+            Contract.Assume(value != null);
+            return (Duration)value;
         }
 
         public static void SetDefaultDuration(DependencyObject obj, Duration value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(DefaultDurationProperty, value);
         }
 
@@ -224,11 +317,23 @@ namespace Elysium.Theme
 
         public static Duration GetMinimumDuration(DependencyObject obj)
         {
-            return (Duration)obj.GetValue(MinimumDurationProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(MinimumDurationProperty);
+            Contract.Assume(value != null);
+            return (Duration)value;
         }
 
         public static void SetMinimumDuration(DependencyObject obj, Duration value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(MinimumDurationProperty, value);
         }
 
@@ -239,11 +344,23 @@ namespace Elysium.Theme
 
         public static Duration GetOptimumDuration(DependencyObject obj)
         {
-            return (Duration)obj.GetValue(OptimumDurationProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(OptimumDurationProperty);
+            Contract.Assume(value != null);
+            return (Duration)value;
         }
 
         public static void SetOptimumDuration(DependencyObject obj, Duration value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(OptimumDurationProperty, value);
         }
 
@@ -254,11 +371,23 @@ namespace Elysium.Theme
 
         public static Duration GetMaximumDuration(DependencyObject obj)
         {
-            return (Duration)obj.GetValue(MaximumDurationProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(MaximumDurationProperty);
+            Contract.Assume(value != null);
+            return (Duration)value;
         }
 
         public static void SetMaximumDuration(DependencyObject obj, Duration value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(MaximumDurationProperty, value);
         }
 
@@ -268,16 +397,26 @@ namespace Elysium.Theme
 
         public static readonly DependencyProperty CommandButtonMaskProperty =
             DependencyProperty.RegisterAttached("CommandButtonMask", typeof(Brush), typeof(Parameters),
-                                                new FrameworkPropertyMetadata((Brush)null, FrameworkPropertyMetadataOptions.AffectsRender |
-                                                                                           FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender));
+                                                new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender |
+                                                                                    FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender));
 
         public static Brush GetCommandButtonMask(DependencyObject obj)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             return (Brush)obj.GetValue(CommandButtonMaskProperty);
         }
 
         public static void SetCommandButtonMask(DependencyObject obj, Brush value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(CommandButtonMaskProperty, value);
         }
 
@@ -291,11 +430,23 @@ namespace Elysium.Theme
 
         public static double GetBulletDecoratorSize(DependencyObject obj)
         {
-            return (double)obj.GetValue(BulletDecoratorSizeProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(BulletDecoratorSizeProperty);
+            Contract.Assume(value != null);
+            return (double)value;
         }
 
         public static void SetBulletDecoratorSize(DependencyObject obj, double value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(BulletDecoratorSizeProperty, value);
         }
 
@@ -305,11 +456,23 @@ namespace Elysium.Theme
 
         public static double GetCheckBoxBulletSize(DependencyObject obj)
         {
-            return (double)obj.GetValue(CheckBoxBulletSizeProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(CheckBoxBulletSizeProperty);
+            Contract.Assume(value != null);
+            return (double)value;
         }
 
         public static void SetCheckBoxBulletSize(DependencyObject obj, double value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(CheckBoxBulletSizeProperty, value);
         }
 
@@ -319,11 +482,23 @@ namespace Elysium.Theme
 
         public static double GetRadioButtonBulletSize(DependencyObject obj)
         {
-            return (double)obj.GetValue(RadioButtonBulletSizeProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(RadioButtonBulletSizeProperty);
+            Contract.Assume(value != null);
+            return (double)value;
         }
 
         public static void SetRadioButtonBulletSize(DependencyObject obj, double value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(RadioButtonBulletSizeProperty, value);
         }
 
@@ -337,11 +512,23 @@ namespace Elysium.Theme
 
         public static double GetComboBoxButtonSize(DependencyObject obj)
         {
-            return (double)obj.GetValue(ComboBoxButtonSizeProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(ComboBoxButtonSizeProperty);
+            Contract.Assume(value != null);
+            return (double)value;
         }
 
         public static void SetComboBoxButtonSize(DependencyObject obj, double value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(ComboBoxButtonSizeProperty, value);
         }
 
@@ -351,11 +538,23 @@ namespace Elysium.Theme
 
         public static double GetComboBoxArrowSize(DependencyObject obj)
         {
-            return (double)obj.GetValue(ComboBoxArrowSizeProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(ComboBoxArrowSizeProperty);
+            Contract.Assume(value != null);
+            return (double)value;
         }
 
         public static void SetComboBoxArrowSize(DependencyObject obj, double value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(ComboBoxArrowSizeProperty, value);
         }
 
@@ -365,11 +564,23 @@ namespace Elysium.Theme
 
         public static Thickness GetComboBoxArrowMargin(DependencyObject obj)
         {
-            return (Thickness)obj.GetValue(ComboBoxArrowMarginProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(ComboBoxArrowMarginProperty);
+            Contract.Assume(value != null);
+            return (Thickness)value;
         }
 
         public static void SetComboBoxArrowMargin(DependencyObject obj, Thickness value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(ComboBoxArrowMarginProperty, value);
         }
 
@@ -383,11 +594,23 @@ namespace Elysium.Theme
 
         public static double GetSliderTrackSize(DependencyObject obj)
         {
-            return (double)obj.GetValue(SliderTrackSizeProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(SliderTrackSizeProperty);
+            Contract.Assume(value != null);
+            return (double)value;
         }
 
         public static void SetSliderTrackSize(DependencyObject obj, double value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(SliderTrackSizeProperty, value);
         }
 
@@ -397,11 +620,23 @@ namespace Elysium.Theme
 
         public static double GetSliderThumbThickness(DependencyObject obj)
         {
-            return (double)obj.GetValue(SliderThumbThicknessProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(SliderThumbThicknessProperty);
+            Contract.Assume(value != null);
+            return (double)value;
         }
 
         public static void SetSliderThumbThickness(DependencyObject obj, double value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(SliderThumbThicknessProperty, value);
         }
 
@@ -415,11 +650,23 @@ namespace Elysium.Theme
 
         public static double GetProgressBarLoadingElementSize(DependencyObject obj)
         {
-            return (double)obj.GetValue(ProgressBarLoadingElementSizeProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(ProgressBarLoadingElementSizeProperty);
+            Contract.Assume(value != null);
+            return (double)value;
         }
 
         public static void SetProgressBarLoadingElementSize(DependencyObject obj, double value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(ProgressBarLoadingElementSizeProperty, value);
         }
 
@@ -429,11 +676,23 @@ namespace Elysium.Theme
 
         public static double GetCircularProgressBarThickness(DependencyObject obj)
         {
-            return (double)obj.GetValue(CircularProgressBarThicknessProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(CircularProgressBarThicknessProperty);
+            Contract.Assume(value != null);
+            return (double)value;
         }
 
         public static void SetCircularProgressBarThickness(DependencyObject obj, double value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(CircularProgressBarThicknessProperty, value);
         }
 
@@ -447,11 +706,23 @@ namespace Elysium.Theme
 
         public static double GetScrollBarArrowSize(DependencyObject obj)
         {
-            return (double)obj.GetValue(ScrollBarArrowSizeProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(ScrollBarArrowSizeProperty);
+            Contract.Assume(value != null);
+            return (double)value;
         }
 
         public static void SetScrollBarArrowSize(DependencyObject obj, double value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(ScrollBarArrowSizeProperty, value);
         }
 
@@ -461,47 +732,77 @@ namespace Elysium.Theme
 
         public static readonly DependencyProperty TabControlIndicatorBrushProperty =
             DependencyProperty.RegisterAttached("TabControlIndicatorBrush", typeof(Brush), typeof(Parameters),
-                                                new FrameworkPropertyMetadata((Brush)null,
-                                                                              FrameworkPropertyMetadataOptions.AffectsRender |
-                                                                              FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender));
+                                                new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender |
+                                                                                    FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender));
 
         public static Brush GetTabControlIndicatorBrush(DependencyObject obj)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             return (Brush)obj.GetValue(TabControlIndicatorBrushProperty);
         }
 
         public static void SetTabControlIndicatorBrush(DependencyObject obj, Brush value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(TabControlIndicatorBrushProperty, value);
         }
 
         public static readonly DependencyProperty TabControlIndicatorThicknessProperty =
             DependencyProperty.RegisterAttached("TabControlIndicatorThickness", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(2.0,
-                                                                              FrameworkPropertyMetadataOptions.AffectsRender |
-                                                                              FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(2.0, FrameworkPropertyMetadataOptions.AffectsRender |
+                                                                                   FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public static Thickness GetTabControlIndicatorThickness(DependencyObject obj)
         {
-            return (Thickness)obj.GetValue(TabControlIndicatorThicknessProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(TabControlIndicatorThicknessProperty);
+            Contract.Assume(value != null);
+            return (Thickness)value;
         }
 
         public static void SetTabControlIndicatorThickness(DependencyObject obj, Thickness value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(TabControlIndicatorThicknessProperty, value);
         }
 
         public static readonly DependencyProperty TabItemHeaderStyleProperty =
             DependencyProperty.RegisterAttached("TabItemHeaderStyle", typeof(Style), typeof(Parameters),
-                                                new FrameworkPropertyMetadata((Style)null, FrameworkPropertyMetadataOptions.AffectsRender));
+                                                new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender));
 
         public static Style GetTabItemHeaderStyle(DependencyObject obj)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             return (Style)obj.GetValue(TabItemHeaderStyleProperty);
         }
 
         public static void SetTabItemHeaderStyle(DependencyObject obj, Style value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(TabItemHeaderStyleProperty, value);
         }
 
@@ -515,11 +816,23 @@ namespace Elysium.Theme
 
         public static double GetSubmenuItemBulletSize(DependencyObject obj)
         {
-            return (double)obj.GetValue(SubmenuItemBulletSizeProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(SubmenuItemBulletSizeProperty);
+            Contract.Assume(value != null);
+            return (double)value;
         }
 
         public static void SetSubmenuItemBulletSize(DependencyObject obj, double value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(SubmenuItemBulletSizeProperty, value);
         }
 
@@ -529,11 +842,23 @@ namespace Elysium.Theme
 
         public static double GetSubmenuHeaderArrowSize(DependencyObject obj)
         {
-            return (double)obj.GetValue(SubmenuHeaderArrowSizeProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(SubmenuHeaderArrowSizeProperty);
+            Contract.Assume(value != null);
+            return (double)value;
         }
 
         public static void SetSubmenuHeaderArrowSize(DependencyObject obj, double value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(SubmenuHeaderArrowSizeProperty, value);
         }
 
@@ -543,11 +868,23 @@ namespace Elysium.Theme
 
         public static Thickness GetSubmenuHeaderArrowMargin(DependencyObject obj)
         {
-            return (Thickness)obj.GetValue(SubmenuHeaderArrowMarginProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(SubmenuHeaderArrowMarginProperty);
+            Contract.Assume(value != null);
+            return (Thickness)value;
         }
 
         public static void SetSubmenuHeaderArrowMargin(DependencyObject obj, Thickness value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(SubmenuHeaderArrowMarginProperty, value);
         }
 

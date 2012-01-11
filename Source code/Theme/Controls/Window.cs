@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -37,8 +38,10 @@ namespace Elysium.Theme.Controls
 
         public Window()
         {
+            Contract.Assume(CommandBindings != null);
             CommandBindings.Add(new CommandBinding(ApplicationCommands.Close, (sender, e) => Close()));
 
+            Contract.Assume(Application.Current != null);
             var isMainWindow = false;
             Application.Current.Dispatcher.Invoke(new Action(() => isMainWindow = Equals(Application.Current.MainWindow, this)));
             if (isMainWindow)
@@ -51,23 +54,31 @@ namespace Elysium.Theme.Controls
         {
             base.OnApplyTemplate();
 
-            _applicationBarHost = (Decorator)Template.FindName(ApplicationBarHost, this);
-            if (_applicationBarHost == null)
-                throw new NullReferenceException("Invalid template. " + ApplicationBarHost + " must be declared.");
-            var applicationBar = GetApplicationBar(this);
-            if (applicationBar != null)
+            if (Template != null)
             {
-                _applicationBarHost.Child = applicationBar;
-            }
+                _applicationBarHost = (Decorator)Template.FindName(ApplicationBarHost, this);
+                if (_applicationBarHost == null)
+                {
+                    throw new NullReferenceException("Invalid template. " + ApplicationBarHost + " must be declared.");
+                }
+                var applicationBar = GetApplicationBar(this);
+                if (applicationBar != null)
+                {
+                    _applicationBarHost.Child = applicationBar;
+                }
 
-            _caption = (FrameworkElement)Template.FindName(CaptionName, this);
-            if (_caption == null)
-                throw new NullReferenceException("Invalid template. " + CaptionName + " must be declared.");
-            _caption.SizeChanged += (sender, e) =>
-                                        {
-                                            NonclientWidth = e.NewSize.Width;
-                                            NonclientHeight = e.NewSize.Height;
-                                        };
+                Contract.Assume(Template != null);
+                _caption = (FrameworkElement)Template.FindName(CaptionName, this);
+                if (_caption == null)
+                {
+                    throw new NullReferenceException("Invalid template. " + CaptionName + " must be declared.");
+                }
+                _caption.SizeChanged += (sender, e) =>
+                                            {
+                                                NonclientWidth = e.NewSize.Width;
+                                                NonclientHeight = e.NewSize.Height;
+                                            };
+            }
         }
 
         public static readonly DependencyProperty ProgressPercentProperty =
@@ -76,7 +87,12 @@ namespace Elysium.Theme.Controls
 
         public double ProgressPercent
         {
-            get { return (double)GetValue(ProgressPercentProperty); }
+            get
+            {
+                var value = GetValue(ProgressPercentProperty);
+                Contract.Assume(value != null);
+                return (double)value;
+            }
             set { SetValue(ProgressPercentProperty, value); }
         }
 
@@ -86,7 +102,12 @@ namespace Elysium.Theme.Controls
 
         public double NonclientWidth
         {
-            get { return (double)GetValue(NonclientWidthProperty); }
+            get
+            {
+                var value = GetValue(NonclientWidthProperty);
+                Contract.Assume(value != null);
+                return (double)value;
+            }
             set { SetValue(NonclientWidthProperty, value); }
         }
 
@@ -96,7 +117,12 @@ namespace Elysium.Theme.Controls
 
         public double NonclientHeight
         {
-            get { return (double)GetValue(NonclientHeightProperty); }
+            get
+            {
+                var value = GetValue(NonclientHeightProperty);
+                Contract.Assume(value != null);
+                return (double)value;
+            }
             set { SetValue(NonclientHeightProperty, value); }
         }
 
@@ -107,30 +133,59 @@ namespace Elysium.Theme.Controls
 
         public static bool GetIsMainWindow(DependencyObject obj)
         {
-            return (bool)obj.GetValue(IsMainWindowProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(IsMainWindowProperty);
+            Contract.Assume(value != null);
+            return (bool)value;
         }
 
         private static void SetIsMainWindow(DependencyObject obj, bool value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(IsMainWindowPropertyKey, value);
         }
 
         public static readonly DependencyProperty ApplicationBarProperty =
             DependencyProperty.RegisterAttached("ApplicationBar", typeof(ApplicationBar), typeof(Window),
-                                                new FrameworkPropertyMetadata((ApplicationBar)null, (OnApplicationBarChanged)));
+                                                new FrameworkPropertyMetadata(null, (OnApplicationBarChanged)));
 
         public static ApplicationBar GetApplicationBar(DependencyObject obj)
         {
-            return (ApplicationBar)obj.GetValue(ApplicationBarProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(ApplicationBarProperty);
+            Contract.Assume(value != null);
+            return (ApplicationBar)value;
         }
 
         public static void SetApplicationBar(DependencyObject obj, ApplicationBar value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(ApplicationBarProperty, value);
         }
 
         private static void OnApplicationBarChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if (d == null)
+            {
+                throw new ArgumentNullException("d");
+            }
+            Contract.EndContractBlock();
             var instance = (System.Windows.Window)d;
             if (e.OldValue == null)
             {
@@ -146,6 +201,10 @@ namespace Elysium.Theme.Controls
 
         private static void OnApplicationBarOpening(object sender, MouseButtonEventArgs e)
         {
+            if (sender == null || !(sender is System.Windows.Window))
+            {
+                return;
+            }
             var applicationBar = GetApplicationBar((System.Windows.Window)sender);
             if (applicationBar != null)
             {

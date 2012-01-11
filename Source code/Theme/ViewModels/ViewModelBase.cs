@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics.Contracts;
 using System.Linq.Expressions;
 
 namespace Elysium.Theme.ViewModels
@@ -24,7 +25,10 @@ namespace Elysium.Theme.ViewModels
         protected virtual void OnPropertyChanged<T>(Expression<Func<T>> propertyExpression)
         {
             if (propertyExpression == null)
+            {
                 throw new ArgumentNullException("propertyExpression");
+            }
+            Contract.EndContractBlock();
             OnPropertyChanged(((MemberExpression)propertyExpression.Body).Member.Name);
         }
 

@@ -19,11 +19,21 @@ namespace Elysium.Theme.Controls
 
         private static IDictionary<int, bool> GetFreeIndexes(DependencyObject obj)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             return (IDictionary<int, bool>)obj.GetValue(FreeIndexesProperty);
         }
 
         private static void SetFreeIndexes(DependencyObject obj, IDictionary<int, bool> value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(FreeIndexesProperty, value);
         }
 
@@ -35,11 +45,23 @@ namespace Elysium.Theme.Controls
 
         public static ToastNotificationAnimation GetAnimation(DependencyObject obj)
         {
-            return (ToastNotificationAnimation)obj.GetValue(AnimationProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(AnimationProperty);
+            Contract.Assume(value != null);
+            return (ToastNotificationAnimation)value;
         }
 
         public static void SetAnimation(DependencyObject obj, ToastNotificationAnimation value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(AnimationProperty, value);
         }
 
@@ -49,11 +71,23 @@ namespace Elysium.Theme.Controls
 
         public static TimeSpan GetLifetime(DependencyObject obj)
         {
-            return (TimeSpan)obj.GetValue(LifetimeProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(LifetimeProperty);
+            Contract.Assume(value != null);
+            return (TimeSpan)value;
         }
 
         public static void SetLifetime(DependencyObject obj, TimeSpan value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(LifetimeProperty, value);
         }
 
@@ -63,11 +97,23 @@ namespace Elysium.Theme.Controls
 
         public static Thickness GetMargin(DependencyObject obj)
         {
-            return (Thickness)obj.GetValue(MarginProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(MarginProperty);
+            Contract.Assume(value != null);
+            return (Thickness)value;
         }
 
         public static void SetMargin(DependencyObject obj, Thickness value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(MarginProperty, value);
         }
 
@@ -77,11 +123,23 @@ namespace Elysium.Theme.Controls
 
         public static double GetWidth(DependencyObject obj)
         {
-            return (double)obj.GetValue(WidthProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(WidthProperty);
+            Contract.Assume(value != null);
+            return (double)value;
         }
 
         public static void SetWidth(DependencyObject obj, double value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(WidthProperty, value);
         }
 
@@ -91,11 +149,23 @@ namespace Elysium.Theme.Controls
 
         public static double GetHeight(DependencyObject obj)
         {
-            return (double)obj.GetValue(HeightProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(HeightProperty);
+            Contract.Assume(value != null);
+            return (double)value;
         }
 
         public static void SetHeight(DependencyObject obj, double value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(HeightProperty, value);
         }
 
@@ -105,11 +175,23 @@ namespace Elysium.Theme.Controls
 
         public static HorizontalPlacement GetHorizontalPlacement(DependencyObject obj)
         {
-            return (HorizontalPlacement)obj.GetValue(HorizontalPlacementProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(HorizontalPlacementProperty);
+            Contract.Assume(value != null);
+            return (HorizontalPlacement)value;
         }
 
         public static void SetHorizontalPlacement(DependencyObject obj, HorizontalPlacement value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(HorizontalPlacementProperty, value);
         }
 
@@ -119,18 +201,32 @@ namespace Elysium.Theme.Controls
 
         public static VerticalPlacement GetVerticalPlacement(DependencyObject obj)
         {
-            return (VerticalPlacement)obj.GetValue(VerticalPlacementProperty);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            var value = obj.GetValue(VerticalPlacementProperty);
+            Contract.Assume(value != null);
+            return (VerticalPlacement)value;
         }
 
         public static void SetVerticalPlacement(DependencyObject obj, VerticalPlacement value)
         {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
             obj.SetValue(VerticalPlacementProperty, value);
         }
 
         public static void Show(string message, string remark = null, FrameworkElement target = null)
         {
             if (string.IsNullOrWhiteSpace(message))
+            {
                 throw new ArgumentException("Message can't be null", "message");
+            }
             Contract.EndContractBlock();
 
             // Create window
@@ -145,6 +241,7 @@ namespace Elysium.Theme.Controls
 
             // Calculate index
             var freeIndexes = GetFreeIndexes(host);
+            Contract.Assume(freeIndexes != null);
             var indexes = freeIndexes.Where(x => x.Value != true).ToList();
             var index = indexes.Count > 0 ? indexes.OrderBy(x => x.Key).First().Key : freeIndexes.Count();
             if (indexes.Count > 0)

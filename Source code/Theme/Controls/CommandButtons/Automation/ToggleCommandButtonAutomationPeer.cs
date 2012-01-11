@@ -1,4 +1,6 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Diagnostics.Contracts;
+using System.Runtime.CompilerServices;
 using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
@@ -10,6 +12,7 @@ namespace Elysium.Theme.Controls.Automation
         public ToggleCommandButtonAutomationPeer(ToggleCommandButton owner)
             : base(owner)
         {
+            Contract.Assume(Owner != null);
         }
 
         protected override string GetClassNameCore()
@@ -30,7 +33,9 @@ namespace Elysium.Theme.Controls.Automation
         void IToggleProvider.Toggle()
         {
             if (!IsEnabled())
+            {
                 throw new ElementNotEnabledException();
+            }
 
             var owner = (ToggleCommandButton)Owner;
             owner.OnToggle();
@@ -65,6 +70,13 @@ namespace Elysium.Theme.Controls.Automation
                 default:
                     return ToggleState.Indeterminate;
             }
+        }
+
+        [ContractInvariantMethod]
+        private void Invariants()
+        {
+            // NOTE: WPF doesn't declare contracts
+            Contract.Invariant(Owner != null);
         }
     }
 } ;
