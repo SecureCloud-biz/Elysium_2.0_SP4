@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace Elysium.Platform.ViewModels
 {
-    internal static class Locator
+    public static class Locator
     {
-        internal static Main Main
+        public static Main Main
         {
             get { return _main ?? (_main = new Main()); }
         }
 
         private static Main _main;
 
-        internal static Collections.ObservableDictionary<Guid, Gadget> Gadgets
+        public static Collections.ObservableDictionary<Guid, Gadget> Gadgets
         {
             get
             {
@@ -42,7 +42,7 @@ namespace Elysium.Platform.ViewModels
 
         private static Collections.ObservableDictionary<Guid, Gadget> _gadgets;
 
-        internal static Collections.ObservableDictionary<Guid, Application> Applications
+        public static Collections.ObservableDictionary<Guid, Application> Applications
         {
             get
             {

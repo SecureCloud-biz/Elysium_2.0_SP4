@@ -4,9 +4,9 @@ using Elysium.Theme;
 
 namespace Elysium.Platform
 {
-    internal sealed partial class App
+    public sealed partial class App
     {
-        internal App()
+        public App()
         {
             // Is application full-trusted?
             if (!AppDomain.CurrentDomain.IsFullyTrusted)
@@ -27,6 +27,15 @@ namespace Elysium.Platform
             {
                 if (isSingleInstance)
                 {
+                    // Set theme
+                    if (Settings.Default.Theme == Theme.Theme.Dark)
+                        ThemeManager.Instance.Dark(Settings.Default.AccentColor);
+                    else ThemeManager.Instance.Light(Settings.Default.AccentColor);
+
+                    InitializeComponent();
+
+                    Views.Locator.Main.Show();
+
                     Communication.Helper.ExecuteServer();
                 }
                 if (hasArguments)
@@ -34,15 +43,6 @@ namespace Elysium.Platform
                     Communication.Helper.ExecuteClient(args[1], args[2], args[3]);
                 }
             }
-
-            // Set theme
-            if (Settings.Default.Theme == Theme.Theme.Dark)
-                ThemeManager.Instance.Dark(Settings.Default.AccentColor);
-            else ThemeManager.Instance.Light(Settings.Default.AccentColor);
-
-            InitializeComponent();
-
-            Views.Locator.Main.Show();
         }
     }
 } ;

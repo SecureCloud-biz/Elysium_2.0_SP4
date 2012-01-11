@@ -12,17 +12,16 @@ using System.Threading;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
-using System.ComponentModel.Composition;
 
 namespace Elysium.Platform.Collections
 {
     [DebuggerDisplay("Count = {Count}")]
     [ComVisible(false)]
     [Serializable]
-    internal class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, IDictionary,
-                                                      INotifyCollectionChanged, INotifyPropertyChanged,
-                                                      ISerializable, IDeserializationCallback,
-                                                      IXmlSerializable
+    public class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, IDictionary,
+                                                        INotifyCollectionChanged, INotifyPropertyChanged,
+                                                        ISerializable, IDeserializationCallback,
+                                                        IXmlSerializable
     {
         #region Monitor
 
@@ -393,8 +392,10 @@ namespace Elysium.Platform.Collections
                 do
                 {
                     comparand = changedEventHandler;
-                    changedEventHandler = Interlocked.CompareExchange(ref _collectionChanged, comparand + value, comparand);
-                } while (changedEventHandler != comparand);
+                    changedEventHandler = Interlocked.CompareExchange(ref _collectionChanged, comparand + value,
+                                                                      comparand);
+                }
+                while (changedEventHandler != comparand);
             }
             remove
             {
@@ -403,8 +404,10 @@ namespace Elysium.Platform.Collections
                 do
                 {
                     comparand = changedEventHandler;
-                    changedEventHandler = Interlocked.CompareExchange(ref _collectionChanged, comparand - value, comparand);
-                } while (changedEventHandler != comparand);
+                    changedEventHandler = Interlocked.CompareExchange(ref _collectionChanged, comparand - value,
+                                                                      comparand);
+                }
+                while (changedEventHandler != comparand);
             }
         }
 
@@ -418,7 +421,8 @@ namespace Elysium.Platform.Collections
                 {
                     comparand = changedEventHandler;
                     changedEventHandler = Interlocked.CompareExchange(ref _propertyChanged, comparand + value, comparand);
-                } while (changedEventHandler != comparand);
+                }
+                while (changedEventHandler != comparand);
             }
             remove
             {
@@ -428,7 +432,8 @@ namespace Elysium.Platform.Collections
                 {
                     comparand = changedEventHandler;
                     changedEventHandler = Interlocked.CompareExchange(ref _propertyChanged, comparand - value, comparand);
-                } while (changedEventHandler != comparand);
+                }
+                while (changedEventHandler != comparand);
             }
         }
 
@@ -550,6 +555,17 @@ namespace Elysium.Platform.Collections
 
                 writer.WriteEndElement();
             }
+        }
+
+        #endregion
+
+        #region Invariants
+
+        [ContractInvariantMethod]
+        private void Invariants()
+        {
+            Contract.Invariant(_dictionary != null);
+            Contract.Invariant(_monitor != null);
         }
 
         #endregion

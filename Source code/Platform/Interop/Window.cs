@@ -8,7 +8,7 @@ namespace Elysium.Platform.Interop
     [SecurityCritical]
     internal static class Window
     {
-        internal static void RemoveFromAeroPeek(IntPtr hwnd)
+        public static void RemoveFromAeroPeek(IntPtr hwnd)
         {
             if (Windows.IsWindows7)
             {
@@ -19,12 +19,12 @@ namespace Elysium.Platform.Interop
             }
         }
 
-        internal static void RemoveFromAltTab(IntPtr hwnd)
+        public static void RemoveFromAltTab(IntPtr hwnd)
         {
             WinAPI.SetWindowLong(hwnd, WinAPI.GWL_EXSTYLE, new IntPtr(WinAPI.GetWindowLong(hwnd, WinAPI.GWL_EXSTYLE).ToInt32() | WinAPI.WS_EX_TOOLWINDOW));
         }
 
-        internal static void RemoveFromFlip3D(IntPtr hwnd)
+        public static void RemoveFromFlip3D(IntPtr hwnd)
         {
             var value = Marshal.AllocHGlobal(sizeof(int));
             Marshal.WriteInt32(value, (int)WinAPI.DWMFlip3DWindowPolicy.DWMFLIP3D_EXCLUDEBELOW);
@@ -32,7 +32,7 @@ namespace Elysium.Platform.Interop
             Marshal.FreeHGlobal(value);
         }
 
-        internal static void SetFullScreenAndBottomMost(IntPtr hwnd)
+        public static void SetFullScreenAndBottomMost(IntPtr hwnd)
         {
             var left = Taskbar.Instance.Position == TaskbarPosition.Left ? Taskbar.Instance.AutoHide ? 1 : Taskbar.Instance.Width : 0;
             var top = Taskbar.Instance.Position == TaskbarPosition.Top ? Taskbar.Instance.AutoHide ? 1 : Taskbar.Instance.Height : 0;

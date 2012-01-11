@@ -9,10 +9,12 @@ namespace Elysium.Platform.Security
 {
     internal static class GadgetHelper
     {
-        internal static AppDomain CreateDomain(string path)
+        public static AppDomain CreateDomain(string path)
         {
-            Contract.Requires(path != null);
+            if (path == null)
+                throw new ArgumentNullException("path");
             Contract.Ensures(Contract.Result<AppDomain>() != null);
+            Contract.EndContractBlock();
 
             var domainName = AssemblyName.GetAssemblyName(path).FullName;
             var domainSetup = new AppDomainSetup { ApplicationBase = Path.GetDirectoryName(path) };

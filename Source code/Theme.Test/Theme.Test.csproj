@@ -26,14 +26,14 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Binary\Debug\Theme.Test\AnyCPU\</OutputPath>
+    <OutputPath>..\..\Binary\Debug\Theme.Test\AnyCPU\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\Binary\Release\Theme.Test\AnyCPU\</OutputPath>
+    <OutputPath>..\..\Binary\Release\Theme.Test\AnyCPU\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -74,8 +74,14 @@
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Sample24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Sample16.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="PostBuildEvent">
-    <Exec Command="xcopy &quot;$(SolutionDir)Binary\$(ConfigurationName)\Theme\AnyCPU&quot; &quot;$(SolutionDir)Binary\$(ConfigurationName)\Theme.Test\AnyCPU&quot; /e /y" />
+    <Exec Command="xcopy &quot;$(SolutionDir)..\Binary\$(ConfigurationName)\Theme\AnyCPU&quot; &quot;$(SolutionDir)..\Binary\$(ConfigurationName)\Theme.Test\AnyCPU&quot; /e /y" />
   </Target>
 </Project>

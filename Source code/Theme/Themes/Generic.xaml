@@ -4,10 +4,13 @@
     <ResourceDictionary.MergedDictionaries>
         
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/SharedResources.xaml"/>
-        
+
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/Windows/Window.xaml"/>
+        
+        <ResourceDictionary Source="/Elysium.Theme;component/Themes/ApplicationBar/ApplicationBar.xaml"/>
 
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/Menus/ContextMenu.xaml"/>
+        <ResourceDictionary Source="/Elysium.Theme;component/Themes/Menus/Submenu.xaml"/>
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/Menus/MenuItem.xaml"/>
 
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/Tabs/TabControl.xaml"/>
@@ -16,10 +19,10 @@
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/Buttons/Button.xaml"/>
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/Buttons/RepeatButton.xaml"/>
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/Buttons/ToggleButton.xaml"/>
-        
+
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/Buttons/CommandButton.xaml"/>
-        <ResourceDictionary Source="/Elysium.Theme;component/Themes/Buttons/RepeatCommandButton.xaml"/>
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/Buttons/ToggleCommandButton.xaml"/>
+        <ResourceDictionary Source="/Elysium.Theme;component/Themes/Buttons/DropDownCommandButton.xaml"/>
         
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/Buttons/CheckBox.xaml"/>
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/Buttons/RadioButton.xaml"/>
@@ -34,7 +37,8 @@
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/Selectors/ComboBoxItem.xaml"/>
         
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/Ranges/Slider.xaml"/>
-        <ResourceDictionary Source="/Elysium.Theme;component/Themes/Ranges/ProgressBar.xaml"/>
+        <ResourceDictionary Source="/Elysium.Theme;component/Themes/Ranges/LinearProgressBar.xaml"/>
+        <ResourceDictionary Source="/Elysium.Theme;component/Themes/Ranges/CircularProgressBar.xaml"/>
         
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/Scrolls/ScrollBar.xaml"/>
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/Scrolls/ScrollViewer.xaml"/>

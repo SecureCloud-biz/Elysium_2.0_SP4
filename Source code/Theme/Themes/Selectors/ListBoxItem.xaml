@@ -8,10 +8,26 @@
 
     <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource SelectorsItemsBaseStyle}">
         <Style.Triggers>
-            <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="{StaticResource Accent}"/>
-                <Setter Property="Foreground" Value="{StaticResource ForegroundContrast}"/>
-            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsEnabled" Value="True"/>
+                    <Condition Property="IsSelected" Value="True"/>
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter Property="Background" Value="{StaticResource Accent}"/>
+                    <Setter Property="Foreground" Value="{StaticResource ForegroundContrast}"/>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsEnabled" Value="False"/>
+                    <Condition Property="IsSelected" Value="True"/>
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter Property="Background" Value="{StaticResource Disabled}"/>
+                    <Setter Property="Foreground" Value="{StaticResource ForegroundContrast}"/>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
         </Style.Triggers>
     </Style>
     

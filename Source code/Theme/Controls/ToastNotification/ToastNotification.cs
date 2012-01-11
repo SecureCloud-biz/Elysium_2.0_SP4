@@ -9,32 +9,13 @@ using System.Windows.Media.Animation;
 
 namespace Elysium.Theme.Controls
 {
-    public enum HorizontalPlacement
+    public static class ToastNotification
     {
-        Left,
-        Right
-    }
-
-    public enum VerticalPlacement
-    {
-        Top,
-        Bottom
-    }
-
-    public enum ToastNotificationAnimation
-    {
-        None,
-        Fade,
-        Slide
-    }
-
-    public sealed class ToastNotification
-    {
-        public static readonly DependencyObject Desktop = new DependencyObject();
+        public static readonly FrameworkElement Desktop = new FrameworkElement();
 
         private static readonly DependencyProperty FreeIndexesProperty =
             DependencyProperty.RegisterAttached("FreeIndexes", typeof(IDictionary<int, bool>), typeof(ToastNotification),
-                                                new UIPropertyMetadata(new Dictionary<int, bool>()));
+                                                new PropertyMetadata(new Dictionary<int, bool>()));
 
         private static IDictionary<int, bool> GetFreeIndexes(DependencyObject obj)
         {
@@ -48,7 +29,9 @@ namespace Elysium.Theme.Controls
 
         public static readonly DependencyProperty AnimationProperty =
             DependencyProperty.RegisterAttached("Animation", typeof(ToastNotificationAnimation), typeof(ToastNotification),
-                                                new UIPropertyMetadata(ToastNotificationAnimation.Slide));
+                                                new FrameworkPropertyMetadata(ToastNotificationAnimation.Slide,
+                                                                              FrameworkPropertyMetadataOptions.AffectsArrange |
+                                                                              FrameworkPropertyMetadataOptions.AffectsRender));
 
         public static ToastNotificationAnimation GetAnimation(DependencyObject obj)
         {
@@ -61,7 +44,8 @@ namespace Elysium.Theme.Controls
         }
 
         public static readonly DependencyProperty LifetimeProperty =
-            DependencyProperty.RegisterAttached("Lifetime", typeof(TimeSpan), typeof(ToastNotification), new UIPropertyMetadata(TimeSpan.FromSeconds(10.0)));
+            DependencyProperty.RegisterAttached("Lifetime", typeof(TimeSpan), typeof(ToastNotification),
+                                                new FrameworkPropertyMetadata(TimeSpan.FromSeconds(10.0), FrameworkPropertyMetadataOptions.AffectsRender));
 
         public static TimeSpan GetLifetime(DependencyObject obj)
         {
@@ -74,7 +58,8 @@ namespace Elysium.Theme.Controls
         }
 
         public static readonly DependencyProperty MarginProperty =
-            DependencyProperty.RegisterAttached("Margin", typeof(Thickness), typeof(ToastNotification), new UIPropertyMetadata(new Thickness(10.0)));
+            DependencyProperty.RegisterAttached("Margin", typeof(Thickness), typeof(ToastNotification),
+                                                new FrameworkPropertyMetadata(new Thickness(10.0), FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public static Thickness GetMargin(DependencyObject obj)
         {
@@ -87,7 +72,8 @@ namespace Elysium.Theme.Controls
         }
 
         public static readonly DependencyProperty WidthProperty =
-            DependencyProperty.RegisterAttached("Width", typeof(double), typeof(ToastNotification), new UIPropertyMetadata(480.0));
+            DependencyProperty.RegisterAttached("Width", typeof(double), typeof(ToastNotification),
+                                                new FrameworkPropertyMetadata(480.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public static double GetWidth(DependencyObject obj)
         {
@@ -100,7 +86,8 @@ namespace Elysium.Theme.Controls
         }
 
         public static readonly DependencyProperty HeightProperty =
-            DependencyProperty.RegisterAttached("Height", typeof(double), typeof(ToastNotification), new UIPropertyMetadata(64.0));
+            DependencyProperty.RegisterAttached("Height", typeof(double), typeof(ToastNotification),
+                                                new FrameworkPropertyMetadata(64.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public static double GetHeight(DependencyObject obj)
         {
@@ -114,7 +101,7 @@ namespace Elysium.Theme.Controls
 
         public static readonly DependencyProperty HorizontalPlacementProperty =
             DependencyProperty.RegisterAttached("HorizontalPlacement", typeof(HorizontalPlacement), typeof(ToastNotification),
-                                                new UIPropertyMetadata(HorizontalPlacement.Right));
+                                                new FrameworkPropertyMetadata(HorizontalPlacement.Right, FrameworkPropertyMetadataOptions.AffectsArrange));
 
         public static HorizontalPlacement GetHorizontalPlacement(DependencyObject obj)
         {
@@ -128,7 +115,7 @@ namespace Elysium.Theme.Controls
 
         public static readonly DependencyProperty VerticalPlacementProperty =
             DependencyProperty.RegisterAttached("VerticalPlacement", typeof(VerticalPlacement), typeof(ToastNotification),
-                                                new UIPropertyMetadata(VerticalPlacement.Bottom));
+                                                new FrameworkPropertyMetadata(VerticalPlacement.Bottom, FrameworkPropertyMetadataOptions.AffectsArrange));
 
         public static VerticalPlacement GetVerticalPlacement(DependencyObject obj)
         {
@@ -142,25 +129,21 @@ namespace Elysium.Theme.Controls
 
         public static void Show(string message, string remark = null, FrameworkElement target = null)
         {
-            Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(message), "message");
+            if (string.IsNullOrWhiteSpace(message))
+                throw new ArgumentException("Message can't be null", "message");
+            Contract.EndContractBlock();
 
-            var window = new Window { Focusable = false, ShowActivated = false, ShowInTaskbar = false, WindowStyle = WindowStyle.ToolWindow };
-            var content = new Grid();
-            var messagePresenter = new TextBlock { FontWeight = FontWeights.SemiBold, Text = message };
-            Grid.SetRow(messagePresenter, 0);
-            content.Children.Add(messagePresenter);
+            // Create window
+            var window = new Window { Title = message, Focusable = false, ShowActivated = false, ShowInTaskbar = false, WindowStyle = WindowStyle.ToolWindow };
             if (!string.IsNullOrWhiteSpace(remark))
             {
-                content.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-                content.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-                var remarkPresenter = new TextBlock { FontWeight = FontWeights.SemiBold, Text = remark };
-                Grid.SetRow(remarkPresenter, 1);
-                content.Children.Add(remarkPresenter);
+                window.Content = new TextBlock { FontStyle = FontStyles.Italic, Margin = new Thickness(10, 0, 10, 5), Text = remark };
             }
-            window.Content = content;
 
+            // Get host
             var host = target ?? Desktop;
 
+            // Calculate index
             var freeIndexes = GetFreeIndexes(host);
             var indexes = freeIndexes.Where(x => x.Value != true).ToList();
             var index = indexes.Count > 0 ? indexes.OrderBy(x => x.Key).First().Key : freeIndexes.Count();
@@ -169,6 +152,7 @@ namespace Elysium.Theme.Controls
             else
                 freeIndexes.Add(index, true);
 
+            // Calculate coordinates
             var startPoint = target != null ? target.PointToScreen(new Point(0, 0)) : new Point(0, 0);
             var width = GetWidth(host);
             var height = GetHeight(host);
@@ -176,7 +160,8 @@ namespace Elysium.Theme.Controls
             var offset = index * (margin.Top + height + margin.Bottom);
 
             var left = startPoint.X;
-            if (GetHorizontalPlacement(host) == HorizontalPlacement.Left)
+            var horizontalPlacement = GetHorizontalPlacement(host);
+            if (horizontalPlacement == HorizontalPlacement.Left)
             {
                 left += margin.Left;
             }
@@ -188,8 +173,10 @@ namespace Elysium.Theme.Controls
                     left += SystemParameters.WorkArea.Right;
                 left -= width + margin.Right;
             }
+
             var top = startPoint.Y;
-            if (GetVerticalPlacement(host) == VerticalPlacement.Top)
+            var verticalPlacement = GetVerticalPlacement(host);
+            if (verticalPlacement == VerticalPlacement.Top)
             {
                 top += margin.Top;
                 top += offset;
@@ -209,26 +196,28 @@ namespace Elysium.Theme.Controls
             window.Width = width;
             window.Height = height;
 
-            var timer = new Timer(state => window.Close(), null, TimeSpan.FromSeconds(-1), TimeSpan.FromSeconds(-1));
+            // Create timer
+            var timer = new Timer(state => window.Dispatcher.Invoke(new Action(window.Close)), null, -1, -1);
 
-            window.Closed += (s, e) =>
-                                 {
-                                     timer.Dispose();
-                                     switch (GetAnimation(host))
-                                     {
-                                         case ToastNotificationAnimation.None:
-                                             break;
-                                         case ToastNotificationAnimation.Fade:
-                                             window.BeginAnimation(UIElement.OpacityProperty,
-                                                                   new DoubleAnimation(1.0, 0.0, Parameters.GetMinimumDurationProperty(host)));
-                                             break;
-                                         case ToastNotificationAnimation.Slide:
-                                             window.BeginAnimation(System.Windows.Window.LeftProperty,
-                                                                   new DoubleAnimation(left, -width, Parameters.GetOptimumDurationProperty(host)));
-                                             break;
-                                     }
-                                     freeIndexes[index] = false;
-                                 };
+            // Closing animation
+            window.Closing += (s, e) =>
+                                  {
+                                      timer.Dispose();
+                                      switch (GetAnimation(host))
+                                      {
+                                          case ToastNotificationAnimation.None:
+                                              break;
+                                          case ToastNotificationAnimation.Fade:
+                                              window.BeginAnimation(UIElement.OpacityProperty,
+                                                                    new DoubleAnimation(1.0, 0.0, Parameters.GetMinimumDuration(host)));
+                                              break;
+                                          case ToastNotificationAnimation.Slide:
+                                              window.BeginAnimation(System.Windows.Window.LeftProperty,
+                                                                    new DoubleAnimation(left, -width, Parameters.GetOptimumDuration(host)));
+                                              break;
+                                      }
+                                      freeIndexes[index] = false;
+                                  };
 
             switch (GetAnimation(host))
             {
@@ -238,25 +227,32 @@ namespace Elysium.Theme.Controls
                     window.Opacity = 0;
                     break;
                 case ToastNotificationAnimation.Slide:
-                    window.Left = -width;
+                    window.Left += horizontalPlacement == HorizontalPlacement.Left ? -margin.Left : width + margin.Right;
                     break;
             }
 
             window.Show();
 
+            // Opening animation
             switch (GetAnimation(host))
             {
                 case ToastNotificationAnimation.None:
                     break;
                 case ToastNotificationAnimation.Fade:
-                    window.BeginAnimation(UIElement.OpacityProperty, new DoubleAnimation(0.0, 1.0, Parameters.GetMinimumDurationProperty(host)));
+                    window.BeginAnimation(UIElement.OpacityProperty,
+                                          new DoubleAnimation(0.0, 1.0, Parameters.GetMinimumDuration(host)));
                     break;
                 case ToastNotificationAnimation.Slide:
-                    window.BeginAnimation(System.Windows.Window.LeftProperty, new DoubleAnimation(-width, left, Parameters.GetOptimumDurationProperty(host)));
+                    window.BeginAnimation(System.Windows.Window.LeftProperty,
+                                          new DoubleAnimation(window.Left, left, Parameters.GetOptimumDuration(host)));
                     break;
             }
 
-            timer.Change(TimeSpan.FromSeconds(0), GetLifetime(host));
+            var lifetime = GetLifetime(host);
+            window.BeginAnimation(Window.ProgressPercentProperty, new DoubleAnimation(100.0, 0.0, lifetime));
+
+            // Start timer
+            timer.Change(lifetime, TimeSpan.FromSeconds(0));
         }
     }
 } ;

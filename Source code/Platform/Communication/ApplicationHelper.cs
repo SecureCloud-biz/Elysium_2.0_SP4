@@ -4,6 +4,7 @@ using System.Diagnostics.Contracts;
 using System.IO;
 using System.Reflection;
 using System.Security;
+using System.Security.Permissions;
 using System.Threading;
 using Elysium.Theme.Controls;
 
@@ -11,7 +12,7 @@ namespace Elysium.Platform.Communication
 {
     internal static class ApplicationHelper
     {
-        internal static bool Register(string path, string type)
+        public static bool Register(string path, string type)
         {
             AssemblyName assemblyName;
             try
@@ -48,7 +49,9 @@ namespace Elysium.Platform.Communication
             try
             {
                 sandbox = Security.Helper.CreateSandbox();
-                sandbox.SetupInformation.ApplicationBase = Path.GetDirectoryName(path);
+                var directory = Path.GetDirectoryName(path);
+                sandbox.SetupInformation.ApplicationBase = directory;
+                sandbox.PermissionSet.AddPermission(new FileIOPermission(FileIOPermissionAccess.Read | FileIOPermissionAccess.PathDiscovery, directory));
                 var assembly = sandbox.Load(assemblyName);
                 if (!assembly.IsDefined(typeof(SecurityTransparentAttribute), false))
                 {
@@ -107,8 +110,9 @@ namespace Elysium.Platform.Communication
             return true;
         }
 
-        internal static bool Load(Guid id, out Application proxy)
+        public static bool Load(Guid id, out AppDomain domain, out Application proxy)
         {
+            domain = null;
             proxy = null;
             ViewModels.Application application;
             try
@@ -127,7 +131,7 @@ namespace Elysium.Platform.Communication
             }
             try
             {
-                application.Domain = Security.ApplicationHelper.CreateDomain(application.Assembly);
+                domain = Security.ApplicationHelper.CreateDomain(application.Assembly);
             }
             catch (Exception)
             {
@@ -136,7 +140,7 @@ namespace Elysium.Platform.Communication
             }
             try
             {
-                proxy = (Application)application.Domain.CreateInstance(AssemblyName.GetAssemblyName(application.Assembly).Name, application.Type).Unwrap();
+                proxy = (Application)domain.CreateInstance(AssemblyName.GetAssemblyName(application.Assembly).Name, application.Type).Unwrap();
                 proxy.Execute = () => Execute(id);
                 proxy.Close = () => Close(id);
                 return true;
@@ -148,7 +152,7 @@ namespace Elysium.Platform.Communication
             }
         }
 
-        internal static void Execute(Guid id)
+        private static void Execute(Guid id)
         {
             var application = ViewModels.Locator.Applications[id];
             var domain = application.Domain;
@@ -158,7 +162,7 @@ namespace Elysium.Platform.Communication
             application.Thread = thread;
         }
 
-        internal static void Close(Guid id)
+        private static void Close(Guid id)
         {
             var application = ViewModels.Locator.Applications[id];
             var thread = application.Thread;
@@ -166,7 +170,7 @@ namespace Elysium.Platform.Communication
             application.Thread = null;
         }
 
-        internal static void Unload(Guid id)
+        public static void Unload(Guid id)
         {
             var domain = ViewModels.Locator.Applications[id].Domain;
             try
@@ -180,7 +184,7 @@ namespace Elysium.Platform.Communication
             }
         }
 
-        internal static bool Unregister(Guid id)
+        public static bool Unregister(Guid id)
         {
             return Settings.Default.Applications.Remove(id);
         }

@@ -7,30 +7,30 @@ using Elysium.Theme.ViewModels;
 
 namespace Elysium.Platform.ViewModels
 {
-    internal sealed class Application : ViewModelBase
+    public sealed class Application : ViewModelBase
     {
         private readonly Models.Application _model;
 
         private readonly Communication.Application _proxy;
 
-        internal Application(Models.Application model)
+        public Application(Models.Application model)
         {
             _model = model;
-            if (!Communication.ApplicationHelper.Load(_model.ID, out _proxy))
+            if (!Communication.ApplicationHelper.Load(_model.ID, out _domain, out _proxy))
                 Dispose();
         }
 
-        internal string Assembly
+        public string Assembly
         {
             get { return _model.Assembly; }
         }
 
-        internal string Type
+        public string Type
         {
             get { return _model.Type; }
         }
 
-        internal AppDomain Domain
+        public AppDomain Domain
         {
             get
             {
@@ -41,18 +41,11 @@ namespace Elysium.Platform.ViewModels
 
                 return _domain;
             }
-            set
-            {
-                Contract.Requires<ArgumentNullException>(value != null, "value");
-
-                _domain = value;
-                OnPropertyChanged("Domain");
-            }
         }
 
         private AppDomain _domain;
 
-        internal Thread Thread
+        public Thread Thread
         {
             get
             {
@@ -73,7 +66,7 @@ namespace Elysium.Platform.ViewModels
 
         private Thread _thread;
 
-        internal Communication.Info Info
+        public Communication.Info Info
         {
             get
             {
@@ -86,7 +79,7 @@ namespace Elysium.Platform.ViewModels
             }
         }
 
-        internal Communication.ApplicationCallback Callback
+        public Communication.ApplicationCallback Callback
         {
             get
             {
@@ -99,7 +92,7 @@ namespace Elysium.Platform.ViewModels
             }
         }
 
-        internal FrameworkElement Visual
+        public FrameworkElement Visual
         {
             get
             {
@@ -118,7 +111,7 @@ namespace Elysium.Platform.ViewModels
 
         private FrameworkElement _visual;
 
-        internal string Page
+        public string Page
         {
             get { return _model.Page; }
             set
@@ -128,12 +121,12 @@ namespace Elysium.Platform.ViewModels
             }
         }
 
-        internal bool IsAttachable
+        public bool IsAttachable
         {
             get { return _proxy.IsAttachable; }
         }
 
-        internal bool IsAttached
+        public bool IsAttached
         {
             get { return _model.IsAttached; }
             set
@@ -143,7 +136,7 @@ namespace Elysium.Platform.ViewModels
             }
         }
 
-        internal bool IsVisible
+        public bool IsVisible
         {
             get { return _model.IsVisible; }
             set
@@ -166,6 +159,14 @@ namespace Elysium.Platform.ViewModels
 
                 Disposed = true;
             }
+        }
+
+        [ContractInvariantMethod]
+        private void Invariants()
+        {
+            Contract.Invariant(_domain != null);
+            Contract.Invariant(_model != null);
+            Contract.Invariant(_proxy != null);
         }
     }
 } ;

@@ -8,18 +8,19 @@ namespace Elysium.Platform.Communication
 {
     internal static class Helper
     {
-        private const string MutexName = "Elysium Platform Mutex";
+        private const string MutexName = "elysium";
+        private static Mutex _mutex;
+
         private const string PipeStreamName = "Elysium Platform Communication Stream";
 
-        internal static bool IsSingleInstance()
+        public static bool IsSingleInstance()
         {
-            bool result;
-            var mutex = new Mutex(true, MutexName, out result);
-            mutex.Dispose();
-            return result;
+            bool isSingleInstance;
+            _mutex = new Mutex(false, MutexName, out isSingleInstance);
+            return isSingleInstance;
         }
 
-        internal static void ExecuteServer()
+        public static void ExecuteServer()
         {
             var thread = new Thread(ExecuteServerAction);
             thread.SetApartmentState(ApartmentState.STA);
@@ -33,25 +34,31 @@ namespace Elysium.Platform.Communication
             {
                 using (var pipeServer = new NamedPipeServerStream(PipeStreamName, PipeDirection.InOut, 1))
                 {
-                    pipeServer.WaitForConnection();
-                    var isRegistered = false;
-                    try
+                    // Dot not use using statement because after disposing child stream parent stream disposing too
+                    var reader = new StreamReader(pipeServer);
+                    var writer = new StreamWriter(pipeServer);
+                    while (true)
                     {
-                        using (var reader = new StreamReader(pipeServer))
+                        pipeServer.WaitForConnection();
+
+                        var isRegistered = false;
+                        try
                         {
                             var isApplication = string.Equals(reader.ReadLine(), true.ToString());
                             var path = reader.ReadLine();
                             var type = reader.ReadLine();
-                            isRegistered = !isApplication ? GadgetHelper.Register(path, type) : ApplicationHelper.Register(path, type);
+                            System.Windows.Application.Current.Dispatcher.Invoke(
+                                new Action(() =>
+                                           isRegistered =
+                                           !isApplication ? GadgetHelper.Register(path, type) : ApplicationHelper.Register(path, type)));
                         }
-                    }
-                    finally
-                    {
-                        using (var writer = new StreamWriter(pipeServer))
+                        finally
                         {
                             writer.WriteLine(isRegistered);
                             writer.Flush();
                         }
+
+                        pipeServer.Disconnect();
                     }
                 }
             }
@@ -61,11 +68,9 @@ namespace Elysium.Platform.Communication
             }
         }
 
-        internal static void ExecuteClient(string isApplication, string path, string type)
+        public static void ExecuteClient(string isApplication, string path, string type)
         {
-            var thread = new Thread(() => ExecuteClientAction(isApplication, path, type));
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
+            ExecuteClientAction(isApplication, path, type);
         }
 
         private static void ExecuteClientAction(string isApplication, string path, string type)
@@ -76,27 +81,30 @@ namespace Elysium.Platform.Communication
                 using (var pipeClient = new NamedPipeClientStream(".", PipeStreamName, PipeDirection.InOut))
                 {
                     pipeClient.Connect();
+
+                    // Dot not use using statement because after disposing child stream parent stream disposing too
+                    var writer = new StreamWriter(pipeClient);
                     try
                     {
-                        using (var writer = new StreamWriter(pipeClient))
-                        {
-                            writer.WriteLine(bool.Parse(isApplication));
-                            writer.WriteLine(path);
-                            writer.WriteLine(type);
-                        }
+                        writer.WriteLine(bool.Parse(isApplication));
+                        writer.WriteLine(path);
+                        writer.WriteLine(type);
+                        writer.Flush();
                     }
                     catch
                     {
                         abort();
                     }
+
                     pipeClient.WaitForPipeDrain();
+
+                    // Dot not use using statement because after disposing child stream parent stream disposing too
+                    var reader = new StreamReader(pipeClient);
                     try
                     {
-                        using (var reader = new StreamReader(pipeClient))
-                        {
-                            if (!string.Equals(reader.ReadLine(), true.ToString()))
-                                abort();
-                        }
+                        var result = reader.ReadLine();
+                        if (!string.Equals(result, true.ToString()))
+                            abort();
                     }
                     catch
                     {

@@ -5,19 +5,60 @@ using System.Windows.Media;
 
 namespace Elysium.Platform.Communication
 {
-    [ContractClass(typeof(Contracts.InfoContract))]
-    public abstract class Info : MarshalByRefObject
+    public class Info : MarshalByRefObject
     {
-        public abstract string Name { get; }
+        public Info(string name, IEnumerable<string> author, IEnumerable<Uri> license, string description = null, ImageSource image = null, Uri link = null)
+        {
+            Name = name;
+            Description = description;
+            License = license;
+            Author = author;
+            Image = image;
+            Link = link;
+        }
 
-        public abstract string Description { get; }
+        public string Name
+        {
+            get
+            {
+                Contract.Ensures(!string.IsNullOrEmpty(Contract.Result<string>()));
+                return _name;
+            }
+            private set { _name = value; }
+        }
 
-        public abstract IEnumerable<string> Author { get; }
+        private string _name;
 
-        public abstract IEnumerable<Uri> License { get; }
+        public string Description { get; private set; }
 
-        public abstract ImageSource Image { get; }
+        public IEnumerable<string> Author
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<IEnumerable<string>>() != null);
+                Contract.Ensures(Contract.ForAll(Contract.Result<IEnumerable<string>>(), element => !string.IsNullOrEmpty(element)));
+                return _author;
+            }
+            private set { _author = value; }
+        }
 
-        public abstract Uri Link { get; }
+        private IEnumerable<string> _author;
+
+        public IEnumerable<Uri> License
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<IEnumerable<Uri>>() != null);
+                Contract.Ensures(Contract.ForAll(Contract.Result<IEnumerable<Uri>>(), element => element != null));
+                return _license;
+            }
+            private set { _license = value; }
+        }
+
+        private IEnumerable<Uri> _license;
+
+        public ImageSource Image { get; private set; }
+
+        public Uri Link { get; private set; }
     }
 } ;

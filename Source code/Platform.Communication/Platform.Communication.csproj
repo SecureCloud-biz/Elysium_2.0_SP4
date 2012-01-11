@@ -19,15 +19,15 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
+    <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>..\Binary\Debug\Platform.Communication\AnyCPU\</OutputPath>
+    <OutputPath>..\..\Binary\Debug\Platform.Communication\AnyCPU\</OutputPath>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <DefineConstants>DEBUG;TRACE;CONTRACTS_FULL</DefineConstants>
-    <DocumentationFile>..\Binary\Debug\Platform.Communication\AnyCPU\Elysium.Platform.Communication.XML</DocumentationFile>
+    <DocumentationFile>..\..\Binary\Debug\Platform.Communication\AnyCPU\Elysium.Platform.Communication.XML</DocumentationFile>
     <NoWarn>1591</NoWarn>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
@@ -49,23 +49,24 @@
     <CodeContractsCustomRewriterClass />
     <CodeContractsLibPaths />
     <CodeContractsExtraRewriteOptions />
-    <CodeContractsExtraAnalysisOptions>-maxWarnings=214748364</CodeContractsExtraAnalysisOptions>
+    <CodeContractsExtraAnalysisOptions>
+    </CodeContractsExtraAnalysisOptions>
     <CodeContractsBaseLineFile />
     <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
     <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
-    <CodeContractsReferenceAssembly>DoNotBuild</CodeContractsReferenceAssembly>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
     <CodeContractsAnalysisWarningLevel>2</CodeContractsAnalysisWarningLevel>
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>..\Binary\Release\Platform.Communication\AnyCPU\</OutputPath>
+    <OutputPath>..\..\Binary\Release\Platform.Communication\AnyCPU\</OutputPath>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <DefineConstants>TRACE</DefineConstants>
-    <DocumentationFile>..\Binary\Release\Platform.Communication\AnyCPU\Elysium.Platform.Communication.XML</DocumentationFile>
+    <DocumentationFile>..\..\Binary\Release\Platform.Communication\AnyCPU\Elysium.Platform.Communication.XML</DocumentationFile>
     <NoWarn>1591</NoWarn>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
     <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
     <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
     <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
@@ -88,7 +89,7 @@
     <CodeContractsBaseLineFile />
     <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
     <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
-    <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
     <CodeContractsAnalysisWarningLevel>2</CodeContractsAnalysisWarningLevel>
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
@@ -114,7 +115,6 @@
     <Compile Include="Gadget.cs" />
     <Compile Include="GadgetCallback.cs" />
     <Compile Include="Info.cs" />
-    <Compile Include="Contracts\InfoContract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

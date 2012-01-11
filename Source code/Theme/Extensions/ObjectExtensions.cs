@@ -9,10 +9,5 @@ namespace Elysium.Theme.Extensions
         {
             return ((MemberExpression)expression.Body).Member.Name;
         }
-
-        public static string GetName(this object obj)
-        {
-            return GetObjectName(() => obj);
-        }
     }
 } ;

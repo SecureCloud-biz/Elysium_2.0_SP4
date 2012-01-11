@@ -4,24 +4,24 @@ using System.Xml.Serialization;
 namespace Elysium.Platform.Models
 {
     [XmlRoot]
-    internal sealed class Application
+    public sealed class Application
     {
         [XmlAttribute]
-        internal Guid ID { get; set; }
+        public Guid ID { get; set; }
 
         [XmlAttribute]
-        internal string Assembly { get; set; }
+        public string Assembly { get; set; }
 
         [XmlAttribute]
-        internal string Type { get; set; }
+        public string Type { get; set; }
 
         [XmlAttribute]
-        internal string Page { get; set; }
+        public string Page { get; set; }
 
         [XmlAttribute]
-        internal bool IsAttached { get; set; }
+        public bool IsAttached { get; set; }
 
         [XmlAttribute]
-        internal bool IsVisible { get; set; }
+        public bool IsVisible { get; set; }
     }
 } ;

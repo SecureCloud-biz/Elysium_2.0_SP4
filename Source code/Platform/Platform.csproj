@@ -20,15 +20,15 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
+    <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <PlatformTarget>x86</PlatformTarget>
-    <OutputPath>..\Binary\Debug\Platform\x86\</OutputPath>
+    <OutputPath>..\..\Binary\Debug\Platform\x86\</OutputPath>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <DefineConstants>TRACE;DEBUG;X86;CONTRACTS_FULL</DefineConstants>
-    <CodeAnalysisLogFile>..\Binary\Debug\Platform32.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisLogFile>..\..\Binary\Debug\Platform32.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
@@ -55,23 +55,24 @@
     <CodeContractsCustomRewriterClass />
     <CodeContractsLibPaths />
     <CodeContractsExtraRewriteOptions />
-    <CodeContractsExtraAnalysisOptions>-maxWarnings=214748364</CodeContractsExtraAnalysisOptions>
+    <CodeContractsExtraAnalysisOptions>
+    </CodeContractsExtraAnalysisOptions>
     <CodeContractsBaseLineFile />
     <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
     <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
-    <CodeContractsReferenceAssembly>DoNotBuild</CodeContractsReferenceAssembly>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
     <CodeContractsAnalysisWarningLevel>2</CodeContractsAnalysisWarningLevel>
-    <DocumentationFile>..\Binary\Debug\Platform\x86\Elysium.Platform.XML</DocumentationFile>
+    <DocumentationFile>..\..\Binary\Debug\Platform\x86\Elysium.Platform.XML</DocumentationFile>
     <NoWarn>1591</NoWarn>
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <PlatformTarget>x86</PlatformTarget>
-    <OutputPath>..\Binary\Release\Platform\x86\</OutputPath>
+    <OutputPath>..\..\Binary\Release\Platform\x86\</OutputPath>
     <Optimize>true</Optimize>
     <DebugType>none</DebugType>
     <DefineConstants>X86</DefineConstants>
-    <CodeAnalysisLogFile>..\Binary\Release\Platform32.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisLogFile>..\..\Binary\Release\Platform32.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
@@ -79,7 +80,7 @@
     <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
     <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
-    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
     <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
     <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
     <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
@@ -102,19 +103,19 @@
     <CodeContractsBaseLineFile />
     <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
     <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
-    <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
     <CodeContractsAnalysisWarningLevel>2</CodeContractsAnalysisWarningLevel>
-    <DocumentationFile>..\Binary\Release\Platform\x86\Elysium.Platform.XML</DocumentationFile>
+    <DocumentationFile>..\..\Binary\Release\Platform\x86\Elysium.Platform.XML</DocumentationFile>
     <NoWarn>1591</NoWarn>
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <PlatformTarget>x64</PlatformTarget>
-    <OutputPath>..\Binary\Debug\Platform\x64\</OutputPath>
+    <OutputPath>..\..\Binary\Debug\Platform\x64\</OutputPath>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <DefineConstants>TRACE;DEBUG;X64;CONTRACTS_FULL</DefineConstants>
-    <CodeAnalysisLogFile>..\Binary\Debug\Platform64.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisLogFile>..\..\Binary\Debug\Platform64.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
@@ -146,19 +147,19 @@
     <CodeContractsBaseLineFile />
     <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
     <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
-    <CodeContractsReferenceAssembly>DoNotBuild</CodeContractsReferenceAssembly>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
     <CodeContractsAnalysisWarningLevel>2</CodeContractsAnalysisWarningLevel>
-    <DocumentationFile>..\Binary\Debug\Platform\x64\Elysium.Platform.XML</DocumentationFile>
+    <DocumentationFile>..\..\Binary\Debug\Platform\x64\Elysium.Platform.XML</DocumentationFile>
     <NoWarn>1591</NoWarn>
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <PlatformTarget>x64</PlatformTarget>
-    <OutputPath>..\Binary\Release\Platform\x64\</OutputPath>
+    <OutputPath>..\..\Binary\Release\Platform\x64\</OutputPath>
     <Optimize>true</Optimize>
     <DebugType>none</DebugType>
     <DefineConstants>X64</DefineConstants>
-    <CodeAnalysisLogFile>..\Binary\Release\Platform64.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisLogFile>..\..\Binary\Release\Platform64.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
@@ -166,7 +167,7 @@
     <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
     <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
-    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
     <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
     <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
     <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
@@ -189,9 +190,9 @@
     <CodeContractsBaseLineFile />
     <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
     <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
-    <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
     <CodeContractsAnalysisWarningLevel>2</CodeContractsAnalysisWarningLevel>
-    <DocumentationFile>..\Binary\Release\Platform\x64\Elysium.Platform.XML</DocumentationFile>
+    <DocumentationFile>..\..\Binary\Release\Platform\x64\Elysium.Platform.XML</DocumentationFile>
     <NoWarn>1591</NoWarn>
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
@@ -327,7 +328,8 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="PostBuildEvent">
-    <Exec Command="xcopy &quot;$(SolutionDir)Binary\$(ConfigurationName)\Theme\AnyCPU&quot; &quot;$(SolutionDir)Binary\$(ConfigurationName)\Platform\$(PlatformName)&quot; /e /y" />
-    <Exec Command="xcopy &quot;$(SolutionDir)Binary\$(ConfigurationName)\Platform.Communication\AnyCPU&quot; &quot;$(SolutionDir)Binary\$(ConfigurationName)\Platform\$(PlatformName)&quot; /e /y" />
+    <Exec Command="xcopy &quot;$(SolutionDir)\..\Binary\$(ConfigurationName)\Theme\AnyCPU&quot; &quot;$(SolutionDir)\..\Binary\$(ConfigurationName)\Platform\$(PlatformName)&quot; /e /y" />
+    <Exec Command="xcopy &quot;$(SolutionDir)\..\Binary\$(ConfigurationName)\Platform.Communication\AnyCPU&quot; &quot;$(SolutionDir)\..\Binary\$(ConfigurationName)\Platform\$(PlatformName)&quot; /e /y" />
+    <Exec Command="xcopy &quot;$(SolutionDir)\..\Binary\$(ConfigurationName)\Platform.Gadgets\AnyCPU&quot; &quot;$(SolutionDir)\..\Binary\$(ConfigurationName)\Platform\$(PlatformName)&quot; /e /y" />
   </Target>
 </Project>

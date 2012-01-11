@@ -1,36 +1,36 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:Root="clr-namespace:Elysium.Theme">
+                    xmlns:root="clr-namespace:Elysium.Theme">
     
     <SolidColorBrush x:Key="Accent"
-                     Color="{Binding Source={x:Static Root:ThemeManager.Instance}, Path=Accent}"/>
+                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Accent}"/>
     <SolidColorBrush x:Key="Background"
-                     Color="{Binding Source={x:Static Root:ThemeManager.Instance}, Path=Background}"/>
+                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Background}"/>
     <SolidColorBrush x:Key="Foreground"
-                     Color="{Binding Source={x:Static Root:ThemeManager.Instance}, Path=Foreground}"/>
+                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Foreground}"/>
     <SolidColorBrush x:Key="ForegroundContrast"
-                     Color="{Binding Source={x:Static Root:ThemeManager.Instance}, Path=ForegroundContrast}"/>
+                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=ForegroundContrast}"/>
     <SolidColorBrush x:Key="ForegroundHighlight"
-                     Color="{Binding Source={x:Static Root:ThemeManager.Instance}, Path=ForegroundHighlight}"/>
+                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=ForegroundHighlight}"/>
     <SolidColorBrush x:Key="ForegroundMiddlelight"
-                     Color="{Binding Source={x:Static Root:ThemeManager.Instance}, Path=ForegroundMiddlelight}"/>
+                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=ForegroundMiddlelight}"/>
     <SolidColorBrush x:Key="ForegroundLowlight"
-                     Color="{Binding Source={x:Static Root:ThemeManager.Instance}, Path=ForegroundLowlight}"/>
+                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=ForegroundLowlight}"/>
     <SolidColorBrush x:Key="Disabled"
-                     Color="{Binding Source={x:Static Root:ThemeManager.Instance}, Path=Disabled}"/>
+                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Disabled}"/>
     <SolidColorBrush x:Key="Transparent"
-                     Color="{Binding Source={x:Static Root:ThemeManager.Instance}, Path=Transparent}"/>
+                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Transparent}"/>
     <SolidColorBrush x:Key="Semitransparent"
-                     Color="{Binding Source={x:Static Root:ThemeManager.Instance}, Path=Semitransparent}"/>
+                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Semitransparent}"/>
 
     <Style x:Key="FocusVisualStyle">
         <Setter Property="Control.Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Rectangle Margin="{x:Static Root:Parameters.DefaultPadding}" 
+                    <Rectangle Margin="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultPadding, Mode=OneWay}" 
                                Fill="{StaticResource Transparent}"
                                Stroke="{StaticResource Foreground}"
-                               StrokeThickness="{x:Static Root:Parameters.DefaultStrokeThickness}"
+                               StrokeThickness="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThicknessValue, Mode=OneWay}"
                                StrokeDashArray="2 1"
                                RenderOptions.EdgeMode="Aliased"/>
                 </ControlTemplate>

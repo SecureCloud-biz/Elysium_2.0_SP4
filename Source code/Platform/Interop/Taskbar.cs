@@ -15,7 +15,7 @@ namespace Elysium.Platform.Interop
 
     internal sealed class Taskbar
     {
-        internal static readonly Taskbar Instance = new Taskbar();
+        public static readonly Taskbar Instance = new Taskbar();
 
         [SecurityCritical]
         private Taskbar()
@@ -42,30 +42,30 @@ namespace Elysium.Platform.Interop
             AutoHide = (state & WinAPI.ABS_AUTOHIDE) == WinAPI.ABS_AUTOHIDE;
         }
 
-        internal IntPtr Handle { get; private set; }
+        public IntPtr Handle { get; private set; }
 
-        internal TaskbarPosition Position { get; private set; }
+        public TaskbarPosition Position { get; private set; }
 
-        internal int Left { get; private set; }
+        public int Left { get; private set; }
 
-        internal int Top { get; private set; }
+        public int Top { get; private set; }
 
-        internal int Right { get; private set; }
+        public int Right { get; private set; }
 
-        internal int Bottom { get; private set; }
+        public int Bottom { get; private set; }
 
-        internal int Width
+        public int Width
         {
             get { return Right - Left; }
         }
 
-        internal int Height
+        public int Height
         {
             get { return Bottom - Top; }
         }
 
-        internal bool AlwaysOnTop { get; private set; }
+        public bool AlwaysOnTop { get; private set; }
 
-        internal bool AutoHide { get; private set; }
+        public bool AutoHide { get; private set; }
     }
 } ;

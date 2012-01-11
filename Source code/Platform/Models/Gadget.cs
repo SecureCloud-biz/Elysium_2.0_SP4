@@ -5,36 +5,36 @@ using System.Xml.Serialization;
 namespace Elysium.Platform.Models
 {
     [XmlRoot]
-    internal sealed class Gadget
+    public sealed class Gadget
     {
         [XmlAttribute]
-        internal Guid ID { get; set; }
+        public Guid ID { get; set; }
 
         [XmlAttribute]
-        internal string Assembly { get; set; }
+        public string Assembly { get; set; }
 
         [XmlAttribute]
-        internal string Type { get; set; }
+        public string Type { get; set; }
 
         [XmlAttribute]
-        internal string Page { get; set; }
+        public string Page { get; set; }
 
         [XmlAttribute]
-        internal string Group { get; set; }
+        public string Group { get; set; }
 
         [XmlAttribute]
-        internal int Column { get; set; }
+        public int Column { get; set; }
 
         [XmlAttribute]
-        internal int ColumnSpan { get; set; }
+        public int ColumnSpan { get; set; }
 
         [XmlAttribute]
-        internal int Row { get; set; }
+        public int Row { get; set; }
         
         [XmlAttribute]
-        internal bool IsExpanded { get; set; }
+        public bool IsExpanded { get; set; }
 
         [XmlAttribute]
-        internal bool IsVisible { get; set; }
+        public bool IsVisible { get; set; }
     }
 } ;

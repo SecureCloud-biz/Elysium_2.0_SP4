@@ -7,16 +7,14 @@
             InitializeComponent();
         }
 
-        private void WindowMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void LightClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (ThemeManager.Instance.Theme == Theme.Light)
-            {
-                ThemeManager.Instance.Dark(ThemeManager.Instance.Accent);
-            }
-            else
-            {
-                ThemeManager.Instance.Light(ThemeManager.Instance.Accent);
-            }
+            ThemeManager.Instance.Light(ThemeManager.Instance.Accent);
+        }
+
+        private void DarkClick(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ThemeManager.Instance.Dark(ThemeManager.Instance.Accent);
         }
     }
 } ;

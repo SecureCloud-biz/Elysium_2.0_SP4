@@ -1,8 +1,8 @@
 ﻿namespace Elysium.Platform.Views
 {
-    internal static class Locator
+    public static class Locator
     {
-        internal static Main Main
+        public static Main Main
         {
             get { return _main ?? (_main = new Main { DataContext = ViewModels.Locator.Main }); }
         }

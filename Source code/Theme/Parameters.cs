@@ -4,77 +4,199 @@ using System.Windows.Media;
 
 namespace Elysium.Theme
 {
-    public static class Parameters
+    public class Parameters : DependencyObject
     {
-        static Parameters()
-        {
-            FontFamily = new FontFamily("Segoe UI");
-            HeaderFontSize = 12.0 * (96.0 / 72.0);
-            ContentFontSize = 10.0 * (96.0 / 72.0);
-            TextFontSize = 9.0 * (96.0 / 72.0);
-
-            DefaultThickness = new Thickness(1.0);
-            SemiboldThickness = new Thickness(1.5);
-            BoldThickness = new Thickness(2.0);
-
-            DefaultStrokeThickness = 1.0;
-            SemiboldStrokeThickness = 1.5;
-            BoldStrokeThickness = 2.0;
-
-            DefaultPadding = new Thickness(1.0);
-            SemiboldPadding = new Thickness(2.0);
-            BoldPadding = new Thickness(5.0);
-
-            DefaultPaddingValue = 1.0;
-            SemiboldPaddingValue = 2.0;
-            BoldPaddingValue = 5.0;
-        }
+        public static readonly Parameters Instance = new Parameters();
 
         #region Font
 
-        public static FontFamily FontFamily { get; set; }
+        public static readonly DependencyProperty FontFamilyProperty =
+            DependencyProperty.Register("FontFamily", typeof(FontFamily), typeof(Parameters),
+                                        new FrameworkPropertyMetadata(new FontFamily("Segoe UI"),
+                                                                      FrameworkPropertyMetadataOptions.AffectsRender |
+                                                                      FrameworkPropertyMetadataOptions.AffectsMeasure));
 
-        public static double HeaderFontSize { get; set; }
+        public FontFamily FontFamily
+        {
+            get { return (FontFamily)GetValue(FontFamilyProperty); }
+            set { SetValue(FontFamilyProperty, value); }
+        }
 
-        public static double ContentFontSize { get; set; }
+        public static readonly DependencyProperty TitleFontSizeProperty =
+            DependencyProperty.Register("TitleFontSize", typeof(double), typeof(Parameters),
+                                        new FrameworkPropertyMetadata(12.0 * (96.0 / 72.0),
+                                                                      FrameworkPropertyMetadataOptions.AffectsRender |
+                                                                      FrameworkPropertyMetadataOptions.AffectsMeasure));
 
-        public static double TextFontSize { get; set; }
+        public double TitleFontSize
+        {
+            get { return (double)GetValue(TitleFontSizeProperty); }
+            set { SetValue(TitleFontSizeProperty, value); }
+        }
+
+        public static readonly DependencyProperty HeaderFontSizeProperty =
+            DependencyProperty.Register("HeaderFontSize", typeof(double), typeof(Parameters),
+                                        new FrameworkPropertyMetadata(16.0 * (96.0 / 72.0),
+                                                                      FrameworkPropertyMetadataOptions.AffectsRender |
+                                                                      FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        public double HeaderFontSize
+        {
+            get { return (double)GetValue(HeaderFontSizeProperty); }
+            set { SetValue(HeaderFontSizeProperty, value); }
+        }
+
+        public static readonly DependencyProperty ContentFontSizeProperty =
+            DependencyProperty.Register("ContentFontSize", typeof(double), typeof(Parameters),
+                                        new FrameworkPropertyMetadata(10.0 * (96.0 / 72.0),
+                                                                      FrameworkPropertyMetadataOptions.AffectsRender |
+                                                                      FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        public double ContentFontSize
+        {
+            get { return (double)GetValue(ContentFontSizeProperty); }
+            set { SetValue(ContentFontSizeProperty, value); }
+        }
+
+        public static readonly DependencyProperty TextFontSizeProperty =
+            DependencyProperty.Register("TextFontSize", typeof(double), typeof(Parameters),
+                                        new FrameworkPropertyMetadata(9.0 * (96.0 / 72.0),
+                                                                      FrameworkPropertyMetadataOptions.AffectsRender |
+                                                                      FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        public double TextFontSize
+        {
+            get { return (double)GetValue(TextFontSizeProperty); }
+            set { SetValue(TextFontSizeProperty, value); }
+        }
 
         #endregion
 
         #region Thickness
 
-        public static Thickness DefaultThickness { get; set; }
+        public static readonly DependencyProperty DefaultThicknessProperty =
+            DependencyProperty.Register("DefaultThickness", typeof(Thickness), typeof(Parameters),
+                                        new FrameworkPropertyMetadata(new Thickness(1.0), FrameworkPropertyMetadataOptions.AffectsMeasure));
 
-        public static Thickness SemiboldThickness { get; set; }
+        public Thickness DefaultThickness
+        {
+            get { return (Thickness)GetValue(DefaultThicknessProperty); }
+            set { SetValue(DefaultThicknessProperty, value); }
+        }
 
-        public static Thickness BoldThickness { get; set; }
+        public static readonly DependencyProperty SemiboldThicknessProperty =
+            DependencyProperty.Register("SemiboldThickness", typeof(Thickness), typeof(Parameters),
+                                        new FrameworkPropertyMetadata(new Thickness(1.5), FrameworkPropertyMetadataOptions.AffectsMeasure));
 
-        #endregion
+        public Thickness SemiboldThickness
+        {
+            get { return (Thickness)GetValue(SemiboldThicknessProperty); }
+            set { SetValue(SemiboldThicknessProperty, value); }
+        }
 
-        #region Stroke thickness
+        public static readonly DependencyProperty BoldThicknessProperty =
+            DependencyProperty.Register("BoldThickness", typeof(Thickness), typeof(Parameters),
+                                        new FrameworkPropertyMetadata(new Thickness(2.0), FrameworkPropertyMetadataOptions.AffectsMeasure));
 
-        public static double DefaultStrokeThickness { get; set; }
+        public Thickness BoldThickness
+        {
+            get { return (Thickness)GetValue(BoldThicknessProperty); }
+            set { SetValue(BoldThicknessProperty, value); }
+        }
 
-        public static double SemiboldStrokeThickness { get; set; }
+        public static readonly DependencyProperty DefaultThicknessValueProperty =
+            DependencyProperty.Register("DefaultThicknessValue", typeof(double), typeof(Parameters),
+                                        new FrameworkPropertyMetadata(1.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
-        public static double BoldStrokeThickness { get; set; }
+        public double DefaultThicknessValue
+        {
+            get { return (double)GetValue(DefaultThicknessValueProperty); }
+            set { SetValue(DefaultThicknessValueProperty, value); }
+        }
+
+        public static readonly DependencyProperty SemiboldThicknessValueProperty =
+            DependencyProperty.Register("SemiboldThicknessValue", typeof(double), typeof(Parameters),
+                                        new FrameworkPropertyMetadata(1.5, FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        public double SemiboldThicknessValue
+        {
+            get { return (double)GetValue(SemiboldThicknessValueProperty); }
+            set { SetValue(SemiboldThicknessValueProperty, value); }
+        }
+
+        public static readonly DependencyProperty BoldThicknessValueProperty =
+            DependencyProperty.Register("BoldThicknessValue", typeof(double), typeof(Parameters),
+                                        new FrameworkPropertyMetadata(2.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        public double BoldThicknessValue
+        {
+            get { return (double)GetValue(BoldThicknessValueProperty); }
+            set { SetValue(BoldThicknessValueProperty, value); }
+        }
 
         #endregion
 
         #region Padding
 
-        public static Thickness DefaultPadding { get; set; }
+        public static readonly DependencyProperty DefaultPaddingProperty =
+            DependencyProperty.Register("DefaultPadding", typeof(Thickness), typeof(Parameters),
+                                        new FrameworkPropertyMetadata(new Thickness(1.0), FrameworkPropertyMetadataOptions.AffectsMeasure));
 
-        public static Thickness SemiboldPadding { get; set; }
+        public Thickness DefaultPadding
+        {
+            get { return (Thickness)GetValue(DefaultPaddingProperty); }
+            set { SetValue(DefaultPaddingProperty, value); }
+        }
 
-        public static Thickness BoldPadding { get; set; }
+        public static readonly DependencyProperty SemiboldPaddingProperty =
+            DependencyProperty.Register("SemiboldPadding", typeof(Thickness), typeof(Parameters),
+                                        new FrameworkPropertyMetadata(new Thickness(2.0), FrameworkPropertyMetadataOptions.AffectsMeasure));
 
-        public static double DefaultPaddingValue { get; set; }
+        public Thickness SemiboldPadding
+        {
+            get { return (Thickness)GetValue(SemiboldPaddingProperty); }
+            set { SetValue(SemiboldPaddingProperty, value); }
+        }
 
-        public static double SemiboldPaddingValue { get; set; }
+        public static readonly DependencyProperty BoldPaddingProperty =
+            DependencyProperty.Register("BoldPadding", typeof(Thickness), typeof(Parameters),
+                                        new FrameworkPropertyMetadata(new Thickness(5.0), FrameworkPropertyMetadataOptions.AffectsMeasure));
 
-        public static double BoldPaddingValue { get; set; }
+        public Thickness BoldPadding
+        {
+            get { return (Thickness)GetValue(BoldPaddingProperty); }
+            set { SetValue(BoldPaddingProperty, value); }
+        }
+
+        public static readonly DependencyProperty DefaultPaddingValueProperty =
+            DependencyProperty.Register("DefaultPaddingValue", typeof(double), typeof(Parameters),
+                                        new FrameworkPropertyMetadata(1.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        public double DefaultPaddingValue
+        {
+            get { return (double)GetValue(DefaultPaddingValueProperty); }
+            set { SetValue(DefaultPaddingValueProperty, value); }
+        }
+
+        public static readonly DependencyProperty SemiboldPaddingValueProperty =
+            DependencyProperty.Register("SemiboldPaddingValue", typeof(double), typeof(Parameters),
+                                        new FrameworkPropertyMetadata(2.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        public double SemiboldPaddingValue
+        {
+            get { return (double)GetValue(SemiboldPaddingValueProperty); }
+            set { SetValue(SemiboldPaddingValueProperty, value); }
+        }
+
+        public static readonly DependencyProperty BoldPaddingValueProperty =
+            DependencyProperty.Register("BoldPaddingValue", typeof(double), typeof(Parameters),
+                                        new FrameworkPropertyMetadata(5.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        public double BoldPaddingValue
+        {
+            get { return (double)GetValue(BoldPaddingValueProperty); }
+            set { SetValue(BoldPaddingValueProperty, value); }
+        }
 
         #endregion
 
@@ -82,7 +204,8 @@ namespace Elysium.Theme
 
         public static readonly DependencyProperty DefaultDurationProperty =
             DependencyProperty.RegisterAttached("DefaultDuration", typeof(Duration), typeof(Parameters),
-                                                new UIPropertyMetadata((new Duration(TimeSpan.Parse("00:00:00.0")))));
+                                                new FrameworkPropertyMetadata((new Duration(TimeSpan.Parse("00:00:00.0"))),
+                                                                              FrameworkPropertyMetadataOptions.None));
 
         public static Duration GetDefaultDuration(DependencyObject obj)
         {
@@ -96,44 +219,66 @@ namespace Elysium.Theme
 
         public static readonly DependencyProperty MinimumDurationProperty =
             DependencyProperty.RegisterAttached("MinimumDuration", typeof(Duration), typeof(Parameters),
-                                                new UIPropertyMetadata(new Duration(TimeSpan.Parse("00:00:00.2"))));
+                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.Parse("00:00:00.2")),
+                                                                              FrameworkPropertyMetadataOptions.None));
 
-        public static Duration GetMinimumDurationProperty(DependencyObject obj)
+        public static Duration GetMinimumDuration(DependencyObject obj)
         {
             return (Duration)obj.GetValue(MinimumDurationProperty);
         }
 
-        public static void SetMinimumDurationProperty(DependencyObject obj, Duration value)
+        public static void SetMinimumDuration(DependencyObject obj, Duration value)
         {
             obj.SetValue(MinimumDurationProperty, value);
         }
 
         public static readonly DependencyProperty OptimumDurationProperty =
             DependencyProperty.RegisterAttached("OptimumDuration", typeof(Duration), typeof(Parameters),
-                                                new UIPropertyMetadata(new Duration(TimeSpan.Parse("00:00:00.5"))));
+                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.Parse("00:00:00.5")),
+                                                                              FrameworkPropertyMetadataOptions.None));
 
-        public static Duration GetOptimumDurationProperty(DependencyObject obj)
+        public static Duration GetOptimumDuration(DependencyObject obj)
         {
             return (Duration)obj.GetValue(OptimumDurationProperty);
         }
 
-        public static void SetOptimumDurationProperty(DependencyObject obj, Duration value)
+        public static void SetOptimumDuration(DependencyObject obj, Duration value)
         {
             obj.SetValue(OptimumDurationProperty, value);
         }
 
         public static readonly DependencyProperty MaximumDurationProperty =
             DependencyProperty.RegisterAttached("MaximumDuration", typeof(Duration), typeof(Parameters),
-                                                new UIPropertyMetadata(new Duration(TimeSpan.Parse("00:00:01.0"))));
+                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.Parse("00:00:01.0")),
+                                                                              FrameworkPropertyMetadataOptions.None));
 
-        public static Duration GetMaximumDurationProperty(DependencyObject obj)
+        public static Duration GetMaximumDuration(DependencyObject obj)
         {
             return (Duration)obj.GetValue(MaximumDurationProperty);
         }
 
-        public static void SetMaximumDurationProperty(DependencyObject obj, Duration value)
+        public static void SetMaximumDuration(DependencyObject obj, Duration value)
         {
             obj.SetValue(MaximumDurationProperty, value);
+        }
+
+        #endregion
+
+        #region Buttons
+
+        public static readonly DependencyProperty CommandButtonMaskProperty =
+            DependencyProperty.RegisterAttached("CommandButtonMask", typeof(Brush), typeof(Parameters),
+                                                new FrameworkPropertyMetadata((Brush)null, FrameworkPropertyMetadataOptions.AffectsRender |
+                                                                                           FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender));
+
+        public static Brush GetCommandButtonMask(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(CommandButtonMaskProperty);
+        }
+
+        public static void SetCommandButtonMask(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(CommandButtonMaskProperty, value);
         }
 
         #endregion
@@ -141,7 +286,8 @@ namespace Elysium.Theme
         #region CheckBox & RadioButton
 
         public static readonly DependencyProperty BulletDecoratorSizeProperty =
-            DependencyProperty.RegisterAttached("BulletDecoratorSize", typeof(double), typeof(Parameters), new UIPropertyMetadata(14.0));
+            DependencyProperty.RegisterAttached("BulletDecoratorSize", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(14.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public static double GetBulletDecoratorSize(DependencyObject obj)
         {
@@ -154,7 +300,8 @@ namespace Elysium.Theme
         }
 
         public static readonly DependencyProperty CheckBoxBulletSizeProperty =
-            DependencyProperty.RegisterAttached("CheckBoxBulletSize", typeof(double), typeof(Parameters), new UIPropertyMetadata(10.0));
+            DependencyProperty.RegisterAttached("CheckBoxBulletSize", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(10.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public static double GetCheckBoxBulletSize(DependencyObject obj)
         {
@@ -167,7 +314,8 @@ namespace Elysium.Theme
         }
 
         public static readonly DependencyProperty RadioButtonBulletSizeProperty =
-            DependencyProperty.RegisterAttached("RadioButtonBulletSize", typeof(double), typeof(Parameters), new UIPropertyMetadata(8.0));
+            DependencyProperty.RegisterAttached("RadioButtonBulletSize", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(8.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public static double GetRadioButtonBulletSize(DependencyObject obj)
         {
@@ -184,7 +332,8 @@ namespace Elysium.Theme
         #region ComboBox
 
         public static readonly DependencyProperty ComboBoxButtonSizeProperty =
-            DependencyProperty.RegisterAttached("ComboBoxButtonSize", typeof(double), typeof(Parameters), new UIPropertyMetadata(18.0));
+            DependencyProperty.RegisterAttached("ComboBoxButtonSize", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(18.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public static double GetComboBoxButtonSize(DependencyObject obj)
         {
@@ -197,7 +346,8 @@ namespace Elysium.Theme
         }
 
         public static readonly DependencyProperty ComboBoxArrowSizeProperty =
-            DependencyProperty.RegisterAttached("ComboBoxArrowSize", typeof(double), typeof(Parameters), new UIPropertyMetadata(8.0));
+            DependencyProperty.RegisterAttached("ComboBoxArrowSize", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(8.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public static double GetComboBoxArrowSize(DependencyObject obj)
         {
@@ -210,7 +360,8 @@ namespace Elysium.Theme
         }
 
         public static readonly DependencyProperty ComboBoxArrowMarginProperty =
-            DependencyProperty.RegisterAttached("ComboBoxArrowMargin", typeof(Thickness), typeof(Parameters), new UIPropertyMetadata(new Thickness(5, 0, 5, 0)));
+            DependencyProperty.RegisterAttached("ComboBoxArrowMargin", typeof(Thickness), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(new Thickness(5, 0, 5, 0), FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public static Thickness GetComboBoxArrowMargin(DependencyObject obj)
         {
@@ -227,7 +378,8 @@ namespace Elysium.Theme
         #region Slider
 
         public static readonly DependencyProperty SliderTrackSizeProperty =
-            DependencyProperty.RegisterAttached("SliderTrackSize", typeof(double), typeof(Parameters), new UIPropertyMetadata(4.0));
+            DependencyProperty.RegisterAttached("SliderTrackSize", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(4.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public static double GetSliderTrackSize(DependencyObject obj)
         {
@@ -240,7 +392,8 @@ namespace Elysium.Theme
         }
 
         public static readonly DependencyProperty SliderThumbThicknessProperty =
-            DependencyProperty.RegisterAttached("SliderThumbThickness", typeof(double), typeof(Parameters), new UIPropertyMetadata(6.0));
+            DependencyProperty.RegisterAttached("SliderThumbThickness", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(6.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public static double GetSliderThumbThickness(DependencyObject obj)
         {
@@ -257,7 +410,8 @@ namespace Elysium.Theme
         #region ProgressBar
 
         public static readonly DependencyProperty ProgressBarLoadingElementSizeProperty =
-            DependencyProperty.RegisterAttached("ProgressBarLoadingElementSize", typeof(double), typeof(Parameters), new UIPropertyMetadata(4.0));
+            DependencyProperty.RegisterAttached("ProgressBarLoadingElementSize", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(4.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public static double GetProgressBarLoadingElementSize(DependencyObject obj)
         {
@@ -269,25 +423,27 @@ namespace Elysium.Theme
             obj.SetValue(ProgressBarLoadingElementSizeProperty, value);
         }
 
-        public static readonly DependencyProperty ProgressBarLoadingElementStartPositionProperty =
-            DependencyProperty.RegisterAttached("ProgressBarLoadingElementStartPosition", typeof(double), typeof(Parameters), new UIPropertyMetadata(-5.0));
+        public static readonly DependencyProperty CircularProgressBarThicknessProperty =
+            DependencyProperty.RegisterAttached("CircularProgressBarThickness", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(3.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
-        public static double GetProgressBarLoadingElementStartPosition(DependencyObject obj)
+        public static double GetCircularProgressBarThickness(DependencyObject obj)
         {
-            return (double)obj.GetValue(ProgressBarLoadingElementStartPositionProperty);
+            return (double)obj.GetValue(CircularProgressBarThicknessProperty);
         }
 
-        public static void SetProgressBarLoadingElementStartPosition(DependencyObject obj, double value)
+        public static void SetCircularProgressBarThickness(DependencyObject obj, double value)
         {
-            obj.SetValue(ProgressBarLoadingElementStartPositionProperty, value);
+            obj.SetValue(CircularProgressBarThicknessProperty, value);
         }
 
         #endregion
 
-        #region ScrollBar & ScrollViewer
+        #region ScrollBar
 
         public static readonly DependencyProperty ScrollBarArrowSizeProperty =
-            DependencyProperty.RegisterAttached("ScrollBarArrowSize", typeof(double), typeof(Parameters), new UIPropertyMetadata(6.0));
+            DependencyProperty.RegisterAttached("ScrollBarArrowSize", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(6.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public static double GetScrollBarArrowSize(DependencyObject obj)
         {
@@ -299,25 +455,31 @@ namespace Elysium.Theme
             obj.SetValue(ScrollBarArrowSizeProperty, value);
         }
 
-        public static readonly DependencyProperty ScrollViewerShadowSizeProperty =
-            DependencyProperty.RegisterAttached("ScrollViewerShadowSize", typeof(double), typeof(Parameters), new UIPropertyMetadata(5.0));
-
-        public static double GetScrollViewerShadowSize(DependencyObject obj)
-        {
-            return (double)obj.GetValue(ScrollViewerShadowSizeProperty);
-        }
-
-        public static void SetScrollViewerShadowSize(DependencyObject obj, double value)
-        {
-            obj.SetValue(ScrollViewerShadowSizeProperty, value);
-        }
-
         #endregion
 
         #region TabControl
 
+        public static readonly DependencyProperty TabControlIndicatorBrushProperty =
+            DependencyProperty.RegisterAttached("TabControlIndicatorBrush", typeof(Brush), typeof(Parameters),
+                                                new FrameworkPropertyMetadata((Brush)null,
+                                                                              FrameworkPropertyMetadataOptions.AffectsRender |
+                                                                              FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender));
+
+        public static Brush GetTabControlIndicatorBrush(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(TabControlIndicatorBrushProperty);
+        }
+
+        public static void SetTabControlIndicatorBrush(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(TabControlIndicatorBrushProperty, value);
+        }
+
         public static readonly DependencyProperty TabControlIndicatorThicknessProperty =
-            DependencyProperty.RegisterAttached("TabControlIndicatorThickness", typeof(Thickness), typeof(Parameters), new UIPropertyMetadata(new Thickness()));
+            DependencyProperty.RegisterAttached("TabControlIndicatorThickness", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(2.0,
+                                                                              FrameworkPropertyMetadataOptions.AffectsRender |
+                                                                              FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public static Thickness GetTabControlIndicatorThickness(DependencyObject obj)
         {
@@ -329,12 +491,27 @@ namespace Elysium.Theme
             obj.SetValue(TabControlIndicatorThicknessProperty, value);
         }
 
+        public static readonly DependencyProperty TabItemHeaderStyleProperty =
+            DependencyProperty.RegisterAttached("TabItemHeaderStyle", typeof(Style), typeof(Parameters),
+                                                new FrameworkPropertyMetadata((Style)null, FrameworkPropertyMetadataOptions.AffectsRender));
+
+        public static Style GetTabItemHeaderStyle(DependencyObject obj)
+        {
+            return (Style)obj.GetValue(TabItemHeaderStyleProperty);
+        }
+
+        public static void SetTabItemHeaderStyle(DependencyObject obj, Style value)
+        {
+            obj.SetValue(TabItemHeaderStyleProperty, value);
+        }
+
         #endregion
 
         #region Menu
 
         public static readonly DependencyProperty SubmenuItemBulletSizeProperty =
-            DependencyProperty.RegisterAttached("SubmenuItemBulletSize", typeof(double), typeof(Parameters), new UIPropertyMetadata(12.0));
+            DependencyProperty.RegisterAttached("SubmenuItemBulletSize", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(12.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public static double GetSubmenuItemBulletSize(DependencyObject obj)
         {
@@ -347,7 +524,8 @@ namespace Elysium.Theme
         }
 
         public static readonly DependencyProperty SubmenuHeaderArrowSizeProperty =
-            DependencyProperty.RegisterAttached("SubmenuHeaderArrowSize", typeof(double), typeof(Parameters), new UIPropertyMetadata(8.0));
+            DependencyProperty.RegisterAttached("SubmenuHeaderArrowSize", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(8.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public static double GetSubmenuHeaderArrowSize(DependencyObject obj)
         {
@@ -361,7 +539,7 @@ namespace Elysium.Theme
 
         public static readonly DependencyProperty SubmenuHeaderArrowMarginProperty =
             DependencyProperty.RegisterAttached("SubmenuHeaderArrowMargin", typeof(Thickness), typeof(Parameters),
-                                                new UIPropertyMetadata(new Thickness(3, 0, 3, 0)));
+                                                new FrameworkPropertyMetadata(new Thickness(3, 0, 3, 0), FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public static Thickness GetSubmenuHeaderArrowMargin(DependencyObject obj)
         {

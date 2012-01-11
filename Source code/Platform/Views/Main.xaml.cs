@@ -4,12 +4,12 @@ using Elysium.Platform.Interop;
 
 namespace Elysium.Platform.Views
 {
-    internal sealed partial class Main
+    public sealed partial class Main
     {
         private readonly WindowInteropHelper _helper;
 
         [SecurityCritical]
-        internal Main()
+        public Main()
         {
             InitializeComponent();
 

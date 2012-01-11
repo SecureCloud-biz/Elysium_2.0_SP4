@@ -8,29 +8,29 @@ namespace Elysium.Platform.Interop
     internal static class WinAPI
     {
 // ReSharper disable InconsistentNaming
-        internal const int GWL_EXSTYLE = -20;
-        internal const int WS_EX_TOOLWINDOW = 0x00000080;
+        public const int GWL_EXSTYLE = -20;
+        public const int WS_EX_TOOLWINDOW = 0x00000080;
 
-        internal const uint SWP_NOACTIVATE = 0x0010;
-        internal const uint SWP_NOMOVE = 0x0002;
-        internal const uint SWP_NOSIZE = 0x0001;
+        public const uint SWP_NOACTIVATE = 0x0010;
+        public const uint SWP_NOMOVE = 0x0002;
+        public const uint SWP_NOSIZE = 0x0001;
 
-        internal static readonly IntPtr HWND_BOTTOM = new IntPtr(1);
+        public static readonly IntPtr HWND_BOTTOM = new IntPtr(1);
 
-        internal const uint ABM_GETTASKBARPOS = 0x00000005;
-        internal const uint ABM_GETSTATE = 0x00000004;
+        public const uint ABM_GETTASKBARPOS = 0x00000005;
+        public const uint ABM_GETSTATE = 0x00000004;
 
-        internal const uint ABS_AUTOHIDE = 0x0000001;
-        internal const uint ABS_ALWAYSONTOP = 0x0000002;
+        public const uint ABS_AUTOHIDE = 0x0000001;
+        public const uint ABS_ALWAYSONTOP = 0x0000002;
 
-        internal enum Bool
+        public enum Bool
         {
             False = 0,
             True
         }
 
         [ComVisible(true)]
-        internal enum DWMWindowAttribute : uint
+        public enum DWMWindowAttribute : uint
         {
             DWMWA_NCRENDERING_ENABLED = 1,
             DWMWA_NCRENDERING_POLICY,
@@ -48,7 +48,7 @@ namespace Elysium.Platform.Interop
         }
 
         [ComVisible(true)]
-        internal enum DWMFlip3DWindowPolicy
+        public enum DWMFlip3DWindowPolicy
         {
             DWMFLIP3D_DEFAULT,
             DWMFLIP3D_EXCLUDEBELOW,
@@ -56,7 +56,7 @@ namespace Elysium.Platform.Interop
             DWMFLIP3D_LAST
         }
 
-        internal enum ABE : uint
+        public enum ABE : uint
         {
             Left = 0,
             Top,
@@ -65,25 +65,25 @@ namespace Elysium.Platform.Interop
         }
 
         [StructLayout(LayoutKind.Sequential)]
-        internal struct RECT
+        public struct RECT
         {
-            internal int left;
-            internal int top;
-            internal int right;
-            internal int bottom;
+            public int left;
+            public int top;
+            public int right;
+            public int bottom;
         }
 
         [StructLayout(LayoutKind.Sequential)]
-        internal struct APPBARDATA
+        public struct APPBARDATA
         {
-            internal uint cbSize;
-            internal IntPtr hWnd;
-            internal uint uCallbackMessage;
-            internal ABE uEdge;
-            internal RECT rc;
+            public uint cbSize;
+            public IntPtr hWnd;
+            public uint uCallbackMessage;
+            public ABE uEdge;
+            public RECT rc;
 
             [MarshalAs(UnmanagedType.SysInt)]
-            internal IntPtr lParam;
+            public IntPtr lParam;
         }
 
 // ReSharper restore InconsistentNaming
@@ -96,7 +96,7 @@ namespace Elysium.Platform.Interop
 
         [DllImport("user32.dll", SetLastError = true, EntryPoint = GetWindowLongEntryPoint)]
         [return: MarshalAs(UnmanagedType.SysInt)]
-        internal static extern IntPtr GetWindowLong(IntPtr hWnd, int nIndex);
+        public static extern IntPtr GetWindowLong(IntPtr hWnd, int nIndex);
 
 #if X86
         private const string SetWindowLongEntryPoint = "SetWindowLong";
@@ -106,25 +106,25 @@ namespace Elysium.Platform.Interop
 
         [DllImport("user32.dll", SetLastError = true, EntryPoint = SetWindowLongEntryPoint)]
         [return: MarshalAs(UnmanagedType.SysInt)]
-        internal static extern IntPtr SetWindowLong(IntPtr hWnd, int nIndex, [MarshalAs(UnmanagedType.SysInt)] IntPtr dwNewLong);
+        public static extern IntPtr SetWindowLong(IntPtr hWnd, int nIndex, [MarshalAs(UnmanagedType.SysInt)] IntPtr dwNewLong);
 
         [DllImport("user32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        internal static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int x, int y, int cx, int cy, uint uFlags);
+        public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int x, int y, int cx, int cy, uint uFlags);
 
         [DllImport("dwmapi.dll", SetLastError = false, PreserveSig = true)]
         [return: MarshalAs(UnmanagedType.Error)]
-        internal static extern int DwmSetWindowAttribute(IntPtr hwnd,
+        public static extern int DwmSetWindowAttribute(IntPtr hwnd,
                                                          DWMWindowAttribute dwmAttribute,
                                                          IntPtr pvAttribute,
                                                          uint cbAttribute);
 
 
         [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-        internal static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+        public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
 
         [DllImport("shell32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.SysUInt)]
-        internal static extern UIntPtr SHAppBarMessage(uint dwMessage, [In] [Out] ref APPBARDATA pData);
+        public static extern UIntPtr SHAppBarMessage(uint dwMessage, [In] [Out] ref APPBARDATA pData);
     }
 } ;

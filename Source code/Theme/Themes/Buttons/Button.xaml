@@ -12,7 +12,7 @@
         
         <Style.Triggers>
             <Trigger Property="IsDefault" Value="True">
-                <Setter Property="BorderBrush" Value="{StaticResource Accent}"/>
+                <Setter Property="FontWeight" Value="Bold"/>
             </Trigger>
         </Style.Triggers>
         

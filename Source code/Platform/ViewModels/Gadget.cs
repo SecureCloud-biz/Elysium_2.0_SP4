@@ -6,30 +6,30 @@ using Elysium.Theme.ViewModels;
 
 namespace Elysium.Platform.ViewModels
 {
-    internal sealed class Gadget : ViewModelBase
+    public sealed class Gadget : ViewModelBase
     {
         private readonly Models.Gadget _model;
 
         private readonly Communication.Gadget _proxy;
 
-        internal Gadget(Models.Gadget model)
+        public Gadget(Models.Gadget model)
         {
             _model = model;
-            if (!Communication.GadgetHelper.Load(_model.ID, out _proxy))
+            if (!Communication.GadgetHelper.Load(_model.ID, out _domain, out _proxy))
                 Dispose();
         }
 
-        internal string Assembly
+        public string Assembly
         {
             get { return _model.Assembly; }
         }
 
-        internal string Type
+        public string Type
         {
             get { return _model.Type; }
         }
 
-        internal AppDomain Domain
+        public AppDomain Domain
         {
             get
             {
@@ -40,18 +40,11 @@ namespace Elysium.Platform.ViewModels
 
                 return _domain;
             }
-            set
-            {
-                Contract.Requires<ArgumentNullException>(value != null, "value");
-
-                _domain = value;
-                OnPropertyChanged("Domain");
-            }
         }
 
         private AppDomain _domain;
 
-        internal Communication.Info Info
+        public Communication.Info Info
         {
             get
             {
@@ -64,7 +57,7 @@ namespace Elysium.Platform.ViewModels
             }
         }
 
-        internal Communication.GadgetCallback Callback
+        public Communication.GadgetCallback Callback
         {
             get
             {
@@ -77,7 +70,7 @@ namespace Elysium.Platform.ViewModels
             }
         }
 
-        internal FrameworkElement Visual
+        public FrameworkElement Visual
         {
             get
             {
@@ -96,7 +89,7 @@ namespace Elysium.Platform.ViewModels
 
         private FrameworkElement _visual;
 
-        internal string Page
+        public string Page
         {
             get { return _model.Page; }
             set
@@ -106,7 +99,7 @@ namespace Elysium.Platform.ViewModels
             }
         }
 
-        internal string Group
+        public string Group
         {
             get { return _model.Group; }
             set
@@ -116,49 +109,56 @@ namespace Elysium.Platform.ViewModels
             }
         }
 
-        internal int Column
+        public int Column
         {
             get { return _model.Column; }
             set
             {
-                Contract.Requires<ArgumentException>(value >= 0, Resources.Gadget.ColumnValueMustBeGreaterThanOrEqualToZero);
+                if (value < 0)
+                    throw new ArgumentException(Resources.Gadget.ColumnValueMustBeGreaterThanOrEqualToZero, "value");
+                Contract.EndContractBlock();
 
                 _model.Column = value;
                 OnPropertyChanged("Column");
             }
         }
 
-        internal int ColumnSpan
+        public int ColumnSpan
         {
             get { return _model.ColumnSpan; }
             set
             {
-                Contract.Requires<ArgumentException>(value > 0, Resources.Gadget.ColumnSpanValueMustBeGreaterThanZero);
-                Contract.Requires<ArgumentException>(value <= 2, Resources.Gadget.ColumnSpanValueMustBeLessThanOrEqualToTwo);
+                if (value <= 0)
+                    throw new ArgumentException(Resources.Gadget.ColumnSpanValueMustBeGreaterThanZero, "value");
+                if (value > 2)
+                    throw new ArgumentException(Resources.Gadget.ColumnSpanValueMustBeLessThanOrEqualToTwo, "value");
+                Contract.EndContractBlock();
 
                 _model.ColumnSpan = value;
                 OnPropertyChanged("ColumnSpan");
             }
         }
 
-        internal int Row
+        public int Row
         {
             get { return _model.Row; }
             set
             {
-                Contract.Requires<ArgumentException>(value >= 0, Resources.Gadget.RowValueMustBeGreaterThanOrEqualToZero);
+                if (value < 0)
+                    throw new ArgumentException(Resources.Gadget.RowValueMustBeGreaterThanOrEqualToZero, "value");
+                Contract.EndContractBlock();
 
                 _model.Row = value;
                 OnPropertyChanged("Row");
             }
         }
 
-        internal bool IsExpandable
+        public bool IsExpandable
         {
             get { return _proxy.IsExpandable; }
         }
 
-        internal bool IsExpanded
+        public bool IsExpanded
         {
             get { return _model.IsExpanded; }
             set
@@ -168,7 +168,7 @@ namespace Elysium.Platform.ViewModels
             }
         }
 
-        internal bool IsVisible
+        public bool IsVisible
         {
             get { return _model.IsVisible; }
             set
@@ -191,6 +191,14 @@ namespace Elysium.Platform.ViewModels
 
                 Disposed = true;
             }
+        }
+
+        [ContractInvariantMethod]
+        private void Invariants()
+        {
+            Contract.Invariant(_domain != null);
+            Contract.Invariant(_model != null);
+            Contract.Invariant(_proxy != null);
         }
     }
 } ;

@@ -2,7 +2,7 @@
 
 namespace Elysium.Platform.ViewModels
 {
-    internal class Main : ViewModelBase
+    public class Main : ViewModelBase
     {
 
     }

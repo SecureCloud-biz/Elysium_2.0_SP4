@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Security;
+using System.Security.Permissions;
 using Elysium.Theme.Controls;
 
 namespace Elysium.Platform.Communication
 {
     internal static class GadgetHelper
     {
-        internal static bool Register(string path, string type)
+        public static bool Register(string path, string type)
         {
             AssemblyName assemblyName;
             try
@@ -31,7 +32,7 @@ namespace Elysium.Platform.Communication
                 ToastNotification.Show(Resources.Gadget.RegistrationFailed, string.Format(Resources.Default.FileIsNotAssembly, path));
                 return false;
             }
-            catch (Exception)
+            catch
             {
                 ToastNotification.Show(Resources.Gadget.RegistrationFailed);
                 return false;
@@ -40,13 +41,22 @@ namespace Elysium.Platform.Communication
             try
             {
                 sandbox = Security.Helper.CreateSandbox();
+                
                 sandbox.SetupInformation.ApplicationBase = Path.GetDirectoryName(path);
-                var assembly = sandbox.Load(assemblyName);
+                var permissions = sandbox.ApplicationTrust.DefaultGrantSet.PermissionSet;
+                permissions.AddPermission(new FileIOPermission(FileIOPermissionAccess.Read | FileIOPermissionAccess.PathDiscovery, path));
+                permissions.AddPermission(new ReflectionPermission(ReflectionPermissionFlag.MemberAccess));
+                sandbox.ApplicationTrust.DefaultGrantSet.PermissionSet = permissions;
+
+                Assembly assembly = null;
+                sandbox.DoCallBack(() => assembly = Assembly.ReflectionOnlyLoadFrom(path));
+
                 if (!assembly.IsDefined(typeof(SecurityTransparentAttribute), false))
                 {
                     ToastNotification.Show(Resources.Gadget.RegistrationFailed,
                                            string.Format(Resources.Default.AssemblyIsNotSecurityTransparent, assemblyName.Name));
                 }
+
                 var typeInfo = assembly.GetType(type);
                 if (typeInfo == null)
                 {
@@ -64,7 +74,7 @@ namespace Elysium.Platform.Communication
                 ToastNotification.Show(Resources.Gadget.RegistrationFailed, string.Format(Resources.Default.InvalidTypeName, type));
                 return false;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 ToastNotification.Show(Resources.Gadget.RegistrationFailed);
                 return false;
@@ -88,8 +98,9 @@ namespace Elysium.Platform.Communication
             return true;
         }
 
-        internal static bool Load(Guid id, out Gadget proxy)
+        public static bool Load(Guid id, out AppDomain domain, out Gadget proxy)
         {
+            domain = null;
             proxy = null;
             ViewModels.Gadget gadget;
             try
@@ -108,7 +119,7 @@ namespace Elysium.Platform.Communication
             }
             try
             {
-                gadget.Domain = Security.GadgetHelper.CreateDomain(gadget.Assembly);
+                domain = Security.GadgetHelper.CreateDomain(gadget.Assembly);
             }
             catch (Exception)
             {
@@ -117,7 +128,7 @@ namespace Elysium.Platform.Communication
             }
             try
             {
-                proxy = (Gadget)gadget.Domain.CreateInstance(AssemblyName.GetAssemblyName(gadget.Assembly).Name, gadget.Type).Unwrap();
+                proxy = (Gadget)domain.CreateInstance(AssemblyName.GetAssemblyName(gadget.Assembly).Name, gadget.Type).Unwrap();
                 return true;
             }
             catch (Exception)
@@ -127,7 +138,7 @@ namespace Elysium.Platform.Communication
             }
         }
 
-        internal static void Unload(Guid id)
+        public static void Unload(Guid id)
         {
             var domain = ViewModels.Locator.Gadgets[id].Domain;
             try
@@ -141,7 +152,7 @@ namespace Elysium.Platform.Communication
             }
         }
 
-        internal static bool Unregister(Guid id)
+        public static bool Unregister(Guid id)
         {
             return Settings.Default.Gadgets.Remove(id);
         }

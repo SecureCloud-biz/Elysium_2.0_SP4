@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:Root="clr-namespace:Elysium.Theme">
+                    xmlns:root="clr-namespace:Elysium.Theme">
     
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/SharedResources.xaml"/>
@@ -8,19 +8,19 @@
     
     <Style x:Key="ButtonsBaseStyle" TargetType="{x:Type ButtonBase}">
         
-        <Setter Property="Background" Value="{StaticResource ForegroundHighlight}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
-        <Setter Property="BorderThickness" Value="{x:Static Root:Parameters.DefaultThickness}"/>
-        <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
-        <Setter Property="FontFamily" Value="{x:Static Root:Parameters.FontFamily}"/>
-        <Setter Property="FontSize" Value="{x:Static Root:Parameters.ContentFontSize}"/>
+        <Setter Property="Background" Value="{StaticResource Accent}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Accent}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundContrast}"/>
+        <Setter Property="FontFamily" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=FontFamily, Mode=OneWay}"/>
+        <Setter Property="FontSize" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=ContentFontSize, Mode=OneWay}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
 
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}"/>
         
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="{x:Static Root:Parameters.BoldPadding}"/>
+        <Setter Property="Padding" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
         
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
@@ -52,13 +52,14 @@
                 <Setter Property="Foreground" Value="{StaticResource ForegroundContrast}"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{StaticResource ForegroundLowlight}"/>
-                <Setter Property="BorderBrush" Value="{StaticResource ForegroundLowlight}"/>
-                <Setter Property="Foreground" Value="{StaticResource ForegroundContrast}"/>
+                <Setter Property="Background" Value="{StaticResource ForegroundHighlight}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource ForegroundHighlight}"/>
+                <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="{StaticResource Transparent}"/>
+                <Setter Property="Background" Value="{StaticResource Background}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource Disabled}"/>
+                <Setter Property="BorderThickness" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThickness, Mode=OneWay}"/>
                 <Setter Property="Foreground" Value="{StaticResource Disabled}"/>
             </Trigger>
         </Style.Triggers>

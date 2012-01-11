@@ -8,11 +8,23 @@
 
     <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource SelectorsItemsBaseStyle}">
         <Style.Triggers>
-            <Trigger Property="IsHighlighted" Value="True">
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsEnabled" Value="True"/>
+                    <Condition Property="IsHighlighted" Value="True"/>
+                </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{StaticResource Accent}"/>
                 <Setter Property="Foreground" Value="{StaticResource ForegroundContrast}"/>
-            </Trigger>
-        </Style.Triggers>        
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsEnabled" Value="False"/>
+                    <Condition Property="IsHighlighted" Value="True"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{StaticResource Disabled}"/>
+                <Setter Property="Foreground" Value="{StaticResource ForegroundContrast}"/>
+            </MultiTrigger>
+        </Style.Triggers>
     </Style>
 
 </ResourceDictionary>

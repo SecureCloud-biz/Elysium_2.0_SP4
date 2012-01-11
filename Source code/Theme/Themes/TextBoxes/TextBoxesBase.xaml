@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:Root="clr-namespace:Elysium.Theme">
+                    xmlns:root="clr-namespace:Elysium.Theme">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/SharedResources.xaml"/>
@@ -10,10 +10,10 @@
         
         <Setter Property="Background" Value="{StaticResource Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
-        <Setter Property="BorderThickness" Value="{x:Static Root:Parameters.DefaultThickness}"/>
+        <Setter Property="BorderThickness" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThickness, Mode=OneWay}"/>
         <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
-        <Setter Property="FontFamily" Value="{x:Static Root:Parameters.FontFamily}"/>
-        <Setter Property="FontSize" Value="{x:Static Root:Parameters.TextFontSize}"/>
+        <Setter Property="FontFamily" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=FontFamily, Mode=OneWay}"/>
+        <Setter Property="FontSize" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=TextFontSize, Mode=OneWay}"/>
         <Setter Property="FontWeight" Value="Normal"/>
 
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -24,7 +24,7 @@
 
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="{x:Static Root:Parameters.DefaultPadding}"/>
+        <Setter Property="Padding" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultPadding, Mode=OneWay}"/>
 
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
