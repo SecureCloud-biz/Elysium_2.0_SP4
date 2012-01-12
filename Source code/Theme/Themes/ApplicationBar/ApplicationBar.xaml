@@ -9,8 +9,8 @@
 
     <Style x:Key="{x:Type controls:ApplicationBar}" TargetType="{x:Type controls:ApplicationBar}">
 
-        <Setter Property="Background" Value="{StaticResource ForegroundHighlight}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource ForegroundLowlight}"/>
+        <Setter Property="Background" Value="{StaticResource Highlight}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Lowlight}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
         <Setter Property="FontFamily" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=FontFamily, Mode=OneWay}"/>

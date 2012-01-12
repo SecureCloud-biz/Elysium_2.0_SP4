@@ -36,27 +36,28 @@ namespace Elysium.Theme.Controls.Automation
             return base.GetPattern(patternInterface);
         }
 
-        void IRangeValueProvider.SetValue(double val)
+        public void SetValue(double value)
         {
-            throw new InvalidOperationException("ProgressBar is read-only");
+            throw new InvalidOperationException("Progress bar is read-only");
         }
 
-        bool IRangeValueProvider.IsReadOnly
+        public bool IsReadOnly
         {
             get { return true; }
         }
 
-        double IRangeValueProvider.LargeChange
+        public double LargeChange
         {
             get { return double.NaN; }
         }
 
-        double IRangeValueProvider.SmallChange
+        public double SmallChange
         {
             get { return double.NaN; }
         }
 
         [ContractInvariantMethod]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         private void Invariants()
         {
             // NOTE: WPF doesn't declare contracts

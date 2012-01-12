@@ -2,8 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:root="clr-namespace:Elysium.Theme"
                     xmlns:primitives="clr-namespace:Elysium.Theme.Controls.Primitives"
-                    xmlns:controls="clr-namespace:Elysium.Theme.Controls"
-                    xmlns:converters="clr-namespace:Elysium.Theme.Converters">
+                    xmlns:controls="clr-namespace:Elysium.Theme.Controls">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/SharedResources.xaml"/>
@@ -26,7 +25,7 @@
                                  Grid.Row="0"
                                  Fill="{TemplateBinding Background}"
                                  Stroke="{TemplateBinding BorderBrush}"
-                                 StrokeThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static converters:ThicknessToDoubleConverter.Instance}}"
+                                 StrokeThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessToDoubleConverter}}"
                                  Stretch="Uniform"
                                  HorizontalAlignment="Center"
                                  VerticalAlignment="Center"/>
@@ -34,7 +33,7 @@
                                  Grid.Row="0"
                                  Fill="{TemplateBinding root:Parameters.CommandButtonMask}"
                                  Stroke="{StaticResource Transparent}"
-                                 StrokeThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static converters:ThicknessToDoubleConverter.Instance}}"
+                                 StrokeThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessToDoubleConverter}}"
                                  Stretch="Uniform"
                                  HorizontalAlignment="Center"
                                  VerticalAlignment="Center">

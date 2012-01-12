@@ -1,7 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:root="clr-namespace:Elysium.Theme"
-                    xmlns:converters="clr-namespace:Elysium.Theme.Converters">
+                    xmlns:root="clr-namespace:Elysium.Theme">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/SharedResources.xaml"/>
@@ -16,7 +15,7 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                        <Polygon Fill="{StaticResource ForegroundMiddlelight}"
+                        <Polygon Fill="{StaticResource MiddleLight}"
                                  StrokeThickness="0"
                                  Stretch="Uniform"
                                  Margin="{TemplateBinding root:Parameters.ComboBoxArrowMargin}"
@@ -40,7 +39,7 @@
     <Style x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
 
         <Setter Property="CaretBrush" Value="{StaticResource Foreground}"/>
-        <Setter Property="SelectionBrush" Value="{StaticResource ForegroundMiddlelight}"/>
+        <Setter Property="SelectionBrush" Value="{StaticResource MiddleLight}"/>
 
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
 
@@ -70,7 +69,7 @@
     <Style TargetType="{x:Type ComboBox}">
 
         <Setter Property="Background" Value="{StaticResource Background}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MiddleLight}"/>
         <Setter Property="BorderThickness" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThickness, Mode=OneWay}"/>
         <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
         <Setter Property="FontFamily" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=FontFamily, Mode=OneWay}"/>
@@ -96,7 +95,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
-
+                    
                     <Border x:Name="LayoutRoot"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
@@ -105,7 +104,7 @@
                         <Grid Background="{StaticResource Transparent}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ComboBoxButtonSize), Converter={x:Static converters:DoubleToGridLengthConverter.Instance}}"/>
+                                <ColumnDefinition Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ComboBoxButtonSize), Converter={StaticResource DoubleToGridLengthConverter}}"/>
                             </Grid.ColumnDefinitions>
                             <Popup x:Name="PART_Popup" 
                                    Grid.Column="0"
@@ -178,10 +177,10 @@
                             <Setter TargetName="TextBoxLayout" Property="Visibility" Value="Visible"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{StaticResource ForegroundHighlight}"/>
+                            <Setter Property="Background" Value="{StaticResource Highlight}"/>
                         </Trigger>
                         <Trigger Property="IsDropDownOpen" Value="True">
-                            <Setter Property="Background" Value="{StaticResource ForegroundHighlight}"/>
+                            <Setter Property="Background" Value="{StaticResource Highlight}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                     

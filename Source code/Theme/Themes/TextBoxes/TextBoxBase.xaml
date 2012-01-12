@@ -9,7 +9,7 @@
     <Style x:Key="TextBoxBaseStyle" TargetType="{x:Type TextBoxBase}" BasedOn="{StaticResource TextBoxesBaseStyle}">
         
         <Setter Property="CaretBrush" Value="{StaticResource Foreground}"/>
-        <Setter Property="SelectionBrush" Value="{StaticResource ForegroundMiddlelight}"/>
+        <Setter Property="SelectionBrush" Value="{StaticResource MiddleLight}"/>
 
         <Setter Property="OverridesDefaultStyle" Value="True"/>
 

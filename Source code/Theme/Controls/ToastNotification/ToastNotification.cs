@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Threading;
@@ -11,6 +12,7 @@ namespace Elysium.Theme.Controls
 {
     public static class ToastNotification
     {
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification = "Desktop is constant")]
         public static readonly FrameworkElement Desktop = new FrameworkElement();
 
         private static readonly DependencyProperty FreeIndexesProperty =

@@ -7,8 +7,6 @@ namespace Elysium.Theme.Converters
 {
     public sealed class PositiveToNegativeConverter : IValueConverter
     {
-        public static readonly PositiveToNegativeConverter Instance = new PositiveToNegativeConverter();
-
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is Byte)

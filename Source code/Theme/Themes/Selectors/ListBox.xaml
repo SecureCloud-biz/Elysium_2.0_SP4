@@ -9,7 +9,7 @@
     <Style TargetType="{x:Type ListBox}">
 
         <Setter Property="Background" Value="{StaticResource Background}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MiddleLight}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
         <Setter Property="FontFamily" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=FontFamily, Mode=OneWay}"/>

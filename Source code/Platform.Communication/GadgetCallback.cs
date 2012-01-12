@@ -7,7 +7,7 @@ namespace Elysium.Platform.Communication
     {
         public abstract void AccentColorChanged(Color accentColor);
 
-        public abstract void ThemeChanged(Theme.Theme theme);
+        public abstract void ThemeChanged(Theme.ThemeType theme);
 
         public abstract void SizeChanged(bool isExpanded);
 

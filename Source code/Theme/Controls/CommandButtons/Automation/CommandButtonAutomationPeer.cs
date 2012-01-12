@@ -28,7 +28,7 @@ namespace Elysium.Theme.Controls.Automation
             return patternInterface == PatternInterface.Invoke ? this : base.GetPattern(patternInterface);
         }
 
-        void IInvokeProvider.Invoke()
+        public void Invoke()
         {
             if (!IsEnabled())
             {

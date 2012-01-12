@@ -1,9 +1,11 @@
-﻿using System.Windows.Media;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Windows.Media;
+
 using Elysium.Theme.ViewModels;
 
 namespace Elysium.Theme
 {
-    public enum Theme
+    public enum ThemeType
     {
         Dark,
         Light
@@ -11,6 +13,7 @@ namespace Elysium.Theme
 
     public sealed class ThemeManager : ViewModelBase
     {
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification = "ThemeManager is singleton")]
         public static readonly ThemeManager Instance = new ThemeManager();
 
         private ThemeManager()
@@ -28,15 +31,15 @@ namespace Elysium.Theme
                 Semitransparent = DarkColors.Semitransparent;
                 Background = DarkColors.Background;
                 Foreground = DarkColors.Foreground;
-                ForegroundContrast = DarkColors.ForegroundContrast;
-                ForegroundHighlight = DarkColors.ForegroundHighlight;
-                ForegroundMiddlelight = DarkColors.ForegroundMiddlelight;
-                ForegroundLowlight = DarkColors.ForegroundLowlight;
+                Contrast = DarkColors.Contrast;
+                Highlight = DarkColors.Highlight;
+                MiddleLight = DarkColors.MiddleLight;
+                Lowlight = DarkColors.Lowlight;
                 Disabled = DarkColors.Disabled;
             }
             finally
             {
-                Theme = Theme.Dark;
+                ThemeType = ThemeType.Dark;
             }
         }
 
@@ -49,29 +52,29 @@ namespace Elysium.Theme
                 Semitransparent = LightColors.Semitransparent;
                 Background = LightColors.Background;
                 Foreground = LightColors.Foreground;
-                ForegroundContrast = LightColors.ForegroundContrast;
-                ForegroundHighlight = LightColors.ForegroundHighlight;
-                ForegroundMiddlelight = LightColors.ForegroundMiddlelight;
-                ForegroundLowlight = LightColors.ForegroundLowlight;
+                Contrast = LightColors.Contrast;
+                Highlight = LightColors.Highlight;
+                MiddleLight = LightColors.MiddleLight;
+                Lowlight = LightColors.Lowlight;
                 Disabled = LightColors.Disabled;
             }
             finally
             {
-                Theme = Theme.Light;
+                ThemeType = ThemeType.Light;
             }
         }
 
-        public Theme Theme
+        public ThemeType ThemeType
         {
-            get { return _theme; }
+            get { return _themeType; }
             private set
             {
-                _theme = value;
-                OnPropertyChanged("Theme");
+                _themeType = value;
+                OnPropertyChanged(() => ThemeType);
             }
         }
 
-        private Theme _theme;
+        private ThemeType _themeType;
 
         public Color Accent
         {
@@ -79,7 +82,7 @@ namespace Elysium.Theme
             private set
             {
                 _accent = value;
-                OnPropertyChanged("Accent");
+                OnPropertyChanged(() => Accent);
             }
         }
 
@@ -91,7 +94,7 @@ namespace Elysium.Theme
             private set
             {
                 _transparent = value;
-                OnPropertyChanged("Transparent");
+                OnPropertyChanged(() => Transparent);
             }
         }
 
@@ -104,7 +107,7 @@ namespace Elysium.Theme
             private set
             {
                 _semitransparent = value;
-                OnPropertyChanged("Semitransparent");
+                OnPropertyChanged(() => Semitransparent);
             }
         }
 
@@ -116,7 +119,7 @@ namespace Elysium.Theme
             private set
             {
                 _background = value;
-                OnPropertyChanged("Background");
+                OnPropertyChanged(() => Background);
             }
         }
 
@@ -128,61 +131,61 @@ namespace Elysium.Theme
             private set
             {
                 _foreground = value;
-                OnPropertyChanged("Foreground");
+                OnPropertyChanged(() => Foreground);
             }
         }
 
         private Color _foreground;
 
-        public Color ForegroundContrast
+        public Color Contrast
         {
-            get { return _foregroundContrast; }
+            get { return _contrast; }
             private set
             {
-                _foregroundContrast = value;
-                OnPropertyChanged("ForegroundContrast");
+                _contrast = value;
+                OnPropertyChanged(() => Contrast);
             }
         }
 
-        private Color _foregroundContrast;
+        private Color _contrast;
 
-        public Color ForegroundHighlight
+        public Color Highlight
         {
-            get { return _foregroundHighlight; }
+            get { return _highlight; }
             private set
             {
-                _foregroundHighlight = value;
-                OnPropertyChanged("ForegroundHighlight");
+                _highlight = value;
+                OnPropertyChanged(() => Highlight);
             }
         }
 
-        private Color _foregroundHighlight;
+        private Color _highlight;
 
 
-        public Color ForegroundMiddlelight
+        public Color MiddleLight
         {
-            get { return _foregroundMiddlelight; }
+            get { return _middleLight; }
             private set
             {
-                _foregroundMiddlelight = value;
-                OnPropertyChanged("ForegroundMiddlelight");
+                _middleLight = value;
+                OnPropertyChanged(() => MiddleLight);
             }
         }
 
-        private Color _foregroundMiddlelight;
+        private Color _middleLight;
 
 
-        public Color ForegroundLowlight
+        public Color Lowlight
         {
-            get { return _foregroundLowlight; }
+            get { return _lowlight; }
             private set
             {
-                _foregroundLowlight = value;
-                OnPropertyChanged("ForegroundLowlight");
+                _lowlight = value;
+                OnPropertyChanged(() => Lowlight);
             }
         }
 
-        private Color _foregroundLowlight;
+        private Color _lowlight;
 
         public Color Disabled
         {
@@ -190,7 +193,7 @@ namespace Elysium.Theme
             private set
             {
                 _disabled = value;
-                OnPropertyChanged("Disabled");
+                OnPropertyChanged(() => Disabled);
             }
         }
 

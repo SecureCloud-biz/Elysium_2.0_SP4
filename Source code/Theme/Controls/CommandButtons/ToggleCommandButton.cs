@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Windows;
 using System.Windows.Automation.Peers;
@@ -12,6 +13,7 @@ namespace Elysium.Theme.Controls
     [DefaultEvent("Checked")]
     public class ToggleCommandButton : CommandButtonBase
     {
+        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
         static ToggleCommandButton()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ToggleCommandButton), new FrameworkPropertyMetadata(typeof(ToggleCommandButton)));

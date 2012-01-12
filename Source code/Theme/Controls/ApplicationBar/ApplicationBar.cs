@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Windows;
 using System.Windows.Automation.Peers;
@@ -17,6 +18,7 @@ namespace Elysium.Theme.Controls
     [StyleTypedProperty(Property = "ItemContainerStyle", StyleTargetType = typeof(CommandButton))]
     public class ApplicationBar : ItemsControl
     {
+        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
         static ApplicationBar()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ApplicationBar), new FrameworkPropertyMetadata(typeof(ApplicationBar)));

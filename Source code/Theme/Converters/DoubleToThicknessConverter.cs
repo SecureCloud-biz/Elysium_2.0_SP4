@@ -8,8 +8,6 @@ namespace Elysium.Theme.Converters
     [ValueConversion(typeof(double), typeof(Thickness))]
     public sealed class DoubleToThicknessConverter : IValueConverter
     {
-        public static readonly DoubleToThicknessConverter Instance = new DoubleToThicknessConverter();
-
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (!(value is double))

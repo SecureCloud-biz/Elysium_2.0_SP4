@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Security;
 using System.Windows;
@@ -21,6 +22,7 @@ namespace Elysium.Theme.Controls
         private Rectangle _indicator;
         private Canvas _loadingBar;
 
+        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
         static LinearProgressBar()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(LinearProgressBar), new FrameworkPropertyMetadata(typeof(LinearProgressBar)));
@@ -66,6 +68,13 @@ namespace Elysium.Theme.Controls
         {
             base.OnAnimationsUpdating(e);
 
+            UpdateIndeterminateAnimation();
+
+            UpdateLoadingAnimation();
+        }
+
+        private void UpdateIndeterminateAnimation()
+        {
             if (IndeterminateAnimation != null && IndeterminateAnimation.Name == DefaultIndeterminateAnimationName && Track != null && _indicator != null)
             {
                 var isStarted = State == ProgressBarState.Indeterminate && IsEnabled;
@@ -103,7 +112,10 @@ namespace Elysium.Theme.Controls
                     IndeterminateAnimation.Begin(this, Template, true);
                 }
             }
+        }
 
+        private void UpdateLoadingAnimation()
+        {
             if (LoadingAnimation != null && LoadingAnimation.Name == DefaultLoadingAnimationName && Track != null && _loadingBar != null)
             {
                 var isStarted = State == ProgressBarState.Loading && IsEnabled;
@@ -170,8 +182,7 @@ namespace Elysium.Theme.Controls
                                           (Orientation == Orientation.Horizontal ? elementWidth : elementHeight) + 1;
 
                         var duration = new Duration(TimeSpan.FromSeconds(durationTime));
-                        var animation = new DoubleAnimation(endPosition, duration)
-                                            { BeginTime = TimeSpan.FromSeconds(partMotionTime + shortPauseTime + i * beginTimeIncrement) };
+                        var animation = new DoubleAnimation(endPosition, duration) { BeginTime = TimeSpan.FromSeconds(partMotionTime + shortPauseTime + i * beginTimeIncrement) };
                         Storyboard.SetTarget(animation, element);
                         Storyboard.SetTargetProperty(animation,
                                                      new PropertyPath(Orientation == Orientation.Horizontal ? Canvas.LeftProperty : Canvas.TopProperty));

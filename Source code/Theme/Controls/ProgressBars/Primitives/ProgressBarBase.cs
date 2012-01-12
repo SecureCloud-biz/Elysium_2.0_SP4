@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Security;
 using System.Windows;
@@ -18,8 +19,9 @@ namespace Elysium.Theme.Controls.Primitives
     {
         private const string TrackName = "PART_Track";
 
-        protected FrameworkElement Track;
+        protected FrameworkElement Track { get; set; }
 
+        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
         static ProgressBarBase()
         {
             ValueProperty.OverrideMetadata(typeof(ProgressBarBase), new FrameworkPropertyMetadata(OnValueChanged));

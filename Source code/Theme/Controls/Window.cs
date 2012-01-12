@@ -31,6 +31,7 @@ namespace Elysium.Theme.Controls
         private FrameworkElement _caption;
         private Decorator _applicationBarHost;
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
         static Window()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Window), new FrameworkPropertyMetadata(typeof(Window)));
@@ -57,27 +58,25 @@ namespace Elysium.Theme.Controls
             if (Template != null)
             {
                 _applicationBarHost = (Decorator)Template.FindName(ApplicationBarHost, this);
-                if (_applicationBarHost == null)
+                if (_applicationBarHost != null)
                 {
-                    throw new NullReferenceException("Invalid template. " + ApplicationBarHost + " must be declared.");
-                }
-                var applicationBar = GetApplicationBar(this);
-                if (applicationBar != null)
-                {
-                    _applicationBarHost.Child = applicationBar;
+                    var applicationBar = GetApplicationBar(this);
+                    if (applicationBar != null)
+                    {
+                        _applicationBarHost.Child = applicationBar;
+                    }
                 }
 
                 Contract.Assume(Template != null);
                 _caption = (FrameworkElement)Template.FindName(CaptionName, this);
-                if (_caption == null)
+                if (_caption != null)
                 {
-                    throw new NullReferenceException("Invalid template. " + CaptionName + " must be declared.");
+                    _caption.SizeChanged += (sender, e) =>
+                                                {
+                                                    NonClientWidth = e.NewSize.Width;
+                                                    NonClientHeight = e.NewSize.Height;
+                                                };
                 }
-                _caption.SizeChanged += (sender, e) =>
-                                            {
-                                                NonclientWidth = e.NewSize.Width;
-                                                NonclientHeight = e.NewSize.Height;
-                                            };
             }
         }
 
@@ -96,34 +95,34 @@ namespace Elysium.Theme.Controls
             set { SetValue(ProgressPercentProperty, value); }
         }
 
-        public static readonly DependencyProperty NonclientWidthProperty =
-            DependencyProperty.Register("NonclientWidth", typeof(double), typeof(Window),
+        public static readonly DependencyProperty NonClientWidthProperty =
+            DependencyProperty.Register("NonClientWidth", typeof(double), typeof(Window),
                                         new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
-        public double NonclientWidth
+        public double NonClientWidth
         {
             get
             {
-                var value = GetValue(NonclientWidthProperty);
+                var value = GetValue(NonClientWidthProperty);
                 Contract.Assume(value != null);
                 return (double)value;
             }
-            set { SetValue(NonclientWidthProperty, value); }
+            set { SetValue(NonClientWidthProperty, value); }
         }
 
-        public static readonly DependencyProperty NonclientHeightProperty =
-            DependencyProperty.Register("NonclientHeight", typeof(double), typeof(Window),
+        public static readonly DependencyProperty NonClientHeightProperty =
+            DependencyProperty.Register("NonClientHeight", typeof(double), typeof(Window),
                                         new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
-        public double NonclientHeight
+        public double NonClientHeight
         {
             get
             {
-                var value = GetValue(NonclientHeightProperty);
+                var value = GetValue(NonClientHeightProperty);
                 Contract.Assume(value != null);
                 return (double)value;
             }
-            set { SetValue(NonclientHeightProperty, value); }
+            set { SetValue(NonClientHeightProperty, value); }
         }
 
         private static readonly DependencyPropertyKey IsMainWindowPropertyKey =
@@ -201,11 +200,12 @@ namespace Elysium.Theme.Controls
 
         private static void OnApplicationBarOpening(object sender, MouseButtonEventArgs e)
         {
-            if (sender == null || !(sender is System.Windows.Window))
+            var window = sender as System.Windows.Window;
+            if (window == null)
             {
                 return;
             }
-            var applicationBar = GetApplicationBar((System.Windows.Window)sender);
+            var applicationBar = GetApplicationBar(window);
             if (applicationBar != null)
             {
                 applicationBar.IsOpen = true;

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
@@ -8,8 +7,6 @@ namespace Elysium.Theme.Converters
 {
     public sealed class AngleToCoordinateConverter : IMultiValueConverter
     {
-        public static readonly AngleToCoordinateConverter Instance = new AngleToCoordinateConverter();
-
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             if (values == null || values.Length < 4)
@@ -38,25 +35,18 @@ namespace Elysium.Theme.Converters
             var length = Math.Max(width, height);
             var radius = Math.Min(areaWidth / 2, areaHeight / 2) - length;
 
-            try
+            switch (parameter as string)
             {
-                switch (parameter as string)
-                {
-                    case "X":
-                    case "x":
-                        var x = radiusXCoordinate + radius * Math.Cos(angle * Math.PI / 180);
-                        return x;
-                    case "Y":
-                    case "y":
-                        var y = radiusYCoordinate + radius * Math.Sin(angle * Math.PI / 180);
-                        return y;
-                    default:
-                        return fallbackValue;
-                }
-            }
-            catch
-            {
-                return fallbackValue;
+                case "X":
+                case "x":
+                    var x = radiusXCoordinate + radius * Math.Cos(angle * Math.PI / 180);
+                    return x;
+                case "Y":
+                case "y":
+                    var y = radiusYCoordinate + radius * Math.Sin(angle * Math.PI / 180);
+                    return y;
+                default:
+                    return fallbackValue;
             }
         }
 

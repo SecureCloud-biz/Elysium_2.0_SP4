@@ -28,7 +28,7 @@ namespace Elysium.Platform
                 if (isSingleInstance)
                 {
                     // Set theme
-                    if (Settings.Default.Theme == Theme.Theme.Dark)
+                    if (Settings.Default.Theme == Theme.ThemeType.Dark)
                         ThemeManager.Instance.Dark(Settings.Default.AccentColor);
                     else ThemeManager.Instance.Light(Settings.Default.AccentColor);
 

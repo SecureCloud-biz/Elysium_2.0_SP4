@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Windows;
 using System.Windows.Automation;
@@ -19,6 +20,7 @@ namespace Elysium.Theme.Controls
 
         private Popup _popup;
 
+        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
         static DropDownCommandButton()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(DropDownCommandButton), new FrameworkPropertyMetadata(typeof(DropDownCommandButton)));
@@ -239,17 +241,17 @@ namespace Elysium.Theme.Controls
                 }
                 // NOTE: WPF doesn't declare contracts
                 Contract.Assume(Template != null);
-                _popup = (Popup)Template.FindName(PopupName, this);
-                if (_popup == null)
+                _popup = Template.FindName(PopupName, this) as Popup;
+                if (_popup != null)
                 {
-                    throw new NullReferenceException("Invalid template. " + PopupName + " must be declared.");
-                }
-                _popup.CustomPopupPlacementCallback = PlacePopup;
-                _popup.Opened += OnDropDownOpened;
-                _popup.Closed += OnDropDownClosed;
-                if (Submenu != null)
-                {
-                    _popup.Child = Submenu;
+
+                    _popup.CustomPopupPlacementCallback = PlacePopup;
+                    _popup.Opened += OnDropDownOpened;
+                    _popup.Closed += OnDropDownClosed;
+                    if (Submenu != null)
+                    {
+                        _popup.Child = Submenu;
+                    }
                 }
             }
         }

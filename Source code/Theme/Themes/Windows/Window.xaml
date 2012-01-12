@@ -16,7 +16,7 @@
 	<Style x:Key="{x:Type controls:Window}" TargetType="{x:Type controls:Window}">
 
 		<Setter Property="Background" Value="{StaticResource Background}"/>
-		<Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource MiddleLight}"/>
 		<Setter Property="BorderThickness" Value="0"/>
 		<Setter Property="Foreground" Value="{StaticResource Foreground}"/>
 		<Setter Property="FontFamily" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=FontFamily, Mode=OneWay}"/>
@@ -37,7 +37,7 @@
 		
 		<Setter Property="shell:WindowChrome.WindowChrome">
 			<Setter.Value>
-				<shell:WindowChrome CaptionHeight="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Window}}, Path=NonclientHeight}"
+				<shell:WindowChrome CaptionHeight="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Window}}, Path=NonClientHeight}"
 									CornerRadius="0"
 									GlassFrameThickness="0,1,0,0"
 									NonClientFrameEdges="None"
@@ -77,7 +77,7 @@
 										BorderThickness="0">
 									<TextBlock x:Name="Title"
 											   Text="{TemplateBinding Title}"
-											   Foreground="{StaticResource ForegroundContrast}"
+											   Foreground="{StaticResource Contrast}"
 											   FontSize="{Binding Source={x:Static root:Parameters.Instance}, Path=TitleFontSize, Mode=OneWay}"
 											   FontWeight="Normal"
 											   Margin="10,5"/>

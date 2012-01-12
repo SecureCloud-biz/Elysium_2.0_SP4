@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Resources;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Windows;
@@ -30,5 +31,7 @@ using System.Windows.Markup;
     ResourceDictionaryLocation.SourceAssembly
 )]
 
-[assembly: AssemblyVersion("1.2.176.0")]
-[assembly: AssemblyFileVersion("1.2.176.0")]
+[assembly: NeutralResourcesLanguage("en-us")]
+
+[assembly: AssemblyVersion("1.2.204.0")]
+[assembly: AssemblyFileVersion("1.2.204.0")]

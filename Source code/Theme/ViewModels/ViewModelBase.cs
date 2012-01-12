@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.Linq.Expressions;
 
@@ -10,18 +11,29 @@ namespace Elysium.Theme.ViewModels
     /// </summary>
     public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
-        protected bool Disposed;
-
         public event PropertyChangedEventHandler PropertyChanged;
+
+        protected bool ThrowOnInvalidPropertyName
+        {
+            get { return _throwOnInvalidPropertyName; }
+            set { _throwOnInvalidPropertyName = value; }
+        }
+
+        private bool _throwOnInvalidPropertyName = true;
+
+        protected bool Disposed { get; set; }
 
         protected virtual void OnPropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
+            VerifyPropertyName(propertyName);
+            var handler = PropertyChanged;
+            if (handler != null)
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         protected virtual void OnPropertyChanged<T>(Expression<Func<T>> propertyExpression)
         {
             if (propertyExpression == null)
@@ -30,6 +42,22 @@ namespace Elysium.Theme.ViewModels
             }
             Contract.EndContractBlock();
             OnPropertyChanged(((MemberExpression)propertyExpression.Body).Member.Name);
+        }
+
+        [Conditional("DEBUG")]
+        [DebuggerStepThrough]
+        public void VerifyPropertyName(string propertyName)
+        {
+            if (TypeDescriptor.GetProperties(this)[propertyName] == null)
+            {
+                var message = "Invalid property name: " + propertyName;
+
+                if (ThrowOnInvalidPropertyName)
+                {
+                    throw new MemberAccessException(message);
+                }
+                Debug.Fail(message);
+            }
         }
 
         public void Dispose()
@@ -45,7 +73,7 @@ namespace Elysium.Theme.ViewModels
 
         protected virtual void Dispose(bool disposing)
         {
-
+            Disposed = true;
         }
     }
 } ;

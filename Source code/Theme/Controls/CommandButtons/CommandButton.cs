@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Windows;
 using System.Windows.Automation.Peers;
 
 using Elysium.Theme.Controls.Automation;
@@ -8,6 +9,7 @@ namespace Elysium.Theme.Controls
 {
     public class CommandButton : CommandButtonBase
     {
+        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
         static CommandButton()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CommandButton), new FrameworkPropertyMetadata(typeof(CommandButton)));

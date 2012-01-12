@@ -13,9 +13,9 @@
         
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="{StaticResource ForegroundLowlight}"/>
-                <Setter Property="BorderBrush" Value="{StaticResource ForegroundLowlight}"/>
-                <Setter Property="Foreground" Value="{StaticResource ForegroundContrast}"/>
+                <Setter Property="Background" Value="{StaticResource Lowlight}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource Lowlight}"/>
+                <Setter Property="Foreground" Value="{StaticResource Contrast}"/>
             </Trigger>
         </Style.Triggers>
         

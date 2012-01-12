@@ -7,8 +7,6 @@ namespace Elysium.Theme.Converters
 {
     public sealed class PercentToAngleConverter : IValueConverter
     {
-        public static readonly PercentToAngleConverter Instance = new PercentToAngleConverter();
-
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (!(value is double))

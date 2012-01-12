@@ -1,13 +1,19 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Windows;
 using System.Windows.Media;
 
 namespace Elysium.Theme
 {
-    public class Parameters : DependencyObject
+    public sealed class Parameters : DependencyObject
     {
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification = "Parameters is singleton")]
         public static readonly Parameters Instance = new Parameters();
+
+        private Parameters()
+        {
+        }
 
         #region Font
 
@@ -110,19 +116,19 @@ namespace Elysium.Theme
             set { SetValue(DefaultThicknessProperty, value); }
         }
 
-        public static readonly DependencyProperty SemiboldThicknessProperty =
-            DependencyProperty.Register("SemiboldThickness", typeof(Thickness), typeof(Parameters),
+        public static readonly DependencyProperty SemiBoldThicknessProperty =
+            DependencyProperty.Register("SemiBoldThickness", typeof(Thickness), typeof(Parameters),
                                         new FrameworkPropertyMetadata(new Thickness(1.5), FrameworkPropertyMetadataOptions.AffectsMeasure));
 
-        public Thickness SemiboldThickness
+        public Thickness SemiBoldThickness
         {
             get
             {
-                var value = GetValue(SemiboldThicknessProperty);
+                var value = GetValue(SemiBoldThicknessProperty);
                 Contract.Assume(value != null);
                 return (Thickness)value;
             }
-            set { SetValue(SemiboldThicknessProperty, value); }
+            set { SetValue(SemiBoldThicknessProperty, value); }
         }
 
         public static readonly DependencyProperty BoldThicknessProperty =
@@ -155,19 +161,19 @@ namespace Elysium.Theme
             set { SetValue(DefaultThicknessValueProperty, value); }
         }
 
-        public static readonly DependencyProperty SemiboldThicknessValueProperty =
-            DependencyProperty.Register("SemiboldThicknessValue", typeof(double), typeof(Parameters),
+        public static readonly DependencyProperty SemiBoldThicknessValueProperty =
+            DependencyProperty.Register("SemiBoldThicknessValue", typeof(double), typeof(Parameters),
                                         new FrameworkPropertyMetadata(1.5, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
-        public double SemiboldThicknessValue
+        public double SemiBoldThicknessValue
         {
             get
             {
-                var value = GetValue(SemiboldThicknessValueProperty);
+                var value = GetValue(SemiBoldThicknessValueProperty);
                 Contract.Assume(value != null);
                 return (double)value;
             }
-            set { SetValue(SemiboldThicknessValueProperty, value); }
+            set { SetValue(SemiBoldThicknessValueProperty, value); }
         }
 
         public static readonly DependencyProperty BoldThicknessValueProperty =
@@ -204,19 +210,19 @@ namespace Elysium.Theme
             set { SetValue(DefaultPaddingProperty, value); }
         }
 
-        public static readonly DependencyProperty SemiboldPaddingProperty =
-            DependencyProperty.Register("SemiboldPadding", typeof(Thickness), typeof(Parameters),
+        public static readonly DependencyProperty SemiBoldPaddingProperty =
+            DependencyProperty.Register("SemiBoldPadding", typeof(Thickness), typeof(Parameters),
                                         new FrameworkPropertyMetadata(new Thickness(2.0), FrameworkPropertyMetadataOptions.AffectsMeasure));
 
-        public Thickness SemiboldPadding
+        public Thickness SemiBoldPadding
         {
             get
             {
-                var value = GetValue(SemiboldPaddingProperty);
+                var value = GetValue(SemiBoldPaddingProperty);
                 Contract.Assume(value != null);
                 return (Thickness)value;
             }
-            set { SetValue(SemiboldPaddingProperty, value); }
+            set { SetValue(SemiBoldPaddingProperty, value); }
         }
 
         public static readonly DependencyProperty BoldPaddingProperty =
@@ -249,19 +255,19 @@ namespace Elysium.Theme
             set { SetValue(DefaultPaddingValueProperty, value); }
         }
 
-        public static readonly DependencyProperty SemiboldPaddingValueProperty =
-            DependencyProperty.Register("SemiboldPaddingValue", typeof(double), typeof(Parameters),
+        public static readonly DependencyProperty SemiBoldPaddingValueProperty =
+            DependencyProperty.Register("SemiBoldPaddingValue", typeof(double), typeof(Parameters),
                                         new FrameworkPropertyMetadata(2.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
-        public double SemiboldPaddingValue
+        public double SemiBoldPaddingValue
         {
             get
             {
-                var value = GetValue(SemiboldPaddingValueProperty);
+                var value = GetValue(SemiBoldPaddingValueProperty);
                 Contract.Assume(value != null);
                 return (double)value;
             }
-            set { SetValue(SemiboldPaddingValueProperty, value); }
+            set { SetValue(SemiBoldPaddingValueProperty, value); }
         }
 
         public static readonly DependencyProperty BoldPaddingValueProperty =
@@ -285,7 +291,7 @@ namespace Elysium.Theme
 
         public static readonly DependencyProperty DefaultDurationProperty =
             DependencyProperty.RegisterAttached("DefaultDuration", typeof(Duration), typeof(Parameters),
-                                                new FrameworkPropertyMetadata((new Duration(TimeSpan.Parse("00:00:00.0"))),
+                                                new FrameworkPropertyMetadata((new Duration(TimeSpan.FromSeconds(0.0))),
                                                                               FrameworkPropertyMetadataOptions.None));
 
         public static Duration GetDefaultDuration(DependencyObject obj)
@@ -312,7 +318,7 @@ namespace Elysium.Theme
 
         public static readonly DependencyProperty MinimumDurationProperty =
             DependencyProperty.RegisterAttached("MinimumDuration", typeof(Duration), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.Parse("00:00:00.2")),
+                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.FromSeconds(0.2)),
                                                                               FrameworkPropertyMetadataOptions.None));
 
         public static Duration GetMinimumDuration(DependencyObject obj)
@@ -339,7 +345,7 @@ namespace Elysium.Theme
 
         public static readonly DependencyProperty OptimumDurationProperty =
             DependencyProperty.RegisterAttached("OptimumDuration", typeof(Duration), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.Parse("00:00:00.5")),
+                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.FromSeconds(0.5)),
                                                                               FrameworkPropertyMetadataOptions.None));
 
         public static Duration GetOptimumDuration(DependencyObject obj)
@@ -366,7 +372,7 @@ namespace Elysium.Theme
 
         public static readonly DependencyProperty MaximumDurationProperty =
             DependencyProperty.RegisterAttached("MaximumDuration", typeof(Duration), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.Parse("00:00:01.0")),
+                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.FromSeconds(1.0)),
                                                                               FrameworkPropertyMetadataOptions.None));
 
         public static Duration GetMaximumDuration(DependencyObject obj)

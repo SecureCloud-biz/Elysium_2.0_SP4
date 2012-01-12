@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:root="clr-namespace:Elysium.Theme">
+                    xmlns:root="clr-namespace:Elysium.Theme"
+                    xmlns:converters="clr-namespace:Elysium.Theme.Converters">
     
     <SolidColorBrush x:Key="Accent"
                      Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Accent}"/>
@@ -8,14 +9,14 @@
                      Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Background}"/>
     <SolidColorBrush x:Key="Foreground"
                      Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Foreground}"/>
-    <SolidColorBrush x:Key="ForegroundContrast"
-                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=ForegroundContrast}"/>
-    <SolidColorBrush x:Key="ForegroundHighlight"
-                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=ForegroundHighlight}"/>
-    <SolidColorBrush x:Key="ForegroundMiddlelight"
-                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=ForegroundMiddlelight}"/>
-    <SolidColorBrush x:Key="ForegroundLowlight"
-                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=ForegroundLowlight}"/>
+    <SolidColorBrush x:Key="Contrast"
+                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Contrast}"/>
+    <SolidColorBrush x:Key="Highlight"
+                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Highlight}"/>
+    <SolidColorBrush x:Key="MiddleLight"
+                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=MiddleLight}"/>
+    <SolidColorBrush x:Key="Lowlight"
+                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Lowlight}"/>
     <SolidColorBrush x:Key="Disabled"
                      Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Disabled}"/>
     <SolidColorBrush x:Key="Transparent"
@@ -23,6 +24,11 @@
     <SolidColorBrush x:Key="Semitransparent"
                      Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Semitransparent}"/>
 
+    <converters:DoubleToGridLengthConverter x:Key="DoubleToGridLengthConverter"/>
+    <converters:DoubleToThicknessConverter x:Key="DoubleToThicknessConverter"/>
+    <converters:GridLengthToDoubleConverter x:Key="GridLengthToDoubleConverter"/>
+    <converters:ThicknessToDoubleConverter x:Key="ThicknessToDoubleConverter"/>
+    
     <Style x:Key="FocusVisualStyle">
         <Setter Property="Control.Template">
             <Setter.Value>

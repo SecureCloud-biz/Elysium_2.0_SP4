@@ -17,7 +17,32 @@ namespace Elysium.Theme.Commands
         /// <summary>
         /// Constructor
         /// </summary>
-        public DelegateCommand(Action executeMethod, Func<bool> canExecuteMethod = null, bool isAutomaticRequeryDisabled = false)
+        public DelegateCommand(Action executeMethod)
+            : this(executeMethod, null, false)
+        {
+            
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public DelegateCommand(Action executeMethod, Func<bool> canExecuteMethod) : this(executeMethod, canExecuteMethod, false)
+        {
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Requery")]
+        public DelegateCommand(Action executeMethod, bool isAutomaticRequeryDisabled) : this(executeMethod, null, isAutomaticRequeryDisabled)
+        {
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Requery")]
+        public DelegateCommand(Action executeMethod, Func<bool> canExecuteMethod, bool isAutomaticRequeryDisabled)
         {
             if (executeMethod == null)
             {
@@ -46,6 +71,7 @@ namespace Elysium.Theme.Commands
         /// <summary>
         /// Property to enable or disable CommandManager's automatic requery on this command
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Requery")]
         public bool IsAutomaticRequeryDisabled
         {
             get { return _isAutomaticRequeryDisabled; }
@@ -92,6 +118,7 @@ namespace Elysium.Theme.Commands
         /// <summary>
         /// Raises the CanExecuteChaged event
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1030:UseEventsWhereAppropriate")]
         public void RaiseCanExecuteChanged()
         {
             OnCanExecuteChanged();
@@ -157,7 +184,31 @@ namespace Elysium.Theme.Commands
         /// <summary>
         /// Constructor
         /// </summary>
-        public DelegateCommand(Action<T> executeMethod, Func<T, bool> canExecuteMethod = null, bool isAutomaticRequeryDisabled = false)
+        public DelegateCommand(Action<T> executeMethod) : this(executeMethod, null, false)
+        {
+            
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public DelegateCommand(Action<T> executeMethod, Func<T, bool> canExecuteMethod) : this(executeMethod, canExecuteMethod, false)
+        {
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Requery")]
+        public DelegateCommand(Action<T> executeMethod, bool isAutomaticRequeryDisabled) : this(executeMethod, null, isAutomaticRequeryDisabled)
+        {
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Requery")]
+        public DelegateCommand(Action<T> executeMethod, Func<T, bool> canExecuteMethod, bool isAutomaticRequeryDisabled)
         {
             if (executeMethod == null)
             {
@@ -186,6 +237,7 @@ namespace Elysium.Theme.Commands
         /// <summary>
         /// Property to enable or disable CommandManager's automatic requery on this command
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Requery")]
         public bool IsAutomaticRequeryDisabled
         {
             get { return _isAutomaticRequeryDisabled; }
@@ -228,6 +280,7 @@ namespace Elysium.Theme.Commands
         /// <summary>
         /// Raises the CanExecuteChaged event
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1030:UseEventsWhereAppropriate")]
         public void RaiseCanExecuteChanged()
         {
             OnCanExecuteChanged();
@@ -359,12 +412,7 @@ namespace Elysium.Theme.Commands
                 }
             }
         }
-
-        internal static void AddWeakReferenceHandler(ref List<WeakReference> handlers, EventHandler handler)
-        {
-            AddWeakReferenceHandler(ref handlers, handler, -1);
-        }
-
+        
         internal static void AddWeakReferenceHandler(ref List<WeakReference> handlers, EventHandler handler, int defaultListSize)
         {
             if (handlers == null)

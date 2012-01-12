@@ -30,7 +30,7 @@ namespace Elysium.Theme.Controls.Automation
             return patternInterface == PatternInterface.ExpandCollapse ? this : base.GetPattern(patternInterface);
         }
 
-        void IExpandCollapseProvider.Expand()
+        public void Expand()
         {
             if (!IsEnabled())
             {
@@ -44,7 +44,7 @@ namespace Elysium.Theme.Controls.Automation
             owner.IsDropDownOpen = true;
         }
 
-        void IExpandCollapseProvider.Collapse()
+        public void Collapse()
         {
             if (!IsEnabled())
             {
@@ -58,7 +58,7 @@ namespace Elysium.Theme.Controls.Automation
             owner.IsDropDownOpen = false;
         }
 
-        ExpandCollapseState IExpandCollapseProvider.ExpandCollapseState
+        public ExpandCollapseState ExpandCollapseState
         {
             get
             {
@@ -77,6 +77,7 @@ namespace Elysium.Theme.Controls.Automation
         }
 
         [ContractInvariantMethod]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         private void Invariants()
         {
             // NOTE: WPF doesn't declare contracts

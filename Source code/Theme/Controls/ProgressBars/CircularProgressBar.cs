@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Security;
 using System.Windows;
@@ -22,6 +23,7 @@ namespace Elysium.Theme.Controls
         private Arc _arc;
         private Canvas _loadingBar;
 
+        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
         static CircularProgressBar()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CircularProgressBar), new FrameworkPropertyMetadata(typeof(CircularProgressBar)));
@@ -85,13 +87,21 @@ namespace Elysium.Theme.Controls
 
         protected override void OnAnimationsUpdating(RoutedEventArgs e)
         {
-            OnAnimationsUpdatingInternal(e);
-
             base.OnAnimationsUpdating(e);
+
+            OnAnimationsUpdatingInternal(e);
         }
 
         [SecuritySafeCritical]
         internal virtual void OnAnimationsUpdatingInternal(RoutedEventArgs e)
+        {
+            UpdateIndeterminateAnimation();
+
+            UpdateLoadingAnimation();
+        }
+
+        [SecurityCritical]
+        private void UpdateIndeterminateAnimation()
         {
             if (IndeterminateAnimation != null && IndeterminateAnimation.Name == DefaultIndeterminateAnimationName && Track != null && _arc != null)
             {
@@ -108,12 +118,12 @@ namespace Elysium.Theme.Controls
 
                 var time = (trackSize * Math.PI) / 100;
 
-                var startAngleSetValueAnimation = new DoubleAnimation(0, new Duration(TimeSpan.Parse("00:00:00.0")));
+                var startAngleSetValueAnimation = new DoubleAnimation(0, new Duration(TimeSpan.FromSeconds(0.0)));
 
                 Storyboard.SetTarget(startAngleSetValueAnimation, _arc);
                 Storyboard.SetTargetProperty(startAngleSetValueAnimation, new PropertyPath(Arc.StartAngleProperty));
 
-                var endAngleSetValueAnimation = new DoubleAnimation(-270, new Duration(TimeSpan.Parse("00:00:00.0")));
+                var endAngleSetValueAnimation = new DoubleAnimation(-270, new Duration(TimeSpan.FromSeconds(0.0)));
 
                 Storyboard.SetTarget(endAngleSetValueAnimation, _arc);
                 Storyboard.SetTargetProperty(endAngleSetValueAnimation, new PropertyPath(Arc.EndAngleProperty));
@@ -146,7 +156,11 @@ namespace Elysium.Theme.Controls
                     IndeterminateAnimation.Begin(this, Template, true);
                 }
             }
+        }
 
+        [SecurityCritical]
+        private void UpdateLoadingAnimation()
+        {
             if (LoadingAnimation != null && LoadingAnimation.Name == DefaultLoadingAnimationName && Track != null && _loadingBar != null)
             {
                 var isStarted = State == ProgressBarState.Loading && IsEnabled;
@@ -192,8 +206,7 @@ namespace Elysium.Theme.Controls
                         Storyboard.SetTargetProperty(firstCycleAnimation, new PropertyPath(AngleProperty));
 
                         var secondCycleAnimation =
-                            new DoubleAnimation(0.0, endAngle, duration)
-                                { BeginTime = TimeSpan.FromSeconds(partMotionTime + durationTime + i * beginTimeIncrement) };
+                            new DoubleAnimation(0.0, endAngle, duration) { BeginTime = TimeSpan.FromSeconds(partMotionTime + durationTime + i * beginTimeIncrement) };
                         Storyboard.SetTarget(secondCycleAnimation, element);
                         Storyboard.SetTargetProperty(secondCycleAnimation, new PropertyPath(AngleProperty));
 
@@ -215,14 +228,12 @@ namespace Elysium.Theme.Controls
                         Storyboard.SetTargetProperty(firstCycleAnimation, new PropertyPath(AngleProperty));
 
                         var secondCycleAnimation =
-                            new DoubleAnimation(360.0, duration)
-                                { BeginTime = TimeSpan.FromSeconds(partMotionTime * 2 + durationTime + i * beginTimeIncrement) };
+                            new DoubleAnimation(360.0, duration) { BeginTime = TimeSpan.FromSeconds(partMotionTime * 2 + durationTime + i * beginTimeIncrement) };
                         Storyboard.SetTarget(secondCycleAnimation, element);
                         Storyboard.SetTargetProperty(secondCycleAnimation, new PropertyPath(AngleProperty));
 
                         var moveAnimation =
-                            new DoubleAnimation(-1.0, new Duration(TimeSpan.FromSeconds(0)))
-                                { BeginTime = TimeSpan.FromSeconds(partMotionTime * 2 + durationTime * 2 + i * beginTimeIncrement) };
+                            new DoubleAnimation(-1.0, new Duration(TimeSpan.FromSeconds(0))) { BeginTime = TimeSpan.FromSeconds(partMotionTime * 2 + durationTime * 2 + i * beginTimeIncrement) };
                         Storyboard.SetTarget(moveAnimation, element);
                         Storyboard.SetTargetProperty(moveAnimation, new PropertyPath(AngleProperty));
 
@@ -233,7 +244,7 @@ namespace Elysium.Theme.Controls
                 }
 
                 LoadingAnimation.Duration = new Duration(TimeSpan.FromSeconds(longPauseTime + partMotionTime * 3 + shortPauseTime * 2 + durationTime));
-                
+
                 Contract.Assume(LoadingAnimation.Children != null);
                 foreach (var animation in firstCycleAnimations)
                 {

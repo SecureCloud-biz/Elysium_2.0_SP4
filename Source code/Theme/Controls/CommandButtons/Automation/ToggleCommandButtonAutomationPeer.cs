@@ -30,7 +30,7 @@ namespace Elysium.Theme.Controls.Automation
             return patternInterface == PatternInterface.Toggle ? this : base.GetPattern(patternInterface);
         }
 
-        void IToggleProvider.Toggle()
+        public void Toggle()
         {
             if (!IsEnabled())
             {
@@ -41,7 +41,7 @@ namespace Elysium.Theme.Controls.Automation
             owner.OnToggle();
         }
 
-        ToggleState IToggleProvider.ToggleState
+        public ToggleState ToggleState
         {
             get
             {
@@ -73,6 +73,7 @@ namespace Elysium.Theme.Controls.Automation
         }
 
         [ContractInvariantMethod]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         private void Invariants()
         {
             // NOTE: WPF doesn't declare contracts

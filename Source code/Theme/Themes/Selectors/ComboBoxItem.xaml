@@ -14,7 +14,7 @@
                     <Condition Property="IsHighlighted" Value="True"/>
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{StaticResource Accent}"/>
-                <Setter Property="Foreground" Value="{StaticResource ForegroundContrast}"/>
+                <Setter Property="Foreground" Value="{StaticResource Contrast}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -22,7 +22,7 @@
                     <Condition Property="IsHighlighted" Value="True"/>
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{StaticResource Disabled}"/>
-                <Setter Property="Foreground" Value="{StaticResource ForegroundContrast}"/>
+                <Setter Property="Foreground" Value="{StaticResource Contrast}"/>
             </MultiTrigger>
         </Style.Triggers>
     </Style>

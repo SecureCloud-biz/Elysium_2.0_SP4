@@ -11,7 +11,7 @@
         <Setter Property="Background" Value="{StaticResource Accent}"/>
         <Setter Property="BorderBrush" Value="{StaticResource Accent}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{StaticResource ForegroundContrast}"/>
+        <Setter Property="Foreground" Value="{StaticResource Contrast}"/>
         <Setter Property="FontFamily" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=FontFamily, Mode=OneWay}"/>
         <Setter Property="FontSize" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=ContentFontSize, Mode=OneWay}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
@@ -47,13 +47,13 @@
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{StaticResource ForegroundMiddlelight}"/>
-                <Setter Property="BorderBrush" Value="{StaticResource ForegroundMiddlelight}"/>
-                <Setter Property="Foreground" Value="{StaticResource ForegroundContrast}"/>
+                <Setter Property="Background" Value="{StaticResource MiddleLight}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource MiddleLight}"/>
+                <Setter Property="Foreground" Value="{StaticResource Contrast}"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{StaticResource ForegroundHighlight}"/>
-                <Setter Property="BorderBrush" Value="{StaticResource ForegroundHighlight}"/>
+                <Setter Property="Background" Value="{StaticResource Highlight}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource Highlight}"/>
                 <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">

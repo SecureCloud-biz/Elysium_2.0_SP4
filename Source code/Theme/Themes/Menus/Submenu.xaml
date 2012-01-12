@@ -11,7 +11,7 @@
     <Style x:Key="{x:Type controls:Submenu}" TargetType="{x:Type controls:Submenu}">
         
         <Setter Property="Background" Value="{StaticResource Background}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource ForegroundLowlight}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Lowlight}"/>
         <Setter Property="BorderThickness" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThickness, Mode=OneWay}"/>
         <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
         <Setter Property="FontFamily" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=FontFamily, Mode=OneWay}"/>

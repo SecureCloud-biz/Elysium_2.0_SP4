@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,6 +26,7 @@ namespace Elysium.Theme.Controls.Primitives
         private ContentPresenter _headerHost;
         private ContentPresenter _contentHost;
 
+        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
         static CommandButtonBase()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CommandButtonBase), new FrameworkPropertyMetadata(typeof(CommandButtonBase)));
@@ -100,6 +102,7 @@ namespace Elysium.Theme.Controls.Primitives
             instance.OnHeaderStringFormatChanged((string)e.OldValue, (string)e.NewValue);
         }
 
+        [SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string")]
         protected virtual void OnHeaderStringFormatChanged(string oldHeaderStringFormat, string newHeaderStringFormat)
         {
         }

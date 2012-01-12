@@ -38,9 +38,9 @@ namespace Elysium.Platform {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Dark")]
-        public global::Elysium.Theme.Theme Theme {
+        public global::Elysium.Theme.ThemeType Theme {
             get {
-                return ((global::Elysium.Theme.Theme)(this["Theme"]));
+                return ((global::Elysium.Theme.ThemeType)(this["Theme"]));
             }
             set {
                 this["Theme"] = value;

@@ -22,10 +22,10 @@ namespace Elysium.Theme
         public static readonly Color Semitransparent = Color.FromArgb(0xAA, 0x11, 0x11, 0x11);
         public static readonly Color Background = Color.FromArgb(0xFF, 0x11, 0x11, 0x11);
         public static readonly Color Foreground = Color.FromArgb(0xFF, 0xFF, 0xFF, 0xFF);
-        public static readonly Color ForegroundContrast = Color.FromArgb(0xFF, 0x11, 0x11, 0x11);
-        public static readonly Color ForegroundHighlight = Color.FromArgb(0xFF, 0x40, 0x40, 0x40);
-        public static readonly Color ForegroundMiddlelight = Color.FromArgb(0xFF, 0xBF, 0xBF, 0xBF);
-        public static readonly Color ForegroundLowlight = Color.FromArgb(0xFF, 0xDE, 0xDE, 0xDE);
+        public static readonly Color Contrast = Color.FromArgb(0xFF, 0x11, 0x11, 0x11);
+        public static readonly Color Highlight = Color.FromArgb(0xFF, 0x40, 0x40, 0x40);
+        public static readonly Color MiddleLight = Color.FromArgb(0xFF, 0xBF, 0xBF, 0xBF);
+        public static readonly Color Lowlight = Color.FromArgb(0xFF, 0xDE, 0xDE, 0xDE);
         public static readonly Color Disabled = Color.FromArgb(0xFF, 0x66, 0x66, 0x66);
     }
 
@@ -36,10 +36,10 @@ namespace Elysium.Theme
         public static readonly Color Semitransparent = Color.FromArgb(0xAA, 0xFF, 0xFF, 0xFF);
         public static readonly Color Background = Color.FromArgb(0xFF, 0xFF, 0xFF, 0xFF);
         public static readonly Color Foreground = Color.FromArgb(0xFF, 0x21, 0x21, 0x21);
-        public static readonly Color ForegroundContrast = Color.FromArgb(0xFF, 0xFF, 0xFF, 0xFF);
-        public static readonly Color ForegroundHighlight = Color.FromArgb(0xFF, 0xE0, 0xE0, 0xE0);
-        public static readonly Color ForegroundMiddlelight = Color.FromArgb(0xFF, 0x77, 0x77, 0x77);
-        public static readonly Color ForegroundLowlight = Color.FromArgb(0xFF, 0x40, 0x40, 0x40);
+        public static readonly Color Contrast = Color.FromArgb(0xFF, 0xFF, 0xFF, 0xFF);
+        public static readonly Color Highlight = Color.FromArgb(0xFF, 0xE0, 0xE0, 0xE0);
+        public static readonly Color MiddleLight = Color.FromArgb(0xFF, 0x77, 0x77, 0x77);
+        public static readonly Color Lowlight = Color.FromArgb(0xFF, 0x40, 0x40, 0x40);
         public static readonly Color Disabled = Color.FromArgb(0xFF, 0xB2, 0xB2, 0xB2);
     }
 } ;

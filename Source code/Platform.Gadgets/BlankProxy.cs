@@ -21,14 +21,14 @@ namespace Elysium.Platform.Gadgets
 
             public override void AccentColorChanged(Color accentColor)
             {
-                if (ThemeManager.Instance.Theme == Theme.Theme.Dark)
+                if (ThemeManager.Instance.ThemeType == Theme.ThemeType.Dark)
                     ThemeManager.Instance.Dark(accentColor);
                 else ThemeManager.Instance.Light(accentColor);
             }
 
-            public override void ThemeChanged(Theme.Theme theme)
+            public override void ThemeChanged(Theme.ThemeType theme)
             {
-                if (theme == Theme.Theme.Dark)
+                if (theme == Theme.ThemeType.Dark)
                     ThemeManager.Instance.Dark(ThemeManager.Instance.Accent);
                 else ThemeManager.Instance.Light(ThemeManager.Instance.Accent);
             }
