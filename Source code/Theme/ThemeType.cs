@@ -1,14 +1,14 @@
 using JetBrains.Annotations;
 
-namespace Elysium.Theme.Controls
+namespace Elysium.Theme
 {
     [PublicAPI]
-    public enum VerticalPlacement
+    public enum ThemeType
     {
         [PublicAPI]
-        Top,
+        Dark,
 
         [PublicAPI]
-        Bottom
+        Light
     }
 } ;

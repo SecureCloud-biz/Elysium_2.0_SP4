@@ -1,9 +1,13 @@
 ﻿using System.Windows;
 
+using JetBrains.Annotations;
+
 namespace Elysium.Theme.Extensions
 {
+    [PublicAPI]
     public static class LogicalTreeHelperExtensions
     {
+        [PublicAPI]
         public static T FindParent<T>(DependencyObject current)
             where T : DependencyObject
         {

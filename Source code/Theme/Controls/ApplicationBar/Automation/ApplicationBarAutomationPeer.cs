@@ -1,4 +1,5 @@
-﻿using System.Windows.Automation.Peers;
+﻿using System.Diagnostics.Contracts;
+using System.Windows.Automation.Peers;
 
 namespace Elysium.Theme.Controls.Automation
 {
@@ -11,11 +12,13 @@ namespace Elysium.Theme.Controls.Automation
 
         protected override string GetClassNameCore()
         {
+            Contract.Ensures(Contract.Result<string>() == "ApplicationBar");
             return "ApplicationBar";
         }
 
         protected override AutomationControlType GetAutomationControlTypeCore()
         {
+            Contract.Ensures(Contract.Result<AutomationControlType>() == AutomationControlType.Menu);
             return AutomationControlType.Menu;
         }
     }

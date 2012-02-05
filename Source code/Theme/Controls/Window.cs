@@ -1,12 +1,20 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics.Contracts;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
+using System.Windows.Threading;
+
+using Elysium.Theme.Extensions;
+
+using JetBrains.Annotations;
 
 namespace Elysium.Theme.Controls
 {
+    [PublicAPI]
     [TemplatePart(Name = LayoutRootName, Type = typeof(Panel))]
     [TemplatePart(Name = CaptionName, Type = typeof(FrameworkElement))]
     [TemplatePart(Name = TitleName, Type = typeof(FrameworkElement))]
@@ -41,14 +49,6 @@ namespace Elysium.Theme.Controls
         {
             Contract.Assume(CommandBindings != null);
             CommandBindings.Add(new CommandBinding(ApplicationCommands.Close, (sender, e) => Close()));
-
-            Contract.Assume(Application.Current != null);
-            var isMainWindow = false;
-            Application.Current.Dispatcher.Invoke(new Action(() => isMainWindow = Equals(Application.Current.MainWindow, this)));
-            if (isMainWindow)
-            {
-                SetIsMainWindow(this, true);
-            }
         }
 
         public override void OnApplyTemplate()
@@ -80,95 +80,114 @@ namespace Elysium.Theme.Controls
             }
         }
 
+        [PublicAPI]
         public static readonly DependencyProperty ProgressPercentProperty =
             DependencyProperty.Register("ProgressPercent", typeof(double), typeof(Window),
                                         new FrameworkPropertyMetadata(100.0, FrameworkPropertyMetadataOptions.None));
 
+        [PublicAPI]
+        [Bindable(true)]
+        [Category("Appearance")]
+        [Description("The current magnitude of the progress bar that placed in the top of window.")]
         public double ProgressPercent
         {
-            get
-            {
-                var value = GetValue(ProgressPercentProperty);
-                Contract.Assume(value != null);
-                return (double)value;
-            }
+            get { return BoxingHelper<double>.Unbox(GetValue(ProgressPercentProperty)); }
             set { SetValue(ProgressPercentProperty, value); }
         }
 
+        [PublicAPI]
         public static readonly DependencyProperty NonClientWidthProperty =
             DependencyProperty.Register("NonClientWidth", typeof(double), typeof(Window),
                                         new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
+        [PublicAPI]
+        [Bindable(true)]
         public double NonClientWidth
         {
-            get
-            {
-                var value = GetValue(NonClientWidthProperty);
-                Contract.Assume(value != null);
-                return (double)value;
-            }
+            get { return BoxingHelper<double>.Unbox(GetValue(NonClientWidthProperty)); }
             set { SetValue(NonClientWidthProperty, value); }
         }
 
+        [PublicAPI]
         public static readonly DependencyProperty NonClientHeightProperty =
             DependencyProperty.Register("NonClientHeight", typeof(double), typeof(Window),
                                         new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
+        [PublicAPI]
+        [Bindable(true)]
         public double NonClientHeight
         {
-            get
-            {
-                var value = GetValue(NonClientHeightProperty);
-                Contract.Assume(value != null);
-                return (double)value;
-            }
+            get { return BoxingHelper<double>.Unbox(GetValue(NonClientHeightProperty)); }
             set { SetValue(NonClientHeightProperty, value); }
         }
 
-        private static readonly DependencyPropertyKey IsMainWindowPropertyKey =
-            DependencyProperty.RegisterAttachedReadOnly("IsMainWindow", typeof(bool), typeof(Window), new FrameworkPropertyMetadata(false));
+        [PublicAPI]
+        public static readonly DependencyProperty IsMainWindowProperty =
+            DependencyProperty.RegisterAttached("IsMainWindow", typeof(bool), typeof(Window), new FrameworkPropertyMetadata(false, OnIsMainWindowChanged));
 
-        public static readonly DependencyProperty IsMainWindowProperty = IsMainWindowPropertyKey.DependencyProperty;
-
-        public static bool GetIsMainWindow(DependencyObject obj)
+        [PublicAPI]
+        [JetBrains.Annotations.Pure]
+        [System.Diagnostics.Contracts.Pure]
+        [AttachedPropertyBrowsableForType(typeof(System.Windows.Window))]
+        public static bool GetIsMainWindow(System.Windows.Window obj)
         {
             if (obj == null)
             {
                 throw new ArgumentNullException("obj");
             }
             Contract.EndContractBlock();
-            var value = obj.GetValue(IsMainWindowProperty);
-            Contract.Assume(value != null);
-            return (bool)value;
+            return BooleanBoxingHelper.Unbox(obj.GetValue(IsMainWindowProperty));
         }
 
-        private static void SetIsMainWindow(DependencyObject obj, bool value)
+        [PublicAPI]
+        public static void SetIsMainWindow(System.Windows.Window obj, bool value)
         {
             if (obj == null)
             {
                 throw new ArgumentNullException("obj");
             }
             Contract.EndContractBlock();
-            obj.SetValue(IsMainWindowPropertyKey, value);
+            obj.SetValue(IsMainWindowProperty, BooleanBoxingHelper.Box(value));
         }
 
+        private static void OnIsMainWindowChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var instance = (System.Windows.Window)d;
+            if (instance != null && e.NewValue == BooleanBoxingHelper.TrueBox)
+            {
+                Action setMainWindow =
+                    () =>
+                        {
+                            foreach (var window in Application.Current.Windows.AsParallel().Cast<Window>().Where(window => window != instance))
+                            {
+                                SetIsMainWindow(window, false);
+                            }
+                        };
+                Application.Current.Dispatcher.BeginInvoke(setMainWindow, DispatcherPriority.Render);
+            }
+        }
+
+        [PublicAPI]
         public static readonly DependencyProperty ApplicationBarProperty =
             DependencyProperty.RegisterAttached("ApplicationBar", typeof(ApplicationBar), typeof(Window),
                                                 new FrameworkPropertyMetadata(null, (OnApplicationBarChanged)));
 
-        public static ApplicationBar GetApplicationBar(DependencyObject obj)
+        [PublicAPI]
+        [JetBrains.Annotations.Pure]
+        [System.Diagnostics.Contracts.Pure]
+        [AttachedPropertyBrowsableForType(typeof(System.Windows.Window))]
+        public static ApplicationBar GetApplicationBar(System.Windows.Window obj)
         {
             if (obj == null)
             {
                 throw new ArgumentNullException("obj");
             }
             Contract.EndContractBlock();
-            var value = obj.GetValue(ApplicationBarProperty);
-            Contract.Assume(value != null);
-            return (ApplicationBar)value;
+            return (ApplicationBar)obj.GetValue(ApplicationBarProperty);
         }
 
-        public static void SetApplicationBar(DependencyObject obj, ApplicationBar value)
+        [PublicAPI]
+        public static void SetApplicationBar(System.Windows.Window obj, ApplicationBar value)
         {
             if (obj == null)
             {
@@ -185,8 +204,8 @@ namespace Elysium.Theme.Controls
                 throw new ArgumentNullException("d");
             }
             Contract.EndContractBlock();
-            var instance = (System.Windows.Window)d;
-            if (e.OldValue == null)
+            var instance = d as System.Windows.Window;
+            if (instance != null && e.OldValue == null)
             {
                 instance.MouseRightButtonUp += OnApplicationBarOpening;
             }
@@ -201,14 +220,14 @@ namespace Elysium.Theme.Controls
         private static void OnApplicationBarOpening(object sender, MouseButtonEventArgs e)
         {
             var window = sender as System.Windows.Window;
-            if (window == null)
+            var source = e.OriginalSource as UIElement;
+            if (window != null && source != null && !ApplicationBar.GetPreventsOpen(source))
             {
-                return;
-            }
-            var applicationBar = GetApplicationBar(window);
-            if (applicationBar != null)
-            {
-                applicationBar.IsOpen = true;
+                var applicationBar = GetApplicationBar(window);
+                if (applicationBar != null)
+                {
+                    applicationBar.IsOpen = true;
+                }
             }
         }
     }

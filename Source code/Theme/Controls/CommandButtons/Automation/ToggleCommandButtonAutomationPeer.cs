@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics.Contracts;
+﻿using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
 using System.Windows.Automation;
 using System.Windows.Automation.Peers;
@@ -17,11 +16,13 @@ namespace Elysium.Theme.Controls.Automation
 
         protected override string GetClassNameCore()
         {
+            Contract.Ensures(Contract.Result<string>() == "Button");
             return "Button";
         }
 
         protected override AutomationControlType GetAutomationControlTypeCore()
         {
+            Contract.Ensures(Contract.Result<AutomationControlType>() == AutomationControlType.Button);
             return AutomationControlType.Button;
         }
 

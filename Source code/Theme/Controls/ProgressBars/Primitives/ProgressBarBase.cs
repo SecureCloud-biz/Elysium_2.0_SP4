@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Security;
@@ -7,19 +8,21 @@ using System.Windows.Automation.Peers;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media.Animation;
 
+using Elysium.Theme.Extensions;
+
+using JetBrains.Annotations;
+
 using ProgressBarAutomationPeer = Elysium.Theme.Controls.Automation.ProgressBarAutomationPeer;
 
 namespace Elysium.Theme.Controls.Primitives
 {
+    [PublicAPI]
     [TemplatePart(Name = TrackName, Type = typeof(FrameworkElement))]
-    [TemplateVisualState(Name = "Normal", GroupName = "CommonStates")]
-    [TemplateVisualState(Name = "Indeterminate", GroupName = "CommonStates")]
-    [TemplateVisualState(Name = "Loading", GroupName = "CommonStates")]
     public abstract class ProgressBarBase : RangeBase
     {
         private const string TrackName = "PART_Track";
 
-        protected FrameworkElement Track { get; set; }
+        internal FrameworkElement Track;
 
         [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
         static ProgressBarBase()
@@ -31,16 +34,13 @@ namespace Elysium.Theme.Controls.Primitives
         private static readonly DependencyPropertyKey PercentKey =
             DependencyProperty.RegisterReadOnly("Percent", typeof(double), typeof(ProgressBarBase), new FrameworkPropertyMetadata(0.0));
 
+        [PublicAPI]
         public static readonly DependencyProperty PercentProperty = PercentKey.DependencyProperty;
 
+        [PublicAPI]
         public double Percent
         {
-            get
-            {
-                var value = GetValue(PercentProperty);
-                Contract.Assume(value != null);
-                return (double)value;
-            }
+            get { return BoxingHelper<double>.Unbox(GetValue(PercentProperty)); }
             private set { SetValue(PercentKey, value); }
         }
 
@@ -57,18 +57,18 @@ namespace Elysium.Theme.Controls.Primitives
                                       : (progressBar.Value - progressBar.Minimum) / (progressBar.Maximum - progressBar.Minimum);
         }
 
+        [PublicAPI]
         public static readonly DependencyProperty StateProperty =
             DependencyProperty.Register("State", typeof(ProgressBarState), typeof(ProgressBarBase),
                                         new FrameworkPropertyMetadata(ProgressBarState.Normal, OnStateChanged));
 
+        [PublicAPI]
+        [Bindable(true)]
+        [Category("Behavior")]
+        [Description("Determines the state of control.")]
         public ProgressBarState State
         {
-            get
-            {
-                var value = GetValue(StateProperty);
-                Contract.Assume(value != null);
-                return (ProgressBarState)value;
-            }
+            get { return BoxingHelper<ProgressBarState>.Unbox(GetValue(StateProperty)); }
             set { SetValue(StateProperty, value); }
         }
 
@@ -81,108 +81,137 @@ namespace Elysium.Theme.Controls.Primitives
             Contract.EndContractBlock();
 
             var progressBar = (ProgressBarBase)d;
+            progressBar.OnStateChanged(BoxingHelper<ProgressBarState>.Unbox(e.OldValue), BoxingHelper<ProgressBarState>.Unbox(e.NewValue));
+        }
 
-            var peer = UIElementAutomationPeer.FromElement(progressBar) as ProgressBarAutomationPeer;
+        [PublicAPI]
+// ReSharper disable VirtualMemberNeverOverriden.Global
+        protected virtual void OnStateChanged(ProgressBarState oldState, ProgressBarState newState)
+// ReSharper restore VirtualMemberNeverOverriden.Global
+        {
+            var peer = UIElementAutomationPeer.FromElement(this) as ProgressBarAutomationPeer;
             if (peer != null)
             {
                 peer.InvalidatePeer();
             }
 
-            Contract.Assume(progressBar != null);
-            if (progressBar.IsEnabled)
+            if (IsEnabled)
             {
-                Contract.Assume(e.NewValue != null);
-                switch ((ProgressBarState)e.NewValue)
+                switch (newState)
                 {
-                    case ProgressBarState.Loading:
-                        VisualStateManager.GoToState(progressBar, "Loading", true);
-                        if (progressBar.IndeterminateAnimation != null)
+                    case ProgressBarState.Busy:
+                        VisualStateManager.GoToState(this, "Busy", true);
+                        if (IndeterminateAnimation != null)
                         {
-                            progressBar.IndeterminateAnimation.Stop(progressBar);
+                            IndeterminateAnimation.Stop(this);
                         }
-                        if (progressBar.LoadingAnimation != null)
+                        if (BusyAnimation != null)
                         {
-                            progressBar.LoadingAnimation.Begin(progressBar, progressBar.Template, true);
+                            BusyAnimation.Begin(this, Template, true);
                         }
                         break;
                     case ProgressBarState.Indeterminate:
-                        VisualStateManager.GoToState(progressBar, "Indeterminate", true);
-                        if (progressBar.LoadingAnimation != null)
+                        VisualStateManager.GoToState(this, "Indeterminate", true);
+                        if (BusyAnimation != null)
                         {
-                            progressBar.LoadingAnimation.Stop(progressBar);
+                            BusyAnimation.Stop(this);
                         }
-                        if (progressBar.IndeterminateAnimation != null)
+                        if (IndeterminateAnimation != null)
                         {
-                            progressBar.IndeterminateAnimation.Begin(progressBar, progressBar.Template, true);
+                            IndeterminateAnimation.Begin(this, Template, true);
                         }
                         break;
                     case ProgressBarState.Normal:
-                        VisualStateManager.GoToState(progressBar, "Normal", true);
-                        if (progressBar.IndeterminateAnimation != null)
+                        VisualStateManager.GoToState(this, "Normal", true);
+                        if (IndeterminateAnimation != null)
                         {
-                            progressBar.IndeterminateAnimation.Stop(progressBar);
+                            IndeterminateAnimation.Stop(this);
                         }
-                        if (progressBar.LoadingAnimation != null)
+                        if (BusyAnimation != null)
                         {
-                            progressBar.LoadingAnimation.Stop(progressBar);
+                            BusyAnimation.Stop(this);
                         }
                         break;
                 }
             }
         }
 
+        [PublicAPI]
         protected const string DefaultIndeterminateAnimationName = "DefaultIndeterminateAnimation";
 
+        [PublicAPI]
         public static readonly DependencyProperty IndeterminateAnimationProperty =
             DependencyProperty.Register("IndeterminateAnimation", typeof(Storyboard), typeof(ProgressBarBase),
                                         new FrameworkPropertyMetadata(
                                             new Storyboard { Name = DefaultIndeterminateAnimationName, RepeatBehavior = RepeatBehavior.Forever },
                                             FrameworkPropertyMetadataOptions.AffectsRender));
 
+        [PublicAPI]
+        [Category("Appearance")]
+        [Description("Determines the animation that playing in Indeterminate state.")]
         public Storyboard IndeterminateAnimation
         {
             get { return (Storyboard)GetValue(IndeterminateAnimationProperty); }
             set { SetValue(IndeterminateAnimationProperty, value); }
         }
 
-        protected const string DefaultLoadingAnimationName = "DefaultLoadingAnimation";
+        [PublicAPI]
+        protected const string DefaultBusyAnimationName = "DefaultBusyAnimation";
 
-        public static readonly DependencyProperty LoadingAnimationProperty =
-            DependencyProperty.Register("LoadingAnimation", typeof(Storyboard), typeof(ProgressBarBase),
+        [PublicAPI]
+        public static readonly DependencyProperty BusyAnimationProperty =
+            DependencyProperty.Register("BusyAnimation", typeof(Storyboard), typeof(ProgressBarBase),
                                         new FrameworkPropertyMetadata(
-                                            new Storyboard { Name = DefaultLoadingAnimationName, RepeatBehavior = RepeatBehavior.Forever },
+                                            new Storyboard { Name = DefaultBusyAnimationName, RepeatBehavior = RepeatBehavior.Forever },
                                             FrameworkPropertyMetadataOptions.AffectsRender));
 
-        public Storyboard LoadingAnimation
+        [PublicAPI]
+        [Category("Appearance")]
+        [Description("Determines the animation that playing in Busy state.")]
+        public Storyboard BusyAnimation
         {
-            get { return (Storyboard)GetValue(LoadingAnimationProperty); }
-            set { SetValue(LoadingAnimationProperty, value); }
+            get { return (Storyboard)GetValue(BusyAnimationProperty); }
+            set { SetValue(BusyAnimationProperty, value); }
         }
 
+        [PublicAPI]
         public static readonly RoutedEvent AnimationsUpdatingEvent = EventManager.RegisterRoutedEvent("AnimationsUpdating", RoutingStrategy.Tunnel,
                                                                                                       typeof(RoutedEventHandler), typeof(ProgressBarBase));
 
+        [PublicAPI]
+        [Category("Behavior")]
+        [Description("Occurs when a state's animations updating.")]
         public event RoutedEventHandler AnimationsUpdating
         {
             add { AddHandler(AnimationsUpdatingEvent, value); }
             remove { RemoveHandler(AnimationsUpdatingEvent, value); }
         }
 
+        [PublicAPI]
+// ReSharper disable VirtualMemberNeverOverriden.Global
         protected virtual void OnAnimationsUpdating(RoutedEventArgs e)
+// ReSharper restore VirtualMemberNeverOverriden.Global
         {
             RaiseEvent(e);
         }
 
+        [PublicAPI]
         public static readonly RoutedEvent AnimationsUpdatedEvent = EventManager.RegisterRoutedEvent("AnimationsUpdated", RoutingStrategy.Bubble,
                                                                                                      typeof(RoutedEventHandler), typeof(ProgressBarBase));
 
+        [PublicAPI]
+        [Category("Behavior")]
+        [Description("Occurs when a state's animations updated.")]
         public event RoutedEventHandler AnimationsUpdated
         {
             add { AddHandler(AnimationsUpdatedEvent, value); }
             remove { RemoveHandler(AnimationsUpdatedEvent, value); }
         }
 
+        [PublicAPI]
+// ReSharper disable VirtualMemberNeverOverriden.Global
         protected virtual void OnAnimationsUpdated(RoutedEventArgs e)
+// ReSharper restore VirtualMemberNeverOverriden.Global
         {
             RaiseEvent(e);
         }
@@ -204,10 +233,10 @@ namespace Elysium.Theme.Controls.Primitives
                 if (Track != null)
                 {
                     Track.SizeChanged += (sender, e) =>
-                                             {
-                                                 OnAnimationsUpdating(new RoutedEventArgs(AnimationsUpdatingEvent));
-                                                 OnAnimationsUpdated(new RoutedEventArgs(AnimationsUpdatedEvent));
-                                             };
+                    {
+                        OnAnimationsUpdating(new RoutedEventArgs(AnimationsUpdatingEvent));
+                        OnAnimationsUpdated(new RoutedEventArgs(AnimationsUpdatedEvent));
+                    };
                 }
             }
         }

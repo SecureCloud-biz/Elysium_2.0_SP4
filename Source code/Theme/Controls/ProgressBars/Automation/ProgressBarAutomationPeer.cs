@@ -17,11 +17,13 @@ namespace Elysium.Theme.Controls.Automation
 
         protected override string GetClassNameCore()
         {
+            Contract.Ensures(Contract.Result<string>() == "ProgressBar");
             return "ProgressBar";
         }
 
         protected override AutomationControlType GetAutomationControlTypeCore()
         {
+            Contract.Ensures(Contract.Result<AutomationControlType>() == AutomationControlType.ProgressBar);
             return AutomationControlType.ProgressBar;
         }
 
@@ -43,17 +45,29 @@ namespace Elysium.Theme.Controls.Automation
 
         public bool IsReadOnly
         {
-            get { return true; }
+            get
+            {
+                Contract.Ensures(Contract.Result<bool>());
+                return true;
+            }
         }
 
         public double LargeChange
         {
-            get { return double.NaN; }
+            get
+            {
+                Contract.Ensures(double.IsNaN(Contract.Result<double>()));
+                return double.NaN;
+            }
         }
 
         public double SmallChange
         {
-            get { return double.NaN; }
+            get
+            {
+                Contract.Ensures(double.IsNaN(Contract.Result<double>()));
+                return double.NaN;
+            }
         }
 
         [ContractInvariantMethod]

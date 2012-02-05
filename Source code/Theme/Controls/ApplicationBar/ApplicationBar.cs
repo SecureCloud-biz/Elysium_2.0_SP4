@@ -11,12 +11,17 @@ using System.Windows.Media.Animation;
 using Elysium.Theme.Controls.Automation;
 using Elysium.Theme.Extensions;
 
+using JetBrains.Annotations;
+
 namespace Elysium.Theme.Controls
 {
+    [PublicAPI]
     [DefaultEvent("Opened")]
     [Localizability(LocalizationCategory.Menu)]
     [StyleTypedProperty(Property = "ItemContainerStyle", StyleTargetType = typeof(CommandButton))]
+// ReSharper disable ClassWithVirtualMembersNeverInherited.Global
     public class ApplicationBar : ItemsControl
+// ReSharper restore ClassWithVirtualMembersNeverInherited.Global
     {
         [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
         static ApplicationBar()
@@ -48,23 +53,27 @@ namespace Elysium.Theme.Controls
                                               new MouseButtonEventHandler(OnPreviewMouseButtonOutsideCapturedElement));
         }
 
+        [PublicAPI]
         public static readonly DependencyProperty DockProperty =
             DependencyProperty.RegisterAttached("Dock", typeof(ApplicationBarDock), typeof(ApplicationBar),
                                                 new FrameworkPropertyMetadata(ApplicationBarDock.Left, FrameworkPropertyMetadataOptions.AffectsArrange));
 
-        public static ApplicationBarDock GetDock(DependencyObject obj)
+        [PublicAPI]
+        [JetBrains.Annotations.Pure]
+        [System.Diagnostics.Contracts.Pure]
+        [AttachedPropertyBrowsableForChildren]
+        public static ApplicationBarDock GetDock(UIElement obj)
         {
             if (obj == null)
             {
                 throw new ArgumentNullException("obj");
             }
             Contract.EndContractBlock();
-            var value = obj.GetValue(DockProperty);
-            Contract.Assume(value != null);
-            return (ApplicationBarDock)value;
+            return BoxingHelper<ApplicationBarDock>.Unbox(obj.GetValue(DockProperty));
         }
 
-        public static void SetDock(DependencyObject obj, ApplicationBarDock value)
+        [PublicAPI]
+        public static void SetDock(UIElement obj, ApplicationBarDock value)
         {
             if (obj == null)
             {
@@ -74,21 +83,20 @@ namespace Elysium.Theme.Controls
             obj.SetValue(DockProperty, value);
         }
 
-        [Bindable(true)]
-        [Category("Appearance")]
+        [PublicAPI]
         public static readonly DependencyProperty IsOpenProperty =
             DependencyProperty.Register("IsOpen", typeof(bool), typeof(ApplicationBar),
-                                        new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnIsOpenChanged));
+                                        new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
+                                                                      OnIsOpenChanged));
 
+        [PublicAPI]
+        [Bindable(true)]
+        [Category("Behavior")]
+        [Description("Indicates whether the ApplicationBar is visible.")]
         public bool IsOpen
         {
-            get
-            {
-                var value = GetValue(IsOpenProperty);
-                Contract.Assume(value != null);
-                return (bool)value;
-            }
-            set { SetValue(IsOpenProperty, value); }
+            get { return BooleanBoxingHelper.Unbox(GetValue(IsOpenProperty)); }
+            set { SetValue(IsOpenProperty, BooleanBoxingHelper.Box(value)); }
         }
 
         private bool _isOpen;
@@ -101,12 +109,10 @@ namespace Elysium.Theme.Controls
             }
             Contract.EndContractBlock();
             var instance = (ApplicationBar)d;
-            Contract.Assume(e.OldValue != null);
-            Contract.Assume(e.NewValue != null);
-            instance.OnIsOpenChanged((bool)e.OldValue, (bool)e.NewValue);
+            instance.OnIsOpenChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
         }
 
-        protected virtual void OnIsOpenChanged(bool oldIsOpen, bool newIsOpen)
+        private void OnIsOpenChanged(bool oldIsOpen, bool newIsOpen)
         {
             if (newIsOpen)
             {
@@ -135,60 +141,59 @@ namespace Elysium.Theme.Controls
                     Contract.Assume(storyboard.Children != null);
                     storyboard.Children.Add(animation);
                     storyboard.Completed += (sender, e) =>
-                                                {
-                                                    OnOpened(EventArgs.Empty);
+                    {
+                        OnOpened(EventArgs.Empty);
 
-                                                    storyboard.Remove();
-                                                };
+                        storyboard.Remove();
+                    };
                     BeginStoryboard(storyboard);
 
                     Mouse.Capture(this, CaptureMode.SubTree);
                 }
             }
-            else
+            else if (oldIsOpen)
             {
-                if (oldIsOpen)
+                OnClosing(EventArgs.Empty);
+
+                if (Mouse.Captured == this)
                 {
-                    OnClosing(EventArgs.Empty);
-
-                    if (Mouse.Captured == this)
-                    {
-                        Mouse.Capture(null);
-                    }
-
-                    var storyboard = new Storyboard { FillBehavior = FillBehavior.Stop };
-                    Timeline animation;
-                    switch (TransitionMode)
-                    {
-                        case ApplicationBarTransitionMode.Fade:
-                            animation = new DoubleAnimation(1.0, 0.0, Parameters.GetMinimumDuration(this));
-                            Storyboard.SetTarget(animation, this);
-                            Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
-                            break;
-                        default:
-                            animation = new DoubleAnimation(DesiredSize.Height, 0.0, Parameters.GetMinimumDuration(this));
-                            Storyboard.SetTarget(animation, this);
-                            Storyboard.SetTargetProperty(animation, new PropertyPath("Height"));
-                            break;
-                    }
-                    Contract.Assume(storyboard.Children != null);
-                    storyboard.Children.Add(animation);
-                    storyboard.Completed += (sender, e) =>
-                                                {
-                                                    _isOpen = false;
-                                                    InvalidateArrange();
-
-                                                    OnClosed(EventArgs.Empty);
-
-                                                    storyboard.Remove();
-                                                };
-                    BeginStoryboard(storyboard);
+                    Mouse.Capture(null);
                 }
+
+                var storyboard = new Storyboard { FillBehavior = FillBehavior.Stop };
+                Timeline animation;
+                switch (TransitionMode)
+                {
+                    case ApplicationBarTransitionMode.Fade:
+                        animation = new DoubleAnimation(1.0, 0.0, Parameters.GetMinimumDuration(this));
+                        Storyboard.SetTarget(animation, this);
+                        Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
+                        break;
+                    default:
+                        animation = new DoubleAnimation(DesiredSize.Height, 0.0, Parameters.GetMinimumDuration(this));
+                        Storyboard.SetTarget(animation, this);
+                        Storyboard.SetTargetProperty(animation, new PropertyPath("Height"));
+                        break;
+                }
+                Contract.Assume(storyboard.Children != null);
+                storyboard.Children.Add(animation);
+                storyboard.Completed += (sender, e) =>
+                {
+                    _isOpen = false;
+                    InvalidateArrange();
+
+                    OnClosed(EventArgs.Empty);
+
+                    storyboard.Remove();
+                };
+                BeginStoryboard(storyboard);
             }
         }
 
+        [PublicAPI]
         public event EventHandler Opening;
 
+        [PublicAPI]
         protected virtual void OnOpening(EventArgs e)
         {
             if (Opening != null)
@@ -197,8 +202,10 @@ namespace Elysium.Theme.Controls
             }
         }
 
+        [PublicAPI]
         public event EventHandler Opened;
 
+        [PublicAPI]
         protected virtual void OnOpened(EventArgs e)
         {
             if (Opened != null)
@@ -207,8 +214,10 @@ namespace Elysium.Theme.Controls
             }
         }
 
+        [PublicAPI]
         public event EventHandler Closing;
 
+        [PublicAPI]
         protected virtual void OnClosing(EventArgs e)
         {
             if (Closing != null)
@@ -217,8 +226,10 @@ namespace Elysium.Theme.Controls
             }
         }
 
+        [PublicAPI]
         public event EventHandler Closed;
 
+        [PublicAPI]
         protected virtual void OnClosed(EventArgs e)
         {
             if (Closed != null)
@@ -227,35 +238,64 @@ namespace Elysium.Theme.Controls
             }
         }
 
+        [PublicAPI]
         public static readonly DependencyProperty StaysOpenProperty =
-            DependencyProperty.Register("StaysOpen", typeof(bool), typeof(ApplicationBar), new FrameworkPropertyMetadata(false));
+            DependencyProperty.Register("StaysOpen", typeof(bool), typeof(ApplicationBar),
+                                        new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, FrameworkPropertyMetadataOptions.None));
 
+        [PublicAPI]
+        [Bindable(true)]
+        [Category("Behavior")]
+        [Description("Indicates whether the ApplicationBar control closes when the control is no longer in focus.")]
         public bool StaysOpen
         {
-            get
-            {
-                var value = GetValue(StaysOpenProperty);
-                Contract.Assume(value != null);
-                return (bool)value;
-            }
-            set { SetValue(StaysOpenProperty, value); }
+            get { return BooleanBoxingHelper.Unbox(GetValue(StaysOpenProperty)); }
+            set { SetValue(StaysOpenProperty, BooleanBoxingHelper.Box(value)); }
         }
 
+        [PublicAPI]
+        public static readonly DependencyProperty PreventsOpenProperty =
+            DependencyProperty.RegisterAttached("PreventsOpen", typeof(bool), typeof(ApplicationBar),
+                                                new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, FrameworkPropertyMetadataOptions.Inherits));
+
+        [PublicAPI]
+        [JetBrains.Annotations.Pure]
+        [System.Diagnostics.Contracts.Pure]
+        public static bool GetPreventsOpen(UIElement obj)
+        {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            return BooleanBoxingHelper.Unbox(obj.GetValue(PreventsOpenProperty));
+        }
+
+        [PublicAPI]
+        public static void SetPreventsOpen(UIElement obj, bool value)
+        {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            obj.SetValue(PreventsOpenProperty, BooleanBoxingHelper.Box(value));
+        }
+
+        [PublicAPI]
         public static readonly DependencyProperty TransitionModeProperty =
             DependencyProperty.Register("TransitionMode", typeof(ApplicationBarTransitionMode), typeof(ApplicationBar),
-                                        new FrameworkPropertyMetadata(ApplicationBarTransitionMode.Slide));
+                                        new FrameworkPropertyMetadata(ApplicationBarTransitionMode.Slide, FrameworkPropertyMetadataOptions.None));
 
+        [PublicAPI]
+        [Bindable(true)]
+        [Category("Appearance")]
+        [Description("Animation for the opening and closing of a ApplicationBar.")]
         public ApplicationBarTransitionMode TransitionMode
         {
-            get
-            {
-                var value = GetValue(TransitionModeProperty);
-                Contract.Assume(value != null);
-                return (ApplicationBarTransitionMode)value;
-            }
+            get { return BoxingHelper<ApplicationBarTransitionMode>.Unbox(GetValue(TransitionModeProperty)); }
             set { SetValue(TransitionModeProperty, value); }
         }
-
 
         protected override bool IsItemItsOwnContainerOverride(object item)
         {
@@ -288,13 +328,6 @@ namespace Elysium.Theme.Controls
                 {
                     Mouse.Capture(instance, CaptureMode.SubTree);
                     e.Handled = true;
-                }
-                else
-                {
-                    if (instance.IsOpen && !instance.StaysOpen)
-                    {
-                        instance.IsOpen = true;
-                    }
                 }
             }
         }

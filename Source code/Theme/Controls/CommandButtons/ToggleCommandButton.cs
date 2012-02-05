@@ -7,11 +7,17 @@ using System.Windows.Automation.Peers;
 
 using Elysium.Theme.Controls.Automation;
 using Elysium.Theme.Controls.Primitives;
+using Elysium.Theme.Extensions;
+
+using JetBrains.Annotations;
 
 namespace Elysium.Theme.Controls
 {
+    [PublicAPI]
     [DefaultEvent("Checked")]
+// ReSharper disable ClassWithVirtualMembersNeverInherited.Global
     public class ToggleCommandButton : CommandButtonBase
+// ReSharper restore ClassWithVirtualMembersNeverInherited.Global
     {
         [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
         static ToggleCommandButton()
@@ -19,27 +25,22 @@ namespace Elysium.Theme.Controls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ToggleCommandButton), new FrameworkPropertyMetadata(typeof(ToggleCommandButton)));
         }
 
+        [PublicAPI]
         public static readonly DependencyProperty IsCheckedProperty =
             DependencyProperty.Register("IsChecked", typeof(bool?), typeof(ToggleCommandButton),
-                                        new FrameworkPropertyMetadata(false,
+                                        new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox,
                                                                       FrameworkPropertyMetadataOptions.BindsTwoWayByDefault |
                                                                       FrameworkPropertyMetadataOptions.Journal, OnIsCheckedChanged));
 
+        [PublicAPI]
         [Category("Appearance")]
+        [Description("Indicates whether the button is checked.")]
         [TypeConverter(typeof(NullableBoolConverter))]
         [Localizability(LocalizationCategory.None, Readability = Readability.Unreadable)]
         public bool? IsChecked
         {
-            get
-            {
-                var value = GetValue(IsCheckedProperty);
-                if (value == null)
-                {
-                    return null;
-                }
-                return (bool)value;
-            }
-            set { SetValue(IsCheckedProperty, value); }
+            get { return NullableBooleanBoxingHelper.Unbox(GetValue(IsCheckedProperty)); }
+            set { SetValue(IsCheckedProperty, NullableBooleanBoxingHelper.Box(value)); }
         }
 
         private static void OnIsCheckedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -50,28 +51,10 @@ namespace Elysium.Theme.Controls
             }
             Contract.EndContractBlock();
             var instance = (ToggleCommandButton)d;
-            bool? oldValue;
-            if (e.OldValue == null)
-            {
-                oldValue = null;
-            }
-            else
-            {
-                oldValue = (bool)e.OldValue;
-            }
-            bool? newValue;
-            if (e.NewValue == null)
-            {
-                newValue = null;
-            }
-            else
-            {
-                newValue = (bool)e.NewValue;
-            }
-            instance.OnIsCheckedChanged(oldValue, newValue);
+            instance.OnIsCheckedChanged(NullableBooleanBoxingHelper.Unbox(e.OldValue), NullableBooleanBoxingHelper.Unbox(e.NewValue));
         }
 
-        protected virtual void OnIsCheckedChanged(bool? oldIsChecked, bool? newIsChecked)
+        private void OnIsCheckedChanged(bool? oldIsChecked, bool? newIsChecked)
         {
             var peer = UIElementAutomationPeer.FromElement(this) as ToggleCommandButtonAutomationPeer;
             if (peer != null)
@@ -96,10 +79,13 @@ namespace Elysium.Theme.Controls
             }
         }
 
+        [PublicAPI]
         public static readonly RoutedEvent CheckedEvent = EventManager.RegisterRoutedEvent("Checked", RoutingStrategy.Bubble,
                                                                                            typeof(RoutedEventHandler), typeof(ToggleCommandButton));
 
+        [PublicAPI]
         [Category("Behavior")]
+        [Description("Occurs when a button is checked.")]
         public event RoutedEventHandler Checked
         {
             add { AddHandler(CheckedEvent, value); }
@@ -107,15 +93,19 @@ namespace Elysium.Theme.Controls
             remove { RemoveHandler(CheckedEvent, value); }
         }
 
+        [PublicAPI]
         protected virtual void OnChecked(RoutedEventArgs e)
         {
             RaiseEvent(e);
         }
 
+        [PublicAPI]
         public static readonly RoutedEvent UncheckedEvent = EventManager.RegisterRoutedEvent("Unchecked", RoutingStrategy.Bubble,
                                                                                              typeof(RoutedEventHandler), typeof(ToggleCommandButton));
 
+        [PublicAPI]
         [Category("Behavior")]
+        [Description("Occurs when a button is unchecked.")]
         public event RoutedEventHandler Unchecked
         {
             add { AddHandler(UncheckedEvent, value); }
@@ -123,15 +113,19 @@ namespace Elysium.Theme.Controls
             remove { RemoveHandler(UncheckedEvent, value); }
         }
 
+        [PublicAPI]
         protected virtual void OnUnchecked(RoutedEventArgs e)
         {
             RaiseEvent(e);
         }
 
+        [PublicAPI]
         public static readonly RoutedEvent IndeterminateEvent = EventManager.RegisterRoutedEvent("Indeterminate", RoutingStrategy.Bubble,
                                                                                                  typeof(RoutedEventHandler), typeof(ToggleCommandButton));
 
+        [PublicAPI]
         [Category("Behavior")]
+        [Description("Occurs when a button state is indeterminate.")]
         public event RoutedEventHandler Indeterminate
         {
             add { AddHandler(IndeterminateEvent, value); }
@@ -139,25 +133,24 @@ namespace Elysium.Theme.Controls
             remove { RemoveHandler(IndeterminateEvent, value); }
         }
 
+        [PublicAPI]
         protected virtual void OnIndeterminate(RoutedEventArgs e)
         {
             RaiseEvent(e);
         }
 
+        [PublicAPI]
         public static readonly DependencyProperty IsThreeStateProperty =
-            DependencyProperty.Register("IsThreeState", typeof(bool), typeof(ToggleCommandButton), new FrameworkPropertyMetadata(false));
+            DependencyProperty.Register("IsThreeState", typeof(bool), typeof(ToggleCommandButton), new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox));
 
+        [PublicAPI]
         [Bindable(true)]
         [Category("Behavior")]
+        [Description("Determines whether the control supports two or three states.")]
         public bool IsThreeState
         {
-            get
-            {
-                var value = GetValue(IsThreeStateProperty);
-                Contract.Assume(value != null);
-                return (bool)value;
-            }
-            set { SetValue(IsThreeStateProperty, value); }
+            get { return BooleanBoxingHelper.Unbox(GetValue(IsThreeStateProperty)); }
+            set { SetValue(IsThreeStateProperty, BooleanBoxingHelper.Box(value)); }
         }
 
         protected override AutomationPeer OnCreateAutomationPeer()
@@ -171,6 +164,7 @@ namespace Elysium.Theme.Controls
             base.OnClick();
         }
 
+        [PublicAPI]
         protected internal virtual void OnToggle()
         {
             bool? isChecked;

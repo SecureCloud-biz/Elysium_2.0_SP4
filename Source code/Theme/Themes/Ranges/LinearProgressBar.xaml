@@ -28,34 +28,34 @@
                         <ScaleTransform ScaleX="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Percent}"/>
                     </Rectangle.LayoutTransform>
                 </Rectangle>
-                <Canvas x:Name="PART_LoadingBar"
+                <Canvas x:Name="PART_BusyBar"
                         Canvas.Left="0" Canvas.Top="0"
                         Visibility="Hidden">
                     <Ellipse Fill="{TemplateBinding Foreground}"
                              StrokeThickness="0"
-                             Canvas.Left="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ProgressBarLoadingElementSize), Converter={StaticResource PositiveToNegativeConverter}}"
-                             Width="{TemplateBinding root:Parameters.ProgressBarLoadingElementSize}"
-                             Height="{TemplateBinding root:Parameters.ProgressBarLoadingElementSize}"/>
+                             Canvas.Left="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ProgressBarBusyElementSize), Converter={StaticResource PositiveToNegativeConverter}}"
+                             Width="{TemplateBinding root:Parameters.ProgressBarBusyElementSize}"
+                             Height="{TemplateBinding root:Parameters.ProgressBarBusyElementSize}"/>
                     <Ellipse Fill="{TemplateBinding Foreground}"
                              StrokeThickness="0"
-                             Canvas.Left="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ProgressBarLoadingElementSize), Converter={StaticResource PositiveToNegativeConverter}}"
-                             Width="{TemplateBinding root:Parameters.ProgressBarLoadingElementSize}"
-                             Height="{TemplateBinding root:Parameters.ProgressBarLoadingElementSize}"/>
+                             Canvas.Left="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ProgressBarBusyElementSize), Converter={StaticResource PositiveToNegativeConverter}}"
+                             Width="{TemplateBinding root:Parameters.ProgressBarBusyElementSize}"
+                             Height="{TemplateBinding root:Parameters.ProgressBarBusyElementSize}"/>
                     <Ellipse Fill="{TemplateBinding Foreground}"
                              StrokeThickness="0"
-                             Canvas.Left="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ProgressBarLoadingElementSize), Converter={StaticResource PositiveToNegativeConverter}}"
-                             Width="{TemplateBinding root:Parameters.ProgressBarLoadingElementSize}"
-                             Height="{TemplateBinding root:Parameters.ProgressBarLoadingElementSize}"/>
+                             Canvas.Left="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ProgressBarBusyElementSize), Converter={StaticResource PositiveToNegativeConverter}}"
+                             Width="{TemplateBinding root:Parameters.ProgressBarBusyElementSize}"
+                             Height="{TemplateBinding root:Parameters.ProgressBarBusyElementSize}"/>
                     <Ellipse Fill="{TemplateBinding Foreground}"
                              StrokeThickness="0"
-                             Canvas.Left="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ProgressBarLoadingElementSize), Converter={StaticResource PositiveToNegativeConverter}}"
-                             Width="{TemplateBinding root:Parameters.ProgressBarLoadingElementSize}"
-                             Height="{TemplateBinding root:Parameters.ProgressBarLoadingElementSize}"/>
+                             Canvas.Left="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ProgressBarBusyElementSize), Converter={StaticResource PositiveToNegativeConverter}}"
+                             Width="{TemplateBinding root:Parameters.ProgressBarBusyElementSize}"
+                             Height="{TemplateBinding root:Parameters.ProgressBarBusyElementSize}"/>
                     <Ellipse Fill="{TemplateBinding Foreground}"
                              StrokeThickness="0"
-                             Canvas.Left="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ProgressBarLoadingElementSize), Converter={StaticResource PositiveToNegativeConverter}}"
-                             Width="{TemplateBinding root:Parameters.ProgressBarLoadingElementSize}"
-                             Height="{TemplateBinding root:Parameters.ProgressBarLoadingElementSize}"/>
+                             Canvas.Left="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ProgressBarBusyElementSize), Converter={StaticResource PositiveToNegativeConverter}}"
+                             Width="{TemplateBinding root:Parameters.ProgressBarBusyElementSize}"
+                             Height="{TemplateBinding root:Parameters.ProgressBarBusyElementSize}"/>
                 </Canvas>
             </Canvas>
         </Border>
@@ -77,12 +77,12 @@
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="State" Value="Loading"/>
+                    <Condition Property="State" Value="Busy"/>
                     <Condition Property="IsEnabled" Value="True"/>
                 </MultiTrigger.Conditions>
                 <MultiTrigger.Setters>
                     <Setter TargetName="PART_Indicator" Property="Visibility" Value="Hidden"/>
-                    <Setter TargetName="PART_LoadingBar" Property="Visibility" Value="Visible"/>
+                    <Setter TargetName="PART_BusyBar" Property="Visibility" Value="Visible"/>
                 </MultiTrigger.Setters>
             </MultiTrigger>
         </ControlTemplate.Triggers>
@@ -114,34 +114,34 @@
                         <ScaleTransform ScaleY="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Percent}"/>
                     </Rectangle.LayoutTransform>
                 </Rectangle>
-                <Canvas x:Name="PART_LoadingBar"
+                <Canvas x:Name="PART_BusyBar"
                         Canvas.Left="0" Canvas.Top="0"
                         Visibility="Hidden">
                     <Ellipse Fill="{TemplateBinding Foreground}"
                              StrokeThickness="0"
-                             Canvas.Top="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ProgressBarLoadingElementSize), Converter={StaticResource PositiveToNegativeConverter}}"
-                             Width="{TemplateBinding root:Parameters.ProgressBarLoadingElementSize}"
-                             Height="{TemplateBinding root:Parameters.ProgressBarLoadingElementSize}"/>
+                             Canvas.Top="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ProgressBarBusyElementSize), Converter={StaticResource PositiveToNegativeConverter}}"
+                             Width="{TemplateBinding root:Parameters.ProgressBarBusyElementSize}"
+                             Height="{TemplateBinding root:Parameters.ProgressBarBusyElementSize}"/>
                     <Ellipse Fill="{TemplateBinding Foreground}"
                              StrokeThickness="0"
-                             Canvas.Top="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ProgressBarLoadingElementSize), Converter={StaticResource PositiveToNegativeConverter}}"
-                             Width="{TemplateBinding root:Parameters.ProgressBarLoadingElementSize}"
-                             Height="{TemplateBinding root:Parameters.ProgressBarLoadingElementSize}"/>
+                             Canvas.Top="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ProgressBarBusyElementSize), Converter={StaticResource PositiveToNegativeConverter}}"
+                             Width="{TemplateBinding root:Parameters.ProgressBarBusyElementSize}"
+                             Height="{TemplateBinding root:Parameters.ProgressBarBusyElementSize}"/>
                     <Ellipse Fill="{TemplateBinding Foreground}"
                              StrokeThickness="0"
-                             Canvas.Top="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ProgressBarLoadingElementSize), Converter={StaticResource PositiveToNegativeConverter}}"
-                             Width="{TemplateBinding root:Parameters.ProgressBarLoadingElementSize}"
-                             Height="{TemplateBinding root:Parameters.ProgressBarLoadingElementSize}"/>
+                             Canvas.Top="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ProgressBarBusyElementSize), Converter={StaticResource PositiveToNegativeConverter}}"
+                             Width="{TemplateBinding root:Parameters.ProgressBarBusyElementSize}"
+                             Height="{TemplateBinding root:Parameters.ProgressBarBusyElementSize}"/>
                     <Ellipse Fill="{TemplateBinding Foreground}"
                              StrokeThickness="0"
-                             Canvas.Top="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ProgressBarLoadingElementSize), Converter={StaticResource PositiveToNegativeConverter}}"
-                             Width="{TemplateBinding root:Parameters.ProgressBarLoadingElementSize}"
-                             Height="{TemplateBinding root:Parameters.ProgressBarLoadingElementSize}"/>
+                             Canvas.Top="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ProgressBarBusyElementSize), Converter={StaticResource PositiveToNegativeConverter}}"
+                             Width="{TemplateBinding root:Parameters.ProgressBarBusyElementSize}"
+                             Height="{TemplateBinding root:Parameters.ProgressBarBusyElementSize}"/>
                     <Ellipse Fill="{TemplateBinding Foreground}"
                              StrokeThickness="0"
-                             Canvas.Top="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ProgressBarLoadingElementSize), Converter={StaticResource PositiveToNegativeConverter}}"
-                             Width="{TemplateBinding root:Parameters.ProgressBarLoadingElementSize}"
-                             Height="{TemplateBinding root:Parameters.ProgressBarLoadingElementSize}"/>
+                             Canvas.Top="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ProgressBarBusyElementSize), Converter={StaticResource PositiveToNegativeConverter}}"
+                             Width="{TemplateBinding root:Parameters.ProgressBarBusyElementSize}"
+                             Height="{TemplateBinding root:Parameters.ProgressBarBusyElementSize}"/>
                 </Canvas>
             </Canvas>
         </Border>
@@ -163,12 +163,12 @@
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="State" Value="Loading"/>
+                    <Condition Property="State" Value="Busy"/>
                     <Condition Property="IsEnabled" Value="True"/>
                 </MultiTrigger.Conditions>
                 <MultiTrigger.Setters>
                     <Setter TargetName="PART_Indicator" Property="Visibility" Value="Hidden"/>
-                    <Setter TargetName="PART_LoadingBar" Property="Visibility" Value="Visible"/>
+                    <Setter TargetName="PART_BusyBar" Property="Visibility" Value="Visible"/>
                 </MultiTrigger.Setters>
             </MultiTrigger>
         </ControlTemplate.Triggers>
@@ -188,7 +188,7 @@
 
         <Style.Triggers>
 
-            <Trigger Property="State" Value="Loading">
+            <Trigger Property="State" Value="Busy">
                 <Setter Property="Background" Value="{StaticResource Transparent}"/>
             </Trigger>
             

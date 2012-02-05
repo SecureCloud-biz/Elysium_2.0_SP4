@@ -5,8 +5,11 @@ using System.Windows.Automation.Peers;
 using Elysium.Theme.Controls.Automation;
 using Elysium.Theme.Controls.Primitives;
 
+using JetBrains.Annotations;
+
 namespace Elysium.Theme.Controls
 {
+    [PublicAPI]
     public class CommandButton : CommandButtonBase
     {
         [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]

@@ -10,11 +10,17 @@ using System.Windows.Controls.Primitives;
 
 using Elysium.Theme.Controls.Automation;
 using Elysium.Theme.Controls.Primitives;
+using Elysium.Theme.Extensions;
+
+using JetBrains.Annotations;
 
 namespace Elysium.Theme.Controls
 {
+    [PublicAPI]
     [TemplatePart(Name = PopupName, Type = typeof(Popup))]
+// ReSharper disable ClassWithVirtualMembersNeverInherited.Global
     public class DropDownCommandButton : CommandButtonBase
+// ReSharper restore ClassWithVirtualMembersNeverInherited.Global
     {
         private const string PopupName = "PART_Popup";
 
@@ -27,12 +33,15 @@ namespace Elysium.Theme.Controls
             EventManager.RegisterClassHandler(typeof(DropDownCommandButton), MenuItem.ClickEvent, new RoutedEventHandler(OnMenuItemClick), true);
         }
 
+        [PublicAPI]
         public static readonly DependencyProperty SubmenuProperty =
             DependencyProperty.Register("Submenu", typeof(Submenu), typeof(DropDownCommandButton),
                                         new FrameworkPropertyMetadata(null, OnSubmenuChanged));
 
+        [PublicAPI]
         [Bindable(true)]
         [Category("Content")]
+        [Description("Popup menu that drop down.")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public Submenu Submenu
         {
@@ -51,6 +60,7 @@ namespace Elysium.Theme.Controls
             instance.OnSubmenuChanged((Submenu)e.OldValue, (Submenu)e.NewValue);
         }
 
+        [PublicAPI]
         protected virtual void OnSubmenuChanged(Submenu oldSubmenu, Submenu newSubmenu)
         {
             if (_popup != null)
@@ -62,21 +72,18 @@ namespace Elysium.Theme.Controls
 
         private static readonly DependencyPropertyKey HasSubmenuPropertyKey =
             DependencyProperty.RegisterReadOnly("HasSubmenu", typeof(bool), typeof(DropDownCommandButton),
-                                                new FrameworkPropertyMetadata(false, OnHasSubmenuChanged));
+                                                new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, OnHasSubmenuChanged));
 
+        [PublicAPI]
         public static readonly DependencyProperty HasSubmenuProperty = HasSubmenuPropertyKey.DependencyProperty;
 
+        [PublicAPI]
         [Bindable(false)]
         [Browsable(false)]
         public bool HasSubmenu
         {
-            get
-            {
-                var value = GetValue(HasSubmenuProperty);
-                Contract.Assume(value != null);
-                return (bool)value;
-            }
-            private set { SetValue(HasSubmenuPropertyKey, value); }
+            get { return BooleanBoxingHelper.Unbox(GetValue(HasSubmenuProperty)); }
+            private set { SetValue(HasSubmenuPropertyKey, BooleanBoxingHelper.Box(value)); }
         }
 
         private static void OnHasSubmenuChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -87,11 +94,10 @@ namespace Elysium.Theme.Controls
             }
             Contract.EndContractBlock();
             var instance = (DropDownCommandButton)d;
-            Contract.Assume(e.OldValue != null);
-            Contract.Assume(e.NewValue != null);
-            instance.OnHasSubmenuChanged((bool)e.OldValue, (bool)e.NewValue);
+            instance.OnHasSubmenuChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
         }
 
+        [PublicAPI]
         protected virtual void OnHasSubmenuChanged(bool oldHasSubmenu, bool newHasSubmenu)
         {
             var peer = UIElementAutomationPeer.FromElement(this) as DropDownCommandButtonAutomationPeer;
@@ -103,22 +109,20 @@ namespace Elysium.Theme.Controls
             }
         }
 
+        [PublicAPI]
         public static readonly DependencyProperty IsDropDownOpenProperty =
             DependencyProperty.Register("IsDropDownOpen", typeof(bool), typeof(DropDownCommandButton),
-                                        new FrameworkPropertyMetadata(false, OnIsDropDownOpenChanged, CoerceIsDropDownOpen));
+                                        new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, OnIsDropDownOpenChanged, CoerceIsDropDownOpen));
 
+        [PublicAPI]
         [Bindable(true)]
         [Browsable(false)]
         [Category("Appearance")]
+        [Description("Indicates whether drop down is open.")]
         public bool IsDropDownOpen
         {
-            get
-            {
-                var value = GetValue(IsDropDownOpenProperty);
-                Contract.Assume(value != null);
-                return (bool)value;
-            }
-            set { SetValue(IsDropDownOpenProperty, value); }
+            get { return BooleanBoxingHelper.Unbox(GetValue(IsDropDownOpenProperty)); }
+            set { SetValue(IsDropDownOpenProperty, BooleanBoxingHelper.Box(value)); }
         }
 
         private static void OnIsDropDownOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -129,12 +133,10 @@ namespace Elysium.Theme.Controls
             }
             Contract.EndContractBlock();
             var instance = (DropDownCommandButton)d;
-            Contract.Assume(e.OldValue != null);
-            Contract.Assume(e.NewValue != null);
-            instance.OnIsDropDownOpenChanged((bool)e.OldValue, (bool)e.NewValue);
+            instance.OnIsDropDownOpenChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
         }
 
-        protected virtual void OnIsDropDownOpenChanged(bool oldIsDropDownOpen, bool newIsDropDownOpen)
+        private void OnIsDropDownOpenChanged(bool oldIsDropDownOpen, bool newIsDropDownOpen)
         {
             var peer = UIElementAutomationPeer.FromElement(this) as DropDownCommandButtonAutomationPeer;
             if (peer != null)
@@ -165,17 +167,18 @@ namespace Elysium.Theme.Controls
             }
             Contract.EndContractBlock();
             var instance = (DropDownCommandButton)d;
-            Contract.Assume(baseValue != null);
-            return instance.CoerceIsDropDownOpen((bool)baseValue);
+            return instance.CoerceIsDropDownOpen(BooleanBoxingHelper.Unbox(baseValue));
         }
 
-        protected virtual object CoerceIsDropDownOpen(bool baseValue)
+        private object CoerceIsDropDownOpen(bool baseValue)
         {
             return HasSubmenu && baseValue;
         }
 
+        [PublicAPI]
         public event EventHandler DropDownOpened;
 
+        [PublicAPI]
         protected virtual void OnDropDownOpened(EventArgs e)
         {
             if (DropDownOpened != null)
@@ -189,8 +192,10 @@ namespace Elysium.Theme.Controls
             OnDropDownOpened(e);
         }
 
+        [PublicAPI]
         public event EventHandler DropDownClosed;
 
+        [PublicAPI]
         protected virtual void OnDropDownClosed(EventArgs e)
         {
             if (DropDownClosed != null)
@@ -204,21 +209,19 @@ namespace Elysium.Theme.Controls
             OnDropDownClosed(e);
         }
 
+        [PublicAPI]
         public static readonly DependencyProperty MaxDropDownHeightProperty =
             DependencyProperty.Register("MaxDropDownHeight", typeof(double), typeof(DropDownCommandButton),
                                         new FrameworkPropertyMetadata(SystemParameters.PrimaryScreenHeight / 3));
 
+        [PublicAPI]
         [Bindable(true)]
         [Category("Layout")]
+        [Description("The maximum height constraint of the drop down.")]
         [TypeConverter(typeof(LengthConverter))]
         public double MaxDropDownHeight
         {
-            get
-            {
-                var value = GetValue(MaxDropDownHeightProperty);
-                Contract.Assume(value != null);
-                return (double)value;
-            }
+            get { return BoxingHelper<double>.Unbox(GetValue(MaxDropDownHeightProperty)); }
             set { SetValue(MaxDropDownHeightProperty, value); }
         }
 
@@ -277,7 +280,7 @@ namespace Elysium.Theme.Controls
             if (window != null)
             {
                 var transformToAncestor = TransformToAncestor(window);
-                // Because WPF doesn't include contracts
+                // NOTE: WPF doesn't declare contracts
                 Contract.Assume(transformToAncestor != null);
                 var position = new Point(targetsize.Width / 2 - popupsize.Width / 2 + offset.X,
                                          -popupsize.Height + offset.Y - (Margin.Left + Margin.Top + Margin.Right + Margin.Bottom) / 2);
@@ -291,7 +294,7 @@ namespace Elysium.Theme.Controls
                     relativePosition.X = window.Width - popupsize.Width;
                 }
                 var transformToDescendant = window.TransformToDescendant(this);
-                // Because WPF doesn't include contracts
+                // NOTE: WPF doesn't declare contracts
                 Contract.Assume(transformToDescendant != null);
                 position = transformToDescendant.Transform(relativePosition);
                 return new[]

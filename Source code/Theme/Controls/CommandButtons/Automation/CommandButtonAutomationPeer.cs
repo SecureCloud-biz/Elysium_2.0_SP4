@@ -15,11 +15,13 @@ namespace Elysium.Theme.Controls.Automation
 
         protected override string GetClassNameCore()
         {
+            Contract.Ensures(Contract.Result<string>() == "Button");
             return "Button";
         }
 
         protected override AutomationControlType GetAutomationControlTypeCore()
         {
+            Contract.Ensures(Contract.Result<AutomationControlType>() == AutomationControlType.Button);
             return AutomationControlType.Button;
         }
 

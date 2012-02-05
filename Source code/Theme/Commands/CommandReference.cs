@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 using System.Windows;
 using System.Windows.Input;
 
@@ -57,6 +58,7 @@ namespace Elysium.Theme.Commands
 
         protected override Freezable CreateInstanceCore()
         {
+            Contract.Ensures(false);
             throw new NotImplementedException();
         }
 

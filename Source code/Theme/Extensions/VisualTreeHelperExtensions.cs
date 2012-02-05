@@ -1,10 +1,14 @@
 ﻿using System.Windows;
 using System.Windows.Media;
 
+using JetBrains.Annotations;
+
 namespace Elysium.Theme.Extensions
 {
+    [PublicAPI]
     public static class VisualTreeHelperExtensions
     {
+        [PublicAPI]
         public static T FindParent<T>(DependencyObject reference)
             where T : DependencyObject
         {

@@ -13,36 +13,12 @@ namespace Elysium.Theme.Commands
     public class DelegateCommand : ICommand
     {
         #region Constructors
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public DelegateCommand(Action executeMethod)
-            : this(executeMethod, null, false)
-        {
-            
-        }
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public DelegateCommand(Action executeMethod, Func<bool> canExecuteMethod) : this(executeMethod, canExecuteMethod, false)
-        {
-        }
-
+        
         /// <summary>
         /// Constructor
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Requery")]
-        public DelegateCommand(Action executeMethod, bool isAutomaticRequeryDisabled) : this(executeMethod, null, isAutomaticRequeryDisabled)
-        {
-        }
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Requery")]
-        public DelegateCommand(Action executeMethod, Func<bool> canExecuteMethod, bool isAutomaticRequeryDisabled)
+        public DelegateCommand(Action executeMethod, Func<bool> canExecuteMethod = null, bool isAutomaticRequeryDisabled = false)
         {
             if (executeMethod == null)
             {
@@ -180,35 +156,12 @@ namespace Elysium.Theme.Commands
     public class DelegateCommand<T> : ICommand
     {
         #region Constructors
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public DelegateCommand(Action<T> executeMethod) : this(executeMethod, null, false)
-        {
-            
-        }
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public DelegateCommand(Action<T> executeMethod, Func<T, bool> canExecuteMethod) : this(executeMethod, canExecuteMethod, false)
-        {
-        }
-
+        
         /// <summary>
         /// Constructor
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Requery")]
-        public DelegateCommand(Action<T> executeMethod, bool isAutomaticRequeryDisabled) : this(executeMethod, null, isAutomaticRequeryDisabled)
-        {
-        }
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Requery")]
-        public DelegateCommand(Action<T> executeMethod, Func<T, bool> canExecuteMethod, bool isAutomaticRequeryDisabled)
+        public DelegateCommand(Action<T> executeMethod, Func<T, bool> canExecuteMethod = null, bool isAutomaticRequeryDisabled = false)
         {
             if (executeMethod == null)
             {
@@ -331,13 +284,13 @@ namespace Elysium.Theme.Commands
             }
         }
 
+        [ContractVerification(false)]
         bool ICommand.CanExecute(object parameter)
         {
             if (parameter == null && typeof(T).IsValueType)
             {
                 return (_canExecuteMethod == null);
             }
-            Contract.Assume(parameter != null);
             return CanExecute((T)parameter);
         }
 

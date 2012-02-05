@@ -8,16 +8,24 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 
+using Elysium.Theme.Extensions;
+
+using JetBrains.Annotations;
+
 namespace Elysium.Theme.Controls
 {
+    [PublicAPI]
     public static class ToastNotification
     {
+        [PublicAPI]
         [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification = "Desktop is constant")]
         public static readonly FrameworkElement Desktop = new FrameworkElement();
 
-        private static readonly DependencyProperty FreeIndexesProperty =
-            DependencyProperty.RegisterAttached("FreeIndexes", typeof(IDictionary<int, bool>), typeof(ToastNotification),
-                                                new PropertyMetadata(new Dictionary<int, bool>()));
+        private static readonly DependencyPropertyKey FreeIndexesPropertyKey =
+            DependencyProperty.RegisterAttachedReadOnly("FreeIndexes", typeof(IDictionary<int, bool>), typeof(ToastNotification),
+                                                        new PropertyMetadata(new Dictionary<int, bool>()));
+
+        private static readonly DependencyProperty FreeIndexesProperty = FreeIndexesPropertyKey.DependencyProperty;
 
         private static IDictionary<int, bool> GetFreeIndexes(DependencyObject obj)
         {
@@ -25,26 +33,21 @@ namespace Elysium.Theme.Controls
             {
                 throw new ArgumentNullException("obj");
             }
+            Contract.Ensures(Contract.Result<IDictionary<int, bool>>() != null);
             Contract.EndContractBlock();
-            return (IDictionary<int, bool>)obj.GetValue(FreeIndexesProperty);
+            var value = (IDictionary<int, bool>)obj.GetValue(FreeIndexesProperty);
+            Contract.Assume(value != null);
+            return value;
         }
 
-        private static void SetFreeIndexes(DependencyObject obj, IDictionary<int, bool> value)
-        {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
-            obj.SetValue(FreeIndexesProperty, value);
-        }
-
+        [PublicAPI]
         public static readonly DependencyProperty AnimationProperty =
             DependencyProperty.RegisterAttached("Animation", typeof(ToastNotificationAnimation), typeof(ToastNotification),
                                                 new FrameworkPropertyMetadata(ToastNotificationAnimation.Slide,
                                                                               FrameworkPropertyMetadataOptions.AffectsArrange |
                                                                               FrameworkPropertyMetadataOptions.AffectsRender));
 
+        [PublicAPI]
         public static ToastNotificationAnimation GetAnimation(DependencyObject obj)
         {
             if (obj == null)
@@ -52,11 +55,10 @@ namespace Elysium.Theme.Controls
                 throw new ArgumentNullException("obj");
             }
             Contract.EndContractBlock();
-            var value = obj.GetValue(AnimationProperty);
-            Contract.Assume(value != null);
-            return (ToastNotificationAnimation)value;
+            return BoxingHelper<ToastNotificationAnimation>.Unbox(obj.GetValue(AnimationProperty));
         }
 
+        [PublicAPI]
         public static void SetAnimation(DependencyObject obj, ToastNotificationAnimation value)
         {
             if (obj == null)
@@ -67,10 +69,12 @@ namespace Elysium.Theme.Controls
             obj.SetValue(AnimationProperty, value);
         }
 
+        [PublicAPI]
         public static readonly DependencyProperty LifetimeProperty =
             DependencyProperty.RegisterAttached("Lifetime", typeof(TimeSpan), typeof(ToastNotification),
                                                 new FrameworkPropertyMetadata(TimeSpan.FromSeconds(10.0), FrameworkPropertyMetadataOptions.AffectsRender));
 
+        [PublicAPI]
         public static TimeSpan GetLifetime(DependencyObject obj)
         {
             if (obj == null)
@@ -78,11 +82,10 @@ namespace Elysium.Theme.Controls
                 throw new ArgumentNullException("obj");
             }
             Contract.EndContractBlock();
-            var value = obj.GetValue(LifetimeProperty);
-            Contract.Assume(value != null);
-            return (TimeSpan)value;
+            return BoxingHelper<TimeSpan>.Unbox(obj.GetValue(LifetimeProperty));
         }
 
+        [PublicAPI]
         public static void SetLifetime(DependencyObject obj, TimeSpan value)
         {
             if (obj == null)
@@ -93,10 +96,12 @@ namespace Elysium.Theme.Controls
             obj.SetValue(LifetimeProperty, value);
         }
 
+        [PublicAPI]
         public static readonly DependencyProperty MarginProperty =
             DependencyProperty.RegisterAttached("Margin", typeof(Thickness), typeof(ToastNotification),
                                                 new FrameworkPropertyMetadata(new Thickness(10.0), FrameworkPropertyMetadataOptions.AffectsMeasure));
 
+        [PublicAPI]
         public static Thickness GetMargin(DependencyObject obj)
         {
             if (obj == null)
@@ -104,11 +109,10 @@ namespace Elysium.Theme.Controls
                 throw new ArgumentNullException("obj");
             }
             Contract.EndContractBlock();
-            var value = obj.GetValue(MarginProperty);
-            Contract.Assume(value != null);
-            return (Thickness)value;
+            return BoxingHelper<Thickness>.Unbox(obj.GetValue(MarginProperty));
         }
 
+        [PublicAPI]
         public static void SetMargin(DependencyObject obj, Thickness value)
         {
             if (obj == null)
@@ -119,62 +123,86 @@ namespace Elysium.Theme.Controls
             obj.SetValue(MarginProperty, value);
         }
 
+        [PublicAPI]
         public static readonly DependencyProperty WidthProperty =
             DependencyProperty.RegisterAttached("Width", typeof(double), typeof(ToastNotification),
-                                                new FrameworkPropertyMetadata(480.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(480.0, FrameworkPropertyMetadataOptions.AffectsMeasure), IsWidthHeightValid);
 
+        [PublicAPI]
         public static double GetWidth(DependencyObject obj)
         {
             if (obj == null)
             {
                 throw new ArgumentNullException("obj");
             }
+            Contract.Ensures(Contract.Result<double>() >= 0 || double.IsNaN(Contract.Result<double>()));
             Contract.EndContractBlock();
-            var value = obj.GetValue(WidthProperty);
-            Contract.Assume(value != null);
-            return (double)value;
+            var unboxedValue = BoxingHelper<double>.Unbox(obj.GetValue(WidthProperty));
+            Contract.Assume(unboxedValue >= 0 || double.IsNaN(unboxedValue));
+            return unboxedValue;
         }
 
+        [PublicAPI]
         public static void SetWidth(DependencyObject obj, double value)
         {
             if (obj == null)
             {
                 throw new ArgumentNullException("obj");
             }
+            if (!(value >= 0 || double.IsNaN(value)))
+            {
+                throw new ArgumentException("Width must be greater than zero, equal to zero or NaN", "value");
+            }
             Contract.EndContractBlock();
             obj.SetValue(WidthProperty, value);
         }
 
+        [PublicAPI]
         public static readonly DependencyProperty HeightProperty =
             DependencyProperty.RegisterAttached("Height", typeof(double), typeof(ToastNotification),
                                                 new FrameworkPropertyMetadata(64.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
+        [PublicAPI]
         public static double GetHeight(DependencyObject obj)
         {
             if (obj == null)
             {
                 throw new ArgumentNullException("obj");
             }
+            Contract.Ensures(Contract.Result<double>() >= 0 || double.IsNaN(Contract.Result<double>()));
             Contract.EndContractBlock();
-            var value = obj.GetValue(HeightProperty);
-            Contract.Assume(value != null);
-            return (double)value;
+            var unboxedValue = BoxingHelper<double>.Unbox(obj.GetValue(HeightProperty));
+            Contract.Assume(unboxedValue >= 0 || double.IsNaN(unboxedValue));
+            return unboxedValue;
         }
 
+        [PublicAPI]
         public static void SetHeight(DependencyObject obj, double value)
         {
             if (obj == null)
             {
                 throw new ArgumentNullException("obj");
             }
+            if (!(value >= 0 || double.IsNaN(value)))
+            {
+                throw new ArgumentException("Height must be greater than zero, equal to zero or NaN", "value");
+            }
             Contract.EndContractBlock();
             obj.SetValue(HeightProperty, value);
         }
 
+        private static bool IsWidthHeightValid(object value)
+        {
+            var unboxedValue = BoxingHelper<double>.Unbox(value);
+            return !double.IsInfinity(unboxedValue) && (unboxedValue >= 0.0 || double.IsNaN(unboxedValue));
+        }
+
+        [PublicAPI]
         public static readonly DependencyProperty HorizontalPlacementProperty =
             DependencyProperty.RegisterAttached("HorizontalPlacement", typeof(HorizontalPlacement), typeof(ToastNotification),
                                                 new FrameworkPropertyMetadata(HorizontalPlacement.Right, FrameworkPropertyMetadataOptions.AffectsArrange));
 
+        [PublicAPI]
         public static HorizontalPlacement GetHorizontalPlacement(DependencyObject obj)
         {
             if (obj == null)
@@ -182,11 +210,10 @@ namespace Elysium.Theme.Controls
                 throw new ArgumentNullException("obj");
             }
             Contract.EndContractBlock();
-            var value = obj.GetValue(HorizontalPlacementProperty);
-            Contract.Assume(value != null);
-            return (HorizontalPlacement)value;
+            return BoxingHelper<HorizontalPlacement>.Unbox(obj.GetValue(HorizontalPlacementProperty));
         }
 
+        [PublicAPI]
         public static void SetHorizontalPlacement(DependencyObject obj, HorizontalPlacement value)
         {
             if (obj == null)
@@ -197,10 +224,12 @@ namespace Elysium.Theme.Controls
             obj.SetValue(HorizontalPlacementProperty, value);
         }
 
+        [PublicAPI]
         public static readonly DependencyProperty VerticalPlacementProperty =
             DependencyProperty.RegisterAttached("VerticalPlacement", typeof(VerticalPlacement), typeof(ToastNotification),
                                                 new FrameworkPropertyMetadata(VerticalPlacement.Bottom, FrameworkPropertyMetadataOptions.AffectsArrange));
 
+        [PublicAPI]
         public static VerticalPlacement GetVerticalPlacement(DependencyObject obj)
         {
             if (obj == null)
@@ -208,11 +237,10 @@ namespace Elysium.Theme.Controls
                 throw new ArgumentNullException("obj");
             }
             Contract.EndContractBlock();
-            var value = obj.GetValue(VerticalPlacementProperty);
-            Contract.Assume(value != null);
-            return (VerticalPlacement)value;
+            return BoxingHelper<VerticalPlacement>.Unbox(obj.GetValue(VerticalPlacementProperty));
         }
 
+        [PublicAPI]
         public static void SetVerticalPlacement(DependencyObject obj, VerticalPlacement value)
         {
             if (obj == null)
@@ -223,6 +251,7 @@ namespace Elysium.Theme.Controls
             obj.SetValue(VerticalPlacementProperty, value);
         }
 
+        [PublicAPI]
         public static void Show(string message, string remark = null, FrameworkElement target = null)
         {
             if (string.IsNullOrWhiteSpace(message))
@@ -243,7 +272,6 @@ namespace Elysium.Theme.Controls
 
             // Calculate index
             var freeIndexes = GetFreeIndexes(host);
-            Contract.Assume(freeIndexes != null);
             var indexes = freeIndexes.Where(x => x.Value != true).ToList();
             var index = indexes.Count > 0 ? indexes.OrderBy(x => x.Key).First().Key : freeIndexes.Count();
             if (indexes.Count > 0)

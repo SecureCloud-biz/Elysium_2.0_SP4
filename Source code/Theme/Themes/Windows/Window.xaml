@@ -53,6 +53,7 @@
 					<Border Background="{TemplateBinding Background}"
 							BorderBrush="{TemplateBinding BorderBrush}"
 							BorderThickness="{TemplateBinding BorderThickness}"
+							UseLayoutRounding="{TemplateBinding UseLayoutRounding}"
 							SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
 						<Grid x:Name="PART_LayoutRoot">
 							<Grid.RowDefinitions>

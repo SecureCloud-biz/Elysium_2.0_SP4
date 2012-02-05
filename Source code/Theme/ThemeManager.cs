@@ -1,18 +1,17 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Contracts;
 using System.Windows.Media;
 
 using Elysium.Theme.ViewModels;
 
+using JetBrains.Annotations;
+
 namespace Elysium.Theme
 {
-    public enum ThemeType
-    {
-        Dark,
-        Light
-    }
-
+    [PublicAPI]
     public sealed class ThemeManager : ViewModelBase
     {
+        [PublicAPI]
         [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification = "ThemeManager is singleton")]
         public static readonly ThemeManager Instance = new ThemeManager();
 
@@ -21,8 +20,10 @@ namespace Elysium.Theme
             Light(AccentColors.Blue);
         }
 
+        [PublicAPI]
         public void Dark(Color accent)
         {
+            Contract.Ensures(ThemeType == ThemeType.Dark);
             try
             {
 
@@ -43,8 +44,10 @@ namespace Elysium.Theme
             }
         }
 
+        [PublicAPI]
         public void Light(Color accent)
         {
+            Contract.Ensures(ThemeType == ThemeType.Light);
             try
             {
                 Accent = accent;
@@ -64,6 +67,7 @@ namespace Elysium.Theme
             }
         }
 
+        [PublicAPI]
         public ThemeType ThemeType
         {
             get { return _themeType; }
@@ -76,6 +80,7 @@ namespace Elysium.Theme
 
         private ThemeType _themeType;
 
+        [PublicAPI]
         public Color Accent
         {
             get { return _accent; }
@@ -88,6 +93,7 @@ namespace Elysium.Theme
 
         private Color _accent;
 
+        [PublicAPI]
         public Color Transparent
         {
             get { return _transparent; }
@@ -100,6 +106,7 @@ namespace Elysium.Theme
 
         private Color _transparent;
 
+        [PublicAPI]
         public Color Semitransparent
         {
             get { return _semitransparent; }
@@ -113,6 +120,7 @@ namespace Elysium.Theme
 
         private Color _semitransparent;
 
+        [PublicAPI]
         public Color Background
         {
             get { return _background; }
@@ -125,6 +133,7 @@ namespace Elysium.Theme
 
         private Color _background;
 
+        [PublicAPI]
         public Color Foreground
         {
             get { return _foreground; }
@@ -137,6 +146,7 @@ namespace Elysium.Theme
 
         private Color _foreground;
 
+        [PublicAPI]
         public Color Contrast
         {
             get { return _contrast; }
@@ -149,6 +159,7 @@ namespace Elysium.Theme
 
         private Color _contrast;
 
+        [PublicAPI]
         public Color Highlight
         {
             get { return _highlight; }
@@ -161,7 +172,7 @@ namespace Elysium.Theme
 
         private Color _highlight;
 
-
+        [PublicAPI]
         public Color MiddleLight
         {
             get { return _middleLight; }
@@ -174,7 +185,7 @@ namespace Elysium.Theme
 
         private Color _middleLight;
 
-
+        [PublicAPI]
         public Color Lowlight
         {
             get { return _lowlight; }
@@ -187,6 +198,7 @@ namespace Elysium.Theme
 
         private Color _lowlight;
 
+        [PublicAPI]
         public Color Disabled
         {
             get { return _disabled; }

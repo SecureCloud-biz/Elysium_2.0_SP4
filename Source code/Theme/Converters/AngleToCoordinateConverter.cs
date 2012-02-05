@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
@@ -52,6 +53,7 @@ namespace Elysium.Theme.Converters
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
+            Contract.Ensures(false);
             throw new NotSupportedException();
         }
     }

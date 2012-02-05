@@ -2,8 +2,11 @@
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 
+using JetBrains.Annotations;
+
 namespace Elysium.Theme.Controls
 {
+    [PublicAPI]
     public class Submenu : MenuBase
     {
         static Submenu()

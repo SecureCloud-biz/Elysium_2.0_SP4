@@ -4,15 +4,17 @@ using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.Linq.Expressions;
 
+using JetBrains.Annotations;
+
 namespace Elysium.Theme.ViewModels
 {
-    /// <summary>
-    /// Provides common functionality for ViewModel classes
-    /// </summary>
+    [PublicAPI]
     public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
+        [PublicAPI]
         public event PropertyChangedEventHandler PropertyChanged;
 
+        [PublicAPI]
         protected bool ThrowOnInvalidPropertyName
         {
             get { return _throwOnInvalidPropertyName; }
@@ -21,9 +23,13 @@ namespace Elysium.Theme.ViewModels
 
         private bool _throwOnInvalidPropertyName = true;
 
+        [PublicAPI]
         protected bool Disposed { get; set; }
 
+        [PublicAPI]
+// ReSharper disable VirtualMemberNeverOverriden.Global
         protected virtual void OnPropertyChanged(string propertyName)
+// ReSharper restore VirtualMemberNeverOverriden.Global
         {
             VerifyPropertyName(propertyName);
             var handler = PropertyChanged;
@@ -33,8 +39,11 @@ namespace Elysium.Theme.ViewModels
             }
         }
 
+        [PublicAPI]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
+// ReSharper disable VirtualMemberNeverOverriden.Global
         protected virtual void OnPropertyChanged<T>(Expression<Func<T>> propertyExpression)
+// ReSharper restore VirtualMemberNeverOverriden.Global
         {
             if (propertyExpression == null)
             {
@@ -44,6 +53,7 @@ namespace Elysium.Theme.ViewModels
             OnPropertyChanged(((MemberExpression)propertyExpression.Body).Member.Name);
         }
 
+        [PublicAPI]
         [Conditional("DEBUG")]
         [DebuggerStepThrough]
         public void VerifyPropertyName(string propertyName)
@@ -60,6 +70,7 @@ namespace Elysium.Theme.ViewModels
             }
         }
 
+        [PublicAPI]
         public void Dispose()
         {
             Dispose(true);
@@ -71,8 +82,12 @@ namespace Elysium.Theme.ViewModels
             Dispose(false);
         }
 
+        [PublicAPI]
+// ReSharper disable VirtualMemberNeverOverriden.Global
         protected virtual void Dispose(bool disposing)
+// ReSharper restore VirtualMemberNeverOverriden.Global
         {
+            Contract.Ensures(Disposed);
             Disposed = true;
         }
     }

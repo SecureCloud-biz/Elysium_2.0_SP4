@@ -1,9 +1,17 @@
-﻿namespace Elysium.Theme.Controls
+﻿using JetBrains.Annotations;
+
+namespace Elysium.Theme.Controls
 {
+    [PublicAPI]
     public enum ProgressBarState
     {
+        [PublicAPI]
         Normal,
+
+        [PublicAPI]
         Indeterminate,
-        Loading
+
+        [PublicAPI]
+        Busy
     }
 } ;

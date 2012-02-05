@@ -8,8 +8,7 @@
 
     <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ButtonsBaseStyle}">
         
-        <Setter Property="OverridesDefaultStyle" Value="True"/>        
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
         
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">

@@ -325,7 +325,8 @@
 				</RichTextBox>
 				<Grid Grid.Column="2"
 					  Grid.Row="0"
-					  Grid.RowSpan="4">
+					  Grid.RowSpan="4"
+					  metro:ApplicationBar.PreventsOpen="true">
 					<TextBlock Foreground="{StaticResource MiddleLight}"
 							   FontSize="{Binding Source={x:Static metro:Parameters.Instance}, Path=HeaderFontSize}"                              
 							   Text="Click here to see ContextMenu"
@@ -565,23 +566,23 @@
 										 Grid.Row="0"
 										 IsEnabled="False"
 										 Orientation="Horizontal"
-										 State="Loading"
+										 State="Busy"
 										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
 				<metro:LinearProgressBar Grid.Column="5"
 										 Grid.Row="1"
 										 Orientation="Horizontal"
-										 State="Loading"
+										 State="Busy"
 										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
 				<metro:LinearProgressBar Grid.Column="5"
 										 Grid.Row="2"
 										 IsEnabled="False"
 										 Orientation="Vertical"
-										 State="Loading"
+										 State="Busy"
 										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
 				<metro:LinearProgressBar Grid.Column="5"
 										 Grid.Row="3"
 										 Orientation="Vertical"
-										 State="Loading"
+										 State="Busy"
 										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
 				<metro:CircularProgressBar Grid.Column="6"
 										   Grid.Row="0"
@@ -604,11 +605,11 @@
 				<metro:CircularProgressBar Grid.Column="8"
 										   Grid.Row="0"
 										   IsEnabled="False"
-										   State="Loading"
+										   State="Busy"
 										   Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
 				<metro:CircularProgressBar Grid.Column="8"
 										   Grid.Row="1"
-										   State="Loading"
+										   State="Busy"
 										   Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
 			</Grid>
 		</TabItem>

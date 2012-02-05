@@ -8,8 +8,13 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Shapes;
 
+using Elysium.Theme.Extensions;
+
+using JetBrains.Annotations;
+
 namespace Elysium.Theme.Controls.Primitives
 {
+    [PublicAPI]
     [TemplatePart(Name = DecorName, Type = typeof(Ellipse))]
     [TemplatePart(Name = MaskName, Type = typeof(Ellipse))]
     [TemplatePart(Name = HeaderHostName, Type = typeof(ContentPresenter))]
@@ -32,11 +37,14 @@ namespace Elysium.Theme.Controls.Primitives
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CommandButtonBase), new FrameworkPropertyMetadata(typeof(CommandButtonBase)));
         }
 
+        [PublicAPI]
         public static readonly DependencyProperty HeaderProperty =
             HeaderedContentControl.HeaderProperty.AddOwner(typeof(CommandButtonBase), new FrameworkPropertyMetadata((object)null, OnHeaderChanged));
 
+        [PublicAPI]
         [Bindable(true)]
         [Category("Content")]
+        [Description("The data used for the header of each control.")]
         [Localizability(LocalizationCategory.Label)]
         public object Header
         {
@@ -51,40 +59,63 @@ namespace Elysium.Theme.Controls.Primitives
                 throw new ArgumentNullException("d");
             }
             Contract.EndContractBlock();
-            var control = (CommandButtonBase)d;
-            control.HasHeader = e.NewValue != null;
+            var instance = (CommandButtonBase)d;
+            instance.OnHeaderChanged(e.OldValue, e.NewValue);
+            instance.HasHeader = e.NewValue != null;
         }
 
+        [PublicAPI]
+// ReSharper disable VirtualMemberNeverOverriden.Global
         protected virtual void OnHeaderChanged(object oldHeader, object newHeader)
+// ReSharper restore VirtualMemberNeverOverriden.Global
         {
             RemoveLogicalChild(oldHeader);
             AddLogicalChild(newHeader);
         }
 
         private static readonly DependencyPropertyKey HasHeaderPropertyKey =
-            DependencyProperty.RegisterReadOnly("HasHeader", typeof(bool), typeof(CommandButtonBase), new FrameworkPropertyMetadata(false));
+            DependencyProperty.RegisterReadOnly("HasHeader", typeof(bool), typeof(CommandButtonBase),
+                                                new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, OnHasHeaderChanged));
 
+        [PublicAPI]
         public static readonly DependencyProperty HasHeaderProperty = HasHeaderPropertyKey.DependencyProperty;
 
+        [PublicAPI]
         [Bindable(false)]
         [Browsable(false)]
         public bool HasHeader
         {
-            get
-            {
-                var value = GetValue(HasHeaderProperty);
-                Contract.Assume(value != null);
-                return (bool)value;
-            }
-            private set { SetValue(HasHeaderPropertyKey, value); }
+            get { return BooleanBoxingHelper.Unbox(GetValue(HasHeaderProperty)); }
+            private set { SetValue(HasHeaderPropertyKey, BooleanBoxingHelper.Box(value)); }
         }
 
+        private static void OnHasHeaderChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d == null)
+            {
+                throw new ArgumentNullException("d");
+            }
+            Contract.EndContractBlock();
+            var instance = (CommandButtonBase)d;
+            instance.OnHasHeaderChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
+        }
+
+        [PublicAPI]
+        // ReSharper disable VirtualMemberNeverOverriden.Global
+        protected virtual void OnHasHeaderChanged(bool oldHeader, bool newHeader)
+            // ReSharper restore VirtualMemberNeverOverriden.Global
+        {
+        }
+
+        [PublicAPI]
         public static readonly DependencyProperty HeaderStringFormatProperty =
             HeaderedContentControl.HeaderStringFormatProperty.AddOwner(typeof(CommandButtonBase),
                                                                        new FrameworkPropertyMetadata(null, OnHeaderStringFormatChanged));
 
+        [PublicAPI]
         [Bindable(true)]
         [Category("Content")]
+        [Description("A composite string that specifies how to format the Header property if it is displayed as a string.")]
         public string HeaderStringFormat
         {
             get { return (string)GetValue(HeaderStringFormatProperty); }
@@ -102,17 +133,23 @@ namespace Elysium.Theme.Controls.Primitives
             instance.OnHeaderStringFormatChanged((string)e.OldValue, (string)e.NewValue);
         }
 
+        [PublicAPI]
         [SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string")]
+// ReSharper disable VirtualMemberNeverOverriden.Global
         protected virtual void OnHeaderStringFormatChanged(string oldHeaderStringFormat, string newHeaderStringFormat)
+// ReSharper restore VirtualMemberNeverOverriden.Global
         {
         }
 
+        [PublicAPI]
         public static readonly DependencyProperty HeaderTemplateProperty =
             HeaderedContentControl.HeaderTemplateProperty.AddOwner(typeof(CommandButtonBase),
                                                                    new FrameworkPropertyMetadata(null, OnHeaderTemplateChanged));
 
+        [PublicAPI]
         [Bindable(true)]
         [Category("Content")]
+        [Description("The template used to display the content of the control's header.")]
         public DataTemplate HeaderTemplate
         {
             get { return (DataTemplate)GetValue(HeaderTemplateProperty); }
@@ -130,18 +167,24 @@ namespace Elysium.Theme.Controls.Primitives
             instance.OnHeaderTemplateChanged((DataTemplate)e.OldValue, (DataTemplate)e.NewValue);
         }
 
+        [PublicAPI]
+// ReSharper disable VirtualMemberNeverOverriden.Global
         protected virtual void OnHeaderTemplateChanged(DataTemplate oldHeaderTemplate, DataTemplate newHeaderTemplate)
+// ReSharper restore VirtualMemberNeverOverriden.Global
         {
             if (newHeaderTemplate != null && HeaderTemplateSelector != null)
                 Trace.TraceError("Template and TemplateSelector defined");
         }
 
+        [PublicAPI]
         public static readonly DependencyProperty HeaderTemplateSelectorProperty =
             HeaderedContentControl.HeaderTemplateSelectorProperty.AddOwner(typeof(CommandButtonBase),
                                                                            new FrameworkPropertyMetadata(null, OnHeaderTemplateSelectorChanged));
 
+        [PublicAPI]
         [Bindable(true)]
         [Category("Content")]
+        [Description("A data template selector that provides custom logic for choosing the template used to display the header.")]
         public DataTemplateSelector HeaderTemplateSelector
         {
             get { return (DataTemplateSelector)GetValue(HeaderTemplateSelectorProperty); }
@@ -159,7 +202,10 @@ namespace Elysium.Theme.Controls.Primitives
             instance.OnHeaderTemplateSelectorChanged((DataTemplateSelector)e.OldValue, (DataTemplateSelector)e.NewValue);
         }
 
+        [PublicAPI]
+// ReSharper disable VirtualMemberNeverOverriden.Global
         protected virtual void OnHeaderTemplateSelectorChanged(DataTemplateSelector oldHeaderTemplateSelector, DataTemplateSelector newHeaderTemplateSelector)
+// ReSharper restore VirtualMemberNeverOverriden.Global
         {
             if (HeaderTemplate != null && newHeaderTemplateSelector != null)
                 Trace.TraceError("Template and TemplateSelector defined");
@@ -172,13 +218,13 @@ namespace Elysium.Theme.Controls.Primitives
             if (Template != null)
             {
                 _decor = Template.FindName(DecorName, this) as Ellipse;
-                // Because WPF doesn't include contracts
+                // NOTE: WPF doesn't declare contracts
                 Contract.Assume(Template != null);
                 _mask = Template.FindName(MaskName, this) as Ellipse;
-                // Because WPF doesn't include contracts
+                // NOTE: WPF doesn't declare contracts
                 Contract.Assume(Template != null);
                 _headerHost = Template.FindName(HeaderHostName, this) as ContentPresenter;
-                // Because WPF doesn't include contracts
+                // NOTE: WPF doesn't declare contracts
                 Contract.Assume(Template != null);
                 _contentHost = Template.FindName(ContentHostName, this) as ContentPresenter;
             }
@@ -204,6 +250,9 @@ namespace Elysium.Theme.Controls.Primitives
                 Contract.Assume(height >= 0.0);
 
                 var boxSize = Math.Min(width, height - _headerHost.DesiredSize.Height);
+
+                Contract.Assume(boxSize >= 0.0);
+
                 _decor.Width = boxSize;
                 _decor.Height = boxSize;
                 _mask.Width = boxSize;

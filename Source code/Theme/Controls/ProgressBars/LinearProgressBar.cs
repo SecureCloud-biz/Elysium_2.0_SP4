@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Security;
@@ -9,18 +10,22 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
 using Elysium.Theme.Controls.Primitives;
+using Elysium.Theme.Extensions;
+
+using JetBrains.Annotations;
 
 namespace Elysium.Theme.Controls
 {
+    [PublicAPI]
     [TemplatePart(Name = IndicatorName, Type = typeof(Rectangle))]
-    [TemplatePart(Name = LoadingBarName, Type = typeof(Canvas))]
+    [TemplatePart(Name = BusyBarName, Type = typeof(Canvas))]
     public class LinearProgressBar : ProgressBarBase
     {
         private const string IndicatorName = "PART_Indicator";
-        private const string LoadingBarName = "PART_LoadingBar";
+        private const string BusyBarName = "PART_BusyBar";
 
         private Rectangle _indicator;
-        private Canvas _loadingBar;
+        private Canvas _busyBar;
 
         [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
         static LinearProgressBar()
@@ -28,26 +33,24 @@ namespace Elysium.Theme.Controls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(LinearProgressBar), new FrameworkPropertyMetadata(typeof(LinearProgressBar)));
         }
 
+        [PublicAPI]
         public static readonly DependencyProperty OrientationProperty =
             DependencyProperty.Register("Orientation", typeof(Orientation), typeof(ProgressBarBase),
                                         new FrameworkPropertyMetadata(Orientation.Horizontal, FrameworkPropertyMetadataOptions.AffectsMeasure),
                                         IsValidOrientation);
 
+        [PublicAPI]
+        [Category("Appearance")]
+        [Description("Determines orientation of control.")]
         public Orientation Orientation
         {
-            get
-            {
-                var value = GetValue(OrientationProperty);
-                Contract.Assume(value != null);
-                return (Orientation)value;
-            }
+            get { return BoxingHelper<Orientation>.Unbox(GetValue(OrientationProperty)); }
             set { SetValue(OrientationProperty, value); }
         }
 
         private static bool IsValidOrientation(object value)
         {
-            Contract.Assume(value != null);
-            var orientation = (Orientation)value;
+            var orientation = BoxingHelper<Orientation>.Unbox(value);
             return orientation == Orientation.Horizontal || orientation == Orientation.Vertical;
         }
 
@@ -57,8 +60,9 @@ namespace Elysium.Theme.Controls
             if (Template != null)
             {
                 _indicator = Template.FindName(IndicatorName, this) as Rectangle;
+                // NOTE: WPF doesn't declare contracts
                 Contract.Assume(Template != null);
-                _loadingBar = Template.FindName(LoadingBarName, this) as Canvas;
+                _busyBar = Template.FindName(BusyBarName, this) as Canvas;
             }
 
             base.OnApplyTemplateInternal();
@@ -70,7 +74,7 @@ namespace Elysium.Theme.Controls
 
             UpdateIndeterminateAnimation();
 
-            UpdateLoadingAnimation();
+            UpdateBusyAnimation();
         }
 
         private void UpdateIndeterminateAnimation()
@@ -93,6 +97,7 @@ namespace Elysium.Theme.Controls
                 var time = trackSize / 100;
 
                 var animation = new DoubleAnimationUsingKeyFrames { Duration = new Duration(TimeSpan.FromSeconds(time + 0.5)) };
+                // NOTE: WPF doesn't declare contracts
                 Contract.Assume(animation.KeyFrames != null);
                 animation.KeyFrames.Add(new DiscreteDoubleKeyFrame(-indicatorSize - 1, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0))));
                 animation.KeyFrames.Add(new LinearDoubleKeyFrame(trackSize + 1, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
@@ -114,43 +119,44 @@ namespace Elysium.Theme.Controls
             }
         }
 
-        private void UpdateLoadingAnimation()
+        private void UpdateBusyAnimation()
         {
-            if (LoadingAnimation != null && LoadingAnimation.Name == DefaultLoadingAnimationName && Track != null && _loadingBar != null)
+            if (BusyAnimation != null && BusyAnimation.Name == DefaultBusyAnimationName && Track != null && _busyBar != null)
             {
-                var isStarted = State == ProgressBarState.Loading && IsEnabled;
+                var isStarted = State == ProgressBarState.Busy && IsEnabled;
                 if (isStarted)
                 {
-                    LoadingAnimation.Stop(this);
-                    LoadingAnimation.Remove(this);
+                    BusyAnimation.Stop(this);
+                    BusyAnimation.Remove(this);
                 }
 
-                Contract.Assume(_loadingBar.Children != null);
+                // NOTE: WPF doesn't declare contracts
+                Contract.Assume(_busyBar.Children != null);
 
-                LoadingAnimation = new Storyboard { Name = DefaultLoadingAnimationName, RepeatBehavior = RepeatBehavior.Forever };
+                BusyAnimation = new Storyboard { Name = DefaultBusyAnimationName, RepeatBehavior = RepeatBehavior.Forever };
 
                 const double time = 0.25;
                 const double durationTime = time * 2;
                 const double beginTimeIncrement = time / 2;
                 const double shortPauseTime = time;
                 const double longPauseTime = time * 1.5;
-                var partMotionTime = (_loadingBar.Children.Count - 1) * beginTimeIncrement + durationTime;
+                var partMotionTime = (_busyBar.Children.Count - 1) * beginTimeIncrement + durationTime;
 
-                var loadingAnimations = new Collection<DoubleAnimation>();
+                var busyAnimations = new Collection<DoubleAnimation>();
 
                 var width = Track.ActualWidth;
                 var height = Track.ActualHeight;
 
-                for (var i = 0; i < _loadingBar.Children.Count; i++)
+                for (var i = 0; i < _busyBar.Children.Count; i++)
                 {
-                    var element = (FrameworkElement)_loadingBar.Children[_loadingBar.Children.Count - i - 1];
+                    var element = (FrameworkElement)_busyBar.Children[_busyBar.Children.Count - i - 1];
 
                     if (element != null)
                     {
                         var elementWidth = element.Width;
                         var elementHeight = element.Height;
 
-                        var index = (_loadingBar.Children.Count - 1) / 2 - i;
+                        var index = (_busyBar.Children.Count - 1) / 2 - i;
 
                         var center = (Orientation == Orientation.Horizontal ? width : height) / 2;
                         var margin = Orientation == Orientation.Horizontal ? elementWidth : elementHeight;
@@ -164,13 +170,13 @@ namespace Elysium.Theme.Controls
                         Storyboard.SetTargetProperty(animation,
                                                      new PropertyPath(Orientation == Orientation.Horizontal ? Canvas.LeftProperty : Canvas.TopProperty));
 
-                        loadingAnimations.Add(animation);
+                        busyAnimations.Add(animation);
                     }
                 }
 
-                for (var i = 0; i < _loadingBar.Children.Count; i++)
+                for (var i = 0; i < _busyBar.Children.Count; i++)
                 {
-                    var element = (FrameworkElement)_loadingBar.Children[_loadingBar.Children.Count - i - 1];
+                    var element = (FrameworkElement)_busyBar.Children[_busyBar.Children.Count - i - 1];
 
 
                     if (element != null)
@@ -187,21 +193,22 @@ namespace Elysium.Theme.Controls
                         Storyboard.SetTargetProperty(animation,
                                                      new PropertyPath(Orientation == Orientation.Horizontal ? Canvas.LeftProperty : Canvas.TopProperty));
 
-                        loadingAnimations.Add(animation);
+                        busyAnimations.Add(animation);
                     }
                 }
 
-                LoadingAnimation.Duration = new Duration(TimeSpan.FromSeconds(partMotionTime * 2 + shortPauseTime + longPauseTime));
+                BusyAnimation.Duration = new Duration(TimeSpan.FromSeconds(partMotionTime * 2 + shortPauseTime + longPauseTime));
 
-                Contract.Assume(LoadingAnimation.Children != null);
-                foreach (var animation in loadingAnimations)
+                // NOTE: WPF doesn't declare contracts
+                Contract.Assume(BusyAnimation.Children != null);
+                foreach (var animation in busyAnimations)
                 {
-                    LoadingAnimation.Children.Add(animation);
+                    BusyAnimation.Children.Add(animation);
                 }
 
                 if (isStarted)
                 {
-                    LoadingAnimation.Begin(this, Template, true);
+                    BusyAnimation.Begin(this, Template, true);
                 }
             }
         }
