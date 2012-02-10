@@ -28,7 +28,7 @@
                     <ControlTemplate.Resources>
                         <converters:PercentToAngleConverter x:Key="PercentToAngleConverter"/>
                         <converters:AngleToCoordinateConverter x:Key="AngleToCoordinateConverter"/>
-                        <converters:PositiveToNegativeConverter x:Key="PositiveToNegativeConverter"/>
+                        <converters:NumberPositiveToNegativeConverter x:Key="NumberPositiveToNegativeConverter"/>
                     </ControlTemplate.Resources>
 
                     <Border Background="{TemplateBinding Background}"
@@ -64,7 +64,7 @@
                                     <Canvas.Left>
                                         <MultiBinding Converter="{StaticResource AngleToCoordinateConverter}"
                                                       ConverterParameter="X">
-                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(root:Parameters.ProgressBarBusyElementSize)" Converter="{StaticResource PositiveToNegativeConverter}"/>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(root:Parameters.ProgressBarBusyElementSize)" Converter="{StaticResource NumberPositiveToNegativeConverter}"/>
                                             <Binding RelativeSource="{RelativeSource Self}" Path="(controls:CircularProgressBar.Angle)"/>
                                             <Binding ElementName="PART_Track" Path="ActualWidth"/>
                                             <Binding ElementName="PART_Track" Path="ActualHeight"/>
@@ -75,7 +75,7 @@
                                     <Canvas.Top>
                                         <MultiBinding Converter="{StaticResource AngleToCoordinateConverter}"
                                                       ConverterParameter="Y">
-                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(root:Parameters.ProgressBarBusyElementSize)" Converter="{StaticResource PositiveToNegativeConverter}"/>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(root:Parameters.ProgressBarBusyElementSize)" Converter="{StaticResource NumberPositiveToNegativeConverter}"/>
                                             <Binding RelativeSource="{RelativeSource Self}" Path="(controls:CircularProgressBar.Angle)"/>
                                             <Binding ElementName="PART_Track" Path="ActualWidth"/>
                                             <Binding ElementName="PART_Track" Path="ActualHeight"/>
@@ -91,7 +91,7 @@
                                     <Canvas.Left>
                                         <MultiBinding Converter="{StaticResource AngleToCoordinateConverter}"
                                                       ConverterParameter="X">
-                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(root:Parameters.ProgressBarBusyElementSize)" Converter="{StaticResource PositiveToNegativeConverter}"/>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(root:Parameters.ProgressBarBusyElementSize)" Converter="{StaticResource NumberPositiveToNegativeConverter}"/>
                                             <Binding RelativeSource="{RelativeSource Self}" Path="(controls:CircularProgressBar.Angle)"/>
                                             <Binding ElementName="PART_Track" Path="ActualWidth"/>
                                             <Binding ElementName="PART_Track" Path="ActualHeight"/>
@@ -102,7 +102,7 @@
                                     <Canvas.Top>
                                         <MultiBinding Converter="{StaticResource AngleToCoordinateConverter}"
                                                       ConverterParameter="Y">
-                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(root:Parameters.ProgressBarBusyElementSize)" Converter="{StaticResource PositiveToNegativeConverter}"/>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(root:Parameters.ProgressBarBusyElementSize)" Converter="{StaticResource NumberPositiveToNegativeConverter}"/>
                                             <Binding RelativeSource="{RelativeSource Self}" Path="(controls:CircularProgressBar.Angle)"/>
                                             <Binding ElementName="PART_Track" Path="ActualWidth"/>
                                             <Binding ElementName="PART_Track" Path="ActualHeight"/>
@@ -118,7 +118,7 @@
                                     <Canvas.Left>
                                         <MultiBinding Converter="{StaticResource AngleToCoordinateConverter}"
                                                       ConverterParameter="X">
-                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(root:Parameters.ProgressBarBusyElementSize)" Converter="{StaticResource PositiveToNegativeConverter}"/>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(root:Parameters.ProgressBarBusyElementSize)" Converter="{StaticResource NumberPositiveToNegativeConverter}"/>
                                             <Binding RelativeSource="{RelativeSource Self}" Path="(controls:CircularProgressBar.Angle)"/>
                                             <Binding ElementName="PART_Track" Path="ActualWidth"/>
                                             <Binding ElementName="PART_Track" Path="ActualHeight"/>
@@ -129,7 +129,7 @@
                                     <Canvas.Top>
                                         <MultiBinding Converter="{StaticResource AngleToCoordinateConverter}"
                                                       ConverterParameter="Y">
-                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(root:Parameters.ProgressBarBusyElementSize)" Converter="{StaticResource PositiveToNegativeConverter}"/>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(root:Parameters.ProgressBarBusyElementSize)" Converter="{StaticResource NumberPositiveToNegativeConverter}"/>
                                             <Binding RelativeSource="{RelativeSource Self}" Path="(controls:CircularProgressBar.Angle)"/>
                                             <Binding ElementName="PART_Track" Path="ActualWidth"/>
                                             <Binding ElementName="PART_Track" Path="ActualHeight"/>
@@ -145,7 +145,7 @@
                                     <Canvas.Left>
                                         <MultiBinding Converter="{StaticResource AngleToCoordinateConverter}"
                                                       ConverterParameter="X">
-                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(root:Parameters.ProgressBarBusyElementSize)" Converter="{StaticResource PositiveToNegativeConverter}"/>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(root:Parameters.ProgressBarBusyElementSize)" Converter="{StaticResource NumberPositiveToNegativeConverter}"/>
                                             <Binding RelativeSource="{RelativeSource Self}" Path="(controls:CircularProgressBar.Angle)"/>
                                             <Binding ElementName="PART_Track" Path="ActualWidth"/>
                                             <Binding ElementName="PART_Track" Path="ActualHeight"/>
@@ -156,7 +156,7 @@
                                     <Canvas.Top>
                                         <MultiBinding Converter="{StaticResource AngleToCoordinateConverter}"
                                                       ConverterParameter="Y">
-                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(root:Parameters.ProgressBarBusyElementSize)" Converter="{StaticResource PositiveToNegativeConverter}"/>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(root:Parameters.ProgressBarBusyElementSize)" Converter="{StaticResource NumberPositiveToNegativeConverter}"/>
                                             <Binding RelativeSource="{RelativeSource Self}" Path="(controls:CircularProgressBar.Angle)"/>
                                             <Binding ElementName="PART_Track" Path="ActualWidth"/>
                                             <Binding ElementName="PART_Track" Path="ActualHeight"/>
@@ -172,7 +172,7 @@
                                     <Canvas.Left>
                                         <MultiBinding Converter="{StaticResource AngleToCoordinateConverter}"
                                                       ConverterParameter="X">
-                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(root:Parameters.ProgressBarBusyElementSize)" Converter="{StaticResource PositiveToNegativeConverter}"/>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(root:Parameters.ProgressBarBusyElementSize)" Converter="{StaticResource NumberPositiveToNegativeConverter}"/>
                                             <Binding RelativeSource="{RelativeSource Self}" Path="(controls:CircularProgressBar.Angle)"/>
                                             <Binding ElementName="PART_Track" Path="ActualWidth"/>
                                             <Binding ElementName="PART_Track" Path="ActualHeight"/>
@@ -183,7 +183,7 @@
                                     <Canvas.Top>
                                         <MultiBinding Converter="{StaticResource AngleToCoordinateConverter}"
                                                       ConverterParameter="Y">
-                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(root:Parameters.ProgressBarBusyElementSize)" Converter="{StaticResource PositiveToNegativeConverter}"/>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(root:Parameters.ProgressBarBusyElementSize)" Converter="{StaticResource NumberPositiveToNegativeConverter}"/>
                                             <Binding RelativeSource="{RelativeSource Self}" Path="(controls:CircularProgressBar.Angle)"/>
                                             <Binding ElementName="PART_Track" Path="ActualWidth"/>
                                             <Binding ElementName="PART_Track" Path="ActualHeight"/>

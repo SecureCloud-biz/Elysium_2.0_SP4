@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Windows;
@@ -57,8 +58,12 @@ namespace Elysium.Theme.Controls
 
             if (Template != null)
             {
-                _applicationBarHost = (Decorator)Template.FindName(ApplicationBarHost, this);
-                if (_applicationBarHost != null)
+                _applicationBarHost = Template.FindName(ApplicationBarHost, this) as Decorator;
+                if (_applicationBarHost == null)
+                {
+                    Trace.TraceWarning(ApplicationBarHost + " not found.");
+                }
+                else
                 {
                     var applicationBar = GetApplicationBar(this);
                     if (applicationBar != null)
@@ -68,14 +73,18 @@ namespace Elysium.Theme.Controls
                 }
 
                 Contract.Assume(Template != null);
-                _caption = (FrameworkElement)Template.FindName(CaptionName, this);
-                if (_caption != null)
+                _caption = Template.FindName(CaptionName, this) as FrameworkElement;
+                if (_caption == null)
+                {
+                    Trace.TraceWarning(CaptionName + " not found.");
+                }
+                else
                 {
                     _caption.SizeChanged += (sender, e) =>
-                                                {
-                                                    NonClientWidth = e.NewSize.Width;
-                                                    NonClientHeight = e.NewSize.Height;
-                                                };
+                    {
+                        NonClientWidth = e.NewSize.Width;
+                        NonClientHeight = e.NewSize.Height;
+                    };
                 }
             }
         }
@@ -157,12 +166,12 @@ namespace Elysium.Theme.Controls
             {
                 Action setMainWindow =
                     () =>
+                    {
+                        foreach (var window in Application.Current.Windows.AsParallel().Cast<Window>().Where(window => window != instance))
                         {
-                            foreach (var window in Application.Current.Windows.AsParallel().Cast<Window>().Where(window => window != instance))
-                            {
-                                SetIsMainWindow(window, false);
-                            }
-                        };
+                            SetIsMainWindow(window, false);
+                        }
+                    };
                 Application.Current.Dispatcher.BeginInvoke(setMainWindow, DispatcherPriority.Render);
             }
         }

@@ -16,6 +16,7 @@
                 <ControlTemplate TargetType="{x:Type controls:DropDownCommandButton}">
 
                     <Grid x:Name="LayoutRoot"
+                          Background="{StaticResource Transparent}"
                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>

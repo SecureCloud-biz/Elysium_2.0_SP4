@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Security;
@@ -230,7 +231,11 @@ namespace Elysium.Theme.Controls.Primitives
             {
                 Track = Template.FindName(TrackName, this) as FrameworkElement;
 
-                if (Track != null)
+                if (Track == null)
+                {
+                    Trace.TraceWarning(TrackName + " not found.");
+                }
+                else
                 {
                     Track.SizeChanged += (sender, e) =>
                     {

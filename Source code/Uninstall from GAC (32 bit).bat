@@ -1,7 +1,5 @@
 @echo off
 set PATH=%ProgramFiles%\Microsoft SDKs\Windows\v7.0A\Bin\NETFX 4.0 Tools
-chdir /d %~dp0
-cd ..\
 @echo on
 gacutil /u "Microsoft.Expression.Drawing"
 gacutil /u "Microsoft.Expression.Interactions"

@@ -551,6 +551,66 @@ namespace Elysium.Theme
 
         #endregion
 
+        #region ToggleSwitch
+
+        [PublicAPI]
+        public static readonly DependencyProperty ToggleSwitchTrackSizeProperty =
+            DependencyProperty.RegisterAttached("ToggleSwitchTrackSize", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(50.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        [PublicAPI]
+        [AttachedPropertyBrowsableForType(typeof(ToggleSwitch))]
+        public static double GetToggleSwitchTrackSize(DependencyObject obj)
+        {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            return BoxingHelper<double>.Unbox(obj.GetValue(ToggleSwitchTrackSizeProperty));
+        }
+
+        [PublicAPI]
+        public static void SetToggleSwitchTrackSize(DependencyObject obj, double value)
+        {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            obj.SetValue(ToggleSwitchTrackSizeProperty, value);
+        }
+
+        [PublicAPI]
+        public static readonly DependencyProperty ToggleSwitchThumbThicknessProperty =
+            DependencyProperty.RegisterAttached("ToggleSwitchThumbThickness", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(12.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        [PublicAPI]
+        [AttachedPropertyBrowsableForType(typeof(ToggleSwitch))]
+        public static double GetToggleSwitchThumbThickness(DependencyObject obj)
+        {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            return BoxingHelper<double>.Unbox(obj.GetValue(ToggleSwitchThumbThicknessProperty));
+        }
+
+        [PublicAPI]
+        public static void SetToggleSwitchThumbThickness(DependencyObject obj, double value)
+        {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            obj.SetValue(ToggleSwitchThumbThicknessProperty, value);
+        }
+
+        #endregion
+
         #region ComboBox
 
         [PublicAPI]

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Security;
@@ -87,9 +88,17 @@ namespace Elysium.Theme.Controls
             if (Template != null)
             {
                 _arc = Template.FindName(ArcName, this) as Arc;
+                if (_arc == null)
+                {
+                    Trace.TraceWarning(ArcName + " not found.");
+                }
                 // NOTE: WPF doesn't declare contracts
                 Contract.Assume(Template != null);
                 _busyBar = Template.FindName(BusyBarName, this) as Canvas;
+                if (_busyBar == null)
+                {
+                    Trace.TraceWarning(BusyBarName +" not found.");
+                }
             }
 
             base.OnApplyTemplateInternal();

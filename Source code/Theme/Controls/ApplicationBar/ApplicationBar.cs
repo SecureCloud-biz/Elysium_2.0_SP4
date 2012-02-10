@@ -112,46 +112,45 @@ namespace Elysium.Theme.Controls
             instance.OnIsOpenChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
         }
 
+// ReSharper disable UnusedParameter.Local
         private void OnIsOpenChanged(bool oldIsOpen, bool newIsOpen)
+// ReSharper restore UnusedParameter.Local
         {
             if (newIsOpen)
             {
-                if (!oldIsOpen)
+                OnOpening(EventArgs.Empty);
+
+                _isOpen = true;
+                InvalidateArrange();
+
+                var storyboard = new Storyboard { FillBehavior = FillBehavior.Stop };
+                Timeline animation;
+                switch (TransitionMode)
                 {
-                    OnOpening(EventArgs.Empty);
-
-                    _isOpen = true;
-                    InvalidateArrange();
-
-                    var storyboard = new Storyboard { FillBehavior = FillBehavior.Stop };
-                    Timeline animation;
-                    switch (TransitionMode)
-                    {
-                        case ApplicationBarTransitionMode.Fade:
-                            animation = new DoubleAnimation(0.0, 1.0, Parameters.GetMinimumDuration(this));
-                            Storyboard.SetTarget(animation, this);
-                            Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
-                            break;
-                        default:
-                            animation = new DoubleAnimation(0.0, DesiredSize.Height, Parameters.GetMinimumDuration(this));
-                            Storyboard.SetTarget(animation, this);
-                            Storyboard.SetTargetProperty(animation, new PropertyPath("Height"));
-                            break;
-                    }
-                    Contract.Assume(storyboard.Children != null);
-                    storyboard.Children.Add(animation);
-                    storyboard.Completed += (sender, e) =>
-                    {
-                        OnOpened(EventArgs.Empty);
-
-                        storyboard.Remove();
-                    };
-                    BeginStoryboard(storyboard);
-
-                    Mouse.Capture(this, CaptureMode.SubTree);
+                    case ApplicationBarTransitionMode.Fade:
+                        animation = new DoubleAnimation(0.0, 1.0, Parameters.GetMinimumDuration(this));
+                        Storyboard.SetTarget(animation, this);
+                        Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
+                        break;
+                    default:
+                        animation = new DoubleAnimation(0.0, DesiredSize.Height, Parameters.GetMinimumDuration(this));
+                        Storyboard.SetTarget(animation, this);
+                        Storyboard.SetTargetProperty(animation, new PropertyPath("Height"));
+                        break;
                 }
+                Contract.Assume(storyboard.Children != null);
+                storyboard.Children.Add(animation);
+                storyboard.Completed += (sender, e) =>
+                {
+                    OnOpened(EventArgs.Empty);
+
+                    storyboard.Remove();
+                };
+                BeginStoryboard(storyboard);
+
+                Mouse.Capture(this, CaptureMode.SubTree);
             }
-            else if (oldIsOpen)
+            else
             {
                 OnClosing(EventArgs.Empty);
 

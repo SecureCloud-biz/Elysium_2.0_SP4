@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Windows;
@@ -245,9 +246,12 @@ namespace Elysium.Theme.Controls
                 // NOTE: WPF doesn't declare contracts
                 Contract.Assume(Template != null);
                 _popup = Template.FindName(PopupName, this) as Popup;
-                if (_popup != null)
+                if (_popup == null)
                 {
-
+                    Trace.TraceWarning(PopupName + " not found.");
+                }
+                else
+                {
                     _popup.CustomPopupPlacementCallback = PlacePopup;
                     _popup.Opened += OnDropDownOpened;
                     _popup.Closed += OnDropDownClosed;

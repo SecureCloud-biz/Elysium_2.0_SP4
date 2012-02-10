@@ -214,6 +214,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\Ranges\ToggleSwitch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Scrolls\ScrollBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -305,13 +309,16 @@
     <Compile Include="Controls\ToastNotification\ToastNotification.cs" />
     <Compile Include="Controls\ToastNotification\ToastNotificationAnimation.cs" />
     <Compile Include="Controls\ToastNotification\VerticalPlacement.cs" />
+    <Compile Include="Controls\ToggleSwitch\Automation\ToggleSwitchAutomationPeer.cs" />
+    <Compile Include="Controls\ToggleSwitch\ToggleSwitch.cs" />
     <Compile Include="Controls\Window.cs" />
     <Compile Include="Converters\AngleToCoordinateConverter.cs" />
     <Compile Include="Converters\DoubleToGridLengthConverter.cs" />
     <Compile Include="Converters\DoubleToThicknessConverter.cs" />
     <Compile Include="Converters\GridLengthToDoubleConverter.cs" />
     <Compile Include="Converters\PercentToAngleConverter.cs" />
-    <Compile Include="Converters\PositiveToNegativeConverter.cs" />
+    <Compile Include="Converters\NumberPositiveToNegativeConverter.cs" />
+    <Compile Include="Converters\ThicknessPositiveToNegativeConverter.cs" />
     <Compile Include="Converters\ThicknessToDoubleConverter.cs" />
     <Compile Include="Extensions\BooleanBoxingHelper.cs" />
     <Compile Include="Extensions\BoxingHelper.cs" />
@@ -338,5 +345,6 @@
   <ItemGroup>
     <None Include="Properties\Key.snk" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

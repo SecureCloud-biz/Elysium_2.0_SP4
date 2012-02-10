@@ -173,7 +173,7 @@ namespace Elysium.Theme.Controls.Primitives
 // ReSharper restore VirtualMemberNeverOverriden.Global
         {
             if (newHeaderTemplate != null && HeaderTemplateSelector != null)
-                Trace.TraceError("Template and TemplateSelector defined");
+                Trace.TraceError("HeaderTemplate and HeaderTemplateSelector defined");
         }
 
         [PublicAPI]
@@ -208,7 +208,7 @@ namespace Elysium.Theme.Controls.Primitives
 // ReSharper restore VirtualMemberNeverOverriden.Global
         {
             if (HeaderTemplate != null && newHeaderTemplateSelector != null)
-                Trace.TraceError("Template and TemplateSelector defined");
+                Trace.TraceError("HeaderTemplate and HeaderTemplateSelector defined");
         }
 
         public override void OnApplyTemplate()
@@ -218,15 +218,31 @@ namespace Elysium.Theme.Controls.Primitives
             if (Template != null)
             {
                 _decor = Template.FindName(DecorName, this) as Ellipse;
+                if (_decor == null)
+                {
+                    Trace.TraceError(DecorName + " not found.");
+                }
                 // NOTE: WPF doesn't declare contracts
                 Contract.Assume(Template != null);
                 _mask = Template.FindName(MaskName, this) as Ellipse;
+                if (_mask == null)
+                {
+                    Trace.TraceError(MaskName + " not found.");
+                }
                 // NOTE: WPF doesn't declare contracts
                 Contract.Assume(Template != null);
                 _headerHost = Template.FindName(HeaderHostName, this) as ContentPresenter;
+                if (_headerHost == null)
+                {
+                    Trace.TraceError(HeaderHostName + " not found.");
+                }
                 // NOTE: WPF doesn't declare contracts
                 Contract.Assume(Template != null);
                 _contentHost = Template.FindName(ContentHostName, this) as ContentPresenter;
+                if (_contentHost == null)
+                {
+                    Trace.TraceError(ContentHostName + " not found.");
+                }
             }
         }
 

@@ -36,6 +36,8 @@
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/Selectors/ComboBox.xaml"/>
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/Selectors/ComboBoxItem.xaml"/>
         
+        <ResourceDictionary Source="/Elysium.Theme;component/Themes/Ranges/ToggleSwitch.xaml"/>
+        
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/Ranges/Slider.xaml"/>
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/Ranges/LinearProgressBar.xaml"/>
         <ResourceDictionary Source="/Elysium.Theme;component/Themes/Ranges/CircularProgressBar.xaml"/>

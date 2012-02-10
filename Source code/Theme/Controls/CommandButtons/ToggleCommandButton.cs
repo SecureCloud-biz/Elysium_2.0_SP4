@@ -70,7 +70,7 @@ namespace Elysium.Theme.Controls
                     break;
                 case false:
                     OnUnchecked(new RoutedEventArgs(UncheckedEvent));
-                    VisualStateManager.GoToState(this, "Unchecked", true);
+                    VisualStateManager.GoToState(this, "Normal", true);
                     break;
                 case null:
                     OnIndeterminate(new RoutedEventArgs(IndeterminateEvent));

@@ -5,7 +5,7 @@ using System.Windows.Data;
 
 namespace Elysium.Theme.Converters
 {
-    public sealed class PositiveToNegativeConverter : IValueConverter
+    public sealed class NumberPositiveToNegativeConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
