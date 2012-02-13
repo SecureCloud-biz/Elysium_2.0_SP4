@@ -33,5 +33,5 @@ using System.Windows.Markup;
 
 [assembly: NeutralResourcesLanguage("en-us")]
 
-[assembly: AssemblyVersion("1.2.247.0")]
-[assembly: AssemblyFileVersion("1.2.247.0")]
+[assembly: AssemblyVersion("1.2.257.0")]
+[assembly: AssemblyFileVersion("1.2.257.0")]
