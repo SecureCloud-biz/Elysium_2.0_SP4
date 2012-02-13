@@ -11,9 +11,9 @@
 
     <Style x:Key="{x:Type controls:CircularProgressBar}" TargetType="{x:Type controls:CircularProgressBar}">
 
-        <Setter Property="Background" Value="{StaticResource Transparent}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource MiddleLight}"/>
-        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="{StaticResource Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Highlight}"/>
+        <Setter Property="BorderThickness" Value="3.0"/>
         <Setter Property="Foreground" Value="{StaticResource Accent}"/>
         
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -31,9 +31,8 @@
                         <converters:NumberPositiveToNegativeConverter x:Key="NumberPositiveToNegativeConverter"/>
                     </ControlTemplate.Resources>
 
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
+                    <Border Background="{StaticResource Transparent}"
+                            BorderThickness="0"
                             ClipToBounds="True">
                         <Canvas x:Name="PART_Track"
                                 RenderTransformOrigin="0.5,0.5"
@@ -41,14 +40,31 @@
                             <Canvas.RenderTransform>
                                 <RotateTransform Angle="90"/>
                             </Canvas.RenderTransform>
+                            <ed:Arc x:Name="BackgroundArc"
+                                    Fill="{TemplateBinding Background}"
+                                    Stroke="{TemplateBinding BorderBrush}"
+                                    StrokeThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessToDoubleConverter}}"
+                                    StartAngle="0"
+                                    EndAngle="360"
+                                    Stretch="None"
+                                    RenderTransformOrigin="0.5,0.5"
+                                    Canvas.Left="0" Canvas.Top="0"
+                                    Panel.ZIndex="0"
+                                    Width="{Binding ElementName=PART_Track, Path=ActualWidth}" Height="{Binding ElementName=PART_Track, Path=ActualHeight}">
+                                <ed:Arc.RenderTransform>
+                                    <RotateTransform Angle="-90"/>
+                                </ed:Arc.RenderTransform>
+                            </ed:Arc>
                             <ed:Arc x:Name="PART_Arc"
+                                    Fill="{StaticResource Transparent}"
                                     Stroke="{TemplateBinding Foreground}"
-                                    StrokeThickness="{TemplateBinding root:Parameters.CircularProgressBarThickness}"
+                                    StrokeThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessToDoubleConverter}}"
                                     StartAngle="0"
                                     EndAngle="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Percent, Converter={StaticResource PercentToAngleConverter}}"
                                     Stretch="None"
                                     RenderTransformOrigin="0.5,0.5"
                                     Canvas.Left="0" Canvas.Top="0"
+                                    Panel.ZIndex="1"
                                     Width="{Binding ElementName=PART_Track, Path=ActualWidth}" Height="{Binding ElementName=PART_Track, Path=ActualHeight}">
                                 <ed:Arc.RenderTransform>
                                     <RotateTransform Angle="-90"/>
@@ -203,6 +219,7 @@
                                 <Condition Property="IsEnabled" Value="True"/>
                             </MultiTrigger.Conditions>
                             <MultiTrigger.Setters>
+                                <Setter TargetName="BackgroundArc" Property="Visibility" Value="Hidden"/>
                                 <Setter TargetName="PART_Arc" Property="Visibility" Value="Hidden"/>
                                 <Setter TargetName="PART_BusyBar" Property="Visibility" Value="Visible"/>
                             </MultiTrigger.Setters>
@@ -211,9 +228,17 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        
+
         <Style.Triggers>
-            
+
+            <Trigger Property="State" Value="Indeterminate">
+                <Setter Property="BorderBrush" Value="{StaticResource Transparent}"/>
+            </Trigger>
+
+            <Trigger Property="State" Value="Busy">
+                <Setter Property="BorderBrush" Value="{StaticResource Transparent}"/>
+            </Trigger>
+
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Foreground" Value="{StaticResource Disabled}"/>
             </Trigger>

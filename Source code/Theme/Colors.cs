@@ -42,22 +42,22 @@ namespace Elysium.Theme
     public static class DarkColors
     {
         [PublicAPI]
-        public static readonly Color Transparent = Color.FromArgb(0x00, 0x07, 0x07, 0x071);
+        public static readonly Color Transparent = Color.FromArgb(0x00, 0x11, 0x11, 0x011);
 
         [PublicAPI]
-        public static readonly Color Semitransparent = Color.FromArgb(0xAA, 0x07, 0x07, 0x07);
+        public static readonly Color Semitransparent = Color.FromArgb(0xAA, 0x11, 0x11, 0x11);
 
         [PublicAPI]
-        public static readonly Color Background = Color.FromArgb(0xFF, 0x07, 0x07, 0x07);
+        public static readonly Color Background = Color.FromArgb(0xFF, 0x11, 0x11, 0x11);
 
         [PublicAPI]
         public static readonly Color Foreground = Color.FromArgb(0xFF, 0xFF, 0xFF, 0xFF);
 
         [PublicAPI]
-        public static readonly Color Contrast = Color.FromArgb(0xFF, 0x07, 0x07, 0x07);
+        public static readonly Color Contrast = Color.FromArgb(0xFF, 0x11, 0x11, 0x11);
 
         [PublicAPI]
-        public static readonly Color Highlight = Color.FromArgb(0xFF, 0x1F, 0x1F, 0x1F);
+        public static readonly Color Highlight = Color.FromArgb(0xFF, 0x33, 0x33, 0x33);
 
         [PublicAPI]
         public static readonly Color MiddleLight = Color.FromArgb(0xFF, 0x99, 0x99, 0x99);
@@ -88,7 +88,7 @@ namespace Elysium.Theme
         public static readonly Color Contrast = Color.FromArgb(0xFF, 0xFF, 0xFF, 0xFF);
 
         [PublicAPI]
-        public static readonly Color Highlight = Color.FromArgb(0xFF, 0xEF, 0xEF, 0xEF);
+        public static readonly Color Highlight = Color.FromArgb(0xFF, 0xE2, 0xE2, 0xE2);
 
         [PublicAPI]
         public static readonly Color MiddleLight = Color.FromArgb(0xFF, 0x77, 0x77, 0x77);

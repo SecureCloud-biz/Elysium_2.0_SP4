@@ -556,7 +556,7 @@ namespace Elysium.Theme
         [PublicAPI]
         public static readonly DependencyProperty ToggleSwitchTrackSizeProperty =
             DependencyProperty.RegisterAttached("ToggleSwitchTrackSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(50.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(48.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(ToggleSwitch))]
@@ -584,7 +584,7 @@ namespace Elysium.Theme
         [PublicAPI]
         public static readonly DependencyProperty ToggleSwitchThumbThicknessProperty =
             DependencyProperty.RegisterAttached("ToggleSwitchThumbThickness", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(12.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(10.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(ToggleSwitch))]
@@ -787,34 +787,6 @@ namespace Elysium.Theme
             }
             Contract.EndContractBlock();
             obj.SetValue(ProgressBarBusyElementSizeProperty, value);
-        }
-
-        [PublicAPI]
-        public static readonly DependencyProperty CircularProgressBarThicknessProperty =
-            DependencyProperty.RegisterAttached("CircularProgressBarThickness", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(3.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
-
-        [PublicAPI]
-        [AttachedPropertyBrowsableForType(typeof(CircularProgressBar))]
-        public static double GetCircularProgressBarThickness(DependencyObject obj)
-        {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
-            return BoxingHelper<double>.Unbox(obj.GetValue(CircularProgressBarThicknessProperty));
-        }
-
-        [PublicAPI]
-        public static void SetCircularProgressBarThickness(DependencyObject obj, double value)
-        {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
-            obj.SetValue(CircularProgressBarThicknessProperty, value);
         }
 
         #endregion
@@ -1025,6 +997,38 @@ namespace Elysium.Theme
             }
             Contract.EndContractBlock();
             obj.SetValue(SubmenuHeaderArrowMarginProperty, value);
+        }
+
+        #endregion
+
+        #region Window
+
+        [PublicAPI]
+        public static readonly DependencyProperty WindowResizeBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("WindowResizeBorderThickness", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(3.0, FrameworkPropertyMetadataOptions.None));
+
+        [PublicAPI]
+        [AttachedPropertyBrowsableForType(typeof(Controls.Window))]
+        public static double GetWindowResizeBorderThickness(Controls.Window obj)
+        {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            return BoxingHelper<double>.Unbox(obj.GetValue(WindowResizeBorderThicknessProperty));
+        }
+
+        [PublicAPI]
+        public static void SetWindowResizeBorderThickness(Controls.Window obj, double value)
+        {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            obj.SetValue(WindowResizeBorderThicknessProperty, value);
         }
 
         #endregion

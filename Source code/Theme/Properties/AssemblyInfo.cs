@@ -8,7 +8,7 @@ using System.Windows.Markup;
 
 [assembly: AssemblyTitle("Elysium: Theme assembly")]
 [assembly: AssemblyDescription("WPF Metro-style theme")]
-[assembly: AssemblyProduct("Elysium theme")]
+[assembly: AssemblyProduct("Elysium Theme")]
 [assembly: AssemblyCopyright("Copyright © Alex F. Sherman & Codeplex Community 2011-2012")]
 
 [assembly: SecurityRules(SecurityRuleSet.Level2)]
@@ -33,5 +33,5 @@ using System.Windows.Markup;
 
 [assembly: NeutralResourcesLanguage("en-us")]
 
-[assembly: AssemblyVersion("1.2.246.0")]
-[assembly: AssemblyFileVersion("1.2.246.0")]
+[assembly: AssemblyVersion("1.2.247.0")]
+[assembly: AssemblyFileVersion("1.2.247.0")]

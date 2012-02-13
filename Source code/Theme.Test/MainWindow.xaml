@@ -1,638 +1,639 @@
 ﻿<metro:Window x:Class="Elysium.Theme.Test.MainWindow"
-			  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-			  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-			  xmlns:metro="http://schemas.codeplex.com/elysium/theme"
-			  WindowStartupLocation="CenterScreen"
-			  Width="1024" Height="480">
-	<metro:Window.ApplicationBar>
-		<metro:ApplicationBar>
-			<metro:CommandButton Header="Light theme"
-								 Click="LightClick"
-								 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-			<metro:CommandButton Header="Dark theme"
-								 Click="DarkClick"
-								 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-				<Image Source="pack://application:,,,/Elysium.Theme.Test;component/Icons/Sample24.png"
-					   Stretch="None"/>
-			</metro:CommandButton>
-			<metro:DropDownCommandButton Header="Advanced"
-										 metro:ApplicationBar.Dock="Right"
-										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-				<Image Source="pack://application:,,,/Elysium.Theme;component/Icons/Advanced.png"
-					   Stretch="None"/>
-				<metro:DropDownCommandButton.Submenu>
-					<metro:Submenu>
-						<MenuItem Header="First advanced item"/>
-						<MenuItem Header="Second advanced item"/>
-						<MenuItem Header="Third advanced item"/>
-					</metro:Submenu>
-				</metro:DropDownCommandButton.Submenu>
-			</metro:DropDownCommandButton>           
-		</metro:ApplicationBar>
-	</metro:Window.ApplicationBar>
-	<TabControl Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-		<TabItem Header="buttons">
-			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="Auto"/>
-					<ColumnDefinition Width="Auto"/>
-					<ColumnDefinition Width="Auto"/>
-				</Grid.ColumnDefinitions>
-				<Grid Grid.Column="0"
-					  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="Auto"/>
-					</Grid.ColumnDefinitions>
-					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="Auto"/>
-					</Grid.RowDefinitions>
-					<Button Grid.Column="0"
-							Grid.Row="0"
-							Content="DISABLED"
-							IsEnabled="False"
-							Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-					<Button Grid.Column="0"
-							Grid.Row="1"
-							Content="BUTTON"
-							Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-					<Button Grid.Column="0"
-							Grid.Row="2"
-							Content="DEFAULT"
-							IsDefault="True"
-							Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-					<RepeatButton Grid.Column="1"
-								  Grid.Row="0"
-								  Content="DISABLED"
-								  IsEnabled="False"
-								  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-					<RepeatButton Grid.Column="1"
-								  Grid.Row="1"
-								  Content="REPEATBUTTON"
-								  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-					<ToggleButton Grid.Column="2"
-								  Grid.Row="0"
-								  Content="DISABLED"
-								  IsEnabled="False"
-								  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-					<ToggleButton Grid.Column="2"
-								  Grid.Row="1"
-								  Content="TOGGLEBUTTON"
-								  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-					<ToggleButton Grid.Column="2"
-								  Grid.Row="2"
-								  Content="CHECKED"
-								  IsChecked="True"
-								  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-					<ToggleButton Grid.Column="2"
-								  Grid.Row="3"
-								  Content="INDETERMINATE"
-								  IsThreeState="True"
-								  IsChecked="{x:Null}"
-								  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				</Grid>
-				<Grid Grid.Column="1"
-					  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="Auto"/>
-					</Grid.ColumnDefinitions>
-					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="Auto"/>
-					</Grid.RowDefinitions>
-					<CheckBox Grid.Column="0"
-							  Grid.Row="0"
-							  IsEnabled="False"
-							  IsChecked="False"
-							  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-						<Grid>
-							<TextBlock Text="Disabled unchecked"/>
-						</Grid>
-					</CheckBox>
-					<CheckBox Grid.Column="0"
-							  Grid.Row="1"
-							  IsEnabled="False"
-							  IsChecked="True"
-							  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-						<Grid>
-							<TextBlock Text="Disabled checked"/>
-						</Grid>
-					</CheckBox>
-					<CheckBox Grid.Column="0"
-							  Grid.Row="2"
-							  IsEnabled="False"
-							  IsThreeState="True"
-							  IsChecked="{x:Null}"
-							  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-						<Grid>
-							<TextBlock Text="Disabled indeterminate"/>
-						</Grid>
-					</CheckBox>
-					<CheckBox Grid.Column="0"
-							  Grid.Row="3"
-							  IsChecked="False"
-							  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-						<Grid>
-							<TextBlock Text="Unchecked"/>
-						</Grid>
-					</CheckBox>
-					<CheckBox Grid.Column="0"
-							  Grid.Row="4"
-							  IsChecked="True"
-							  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-						<Grid>
-							<TextBlock Text="Checked"/>
-						</Grid>
-					</CheckBox>
-					<CheckBox Grid.Column="0"
-							  Grid.Row="5"
-							  IsThreeState="True"
-							  IsChecked="{x:Null}"
-							  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-						<Grid>
-							<TextBlock Text="Indeterminate"/>
-						</Grid>
-					</CheckBox>
-					<RadioButton Grid.Column="1"
-								 Grid.Row="0"
-								 IsEnabled="False"
-								 IsChecked="False"
-								 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-						<Grid>
-							<TextBlock Text="Disabled unchecked"/>
-						</Grid>
-					</RadioButton>
-					<RadioButton Grid.Column="1"
-								 Grid.Row="1"
-								 IsEnabled="False"
-								 IsChecked="True"
-								 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-						<Grid>
-							<TextBlock Text="Disabled checked"/>
-						</Grid>
-					</RadioButton>
-					<RadioButton Grid.Column="1"
-								 Grid.Row="3"
-								 GroupName="RadioButtons"
-								 IsChecked="False"
-								 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-						<Grid>
-							<TextBlock Text="Unchecked"/>
-						</Grid>
-					</RadioButton>
-					<RadioButton Grid.Column="1"
-								 Grid.Row="4"
-								 GroupName="RadioButtons"
-								 IsChecked="True"
-								 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-						<Grid>
-							<TextBlock Text="Checked"/>
-						</Grid>
-					</RadioButton>
-				</Grid>
-				<Grid Grid.Column="2">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="Auto"/>
-					</Grid.ColumnDefinitions>
-					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="Auto"/>
-					</Grid.RowDefinitions>
-					<metro:CommandButton Grid.Column="0"
-										 Grid.Row="0"
-										 Header="Disabled"
-										 IsEnabled="False"
-										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-						<Image Source="pack://application:,,,/Elysium.Theme.Test;component/Icons/Sample24.png"
-							   Stretch="None"/>
-					</metro:CommandButton>
-					<metro:CommandButton Grid.Column="0"
-										 Grid.Row="1"
-										 Header="CommandButton"
-										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-						<Image Source="pack://application:,,,/Elysium.Theme.Test;component/Icons/Sample24.png"
-							   Stretch="None"/>
-					</metro:CommandButton>
-					<metro:ToggleCommandButton Grid.Column="1"
-											   Grid.Row="0"
-											   Header="Disabled"
-											   IsEnabled="False"
-											   Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-						<Image Source="pack://application:,,,/Elysium.Theme.Test;component/Icons/Sample24.png"
-							   Stretch="None"/>
-					</metro:ToggleCommandButton>
-					<metro:ToggleCommandButton Grid.Column="1"
-											   Grid.Row="1"
-											   Header="ToggleCommandButton"
-											   Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-						<Image Source="pack://application:,,,/Elysium.Theme.Test;component/Icons/Sample24.png"
-							   Stretch="None"/>
-					</metro:ToggleCommandButton>
-					<metro:ToggleCommandButton Grid.Column="1"
-											   Grid.Row="2"
-											   Header="Checked"
-											   IsChecked="True"
-											   Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-						<Image Source="pack://application:,,,/Elysium.Theme.Test;component/Icons/Sample24.png"
-							   Stretch="None"/>
-					</metro:ToggleCommandButton>
-					<metro:ToggleCommandButton Grid.Column="1"
-											   Grid.Row="3"
-											   Header="Indeterminate"
-											   IsThreeState="True"
-											   IsChecked="{x:Null}"
-											   Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-						<Image Source="pack://application:,,,/Elysium.Theme.Test;component/Icons/Sample24.png"
-							   Stretch="None"/>
-					</metro:ToggleCommandButton>
-				</Grid>
-			</Grid>
-		</TabItem>
-		<TabItem Header="text and menus">
-			<Grid Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="*"/>
-					<ColumnDefinition Width="*"/>
-					<ColumnDefinition Width="3*"/>
-				</Grid.ColumnDefinitions>
-				<Grid.RowDefinitions>
-					<RowDefinition Height="Auto"/>
-					<RowDefinition Height="Auto"/>
-					<RowDefinition Height="Auto"/>
-					<RowDefinition Height="Auto"/>
-				</Grid.RowDefinitions>
-				<TextBlock Grid.Column="0"
-						   Grid.Row="0"
-						   Text="Lorem ipsum dolor sit amet"
-						   Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<TextBlock Grid.Column="1"
-						   Grid.Row="0"
-						   IsEnabled="False"
-						   Text="Lorem ipsum dolor sit amet"
-						   Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<TextBox Grid.Column="0"
-						 Grid.Row="1"
-						 Text="Lorem ipsum dolor sit amet"
-						 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<TextBox Grid.Column="1"
-						 Grid.Row="1"
-						 IsEnabled="False"
-						 Text="Lorem ipsum dolor sit amet"
-						 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<PasswordBox Grid.Column="0"
-							 Grid.Row="2"
-							 Password="Password"
-							 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<PasswordBox Grid.Column="1"
-							 Grid.Row="2"
-							 IsEnabled="False"
-							 Password="Password"
-							 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<RichTextBox Grid.Column="0"
-							 Grid.Row="3"
-							 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-					<FlowDocument>
-						<Paragraph>
-							<Run>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-							</Run>
-						</Paragraph>
-					</FlowDocument>
-				</RichTextBox>
-				<RichTextBox Grid.Column="1"
-							 Grid.Row="3"
-							 IsEnabled="False"
-							 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-					<FlowDocument>
-						<Paragraph>
-							<Run>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-							</Run>
-						</Paragraph>
-					</FlowDocument>
-				</RichTextBox>
-				<Grid Grid.Column="2"
-					  Grid.Row="0"
-					  Grid.RowSpan="4"
-					  metro:ApplicationBar.PreventsOpen="true">
-					<TextBlock Foreground="{StaticResource MiddleLight}"
-							   FontSize="{Binding Source={x:Static metro:Parameters.Instance}, Path=HeaderFontSize}"                              
-							   Text="Click here to see ContextMenu"
-							   HorizontalAlignment="Center"
-							   VerticalAlignment="Center"/>
-					<Grid.ContextMenu>
-						<ContextMenu>
-							<MenuItem Header="First MenuItem"/>
-							<MenuItem Header="First checkable MenuItem"
-									  IsCheckable="True"
-									  IsChecked="True"/>
-							<MenuItem Header="First MenuItem with icon">
-								<MenuItem.Icon>
-									<Image Source="pack://application:,,,/Elysium.Theme.Test;component/Icons/Sample16.png"
-										   Stretch="None"/>
-								</MenuItem.Icon>
-							</MenuItem>
-							<MenuItem Header="First expandable MenuItem">
-								<MenuItem Header="Second MenuItem"/>
-								<MenuItem Header="Second checkable MenuItem"
-										  IsCheckable="True"
-										  IsChecked="True"/>
-								<MenuItem Header="Second disabled MenuItem"
-										  IsEnabled="False"/>
-								<MenuItem Header="Second expandable MenuItem">
-									<MenuItem Header="3rd MenuItem"/>
-									<MenuItem Header="4th MenuItem"/>
-								</MenuItem>
-							</MenuItem>
-							<MenuItem Header="First disabled MenuItem"
-									  IsEnabled="False"/>
-						</ContextMenu>
-					</Grid.ContextMenu>
-				</Grid>
-			</Grid>
-		</TabItem>
-		<TabItem Header="selectors and ranges">
-			<Grid Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="Auto"/>
-					<ColumnDefinition Width="Auto"/>
-					<ColumnDefinition Width="100"/>
-					<ColumnDefinition Width="100"/>
-					<ColumnDefinition Width="100"/>
-					<ColumnDefinition Width="100"/>
-					<ColumnDefinition Width="100"/>
-					<ColumnDefinition Width="50"/>
-					<ColumnDefinition Width="50"/>
-					<ColumnDefinition Width="50"/>
-				</Grid.ColumnDefinitions>
-				<Grid.RowDefinitions>
-					<RowDefinition Height="Auto"/>
-					<RowDefinition Height="Auto"/>
-					<RowDefinition Height="Auto"/>
-					<RowDefinition Height="Auto"/>
-				</Grid.RowDefinitions>
-				<ComboBox Grid.Column="0"
-						  Grid.Row="0"
-						  IsEnabled="False"
-						  IsEditable="False"
-						  SelectedIndex="2"
-						  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-					<ComboBoxItem Content="First ComboBoxItem"/>
-					<ComboBoxItem Content="Second ComboBoxItem"/>
-					<ComboBoxItem Content="Third ComboBoxItem"/>
-					<ComboBoxItem Content="4th ComboBoxItem"/>
-					<ComboBoxItem Content="5th ComboBoxItem"/>
-					<ComboBoxItem Content="6th ComboBoxItem"/>
-					<ComboBoxItem Content="7th ComboBoxItem"/>
-				</ComboBox>
-				<ComboBox Grid.Column="1"
-						  Grid.Row="0"
-						  IsEnabled="False"
-						  IsEditable="True"
-						  SelectedIndex="4"
-						  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-					<ComboBoxItem Content="First ComboBoxItem"/>
-					<ComboBoxItem Content="Second ComboBoxItem"/>
-					<ComboBoxItem Content="Third ComboBoxItem"/>
-					<ComboBoxItem Content="4th ComboBoxItem"/>
-					<ComboBoxItem Content="5th ComboBoxItem"/>
-					<ComboBoxItem Content="6th ComboBoxItem"/>
-					<ComboBoxItem Content="7th ComboBoxItem"/>
-				</ComboBox>
-				<ComboBox Grid.Column="0"
-						  Grid.Row="1"
-						  IsEditable="False"
-						  SelectedIndex="2"
-						  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-					<ComboBoxItem Content="First ComboBoxItem"/>
-					<ComboBoxItem Content="Second ComboBoxItem"/>
-					<ComboBoxItem Content="Third ComboBoxItem"/>
-					<ComboBoxItem Content="4th ComboBoxItem"/>
-					<ComboBoxItem Content="5th ComboBoxItem"/>
-					<ComboBoxItem Content="6th ComboBoxItem"/>
-					<ComboBoxItem Content="7th ComboBoxItem"/>
-				</ComboBox>
-				<ComboBox Grid.Column="1"
-						  Grid.Row="1"
-						  IsEditable="True"
-						  SelectedIndex="4"
-						  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
-					<ComboBoxItem Content="First ComboBoxItem"/>
-					<ComboBoxItem Content="Second ComboBoxItem"/>
-					<ComboBoxItem Content="Third ComboBoxItem"/>
-					<ComboBoxItem Content="4th ComboBoxItem"/>
-					<ComboBoxItem Content="5th ComboBoxItem"/>
-					<ComboBoxItem Content="6th ComboBoxItem"/>
-					<ComboBoxItem Content="7th ComboBoxItem"/>
-				</ComboBox>
-				<ListBox Grid.Column="0"
-						 Grid.Row="2"
-						 IsEnabled="False"
-						 SelectedIndex="1"
-						 SelectionMode="Single"
-						 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
-						 Height="100">
-					<ListBoxItem Content="First ListBoxItem"/>
-					<ListBoxItem Content="Second ListBoxItem"/>
-					<ListBoxItem Content="Third ListBoxItem"/>
-					<ListBoxItem Content="4th ListBoxItem"/>
-					<ListBoxItem Content="5th ListBoxItem"/>
-					<ListBoxItem Content="6th ListBoxItem"/>
-					<ListBoxItem Content="7th ListBoxItem"/>
-				</ListBox>
-				<ListBox Grid.Column="1"
-						 Grid.Row="2"
-						 IsEnabled="False"
-						 SelectedIndex="0"
-						 SelectionMode="Multiple"
-						 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
-						 Height="100">
-					<ListBoxItem Content="First ListBoxItem"/>
-					<ListBoxItem Content="Second ListBoxItem"/>
-					<ListBoxItem Content="Third ListBoxItem"/>
-					<ListBoxItem Content="4th ListBoxItem"/>
-					<ListBoxItem Content="5th ListBoxItem"/>
-					<ListBoxItem Content="6th ListBoxItem"/>
-					<ListBoxItem Content="7th ListBoxItem"/>
-				</ListBox>
-				<ListBox Grid.Column="0"
-						 Grid.Row="3"
-						 SelectedIndex="1"
-						 SelectionMode="Single"
-						 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
-						 Height="100">
-					<ListBoxItem Content="First ListBoxItem"/>
-					<ListBoxItem Content="Second ListBoxItem"/>
-					<ListBoxItem Content="Third ListBoxItem"/>
-					<ListBoxItem Content="4th ListBoxItem"/>
-					<ListBoxItem Content="5th ListBoxItem"/>
-					<ListBoxItem Content="6th ListBoxItem"/>
-					<ListBoxItem Content="7th ListBoxItem"/>
-				</ListBox>
-				<ListBox Grid.Column="1"
-						 Grid.Row="3"
-						 SelectedIndex="0"
-						 SelectionMode="Multiple"
-						 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
-						 Height="100">
-					<ListBoxItem Content="First ListBoxItem"/>
-					<ListBoxItem Content="Second ListBoxItem"/>
-					<ListBoxItem Content="Third ListBoxItem"/>
-					<ListBoxItem Content="4th ListBoxItem"/>
-					<ListBoxItem Content="5th ListBoxItem"/>
-					<ListBoxItem Content="6th ListBoxItem"/>
-					<ListBoxItem Content="7th ListBoxItem"/>
-				</ListBox>
-				<metro:ToggleSwitch Grid.Column="2"
-									Grid.Row="0"
-									IsEnabled="False"
-									IsChecked="False"
-									Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<metro:ToggleSwitch Grid.Column="2"
-									Grid.Row="1"
-									IsEnabled="False"
-									IsChecked="True"
-									Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<metro:ToggleSwitch Grid.Column="2"
-									Grid.Row="2"
-									IsEnabled="True"
-									IsChecked="False"
-									Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<metro:ToggleSwitch Grid.Column="2"
-									Grid.Row="3"
-									IsEnabled="True"
-									IsChecked="True"
-									Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<Slider Grid.Column="3"
-						Grid.Row="0"
-						IsEnabled="False"
-						Orientation="Horizontal"
-						Value="4"
-						Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
-						Width="100"/>
-				<Slider Grid.Column="3"
-						Grid.Row="1"
-						Orientation="Horizontal"
-						Value="4"
-						Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
-						Width="100"/>
-				<Slider Grid.Column="3"
-						Grid.Row="2"
-						IsEnabled="False"
-						Orientation="Vertical"
-						Value="6"
-						Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<Slider Grid.Column="3"
-						Grid.Row="3"
-						Orientation="Vertical"
-						Value="6"
-						Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<metro:LinearProgressBar Grid.Column="4"
-										 Grid.Row="0"
-										 IsEnabled="False"
-										 Orientation="Horizontal"
-										 Value="70"
-										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<metro:LinearProgressBar Grid.Column="4"
-										 Grid.Row="1"
-										 Orientation="Horizontal"
-										 Value="70"
-										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<metro:LinearProgressBar Grid.Column="4"
-										 Grid.Row="2"
-										 IsEnabled="False"
-										 Orientation="Vertical"
-										 Value="45"
-										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<metro:LinearProgressBar Grid.Column="4"
-										 Grid.Row="3"
-										 Orientation="Vertical"
-										 Value="45"
-										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<metro:LinearProgressBar Grid.Column="5"
-										 Grid.Row="0"
-										 IsEnabled="False"
-										 Orientation="Horizontal"
-										 State="Indeterminate"
-										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<metro:LinearProgressBar Grid.Column="5"
-										 Grid.Row="1"
-										 Orientation="Horizontal"
-										 State="Indeterminate"
-										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<metro:LinearProgressBar Grid.Column="5"
-										 Grid.Row="2"
-										 IsEnabled="False"
-										 Orientation="Vertical"
-										 State="Indeterminate"
-										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<metro:LinearProgressBar Grid.Column="5"
-										 Grid.Row="3"
-										 Orientation="Vertical"
-										 State="Indeterminate"
-										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<metro:LinearProgressBar Grid.Column="6"
-										 Grid.Row="0"
-										 IsEnabled="False"
-										 Orientation="Horizontal"
-										 State="Busy"
-										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<metro:LinearProgressBar Grid.Column="6"
-										 Grid.Row="1"
-										 Orientation="Horizontal"
-										 State="Busy"
-										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<metro:LinearProgressBar Grid.Column="6"
-										 Grid.Row="2"
-										 IsEnabled="False"
-										 Orientation="Vertical"
-										 State="Busy"
-										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<metro:LinearProgressBar Grid.Column="6"
-										 Grid.Row="3"
-										 Orientation="Vertical"
-										 State="Busy"
-										 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<metro:CircularProgressBar Grid.Column="7"
-										   Grid.Row="0"
-										   IsEnabled="False"
-										   Value="65"
-										   Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<metro:CircularProgressBar Grid.Column="7"
-										   Grid.Row="1"
-										   Value="65"
-										   Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<metro:CircularProgressBar Grid.Column="8"
-										   Grid.Row="0"
-										   IsEnabled="False"
-										   State="Indeterminate"
-										   Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<metro:CircularProgressBar Grid.Column="8"
-										   Grid.Row="1"
-										   State="Indeterminate"
-										   Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<metro:CircularProgressBar Grid.Column="9"
-										   Grid.Row="0"
-										   IsEnabled="False"
-										   State="Busy"
-										   Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-				<metro:CircularProgressBar Grid.Column="9"
-										   Grid.Row="1"
-										   State="Busy"
-										   Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
-			</Grid>
-		</TabItem>
-	</TabControl>
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:metro="http://schemas.codeplex.com/elysium/theme"
+              WindowStartupLocation="CenterScreen"
+              Width="1024" Height="480">
+    <metro:Window.ApplicationBar>
+        <metro:ApplicationBar>
+            <metro:CommandButton Header="Light theme"
+                                 Click="LightClick"
+                                 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+            <metro:CommandButton Header="Dark theme"
+                                 Click="DarkClick"
+                                 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                <Image Source="pack://application:,,,/Elysium.Theme.Test;component/Icons/Sample24.png"
+                       Stretch="None"/>
+            </metro:CommandButton>
+            <metro:DropDownCommandButton Header="Advanced"
+                                         metro:ApplicationBar.Dock="Right"
+                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                <Image Source="pack://application:,,,/Elysium.Theme;component/Icons/Advanced.png"
+                       Stretch="None"/>
+                <metro:DropDownCommandButton.Submenu>
+                    <metro:Submenu>
+                        <MenuItem Header="First advanced item"/>
+                        <MenuItem Header="Second advanced item"/>
+                        <MenuItem Header="Third advanced item"/>
+                    </metro:Submenu>
+                </metro:DropDownCommandButton.Submenu>
+            </metro:DropDownCommandButton>           
+        </metro:ApplicationBar>
+    </metro:Window.ApplicationBar>
+    <TabControl Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+        <TabItem Header="buttons">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0"
+                      Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Button Grid.Column="0"
+                            Grid.Row="0"
+                            Content="DISABLED"
+                            IsEnabled="False"
+                            Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                    <Button Grid.Column="0"
+                            Grid.Row="1"
+                            Content="BUTTON"
+                            Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                    <Button Grid.Column="0"
+                            Grid.Row="2"
+                            Content="DEFAULT"
+                            IsDefault="True"
+                            Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                    <RepeatButton Grid.Column="1"
+                                  Grid.Row="0"
+                                  Content="DISABLED"
+                                  IsEnabled="False"
+                                  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                    <RepeatButton Grid.Column="1"
+                                  Grid.Row="1"
+                                  Content="REPEATBUTTON"
+                                  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                    <ToggleButton Grid.Column="2"
+                                  Grid.Row="0"
+                                  Content="DISABLED"
+                                  IsEnabled="False"
+                                  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                    <ToggleButton Grid.Column="2"
+                                  Grid.Row="1"
+                                  Content="TOGGLEBUTTON"
+                                  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                    <ToggleButton Grid.Column="2"
+                                  Grid.Row="2"
+                                  Content="CHECKED"
+                                  IsChecked="True"
+                                  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                    <ToggleButton Grid.Column="2"
+                                  Grid.Row="3"
+                                  Content="INDETERMINATE"
+                                  IsThreeState="True"
+                                  IsChecked="{x:Null}"
+                                  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                </Grid>
+                <Grid Grid.Column="1"
+                      Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <CheckBox Grid.Column="0"
+                              Grid.Row="0"
+                              IsEnabled="False"
+                              IsChecked="False"
+                              Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                        <Grid>
+                            <TextBlock Text="Disabled unchecked"/>
+                        </Grid>
+                    </CheckBox>
+                    <CheckBox Grid.Column="0"
+                              Grid.Row="1"
+                              IsEnabled="False"
+                              IsChecked="True"
+                              Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                        <Grid>
+                            <TextBlock Text="Disabled checked"/>
+                        </Grid>
+                    </CheckBox>
+                    <CheckBox Grid.Column="0"
+                              Grid.Row="2"
+                              IsEnabled="False"
+                              IsThreeState="True"
+                              IsChecked="{x:Null}"
+                              Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                        <Grid>
+                            <TextBlock Text="Disabled indeterminate"/>
+                        </Grid>
+                    </CheckBox>
+                    <CheckBox Grid.Column="0"
+                              Grid.Row="3"
+                              IsChecked="False"
+                              Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                        <Grid>
+                            <TextBlock Text="Unchecked"/>
+                        </Grid>
+                    </CheckBox>
+                    <CheckBox Grid.Column="0"
+                              Grid.Row="4"
+                              IsChecked="True"
+                              Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                        <Grid>
+                            <TextBlock Text="Checked"/>
+                        </Grid>
+                    </CheckBox>
+                    <CheckBox Grid.Column="0"
+                              Grid.Row="5"
+                              IsThreeState="True"
+                              IsChecked="{x:Null}"
+                              Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                        <Grid>
+                            <TextBlock Text="Indeterminate"/>
+                        </Grid>
+                    </CheckBox>
+                    <RadioButton Grid.Column="1"
+                                 Grid.Row="0"
+                                 IsEnabled="False"
+                                 IsChecked="False"
+                                 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                        <Grid>
+                            <TextBlock Text="Disabled unchecked"/>
+                        </Grid>
+                    </RadioButton>
+                    <RadioButton Grid.Column="1"
+                                 Grid.Row="1"
+                                 IsEnabled="False"
+                                 IsChecked="True"
+                                 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                        <Grid>
+                            <TextBlock Text="Disabled checked"/>
+                        </Grid>
+                    </RadioButton>
+                    <RadioButton Grid.Column="1"
+                                 Grid.Row="3"
+                                 GroupName="RadioButtons"
+                                 IsChecked="False"
+                                 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                        <Grid>
+                            <TextBlock Text="Unchecked"/>
+                        </Grid>
+                    </RadioButton>
+                    <RadioButton Grid.Column="1"
+                                 Grid.Row="4"
+                                 GroupName="RadioButtons"
+                                 IsChecked="True"
+                                 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                        <Grid>
+                            <TextBlock Text="Checked"/>
+                        </Grid>
+                    </RadioButton>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <metro:CommandButton Grid.Column="0"
+                                         Grid.Row="0"
+                                         Header="Disabled"
+                                         IsEnabled="False"
+                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                        <Image Source="pack://application:,,,/Elysium.Theme.Test;component/Icons/Sample24.png"
+                               Stretch="None"/>
+                    </metro:CommandButton>
+                    <metro:CommandButton Grid.Column="0"
+                                         Grid.Row="1"
+                                         Header="CommandButton"
+                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                        <Image Source="pack://application:,,,/Elysium.Theme.Test;component/Icons/Sample24.png"
+                               Stretch="None"/>
+                    </metro:CommandButton>
+                    <metro:ToggleCommandButton Grid.Column="1"
+                                               Grid.Row="0"
+                                               Header="Disabled"
+                                               IsEnabled="False"
+                                               Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                        <Image Source="pack://application:,,,/Elysium.Theme.Test;component/Icons/Sample24.png"
+                               Stretch="None"/>
+                    </metro:ToggleCommandButton>
+                    <metro:ToggleCommandButton Grid.Column="1"
+                                               Grid.Row="1"
+                                               Header="ToggleCommandButton"
+                                               Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                        <Image Source="pack://application:,,,/Elysium.Theme.Test;component/Icons/Sample24.png"
+                               Stretch="None"/>
+                    </metro:ToggleCommandButton>
+                    <metro:ToggleCommandButton Grid.Column="1"
+                                               Grid.Row="2"
+                                               Header="Checked"
+                                               IsChecked="True"
+                                               Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                        <Image Source="pack://application:,,,/Elysium.Theme.Test;component/Icons/Sample24.png"
+                               Stretch="None"/>
+                    </metro:ToggleCommandButton>
+                    <metro:ToggleCommandButton Grid.Column="1"
+                                               Grid.Row="3"
+                                               Header="Indeterminate"
+                                               IsThreeState="True"
+                                               IsChecked="{x:Null}"
+                                               Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                        <Image Source="pack://application:,,,/Elysium.Theme.Test;component/Icons/Sample24.png"
+                               Stretch="None"/>
+                    </metro:ToggleCommandButton>
+                </Grid>
+            </Grid>
+        </TabItem>
+        <TabItem Header="text and menus">
+            <Grid Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0"
+                           Grid.Row="0"
+                           Text="Lorem ipsum dolor sit amet"
+                           Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <TextBlock Grid.Column="1"
+                           Grid.Row="0"
+                           IsEnabled="False"
+                           Text="Lorem ipsum dolor sit amet"
+                           Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <TextBox Grid.Column="0"
+                         Grid.Row="1"
+                         Text="Lorem ipsum dolor sit amet"
+                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <TextBox Grid.Column="1"
+                         Grid.Row="1"
+                         IsEnabled="False"
+                         Text="Lorem ipsum dolor sit amet"
+                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <PasswordBox Grid.Column="0"
+                             Grid.Row="2"
+                             Password="Password"
+                             Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <PasswordBox Grid.Column="1"
+                             Grid.Row="2"
+                             IsEnabled="False"
+                             Password="Password"
+                             Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <RichTextBox Grid.Column="0"
+                             Grid.Row="3"
+                             Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                    <FlowDocument>
+                        <Paragraph>
+                            <Run>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </Run>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+                <RichTextBox Grid.Column="1"
+                             Grid.Row="3"
+                             IsEnabled="False"
+                             Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                    <FlowDocument>
+                        <Paragraph>
+                            <Run>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </Run>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+                <Grid Grid.Column="2"
+                      Grid.Row="0"
+                      Grid.RowSpan="4"
+                      metro:ApplicationBar.PreventsOpen="true">
+                    <TextBlock Foreground="{StaticResource MiddleLight}"
+                               FontSize="{Binding Source={x:Static metro:Parameters.Instance}, Path=HeaderFontSize}"                              
+                               Text="Click here to see ContextMenu"
+                               TextOptions.TextFormattingMode="Ideal"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                    <Grid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="First MenuItem"/>
+                            <MenuItem Header="First checkable MenuItem"
+                                      IsCheckable="True"
+                                      IsChecked="True"/>
+                            <MenuItem Header="First MenuItem with icon">
+                                <MenuItem.Icon>
+                                    <Image Source="pack://application:,,,/Elysium.Theme.Test;component/Icons/Sample16.png"
+                                           Stretch="None"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="First expandable MenuItem">
+                                <MenuItem Header="Second MenuItem"/>
+                                <MenuItem Header="Second checkable MenuItem"
+                                          IsCheckable="True"
+                                          IsChecked="True"/>
+                                <MenuItem Header="Second disabled MenuItem"
+                                          IsEnabled="False"/>
+                                <MenuItem Header="Second expandable MenuItem">
+                                    <MenuItem Header="3rd MenuItem"/>
+                                    <MenuItem Header="4th MenuItem"/>
+                                </MenuItem>
+                            </MenuItem>
+                            <MenuItem Header="First disabled MenuItem"
+                                      IsEnabled="False"/>
+                        </ContextMenu>
+                    </Grid.ContextMenu>
+                </Grid>
+            </Grid>
+        </TabItem>
+        <TabItem Header="selectors and ranges">
+            <Grid Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ComboBox Grid.Column="0"
+                          Grid.Row="0"
+                          IsEnabled="False"
+                          IsEditable="False"
+                          SelectedIndex="2"
+                          Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                    <ComboBoxItem Content="First ComboBoxItem"/>
+                    <ComboBoxItem Content="Second ComboBoxItem"/>
+                    <ComboBoxItem Content="Third ComboBoxItem"/>
+                    <ComboBoxItem Content="4th ComboBoxItem"/>
+                    <ComboBoxItem Content="5th ComboBoxItem"/>
+                    <ComboBoxItem Content="6th ComboBoxItem"/>
+                    <ComboBoxItem Content="7th ComboBoxItem"/>
+                </ComboBox>
+                <ComboBox Grid.Column="1"
+                          Grid.Row="0"
+                          IsEnabled="False"
+                          IsEditable="True"
+                          SelectedIndex="4"
+                          Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                    <ComboBoxItem Content="First ComboBoxItem"/>
+                    <ComboBoxItem Content="Second ComboBoxItem"/>
+                    <ComboBoxItem Content="Third ComboBoxItem"/>
+                    <ComboBoxItem Content="4th ComboBoxItem"/>
+                    <ComboBoxItem Content="5th ComboBoxItem"/>
+                    <ComboBoxItem Content="6th ComboBoxItem"/>
+                    <ComboBoxItem Content="7th ComboBoxItem"/>
+                </ComboBox>
+                <ComboBox Grid.Column="0"
+                          Grid.Row="1"
+                          IsEditable="False"
+                          SelectedIndex="2"
+                          Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                    <ComboBoxItem Content="First ComboBoxItem"/>
+                    <ComboBoxItem Content="Second ComboBoxItem"/>
+                    <ComboBoxItem Content="Third ComboBoxItem"/>
+                    <ComboBoxItem Content="4th ComboBoxItem"/>
+                    <ComboBoxItem Content="5th ComboBoxItem"/>
+                    <ComboBoxItem Content="6th ComboBoxItem"/>
+                    <ComboBoxItem Content="7th ComboBoxItem"/>
+                </ComboBox>
+                <ComboBox Grid.Column="1"
+                          Grid.Row="1"
+                          IsEditable="True"
+                          SelectedIndex="4"
+                          Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                    <ComboBoxItem Content="First ComboBoxItem"/>
+                    <ComboBoxItem Content="Second ComboBoxItem"/>
+                    <ComboBoxItem Content="Third ComboBoxItem"/>
+                    <ComboBoxItem Content="4th ComboBoxItem"/>
+                    <ComboBoxItem Content="5th ComboBoxItem"/>
+                    <ComboBoxItem Content="6th ComboBoxItem"/>
+                    <ComboBoxItem Content="7th ComboBoxItem"/>
+                </ComboBox>
+                <ListBox Grid.Column="0"
+                         Grid.Row="2"
+                         IsEnabled="False"
+                         SelectedIndex="1"
+                         SelectionMode="Single"
+                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
+                         Height="100">
+                    <ListBoxItem Content="First ListBoxItem"/>
+                    <ListBoxItem Content="Second ListBoxItem"/>
+                    <ListBoxItem Content="Third ListBoxItem"/>
+                    <ListBoxItem Content="4th ListBoxItem"/>
+                    <ListBoxItem Content="5th ListBoxItem"/>
+                    <ListBoxItem Content="6th ListBoxItem"/>
+                    <ListBoxItem Content="7th ListBoxItem"/>
+                </ListBox>
+                <ListBox Grid.Column="1"
+                         Grid.Row="2"
+                         IsEnabled="False"
+                         SelectedIndex="0"
+                         SelectionMode="Multiple"
+                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
+                         Height="100">
+                    <ListBoxItem Content="First ListBoxItem"/>
+                    <ListBoxItem Content="Second ListBoxItem"/>
+                    <ListBoxItem Content="Third ListBoxItem"/>
+                    <ListBoxItem Content="4th ListBoxItem"/>
+                    <ListBoxItem Content="5th ListBoxItem"/>
+                    <ListBoxItem Content="6th ListBoxItem"/>
+                    <ListBoxItem Content="7th ListBoxItem"/>
+                </ListBox>
+                <ListBox Grid.Column="0"
+                         Grid.Row="3"
+                         SelectedIndex="1"
+                         SelectionMode="Single"
+                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
+                         Height="100">
+                    <ListBoxItem Content="First ListBoxItem"/>
+                    <ListBoxItem Content="Second ListBoxItem"/>
+                    <ListBoxItem Content="Third ListBoxItem"/>
+                    <ListBoxItem Content="4th ListBoxItem"/>
+                    <ListBoxItem Content="5th ListBoxItem"/>
+                    <ListBoxItem Content="6th ListBoxItem"/>
+                    <ListBoxItem Content="7th ListBoxItem"/>
+                </ListBox>
+                <ListBox Grid.Column="1"
+                         Grid.Row="3"
+                         SelectedIndex="0"
+                         SelectionMode="Multiple"
+                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
+                         Height="100">
+                    <ListBoxItem Content="First ListBoxItem"/>
+                    <ListBoxItem Content="Second ListBoxItem"/>
+                    <ListBoxItem Content="Third ListBoxItem"/>
+                    <ListBoxItem Content="4th ListBoxItem"/>
+                    <ListBoxItem Content="5th ListBoxItem"/>
+                    <ListBoxItem Content="6th ListBoxItem"/>
+                    <ListBoxItem Content="7th ListBoxItem"/>
+                </ListBox>
+                <metro:ToggleSwitch Grid.Column="2"
+                                    Grid.Row="0"
+                                    IsEnabled="False"
+                                    IsChecked="False"
+                                    Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <metro:ToggleSwitch Grid.Column="2"
+                                    Grid.Row="1"
+                                    IsEnabled="False"
+                                    IsChecked="True"
+                                    Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <metro:ToggleSwitch Grid.Column="2"
+                                    Grid.Row="2"
+                                    IsEnabled="True"
+                                    IsChecked="False"
+                                    Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <metro:ToggleSwitch Grid.Column="2"
+                                    Grid.Row="3"
+                                    IsEnabled="True"
+                                    IsChecked="True"
+                                    Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <Slider Grid.Column="3"
+                        Grid.Row="0"
+                        IsEnabled="False"
+                        Orientation="Horizontal"
+                        Value="4"
+                        Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
+                        Width="100"/>
+                <Slider Grid.Column="3"
+                        Grid.Row="1"
+                        Orientation="Horizontal"
+                        Value="4"
+                        Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
+                        Width="100"/>
+                <Slider Grid.Column="3"
+                        Grid.Row="2"
+                        IsEnabled="False"
+                        Orientation="Vertical"
+                        Value="6"
+                        Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <Slider Grid.Column="3"
+                        Grid.Row="3"
+                        Orientation="Vertical"
+                        Value="6"
+                        Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <metro:LinearProgressBar Grid.Column="4"
+                                         Grid.Row="0"
+                                         IsEnabled="False"
+                                         Orientation="Horizontal"
+                                         Value="70"
+                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <metro:LinearProgressBar Grid.Column="4"
+                                         Grid.Row="1"
+                                         Orientation="Horizontal"
+                                         Value="70"
+                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <metro:LinearProgressBar Grid.Column="4"
+                                         Grid.Row="2"
+                                         IsEnabled="False"
+                                         Orientation="Vertical"
+                                         Value="45"
+                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <metro:LinearProgressBar Grid.Column="4"
+                                         Grid.Row="3"
+                                         Orientation="Vertical"
+                                         Value="45"
+                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <metro:LinearProgressBar Grid.Column="5"
+                                         Grid.Row="0"
+                                         IsEnabled="False"
+                                         Orientation="Horizontal"
+                                         State="Indeterminate"
+                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <metro:LinearProgressBar Grid.Column="5"
+                                         Grid.Row="1"
+                                         Orientation="Horizontal"
+                                         State="Indeterminate"
+                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <metro:LinearProgressBar Grid.Column="5"
+                                         Grid.Row="2"
+                                         IsEnabled="False"
+                                         Orientation="Vertical"
+                                         State="Indeterminate"
+                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <metro:LinearProgressBar Grid.Column="5"
+                                         Grid.Row="3"
+                                         Orientation="Vertical"
+                                         State="Indeterminate"
+                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <metro:LinearProgressBar Grid.Column="6"
+                                         Grid.Row="0"
+                                         IsEnabled="False"
+                                         Orientation="Horizontal"
+                                         State="Busy"
+                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <metro:LinearProgressBar Grid.Column="6"
+                                         Grid.Row="1"
+                                         Orientation="Horizontal"
+                                         State="Busy"
+                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <metro:LinearProgressBar Grid.Column="6"
+                                         Grid.Row="2"
+                                         IsEnabled="False"
+                                         Orientation="Vertical"
+                                         State="Busy"
+                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <metro:LinearProgressBar Grid.Column="6"
+                                         Grid.Row="3"
+                                         Orientation="Vertical"
+                                         State="Busy"
+                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <metro:CircularProgressBar Grid.Column="7"
+                                           Grid.Row="0"
+                                           IsEnabled="False"
+                                           Value="65"
+                                           Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <metro:CircularProgressBar Grid.Column="7"
+                                           Grid.Row="1"
+                                           Value="65"
+                                           Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <metro:CircularProgressBar Grid.Column="8"
+                                           Grid.Row="0"
+                                           IsEnabled="False"
+                                           State="Indeterminate"
+                                           Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <metro:CircularProgressBar Grid.Column="8"
+                                           Grid.Row="1"
+                                           State="Indeterminate"
+                                           Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <metro:CircularProgressBar Grid.Column="9"
+                                           Grid.Row="0"
+                                           IsEnabled="False"
+                                           State="Busy"
+                                           Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                <metro:CircularProgressBar Grid.Column="9"
+                                           Grid.Row="1"
+                                           State="Busy"
+                                           Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+            </Grid>
+        </TabItem>
+    </TabControl>
 </metro:Window>

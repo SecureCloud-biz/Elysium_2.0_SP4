@@ -1,216 +1,217 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-					xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-					xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
-					xmlns:shell="http://schemas.microsoft.com/winfx/2006/xaml/presentation/shell"
-					xmlns:system="clr-namespace:System;assembly=mscorlib"
-					xmlns:root="clr-namespace:Elysium.Theme"
-					xmlns:primitives="clr-namespace:Elysium.Theme.Controls.Primitives"
-					xmlns:controls="clr-namespace:Elysium.Theme.Controls">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+                    xmlns:shell="http://schemas.microsoft.com/winfx/2006/xaml/presentation/shell"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:root="clr-namespace:Elysium.Theme"
+                    xmlns:primitives="clr-namespace:Elysium.Theme.Controls.Primitives"
+                    xmlns:controls="clr-namespace:Elysium.Theme.Controls">
 
-	<ResourceDictionary.MergedDictionaries>
-		<ResourceDictionary Source="/Elysium.Theme;component/Themes/SharedResources.xaml"/>
-		<ResourceDictionary Source="/Elysium.Theme;component/Themes/Buttons/CommandButtonBase.xaml"/>
-	</ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Elysium.Theme;component/Themes/SharedResources.xaml"/>
+        <ResourceDictionary Source="/Elysium.Theme;component/Themes/Buttons/CommandButtonBase.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
 
-	<Style x:Key="{x:Type controls:Window}" TargetType="{x:Type controls:Window}">
+    <Style x:Key="{x:Type controls:Window}" TargetType="{x:Type controls:Window}">
 
-		<Setter Property="Background" Value="{StaticResource Background}"/>
-		<Setter Property="BorderBrush" Value="{StaticResource MiddleLight}"/>
-		<Setter Property="BorderThickness" Value="0"/>
-		<Setter Property="Foreground" Value="{StaticResource Foreground}"/>
-		<Setter Property="FontFamily" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=FontFamily, Mode=OneWay}"/>
-		<Setter Property="FontSize" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=TextFontSize, Mode=OneWay}"/>
-		<Setter Property="FontWeight" Value="Normal"/>
-		<Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
-		<Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
-		<Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
-		
-		<Setter Property="ResizeMode" Value="CanResizeWithGrip"/>
+        <Setter Property="Background" Value="{StaticResource Background}"/>        
+        <Setter Property="BorderBrush" Value="{StaticResource MiddleLight}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
+        <Setter Property="FontFamily" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=FontFamily, Mode=OneWay}"/>
+        <Setter Property="FontSize" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=TextFontSize, Mode=OneWay}"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+        <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
+        
+        <Setter Property="ResizeMode" Value="CanResizeWithGrip"/>
 
-		<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-		<Setter Property="VerticalContentAlignment" Value="Stretch"/>
-		<Setter Property="Padding" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="Padding" Value="0"/>
 
-		<Setter Property="UseLayoutRounding" Value="True"/>
-		<Setter Property="SnapsToDevicePixels" Value="True"/>
-		
-		<Setter Property="shell:WindowChrome.WindowChrome">
-			<Setter.Value>
-				<shell:WindowChrome CaptionHeight="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Window}}, Path=NonClientHeight}"
-									CornerRadius="0"
-									GlassFrameThickness="0,1,0,0"
-									NonClientFrameEdges="None"
-									ResizeBorderThickness="1"
-									UseAeroCaptionButtons="False"/>
-			</Setter.Value>
-		</Setter>
-		
-		<Setter Property="Template">
-			<Setter.Value>
-				<ControlTemplate TargetType="{x:Type controls:Window}">
-					
-					<Border Background="{TemplateBinding Background}"
-							BorderBrush="{TemplateBinding BorderBrush}"
-							BorderThickness="{TemplateBinding BorderThickness}"
-							UseLayoutRounding="{TemplateBinding UseLayoutRounding}"
-							SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-						<Grid x:Name="PART_LayoutRoot">
-							<Grid.RowDefinitions>
-								<RowDefinition Height="Auto"/>
-								<RowDefinition Height="*"/>
-							</Grid.RowDefinitions>
-							<controls:LinearProgressBar x:Name="PART_ProgressBar"
-														Grid.Row="0"
-														Value="{TemplateBinding ProgressPercent}"
-														VerticalAlignment="Top"
-														Width="{TemplateBinding Width}" Height="2"/>
-							<Grid x:Name="PART_Caption"
-								  Grid.Row="0">
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="Auto"/>
-									<ColumnDefinition Width="*"/>
-									<ColumnDefinition Width="Auto"/>
-								</Grid.ColumnDefinitions>
-								<Border x:Name="PART_Title"
-										Grid.Column="0"
-										Background="{StaticResource Accent}"
-										BorderThickness="0">
-									<TextBlock x:Name="Title"
-											   Text="{TemplateBinding Title}"
-											   Foreground="{StaticResource Contrast}"
-											   FontSize="{Binding Source={x:Static root:Parameters.Instance}, Path=TitleFontSize, Mode=OneWay}"
-											   FontWeight="Normal"
-											   Margin="10,5"/>
-								</Border>
-								<StackPanel Grid.Column="2"
-											Orientation="Horizontal"
-											shell:WindowChrome.IsHitTestVisibleInChrome="True">
-									<controls:CommandButton x:Name="PART_Minimize"
-															Background="{StaticResource Transparent}"
-															BorderThickness="0"
-															Width="30" Height="30">
-										<Image Source="pack://application:,,,/Elysium.Theme;component/Icons/Minimize.png"
-											   Stretch="None"
-											   RenderOptions.BitmapScalingMode="NearestNeighbor"
-											   Width="10" Height="10"/>
-										<i:Interaction.Triggers>
-											<i:EventTrigger EventName="Click">
-												<ei:ChangePropertyAction TargetObject="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-																		 PropertyName="WindowState"
-																		 Value="{x:Static WindowState.Minimized}"/>
-											</i:EventTrigger>
-										</i:Interaction.Triggers>
-									</controls:CommandButton>
-									<controls:ToggleCommandButton x:Name="PART_MaximizeRestore"
-															Background="{StaticResource Transparent}"
-																  BorderThickness="0"
-																  Width="30" Height="30">
-										<controls:ToggleCommandButton.Resources>
-											<Image x:Key="MaximizeIcon"
-												   Source="pack://application:,,,/Elysium.Theme;component/Icons/Maximize.png"
-												   Stretch="None"
-												   RenderOptions.BitmapScalingMode="NearestNeighbor"
-												   Width="10" Height="10"/>
-											<Image x:Key="RestoreIcon"
-												   Source="pack://application:,,,/Elysium.Theme;component/Icons/Restore.png"
-												   Stretch="None"
-												   RenderOptions.BitmapScalingMode="NearestNeighbor"
-												   Width="10" Height="10"/>
-										</controls:ToggleCommandButton.Resources>
-										<controls:ToggleCommandButton.Style>
-											<Style TargetType="{x:Type controls:ToggleCommandButton}" BasedOn="{StaticResource {x:Type primitives:CommandButtonBase}}">
-												<Setter Property="Content" Value="{StaticResource MaximizeIcon}"/>
-												<Style.Triggers>
-													<Trigger Property="IsChecked" Value="True">
-														<Setter Property="Content" Value="{StaticResource RestoreIcon}"/>
-													</Trigger>
-												</Style.Triggers>
-											</Style>
-										</controls:ToggleCommandButton.Style>
-										<i:Interaction.Triggers>
-											<i:EventTrigger EventName="Click">
-												<ei:ChangePropertyAction TargetObject="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-																		 PropertyName="WindowState"
-																		 Value="{x:Static WindowState.Normal}"/>
-												<ei:ChangePropertyAction TargetObject="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-																		 PropertyName="WindowState"
-																		 Value="{x:Static WindowState.Maximized}"
-																		 IsEnabled="{Binding IsChecked, ElementName=PART_MaximizeRestore}"/>
-											</i:EventTrigger>
-										</i:Interaction.Triggers>
-									</controls:ToggleCommandButton>
-									<controls:CommandButton x:Name="PART_Close"
-															Command="{x:Static ApplicationCommands.Close}"
-															Background="{StaticResource Transparent}"
-															BorderThickness="0"
-															Width="30" Height="30">
-										<Image Source="pack://application:,,,/Elysium.Theme;component/Icons/Close.png"
-											   Stretch="None"
-											   RenderOptions.BitmapScalingMode="NearestNeighbor"
-											   Width="10" Height="10"/>
-									</controls:CommandButton>
-								</StackPanel>
-							</Grid>
-							<AdornerDecorator Grid.Row="1">
-								<ContentPresenter/>
-							</AdornerDecorator>
-							<Border x:Name="PART_ApplicationBarHost"
-									Grid.Row="1"/>
-							<ResizeGrip x:Name="PART_Grip"
-										Grid.Row="1"
-										IsTabStop="False"
-										Visibility="Collapsed"
-										HorizontalAlignment="Right"
-										VerticalAlignment="Bottom"/>
-						</Grid>
-					</Border>
-					
-					<ControlTemplate.Triggers>
-						<Trigger Property="IsMainWindow" Value="False">
-							<Setter TargetName="PART_Title" Property="Background" Value="{StaticResource Transparent}"/>
-							<Setter TargetName="Title" Property="Foreground" Value="{StaticResource Foreground}"/>
-						</Trigger>
-						<Trigger Property="Title" Value="{x:Static system:String.Empty}">
-							<Setter TargetName="PART_Title" Property="Visibility" Value="Collapsed"/>
-						</Trigger>
-						<Trigger Property="WindowState" Value="Maximized">
-							<Setter TargetName="PART_LayoutRoot" Property="Margin" Value="{Binding Source={x:Static shell:SystemParameters2.Current}, Path=WindowResizeBorderThickness}"/>
-						</Trigger>
-						<Trigger Property="WindowStyle" Value="{x:Static WindowStyle.None}">
-							<Trigger.Setters>
-								<Setter TargetName="PART_Title" Property="Visibility" Value="Collapsed"/>
-								<Setter TargetName="PART_Minimize" Property="Visibility" Value="Collapsed"/>
-								<Setter TargetName="PART_MaximizeRestore" Property="Visibility" Value="Collapsed"/>
-								<Setter TargetName="PART_Close" Property="Visibility" Value="Collapsed"/>
-							</Trigger.Setters>
-						</Trigger>
-						<Trigger Property="WindowStyle" Value="{x:Static WindowStyle.ToolWindow}">
-							<Trigger.Setters>
-								<Setter TargetName="PART_Minimize" Property="Visibility" Value="Collapsed"/>
-								<Setter TargetName="PART_MaximizeRestore" Property="Visibility" Value="Collapsed"/>
-							</Trigger.Setters>
-						</Trigger>
-						<Trigger Property="ResizeMode" Value="CanResizeWithGrip">
-							<Trigger.Setters>
-								<Setter TargetName="PART_Grip" Property="Visibility" Value="Visible"/>
-							</Trigger.Setters>
-						</Trigger>
-					</ControlTemplate.Triggers>
-					
-				</ControlTemplate>
-			</Setter.Value>
-		</Setter>
-		
-		<Style.Triggers>
-			<Trigger Property="WindowStyle" Value="{x:Static WindowStyle.None}">
-				<Setter Property="ResizeMode" Value="NoResize"/>
-			</Trigger>
-			<Trigger Property="WindowStyle" Value="{x:Static WindowStyle.ToolWindow}">
-				<Setter Property="ResizeMode" Value="NoResize"/>
-			</Trigger>            
-		</Style.Triggers>
-		
-	</Style>
-	
+        <Setter Property="UseLayoutRounding" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        
+        <Setter Property="shell:WindowChrome.WindowChrome">
+            <Setter.Value>
+                <shell:WindowChrome CaptionHeight="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Window}}, Path=NonClientHeight}"
+                                    CornerRadius="0"
+                                    GlassFrameThickness="0,1,0,0"
+                                    NonClientFrameEdges="None"
+                                    ResizeBorderThickness="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Window}}, Path=(root:Parameters.WindowResizeBorderThickness)}"
+                                    UseAeroCaptionButtons="False"/>
+            </Setter.Value>
+        </Setter>
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Window}">
+                    
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            UseLayoutRounding="{TemplateBinding UseLayoutRounding}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <Grid x:Name="PART_LayoutRoot">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <controls:LinearProgressBar x:Name="PART_ProgressBar"
+                                                        Grid.Row="0"
+                                                        Value="{TemplateBinding ProgressPercent}"
+                                                        VerticalAlignment="Top"
+                                                        Width="{TemplateBinding Width}" Height="2"/>
+                            <Grid x:Name="PART_Caption"
+                                  Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Border x:Name="PART_Title"
+                                        Grid.Column="0"
+                                        Background="{StaticResource Accent}"
+                                        BorderThickness="0">
+                                    <TextBlock x:Name="Title"
+                                               Text="{TemplateBinding Title}"
+                                               Foreground="{StaticResource Contrast}"
+                                               FontSize="{Binding Source={x:Static root:Parameters.Instance}, Path=TitleFontSize, Mode=OneWay}"
+                                               FontWeight="Normal"
+                                               Margin="10,5"/>
+                                </Border>
+                                <StackPanel Grid.Column="2"
+                                            Orientation="Horizontal"
+                                            shell:WindowChrome.IsHitTestVisibleInChrome="True">
+                                    <controls:CommandButton x:Name="PART_Minimize"
+                                                            Background="{StaticResource Transparent}"
+                                                            BorderThickness="0"
+                                                            Width="30" Height="30">
+                                        <Image Source="pack://application:,,,/Elysium.Theme;component/Icons/Minimize.png"
+                                               Stretch="None"
+                                               RenderOptions.BitmapScalingMode="NearestNeighbor"
+                                               Width="10" Height="10"/>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <ei:ChangePropertyAction TargetObject="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                                                         PropertyName="WindowState"
+                                                                         Value="{x:Static WindowState.Minimized}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </controls:CommandButton>
+                                    <controls:ToggleCommandButton x:Name="PART_MaximizeRestore"
+                                                            Background="{StaticResource Transparent}"
+                                                                  BorderThickness="0"
+                                                                  Width="30" Height="30">
+                                        <controls:ToggleCommandButton.Resources>
+                                            <Image x:Key="MaximizeIcon"
+                                                   Source="pack://application:,,,/Elysium.Theme;component/Icons/Maximize.png"
+                                                   Stretch="None"
+                                                   RenderOptions.BitmapScalingMode="NearestNeighbor"
+                                                   Width="10" Height="10"/>
+                                            <Image x:Key="RestoreIcon"
+                                                   Source="pack://application:,,,/Elysium.Theme;component/Icons/Restore.png"
+                                                   Stretch="None"
+                                                   RenderOptions.BitmapScalingMode="NearestNeighbor"
+                                                   Width="10" Height="10"/>
+                                        </controls:ToggleCommandButton.Resources>
+                                        <controls:ToggleCommandButton.Style>
+                                            <Style TargetType="{x:Type controls:ToggleCommandButton}" BasedOn="{StaticResource {x:Type primitives:CommandButtonBase}}">
+                                                <Setter Property="Content" Value="{StaticResource MaximizeIcon}"/>
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsChecked" Value="True">
+                                                        <Setter Property="Content" Value="{StaticResource RestoreIcon}"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </controls:ToggleCommandButton.Style>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <ei:ChangePropertyAction TargetObject="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                                                         PropertyName="WindowState"
+                                                                         Value="{x:Static WindowState.Normal}"/>
+                                                <ei:ChangePropertyAction TargetObject="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                                                         PropertyName="WindowState"
+                                                                         Value="{x:Static WindowState.Maximized}"
+                                                                         IsEnabled="{Binding IsChecked, ElementName=PART_MaximizeRestore}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </controls:ToggleCommandButton>
+                                    <controls:CommandButton x:Name="PART_Close"
+                                                            Command="{x:Static ApplicationCommands.Close}"
+                                                            Background="{StaticResource Transparent}"
+                                                            BorderThickness="0"
+                                                            Width="30" Height="30">
+                                        <Image Source="pack://application:,,,/Elysium.Theme;component/Icons/Close.png"
+                                               Stretch="None"
+                                               RenderOptions.BitmapScalingMode="NearestNeighbor"
+                                               Width="10" Height="10"/>
+                                    </controls:CommandButton>
+                                </StackPanel>
+                            </Grid>
+                            <AdornerDecorator Grid.Row="1">
+                                <ContentPresenter/>
+                            </AdornerDecorator>
+                            <Border x:Name="PART_ApplicationBarHost"
+                                    Grid.Row="1"/>
+                            <ResizeGrip x:Name="PART_Grip"
+                                        Grid.Row="1"
+                                        shell:WindowChrome.ResizeGripDirection="BottomRight"
+                                        IsTabStop="False"
+                                        Visibility="Collapsed"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Bottom"/>
+                        </Grid>
+                    </Border>
+                    
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMainWindow" Value="False">
+                            <Setter TargetName="PART_Title" Property="Background" Value="{StaticResource Transparent}"/>
+                            <Setter TargetName="Title" Property="Foreground" Value="{StaticResource Foreground}"/>
+                        </Trigger>
+                        <Trigger Property="Title" Value="{x:Static system:String.Empty}">
+                            <Setter TargetName="PART_Title" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="WindowState" Value="Maximized">
+                            <Setter TargetName="PART_LayoutRoot" Property="Margin" Value="{Binding Source={x:Static shell:SystemParameters2.Current}, Path=WindowResizeBorderThickness}"/>
+                        </Trigger>
+                        <Trigger Property="WindowStyle" Value="{x:Static WindowStyle.None}">
+                            <Trigger.Setters>
+                                <Setter TargetName="PART_Title" Property="Visibility" Value="Collapsed"/>
+                                <Setter TargetName="PART_Minimize" Property="Visibility" Value="Collapsed"/>
+                                <Setter TargetName="PART_MaximizeRestore" Property="Visibility" Value="Collapsed"/>
+                                <Setter TargetName="PART_Close" Property="Visibility" Value="Collapsed"/>
+                            </Trigger.Setters>
+                        </Trigger>
+                        <Trigger Property="WindowStyle" Value="{x:Static WindowStyle.ToolWindow}">
+                            <Trigger.Setters>
+                                <Setter TargetName="PART_Minimize" Property="Visibility" Value="Collapsed"/>
+                                <Setter TargetName="PART_MaximizeRestore" Property="Visibility" Value="Collapsed"/>
+                            </Trigger.Setters>
+                        </Trigger>
+                        <Trigger Property="ResizeMode" Value="CanResizeWithGrip">
+                            <Trigger.Setters>
+                                <Setter TargetName="PART_Grip" Property="Visibility" Value="Visible"/>
+                            </Trigger.Setters>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        
+        <Style.Triggers>
+            <Trigger Property="WindowStyle" Value="{x:Static WindowStyle.None}">
+                <Setter Property="ResizeMode" Value="NoResize"/>
+            </Trigger>
+            <Trigger Property="WindowStyle" Value="{x:Static WindowStyle.ToolWindow}">
+                <Setter Property="ResizeMode" Value="NoResize"/>
+            </Trigger>            
+        </Style.Triggers>
+        
+    </Style>
+    
 </ResourceDictionary>

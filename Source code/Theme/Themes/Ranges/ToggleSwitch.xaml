@@ -10,6 +10,8 @@
 
     <Style x:Key="ToggleSwitchSwitchStyle" TargetType="{x:Type Button}">
 
+        <Setter Property="Background" Value="{StaticResource Highlight}"/>
+        
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Focusable" Value="False"/>
 
@@ -32,7 +34,6 @@
     <Style x:Key="ToggleSwitchThumbStyle" TargetType="{x:Type Thumb}">
 
         <Setter Property="Background" Value="{StaticResource MiddleLight}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource Background}"/>
 
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Focusable" Value="False"/>
@@ -72,7 +73,7 @@
 
     <Style x:Key="{x:Type controls:ToggleSwitch}" TargetType="{x:Type controls:ToggleSwitch}">
 
-        <Setter Property="Background" Value="{StaticResource Highlight}"/>
+        <Setter Property="Background" Value="{StaticResource Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource MiddleLight}"/>
         <Setter Property="BorderThickness" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThickness, Mode=OneWay}"/>
         <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
@@ -87,9 +88,9 @@
 
         <Setter Property="Padding" Value="0"/>
 
-        <Setter Property="MinHeight" Value="14"/>
-        <Setter Property="Height" Value="18"/>
-        <Setter Property="MaxHeight" Value="22"/>
+        <Setter Property="MinHeight" Value="12"/>
+        <Setter Property="Height" Value="16"/>
+        <Setter Property="MaxHeight" Value="20"/>
 
         <Setter Property="SnapsToDevicePixels" Value="True"/>
 
@@ -133,6 +134,7 @@
                             <DockPanel>
                                 <Thumb x:Name="PART_Thumb"
                                        DockPanel.Dock="Left"
+                                       BorderBrush="{TemplateBinding Background}"
                                        BorderThickness="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThicknessValue, Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Right}"
                                        IsEnabled="{TemplateBinding IsEnabled}"
                                        Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Mode=OneWay, Converter={StaticResource ThicknessPositiveToNegativeConverter}, ConverterParameter='Left, Top, Bottom'}"
@@ -141,7 +143,7 @@
                                        Panel.ZIndex="1"
                                        Style="{StaticResource ToggleSwitchThumbStyle}"/>
                                 <Button x:Name="PART_Switch"
-                                        Background="{TemplateBinding Background}"
+                                        Margin="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThicknessValue, Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Right, Top, Bottom'}"
                                         Panel.ZIndex="0"
                                         Style="{StaticResource ToggleSwitchSwitchStyle}"/>
                             </DockPanel>
@@ -152,20 +154,12 @@
                         <Trigger Property="IsChecked" Value="False">
                             <Setter TargetName="OffHeaderHost" Property="Visibility" Value="Visible"/>
                         </Trigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsChecked" Value="False"/>
-                                <Condition Property="IsEnabled" Value="True"/>
-                            </MultiTrigger.Conditions>
-                            <MultiTrigger.Setters>
-                                <Setter TargetName="PART_Track" Property="Background" Value="{StaticResource Accent}"/>
-                            </MultiTrigger.Setters>
-                        </MultiTrigger>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="OnHeaderHost" Property="Visibility" Value="Visible"/>
                             <Setter TargetName="PART_Thumb" Property="DockPanel.Dock" Value="Right"/>
                             <Setter TargetName="PART_Thumb" Property="BorderThickness" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThicknessValue, Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Left}"/>
                             <Setter TargetName="PART_Thumb" Property="Margin" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Mode=OneWay, Converter={StaticResource ThicknessPositiveToNegativeConverter}, ConverterParameter='Right, Top, Bottom'}"/>
+                            <Setter TargetName="PART_Switch" Property="Margin" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThicknessValue, Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Top, Bottom'}"/>
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>

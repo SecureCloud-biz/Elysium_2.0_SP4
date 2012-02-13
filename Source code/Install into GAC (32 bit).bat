@@ -7,4 +7,5 @@ gacutil /i "%ProgramFiles%\Microsoft SDKs\Expression\Blend\.NETFramework\v4.0\Li
 gacutil /i "%ProgramFiles%\Microsoft SDKs\Expression\Blend\.NETFramework\v4.0\Libraries\Microsoft.Expression.Interactions.dll"
 gacutil /i "%ProgramFiles%\Microsoft SDKs\Expression\Blend\.NETFramework\v4.0\Libraries\System.Windows.Interactivity.dll"
 gacutil /i "%CD%\Tools and Resources\Assembly dependencies\Microsoft.Windows.Shell.dll"
+gacutil /i "%CD%\Tools and Resources\Assembly dependencies\PipelineHints.dll"
 pause
