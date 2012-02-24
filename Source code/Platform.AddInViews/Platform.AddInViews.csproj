@@ -132,7 +132,6 @@
     <CodeContractsAnalysisWarningLevel>2</CodeContractsAnalysisWarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.AddIn" />
@@ -150,10 +149,12 @@
     <ProjectReference Include="..\Platform.Contracts.Helpers\Platform.Contracts.Helpers.csproj">
       <Project>{A2747CFE-667E-4649-8B90-45E09D137B30}</Project>
       <Name>Platform.Contracts.Helpers</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Theme\Theme.csproj">
       <Project>{5A65DA67-130D-43D8-9224-4559B523B6D4}</Project>
       <Name>Theme</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

@@ -1,0 +1,57 @@
+﻿<Window x:Class="Elysium.Platform.Views.AccessRequestView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:metro="http://schemas.codeplex.com/elysium/theme"
+        xmlns:viewmodels="clr-namespace:Elysium.Platform.ViewModels"
+        xmlns:resources="clr-namespace:Elysium.Platform.Resources"
+        mc:Ignorable="d" 
+        d:DesignWidth="1024" d:DesignHeight="250"
+        Background="#99111111"
+        DataContext="{x:Static viewmodels:Locator.AccessRequest}">
+    <Border Background="{StaticResource Background}"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            UseLayoutRounding="True"
+            SnapsToDevicePixels="True">
+        <Grid Margin="150,0"
+              HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0"
+                       Text="{Binding Header}"
+                       FontFamily="{Binding Source={x:Static metro:Parameters.Instance}, Path=FontFamily, Mode=OneWay}"
+                       FontSize="20pt"
+                       FontWeight="Light"
+                       TextOptions.TextFormattingMode="Ideal"
+                       TextOptions.TextRenderingMode="ClearType"
+                       RenderOptions.ClearTypeHint="Enabled"
+                       Margin="0,15"
+                       SnapsToDevicePixels="True"
+                       HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="1"
+                       Text="{Binding Message}"
+                       FontFamily="{Binding Source={x:Static metro:Parameters.Instance}, Path=FontFamily, Mode=OneWay}"
+                       FontSize="{Binding Source={x:Static metro:Parameters.Instance}, Path=TextFontSize, Mode=OneWay}"
+                       TextWrapping="Wrap"
+                       Margin="0,0"
+                       HorizontalAlignment="Left"/>
+            <StackPanel Grid.Row="2"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <Button Content="{x:Static resources:UI.Allow}"
+                        Command="{Binding AllowCommand}"
+                        IsDefault="True"
+                        Margin="30,15,0,15"/>
+                <Button Content="{x:Static resources:UI.Deny}"
+                        Command="{Binding DenyCommand}"
+                        IsCancel="True"
+                        Margin="30,15,0,15"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

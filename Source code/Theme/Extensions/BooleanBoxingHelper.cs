@@ -2,7 +2,7 @@
 
 namespace Elysium.Theme.Extensions
 {
-    public static class BooleanBoxingHelper
+    internal static class BooleanBoxingHelper
     {
         internal static readonly object FalseBox = false;
         internal static readonly object TrueBox = true;

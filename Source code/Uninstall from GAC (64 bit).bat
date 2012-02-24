@@ -5,5 +5,5 @@ gacutil /u "Microsoft.Expression.Drawing"
 gacutil /u "Microsoft.Expression.Interactions"
 gacutil /u "System.Windows.Interactivity"
 gacutil /u "Microsoft.Windows.Shell"
-gacutil /u "PipelineHints"
+gacutil /u "JetBrains.Annotations"
 pause

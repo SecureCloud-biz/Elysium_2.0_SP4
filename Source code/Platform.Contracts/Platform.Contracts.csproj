@@ -130,7 +130,6 @@
     <CodeContractsAnalysisWarningLevel>2</CodeContractsAnalysisWarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.AddIn.Contract" />
@@ -159,7 +158,4 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="PostBuildEvent">
-    <Exec Command="xcopy &quot;$(SolutionDir)\..\Binary\$(ConfigurationName)\Theme\AnyCPU&quot; &quot;$(OutDir)&quot; /e /y" />
-  </Target>
 </Project>

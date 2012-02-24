@@ -22,6 +22,8 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
         
+        <Setter Property="MinWidth" Value="70"/>
+        
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         
@@ -52,9 +54,9 @@
                 <Setter Property="Foreground" Value="{StaticResource Contrast}"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{StaticResource Highlight}"/>
-                <Setter Property="BorderBrush" Value="{StaticResource Highlight}"/>
-                <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
+                <Setter Property="Background" Value="{StaticResource Lowlight}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource Lowlight}"/>
+                <Setter Property="Foreground" Value="{StaticResource Contrast}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Background" Value="{StaticResource Background}"/>
