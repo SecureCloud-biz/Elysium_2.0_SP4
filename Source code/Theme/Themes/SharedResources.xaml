@@ -1,28 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:root="clr-namespace:Elysium.Theme"
-                    xmlns:converters="clr-namespace:Elysium.Theme.Converters">
-    
-    <SolidColorBrush x:Key="Accent"
-                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Accent}"/>
-    <SolidColorBrush x:Key="Background"
-                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Background}"/>
-    <SolidColorBrush x:Key="Foreground"
-                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Foreground}"/>
-    <SolidColorBrush x:Key="Contrast"
-                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Contrast}"/>
-    <SolidColorBrush x:Key="Highlight"
-                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Highlight}"/>
-    <SolidColorBrush x:Key="MiddleLight"
-                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=MiddleLight}"/>
-    <SolidColorBrush x:Key="Lowlight"
-                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Lowlight}"/>
-    <SolidColorBrush x:Key="Disabled"
-                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Disabled}"/>
-    <SolidColorBrush x:Key="Transparent"
-                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Transparent}"/>
-    <SolidColorBrush x:Key="Semitransparent"
-                     Color="{Binding Source={x:Static root:ThemeManager.Instance}, Path=Semitransparent}"/>
+                    xmlns:root="clr-namespace:Elysium"
+                    xmlns:converters="clr-namespace:Elysium.Converters">
 
     <converters:DoubleToGridLengthConverter x:Key="DoubleToGridLengthConverter"/>
     <converters:DoubleToThicknessConverter x:Key="DoubleToThicknessConverter"/>
@@ -34,8 +13,8 @@
             <Setter.Value>
                 <ControlTemplate>
                     <Rectangle Margin="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultPadding, Mode=OneWay}" 
-                               Fill="{StaticResource Transparent}"
-                               Stroke="{StaticResource Foreground}"
+                               Fill="{DynamicResource TransparentBrush}"
+                               Stroke="{DynamicResource ForegroundBrush}"
                                StrokeThickness="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThicknessValue, Mode=OneWay}"
                                StrokeDashArray="2 1"
                                RenderOptions.EdgeMode="Aliased"/>

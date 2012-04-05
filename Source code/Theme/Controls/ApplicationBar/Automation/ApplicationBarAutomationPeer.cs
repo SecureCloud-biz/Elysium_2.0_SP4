@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.Contracts;
 using System.Windows.Automation.Peers;
 
-namespace Elysium.Theme.Controls.Automation
+namespace Elysium.Controls.Automation
 {
     public class ApplicationBarAutomationPeer : FrameworkElementAutomationPeer
     {

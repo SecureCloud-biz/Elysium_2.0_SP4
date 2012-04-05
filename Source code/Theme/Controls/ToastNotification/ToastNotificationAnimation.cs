@@ -1,6 +1,6 @@
 using JetBrains.Annotations;
 
-namespace Elysium.Theme.Controls
+namespace Elysium.Controls
 {
     [PublicAPI]
     public enum ToastNotificationAnimation

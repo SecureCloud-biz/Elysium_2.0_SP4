@@ -10,12 +10,12 @@ using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
-using Elysium.Theme.Controls.Primitives;
-using Elysium.Theme.Extensions;
+using Elysium.Controls.Primitives;
+using Elysium.Extensions;
 
 using JetBrains.Annotations;
 
-namespace Elysium.Theme.Controls
+namespace Elysium.Controls
 {
     [PublicAPI]
     [TemplatePart(Name = IndicatorName, Type = typeof(Rectangle))]

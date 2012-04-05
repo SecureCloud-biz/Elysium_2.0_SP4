@@ -1,17 +1,17 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:root="clr-namespace:Elysium.Theme">
+                    xmlns:root="clr-namespace:Elysium">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Elysium.Theme;component/Themes/SharedResources.xaml"/>
+        <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="TabItemHeaderStyle" TargetType="{x:Type ContentControl}">
         
-        <Setter Property="Background" Value="{StaticResource Background}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource Lowlight}"/>
+        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{StaticResource Lowlight}"/>
+        <Setter Property="Foreground" Value="{DynamicResource LowlightBrush}"/>
         <Setter Property="FontFamily" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=FontFamily, Mode=OneWay}"/>
         <Setter Property="FontSize" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=HeaderFontSize, Mode=OneWay}"/>
         <Setter Property="FontWeight" Value="Normal"/>        
@@ -63,15 +63,15 @@
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
             </Trigger>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabItem}}, Path=IsSelected}" Value="True">
-                <Setter Property="BorderBrush" Value="{StaticResource Accent}"/>
-                <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
             </DataTrigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="BorderBrush" Value="{StaticResource Disabled}"/>
-                <Setter Property="Foreground" Value="{StaticResource Disabled}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource DisabledBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
             </Trigger>
         </Style.Triggers>
         
@@ -79,10 +79,10 @@
     
     <Style TargetType="{x:Type TabItem}">
 
-        <Setter Property="Background" Value="{StaticResource Background}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource Lowlight}"/>
+        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
         <Setter Property="FontFamily" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=FontFamily, Mode=OneWay}"/>
         <Setter Property="FontSize" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=TextFontSize, Mode=OneWay}"/>
         <Setter Property="FontWeight" Value="Normal"/>
@@ -133,7 +133,7 @@
         
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="root:Parameters.TabControlIndicatorBrush" Value="{StaticResource Accent}"/>
+                <Setter Property="root:Parameters.TabControlIndicatorBrush" Value="{DynamicResource AccentBrush}"/>
             </Trigger>
         </Style.Triggers>
         

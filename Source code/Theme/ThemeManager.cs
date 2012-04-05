@@ -1,214 +1,311 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
 using System.Diagnostics.Contracts;
+using System.Linq;
+using System.Windows;
 using System.Windows.Media;
-
-using Elysium.Theme.ViewModels;
 
 using JetBrains.Annotations;
 
-namespace Elysium.Theme
+namespace Elysium
 {
     [PublicAPI]
-    public sealed class ThemeManager : ViewModelBase
+    public static class ThemeManager
     {
         [PublicAPI]
-        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification = "ThemeManager is singleton")]
-        public static readonly ThemeManager Instance = new ThemeManager();
+        public static readonly DependencyProperty ThemeProperty =
+            DependencyProperty.RegisterAttached("Theme", typeof(Theme?), typeof(ThemeManager),
+                                                new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender, OnThemeChanged));
 
-        private ThemeManager()
+        [PublicAPI]
+        [AttachedPropertyBrowsableForType(typeof(FrameworkElement))]
+        public static Theme? GetTheme(FrameworkElement obj)
         {
-            Light(AccentColors.Blue);
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            return (Theme?)obj.GetValue(ThemeProperty);
         }
 
         [PublicAPI]
-        public void Dark(Color accent)
+        public static void SetTheme(FrameworkElement obj, Theme? value)
         {
-            Contract.Ensures(ThemeType == ThemeType.Dark);
-            try
+            if (obj == null)
             {
-
-                Accent = accent;
-                Transparent = DarkColors.Transparent;
-                Semitransparent = DarkColors.Semitransparent;
-                Background = DarkColors.Background;
-                Foreground = DarkColors.Foreground;
-                Contrast = DarkColors.Contrast;
-                Highlight = DarkColors.Highlight;
-                MiddleLight = DarkColors.MiddleLight;
-                Lowlight = DarkColors.Lowlight;
-                Disabled = DarkColors.Disabled;
+                throw new ArgumentNullException("obj");
             }
-            finally
-            {
-                ThemeType = ThemeType.Dark;
-            }
+            Contract.EndContractBlock();
+            obj.SetValue(ThemeProperty, value);
         }
 
-        [PublicAPI]
-        public void Light(Color accent)
+        private static void OnThemeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            Contract.Ensures(ThemeType == ThemeType.Light);
-            try
+            var control = d as FrameworkElement;
+            if (control != null)
             {
-                Accent = accent;
-                Transparent = LightColors.Transparent;
-                Semitransparent = LightColors.Semitransparent;
-                Background = LightColors.Background;
-                Foreground = LightColors.Foreground;
-                Contrast = LightColors.Contrast;
-                Highlight = LightColors.Highlight;
-                MiddleLight = LightColors.MiddleLight;
-                Lowlight = LightColors.Lowlight;
-                Disabled = LightColors.Disabled;
-            }
-            finally
-            {
-                ThemeType = ThemeType.Light;
+                control.ApplyTheme((Theme?)e.NewValue, null, null);
             }
         }
 
         [PublicAPI]
-        public ThemeType ThemeType
-        {
-            get { return _themeType; }
-            private set
-            {
-                _themeType = value;
-                OnPropertyChanged(() => ThemeType);
-            }
-        }
-
-        private ThemeType _themeType;
+        public static readonly DependencyProperty AccentBrushProperty =
+            DependencyProperty.RegisterAttached("AccentBrush", typeof(SolidColorBrush), typeof(ThemeManager),
+                                                new FrameworkPropertyMetadata(null, OnAccentBrushChanged));
 
         [PublicAPI]
-        public Color Accent
+        [AttachedPropertyBrowsableForType(typeof(FrameworkElement))]
+        public static SolidColorBrush GetAccentBrush(FrameworkElement obj)
         {
-            get { return _accent; }
-            private set
+            if (obj == null)
             {
-                _accent = value;
-                OnPropertyChanged(() => Accent);
+                throw new ArgumentNullException("obj");
             }
+            Contract.EndContractBlock();
+            return (SolidColorBrush)obj.GetValue(AccentBrushProperty);
         }
-
-        private Color _accent;
 
         [PublicAPI]
-        public Color Transparent
+        public static void SetAccentBrush(FrameworkElement obj, SolidColorBrush value)
         {
-            get { return _transparent; }
-            private set
+            if (obj == null)
             {
-                _transparent = value;
-                OnPropertyChanged(() => Transparent);
+                throw new ArgumentNullException("obj");
             }
+            Contract.EndContractBlock();
+            obj.SetValue(AccentBrushProperty, value);
         }
 
-        private Color _transparent;
+        private static void OnAccentBrushChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as FrameworkElement;
+            if (control != null)
+            {
+                control.ApplyTheme(null, (SolidColorBrush)e.NewValue, null);
+            }
+        }
 
         [PublicAPI]
-        public Color Semitransparent
-        {
-            get { return _semitransparent; }
-
-            private set
-            {
-                _semitransparent = value;
-                OnPropertyChanged(() => Semitransparent);
-            }
-        }
-
-        private Color _semitransparent;
+        public static readonly DependencyProperty ContrastBrushProperty =
+            DependencyProperty.RegisterAttached("ContrastBrush", typeof(SolidColorBrush), typeof(ThemeManager),
+                                                new FrameworkPropertyMetadata(null, OnContrastBrushChanged));
 
         [PublicAPI]
-        public Color Background
+        [AttachedPropertyBrowsableForType(typeof(FrameworkElement))]
+        public static SolidColorBrush GetContrastBrush(FrameworkElement obj)
         {
-            get { return _background; }
-            private set
+            if (obj == null)
             {
-                _background = value;
-                OnPropertyChanged(() => Background);
+                throw new ArgumentNullException("obj");
             }
+            Contract.EndContractBlock();
+            return (SolidColorBrush)obj.GetValue(ContrastBrushProperty);
         }
-
-        private Color _background;
 
         [PublicAPI]
-        public Color Foreground
+        public static void SetContrastBrush(FrameworkElement obj, SolidColorBrush value)
         {
-            get { return _foreground; }
-            private set
+            if (obj == null)
             {
-                _foreground = value;
-                OnPropertyChanged(() => Foreground);
+                throw new ArgumentNullException("obj");
             }
+            Contract.EndContractBlock();
+            obj.SetValue(ContrastBrushProperty, value);
         }
 
-        private Color _foreground;
+        private static void OnContrastBrushChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as FrameworkElement;
+            if (control != null)
+            {
+                control.ApplyTheme(null, null, (SolidColorBrush)e.NewValue);
+            }
+        }
 
         [PublicAPI]
-        public Color Contrast
+        public static void ApplyTheme(this Application application, Theme? theme,
+                                      SolidColorBrush accentBrush, SolidColorBrush contrastBrush)
         {
-            get { return _contrast; }
-            private set
+            // Resource dictionaries paths
+            var accentColorsUri = new Uri("/Elysium;component/Themes/AccentColors.xaml", UriKind.Relative);
+            var lightColorsUri = new Uri("/Elysium;component/Themes/LightColors.xaml", UriKind.Relative);
+            var darkColorsUri = new Uri("/Elysium;component/Themes/DarkColors.xaml", UriKind.Relative);
+
+            // Resource dictionaries
+            var accentColorsDictionary = new ResourceDictionary { Source = accentColorsUri };
+            var lightColorsDictionary = new ResourceDictionary { Source = lightColorsUri };
+            var darkColorsDictionary = new ResourceDictionary { Source = darkColorsUri };
+
+            // Add AccentColors.xaml, if not included
+            if (application.Resources.MergedDictionaries.All(dictionary => dictionary.Source != accentColorsUri))
             {
-                _contrast = value;
-                OnPropertyChanged(() => Contrast);
+                application.Resources.MergedDictionaries.Add(accentColorsDictionary);
+            }
+
+            if (theme == Theme.Light)
+            {
+                // Add LightColors.xaml, if not included
+                if (application.Resources.MergedDictionaries.All(dictionary => dictionary.Source != lightColorsUri))
+                {
+                    application.Resources.MergedDictionaries.Add(lightColorsDictionary);
+                }
+
+                // Remove DarkColors.xaml, if included
+                var darkColorsDictionaries = application.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == darkColorsUri).ToList();
+                foreach (var dictionary in darkColorsDictionaries)
+                {
+                    application.Resources.MergedDictionaries.Remove(dictionary);
+                }
+            }
+            if (theme == Theme.Dark)
+            {
+                // Add DarkColors.xaml, if not included
+                if (application.Resources.MergedDictionaries.All(dictionary => dictionary.Source != darkColorsUri))
+                {
+                    application.Resources.MergedDictionaries.Add(darkColorsDictionary);
+                }
+
+                // Remove LightColors.xaml, if included
+                var lightColorsDictionaries = application.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == lightColorsUri).ToList();
+                foreach (var dictionary in lightColorsDictionaries)
+                {
+                    application.Resources.MergedDictionaries.Remove(dictionary);
+                }
+            }
+
+            // Bug in WPF 4: http://connect.microsoft.com/VisualStudio/feedback/details/555322/global-wpf-styles-are-not-shown-when-using-2-levels-of-references
+            if (application.Resources.Keys.Count == 0)
+            {
+                application.Resources.Add(typeof(Window), new Style(typeof(Window)));
+            }
+
+            if (accentBrush != null)
+            {
+                if (application.Resources.Contains("AccentBrush"))
+                {
+                    // Set AccentBrush value, if key exist
+                    application.Resources["AccentBrush"] = accentBrush;
+                }
+                else
+                {
+                    // Add AccentBrush key and value, if key doesn't exist
+                    application.Resources.Add("AccentBrush", accentBrush);
+                }
+            }
+
+            if (contrastBrush != null)
+            {
+                if (application.Resources.Contains("ContrastBrush"))
+                {
+                    // Set ContrastBrush value, if key exist
+                    application.Resources["ContrastBrush"] = contrastBrush;
+                }
+                else
+                {
+                    // Add ContrastBrush key and value, if key doesn't exist
+                    application.Resources.Add("ContrastBrush", contrastBrush);
+                }
+            }
+
+            // Add Generic.xaml, if not included
+            var genericDictionaryUri = new Uri("/Elysium;component/Themes/Generic.xaml", UriKind.Relative);
+            if (application.Resources.MergedDictionaries.All(dictionary => dictionary.Source != genericDictionaryUri))
+            {
+                application.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = genericDictionaryUri });
             }
         }
-
-        private Color _contrast;
 
         [PublicAPI]
-        public Color Highlight
+        public static void ApplyTheme(this FrameworkElement control, Theme? theme,
+                                      SolidColorBrush accentBrush, SolidColorBrush contrastBrush)
         {
-            get { return _highlight; }
-            private set
+            // Resource dictionaries paths
+            var accentColorsUri = new Uri("/Elysium;component/Themes/AccentColors.xaml", UriKind.Relative);
+            var lightColorsUri = new Uri("/Elysium;component/Themes/LightColors.xaml", UriKind.Relative);
+            var darkColorsUri = new Uri("/Elysium;component/Themes/DarkColors.xaml", UriKind.Relative);
+
+            // Resource dictionaries
+            var accentColorsDictionary = new ResourceDictionary { Source = accentColorsUri };
+            var lightColorsDictionary = new ResourceDictionary { Source = lightColorsUri };
+            var darkColorsDictionary = new ResourceDictionary { Source = darkColorsUri };
+
+            // Add AccentColors.xaml, if not included
+            if (control.Resources.MergedDictionaries.All(dictionary => dictionary.Source != accentColorsUri))
             {
-                _highlight = value;
-                OnPropertyChanged(() => Highlight);
+                control.Resources.MergedDictionaries.Add(accentColorsDictionary);
+            }
+
+            if (theme == Theme.Light)
+            {
+                // Add LightColors.xaml, if not included
+                if (control.Resources.MergedDictionaries.All(dictionary => dictionary.Source != lightColorsUri))
+                {
+                    control.Resources.MergedDictionaries.Add(lightColorsDictionary);
+                }
+
+                // Remove DarkColors.xaml, if included
+                var darkColorsDictionaries = control.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == darkColorsUri).ToList();
+                foreach (var dictionary in darkColorsDictionaries)
+                {
+                    control.Resources.MergedDictionaries.Remove(dictionary);
+                }
+            }
+            if (theme == Theme.Dark)
+            {
+                // Add DarkColors.xaml, if not included
+                if (control.Resources.MergedDictionaries.All(dictionary => dictionary.Source != darkColorsUri))
+                {
+                    control.Resources.MergedDictionaries.Add(darkColorsDictionary);
+                }
+
+                // Remove LightColors.xaml, if included
+                var lightColorsDictionaries = control.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == lightColorsUri).ToList();
+                foreach (var dictionary in lightColorsDictionaries)
+                {
+                    control.Resources.MergedDictionaries.Remove(dictionary);
+                }
+            }
+
+            // Bug in WPF 4: http://connect.microsoft.com/VisualStudio/feedback/details/555322/global-wpf-styles-are-not-shown-when-using-2-levels-of-references
+            if (control.Resources.Keys.Count == 0)
+            {
+                control.Resources.Add(typeof(Window), new Style(typeof(Window)));
+            }
+
+            if (accentBrush != null)
+            {
+                if (control.Resources.Contains("AccentBrush"))
+                {
+                    // Set AccentBrush value, if key exist
+                    control.Resources["AccentBrush"] = accentBrush;
+                }
+                else
+                {
+                    // Add AccentBrush key and value, if key doesn't exist
+                    control.Resources.Add("AccentBrush", accentBrush);
+                }
+            }
+
+            if (contrastBrush != null)
+            {
+                if (control.Resources.Contains("ContrastBrush"))
+                {
+                    // Set ContrastBrush value, if key exist
+                    control.Resources["ContrastBrush"] = contrastBrush;
+                }
+                else
+                {
+                    // Add ContrastBrush key and value, if key doesn't exist
+                    control.Resources.Add("ContrastBrush", contrastBrush);
+                }
+            }
+
+            // Add Generic.xaml, if not included
+            var genericDictionaryUri = new Uri("/Elysium;component/Themes/Generic.xaml", UriKind.Relative);
+            if (control.Resources.MergedDictionaries.All(dictionary => dictionary.Source != genericDictionaryUri))
+            {
+                control.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = genericDictionaryUri });
             }
         }
-
-        private Color _highlight;
-
-        [PublicAPI]
-        public Color MiddleLight
-        {
-            get { return _middleLight; }
-            private set
-            {
-                _middleLight = value;
-                OnPropertyChanged(() => MiddleLight);
-            }
-        }
-
-        private Color _middleLight;
-
-        [PublicAPI]
-        public Color Lowlight
-        {
-            get { return _lowlight; }
-            private set
-            {
-                _lowlight = value;
-                OnPropertyChanged(() => Lowlight);
-            }
-        }
-
-        private Color _lowlight;
-
-        [PublicAPI]
-        public Color Disabled
-        {
-            get { return _disabled; }
-            private set
-            {
-                _disabled = value;
-                OnPropertyChanged(() => Disabled);
-            }
-        }
-
-        private Color _disabled;
     }
 } ;

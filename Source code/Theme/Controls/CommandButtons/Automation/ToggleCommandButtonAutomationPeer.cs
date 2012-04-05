@@ -4,7 +4,7 @@ using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 
-namespace Elysium.Theme.Controls.Automation
+namespace Elysium.Controls.Automation
 {
     public class ToggleCommandButtonAutomationPeer : ButtonBaseAutomationPeer, IToggleProvider
     {

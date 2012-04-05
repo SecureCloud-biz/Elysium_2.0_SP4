@@ -1,4 +1,4 @@
-﻿namespace Elysium.Theme.Extensions
+﻿namespace Elysium.Extensions
 {
     internal static class NullableBooleanBoxingHelper
     {

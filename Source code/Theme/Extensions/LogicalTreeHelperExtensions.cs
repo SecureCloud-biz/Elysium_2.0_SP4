@@ -2,7 +2,7 @@
 
 using JetBrains.Annotations;
 
-namespace Elysium.Theme.Extensions
+namespace Elysium.Extensions
 {
     [PublicAPI]
     public static class LogicalTreeHelperExtensions

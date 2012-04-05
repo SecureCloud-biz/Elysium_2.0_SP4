@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace Elysium.Theme.Converters
+namespace Elysium.Converters
 {
     public sealed class AngleToCoordinateConverter : IMultiValueConverter
     {

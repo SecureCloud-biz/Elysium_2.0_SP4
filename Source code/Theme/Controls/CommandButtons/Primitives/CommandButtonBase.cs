@@ -8,11 +8,11 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Shapes;
 
-using Elysium.Theme.Extensions;
+using Elysium.Extensions;
 
 using JetBrains.Annotations;
 
-namespace Elysium.Theme.Controls.Primitives
+namespace Elysium.Controls.Primitives
 {
     [PublicAPI]
     [TemplatePart(Name = DecorName, Type = typeof(Ellipse))]

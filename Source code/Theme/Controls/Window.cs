@@ -9,11 +9,11 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Threading;
 
-using Elysium.Theme.Extensions;
+using Elysium.Extensions;
 
 using JetBrains.Annotations;
 
-namespace Elysium.Theme.Controls
+namespace Elysium.Controls
 {
     [PublicAPI]
     [TemplatePart(Name = LayoutRootName, Type = typeof(Panel))]

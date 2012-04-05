@@ -9,13 +9,13 @@ using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 
-using Elysium.Theme.Controls.Automation;
-using Elysium.Theme.Controls.Primitives;
-using Elysium.Theme.Extensions;
+using Elysium.Controls.Automation;
+using Elysium.Controls.Primitives;
+using Elysium.Extensions;
 
 using JetBrains.Annotations;
 
-namespace Elysium.Theme.Controls
+namespace Elysium.Controls
 {
     [PublicAPI]
     [TemplatePart(Name = PopupName, Type = typeof(Popup))]
@@ -239,9 +239,10 @@ namespace Elysium.Theme.Controls
             {
                 if (_popup != null)
                 {
-                    _popup.CustomPopupPlacementCallback = null;
-                    _popup.Opened -= OnDropDownOpened;
+                    _popup.Child = null;
                     _popup.Closed -= OnDropDownClosed;
+                    _popup.Opened -= OnDropDownOpened;
+                    _popup.CustomPopupPlacementCallback = null;
                 }
                 // NOTE: WPF doesn't declare contracts
                 Contract.Assume(Template != null);

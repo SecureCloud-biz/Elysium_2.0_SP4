@@ -8,29 +8,32 @@ using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 
-using Elysium.Theme.Controls.Automation;
-using Elysium.Theme.Extensions;
+using Elysium.Controls.Automation;
+using Elysium.Extensions;
 
 using JetBrains.Annotations;
 
-namespace Elysium.Theme.Controls
+namespace Elysium.Controls
 {
     [PublicAPI]
     [DefaultEvent("Checked")]
     [TemplatePart(Name = TrackName, Type = typeof(FrameworkElement))]
-    [TemplatePart(Name = SwitchName, Type = typeof(Button))]
+    [TemplatePart(Name = FillName, Type = typeof(FrameworkElement))]
     [TemplatePart(Name = ThumbName, Type = typeof(Thumb))]
+    [TemplatePart(Name = SwitchName, Type = typeof(Button))]
 // ReSharper disable ClassWithVirtualMembersNeverInherited.Global
     public class ToggleSwitch : Control
 // ReSharper restore ClassWithVirtualMembersNeverInherited.Global
     {
         private const string TrackName = "PART_Track";
-        private const string SwitchName = "PART_Switch";
+        private const string FillName = "PART_Fill";
         private const string ThumbName = "PART_Thumb";
+        private const string SwitchName = "PART_Switch";
 
         private FrameworkElement _track;
-        private Button _switch;
+        private FrameworkElement _fill;
         private Thumb _thumb;
+        private Button _switch;
 
         [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
         static ToggleSwitch()
@@ -579,18 +582,10 @@ namespace Elysium.Theme.Controls
                 {
                     Trace.TraceWarning(TrackName + " not found.");
                 }
-                if (_switch != null)
+                _fill = Template.FindName(FillName, this) as FrameworkElement;
+                if (_fill == null)
                 {
-                    _switch.Click -= OnToggle;
-                }
-                _switch = Template.FindName(SwitchName, this) as Button;
-                if (_switch == null)
-                {
-                    Trace.TraceWarning(SwitchName + " not found.");
-                }
-                else
-                {
-                    _switch.Click += OnToggle;
+                    Trace.TraceWarning(FillName + " not found.");
                 }
                 if (_thumb != null)
                 {
@@ -609,37 +604,48 @@ namespace Elysium.Theme.Controls
                     _thumb.DragDelta += OnSwitchChanging;
                     _thumb.DragCompleted += OnSwitchCompleted;
                 }
+                if (_switch != null)
+                {
+                    _switch.Click -= OnToggle;
+                }
+                _switch = Template.FindName(SwitchName, this) as Button;
+                if (_switch == null)
+                {
+                    Trace.TraceWarning(SwitchName + " not found.");
+                }
+                else
+                {
+                    _switch.Click += OnToggle;
+                }
             }
         }
 
-        private Thickness _originalThumbMargin;
-
         private void OnSwitchStarted(object sender, DragStartedEventArgs e)
         {
-            _originalThumbMargin = _thumb.Margin;
             IsSwitching = true;
         }
 
         private void OnSwitchChanging(object sender, DragDeltaEventArgs e)
         {
-            var margin = !IsChecked ? _thumb.Margin.Left + e.HorizontalChange : _thumb.Margin.Right - e.HorizontalChange;
+            var width = !IsChecked ? _fill.Width + e.HorizontalChange : _fill.Width - e.HorizontalChange;
 
-            if (margin < _originalThumbMargin.Left)
+            var maxwidth = _track.ActualWidth - _thumb.ActualWidth - (!IsChecked ? _fill.Margin.Left : _fill.Margin.Right);
+
+            if (width < 0)
             {
-                margin = _originalThumbMargin.Left;
+                width = 0;
             }
-            else if (margin > _track.ActualWidth - _thumb.ActualWidth - _originalThumbMargin.Right)
+            else if (width > maxwidth)
             {
-                margin = _track.ActualWidth - _thumb.ActualWidth - _originalThumbMargin.Right;
+                width = maxwidth;
             }
 
-            _thumb.Margin = new Thickness(!IsChecked ? margin : _thumb.Margin.Left, _thumb.Margin.Top,
-                                          !IsChecked ? _thumb.Margin.Right : margin, _thumb.Margin.Bottom);
+            _fill.Width = width;
         }
 
         private void OnSwitchCompleted(object sender, DragCompletedEventArgs e)
         {
-            _thumb.Margin = _originalThumbMargin;
+            _fill.Width = 0;
             IsSwitching = false;
             IsChecked = _thumb.TranslatePoint(new Point(_thumb.ActualWidth / 2.0, 0), _track).X > _track.ActualWidth / 2;
         }

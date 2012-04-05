@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 using JetBrains.Annotations;
 
-namespace Elysium.Theme.Controls
+namespace Elysium.Controls
 {
     [PublicAPI]
     public class Submenu : MenuBase

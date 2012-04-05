@@ -5,13 +5,13 @@ using System.Diagnostics.Contracts;
 using System.Windows;
 using System.Windows.Automation.Peers;
 
-using Elysium.Theme.Controls.Automation;
-using Elysium.Theme.Controls.Primitives;
-using Elysium.Theme.Extensions;
+using Elysium.Controls.Automation;
+using Elysium.Controls.Primitives;
+using Elysium.Extensions;
 
 using JetBrains.Annotations;
 
-namespace Elysium.Theme.Controls
+namespace Elysium.Controls
 {
     [PublicAPI]
     [DefaultEvent("Checked")]

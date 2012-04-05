@@ -9,13 +9,13 @@ using System.Windows.Automation.Peers;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media.Animation;
 
-using Elysium.Theme.Extensions;
+using Elysium.Extensions;
 
 using JetBrains.Annotations;
 
-using ProgressBarAutomationPeer = Elysium.Theme.Controls.Automation.ProgressBarAutomationPeer;
+using ProgressBarAutomationPeer = Elysium.Controls.Automation.ProgressBarAutomationPeer;
 
-namespace Elysium.Theme.Controls.Primitives
+namespace Elysium.Controls.Primitives
 {
     [PublicAPI]
     [TemplatePart(Name = TrackName, Type = typeof(FrameworkElement))]

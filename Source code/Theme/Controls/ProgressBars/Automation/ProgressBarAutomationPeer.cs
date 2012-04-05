@@ -3,9 +3,9 @@ using System.Diagnostics.Contracts;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 
-using Elysium.Theme.Controls.Primitives;
+using Elysium.Controls.Primitives;
 
-namespace Elysium.Theme.Controls.Automation
+namespace Elysium.Controls.Automation
 {
     public class ProgressBarAutomationPeer : RangeBaseAutomationPeer, IRangeValueProvider
     {

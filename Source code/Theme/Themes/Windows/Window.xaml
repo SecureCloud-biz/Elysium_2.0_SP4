@@ -4,21 +4,21 @@
                     xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
                     xmlns:shell="http://schemas.microsoft.com/winfx/2006/xaml/presentation/shell"
                     xmlns:system="clr-namespace:System;assembly=mscorlib"
-                    xmlns:root="clr-namespace:Elysium.Theme"
-                    xmlns:primitives="clr-namespace:Elysium.Theme.Controls.Primitives"
-                    xmlns:controls="clr-namespace:Elysium.Theme.Controls">
+                    xmlns:root="clr-namespace:Elysium"
+                    xmlns:primitives="clr-namespace:Elysium.Controls.Primitives"
+                    xmlns:controls="clr-namespace:Elysium.Controls">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Elysium.Theme;component/Themes/SharedResources.xaml"/>
-        <ResourceDictionary Source="/Elysium.Theme;component/Themes/Buttons/CommandButtonBase.xaml"/>
+        <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
+        <ResourceDictionary Source="/Elysium;component/Themes/Buttons/CommandButtonBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{x:Type controls:Window}" TargetType="{x:Type controls:Window}">
 
-        <Setter Property="Background" Value="{StaticResource Background}"/>        
-        <Setter Property="BorderBrush" Value="{StaticResource MiddleLight}"/>
+        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>        
+        <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
         <Setter Property="FontFamily" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=FontFamily, Mode=OneWay}"/>
         <Setter Property="FontSize" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=TextFontSize, Mode=OneWay}"/>
         <Setter Property="FontWeight" Value="Normal"/>
@@ -37,11 +37,11 @@
         
         <Setter Property="shell:WindowChrome.WindowChrome">
             <Setter.Value>
-                <shell:WindowChrome CaptionHeight="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Window}}, Path=NonClientHeight}"
+                <shell:WindowChrome CaptionHeight="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Window}}, Path=NonClientHeight, Mode=OneWay}"
                                     CornerRadius="0"
                                     GlassFrameThickness="0,1,0,0"
                                     NonClientFrameEdges="None"
-                                    ResizeBorderThickness="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Window}}, Path=(root:Parameters.WindowResizeBorderThickness)}"
+                                    ResizeBorderThickness="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Window}}, Path=(root:Parameters.WindowResizeBorderThickness), Mode=OneWay}"
                                     UseAeroCaptionButtons="False"/>
             </Setter.Value>
         </Setter>
@@ -70,15 +70,15 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="90"/>
                                 </Grid.ColumnDefinitions>
                                 <Border x:Name="PART_Title"
                                         Grid.Column="0"
-                                        Background="{StaticResource Accent}"
+                                        Background="{DynamicResource AccentBrush}"
                                         BorderThickness="0">
                                     <TextBlock x:Name="Title"
                                                Text="{TemplateBinding Title}"
-                                               Foreground="{StaticResource Contrast}"
+                                               Foreground="{DynamicResource ContrastBrush}"
                                                FontSize="{Binding Source={x:Static root:Parameters.Instance}, Path=TitleFontSize, Mode=OneWay}"
                                                FontWeight="Normal"
                                                Margin="10,5"/>
@@ -87,10 +87,10 @@
                                             Orientation="Horizontal"
                                             shell:WindowChrome.IsHitTestVisibleInChrome="True">
                                     <controls:CommandButton x:Name="PART_Minimize"
-                                                            Background="{StaticResource Transparent}"
+                                                            Background="{DynamicResource TransparentBrush}"
                                                             BorderThickness="0"
                                                             Width="30" Height="30">
-                                        <Image Source="pack://application:,,,/Elysium.Theme;component/Icons/Minimize.png"
+                                        <Image Source="pack://application:,,,/Elysium;component/Icons/Minimize.png"
                                                Stretch="None"
                                                RenderOptions.BitmapScalingMode="NearestNeighbor"
                                                Width="10" Height="10"/>
@@ -103,17 +103,17 @@
                                         </i:Interaction.Triggers>
                                     </controls:CommandButton>
                                     <controls:ToggleCommandButton x:Name="PART_MaximizeRestore"
-                                                            Background="{StaticResource Transparent}"
+                                                            Background="{DynamicResource TransparentBrush}"
                                                                   BorderThickness="0"
                                                                   Width="30" Height="30">
                                         <controls:ToggleCommandButton.Resources>
                                             <Image x:Key="MaximizeIcon"
-                                                   Source="pack://application:,,,/Elysium.Theme;component/Icons/Maximize.png"
+                                                   Source="pack://application:,,,/Elysium;component/Icons/Maximize.png"
                                                    Stretch="None"
                                                    RenderOptions.BitmapScalingMode="NearestNeighbor"
                                                    Width="10" Height="10"/>
                                             <Image x:Key="RestoreIcon"
-                                                   Source="pack://application:,,,/Elysium.Theme;component/Icons/Restore.png"
+                                                   Source="pack://application:,,,/Elysium;component/Icons/Restore.png"
                                                    Stretch="None"
                                                    RenderOptions.BitmapScalingMode="NearestNeighbor"
                                                    Width="10" Height="10"/>
@@ -142,10 +142,10 @@
                                     </controls:ToggleCommandButton>
                                     <controls:CommandButton x:Name="PART_Close"
                                                             Command="{x:Static ApplicationCommands.Close}"
-                                                            Background="{StaticResource Transparent}"
+                                                            Background="{DynamicResource TransparentBrush}"
                                                             BorderThickness="0"
                                                             Width="30" Height="30">
-                                        <Image Source="pack://application:,,,/Elysium.Theme;component/Icons/Close.png"
+                                        <Image Source="pack://application:,,,/Elysium;component/Icons/Close.png"
                                                Stretch="None"
                                                RenderOptions.BitmapScalingMode="NearestNeighbor"
                                                Width="10" Height="10"/>
@@ -169,8 +169,8 @@
                     
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMainWindow" Value="False">
-                            <Setter TargetName="PART_Title" Property="Background" Value="{StaticResource Transparent}"/>
-                            <Setter TargetName="Title" Property="Foreground" Value="{StaticResource Foreground}"/>
+                            <Setter TargetName="PART_Title" Property="Background" Value="{DynamicResource TransparentBrush}"/>
+                            <Setter TargetName="Title" Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
                         </Trigger>
                         <Trigger Property="Title" Value="{x:Static system:String.Empty}">
                             <Setter TargetName="PART_Title" Property="Visibility" Value="Collapsed"/>
@@ -189,6 +189,17 @@
                         <Trigger Property="WindowStyle" Value="{x:Static WindowStyle.ToolWindow}">
                             <Trigger.Setters>
                                 <Setter TargetName="PART_Minimize" Property="Visibility" Value="Collapsed"/>
+                                <Setter TargetName="PART_MaximizeRestore" Property="Visibility" Value="Collapsed"/>
+                            </Trigger.Setters>
+                        </Trigger>
+                        <Trigger Property="ResizeMode" Value="NoResize">
+                            <Trigger.Setters>
+                                <Setter TargetName="PART_Minimize" Property="Visibility" Value="Collapsed"/>
+                                <Setter TargetName="PART_MaximizeRestore" Property="Visibility" Value="Collapsed"/>
+                            </Trigger.Setters>
+                        </Trigger>
+                        <Trigger Property="ResizeMode" Value="CanMinimize">
+                            <Trigger.Setters>
                                 <Setter TargetName="PART_MaximizeRestore" Property="Visibility" Value="Collapsed"/>
                             </Trigger.Setters>
                         </Trigger>

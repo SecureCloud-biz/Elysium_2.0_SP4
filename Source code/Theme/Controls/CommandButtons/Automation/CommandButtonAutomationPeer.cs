@@ -4,7 +4,7 @@ using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 using System.Windows.Threading;
 
-namespace Elysium.Theme.Controls.Automation
+namespace Elysium.Controls.Automation
 {
     public class CommandButtonAutomationPeer : ButtonBaseAutomationPeer, IInvokeProvider
     {

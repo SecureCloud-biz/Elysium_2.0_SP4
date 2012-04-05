@@ -8,8 +8,8 @@
     <ProjectGuid>{5A65DA67-130D-43D8-9224-4559B523B6D4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Elysium.Theme</RootNamespace>
-    <AssemblyName>Elysium.Theme</AssemblyName>
+    <RootNamespace>Elysium</RootNamespace>
+    <AssemblyName>Elysium</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <ErrorReport>prompt</ErrorReport>
@@ -26,9 +26,9 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\Binary\Debug\Theme\AnyCPU\</OutputPath>
+    <OutputPath>..\..\Binary\Debug\Elysium for .NET 4\AnyCPU\</OutputPath>
     <DefineConstants>TRACE;DEBUG;CONTRACTS_FULL</DefineConstants>
-    <DocumentationFile>..\..\Binary\Debug\Theme\AnyCPU\Elysium.Theme.xml</DocumentationFile>
+    <DocumentationFile>..\..\Binary\Debug\Elysium for .NET 4\AnyCPU\Elysium.xml</DocumentationFile>
     <NoWarn>1591</NoWarn>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
@@ -69,8 +69,8 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\Binary\Release\Theme\AnyCPU\</OutputPath>
-    <DocumentationFile>..\..\Binary\Release\Theme\AnyCPU\Elysium.Theme.xml</DocumentationFile>
+    <OutputPath>..\..\Binary\Release\Elysium for .NET 4\AnyCPU\</OutputPath>
+    <DocumentationFile>..\..\Binary\Release\Elysium for .NET 4\AnyCPU\Elysium.xml</DocumentationFile>
     <NoWarn>1591</NoWarn>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
@@ -118,9 +118,9 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\Binary\Analysis\Theme\AnyCPU\</OutputPath>
+    <OutputPath>..\..\Binary\Analysis\Elysium for .NET 4\AnyCPU\</OutputPath>
     <DefineConstants>TRACE;DEBUG;CONTRACTS_FULL</DefineConstants>
-    <DocumentationFile>..\..\Binary\Analysis\Theme\AnyCPU\Elysium.Theme.xml</DocumentationFile>
+    <DocumentationFile>..\..\Binary\Analysis\Elysium for .NET 4\AnyCPU\Elysium.xml</DocumentationFile>
     <NoWarn>1591</NoWarn>
     <CodeAnalysisLogFile>..\..\Binary\Analysis\Theme\AnyCPU\Elysium.Theme.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
@@ -199,6 +199,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Themes\AccentColors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\ApplicationBar\ApplicationBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -243,9 +247,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\DarkColors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\LightColors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Menus\ContextMenu.xaml">
       <SubType>Designer</SubType>
@@ -341,9 +353,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Colors.cs" />
-    <Compile Include="Commands\CommandReference.cs" />
-    <Compile Include="Commands\DelegateCommand.cs" />
+    <Compile Include="AccentColors.cs" />
     <Compile Include="Controls\ApplicationBar\ApplicationBar.cs" />
     <Compile Include="Controls\ApplicationBar\ApplicationBarTransitionMode.cs" />
     <Compile Include="Controls\ApplicationBar\ApplicationBarDock.cs" />
@@ -388,8 +398,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ThemeManager.cs" />
-    <Compile Include="ThemeType.cs" />
-    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Theme.cs" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\Close.png" />

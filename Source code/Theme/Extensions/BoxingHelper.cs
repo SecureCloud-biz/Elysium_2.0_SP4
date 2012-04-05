@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.Contracts;
 
-namespace Elysium.Theme.Extensions
+namespace Elysium.Extensions
 {
     internal static class BoxingHelper<T>
     {

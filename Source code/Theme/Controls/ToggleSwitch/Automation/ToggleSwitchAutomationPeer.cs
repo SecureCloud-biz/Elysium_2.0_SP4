@@ -6,7 +6,7 @@ using System.Windows.Automation.Provider;
 
 using JetBrains.Annotations;
 
-namespace Elysium.Theme.Controls.Automation
+namespace Elysium.Controls.Automation
 {
     public class ToggleSwitchAutomationPeer : FrameworkElementAutomationPeer, IToggleProvider
     {

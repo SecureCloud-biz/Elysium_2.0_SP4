@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theme", "Theme\Theme.csproj", "{5A65DA67-130D-43D8-9224-4559B523B6D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theme.Test", "Theme.Test\Theme.Test.csproj", "{0B85401E-33FA-41EE-9627-8C17DA21505C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{0B85401E-33FA-41EE-9627-8C17DA21505C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assembly dependencies", "Assembly dependencies", "{ADCE869D-0EF4-4394-8BCD-A3763B9EF424}"
 	ProjectSection(SolutionItems) = preProject
@@ -18,13 +18,13 @@ Global
 		SccNumberOfProjects = 3
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs34
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Theme\\Theme.csproj
-		SccProjectName1 = Theme
-		SccLocalPath1 = Theme
-		SccProjectUniqueName2 = Theme.Test\\Theme.Test.csproj
-		SccProjectName2 = Theme.Test
-		SccLocalPath2 = Theme.Test
+		SccProjectUniqueName0 = Theme\\Theme.csproj
+		SccProjectName0 = Theme
+		SccLocalPath0 = Theme
+		SccProjectUniqueName1 = Test\\Test.csproj
+		SccProjectName1 = Test
+		SccLocalPath1 = Test
+		SccLocalPath2 = .
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Analysis|Mixed Platforms = Analysis|Mixed Platforms

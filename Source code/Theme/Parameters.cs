@@ -1,315 +1,401 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
-using Elysium.Theme.Controls;
-using Elysium.Theme.Controls.Primitives;
-using Elysium.Theme.Extensions;
+using Elysium.Controls;
+using Elysium.Controls.Primitives;
+using Elysium.Extensions;
 
 using JetBrains.Annotations;
 
-namespace Elysium.Theme
+namespace Elysium
 {
     [PublicAPI]
-    public sealed class Parameters : DependencyObject
+    public sealed class Parameters
     {
         [PublicAPI]
-        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification = "Parameters is singleton")]
-        public static readonly Parameters Instance = new Parameters();
+        public static Parameters Instance { get; private set; }
+
+        static Parameters()
+        {
+            Instance = new Parameters();
+        }
 
         private Parameters()
         {
         }
 
-        #region Font
+        private readonly object _lock = new object();
 
-        [PublicAPI]
-        public static readonly DependencyProperty FontFamilyProperty =
-            DependencyProperty.Register("FontFamily", typeof(FontFamily), typeof(Parameters),
-                                        new FrameworkPropertyMetadata(new FontFamily("Segoe UI"),
-                                                                      FrameworkPropertyMetadataOptions.AffectsRender |
-                                                                      FrameworkPropertyMetadataOptions.AffectsMeasure));
+        #region Font
 
         [PublicAPI]
         public FontFamily FontFamily
         {
-            get { return (FontFamily)GetValue(FontFamilyProperty); }
-            set { SetValue(FontFamilyProperty, value); }
+            get
+            {
+                lock (_lock)
+                {
+                    return _fontFamily;
+                }
+            }
+            set
+            {
+                lock (_lock)
+                {
+                    _fontFamily = value;
+                }
+            }
         }
 
-        [PublicAPI]
-        public static readonly DependencyProperty TitleFontSizeProperty =
-            DependencyProperty.Register("TitleFontSize", typeof(double), typeof(Parameters),
-                                        new FrameworkPropertyMetadata(12.0 * (96.0 / 72.0),
-                                                                      FrameworkPropertyMetadataOptions.AffectsRender |
-                                                                      FrameworkPropertyMetadataOptions.AffectsMeasure), IsFontSizeValid);
+        private FontFamily _fontFamily = new FontFamily("Segoe UI");
 
         [PublicAPI]
         public double TitleFontSize
         {
             get
             {
-                Contract.Ensures(!double.IsNaN(Contract.Result<double>()) && double.IsInfinity(Contract.Result<double>()) && Contract.Result<double>() > 0.0);
-                var unboxedValue = BoxingHelper<double>.Unbox(GetValue(TitleFontSizeProperty));
-                Contract.Assume(!double.IsNaN(unboxedValue) && double.IsInfinity(unboxedValue) && unboxedValue > 0.0);
-                return unboxedValue;
+                lock (_lock)
+                {
+                    return _titleFontSize;
+                }
             }
             set
             {
-                if (!(value > 0.0) || double.IsNaN(value) || double.IsInfinity(value))
+                lock (_lock)
                 {
-                    throw new ArgumentException("Font size must be greater than zero.");
+                    _titleFontSize = value;
                 }
-                Contract.EndContractBlock();
-                SetValue(TitleFontSizeProperty, value);
             }
         }
 
-        [PublicAPI]
-        public static readonly DependencyProperty HeaderFontSizeProperty =
-            DependencyProperty.Register("HeaderFontSize", typeof(double), typeof(Parameters),
-                                        new FrameworkPropertyMetadata(16.0 * (96.0 / 72.0),
-                                                                      FrameworkPropertyMetadataOptions.AffectsRender |
-                                                                      FrameworkPropertyMetadataOptions.AffectsMeasure), IsFontSizeValid);
+        private double _titleFontSize = 12.0 * (96.0 / 72.0);
 
         [PublicAPI]
         public double HeaderFontSize
         {
             get
             {
-                Contract.Ensures(!double.IsNaN(Contract.Result<double>()) && double.IsInfinity(Contract.Result<double>()) && Contract.Result<double>() > 0.0);
-                var unboxedValue = BoxingHelper<double>.Unbox(GetValue(HeaderFontSizeProperty));
-                Contract.Assume(!double.IsNaN(unboxedValue) && double.IsInfinity(unboxedValue) && unboxedValue > 0.0);
-                return unboxedValue;
+                lock (_lock)
+                {
+                    return _headerFontSize;
+                }
             }
             set
             {
-                if (!(value > 0.0) || double.IsNaN(value) || double.IsInfinity(value))
+                lock (_lock)
                 {
-                    throw new ArgumentException("Font size must be greater than zero.");
+                    _headerFontSize = value;
                 }
-                Contract.EndContractBlock();
-                SetValue(HeaderFontSizeProperty, value);
             }
         }
 
-        [PublicAPI]
-        public static readonly DependencyProperty ContentFontSizeProperty =
-            DependencyProperty.Register("ContentFontSize", typeof(double), typeof(Parameters),
-                                        new FrameworkPropertyMetadata(10.0 * (96.0 / 72.0),
-                                                                      FrameworkPropertyMetadataOptions.AffectsRender |
-                                                                      FrameworkPropertyMetadataOptions.AffectsMeasure), IsFontSizeValid);
+        private double _headerFontSize = 16.0 * (96.0 / 72.0);
 
         [PublicAPI]
         public double ContentFontSize
         {
             get
             {
-                Contract.Ensures(!double.IsNaN(Contract.Result<double>()) && double.IsInfinity(Contract.Result<double>()) && Contract.Result<double>() > 0.0);
-                var unboxedValue = BoxingHelper<double>.Unbox(GetValue(ContentFontSizeProperty));
-                Contract.Assume(!double.IsNaN(unboxedValue) && double.IsInfinity(unboxedValue) && unboxedValue > 0.0);
-                return unboxedValue;
+                lock (_lock)
+                {
+                    return _contentFontSize;
+                }
             }
             set
             {
-                if (!(value > 0.0) || double.IsNaN(value) || double.IsInfinity(value))
+                lock (_lock)
                 {
-                    throw new ArgumentException("Font size must be greater than zero.");
+                    _contentFontSize = value;
                 }
-                Contract.EndContractBlock();
-                SetValue(ContentFontSizeProperty, value);
             }
         }
 
-        [PublicAPI]
-        public static readonly DependencyProperty TextFontSizeProperty =
-            DependencyProperty.Register("TextFontSize", typeof(double), typeof(Parameters),
-                                        new FrameworkPropertyMetadata(9.0 * (96.0 / 72.0),
-                                                                      FrameworkPropertyMetadataOptions.AffectsRender |
-                                                                      FrameworkPropertyMetadataOptions.AffectsMeasure), IsFontSizeValid);
+        private double _contentFontSize = 10.0 * (96.0 / 72.0);
 
         [PublicAPI]
         public double TextFontSize
         {
             get
             {
-                Contract.Ensures(!double.IsNaN(Contract.Result<double>()) && double.IsInfinity(Contract.Result<double>()) && Contract.Result<double>() > 0.0);
-                var unboxedValue = BoxingHelper<double>.Unbox(GetValue(TextFontSizeProperty));
-                Contract.Assume(!double.IsNaN(unboxedValue) && double.IsInfinity(unboxedValue) && unboxedValue > 0.0);
-                return unboxedValue;
+                lock (_lock)
+                {
+                    return _textFontSize;
+                }
             }
             set
             {
-                if (!(value > 0.0) || double.IsNaN(value) || double.IsInfinity(value))
+                lock (_lock)
                 {
-                    throw new ArgumentException("Font size must be greater than zero.");
+                    _textFontSize = value;
                 }
-                Contract.EndContractBlock();
-                SetValue(TextFontSizeProperty, value);
             }
         }
 
-        private static bool IsFontSizeValid(object value)
-        {
-            var unboxedValue = BoxingHelper<double>.Unbox(value);
-            return !(double.IsNaN(unboxedValue)) && !(double.IsInfinity(unboxedValue)) && unboxedValue > 0.0;
-        }
+        private double _textFontSize = 9.0 * (96.0 / 72.0);
 
         #endregion
 
         #region Thickness
 
         [PublicAPI]
-        public static readonly DependencyProperty DefaultThicknessProperty =
-            DependencyProperty.Register("DefaultThickness", typeof(Thickness), typeof(Parameters),
-                                        new FrameworkPropertyMetadata(new Thickness(1.0), FrameworkPropertyMetadataOptions.AffectsMeasure));
-
-        [PublicAPI]
         public Thickness DefaultThickness
         {
-            get { return BoxingHelper<Thickness>.Unbox(GetValue(DefaultThicknessProperty)); }
-            set { SetValue(DefaultThicknessProperty, value); }
+            get
+            {
+                lock (_lock)
+                {
+                    return _defaultThickness;
+                }
+            }
+            set
+            {
+                lock (_lock)
+                {
+                    _defaultThickness = value;
+                }
+            }
         }
 
-        [PublicAPI]
-        public static readonly DependencyProperty SemiBoldThicknessProperty =
-            DependencyProperty.Register("SemiBoldThickness", typeof(Thickness), typeof(Parameters),
-                                        new FrameworkPropertyMetadata(new Thickness(1.5), FrameworkPropertyMetadataOptions.AffectsMeasure));
+        private Thickness _defaultThickness = new Thickness(1.0);
 
         [PublicAPI]
         public Thickness SemiBoldThickness
         {
-            get { return BoxingHelper<Thickness>.Unbox(GetValue(SemiBoldThicknessProperty)); }
-            set { SetValue(SemiBoldThicknessProperty, value); }
+            get
+            {
+                lock (_lock)
+                {
+                    return _semiBoldThickness;
+                }
+            }
+            set
+            {
+                lock (_lock)
+                {
+                    _semiBoldThickness = value;
+                }
+            }
         }
 
-        [PublicAPI]
-        public static readonly DependencyProperty BoldThicknessProperty =
-            DependencyProperty.Register("BoldThickness", typeof(Thickness), typeof(Parameters),
-                                        new FrameworkPropertyMetadata(new Thickness(2.0), FrameworkPropertyMetadataOptions.AffectsMeasure));
+        private Thickness _semiBoldThickness = new Thickness(1.5);
 
         [PublicAPI]
         public Thickness BoldThickness
         {
-            get { return BoxingHelper<Thickness>.Unbox(GetValue(BoldThicknessProperty)); }
-            set { SetValue(BoldThicknessProperty, value); }
+            get
+            {
+                lock (_lock)
+                {
+                    return _boldThickness;
+                }
+            }
+            set
+            {
+                lock (_lock)
+                {
+                    _boldThickness = value;
+                }
+            }
         }
 
-        [PublicAPI]
-        public static readonly DependencyProperty DefaultThicknessValueProperty =
-            DependencyProperty.Register("DefaultThicknessValue", typeof(double), typeof(Parameters),
-                                        new FrameworkPropertyMetadata(1.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+        private Thickness _boldThickness = new Thickness(2.0);
 
         [PublicAPI]
         public double DefaultThicknessValue
         {
-            get { return BoxingHelper<double>.Unbox(GetValue(DefaultThicknessValueProperty)); }
-            set { SetValue(DefaultThicknessValueProperty, value); }
+            get
+            {
+                lock (_lock)
+                {
+                    return _defaultThicknessValue;
+                }
+            }
+            set
+            {
+                lock (_lock)
+                {
+                    _defaultThicknessValue = value;
+                }
+            }
         }
 
-        [PublicAPI]
-        public static readonly DependencyProperty SemiBoldThicknessValueProperty =
-            DependencyProperty.Register("SemiBoldThicknessValue", typeof(double), typeof(Parameters),
-                                        new FrameworkPropertyMetadata(1.5, FrameworkPropertyMetadataOptions.AffectsMeasure));
+        private double _defaultThicknessValue = 1.0;
 
         [PublicAPI]
         public double SemiBoldThicknessValue
         {
-            get { return BoxingHelper<double>.Unbox(GetValue(SemiBoldThicknessValueProperty)); }
-            set { SetValue(SemiBoldThicknessValueProperty, value); }
+            get
+            {
+                lock (_lock)
+                {
+                    return _semiBoldThicknessValue;
+                }
+            }
+            set
+            {
+                lock (_lock)
+                {
+                    _semiBoldThicknessValue = value;
+                }
+            }
         }
 
-        [PublicAPI]
-        public static readonly DependencyProperty BoldThicknessValueProperty =
-            DependencyProperty.Register("BoldThicknessValue", typeof(double), typeof(Parameters),
-                                        new FrameworkPropertyMetadata(2.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+        private double _semiBoldThicknessValue = 1.5;
 
         [PublicAPI]
         public double BoldThicknessValue
         {
-            get { return BoxingHelper<double>.Unbox(GetValue(BoldThicknessValueProperty)); }
-            set { SetValue(BoldThicknessValueProperty, value); }
+            get
+            {
+                lock (_lock)
+                {
+                    return _boldThicknessValue;
+                }
+            }
+            set
+            {
+                lock (_lock)
+                {
+                    _boldThicknessValue = value;
+                }
+            }
         }
+
+        private double _boldThicknessValue = 2.0;
 
         #endregion
 
         #region Padding
 
         [PublicAPI]
-        public static readonly DependencyProperty DefaultPaddingProperty =
-            DependencyProperty.Register("DefaultPadding", typeof(Thickness), typeof(Parameters),
-                                        new FrameworkPropertyMetadata(new Thickness(1.0), FrameworkPropertyMetadataOptions.AffectsMeasure));
-
-        [PublicAPI]
         public Thickness DefaultPadding
         {
-            get { return BoxingHelper<Thickness>.Unbox(GetValue(DefaultPaddingProperty)); }
-            set { SetValue(DefaultPaddingProperty, value); }
+            get
+            {
+                lock (_lock)
+                {
+                    return _defaultPadding;
+                }
+            }
+            set
+            {
+                lock (_lock)
+                {
+                    _defaultPadding = value;
+                }
+            }
         }
 
-        [PublicAPI]
-        public static readonly DependencyProperty SemiBoldPaddingProperty =
-            DependencyProperty.Register("SemiBoldPadding", typeof(Thickness), typeof(Parameters),
-                                        new FrameworkPropertyMetadata(new Thickness(2.0), FrameworkPropertyMetadataOptions.AffectsMeasure));
+        private Thickness _defaultPadding = new Thickness(1.0);
 
         [PublicAPI]
         public Thickness SemiBoldPadding
         {
-            get { return BoxingHelper<Thickness>.Unbox(GetValue(SemiBoldPaddingProperty)); }
-            set { SetValue(SemiBoldPaddingProperty, value); }
+            get
+            {
+                lock (_lock)
+                {
+                    return _semiBoldPadding;
+                }
+            }
+            set
+            {
+                lock (_lock)
+                {
+                    _semiBoldPadding = value;
+                }
+            }
         }
 
-        [PublicAPI]
-        public static readonly DependencyProperty BoldPaddingProperty =
-            DependencyProperty.Register("BoldPadding", typeof(Thickness), typeof(Parameters),
-                                        new FrameworkPropertyMetadata(new Thickness(5.0), FrameworkPropertyMetadataOptions.AffectsMeasure));
+        private Thickness _semiBoldPadding = new Thickness(2.0);
 
         [PublicAPI]
         public Thickness BoldPadding
         {
-            get { return BoxingHelper<Thickness>.Unbox(GetValue(BoldPaddingProperty)); }
-            set { SetValue(BoldPaddingProperty, value); }
+            get
+            {
+                lock (_lock)
+                {
+                    return _boldPadding;
+                }
+            }
+            set
+            {
+                lock (_lock)
+                {
+                    _boldPadding = value;
+                }
+            }
         }
 
-        [PublicAPI]
-        public static readonly DependencyProperty DefaultPaddingValueProperty =
-            DependencyProperty.Register("DefaultPaddingValue", typeof(double), typeof(Parameters),
-                                        new FrameworkPropertyMetadata(1.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+        private Thickness _boldPadding = new Thickness(5.0);
 
         [PublicAPI]
         public double DefaultPaddingValue
         {
-            get { return BoxingHelper<double>.Unbox(GetValue(DefaultPaddingValueProperty)); }
-            set { SetValue(DefaultPaddingValueProperty, value); }
+            get
+            {
+                lock (_lock)
+                {
+                    return _defaultPaddingValue;
+                }
+            }
+            set
+            {
+                lock (_lock)
+                {
+                    _defaultPaddingValue = value;
+                }
+            }
         }
 
-        [PublicAPI]
-        public static readonly DependencyProperty SemiBoldPaddingValueProperty =
-            DependencyProperty.Register("SemiBoldPaddingValue", typeof(double), typeof(Parameters),
-                                        new FrameworkPropertyMetadata(2.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+        private double _defaultPaddingValue = 1.0;
 
         [PublicAPI]
         public double SemiBoldPaddingValue
         {
-            get { return BoxingHelper<double>.Unbox(GetValue(SemiBoldPaddingValueProperty)); }
-            set { SetValue(SemiBoldPaddingValueProperty, value); }
+            get
+            {
+                lock (_lock)
+                {
+                    return _semiBoldPaddingValue;
+                }
+            }
+            set
+            {
+                lock (_lock)
+                {
+                    _semiBoldPaddingValue = value;
+                }
+            }
         }
 
-        [PublicAPI]
-        public static readonly DependencyProperty BoldPaddingValueProperty =
-            DependencyProperty.Register("BoldPaddingValue", typeof(double), typeof(Parameters),
-                                        new FrameworkPropertyMetadata(5.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+        private double _semiBoldPaddingValue = 2.0;
 
         [PublicAPI]
         public double BoldPaddingValue
         {
-            get { return BoxingHelper<double>.Unbox(GetValue(BoldPaddingValueProperty)); }
-            set { SetValue(BoldPaddingValueProperty, value); }
+            get
+            {
+                lock (_lock)
+                {
+                    return _boldPaddingValue;
+                }
+            }
+            set
+            {
+                lock (_lock)
+                {
+                    _boldPaddingValue = value;
+                }
+            }
         }
+
+        private double _boldPaddingValue = 5.0;
 
         #endregion
 
@@ -318,8 +404,7 @@ namespace Elysium.Theme
         [PublicAPI]
         public static readonly DependencyProperty DefaultDurationProperty =
             DependencyProperty.RegisterAttached("DefaultDuration", typeof(Duration), typeof(Parameters),
-                                                new FrameworkPropertyMetadata((new Duration(TimeSpan.FromSeconds(0.0))),
-                                                                              FrameworkPropertyMetadataOptions.None));
+                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.FromSeconds(0.0)), FrameworkPropertyMetadataOptions.None));
 
         [PublicAPI]
         public static Duration GetDefaultDuration(DependencyObject obj)
@@ -346,8 +431,7 @@ namespace Elysium.Theme
         [PublicAPI]
         public static readonly DependencyProperty MinimumDurationProperty =
             DependencyProperty.RegisterAttached("MinimumDuration", typeof(Duration), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.FromSeconds(0.2)),
-                                                                              FrameworkPropertyMetadataOptions.None));
+                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.FromSeconds(0.2)), FrameworkPropertyMetadataOptions.None));
 
         [PublicAPI]
         public static Duration GetMinimumDuration(DependencyObject obj)
@@ -374,8 +458,7 @@ namespace Elysium.Theme
         [PublicAPI]
         public static readonly DependencyProperty OptimumDurationProperty =
             DependencyProperty.RegisterAttached("OptimumDuration", typeof(Duration), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.FromSeconds(0.5)),
-                                                                              FrameworkPropertyMetadataOptions.None));
+                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.FromSeconds(0.5)), FrameworkPropertyMetadataOptions.None));
 
         [PublicAPI]
         public static Duration GetOptimumDuration(DependencyObject obj)
@@ -402,8 +485,7 @@ namespace Elysium.Theme
         [PublicAPI]
         public static readonly DependencyProperty MaximumDurationProperty =
             DependencyProperty.RegisterAttached("MaximumDuration", typeof(Duration), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.FromSeconds(1.0)),
-                                                                              FrameworkPropertyMetadataOptions.None));
+                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.FromSeconds(1.0)), FrameworkPropertyMetadataOptions.None));
 
         [PublicAPI]
         public static Duration GetMaximumDuration(DependencyObject obj)
@@ -467,7 +549,7 @@ namespace Elysium.Theme
         [PublicAPI]
         public static readonly DependencyProperty BulletDecoratorSizeProperty =
             DependencyProperty.RegisterAttached("BulletDecoratorSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(14.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(16.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(CheckBox))]
@@ -494,59 +576,60 @@ namespace Elysium.Theme
         }
 
         [PublicAPI]
-        public static readonly DependencyProperty CheckBoxBulletSizeProperty =
-            DependencyProperty.RegisterAttached("CheckBoxBulletSize", typeof(double), typeof(Parameters),
+        public static readonly DependencyProperty BulletSizeProperty =
+            DependencyProperty.RegisterAttached("BulletSize", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(8.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        [PublicAPI]
+        [AttachedPropertyBrowsableForType(typeof(CheckBox))]
+        [AttachedPropertyBrowsableForType(typeof(RadioButton))]
+        public static double GetBulletSize(DependencyObject obj)
+        {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            return BoxingHelper<double>.Unbox(obj.GetValue(BulletSizeProperty));
+        }
+
+        [PublicAPI]
+        public static void SetBulletSize(DependencyObject obj, double value)
+        {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            Contract.EndContractBlock();
+            obj.SetValue(BulletSizeProperty, value);
+        }
+
+        [PublicAPI]
+        public static readonly DependencyProperty CheckSizeProperty =
+            DependencyProperty.RegisterAttached("CheckSize", typeof(double), typeof(Parameters),
                                                 new FrameworkPropertyMetadata(10.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(CheckBox))]
-        public static double GetCheckBoxBulletSize(DependencyObject obj)
+        public static double GetCheckSize(DependencyObject obj)
         {
             if (obj == null)
             {
                 throw new ArgumentNullException("obj");
             }
             Contract.EndContractBlock();
-            return BoxingHelper<double>.Unbox(obj.GetValue(CheckBoxBulletSizeProperty));
+            return BoxingHelper<double>.Unbox(obj.GetValue(CheckSizeProperty));
         }
 
         [PublicAPI]
-        public static void SetCheckBoxBulletSize(DependencyObject obj, double value)
+        public static void SetCheckSize(DependencyObject obj, double value)
         {
             if (obj == null)
             {
                 throw new ArgumentNullException("obj");
             }
             Contract.EndContractBlock();
-            obj.SetValue(CheckBoxBulletSizeProperty, value);
-        }
-
-        [PublicAPI]
-        public static readonly DependencyProperty RadioButtonBulletSizeProperty =
-            DependencyProperty.RegisterAttached("RadioButtonBulletSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(8.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
-
-        [PublicAPI]
-        [AttachedPropertyBrowsableForType(typeof(RadioButton))]
-        public static double GetRadioButtonBulletSize(DependencyObject obj)
-        {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
-            return BoxingHelper<double>.Unbox(obj.GetValue(RadioButtonBulletSizeProperty));
-        }
-
-        [PublicAPI]
-        public static void SetRadioButtonBulletSize(DependencyObject obj, double value)
-        {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
-            obj.SetValue(RadioButtonBulletSizeProperty, value);
+            obj.SetValue(CheckSizeProperty, value);
         }
 
         #endregion
@@ -833,6 +916,7 @@ namespace Elysium.Theme
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(TabControl))]
+        [AttachedPropertyBrowsableForType(typeof(TabItem))]
         public static Brush GetTabControlIndicatorBrush(DependencyObject obj)
         {
             if (obj == null)
@@ -1029,6 +1113,19 @@ namespace Elysium.Theme
             }
             Contract.EndContractBlock();
             obj.SetValue(WindowResizeBorderThicknessProperty, value);
+        }
+
+        #endregion
+
+        #region Invariants
+
+        [ContractInvariantMethod]
+        private void Invariants()
+        {
+            Contract.Invariant(!double.IsNaN(TitleFontSize) && !double.IsInfinity(TitleFontSize) && TitleFontSize > 0.0);
+            Contract.Invariant(!double.IsNaN(HeaderFontSize) && !double.IsInfinity(HeaderFontSize) && HeaderFontSize > 0.0);
+            Contract.Invariant(!double.IsNaN(ContentFontSize) && !double.IsInfinity(ContentFontSize) && ContentFontSize > 0.0);
+            Contract.Invariant(!double.IsNaN(TextFontSize) && !double.IsInfinity(TextFontSize) && TextFontSize > 0.0);
         }
 
         #endregion

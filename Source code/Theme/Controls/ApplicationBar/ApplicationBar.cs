@@ -8,12 +8,12 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 
-using Elysium.Theme.Controls.Automation;
-using Elysium.Theme.Extensions;
+using Elysium.Controls.Automation;
+using Elysium.Extensions;
 
 using JetBrains.Annotations;
 
-namespace Elysium.Theme.Controls
+namespace Elysium.Controls
 {
     [PublicAPI]
     [DefaultEvent("Opened")]

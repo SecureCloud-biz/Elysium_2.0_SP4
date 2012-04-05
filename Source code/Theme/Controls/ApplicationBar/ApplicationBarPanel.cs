@@ -6,7 +6,7 @@ using System.Windows.Controls;
 
 using JetBrains.Annotations;
 
-namespace Elysium.Theme.Controls
+namespace Elysium.Controls
 {
     [PublicAPI]
     public class ApplicationBarPanel : Panel

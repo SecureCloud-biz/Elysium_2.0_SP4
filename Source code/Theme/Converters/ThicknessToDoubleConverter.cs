@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace Elysium.Theme.Converters
+namespace Elysium.Converters
 {
     [ValueConversion(typeof(Thickness), typeof(double))]
     public sealed class ThicknessToDoubleConverter : IValueConverter

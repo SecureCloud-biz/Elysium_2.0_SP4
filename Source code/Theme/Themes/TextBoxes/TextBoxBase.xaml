@@ -2,14 +2,13 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Elysium.Theme;component/Themes/SharedResources.xaml"/>
-        <ResourceDictionary Source="/Elysium.Theme;component/Themes/TextBoxes/TextBoxesBase.xaml"/>
+        <ResourceDictionary Source="/Elysium;component/Themes/TextBoxes/TextBoxesBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="TextBoxBaseStyle" TargetType="{x:Type TextBoxBase}" BasedOn="{StaticResource TextBoxesBaseStyle}">
         
-        <Setter Property="CaretBrush" Value="{StaticResource Foreground}"/>
-        <Setter Property="SelectionBrush" Value="{StaticResource MiddleLight}"/>
+        <Setter Property="CaretBrush" Value="{DynamicResource ForegroundBrush}"/>
+        <Setter Property="SelectionBrush" Value="{DynamicResource MiddleLightBrush}"/>
 
         <Setter Property="OverridesDefaultStyle" Value="True"/>
 
@@ -20,8 +19,8 @@
                     <Condition Property="IsReadOnly" Value="False"/>
                 </MultiTrigger.Conditions>
                 <MultiTrigger.Setters>
-                    <Setter Property="BorderBrush" Value="{StaticResource Accent}"/>
-                    <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
+                    <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
                 </MultiTrigger.Setters>
             </MultiTrigger>
         </Style.Triggers>

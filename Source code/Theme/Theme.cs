@@ -1,9 +1,9 @@
 using JetBrains.Annotations;
 
-namespace Elysium.Theme
+namespace Elysium
 {
     [PublicAPI]
-    public enum ThemeType
+    public enum Theme
     {
         [PublicAPI]
         Dark,

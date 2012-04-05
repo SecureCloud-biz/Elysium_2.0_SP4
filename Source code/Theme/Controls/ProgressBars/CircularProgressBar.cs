@@ -8,15 +8,15 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 
-using Elysium.Theme.Extensions;
+using Elysium.Extensions;
 
 using JetBrains.Annotations;
 
 using Microsoft.Expression.Shapes;
 
-using Elysium.Theme.Controls.Primitives;
+using Elysium.Controls.Primitives;
 
-namespace Elysium.Theme.Controls
+namespace Elysium.Controls
 {
     [PublicAPI]
     [TemplatePart(Name = ArcName, Type = typeof(Arc))]
