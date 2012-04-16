@@ -11,17 +11,16 @@
         
         <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
-        <Setter Property="BorderThickness" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=SemiBoldThickness, Mode=OneWay}"/>
+        <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.SemiBoldThickness), Mode=OneWay}"/>
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
-        <Setter Property="FontFamily" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=FontFamily, Mode=OneWay}"/>
-        <Setter Property="FontSize" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=ContentFontSize, Mode=OneWay}"/>
+        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.ContentFontSize), Mode=OneWay}"/>
         <Setter Property="FontWeight" Value="Normal"/>
 
         <Setter Property="root:Parameters.CommandButtonMask" Value="{DynamicResource MiddleLightBrush}"/>
         
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}"/>
 
-        <Setter Property="Padding" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=SemiBoldPadding, Mode=OneWay}"/>
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.SemiBoldPadding), Mode=OneWay}"/>
         
         <Setter Property="SnapsToDevicePixels" Value="True"/>
 

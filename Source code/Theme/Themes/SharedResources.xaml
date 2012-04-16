@@ -12,10 +12,10 @@
         <Setter Property="Control.Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Rectangle Margin="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultPadding, Mode=OneWay}" 
+                    <Rectangle Margin="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultPadding), Mode=OneWay}" 
                                Fill="{DynamicResource TransparentBrush}"
                                Stroke="{DynamicResource ForegroundBrush}"
-                               StrokeThickness="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThicknessValue, Mode=OneWay}"
+                               StrokeThickness="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThicknessValue), Mode=OneWay}"
                                StrokeDashArray="2 1"
                                RenderOptions.EdgeMode="Aliased"/>
                 </ControlTemplate>

@@ -52,14 +52,10 @@ namespace Elysium.Controls.Primitives
             set { SetValue(HeaderProperty, value); }
         }
 
-        private static void OnHeaderChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnHeaderChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            if (d == null)
-            {
-                throw new ArgumentNullException("d");
-            }
-            Contract.EndContractBlock();
-            var instance = (CommandButtonBase)d;
+            ValidationHelper.NotNull(obj, () => obj);
+            var instance = (CommandButtonBase)obj;
             instance.OnHeaderChanged(e.OldValue, e.NewValue);
             instance.HasHeader = e.NewValue != null;
         }
@@ -89,21 +85,17 @@ namespace Elysium.Controls.Primitives
             private set { SetValue(HasHeaderPropertyKey, BooleanBoxingHelper.Box(value)); }
         }
 
-        private static void OnHasHeaderChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnHasHeaderChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            if (d == null)
-            {
-                throw new ArgumentNullException("d");
-            }
-            Contract.EndContractBlock();
-            var instance = (CommandButtonBase)d;
+            ValidationHelper.NotNull(obj, () => obj);
+            var instance = (CommandButtonBase)obj;
             instance.OnHasHeaderChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
         }
 
         [PublicAPI]
-        // ReSharper disable VirtualMemberNeverOverriden.Global
+// ReSharper disable VirtualMemberNeverOverriden.Global
         protected virtual void OnHasHeaderChanged(bool oldHeader, bool newHeader)
-            // ReSharper restore VirtualMemberNeverOverriden.Global
+// ReSharper restore VirtualMemberNeverOverriden.Global
         {
         }
 
@@ -122,14 +114,10 @@ namespace Elysium.Controls.Primitives
             set { SetValue(HeaderStringFormatProperty, value); }
         }
 
-        private static void OnHeaderStringFormatChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnHeaderStringFormatChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            if (d == null)
-            {
-                throw new ArgumentNullException("d");
-            }
-            Contract.EndContractBlock();
-            var instance = (CommandButtonBase)d;
+            ValidationHelper.NotNull(obj, () => obj);
+            var instance = (CommandButtonBase)obj;
             instance.OnHeaderStringFormatChanged((string)e.OldValue, (string)e.NewValue);
         }
 
@@ -156,14 +144,10 @@ namespace Elysium.Controls.Primitives
             set { SetValue(HeaderTemplateProperty, value); }
         }
 
-        private static void OnHeaderTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnHeaderTemplateChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            if (d == null)
-            {
-                throw new ArgumentNullException("d");
-            }
-            Contract.EndContractBlock();
-            var instance = (CommandButtonBase)d;
+            ValidationHelper.NotNull(obj, () => obj);
+            var instance = (CommandButtonBase)obj;
             instance.OnHeaderTemplateChanged((DataTemplate)e.OldValue, (DataTemplate)e.NewValue);
         }
 
@@ -191,14 +175,10 @@ namespace Elysium.Controls.Primitives
             set { SetValue(HeaderTemplateSelectorProperty, value); }
         }
 
-        private static void OnHeaderTemplateSelectorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnHeaderTemplateSelectorChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            if (d == null)
-            {
-                throw new ArgumentNullException("d");
-            }
-            Contract.EndContractBlock();
-            var instance = (CommandButtonBase)d;
+            ValidationHelper.NotNull(obj, () => obj);
+            var instance = (CommandButtonBase)obj;
             instance.OnHeaderTemplateSelectorChanged((DataTemplateSelector)e.OldValue, (DataTemplateSelector)e.NewValue);
         }
 
@@ -222,21 +202,24 @@ namespace Elysium.Controls.Primitives
                 {
                     Trace.TraceError(DecorName + " not found.");
                 }
-                // NOTE: WPF doesn't declare contracts
+
+                // BUG in Code Contracts: FindName is pure method
                 Contract.Assume(Template != null);
                 _mask = Template.FindName(MaskName, this) as Ellipse;
                 if (_mask == null)
                 {
                     Trace.TraceError(MaskName + " not found.");
                 }
-                // NOTE: WPF doesn't declare contracts
+
+                // BUG in Code Contracts: FindName is pure method
                 Contract.Assume(Template != null);
                 _headerHost = Template.FindName(HeaderHostName, this) as ContentPresenter;
                 if (_headerHost == null)
                 {
                     Trace.TraceError(HeaderHostName + " not found.");
                 }
-                // NOTE: WPF doesn't declare contracts
+
+                // BUG in Code Contracts: FindName is pure method
                 Contract.Assume(Template != null);
                 _contentHost = Template.FindName(ContentHostName, this) as ContentPresenter;
                 if (_contentHost == null)
@@ -254,20 +237,28 @@ namespace Elysium.Controls.Primitives
                 _contentHost.Measure(infinitySize);
                 _headerHost.Measure(infinitySize);
 
+                // BUG in Code Contracts: DesiredSize.Width and DesiredSize.Height must be is equal to or greater than zero
+                Contract.Assume(_contentHost.DesiredSize.Width >= 0d);
+                Contract.Assume(_contentHost.DesiredSize.Height >= 0d);
+                Contract.Assume(_headerHost.DesiredSize.Width >= 0d);
+                Contract.Assume(_headerHost.DesiredSize.Height >= 0d);
+
                 var contentSize = Math.Max(_contentHost.DesiredSize.Width, _contentHost.DesiredSize.Height) * Math.Sqrt(2.0);
 
                 var constraintWidth = double.IsNaN(constraint.Width) || double.IsInfinity(constraint.Width) ? double.MaxValue : constraint.Width;
-                var constraintHeight = double.IsNaN(constraint.Height) || double.IsInfinity(constraint.Height) ? 0.0 : constraint.Height;
+                var constraintHeight = double.IsNaN(constraint.Height) || double.IsInfinity(constraint.Height) ? 0d : constraint.Height;
 
                 var width = Math.Min(Math.Max(contentSize, _headerHost.DesiredSize.Width), constraintWidth);
                 var height = Math.Max(contentSize + _headerHost.DesiredSize.Height, constraintHeight);
 
-                Contract.Assume(width >= 0.0);
-                Contract.Assume(height >= 0.0);
+                // BUG in Code Contracts: Math.Max and Math.Min doesn't contain ensures
+                Contract.Assume(width >= 0);
+                Contract.Assume(height >= 0);
 
-                var boxSize = Math.Min(width, height - _headerHost.DesiredSize.Height);
+                var boxSize = Math.Min(width, Math.Max(height - _headerHost.DesiredSize.Height, 0d));
 
-                Contract.Assume(boxSize >= 0.0);
+                // BUG in Code Contracts: Math.Max and Math.Min doesn't contain ensures
+                Contract.Assume(boxSize >= 0);
 
                 _decor.Width = boxSize;
                 _decor.Height = boxSize;

@@ -6,10 +6,10 @@ using JetBrains.Annotations;
 namespace Elysium.Controls.Automation
 {
     [PublicAPI]
-    public class ApplicationBarAutomationPeer : FrameworkElementAutomationPeer
+    public class SubmenuAutomationPeer : FrameworkElementAutomationPeer
     {
         [PublicAPI]
-        public ApplicationBarAutomationPeer([NotNull] ApplicationBar owner) : base(owner)
+        public SubmenuAutomationPeer([NotNull] Submenu owner) : base(owner)
         {
         }
 
@@ -17,8 +17,8 @@ namespace Elysium.Controls.Automation
         [System.Diagnostics.Contracts.Pure]
         protected override string GetClassNameCore()
         {
-            Contract.Ensures(Contract.Result<string>() == "ApplicationBar");
-            return "ApplicationBar";
+            Contract.Ensures(Contract.Result<string>() == "Submenu");
+            return "Submenu";
         }
 
         [JetBrains.Annotations.Pure]

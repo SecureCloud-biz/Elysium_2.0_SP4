@@ -11,10 +11,9 @@
         
         <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
-        <Setter Property="BorderThickness" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThickness, Mode=OneWay}"/>
+        <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThickness), Mode=OneWay}"/>
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
-        <Setter Property="FontFamily" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=FontFamily, Mode=OneWay}"/>
-        <Setter Property="FontSize" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=ContentFontSize, Mode=OneWay}"/>
+        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.ContentFontSize), Mode=OneWay}"/>
         <Setter Property="FontWeight" Value="Normal"/>
 
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
@@ -26,7 +25,7 @@
 
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-        <Setter Property="Padding" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.BoldPadding), Mode=OneWay}"/>
 
         <Setter Property="Grid.IsSharedSizeScope" Value="True"/>
         

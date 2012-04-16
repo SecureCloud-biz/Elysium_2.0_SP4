@@ -15,20 +15,19 @@ namespace Elysium.Controls
         {
             var infinitySize = new Size(double.PositiveInfinity, double.PositiveInfinity);
             var desiredSize = new Size(0, 0);
-            Contract.Assume(InternalChildren != null);
             foreach (var child in InternalChildren.Cast<UIElement>().Where(child => child != null))
             {
-                // BUG in Code Contracts
+                // NOTE: Code Contracts doesn't support closures
                 Contract.Assume(child != null);
                 child.Measure(infinitySize);
-                Contract.Assume(child.DesiredSize.Width >= 0.0);
-                Contract.Assume(child.DesiredSize.Height >= 0.0);
+                // BUG in Code Contracts: DesiredSize.Width must be is equal to or greater than zero
+                Contract.Assume(child.DesiredSize.Width >= 0d);
                 desiredSize.Width += child.DesiredSize.Width;
                 desiredSize.Height = Math.Max(desiredSize.Height, child.DesiredSize.Height);
             }
             foreach (var child in InternalChildren.Cast<UIElement>().Where(child => child != null))
             {
-                // BUG in Code Contracts
+                // NOTE: Code Contracts doesn't support closures
                 Contract.Assume(child != null);
                 child.Measure(desiredSize);
             }
@@ -37,12 +36,11 @@ namespace Elysium.Controls
 
         protected override Size ArrangeOverride(Size finalSize)
         {
-            var leftFilledWidth = 0.0;
-            var rightFilledWidth = 0.0;
-            Contract.Assume(InternalChildren != null);
+            var leftFilledWidth = 0d;
+            var rightFilledWidth = 0d;
             foreach (var child in InternalChildren.Cast<UIElement>().Where(child => child != null))
             {
-                // BUG in Code Contracts
+                // NOTE: Code Contracts doesn't support closures
                 Contract.Assume(child != null);
                 var isRightDocked = ApplicationBar.GetDock(child) == ApplicationBarDock.Right;
                 var x = !isRightDocked ? leftFilledWidth : finalSize.Width - rightFilledWidth - child.DesiredSize.Width;

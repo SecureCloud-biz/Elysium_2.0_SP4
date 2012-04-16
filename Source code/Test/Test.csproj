@@ -53,13 +53,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Theme\Theme.csproj">
-      <Project>{5A65DA67-130D-43D8-9224-4559B523B6D4}</Project>
-      <Name>Theme</Name>
-      <Private>False</Private>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -87,6 +80,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\Sample16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Theme\Theme.csproj">
+      <Project>{5A65DA67-130D-43D8-9224-4559B523B6D4}</Project>
+      <Name>Theme</Name>
+      <Private>False</Private>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

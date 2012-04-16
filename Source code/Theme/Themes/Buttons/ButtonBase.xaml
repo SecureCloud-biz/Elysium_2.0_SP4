@@ -10,17 +10,16 @@
         
         <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}"/>
-        <Setter Property="BorderThickness" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThickness, Mode=OneWay}"/>
+        <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThickness), Mode=OneWay}"/>
         <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
-        <Setter Property="FontFamily" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=FontFamily, Mode=OneWay}"/>
-        <Setter Property="FontSize" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=ContentFontSize, Mode=OneWay}"/>
+        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.ContentFontSize), Mode=OneWay}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
 
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}"/>
         
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.BoldPadding), Mode=OneWay}"/>
         
         <Setter Property="MinWidth" Value="70"/>
         

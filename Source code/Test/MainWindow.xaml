@@ -8,15 +8,15 @@
         <metro:ApplicationBar>
             <metro:CommandButton Header="Light theme"
                                  Click="LightClick"
-                                 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                 Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
             <metro:CommandButton Header="Dark theme"
                                  Click="DarkClick"
-                                 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                                 Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
                 <Image Source="pack://application:,,,/Test;component/Icons/Sample24.png"
                        Stretch="None"/>
             </metro:CommandButton>
             <metro:DropDownCommandButton Header="Accent color"
-                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
                 <Image Source="pack://application:,,,/Elysium;component/Icons/Advanced.png"
                        Stretch="None"/>
                 <metro:DropDownCommandButton.Submenu>
@@ -96,7 +96,7 @@
             </metro:DropDownCommandButton>
             <metro:DropDownCommandButton Header="Advanced"
                                          metro:ApplicationBar.Dock="Right"
-                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
                 <Image Source="pack://application:,,,/Elysium;component/Icons/Advanced.png"
                        Stretch="None"/>
                 <metro:DropDownCommandButton.Submenu>
@@ -109,7 +109,7 @@
             </metro:DropDownCommandButton>
         </metro:ApplicationBar>
     </metro:Window.ApplicationBar>
-    <TabControl Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+    <TabControl Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
         <TabItem Header="buttons">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -118,7 +118,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0"
-                      Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                      Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
@@ -134,48 +134,48 @@
                             Grid.Row="0"
                             Content="DISABLED"
                             IsEnabled="False"
-                            Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                            Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                     <Button Grid.Column="0"
                             Grid.Row="1"
                             Content="BUTTON"
-                            Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                            Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                     <Button Grid.Column="0"
                             Grid.Row="2"
                             Content="DEFAULT"
                             IsDefault="True"
-                            Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                            Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                     <RepeatButton Grid.Column="1"
                                   Grid.Row="0"
                                   Content="DISABLED"
                                   IsEnabled="False"
-                                  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                  Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                     <RepeatButton Grid.Column="1"
                                   Grid.Row="1"
                                   Content="REPEATBUTTON"
-                                  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                  Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                     <ToggleButton Grid.Column="2"
                                   Grid.Row="0"
                                   Content="DISABLED"
                                   IsEnabled="False"
-                                  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                  Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                     <ToggleButton Grid.Column="2"
                                   Grid.Row="1"
                                   Content="TOGGLEBUTTON"
-                                  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                  Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                     <ToggleButton Grid.Column="2"
                                   Grid.Row="2"
                                   Content="CHECKED"
                                   IsChecked="True"
-                                  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                  Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                     <ToggleButton Grid.Column="2"
                                   Grid.Row="3"
                                   Content="INDETERMINATE"
                                   IsThreeState="True"
                                   IsChecked="{x:Null}"
-                                  Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                  Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 </Grid>
                 <Grid Grid.Column="1"
-                      Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                      Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
@@ -192,7 +192,7 @@
                               Grid.Row="0"
                               IsEnabled="False"
                               IsChecked="False"
-                              Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
+                              Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"
                               VerticalAlignment="Center">
                         <Grid>
                             <TextBlock Text="Disabled unchecked"/>
@@ -202,7 +202,7 @@
                               Grid.Row="1"
                               IsEnabled="False"
                               IsChecked="True"
-                              Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
+                              Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"
                               VerticalAlignment="Center">
                         <Grid>
                             <TextBlock Text="Disabled checked"/>
@@ -213,7 +213,7 @@
                               IsEnabled="False"
                               IsThreeState="True"
                               IsChecked="{x:Null}"
-                              Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
+                              Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"
                               VerticalAlignment="Center">
                         <Grid>
                             <TextBlock Text="Disabled indeterminate"/>
@@ -222,7 +222,7 @@
                     <CheckBox Grid.Column="0"
                               Grid.Row="3"
                               IsChecked="False"
-                              Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
+                              Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"
                               VerticalAlignment="Center">
                         <Grid>
                             <TextBlock Text="Unchecked"/>
@@ -231,7 +231,7 @@
                     <CheckBox Grid.Column="0"
                               Grid.Row="4"
                               IsChecked="True"
-                              Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
+                              Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"
                               VerticalAlignment="Center">
                         <Grid>
                             <TextBlock Text="Checked"/>
@@ -241,7 +241,7 @@
                               Grid.Row="5"
                               IsThreeState="True"
                               IsChecked="{x:Null}"
-                              Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
+                              Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"
                               VerticalAlignment="Center">
                         <Grid>
                             <TextBlock Text="Indeterminate"/>
@@ -251,7 +251,7 @@
                                  Grid.Row="0"
                                  IsEnabled="False"
                                  IsChecked="False"
-                                 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
+                                 Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"
                                  VerticalAlignment="Center">
                         <Grid>
                             <TextBlock Text="Disabled unchecked"/>
@@ -261,7 +261,7 @@
                                  Grid.Row="1"
                                  IsEnabled="False"
                                  IsChecked="True"
-                                 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
+                                 Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"
                                  VerticalAlignment="Center">
                         <Grid>
                             <TextBlock Text="Disabled checked"/>
@@ -271,7 +271,7 @@
                                  Grid.Row="3"
                                  GroupName="RadioButtons"
                                  IsChecked="False"
-                                 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
+                                 Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"
                                  VerticalAlignment="Center">
                         <Grid>
                             <TextBlock Text="Unchecked"/>
@@ -281,7 +281,7 @@
                                  Grid.Row="4"
                                  GroupName="RadioButtons"
                                  IsChecked="True"
-                                 Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
+                                 Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"
                                  VerticalAlignment="Center">
                         <Grid>
                             <TextBlock Text="Checked"/>
@@ -303,14 +303,14 @@
                                          Grid.Row="0"
                                          Header="Disabled"
                                          IsEnabled="False"
-                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
                         <Image Source="pack://application:,,,/Test;component/Icons/Sample24.png"
                                Stretch="None"/>
                     </metro:CommandButton>
                     <metro:CommandButton Grid.Column="0"
                                          Grid.Row="1"
                                          Header="CommandButton"
-                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
                         <Image Source="pack://application:,,,/Test;component/Icons/Sample24.png"
                                Stretch="None"/>
                     </metro:CommandButton>
@@ -318,14 +318,14 @@
                                                Grid.Row="0"
                                                Header="Disabled"
                                                IsEnabled="False"
-                                               Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                                               Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
                         <Image Source="pack://application:,,,/Test;component/Icons/Sample24.png"
                                Stretch="None"/>
                     </metro:ToggleCommandButton>
                     <metro:ToggleCommandButton Grid.Column="1"
                                                Grid.Row="1"
                                                Header="ToggleCommandButton"
-                                               Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                                               Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
                         <Image Source="pack://application:,,,/Test;component/Icons/Sample24.png"
                                Stretch="None"/>
                     </metro:ToggleCommandButton>
@@ -333,7 +333,7 @@
                                                Grid.Row="2"
                                                Header="Checked"
                                                IsChecked="True"
-                                               Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                                               Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
                         <Image Source="pack://application:,,,/Test;component/Icons/Sample24.png"
                                Stretch="None"/>
                     </metro:ToggleCommandButton>
@@ -342,7 +342,7 @@
                                                Header="Indeterminate"
                                                IsThreeState="True"
                                                IsChecked="{x:Null}"
-                                               Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                                               Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
                         <Image Source="pack://application:,,,/Test;component/Icons/Sample24.png"
                                Stretch="None"/>
                     </metro:ToggleCommandButton>
@@ -350,7 +350,7 @@
             </Grid>
         </TabItem>
         <TabItem Header="text and menus">
-            <Grid Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+            <Grid Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -365,33 +365,33 @@
                 <TextBlock Grid.Column="0"
                            Grid.Row="0"
                            Text="Lorem ipsum dolor sit amet"
-                           Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                           Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <TextBlock Grid.Column="1"
                            Grid.Row="0"
                            IsEnabled="False"
                            Text="Lorem ipsum dolor sit amet"
-                           Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                           Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <TextBox Grid.Column="0"
                          Grid.Row="1"
                          Text="Lorem ipsum dolor sit amet"
-                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <TextBox Grid.Column="1"
                          Grid.Row="1"
                          IsEnabled="False"
                          Text="Lorem ipsum dolor sit amet"
-                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <PasswordBox Grid.Column="0"
                              Grid.Row="2"
                              Password="Password"
-                             Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                             Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <PasswordBox Grid.Column="1"
                              Grid.Row="2"
                              IsEnabled="False"
                              Password="Password"
-                             Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                             Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <RichTextBox Grid.Column="0"
                              Grid.Row="3"
-                             Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                             Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
                     <FlowDocument>
                         <Paragraph>
                             <Run>
@@ -403,7 +403,7 @@
                 <RichTextBox Grid.Column="1"
                              Grid.Row="3"
                              IsEnabled="False"
-                             Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                             Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
                     <FlowDocument>
                         <Paragraph>
                             <Run>
@@ -417,7 +417,7 @@
                       Grid.RowSpan="4"
                       metro:ApplicationBar.PreventsOpen="true">
                     <TextBlock Foreground="{DynamicResource MiddleLightBrush}"
-                               FontSize="{Binding Source={x:Static metro:Parameters.Instance}, Path=HeaderFontSize}"                              
+                               FontSize="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.HeaderFontSize)}"                              
                                Text="Click here to see ContextMenu"
                                TextOptions.TextFormattingMode="Ideal"
                                HorizontalAlignment="Center"
@@ -454,7 +454,7 @@
             </Grid>
         </TabItem>
         <TabItem Header="selectors and ranges">
-            <Grid Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+            <Grid Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
@@ -478,7 +478,7 @@
                           IsEnabled="False"
                           IsEditable="False"
                           SelectedIndex="2"
-                          Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                          Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
                     <ComboBoxItem Content="First ComboBoxItem"/>
                     <ComboBoxItem Content="Second ComboBoxItem"/>
                     <ComboBoxItem Content="Third ComboBoxItem"/>
@@ -492,7 +492,7 @@
                           IsEnabled="False"
                           IsEditable="True"
                           SelectedIndex="4"
-                          Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                          Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
                     <ComboBoxItem Content="First ComboBoxItem"/>
                     <ComboBoxItem Content="Second ComboBoxItem"/>
                     <ComboBoxItem Content="Third ComboBoxItem"/>
@@ -505,7 +505,7 @@
                           Grid.Row="1"
                           IsEditable="False"
                           SelectedIndex="2"
-                          Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                          Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
                     <ComboBoxItem Content="First ComboBoxItem"/>
                     <ComboBoxItem Content="Second ComboBoxItem"/>
                     <ComboBoxItem Content="Third ComboBoxItem"/>
@@ -518,7 +518,7 @@
                           Grid.Row="1"
                           IsEditable="True"
                           SelectedIndex="4"
-                          Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}">
+                          Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
                     <ComboBoxItem Content="First ComboBoxItem"/>
                     <ComboBoxItem Content="Second ComboBoxItem"/>
                     <ComboBoxItem Content="Third ComboBoxItem"/>
@@ -532,7 +532,7 @@
                          IsEnabled="False"
                          SelectedIndex="1"
                          SelectionMode="Single"
-                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
+                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"
                          Height="100">
                     <ListBoxItem Content="First ListBoxItem"/>
                     <ListBoxItem Content="Second ListBoxItem"/>
@@ -547,7 +547,7 @@
                          IsEnabled="False"
                          SelectedIndex="0"
                          SelectionMode="Multiple"
-                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
+                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"
                          Height="100">
                     <ListBoxItem Content="First ListBoxItem"/>
                     <ListBoxItem Content="Second ListBoxItem"/>
@@ -561,7 +561,7 @@
                          Grid.Row="3"
                          SelectedIndex="1"
                          SelectionMode="Single"
-                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
+                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"
                          Height="100">
                     <ListBoxItem Content="First ListBoxItem"/>
                     <ListBoxItem Content="Second ListBoxItem"/>
@@ -575,7 +575,7 @@
                          Grid.Row="3"
                          SelectedIndex="0"
                          SelectionMode="Multiple"
-                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
+                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"
                          Height="100">
                     <ListBoxItem Content="First ListBoxItem"/>
                     <ListBoxItem Content="Second ListBoxItem"/>
@@ -589,139 +589,139 @@
                                     Grid.Row="0"
                                     IsEnabled="False"
                                     IsChecked="False"
-                                    Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                    Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <metro:ToggleSwitch Grid.Column="2"
                                     Grid.Row="1"
                                     IsEnabled="False"
                                     IsChecked="True"
-                                    Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                    Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <metro:ToggleSwitch Grid.Column="2"
                                     Grid.Row="2"
                                     IsEnabled="True"
                                     IsChecked="False"
-                                    Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                    Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <metro:ToggleSwitch Grid.Column="2"
                                     Grid.Row="3"
                                     IsEnabled="True"
                                     IsChecked="True"
-                                    Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                    Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <Slider Grid.Column="3"
                         Grid.Row="0"
                         IsEnabled="False"
                         Orientation="Horizontal"
                         Value="4"
-                        Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
+                        Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"
                         Width="100"/>
                 <Slider Grid.Column="3"
                         Grid.Row="1"
                         Orientation="Horizontal"
                         Value="4"
-                        Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"
+                        Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"
                         Width="100"/>
                 <Slider Grid.Column="3"
                         Grid.Row="2"
                         IsEnabled="False"
                         Orientation="Vertical"
                         Value="6"
-                        Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                        Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <Slider Grid.Column="3"
                         Grid.Row="3"
                         Orientation="Vertical"
                         Value="6"
-                        Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                        Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <metro:LinearProgressBar Grid.Column="4"
                                          Grid.Row="0"
                                          IsEnabled="False"
                                          Orientation="Horizontal"
                                          Value="70"
-                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <metro:LinearProgressBar Grid.Column="4"
                                          Grid.Row="1"
                                          Orientation="Horizontal"
                                          Value="70"
-                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <metro:LinearProgressBar Grid.Column="4"
                                          Grid.Row="2"
                                          IsEnabled="False"
                                          Orientation="Vertical"
                                          Value="45"
-                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <metro:LinearProgressBar Grid.Column="4"
                                          Grid.Row="3"
                                          Orientation="Vertical"
                                          Value="45"
-                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <metro:LinearProgressBar Grid.Column="5"
                                          Grid.Row="0"
                                          IsEnabled="False"
                                          Orientation="Horizontal"
                                          State="Indeterminate"
-                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <metro:LinearProgressBar Grid.Column="5"
                                          Grid.Row="1"
                                          Orientation="Horizontal"
                                          State="Indeterminate"
-                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <metro:LinearProgressBar Grid.Column="5"
                                          Grid.Row="2"
                                          IsEnabled="False"
                                          Orientation="Vertical"
                                          State="Indeterminate"
-                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <metro:LinearProgressBar Grid.Column="5"
                                          Grid.Row="3"
                                          Orientation="Vertical"
                                          State="Indeterminate"
-                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <metro:LinearProgressBar Grid.Column="6"
                                          Grid.Row="0"
                                          IsEnabled="False"
                                          Orientation="Horizontal"
                                          State="Busy"
-                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <metro:LinearProgressBar Grid.Column="6"
                                          Grid.Row="1"
                                          Orientation="Horizontal"
                                          State="Busy"
-                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <metro:LinearProgressBar Grid.Column="6"
                                          Grid.Row="2"
                                          IsEnabled="False"
                                          Orientation="Vertical"
                                          State="Busy"
-                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <metro:LinearProgressBar Grid.Column="6"
                                          Grid.Row="3"
                                          Orientation="Vertical"
                                          State="Busy"
-                                         Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                         Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <metro:CircularProgressBar Grid.Column="7"
                                            Grid.Row="0"
                                            IsEnabled="False"
                                            Value="65"
-                                           Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                           Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <metro:CircularProgressBar Grid.Column="7"
                                            Grid.Row="1"
                                            Value="65"
-                                           Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                           Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <metro:CircularProgressBar Grid.Column="8"
                                            Grid.Row="0"
                                            IsEnabled="False"
                                            State="Indeterminate"
-                                           Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                           Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <metro:CircularProgressBar Grid.Column="8"
                                            Grid.Row="1"
                                            State="Indeterminate"
-                                           Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                           Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <metro:CircularProgressBar Grid.Column="9"
                                            Grid.Row="0"
                                            IsEnabled="False"
                                            State="Busy"
-                                           Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                           Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
                 <metro:CircularProgressBar Grid.Column="9"
                                            Grid.Row="1"
                                            State="Busy"
-                                           Margin="{Binding Source={x:Static metro:Parameters.Instance}, Path=BoldPadding, Mode=OneWay}"/>
+                                           Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}"/>
             </Grid>
         </TabItem>
     </TabControl>

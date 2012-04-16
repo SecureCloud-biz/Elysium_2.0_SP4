@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Windows;
@@ -9,6 +8,7 @@ using System.Windows.Input;
 using System.Windows.Media.Animation;
 
 using Elysium.Controls.Automation;
+using Elysium.Controls.Primitives;
 using Elysium.Extensions;
 
 using JetBrains.Annotations;
@@ -62,24 +62,18 @@ namespace Elysium.Controls
         [JetBrains.Annotations.Pure]
         [System.Diagnostics.Contracts.Pure]
         [AttachedPropertyBrowsableForChildren]
-        public static ApplicationBarDock GetDock(UIElement obj)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static ApplicationBarDock GetDock([NotNull] UIElement obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             return BoxingHelper<ApplicationBarDock>.Unbox(obj.GetValue(DockProperty));
         }
 
         [PublicAPI]
-        public static void SetDock(UIElement obj, ApplicationBarDock value)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static void SetDock([NotNull] UIElement obj, ApplicationBarDock value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(DockProperty, value);
         }
 
@@ -101,24 +95,18 @@ namespace Elysium.Controls
 
         private bool _isOpen;
 
-        private static void OnIsOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnIsOpenChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            if (d == null)
-            {
-                throw new ArgumentNullException("d");
-            }
-            Contract.EndContractBlock();
-            var instance = (ApplicationBar)d;
-            instance.OnIsOpenChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
+            ValidationHelper.NotNull(obj, () => obj);
+            var instance = (ApplicationBar)obj;
+            instance.OnIsOpenChanged( /*BooleanBoxingHelper.Unbox(e.OldValue), */BooleanBoxingHelper.Unbox(e.NewValue));
         }
 
-// ReSharper disable UnusedParameter.Local
-        private void OnIsOpenChanged(bool oldIsOpen, bool newIsOpen)
-// ReSharper restore UnusedParameter.Local
+        private void OnIsOpenChanged( /*bool oldIsOpen, */ bool newIsOpen)
         {
             if (newIsOpen)
             {
-                OnOpening(EventArgs.Empty);
+                OnOpening(new RoutedEventArgs(OpeningEvent, this));
 
                 _isOpen = true;
                 InvalidateArrange();
@@ -128,21 +116,22 @@ namespace Elysium.Controls
                 switch (TransitionMode)
                 {
                     case ApplicationBarTransitionMode.Fade:
-                        animation = new DoubleAnimation(0.0, 1.0, Parameters.GetMinimumDuration(this));
+                        animation = new DoubleAnimation(0d, 1.0, Parameters.GetMinimumDuration(this));
                         Storyboard.SetTarget(animation, this);
                         Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
                         break;
                     default:
-                        animation = new DoubleAnimation(0.0, DesiredSize.Height, Parameters.GetMinimumDuration(this));
+                        animation = new DoubleAnimation(0d, DesiredSize.Height, Parameters.GetMinimumDuration(this));
                         Storyboard.SetTarget(animation, this);
                         Storyboard.SetTargetProperty(animation, new PropertyPath("Height"));
                         break;
                 }
+                // BUG in Code Contracts
                 Contract.Assume(storyboard.Children != null);
                 storyboard.Children.Add(animation);
                 storyboard.Completed += (sender, e) =>
                 {
-                    OnOpened(EventArgs.Empty);
+                    OnOpened(new RoutedEventArgs(OpenedEvent, this));
 
                     storyboard.Remove();
                 };
@@ -152,7 +141,7 @@ namespace Elysium.Controls
             }
             else
             {
-                OnClosing(EventArgs.Empty);
+                OnClosing(new RoutedEventArgs(ClosingEvent, this));
 
                 if (Mouse.Captured == this)
                 {
@@ -164,16 +153,17 @@ namespace Elysium.Controls
                 switch (TransitionMode)
                 {
                     case ApplicationBarTransitionMode.Fade:
-                        animation = new DoubleAnimation(1.0, 0.0, Parameters.GetMinimumDuration(this));
+                        animation = new DoubleAnimation(1.0, 0d, Parameters.GetMinimumDuration(this));
                         Storyboard.SetTarget(animation, this);
                         Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
                         break;
                     default:
-                        animation = new DoubleAnimation(DesiredSize.Height, 0.0, Parameters.GetMinimumDuration(this));
+                        animation = new DoubleAnimation(DesiredSize.Height, 0d, Parameters.GetMinimumDuration(this));
                         Storyboard.SetTarget(animation, this);
                         Storyboard.SetTargetProperty(animation, new PropertyPath("Height"));
                         break;
                 }
+                // BUG in Code Contracts
                 Contract.Assume(storyboard.Children != null);
                 storyboard.Children.Add(animation);
                 storyboard.Completed += (sender, e) =>
@@ -181,7 +171,7 @@ namespace Elysium.Controls
                     _isOpen = false;
                     InvalidateArrange();
 
-                    OnClosed(EventArgs.Empty);
+                    OnClosed(new RoutedEventArgs(ClosedEvent, this));
 
                     storyboard.Remove();
                 };
@@ -190,51 +180,71 @@ namespace Elysium.Controls
         }
 
         [PublicAPI]
-        public event EventHandler Opening;
+        public static readonly RoutedEvent OpeningEvent =
+            EventManager.RegisterRoutedEvent("Opening", RoutingStrategy.Tunnel, typeof(RoutedEventHandler), typeof(ApplicationBar));
 
         [PublicAPI]
-        protected virtual void OnOpening(EventArgs e)
+        public event RoutedEventHandler Opening
         {
-            if (Opening != null)
-            {
-                Opening(this, e);
-            }
+            add { AddHandler(OpeningEvent, value); }
+            remove { RemoveHandler(OpeningEvent, value); }
         }
 
         [PublicAPI]
-        public event EventHandler Opened;
-
-        [PublicAPI]
-        protected virtual void OnOpened(EventArgs e)
+        protected virtual void OnOpening(RoutedEventArgs e)
         {
-            if (Opened != null)
-            {
-                Opened(this, e);
-            }
+            RaiseEvent(e);
         }
 
         [PublicAPI]
-        public event EventHandler Closing;
+        public static readonly RoutedEvent OpenedEvent =
+            EventManager.RegisterRoutedEvent("Opened", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ApplicationBar));
 
         [PublicAPI]
-        protected virtual void OnClosing(EventArgs e)
+        public event RoutedEventHandler Opened
         {
-            if (Closing != null)
-            {
-                Closing(this, e);
-            }
+            add { AddHandler(OpenedEvent, value); }
+            remove { RemoveHandler(OpenedEvent, value); }
         }
 
         [PublicAPI]
-        public event EventHandler Closed;
+        protected virtual void OnOpened(RoutedEventArgs e)
+        {
+            RaiseEvent(e);
+        }
 
         [PublicAPI]
-        protected virtual void OnClosed(EventArgs e)
+        public static readonly RoutedEvent ClosingEvent =
+            EventManager.RegisterRoutedEvent("Closing", RoutingStrategy.Tunnel, typeof(RoutedEventHandler), typeof(ApplicationBar));
+
+        [PublicAPI]
+        public event RoutedEventHandler Closing
         {
-            if (Closed != null)
-            {
-                Closed(this, e);
-            }
+            add { AddHandler(ClosingEvent, value); }
+            remove { RemoveHandler(ClosingEvent, value); }
+        }
+
+        [PublicAPI]
+        protected virtual void OnClosing(RoutedEventArgs e)
+        {
+            RaiseEvent(e);
+        }
+
+        [PublicAPI]
+        public static readonly RoutedEvent ClosedEvent =
+            EventManager.RegisterRoutedEvent("Closed", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ApplicationBar));
+
+        [PublicAPI]
+        public event RoutedEventHandler Closed
+        {
+            add { AddHandler(ClosedEvent, value); }
+            remove { RemoveHandler(ClosedEvent, value); }
+        }
+
+        [PublicAPI]
+        protected virtual void OnClosed(RoutedEventArgs e)
+        {
+            RaiseEvent(e);
         }
 
         [PublicAPI]
@@ -260,24 +270,18 @@ namespace Elysium.Controls
         [PublicAPI]
         [JetBrains.Annotations.Pure]
         [System.Diagnostics.Contracts.Pure]
-        public static bool GetPreventsOpen(UIElement obj)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static bool GetPreventsOpen([NotNull] UIElement obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             return BooleanBoxingHelper.Unbox(obj.GetValue(PreventsOpenProperty));
         }
 
         [PublicAPI]
-        public static void SetPreventsOpen(UIElement obj, bool value)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static void SetPreventsOpen([NotNull] UIElement obj, bool value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(PreventsOpenProperty, BooleanBoxingHelper.Box(value));
         }
 
@@ -298,7 +302,7 @@ namespace Elysium.Controls
 
         protected override bool IsItemItsOwnContainerOverride(object item)
         {
-            return (item is CommandButton || item is ToggleCommandButton || item is DropDownCommandButton);
+            return item is CommandButtonBase;
         }
 
         protected override DependencyObject GetContainerForItemOverride()

@@ -75,10 +75,9 @@
 
         <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
-        <Setter Property="BorderThickness" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThickness, Mode=OneWay}"/>
+        <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThickness), Mode=OneWay}"/>
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
-        <Setter Property="FontFamily" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=FontFamily, Mode=OneWay}"/>
-        <Setter Property="FontSize" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=TextFontSize, Mode=OneWay}"/>
+        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.TextFontSize), Mode=OneWay}"/>
         <Setter Property="FontWeight" Value="Normal"/>
 
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -135,20 +134,20 @@
                                 <Rectangle x:Name="PART_Fill"
                                            DockPanel.Dock="Left"
                                            Fill="{DynamicResource AccentBrush}"
-                                           Margin="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThicknessValue, Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Top, Bottom'}"
+                                           Margin="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThicknessValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Top, Bottom'}"
                                            Panel.ZIndex="0"
                                            Width="0"/>
                                 <Thumb x:Name="PART_Thumb"
                                        DockPanel.Dock="Left"
                                        BorderBrush="{TemplateBinding Background}"
-                                       BorderThickness="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThicknessValue, Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Right}"
+                                       BorderThickness="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThicknessValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Right}"
                                        IsEnabled="{TemplateBinding IsEnabled}"
                                        Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Mode=OneWay, Converter={StaticResource ThicknessPositiveToNegativeConverter}}"
                                        Width="{TemplateBinding root:Parameters.ToggleSwitchThumbThickness}"
                                        Panel.ZIndex="1"
                                        Style="{StaticResource ToggleSwitchThumbStyle}"/>
                                 <Button x:Name="PART_Switch"
-                                        Margin="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThicknessValue, Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Right, Top, Bottom'}"
+                                        Margin="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThicknessValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Right, Top, Bottom'}"
                                         Panel.ZIndex="0"
                                         Style="{StaticResource ToggleSwitchSwitchStyle}"/>
                             </DockPanel>
@@ -163,11 +162,11 @@
                             <Setter TargetName="OnHeaderHost" Property="Visibility" Value="Visible"/>
                             <Setter TargetName="PART_Fill" Property="DockPanel.Dock" Value="Right"/>
                             <Setter TargetName="PART_Fill" Property="Fill" Value="{DynamicResource HighlightBrush}"/>
-                            <Setter TargetName="PART_Fill" Property="Margin" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThicknessValue, Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Right, Top, Bottom'}"/>
+                            <Setter TargetName="PART_Fill" Property="Margin" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThicknessValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Right, Top, Bottom'}"/>
                             <Setter TargetName="PART_Thumb" Property="DockPanel.Dock" Value="Right"/>
-                            <Setter TargetName="PART_Thumb" Property="BorderThickness" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThicknessValue, Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Left}"/>
+                            <Setter TargetName="PART_Thumb" Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThicknessValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Left}"/>
                             <Setter TargetName="PART_Thumb" Property="Margin" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Mode=OneWay, Converter={StaticResource ThicknessPositiveToNegativeConverter}}"/>
-                            <Setter TargetName="PART_Switch" Property="Margin" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThicknessValue, Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Top, Bottom'}"/>
+                            <Setter TargetName="PART_Switch" Property="Margin" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThicknessValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Top, Bottom'}"/>
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -184,7 +183,7 @@
                                 <Condition Property="IsChecked" Value="False"/>
                             </MultiTrigger.Conditions>
                             <MultiTrigger.Setters>
-                                <Setter TargetName="PART_Thumb" Property="BorderThickness" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThicknessValue, Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Left}"/>
+                                <Setter TargetName="PART_Thumb" Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThicknessValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Left}"/>
                             </MultiTrigger.Setters>
                         </MultiTrigger>
                         <MultiTrigger>
@@ -193,7 +192,7 @@
                                 <Condition Property="IsChecked" Value="True"/>
                             </MultiTrigger.Conditions>
                             <MultiTrigger.Setters>
-                                <Setter TargetName="PART_Thumb" Property="BorderThickness" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThicknessValue, Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Right}"/>
+                                <Setter TargetName="PART_Thumb" Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThicknessValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Right}"/>
                             </MultiTrigger.Setters>
                         </MultiTrigger>
                     </ControlTemplate.Triggers>

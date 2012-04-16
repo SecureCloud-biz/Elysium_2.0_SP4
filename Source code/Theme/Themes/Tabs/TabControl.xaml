@@ -9,8 +9,7 @@
         <Setter Property="BorderThickness" Value="0"/>        
         <Setter Property="root:Parameters.TabControlIndicatorBrush" Value="{DynamicResource HighlightBrush}"/>
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
-        <Setter Property="FontFamily" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=FontFamily, Mode=OneWay}"/>
-        <Setter Property="FontSize" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=TextFontSize, Mode=OneWay}"/>
+        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.TextFontSize), Mode=OneWay}"/>
         <Setter Property="FontWeight" Value="Normal"/>
         
         <Setter Property="ClipToBounds" Value="True"/>

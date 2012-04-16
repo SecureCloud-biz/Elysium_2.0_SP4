@@ -21,17 +21,17 @@ namespace Elysium.Converters
                 return fallbackValue;
             }
             var angle = (double)values[1];
-            if (angle < 0.0)
+            if (angle < 0d)
             {
                 return fallbackValue;
             }
             var areaWidth = (double)values[2];
             var areaHeight = (double)values[3];
 
-            var width = values.Length > 4 ? (values[4] is double ? (double)values[4] : 0.0) : 0.0;
-            var height = values.Length > 5 ? (values[5] is double ? (double)values[5] : 0.0) : 0.0;
-            var radiusXCoordinate = values.Length > 6 ? (values[5] is double ? (double)values[5] : 0.0) : areaWidth / 2;
-            var radiusYCoordinate = values.Length > 7 ? (values[6] is double ? (double)values[6] : 0.0) : areaHeight / 2;
+            var width = values.Length > 4 ? (values[4] is double ? (double)values[4] : 0d) : 0d;
+            var height = values.Length > 5 ? (values[5] is double ? (double)values[5] : 0d) : 0d;
+            var radiusXCoordinate = values.Length > 6 ? (values[5] is double ? (double)values[5] : 0d) : areaWidth / 2;
+            var radiusYCoordinate = values.Length > 7 ? (values[6] is double ? (double)values[6] : 0d) : areaHeight / 2;
 
             var length = Math.Max(width, height);
             var radius = Math.Min(areaWidth / 2, areaHeight / 2) - length;

@@ -10,14 +10,14 @@
         
         <Setter Property="Background" Value="{DynamicResource TransparentBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource HighlightBrush}"/>
-        <Setter Property="BorderThickness" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThickness, Mode=OneWay}"/>
+        <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThickness), Mode=OneWay}"/>
         
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=SemiBoldPaddingValue, Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Right'}"/>
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.SemiBoldPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Right'}"/>
 
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
@@ -65,7 +65,7 @@
                       Grid.Column="0"
                       Fill="{DynamicResource TransparentBrush}"
                       Stroke="{DynamicResource LowlightBrush}"
-                      StrokeThickness="{Binding Source={x:Static root:Parameters.Instance}, Path=BoldThicknessValue, Mode=OneWay}"
+                      StrokeThickness="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.BoldThicknessValue), Mode=OneWay}"
                       Stretch="Uniform"
                       Visibility="Collapsed"
                       HorizontalAlignment="Center" VerticalAlignment="Center"
@@ -87,7 +87,7 @@
                                   Grid.Column="1"
                                   ContentSource="Header"
                                   RecognizesAccessKey="True"
-                                  Margin="{Binding Source={x:Static root:Parameters.Instance}, Path=BoldPaddingValue, Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Right'}"
+                                  Margin="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.BoldPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Right'}"
                                   HorizontalAlignment="Left"
                                   VerticalAlignment="Center"/>
                 <TextBlock Grid.Column="2"
@@ -137,7 +137,7 @@
                                   Grid.Column="1"
                                   ContentSource="Header"
                                   RecognizesAccessKey="True"
-                                  Margin="{Binding Source={x:Static root:Parameters.Instance}, Path=BoldPaddingValue, Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Right'}"
+                                  Margin="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.BoldPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Right'}"
                                   HorizontalAlignment="Left"
                                   VerticalAlignment="Center"/>
                 <Polygon Grid.Column="2"

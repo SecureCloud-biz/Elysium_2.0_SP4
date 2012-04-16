@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,388 +16,409 @@ using JetBrains.Annotations;
 namespace Elysium
 {
     [PublicAPI]
-    public sealed class Parameters
+    public static class Parameters
     {
-        [PublicAPI]
-        public static Parameters Instance { get; private set; }
-
-        static Parameters()
-        {
-            Instance = new Parameters();
-        }
-
-        private Parameters()
-        {
-        }
-
-        private readonly object _lock = new object();
-
-        #region Font
+        #region Font size
 
         [PublicAPI]
-        public FontFamily FontFamily
-        {
-            get
-            {
-                lock (_lock)
-                {
-                    return _fontFamily;
-                }
-            }
-            set
-            {
-                lock (_lock)
-                {
-                    _fontFamily = value;
-                }
-            }
-        }
-
-        private FontFamily _fontFamily = new FontFamily("Segoe UI");
+        public static readonly DependencyProperty TitleFontSizeProperty =
+            DependencyProperty.RegisterAttached("TitleFontSize", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(12d * (96d / 72d),
+                                                                              FrameworkPropertyMetadataOptions.AffectsMeasure |
+                                                                              FrameworkPropertyMetadataOptions.AffectsArrange |
+                                                                              FrameworkPropertyMetadataOptions.AffectsRender |
+                                                                              FrameworkPropertyMetadataOptions.Inherits,
+                                                                              null, CoerceSize));
 
         [PublicAPI]
-        public double TitleFontSize
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        public static double GetTitleFontSize([NotNull] DependencyObject obj)
         {
-            get
-            {
-                lock (_lock)
-                {
-                    return _titleFontSize;
-                }
-            }
-            set
-            {
-                lock (_lock)
-                {
-                    _titleFontSize = value;
-                }
-            }
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
+            return BoxingHelper<double>.Unbox(obj.GetValue(TitleFontSizeProperty));
         }
-
-        private double _titleFontSize = 12.0 * (96.0 / 72.0);
 
         [PublicAPI]
-        public double HeaderFontSize
+        public static void SetTitleFontSize([NotNull] DependencyObject obj, double value)
         {
-            get
-            {
-                lock (_lock)
-                {
-                    return _headerFontSize;
-                }
-            }
-            set
-            {
-                lock (_lock)
-                {
-                    _headerFontSize = value;
-                }
-            }
+            ValidationHelper.NotNull(obj, () => obj);
+            obj.SetValue(TitleFontSizeProperty, value);
         }
-
-        private double _headerFontSize = 16.0 * (96.0 / 72.0);
 
         [PublicAPI]
-        public double ContentFontSize
-        {
-            get
-            {
-                lock (_lock)
-                {
-                    return _contentFontSize;
-                }
-            }
-            set
-            {
-                lock (_lock)
-                {
-                    _contentFontSize = value;
-                }
-            }
-        }
-
-        private double _contentFontSize = 10.0 * (96.0 / 72.0);
+        public static readonly DependencyProperty HeaderFontSizeProperty =
+            DependencyProperty.RegisterAttached("HeaderFontSize", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(16d * (96d / 72d),
+                                                                              FrameworkPropertyMetadataOptions.AffectsMeasure |
+                                                                              FrameworkPropertyMetadataOptions.AffectsArrange |
+                                                                              FrameworkPropertyMetadataOptions.AffectsRender |
+                                                                              FrameworkPropertyMetadataOptions.Inherits,
+                                                                              null, CoerceSize));
 
         [PublicAPI]
-        public double TextFontSize
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        public static double GetHeaderFontSize([NotNull] DependencyObject obj)
         {
-            get
-            {
-                lock (_lock)
-                {
-                    return _textFontSize;
-                }
-            }
-            set
-            {
-                lock (_lock)
-                {
-                    _textFontSize = value;
-                }
-            }
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
+            return BoxingHelper<double>.Unbox(obj.GetValue(HeaderFontSizeProperty));
         }
 
-        private double _textFontSize = 9.0 * (96.0 / 72.0);
+        [PublicAPI]
+        public static void SetHeaderFontSize([NotNull] DependencyObject obj, double value)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            obj.SetValue(HeaderFontSizeProperty, value);
+        }
+
+        [PublicAPI]
+        public static readonly DependencyProperty ContentFontSizeProperty =
+            DependencyProperty.RegisterAttached("ContentFontSize", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(10d * (96d / 72d),
+                                                                              FrameworkPropertyMetadataOptions.AffectsMeasure |
+                                                                              FrameworkPropertyMetadataOptions.AffectsArrange |
+                                                                              FrameworkPropertyMetadataOptions.AffectsRender |
+                                                                              FrameworkPropertyMetadataOptions.Inherits,
+                                                                              null, CoerceSize));
+
+        [PublicAPI]
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        public static double GetContentFontSize([NotNull] DependencyObject obj)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
+            return BoxingHelper<double>.Unbox(obj.GetValue(ContentFontSizeProperty));
+        }
+
+        [PublicAPI]
+        public static void SetContentFontSize([NotNull] DependencyObject obj, double value)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            obj.SetValue(ContentFontSizeProperty, value);
+        }
+
+        [PublicAPI]
+        public static readonly DependencyProperty TextFontSizeProperty =
+            DependencyProperty.RegisterAttached("TextFontSize", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(9d * (96d / 72d),
+                                                                              FrameworkPropertyMetadataOptions.AffectsMeasure |
+                                                                              FrameworkPropertyMetadataOptions.AffectsArrange |
+                                                                              FrameworkPropertyMetadataOptions.AffectsRender |
+                                                                              FrameworkPropertyMetadataOptions.Inherits,
+                                                                              null, CoerceSize));
+
+        [PublicAPI]
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        public static double GetTextFontSize([NotNull] DependencyObject obj)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
+            return BoxingHelper<double>.Unbox(obj.GetValue(TextFontSizeProperty));
+        }
+
+        [PublicAPI]
+        public static void SetTextFontSize([NotNull] DependencyObject obj, double value)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            obj.SetValue(TextFontSizeProperty, value);
+        }
 
         #endregion
 
         #region Thickness
 
         [PublicAPI]
-        public Thickness DefaultThickness
-        {
-            get
-            {
-                lock (_lock)
-                {
-                    return _defaultThickness;
-                }
-            }
-            set
-            {
-                lock (_lock)
-                {
-                    _defaultThickness = value;
-                }
-            }
-        }
-
-        private Thickness _defaultThickness = new Thickness(1.0);
+        public static readonly DependencyProperty DefaultThicknessProperty =
+            DependencyProperty.RegisterAttached("DefaultThickness", typeof(Thickness), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(new Thickness(1d),
+                                                                              FrameworkPropertyMetadataOptions.AffectsArrange |
+                                                                              FrameworkPropertyMetadataOptions.Inherits,
+                                                                              null, CoerceThickness));
 
         [PublicAPI]
-        public Thickness SemiBoldThickness
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        public static Thickness GetDefaultThickness([NotNull] DependencyObject obj)
         {
-            get
-            {
-                lock (_lock)
-                {
-                    return _semiBoldThickness;
-                }
-            }
-            set
-            {
-                lock (_lock)
-                {
-                    _semiBoldThickness = value;
-                }
-            }
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureThickness();
+            return BoxingHelper<Thickness>.Unbox(obj.GetValue(DefaultThicknessProperty));
         }
-
-        private Thickness _semiBoldThickness = new Thickness(1.5);
 
         [PublicAPI]
-        public Thickness BoldThickness
+        public static void SetDefaultThickness([NotNull] DependencyObject obj, Thickness value)
         {
-            get
-            {
-                lock (_lock)
-                {
-                    return _boldThickness;
-                }
-            }
-            set
-            {
-                lock (_lock)
-                {
-                    _boldThickness = value;
-                }
-            }
+            ValidationHelper.NotNull(obj, () => obj);
+            obj.SetValue(DefaultThicknessProperty, value);
         }
-
-        private Thickness _boldThickness = new Thickness(2.0);
 
         [PublicAPI]
-        public double DefaultThicknessValue
-        {
-            get
-            {
-                lock (_lock)
-                {
-                    return _defaultThicknessValue;
-                }
-            }
-            set
-            {
-                lock (_lock)
-                {
-                    _defaultThicknessValue = value;
-                }
-            }
-        }
-
-        private double _defaultThicknessValue = 1.0;
+        public static readonly DependencyProperty SemiBoldThicknessProperty =
+            DependencyProperty.RegisterAttached("SemiBoldThickness", typeof(Thickness), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(new Thickness(1.5d),
+                                                                              FrameworkPropertyMetadataOptions.AffectsArrange |
+                                                                              FrameworkPropertyMetadataOptions.Inherits,
+                                                                              null, CoerceThickness));
 
         [PublicAPI]
-        public double SemiBoldThicknessValue
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        public static Thickness GetSemiBoldThickness([NotNull] DependencyObject obj)
         {
-            get
-            {
-                lock (_lock)
-                {
-                    return _semiBoldThicknessValue;
-                }
-            }
-            set
-            {
-                lock (_lock)
-                {
-                    _semiBoldThicknessValue = value;
-                }
-            }
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureThickness();
+            return BoxingHelper<Thickness>.Unbox(obj.GetValue(SemiBoldThicknessProperty));
         }
-
-        private double _semiBoldThicknessValue = 1.5;
 
         [PublicAPI]
-        public double BoldThicknessValue
+        public static void SetSemiBoldThickness([NotNull] DependencyObject obj, Thickness value)
         {
-            get
-            {
-                lock (_lock)
-                {
-                    return _boldThicknessValue;
-                }
-            }
-            set
-            {
-                lock (_lock)
-                {
-                    _boldThicknessValue = value;
-                }
-            }
+            ValidationHelper.NotNull(obj, () => obj);
+            obj.SetValue(SemiBoldThicknessProperty, value);
         }
 
-        private double _boldThicknessValue = 2.0;
+        [PublicAPI]
+        public static readonly DependencyProperty BoldThicknessProperty =
+            DependencyProperty.RegisterAttached("BoldThickness", typeof(Thickness), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(new Thickness(2d),
+                                                                              FrameworkPropertyMetadataOptions.AffectsArrange |
+                                                                              FrameworkPropertyMetadataOptions.Inherits,
+                                                                              null, CoerceThickness));
+
+        [PublicAPI]
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        public static Thickness GetBoldThickness([NotNull] DependencyObject obj)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureThickness();
+            return BoxingHelper<Thickness>.Unbox(obj.GetValue(BoldThicknessProperty));
+        }
+
+        [PublicAPI]
+        public static void SetBoldThickness([NotNull] DependencyObject obj, Thickness value)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            obj.SetValue(BoldThicknessProperty, value);
+        }
+
+        [PublicAPI]
+        public static readonly DependencyProperty DefaultThicknessValueProperty =
+            DependencyProperty.RegisterAttached("DefaultThicknessValue", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(1d,
+                                                                              FrameworkPropertyMetadataOptions.AffectsArrange |
+                                                                              FrameworkPropertyMetadataOptions.Inherits,
+                                                                              null, CoerceSize));
+
+        [PublicAPI]
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        public static double GetDefaultThicknessValue([NotNull] DependencyObject obj)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
+            return BoxingHelper<double>.Unbox(obj.GetValue(DefaultThicknessValueProperty));
+        }
+
+        [PublicAPI]
+        public static void SetDefaultThicknessValue([NotNull] DependencyObject obj, double value)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            obj.SetValue(DefaultThicknessValueProperty, value);
+        }
+
+        [PublicAPI]
+        public static readonly DependencyProperty SemiBoldThicknessValueProperty =
+            DependencyProperty.RegisterAttached("SemiBoldThicknessValue", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(1.5d,
+                                                                              FrameworkPropertyMetadataOptions.AffectsArrange |
+                                                                              FrameworkPropertyMetadataOptions.Inherits,
+                                                                              null, CoerceSize));
+
+        [PublicAPI]
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        public static double GetSemiBoldThicknessValue([NotNull] DependencyObject obj)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
+            return BoxingHelper<double>.Unbox(obj.GetValue(SemiBoldThicknessValueProperty));
+        }
+
+        [PublicAPI]
+        public static void SetSemiBoldThicknessValue([NotNull] DependencyObject obj, double value)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            obj.SetValue(SemiBoldThicknessValueProperty, value);
+        }
+
+        [PublicAPI]
+        public static readonly DependencyProperty BoldThicknessValueProperty =
+            DependencyProperty.RegisterAttached("BoldThicknessValue", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(2d,
+                                                                              FrameworkPropertyMetadataOptions.AffectsArrange |
+                                                                              FrameworkPropertyMetadataOptions.Inherits,
+                                                                              null, CoerceSize));
+
+        [PublicAPI]
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        public static double GetBoldThicknessValue([NotNull] DependencyObject obj)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
+            return BoxingHelper<double>.Unbox(obj.GetValue(BoldThicknessValueProperty));
+        }
+
+        [PublicAPI]
+        public static void SetBoldThicknessValue([NotNull] DependencyObject obj, double value)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            obj.SetValue(BoldThicknessValueProperty, value);
+        }
 
         #endregion
 
         #region Padding
 
         [PublicAPI]
-        public Thickness DefaultPadding
-        {
-            get
-            {
-                lock (_lock)
-                {
-                    return _defaultPadding;
-                }
-            }
-            set
-            {
-                lock (_lock)
-                {
-                    _defaultPadding = value;
-                }
-            }
-        }
-
-        private Thickness _defaultPadding = new Thickness(1.0);
+        public static readonly DependencyProperty DefaultPaddingProperty =
+            DependencyProperty.RegisterAttached("DefaultPadding", typeof(Thickness), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(new Thickness(1d),
+                                                                              FrameworkPropertyMetadataOptions.AffectsArrange |
+                                                                              FrameworkPropertyMetadataOptions.Inherits,
+                                                                              null, CoerceThickness));
 
         [PublicAPI]
-        public Thickness SemiBoldPadding
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        public static Thickness GetDefaultPadding([NotNull] DependencyObject obj)
         {
-            get
-            {
-                lock (_lock)
-                {
-                    return _semiBoldPadding;
-                }
-            }
-            set
-            {
-                lock (_lock)
-                {
-                    _semiBoldPadding = value;
-                }
-            }
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureThickness();
+            return BoxingHelper<Thickness>.Unbox(obj.GetValue(DefaultPaddingProperty));
         }
-
-        private Thickness _semiBoldPadding = new Thickness(2.0);
 
         [PublicAPI]
-        public Thickness BoldPadding
+        public static void SetDefaultPadding([NotNull] DependencyObject obj, Thickness value)
         {
-            get
-            {
-                lock (_lock)
-                {
-                    return _boldPadding;
-                }
-            }
-            set
-            {
-                lock (_lock)
-                {
-                    _boldPadding = value;
-                }
-            }
+            ValidationHelper.NotNull(obj, () => obj);
+            obj.SetValue(DefaultPaddingProperty, value);
         }
-
-        private Thickness _boldPadding = new Thickness(5.0);
 
         [PublicAPI]
-        public double DefaultPaddingValue
-        {
-            get
-            {
-                lock (_lock)
-                {
-                    return _defaultPaddingValue;
-                }
-            }
-            set
-            {
-                lock (_lock)
-                {
-                    _defaultPaddingValue = value;
-                }
-            }
-        }
-
-        private double _defaultPaddingValue = 1.0;
+        public static readonly DependencyProperty SemiBoldPaddingProperty =
+            DependencyProperty.RegisterAttached("SemiBoldPadding", typeof(Thickness), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(new Thickness(2d),
+                                                                              FrameworkPropertyMetadataOptions.AffectsArrange |
+                                                                              FrameworkPropertyMetadataOptions.Inherits,
+                                                                              null, CoerceThickness));
 
         [PublicAPI]
-        public double SemiBoldPaddingValue
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        public static Thickness GetSemiBoldPadding([NotNull] DependencyObject obj)
         {
-            get
-            {
-                lock (_lock)
-                {
-                    return _semiBoldPaddingValue;
-                }
-            }
-            set
-            {
-                lock (_lock)
-                {
-                    _semiBoldPaddingValue = value;
-                }
-            }
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureThickness();
+            return BoxingHelper<Thickness>.Unbox(obj.GetValue(SemiBoldPaddingProperty));
         }
-
-        private double _semiBoldPaddingValue = 2.0;
 
         [PublicAPI]
-        public double BoldPaddingValue
+        public static void SetSemiBoldPadding([NotNull] DependencyObject obj, Thickness value)
         {
-            get
-            {
-                lock (_lock)
-                {
-                    return _boldPaddingValue;
-                }
-            }
-            set
-            {
-                lock (_lock)
-                {
-                    _boldPaddingValue = value;
-                }
-            }
+            ValidationHelper.NotNull(obj, () => obj);
+            obj.SetValue(SemiBoldPaddingProperty, value);
         }
 
-        private double _boldPaddingValue = 5.0;
+        [PublicAPI]
+        public static readonly DependencyProperty BoldPaddingProperty =
+            DependencyProperty.RegisterAttached("BoldPadding", typeof(Thickness), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(new Thickness(5d),
+                                                                              FrameworkPropertyMetadataOptions.AffectsArrange |
+                                                                              FrameworkPropertyMetadataOptions.Inherits,
+                                                                              null, CoerceThickness));
+
+        [PublicAPI]
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        public static Thickness GetBoldPadding([NotNull] DependencyObject obj)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureThickness();
+            return BoxingHelper<Thickness>.Unbox(obj.GetValue(BoldPaddingProperty));
+        }
+
+        [PublicAPI]
+        public static void SetBoldPadding([NotNull] DependencyObject obj, Thickness value)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            obj.SetValue(BoldPaddingProperty, value);
+        }
+
+        [PublicAPI]
+        public static readonly DependencyProperty DefaultPaddingValueProperty =
+            DependencyProperty.RegisterAttached("DefaultPaddingValue", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(1d,
+                                                                              FrameworkPropertyMetadataOptions.AffectsArrange |
+                                                                              FrameworkPropertyMetadataOptions.Inherits,
+                                                                              null, CoerceSize));
+
+        [PublicAPI]
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        public static double GetDefaultPaddingValue([NotNull] DependencyObject obj)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
+            return BoxingHelper<double>.Unbox(obj.GetValue(DefaultPaddingValueProperty));
+        }
+
+        [PublicAPI]
+        public static void SetDefaultPaddingValue([NotNull] DependencyObject obj, double value)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            obj.SetValue(DefaultPaddingValueProperty, value);
+        }
+
+        [PublicAPI]
+        public static readonly DependencyProperty SemiBoldPaddingValueProperty =
+            DependencyProperty.RegisterAttached("SemiBoldPaddingValue", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(2d,
+                                                                              FrameworkPropertyMetadataOptions.AffectsArrange |
+                                                                              FrameworkPropertyMetadataOptions.Inherits,
+                                                                              null, CoerceSize));
+
+        [PublicAPI]
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        public static double GetSemiBoldPaddingValue([NotNull] DependencyObject obj)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
+            return BoxingHelper<double>.Unbox(obj.GetValue(SemiBoldPaddingValueProperty));
+        }
+
+        [PublicAPI]
+        public static void SetSemiBoldPaddingValue([NotNull] DependencyObject obj, double value)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            obj.SetValue(SemiBoldPaddingValueProperty, value);
+        }
+
+        [PublicAPI]
+        public static readonly DependencyProperty BoldPaddingValueProperty =
+            DependencyProperty.RegisterAttached("BoldPaddingValue", typeof(double), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(5d,
+                                                                              FrameworkPropertyMetadataOptions.AffectsArrange |
+                                                                              FrameworkPropertyMetadataOptions.Inherits,
+                                                                              null, CoerceSize));
+
+        [PublicAPI]
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        public static double GetBoldPaddingValue([NotNull] DependencyObject obj)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
+            return BoxingHelper<double>.Unbox(obj.GetValue(BoldPaddingValueProperty));
+        }
+
+        [PublicAPI]
+        public static void SetBoldPaddingValue([NotNull] DependencyObject obj, double value)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            obj.SetValue(BoldPaddingValueProperty, value);
+        }
 
         #endregion
 
@@ -404,108 +427,79 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty DefaultDurationProperty =
             DependencyProperty.RegisterAttached("DefaultDuration", typeof(Duration), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.FromSeconds(0.0)), FrameworkPropertyMetadataOptions.None));
+                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.FromSeconds(0d)), FrameworkPropertyMetadataOptions.Inherits));
 
         [PublicAPI]
-        public static Duration GetDefaultDuration(DependencyObject obj)
+        public static Duration GetDefaultDuration([NotNull] DependencyObject obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             return BoxingHelper<Duration>.Unbox(obj.GetValue(DefaultDurationProperty));
         }
 
         [PublicAPI]
-        public static void SetDefaultDuration(DependencyObject obj, Duration value)
+        public static void SetDefaultDuration([NotNull] DependencyObject obj, Duration value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(DefaultDurationProperty, value);
         }
 
         [PublicAPI]
         public static readonly DependencyProperty MinimumDurationProperty =
             DependencyProperty.RegisterAttached("MinimumDuration", typeof(Duration), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.FromSeconds(0.2)), FrameworkPropertyMetadataOptions.None));
+                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.FromSeconds(0.2d)),
+                                                                              FrameworkPropertyMetadataOptions.Inherits));
 
         [PublicAPI]
-        public static Duration GetMinimumDuration(DependencyObject obj)
+        public static Duration GetMinimumDuration([NotNull] DependencyObject obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             return BoxingHelper<Duration>.Unbox(obj.GetValue(MinimumDurationProperty));
         }
 
         [PublicAPI]
-        public static void SetMinimumDuration(DependencyObject obj, Duration value)
+        public static void SetMinimumDuration([NotNull] DependencyObject obj, Duration value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(MinimumDurationProperty, value);
         }
 
         [PublicAPI]
         public static readonly DependencyProperty OptimumDurationProperty =
             DependencyProperty.RegisterAttached("OptimumDuration", typeof(Duration), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.FromSeconds(0.5)), FrameworkPropertyMetadataOptions.None));
+                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.FromSeconds(0.5d)),
+                                                                              FrameworkPropertyMetadataOptions.Inherits));
 
         [PublicAPI]
-        public static Duration GetOptimumDuration(DependencyObject obj)
+        public static Duration GetOptimumDuration([NotNull] DependencyObject obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             return BoxingHelper<Duration>.Unbox(obj.GetValue(OptimumDurationProperty));
         }
 
         [PublicAPI]
-        public static void SetOptimumDuration(DependencyObject obj, Duration value)
+        public static void SetOptimumDuration([NotNull] DependencyObject obj, Duration value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(OptimumDurationProperty, value);
         }
 
         [PublicAPI]
         public static readonly DependencyProperty MaximumDurationProperty =
             DependencyProperty.RegisterAttached("MaximumDuration", typeof(Duration), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.FromSeconds(1.0)), FrameworkPropertyMetadataOptions.None));
+                                                new FrameworkPropertyMetadata(new Duration(TimeSpan.FromSeconds(1.0d)),
+                                                                              FrameworkPropertyMetadataOptions.Inherits));
 
         [PublicAPI]
-        public static Duration GetMaximumDuration(DependencyObject obj)
+        public static Duration GetMaximumDuration([NotNull] DependencyObject obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             return BoxingHelper<Duration>.Unbox(obj.GetValue(MaximumDurationProperty));
         }
 
         [PublicAPI]
-        public static void SetMaximumDuration(DependencyObject obj, Duration value)
+        public static void SetMaximumDuration([NotNull] DependencyObject obj, Duration value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(MaximumDurationProperty, value);
         }
 
@@ -521,24 +515,18 @@ namespace Elysium
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(CommandButton))]
-        public static Brush GetCommandButtonMask(DependencyObject obj)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static Brush GetCommandButtonMask([NotNull] CommandButtonBase obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             return (Brush)obj.GetValue(CommandButtonMaskProperty);
         }
 
         [PublicAPI]
-        public static void SetCommandButtonMask(DependencyObject obj, Brush value)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static void SetCommandButtonMask([NotNull] CommandButtonBase obj, Brush value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(CommandButtonMaskProperty, value);
         }
 
@@ -549,86 +537,74 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty BulletDecoratorSizeProperty =
             DependencyProperty.RegisterAttached("BulletDecoratorSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(16.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(16d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(CheckBox))]
         [AttachedPropertyBrowsableForType(typeof(RadioButton))]
-        public static double GetBulletDecoratorSize(DependencyObject obj)
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        public static double GetBulletDecoratorSize([NotNull] DependencyObject obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.OfTypes(obj, () => obj, typeof(CheckBox), typeof(RadioButton), "CheckBox", "RadioButton");
+            EnsureSize();
             return BoxingHelper<double>.Unbox(obj.GetValue(BulletDecoratorSizeProperty));
         }
 
         [PublicAPI]
-        public static void SetBulletDecoratorSize(DependencyObject obj, double value)
+        public static void SetBulletDecoratorSize([NotNull] DependencyObject obj, double value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.OfTypes(obj, () => obj, typeof(CheckBox), typeof(RadioButton), "CheckBox", "RadioButton");
             obj.SetValue(BulletDecoratorSizeProperty, value);
         }
 
         [PublicAPI]
         public static readonly DependencyProperty BulletSizeProperty =
             DependencyProperty.RegisterAttached("BulletSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(8.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(8d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(CheckBox))]
         [AttachedPropertyBrowsableForType(typeof(RadioButton))]
-        public static double GetBulletSize(DependencyObject obj)
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        public static double GetBulletSize([NotNull] DependencyObject obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.OfTypes(obj, () => obj, typeof(CheckBox), typeof(RadioButton), "CheckBox", "RadioButton");
+            EnsureSize();
             return BoxingHelper<double>.Unbox(obj.GetValue(BulletSizeProperty));
         }
 
         [PublicAPI]
-        public static void SetBulletSize(DependencyObject obj, double value)
+        public static void SetBulletSize([NotNull] DependencyObject obj, double value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.OfTypes(obj, () => obj, typeof(CheckBox), typeof(RadioButton), "CheckBox", "RadioButton");
             obj.SetValue(BulletSizeProperty, value);
         }
 
         [PublicAPI]
         public static readonly DependencyProperty CheckSizeProperty =
             DependencyProperty.RegisterAttached("CheckSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(10.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(10d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(CheckBox))]
-        public static double GetCheckSize(DependencyObject obj)
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static double GetCheckSize([NotNull] CheckBox obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
             return BoxingHelper<double>.Unbox(obj.GetValue(CheckSizeProperty));
         }
 
         [PublicAPI]
-        public static void SetCheckSize(DependencyObject obj, double value)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static void SetCheckSize([NotNull] CheckBox obj, double value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(CheckSizeProperty, value);
         }
 
@@ -639,56 +615,48 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty ToggleSwitchTrackSizeProperty =
             DependencyProperty.RegisterAttached("ToggleSwitchTrackSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(48.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(48d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(ToggleSwitch))]
-        public static double GetToggleSwitchTrackSize(DependencyObject obj)
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static double GetToggleSwitchTrackSize([NotNull] ToggleSwitch obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
             return BoxingHelper<double>.Unbox(obj.GetValue(ToggleSwitchTrackSizeProperty));
         }
 
         [PublicAPI]
-        public static void SetToggleSwitchTrackSize(DependencyObject obj, double value)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static void SetToggleSwitchTrackSize([NotNull] ToggleSwitch obj, double value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(ToggleSwitchTrackSizeProperty, value);
         }
 
         [PublicAPI]
         public static readonly DependencyProperty ToggleSwitchThumbThicknessProperty =
             DependencyProperty.RegisterAttached("ToggleSwitchThumbThickness", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(10.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(10d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(ToggleSwitch))]
-        public static double GetToggleSwitchThumbThickness(DependencyObject obj)
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static double GetToggleSwitchThumbThickness([NotNull] ToggleSwitch obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
             return BoxingHelper<double>.Unbox(obj.GetValue(ToggleSwitchThumbThicknessProperty));
         }
 
         [PublicAPI]
-        public static void SetToggleSwitchThumbThickness(DependencyObject obj, double value)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static void SetToggleSwitchThumbThickness([NotNull] ToggleSwitch obj, double value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(ToggleSwitchThumbThicknessProperty, value);
         }
 
@@ -699,84 +667,72 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty ComboBoxButtonSizeProperty =
             DependencyProperty.RegisterAttached("ComboBoxButtonSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(18.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(18d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(ComboBox))]
-        public static double GetComboBoxButtonSize(DependencyObject obj)
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static double GetComboBoxButtonSize([NotNull] ComboBox obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
             return BoxingHelper<double>.Unbox(obj.GetValue(ComboBoxButtonSizeProperty));
         }
 
         [PublicAPI]
-        public static void SetComboBoxButtonSize(DependencyObject obj, double value)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static void SetComboBoxButtonSize([NotNull] ComboBox obj, double value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(ComboBoxButtonSizeProperty, value);
         }
 
         [PublicAPI]
         public static readonly DependencyProperty ComboBoxArrowSizeProperty =
             DependencyProperty.RegisterAttached("ComboBoxArrowSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(8.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(8d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(ComboBox))]
-        public static double GetComboBoxArrowSize(DependencyObject obj)
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static double GetComboBoxArrowSize([NotNull] ComboBox obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
             return BoxingHelper<double>.Unbox(obj.GetValue(ComboBoxArrowSizeProperty));
         }
 
         [PublicAPI]
-        public static void SetComboBoxArrowSize(DependencyObject obj, double value)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static void SetComboBoxArrowSize([NotNull] ComboBox obj, double value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(ComboBoxArrowSizeProperty, value);
         }
 
         [PublicAPI]
         public static readonly DependencyProperty ComboBoxArrowMarginProperty =
             DependencyProperty.RegisterAttached("ComboBoxArrowMargin", typeof(Thickness), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(new Thickness(5, 0, 5, 0), FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(new Thickness(5d, 0d, 5d, 0d), FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(ComboBox))]
-        public static Thickness GetComboBoxArrowMargin(DependencyObject obj)
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static Thickness GetComboBoxArrowMargin([NotNull] ComboBox obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureThickness();
             return BoxingHelper<Thickness>.Unbox(obj.GetValue(ComboBoxArrowMarginProperty));
         }
 
         [PublicAPI]
-        public static void SetComboBoxArrowMargin(DependencyObject obj, Thickness value)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static void SetComboBoxArrowMargin([NotNull] ComboBox obj, Thickness value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(ComboBoxArrowMarginProperty, value);
         }
 
@@ -787,56 +743,48 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty SliderTrackSizeProperty =
             DependencyProperty.RegisterAttached("SliderTrackSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(4.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(4d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(Slider))]
-        public static double GetSliderTrackSize(DependencyObject obj)
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static double GetSliderTrackSize([NotNull] Slider obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
             return BoxingHelper<double>.Unbox(obj.GetValue(SliderTrackSizeProperty));
         }
 
         [PublicAPI]
-        public static void SetSliderTrackSize(DependencyObject obj, double value)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static void SetSliderTrackSize([NotNull] Slider obj, double value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(SliderTrackSizeProperty, value);
         }
 
         [PublicAPI]
         public static readonly DependencyProperty SliderThumbThicknessProperty =
             DependencyProperty.RegisterAttached("SliderThumbThickness", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(6.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(6d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(Slider))]
-        public static double GetSliderThumbThickness(DependencyObject obj)
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static double GetSliderThumbThickness([NotNull] Slider obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
             return BoxingHelper<double>.Unbox(obj.GetValue(SliderThumbThicknessProperty));
         }
 
         [PublicAPI]
-        public static void SetSliderThumbThickness(DependencyObject obj, double value)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static void SetSliderThumbThickness([NotNull] Slider obj, double value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(SliderThumbThicknessProperty, value);
         }
 
@@ -847,28 +795,24 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty ProgressBarBusyElementSizeProperty =
             DependencyProperty.RegisterAttached("ProgressBarBusyElementSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(4.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(4d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(ProgressBarBase))]
-        public static double GetProgressBarBusyElementSize(DependencyObject obj)
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static double GetProgressBarBusyElementSize([NotNull] ProgressBarBase obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
             return BoxingHelper<double>.Unbox(obj.GetValue(ProgressBarBusyElementSizeProperty));
         }
 
         [PublicAPI]
-        public static void SetProgressBarBusyElementSize(DependencyObject obj, double value)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static void SetProgressBarBusyElementSize([NotNull] ProgressBarBase obj, double value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(ProgressBarBusyElementSizeProperty, value);
         }
 
@@ -879,28 +823,24 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty ScrollBarArrowSizeProperty =
             DependencyProperty.RegisterAttached("ScrollBarArrowSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(6.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(6d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(ScrollBar))]
-        public static double GetScrollBarArrowSize(DependencyObject obj)
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static double GetScrollBarArrowSize([NotNull] ScrollBar obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
             return BoxingHelper<double>.Unbox(obj.GetValue(ScrollBarArrowSizeProperty));
         }
 
         [PublicAPI]
-        public static void SetScrollBarArrowSize(DependencyObject obj, double value)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static void SetScrollBarArrowSize([NotNull] ScrollBar obj, double value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(ScrollBarArrowSizeProperty, value);
         }
 
@@ -917,53 +857,44 @@ namespace Elysium
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(TabControl))]
         [AttachedPropertyBrowsableForType(typeof(TabItem))]
-        public static Brush GetTabControlIndicatorBrush(DependencyObject obj)
+        public static Brush GetTabControlIndicatorBrush([NotNull] DependencyObject obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.OfTypes(obj, () => obj, typeof(TabControl), typeof(TabItem), "TabControl", "TabItem");
             return (Brush)obj.GetValue(TabControlIndicatorBrushProperty);
         }
 
         [PublicAPI]
-        public static void SetTabControlIndicatorBrush(DependencyObject obj, Brush value)
+        public static void SetTabControlIndicatorBrush([NotNull] DependencyObject obj, Brush value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.OfTypes(obj, () => obj, typeof(TabControl), typeof(TabItem), "TabControl", "TabItem");
             obj.SetValue(TabControlIndicatorBrushProperty, value);
         }
 
         [PublicAPI]
         public static readonly DependencyProperty TabControlIndicatorThicknessProperty =
             DependencyProperty.RegisterAttached("TabControlIndicatorThickness", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(2.0, FrameworkPropertyMetadataOptions.AffectsRender |
-                                                                                   FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(2d, FrameworkPropertyMetadataOptions.AffectsRender |
+                                                                                  FrameworkPropertyMetadataOptions.AffectsMeasure,
+                                                                              null, CoerceSize));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(TabControl))]
-        public static Thickness GetTabControlIndicatorThickness(DependencyObject obj)
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static double GetTabControlIndicatorThickness([NotNull] TabControl obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
-            return BoxingHelper<Thickness>.Unbox(obj.GetValue(TabControlIndicatorThicknessProperty));
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
+            return BoxingHelper<double>.Unbox(obj.GetValue(TabControlIndicatorThicknessProperty));
         }
 
         [PublicAPI]
-        public static void SetTabControlIndicatorThickness(DependencyObject obj, Thickness value)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static void SetTabControlIndicatorThickness([NotNull] TabControl obj, double value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(TabControlIndicatorThicknessProperty, value);
         }
 
@@ -974,24 +905,18 @@ namespace Elysium
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(TabItem))]
-        public static Style GetTabItemHeaderStyle(DependencyObject obj)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static Style GetTabItemHeaderStyle([NotNull] TabItem obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             return (Style)obj.GetValue(TabItemHeaderStyleProperty);
         }
 
         [PublicAPI]
-        public static void SetTabItemHeaderStyle(DependencyObject obj, Style value)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static void SetTabItemHeaderStyle([NotNull] TabItem obj, Style value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(TabItemHeaderStyleProperty, value);
         }
 
@@ -1002,84 +927,73 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty SubmenuItemBulletSizeProperty =
             DependencyProperty.RegisterAttached("SubmenuItemBulletSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(12.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(12d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(MenuItem))]
-        public static double GetSubmenuItemBulletSize(DependencyObject obj)
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static double GetSubmenuItemBulletSize([NotNull] MenuItem obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
             return BoxingHelper<double>.Unbox(obj.GetValue(SubmenuItemBulletSizeProperty));
         }
 
         [PublicAPI]
-        public static void SetSubmenuItemBulletSize(DependencyObject obj, double value)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static void SetSubmenuItemBulletSize([NotNull] MenuItem obj, double value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(SubmenuItemBulletSizeProperty, value);
         }
 
         [PublicAPI]
         public static readonly DependencyProperty SubmenuHeaderArrowSizeProperty =
             DependencyProperty.RegisterAttached("SubmenuHeaderArrowSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(8.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(8d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(MenuItem))]
-        public static double GetSubmenuHeaderArrowSize(DependencyObject obj)
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static double GetSubmenuHeaderArrowSize([NotNull] MenuItem obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
             return BoxingHelper<double>.Unbox(obj.GetValue(SubmenuHeaderArrowSizeProperty));
         }
 
         [PublicAPI]
-        public static void SetSubmenuHeaderArrowSize(DependencyObject obj, double value)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static void SetSubmenuHeaderArrowSize([NotNull] MenuItem obj, double value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(SubmenuHeaderArrowSizeProperty, value);
         }
 
         [PublicAPI]
         public static readonly DependencyProperty SubmenuHeaderArrowMarginProperty =
             DependencyProperty.RegisterAttached("SubmenuHeaderArrowMargin", typeof(Thickness), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(new Thickness(3, 0, 3, 0), FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(new Thickness(3d, 0d, 3d, 0d), FrameworkPropertyMetadataOptions.AffectsMeasure,
+                                                                              null, CoerceThickness));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(MenuItem))]
-        public static Thickness GetSubmenuHeaderArrowMargin(DependencyObject obj)
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static Thickness GetSubmenuHeaderArrowMargin([NotNull] MenuItem obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureThickness();
             return BoxingHelper<Thickness>.Unbox(obj.GetValue(SubmenuHeaderArrowMarginProperty));
         }
 
         [PublicAPI]
-        public static void SetSubmenuHeaderArrowMargin(DependencyObject obj, Thickness value)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static void SetSubmenuHeaderArrowMargin([NotNull] MenuItem obj, Thickness value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(SubmenuHeaderArrowMarginProperty, value);
         }
 
@@ -1090,42 +1004,89 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty WindowResizeBorderThicknessProperty =
             DependencyProperty.RegisterAttached("WindowResizeBorderThickness", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(3.0, FrameworkPropertyMetadataOptions.None));
+                                                new FrameworkPropertyMetadata(3d, FrameworkPropertyMetadataOptions.AffectsArrange, null, CoerceSize));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(Controls.Window))]
-        public static double GetWindowResizeBorderThickness(Controls.Window obj)
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static double GetWindowResizeBorderThickness([NotNull] Controls.Window obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
             return BoxingHelper<double>.Unbox(obj.GetValue(WindowResizeBorderThicknessProperty));
         }
 
         [PublicAPI]
-        public static void SetWindowResizeBorderThickness(Controls.Window obj, double value)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static void SetWindowResizeBorderThickness([NotNull] Controls.Window obj, double value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(WindowResizeBorderThicknessProperty, value);
         }
 
         #endregion
 
-        #region Invariants
+        #region Coerce methods
 
-        [ContractInvariantMethod]
-        private void Invariants()
+        private static object CoerceSize(DependencyObject obj, object basevalue)
         {
-            Contract.Invariant(!double.IsNaN(TitleFontSize) && !double.IsInfinity(TitleFontSize) && TitleFontSize > 0.0);
-            Contract.Invariant(!double.IsNaN(HeaderFontSize) && !double.IsInfinity(HeaderFontSize) && HeaderFontSize > 0.0);
-            Contract.Invariant(!double.IsNaN(ContentFontSize) && !double.IsInfinity(ContentFontSize) && ContentFontSize > 0.0);
-            Contract.Invariant(!double.IsNaN(TextFontSize) && !double.IsInfinity(TextFontSize) && TextFontSize > 0.0);
+            ValidationHelper.NotNull(obj, () => obj);
+            var value = BoxingHelper<double>.Unbox(basevalue);
+            return !double.IsNaN(value) && !double.IsInfinity(value) && value > 0d ? value : 0d;
+        }
+
+
+        private static object CoerceThickness(DependencyObject obj, object basevalue)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            var value = BoxingHelper<Thickness>.Unbox(basevalue);
+            if (double.IsNaN(value.Left) || double.IsInfinity(value.Left) || value.Left <= 0d)
+            {
+                value.Left = 0d;
+            }
+            if (double.IsNaN(value.Top) || double.IsInfinity(value.Top) || value.Top <= 0d)
+            {
+                value.Top = 0d;
+            }
+            if (double.IsNaN(value.Right) || double.IsInfinity(value.Right) || value.Right <= 0d)
+            {
+                value.Right = 0d;
+            }
+            if (double.IsNaN(value.Bottom) || double.IsInfinity(value.Bottom) || value.Bottom <= 0d)
+            {
+                value.Bottom = 0d;
+            }
+            return value;
+        }
+
+        #endregion
+
+        #region Contracts
+
+        [DebuggerHidden]
+        [ContractAbbreviator]
+        private static void EnsureSize()
+        {
+            Contract.Ensures(!double.IsNaN(Contract.Result<double>()) && !double.IsInfinity(Contract.Result<double>()) && Contract.Result<double>() > 0d);
+        }
+
+        [DebuggerHidden]
+        [ContractAbbreviator]
+        private static void EnsureThickness()
+        {
+            Contract.Ensures(!double.IsNaN(Contract.Result<Thickness>().Left) &&
+                             !double.IsInfinity(Contract.Result<Thickness>().Left) &&
+                             Contract.Result<Thickness>().Left > 0d);
+            Contract.Ensures(!double.IsNaN(Contract.Result<Thickness>().Top) &&
+                             !double.IsInfinity(Contract.Result<Thickness>().Top) &&
+                             Contract.Result<Thickness>().Top > 0d);
+            Contract.Ensures(!double.IsNaN(Contract.Result<Thickness>().Right) &&
+                             !double.IsInfinity(Contract.Result<Thickness>().Right) &&
+                             Contract.Result<Thickness>().Right > 0d);
+            Contract.Ensures(!double.IsNaN(Contract.Result<Thickness>().Bottom) &&
+                             !double.IsInfinity(Contract.Result<Thickness>().Bottom) &&
+                             Contract.Result<Thickness>().Bottom > 0d);
         }
 
         #endregion

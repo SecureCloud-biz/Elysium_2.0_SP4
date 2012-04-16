@@ -13,7 +13,7 @@ namespace Elysium.Converters
             {
                 return DependencyProperty.UnsetValue;
             }
-            return (double)value * 360.0;
+            return (double)value * 360d;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -22,7 +22,7 @@ namespace Elysium.Converters
             {
                 return DependencyProperty.UnsetValue;
             }
-            return (double)value * (1.0 / 360.0);
+            return (double)value * (1.0 / 360d);
         }
     }
 } ;

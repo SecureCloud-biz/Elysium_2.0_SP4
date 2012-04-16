@@ -10,7 +10,7 @@
         
         <Setter Property="Background" Value="{DynamicResource TransparentBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
-        <Setter Property="BorderThickness" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThickness, Mode=OneWay}"/>
+        <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThickness), Mode=OneWay}"/>
         
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Focusable" Value="False"/>
@@ -116,7 +116,7 @@
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False"/>
 
-        <Setter Property="Padding" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultPaddingValue, Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Left}"/>
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Left}"/>
 
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
@@ -254,14 +254,14 @@
         
         <Style.Triggers>
             <Trigger Property="Orientation" Value="Horizontal">
-                <Setter Property="BorderThickness" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultPaddingValue, Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Bottom}"/>
+                <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Bottom}"/>
                 <Setter Property="MinHeight" Value="6"/>
                 <Setter Property="Height" Value="6"/>
                 <Setter Property="MaxHeight" Value="10"/>                
                 <Setter Property="Template" Value="{StaticResource HorizontalScrollBarTemplate}"/>                
             </Trigger>
             <Trigger Property="Orientation" Value="Vertical">
-                <Setter Property="BorderThickness" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultPaddingValue, Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Right}"/>
+                <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Right}"/>
                 <Setter Property="MinWidth" Value="6"/>
                 <Setter Property="Width" Value="6"/>
                 <Setter Property="MaxWidth" Value="10"/>

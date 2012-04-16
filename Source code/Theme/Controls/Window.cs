@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Windows;
@@ -40,7 +41,7 @@ namespace Elysium.Controls
         private FrameworkElement _caption;
         private Decorator _applicationBarHost;
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
+        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
         static Window()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Window), new FrameworkPropertyMetadata(typeof(Window)));
@@ -48,7 +49,6 @@ namespace Elysium.Controls
 
         public Window()
         {
-            Contract.Assume(CommandBindings != null);
             CommandBindings.Add(new CommandBinding(ApplicationCommands.Close, (sender, e) => Close()));
         }
 
@@ -72,11 +72,12 @@ namespace Elysium.Controls
                     }
                 }
 
+                // BUG in Code Contracts: FindName is pure method
                 Contract.Assume(Template != null);
                 _caption = Template.FindName(CaptionName, this) as FrameworkElement;
                 if (_caption == null)
                 {
-                    Trace.TraceWarning(CaptionName + " not found.");
+                    Trace.TraceError(CaptionName + " not found.");
                 }
                 else
                 {
@@ -92,7 +93,7 @@ namespace Elysium.Controls
         [PublicAPI]
         public static readonly DependencyProperty ProgressPercentProperty =
             DependencyProperty.Register("ProgressPercent", typeof(double), typeof(Window),
-                                        new FrameworkPropertyMetadata(100.0, FrameworkPropertyMetadataOptions.None));
+                                        new FrameworkPropertyMetadata(100d, FrameworkPropertyMetadataOptions.None));
 
         [PublicAPI]
         [Bindable(true)]
@@ -107,7 +108,7 @@ namespace Elysium.Controls
         [PublicAPI]
         public static readonly DependencyProperty NonClientWidthProperty =
             DependencyProperty.Register("NonClientWidth", typeof(double), typeof(Window),
-                                        new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                        new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         [PublicAPI]
         [Bindable(true)]
@@ -120,7 +121,7 @@ namespace Elysium.Controls
         [PublicAPI]
         public static readonly DependencyProperty NonClientHeightProperty =
             DependencyProperty.Register("NonClientHeight", typeof(double), typeof(Window),
-                                        new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                        new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         [PublicAPI]
         [Bindable(true)]
@@ -138,24 +139,18 @@ namespace Elysium.Controls
         [JetBrains.Annotations.Pure]
         [System.Diagnostics.Contracts.Pure]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Window))]
-        public static bool GetIsMainWindow(System.Windows.Window obj)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static bool GetIsMainWindow([NotNull] System.Windows.Window obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             return BooleanBoxingHelper.Unbox(obj.GetValue(IsMainWindowProperty));
         }
 
         [PublicAPI]
-        public static void SetIsMainWindow(System.Windows.Window obj, bool value)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static void SetIsMainWindow([NotNull] System.Windows.Window obj, bool value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(IsMainWindowProperty, BooleanBoxingHelper.Box(value));
         }
 
@@ -185,40 +180,30 @@ namespace Elysium.Controls
         [JetBrains.Annotations.Pure]
         [System.Diagnostics.Contracts.Pure]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Window))]
-        public static ApplicationBar GetApplicationBar(System.Windows.Window obj)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static ApplicationBar GetApplicationBar([NotNull] System.Windows.Window obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             return (ApplicationBar)obj.GetValue(ApplicationBarProperty);
         }
 
         [PublicAPI]
-        public static void SetApplicationBar(System.Windows.Window obj, ApplicationBar value)
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static void SetApplicationBar([NotNull] System.Windows.Window obj, ApplicationBar value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(ApplicationBarProperty, value);
         }
 
-        private static void OnApplicationBarChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnApplicationBarChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            if (d == null)
-            {
-                throw new ArgumentNullException("d");
-            }
-            Contract.EndContractBlock();
-            var instance = d as System.Windows.Window;
+            ValidationHelper.NotNull(obj, () => obj);
+            var instance = obj as System.Windows.Window;
             if (instance != null && e.OldValue == null)
             {
                 instance.MouseRightButtonUp += OnApplicationBarOpening;
             }
-            var window = d as Window;
+            var window = obj as Window;
             if (window != null && window._applicationBarHost != null)
             {
                 var newApplicationBar = (ApplicationBar)e.NewValue;

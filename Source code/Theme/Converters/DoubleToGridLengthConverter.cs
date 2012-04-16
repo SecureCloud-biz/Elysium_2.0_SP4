@@ -12,7 +12,7 @@ namespace Elysium.Converters
         {
             if (!(value is double))
             {
-                return new GridLength(0.0, GridUnitType.Auto);
+                return new GridLength(0d, GridUnitType.Auto);
             }
 
             var unitType = parameter as string;
@@ -20,7 +20,7 @@ namespace Elysium.Converters
             switch (unitType)
             {
                 case "Auto":
-                    return new GridLength(0.0, GridUnitType.Auto);
+                    return new GridLength(0d, GridUnitType.Auto);
                 case "*":
                     return new GridLength((double)value, GridUnitType.Star);
                 default:

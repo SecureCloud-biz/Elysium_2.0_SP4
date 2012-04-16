@@ -5,22 +5,28 @@ using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 
+using JetBrains.Annotations;
+
 namespace Elysium.Controls.Automation
 {
     public class DropDownCommandButtonAutomationPeer : ButtonBaseAutomationPeer, IExpandCollapseProvider
     {
-        public DropDownCommandButtonAutomationPeer(DropDownCommandButton owner)
-            : base(owner)
+        public DropDownCommandButtonAutomationPeer([NotNull] DropDownCommandButton owner) : base(owner)
         {
+            // BUG in CodeContracts: UIElementAutomationPeer's constructor throw ArgumentNullException if owner equals null
             Contract.Assume(Owner != null);
         }
 
+        [JetBrains.Annotations.Pure]
+        [System.Diagnostics.Contracts.Pure]
         protected override string GetClassNameCore()
         {
             Contract.Ensures(Contract.Result<string>() == "Button");
             return "Button";
         }
 
+        [JetBrains.Annotations.Pure]
+        [System.Diagnostics.Contracts.Pure]
         protected override AutomationControlType GetAutomationControlTypeCore()
         {
             Contract.Ensures(Contract.Result<AutomationControlType>() == AutomationControlType.Button);
@@ -82,7 +88,7 @@ namespace Elysium.Controls.Automation
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         private void Invariants()
         {
-            // NOTE: WPF doesn't declare contracts
+            // BUG in CodeContracts: Owner can't be null
             Contract.Invariant(Owner != null);
         }
     }

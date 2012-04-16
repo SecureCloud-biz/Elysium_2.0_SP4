@@ -50,14 +50,10 @@ namespace Elysium.Controls
             set { SetValue(SubmenuProperty, value); }
         }
 
-        private static void OnSubmenuChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnSubmenuChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            if (d == null)
-            {
-                throw new ArgumentNullException("d");
-            }
-            Contract.EndContractBlock();
-            var instance = (DropDownCommandButton)d;
+            ValidationHelper.NotNull(obj, () => obj);
+            var instance = (DropDownCommandButton)obj;
             instance.OnSubmenuChanged((Submenu)e.OldValue, (Submenu)e.NewValue);
         }
 
@@ -87,14 +83,10 @@ namespace Elysium.Controls
             private set { SetValue(HasSubmenuPropertyKey, BooleanBoxingHelper.Box(value)); }
         }
 
-        private static void OnHasSubmenuChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnHasSubmenuChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            if (d == null)
-            {
-                throw new ArgumentNullException("d");
-            }
-            Contract.EndContractBlock();
-            var instance = (DropDownCommandButton)d;
+            ValidationHelper.NotNull(obj, () => obj);
+            var instance = (DropDownCommandButton)obj;
             instance.OnHasSubmenuChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
         }
 
@@ -126,14 +118,10 @@ namespace Elysium.Controls
             set { SetValue(IsDropDownOpenProperty, BooleanBoxingHelper.Box(value)); }
         }
 
-        private static void OnIsDropDownOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnIsDropDownOpenChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            if (d == null)
-            {
-                throw new ArgumentNullException("d");
-            }
-            Contract.EndContractBlock();
-            var instance = (DropDownCommandButton)d;
+            ValidationHelper.NotNull(obj, () => obj);
+            var instance = (DropDownCommandButton)obj;
             instance.OnIsDropDownOpenChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
         }
 
@@ -160,14 +148,10 @@ namespace Elysium.Controls
             }
         }
 
-        private static object CoerceIsDropDownOpen(DependencyObject d, object baseValue)
+        private static object CoerceIsDropDownOpen([NotNull] DependencyObject obj, object baseValue)
         {
-            if (d == null)
-            {
-                throw new ArgumentNullException("d");
-            }
-            Contract.EndContractBlock();
-            var instance = (DropDownCommandButton)d;
+            ValidationHelper.NotNull(obj, () => obj);
+            var instance = (DropDownCommandButton)obj;
             return instance.CoerceIsDropDownOpen(BooleanBoxingHelper.Unbox(baseValue));
         }
 
@@ -211,9 +195,22 @@ namespace Elysium.Controls
         }
 
         [PublicAPI]
+        public static readonly DependencyProperty DropDownDirectionProperty =
+            DependencyProperty.Register("DropDownDirection", typeof(DropDownDirection), typeof(DropDownCommandButton),
+                                        new FrameworkPropertyMetadata(DropDownDirection.Down));
+
+        [PublicAPI]
+        [Category("Layout")]
+        [Description("The direction of the drop down.")]
+        public DropDownDirection DropDownDirection
+        {
+            get { return BoxingHelper<DropDownDirection>.Unbox(GetValue(DropDownDirectionProperty)); }
+            set { SetValue(DropDownDirectionProperty, value); }
+        }
+
+        [PublicAPI]
         public static readonly DependencyProperty MaxDropDownHeightProperty =
-            DependencyProperty.Register("MaxDropDownHeight", typeof(double), typeof(DropDownCommandButton),
-                                        new FrameworkPropertyMetadata(SystemParameters.PrimaryScreenHeight / 3));
+            DependencyProperty.Register("MaxDropDownHeight", typeof(double), typeof(DropDownCommandButton), new FrameworkPropertyMetadata(300d));
 
         [PublicAPI]
         [Bindable(true)]
@@ -244,7 +241,7 @@ namespace Elysium.Controls
                     _popup.Opened -= OnDropDownOpened;
                     _popup.CustomPopupPlacementCallback = null;
                 }
-                // NOTE: WPF doesn't declare contracts
+                // BUG in Code Contracts: FindName is pure method
                 Contract.Assume(Template != null);
                 _popup = Template.FindName(PopupName, this) as Popup;
                 if (_popup == null)
@@ -285,27 +282,41 @@ namespace Elysium.Controls
             if (window != null)
             {
                 var transformToAncestor = TransformToAncestor(window);
-                // NOTE: WPF doesn't declare contracts
-                Contract.Assume(transformToAncestor != null);
-                var position = new Point(targetsize.Width / 2 - popupsize.Width / 2 + offset.X,
-                                         -popupsize.Height + offset.Y - (Margin.Left + Margin.Top + Margin.Right + Margin.Bottom) / 2);
-                var relativePosition = transformToAncestor.Transform(position);
-                if (relativePosition.X < 0)
+
+                var x = targetsize.Width / 2 - popupsize.Width / 2 + offset.X;
+                var y = DropDownDirection == DropDownDirection.Up ? -popupsize.Height + offset.Y : ActualHeight + popupsize.Height + offset.Y;
+                var position = new Point(x, y);
+
+                if (transformToAncestor != null)
                 {
-                    relativePosition.X = 0;
+                    var relativePosition = transformToAncestor.Transform(position);
+                    var selfPosition = TranslatePoint(new Point(0, 0), window);
+
+                    if (relativePosition.X < 0)
+                    {
+                        relativePosition.X = selfPosition.X;
+                    }
+                    if (relativePosition.X + popupsize.Width > window.Width)
+                    {
+                        relativePosition.X = selfPosition.X + ActualWidth;
+                    }
+                    if (DropDownDirection == DropDownDirection.Up && relativePosition.Y < 0)
+                    {
+                        relativePosition.Y = selfPosition.Y + ActualHeight + popupsize.Height;
+                    }
+                    if (DropDownDirection == DropDownDirection.Down && relativePosition.Y + popupsize.Height > window.Height)
+                    {
+                        relativePosition.Y = -popupsize.Height;
+                    }
+
+                    var transformToDescendant = window.TransformToDescendant(this);
+                    if (transformToDescendant != null)
+                    {
+                        position = transformToDescendant.Transform(relativePosition);
+                    }
                 }
-                if (relativePosition.X + popupsize.Width > window.Width)
-                {
-                    relativePosition.X = window.Width - popupsize.Width;
-                }
-                var transformToDescendant = window.TransformToDescendant(this);
-                // NOTE: WPF doesn't declare contracts
-                Contract.Assume(transformToDescendant != null);
-                position = transformToDescendant.Transform(relativePosition);
-                return new[]
-                           {
-                               new CustomPopupPlacement(position, PopupPrimaryAxis.None)
-                           };
+
+                return new[] { new CustomPopupPlacement(position, PopupPrimaryAxis.None) };
             }
             return null;
         }

@@ -1,8 +1,12 @@
 ﻿using System;
-using System.Diagnostics.Contracts;
 using System.Linq;
+using System.Reflection;
+using System.Security;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Threading;
+
+using Elysium.Extensions;
 
 using JetBrains.Annotations;
 
@@ -18,24 +22,16 @@ namespace Elysium
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(FrameworkElement))]
-        public static Theme? GetTheme(FrameworkElement obj)
+        public static Theme? GetTheme([NotNull] FrameworkElement obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             return (Theme?)obj.GetValue(ThemeProperty);
         }
 
         [PublicAPI]
-        public static void SetTheme(FrameworkElement obj, Theme? value)
+        public static void SetTheme([NotNull] FrameworkElement obj, Theme? value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(ThemeProperty, value);
         }
 
@@ -55,24 +51,16 @@ namespace Elysium
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(FrameworkElement))]
-        public static SolidColorBrush GetAccentBrush(FrameworkElement obj)
+        public static SolidColorBrush GetAccentBrush([NotNull] FrameworkElement obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             return (SolidColorBrush)obj.GetValue(AccentBrushProperty);
         }
 
         [PublicAPI]
-        public static void SetAccentBrush(FrameworkElement obj, SolidColorBrush value)
+        public static void SetAccentBrush([NotNull] FrameworkElement obj, SolidColorBrush value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(AccentBrushProperty, value);
         }
 
@@ -92,24 +80,16 @@ namespace Elysium
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(FrameworkElement))]
-        public static SolidColorBrush GetContrastBrush(FrameworkElement obj)
+        public static SolidColorBrush GetContrastBrush([NotNull] FrameworkElement obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             return (SolidColorBrush)obj.GetValue(ContrastBrushProperty);
         }
 
         [PublicAPI]
-        public static void SetContrastBrush(FrameworkElement obj, SolidColorBrush value)
+        public static void SetContrastBrush([NotNull] FrameworkElement obj, SolidColorBrush value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(ContrastBrushProperty, value);
         }
 
@@ -122,35 +102,37 @@ namespace Elysium
             }
         }
 
+        private delegate void ApplyThemeToApplicationDelegate(Application application, Theme? theme, SolidColorBrush accentBrush, SolidColorBrush contrastBrush);
+
         [PublicAPI]
-        public static void ApplyTheme(this Application application, Theme? theme,
-                                      SolidColorBrush accentBrush, SolidColorBrush contrastBrush)
+        public static void ApplyTheme(this Application application, Theme? theme, SolidColorBrush accentBrush, SolidColorBrush contrastBrush)
+        {
+            ValidationHelper.NotNull(application, () => application);
+
+            application.Dispatcher.Invoke(new ApplyThemeToApplicationDelegate(ApplyThemeInternal), DispatcherPriority.Render,
+                                          application, theme, accentBrush, contrastBrush);
+        }
+
+        [SecuritySafeCritical]
+        private static void ApplyThemeInternal(Application application, Theme? theme, SolidColorBrush accentBrush, SolidColorBrush contrastBrush)
         {
             // Resource dictionaries paths
-            var accentColorsUri = new Uri("/Elysium;component/Themes/AccentColors.xaml", UriKind.Relative);
-            var lightColorsUri = new Uri("/Elysium;component/Themes/LightColors.xaml", UriKind.Relative);
-            var darkColorsUri = new Uri("/Elysium;component/Themes/DarkColors.xaml", UriKind.Relative);
+            var lightColorsUri = new Uri("/Elysium;component/Themes/LightBrushes.xaml", UriKind.Relative);
+            var darkColorsUri = new Uri("/Elysium;component/Themes/DarkBrushes.xaml", UriKind.Relative);
 
             // Resource dictionaries
-            var accentColorsDictionary = new ResourceDictionary { Source = accentColorsUri };
-            var lightColorsDictionary = new ResourceDictionary { Source = lightColorsUri };
-            var darkColorsDictionary = new ResourceDictionary { Source = darkColorsUri };
-
-            // Add AccentColors.xaml, if not included
-            if (application.Resources.MergedDictionaries.All(dictionary => dictionary.Source != accentColorsUri))
-            {
-                application.Resources.MergedDictionaries.Add(accentColorsDictionary);
-            }
+            var lightBrushesDictionary = new ResourceDictionary { Source = lightColorsUri };
+            var darkBrushesDictionary = new ResourceDictionary { Source = darkColorsUri };
 
             if (theme == Theme.Light)
             {
-                // Add LightColors.xaml, if not included
+                // Add LightBrushes.xaml, if not included
                 if (application.Resources.MergedDictionaries.All(dictionary => dictionary.Source != lightColorsUri))
                 {
-                    application.Resources.MergedDictionaries.Add(lightColorsDictionary);
+                    application.Resources.MergedDictionaries.Add(lightBrushesDictionary);
                 }
 
-                // Remove DarkColors.xaml, if included
+                // Remove DarkBrushes.xaml, if included
                 var darkColorsDictionaries = application.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == darkColorsUri).ToList();
                 foreach (var dictionary in darkColorsDictionaries)
                 {
@@ -159,13 +141,13 @@ namespace Elysium
             }
             if (theme == Theme.Dark)
             {
-                // Add DarkColors.xaml, if not included
+                // Add DarkBrushes.xaml, if not included
                 if (application.Resources.MergedDictionaries.All(dictionary => dictionary.Source != darkColorsUri))
                 {
-                    application.Resources.MergedDictionaries.Add(darkColorsDictionary);
+                    application.Resources.MergedDictionaries.Add(darkBrushesDictionary);
                 }
 
-                // Remove LightColors.xaml, if included
+                // Remove LightBrushes.xaml, if included
                 var lightColorsDictionaries = application.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == lightColorsUri).ToList();
                 foreach (var dictionary in lightColorsDictionaries)
                 {
@@ -213,37 +195,41 @@ namespace Elysium
             {
                 application.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = genericDictionaryUri });
             }
+
+            OnThemeChanged();
         }
 
+        private delegate void ApplyThemeToControlDelegate(FrameworkElement control, Theme? theme, SolidColorBrush accentBrush, SolidColorBrush contrastBrush);
+
         [PublicAPI]
-        public static void ApplyTheme(this FrameworkElement control, Theme? theme,
-                                      SolidColorBrush accentBrush, SolidColorBrush contrastBrush)
+        public static void ApplyTheme(this FrameworkElement control, Theme? theme, SolidColorBrush accentBrush, SolidColorBrush contrastBrush)
+        {
+            ValidationHelper.NotNull(control, () => control);
+
+            control.Dispatcher.Invoke(new ApplyThemeToControlDelegate(ApplyThemeInternal), DispatcherPriority.Render,
+                                      control, theme, accentBrush, contrastBrush);
+        }
+
+        [SecuritySafeCritical]
+        private static void ApplyThemeInternal(this FrameworkElement control, Theme? theme, SolidColorBrush accentBrush, SolidColorBrush contrastBrush)
         {
             // Resource dictionaries paths
-            var accentColorsUri = new Uri("/Elysium;component/Themes/AccentColors.xaml", UriKind.Relative);
-            var lightColorsUri = new Uri("/Elysium;component/Themes/LightColors.xaml", UriKind.Relative);
-            var darkColorsUri = new Uri("/Elysium;component/Themes/DarkColors.xaml", UriKind.Relative);
+            var lightColorsUri = new Uri("/Elysium;component/Themes/LightBrushes.xaml", UriKind.Relative);
+            var darkColorsUri = new Uri("/Elysium;component/Themes/DarkBrushes.xaml", UriKind.Relative);
 
             // Resource dictionaries
-            var accentColorsDictionary = new ResourceDictionary { Source = accentColorsUri };
-            var lightColorsDictionary = new ResourceDictionary { Source = lightColorsUri };
-            var darkColorsDictionary = new ResourceDictionary { Source = darkColorsUri };
-
-            // Add AccentColors.xaml, if not included
-            if (control.Resources.MergedDictionaries.All(dictionary => dictionary.Source != accentColorsUri))
-            {
-                control.Resources.MergedDictionaries.Add(accentColorsDictionary);
-            }
+            var lightBrushesDictionary = new ResourceDictionary { Source = lightColorsUri };
+            var darkBrushesDictionary = new ResourceDictionary { Source = darkColorsUri };
 
             if (theme == Theme.Light)
             {
-                // Add LightColors.xaml, if not included
+                // Add LightBrushes.xaml, if not included
                 if (control.Resources.MergedDictionaries.All(dictionary => dictionary.Source != lightColorsUri))
                 {
-                    control.Resources.MergedDictionaries.Add(lightColorsDictionary);
+                    control.Resources.MergedDictionaries.Add(lightBrushesDictionary);
                 }
 
-                // Remove DarkColors.xaml, if included
+                // Remove DarkBrushes.xaml, if included
                 var darkColorsDictionaries = control.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == darkColorsUri).ToList();
                 foreach (var dictionary in darkColorsDictionaries)
                 {
@@ -252,13 +238,13 @@ namespace Elysium
             }
             if (theme == Theme.Dark)
             {
-                // Add DarkColors.xaml, if not included
+                // Add DarkBrushes.xaml, if not included
                 if (control.Resources.MergedDictionaries.All(dictionary => dictionary.Source != darkColorsUri))
                 {
-                    control.Resources.MergedDictionaries.Add(darkColorsDictionary);
+                    control.Resources.MergedDictionaries.Add(darkBrushesDictionary);
                 }
 
-                // Remove LightColors.xaml, if included
+                // Remove LightBrushes.xaml, if included
                 var lightColorsDictionaries = control.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == lightColorsUri).ToList();
                 foreach (var dictionary in lightColorsDictionaries)
                 {
@@ -305,6 +291,47 @@ namespace Elysium
             if (control.Resources.MergedDictionaries.All(dictionary => dictionary.Source != genericDictionaryUri))
             {
                 control.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = genericDictionaryUri });
+            }
+
+            OnThemeChanged();
+        }
+
+        [SecurityCritical]
+        private static void OnThemeChanged()
+        {
+            var systemColors = typeof(SystemColors);
+            var invalidateColors = systemColors.GetMethod("InvalidateCache", BindingFlags.Static | BindingFlags.NonPublic);
+            if (invalidateColors != null)
+            {
+                invalidateColors.Invoke(null, null);
+            }
+
+            var systemParameters = typeof(SystemParameters);
+            var invalidateParameters = systemParameters.GetMethod("InvalidateCache", BindingFlags.Static | BindingFlags.NonPublic, null, Type.EmptyTypes, null);
+            if (invalidateParameters != null)
+            {
+                invalidateParameters.Invoke(null, null);
+            }
+
+            var presentationFramework = Assembly.GetAssembly(typeof(Window));
+            if (presentationFramework != null)
+            {
+                var systemResources = presentationFramework.GetType("System.Windows.SystemResources");
+
+                if (systemResources != null)
+                {
+                    var onThemeChanged = systemResources.GetMethod("OnThemeChanged", BindingFlags.Static | BindingFlags.NonPublic);
+                    if (onThemeChanged != null)
+                    {
+                        onThemeChanged.Invoke(null, null);
+                    }
+
+                    var invalidateResources = systemResources.GetMethod("InvalidateResources", BindingFlags.Static | BindingFlags.NonPublic);
+                    if (invalidateResources != null)
+                    {
+                        invalidateResources.Invoke(null, new object[] { false });
+                    }
+                }
             }
         }
     }

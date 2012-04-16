@@ -29,11 +29,11 @@ namespace Elysium.Controls.Primitives
         static ProgressBarBase()
         {
             ValueProperty.OverrideMetadata(typeof(ProgressBarBase), new FrameworkPropertyMetadata(OnValueChanged));
-            MaximumProperty.OverrideMetadata(typeof(ProgressBarBase), new FrameworkPropertyMetadata(100.0));
+            MaximumProperty.OverrideMetadata(typeof(ProgressBarBase), new FrameworkPropertyMetadata(100d));
         }
 
         private static readonly DependencyPropertyKey PercentKey =
-            DependencyProperty.RegisterReadOnly("Percent", typeof(double), typeof(ProgressBarBase), new FrameworkPropertyMetadata(0.0));
+            DependencyProperty.RegisterReadOnly("Percent", typeof(double), typeof(ProgressBarBase), new FrameworkPropertyMetadata(0d));
 
         [PublicAPI]
         public static readonly DependencyProperty PercentProperty = PercentKey.DependencyProperty;
@@ -45,14 +45,10 @@ namespace Elysium.Controls.Primitives
             private set { SetValue(PercentKey, value); }
         }
 
-        private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnValueChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            if (d == null)
-            {
-                throw new ArgumentNullException("d");
-            }
-            Contract.EndContractBlock();
-            var progressBar = (ProgressBarBase)d;
+            ValidationHelper.NotNull(obj, () => obj);
+            var progressBar = (ProgressBarBase)obj;
             progressBar.Percent = progressBar.State != ProgressBarState.Normal || progressBar.Maximum <= progressBar.Minimum
                                       ? double.NaN
                                       : (progressBar.Value - progressBar.Minimum) / (progressBar.Maximum - progressBar.Minimum);
@@ -73,15 +69,10 @@ namespace Elysium.Controls.Primitives
             set { SetValue(StateProperty, value); }
         }
 
-        private static void OnStateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnStateChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            if (d == null)
-            {
-                throw new ArgumentNullException("d");
-            }
-            Contract.EndContractBlock();
-
-            var progressBar = (ProgressBarBase)d;
+            ValidationHelper.NotNull(obj, () => obj);
+            var progressBar = (ProgressBarBase)obj;
             progressBar.OnStateChanged(BoxingHelper<ProgressBarState>.Unbox(e.OldValue), BoxingHelper<ProgressBarState>.Unbox(e.NewValue));
         }
 

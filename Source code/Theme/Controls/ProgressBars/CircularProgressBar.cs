@@ -45,31 +45,24 @@ namespace Elysium.Controls
         [System.Diagnostics.Contracts.Pure]
         public static double GetAngle(DependencyObject obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             return BoxingHelper<double>.Unbox(obj.GetValue(AngleProperty));
         }
 
         [PublicAPI]
         public static void SetAngle(DependencyObject obj, double value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(AngleProperty, value);
         }
 
         protected override Size MeasureOverride(Size constraint)
         {
             var desiredSize = base.MeasureOverride(constraint);
-            Contract.Assume(!desiredSize.IsEmpty);
+            // BUG in Code Contracts: MeasureOverride can return only size when widh and height equals to or greather than zero
+            Contract.Assume(desiredSize.Width >= 0d);
+            Contract.Assume(desiredSize.Height >= 0d);
             var sizeValue = Math.Min(desiredSize.Width, desiredSize.Height);
-            Contract.Assume(sizeValue >= 0.0);
             desiredSize.Width = sizeValue;
             desiredSize.Height = sizeValue;
             return desiredSize;
@@ -77,8 +70,10 @@ namespace Elysium.Controls
 
         protected override Size ArrangeOverride(Size arrangeBounds)
         {
+            // BUG in Code Contracts: arrangeBounds is size, which returned by MeasureOverride, but MeasureOverride can return only size when widh and height equals to or greather than zero
+            Contract.Assume(arrangeBounds.Width >= 0d);
+            Contract.Assume(arrangeBounds.Height >= 0d);
             var sizeValue = Math.Min(arrangeBounds.Width, arrangeBounds.Height);
-            Contract.Assume(sizeValue >= 0.0);
             return base.ArrangeOverride(new Size(sizeValue, sizeValue));
         }
 
@@ -92,7 +87,7 @@ namespace Elysium.Controls
                 {
                     Trace.TraceWarning(ArcName + " not found.");
                 }
-                // NOTE: WPF doesn't declare contracts
+                // BUG in Code Contracts: FindName is pure method
                 Contract.Assume(Template != null);
                 _busyBar = Template.FindName(BusyBarName, this) as Canvas;
                 if (_busyBar == null)
@@ -137,18 +132,18 @@ namespace Elysium.Controls
 
                 var time = (trackSize * Math.PI) / 100;
 
-                var startAngleSetValueAnimation = new DoubleAnimation(0, new Duration(TimeSpan.FromSeconds(0.0)));
+                var startAngleSetValueAnimation = new DoubleAnimation(0, new Duration(TimeSpan.FromSeconds(0d)));
 
                 Storyboard.SetTarget(startAngleSetValueAnimation, _arc);
                 Storyboard.SetTargetProperty(startAngleSetValueAnimation, new PropertyPath(Arc.StartAngleProperty));
 
-                var endAngleSetValueAnimation = new DoubleAnimation(-270, new Duration(TimeSpan.FromSeconds(0.0)));
+                var endAngleSetValueAnimation = new DoubleAnimation(-270, new Duration(TimeSpan.FromSeconds(0d)));
 
                 Storyboard.SetTarget(endAngleSetValueAnimation, _arc);
                 Storyboard.SetTargetProperty(endAngleSetValueAnimation, new PropertyPath(Arc.EndAngleProperty));
 
                 var startAngleAnimation = new DoubleAnimationUsingKeyFrames();
-                // NOTE: WPF doesn't declare contracts
+                // BUG in Code Contracts: DoubleAnimationUsingKeyFrames.KeyFrames is always have collection instance
                 Contract.Assume(startAngleAnimation.KeyFrames != null);
                 startAngleAnimation.KeyFrames.Add(new EasingDoubleKeyFrame(360, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
 
@@ -156,14 +151,14 @@ namespace Elysium.Controls
                 Storyboard.SetTargetProperty(startAngleAnimation, new PropertyPath(Arc.StartAngleProperty));
 
                 var endAngleAnimation = new DoubleAnimationUsingKeyFrames();
-                // NOTE: WPF doesn't declare contracts
+                // BUG in Code Contracts: DoubleAnimationUsingKeyFrames.KeyFrames is always have collection instance
                 Contract.Assume(endAngleAnimation.KeyFrames != null);
                 endAngleAnimation.KeyFrames.Add(new EasingDoubleKeyFrame(90, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
 
                 Storyboard.SetTarget(endAngleAnimation, _arc);
                 Storyboard.SetTargetProperty(endAngleAnimation, new PropertyPath(Arc.EndAngleProperty));
 
-                // Bug in Code Contracts
+                // BUG in Code Contracts
                 Contract.Assume(IndeterminateAnimation != null);
                 Contract.Assume(IndeterminateAnimation.Children != null);
 
@@ -191,7 +186,7 @@ namespace Elysium.Controls
                     BusyAnimation.Remove(this);
                 }
 
-                // NOTE: WPF doesn't declare contracts
+                // BUG in Code Contracts: Children always have collection instance
                 Contract.Assume(_busyBar.Children != null);
 
                 BusyAnimation = new Storyboard { Name = DefaultBusyAnimationName, RepeatBehavior = RepeatBehavior.Forever };
@@ -218,17 +213,17 @@ namespace Elysium.Controls
                         var index = (_busyBar.Children.Count - 1) / 2 - i;
 
                         var endPosition = length / 2 + index * (elementLength * 2);
-                        var endAngle = endPosition / length * 360.0;
+                        var endAngle = endPosition / length * 360d;
 
                         var duration = new Duration(TimeSpan.FromSeconds(durationTime));
 
                         var firstCycleAnimation =
-                            new DoubleAnimation(0.0, endAngle, duration) { BeginTime = TimeSpan.FromSeconds(i * beginTimeIncrement) };
+                            new DoubleAnimation(0d, endAngle, duration) { BeginTime = TimeSpan.FromSeconds(i * beginTimeIncrement) };
                         Storyboard.SetTarget(firstCycleAnimation, element);
                         Storyboard.SetTargetProperty(firstCycleAnimation, new PropertyPath(AngleProperty));
 
                         var secondCycleAnimation =
-                            new DoubleAnimation(0.0, endAngle, duration)
+                            new DoubleAnimation(0d, endAngle, duration)
                                 { BeginTime = TimeSpan.FromSeconds(partMotionTime + durationTime + i * beginTimeIncrement) };
                         Storyboard.SetTarget(secondCycleAnimation, element);
                         Storyboard.SetTargetProperty(secondCycleAnimation, new PropertyPath(AngleProperty));
@@ -246,12 +241,12 @@ namespace Elysium.Controls
                         var duration = new Duration(TimeSpan.FromSeconds(durationTime));
 
                         var firstCycleAnimation =
-                            new DoubleAnimation(360.0, duration) { BeginTime = TimeSpan.FromSeconds(partMotionTime + i * beginTimeIncrement) };
+                            new DoubleAnimation(360d, duration) { BeginTime = TimeSpan.FromSeconds(partMotionTime + i * beginTimeIncrement) };
                         Storyboard.SetTarget(firstCycleAnimation, element);
                         Storyboard.SetTargetProperty(firstCycleAnimation, new PropertyPath(AngleProperty));
 
                         var secondCycleAnimation =
-                            new DoubleAnimation(360.0, duration)
+                            new DoubleAnimation(360d, duration)
                                 { BeginTime = TimeSpan.FromSeconds(partMotionTime * 2 + durationTime + i * beginTimeIncrement) };
                         Storyboard.SetTarget(secondCycleAnimation, element);
                         Storyboard.SetTargetProperty(secondCycleAnimation, new PropertyPath(AngleProperty));
@@ -270,7 +265,7 @@ namespace Elysium.Controls
 
                 BusyAnimation.Duration = new Duration(TimeSpan.FromSeconds(longPauseTime + partMotionTime * 3 + shortPauseTime * 2 + durationTime));
 
-                // NOTE: WPF doesn't declare contracts
+                // BUG in Code Contracts: Children always have collection instance
                 Contract.Assume(BusyAnimation.Children != null);
                 foreach (var animation in firstCycleAnimations)
                 {

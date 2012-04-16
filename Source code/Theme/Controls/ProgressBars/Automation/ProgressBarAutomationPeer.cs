@@ -5,13 +5,15 @@ using System.Windows.Automation.Provider;
 
 using Elysium.Controls.Primitives;
 
+using JetBrains.Annotations;
+
 namespace Elysium.Controls.Automation
 {
     public class ProgressBarAutomationPeer : RangeBaseAutomationPeer, IRangeValueProvider
     {
-        public ProgressBarAutomationPeer(ProgressBarBase owner)
-            : base(owner)
+        public ProgressBarAutomationPeer([NotNull] ProgressBarBase owner) : base(owner)
         {
+            // BUG in CodeContracts: UIElementAutomationPeer's constructor throw ArgumentNullException if owner equals null
             Contract.Assume(Owner != null);
         }
 
@@ -74,7 +76,7 @@ namespace Elysium.Controls.Automation
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         private void Invariants()
         {
-            // NOTE: WPF doesn't declare contracts
+            // BUG in CodeContracts: Owner can't be null
             Contract.Invariant(Owner != null);
         }
     }

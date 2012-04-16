@@ -4,21 +4,26 @@ using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 using System.Windows.Threading;
 
+using JetBrains.Annotations;
+
 namespace Elysium.Controls.Automation
 {
     public class CommandButtonAutomationPeer : ButtonBaseAutomationPeer, IInvokeProvider
     {
-        public CommandButtonAutomationPeer(CommandButton owner)
-            : base(owner)
+        public CommandButtonAutomationPeer([NotNull] CommandButton owner) : base(owner)
         {
         }
 
+        [JetBrains.Annotations.Pure]
+        [System.Diagnostics.Contracts.Pure]
         protected override string GetClassNameCore()
         {
             Contract.Ensures(Contract.Result<string>() == "Button");
             return "Button";
         }
 
+        [JetBrains.Annotations.Pure]
+        [System.Diagnostics.Contracts.Pure]
         protected override AutomationControlType GetAutomationControlTypeCore()
         {
             Contract.Ensures(Contract.Result<AutomationControlType>() == AutomationControlType.Button);
@@ -39,10 +44,10 @@ namespace Elysium.Controls.Automation
 
             Dispatcher.BeginInvoke(DispatcherPriority.Input, new DispatcherOperationCallback(
                                                                  delegate
-                                                                     {
-                                                                         ((CommandButton)Owner).OnClickInternal();
-                                                                         return null;
-                                                                     }), null);
+                                                                 {
+                                                                     ((CommandButton)Owner).OnClickInternal();
+                                                                     return null;
+                                                                 }), null);
         }
     }
 } ;

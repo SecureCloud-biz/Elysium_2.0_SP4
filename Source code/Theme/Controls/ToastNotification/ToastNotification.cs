@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,17 +29,12 @@ namespace Elysium.Controls
 
         private static readonly DependencyProperty FreeIndexesProperty = FreeIndexesPropertyKey.DependencyProperty;
 
-        private static IDictionary<int, bool> GetFreeIndexes(DependencyObject obj)
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        private static IDictionary<int, bool> GetFreeIndexes([NotNull] DependencyObject obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
+            ValidationHelper.NotNull(obj, () => obj);
             Contract.Ensures(Contract.Result<IDictionary<int, bool>>() != null);
-            Contract.EndContractBlock();
-            var value = (IDictionary<int, bool>)obj.GetValue(FreeIndexesProperty);
-            Contract.Assume(value != null);
-            return value;
+            return (IDictionary<int, bool>)obj.GetValue(FreeIndexesProperty);
         }
 
         [PublicAPI]
@@ -48,112 +45,76 @@ namespace Elysium.Controls
                                                                               FrameworkPropertyMetadataOptions.AffectsRender));
 
         [PublicAPI]
-        public static ToastNotificationAnimation GetAnimation(DependencyObject obj)
+        public static ToastNotificationAnimation GetAnimation([NotNull] DependencyObject obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             return BoxingHelper<ToastNotificationAnimation>.Unbox(obj.GetValue(AnimationProperty));
         }
 
         [PublicAPI]
-        public static void SetAnimation(DependencyObject obj, ToastNotificationAnimation value)
+        public static void SetAnimation([NotNull] DependencyObject obj, ToastNotificationAnimation value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(AnimationProperty, value);
         }
 
         [PublicAPI]
         public static readonly DependencyProperty LifetimeProperty =
             DependencyProperty.RegisterAttached("Lifetime", typeof(TimeSpan), typeof(ToastNotification),
-                                                new FrameworkPropertyMetadata(TimeSpan.FromSeconds(10.0), FrameworkPropertyMetadataOptions.AffectsRender));
+                                                new FrameworkPropertyMetadata(TimeSpan.FromSeconds(10d), FrameworkPropertyMetadataOptions.AffectsRender));
 
         [PublicAPI]
-        public static TimeSpan GetLifetime(DependencyObject obj)
+        public static TimeSpan GetLifetime([NotNull] DependencyObject obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             return BoxingHelper<TimeSpan>.Unbox(obj.GetValue(LifetimeProperty));
         }
 
         [PublicAPI]
-        public static void SetLifetime(DependencyObject obj, TimeSpan value)
+        public static void SetLifetime([NotNull] DependencyObject obj, TimeSpan value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(LifetimeProperty, value);
         }
 
         [PublicAPI]
         public static readonly DependencyProperty MarginProperty =
             DependencyProperty.RegisterAttached("Margin", typeof(Thickness), typeof(ToastNotification),
-                                                new FrameworkPropertyMetadata(new Thickness(10.0), FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(new Thickness(10d), FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         [PublicAPI]
-        public static Thickness GetMargin(DependencyObject obj)
+        public static Thickness GetMargin([NotNull] DependencyObject obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             return BoxingHelper<Thickness>.Unbox(obj.GetValue(MarginProperty));
         }
 
         [PublicAPI]
-        public static void SetMargin(DependencyObject obj, Thickness value)
+        public static void SetMargin([NotNull] DependencyObject obj, Thickness value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(MarginProperty, value);
         }
 
         [PublicAPI]
         public static readonly DependencyProperty WidthProperty =
             DependencyProperty.RegisterAttached("Width", typeof(double), typeof(ToastNotification),
-                                                new FrameworkPropertyMetadata(480.0, FrameworkPropertyMetadataOptions.AffectsMeasure), IsWidthHeightValid);
+                                                new FrameworkPropertyMetadata(480d, FrameworkPropertyMetadataOptions.AffectsMeasure), IsWidthHeightValid);
 
         [PublicAPI]
-        public static double GetWidth(DependencyObject obj)
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        public static double GetWidth([NotNull] DependencyObject obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.Ensures(Contract.Result<double>() >= 0 || double.IsNaN(Contract.Result<double>()));
-            Contract.EndContractBlock();
-            var unboxedValue = BoxingHelper<double>.Unbox(obj.GetValue(WidthProperty));
-            Contract.Assume(unboxedValue >= 0 || double.IsNaN(unboxedValue));
-            return unboxedValue;
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
+            return BoxingHelper<double>.Unbox(obj.GetValue(WidthProperty));
         }
 
         [PublicAPI]
-        public static void SetWidth(DependencyObject obj, double value)
+        public static void SetWidth([NotNull] DependencyObject obj, double value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            if (!(value >= 0 || double.IsNaN(value)))
-            {
-                throw new ArgumentException("Width must be greater than zero, equal to zero or NaN", "value");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
+            RequireSize(value, () => value);
             obj.SetValue(WidthProperty, value);
         }
 
@@ -163,38 +124,53 @@ namespace Elysium.Controls
                                                 new FrameworkPropertyMetadata(64.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         [PublicAPI]
-        public static double GetHeight(DependencyObject obj)
+        [SuppressMessage("Microsoft.Contracts", "Ensures")]
+        public static double GetHeight([NotNull] DependencyObject obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.Ensures(Contract.Result<double>() >= 0 || double.IsNaN(Contract.Result<double>()));
-            Contract.EndContractBlock();
-            var unboxedValue = BoxingHelper<double>.Unbox(obj.GetValue(HeightProperty));
-            Contract.Assume(unboxedValue >= 0 || double.IsNaN(unboxedValue));
-            return unboxedValue;
+            ValidationHelper.NotNull(obj, () => obj);
+            EnsureSize();
+            return BoxingHelper<double>.Unbox(obj.GetValue(HeightProperty));
         }
 
         [PublicAPI]
-        public static void SetHeight(DependencyObject obj, double value)
+        public static void SetHeight([NotNull] DependencyObject obj, double value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            if (!(value >= 0 || double.IsNaN(value)))
-            {
-                throw new ArgumentException("Height must be greater than zero, equal to zero or NaN", "value");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
+            RequireSize(value, () => value);
             obj.SetValue(HeightProperty, value);
         }
 
         private static bool IsWidthHeightValid(object value)
         {
             var unboxedValue = BoxingHelper<double>.Unbox(value);
-            return !double.IsInfinity(unboxedValue) && (unboxedValue >= 0.0 || double.IsNaN(unboxedValue));
+            return !double.IsInfinity(unboxedValue) && (unboxedValue >= 0d || double.IsNaN(unboxedValue));
+        }
+
+        [UsedImplicitly]
+        [DebuggerHidden]
+        [ContractArgumentValidator]
+        private static void RequireSize(double argument, Expression<Func<double>> parameterExpression)
+        {
+            RequireSize(argument, ((MemberExpression)parameterExpression.Body).Member.Name);
+        }
+
+        [DebuggerHidden]
+        [UsedImplicitly]
+        [ContractArgumentValidator]
+        private static void RequireSize(double argument, string parameterName)
+        {
+            if (!(argument >= 0 || double.IsNaN(argument)))
+            {
+                throw new ArgumentException(parameterName + " must be greater than zero, equal to zero or NaN", parameterName);
+            }
+            Contract.EndContractBlock();
+        }
+
+        [DebuggerHidden]
+        [ContractAbbreviator]
+        private static void EnsureSize()
+        {
+            Contract.Ensures(Contract.Result<double>() >= 0 || double.IsNaN(Contract.Result<double>()));
         }
 
         [PublicAPI]
@@ -203,24 +179,16 @@ namespace Elysium.Controls
                                                 new FrameworkPropertyMetadata(HorizontalPlacement.Right, FrameworkPropertyMetadataOptions.AffectsArrange));
 
         [PublicAPI]
-        public static HorizontalPlacement GetHorizontalPlacement(DependencyObject obj)
+        public static HorizontalPlacement GetHorizontalPlacement([NotNull] DependencyObject obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             return BoxingHelper<HorizontalPlacement>.Unbox(obj.GetValue(HorizontalPlacementProperty));
         }
 
         [PublicAPI]
-        public static void SetHorizontalPlacement(DependencyObject obj, HorizontalPlacement value)
+        public static void SetHorizontalPlacement([NotNull] DependencyObject obj, HorizontalPlacement value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(HorizontalPlacementProperty, value);
         }
 
@@ -230,35 +198,26 @@ namespace Elysium.Controls
                                                 new FrameworkPropertyMetadata(VerticalPlacement.Bottom, FrameworkPropertyMetadataOptions.AffectsArrange));
 
         [PublicAPI]
-        public static VerticalPlacement GetVerticalPlacement(DependencyObject obj)
+        public static VerticalPlacement GetVerticalPlacement([NotNull] DependencyObject obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             return BoxingHelper<VerticalPlacement>.Unbox(obj.GetValue(VerticalPlacementProperty));
         }
 
         [PublicAPI]
-        public static void SetVerticalPlacement(DependencyObject obj, VerticalPlacement value)
+        public static void SetVerticalPlacement([NotNull] DependencyObject obj, VerticalPlacement value)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(VerticalPlacementProperty, value);
         }
 
+        [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling")]
+        [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
+        [SuppressMessage("Microsoft.Design", "CA1026:DefaultParametersShouldNotBeUsed")]
         [PublicAPI]
-        public static void Show(string message, string remark = null, FrameworkElement target = null)
+        public static void Show([NotNull] string message, string remark = null, FrameworkElement target = null)
         {
-            if (string.IsNullOrWhiteSpace(message))
-            {
-                throw new ArgumentException("Message can't be null", "message");
-            }
-            Contract.EndContractBlock();
+            ValidationHelper.NotNullOrWhitespace(message, () => message);
 
             // Create window
             var window = new Window { Title = message, Focusable = false, ShowActivated = false, ShowInTaskbar = false, WindowStyle = WindowStyle.ToolWindow };
@@ -328,23 +287,23 @@ namespace Elysium.Controls
 
             // Closing animation
             window.Closing += (s, e) =>
-                                  {
-                                      timer.Dispose();
-                                      switch (GetAnimation(host))
-                                      {
-                                          case ToastNotificationAnimation.None:
-                                              break;
-                                          case ToastNotificationAnimation.Fade:
-                                              window.BeginAnimation(UIElement.OpacityProperty,
-                                                                    new DoubleAnimation(1.0, 0.0, Parameters.GetMinimumDuration(host)));
-                                              break;
-                                          case ToastNotificationAnimation.Slide:
-                                              window.BeginAnimation(System.Windows.Window.LeftProperty,
-                                                                    new DoubleAnimation(left, -width, Parameters.GetOptimumDuration(host)));
-                                              break;
-                                      }
-                                      freeIndexes[index] = false;
-                                  };
+            {
+                timer.Dispose();
+                switch (GetAnimation(host))
+                {
+                    case ToastNotificationAnimation.None:
+                        break;
+                    case ToastNotificationAnimation.Fade:
+                        window.BeginAnimation(UIElement.OpacityProperty,
+                                              new DoubleAnimation(1.0, 0d, Parameters.GetMinimumDuration(host)));
+                        break;
+                    case ToastNotificationAnimation.Slide:
+                        window.BeginAnimation(System.Windows.Window.LeftProperty,
+                                              new DoubleAnimation(left, -width, Parameters.GetOptimumDuration(host)));
+                        break;
+                }
+                freeIndexes[index] = false;
+            };
 
             switch (GetAnimation(host))
             {
@@ -367,7 +326,7 @@ namespace Elysium.Controls
                     break;
                 case ToastNotificationAnimation.Fade:
                     window.BeginAnimation(UIElement.OpacityProperty,
-                                          new DoubleAnimation(0.0, 1.0, Parameters.GetMinimumDuration(host)));
+                                          new DoubleAnimation(0d, 1.0, Parameters.GetMinimumDuration(host)));
                     break;
                 case ToastNotificationAnimation.Slide:
                     window.BeginAnimation(System.Windows.Window.LeftProperty,
@@ -376,7 +335,7 @@ namespace Elysium.Controls
             }
 
             var lifetime = GetLifetime(host);
-            window.BeginAnimation(Window.ProgressPercentProperty, new DoubleAnimation(100.0, 0.0, lifetime));
+            window.BeginAnimation(Window.ProgressPercentProperty, new DoubleAnimation(100d, 0d, lifetime));
 
             // Start timer
             timer.Change(lifetime, TimeSpan.FromSeconds(0));

@@ -10,17 +10,16 @@
 
         <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
-        <Setter Property="BorderThickness" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=DefaultThickness, Mode=OneWay}"/>
+        <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThickness), Mode=OneWay}"/>
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
-        <Setter Property="FontFamily" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=FontFamily, Mode=OneWay}"/>
-        <Setter Property="FontSize" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=ContentFontSize, Mode=OneWay}"/>
+        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.ContentFontSize), Mode=OneWay}"/>
         <Setter Property="FontWeight" Value="Normal"/>
 
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}"/>
 
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Top"/>
-        <Setter Property="Padding" Value="{Binding Source={x:Static root:Parameters.Instance}, Path=BoldPadding, Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Left}"/>
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.BoldPadding), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Left}"/>
 
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
@@ -47,7 +46,7 @@
                                         <Path x:Name="CheckBullet"
                                               Fill="{DynamicResource TransparentBrush}"
                                               Stroke="{DynamicResource AccentBrush}"
-                                              StrokeThickness="{Binding Source={x:Static root:Parameters.Instance}, Path=BoldThicknessValue, Mode=OneWay}"
+                                              StrokeThickness="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.BoldThicknessValue), Mode=OneWay}"
                                               Stretch="Fill"
                                               Visibility="Collapsed"
                                               Width="{TemplateBinding root:Parameters.CheckSize}" Height="{TemplateBinding root:Parameters.CheckSize}">
@@ -75,7 +74,7 @@
                                 </Border>
                             </BulletDecorator.Bullet>
                             <Border Background="{DynamicResource TransparentBrush}"
-                                    Margin="{Binding Source={x:Static root:Parameters.Instance}, Path=BoldPaddingValue, Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Left}">
+                                    Margin="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.BoldPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Left}">
                                 <ContentPresenter Margin="{TemplateBinding Padding}"
                                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
