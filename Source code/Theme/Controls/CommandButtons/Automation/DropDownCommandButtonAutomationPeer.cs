@@ -48,15 +48,14 @@ namespace Elysium.Controls.Automation
         }
 
         [DebuggerHidden]
-        [ContractAbbreviator]
+        [ContractArgumentValidator]
         private void IsEnabledAndHasSubmenu()
         {
-            var owner = (DropDownCommandButton)Owner;
             if (!IsEnabled())
             {
                 throw new ElementNotEnabledException();
             }
-            if (!owner.HasSubmenu)
+            if (!((DropDownCommandButton)Owner).HasSubmenu)
             {
                 throw new InvalidOperationException("Operation can't be perform");
             }
