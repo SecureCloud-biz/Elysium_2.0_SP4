@@ -241,7 +241,7 @@ namespace Elysium.Controls
                     _popup.Opened -= OnDropDownOpened;
                     _popup.CustomPopupPlacementCallback = null;
                 }
-                // BUG in Code Contracts: FindName is pure method
+                // NOTE: Lack of contracts: FindName is pure method
                 Contract.Assume(Template != null);
                 _popup = Template.FindName(PopupName, this) as Popup;
                 if (_popup == null)

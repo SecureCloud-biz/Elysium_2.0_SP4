@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
 using System.Windows.Automation;
@@ -9,28 +10,20 @@ using JetBrains.Annotations;
 
 namespace Elysium.Controls.Automation
 {
-    public class DropDownCommandButtonAutomationPeer : ButtonBaseAutomationPeer, IExpandCollapseProvider
+    [PublicAPI]
+    public class DropDownCommandButtonAutomationPeer : CommandButtonBaseAutomationPeer, IExpandCollapseProvider
     {
+        [PublicAPI]
         public DropDownCommandButtonAutomationPeer([NotNull] DropDownCommandButton owner) : base(owner)
         {
-            // BUG in CodeContracts: UIElementAutomationPeer's constructor throw ArgumentNullException if owner equals null
-            Contract.Assume(Owner != null);
         }
 
         [JetBrains.Annotations.Pure]
         [System.Diagnostics.Contracts.Pure]
         protected override string GetClassNameCore()
         {
-            Contract.Ensures(Contract.Result<string>() == "Button");
-            return "Button";
-        }
-
-        [JetBrains.Annotations.Pure]
-        [System.Diagnostics.Contracts.Pure]
-        protected override AutomationControlType GetAutomationControlTypeCore()
-        {
-            Contract.Ensures(Contract.Result<AutomationControlType>() == AutomationControlType.Button);
-            return AutomationControlType.Button;
+            Contract.Ensures(Contract.Result<string>() == "DropDownCommandButton");
+            return "DropDownCommandButton";
         }
 
         public override object GetPattern(PatternInterface patternInterface)
@@ -38,34 +31,39 @@ namespace Elysium.Controls.Automation
             return patternInterface == PatternInterface.ExpandCollapse ? this : base.GetPattern(patternInterface);
         }
 
+        [PublicAPI]
         public void Expand()
         {
-            if (!IsEnabled())
-            {
-                throw new ElementNotEnabledException();
-            }
+            IsEnabledAndHasSubmenu();
             var owner = (DropDownCommandButton)Owner;
-            if (!owner.HasSubmenu)
-            {
-                throw new InvalidOperationException("Operation can't be perform");
-            }
             owner.IsDropDownOpen = true;
         }
 
+        [PublicAPI]
         public void Collapse()
         {
+            IsEnabledAndHasSubmenu();
+            var owner = (DropDownCommandButton)Owner;
+            owner.IsDropDownOpen = false;
+        }
+
+        [DebuggerHidden]
+        [ContractAbbreviator]
+        private void IsEnabledAndHasSubmenu()
+        {
+            var owner = (DropDownCommandButton)Owner;
             if (!IsEnabled())
             {
                 throw new ElementNotEnabledException();
             }
-            var owner = (DropDownCommandButton)Owner;
             if (!owner.HasSubmenu)
             {
                 throw new InvalidOperationException("Operation can't be perform");
             }
-            owner.IsDropDownOpen = false;
+            Contract.EndContractBlock();
         }
 
+        [PublicAPI]
         public ExpandCollapseState ExpandCollapseState
         {
             get
@@ -82,14 +80,6 @@ namespace Elysium.Controls.Automation
             {
                 RaisePropertyChangedEvent(ExpandCollapsePatternIdentifiers.ExpandCollapseStateProperty, oldValue, newValue);
             }
-        }
-
-        [ContractInvariantMethod]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        private void Invariants()
-        {
-            // BUG in CodeContracts: Owner can't be null
-            Contract.Invariant(Owner != null);
         }
     }
 } ;

@@ -72,7 +72,7 @@ namespace Elysium.Controls
                     }
                 }
 
-                // BUG in Code Contracts: FindName is pure method
+                // NOTE: Lack of contracts: FindName is pure method
                 Contract.Assume(Template != null);
                 _caption = Template.FindName(CaptionName, this) as FrameworkElement;
                 if (_caption == null)

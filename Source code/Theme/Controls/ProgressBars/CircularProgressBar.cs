@@ -59,7 +59,7 @@ namespace Elysium.Controls
         protected override Size MeasureOverride(Size constraint)
         {
             var desiredSize = base.MeasureOverride(constraint);
-            // BUG in Code Contracts: MeasureOverride can return only size when widh and height equals to or greather than zero
+            // NOTE: Lack of contracts: MeasureOverride can return size width non-negative width and height
             Contract.Assume(desiredSize.Width >= 0d);
             Contract.Assume(desiredSize.Height >= 0d);
             var sizeValue = Math.Min(desiredSize.Width, desiredSize.Height);
@@ -70,7 +70,7 @@ namespace Elysium.Controls
 
         protected override Size ArrangeOverride(Size arrangeBounds)
         {
-            // BUG in Code Contracts: arrangeBounds is size, which returned by MeasureOverride, but MeasureOverride can return only size when widh and height equals to or greather than zero
+            // NOTE: Lack of contracts: arrangeBounds is size, which returned by MeasureOverride, but MeasureOverride can return size width non-negative width and height
             Contract.Assume(arrangeBounds.Width >= 0d);
             Contract.Assume(arrangeBounds.Height >= 0d);
             var sizeValue = Math.Min(arrangeBounds.Width, arrangeBounds.Height);
@@ -87,7 +87,7 @@ namespace Elysium.Controls
                 {
                     Trace.TraceWarning(ArcName + " not found.");
                 }
-                // BUG in Code Contracts: FindName is pure method
+                // NOTE: Lack of contracts: FindName is pure method
                 Contract.Assume(Template != null);
                 _busyBar = Template.FindName(BusyBarName, this) as Canvas;
                 if (_busyBar == null)
@@ -143,7 +143,7 @@ namespace Elysium.Controls
                 Storyboard.SetTargetProperty(endAngleSetValueAnimation, new PropertyPath(Arc.EndAngleProperty));
 
                 var startAngleAnimation = new DoubleAnimationUsingKeyFrames();
-                // BUG in Code Contracts: DoubleAnimationUsingKeyFrames.KeyFrames is always have collection instance
+                // NOTE: Lack of contracts: DoubleAnimationUsingKeyFrames.KeyFrames is always have collection instance
                 Contract.Assume(startAngleAnimation.KeyFrames != null);
                 startAngleAnimation.KeyFrames.Add(new EasingDoubleKeyFrame(360, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
 
@@ -151,14 +151,14 @@ namespace Elysium.Controls
                 Storyboard.SetTargetProperty(startAngleAnimation, new PropertyPath(Arc.StartAngleProperty));
 
                 var endAngleAnimation = new DoubleAnimationUsingKeyFrames();
-                // BUG in Code Contracts: DoubleAnimationUsingKeyFrames.KeyFrames is always have collection instance
+                // NOTE: Lack of contracts: DoubleAnimationUsingKeyFrames.KeyFrames is always have collection instance
                 Contract.Assume(endAngleAnimation.KeyFrames != null);
                 endAngleAnimation.KeyFrames.Add(new EasingDoubleKeyFrame(90, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
 
                 Storyboard.SetTarget(endAngleAnimation, _arc);
                 Storyboard.SetTargetProperty(endAngleAnimation, new PropertyPath(Arc.EndAngleProperty));
 
-                // BUG in Code Contracts
+                // NOTE: Lack of contracts
                 Contract.Assume(IndeterminateAnimation != null);
                 Contract.Assume(IndeterminateAnimation.Children != null);
 
@@ -186,7 +186,7 @@ namespace Elysium.Controls
                     BusyAnimation.Remove(this);
                 }
 
-                // BUG in Code Contracts: Children always have collection instance
+                // NOTE: Lack of contracts: Children always have collection instance
                 Contract.Assume(_busyBar.Children != null);
 
                 BusyAnimation = new Storyboard { Name = DefaultBusyAnimationName, RepeatBehavior = RepeatBehavior.Forever };
@@ -265,7 +265,7 @@ namespace Elysium.Controls
 
                 BusyAnimation.Duration = new Duration(TimeSpan.FromSeconds(longPauseTime + partMotionTime * 3 + shortPauseTime * 2 + durationTime));
 
-                // BUG in Code Contracts: Children always have collection instance
+                // NOTE: Lack of contracts: Children always have collection instance
                 Contract.Assume(BusyAnimation.Children != null);
                 foreach (var animation in firstCycleAnimations)
                 {

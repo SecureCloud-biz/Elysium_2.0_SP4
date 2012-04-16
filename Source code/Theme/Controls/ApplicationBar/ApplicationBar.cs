@@ -126,7 +126,7 @@ namespace Elysium.Controls
                         Storyboard.SetTargetProperty(animation, new PropertyPath("Height"));
                         break;
                 }
-                // BUG in Code Contracts
+                // NOTE: Lack of contracts
                 Contract.Assume(storyboard.Children != null);
                 storyboard.Children.Add(animation);
                 storyboard.Completed += (sender, e) =>
@@ -163,7 +163,7 @@ namespace Elysium.Controls
                         Storyboard.SetTargetProperty(animation, new PropertyPath("Height"));
                         break;
                 }
-                // BUG in Code Contracts
+                // NOTE: Lack of contracts
                 Contract.Assume(storyboard.Children != null);
                 storyboard.Children.Add(animation);
                 storyboard.Completed += (sender, e) =>

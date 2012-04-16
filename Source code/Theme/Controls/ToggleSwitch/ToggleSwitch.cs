@@ -532,7 +532,7 @@ namespace Elysium.Controls
                 {
                     Trace.TraceWarning(TrackName + " not found.");
                 }
-                // BUG in Code Contracts: FindName is pure method
+                // NOTE: Lack of contracts: FindName is pure method
                 Contract.Assume(Template != null);
                 _fill = Template.FindName(FillName, this) as FrameworkElement;
                 if (_fill == null)
@@ -545,7 +545,7 @@ namespace Elysium.Controls
                     _thumb.DragDelta -= OnSwitchChanging;
                     _thumb.DragCompleted -= OnSwitchCompleted;
                 }
-                // BUG in Code Contracts: FindName is pure method
+                // NOTE: Lack of contracts: FindName is pure method
                 Contract.Assume(Template != null);
                 _thumb = Template.FindName(ThumbName, this) as Thumb;
                 if (_thumb == null)
@@ -562,7 +562,7 @@ namespace Elysium.Controls
                 {
                     _switch.Click -= OnToggle;
                 }
-                // BUG in Code Contracts: FindName is pure method
+                // NOTE: Lack of contracts: FindName is pure method
                 Contract.Assume(Template != null);
                 _switch = Template.FindName(SwitchName, this) as Button;
                 if (_switch == null)

@@ -8,28 +8,20 @@ using JetBrains.Annotations;
 
 namespace Elysium.Controls.Automation
 {
-    public class ToggleCommandButtonAutomationPeer : ButtonBaseAutomationPeer, IToggleProvider
+    [PublicAPI]
+    public class ToggleCommandButtonAutomationPeer : CommandButtonBaseAutomationPeer, IToggleProvider
     {
+        [PublicAPI]
         public ToggleCommandButtonAutomationPeer([NotNull] ToggleCommandButton owner) : base(owner)
         {
-            // BUG in CodeContracts: UIElementAutomationPeer's constructor throw ArgumentNullException if owner equals null
-            Contract.Assume(Owner != null);
         }
 
         [JetBrains.Annotations.Pure]
         [System.Diagnostics.Contracts.Pure]
         protected override string GetClassNameCore()
         {
-            Contract.Ensures(Contract.Result<string>() == "Button");
-            return "Button";
-        }
-
-        [JetBrains.Annotations.Pure]
-        [System.Diagnostics.Contracts.Pure]
-        protected override AutomationControlType GetAutomationControlTypeCore()
-        {
-            Contract.Ensures(Contract.Result<AutomationControlType>() == AutomationControlType.Button);
-            return AutomationControlType.Button;
+            Contract.Ensures(Contract.Result<string>() == "ToggleCommandButton");
+            return "ToggleCommandButton";
         }
 
         public override object GetPattern(PatternInterface patternInterface)
@@ -37,6 +29,7 @@ namespace Elysium.Controls.Automation
             return patternInterface == PatternInterface.Toggle ? this : base.GetPattern(patternInterface);
         }
 
+        [PublicAPI]
         public void Toggle()
         {
             if (!IsEnabled())
@@ -48,6 +41,7 @@ namespace Elysium.Controls.Automation
             owner.OnToggle();
         }
 
+        [PublicAPI]
         public ToggleState ToggleState
         {
             get
@@ -77,14 +71,6 @@ namespace Elysium.Controls.Automation
                 default:
                     return ToggleState.Indeterminate;
             }
-        }
-
-        [ContractInvariantMethod]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        private void Invariants()
-        {
-            // BUG in CodeContracts: Owner can't be null
-            Contract.Invariant(Owner != null);
         }
     }
 } ;

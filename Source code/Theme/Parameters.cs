@@ -1033,7 +1033,7 @@ namespace Elysium
         {
             ValidationHelper.NotNull(obj, () => obj);
             var value = BoxingHelper<double>.Unbox(basevalue);
-            return !double.IsNaN(value) && !double.IsInfinity(value) && value > 0d ? value : 0d;
+            return IsValidSize(value) ? value : 0d;
         }
 
 
@@ -1041,19 +1041,19 @@ namespace Elysium
         {
             ValidationHelper.NotNull(obj, () => obj);
             var value = BoxingHelper<Thickness>.Unbox(basevalue);
-            if (double.IsNaN(value.Left) || double.IsInfinity(value.Left) || value.Left <= 0d)
+            if (!IsValidSize(value.Left))
             {
                 value.Left = 0d;
             }
-            if (double.IsNaN(value.Top) || double.IsInfinity(value.Top) || value.Top <= 0d)
+            if (!IsValidSize(value.Top))
             {
                 value.Top = 0d;
             }
-            if (double.IsNaN(value.Right) || double.IsInfinity(value.Right) || value.Right <= 0d)
+            if (!IsValidSize(value.Right))
             {
                 value.Right = 0d;
             }
-            if (double.IsNaN(value.Bottom) || double.IsInfinity(value.Bottom) || value.Bottom <= 0d)
+            if (!IsValidSize(value.Bottom))
             {
                 value.Bottom = 0d;
             }
@@ -1068,25 +1068,26 @@ namespace Elysium
         [ContractAbbreviator]
         private static void EnsureSize()
         {
-            Contract.Ensures(!double.IsNaN(Contract.Result<double>()) && !double.IsInfinity(Contract.Result<double>()) && Contract.Result<double>() > 0d);
+            Contract.Ensures(IsValidSize(Contract.Result<double>()));
         }
 
         [DebuggerHidden]
         [ContractAbbreviator]
         private static void EnsureThickness()
         {
-            Contract.Ensures(!double.IsNaN(Contract.Result<Thickness>().Left) &&
-                             !double.IsInfinity(Contract.Result<Thickness>().Left) &&
-                             Contract.Result<Thickness>().Left > 0d);
-            Contract.Ensures(!double.IsNaN(Contract.Result<Thickness>().Top) &&
-                             !double.IsInfinity(Contract.Result<Thickness>().Top) &&
-                             Contract.Result<Thickness>().Top > 0d);
-            Contract.Ensures(!double.IsNaN(Contract.Result<Thickness>().Right) &&
-                             !double.IsInfinity(Contract.Result<Thickness>().Right) &&
-                             Contract.Result<Thickness>().Right > 0d);
-            Contract.Ensures(!double.IsNaN(Contract.Result<Thickness>().Bottom) &&
-                             !double.IsInfinity(Contract.Result<Thickness>().Bottom) &&
-                             Contract.Result<Thickness>().Bottom > 0d);
+            Contract.Ensures(IsValidSize(Contract.Result<Thickness>().Left));
+            Contract.Ensures(IsValidSize(Contract.Result<Thickness>().Top));
+            Contract.Ensures(IsValidSize(Contract.Result<Thickness>().Right));
+            Contract.Ensures(IsValidSize(Contract.Result<Thickness>().Bottom));
+        }
+
+        #endregion
+
+        #region Helpers
+
+        private static bool IsValidSize(double size)
+        {
+            return !double.IsNaN(size) && !double.IsInfinity(size) && size > 0d;
         }
 
         #endregion

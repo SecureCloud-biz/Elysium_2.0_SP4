@@ -12,8 +12,15 @@ namespace Elysium.Controls.Automation
     {
         public ToggleSwitchAutomationPeer([NotNull] ToggleSwitch owner) : base(owner)
         {
-            // BUG in CodeContracts: UIElementAutomationPeer's constructor throw ArgumentNullException if owner equals null
+            // NOTE: Lack of contracts: UIElementAutomationPeer's constructor throw ArgumentNullException if owner equals null
             Contract.Assume(Owner != null);
+        }
+
+        [ContractInvariantMethod]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        private void Invariants()
+        {
+            Contract.Invariant(Owner != null);
         }
 
         [JetBrains.Annotations.Pure]
@@ -75,14 +82,6 @@ namespace Elysium.Controls.Automation
                 default:
                     return ToggleState.Off;
             }
-        }
-
-        [ContractInvariantMethod]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        private void Invariants()
-        {
-            // BUG in CodeContracts: Owner can't be null
-            Contract.Invariant(Owner != null);
         }
     }
 } ;

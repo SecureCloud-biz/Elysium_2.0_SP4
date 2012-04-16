@@ -20,7 +20,7 @@ namespace Elysium.Controls
                 // NOTE: Code Contracts doesn't support closures
                 Contract.Assume(child != null);
                 child.Measure(infinitySize);
-                // BUG in Code Contracts: DesiredSize.Width must be is equal to or greater than zero
+                // NOTE: Lack of contracts: DesiredSize.Width is non-negative
                 Contract.Assume(child.DesiredSize.Width >= 0d);
                 desiredSize.Width += child.DesiredSize.Width;
                 desiredSize.Height = Math.Max(desiredSize.Height, child.DesiredSize.Height);

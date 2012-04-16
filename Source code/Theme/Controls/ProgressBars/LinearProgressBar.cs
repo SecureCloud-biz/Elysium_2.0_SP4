@@ -65,7 +65,7 @@ namespace Elysium.Controls
                 {
                     Trace.TraceWarning(IndicatorName + " not found.");
                 }
-                // BUG in Code Contracts: FindName is pure method
+                // NOTE: Lack of contracts: FindName is pure method
                 Contract.Assume(Template != null);
                 _busyBar = Template.FindName(BusyBarName, this) as Canvas;
                 if (_busyBar == null)
@@ -106,7 +106,7 @@ namespace Elysium.Controls
                 var time = trackSize / 100;
 
                 var animation = new DoubleAnimationUsingKeyFrames { Duration = new Duration(TimeSpan.FromSeconds(time + 0.5)) };
-                // BUG in Code Contracts: DoubleAnimationUsingKeyFrames.KeyFrames is always have collection instance
+                // NOTE: Lack of contracts: DoubleAnimationUsingKeyFrames.KeyFrames is always have collection instance
                 Contract.Assume(animation.KeyFrames != null);
                 animation.KeyFrames.Add(new DiscreteDoubleKeyFrame(-indicatorSize - 1, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0))));
                 animation.KeyFrames.Add(new LinearDoubleKeyFrame(trackSize + 1, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
@@ -115,7 +115,7 @@ namespace Elysium.Controls
                 Storyboard.SetTargetProperty(animation,
                                              new PropertyPath(Orientation == Orientation.Horizontal ? Canvas.LeftProperty : Canvas.TopProperty));
 
-                // BUG in Code Contracts
+                // NOTE: Lack of contracts
                 Contract.Assume(IndeterminateAnimation != null);
                 Contract.Assume(IndeterminateAnimation.Children != null);
                 IndeterminateAnimation.Children.Add(animation);
@@ -138,7 +138,7 @@ namespace Elysium.Controls
                     BusyAnimation.Remove(this);
                 }
 
-                // BUG in Code Contracts: Children always have collection instance
+                // NOTE: Lack of contracts: Children always have collection instance
                 Contract.Assume(_busyBar.Children != null);
 
                 BusyAnimation = new Storyboard { Name = DefaultBusyAnimationName, RepeatBehavior = RepeatBehavior.Forever };
@@ -207,7 +207,7 @@ namespace Elysium.Controls
 
                 BusyAnimation.Duration = new Duration(TimeSpan.FromSeconds(partMotionTime * 2 + shortPauseTime + longPauseTime));
 
-                // BUG in Code Contracts: Children always have collection instance
+                // NOTE: Lack of contracts: Children always have collection instance
                 Contract.Assume(BusyAnimation.Children != null);
                 foreach (var animation in busyAnimations)
                 {

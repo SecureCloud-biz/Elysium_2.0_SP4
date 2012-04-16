@@ -203,7 +203,7 @@ namespace Elysium.Controls.Primitives
                     Trace.TraceError(DecorName + " not found.");
                 }
 
-                // BUG in Code Contracts: FindName is pure method
+                // NOTE: Lack of contracts: FindName is pure method
                 Contract.Assume(Template != null);
                 _mask = Template.FindName(MaskName, this) as Ellipse;
                 if (_mask == null)
@@ -211,7 +211,7 @@ namespace Elysium.Controls.Primitives
                     Trace.TraceError(MaskName + " not found.");
                 }
 
-                // BUG in Code Contracts: FindName is pure method
+                // NOTE: Lack of contracts: FindName is pure method
                 Contract.Assume(Template != null);
                 _headerHost = Template.FindName(HeaderHostName, this) as ContentPresenter;
                 if (_headerHost == null)
@@ -219,7 +219,7 @@ namespace Elysium.Controls.Primitives
                     Trace.TraceError(HeaderHostName + " not found.");
                 }
 
-                // BUG in Code Contracts: FindName is pure method
+                // NOTE: Lack of contracts: FindName is pure method
                 Contract.Assume(Template != null);
                 _contentHost = Template.FindName(ContentHostName, this) as ContentPresenter;
                 if (_contentHost == null)
@@ -237,7 +237,7 @@ namespace Elysium.Controls.Primitives
                 _contentHost.Measure(infinitySize);
                 _headerHost.Measure(infinitySize);
 
-                // BUG in Code Contracts: DesiredSize.Width and DesiredSize.Height must be is equal to or greater than zero
+                // NOTE: Lack of contracts: DesiredSize.Width and DesiredSize.Height is non-negative
                 Contract.Assume(_contentHost.DesiredSize.Width >= 0d);
                 Contract.Assume(_contentHost.DesiredSize.Height >= 0d);
                 Contract.Assume(_headerHost.DesiredSize.Width >= 0d);
@@ -251,13 +251,13 @@ namespace Elysium.Controls.Primitives
                 var width = Math.Min(Math.Max(contentSize, _headerHost.DesiredSize.Width), constraintWidth);
                 var height = Math.Max(contentSize + _headerHost.DesiredSize.Height, constraintHeight);
 
-                // BUG in Code Contracts: Math.Max and Math.Min doesn't contain ensures
+                // NOTE: Lack of contracts: Math.Max and Math.Min doesn't contain ensures
                 Contract.Assume(width >= 0);
                 Contract.Assume(height >= 0);
 
                 var boxSize = Math.Min(width, Math.Max(height - _headerHost.DesiredSize.Height, 0d));
 
-                // BUG in Code Contracts: Math.Max and Math.Min doesn't contain ensures
+                // NOTE: Lack of contracts: Math.Max and Math.Min doesn't contain ensures
                 Contract.Assume(boxSize >= 0);
 
                 _decor.Width = boxSize;
