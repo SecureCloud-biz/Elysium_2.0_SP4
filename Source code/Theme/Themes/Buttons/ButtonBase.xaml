@@ -13,8 +13,14 @@
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThickness), Mode=OneWay}"/>
         <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.ContentFontSize), Mode=OneWay}"/>
+        <Setter Property="FontStretch" Value="Medium"/>
+        <Setter Property="FontStyle" Value="Normal"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+        <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
 
+        <Setter Property="Focusable" Value="True"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}"/>
         
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -35,6 +41,8 @@
                             TextBlock.Foreground="{TemplateBinding Foreground}"
                             TextBlock.FontFamily="{TemplateBinding FontFamily}"
                             TextBlock.FontSize="{TemplateBinding FontSize}"
+                            TextBlock.FontStretch="{TemplateBinding FontStretch}"
+                            TextBlock.FontStyle="{TemplateBinding FontStyle}"
                             TextBlock.FontWeight="{TemplateBinding FontWeight}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <ContentPresenter Margin="{TemplateBinding Padding}"
@@ -47,6 +55,9 @@
         </Setter>
 
         <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
+                <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
+            </DataTrigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{DynamicResource MiddleLightBrush}"/>
                 <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>

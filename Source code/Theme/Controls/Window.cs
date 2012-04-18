@@ -91,6 +91,24 @@ namespace Elysium.Controls
         }
 
         [PublicAPI]
+        public static readonly DependencyProperty HasDropShadowProperty =
+            DependencyProperty.Register("HasDropShadow", typeof(bool), typeof(Window),
+                                        new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, null, CoerceHasDropShadow));
+
+        [PublicAPI]
+        public bool HasDropShadow
+        {
+            get { return BooleanBoxingHelper.Unbox(GetValue(HasDropShadowProperty)); }
+            set { SetValue(HasDropShadowProperty, BooleanBoxingHelper.Box(value)); }
+        }
+
+        private static object CoerceHasDropShadow(DependencyObject obj, object basevalue)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            return BooleanBoxingHelper.Unbox(basevalue) && Environment.OSVersion.Version.Major >= 6;
+        }
+
+        [PublicAPI]
         public static readonly DependencyProperty ProgressPercentProperty =
             DependencyProperty.Register("ProgressPercent", typeof(double), typeof(Window),
                                         new FrameworkPropertyMetadata(100d, FrameworkPropertyMetadataOptions.None));

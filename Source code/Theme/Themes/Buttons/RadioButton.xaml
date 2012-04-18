@@ -13,6 +13,8 @@
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThickness), Mode=OneWay}"/>
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.ContentFontSize), Mode=OneWay}"/>
+        <Setter Property="FontStretch" Value="Medium"/>
+        <Setter Property="FontStyle" Value="Normal"/>
         <Setter Property="FontWeight" Value="Normal"/>
 
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}"/>
@@ -28,39 +30,33 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
 
-                    <Grid Background="{DynamicResource TransparentBrush}"
-                          Margin="{TemplateBinding Padding}"
-                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                        <BulletDecorator Background="{DynamicResource TransparentBrush}"
-                                         TextBlock.Foreground="{TemplateBinding Foreground}"
-                                         TextBlock.FontFamily="{TemplateBinding FontFamily}"
-                                         TextBlock.FontSize="{TemplateBinding FontSize}"
-                                         TextBlock.FontWeight="{TemplateBinding FontWeight}"
-                                         FlowDirection="{TemplateBinding FlowDirection}">
-                            <BulletDecorator.Bullet>
-                                <Grid Background="{DynamicResource TransparentBrush}"
-                                      Width="{TemplateBinding root:Parameters.BulletDecoratorSize}" Height="{TemplateBinding root:Parameters.BulletDecoratorSize}">
-                                    <Ellipse Fill="{TemplateBinding Background}"
-                                             Stroke="{TemplateBinding BorderBrush}"
-                                             StrokeThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness.Left}"/>
-                                    <Ellipse x:Name="CheckBullet"
-                                             Fill="{DynamicResource AccentBrush}"
-                                             StrokeThickness="0"
-                                             Visibility="Collapsed"
-                                             HorizontalAlignment="Center" VerticalAlignment="Center"
-                                             Width="{TemplateBinding root:Parameters.BulletSize}" Height="{TemplateBinding root:Parameters.BulletSize}">
-                                    </Ellipse>
-                                </Grid>
-                            </BulletDecorator.Bullet>
-                            <Border Background="{DynamicResource TransparentBrush}"
-                                    Margin="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.BoldPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Left}">
-                                <ContentPresenter Margin="{TemplateBinding Padding}"
-                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                  RecognizesAccessKey="True"/>
-                            </Border>
-                        </BulletDecorator>
-                    </Grid>
+                    <BulletDecorator TextBlock.Foreground="{TemplateBinding Foreground}"
+                                        TextBlock.FontFamily="{TemplateBinding FontFamily}"
+                                        TextBlock.FontSize="{TemplateBinding FontSize}"
+                                        TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                                        FlowDirection="{TemplateBinding FlowDirection}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <BulletDecorator.Bullet>
+                            <Grid Width="{TemplateBinding root:Parameters.BulletDecoratorSize}" Height="{TemplateBinding root:Parameters.BulletDecoratorSize}">
+                                <Ellipse Fill="{TemplateBinding Background}"
+                                            Stroke="{TemplateBinding BorderBrush}"
+                                            StrokeThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Mode=OneWay, Converter={StaticResource ThicknessToDoubleConverter}}"/>
+                                <Ellipse x:Name="CheckBullet"
+                                            Fill="{DynamicResource AccentBrush}"
+                                            StrokeThickness="0"
+                                            Visibility="Collapsed"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                                            Width="{TemplateBinding root:Parameters.BulletSize}" Height="{TemplateBinding root:Parameters.BulletSize}">
+                                </Ellipse>
+                            </Grid>
+                        </BulletDecorator.Bullet>
+                        <Border Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.BoldPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Left}">
+                            <ContentPresenter Margin="{TemplateBinding Padding}"
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                RecognizesAccessKey="True"/>
+                        </Border>
+                    </BulletDecorator>
                     
                     <ControlTemplate.Triggers>                        
                         <Trigger Property="IsChecked" Value="True">

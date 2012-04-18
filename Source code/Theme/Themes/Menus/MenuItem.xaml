@@ -8,7 +8,7 @@
     
     <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="{x:Type Separator}">
         
-        <Setter Property="Background" Value="{DynamicResource TransparentBrush}"/>
+        <Setter Property="Background" Value="{x:Null}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource HighlightBrush}"/>
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThickness), Mode=OneWay}"/>
         
@@ -63,9 +63,8 @@
                 </Grid.ColumnDefinitions>
                 <Path x:Name="CheckBullet"
                       Grid.Column="0"
-                      Fill="{DynamicResource TransparentBrush}"
                       Stroke="{DynamicResource LowlightBrush}"
-                      StrokeThickness="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.BoldThicknessValue), Mode=OneWay}"
+                      StrokeThickness="{TemplateBinding root:Parameters.BoldThicknessValue}"
                       Stretch="Uniform"
                       Visibility="Collapsed"
                       HorizontalAlignment="Center" VerticalAlignment="Center"
@@ -87,7 +86,7 @@
                                   Grid.Column="1"
                                   ContentSource="Header"
                                   RecognizesAccessKey="True"
-                                  Margin="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.BoldPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Right'}"
+                                  Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.BoldPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Right'}"
                                   HorizontalAlignment="Left"
                                   VerticalAlignment="Center"/>
                 <TextBlock Grid.Column="2"
@@ -137,7 +136,7 @@
                                   Grid.Column="1"
                                   ContentSource="Header"
                                   RecognizesAccessKey="True"
-                                  Margin="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.BoldPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Right'}"
+                                  Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.BoldPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Right'}"
                                   HorizontalAlignment="Left"
                                   VerticalAlignment="Center"/>
                 <Polygon Grid.Column="2"
@@ -158,20 +157,28 @@
                 </Polygon>
                 <Popup x:Name="PART_Popup"
                        Grid.IsSharedSizeScope="True"
+                       AllowsTransparency="True"
                        Placement="Right"
                        PlacementTarget="{Binding ElementName=LayoutRoot}"
                        IsOpen="{TemplateBinding IsSubmenuOpen}"
                        Focusable="False">
-                    <Border Background="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=Background}"
-                            BorderBrush="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=BorderBrush}"
-                            BorderThickness="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=BorderThickness}"
-                            TextBlock.Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=Foreground}"
-                            TextBlock.FontFamily="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=FontFamily}"
-                            TextBlock.FontSize="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=FontSize}"
-                            TextBlock.FontWeight="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=FontWeight}"
-                            SnapsToDevicePixels="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=SnapsToDevicePixels}">
-                        <StackPanel IsItemsHost="True"
-                                    KeyboardNavigation.DirectionalNavigation="Cycle"/>
+                    <Border x:Name="PopupRoot">
+                        <Border Background="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=Background}"
+                                BorderBrush="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=BorderBrush}"
+                                BorderThickness="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=BorderThickness}"
+                                TextBlock.Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=Foreground}"
+                                TextBlock.FontFamily="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=FontFamily}"
+                                TextBlock.FontSize="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=FontSize}"
+                                TextBlock.FontStretch="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=FontStretch}"
+                                TextBlock.FontStyle="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=FontStyle}"
+                                TextBlock.FontWeight="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=FontWeight}"
+                                TextOptions.TextFormattingMode="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=(TextOptions.TextFormattingMode)}"
+                                TextOptions.TextRenderingMode="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=(TextOptions.TextRenderingMode)}"
+                                RenderOptions.ClearTypeHint="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=(RenderOptions.ClearTypeHint)}"
+                                SnapsToDevicePixels="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=SnapsToDevicePixels}">
+                            <StackPanel IsItemsHost="True"
+                                        KeyboardNavigation.DirectionalNavigation="Cycle"/>
+                        </Border>
                     </Border>
                 </Popup>
             </Grid>
@@ -180,18 +187,35 @@
             <Trigger Property="Icon" Value="{x:Null}">
                 <Setter TargetName="IconHost" Property="Visibility" Value="Hidden"/>
             </Trigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=HasDropShadow}" Value="True">
+                <Setter TargetName="PopupRoot" Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect Color="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=(root:Parameters.ShadowBrush).(SolidColorBrush.Color)}"
+                                          BlurRadius="4" ShadowDepth="2"
+                                          Direction="315"
+                                          Opacity="0.3"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="PopupRoot" Property="Background" Value="{DynamicResource Transparent}"/>
+                <Setter TargetName="PopupRoot" Property="Padding" Value="0,0,6,6"/>
+            </DataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <Style TargetType="{x:Type MenuItem}">
 
-        <Setter Property="Background" Value="{DynamicResource TransparentBrush}"/>
+        <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=Background, Mode=OneWay}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=Foreground}"/>
-        <Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=FontFamily}"/>
-        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=FontSize}"/>
-        <Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=FontWeight}"/>
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=Foreground, Mode=OneWay}"/>
+        <Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=FontFamily, Mode=OneWay}"/>
+        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=FontSize, Mode=OneWay}"/>
+        <Setter Property="FontStretch" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=FontStretch, Mode=OneWay}"/>
+        <Setter Property="FontStyle" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=FontStyle, Mode=OneWay}"/>
+        <Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=FontWeight, Mode=OneWay}"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=(TextOptions.TextFormattingMode), Mode=OneWay}"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=(TextOptions.TextRenderingMode), Mode=OneWay}"/>
+        <Setter Property="RenderOptions.ClearTypeHint" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=(RenderOptions.ClearTypeHint), Mode=OneWay}"/>
         
         <Setter Property="Focusable" Value="True"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}"/>

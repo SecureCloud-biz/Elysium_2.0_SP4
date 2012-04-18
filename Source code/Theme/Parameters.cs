@@ -505,26 +505,51 @@ namespace Elysium
 
         #endregion
 
+        #region System Resources
+
+        [PublicAPI]
+        public static readonly DependencyProperty ShadowBrushProperty =
+            DependencyProperty.RegisterAttached("ShadowBrush", typeof(SolidColorBrush), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(null,
+                                                                              FrameworkPropertyMetadataOptions.AffectsRender |
+                                                                              FrameworkPropertyMetadataOptions.Inherits));
+
+        [PublicAPI]
+        public static SolidColorBrush GetShadowBrush([NotNull] DependencyObject obj)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            return (SolidColorBrush)obj.GetValue(ShadowBrushProperty);
+        }
+
+        [PublicAPI]
+        public static void SetShadowBrush([NotNull] DependencyObject obj, SolidColorBrush value)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            obj.SetValue(ShadowBrushProperty, value);
+        }
+
+        #endregion
+
         #region Buttons
 
         [PublicAPI]
         public static readonly DependencyProperty CommandButtonMaskProperty =
-            DependencyProperty.RegisterAttached("CommandButtonMask", typeof(Brush), typeof(Parameters),
+            DependencyProperty.RegisterAttached("CommandButtonMask", typeof(SolidColorBrush), typeof(Parameters),
                                                 new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender |
                                                                                     FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(CommandButton))]
         [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
-        public static Brush GetCommandButtonMask([NotNull] CommandButtonBase obj)
+        public static SolidColorBrush GetCommandButtonMask([NotNull] CommandButtonBase obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            return (Brush)obj.GetValue(CommandButtonMaskProperty);
+            return (SolidColorBrush)obj.GetValue(CommandButtonMaskProperty);
         }
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
-        public static void SetCommandButtonMask([NotNull] CommandButtonBase obj, Brush value)
+        public static void SetCommandButtonMask([NotNull] CommandButtonBase obj, SolidColorBrush value)
         {
             ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(CommandButtonMaskProperty, value);
@@ -546,7 +571,7 @@ namespace Elysium
         public static double GetBulletDecoratorSize([NotNull] DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            ValidationHelper.OfTypes(obj, () => obj, typeof(CheckBox), typeof(RadioButton), "CheckBox", "RadioButton");
+            ValidationHelper.OfTypes(obj, () => obj, typeof(CheckBox), typeof(RadioButton));
             EnsureSize();
             return BoxingHelper<double>.Unbox(obj.GetValue(BulletDecoratorSizeProperty));
         }
@@ -555,7 +580,7 @@ namespace Elysium
         public static void SetBulletDecoratorSize([NotNull] DependencyObject obj, double value)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            ValidationHelper.OfTypes(obj, () => obj, typeof(CheckBox), typeof(RadioButton), "CheckBox", "RadioButton");
+            ValidationHelper.OfTypes(obj, () => obj, typeof(CheckBox), typeof(RadioButton));
             obj.SetValue(BulletDecoratorSizeProperty, value);
         }
 
@@ -571,7 +596,7 @@ namespace Elysium
         public static double GetBulletSize([NotNull] DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            ValidationHelper.OfTypes(obj, () => obj, typeof(CheckBox), typeof(RadioButton), "CheckBox", "RadioButton");
+            ValidationHelper.OfTypes(obj, () => obj, typeof(CheckBox), typeof(RadioButton));
             EnsureSize();
             return BoxingHelper<double>.Unbox(obj.GetValue(BulletSizeProperty));
         }
@@ -580,7 +605,7 @@ namespace Elysium
         public static void SetBulletSize([NotNull] DependencyObject obj, double value)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            ValidationHelper.OfTypes(obj, () => obj, typeof(CheckBox), typeof(RadioButton), "CheckBox", "RadioButton");
+            ValidationHelper.OfTypes(obj, () => obj, typeof(CheckBox), typeof(RadioButton));
             obj.SetValue(BulletSizeProperty, value);
         }
 
@@ -850,25 +875,25 @@ namespace Elysium
 
         [PublicAPI]
         public static readonly DependencyProperty TabControlIndicatorBrushProperty =
-            DependencyProperty.RegisterAttached("TabControlIndicatorBrush", typeof(Brush), typeof(Parameters),
+            DependencyProperty.RegisterAttached("TabControlIndicatorBrush", typeof(SolidColorBrush), typeof(Parameters),
                                                 new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender |
                                                                                     FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(TabControl))]
         [AttachedPropertyBrowsableForType(typeof(TabItem))]
-        public static Brush GetTabControlIndicatorBrush([NotNull] DependencyObject obj)
+        public static SolidColorBrush GetTabControlIndicatorBrush([NotNull] DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            ValidationHelper.OfTypes(obj, () => obj, typeof(TabControl), typeof(TabItem), "TabControl", "TabItem");
-            return (Brush)obj.GetValue(TabControlIndicatorBrushProperty);
+            ValidationHelper.OfTypes(obj, () => obj, typeof(TabControl), typeof(TabItem));
+            return (SolidColorBrush)obj.GetValue(TabControlIndicatorBrushProperty);
         }
 
         [PublicAPI]
-        public static void SetTabControlIndicatorBrush([NotNull] DependencyObject obj, Brush value)
+        public static void SetTabControlIndicatorBrush([NotNull] DependencyObject obj, SolidColorBrush value)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            ValidationHelper.OfTypes(obj, () => obj, typeof(TabControl), typeof(TabItem), "TabControl", "TabItem");
+            ValidationHelper.OfTypes(obj, () => obj, typeof(TabControl), typeof(TabItem));
             obj.SetValue(TabControlIndicatorBrushProperty, value);
         }
 
@@ -1085,6 +1110,8 @@ namespace Elysium
 
         #region Helpers
 
+        [JetBrains.Annotations.Pure]
+        [System.Diagnostics.Contracts.Pure]
         private static bool IsValidSize(double size)
         {
             return !double.IsNaN(size) && !double.IsInfinity(size) && size > 0d;

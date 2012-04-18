@@ -1,6 +1,8 @@
 using JetBrains.Annotations;
 
+// ReSharper disable CheckNamespace
 namespace System.Diagnostics.Contracts
+// ReSharper restore CheckNamespace
 {
     /// <summary>
     /// Enables factoring legacy if-then-throw into separate methods for reuse and full control over

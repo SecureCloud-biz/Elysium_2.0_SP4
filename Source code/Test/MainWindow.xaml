@@ -415,9 +415,10 @@
                 <Grid Grid.Column="2"
                       Grid.Row="0"
                       Grid.RowSpan="4"
+                      Background="Transparent"
                       metro:ApplicationBar.PreventsOpen="true">
                     <TextBlock Foreground="{DynamicResource MiddleLightBrush}"
-                               FontSize="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.HeaderFontSize)}"                              
+                               FontSize="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.HeaderFontSize)}"
                                Text="Click here to see ContextMenu"
                                TextOptions.TextFormattingMode="Ideal"
                                HorizontalAlignment="Center"

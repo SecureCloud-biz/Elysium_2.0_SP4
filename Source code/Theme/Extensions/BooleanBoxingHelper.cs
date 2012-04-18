@@ -7,16 +7,16 @@ namespace Elysium.Extensions
         internal static readonly object FalseBox = false;
         internal static readonly object TrueBox = true;
 
+        [Pure]
         [JetBrains.Annotations.Pure]
-        [System.Diagnostics.Contracts.Pure]
         internal static object Box(bool value)
         {
             Contract.Ensures(Contract.Result<object>() != null);
             return value ? TrueBox : FalseBox;
         }
 
+        [Pure]
         [JetBrains.Annotations.Pure]
-        [System.Diagnostics.Contracts.Pure]
         internal static bool Unbox(object value)
         {
             Contract.Assume(value is bool);

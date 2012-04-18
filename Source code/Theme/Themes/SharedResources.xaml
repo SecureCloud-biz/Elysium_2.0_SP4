@@ -8,14 +8,19 @@
     <converters:GridLengthToDoubleConverter x:Key="GridLengthToDoubleConverter"/>
     <converters:ThicknessToDoubleConverter x:Key="ThicknessToDoubleConverter"/>
     
+    <converters:PercentToAngleConverter x:Key="PercentToAngleConverter"/>
+    <converters:AngleToCoordinateConverter x:Key="AngleToCoordinateConverter"/>
+    <converters:NumberPositiveToNegativeConverter x:Key="NumberPositiveToNegativeConverter"/>
+    <converters:ThicknessPositiveToNegativeConverter x:Key="ThicknessPositiveToNegativeConverter"/>
+    <converters:IsGreaterThanConverter x:Key="IsGreaterThanConverter"/>
+
     <Style x:Key="FocusVisualStyle">
         <Setter Property="Control.Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Rectangle Margin="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultPadding), Mode=OneWay}" 
-                               Fill="{DynamicResource TransparentBrush}"
+                    <Rectangle Margin="{TemplateBinding root:Parameters.DefaultPadding}"
                                Stroke="{DynamicResource ForegroundBrush}"
-                               StrokeThickness="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThicknessValue), Mode=OneWay}"
+                               StrokeThickness="{TemplateBinding root:Parameters.DefaultThicknessValue}"
                                StrokeDashArray="2 1"
                                RenderOptions.EdgeMode="Aliased"/>
                 </ControlTemplate>

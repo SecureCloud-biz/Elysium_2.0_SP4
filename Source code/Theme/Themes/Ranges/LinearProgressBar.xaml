@@ -1,18 +1,13 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:root="clr-namespace:Elysium"
-                    xmlns:controls="clr-namespace:Elysium.Controls"
-                    xmlns:converters="clr-namespace:Elysium.Converters">
+                    xmlns:controls="clr-namespace:Elysium.Controls">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate x:Key="HorizontalProgressBarTemplate" TargetType="{x:Type controls:LinearProgressBar}">
-        <ControlTemplate.Resources>
-            <converters:NumberPositiveToNegativeConverter x:Key="NumberPositiveToNegativeConverter"/>
-        </ControlTemplate.Resources>
-        
+    <ControlTemplate x:Key="HorizontalProgressBarTemplate" TargetType="{x:Type controls:LinearProgressBar}">        
         <Border Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
@@ -89,10 +84,6 @@
     </ControlTemplate>
 
     <ControlTemplate x:Key="VerticalProgressBarTemplate" TargetType="{x:Type controls:LinearProgressBar}">
-        <ControlTemplate.Resources>
-            <converters:NumberPositiveToNegativeConverter x:Key="NumberPositiveToNegativeConverter"/>
-        </ControlTemplate.Resources>
-
         <Border Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
@@ -189,7 +180,7 @@
         <Style.Triggers>
 
             <Trigger Property="State" Value="Busy">
-                <Setter Property="Background" Value="{DynamicResource TransparentBrush}"/>
+                <Setter Property="Background" Value="{x:Null}"/>
             </Trigger>
             
             <Trigger Property="IsEnabled" Value="False">

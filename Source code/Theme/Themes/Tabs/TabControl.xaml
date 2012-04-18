@@ -2,22 +2,33 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:root="clr-namespace:Elysium">
 
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
     <Style TargetType="{x:Type TabControl}">
 
         <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
-        <Setter Property="BorderThickness" Value="0"/>        
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="root:Parameters.TabControlIndicatorBrush" Value="{DynamicResource HighlightBrush}"/>
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.TextFontSize), Mode=OneWay}"/>
+        <Setter Property="FontStretch" Value="Medium"/>
+        <Setter Property="FontStyle" Value="Normal"/>
         <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+        <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
         
         <Setter Property="ClipToBounds" Value="True"/>
 
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Focusable" Value="False"/>
 
-        <Setter Property="Padding" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.BoldPadding), Mode=OneWay}"/>
 
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
@@ -31,6 +42,8 @@
                             TextBlock.Foreground="{TemplateBinding Foreground}"
                             TextBlock.FontFamily="{TemplateBinding FontFamily}"
                             TextBlock.FontSize="{TemplateBinding FontSize}"
+                            TextBlock.FontStretch="{TemplateBinding FontStretch}"
+                            TextBlock.FontStyle="{TemplateBinding FontStyle}"
                             TextBlock.FontWeight="{TemplateBinding FontWeight}"
                             KeyboardNavigation.DirectionalNavigation="Local"
                             ClipToBounds="{TemplateBinding ClipToBounds}"
@@ -52,14 +65,12 @@
                                        Grid.Column="0"
                                        Grid.Row="0"
                                        Fill="{TemplateBinding root:Parameters.TabControlIndicatorBrush}"
-                                       StrokeThickness="0"
                                        Height="{TemplateBinding root:Parameters.TabControlIndicatorThickness}"
                                        HorizontalAlignment="Stretch"
                                        VerticalAlignment="Bottom"/>
                             <TabPanel x:Name="HeaderPanel"
                                       Grid.Column="0"
                                       Grid.Row="0"
-                                      Background="{DynamicResource TransparentBrush}"
                                       IsItemsHost="True"
                                       KeyboardNavigation.TabIndex="1"
                                       Panel.ZIndex="1"/>
@@ -69,12 +80,23 @@
                                     Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(TabItem.Background)}"
                                     BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(TabItem.BorderBrush)}"
                                     BorderThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(TabItem.BorderThickness)}"
+                                    TextBlock.Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(TabItem.Foreground)}"
+                                    TextBlock.FontFamily="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(TabItem.FontFamily)}"
+                                    TextBlock.FontSize="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(TabItem.FontSize)}"
+                                    TextBlock.FontStretch="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(TabItem.FontStretch)}"
+                                    TextBlock.FontStyle="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(TabItem.FontStyle)}"
+                                    TextBlock.FontWeight="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(TabItem.FontWeight)}"
+                                    TextOptions.TextFormattingMode="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(TextOptions.TextFormattingMode)}"
+                                    TextOptions.TextRenderingMode="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(TextOptions.TextRenderingMode)}"
+                                    RenderOptions.ClearTypeHint="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(RenderOptions.ClearTypeHint)}"
                                     KeyboardNavigation.DirectionalNavigation="Contained"
                                     KeyboardNavigation.TabIndex="2"
                                     KeyboardNavigation.TabNavigation="Local">
                                 <ContentPresenter x:Name="PART_SelectedContentHost"
                                                   ContentSource="SelectedContent"
-                                                  Margin="{TemplateBinding Padding}"/>
+                                                  Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(TabItem.Padding)}"
+                                                  HorizontalAlignment="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(TabItem.HorizontalContentAlignment)}"
+                                                  VerticalAlignment="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(TabItem.VerticalContentAlignment)}"/>
                             </Border>
                         </Grid>
                     </Border>
@@ -127,6 +149,9 @@
         </Setter>
 
         <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
+                <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
+            </DataTrigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="BorderBrush" Value="{DynamicResource DisabledBrush}"/>
                 <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>

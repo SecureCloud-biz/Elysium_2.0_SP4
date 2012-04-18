@@ -356,6 +356,7 @@
   <ItemGroup>
     <Compile Include="AccentColors.cs" />
     <Compile Include="Controls\CommandButtons\Automation\CommandButtonBaseAutomationPeer.cs" />
+    <Compile Include="Converters\IsGreaterThanConverter.cs" />
     <Compile Include="Extensions\ContractExtensions.cs" />
     <Compile Include="Extensions\ValidationHelper.cs" />
     <Compile Include="Controls\ApplicationBar\ApplicationBar.cs" />

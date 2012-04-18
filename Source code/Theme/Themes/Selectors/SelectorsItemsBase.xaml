@@ -7,20 +7,25 @@
 
     <Style x:Key="SelectorsItemsBaseStyle" TargetType="{x:Type ListBoxItem}">
 
-        <Setter Property="Background" Value="{DynamicResource TransparentBrush}"/>
+        <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Selector}}, Path=Background, Mode=OneWay}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Selector}}, Path=Foreground}"/>
-        <Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Selector}}, Path=FontFamily}"/>
-        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Selector}}, Path=FontSize}"/>
-        <Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Selector}}, Path=FontWeight}"/>
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Selector}}, Path=Foreground, Mode=OneWay}"/>
+        <Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Selector}}, Path=FontFamily, Mode=OneWay}"/>
+        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Selector}}, Path=FontSize, Mode=OneWay}"/>
+        <Setter Property="FontStretch" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Selector}}, Path=FontStretch, Mode=OneWay}"/>
+        <Setter Property="FontStyle" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Selector}}, Path=FontStyle, Mode=OneWay}"/>
+        <Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Selector}}, Path=FontWeight, Mode=OneWay}"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Selector}}, Path=(TextOptions.TextFormattingMode), Mode=OneWay}"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Selector}}, Path=(TextOptions.TextRenderingMode), Mode=OneWay}"/>
+        <Setter Property="RenderOptions.ClearTypeHint" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Selector}}, Path=(RenderOptions.ClearTypeHint), Mode=OneWay}"/>
 
         <Setter Property="Focusable" Value="True"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}"/>
 
-        <Setter Property="HorizontalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Selector}}, Path=HorizontalContentAlignment}"/>
-        <Setter Property="VerticalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Selector}}, Path=VerticalContentAlignment}"/>
-        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Selector}}, Path=Padding}"/>
+        <Setter Property="HorizontalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Selector}}, Path=HorizontalContentAlignment, Mode=OneWay}"/>
+        <Setter Property="VerticalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Selector}}, Path=VerticalContentAlignment, Mode=OneWay}"/>
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Selector}}, Path=Padding, Mode=OneWay}"/>
 
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
@@ -31,6 +36,14 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
+                            TextBlock.Foreground="{TemplateBinding Foreground}"
+                            TextBlock.FontSize="{TemplateBinding FontSize}"
+                            TextBlock.FontStretch="{TemplateBinding FontStretch}"
+                            TextBlock.FontStyle="{TemplateBinding FontStyle}"
+                            TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                            TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                            TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                            RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"

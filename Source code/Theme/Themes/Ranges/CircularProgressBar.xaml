@@ -2,8 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
                     xmlns:root="clr-namespace:Elysium"
-                    xmlns:controls="clr-namespace:Elysium.Controls"
-                    xmlns:converters="clr-namespace:Elysium.Converters">
+                    xmlns:controls="clr-namespace:Elysium.Controls">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
@@ -24,16 +23,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:CircularProgressBar}">
-                    
-                    <ControlTemplate.Resources>
-                        <converters:PercentToAngleConverter x:Key="PercentToAngleConverter"/>
-                        <converters:AngleToCoordinateConverter x:Key="AngleToCoordinateConverter"/>
-                        <converters:NumberPositiveToNegativeConverter x:Key="NumberPositiveToNegativeConverter"/>
-                    </ControlTemplate.Resources>
-
-                    <Border Background="{DynamicResource TransparentBrush}"
-                            BorderThickness="0"
-                            ClipToBounds="True">
+                    <Border ClipToBounds="True">
                         <Canvas x:Name="PART_Track"
                                 RenderTransformOrigin="0.5,0.5"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
@@ -56,7 +46,6 @@
                                 </ed:Arc.RenderTransform>
                             </ed:Arc>
                             <ed:Arc x:Name="PART_Arc"
-                                    Fill="{DynamicResource TransparentBrush}"
                                     Stroke="{TemplateBinding Foreground}"
                                     StrokeThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessToDoubleConverter}}"
                                     StartAngle="0"
@@ -232,11 +221,11 @@
         <Style.Triggers>
 
             <Trigger Property="State" Value="Indeterminate">
-                <Setter Property="BorderBrush" Value="{DynamicResource TransparentBrush}"/>
+                <Setter Property="BorderBrush" Value="{x:Null}"/>
             </Trigger>
 
             <Trigger Property="State" Value="Busy">
-                <Setter Property="BorderBrush" Value="{DynamicResource TransparentBrush}"/>
+                <Setter Property="BorderBrush" Value="{x:Null}"/>
             </Trigger>
 
             <Trigger Property="IsEnabled" Value="False">

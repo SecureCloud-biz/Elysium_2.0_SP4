@@ -4,11 +4,9 @@ namespace Elysium.Test
 {
     public partial class App
     {
-        public App()
+        private void StartupHandler(object sender, System.Windows.StartupEventArgs e)
         {
-            InitializeComponent();
-
-            var accentBrush = new SolidColorBrush(AccentColors.Blue);
+            var accentBrush = new SolidColorBrush(AccentColors.Viridian);
             accentBrush.Freeze();
             var contrastBrush = new SolidColorBrush(Colors.White);
             contrastBrush.Freeze();

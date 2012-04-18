@@ -3,14 +3,23 @@
                     xmlns:root="clr-namespace:Elysium"
                     xmlns:controls="clr-namespace:Elysium.Controls">
 
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
     <Style x:Key="{x:Type controls:ApplicationBar}" TargetType="{x:Type controls:ApplicationBar}">
         
         <Setter Property="Background" Value="{DynamicResource HighlightBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
-        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.TextFontSize), Mode=OneWay}"/>
+        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.ContentFontSize), Mode=OneWay}"/>
+        <Setter Property="FontStretch" Value="Medium"/>
+        <Setter Property="FontStyle" Value="Normal"/>
         <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+        <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
 
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
@@ -24,13 +33,25 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
+                            TextBlock.Foreground="{TemplateBinding Foreground}"
+                            TextBlock.FontFamily="{TemplateBinding FontFamily}"
+                            TextBlock.FontSize="{TemplateBinding FontSize}"
+                            TextBlock.FontStretch="{TemplateBinding FontStretch}"
+                            TextBlock.FontStyle="{TemplateBinding FontStyle}"
+                            TextBlock.FontWeight="{TemplateBinding FontWeight}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <ItemsPresenter/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        
+
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
+                <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
+            </DataTrigger>
+        </Style.Triggers>
+
     </Style>
 
 </ResourceDictionary>

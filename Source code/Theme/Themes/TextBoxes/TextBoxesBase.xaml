@@ -2,6 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:root="clr-namespace:Elysium">
 
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
     <Style x:Key="TextBoxesBaseStyle" TargetType="{x:Type Control}">
         
         <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
@@ -9,7 +13,12 @@
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThickness), Mode=OneWay}"/>
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.TextFontSize), Mode=OneWay}"/>
+        <Setter Property="FontStretch" Value="Medium"/>
+        <Setter Property="FontStyle" Value="Normal"/>
         <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+        <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
 
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
 
@@ -32,13 +41,25 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <ScrollViewer x:Name="PART_ContentHost"
+                                      Background="{x:Null}"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      FontSize="{TemplateBinding FontSize}"
+                                      FontStretch="{TemplateBinding FontStretch}"
+                                      FontStyle="{TemplateBinding FontStyle}"
+                                      FontWeight="{TemplateBinding FontWeight}"
+                                      TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                                      TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                                      RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
                                       Margin="{TemplateBinding Padding}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        
+
         <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
+                <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
+            </DataTrigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}"/>
                 <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>

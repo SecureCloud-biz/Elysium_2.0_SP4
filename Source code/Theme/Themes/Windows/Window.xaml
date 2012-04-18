@@ -21,11 +21,18 @@
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.TextFontSize), Mode=OneWay}"/>
+        <Setter Property="FontStretch" Value="Medium"/>
+        <Setter Property="FontStyle" Value="Normal"/>
         <Setter Property="FontWeight" Value="Normal"/>
         <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
         <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
-        
+
+        <Setter Property="HasDropShadow" Value="{DynamicResource {x:Static SystemParameters.DropShadowKey}}"/>
+
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Focusable" Value="False"/>
+
         <Setter Property="ResizeMode" Value="CanResizeWithGrip"/>
 
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -39,7 +46,7 @@
             <Setter.Value>
                 <shell:WindowChrome CaptionHeight="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Window}}, Path=NonClientHeight, Mode=OneWay}"
                                     CornerRadius="0"
-                                    GlassFrameThickness="0,1,0,0"
+                                    GlassFrameThickness="0,0,0,1"
                                     NonClientFrameEdges="None"
                                     ResizeBorderThickness="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Window}}, Path=(root:Parameters.WindowResizeBorderThickness), Mode=OneWay}"
                                     UseAeroCaptionButtons="False"/>
@@ -48,8 +55,7 @@
         
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:Window}">
-                    
+                <ControlTemplate TargetType="{x:Type controls:Window}">                    
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
@@ -60,18 +66,21 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <controls:LinearProgressBar x:Name="PART_ProgressBar"
-                                                        Grid.Row="0"
-                                                        Value="{TemplateBinding ProgressPercent}"
-                                                        VerticalAlignment="Top"
-                                                        Width="{TemplateBinding Width}" Height="2"/>
                             <Grid x:Name="PART_Caption"
-                                  Grid.Row="0">
+                                  Grid.Row="0"
+                                  Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Mode=OneWay, Converter={StaticResource ThicknessPositiveToNegativeConverter}}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="90"/>
                                 </Grid.ColumnDefinitions>
+                                <controls:LinearProgressBar x:Name="PART_ProgressBar"
+                                                            Grid.ColumnSpan="3"
+                                                            Grid.Row="0"
+                                                            Background="{x:Null}"
+                                                            Value="{TemplateBinding ProgressPercent}"
+                                                            VerticalAlignment="Top"
+                                                            Width="{TemplateBinding Width}" Height="2"/>
                                 <Border x:Name="PART_Title"
                                         Grid.Column="0"
                                         Background="{DynamicResource AccentBrush}"
@@ -79,7 +88,7 @@
                                     <TextBlock x:Name="Title"
                                                Text="{TemplateBinding Title}"
                                                Foreground="{DynamicResource ContrastBrush}"
-                                               FontSize="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.TitleFontSize), Mode=OneWay}"
+                                               FontSize="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.TitleFontSize), Mode=OneWay}"
                                                FontWeight="Normal"
                                                Margin="10,5"/>
                                 </Border>
@@ -87,7 +96,6 @@
                                             Orientation="Horizontal"
                                             shell:WindowChrome.IsHitTestVisibleInChrome="True">
                                     <controls:CommandButton x:Name="PART_Minimize"
-                                                            Background="{DynamicResource TransparentBrush}"
                                                             BorderThickness="0"
                                                             Width="30" Height="30">
                                         <Image Source="pack://application:,,,/Elysium;component/Icons/Minimize.png"
@@ -103,7 +111,6 @@
                                         </i:Interaction.Triggers>
                                     </controls:CommandButton>
                                     <controls:ToggleCommandButton x:Name="PART_MaximizeRestore"
-                                                            Background="{DynamicResource TransparentBrush}"
                                                                   BorderThickness="0"
                                                                   Width="30" Height="30">
                                         <controls:ToggleCommandButton.Resources>
@@ -136,13 +143,12 @@
                                                 <ei:ChangePropertyAction TargetObject="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                                                          PropertyName="WindowState"
                                                                          Value="{x:Static WindowState.Maximized}"
-                                                                         IsEnabled="{Binding IsChecked, ElementName=PART_MaximizeRestore}"/>
+                                                                         IsEnabled="{Binding ElementName=PART_MaximizeRestore, Path=IsChecked}"/>
                                             </i:EventTrigger>
                                         </i:Interaction.Triggers>
                                     </controls:ToggleCommandButton>
                                     <controls:CommandButton x:Name="PART_Close"
                                                             Command="{x:Static ApplicationCommands.Close}"
-                                                            Background="{DynamicResource TransparentBrush}"
                                                             BorderThickness="0"
                                                             Width="30" Height="30">
                                         <Image Source="pack://application:,,,/Elysium;component/Icons/Close.png"
@@ -153,7 +159,7 @@
                                 </StackPanel>
                             </Grid>
                             <AdornerDecorator Grid.Row="1">
-                                <ContentPresenter/>
+                                <ContentPresenter Margin="{TemplateBinding Padding}"/>
                             </AdornerDecorator>
                             <Border x:Name="PART_ApplicationBarHost"
                                     Grid.Row="1"/>
@@ -166,10 +172,13 @@
                                         VerticalAlignment="Bottom"/>
                         </Grid>
                     </Border>
-                    
+
                     <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.TitleFontSize), Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
+                            <Setter TargetName="Title" Property="TextOptions.TextFormattingMode" Value="Ideal"/>
+                        </DataTrigger>
                         <Trigger Property="IsMainWindow" Value="False">
-                            <Setter TargetName="PART_Title" Property="Background" Value="{DynamicResource TransparentBrush}"/>
+                            <Setter TargetName="PART_Title" Property="Background" Value="{x:Null}"/>
                             <Setter TargetName="Title" Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
                         </Trigger>
                         <Trigger Property="Title" Value="{x:Static system:String.Empty}">
@@ -178,7 +187,7 @@
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="PART_LayoutRoot" Property="Margin" Value="{Binding Source={x:Static shell:SystemParameters2.Current}, Path=WindowResizeBorderThickness}"/>
                         </Trigger>
-                        <Trigger Property="WindowStyle" Value="{x:Static WindowStyle.None}">
+                        <Trigger Property="WindowStyle" Value="None">
                             <Trigger.Setters>
                                 <Setter TargetName="PART_Title" Property="Visibility" Value="Collapsed"/>
                                 <Setter TargetName="PART_Minimize" Property="Visibility" Value="Collapsed"/>
@@ -186,7 +195,7 @@
                                 <Setter TargetName="PART_Close" Property="Visibility" Value="Collapsed"/>
                             </Trigger.Setters>
                         </Trigger>
-                        <Trigger Property="WindowStyle" Value="{x:Static WindowStyle.ToolWindow}">
+                        <Trigger Property="WindowStyle" Value="ToolWindow">
                             <Trigger.Setters>
                                 <Setter TargetName="PART_Minimize" Property="Visibility" Value="Collapsed"/>
                                 <Setter TargetName="PART_MaximizeRestore" Property="Visibility" Value="Collapsed"/>
@@ -215,6 +224,24 @@
         </Setter>
         
         <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
+                <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
+            </DataTrigger>
+            <Trigger Property="HasDropShadow" Value="False">
+                <Trigger.Setters>
+                    <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.BoldThicknessValue), Mode=OneWay}"/>
+                    <Setter Property="shell:WindowChrome.WindowChrome">
+                        <Setter.Value>
+                            <shell:WindowChrome CaptionHeight="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Window}}, Path=NonClientHeight, Mode=OneWay}"
+                                    CornerRadius="0"
+                                    GlassFrameThickness="0"
+                                    NonClientFrameEdges="None"
+                                    ResizeBorderThickness="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Window}}, Path=(root:Parameters.WindowResizeBorderThickness), Mode=OneWay}"
+                                    UseAeroCaptionButtons="False"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger.Setters>
+            </Trigger>
             <Trigger Property="WindowStyle" Value="{x:Static WindowStyle.None}">
                 <Setter Property="ResizeMode" Value="NoResize"/>
             </Trigger>

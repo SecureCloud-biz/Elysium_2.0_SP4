@@ -2,14 +2,23 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:root="clr-namespace:Elysium">
 
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
     <Style TargetType="{x:Type ScrollViewer}">
 
-        <Setter Property="Background" Value="{DynamicResource TransparentBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource Background}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.TextFontSize), Mode=OneWay}"/>
+        <Setter Property="FontStretch" Value="Medium"/>
+        <Setter Property="FontStyle" Value="Normal"/>
         <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+        <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
 
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
@@ -25,7 +34,7 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                        <Grid Background="{DynamicResource TransparentBrush}">
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
@@ -53,7 +62,7 @@
                                        Orientation="Horizontal"
                                        Minimum="0"
                                        Maximum="{TemplateBinding ScrollableWidth}"
-                                       Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=HorizontalOffset, Mode=OneWay}"
+                                       Value="{TemplateBinding HorizontalOffset}"
                                        ViewportSize="{TemplateBinding ViewportWidth}"
                                        Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"/>
                             <ScrollBar x:Name="PART_VerticalScrollBar"
@@ -64,7 +73,7 @@
                                        Orientation="Vertical"
                                        Minimum="0"
                                        Maximum="{TemplateBinding ScrollableHeight}"
-                                       Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=VerticalOffset, Mode=OneWay}"
+                                       Value="{TemplateBinding VerticalOffset}"
                                        ViewportSize="{TemplateBinding ViewportHeight}"
                                        Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"/>
                         </Grid>
@@ -72,7 +81,13 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        
+
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
+                <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
+            </DataTrigger>
+        </Style.Triggers>
+
     </Style>
 
 </ResourceDictionary>

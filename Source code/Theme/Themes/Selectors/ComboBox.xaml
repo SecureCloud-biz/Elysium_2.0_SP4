@@ -18,10 +18,10 @@
                         <Polygon Fill="{DynamicResource MiddleLightBrush}"
                                  StrokeThickness="0"
                                  Stretch="Uniform"
-                                 Margin="{TemplateBinding root:Parameters.ComboBoxArrowMargin}"
+                                 Margin="{Binding RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}, Path=(root:Parameters.ComboBoxArrowMargin), Mode=OneWay}"
                                  HorizontalAlignment="Right" VerticalAlignment="Center"
-                                 Width="{TemplateBinding root:Parameters.ComboBoxArrowSize}"
-                                 Height="{TemplateBinding root:Parameters.ComboBoxArrowSize}">
+                                 Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}, Path=(root:Parameters.ComboBoxArrowSize), Mode=OneWay}"
+                                 Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}, Path=(root:Parameters.ComboBoxArrowSize), Mode=OneWay}">
                             <Polygon.Points>
                                 <PointCollection>
                                     <Point X="0" Y="0"/>
@@ -73,8 +73,16 @@
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThickness), Mode=OneWay}"/>
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.ContentFontSize), Mode=OneWay}"/>
+        <Setter Property="FontStretch" Value="Medium"/>
+        <Setter Property="FontStyle" Value="Normal"/>
         <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+        <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
+        
+        <Setter Property="root:Parameters.ShadowBrush" Value="{DynamicResource ForegroundBrush}"/>
 
+        <Setter Property="Focusable" Value="True"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}"/>
 
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
@@ -100,7 +108,7 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                        <Grid Background="{DynamicResource TransparentBrush}">
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ComboBoxButtonSize), Converter={StaticResource DoubleToGridLengthConverter}}"/>
@@ -108,6 +116,7 @@
                             <Popup x:Name="PART_Popup" 
                                    Grid.Column="0"
                                    Grid.ColumnSpan="2"
+                                   AllowsTransparency="True"
                                    IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                                    Placement="Bottom"
                                    VerticalOffset="-1"
@@ -121,23 +130,32 @@
                                         </Style.Triggers>
                                     </Style>
                                 </Popup.Resources>
-                                <ScrollViewer x:Name="DropDownScrollViewer"
-                                              Background="{DynamicResource BackgroundBrush}"
-                                              BorderBrush="{TemplateBinding BorderBrush}"
-                                              BorderThickness="{TemplateBinding BorderThickness}"
-                                              MinWidth="{Binding ActualWidth, ElementName=LayoutRoot}"
-                                              MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                    <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained"/>
-                                </ScrollViewer>
+                                <Border x:Name="PopupRoot"
+                                        Tag="{DynamicResource {x:Static SystemParameters.DropShadowKey}}">
+                                    <ScrollViewer x:Name="DropDownScrollViewer"
+                                                  Background="{DynamicResource BackgroundBrush}"
+                                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                                  BorderThickness="{TemplateBinding BorderThickness}"
+                                                  Foreground="{TemplateBinding Foreground}"
+                                                  FontSize="{TemplateBinding FontSize}"
+                                                  FontStretch="{TemplateBinding FontStretch}"
+                                                  FontStyle="{TemplateBinding FontStyle}"
+                                                  FontWeight="{TemplateBinding FontWeight}"
+                                                  TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                                                  TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                                                  RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
+                                                  MinWidth="{Binding ElementName=LayoutRoot, Path=ActualWidth}"
+                                                  MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                        <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                    </ScrollViewer>
+                                </Border>
                             </Popup>
                             <ToggleButton x:Name="Button"
                                           Grid.Column="0"
                                           Grid.ColumnSpan="2"
                                           Background="{TemplateBinding Background}"
                                           BorderThickness="0"
-                                          IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                          root:Parameters.ComboBoxArrowMargin="{TemplateBinding root:Parameters.ComboBoxArrowMargin}"
-                                          root:Parameters.ComboBoxArrowSize="{TemplateBinding root:Parameters.ComboBoxArrowSize}"
+                                          IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsDropDownOpen, Mode=TwoWay}"
                                           Style="{StaticResource ComboBoxToggleButton}"/>
                             <ContentPresenter x:Name="ContentPresenter"
                                               Grid.Column="0"
@@ -155,8 +173,6 @@
                                   Background="{DynamicResource BackgroundBrush}"
                                   Visibility="Collapsed">
                                   <TextBox x:Name="PART_EditableTextBox"
-                                           Background="{DynamicResource TransparentBrush}"
-                                           BorderThickness="0"
                                            Foreground="{TemplateBinding Foreground}"
                                            FontFamily="{TemplateBinding FontFamily}"
                                            FontSize="{TemplateBinding FontSize}"
@@ -169,6 +185,18 @@
                     </Border>
 
                     <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=PopupRoot, Path=Tag}"  Value="True">
+                            <Setter TargetName="PopupRoot" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.ShadowBrush).(SolidColorBrush.Color)}"
+                                                      BlurRadius="4" ShadowDepth="2"
+                                                      Direction="315"
+                                                      Opacity="0.3"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="PopupRoot" Property="Background" Value="{DynamicResource Transparent}"/>
+                            <Setter TargetName="PopupRoot" Property="Padding" Value="0,0,6,6"/>
+                        </DataTrigger>
                         <Trigger Property="IsEditable" Value="True">
                             <Setter TargetName="Button" Property="Grid.Column" Value="1"/>
                             <Setter TargetName="Button" Property="Grid.ColumnSpan" Value="1"/>
@@ -186,8 +214,11 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        
-        <Style.Triggers>            
+
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
+                <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
+            </DataTrigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="BorderBrush" Value="{DynamicResource DisabledBrush}"/>
                 <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>

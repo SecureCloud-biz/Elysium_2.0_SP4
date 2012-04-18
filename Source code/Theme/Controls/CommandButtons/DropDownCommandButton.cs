@@ -8,6 +8,7 @@ using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 
 using Elysium.Controls.Automation;
 using Elysium.Controls.Primitives;
@@ -140,6 +141,7 @@ namespace Elysium.Controls
             switch (newIsDropDownOpen)
             {
                 case true:
+                    Mouse.Capture(null, CaptureMode.None);
                     VisualStateManager.GoToState(this, "DropDown", true);
                     break;
                 case false:
@@ -197,7 +199,7 @@ namespace Elysium.Controls
         [PublicAPI]
         public static readonly DependencyProperty DropDownDirectionProperty =
             DependencyProperty.Register("DropDownDirection", typeof(DropDownDirection), typeof(DropDownCommandButton),
-                                        new FrameworkPropertyMetadata(DropDownDirection.Down));
+                                        new FrameworkPropertyMetadata(DropDownDirection.Up));
 
         [PublicAPI]
         [Category("Layout")]
@@ -281,11 +283,13 @@ namespace Elysium.Controls
             var window = System.Windows.Window.GetWindow(this);
             if (window != null)
             {
-                var transformToAncestor = TransformToAncestor(window);
-
-                var x = targetsize.Width / 2 - popupsize.Width / 2 + offset.X;
-                var y = DropDownDirection == DropDownDirection.Up ? -popupsize.Height + offset.Y : ActualHeight + popupsize.Height + offset.Y;
+                var x = (targetsize.Width - Margin.Left + Margin.Right) / 2 - popupsize.Width / 2 + offset.X;
+                var y = DropDownDirection == DropDownDirection.Up
+                            ? -popupsize.Height - Margin.Top - Margin.Bottom - offset.Y
+                            : ActualHeight + Margin.Top + Margin.Bottom + offset.Y;
                 var position = new Point(x, y);
+
+                var transformToAncestor = TransformToAncestor(window);
 
                 if (transformToAncestor != null)
                 {
@@ -298,15 +302,15 @@ namespace Elysium.Controls
                     }
                     if (relativePosition.X + popupsize.Width > window.Width)
                     {
-                        relativePosition.X = selfPosition.X + ActualWidth;
+                        relativePosition.X = selfPosition.X + ActualWidth - popupsize.Width;
                     }
                     if (DropDownDirection == DropDownDirection.Up && relativePosition.Y < 0)
                     {
-                        relativePosition.Y = selfPosition.Y + ActualHeight + popupsize.Height;
+                        relativePosition.Y = selfPosition.Y + ActualHeight + Margin.Top + Margin.Bottom;
                     }
                     if (DropDownDirection == DropDownDirection.Down && relativePosition.Y + popupsize.Height > window.Height)
                     {
-                        relativePosition.Y = -popupsize.Height;
+                        relativePosition.Y = selfPosition.Y - popupsize.Height - Margin.Top - Margin.Bottom;
                     }
 
                     var transformToDescendant = window.TransformToDescendant(this);
