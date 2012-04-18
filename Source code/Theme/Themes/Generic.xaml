@@ -6,6 +6,7 @@
         <ResourceDictionary Source="/Elysium;component/Themes/AccentBrushes.xaml"/>
 
         <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
+        <ResourceDictionary Source="/Elysium;component/Themes/Icons.xaml"/>
 
         <ResourceDictionary Source="/Elysium;component/Themes/Windows/Window.xaml"/>
         

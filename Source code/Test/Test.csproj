@@ -76,12 +76,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\Sample24.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Icons\Sample16.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Theme\Theme.csproj">
       <Project>{5A65DA67-130D-43D8-9224-4559B523B6D4}</Project>
       <Name>Theme</Name>

@@ -12,13 +12,17 @@
             <metro:CommandButton Header="Dark theme"
                                  Click="DarkClick"
                                  Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
-                <Image Source="pack://application:,,,/Test;component/Icons/Sample24.png"
-                       Stretch="None"/>
+                <Path Data="{StaticResource SampleIcon24px}"
+                      Fill="Black"
+                      Stroke="Black"
+                      Width="24" Height="24"/>
             </metro:CommandButton>
             <metro:DropDownCommandButton Header="Accent color"
                                          Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
-                <Image Source="pack://application:,,,/Elysium;component/Icons/Advanced.png"
-                       Stretch="None"/>
+                <Path Data="{DynamicResource AdvancedIcon}"
+                      Fill="Black"
+                      Stroke="Black"
+                      Width="24" Height="24"/>
                 <metro:DropDownCommandButton.Submenu>
                     <metro:Submenu>
                         <MenuItem Header="Blue"
@@ -97,8 +101,10 @@
             <metro:DropDownCommandButton Header="Advanced"
                                          metro:ApplicationBar.Dock="Right"
                                          Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
-                <Image Source="pack://application:,,,/Elysium;component/Icons/Advanced.png"
-                       Stretch="None"/>
+                <Path Data="{DynamicResource AdvancedIcon}"
+                      Fill="Black"
+                      Stroke="Black"
+                      Width="24" Height="24"/>
                 <metro:DropDownCommandButton.Submenu>
                     <metro:Submenu>
                         <MenuItem Header="First advanced item"/>
@@ -304,38 +310,48 @@
                                          Header="Disabled"
                                          IsEnabled="False"
                                          Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
-                        <Image Source="pack://application:,,,/Test;component/Icons/Sample24.png"
-                               Stretch="None"/>
+                        <Path Data="{StaticResource SampleIcon24px}"
+                              Fill="Black"
+                              Stroke="Black"
+                              Width="24" Height="24"/>
                     </metro:CommandButton>
                     <metro:CommandButton Grid.Column="0"
                                          Grid.Row="1"
                                          Header="CommandButton"
                                          Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
-                        <Image Source="pack://application:,,,/Test;component/Icons/Sample24.png"
-                               Stretch="None"/>
+                        <Path Data="{StaticResource SampleIcon24px}"
+                              Fill="Black"
+                              Stroke="Black"
+                              Width="24" Height="24"/>
                     </metro:CommandButton>
                     <metro:ToggleCommandButton Grid.Column="1"
                                                Grid.Row="0"
                                                Header="Disabled"
                                                IsEnabled="False"
                                                Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
-                        <Image Source="pack://application:,,,/Test;component/Icons/Sample24.png"
-                               Stretch="None"/>
+                        <Path Data="{StaticResource SampleIcon24px}"
+                              Fill="Black"
+                              Stroke="Black"
+                              Width="24" Height="24"/>
                     </metro:ToggleCommandButton>
                     <metro:ToggleCommandButton Grid.Column="1"
                                                Grid.Row="1"
                                                Header="ToggleCommandButton"
                                                Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
-                        <Image Source="pack://application:,,,/Test;component/Icons/Sample24.png"
-                               Stretch="None"/>
+                        <Path Data="{StaticResource SampleIcon24px}"
+                              Fill="Black"
+                              Stroke="Black"
+                              Width="24" Height="24"/>
                     </metro:ToggleCommandButton>
                     <metro:ToggleCommandButton Grid.Column="1"
                                                Grid.Row="2"
                                                Header="Checked"
                                                IsChecked="True"
                                                Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
-                        <Image Source="pack://application:,,,/Test;component/Icons/Sample24.png"
-                               Stretch="None"/>
+                        <Path Data="{StaticResource SampleIcon24px}"
+                              Fill="Black"
+                              Stroke="Black"
+                              Width="24" Height="24"/>
                     </metro:ToggleCommandButton>
                     <metro:ToggleCommandButton Grid.Column="1"
                                                Grid.Row="3"
@@ -343,8 +359,10 @@
                                                IsThreeState="True"
                                                IsChecked="{x:Null}"
                                                Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
-                        <Image Source="pack://application:,,,/Test;component/Icons/Sample24.png"
-                               Stretch="None"/>
+                        <Path Data="{StaticResource SampleIcon24px}"
+                              Fill="Black"
+                              Stroke="Black"
+                              Width="24" Height="24"/>
                     </metro:ToggleCommandButton>
                 </Grid>
             </Grid>
@@ -431,8 +449,10 @@
                                       IsChecked="True"/>
                             <MenuItem Header="First MenuItem with icon">
                                 <MenuItem.Icon>
-                                    <Image Source="pack://application:,,,/Test;component/Icons/Sample16.png"
-                                           Stretch="None"/>
+                                    <Path Data="{StaticResource SampleIcon16px}"
+                                          Fill="Black"
+                                          Stroke="Black"
+                                          Width="16" Height="16"/>
                                 </MenuItem.Icon>
                             </MenuItem>
                             <MenuItem Header="First expandable MenuItem">

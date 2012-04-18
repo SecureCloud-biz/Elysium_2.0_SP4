@@ -9,6 +9,7 @@
                     xmlns:controls="clr-namespace:Elysium.Controls">
 
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Elysium;component/Themes/Icons.xaml"/>
         <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
         <ResourceDictionary Source="/Elysium;component/Themes/Buttons/CommandButtonBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
@@ -98,10 +99,10 @@
                                     <controls:CommandButton x:Name="PART_Minimize"
                                                             BorderThickness="0"
                                                             Width="30" Height="30">
-                                        <Image Source="pack://application:,,,/Elysium;component/Icons/Minimize.png"
-                                               Stretch="None"
-                                               RenderOptions.BitmapScalingMode="NearestNeighbor"
-                                               Width="10" Height="10"/>
+                                        <Path Data="{StaticResource MinimizeIcon}"
+                                              Fill="Black"
+                                              Stretch="None"
+                                              Width="10" Height="10"/>
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="Click">
                                                 <ei:ChangePropertyAction TargetObject="{Binding RelativeSource={RelativeSource TemplatedParent}}"
@@ -114,23 +115,23 @@
                                                                   BorderThickness="0"
                                                                   Width="30" Height="30">
                                         <controls:ToggleCommandButton.Resources>
-                                            <Image x:Key="MaximizeIcon"
-                                                   Source="pack://application:,,,/Elysium;component/Icons/Maximize.png"
-                                                   Stretch="None"
-                                                   RenderOptions.BitmapScalingMode="NearestNeighbor"
-                                                   Width="10" Height="10"/>
-                                            <Image x:Key="RestoreIcon"
-                                                   Source="pack://application:,,,/Elysium;component/Icons/Restore.png"
-                                                   Stretch="None"
-                                                   RenderOptions.BitmapScalingMode="NearestNeighbor"
-                                                   Width="10" Height="10"/>
+                                            <Path x:Key="MaximizePath"
+                                                  Data="{StaticResource MaximizeIcon}"
+                                                  Stroke="Black"
+                                                  Stretch="None"
+                                                  Width="10" Height="10"/>
+                                            <Path x:Key="RestorePath"
+                                                  Data="{StaticResource RestoreIcon}"
+                                                  Stroke="Black"
+                                                  Stretch="None"
+                                                  Width="10" Height="10"/>
                                         </controls:ToggleCommandButton.Resources>
                                         <controls:ToggleCommandButton.Style>
                                             <Style TargetType="{x:Type controls:ToggleCommandButton}" BasedOn="{StaticResource {x:Type primitives:CommandButtonBase}}">
-                                                <Setter Property="Content" Value="{StaticResource MaximizeIcon}"/>
+                                                <Setter Property="Content" Value="{StaticResource MaximizePath}"/>
                                                 <Style.Triggers>
                                                     <Trigger Property="IsChecked" Value="True">
-                                                        <Setter Property="Content" Value="{StaticResource RestoreIcon}"/>
+                                                        <Setter Property="Content" Value="{StaticResource RestorePath}"/>
                                                     </Trigger>
                                                 </Style.Triggers>
                                             </Style>
@@ -151,10 +152,10 @@
                                                             Command="{x:Static ApplicationCommands.Close}"
                                                             BorderThickness="0"
                                                             Width="30" Height="30">
-                                        <Image Source="pack://application:,,,/Elysium;component/Icons/Close.png"
-                                               Stretch="None"
-                                               RenderOptions.BitmapScalingMode="NearestNeighbor"
-                                               Width="10" Height="10"/>
+                                        <Path Data="{StaticResource CloseIcon}"
+                                              Stroke="Black"
+                                              Stretch="None"
+                                              Width="10" Height="10"/>
                                     </controls:CommandButton>
                                 </StackPanel>
                             </Grid>

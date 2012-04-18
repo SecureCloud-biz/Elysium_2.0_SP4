@@ -256,6 +256,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Themes\Icons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\LightBrushes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -406,13 +410,6 @@
     </Compile>
     <Compile Include="ThemeManager.cs" />
     <Compile Include="Theme.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Icons\Close.png" />
-    <Resource Include="Icons\Maximize.png" />
-    <Resource Include="Icons\Minimize.png" />
-    <Resource Include="Icons\Restore.png" />
-    <Resource Include="Icons\Advanced.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\Key.snk" />
