@@ -243,22 +243,29 @@ namespace Elysium.Controls.Primitives
                 Contract.Assume(_headerHost.DesiredSize.Width >= 0d);
                 Contract.Assume(_headerHost.DesiredSize.Height >= 0d);
 
-                var contentSize = Math.Max(_contentHost.DesiredSize.Width, _contentHost.DesiredSize.Height) * Math.Sqrt(2.0);
+                var contentSize = Math.Max(_contentHost.DesiredSize.Width, _contentHost.DesiredSize.Height);
+
+                // NOTE: Parity must be the same
+                var contentBoxSize = Math.Ceiling(contentSize * Math.Sqrt(2d));
+                if (((int)contentBoxSize % 2 == 0) ^ ((int)Math.Ceiling(contentSize) % 2 == 0))
+                {
+                    contentBoxSize++;
+                }
 
                 var constraintWidth = double.IsNaN(constraint.Width) || double.IsInfinity(constraint.Width) ? double.MaxValue : constraint.Width;
                 var constraintHeight = double.IsNaN(constraint.Height) || double.IsInfinity(constraint.Height) ? 0d : constraint.Height;
 
-                var width = Math.Min(Math.Max(contentSize, _headerHost.DesiredSize.Width), constraintWidth);
-                var height = Math.Max(contentSize + _headerHost.DesiredSize.Height, constraintHeight);
+                var width = Math.Min(Math.Max(contentBoxSize, _headerHost.DesiredSize.Width), constraintWidth);
+                var height = Math.Max(contentBoxSize + _headerHost.DesiredSize.Height, constraintHeight);
 
                 // NOTE: Lack of contracts: Math.Max and Math.Min doesn't contain ensures
-                Contract.Assume(width >= 0);
-                Contract.Assume(height >= 0);
+                Contract.Assume(width >= 0d);
+                Contract.Assume(height >= 0d);
 
                 var boxSize = Math.Min(width, Math.Max(height - _headerHost.DesiredSize.Height, 0d));
 
                 // NOTE: Lack of contracts: Math.Max and Math.Min doesn't contain ensures
-                Contract.Assume(boxSize >= 0);
+                Contract.Assume(boxSize >= 0d);
 
                 _decor.Width = boxSize;
                 _decor.Height = boxSize;

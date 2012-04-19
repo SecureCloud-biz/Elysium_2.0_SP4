@@ -2,11 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <GeometryGroup x:Key="AdvancedIcon">
-        <EllipseGeometry Center="3,2.5"
+        <EllipseGeometry Center="3,3"
                          RadiusX="2.5" RadiusY="2.5"/>
-        <EllipseGeometry Center="12,2.5"
+        <EllipseGeometry Center="12,3"
                          RadiusX="2.5" RadiusY="2.5"/>
-        <EllipseGeometry Center="21,2.5"
+        <EllipseGeometry Center="21,3"
                          RadiusX="2.5" RadiusY="2.5"/>
     </GeometryGroup>
     

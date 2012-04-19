@@ -8,7 +8,7 @@ using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Input;
+// using System.Windows.Input;
 
 using Elysium.Controls.Automation;
 using Elysium.Controls.Primitives;
@@ -141,7 +141,8 @@ namespace Elysium.Controls
             switch (newIsDropDownOpen)
             {
                 case true:
-                    Mouse.Capture(null, CaptureMode.None);
+                    // BUG #959: When you move the mouse to select from the submenu it disappears before you can select from it.
+                    // Mouse.Capture(null, CaptureMode.None);
                     VisualStateManager.GoToState(this, "DropDown", true);
                     break;
                 case false:
