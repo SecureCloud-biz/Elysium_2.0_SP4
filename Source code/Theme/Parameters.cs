@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Diagnostics.Contracts;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -28,14 +26,14 @@ namespace Elysium
                                                                               FrameworkPropertyMetadataOptions.AffectsArrange |
                                                                               FrameworkPropertyMetadataOptions.AffectsRender |
                                                                               FrameworkPropertyMetadataOptions.Inherits,
-                                                                              null, CoerceSize));
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures")]
         public static double GetTitleFontSize([NotNull] DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(TitleFontSizeProperty));
         }
 
@@ -54,14 +52,14 @@ namespace Elysium
                                                                               FrameworkPropertyMetadataOptions.AffectsArrange |
                                                                               FrameworkPropertyMetadataOptions.AffectsRender |
                                                                               FrameworkPropertyMetadataOptions.Inherits,
-                                                                              null, CoerceSize));
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures")]
         public static double GetHeaderFontSize([NotNull] DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(HeaderFontSizeProperty));
         }
 
@@ -80,14 +78,14 @@ namespace Elysium
                                                                               FrameworkPropertyMetadataOptions.AffectsArrange |
                                                                               FrameworkPropertyMetadataOptions.AffectsRender |
                                                                               FrameworkPropertyMetadataOptions.Inherits,
-                                                                              null, CoerceSize));
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures")]
         public static double GetContentFontSize([NotNull] DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(ContentFontSizeProperty));
         }
 
@@ -106,14 +104,14 @@ namespace Elysium
                                                                               FrameworkPropertyMetadataOptions.AffectsArrange |
                                                                               FrameworkPropertyMetadataOptions.AffectsRender |
                                                                               FrameworkPropertyMetadataOptions.Inherits,
-                                                                              null, CoerceSize));
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures")]
         public static double GetTextFontSize([NotNull] DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(TextFontSizeProperty));
         }
 
@@ -134,14 +132,14 @@ namespace Elysium
                                                 new FrameworkPropertyMetadata(new Thickness(1d),
                                                                               FrameworkPropertyMetadataOptions.AffectsArrange |
                                                                               FrameworkPropertyMetadataOptions.Inherits,
-                                                                              null, CoerceThickness));
+                                                                              null, ThicknessUtil.CoerceNonNegative));
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures")]
         public static Thickness GetDefaultThickness([NotNull] DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureThickness();
+            ThicknessUtil.EnsureNonNegative();
             return BoxingHelper<Thickness>.Unbox(obj.GetValue(DefaultThicknessProperty));
         }
 
@@ -158,14 +156,14 @@ namespace Elysium
                                                 new FrameworkPropertyMetadata(new Thickness(1.5d),
                                                                               FrameworkPropertyMetadataOptions.AffectsArrange |
                                                                               FrameworkPropertyMetadataOptions.Inherits,
-                                                                              null, CoerceThickness));
+                                                                              null, ThicknessUtil.CoerceNonNegative));
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures")]
         public static Thickness GetSemiBoldThickness([NotNull] DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureThickness();
+            ThicknessUtil.EnsureNonNegative();
             return BoxingHelper<Thickness>.Unbox(obj.GetValue(SemiBoldThicknessProperty));
         }
 
@@ -182,14 +180,14 @@ namespace Elysium
                                                 new FrameworkPropertyMetadata(new Thickness(2d),
                                                                               FrameworkPropertyMetadataOptions.AffectsArrange |
                                                                               FrameworkPropertyMetadataOptions.Inherits,
-                                                                              null, CoerceThickness));
+                                                                              null, ThicknessUtil.CoerceNonNegative));
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures")]
         public static Thickness GetBoldThickness([NotNull] DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureThickness();
+            ThicknessUtil.EnsureNonNegative();
             return BoxingHelper<Thickness>.Unbox(obj.GetValue(BoldThicknessProperty));
         }
 
@@ -206,14 +204,14 @@ namespace Elysium
                                                 new FrameworkPropertyMetadata(1d,
                                                                               FrameworkPropertyMetadataOptions.AffectsArrange |
                                                                               FrameworkPropertyMetadataOptions.Inherits,
-                                                                              null, CoerceSize));
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures")]
         public static double GetDefaultThicknessValue([NotNull] DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(DefaultThicknessValueProperty));
         }
 
@@ -230,14 +228,14 @@ namespace Elysium
                                                 new FrameworkPropertyMetadata(1.5d,
                                                                               FrameworkPropertyMetadataOptions.AffectsArrange |
                                                                               FrameworkPropertyMetadataOptions.Inherits,
-                                                                              null, CoerceSize));
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures")]
         public static double GetSemiBoldThicknessValue([NotNull] DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(SemiBoldThicknessValueProperty));
         }
 
@@ -254,14 +252,14 @@ namespace Elysium
                                                 new FrameworkPropertyMetadata(2d,
                                                                               FrameworkPropertyMetadataOptions.AffectsArrange |
                                                                               FrameworkPropertyMetadataOptions.Inherits,
-                                                                              null, CoerceSize));
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures")]
         public static double GetBoldThicknessValue([NotNull] DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(BoldThicknessValueProperty));
         }
 
@@ -282,14 +280,14 @@ namespace Elysium
                                                 new FrameworkPropertyMetadata(new Thickness(1d),
                                                                               FrameworkPropertyMetadataOptions.AffectsArrange |
                                                                               FrameworkPropertyMetadataOptions.Inherits,
-                                                                              null, CoerceThickness));
+                                                                              null, ThicknessUtil.CoerceNonNegative));
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures")]
         public static Thickness GetDefaultPadding([NotNull] DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureThickness();
+            ThicknessUtil.EnsureNonNegative();
             return BoxingHelper<Thickness>.Unbox(obj.GetValue(DefaultPaddingProperty));
         }
 
@@ -306,14 +304,14 @@ namespace Elysium
                                                 new FrameworkPropertyMetadata(new Thickness(2d),
                                                                               FrameworkPropertyMetadataOptions.AffectsArrange |
                                                                               FrameworkPropertyMetadataOptions.Inherits,
-                                                                              null, CoerceThickness));
+                                                                              null, ThicknessUtil.CoerceNonNegative));
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures")]
         public static Thickness GetSemiBoldPadding([NotNull] DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureThickness();
+            ThicknessUtil.EnsureNonNegative();
             return BoxingHelper<Thickness>.Unbox(obj.GetValue(SemiBoldPaddingProperty));
         }
 
@@ -330,14 +328,14 @@ namespace Elysium
                                                 new FrameworkPropertyMetadata(new Thickness(5d),
                                                                               FrameworkPropertyMetadataOptions.AffectsArrange |
                                                                               FrameworkPropertyMetadataOptions.Inherits,
-                                                                              null, CoerceThickness));
+                                                                              null, ThicknessUtil.CoerceNonNegative));
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures")]
         public static Thickness GetBoldPadding([NotNull] DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureThickness();
+            ThicknessUtil.EnsureNonNegative();
             return BoxingHelper<Thickness>.Unbox(obj.GetValue(BoldPaddingProperty));
         }
 
@@ -354,14 +352,14 @@ namespace Elysium
                                                 new FrameworkPropertyMetadata(1d,
                                                                               FrameworkPropertyMetadataOptions.AffectsArrange |
                                                                               FrameworkPropertyMetadataOptions.Inherits,
-                                                                              null, CoerceSize));
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures")]
         public static double GetDefaultPaddingValue([NotNull] DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(DefaultPaddingValueProperty));
         }
 
@@ -378,14 +376,14 @@ namespace Elysium
                                                 new FrameworkPropertyMetadata(2d,
                                                                               FrameworkPropertyMetadataOptions.AffectsArrange |
                                                                               FrameworkPropertyMetadataOptions.Inherits,
-                                                                              null, CoerceSize));
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures")]
         public static double GetSemiBoldPaddingValue([NotNull] DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(SemiBoldPaddingValueProperty));
         }
 
@@ -402,14 +400,14 @@ namespace Elysium
                                                 new FrameworkPropertyMetadata(5d,
                                                                               FrameworkPropertyMetadataOptions.AffectsArrange |
                                                                               FrameworkPropertyMetadataOptions.Inherits,
-                                                                              null, CoerceSize));
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures")]
         public static double GetBoldPaddingValue([NotNull] DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(BoldPaddingValueProperty));
         }
 
@@ -539,7 +537,7 @@ namespace Elysium
                                                                                     FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender));
 
         [PublicAPI]
-        [AttachedPropertyBrowsableForType(typeof(CommandButton))]
+        [AttachedPropertyBrowsableForType(typeof(CommandButtonBase))]
         [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static SolidColorBrush GetCommandButtonMask([NotNull] CommandButtonBase obj)
         {
@@ -562,7 +560,8 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty BulletDecoratorSizeProperty =
             DependencyProperty.RegisterAttached("BulletDecoratorSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(16d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
+                                                new FrameworkPropertyMetadata(16d, FrameworkPropertyMetadataOptions.AffectsMeasure,
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(CheckBox))]
@@ -572,7 +571,7 @@ namespace Elysium
         {
             ValidationHelper.NotNull(obj, () => obj);
             ValidationHelper.OfTypes(obj, () => obj, typeof(CheckBox), typeof(RadioButton));
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(BulletDecoratorSizeProperty));
         }
 
@@ -587,7 +586,8 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty BulletSizeProperty =
             DependencyProperty.RegisterAttached("BulletSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(8d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
+                                                new FrameworkPropertyMetadata(8d, FrameworkPropertyMetadataOptions.AffectsMeasure,
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(CheckBox))]
@@ -597,7 +597,7 @@ namespace Elysium
         {
             ValidationHelper.NotNull(obj, () => obj);
             ValidationHelper.OfTypes(obj, () => obj, typeof(CheckBox), typeof(RadioButton));
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(BulletSizeProperty));
         }
 
@@ -612,7 +612,8 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty CheckSizeProperty =
             DependencyProperty.RegisterAttached("CheckSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(10d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
+                                                new FrameworkPropertyMetadata(10d, FrameworkPropertyMetadataOptions.AffectsMeasure,
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(CheckBox))]
@@ -621,7 +622,7 @@ namespace Elysium
         public static double GetCheckSize([NotNull] CheckBox obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(CheckSizeProperty));
         }
 
@@ -640,7 +641,8 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty ToggleSwitchTrackSizeProperty =
             DependencyProperty.RegisterAttached("ToggleSwitchTrackSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(48d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
+                                                new FrameworkPropertyMetadata(48d, FrameworkPropertyMetadataOptions.AffectsMeasure,
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(ToggleSwitch))]
@@ -649,7 +651,7 @@ namespace Elysium
         public static double GetToggleSwitchTrackSize([NotNull] ToggleSwitch obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(ToggleSwitchTrackSizeProperty));
         }
 
@@ -664,7 +666,8 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty ToggleSwitchThumbThicknessProperty =
             DependencyProperty.RegisterAttached("ToggleSwitchThumbThickness", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(10d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
+                                                new FrameworkPropertyMetadata(10d, FrameworkPropertyMetadataOptions.AffectsMeasure,
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(ToggleSwitch))]
@@ -673,7 +676,7 @@ namespace Elysium
         public static double GetToggleSwitchThumbThickness([NotNull] ToggleSwitch obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(ToggleSwitchThumbThicknessProperty));
         }
 
@@ -692,7 +695,8 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty ComboBoxButtonSizeProperty =
             DependencyProperty.RegisterAttached("ComboBoxButtonSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(18d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
+                                                new FrameworkPropertyMetadata(18d, FrameworkPropertyMetadataOptions.AffectsMeasure,
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(ComboBox))]
@@ -701,7 +705,7 @@ namespace Elysium
         public static double GetComboBoxButtonSize([NotNull] ComboBox obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(ComboBoxButtonSizeProperty));
         }
 
@@ -716,7 +720,8 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty ComboBoxArrowSizeProperty =
             DependencyProperty.RegisterAttached("ComboBoxArrowSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(8d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
+                                                new FrameworkPropertyMetadata(8d, FrameworkPropertyMetadataOptions.AffectsMeasure,
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(ComboBox))]
@@ -725,7 +730,7 @@ namespace Elysium
         public static double GetComboBoxArrowSize([NotNull] ComboBox obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(ComboBoxArrowSizeProperty));
         }
 
@@ -740,7 +745,7 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty ComboBoxArrowMarginProperty =
             DependencyProperty.RegisterAttached("ComboBoxArrowMargin", typeof(Thickness), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(new Thickness(5d, 0d, 5d, 0d), FrameworkPropertyMetadataOptions.AffectsMeasure));
+                                                new FrameworkPropertyMetadata(new Thickness(5d, 0d, 5d, 0d), FrameworkPropertyMetadataOptions.AffectsArrange));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(ComboBox))]
@@ -749,7 +754,7 @@ namespace Elysium
         public static Thickness GetComboBoxArrowMargin([NotNull] ComboBox obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureThickness();
+            ThicknessUtil.EnsureNonNegative();
             return BoxingHelper<Thickness>.Unbox(obj.GetValue(ComboBoxArrowMarginProperty));
         }
 
@@ -768,7 +773,8 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty SliderTrackSizeProperty =
             DependencyProperty.RegisterAttached("SliderTrackSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(4d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
+                                                new FrameworkPropertyMetadata(4d, FrameworkPropertyMetadataOptions.AffectsMeasure,
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(Slider))]
@@ -777,7 +783,7 @@ namespace Elysium
         public static double GetSliderTrackSize([NotNull] Slider obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(SliderTrackSizeProperty));
         }
 
@@ -792,7 +798,8 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty SliderThumbThicknessProperty =
             DependencyProperty.RegisterAttached("SliderThumbThickness", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(6d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
+                                                new FrameworkPropertyMetadata(6d, FrameworkPropertyMetadataOptions.AffectsMeasure,
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(Slider))]
@@ -801,7 +808,7 @@ namespace Elysium
         public static double GetSliderThumbThickness([NotNull] Slider obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(SliderThumbThicknessProperty));
         }
 
@@ -820,7 +827,8 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty ProgressBarBusyElementSizeProperty =
             DependencyProperty.RegisterAttached("ProgressBarBusyElementSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(4d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
+                                                new FrameworkPropertyMetadata(4d, FrameworkPropertyMetadataOptions.AffectsMeasure,
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(ProgressBarBase))]
@@ -829,7 +837,7 @@ namespace Elysium
         public static double GetProgressBarBusyElementSize([NotNull] ProgressBarBase obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(ProgressBarBusyElementSizeProperty));
         }
 
@@ -848,7 +856,8 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty ScrollBarArrowSizeProperty =
             DependencyProperty.RegisterAttached("ScrollBarArrowSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(6d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
+                                                new FrameworkPropertyMetadata(6d, FrameworkPropertyMetadataOptions.AffectsMeasure,
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(ScrollBar))]
@@ -857,7 +866,7 @@ namespace Elysium
         public static double GetScrollBarArrowSize([NotNull] ScrollBar obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(ScrollBarArrowSizeProperty));
         }
 
@@ -900,9 +909,8 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty TabControlIndicatorThicknessProperty =
             DependencyProperty.RegisterAttached("TabControlIndicatorThickness", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(2d, FrameworkPropertyMetadataOptions.AffectsRender |
-                                                                                  FrameworkPropertyMetadataOptions.AffectsMeasure,
-                                                                              null, CoerceSize));
+                                                new FrameworkPropertyMetadata(2d, FrameworkPropertyMetadataOptions.AffectsMeasure,
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(TabControl))]
@@ -911,7 +919,7 @@ namespace Elysium
         public static double GetTabControlIndicatorThickness([NotNull] TabControl obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(TabControlIndicatorThicknessProperty));
         }
 
@@ -952,7 +960,8 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty SubmenuItemBulletSizeProperty =
             DependencyProperty.RegisterAttached("SubmenuItemBulletSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(12d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
+                                                new FrameworkPropertyMetadata(12d, FrameworkPropertyMetadataOptions.AffectsMeasure,
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(MenuItem))]
@@ -961,7 +970,7 @@ namespace Elysium
         public static double GetSubmenuItemBulletSize([NotNull] MenuItem obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(SubmenuItemBulletSizeProperty));
         }
 
@@ -976,7 +985,8 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty SubmenuHeaderArrowSizeProperty =
             DependencyProperty.RegisterAttached("SubmenuHeaderArrowSize", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(8d, FrameworkPropertyMetadataOptions.AffectsMeasure, null, CoerceSize));
+                                                new FrameworkPropertyMetadata(8d, FrameworkPropertyMetadataOptions.AffectsMeasure,
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(MenuItem))]
@@ -985,7 +995,7 @@ namespace Elysium
         public static double GetSubmenuHeaderArrowSize([NotNull] MenuItem obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(SubmenuHeaderArrowSizeProperty));
         }
 
@@ -1001,7 +1011,7 @@ namespace Elysium
         public static readonly DependencyProperty SubmenuHeaderArrowMarginProperty =
             DependencyProperty.RegisterAttached("SubmenuHeaderArrowMargin", typeof(Thickness), typeof(Parameters),
                                                 new FrameworkPropertyMetadata(new Thickness(3d, 0d, 3d, 0d), FrameworkPropertyMetadataOptions.AffectsMeasure,
-                                                                              null, CoerceThickness));
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(MenuItem))]
@@ -1010,7 +1020,7 @@ namespace Elysium
         public static Thickness GetSubmenuHeaderArrowMargin([NotNull] MenuItem obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureThickness();
+            ThicknessUtil.EnsureNonNegative();
             return BoxingHelper<Thickness>.Unbox(obj.GetValue(SubmenuHeaderArrowMarginProperty));
         }
 
@@ -1029,7 +1039,8 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty WindowResizeBorderThicknessProperty =
             DependencyProperty.RegisterAttached("WindowResizeBorderThickness", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(3d, FrameworkPropertyMetadataOptions.AffectsArrange, null, CoerceSize));
+                                                new FrameworkPropertyMetadata(3d, FrameworkPropertyMetadataOptions.AffectsArrange,
+                                                                              null, DoubleUtil.CoerceNonNegative));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(Controls.Window))]
@@ -1038,7 +1049,7 @@ namespace Elysium
         public static double GetWindowResizeBorderThickness([NotNull] Controls.Window obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            EnsureSize();
+            DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(WindowResizeBorderThicknessProperty));
         }
 
@@ -1048,73 +1059,6 @@ namespace Elysium
         {
             ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(WindowResizeBorderThicknessProperty, value);
-        }
-
-        #endregion
-
-        #region Coerce methods
-
-        private static object CoerceSize(DependencyObject obj, object basevalue)
-        {
-            ValidationHelper.NotNull(obj, () => obj);
-            var value = BoxingHelper<double>.Unbox(basevalue);
-            return IsValidSize(value) ? value : 0d;
-        }
-
-
-        private static object CoerceThickness(DependencyObject obj, object basevalue)
-        {
-            ValidationHelper.NotNull(obj, () => obj);
-            var value = BoxingHelper<Thickness>.Unbox(basevalue);
-            if (!IsValidSize(value.Left))
-            {
-                value.Left = 0d;
-            }
-            if (!IsValidSize(value.Top))
-            {
-                value.Top = 0d;
-            }
-            if (!IsValidSize(value.Right))
-            {
-                value.Right = 0d;
-            }
-            if (!IsValidSize(value.Bottom))
-            {
-                value.Bottom = 0d;
-            }
-            return value;
-        }
-
-        #endregion
-
-        #region Contracts
-
-        [DebuggerHidden]
-        [ContractAbbreviator]
-        private static void EnsureSize()
-        {
-            Contract.Ensures(IsValidSize(Contract.Result<double>()));
-        }
-
-        [DebuggerHidden]
-        [ContractAbbreviator]
-        private static void EnsureThickness()
-        {
-            Contract.Ensures(IsValidSize(Contract.Result<Thickness>().Left));
-            Contract.Ensures(IsValidSize(Contract.Result<Thickness>().Top));
-            Contract.Ensures(IsValidSize(Contract.Result<Thickness>().Right));
-            Contract.Ensures(IsValidSize(Contract.Result<Thickness>().Bottom));
-        }
-
-        #endregion
-
-        #region Helpers
-
-        [JetBrains.Annotations.Pure]
-        [System.Diagnostics.Contracts.Pure]
-        private static bool IsValidSize(double size)
-        {
-            return !double.IsNaN(size) && !double.IsInfinity(size) && size > 0d;
         }
 
         #endregion

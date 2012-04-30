@@ -40,14 +40,22 @@ namespace Elysium
             var control = d as FrameworkElement;
             if (control != null)
             {
-                control.ApplyTheme((Theme?)e.NewValue, null, null);
+                var theme = (Theme?)e.NewValue;
+                if (theme != null)
+                {
+                    control.ApplyTheme(theme, null, null);
+                }
+                else
+                {
+                    control.RemoveTheme(true, false, false);
+                }
             }
         }
 
         [PublicAPI]
         public static readonly DependencyProperty AccentBrushProperty =
             DependencyProperty.RegisterAttached("AccentBrush", typeof(SolidColorBrush), typeof(ThemeManager),
-                                                new FrameworkPropertyMetadata(null, OnAccentBrushChanged));
+                                                new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender, OnAccentBrushChanged));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(FrameworkElement))]
@@ -69,14 +77,22 @@ namespace Elysium
             var control = d as FrameworkElement;
             if (control != null)
             {
-                control.ApplyTheme(null, (SolidColorBrush)e.NewValue, null);
+                var accentBrush = (SolidColorBrush)e.NewValue;
+                if (accentBrush != null)
+                {
+                    control.ApplyTheme(null, accentBrush, null);
+                }
+                else
+                {
+                    control.RemoveTheme(false, true, false);
+                }
             }
         }
 
         [PublicAPI]
         public static readonly DependencyProperty ContrastBrushProperty =
             DependencyProperty.RegisterAttached("ContrastBrush", typeof(SolidColorBrush), typeof(ThemeManager),
-                                                new FrameworkPropertyMetadata(null, OnContrastBrushChanged));
+                                                new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender, OnContrastBrushChanged));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(FrameworkElement))]
@@ -98,11 +114,22 @@ namespace Elysium
             var control = d as FrameworkElement;
             if (control != null)
             {
-                control.ApplyTheme(null, null, (SolidColorBrush)e.NewValue);
+                var contrastBrush = (SolidColorBrush)e.NewValue;
+                if (contrastBrush != null)
+                {
+                    control.ApplyTheme(null, null, contrastBrush);
+                }
+                else
+                {
+                    control.RemoveTheme(false, false, true);
+                }
             }
         }
 
         private delegate void ApplyThemeToApplicationDelegate(Application application, Theme? theme, SolidColorBrush accentBrush, SolidColorBrush contrastBrush);
+
+        private delegate void RemoveThemeFromApplicationDelegate(
+            Application application, bool isRemoveTheme, bool isRemoveAccentBrush, bool isRemoveContrastBrush);
 
         [PublicAPI]
         public static void ApplyTheme(this Application application, Theme? theme, SolidColorBrush accentBrush, SolidColorBrush contrastBrush)
@@ -199,10 +226,66 @@ namespace Elysium
             OnThemeChanged();
         }
 
+        [PublicAPI]
+        public static void RemoveTheme(this Application application, bool isRemoveTheme, bool isRemoveAccentBrush, bool isRemoveContrastBrush)
+        {
+            ValidationHelper.NotNull(application, () => application);
+
+            application.Dispatcher.Invoke(new RemoveThemeFromApplicationDelegate(RemoveThemeInternal), DispatcherPriority.Render,
+                                          application, isRemoveTheme, isRemoveAccentBrush, isRemoveContrastBrush);
+        }
+
+        private static void RemoveThemeInternal(this Application application, bool isRemoveTheme, bool isRemoveAccentBrush, bool isRemoveContrastBrush)
+        {
+            if (isRemoveTheme)
+            {
+                // Resource dictionaries paths
+                var lightColorsUri = new Uri("/Elysium;component/Themes/LightBrushes.xaml", UriKind.Relative);
+                var darkColorsUri = new Uri("/Elysium;component/Themes/DarkBrushes.xaml", UriKind.Relative);
+
+                // Remove LightBrushes.xaml, if included
+                var lightColorsDictionaries = application.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == lightColorsUri).ToList();
+                foreach (var dictionary in lightColorsDictionaries)
+                {
+                    application.Resources.MergedDictionaries.Remove(dictionary);
+                }
+
+                // Remove DarkBrushes.xaml, if included
+                var darkColorsDictionaries = application.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == darkColorsUri).ToList();
+                foreach (var dictionary in darkColorsDictionaries)
+                {
+                    application.Resources.MergedDictionaries.Remove(dictionary);
+                }
+
+                // Remove Generic.xaml, if included
+                var genericDictionaryUri = new Uri("/Elysium;component/Themes/Generic.xaml", UriKind.Relative);
+                foreach (var genericDictionary in application.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == genericDictionaryUri))
+                {
+                    application.Resources.MergedDictionaries.Remove(genericDictionary);
+                }
+            }
+
+            // Remove AccentBrush resource
+            if (isRemoveAccentBrush && application.Resources.Contains("AccentBrush"))
+            {
+                application.Resources.Remove("AccentBrush");
+            }
+
+            // Remove ContrastBrush resource
+            if (isRemoveContrastBrush && application.Resources.Contains("ContrastBrush"))
+            {
+                application.Resources.Remove("ContrastBrush");
+            }
+
+            OnThemeChanged();
+        }
+
         private delegate void ApplyThemeToControlDelegate(FrameworkElement control, Theme? theme, SolidColorBrush accentBrush, SolidColorBrush contrastBrush);
 
+        private delegate void RemoveThemeFromControlDelegate(FrameworkElement control, bool isRemoveTheme, bool isRemoveAccentBrush, bool isRemoveContrastBrush);
+
         [PublicAPI]
-        public static void ApplyTheme(this FrameworkElement control, Theme? theme, SolidColorBrush accentBrush, SolidColorBrush contrastBrush)
+        private static void ApplyTheme(this FrameworkElement control, Theme? theme, SolidColorBrush accentBrush, SolidColorBrush contrastBrush)
         {
             ValidationHelper.NotNull(control, () => control);
 
@@ -291,6 +374,60 @@ namespace Elysium
             if (control.Resources.MergedDictionaries.All(dictionary => dictionary.Source != genericDictionaryUri))
             {
                 control.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = genericDictionaryUri });
+            }
+
+            OnThemeChanged();
+        }
+
+        [PublicAPI]
+        private static void RemoveTheme(this FrameworkElement control, bool isRemoveTheme, bool isRemoveAccentBrush, bool isRemoveContrastBrush)
+        {
+            ValidationHelper.NotNull(control, () => control);
+
+            control.Dispatcher.Invoke(new RemoveThemeFromControlDelegate(RemoveThemeInternal), DispatcherPriority.Render,
+                                      control, isRemoveTheme, isRemoveAccentBrush, isRemoveContrastBrush);
+        }
+
+        private static void RemoveThemeInternal(this FrameworkElement control, bool isRemoveTheme, bool isRemoveAccentBrush, bool isRemoveContrastBrush)
+        {
+            if (isRemoveTheme)
+            {
+                // Resource dictionaries paths
+                var lightColorsUri = new Uri("/Elysium;component/Themes/LightBrushes.xaml", UriKind.Relative);
+                var darkColorsUri = new Uri("/Elysium;component/Themes/DarkBrushes.xaml", UriKind.Relative);
+
+                // Remove LightBrushes.xaml, if included
+                var lightColorsDictionaries = control.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == lightColorsUri).ToList();
+                foreach (var dictionary in lightColorsDictionaries)
+                {
+                    control.Resources.MergedDictionaries.Remove(dictionary);
+                }
+
+                // Remove DarkBrushes.xaml, if included
+                var darkColorsDictionaries = control.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == darkColorsUri).ToList();
+                foreach (var dictionary in darkColorsDictionaries)
+                {
+                    control.Resources.MergedDictionaries.Remove(dictionary);
+                }
+
+                // Remove Generic.xaml, if included
+                var genericDictionaryUri = new Uri("/Elysium;component/Themes/Generic.xaml", UriKind.Relative);
+                foreach (var genericDictionary in control.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == genericDictionaryUri))
+                {
+                    control.Resources.MergedDictionaries.Remove(genericDictionary);
+                }
+            }
+
+            // Remove AccentBrush resource
+            if (isRemoveAccentBrush && control.Resources.Contains("AccentBrush"))
+            {
+                control.Resources.Remove("AccentBrush");
+            }
+
+            // Remove ContrastBrush resource
+            if (isRemoveContrastBrush && control.Resources.Contains("ContrastBrush"))
+            {
+                control.Resources.Remove("ContrastBrush");
             }
 
             OnThemeChanged();

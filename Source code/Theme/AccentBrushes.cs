@@ -1,0 +1,170 @@
+﻿using System.Windows.Media;
+
+using JetBrains.Annotations;
+
+namespace Elysium
+{
+    [PublicAPI]
+    public static class AccentBrushes
+    {
+        [PublicAPI]
+        public static SolidColorBrush Blue
+        {
+            get
+            {
+                if (_blue == null)
+                {
+                    _blue = new SolidColorBrush(Color.FromArgb(0xFF, 0x1B, 0xA1, 0xE2));
+                    _blue.Freeze();
+                }
+                return _blue;
+            }
+        }
+
+        private static SolidColorBrush _blue;
+
+        [PublicAPI]
+        public static SolidColorBrush Brown
+        {
+            get
+            {
+                if (_brown == null)
+                {
+                    _brown = new SolidColorBrush(Color.FromArgb(0xFF, 0xA0, 0x50, 0x00));
+                    _brown.Freeze();
+                }
+                return _brown;
+            }
+        }
+
+        private static SolidColorBrush _brown;
+
+        [PublicAPI]
+        public static SolidColorBrush Green
+        {
+            get
+            {
+                if (_green == null)
+                {
+                    _green = new SolidColorBrush(Color.FromArgb(0xFF, 0x33, 0x99, 0x33));
+                    _green.Freeze();
+                }
+                return _green;
+            }
+        }
+
+        private static SolidColorBrush _green;
+
+        [PublicAPI]
+        public static SolidColorBrush Lime
+        {
+            get
+            {
+                if (_lime == null)
+                {
+                    _lime = new SolidColorBrush(Color.FromArgb(0xFF, 0x8C, 0xBF, 0x26));
+                    _lime.Freeze();
+                }
+                return _lime;
+            }
+        }
+
+        private static SolidColorBrush _lime;
+
+        [PublicAPI]
+        public static SolidColorBrush Magenta
+        {
+            get
+            {
+                if (_magenta == null)
+                {
+                    _magenta = new SolidColorBrush(Color.FromArgb(0xFF, 0xFF, 0x00, 0x97));
+                    _magenta.Freeze();
+                }
+                return _magenta;
+            }
+        }
+
+        private static SolidColorBrush _magenta;
+
+        [PublicAPI]
+        public static SolidColorBrush Orange
+        {
+            get
+            {
+                if (_orange == null)
+                {
+                    _orange = new SolidColorBrush(Color.FromArgb(0xFF, 0xF0, 0x96, 0x09));
+                    _orange.Freeze();
+                }
+                return _orange;
+            }
+        }
+
+        private static SolidColorBrush _orange;
+
+        [PublicAPI]
+        public static SolidColorBrush Pink
+        {
+            get
+            {
+                if (_pink == null)
+                {
+                    _pink = new SolidColorBrush(Color.FromArgb(0xFF, 0xE6, 0x71, 0xB8));
+                    _pink.Freeze();
+                }
+                return _pink;
+            }
+        }
+
+        private static SolidColorBrush _pink;
+
+        [PublicAPI]
+        public static SolidColorBrush Purple
+        {
+            get
+            {
+                if (_purple == null)
+                {
+                    _purple = new SolidColorBrush(Color.FromArgb(0xFF, 0xA2, 0x00, 0xFF));
+                    _purple.Freeze();
+                }
+                return _purple;
+            }
+        }
+
+        private static SolidColorBrush _purple;
+
+        [PublicAPI]
+        public static SolidColorBrush Red
+        {
+            get
+            {
+                if (_red == null)
+                {
+                    _red = new SolidColorBrush(Color.FromArgb(0xFF, 0xE5, 0x14, 0x00));
+                    _red.Freeze();
+                }
+                return _red;
+            }
+        }
+
+        private static SolidColorBrush _red;
+
+        [PublicAPI]
+        public static SolidColorBrush Viridian
+        {
+            get
+            {
+                if (_viridian == null)
+                {
+                    _viridian = new SolidColorBrush(Color.FromArgb(0xFF, 0x00, 0xAB, 0xA9));
+                    _viridian.Freeze();
+                }
+                return _viridian;
+            }
+        }
+
+        private static SolidColorBrush _viridian;
+    }
+} ;

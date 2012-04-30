@@ -28,8 +28,9 @@
     <Optimize>false</Optimize>
     <OutputPath>..\..\Binary\Debug\Elysium for .NET 4\AnyCPU\</OutputPath>
     <DefineConstants>TRACE;DEBUG;CONTRACTS_FULL</DefineConstants>
-    <DocumentationFile>..\..\Binary\Debug\Elysium for .NET 4\AnyCPU\Elysium.xml</DocumentationFile>
-    <NoWarn>1591</NoWarn>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>1584,1591</NoWarn>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
@@ -72,8 +73,9 @@
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\Binary\Release\Elysium for .NET 4\AnyCPU\</OutputPath>
-    <DocumentationFile>..\..\Binary\Release\Elysium for .NET 4\AnyCPU\Elysium.xml</DocumentationFile>
-    <NoWarn>1591</NoWarn>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>1584</NoWarn>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
@@ -122,8 +124,9 @@
     <Optimize>false</Optimize>
     <OutputPath>..\..\Binary\Analysis\Elysium for .NET 4\AnyCPU\</OutputPath>
     <DefineConstants>TRACE;DEBUG;CONTRACTS_FULL</DefineConstants>
-    <DocumentationFile>..\..\Binary\Analysis\Elysium for .NET 4\AnyCPU\Elysium.xml</DocumentationFile>
-    <NoWarn>1591</NoWarn>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>1584</NoWarn>
     <CodeAnalysisLogFile>..\..\Binary\Analysis\Elysium for .NET 4\AnyCPU\Elysium.Theme.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
@@ -200,10 +203,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Themes\AccentBrushes.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Themes\ApplicationBar\ApplicationBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -358,11 +357,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccentColors.cs" />
+    <Compile Include="AccentBrushes.cs" />
     <Compile Include="Controls\CommandButtons\Automation\CommandButtonBaseAutomationPeer.cs" />
     <Compile Include="Converters\IsGreaterThanConverter.cs" />
-    <Compile Include="Extensions\ContractExtensions.cs" />
-    <Compile Include="Extensions\ValidationHelper.cs" />
+    <Compile Include="Extensions\Validation helpers\ContractExtensions.cs" />
+    <Compile Include="Extensions\Validation helpers\DoubleUtil.cs" />
+    <Compile Include="Extensions\Validation helpers\ThicknessUtil.cs" />
+    <Compile Include="Extensions\Validation helpers\ValidationHelper.cs" />
     <Compile Include="Controls\ApplicationBar\ApplicationBar.cs" />
     <Compile Include="Controls\ApplicationBar\ApplicationBarTransitionMode.cs" />
     <Compile Include="Controls\ApplicationBar\ApplicationBarDock.cs" />
@@ -398,11 +399,11 @@
     <Compile Include="Converters\NumberPositiveToNegativeConverter.cs" />
     <Compile Include="Converters\ThicknessPositiveToNegativeConverter.cs" />
     <Compile Include="Converters\ThicknessToDoubleConverter.cs" />
-    <Compile Include="Extensions\BooleanBoxingHelper.cs" />
-    <Compile Include="Extensions\BoxingHelper.cs" />
-    <Compile Include="Extensions\NullableBooleanBoxingHelper.cs" />
-    <Compile Include="Extensions\VisualTreeHelperExtensions.cs" />
-    <Compile Include="Extensions\LogicalTreeHelperExtensions.cs" />
+    <Compile Include="Extensions\Boxing helpers\BooleanBoxingHelper.cs" />
+    <Compile Include="Extensions\Boxing helpers\BoxingHelper.cs" />
+    <Compile Include="Extensions\Boxing helpers\NullableBooleanBoxingHelper.cs" />
+    <Compile Include="Extensions\Tree helpers\VisualTreeHelperExtensions.cs" />
+    <Compile Include="Extensions\Tree helpers\LogicalTreeHelperExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Parameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -412,8 +413,57 @@
     <Compile Include="Theme.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Documentation\Documentation.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Documentation\en\Elysium.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Elysium.xml</LastGenOutput>
+    </None>
+    <None Include="Documentation\ru\Elysium.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Elysium.xml</LastGenOutput>
+    </None>
     <None Include="Properties\Key.snk" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="ThemeManager.ru.xml">
+      <DependentUpon>ThemeManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Documentation\ru\Elysium.xml">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Elysium.tt</DependentUpon>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Theme.ru.xml">
+      <DependentUpon>Theme.cs</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AccentBrushes.ru.xml">
+      <DependentUpon>AccentBrushes.cs</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Parameters.ru.xml">
+      <DependentUpon>Parameters.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Documentation\en\Elysium.xml">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Elysium.tt</DependentUpon>
+    </Resource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

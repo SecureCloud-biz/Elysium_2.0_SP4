@@ -7,10 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assembly dependencies", "Assembly dependencies", "{ADCE869D-0EF4-4394-8BCD-A3763B9EF424}"
 	ProjectSection(SolutionItems) = preProject
-		Install into GAC (32 bit).bat = Install into GAC (32 bit).bat
-		Install into GAC (64 bit).bat = Install into GAC (64 bit).bat
-		Uninstall from GAC (32 bit).bat = Uninstall from GAC (32 bit).bat
-		Uninstall from GAC (64 bit).bat = Uninstall from GAC (64 bit).bat
+		Install dependencies into GAC (32 bit).bat = Install dependencies into GAC (32 bit).bat
+		Install dependencies into GAC (64 bit).bat = Install dependencies into GAC (64 bit).bat
+		Uninstall dependencies from GAC (32 bit).bat = Uninstall dependencies from GAC (32 bit).bat
+		Uninstall dependencies from GAC (64 bit).bat = Uninstall dependencies from GAC (64 bit).bat
 	EndProjectSection
 EndProject
 Global
@@ -18,13 +18,13 @@ Global
 		SccNumberOfProjects = 3
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs34
-		SccProjectUniqueName0 = Theme\\Theme.csproj
-		SccProjectName0 = Theme
-		SccLocalPath0 = Theme
-		SccProjectUniqueName1 = Test\\Test.csproj
-		SccProjectName1 = Test
-		SccLocalPath1 = Test
-		SccLocalPath2 = .
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Theme\\Theme.csproj
+		SccProjectName1 = Theme
+		SccLocalPath1 = Theme
+		SccProjectUniqueName2 = Test\\Test.csproj
+		SccProjectName2 = Test
+		SccLocalPath2 = Test
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Analysis|Mixed Platforms = Analysis|Mixed Platforms

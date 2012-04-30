@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace Elysium.Test
 {
@@ -26,7 +27,8 @@ namespace Elysium.Test
             var item = e.Source as MenuItem;
             if (item != null)
             {
-                Application.Current.ApplyTheme(null, Application.Current.Resources[(string)item.Header + "Brush"] as SolidColorBrush, null);
+                var accentBrush = (SolidColorBrush)((Rectangle)item.Icon).Fill;
+                Application.Current.ApplyTheme(null, accentBrush, null);
             }
         }
     }
