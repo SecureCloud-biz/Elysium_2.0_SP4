@@ -59,13 +59,13 @@
                 <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
             </DataTrigger>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource MiddleLightBrush}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource LowlightBrush}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
                 <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{DynamicResource LowlightBrush}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource MiddleLightBrush}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
                 <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">

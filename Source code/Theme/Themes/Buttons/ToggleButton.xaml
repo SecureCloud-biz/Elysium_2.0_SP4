@@ -11,8 +11,8 @@
         
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="{DynamicResource LowlightBrush}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource MiddleLightBrush}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
                 <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
             </Trigger>
         </Style.Triggers>

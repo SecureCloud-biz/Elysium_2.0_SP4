@@ -70,6 +70,7 @@
                 <ControlTemplate TargetType="{x:Type controls:DropDownCommandButton}">
 
                     <Grid x:Name="LayoutRoot"
+                          Background="{DynamicResource TransparentBrush}"                          
                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>

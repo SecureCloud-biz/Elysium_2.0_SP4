@@ -3,13 +3,13 @@
                     xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" >
 
     <SolidColorBrush x:Key="TransparentBrush"
-                     Color="#000A0A0A"
+                     Color="#00171717"
                      PresentationOptions:Freeze="True"/>
     <SolidColorBrush x:Key="SemitransparentBrush"
-                     Color="#AA0A0A0A"
+                     Color="#AA171717"
                      PresentationOptions:Freeze="True"/>
     <SolidColorBrush x:Key="BackgroundBrush"
-                     Color="#FF0A0A0A"
+                     Color="#FF171717"
                      PresentationOptions:Freeze="True"/>
     <SolidColorBrush x:Key="ForegroundBrush"
                      Color="#FFFFFFFF"
@@ -18,13 +18,13 @@
                      Color="#FF333333"
                      PresentationOptions:Freeze="True"/>
     <SolidColorBrush x:Key="MiddleLightBrush"
-                     Color="#FF999999"
+                     Color="#FF666666"
                      PresentationOptions:Freeze="True"/>
     <SolidColorBrush x:Key="LowlightBrush"
-                     Color="#FFCCCCCC"
+                     Color="#FF999999"
                      PresentationOptions:Freeze="True"/>
     <SolidColorBrush x:Key="DisabledBrush"
-                     Color="#FF6C6966"
+                     Color="#FF5C5956"
                      PresentationOptions:Freeze="True"/>
     
 </ResourceDictionary>
