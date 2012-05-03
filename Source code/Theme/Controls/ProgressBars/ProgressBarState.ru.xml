@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Controls.ProgressBarState">
+      <summary>
+        Определяет состояние индикатора выполнения (один из наследников <see cref="T:Elysium.Controls.Primitives.ProgressBarBase"/>).
+      </summary>
+    </type>
+    <field name="F:Elysium.Controls.ProgressBarState.Normal">
+      <summary>
+        Нормальное состояние.
+      </summary>
+    </field>
+    <field name="F:Elysium.Controls.ProgressBarState.Indeterminate">
+      <summary>
+        Неопределённое состояние.
+      </summary>
+    </field>
+    <field name="F:Elysium.Controls.ProgressBarState.Busy">
+      <summary>
+        Состоние занятости.
+      </summary>
+    </field>
+  </members>
+</doc>

@@ -20,6 +20,32 @@
 	//paths.Add(@"ThemeManager.en.xml");
 	//paths.Add(@"Parameters.en.xml");
 	
+	//paths.Add(@"Extensions\Tree helpers\LogicalTreeHelperExtensions.en.xml");
+	//paths.Add(@"Extensions\Tree helpers\VisualTreeHelperExtensions.en.xml");
+	
+	//paths.Add(@"Converters\AngleToCoordinateConverter.en.xml");
+	//paths.Add(@"Converters\PercentToAngleConverter.en.xml");
+	
+	//paths.Add(@"Converters\IsGreaterThanConverter.en.xml");
+	//paths.Add(@"Converters\NumberPositiveToNegativeConverter.en.xml");
+	//paths.Add(@"Converters\ThicknessPositiveToNegativeConverter.en.xml");
+	
+	//paths.Add(@"Converters\DoubleToGridLengthConverter.en.xml");
+	//paths.Add(@"Converters\GridLengthToDoubleConverter.en.xml");
+	//paths.Add(@"Converters\DoubleToThicknessConverter.en.xml");
+	//paths.Add(@"Converters\ThicknessToDoubleConverter.en.xml");
+	
+	//paths.Add(@"Controls\ApplicationBar\ApplicationBarDock.en.xml");
+	//paths.Add(@"Controls\ApplicationBar\ApplicationBarTransitionMode.en.xml");
+	
+	//paths.Add(@"Controls\CommandButtons\DropDownDirection.en.xml");
+	
+	//paths.Add(@"Controls\ProgressBars\ProgressBarState.en.xml");
+	
+	//paths.Add(@"Controls\ToastNotification\ToastNotificationAnimation.en.xml");
+	//paths.Add(@"Controls\ToastNotification\HorizontalPlacement.en.xml");
+	//paths.Add(@"Controls\ToastNotification\VerticalPlacement.en.xml");
+	
 	var documentation = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
 	
 	var doc = new XElement("doc");

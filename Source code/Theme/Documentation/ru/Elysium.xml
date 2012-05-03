@@ -3304,5 +3304,125 @@
         В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
       </returns>
     </member>
+    <member name="T:Elysium.Controls.ApplicationBarDock">
+      <summary>
+        Определяет положение элемента управления внутри <see cref="T:Elysium.Controls.ApplicationBar" />.
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.ApplicationBarDock.Left">
+      <summary>
+        Элемент управления выравнивается по левой стороне.
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.ApplicationBarDock.Right">
+      <summary>
+        Элемент управления выравнивается по правой стороне.
+      </summary>
+    </member>
+    <member name="T:Elysium.Controls.ApplicationBarTransitionMode">
+      <summary>
+        Определяет анимацию появления и исчезания элемента управления <see cref="T:Elysium.Controls.ApplicationBar" />.
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.ApplicationBarTransitionMode.None">
+      <summary>
+        Анимация отсутствует.
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.ApplicationBarTransitionMode.Fade">
+      <summary>
+        Элемент управления <see cref="T:Elysium.Controls.ApplicationBar" /> меняет свою прозрачность с 0% до 100%.
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.ApplicationBarTransitionMode.Slide">
+      <summary>
+        Элемент управления <see cref="T:Elysium.Controls.ApplicationBar" /> постепенно "выезжает" из-за нижнего края окна.
+      </summary>
+    </member>
+    <member name="T:Elysium.Controls.DropDownDirection">
+      <summary>
+        Определяет, с какой стороны элемента управления <see cref="T:Elysium.Controls.DropDownCommandButton" /> находится его выпадающее меню.
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.DropDownDirection.Up">
+      <summary>
+        Выпадающее меню находится сверху.
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.DropDownDirection.Down">
+      <summary>
+        Выпадающее меню находится снизу.
+      </summary>
+    </member>
+    <member name="T:Elysium.Controls.ProgressBarState">
+      <summary>
+        Определяет состояние индикатора выполнения (один из наследников <see cref="T:Elysium.Controls.Primitives.ProgressBarBase" />).
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.ProgressBarState.Normal">
+      <summary>
+        Нормальное состояние.
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.ProgressBarState.Indeterminate">
+      <summary>
+        Неопределённое состояние.
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.ProgressBarState.Busy">
+      <summary>
+        Состоние занятости.
+      </summary>
+    </member>
+    <member name="T:Elysium.Controls.ToastNotificationAnimation">
+      <summary>
+        Определяет анимацию появления и исчезания элемента управления <see cref="T:Elysium.Controls.ToastNotification" />.
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.ToastNotificationAnimation.None">
+      <summary>
+        Анимация отсутствует.
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.ToastNotificationAnimation.Fade">
+      <summary>
+        Элемент управления <see cref="T:Elysium.Controls.ToastNotification" /> меняет свою прозрачность с 0% до 100%.
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.ToastNotificationAnimation.Slide">
+      <summary>
+        Элемент управления <see cref="T:Elysium.Controls.ToastNotification" /> постепенно "выезжает" из-за указанного края экрана.
+      </summary>
+    </member>
+    <member name="T:Elysium.Controls.HorizontalPlacement">
+      <summary>
+        Определяет, по какой стороне экрана выравнивается элемент управления <see cref="T:Elysium.Controls.ToastNotification" />.
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.HorizontalPlacement.Left">
+      <summary>
+        Элемент управления <see cref="T:Elysium.Controls.ToastNotification" /> выравнивается по левой стороне экрана.
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.HorizontalPlacement.Right">
+      <summary>
+        Элемент управления <see cref="T:Elysium.Controls.ToastNotification" /> выравнивается по правой стороне экрана.
+      </summary>
+    </member>
+    <member name="T:Elysium.Controls.VerticalPlacement">
+      <summary>
+        Определяет, по какой стороне экрана выравнивается группа элементов <see cref="T:Elysium.Controls.ToastNotification" />.
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.VerticalPlacement.Top">
+      <summary>
+        Группа элементов <see cref="T:Elysium.Controls.ToastNotification" /> выравнивается по верхнему краю экрана.
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.VerticalPlacement.Bottom">
+      <summary>
+        Группа элементов <see cref="T:Elysium.Controls.ToastNotification" /> выравнивается по нижнему краю экрана.
+      </summary>
+    </member>
   </members>
 </doc>

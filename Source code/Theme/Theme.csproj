@@ -423,20 +423,20 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Elysium.xml</LastGenOutput>
     </None>
-    <Resource Include="Documentation\en\Elysium.xml">
+    <None Include="Documentation\en\Elysium.xml">
       <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>Elysium.tt</DependentUpon>
-    </Resource>
+      <DesignTime>True</DesignTime>
+    </None>
     <None Include="Documentation\ru\Elysium.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Elysium.xml</LastGenOutput>
     </None>
-    <Resource Include="Documentation\ru\Elysium.xml">
+    <None Include="Documentation\ru\Elysium.xml">
       <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>Elysium.tt</DependentUpon>
-    </Resource>
+      <DesignTime>True</DesignTime>
+    </None>
     <None Include="AccentBrushes.ru.xml">
       <DependentUpon>AccentBrushes.cs</DependentUpon>
     </None>
@@ -483,6 +483,27 @@
     </None>
     <None Include="Converters\ThicknessToDoubleConverter.ru.xml">
       <DependentUpon>ThicknessToDoubleConverter.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ApplicationBar\ApplicationBarDock.ru.xml">
+      <DependentUpon>ApplicationBarDock.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ApplicationBar\ApplicationBarTransitionMode.ru.xml">
+      <DependentUpon>ApplicationBarTransitionMode.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\DropDownDirection.ru.xml">
+      <DependentUpon>DropDownDirection.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ProgressBars\ProgressBarState.ru.xml">
+      <DependentUpon>ProgressBarState.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ToastNotification\ToastNotificationAnimation.ru.xml">
+      <DependentUpon>ToastNotificationAnimation.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ToastNotification\HorizontalPlacement.ru.xml">
+      <DependentUpon>HorizontalPlacement.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ToastNotification\VerticalPlacement.ru.xml">
+      <DependentUpon>VerticalPlacement.cs</DependentUpon>
     </None>
     <None Include="Properties\Key.snk" />
   </ItemGroup>

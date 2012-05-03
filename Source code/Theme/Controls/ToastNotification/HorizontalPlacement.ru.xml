@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Controls.HorizontalPlacement">
+      <summary>
+        Определяет, по какой стороне экрана выравнивается элемент управления <see cref="T:Elysium.Controls.ToastNotification"/>.
+      </summary>
+    </type>
+    <field name="F:Elysium.Controls.HorizontalPlacement.Left">
+      <summary>
+        Элемент управления <see cref="T:Elysium.Controls.ToastNotification"/> выравнивается по левой стороне экрана.
+      </summary>
+    </field>
+    <field name="F:Elysium.Controls.HorizontalPlacement.Right">
+      <summary>
+        Элемент управления <see cref="T:Elysium.Controls.ToastNotification"/> выравнивается по правой стороне экрана.
+      </summary>
+    </field>
+  </members>
+</doc>
