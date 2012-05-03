@@ -203,6 +203,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Page Include="Themes\ApplicationBar\ApplicationBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -420,50 +423,68 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Elysium.xml</LastGenOutput>
     </None>
-    <None Include="Documentation\ru\Elysium.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Elysium.xml</LastGenOutput>
-    </None>
-    <None Include="Properties\Key.snk" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ThemeManager.ru.xml">
-      <DependentUpon>ThemeManager.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Documentation\ru\Elysium.xml">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Elysium.tt</DependentUpon>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Theme.ru.xml">
-      <DependentUpon>Theme.cs</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="AccentBrushes.ru.xml">
-      <DependentUpon>AccentBrushes.cs</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Parameters.ru.xml">
-      <DependentUpon>Parameters.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Documentation\en\Elysium.xml">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Elysium.tt</DependentUpon>
     </Resource>
+    <None Include="Documentation\ru\Elysium.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Elysium.xml</LastGenOutput>
+    </None>
+    <Resource Include="Documentation\ru\Elysium.xml">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Elysium.tt</DependentUpon>
+    </Resource>
+    <None Include="AccentBrushes.ru.xml">
+      <DependentUpon>AccentBrushes.cs</DependentUpon>
+    </None>
+    <None Include="Parameters.ru.xml">
+      <DependentUpon>Parameters.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Theme.ru.xml">
+      <DependentUpon>Theme.cs</DependentUpon>
+    </None>
+    <None Include="ThemeManager.ru.xml">
+      <DependentUpon>ThemeManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Extensions\Tree helpers\LogicalTreeHelperExtensions.ru.xml">
+      <DependentUpon>LogicalTreeHelperExtensions.cs</DependentUpon>
+    </None>
+    <None Include="Extensions\Tree helpers\VisualTreeHelperExtensions.ru.xml">
+      <DependentUpon>VisualTreeHelperExtensions.cs</DependentUpon>
+    </None>
+    <None Include="Converters\AngleToCoordinateConverter.ru.xml">
+      <DependentUpon>AngleToCoordinateConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\PercentToAngleConverter.ru.xml">
+      <DependentUpon>PercentToAngleConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\IsGreaterThanConverter.ru.xml">
+      <DependentUpon>IsGreaterThanConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\NumberPositiveToNegativeConverter.ru.xml">
+      <DependentUpon>NumberPositiveToNegativeConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\ThicknessPositiveToNegativeConverter.ru.xml">
+      <DependentUpon>ThicknessPositiveToNegativeConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\DoubleToGridLengthConverter.ru.xml">
+      <DependentUpon>DoubleToGridLengthConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\GridLengthToDoubleConverter.ru.xml">
+      <DependentUpon>GridLengthToDoubleConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\DoubleToThicknessConverter.ru.xml">
+      <DependentUpon>DoubleToThicknessConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\ThicknessToDoubleConverter.ru.xml">
+      <DependentUpon>ThicknessToDoubleConverter.cs</DependentUpon>
+    </None>
+    <None Include="Properties\Key.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

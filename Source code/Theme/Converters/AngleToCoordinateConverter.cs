@@ -51,7 +51,7 @@ namespace Elysium.Converters
             }
         }
 
-        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        object[] IMultiValueConverter.ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
             Contract.Ensures(false);
             throw new NotSupportedException();

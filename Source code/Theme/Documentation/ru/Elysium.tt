@@ -20,6 +20,21 @@
 	paths.Add(@"ThemeManager.ru.xml");
 	paths.Add(@"Parameters.ru.xml");
 	
+	paths.Add(@"Extensions\Tree helpers\LogicalTreeHelperExtensions.ru.xml");
+	paths.Add(@"Extensions\Tree helpers\VisualTreeHelperExtensions.ru.xml");
+	
+	paths.Add(@"Converters\AngleToCoordinateConverter.ru.xml");
+	paths.Add(@"Converters\PercentToAngleConverter.ru.xml");
+	
+	paths.Add(@"Converters\IsGreaterThanConverter.ru.xml");
+	paths.Add(@"Converters\NumberPositiveToNegativeConverter.ru.xml");
+	paths.Add(@"Converters\ThicknessPositiveToNegativeConverter.ru.xml");
+	
+	paths.Add(@"Converters\DoubleToGridLengthConverter.ru.xml");
+	paths.Add(@"Converters\GridLengthToDoubleConverter.ru.xml");
+	paths.Add(@"Converters\DoubleToThicknessConverter.ru.xml");
+	paths.Add(@"Converters\ThicknessToDoubleConverter.ru.xml");
+	
 	var documentation = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
 	
 	var doc = new XElement("doc");

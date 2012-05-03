@@ -11,14 +11,13 @@ namespace Elysium.Converters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var unitType = parameter as string;
-
             if (!(value is GridLength))
             {
                 return DependencyProperty.UnsetValue;
             }
 
             var length = (GridLength)value;
+            var unitType = parameter as string;
             switch (unitType)
             {
                 case "Auto":

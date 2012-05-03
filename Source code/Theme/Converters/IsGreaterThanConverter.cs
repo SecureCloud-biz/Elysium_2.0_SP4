@@ -45,7 +45,7 @@ namespace Elysium.Converters
             return DependencyProperty.UnsetValue;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        object IValueConverter.ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             Contract.Ensures(false);
             throw new NotSupportedException();

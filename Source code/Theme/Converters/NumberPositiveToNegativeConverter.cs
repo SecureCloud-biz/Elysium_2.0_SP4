@@ -16,7 +16,7 @@ namespace Elysium.Converters
             if (value is Int32)
                 return (Int32)value * -1;
             if (value is Int64)
-                return (Int64)value * -1;
+                return (Int64)value * -1L;
             if (value is Single)
                 return (Single)value * -1f;
             if (value is Double)
