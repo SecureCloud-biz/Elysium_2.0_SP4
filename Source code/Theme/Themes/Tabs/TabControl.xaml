@@ -95,8 +95,8 @@
                                 <ContentPresenter x:Name="PART_SelectedContentHost"
                                                   ContentSource="SelectedContent"
                                                   Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(TabItem.Padding)}"
-                                                  HorizontalAlignment="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(TabItem.HorizontalContentAlignment)}"
-                                                  VerticalAlignment="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(TabItem.VerticalContentAlignment)}"/>
+                                                  HorizontalAlignment="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(TabItem.HorizontalContentAlignment), Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  VerticalAlignment="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem.(TabItem.VerticalContentAlignment), Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
                             </Border>
                         </Grid>
                     </Border>

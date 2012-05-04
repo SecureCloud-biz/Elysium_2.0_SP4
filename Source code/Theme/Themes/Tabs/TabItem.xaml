@@ -118,8 +118,8 @@
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}"/>
         <Setter Property="Focusable" Value="True"/>
 
-        <Setter Property="HorizontalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabControl}}, Path=HorizontalContentAlignment, Mode=OneWay}"/>
-        <Setter Property="VerticalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabControl}}, Path=VerticalContentAlignment, Mode=OneWay}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabControl}}, Path=Padding, Mode=OneWay}"/>
 
         <Setter Property="root:Parameters.TabItemHeaderStyle" Value="{StaticResource TabItemHeaderStyle}"/>
