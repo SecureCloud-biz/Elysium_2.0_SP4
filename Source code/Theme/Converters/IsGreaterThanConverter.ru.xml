@@ -14,8 +14,7 @@
         Определяет, больше одно число другого или нет, с двойной точностью.
       </summary>
       <param name="value">
-        Число, принадлежащее к одному из следующих типов: Byte, Int16, Int32, Int64, Single, Double, Decimal.
-      </param>
+        Число, принадлежащее к одному из следующих типов: <see cref="T:System.Byte"/>, <see cref="T:System.Int16"/>, <see cref="T:System.Int32"/>, <see cref="T:System.Int64"/>, <see cref="T:System.Single"/>, <see cref="T:System.Double"/>, <see cref="T:System.Decimal"/>."</param>
       <param name="targetType">Целевой тип. Значение игнорируется.</param>
       <param name="parameter">
         Параметр конвертера. Второе сравниваемое значение. Должен быть строкой, и выражать число, которое может быть приведено к типу <see cref="T:System.Double"/>

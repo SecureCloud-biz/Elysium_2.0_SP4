@@ -505,6 +505,9 @@
     <None Include="Controls\ToastNotification\VerticalPlacement.ru.xml">
       <DependentUpon>VerticalPlacement.cs</DependentUpon>
     </None>
+    <None Include="Controls\ApplicationBar\Automation\ApplicationBarAutomationPeer.ru.xml">
+      <DependentUpon>ApplicationBarAutomationPeer.cs</DependentUpon>
+    </None>
     <None Include="Properties\Key.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

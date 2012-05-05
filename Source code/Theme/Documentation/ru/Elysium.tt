@@ -46,6 +46,8 @@
 	paths.Add(@"Controls\ToastNotification\HorizontalPlacement.ru.xml");
 	paths.Add(@"Controls\ToastNotification\VerticalPlacement.ru.xml");
 	
+	paths.Add(@"Controls\ApplicationBar\Automation\ApplicationBarAutomationPeer.ru.xml");
+	
 	var documentation = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
 	
 	var doc = new XElement("doc");

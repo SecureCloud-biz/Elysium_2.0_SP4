@@ -14,7 +14,7 @@
         Конвертирует процент от полного угла в значение угла.
       </summary>
       <param name="value">
-        Процент от полного угла. Должен иметь один из следующих типов: Int16, Int32, Int64, Single, Double, Decimal.
+        Процент от полного угла. Должен иметь один из следующих типов: <see cref="T:System.Int16"/>, <see cref="T:System.Int32"/>, <see cref="T:System.Int64"/>, <see cref="T:System.Single"/>, <see cref="T:System.Double"/>, <see cref="T:System.Decimal"/>.
       </param>
       <param name="targetType">Целевой тип. Значение игнорируется.</param>
       <param name="parameter">Параметр конвертера. Значение игнорируется.</param>
@@ -29,7 +29,7 @@
         Конвертирует значение угла в процент от полного угла.
       </summary>
       <param name="value">
-        Значение угла. Должен иметь один из следующих типов: Int16, Int32, Int64, Single, Double, Decimal.
+        Значение угла. Должен иметь один из следующих типов: <see cref="T:System.Int16"/>, <see cref="T:System.Int32"/>, <see cref="T:System.Int64"/>, <see cref="T:System.Single"/>, <see cref="T:System.Double"/>, <see cref="T:System.Decimal"/>.
       </param>
       <param name="targetType">Целевой тип. Значение игнорируется.</param>
       <param name="parameter">Параметр конвертера. Значение игнорируется.</param>

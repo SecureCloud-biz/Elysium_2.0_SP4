@@ -3034,7 +3034,7 @@
         Конвертирует процент от полного угла в значение угла.
       </summary>
       <param name="value">
-        Процент от полного угла. Должен иметь один из следующих типов: Int16, Int32, Int64, Single, Double, Decimal.
+        Процент от полного угла. Должен иметь один из следующих типов: <see cref="T:System.Int16" />, <see cref="T:System.Int32" />, <see cref="T:System.Int64" />, <see cref="T:System.Single" />, <see cref="T:System.Double" />, <see cref="T:System.Decimal" />.
       </param>
       <param name="targetType">Целевой тип. Значение игнорируется.</param>
       <param name="parameter">Параметр конвертера. Значение игнорируется.</param>
@@ -3049,7 +3049,7 @@
         Конвертирует значение угла в процент от полного угла.
       </summary>
       <param name="value">
-        Значение угла. Должен иметь один из следующих типов: Int16, Int32, Int64, Single, Double, Decimal.
+        Значение угла. Должен иметь один из следующих типов: <see cref="T:System.Int16" />, <see cref="T:System.Int32" />, <see cref="T:System.Int64" />, <see cref="T:System.Single" />, <see cref="T:System.Double" />, <see cref="T:System.Decimal" />.
       </param>
       <param name="targetType">Целевой тип. Значение игнорируется.</param>
       <param name="parameter">Параметр конвертера. Значение игнорируется.</param>
@@ -3069,8 +3069,7 @@
         Определяет, больше одно число другого или нет, с двойной точностью.
       </summary>
       <param name="value">
-        Число, принадлежащее к одному из следующих типов: Byte, Int16, Int32, Int64, Single, Double, Decimal.
-      </param>
+        Число, принадлежащее к одному из следующих типов: <see cref="T:System.Byte" />, <see cref="T:System.Int16" />, <see cref="T:System.Int32" />, <see cref="T:System.Int64" />, <see cref="T:System.Single" />, <see cref="T:System.Double" />, <see cref="T:System.Decimal" />."</param>
       <param name="targetType">Целевой тип. Значение игнорируется.</param>
       <param name="parameter">
         Параметр конвертера. Второе сравниваемое значение. Должен быть строкой, и выражать число, которое может быть приведено к типу <see cref="T:System.Double" /></param>
@@ -3090,13 +3089,13 @@
         Меняет знак числа на противоположный.
       </summary>
       <param name="value">
-        Число. Должно принадлежать к одному из следующих типов: Byte, Int16, Int32, Int64, Single, Double, Decimal.
+        Число. Должно принадлежать к одному из следующих типов: <see cref="T:System.Byte" />, <see cref="T:System.Int16" />, <see cref="T:System.Int32" />, <see cref="T:System.Int64" />, <see cref="T:System.Single" />, <see cref="T:System.Double" />, <see cref="T:System.Decimal" />.
       </param>
       <param name="targetType">Целевой тип. Значение игнорируется.</param>
       <param name="parameter">Параметр конвертера. Значение игнорируется.</param>
       <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
       <returns>
-        Число, по модуля равное <paramref name="value" />, но с противоположным знаком.
+        Число, по модулю равное <paramref name="value" />, но с противоположным знаком.
         В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
       </returns>
     </member>
@@ -3105,13 +3104,13 @@
         Меняет знак числа на противоположный.
       </summary>
       <param name="value">
-        Число. Должно принадлежать к одному из следующих типов: Byte, Int16, Int32, Int64, Single, Double, Decimal.
+        Число. Должно принадлежать к одному из следующих типов: <see cref="T:System.Byte" />, <see cref="T:System.Int16" />, <see cref="T:System.Int32" />, <see cref="T:System.Int64" />, <see cref="T:System.Single" />, <see cref="T:System.Double" />, <see cref="T:System.Decimal" />.
       </param>
       <param name="targetType">Целевой тип. Значение игнорируется.</param>
       <param name="parameter">Параметр конвертера. Значение игнорируется.</param>
       <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
       <returns>
-        Число, по модуля равное <paramref name="value" />, но с противоположным знаком.
+        Число, по модулю равное <paramref name="value" />, но с противоположным знаком.
         В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
       </returns>
     </member>
@@ -3423,6 +3422,37 @@
       <summary>
         Группа элементов <see cref="T:Elysium.Controls.ToastNotification" /> выравнивается по нижнему краю экрана.
       </summary>
+    </member>
+    <member name="T:Elysium.Converters.ApplicationBarAutomationPeer">
+      <summary>
+        Является провайдером типа <see cref="T:Elysium.Controls.ApplicationBar" /> для технологии UI Automation.
+      </summary>
+    </member>
+    <member name="M:Elysium.Controls.Automation.ApplicationBarAutomationPeer.#ctor(Elysium.Controls.ApplicationBar)">
+      <summary>
+        Возвращает имя объекта <see cref="T:Elysium.Controls.ApplicationBar" />, который связан с данным объектом <see cref="T:Elysium.Converters.ApplicationBarAutomationPeer" />. Данный метод вызывается методом <see cref="T:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
+      </summary>
+      <param name="owner">
+        Экземпляр класса <see cref="T:Elysium.Controls.ApplicationBar" />, для которого будет использоваться провайдер.
+      </param>
+    </member>
+    <member name="M:Elysium.Controls.Automation.ApplicationBarAutomationPeer.GetClassNameCore">
+      <summary>
+        Возвращает имя объекта <see cref="T:Elysium.Controls.ApplicationBar" />, который связан с данным объектом <see cref="T:Elysium.Converters.ApplicationBarAutomationPeer" />. Данный метод вызывается методом <see cref="T:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
+      </summary>
+      <returns>
+        Строка со значением "ApplicationBar".
+      </returns>
+      <ensures>Возвращаемая строка всегда имеет значение "ApplicationBar"</ensures>
+    </member>
+    <member name="M:Elysium.Controls.Automation.ApplicationBarAutomationPeer.GetClassNameCore">
+      <summary>
+        Возвращает тип элемента управления для объекта <see cref="T:Elysium.Controls.ApplicationBar" />, который связан с данным объектом <see cref="T:Elysium.Converters.ApplicationBarAutomationPeer" />. Данный метод вызывается методом <see cref="T:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType" />.
+      </summary>
+      <returns>
+        Значение <see cref="F:System.Windows.Automation.Peers.AutomationControlType.Menu">AutomationControlType.Menu</see>.
+      </returns>
+      <ensures>Возвращаемое значение всегда является значением AutomationControlType.Menu.</ensures>
     </member>
   </members>
 </doc>
