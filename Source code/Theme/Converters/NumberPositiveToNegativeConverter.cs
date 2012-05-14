@@ -3,10 +3,21 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
+using JetBrains.Annotations;
+
 namespace Elysium.Converters
 {
+    [PublicAPI]
+    [ValueConversion(typeof(Byte), typeof(Byte))]
+    [ValueConversion(typeof(Int16), typeof(Int16))]
+    [ValueConversion(typeof(Int32), typeof(Int32))]
+    [ValueConversion(typeof(Int64), typeof(Int64))]
+    [ValueConversion(typeof(Single), typeof(Single))]
+    [ValueConversion(typeof(Double), typeof(Double))]
+    [ValueConversion(typeof(Decimal), typeof(Decimal))]
     public sealed class NumberPositiveToNegativeConverter : IValueConverter
     {
+        [PublicAPI]
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is Byte)
@@ -26,6 +37,7 @@ namespace Elysium.Converters
             return DependencyProperty.UnsetValue;
         }
 
+        [PublicAPI]
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return Convert(value, targetType, parameter, culture);

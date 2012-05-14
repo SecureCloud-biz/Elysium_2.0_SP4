@@ -12,15 +12,18 @@ namespace Elysium.Controls.Automation
     {
         public ToggleSwitchAutomationPeer([NotNull] ToggleSwitch owner) : base(owner)
         {
-            // NOTE: Lack of contracts: UIElementAutomationPeer's constructor throw ArgumentNullException if owner equals null
-            Contract.Assume(Owner != null);
         }
 
-        [ContractInvariantMethod]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        private void Invariants()
+        [PublicAPI]
+        public new ToggleSwitch Owner
         {
-            Contract.Invariant(Owner != null);
+            get
+            {
+                Contract.Ensures(Contract.Result<ToggleSwitch>() != null);
+                var result = (ToggleSwitch)base.Owner;
+                Contract.Assume(result != null);
+                return result;
+            }
         }
 
         [JetBrains.Annotations.Pure]
@@ -35,8 +38,8 @@ namespace Elysium.Controls.Automation
         [System.Diagnostics.Contracts.Pure]
         protected override AutomationControlType GetAutomationControlTypeCore()
         {
-            Contract.Ensures(Contract.Result<AutomationControlType>() == AutomationControlType.Custom);
-            return AutomationControlType.Custom;
+            Contract.Ensures(Contract.Result<AutomationControlType>() == AutomationControlType.Slider);
+            return AutomationControlType.Slider;
         }
 
         public override object GetPattern(PatternInterface patternInterface)
@@ -51,17 +54,12 @@ namespace Elysium.Controls.Automation
                 throw new ElementNotEnabledException();
             }
 
-            var owner = (ToggleSwitch)Owner;
-            owner.OnToggle();
+            Owner.OnToggle();
         }
 
         public ToggleState ToggleState
         {
-            get
-            {
-                var owner = (ToggleSwitch)Owner;
-                return ConvertToToggleState(owner.IsChecked);
-            }
+            get { return ConvertToToggleState(Owner.IsChecked); }
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]

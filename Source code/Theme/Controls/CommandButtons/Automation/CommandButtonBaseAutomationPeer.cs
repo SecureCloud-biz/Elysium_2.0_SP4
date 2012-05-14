@@ -8,20 +8,23 @@ using JetBrains.Annotations;
 namespace Elysium.Controls.Automation
 {
     [PublicAPI]
-    public class CommandButtonBaseAutomationPeer : ButtonBaseAutomationPeer
+    public abstract class CommandButtonBaseAutomationPeer : ButtonBaseAutomationPeer
     {
         [PublicAPI]
-        public CommandButtonBaseAutomationPeer([NotNull] CommandButtonBase owner) : base(owner)
+        protected CommandButtonBaseAutomationPeer([NotNull] CommandButtonBase owner) : base(owner)
         {
-            // NOTE: Lack of contracts: UIElementAutomationPeer's constructor throw ArgumentNullException if owner equals null
-            Contract.Assume(Owner != null);
         }
 
-        [ContractInvariantMethod]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        private void Invariants()
+        [PublicAPI]
+        public new CommandButtonBase Owner
         {
-            Contract.Invariant(Owner != null);
+            get
+            {
+                Contract.Ensures(Contract.Result<CommandButtonBase>() != null);
+                var result = (CommandButtonBase)base.Owner;
+                Contract.Assume(result != null);
+                return result;
+            }
         }
 
         [JetBrains.Annotations.Pure]

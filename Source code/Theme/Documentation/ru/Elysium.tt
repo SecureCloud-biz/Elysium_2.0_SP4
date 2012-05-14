@@ -12,62 +12,73 @@
 <#@ import namespace="System.Xml.Linq" #>
 <#
     var root = Host.ResolvePath(@"..\..\");
-	
-	var paths = new List<string>();
-	
-	paths.Add(@"AccentBrushes.ru.xml");
-	paths.Add(@"Theme.ru.xml");
-	paths.Add(@"ThemeManager.ru.xml");
-	paths.Add(@"Parameters.ru.xml");
-	
-	paths.Add(@"Extensions\Tree helpers\LogicalTreeHelperExtensions.ru.xml");
-	paths.Add(@"Extensions\Tree helpers\VisualTreeHelperExtensions.ru.xml");
-	
-	paths.Add(@"Converters\AngleToCoordinateConverter.ru.xml");
-	paths.Add(@"Converters\PercentToAngleConverter.ru.xml");
-	
-	paths.Add(@"Converters\IsGreaterThanConverter.ru.xml");
-	paths.Add(@"Converters\NumberPositiveToNegativeConverter.ru.xml");
-	paths.Add(@"Converters\ThicknessPositiveToNegativeConverter.ru.xml");
-	
-	paths.Add(@"Converters\DoubleToGridLengthConverter.ru.xml");
-	paths.Add(@"Converters\GridLengthToDoubleConverter.ru.xml");
-	paths.Add(@"Converters\DoubleToThicknessConverter.ru.xml");
-	paths.Add(@"Converters\ThicknessToDoubleConverter.ru.xml");
-	
-	paths.Add(@"Controls\ApplicationBar\ApplicationBarDock.ru.xml");
-	paths.Add(@"Controls\ApplicationBar\ApplicationBarTransitionMode.ru.xml");
-	
-	paths.Add(@"Controls\CommandButtons\DropDownDirection.ru.xml");
-	
-	paths.Add(@"Controls\ProgressBars\ProgressBarState.ru.xml");
-	
-	paths.Add(@"Controls\ToastNotification\ToastNotificationAnimation.ru.xml");
-	paths.Add(@"Controls\ToastNotification\HorizontalPlacement.ru.xml");
-	paths.Add(@"Controls\ToastNotification\VerticalPlacement.ru.xml");
-	
-	paths.Add(@"Controls\ApplicationBar\Automation\ApplicationBarAutomationPeer.ru.xml");
-	
-	var documentation = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
-	
-	var doc = new XElement("doc");
-	doc.Add(new XElement("assembly", new XElement("name", "Elysium")));
-	
-	var members = new XElement("members");
-	
+    
+    var paths = new List<string>();
+    
+    paths.Add(@"AccentBrushes.ru.xml");
+    paths.Add(@"Theme.ru.xml");
+    paths.Add(@"ThemeManager.ru.xml");
+    paths.Add(@"Parameters.ru.xml");
+    
+    paths.Add(@"Extensions\Tree helpers\LogicalTreeHelperExtensions.ru.xml");
+    paths.Add(@"Extensions\Tree helpers\VisualTreeHelperExtensions.ru.xml");
+    
+    paths.Add(@"Converters\AngleToCoordinateConverter.ru.xml");
+    paths.Add(@"Converters\PercentToAngleConverter.ru.xml");
+    
+    paths.Add(@"Converters\IsGreaterThanConverter.ru.xml");
+    paths.Add(@"Converters\NumberPositiveToNegativeConverter.ru.xml");
+    paths.Add(@"Converters\ThicknessPositiveToNegativeConverter.ru.xml");
+    
+    paths.Add(@"Converters\DoubleToGridLengthConverter.ru.xml");
+    paths.Add(@"Converters\GridLengthToDoubleConverter.ru.xml");
+    paths.Add(@"Converters\DoubleToThicknessConverter.ru.xml");
+    paths.Add(@"Converters\ThicknessToDoubleConverter.ru.xml");
+    
+    paths.Add(@"Controls\ApplicationBar\ApplicationBarDock.ru.xml");
+    paths.Add(@"Controls\ApplicationBar\ApplicationBarTransitionMode.ru.xml");
+    
+    paths.Add(@"Controls\CommandButtons\DropDownDirection.ru.xml");
+    
+    paths.Add(@"Controls\ProgressBars\ProgressBarState.ru.xml");
+    
+    paths.Add(@"Controls\ToastNotification\ToastNotificationAnimation.ru.xml");
+    paths.Add(@"Controls\ToastNotification\HorizontalPlacement.ru.xml");
+    paths.Add(@"Controls\ToastNotification\VerticalPlacement.ru.xml");
+    
+    paths.Add(@"Controls\ApplicationBar\Automation\ApplicationBarAutomationPeer.ru.xml");
+    
+    paths.Add(@"Controls\CommandButtons\Automation\CommandButtonBaseAutomationPeer.ru.xml");
+    paths.Add(@"Controls\CommandButtons\Automation\CommandButtonAutomationPeer.ru.xml");
+    paths.Add(@"Controls\CommandButtons\Automation\DropDownCommandButtonAutomationPeer.ru.xml");
+    paths.Add(@"Controls\CommandButtons\Automation\ToggleCommandButtonAutomationPeer.ru.xml");
+    
+    paths.Add(@"Controls\ToggleSwitch\Automation\ToggleSwitchAutomationPeer.ru.xml");
+    
+    paths.Add(@"Controls\ProgressBars\Automation\ProgressBarAutomationPeer.ru.xml");
+    
+    paths.Add(@"Controls\Menus\Automation\SubmenuAutomationPeer.ru.xml");
+    
+    var documentation = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
+    
+    var doc = new XElement("doc");
+    doc.Add(new XElement("assembly", new XElement("name", "Elysium")));
+    
+    var members = new XElement("members");
+    
     foreach (var path in paths)
     {
-		var partOfDocumentation = XDocument.Load(Path.Combine(root, path)).Root.Element("members").Elements();
-		foreach (var declaration in partOfDocumentation)
-		{
-			declaration.Name = "member";
-			members.Add(declaration);
-		}
+        var partOfDocumentation = XDocument.Load(Path.Combine(root, path)).Root.Element("members").Elements();
+        foreach (var declaration in partOfDocumentation)
+        {
+            declaration.Name = "member";
+            members.Add(declaration);
+        }
     }
-	
-	doc.Add(members);
-	
-	documentation.Add(doc);
+    
+    doc.Add(members);
+    
+    documentation.Add(doc);
 #>
 <#= documentation.Declaration #>
 <#= documentation #>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Security;
@@ -21,6 +22,7 @@ namespace Elysium
                                                 new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender, OnThemeChanged));
 
         [PublicAPI]
+        [SuppressMessage("Microsoft.Contracts", "Nonnull-72-0")]
         [AttachedPropertyBrowsableForType(typeof(FrameworkElement))]
         public static Theme? GetTheme([NotNull] FrameworkElement obj)
         {
@@ -35,6 +37,7 @@ namespace Elysium
             obj.SetValue(ThemeProperty, value);
         }
 
+        [SuppressMessage("Microsoft.Contracts", "Nonnull-17-0")]
         private static void OnThemeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = d as FrameworkElement;
@@ -143,6 +146,8 @@ namespace Elysium
         [SecuritySafeCritical]
         private static void ApplyThemeInternal(Application application, Theme? theme, SolidColorBrush accentBrush, SolidColorBrush contrastBrush)
         {
+            ValidationHelper.NotNull(application, () => application);
+
             // Resource dictionaries paths
             var lightColorsUri = new Uri("/Elysium;component/Themes/LightBrushes.xaml", UriKind.Relative);
             var darkColorsUri = new Uri("/Elysium;component/Themes/DarkBrushes.xaml", UriKind.Relative);
@@ -235,8 +240,11 @@ namespace Elysium
                                           application, isRemoveTheme, isRemoveAccentBrush, isRemoveContrastBrush);
         }
 
+        [SecuritySafeCritical]
         private static void RemoveThemeInternal(this Application application, bool isRemoveTheme, bool isRemoveAccentBrush, bool isRemoveContrastBrush)
         {
+            ValidationHelper.NotNull(application, () => application);
+
             if (isRemoveTheme)
             {
                 // Resource dictionaries paths
@@ -296,6 +304,8 @@ namespace Elysium
         [SecuritySafeCritical]
         private static void ApplyThemeInternal(this FrameworkElement control, Theme? theme, SolidColorBrush accentBrush, SolidColorBrush contrastBrush)
         {
+            ValidationHelper.NotNull(control, () => control);
+
             // Resource dictionaries paths
             var lightColorsUri = new Uri("/Elysium;component/Themes/LightBrushes.xaml", UriKind.Relative);
             var darkColorsUri = new Uri("/Elysium;component/Themes/DarkBrushes.xaml", UriKind.Relative);
@@ -388,8 +398,11 @@ namespace Elysium
                                       control, isRemoveTheme, isRemoveAccentBrush, isRemoveContrastBrush);
         }
 
+        [SecuritySafeCritical]
         private static void RemoveThemeInternal(this FrameworkElement control, bool isRemoveTheme, bool isRemoveAccentBrush, bool isRemoveContrastBrush)
         {
+            ValidationHelper.NotNull(control, () => control);
+
             if (isRemoveTheme)
             {
                 // Resource dictionaries paths

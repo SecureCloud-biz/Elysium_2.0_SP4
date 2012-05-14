@@ -553,9 +553,12 @@ namespace Elysium.Controls
                 }
                 else
                 {
-                    _thumb.DragStarted += OnSwitchStarted;
-                    _thumb.DragDelta += OnSwitchChanging;
-                    _thumb.DragCompleted += OnSwitchCompleted;
+                    if (_fill != null && _track != null)
+                    {
+                        _thumb.DragStarted += OnSwitchStarted;
+                        _thumb.DragDelta += OnSwitchChanging;
+                        _thumb.DragCompleted += OnSwitchCompleted;
+                    }
                 }
                 if (_switch != null)
                 {
@@ -582,6 +585,10 @@ namespace Elysium.Controls
 
         private void OnSwitchChanging(object sender, DragDeltaEventArgs e)
         {
+            Contract.Assume(_fill != null);
+            Contract.Assume(_track != null);
+            Contract.Assume(_thumb != null);
+
             var width = !IsChecked ? _fill.Width + e.HorizontalChange : _fill.Width - e.HorizontalChange;
 
             var maxwidth = _track.ActualWidth - _thumb.ActualWidth - (!IsChecked ? _fill.Margin.Left : _fill.Margin.Right);
@@ -600,6 +607,10 @@ namespace Elysium.Controls
 
         private void OnSwitchCompleted(object sender, DragCompletedEventArgs e)
         {
+            Contract.Assume(_fill != null);
+            Contract.Assume(_track != null);
+            Contract.Assume(_thumb != null);
+
             _fill.Width = 0;
             IsSwitching = false;
             IsChecked = _thumb.TranslatePoint(new Point(_thumb.ActualWidth / 2.0, 0), _track).X > _track.ActualWidth / 2;

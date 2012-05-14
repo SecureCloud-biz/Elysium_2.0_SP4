@@ -5,10 +5,21 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
+using JetBrains.Annotations;
+
 namespace Elysium.Converters
 {
-    public class IsGreaterThanConverter : IValueConverter
+    [PublicAPI]
+    [ValueConversion(typeof(Byte), typeof(Boolean))]
+    [ValueConversion(typeof(Int16), typeof(Boolean))]
+    [ValueConversion(typeof(Int32), typeof(Boolean))]
+    [ValueConversion(typeof(Int64), typeof(Boolean))]
+    [ValueConversion(typeof(Single), typeof(Boolean))]
+    [ValueConversion(typeof(Double), typeof(Boolean))]
+    [ValueConversion(typeof(Decimal), typeof(Boolean))]
+    public sealed class IsGreaterThanConverter : IValueConverter
     {
+        [PublicAPI]
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (!(value is Byte) && !(value is Int16) && !(value is Int32) && !(value is Int64) &&

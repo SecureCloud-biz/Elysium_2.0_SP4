@@ -24,7 +24,7 @@
     <SelfBranded>True</SelfBranded>
     <SyntaxFilters>CSharp, VisualBasic, CPlusPlus, FSharp, XamlUsage</SyntaxFilters>
     <IncludeFavorites>False</IncludeFavorites>
-    <BuildAssemblerVerbosity>OnlyErrors</BuildAssemblerVerbosity>
+    <BuildAssemblerVerbosity>AllMessages</BuildAssemblerVerbosity>
     <BuildLogFile>Elysium.log</BuildLogFile>
     <CopyrightHref>http://elysium.codeplex.com/license</CopyrightHref>
     <FooterText>Copyright %28c%29 2011 Alex F. Sherman</FooterText>
@@ -74,9 +74,11 @@
     <MissingTags>Summary, Parameter, Returns, Value, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="Elysium" isDocumented="True">Предоставляет несколько классов для управления базовыми функциями и параметрами темы.</NamespaceSummaryItem>
-<NamespaceSummaryItem name="Elysium.Converters" isDocumented="True">Предоставляет конвертеры типов.</NamespaceSummaryItem>
-<NamespaceSummaryItem name="Elysium.Extensions" isDocumented="True">Предоставляет классы, расширяющие функционал стандартных классов WPF.</NamespaceSummaryItem>
-<NamespaceSummaryItem name="Elysium.Controls" isDocumented="True">Предоставляет классы элементов управления, а также классы, необходимые для их функционирования.</NamespaceSummaryItem></NamespaceSummaries>
+      <NamespaceSummaryItem name="Elysium.Converters" isDocumented="True">Предоставляет конвертеры типов.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="Elysium.Extensions" isDocumented="True">Предоставляет классы, расширяющие функционал стандартных классов WPF.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="Elysium.Controls" isDocumented="True">Предоставляет классы элементов управления, а также классы, необходимые для их функционирования.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="Elysium.Controls.Automation" isDocumented="True">Предоставляет классы для работы с технологией UI Automation.</NamespaceSummaryItem>
+    </NamespaceSummaries>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
        order for Visual Studio to perform the build.  The others are optional

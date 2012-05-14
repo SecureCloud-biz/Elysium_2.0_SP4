@@ -232,7 +232,7 @@ namespace Elysium.Controls
             // Calculate index
             var freeIndexes = GetFreeIndexes(host);
             var indexes = freeIndexes.Where(x => x.Value != true).ToList();
-            var index = indexes.Count > 0 ? indexes.OrderBy(x => x.Key).First().Key : freeIndexes.Count();
+            var index = indexes.Any() ? indexes.OrderBy(x => x.Key).First().Key : freeIndexes.Count();
             if (indexes.Count > 0)
                 freeIndexes[index] = true;
             else

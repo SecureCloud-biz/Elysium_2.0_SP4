@@ -19,7 +19,7 @@ namespace Elysium.Controls.Primitives
     [TemplatePart(Name = MaskName, Type = typeof(Ellipse))]
     [TemplatePart(Name = HeaderHostName, Type = typeof(ContentPresenter))]
     [TemplatePart(Name = ContentHostName, Type = typeof(ContentPresenter))]
-    public class CommandButtonBase : ButtonBase
+    public abstract class CommandButtonBase : ButtonBase
     {
         private const string DecorName = "PART_Decor";
         private const string MaskName = "PART_Mask";

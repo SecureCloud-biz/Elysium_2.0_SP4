@@ -3,11 +3,15 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
+using JetBrains.Annotations;
+
 namespace Elysium.Converters
 {
+    [PublicAPI]
     [ValueConversion(typeof(Thickness), typeof(double))]
     public sealed class ThicknessToDoubleConverter : IValueConverter
     {
+        [PublicAPI]
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (!(value is Thickness))
@@ -33,6 +37,7 @@ namespace Elysium.Converters
             }
         }
 
+        [PublicAPI]
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (!(value is double))

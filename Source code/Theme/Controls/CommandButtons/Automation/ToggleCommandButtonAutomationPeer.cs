@@ -64,12 +64,12 @@ namespace Elysium.Controls.Automation
         {
             switch (value)
             {
+                case (null):
+                    return ToggleState.Indeterminate;
                 case (true):
                     return ToggleState.On;
-                case (false):
-                    return ToggleState.Off;
                 default:
-                    return ToggleState.Indeterminate;
+                    return ToggleState.Off;
             }
         }
     }

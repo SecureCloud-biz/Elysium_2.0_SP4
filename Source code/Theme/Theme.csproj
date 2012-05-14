@@ -44,14 +44,14 @@
     <CodeContractsArithmeticObligations>True</CodeContractsArithmeticObligations>
     <CodeContractsEnumObligations>True</CodeContractsEnumObligations>
     <CodeContractsRedundantAssumptions>True</CodeContractsRedundantAssumptions>
-    <CodeContractsInferRequires>False</CodeContractsInferRequires>
-    <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
-    <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
-    <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
+    <CodeContractsInferRequires>True</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>True</CodeContractsInferEnsures>
+    <CodeContractsInferObjectInvariants>True</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>True</CodeContractsSuggestAssumptions>
     <CodeContractsSuggestRequires>True</CodeContractsSuggestRequires>
     <CodeContractsSuggestEnsures>True</CodeContractsSuggestEnsures>
     <CodeContractsSuggestObjectInvariants>True</CodeContractsSuggestObjectInvariants>
-    <CodeContractsDisjunctiveRequires>False</CodeContractsDisjunctiveRequires>
+    <CodeContractsDisjunctiveRequires>True</CodeContractsDisjunctiveRequires>
     <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
     <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
     <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
@@ -169,6 +169,7 @@
     <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
     <CodeContractsReferenceAssembly>DoNotBuild</CodeContractsReferenceAssembly>
     <CodeContractsAnalysisWarningLevel>2</CodeContractsAnalysisWarningLevel>
+    <CodeContractsBaseLineFile />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="JetBrains.Annotations">
@@ -507,6 +508,28 @@
     </None>
     <None Include="Controls\ApplicationBar\Automation\ApplicationBarAutomationPeer.ru.xml">
       <DependentUpon>ApplicationBarAutomationPeer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Controls\CommandButtons\Automation\CommandButtonBaseAutomationPeer.ru.xml">
+      <DependentUpon>CommandButtonBaseAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\Automation\CommandButtonAutomationPeer.ru.xml">
+      <DependentUpon>CommandButtonAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\Automation\DropDownCommandButtonAutomationPeer.ru.xml">
+      <DependentUpon>DropDownCommandButtonAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\Automation\ToggleCommandButtonAutomationPeer.ru.xml">
+      <DependentUpon>ToggleCommandButtonAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ToggleSwitch\Automation\ToggleSwitchAutomationPeer.ru.xml">
+      <DependentUpon>ToggleSwitchAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ProgressBars\Automation\ProgressBarAutomationPeer.ru.xml">
+      <DependentUpon>ProgressBarAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Menus\Automation\SubmenuAutomationPeer.ru.xml">
+      <DependentUpon>SubmenuAutomationPeer.cs</DependentUpon>
     </None>
     <None Include="Properties\Key.snk" />
   </ItemGroup>

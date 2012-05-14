@@ -21,7 +21,7 @@
       </param>
       <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
       <returns>
-        True, если <paramref name="value"/> больше, чем <paramref name="parameter"/>, иначе - False.
+        True, если <paramref name="value"/> больше, чем <paramref name="parameter"/>, иначе — False.
         В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
       </returns>
     </method>

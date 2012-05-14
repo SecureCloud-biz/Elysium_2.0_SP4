@@ -102,10 +102,19 @@ namespace Elysium.Controls
             set { SetValue(HasDropShadowProperty, BooleanBoxingHelper.Box(value)); }
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         private static object CoerceHasDropShadow(DependencyObject obj, object basevalue)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            return BooleanBoxingHelper.Unbox(basevalue) && Environment.OSVersion.Version.Major >= 6;
+            try
+            {
+                // NOTE: Ignore Code Contracts warnings
+                return BooleanBoxingHelper.Unbox(basevalue) && Environment.OSVersion.Version.Major >= 6;
+            }
+            catch
+            {
+                return basevalue;
+            }
         }
 
         [PublicAPI]

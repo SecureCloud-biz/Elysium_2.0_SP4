@@ -13,15 +13,18 @@ namespace Elysium.Controls.Automation
     {
         public ProgressBarAutomationPeer([NotNull] ProgressBarBase owner) : base(owner)
         {
-            // NOTE: Lack of contracts: UIElementAutomationPeer's constructor throw ArgumentNullException if owner equals null
-            Contract.Assume(Owner != null);
         }
 
-        [ContractInvariantMethod]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        private void Invariants()
+        [PublicAPI]
+        public new ProgressBarBase Owner
         {
-            Contract.Invariant(Owner != null);
+            get
+            {
+                Contract.Ensures(Contract.Result<ProgressBarBase>() != null);
+                var result = (ProgressBarBase)base.Owner;
+                Contract.Assume(result != null);
+                return result;
+            }
         }
 
         protected override string GetClassNameCore()
@@ -38,17 +41,17 @@ namespace Elysium.Controls.Automation
 
         public override object GetPattern(PatternInterface patternInterface)
         {
-            var state = ((ProgressBarBase)Owner).State;
-            if (patternInterface == PatternInterface.RangeValue && state == ProgressBarState.Indeterminate)
+            var state = Owner.State;
+            if (patternInterface == PatternInterface.RangeValue && (state == ProgressBarState.Indeterminate || state == ProgressBarState.Busy))
             {
                 return null;
             }
-
             return base.GetPattern(patternInterface);
         }
 
-        public void SetValue(double value)
+        void IRangeValueProvider.SetValue(double value)
         {
+            Contract.Ensures(false);
             throw new InvalidOperationException("Progress bar is read-only");
         }
 

@@ -3,11 +3,15 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
+using JetBrains.Annotations;
+
 namespace Elysium.Converters
 {
+    [PublicAPI]
     [ValueConversion(typeof(Thickness), typeof(Thickness))]
-    public class ThicknessPositiveToNegativeConverter : IValueConverter
+    public sealed class ThicknessPositiveToNegativeConverter : IValueConverter
     {
+        [PublicAPI]
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (!(value is Thickness))
@@ -60,6 +64,7 @@ namespace Elysium.Converters
             return new Thickness(-source.Left, -source.Top, -source.Right, -source.Bottom);
         }
 
+        [PublicAPI]
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return Convert(value, targetType, parameter, culture);

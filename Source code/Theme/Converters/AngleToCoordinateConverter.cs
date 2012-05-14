@@ -4,10 +4,15 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
+using JetBrains.Annotations;
+
 namespace Elysium.Converters
 {
+    [PublicAPI]
+    [ValueConversion(typeof(Double), typeof(Double))]
     public sealed class AngleToCoordinateConverter : IMultiValueConverter
     {
+        [PublicAPI]
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             if (values == null || values.Length < 4)

@@ -58,30 +58,32 @@ namespace Elysium.Extensions
             Contract.EndContractBlock();
         }
 
-        [DebuggerHidden]
-        [UsedImplicitly]
-        [ContractArgumentValidator]
-        internal static void OfType<T>(T argument, [NotNull] Expression<Func<T>> parameterExpression, [NotNull] Type type)
-        {
-            OfType(argument, ((MemberExpression)parameterExpression.Body).Member.Name, type);
-        }
+        //[DebuggerHidden]
+        //[UsedImplicitly]
+        //[ContractArgumentValidator]
+        //internal static void OfType<T>(T argument, [NotNull] Expression<Func<T>> parameterExpression, [NotNull] Type type)
+        //{
+        //    OfType(argument, ((MemberExpression)parameterExpression.Body).Member.Name, type);
+        //}
 
-        [DebuggerHidden]
-        [UsedImplicitly]
-        [ContractArgumentValidator]
-        internal static void OfType<T>(T argument, [NotNull] string parameterName, [NotNull] Type type)
-        {
-            if (!(argument.GetType() == type))
-            {
-                throw new ArgumentException(parameterName + " must be of type: " + type.Name, parameterName);
-            }
-            Contract.EndContractBlock();
-        }
+        //[DebuggerHidden]
+        //[UsedImplicitly]
+        //[ContractArgumentValidator]
+        //internal static void OfType<T>(T argument, [NotNull] string parameterName, [NotNull] Type type)
+        //{
+        //    if (!(argument.GetType() == type))
+        //    {
+        //        throw new ArgumentException(parameterName + " must be of type: " + type.Name, parameterName);
+        //    }
+        //    Contract.EndContractBlock();
+        //}
 
         [DebuggerHidden]
         [UsedImplicitly]
         [ContractArgumentValidator]
         [SuppressMessage("Microsoft.Contracts", "Nonnull-2-0")]
+        [SuppressMessage("Microsoft.Contracts", "Nonnull-64-0")]
+        [SuppressMessage("Microsoft.Contracts", "Nonnull-81-0")]
         internal static void OfTypes<T>(T argument, [NotNull] Expression<Func<T>> parameterExpression, [NotNull] Type firstType, [NotNull] Type secondType)
         {
             OfTypes(argument, ((MemberExpression)parameterExpression.Body).Member.Name, firstType, secondType);
@@ -90,6 +92,8 @@ namespace Elysium.Extensions
         [DebuggerHidden]
         [UsedImplicitly]
         [ContractArgumentValidator]
+        [SuppressMessage("Microsoft.Contracts", "Nonnull-64-0")]
+        [SuppressMessage("Microsoft.Contracts", "Nonnull-81-0")]
         internal static void OfTypes<T>(T argument, [NotNull] string parameterName, [NotNull] Type firstType, [NotNull] Type secondType)
         {
             if (!(argument.GetType() == firstType) && !(argument.GetType() == secondType))

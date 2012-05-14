@@ -15,7 +15,9 @@ namespace Elysium.Controls
         {
             var infinitySize = new Size(double.PositiveInfinity, double.PositiveInfinity);
             var desiredSize = new Size(0, 0);
-            foreach (var child in InternalChildren.Cast<UIElement>().Where(child => child != null))
+            Contract.Assume(InternalChildren != null);
+            var children = InternalChildren.Cast<UIElement>();
+            foreach (var child in children.Where(child => child != null))
             {
                 // NOTE: Code Contracts doesn't support closures
                 Contract.Assume(child != null);
@@ -38,7 +40,9 @@ namespace Elysium.Controls
         {
             var leftFilledWidth = 0d;
             var rightFilledWidth = 0d;
-            foreach (var child in InternalChildren.Cast<UIElement>().Where(child => child != null))
+            Contract.Assume(InternalChildren != null);
+            var children = InternalChildren.Cast<UIElement>();
+            foreach (var child in children.Where(child => child != null))
             {
                 // NOTE: Code Contracts doesn't support closures
                 Contract.Assume(child != null);

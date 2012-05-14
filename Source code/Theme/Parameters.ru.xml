@@ -14,7 +14,7 @@
       <summary>
         Получает или задаёт размер шрифта в заголовке окна.
       </summary>
-      <value>Размер шрифта в заголовке окна. Значение по-умолчанию - 12pt.</value>
+      <value>Размер шрифта в заголовке окна. Значение по умолчанию — 12pt.</value>
       <remarks>
         <list type="table">
           <item>
@@ -89,7 +89,7 @@
       <summary>
         Получает или задаёт размер шрифта в заголовке элемента управления.
       </summary>
-      <value>Размер шрифта в заголовке элемента управления. Значение по-умолчанию - 16pt.</value>
+      <value>Размер шрифта в заголовке элемента управления. Значение по умолчанию — 16pt.</value>
       <remarks>
         <list type="table">
           <item>
@@ -164,7 +164,7 @@
       <summary>
         Получает или задаёт размер шрифта для содержимого элемента управления.
       </summary>
-      <value>Размер шрифта для содержимого элемента управления. Значение по-умолчанию - 10pt.</value>
+      <value>Размер шрифта для содержимого элемента управления. Значение по умолчанию — 10pt.</value>
       <remarks>
         <list type="table">
           <item>
@@ -309,7 +309,7 @@
       <summary>
         Получает или задаёт размер шрифта текста.
       </summary>
-      <value>Размер шрифта текста. Значение по-умолчанию - 9pt.</value>
+      <value>Размер шрифта текста. Значение по умолчанию — 9pt.</value>
       <remarks>
         <list type="table">
           <item>
@@ -408,9 +408,9 @@
     <!-- Thickness -->
     <property name="P:Elysium.Parameters.DefaultThickness">
       <summary>
-        Получает или задаёт толщину линии по-умолчанию.
+        Получает или задаёт толщину линии по умолчанию.
       </summary>
-      <value>Толщина линии по-умолчанию. Значение по-умолчанию - 1px.</value>
+      <value>Толщина линии по умолчанию. Значение по умолчанию — 1px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -452,7 +452,7 @@
         Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultThickness"/> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Толщина линии по-умолчанию.</returns>
+      <returns>Толщина линии по умолчанию.</returns>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj"/> имеет значение null.
       </exception>
@@ -464,7 +464,7 @@
         Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultThickness"/> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">Толщина линии по-умолчанию.</param>
+      <param name="value">Толщина линии по умолчанию.</param>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj"/> имеет значение null.
       </exception>
@@ -474,7 +474,7 @@
       <summary>
         Получает или задаёт толщину полужирной линии.
       </summary>
-      <value>Толщина полужирной линии. Значение по-умолчанию - 1.5px.</value>
+      <value>Толщина полужирной линии. Значение по умолчанию — 1.5px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -538,7 +538,7 @@
       <summary>
         Получает или задаёт толщину жирной линии.
       </summary>
-      <value>Толщина жирной линии. Значение по-умолчанию - 2px.</value>
+      <value>Толщина жирной линии. Значение по умолчанию — 2px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -600,9 +600,9 @@
     </method>
     <property name="P:Elysium.Parameters.DefaultThicknessValue">
       <summary>
-        Получает или задаёт толщину линии по-умолчанию.
+        Получает или задаёт толщину линии по умолчанию.
       </summary>
-      <value>Толщина линии по-умолчанию. Значение по-умолчанию - 1px.</value>
+      <value>Толщина линии по умолчанию. Значение по умолчанию — 1px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -644,7 +644,7 @@
         Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultThicknessValue"/> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Толщина линии по-умолчанию.</returns>
+      <returns>Толщина линии по умолчанию.</returns>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj"/> имеет значение null.
       </exception>
@@ -656,7 +656,7 @@
         Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultThicknessValue"/> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">Толщина линии по-умолчанию.</param>
+      <param name="value">Толщина линии по умолчанию.</param>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj"/> имеет значение null.
       </exception>
@@ -666,7 +666,7 @@
       <summary>
         Получает или задаёт толщину полужирной линии.
       </summary>
-      <value>Толщина полужирной линии. Значение по-умолчанию - 1.5px.</value>
+      <value>Толщина полужирной линии. Значение по умолчанию — 1.5px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -730,7 +730,7 @@
       <summary>
         Получает или задаёт толщину жирной линии.
       </summary>
-      <value>Толщина жирной линии. Значение по-умолчанию - 2px.</value>
+      <value>Толщина жирной линии. Значение по умолчанию — 2px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -793,9 +793,9 @@
     <!-- Padding -->
     <property name="P:Elysium.Parameters.DefaultPadding">
       <summary>
-        Получает или задаёт размер отступов по-умолчанию.
+        Получает или задаёт размер отступов по умолчанию.
       </summary>
-      <value>Размер отступов по-умолчанию. Значение по-умолчанию - 1px.</value>
+      <value>Размер отступов по умолчанию. Значение по умолчанию — 1px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -837,7 +837,7 @@
         Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultPadding"/> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Размер отступов по-умолчанию.</returns>
+      <returns>Размер отступов по умолчанию.</returns>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj"/> имеет значение null.
       </exception>
@@ -849,7 +849,7 @@
         Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultPadding"/> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">Размер отступов по-умолчанию.</param>
+      <param name="value">Размер отступов по умолчанию.</param>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj"/> имеет значение null.
       </exception>
@@ -859,7 +859,7 @@
       <summary>
         Получает или задаёт величину отступов среднего размера.
       </summary>
-      <value>Величина отступов среднего размера. Значение по-умолчанию - 2px.</value>
+      <value>Величина отступов среднего размера. Значение по умолчанию — 2px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -923,7 +923,7 @@
       <summary>
         Получает или задаёт величину наиболее большого отступа.
       </summary>
-      <value>Величина наиболее большого отступа. Значение по-умолчанию - 5px.</value>
+      <value>Величина наиболее большого отступа. Значение по умолчанию — 5px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -985,9 +985,9 @@
     </method>
     <property name="P:Elysium.Parameters.DefaultPaddingValue">
       <summary>
-        Получает или задаёт размер отступов по-умолчанию.
+        Получает или задаёт размер отступов по умолчанию.
       </summary>
-      <value>Размер отступов по-умолчанию. Значение по-умолчанию - 1px.</value>
+      <value>Размер отступов по умолчанию. Значение по умолчанию — 1px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -1029,7 +1029,7 @@
         Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultPaddingValue"/> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Размер отступов по-умолчанию.</returns>
+      <returns>Размер отступов по умолчанию.</returns>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj"/> имеет значение null.
       </exception>
@@ -1041,7 +1041,7 @@
         Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultPaddingValue"/> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">Размер отступов по-умолчанию.</param>
+      <param name="value">Размер отступов по умолчанию.</param>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj"/> имеет значение null.
       </exception>
@@ -1051,7 +1051,7 @@
       <summary>
         Получает или задаёт величину отступов среднего размера.
       </summary>
-      <value>Величина отступов среднего размера. Значение по-умолчанию - 2px.</value>
+      <value>Величина отступов среднего размера. Значение по умолчанию — 2px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -1115,7 +1115,7 @@
       <summary>
         Получает или задаёт величину наиболее большого отступа.
       </summary>
-      <value>Величина наиболее большого отступа. Значение по-умолчанию - 5px.</value>
+      <value>Величина наиболее большого отступа. Значение по умолчанию — 5px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -1178,9 +1178,9 @@
     <!-- Duration -->
     <property name="P:Elysium.Parameters.DefaultDuration">
       <summary>
-        Получает или задаёт продолжительность анимации по-умолчанию.
+        Получает или задаёт продолжительность анимации по умолчанию.
       </summary>
-      <value>Продолжительность анимации по-умолчанию. Значение по-умолчанию - 0 сек.</value>
+      <value>Продолжительность анимации по умолчанию. Значение по умолчанию — 0 сек.</value>
       <remarks>
         <list type="table">
           <item>
@@ -1221,7 +1221,7 @@
         Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultDuration"/> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Продолжительность анимации по-умолчанию.</returns>
+      <returns>Продолжительность анимации по умолчанию.</returns>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj"/> имеет значение null.
       </exception>
@@ -1232,7 +1232,7 @@
         Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultDuration"/> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">Продолжительность анимации по-умолчанию.</param>
+      <param name="value">Продолжительность анимации по умолчанию.</param>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj"/> имеет значение null.
       </exception>
@@ -1242,7 +1242,7 @@
       <summary>
         Получает или задаёт минимальную продолжительность анимации.
       </summary>
-      <value>Минимальная продолжительность анимации. Значение по-умолчанию - 0.2 сек.</value>
+      <value>Минимальная продолжительность анимации. Значение по умолчанию — 0.2 сек.</value>
       <remarks>
         <list type="table">
           <item>
@@ -1304,7 +1304,7 @@
       <summary>
         Получает или задаёт оптимальную продолжительность анимации.
       </summary>
-      <value>Оптимальная продолжительность анимации. Значение по-умолчанию - 0.5 сек.</value>
+      <value>Оптимальная продолжительность анимации. Значение по умолчанию — 0.5 сек.</value>
       <remarks>
         <list type="table">
           <item>
@@ -1366,7 +1366,7 @@
       <summary>
         Получает или задаёт максимальную продолжительность анимации.
       </summary>
-      <value>Максимальная продолжительность анимации. Значение по-умолчанию - 1 сек.</value>
+      <value>Максимальная продолжительность анимации. Значение по умолчанию — 1 сек.</value>
       <remarks>
         <list type="table">
           <item>
@@ -1429,7 +1429,7 @@
       <summary>
         Получает или задаёт кисть, используемую при создании теней.
       </summary>
-      <value>Кисть, используемая при создании тени. Значение по-умолчанию - null.</value>
+      <value>Кисть, используемая при создании тени. Значение по умолчанию — null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -1492,9 +1492,9 @@
     <!-- Buttons -->
     <property name="P:Elysium.Parameters.CommandButtonMask">
       <summary>
-        Получает или задаёт кисть, используемую для заливки содержимого кнопок управления - классов, наследующихся от класса <see cref="T:Elysium.Controls.Primitives.CommandButtonBase"/>.
+        Получает или задаёт кисть, используемую для заливки содержимого кнопок управления — классов, наследующихся от класса <see cref="T:Elysium.Controls.Primitives.CommandButtonBase"/>.
       </summary>
-      <value>Кисть, используемая для заливки содержимого кнопок управления. Значение по-умолчанию - null.</value>
+      <value>Кисть, используемая для заливки содержимого кнопок управления. Значение по умолчанию — null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -1559,7 +1559,7 @@
       <summary>
         Получает или задаёт размер области, на которой располагается маркер у классов <see cref="T:System.Windows.Controls.CheckBox"/> и <see cref="T:System.Windows.Controls.RadioButton"/>.
       </summary>
-      <value>Размер области, на которой располагается маркер. Значение по-умолчанию - 16px.</value>
+      <value>Размер области, на которой располагается маркер. Значение по умолчанию — 16px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -1630,7 +1630,7 @@
       <summary>
         Получает или задаёт размер маркера в состоянии "не определено" у классов <see cref="T:System.Windows.Controls.CheckBox"/> и <see cref="T:System.Windows.Controls.RadioButton"/>.
       </summary>
-      <value>Размер маркера в состоянии "не определено". Значение по-умолчанию - 8px.</value>
+      <value>Размер маркера в состоянии "не определено". Значение по умолчанию — 8px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -1701,7 +1701,7 @@
       <summary>
         Получает или задаёт размер маркера в состоянии "включен" для элемента управления <see cref="T:System.Windows.Controls.CheckBox"/>.
       </summary>
-      <value>Размер маркера в состоянии "включен". Значение по-умолчанию - 10px.</value>
+      <value>Размер маркера в состоянии "включен". Значение по умолчанию — 10px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -1765,7 +1765,7 @@
       <summary>
         Получает или задаёт ширину переключателя в элементе управления <see cref="T:Elysium.Controls.ToggleSwitch"/>.
       </summary>
-      <value>Ширина переключателя. Значение по-умолчанию - 48px.</value>
+      <value>Ширина переключателя. Значение по умолчанию — 48px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -1828,7 +1828,7 @@
       <summary>
         Получает или задаёт толщину переключателя в элементе управления <see cref="T:Elysium.Controls.ToggleSwitch"/>.
       </summary>
-      <value>Толщина переключателя. Значение по-умолчанию - 10px.</value>
+      <value>Толщина переключателя. Значение по умолчанию — 10px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -1893,7 +1893,7 @@
         Получает или задаёт ширину кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox"/>.
       </summary>
       <value>
-        Ширина кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox"/>. Значение по-умолчанию - 18px.
+        Ширина кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox"/>. Значение по умолчанию — 18px.
       </value>
       <remarks>
         <list type="table">
@@ -1964,7 +1964,7 @@
         Получает или задаёт размер указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.ComboBox"/>.
       </summary>
       <value>
-        Размер указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.ComboBox"/>. Значение по-умолчанию - 8px.
+        Размер указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.ComboBox"/>. Значение по умолчанию — 8px.
       </value>
       <remarks>
         <list type="table">
@@ -2033,7 +2033,7 @@
         Получает или задаёт отступ указателя на возможность открытия (стрелки) от краёв кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox"/>.
       </summary>
       <value>
-        Отступ указателя на возможность открытия (стрелки) от краёв кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox"/>. Значение по-умолчанию - (5, 0, 5, 0).
+        Отступ указателя на возможность открытия (стрелки) от краёв кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox"/>. Значение по умолчанию — (5, 0, 5, 0).
       </value>
       <remarks>
         <list type="table">
@@ -2050,7 +2050,7 @@
             </description>
           </item>
         </list>
-        В стиле по-умолчанию используется значение только правого отступа, остальные значения игнорируются.
+        В стиле по умолчанию используется значение только правого отступа, остальные значения игнорируются.
         Тем не менее, при переопределении стиля вы можете использовать и значения других отступов.
       </remarks>
       <example>
@@ -2104,7 +2104,7 @@
       <summary>
         Получает или задаёт длину трека в элементе управления <see cref="T:System.Windows.Controls.Slider"/>.
       </summary>
-      <value>Длина трека. Значение по-умолчанию - 48px.</value>
+      <value>Длина трека. Значение по умолчанию — 48px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -2167,7 +2167,7 @@
       <summary>
         Получает или задаёт ширину ползунка в элементе управления <see cref="T:System.Windows.Controls.Slider"/>.
       </summary>
-      <value>Ширина ползунка. Значение по-умолчанию - 6px.</value>
+      <value>Ширина ползунка. Значение по умолчанию — 6px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -2229,9 +2229,9 @@
     <!-- ProgressBars --> 
     <property name="P:Elysium.Parameters.ProgressBarBusyElementSize">
       <summary>
-        Получает или задаёт размер элемента индикации состояния занятости (по-умолчанию - кружка) для наследников класса <see cref="T:Elysium.Controls.Primitives.ProgressBarBase"/>.
+        Получает или задаёт размер элемента индикации состояния занятости (по умолчанию — кружка) для наследников класса <see cref="T:Elysium.Controls.Primitives.ProgressBarBase"/>.
       </summary>
-      <value>Размер элемента индикации состояния занятости. Значение по-умолчанию - 4px.</value>
+      <value>Размер элемента индикации состояния занятости. Значение по умолчанию — 4px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -2296,7 +2296,7 @@
         Получает или задаёт размер указателя (стрелки) в элементе управления <see cref="T:System.Windows.Controls.Primitives.ScrollBar"/>.
       </summary>
       <value>
-        Размер указателя (стрелки). Значение по-умолчанию - 6px.
+        Размер указателя (стрелки). Значение по умолчанию — 6px.
       </value>
       <remarks>
         <list type="table">
@@ -2361,7 +2361,7 @@
       <summary>
         Получает или задаёт кисть, используемую для заливки индикатора текущей вкладки элемента управления <see cref="T:System.Windows.Controls.TabControl"/>.
       </summary>
-      <value>Кисть, используемая для заливки индикатора текущей вкладки. Значение по-умолчанию - null.</value>
+      <value>Кисть, используемая для заливки индикатора текущей вкладки. Значение по умолчанию — null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -2433,7 +2433,7 @@
       <summary>
         Получает или задаёт толщину индикатора текущей вкладки в элементе управления <see cref="T:System.Windows.Controls.TabControl"/>.
       </summary>
-      <value>Толщина индикатора текущей вкладки. Значение по-умолчанию - 2px.</value>
+      <value>Толщина индикатора текущей вкладки. Значение по умолчанию — 2px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -2496,7 +2496,7 @@
       <summary>
         Получает или задаёт стиль заголовка вкладки в элементе управления <see cref="T:System.Windows.Controls.TabItem"/>.
       </summary>
-      <value>Стиль заголовка вкладки. Значение по-умолчанию - null.</value>
+      <value>Стиль заголовка вкладки. Значение по умолчанию — null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -2550,7 +2550,7 @@
       <summary>
         Получает или задаёт размер маркера у класса <see cref="T:System.Windows.Controls.MenuItem"/>.
       </summary>
-      <value>Размер маркера. Значение по-умолчанию - 12px.</value>
+      <value>Размер маркера. Значение по умолчанию — 12px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -2615,7 +2615,7 @@
         Получает или задаёт размер указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.MenuItem"/>.
       </summary>
       <value>
-        Размер указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.MenuItem"/>. Значение по-умолчанию - 8px.
+        Размер указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.MenuItem"/>. Значение по умолчанию — 8px.
       </value>
       <remarks>
         <list type="table">
@@ -2684,7 +2684,7 @@
         Получает или задаёт отступ указателя на возможность открытия (стрелки) от краёв элемента управления <see cref="T:System.Windows.Controls.MenuItem"/>.
       </summary>
       <value>
-        Отступ указателя на возможность открытия (стрелки) от краёв элемента управления <see cref="T:System.Windows.Controls.MenuItem"/>. Значение по-умолчанию - (3, 0, 3, 0).
+        Отступ указателя на возможность открытия (стрелки) от краёв элемента управления <see cref="T:System.Windows.Controls.MenuItem"/>. Значение по умолчанию — (3, 0, 3, 0).
       </value>
       <remarks>
         <list type="table">
@@ -2701,7 +2701,7 @@
             </description>
           </item>
         </list>
-        В стиле по-умолчанию используется значение только правого отступа, остальные значения игнорируются.
+        В стиле по умолчанию используется значение только правого отступа, остальные значения игнорируются.
         Тем не менее, при переопределении стиля вы можете использовать и значения других отступов.
       </remarks>
       <example>
@@ -2756,7 +2756,7 @@
         Получает или задаёт толщину рамки изменения размера элемента управления <see cref="T:Elysium.Controls.Window"/>.
       </summary>
       <value>
-        Толщина рамки изменения размера окна. Значение по-умолчанию - 3px.
+        Толщина рамки изменения размера окна. Значение по умолчанию — 3px.
       </value>
       <remarks>
         <list type="table">
