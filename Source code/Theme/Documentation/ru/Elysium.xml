@@ -4090,7 +4090,7 @@
           <item>
             <term>Ассоциированный метод</term>
             <description>
-              <see cref="F:Elysium.Controls.ToggleCommandButton.OnChecked" />
+              <see cref="M:Elysium.Controls.ToggleCommandButton.OnChecked" />
             </description>
           </item>
           <item>
@@ -4129,7 +4129,7 @@
           <item>
             <term>Ассоциированный метод</term>
             <description>
-              <see cref="F:Elysium.Controls.ToggleCommandButton.OnUnchecked" />
+              <see cref="M:Elysium.Controls.ToggleCommandButton.OnUnchecked" />
             </description>
           </item>
           <item>
@@ -4168,7 +4168,7 @@
           <item>
             <term>Ассоциированный метод</term>
             <description>
-              <see cref="F:Elysium.Controls.ToggleCommandButton.OnIndeterminate" />
+              <see cref="M:Elysium.Controls.ToggleCommandButton.OnIndeterminate" />
             </description>
           </item>
           <item>
