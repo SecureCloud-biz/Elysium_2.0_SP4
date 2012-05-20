@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.IdentityModel.Selectors</name>
+  </assembly>
+  <members>
+    <member name="T:System.IdentityModel.Selectors.CardSpaceException">
+      <summary>Исключение, которое создается в случае возникновения одного или нескольких исключений на уровне службы .Причина ошибки записывается в журнал событий.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.CardSpaceException.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.IdentityModel.Selectors.CardSpaceException" />. </summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.CardSpaceException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.CardSpaceException" />, используя сериализованные данные.</summary>
+      <param name="info">Объект <see cref="T:System.Runtime.Serialization.SerializationInfo" />, содержащий данные сериализованного объекта, касающиеся возникающего исключения.</param>
+      <param name="context">Объект <see cref="T:System.Runtime.Serialization.StreamingContext" />, содержащий контекстные сведения об источнике или назначении.</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.CardSpaceException.#ctor(System.String)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.CardSpaceException" /> с указанным сообщением об ошибке.</summary>
+      <param name="message">Сообщение, описывающее ошибку.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.CardSpaceException.#ctor(System.String,System.Exception)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.CardSpaceException" /> с указанным сообщением об ошибке и ссылкой на внутреннее исключение, вызвавшее данное исключение.</summary>
+      <param name="message">Сообщение, описывающее ошибку.</param>
+      <param name="innerException">Объект <see cref="T:System.Exception" />, представляющийся причину текущего исключения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.IdentityModel.Selectors.CardSpacePolicyElement">
+      <summary>Этот класс предназначен для использования инфраструктурой.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.CardSpacePolicyElement.#ctor(System.Xml.XmlElement,System.Xml.XmlElement,System.Collections.ObjectModel.Collection{System.Xml.XmlElement},System.Uri,System.Int32,System.Boolean)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.IdentityModel.Selectors.CardSpacePolicyElement" /> с использованием указанных целевого объекта и поставщика политики, параметров политики, местоположения и версии уведомления о конфиденциальности.</summary>
+      <param name="target">Элемент <see cref="T:System.Xml.XmlElement" />, представляющий целевой объект политики.Задает свойство <see cref="P:System.IdentityModel.Selectors.CardSpacePolicyElement.Target" />.</param>
+      <param name="issuer">Элемент <see cref="T:System.Xml.XmlElement" />, представляющий поставщик политики.Задает свойство <see cref="P:System.IdentityModel.Selectors.CardSpacePolicyElement.Issuer" />.</param>
+      <param name="parameters">Коллекция <see cref="T:System.Collections.ObjectModel.Collection`1" /> типа <see cref="T:System.Xml.XmlElement" />, представляющая параметры данного элемента.Задает свойство <see cref="P:System.IdentityModel.Selectors.CardSpacePolicyElement.Parameters" />.</param>
+      <param name="privacyNoticeLink">Объект <see cref="T:System.Uri" />, определяющий местоположение политики конфиденциальности.Задает свойство <see cref="P:System.IdentityModel.Selectors.CardSpacePolicyElement.PolicyNoticeLink" />.</param>
+      <param name="privacyNoticeVersion">Версия сведений о конфиденциальности.Задает свойство <see cref="P:System.IdentityModel.Selectors.CardSpacePolicyElement.PolicyNoticeVersion" />.</param>
+      <param name="isManagedIssuer">Значение true, если поставщик является управляемым; в противном случае — значение false.Задает свойство <see cref="P:System.IdentityModel.Selectors.CardSpacePolicyElement.IsManagedIssuer" />.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.IdentityModel.Selectors.CardSpacePolicyElement.IsManagedIssuer">
+      <summary>Возвращает или задает значение, указывающее, является ли поставщик политики управляемым поставщиком.</summary>
+      <returns>Значение true, если поставщик является управляемым; в противном случае — значение false.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.IdentityModel.Selectors.CardSpacePolicyElement.Issuer">
+      <summary>Возвращает или задает поставщик политики.</summary>
+      <returns>Элемент <see cref="T:System.Xml.XmlElement" />, представляющий поставщик политики.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.IdentityModel.Selectors.CardSpacePolicyElement.Parameters">
+      <summary>Возвращает коллекцию элементов XML, которые представляют параметры этого элемента.</summary>
+      <returns>Коллекция <see cref="T:System.Collections.ObjectModel.Collection`1" /> типа <see cref="T:System.Xml.XmlElement" />, представляющая параметры данного элемента.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.IdentityModel.Selectors.CardSpacePolicyElement.PolicyNoticeLink">
+      <summary>Возвращает или задает универсальный код ресурса (URI) для сведений о конфиденциальности этой политики.</summary>
+      <returns>Объект <see cref="T:System.Uri" />, определяющий местоположение политики конфиденциальности.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.IdentityModel.Selectors.CardSpacePolicyElement.PolicyNoticeVersion">
+      <summary>Возвращает или задает версию сведений о конфиденциальности.</summary>
+      <returns>Версия сведений о конфиденциальности.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.IdentityModel.Selectors.CardSpacePolicyElement.Target">
+      <summary>Возвращает или задает целевой объект этой политики.</summary>
+      <returns>Элемент <see cref="T:System.Xml.XmlElement" />, представляющий целевой объект политики.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.IdentityModel.Selectors.CardSpaceSelector">
+      <summary>Предоставляет доступ ко всем открытым операциям , поддерживаемым в управляемом коде.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.CardSpaceSelector.GetToken(System.IdentityModel.Selectors.CardSpacePolicyElement[],System.IdentityModel.Selectors.SecurityTokenSerializer)">
+      <summary>Создает маркер безопасности с помощью системы  и заданной цепочки политики и сериализатора маркеров.</summary>
+      <returns>Маркер <see cref="T:System.IdentityModel.Tokens.GenericXmlSecurityToken" />, представляющий созданный маркер безопасности.</returns>
+      <param name="policyChain">Массив <see cref="T:System.IdentityModel.Selectors.CardSpacePolicyElement" />, описывающий федеративную цепочку безопасности, требуемую клиентом для очистки последнего маркера.</param>
+      <param name="tokenSerializer">Объект <see cref="T:System.IdentityModel.Selectors.SecurityTokenSerializer" />, который может читать предложение KeyInfo.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="policyChain" /> равно null.— или —<paramref name="policyChain" /> имеет нулевую длину.— или —<paramref name="tokenSerializer" /> равно null.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.CardSpaceSelector.GetToken(System.Xml.XmlElement,System.Collections.Generic.IEnumerable{System.Xml.XmlElement},System.Xml.XmlElement,System.IdentityModel.Selectors.SecurityTokenSerializer)">
+      <summary>Создает маркер безопасности с помощью системы  и заданной конечной точки, политики, поставщика маркера и сериализатора маркеров.</summary>
+      <returns>Маркер <see cref="T:System.IdentityModel.Tokens.GenericXmlSecurityToken" />, представляющий созданный маркер безопасности.</returns>
+      <param name="endpoint">Элемент <see cref="T:System.Xml.XmlElement" />, представляющий адрес конечной точки получателя, в которую предоставляется маркер.</param>
+      <param name="policy">Объект <see cref="T:System.Collections.Generic.IEnumerable`1" /> типа <see cref="T:System.Xml.XmlElement" />, содержащий фрагмент политики, который задает типы маркеров и утверждения, запрашиваемые получателем.</param>
+      <param name="requiredRemoteTokenIssuer">Элемент <see cref="T:System.Xml.XmlElement" />, представляющий поставщик маркера.</param>
+      <param name="tokenSerializer">Объект <see cref="T:System.IdentityModel.Selectors.SecurityTokenSerializer" />, который может читать предложение KeyInfo.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="endpoint" /> равно null.— или —<paramref name="policy" /> равно null.— или —<paramref name="tokenSerializer" /> равно null.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.CardSpaceSelector.Import(System.String)">
+      <summary>Отображает элемент пользовательского интерфейса Импорт карты.</summary>
+      <param name="fileName">Имя импортируемого файла.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="fileName" /> равно null.— или —Параметр <paramref name="fileName" /> имеет значение <see cref="F:System.String.Empty" />.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.CardSpaceSelector.Manage">
+      <summary>Отображает элемент пользовательского интерфейса , который позволяет пользователю создавать, удалять, переименовывать и изменять карту.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.IdentityModel.Selectors.IdentityValidationException">
+      <summary>Класс исключения, указывающий, что сертификат получателя недействителен.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.IdentityValidationException.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.IdentityModel.Selectors.IdentityValidationException" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.IdentityValidationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.IdentityModel.Selectors.IdentityValidationException" /> на основе указанных сведений о сериализации и контекста сериализации.</summary>
+      <param name="info">Объект <see cref="T:System.Runtime.Serialization.SerializationInfo" />, содержащий данные сериализованного объекта, касающиеся возникающего исключения.</param>
+      <param name="context">Объект <see cref="T:System.Runtime.Serialization.StreamingContext" />, содержащий контекстные сведения об источнике или назначении.</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.IdentityValidationException.#ctor(System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.IdentityModel.Selectors.IdentityValidationException" /> с указанным сообщением об ошибке.</summary>
+      <param name="message">Строка, содержащая сообщение об ошибке с объяснением причин исключения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.IdentityValidationException.#ctor(System.String,System.Exception)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.IdentityModel.Selectors.IdentityValidationException" /> с указанным сообщением об ошибке и исходным исключением, вызвавшим данное исключение.</summary>
+      <param name="message">Строка, содержащая сообщение об ошибке с объяснением причин исключения.</param>
+      <param name="innerException">Исходное исключение, вызвавшее данное исключение.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.IdentityModel.Selectors.PolicyValidationException">
+      <summary>Класс исключения, указывающий, что не удалось проверить политику, предоставленную получателем.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.PolicyValidationException.#ctor">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.PolicyValidationException" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.PolicyValidationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.PolicyValidationException" /> с указанными сведениями о сериализации и контекстом потоковой передачи.</summary>
+      <param name="info">Объект <see cref="T:System.Runtime.Serialization.SerializationInfo" />, содержащий данные сериализованного объекта, касающиеся возникающего исключения.</param>
+      <param name="context">Объект <see cref="T:System.Runtime.Serialization.StreamingContext" />, содержащий контекстные сведения об источнике или назначении.</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.PolicyValidationException.#ctor(System.String)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.PolicyValidationException" /> с указанным сообщением об ошибке.</summary>
+      <param name="message">Сообщение, описывающее ошибку.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.PolicyValidationException.#ctor(System.String,System.Exception)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.PolicyValidationException" /> с указанным сообщением об ошибке и ссылкой на внутреннее исключение, вызвавшее данное исключение.</summary>
+      <param name="message">Сообщение, описывающее ошибку.</param>
+      <param name="innerException">Исключение, являющееся причиной текущего исключения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.IdentityModel.Selectors.ServiceBusyException">
+      <summary>Класс исключения, указывающий, что служба  занята обработкой других запросов.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.ServiceBusyException.#ctor">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.ServiceBusyException" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.ServiceBusyException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.ServiceBusyException" /> с указанными сведениями о сериализации и контекстом потоковой передачи.</summary>
+      <param name="info">Объект <see cref="T:System.Runtime.Serialization.SerializationInfo" />, содержащий данные сериализованного объекта, касающиеся возникающего исключения.</param>
+      <param name="context">Объект <see cref="T:System.Runtime.Serialization.StreamingContext" />, содержащий контекстные сведения об источнике или назначении.</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.ServiceBusyException.#ctor(System.String)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.ServiceBusyException" /> с указанным сообщением об ошибке.</summary>
+      <param name="message">Сообщение, описывающее ошибку.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.ServiceBusyException.#ctor(System.String,System.Exception)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.ServiceBusyException" /> с указанным сообщением об ошибке и ссылкой на внутреннее исключение, вызвавшее данное исключение.</summary>
+      <param name="message">Сообщение, описывающее ошибку.</param>
+      <param name="innerException">Исключение, являющееся причиной текущего исключения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.IdentityModel.Selectors.ServiceNotStartedException">
+      <summary>Это исключение создается, если служба  не запущена на компьютере пользователя.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.ServiceNotStartedException.#ctor">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.ServiceNotStartedException" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.ServiceNotStartedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.ServiceNotStartedException" />, используя сериализованные данные.</summary>
+      <param name="info">Объект <see cref="T:System.Runtime.Serialization.SerializationInfo" />, содержащий данные сериализованного объекта, касающиеся возникающего исключения.</param>
+      <param name="context">Объект <see cref="T:System.Runtime.Serialization.StreamingContext" />, содержащий контекстные сведения об источнике или назначении.</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.ServiceNotStartedException.#ctor(System.String)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.ServiceNotStartedException" /> с указанным сообщением об ошибке.</summary>
+      <param name="message">Сообщение, описывающее ошибку.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.ServiceNotStartedException.#ctor(System.String,System.Exception)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.ServiceNotStartedException" /> с указанным сообщением об ошибке и ссылкой на внутреннее исключение, вызвавшее данное исключение.</summary>
+      <param name="message">Сообщение, описывающее ошибку.</param>
+      <param name="innerException">Исключение, являющееся причиной текущего исключения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.IdentityModel.Selectors.StsCommunicationException">
+      <summary>Исключение, создаваемое в случае ошибки связи со службой маркеров безопасности.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.StsCommunicationException.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.IdentityModel.Selectors.StsCommunicationException" />. </summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.StsCommunicationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.StsCommunicationException" />, используя сериализованные данные.</summary>
+      <param name="info">Объект <see cref="T:System.Runtime.Serialization.SerializationInfo" />, содержащий данные сериализованного объекта, касающиеся возникающего исключения.</param>
+      <param name="context">Объект <see cref="T:System.Runtime.Serialization.StreamingContext" />, содержащий контекстные сведения об источнике или назначении.</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.StsCommunicationException.#ctor(System.String)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.StsCommunicationException" /> с указанным сообщением об ошибке.</summary>
+      <param name="message">Сообщение, описывающее ошибку.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.StsCommunicationException.#ctor(System.String,System.Exception)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.StsCommunicationException" /> с указанным сообщением об ошибке и ссылкой на внутреннее исключение, вызвавшее данное исключение.</summary>
+      <param name="message">Сообщение, описывающее ошибку.</param>
+      <param name="innerException">Исключение, являющееся причиной текущего исключения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.IdentityModel.Selectors.UnsupportedPolicyOptionsException">
+      <summary>Указывает, что политика, предоставленная системе, содержит неподдерживаемые параметры.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UnsupportedPolicyOptionsException.#ctor">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.UnsupportedPolicyOptionsException" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UnsupportedPolicyOptionsException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.UnsupportedPolicyOptionsException" /> с указанными сведениями о сериализации и контекстом потоковой передачи.</summary>
+      <param name="info">Объект <see cref="T:System.Runtime.Serialization.SerializationInfo" />, содержащий данные сериализованного объекта, касающиеся возникающего исключения.</param>
+      <param name="context">Объект <see cref="T:System.Runtime.Serialization.StreamingContext" />, содержащий контекстные сведения об источнике или назначении.</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UnsupportedPolicyOptionsException.#ctor(System.String)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.UnsupportedPolicyOptionsException" /> с указанным сообщением об ошибке.</summary>
+      <param name="message">Сообщение об ошибке.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UnsupportedPolicyOptionsException.#ctor(System.String,System.Exception)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.UnsupportedPolicyOptionsException" /> с указанным сообщением об ошибке и исходным исключением, вызвавшим данное исключение.</summary>
+      <param name="message">Сообщение об ошибке с объяснением причины исключения.</param>
+      <param name="innerException">Исходное исключение, вызвавшее данное исключение.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.IdentityModel.Selectors.UntrustedRecipientException">
+      <summary>Исключение, возникающее, когда пользователь после просмотра информации сертификата решает не доверять объекту, запрашивающему маркер.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UntrustedRecipientException.#ctor">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.UntrustedRecipientException" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UntrustedRecipientException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.UntrustedRecipientException" />, используя сериализованные данные.</summary>
+      <param name="info">Объект <see cref="T:System.Runtime.Serialization.SerializationInfo" />, содержащий сериализованные данные объекта о вызываемом исключении.</param>
+      <param name="context">Объект <see cref="T:System.Runtime.Serialization.StreamingContext" />, содержащий контекстные сведения об источнике или назначении.</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UntrustedRecipientException.#ctor(System.String)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.UntrustedRecipientException" /> с указанным сообщением об ошибке.</summary>
+      <param name="message">Сообщение, описывающее ошибку.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UntrustedRecipientException.#ctor(System.String,System.Exception)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.UntrustedRecipientException" /> с указанным сообщением об ошибке и ссылкой на внутреннее исключение, вызвавшее данное исключение.</summary>
+      <param name="message">Сообщение, описывающее ошибку.</param>
+      <param name="innerException">Исключение, являющееся причиной текущего исключения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.IdentityModel.Selectors.UserCancellationException">
+      <summary>Исключение, которое создается, когда пользователь отменяет операцию во время вызова метода <see cref="M:System.IdentityModel.Selectors.CardSpaceSelector.GetToken(System.IdentityModel.Selectors.CardSpacePolicyElement[],System.IdentityModel.Selectors.SecurityTokenSerializer)" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UserCancellationException.#ctor">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.UserCancellationException" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UserCancellationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.UserCancellationException" />, используя сериализованные данные.</summary>
+      <param name="info">Объект <see cref="T:System.Runtime.Serialization.SerializationInfo" />, содержащий сериализованные данные объекта о вызываемом исключении.</param>
+      <param name="context">Объект <see cref="T:System.Runtime.Serialization.StreamingContext" />, содержащий контекстные сведения об источнике или назначении.</param>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UserCancellationException.#ctor(System.String)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.UserCancellationException" /> с указанным сообщением об ошибке.
+</summary>
+      <param name="message">Сообщение, описывающее ошибку.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.IdentityModel.Selectors.UserCancellationException.#ctor(System.String,System.Exception)">
+      <summary>Инициализирует экземпляр класса <see cref="T:System.IdentityModel.Selectors.UserCancellationException" /> с указанным сообщением об ошибке и ссылкой на внутреннее исключение, вызвавшее данное исключение.</summary>
+      <param name="message">Сообщение, описывающее ошибку.</param>
+      <param name="innerException">Исключение, являющееся причиной текущего исключения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+  </members>
+</doc>

@@ -1,0 +1,921 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.ServiceProcess</name>
+  </assembly>
+  <members>
+    <member name="T:System.ServiceProcess.PowerBroadcastStatus">
+      <summary>Показывает состояние питания системы.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.PowerBroadcastStatus.BatteryLow">
+      <summary>Низкий уровень заряда батареи.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.PowerBroadcastStatus.OemEvent">
+      <summary>BIOS с автоматическим управлением питанием (APM) оповестила об OEM-событии APM.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.PowerBroadcastStatus.PowerStatusChange">
+      <summary>Обнаружено изменение состояния питания компьютера, например, переключение с питания от батареи на питание от сети.Это событие возникает также, если уровень заряда батареи становится ниже заданного пользователем порога или изменяется на заданную величину в процентах.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.PowerBroadcastStatus.QuerySuspend">
+      <summary>Система запросила разрешение на приостановку работы компьютера.Приложение, предоставляющее такое разрешение, должно предварительно выполнить все необходимые действия для приостановки работы.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.PowerBroadcastStatus.QuerySuspendFailed">
+      <summary>Система запретила приостановку компьютера.Это состояние возникает, если какое-либо приложение или драйвер отклонили предыдущее состояние QuerySuspend.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.PowerBroadcastStatus.ResumeAutomatic">
+      <summary>Компьютер был автоматически выведен из спящего режима для обработки события.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.PowerBroadcastStatus.ResumeCritical">
+      <summary>Система возобновила работу после экстренной приостановки из-за отказа батареи.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.PowerBroadcastStatus.ResumeSuspend">
+      <summary>Система возобновила работу после приостановки.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.PowerBroadcastStatus.Suspend">
+      <summary>Компьютер переходит в состояние приостановки.Обычно это событие возникает, если все приложения и устанавливаемые драйверы вернули значение true предыдущего состояния QuerySuspend.</summary>
+    </member>
+    <member name="T:System.ServiceProcess.ServiceAccount">
+      <summary>Задает контекст безопасности службы, определяющий тип ее регистрации в системе.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceAccount.LocalService">
+      <summary>Учетная запись, соответствующая пользователю без привилегий на локальном компьютере и предоставляющая любому удаленному серверу учетные данные анонимного доступа.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceAccount.NetworkService">
+      <summary>Учетная запись, предоставляющая широкие локальные привилегии и представляющая любому удаленному серверу учетные данные компьютера.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceAccount.LocalSystem">
+      <summary>Учетная запись, используемая диспетчером служб, которая предоставляет широкие привилегии на локальном компьютере и соответствует компьютеру в сети.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceAccount.User">
+      <summary>Учетная запись, определяемая конкретным пользователем в сети.Если для элемента <see cref="P:System.ServiceProcess.ServiceProcessInstaller.Account" /> задается значение User, при установке службы система запрашивает допустимые имя пользователя и пароль, кроме тех случаев, когда заданы значения и для свойства <see cref="P:System.ServiceProcess.ServiceProcessInstaller.Username" />, и для свойства <see cref="P:System.ServiceProcess.ServiceProcessInstaller.Password" /> экземпляра класса <see cref="T:System.ServiceProcess.ServiceProcessInstaller" />.</summary>
+    </member>
+    <member name="T:System.ServiceProcess.ServiceBase">
+      <summary>Предоставляет базовый класс для службы, которая будет существовать в рамках служебного приложения.При создании нового класса службы необходимо наследовать от класса <see cref="T:System.ServiceProcess.ServiceBase" />.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceBase.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceProcess.ServiceBase" />.</summary>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceBase.AutoLog">
+      <summary>Определяет необходимость записи в журнал событий команд запуска, останова, паузы и возобновления.</summary>
+      <returns>true — данные должны записываться в журнал событий; в противном случае — false.</returns>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceBase.CanHandlePowerEvent">
+      <summary>Получает или задает значение, указывающее, может ли служба обрабатывать уведомления об изменениях состояния питания компьютера.</summary>
+      <returns>true, если служба обрабатывает изменения состояния питания, указанные в классе <see cref="T:System.ServiceProcess.PowerBroadcastStatus" />; в противном случае — false.</returns>
+      <exception cref="T:System.InvalidOperationException">Это свойство изменено после запуска службы. </exception>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceBase.CanHandleSessionChangeEvent">
+      <summary>Получает или задает значение, показывающее, может ли служба обрабатывать события изменения сеанса, принимаемые от сеанса сервера терминалов.</summary>
+      <returns>true, если служба может обрабатывать события изменения сеанса сервера терминалов; в противном случае — false. </returns>
+      <exception cref="T:System.InvalidOperationException">Это свойство изменено после запуска службы.</exception>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceBase.CanPauseAndContinue">
+      <summary>Получает или задает значение, определяющее возможность приостановки и возобновления работы службы.</summary>
+      <returns>true, если работу службы можно приостановить; в противном случае — false.</returns>
+      <exception cref="T:System.InvalidOperationException">Служба уже запущена.После запуска службы свойство <see cref="P:System.ServiceProcess.ServiceBase.CanPauseAndContinue" /> изменить нельзя.</exception>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceBase.CanShutdown">
+      <summary>Получает или задает значение, определяющее необходимость уведомления службы о завершении работы системы.</summary>
+      <returns>true, если служба должна получать уведомление о завершении работы системы; в противном случае — false.</returns>
+      <exception cref="T:System.InvalidOperationException">Служба уже запущена.После запуска службы свойство <see cref="P:System.ServiceProcess.ServiceBase.CanShutdown" /> изменить нельзя.</exception>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceBase.CanStop">
+      <summary>Получает или задает значение, определяющее, можно ли остановить работу службы после ее запуска.</summary>
+      <returns>true, если возможны останов службы и вызов метода <see cref="M:System.ServiceProcess.ServiceBase.OnStop" />; в противном случае — false.</returns>
+      <exception cref="T:System.InvalidOperationException">Служба уже запущена.После запуска службы свойство <see cref="P:System.ServiceProcess.ServiceBase.CanStop" /> изменить нельзя.</exception>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceBase.Dispose(System.Boolean)">
+      <summary>Освобождает ресурсы (помимо памяти), используемые классом <see cref="T:System.ServiceProcess.ServiceBase" />.</summary>
+      <param name="disposing">Значение true позволяет освободить управляемые и неуправляемые ресурсы; значение false позволяет освободить только неуправляемые ресурсы. </param>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceBase.EventLog">
+      <summary>Получает журнал событий, который можно использовать для записи в журнал событий приложения уведомлений о вызовах команд службы, например, команд запуска и останова.</summary>
+      <returns>Экземпляр <see cref="T:System.Diagnostics.EventLog" />, источник которого регистрируется в журнале приложения.</returns>
+      <PermissionSet>
+        <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
+        <IPermission class="System.Diagnostics.EventLogPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceBase.ExitCode">
+      <summary>Получает или задает код завершения для службы.</summary>
+      <returns>Код завершения для службы.</returns>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceBase.MaxNameLength">
+      <summary>Указывает максимальный размер имени службы.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceBase.OnContinue">
+      <summary>Если метод <see cref="M:System.ServiceProcess.ServiceBase.OnContinue" /> реализован в производном классе, он запускается при передаче службе команды возобновления диспетчером служб.Задает действия, подлежащие выполнению при возобновлении нормальной работы службы после ее приостановки.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceBase.OnCustomCommand(System.Int32)">
+      <summary>Если метод <see cref="M:System.ServiceProcess.ServiceBase.OnCustomCommand(System.Int32)" /> реализован в производном классе, он выполняется при передаче службе пользовательской команды диспетчером служб.Задает действия, подлежащие выполнению при появлении команды с указанным значением параметра.</summary>
+      <param name="command">Сообщение команды, направляемое службе. </param>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceBase.OnPause">
+      <summary>Если этот метод реализован в производном классе, он выполняется при передаче службе команды паузы диспетчером служб.Задает действия, подлежащие выполнению при приостановке работы службы.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceBase.OnPowerEvent(System.ServiceProcess.PowerBroadcastStatus)">
+      <summary>Если этот метод реализован в производном классе, он выполняется при изменении состояния питания компьютера.Это применимо для переносных компьютеров, когда они переходят в режим приостановки (этот режим отличается от режима завершения работы системы).</summary>
+      <returns>Если этот метод реализован в производном классе, возвращаемое значение определяется требованиями приложения.Например, если передается состояние широковещания QuerySuspend, можно заставить приложение отклонять запрос с возвратом значения false.</returns>
+      <param name="powerStatus">Класс <see cref="T:System.ServiceProcess.PowerBroadcastStatus" />, определяющий выдаваемое системой уведомление о состоянии питания. </param>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceBase.OnSessionChange(System.ServiceProcess.SessionChangeDescription)">
+      <summary>Выполняется при получении события изменения от сеанса сервера терминалов. </summary>
+      <param name="changeDescription">Структура <see cref="T:System.ServiceProcess.SessionChangeDescription" />, определяющая тип изменения.</param>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceBase.OnShutdown">
+      <summary>Если этот метод реализован в производном классе, он выполняется при завершении работы системы.Задает действия, выполняемые непосредственно перед завершением работы системы.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceBase.OnStart(System.String[])">
+      <summary>Если этот метод реализован в производном классе, он выполняется при передаче службе команды запуска диспетчером служб или при запуске операционной системы (для служб, запускаемых автоматически).Задает действия, подлежащие выполнению при запуске службы.</summary>
+      <param name="args">Данные, передаваемые командой запуска. </param>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceBase.OnStop">
+      <summary>Если этот метод реализован в производном классе, он выполняется при передаче службе команды останова диспетчером служб.Задает действия, подлежащие выполнению при останове службы.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceBase.RequestAdditionalTime(System.Int32)">
+      <summary>Запрашивает дополнительное время для отложенной операции.</summary>
+      <param name="milliseconds">Запрашиваемое время в миллисекундах.</param>
+      <exception cref="T:System.InvalidOperationException">Служба не находится в состоянии ожидания.</exception>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceBase.Run(System.ServiceProcess.ServiceBase)">
+      <summary>Регистрирует исполняемый файл для службы с помощью диспетчера служб.</summary>
+      <param name="service">Класс <see cref="T:System.ServiceProcess.ServiceBase" />, определяющий службу для запуска. </param>
+      <exception cref="T:System.ArgumentException">Параметр <paramref name="service" /> имеет значение null.</exception>
+      <exception cref="T:System.ComponentModel.Win32Exception">Попытка запуска службы из командной строки. </exception>
+      <PermissionSet>
+        <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" PathDiscovery="*AllFiles*" />
+        <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlAppDomain" />
+        <IPermission class="System.Diagnostics.EventLogPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceBase.Run(System.ServiceProcess.ServiceBase[])">
+      <summary>Регистрирует исполняемый файл для нескольких служб с помощью диспетчера служб.</summary>
+      <param name="services">Массив экземпляров ServiceBase, определяющих службы для запуска. </param>
+      <exception cref="T:System.ArgumentException">Отсутствует служба для запуска.Массив может иметь значение null или быть пустым.</exception>
+      <exception cref="T:System.ComponentModel.Win32Exception">Попытка запуска службы из командной строки. </exception>
+      <PermissionSet>
+        <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" PathDiscovery="*AllFiles*" />
+        <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlAppDomain" />
+        <IPermission class="System.Diagnostics.EventLogPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceBase.ServiceHandle">
+      <summary>Получает дескриптор управления службой.</summary>
+      <returns>Структура <see cref="T:System.IntPtr" />, содержащая дескриптор управления службой.</returns>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceBase.ServiceMainCallback(System.Int32,System.IntPtr)">
+      <summary>Регистрирует обработчик команд и запускает службу.</summary>
+      <param name="argCount">Число аргументов в массиве аргументов. </param>
+      <param name="argPointer">Структура <see cref="T:System.IntPtr" />, указывающая на массив аргументов.</param>
+      <PermissionSet>
+        <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" PathDiscovery="*AllFiles*" />
+        <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
+        <IPermission class="System.Diagnostics.EventLogPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceBase.ServiceName">
+      <summary>Получает или задает короткое имя, используемое для идентификации службы в системе.</summary>
+      <returns>Имя службы. </returns>
+      <exception cref="T:System.InvalidOperationException">Служба уже запущена.После запуска службы свойство <see cref="P:System.ServiceProcess.ServiceBase.ServiceName" /> изменить нельзя.</exception>
+      <exception cref="T:System.ArgumentException">Недопустимое свойство <see cref="P:System.ServiceProcess.ServiceBase.ServiceName" />. </exception>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceBase.Stop">
+      <summary>Останавливает работающую службу.</summary>
+    </member>
+    <member name="T:System.ServiceProcess.ServiceController">
+      <summary>Представляет службу Windows и позволяет подключаться к запущенной или остановленной службе, управлять работой службы и получать сведения о ней.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceController.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceProcess.ServiceController" />, не связанный с конкретной службой.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceController.#ctor(System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceProcess.ServiceController" />, связанный с существующей службой на локальном компьютере.</summary>
+      <param name="name">Короткое имя, определяющее службу для системы. </param>
+      <exception cref="T:System.ArgumentException">Значение параметра <paramref name="name" /> — null или строка нулевой длины. </exception>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceController.#ctor(System.String,System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceProcess.ServiceController" />, связанный с существующей службой на указанном компьютере.</summary>
+      <param name="name">Короткое имя, определяющее службу для системы. </param>
+      <param name="machineName">Компьютер, на котором находится служба. </param>
+      <exception cref="T:System.ArgumentException">Значение параметра <paramref name="name" /> — null или строка нулевой длины.–либо– Неправильный синтаксис параметра <paramref name="machineName" />. </exception>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceController.CanPauseAndContinue">
+      <summary>Получает значение, показывающее, возможны ли приостановка и возобновление работы службы.</summary>
+      <returns>true, если работу службы можно приостановить; в противном случае — false.</returns>
+      <exception cref="T:System.ComponentModel.Win32Exception">Произошла ошибка при обращении к системному API. </exception>
+      <exception cref="T:System.InvalidOperationException">Служба не была найдена.</exception>
+      <PermissionSet>
+        <IPermission class="System.ServiceProcess.ServiceControllerPermission, System.ServiceProcess, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceController.CanShutdown">
+      <summary>Получает значение, показывающее, необходимо ли уведомлять службу о завершении работы системы.</summary>
+      <returns>true, если служба должна получать уведомление о завершении работы системы; в противном случае — false.</returns>
+      <exception cref="T:System.ComponentModel.Win32Exception">Произошла ошибка при обращении к системному API. </exception>
+      <exception cref="T:System.InvalidOperationException">Служба не была найдена.</exception>
+      <PermissionSet>
+        <IPermission class="System.ServiceProcess.ServiceControllerPermission, System.ServiceProcess, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceController.CanStop">
+      <summary>Получает значение, определяющее, возможен ли останов службы после ее запуска.</summary>
+      <returns>true, если возможны останов службы и вызов метода <see cref="M:System.ServiceProcess.ServiceBase.OnStop" />; в противном случае — false.</returns>
+      <exception cref="T:System.ComponentModel.Win32Exception">Произошла ошибка при обращении к системному API. </exception>
+      <exception cref="T:System.InvalidOperationException">Служба не была найдена.</exception>
+      <PermissionSet>
+        <IPermission class="System.ServiceProcess.ServiceControllerPermission, System.ServiceProcess, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceController.Close">
+      <summary>Отключает данный экземпляр <see cref="T:System.ServiceProcess.ServiceController" /> от службы и освобождает все выделенные ему ресурсы.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceController.Continue">
+      <summary>Возобновляет работу службы после ее приостановки.</summary>
+      <exception cref="T:System.ComponentModel.Win32Exception">Произошла ошибка при обращении к системному API. </exception>
+      <exception cref="T:System.InvalidOperationException">Служба не была найдена. </exception>
+      <PermissionSet>
+        <IPermission class="System.ServiceProcess.ServiceControllerPermission, System.ServiceProcess, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceController.DependentServices">
+      <summary>Получает набор служб, который зависит от службы, связанной с данным экземпляром <see cref="T:System.ServiceProcess.ServiceController" />.</summary>
+      <returns>Массив экземпляров <see cref="T:System.ServiceProcess.ServiceController" />, каждый из которых связан со службой, зависящей от данной службы.</returns>
+      <exception cref="T:System.ComponentModel.Win32Exception">Произошла ошибка при обращении к системному API. </exception>
+      <exception cref="T:System.InvalidOperationException">Служба не была найдена.</exception>
+      <PermissionSet>
+        <IPermission class="System.ServiceProcess.ServiceControllerPermission, System.ServiceProcess, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceController.DisplayName">
+      <summary>Получает или задает понятное имя службы.</summary>
+      <returns>Понятное имя службы, которое может использоваться для ее идентификации.</returns>
+      <exception cref="T:System.ArgumentNullException">Параметр <see cref="P:System.ServiceProcess.ServiceController.DisplayName" /> имеет значение null. </exception>
+      <exception cref="T:System.ComponentModel.Win32Exception">Произошла ошибка при обращении к системному API. </exception>
+      <exception cref="T:System.InvalidOperationException">Служба не была найдена.</exception>
+      <PermissionSet>
+        <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence" />
+      </PermissionSet>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceController.Dispose(System.Boolean)">
+      <summary>Освобождает неуправляемые ресурсы, используемые объектом <see cref="T:System.ServiceProcess.ServiceController" /> (при необходимости освобождает и управляемые ресурсы). </summary>
+      <param name="disposing">Значение true, чтобы освободить все ресурсы (управляемые и неуправляемые); значение false, чтобы освободить только неуправляемые ресурсы.</param>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceController.ExecuteCommand(System.Int32)">
+      <summary>Выполняет пользовательскую команду для службы.</summary>
+      <param name="command">Определяемый приложением флаг команды, показывающий, какая пользовательская команда должна быть выполнена. </param>
+      <exception cref="T:System.ComponentModel.Win32Exception">Произошла ошибка при обращении к системному API. </exception>
+      <exception cref="T:System.InvalidOperationException">Служба не была найдена. </exception>
+      <PermissionSet>
+        <IPermission class="System.ServiceProcess.ServiceControllerPermission, System.ServiceProcess, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceController.GetDevices">
+      <summary>Загружает службы драйверов устройств на локальном компьютере.</summary>
+      <returns>Массив типа <see cref="T:System.ServiceProcess.ServiceController" />, каждый элемент которого связан со службой драйвера устройства на локальном компьютере.</returns>
+      <exception cref="T:System.ComponentModel.Win32Exception">Произошла ошибка при обращении к системному API. </exception>
+      <PermissionSet>
+        <IPermission class="System.ServiceProcess.ServiceControllerPermission, System.ServiceProcess, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceController.GetDevices(System.String)">
+      <summary>Загружает службы драйверов устройств на указанном компьютере.</summary>
+      <returns>Массив типа <see cref="T:System.ServiceProcess.ServiceController" />, каждый элемент которого связан со службой драйвера устройства на указанном компьютере.</returns>
+      <param name="machineName">Компьютер, с которого должны быть загружены службы драйверов устройств. </param>
+      <exception cref="T:System.ComponentModel.Win32Exception">Произошла ошибка при обращении к системному API. </exception>
+      <exception cref="T:System.ArgumentException">Недопустимый синтаксис параметра <paramref name="machineName" />. </exception>
+      <PermissionSet>
+        <IPermission class="System.ServiceProcess.ServiceControllerPermission, System.ServiceProcess, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceController.GetServices">
+      <summary>Загружает все службы на локальном компьютере, за исключением служб драйверов устройств.</summary>
+      <returns>Массив типа <see cref="T:System.ServiceProcess.ServiceController" />, каждый элемент которого связан со службой на локальном компьютере.</returns>
+      <exception cref="T:System.ComponentModel.Win32Exception">Произошла ошибка при обращении к системному API. </exception>
+      <PermissionSet>
+        <IPermission class="System.ServiceProcess.ServiceControllerPermission, System.ServiceProcess, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceController.GetServices(System.String)">
+      <summary>Загружает все службы на указанном компьютере, за исключением служб драйверов устройств.</summary>
+      <returns>Массив типа <see cref="T:System.ServiceProcess.ServiceController" />, каждый элемент которого связан со службой на указанном компьютере.</returns>
+      <param name="machineName">Компьютер, с которого должны быть загружены службы. </param>
+      <exception cref="T:System.ComponentModel.Win32Exception">Произошла ошибка при обращении к системному API. </exception>
+      <exception cref="T:System.ArgumentException">Недопустимый синтаксис параметра <paramref name="machineName" />. </exception>
+      <PermissionSet>
+        <IPermission class="System.ServiceProcess.ServiceControllerPermission, System.ServiceProcess, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceController.MachineName">
+      <summary>Получает или задает имя компьютера, на котором находится данная служба.</summary>
+      <returns>Имя компьютера, на котором работает служба, связанная с данным экземпляром <see cref="T:System.ServiceProcess.ServiceController" />.Значение по умолчанию — локальный компьютер (".").</returns>
+      <exception cref="T:System.ArgumentException">Неправильный синтаксис параметра <see cref="P:System.ServiceProcess.ServiceController.MachineName" />. </exception>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceController.Pause">
+      <summary>Приостанавливает работу службы.</summary>
+      <exception cref="T:System.ComponentModel.Win32Exception">Произошла ошибка при обращении к системному API. </exception>
+      <exception cref="T:System.InvalidOperationException">Служба не была найдена. </exception>
+      <PermissionSet>
+        <IPermission class="System.ServiceProcess.ServiceControllerPermission, System.ServiceProcess, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceController.Refresh">
+      <summary>Обновляет значения свойств текущими значениями.</summary>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceController.ServiceHandle">
+      <summary>Получает дескриптор службы.</summary>
+      <returns>Свойство <see cref="T:System.Runtime.InteropServices.SafeHandle" />, содержащее дескриптор для службы. </returns>
+      <exception cref="T:System.InvalidOperationException">Служба не была найдена.</exception>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceController.ServiceName">
+      <summary>Получает или задает имя, определяющее службу, на которую ссылается данный экземпляр.</summary>
+      <returns>Имя, определяющее службу, на которую ссылается данный экземпляр <see cref="T:System.ServiceProcess.ServiceController" />.Значением по умолчанию является пустая строка ("").</returns>
+      <exception cref="T:System.ArgumentNullException">Параметр <see cref="P:System.ServiceProcess.ServiceController.ServiceName" /> имеет значение null. </exception>
+      <exception cref="T:System.ArgumentException">Неправильный синтаксис свойства <see cref="P:System.ServiceProcess.ServiceController.ServiceName" />. </exception>
+      <exception cref="T:System.InvalidOperationException">Служба не была найдена.</exception>
+      <PermissionSet>
+        <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence" />
+      </PermissionSet>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceController.ServicesDependedOn">
+      <summary>Набор служб, от которых зависит данная служба.</summary>
+      <returns>Массив экземпляров <see cref="T:System.ServiceProcess.ServiceController" />, каждый из которых связан со службой, которая должна быть запущена для запуска данной службы.</returns>
+      <exception cref="T:System.ComponentModel.Win32Exception">Произошла ошибка при обращении к системному API. </exception>
+      <exception cref="T:System.InvalidOperationException">Служба не была найдена.</exception>
+      <PermissionSet>
+        <IPermission class="System.ServiceProcess.ServiceControllerPermission, System.ServiceProcess, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceController.ServiceType">
+      <summary>Получает тип службы, на которую ссылается данный объект.</summary>
+      <returns>Одно из значений <see cref="T:System.ServiceProcess.ServiceType" />, используемое для определения типа сетевой службы.</returns>
+      <exception cref="T:System.ComponentModel.Win32Exception">Произошла ошибка при обращении к системному API. </exception>
+      <exception cref="T:System.InvalidOperationException">Служба не была найдена.</exception>
+      <PermissionSet>
+        <IPermission class="System.ServiceProcess.ServiceControllerPermission, System.ServiceProcess, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceController.Start">
+      <summary>Запускает службу без передачи аргументов.</summary>
+      <exception cref="T:System.ComponentModel.Win32Exception">Произошла ошибка при обращении к системному API. </exception>
+      <exception cref="T:System.InvalidOperationException">Служба не была найдена.</exception>
+      <PermissionSet>
+        <IPermission class="System.ServiceProcess.ServiceControllerPermission, System.ServiceProcess, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceController.Start(System.String[])">
+      <summary>Запускает службу, передавая заданные аргументы.</summary>
+      <param name="args">Массив аргументов для передачи в службу при ее запуске. </param>
+      <exception cref="T:System.ComponentModel.Win32Exception">Произошла ошибка при обращении к системному API. </exception>
+      <exception cref="T:System.InvalidOperationException">Служба запускаться не будет. </exception>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="args" /> имеет значение null.–либо–Элемент массива — null.</exception>
+      <PermissionSet>
+        <IPermission class="System.ServiceProcess.ServiceControllerPermission, System.ServiceProcess, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceController.Status">
+      <summary>Получает состояние службы, на которую ссылается данный объект.</summary>
+      <returns>Одно из значений <see cref="T:System.ServiceProcess.ServiceControllerStatus" />, определяющее состояние службы: запущена ли она, остановлена, приостановлена, а также ожидаются ли команды запуска, останова, паузы или возобновления работы службы.</returns>
+      <exception cref="T:System.ComponentModel.Win32Exception">Произошла ошибка при обращении к системному API. </exception>
+      <exception cref="T:System.InvalidOperationException">Служба не была найдена.</exception>
+      <PermissionSet>
+        <IPermission class="System.ServiceProcess.ServiceControllerPermission, System.ServiceProcess, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceController.Stop">
+      <summary>Останавливает данную службу и все зависящие от нее службы.</summary>
+      <exception cref="T:System.ComponentModel.Win32Exception">Произошла ошибка при обращении к системному API. </exception>
+      <exception cref="T:System.InvalidOperationException">Служба не была найдена. </exception>
+      <PermissionSet>
+        <IPermission class="System.ServiceProcess.ServiceControllerPermission, System.ServiceProcess, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceController.WaitForStatus(System.ServiceProcess.ServiceControllerStatus)">
+      <summary>Постоянно ожидает достижения службой указанного состояния.</summary>
+      <param name="desiredStatus">Ожидаемое состояние. </param>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">Параметр <paramref name="desiredStatus" /> не имеет ни одного из значений, указанных в перечислении <see cref="T:System.ServiceProcess.ServiceControllerStatus" />. </exception>
+      <PermissionSet>
+        <IPermission class="System.ServiceProcess.ServiceControllerPermission, System.ServiceProcess, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceController.WaitForStatus(System.ServiceProcess.ServiceControllerStatus,System.TimeSpan)">
+      <summary>Ожидает достижения службой заданного состояния или истечения заданного тайм-аута.</summary>
+      <param name="desiredStatus">Ожидаемое состояние. </param>
+      <param name="timeout">Объект <see cref="T:System.TimeSpan" />, определяющий временной интервал, в течение которого ожидается достижение службой заданного состояния. </param>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">Параметр <paramref name="desiredStatus" /> не имеет ни одного из значений, указанных в перечислении <see cref="T:System.ServiceProcess.ServiceControllerStatus" />. </exception>
+      <exception cref="T:System.ServiceProcess.TimeoutException">Превышено заданное значение параметра <paramref name="timeout" />. </exception>
+      <PermissionSet>
+        <IPermission class="System.ServiceProcess.ServiceControllerPermission, System.ServiceProcess, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="T:System.ServiceProcess.ServiceControllerPermission">
+      <summary>Позволяет управлять разрешениями управления доступом для кода для контроллеров служб.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermission.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceProcess.ServiceControllerPermission" />.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermission.#ctor(System.Security.Permissions.PermissionState)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceProcess.ServiceControllerPermission" /> с заданными возможностями доступа к ресурсам.</summary>
+      <param name="state">One of the <see cref="T:System.Security.Permissions.PermissionState" /> values. </param>
+      <exception cref="T:System.ArgumentException">Параметр <paramref name="state" /> не имеет допустимого значения <see cref="T:System.Security.Permissions.PermissionState" />. </exception>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermission.#ctor(System.ServiceProcess.ServiceControllerPermissionAccess,System.String,System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceProcess.ServiceControllerPermission" /> с заданными уровнями разрешения на доступ, именем компьютера, на котором находится служба, и коротким именем, по которому система идентифицирует данную службу.</summary>
+      <param name="permissionAccess">Одно из значений <see cref="T:System.ServiceProcess.ServiceControllerPermissionAccess" />. </param>
+      <param name="machineName">Имя компьютера, на котором находится служба. </param>
+      <param name="serviceName">Короткое имя, определяющее службу для системы. </param>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermission.#ctor(System.ServiceProcess.ServiceControllerPermissionEntry[])">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceProcess.ServiceControllerPermission" /> с заданными записями разрешений.</summary>
+      <param name="permissionAccessEntries">An array of <see cref="T:System.ServiceProcess.ServiceControllerPermissionEntry" /> objects.Для свойства <see cref="P:System.ServiceProcess.ServiceControllerPermission.PermissionEntries" /> устанавливается данное значение.</param>
+      <exception cref="T:System.ArgumentNullException">Значение параметра <paramref name="permissionAccessEntries " /> — null.</exception>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceControllerPermission.PermissionEntries">
+      <summary>Gets the collection of permission entries for this permissions request.</summary>
+      <returns>Коллекция <see cref="T:System.ServiceProcess.ServiceControllerPermissionEntryCollection" />, содержащая записи разрешений для данного запроса разрешений.</returns>
+    </member>
+    <member name="T:System.ServiceProcess.ServiceControllerPermissionAccess">
+      <summary>Defines access levels used by <see cref="T:System.ServiceProcess.ServiceController" /> permission classes.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceControllerPermissionAccess.None">
+      <summary>The <see cref="T:System.ServiceProcess.ServiceController" /> has no permissions.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceControllerPermissionAccess.Browse">
+      <summary>С помощью класса <see cref="T:System.ServiceProcess.ServiceController" /> можно подключиться к существующим службам, но не управлять ими.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceControllerPermissionAccess.Control">
+      <summary>С помощью класса <see cref="T:System.ServiceProcess.ServiceController" /> можно подключиться к существующими службам и управлять ими.</summary>
+    </member>
+    <member name="T:System.ServiceProcess.ServiceControllerPermissionAttribute">
+      <summary>Разрешает декларативные проверки разрешений контроллера служб.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermissionAttribute.#ctor(System.Security.Permissions.SecurityAction)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceProcess.ServiceControllerPermissionAttribute" />.</summary>
+      <param name="action">Одно из значений <see cref="T:System.Security.Permissions.SecurityAction" />. </param>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermissionAttribute.CreatePermission">
+      <summary>Creates the permission based on the requested access levels that are set through the <see cref="P:System.ServiceProcess.ServiceControllerPermissionAttribute.PermissionAccess" /> property on the attribute.</summary>
+      <returns>Объект <see cref="T:System.Security.IPermission" />, представляющий созданное разрешение.</returns>
+      <PermissionSet>
+        <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence" />
+      </PermissionSet>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceControllerPermissionAttribute.MachineName">
+      <summary>Получает или задает имя компьютера, на котором находится служба.</summary>
+      <returns>Имя компьютера, на котором работает служба, связанная с объектом <see cref="T:System.ServiceProcess.ServiceController" />.</returns>
+      <exception cref="T:System.ArgumentException">Неправильный синтаксис параметра <see cref="P:System.ServiceProcess.ServiceControllerPermissionAttribute.MachineName" />. </exception>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceControllerPermissionAttribute.PermissionAccess">
+      <summary>Получает или задает уровни доступа, используемые в запросе разрешений.</summary>
+      <returns>Побитовая комбинация значений <see cref="T:System.ServiceProcess.ServiceControllerPermissionAccess" />.</returns>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceControllerPermissionAttribute.ServiceName">
+      <summary>Получает или задает короткое имя, определяющее службу для системы.</summary>
+      <returns>Имя службы.</returns>
+      <exception cref="T:System.ArgumentNullException">Параметр <see cref="P:System.ServiceProcess.ServiceControllerPermissionAttribute.ServiceName" /> имеет значение null. </exception>
+      <exception cref="T:System.ArgumentException">Неправильный синтаксис свойства <see cref="P:System.ServiceProcess.ServiceControllerPermissionAttribute.ServiceName" />. </exception>
+    </member>
+    <member name="T:System.ServiceProcess.ServiceControllerPermissionEntry">
+      <summary>Определяет наименьшую единицу разрешения управления доступом для кода, которое задано для класса <see cref="T:System.ServiceProcess.ServiceController" />.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermissionEntry.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceProcess.ServiceControllerPermissionEntry" />.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermissionEntry.#ctor(System.ServiceProcess.ServiceControllerPermissionAccess,System.String,System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceProcess.ServiceControllerPermissionEntry" /> с заданными уровнями разрешения на доступ, именем компьютера и коротким именем, определяющим службу.</summary>
+      <param name="permissionAccess">Одно из значений <see cref="T:System.ServiceProcess.ServiceControllerPermissionAccess" />. </param>
+      <param name="machineName">Имя компьютера, на котором находится служба. </param>
+      <param name="serviceName">Короткое имя, определяющее службу для системы. </param>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="serviceName" /> имеет значение null.</exception>
+      <exception cref="T:System.ArgumentException">Недопустимое значение свойства <paramref name="machineName " />.–либо–Недопустимое значение свойства <paramref name="serviceName " />.</exception>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceControllerPermissionEntry.MachineName">
+      <summary>Получает имя компьютера, на котором находится служба.</summary>
+      <returns>Имя компьютера, на котором работает служба, связанная с объектом <see cref="T:System.ServiceProcess.ServiceController" />.</returns>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceControllerPermissionEntry.PermissionAccess">
+      <summary>Получает уровни доступа, используемые в запросе разрешений.</summary>
+      <returns>Побитовая комбинация значений <see cref="T:System.ServiceProcess.ServiceControllerPermissionAccess" />.</returns>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceControllerPermissionEntry.ServiceName">
+      <summary>Получает короткое имя, определяющее службу для системы.</summary>
+      <returns>Имя службы.</returns>
+    </member>
+    <member name="T:System.ServiceProcess.ServiceControllerPermissionEntryCollection">
+      <summary>Contains a strongly-typed collection of <see cref="T:System.ServiceProcess.ServiceControllerPermissionEntry" /> objects.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermissionEntryCollection.Add(System.ServiceProcess.ServiceControllerPermissionEntry)">
+      <summary>Добавляет указанный объект <see cref="T:System.ServiceProcess.ServiceControllerPermissionEntry" /> в данную коллекцию.</summary>
+      <returns>The zero-based index of the added <see cref="T:System.ServiceProcess.ServiceControllerPermissionEntry" /> object.</returns>
+      <param name="value">Добавляемый объект <see cref="T:System.ServiceProcess.ServiceControllerPermissionEntry" />. </param>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermissionEntryCollection.AddRange(System.ServiceProcess.ServiceControllerPermissionEntry[])">
+      <summary>Добавляет набор указанных записей разрешений в данную коллекцию.</summary>
+      <param name="value">Массив объектов типа <see cref="T:System.ServiceProcess.ServiceControllerPermissionEntry" />, содержащий добавляемые записи разрешений. </param>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="value" /> имеет значение null.</exception>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermissionEntryCollection.AddRange(System.ServiceProcess.ServiceControllerPermissionEntryCollection)">
+      <summary>Добавляет набор указанных записей разрешений в данную коллекцию.</summary>
+      <param name="value">Коллекция <see cref="T:System.ServiceProcess.ServiceControllerPermissionEntryCollection" />, содержащая добавляемые записи разрешений. </param>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="value" /> имеет значение null.</exception>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermissionEntryCollection.Contains(System.ServiceProcess.ServiceControllerPermissionEntry)">
+      <summary>Determines whether this collection contains a specified <see cref="T:System.ServiceProcess.ServiceControllerPermissionEntry" /> object.</summary>
+      <returns>true, если указанный объект <see cref="T:System.ServiceProcess.ServiceControllerPermissionEntry" /> принадлежит данной коллекции; в противном случае — false.</returns>
+      <param name="value">Искомый объект <see cref="T:System.ServiceProcess.ServiceControllerPermissionEntry" />. </param>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermissionEntryCollection.CopyTo(System.ServiceProcess.ServiceControllerPermissionEntry[],System.Int32)">
+      <summary>Копирует записи разрешений из данной коллекции в массив, начиная с конкретного индекса массива.</summary>
+      <param name="array">Массив типа <see cref="T:System.ServiceProcess.ServiceControllerPermissionEntry" />, который получает скопированные записи разрешений. </param>
+      <param name="index">Отсчитываемый с нуля индекс, с которого начинается копирование записей разрешений. </param>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermissionEntryCollection.IndexOf(System.ServiceProcess.ServiceControllerPermissionEntry)">
+      <summary>Определяет индекс указанной записи разрешения в данной коллекции.</summary>
+      <returns>Отсчитываемый с нуля индекс заданной записи разрешения или -1, если запись разрешения не найдена в коллекции.</returns>
+      <param name="value">Запись разрешения, которую требуется найти. </param>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermissionEntryCollection.Insert(System.Int32,System.ServiceProcess.ServiceControllerPermissionEntry)">
+      <summary>Вставляет запись разрешения в данную коллекцию по указанному индексу.</summary>
+      <param name="index">Отсчитываемый с нуля индекс в коллекции, по которому нужно вставить запись разрешения. </param>
+      <param name="value">Запись разрешения для вставки в данную коллекцию. </param>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceControllerPermissionEntryCollection.Item(System.Int32)">
+      <summary>Получает или задает объект по указанному индексу.</summary>
+      <returns>Объект <see cref="T:System.ServiceProcess.ServiceControllerPermissionEntry" />, расположенный по указанному индексу.</returns>
+      <param name="index">Отсчитываемый с нуля индекс в коллекции. </param>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermissionEntryCollection.OnClear">
+      <summary>Выполняет дополнительные пользовательские действия после очистки содержимого коллекции.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermissionEntryCollection.OnInsert(System.Int32,System.Object)">
+      <summary>Выполняет дополнительные пользовательские действия перед вставкой в коллекцию новой записи разрешения.</summary>
+      <param name="index">Отсчитываемый с нуля индекс, по которому следует вставить значение <paramref name="value" />. </param>
+      <param name="value">Новое значение записи разрешения в позиции с индексом <paramref name="index" />. </param>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermissionEntryCollection.OnRemove(System.Int32,System.Object)">
+      <summary>Выполняет дополнительные пользовательские действия при удалении новой записи разрешения из коллекции.</summary>
+      <param name="index">Отсчитываемый с нуля индекс, по которому может быть найдено значение <paramref name="value" />. </param>
+      <param name="value">Запись разрешения, которую требуется удалить из позиции с индексом <paramref name="index" />. </param>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermissionEntryCollection.OnSet(System.Int32,System.Object,System.Object)">
+      <summary>Выполняет дополнительные пользовательские действия перед заданием значения в коллекции.</summary>
+      <param name="index">Отсчитываемый с нуля индекс, по которому может быть найдено значение <paramref name="oldValue" />. </param>
+      <param name="oldValue">Значение, которое требуется заменить значением <paramref name="newValue" />. </param>
+      <param name="newValue">Новое значение записи разрешения в позиции с индексом <paramref name="index" />. </param>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermissionEntryCollection.Remove(System.ServiceProcess.ServiceControllerPermissionEntry)">
+      <summary>Удаляет указанную запись разрешения из данной коллекции.</summary>
+      <param name="value">Удаляемая запись разрешения. </param>
+    </member>
+    <member name="T:System.ServiceProcess.ServiceControllerStatus">
+      <summary>Показывает текущее состояние службы.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceControllerStatus.ContinuePending">
+      <summary>Ожидается возобновление работы службы.Это соответствует константе SERVICE_CONTINUE_PENDING Win32, заданной равной 0x00000005.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceControllerStatus.Paused">
+      <summary>Служба приостановлена.Это соответствует константе SERVICE_PAUSED Win32, заданной равной 0x00000007.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceControllerStatus.PausePending">
+      <summary>Ожидается приостановка службы.Это соответствует константе SERVICE_PAUSE_PENDING Win32, заданной равной 0x00000006.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceControllerStatus.Running">
+      <summary>Служба запущена.Это соответствует константе SERVICE_RUNNING Win32, заданной равной 0x00000004.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceControllerStatus.StartPending">
+      <summary>Служба запускается.Это соответствует константе SERVICE_START_PENDING Win32, заданной равной 0x00000002.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceControllerStatus.Stopped">
+      <summary>Служба не запущена.Это соответствует константе SERVICE_STOPPED Win32, заданной равной 0x00000001.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceControllerStatus.StopPending">
+      <summary>Служба останавливается.Это соответствует константе SERVICE_STOP_PENDING Win32, заданной равной 0x00000003.</summary>
+    </member>
+    <member name="T:System.ServiceProcess.ServiceInstaller">
+      <summary>Устанавливает класс, расширяющий класс <see cref="T:System.ServiceProcess.ServiceBase" /> для реализации службы.Этот класс вызывается программой установки при установке служебного приложения.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceInstaller.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceProcess.ServiceInstaller" />.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceInstaller.CopyFromComponent(System.ComponentModel.IComponent)">
+      <summary>Копирует в данный установщик свойства из экземпляра класса <see cref="T:System.ServiceProcess.ServiceBase" />.</summary>
+      <param name="component">Объект <see cref="T:System.ComponentModel.IComponent" />, из которого будет выполняться копирование. </param>
+      <exception cref="T:System.ArgumentException">Компонент, связанный с данным установщиком, не наследуется из класса <see cref="T:System.ServiceProcess.ServiceBase" />. </exception>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceInstaller.DelayedAutoStart">
+      <summary>Получает или задает значение, указывающее, следует ли задержать запуск службы, пока не заработают другие автоматически запускающиеся службы.</summary>
+      <returns>Значение true для задержки автоматического запуска службы; в противном случае — значение false.Значение по умолчанию — false.</returns>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceInstaller.Description">
+      <summary>Получает или задает описание для службы.</summary>
+      <returns>Описание службы.Значением по умолчанию является пустая строка ("").</returns>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceInstaller.DisplayName">
+      <summary>Определяет понятное имя, идентифицирующее службу для пользователя.</summary>
+      <returns>Имя, связанное со службой, которое часто используется в интерактивных инструментах.</returns>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceInstaller.Install(System.Collections.IDictionary)">
+      <summary>Устанавливает службу, записывая в реестр сведения о служебном приложении.Этот метод предназначен для использования инструментами установки, которые автоматически обрабатывают соответствующие методы.</summary>
+      <param name="stateSaver">Объект <see cref="T:System.Collections.IDictionary" />, содержащий контекстные данные, связанные с процессом установки. </param>
+      <exception cref="T:System.InvalidOperationException">Средства установки не содержат <see cref="T:System.ServiceProcess.ServiceProcessInstaller" /> для исполняемого файла.— или — Имя файла сборки — null или пустая строка.— или — Недопустимое имя службы.— или — Не удалось открыть диспетчер служб. </exception>
+      <exception cref="T:System.ArgumentException">Отображаемое имя службы содержит более 255 символов.</exception>
+      <exception cref="T:System.ComponentModel.Win32Exception">Системе не удалось создать дескриптор для службы. — или —Служба с этим именем уже установлена.</exception>
+      <PermissionSet>
+        <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+        <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
+        <IPermission class="System.Security.Permissions.UIPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceInstaller.IsEquivalentInstaller(System.Configuration.Install.ComponentInstaller)">
+      <summary>Определяет, будут ли два установщика устанавливать одну и ту же службу.</summary>
+      <returns>true, если вызов метода <see cref="M:System.ServiceProcess.ServiceInstaller.Install(System.Collections.IDictionary)" /> для обоих установщиков будет приводить к установке одной и той же службы; в противном случае — false.</returns>
+      <param name="otherInstaller">Объект <see cref="T:System.Configuration.Install.ComponentInstaller" />, с которым сравнивается текущий установщик. </param>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceInstaller.Rollback(System.Collections.IDictionary)">
+      <summary>Отменяет сведения о служебном приложении, записанные в реестр процедурой установки.Этот метод предназначен для использования инструментами установки, которые автоматически обрабатывают соответствующие методы.</summary>
+      <param name="savedState">Объект <see cref="T:System.Collections.IDictionary" />, содержащий контекстные данные, связанные с процессом установки. </param>
+      <PermissionSet>
+        <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+        <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
+        <IPermission class="System.ServiceProcess.ServiceControllerPermission, System.ServiceProcess, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceInstaller.ServiceName">
+      <summary>Определяет имя, используемое для идентификации службы в системе.Это свойство должно совпадать со свойством <see cref="P:System.ServiceProcess.ServiceBase.ServiceName" /> устанавливаемой службы.</summary>
+      <returns>Имя устанавливаемой службы.Это значение должно быть задано до установки службы.</returns>
+      <exception cref="T:System.ArgumentException">Недопустимое свойство <see cref="P:System.ServiceProcess.ServiceInstaller.ServiceName" />. </exception>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceInstaller.ServicesDependedOn">
+      <summary>Определяет службы, необходимые для запуска данной службы.</summary>
+      <returns>Массив служб, которые должны быть запущены до запуска службы, связанной с данным установщиком.</returns>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceInstaller.StartType">
+      <summary>Определяет способ и время запуска службы.</summary>
+      <returns>Объект <see cref="T:System.ServiceProcess.ServiceStartMode" />, представляющий способ запуска службы.По умолчанию используется значение Manual, указывающее, что служба не будет запускаться автоматически после перезагрузки.</returns>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">Задать свойство <see cref="P:System.ServiceProcess.ServiceInstaller.StartType" /> невозможно, поскольку не определено значение для объекта <see cref="T:System.ServiceProcess.ServiceStartMode" />.</exception>
+      <PermissionSet>
+        <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence" />
+      </PermissionSet>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceInstaller.Uninstall(System.Collections.IDictionary)">
+      <summary>Удаляет службу, удаляя сведения о ней из реестра.</summary>
+      <param name="savedState">Объект <see cref="T:System.Collections.IDictionary" />, содержащий контекстные данные, связанные с процессом установки. </param>
+      <exception cref="T:System.ComponentModel.Win32Exception">Не удалось открыть диспетчер служб.— или — Системе не удалось получить дескриптор для службы. </exception>
+      <PermissionSet>
+        <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+        <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
+        <IPermission class="System.ServiceProcess.ServiceControllerPermission, System.ServiceProcess, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="T:System.ServiceProcess.ServiceProcessDescriptionAttribute">
+      <summary>Задает описание свойства или события.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceProcessDescriptionAttribute.#ctor(System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceProcess.ServiceProcessDescriptionAttribute" />, используя заданное описание.</summary>
+      <param name="description">Текст описания, определяемый приложением. </param>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceProcessDescriptionAttribute.Description">
+      <summary>Получает текст описания, связанный с процессом службы.</summary>
+      <returns>Описание, определяемое приложением.</returns>
+    </member>
+    <member name="T:System.ServiceProcess.ServiceProcessInstaller">
+      <summary>Устанавливает классы, содержащие исполняемый файл, которые расширяют класс <see cref="T:System.ServiceProcess.ServiceBase" />.Этот класс вызывается программами установки, например InstallUtil.exe, при установке служебного приложения.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceProcessInstaller.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceProcess.ServiceProcessInstaller" />. </summary>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceProcessInstaller.Account">
+      <summary>Получает или задает тип учетной записи, под управлением которой должно запускаться данное служебное приложение.</summary>
+      <returns>Объект <see cref="T:System.ServiceProcess.ServiceAccount" />, определяющий тип учетной записи, под управлением которой система запускает данную службу.Значение по умолчанию — User.</returns>
+      <PermissionSet>
+        <IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+        <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+        <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence" />
+        <IPermission class="System.Security.Permissions.UIPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+        <IPermission class="System.Diagnostics.PerformanceCounterPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceProcessInstaller.CopyFromComponent(System.ComponentModel.IComponent)">
+      <summary>Реализует метод <see cref="M:System.Configuration.Install.ComponentInstaller.CopyFromComponent(System.ComponentModel.IComponent)" /> базового класса без поведения, определяемого классом <see cref="T:System.ServiceProcess.ServiceProcessInstaller" />.</summary>
+      <param name="comp">Объект <see cref="T:System.ComponentModel.IComponent" />, представляющий процесс службы. </param>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceProcessInstaller.HelpText">
+      <summary>Получает текст справки для параметров установки службы.</summary>
+      <returns>Текст справки, содержащий описание действий по заданию имени пользователя и пароля для запуска службы под управлением определенной учетной записи.</returns>
+      <PermissionSet>
+        <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence" />
+      </PermissionSet>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceProcessInstaller.Install(System.Collections.IDictionary)">
+      <summary>Записывает в реестр сведения о служебном приложении.Этот метод предназначен для использования инструментами установки, которые автоматически вызывают соответствующие методы.</summary>
+      <param name="stateSaver">Объект <see cref="T:System.Collections.IDictionary" />, содержащий контекстные данные, связанные с процессом установки. </param>
+      <exception cref="T:System.ArgumentException">Параметр <paramref name="stateSaver" /> имеет значение null. </exception>
+      <PermissionSet>
+        <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
+        <IPermission class="System.Security.Permissions.UIPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceProcessInstaller.Password">
+      <summary>Получает или задает пароль, связанный с учетной записью пользователя, под управлением которой запускается служебное приложение.</summary>
+      <returns>Пароль, связанный с учетной записью, под управлением которой должна запускаться служба.Значением по умолчанию является пустая строка ("").Это свойство не является общим и не может быть сериализовано.</returns>
+      <PermissionSet>
+        <IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+        <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+        <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence" />
+        <IPermission class="System.Security.Permissions.UIPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+        <IPermission class="System.Diagnostics.PerformanceCounterPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceProcessInstaller.Rollback(System.Collections.IDictionary)">
+      <summary>Отменяет сведения о служебном приложении, записанные в реестр процедурой установки.Этот метод предназначен для использования инструментами установки, которые автоматически обрабатывают соответствующие методы.</summary>
+      <param name="savedState">Объект <see cref="T:System.Collections.IDictionary" />, содержащий контекстные данные, связанные с процессом установки. </param>
+      <exception cref="T:System.ArgumentException">Параметр <paramref name="savedState" /> имеет значение null.-или- Параметр <paramref name="savedState" /> поврежден либо отсутствует. </exception>
+      <PermissionSet>
+        <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
+      </PermissionSet>
+    </member>
+    <member name="P:System.ServiceProcess.ServiceProcessInstaller.Username">
+      <summary>Получает или задает учетную запись пользователя, под управлением которой будет запускаться служебное приложение.</summary>
+      <returns>Учетная запись, под управлением которой должна запускаться служба.Значением по умолчанию является пустая строка ("").</returns>
+      <PermissionSet>
+        <IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+        <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+        <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence" />
+        <IPermission class="System.Security.Permissions.UIPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+        <IPermission class="System.Diagnostics.PerformanceCounterPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="T:System.ServiceProcess.ServiceStartMode">
+      <summary>Показывает режим запуска службы.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceStartMode.Manual">
+      <summary>Показывает, что служба запускается только вручную — пользователем (с помощью диспетчера служб) или приложением.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceStartMode.Automatic">
+      <summary>Показывает, что служба запускается (или была запущена) операционной системой при запуске.Если служба, запускаемая автоматически, зависит от службы, запускаемой вручную, последняя также запускается автоматически при запуске системы.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceStartMode.Disabled">
+      <summary>Показывает, что служба отключена и не может быть запущена пользователем или приложением.</summary>
+    </member>
+    <member name="T:System.ServiceProcess.ServiceType">
+      <summary>Представляет тип службы.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceType.Adapter">
+      <summary>Служба для устройства, требующего собственного драйвера.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceType.FileSystemDriver">
+      <summary>Драйвер файловой системы, который является и драйвером устройства ядра.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceType.InteractiveProcess">
+      <summary>Служба, взаимодействующая с рабочим столом.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceType.KernelDriver">
+      <summary>Драйвер устройства ядра, например, жесткого диска, или другой драйвер устройства нижнего уровня.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceType.RecognizerDriver">
+      <summary>Драйвер файловой системы, используемый при запуске системы для определения ее файловых систем.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceType.Win32OwnProcess">
+      <summary>Программа Win32, которая запускается контролером служб и подчиняется протоколу управления службами.Этот тип службы Win32 запускается самостоятельно.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.ServiceType.Win32ShareProcess">
+      <summary>Служба Win32, которая может работать совместно с другими службами Win32.</summary>
+    </member>
+    <member name="T:System.ServiceProcess.SessionChangeDescription">
+      <summary>Определяет причину изменения сеанса служб терминалов.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.SessionChangeDescription.Equals(System.Object)">
+      <summary>Определяет, равен ли указанный объект текущему описанию изменения сеанса.</summary>
+      <returns>true, если объект <paramref name="obj" /> равен текущей структуре <see cref="T:System.ServiceProcess.SessionChangeDescription" />; в противном случае — false.</returns>
+      <param name="obj">Объект для сравнения с текущей структурой <see cref="T:System.ServiceProcess.SessionChangeDescription" />.</param>
+    </member>
+    <member name="M:System.ServiceProcess.SessionChangeDescription.Equals(System.ServiceProcess.SessionChangeDescription)">
+      <summary>Определяет, равно ли указанное описание изменения сеанса текущему описанию изменения сеанса.</summary>
+      <returns>true, если объект <paramref name="changeDescription" /> равен текущей структуре <see cref="T:System.ServiceProcess.SessionChangeDescription" />; в противном случае — false.</returns>
+      <param name="changeDescription">Структура <see cref="T:System.ServiceProcess.SessionChangeDescription" /> для сравнения с текущей структурой <see cref="T:System.ServiceProcess.SessionChangeDescription" />.</param>
+    </member>
+    <member name="M:System.ServiceProcess.SessionChangeDescription.GetHashCode">
+      <summary>Получает хэш-код для текущего описания изменения сеанса.</summary>
+      <returns>Хэш-код для текущего описания изменения сеанса.</returns>
+    </member>
+    <member name="M:System.ServiceProcess.SessionChangeDescription.op_Equality(System.ServiceProcess.SessionChangeDescription,System.ServiceProcess.SessionChangeDescription)">
+      <summary>Возвращает значение, показывающее, равны ли две структуры <see cref="T:System.ServiceProcess.SessionChangeDescription" />.</summary>
+      <returns>true if <paramref name="a" /> and <paramref name="b" /> are equal; otherwise, false. </returns>
+      <param name="a">Структура <see cref="T:System.ServiceProcess.SessionChangeDescription" />.</param>
+      <param name="b">Структура <see cref="T:System.ServiceProcess.SessionChangeDescription" />.</param>
+    </member>
+    <member name="M:System.ServiceProcess.SessionChangeDescription.op_Inequality(System.ServiceProcess.SessionChangeDescription,System.ServiceProcess.SessionChangeDescription)">
+      <summary>Возвращает значение, показывающее, являются ли две структуры <see cref="T:System.ServiceProcess.SessionChangeDescription" /> неравными.</summary>
+      <returns>Значение true, если значения параметров <paramref name="a" /> и <paramref name="b" /> не равны; в противном случае — false.</returns>
+      <param name="a">Структура <see cref="T:System.ServiceProcess.SessionChangeDescription" />.</param>
+      <param name="b">Структура <see cref="T:System.ServiceProcess.SessionChangeDescription" />.</param>
+    </member>
+    <member name="P:System.ServiceProcess.SessionChangeDescription.Reason">
+      <summary>Получает причину изменения сеанса.</summary>
+      <returns>Одно из значений <see cref="T:System.ServiceProcess.SessionChangeReason" />. </returns>
+    </member>
+    <member name="P:System.ServiceProcess.SessionChangeDescription.SessionId">
+      <summary>Получает идентификатор связанного сеанса.</summary>
+      <returns>Идентификатор связанного сеанса.</returns>
+    </member>
+    <member name="T:System.ServiceProcess.SessionChangeReason">
+      <summary>Определяет причину уведомления об изменении сеанса служб терминалов.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.SessionChangeReason.ConsoleConnect">
+      <summary>Установлен консольный сеанс.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.SessionChangeReason.ConsoleDisconnect">
+      <summary>Завершен консольный сеанс.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.SessionChangeReason.RemoteConnect">
+      <summary>Установлен удаленный сеанс.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.SessionChangeReason.RemoteDisconnect">
+      <summary>Завершен удаленный сеанс.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.SessionChangeReason.SessionLogon">
+      <summary>Пользователь вошел в сеанс.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.SessionChangeReason.SessionLogoff">
+      <summary>Пользователь вышел из сеанса.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.SessionChangeReason.SessionLock">
+      <summary>A session has been locked.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.SessionChangeReason.SessionUnlock">
+      <summary>A session has been unlocked.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.SessionChangeReason.SessionRemoteControl">
+      <summary>Изменилось состояние удаленного управления сеанса.</summary>
+    </member>
+    <member name="T:System.ServiceProcess.TimeoutException">
+      <summary>Исключение, вызываемое по истечении заданного тайм-аута.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.TimeoutException.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceProcess.TimeoutException" /> без текста сообщения.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.TimeoutException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceProcess.TimeoutException" /> с заданными сведениями о сериализации и контекстом.</summary>
+      <param name="info">Объект <see cref="T:System.Runtime.Serialization.SerializationInfo" />, хранящий сериализованные данные объекта, относящиеся к создаваемому исключению.</param>
+      <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="info" /> имеет значение null. </exception>
+      <exception cref="T:System.Runtime.Serialization.SerializationException">Имя класса — null, или значение свойства <see cref="P:System.Exception.HResult" /> равно нулю (0). </exception>
+    </member>
+    <member name="M:System.ServiceProcess.TimeoutException.#ctor(System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceProcess.TimeoutException" /> с заданным текстом сообщения.</summary>
+      <param name="message">Текст описания типа или источника исключения.</param>
+    </member>
+    <member name="M:System.ServiceProcess.TimeoutException.#ctor(System.String,System.Exception)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceProcess.TimeoutException" /> с заданными текстом сообщения и внутренним исключением.</summary>
+      <param name="message">Текст описания типа или источника исключения.</param>
+      <param name="innerException">Исключение, которое вызвало текущее исключение. </param>
+    </member>
+    <member name="T:System.ServiceProcess.Design.ServiceInstallerDialog">
+      <summary>Предоставляет диалоговое окно, которое запрашивает информацию об учетной записи для приложения службы Windows.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.Design.ServiceInstallerDialog.#ctor">
+      <summary>Инициализирует новый экземпляр формы учетной записи службы.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.Design.ServiceInstallerDialog.Main">
+      <summary>Запускает стандартный цикл обработки сообщений приложения и отображает форму учетной записи службы.</summary>
+      <PermissionSet>
+        <IPermission class="System.Security.Permissions.UIPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="P:System.ServiceProcess.Design.ServiceInstallerDialog.Password">
+      <summary>Возвращает или задает пароль для формы учетной записи службы.</summary>
+      <returns>Строка, представляющая пароль в форме учетной записи службы.Значением по умолчанию является пустая строка ("").</returns>
+      <PermissionSet>
+        <IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+        <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+        <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence" />
+        <IPermission class="System.Diagnostics.PerformanceCounterPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="P:System.ServiceProcess.Design.ServiceInstallerDialog.Result">
+      <summary>Возвращает результат диалогового окна формы учетной записи службы.</summary>
+      <returns>Значение <see cref="T:System.ServiceProcess.Design.ServiceInstallerDialogResult" />, указывающее ответ пользователя в диалоговом окне.Значение по умолчанию равно OK.</returns>
+    </member>
+    <member name="P:System.ServiceProcess.Design.ServiceInstallerDialog.Username">
+      <summary>Возвращает или задает имя пользователя для формы учетной записи службы.</summary>
+      <returns>Строка, представляющая имя пользователя в форме учетной записи службы.Значением по умолчанию является пустая строка ("").</returns>
+      <PermissionSet>
+        <IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+        <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+        <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence" />
+        <IPermission class="System.Diagnostics.PerformanceCounterPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+      </PermissionSet>
+    </member>
+    <member name="T:System.ServiceProcess.Design.ServiceInstallerDialogResult">
+      <summary>Задает возвращаемое значение формы <see cref="T:System.ServiceProcess.Design.ServiceInstallerDialog" />.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.Design.ServiceInstallerDialogResult.OK">
+      <summary>Возвращаемое диалоговым окном значение равно OK.Это значение обычно свидетельствует о том, что пользователь подтвердил свойства учетной записи и нажал кнопку OK, чтобы закрыть диалоговое окно.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.Design.ServiceInstallerDialogResult.UseSystem">
+      <summary>При установке службы вместо учетной записи пользователя используется учетная запись системы.Это значение обычно свидетельствует о том, что диалоговое окно для пользователя не отобразилось.Например, свойству <see cref="P:System.ServiceProcess.ServiceProcessInstaller.Account" /> присвоено не значение User, а другое значение.</summary>
+    </member>
+    <member name="F:System.ServiceProcess.Design.ServiceInstallerDialogResult.Canceled">
+      <summary>Возвращаемое диалоговым окном значение равно Canceled.Это значение обычно свидетельствует о том, что пользователь отменил ответ в диалоговом окне, не заполняя поля учетной записи.</summary>
+    </member>
+  </members>
+</doc>

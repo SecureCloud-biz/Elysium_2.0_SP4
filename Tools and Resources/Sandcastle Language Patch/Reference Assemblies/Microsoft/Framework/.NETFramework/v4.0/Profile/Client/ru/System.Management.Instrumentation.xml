@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Management.Instrumentation</name>
+  </assembly>
+  <members>
+    <member name="T:System.Management.Instrumentation.DefaultManagementInstaller">
+      <summary>Устанавливает инструментированную сборку.Для использования этого стандартного установщика проекта достаточно извлечь класс из <see cref="T:System.Management.Instrumentation.DefaultManagementInstaller" /> внутри сборки.Переопределять какие-либо методы не требуется.</summary>
+    </member>
+    <member name="M:System.Management.Instrumentation.DefaultManagementInstaller.#ctor">
+      <summary>Выполняет инициализацию нового экземпляра класса <see cref="T:System.Management.Instrumentation.DefaultManagementInstaller" />.Этот конструктор используется по умолчанию.</summary>
+    </member>
+    <member name="T:System.Management.Instrumentation.InstrumentationManager">
+      <summary>Обеспечивает методы для управления временем существования и моделью, используемых для отделенных поставщиков.</summary>
+    </member>
+    <member name="M:System.Management.Instrumentation.InstrumentationManager.Publish(System.Object)">
+      <summary>Делает экземпляр поставщика доступным в инфраструктуре WMI.</summary>
+    </member>
+    <member name="M:System.Management.Instrumentation.InstrumentationManager.RegisterAssembly(System.Reflection.Assembly)">
+      <summary>Регистрирует сборку в инфраструктуре WMI.</summary>
+      <param name="managementAssembly"> Регистрируемая сборка.</param>
+    </member>
+    <member name="M:System.Management.Instrumentation.InstrumentationManager.RegisterType(System.Type)">
+      <summary>Регистрирует класс в инфраструктуре WMI.</summary>
+      <param name="managementType">Тип класса.</param>
+    </member>
+    <member name="M:System.Management.Instrumentation.InstrumentationManager.Revoke(System.Object)">
+      <summary>Делает недоступным в инфраструктуре WMI экземпляр доступного на данный момент поставщика.</summary>
+    </member>
+    <member name="M:System.Management.Instrumentation.InstrumentationManager.UnregisterAssembly(System.Reflection.Assembly)">
+      <summary>Отменяет регистрацию сборки в инфраструктуре WMI.</summary>
+      <param name="managementAssembly">Сборка, регистрация которой будет отменена.</param>
+    </member>
+    <member name="M:System.Management.Instrumentation.InstrumentationManager.UnregisterType(System.Type)">
+      <summary>Отменяет регистрацию класса в инфраструктуре WMI.</summary>
+      <param name="managementType">Тип, регистрация которого будет отменена.</param>
+    </member>
+    <member name="T:System.Management.Instrumentation.ManagedCommonProvider">
+      <summary>Это внутренний класс, который используется в инфраструктуре расширений поставщиков данных WMI.NET.</summary>
+    </member>
+    <member name="M:System.Management.Instrumentation.ManagedCommonProvider.#ctor">
+      <summary>Это используемый по умолчанию внутренний конструктор для <see cref="T:System.Management.Instrumentation.ManagedCommonProvider" />, который используется в инфраструктуре расширений поставщиков данных WMI.NET.</summary>
+    </member>
+    <member name="T:System.Management.Instrumentation.ManagementQualifierAttribute">
+      <summary>Атрибут ManagementQualifier содержит дополнительную информацию поставщика WMI о связанном классе, экземпляре, свойстве, поле или методе WMI.</summary>
+    </member>
+    <member name="M:System.Management.Instrumentation.ManagementQualifierAttribute.#ctor(System.String)">
+      <summary>Создает экземпляр ManagementQualifierAttribute.</summary>
+      <param name="name"> Имя квалификатора.</param>
+    </member>
+    <member name="P:System.Management.Instrumentation.ManagementQualifierAttribute.Flavor">
+      <summary>Флаг атрибута.</summary>
+      <returns>Возвращает ManagementQualifierFlavor, указывающий флаг квалификатора.</returns>
+    </member>
+    <member name="P:System.Management.Instrumentation.ManagementQualifierAttribute.Name">
+      <summary>Имя квалификатора.</summary>
+      <returns>Возвращает строку, содержащую имя квалификатора.</returns>
+    </member>
+    <member name="P:System.Management.Instrumentation.ManagementQualifierAttribute.Value">
+      <summary>Связанное с квалификатором значение.</summary>
+      <returns>Возвращает объект, который представляет значение квалификатора.</returns>
+    </member>
+    <member name="T:System.Management.Instrumentation.ManagementQualifierFlavors">
+      <summary>Флаги квалификаторов, которые могут использоваться для расширений поставщика WMI.</summary>
+    </member>
+    <member name="F:System.Management.Instrumentation.ManagementQualifierFlavors.Amended">
+      <summary>Квалификатор не требуется в определении базового класса и может быть изменен при локализации.</summary>
+    </member>
+    <member name="F:System.Management.Instrumentation.ManagementQualifierFlavors.DisableOverride">
+      <summary>Квалификатор нельзя переопределить в производном классе или экземпляре.Обратите внимание, что по умолчанию распространенный квалификатор можно изменить.</summary>
+    </member>
+    <member name="F:System.Management.Instrumentation.ManagementQualifierFlavors.ClassOnly">
+      <summary>Квалификатор передается в экземпляры.</summary>
+    </member>
+    <member name="F:System.Management.Instrumentation.ManagementQualifierFlavors.ThisClassOnly">
+      <summary>Квалификатор не распространяется на производные классы.</summary>
+    </member>
+    <member name="T:System.Management.Instrumentation.WmiProviderInstallationException">
+      <summary>Представляет исключение, возникающее при сбое установки поставщика WMI.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Management.Instrumentation.WmiProviderInstallationException.#ctor">
+      <summary>Инициализирует новый экземпляр класса.Этот конструктор используется по умолчанию.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Management.Instrumentation.WmiProviderInstallationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Выполняет инициализацию нового экземпляра класса с использованием информации о сериализации.</summary>
+      <param name="info">Данные, необходимые для выполнения сериализации или десериализации объекта.</param>
+      <param name="context">Описание источника и назначения заданного сериализованного потока.</param>
+    </member>
+    <member name="M:System.Management.Instrumentation.WmiProviderInstallationException.#ctor(System.String)">
+      <summary>Выполняет инициализацию нового экземпляра класса с использованием заданного сообщения, содержащего описание исключения.</summary>
+      <param name="message"> Сообщение с описанием исключения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Management.Instrumentation.WmiProviderInstallationException.#ctor(System.String,System.Exception)">
+      <summary>Выполняет инициализацию нового экземпляра класса с заданной строкой и исключением.</summary>
+      <param name="message">Сообщение с описанием исключения.</param>
+      <param name="innerException">Экземпляр класса Exception, вызвавший текущее исключение.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+  </members>
+</doc>

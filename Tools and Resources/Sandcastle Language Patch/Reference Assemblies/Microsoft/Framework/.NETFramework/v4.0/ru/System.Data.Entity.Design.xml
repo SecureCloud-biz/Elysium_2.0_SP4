@@ -1,0 +1,603 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Data.Entity.Design</name>
+  </assembly>
+  <members>
+    <member name="T:System.Data.Entity.Design.EdmToObjectNamespaceMap">
+      <summary>Представляет коллекцию концептуальной модели для кодирования сопоставлений пространств имен.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.EdmToObjectNamespaceMap.Add(System.String,System.String)">
+      <summary>Добавляет сопоставление пространства имен в объект <see cref="T:System.Data.Entity.Design.EdmToObjectNamespaceMap" />.</summary>
+      <param name="edmNamespace">Имя пространства имен модели.</param>
+      <param name="objectNamespace">Имя пространства имен кода.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EdmToObjectNamespaceMap.Clear">
+      <summary>Удаляет все сопоставления пространств имен из объекта <see cref="T:System.Data.Entity.Design.EdmToObjectNamespaceMap" />.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.EdmToObjectNamespaceMap.Contains(System.String)">
+      <summary>Получает значение, указывающее, содержит ли объект<see cref="T:System.Data.Entity.Design.EdmToObjectNamespaceMap" /> заданное имя пространства имен модели.</summary>
+      <returns>Значение true, если имя пространства имен модели найдено; в противном случае — значение false.</returns>
+      <param name="edmNamespace">Имя пространства имен модели.</param>
+    </member>
+    <member name="P:System.Data.Entity.Design.EdmToObjectNamespaceMap.Count">
+      <summary>Получает число сопоставлений в <see cref="T:System.Data.Entity.Design.EdmToObjectNamespaceMap" />.</summary>
+      <returns>Число сопоставлений.</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EdmToObjectNamespaceMap.EdmNamespaces">
+      <summary>Получает список имен пространства имен модели в <see cref="T:System.Data.Entity.Design.EdmToObjectNamespaceMap" />.</summary>
+      <returns>Список имен пространства имен модели.</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EdmToObjectNamespaceMap.Item(System.String)">
+      <summary>Получает или задает имя пространства имен кода для указанного имени пространства имен модели.</summary>
+      <returns>Имя пространства имен кода, которое сопоставляется с заданным именем пространства имен модели.</returns>
+      <param name="edmNamespace">Имя пространства имен модели.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EdmToObjectNamespaceMap.Remove(System.String)">
+      <summary>Удаляет заданное сопоставление пространства имен.</summary>
+      <returns>Значение true, если сопоставление пространства имен успешно удалено; в противном случае — значение false.</returns>
+      <param name="edmNamespace">Сопоставление пространства имен модели, которое требуется удалить.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EdmToObjectNamespaceMap.TryGetObjectNamespace(System.String,System.String@)">
+      <summary>Получает значение, указывающее, извлечено ли пространство имен объекта.</summary>
+      <returns>Значение true, если пространство имен объекта было извлечено; в противном случае — значение false.</returns>
+      <param name="edmNamespace">Имя пространства имен модели.</param>
+      <param name="objectNamespace">Имя пространства имен кода.</param>
+    </member>
+    <member name="T:System.Data.Entity.Design.EntityClassGenerator">
+      <summary>Создает контекст объекта и классы сущностей (код уровня объекта) из CSDL-файлов.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityClassGenerator.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Entity.Design.EntityClassGenerator" /> с параметром языка <see cref="F:System.Data.Entity.Design.LanguageOption.GenerateCSharpCode" />. </summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityClassGenerator.#ctor(System.Data.Entity.Design.LanguageOption)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Entity.Design.EntityClassGenerator" /> с заданным объектом <see cref="T:System.Data.Entity.Design.LanguageOption" />. </summary>
+      <param name="languageOption">Значение <see cref="T:System.Data.Entity.Design.LanguageOption" />, указывающее язык созданного кода.По умолчанию используется язык C#.</param>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityClassGenerator.EdmToObjectNamespaceMap">
+      <summary>Получает объект <see cref="T:System.Data.Entity.Design.EdmToObjectNamespaceMap" />, содержащий сопоставления CSDL и пространства имен кода.</summary>
+      <returns>Сопоставления CSDL с пространством имен кода.</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityClassGenerator.GenerateCode(System.String,System.String)">
+      <summary>Создает файл исходного кода, содержащий объекты, сформированные при помощи заданного CSDL-файла.</summary>
+      <returns>Список <see cref="T:System.Collections.IList" /> ошибок <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />, содержащий все возникшие ошибки.</returns>
+      <param name="sourceEdmSchemaFilePath">Путь к CSDL-файлу.</param>
+      <param name="targetFilePath">Путь к созданному файлу исходного кода.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityClassGenerator.GenerateCode(System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+      <summary>Создает исходный код с помощью заданного CSDL-файла.Список путей к файлам схемы используется для разрешения ссылок, содержащихся в CSDL-файле.</summary>
+      <returns>Список <see cref="T:System.Collections.IList" /> объектов <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />, содержащий все возникшие ошибки.</returns>
+      <param name="sourceEdmSchemaFilePath">Путь к CSDL-файлу.</param>
+      <param name="targetPath">Путь к созданному файлу исходного кода.</param>
+      <param name="additionalEdmSchemaFilePaths">Список путей к файлам схемы, которые используются для разрешения ссылок в исходной схеме (CSDL-файл).Если в исходной схеме отсутствуют зависимости, передается пустой список.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityClassGenerator.GenerateCode(System.Xml.XmlReader,System.IO.TextWriter)">
+      <summary>Создает исходный код, используя CSDL-файл, который содержится в объекте <see cref="T:System.Xml.XmlReader" />, и записывает созданный исходный код в объект <see cref="T:System.IO.TextWriter" />.</summary>
+      <returns>Список <see cref="T:System.Collections.IList" /> ошибок <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />, содержащий все возникшие ошибки.</returns>
+      <param name="sourceEdmSchema">Объект <see cref="T:System.Xml.XmlReader" />, содержащий CSDL-файл.</param>
+      <param name="target">Объект <see cref="T:System.IO.TextWriter" />, в который записывается исходный код.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityClassGenerator.GenerateCode(System.Xml.XmlReader,System.IO.TextWriter,System.Collections.Generic.IEnumerable{System.Xml.XmlReader})">
+      <summary>Создает исходный код на основе CSDL-файла в объекте <see cref="T:System.Xml.XmlReader" />, а затем записывает созданный исходный код в объект <see cref="T:System.IO.TextWriter" />.Список <see cref="T:System.Collections.IList" /> объектов <see cref="T:System.Xml.XmlReader" /> используется для разрешения ссылок, содержащихся в CSDL-файле.</summary>
+      <returns>Список объектов <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />, содержащий все возникшие ошибки.</returns>
+      <param name="sourceEdmSchema">Объект <see cref="T:System.Xml.XmlReader" />, содержащий CSDL-файл.</param>
+      <param name="target">Объект <see cref="T:System.IO.TextWriter" />, в который следует записывать созданный исходный код.</param>
+      <param name="additionalEdmSchemas">Список объектов <see cref="T:System.Xml.XmlReader" />, содержащих схемы, на которые ссылается исходная схема (CSDL-файл).Если в исходной схеме отсутствуют зависимости, передается пустой объект <see cref="T:System.Collections.IList" />.</param>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityClassGenerator.LanguageOption">
+      <summary>Получает или задает значение <see cref="T:System.Data.Entity.Design.LanguageOption" />, указывающее язык создаваемого кода. </summary>
+      <returns>Одно из значений <see cref="T:System.Data.Entity.Design.LanguageOption" />.Значение по умолчанию — <see cref="F:System.Data.Entity.Design.LanguageOption.GenerateCSharpCode" />.</returns>
+    </member>
+    <member name="E:System.Data.Entity.Design.EntityClassGenerator.OnPropertyGenerated">
+      <summary>Происходит при изменении свойства.</summary>
+    </member>
+    <member name="E:System.Data.Entity.Design.EntityClassGenerator.OnTypeGenerated">
+      <summary>Происходит при изменении сведений о типе.</summary>
+    </member>
+    <member name="T:System.Data.Entity.Design.EntityCodeGenerator">
+      <summary>Создает исходный код уровня объектов из кода на языке CSDL.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityCodeGenerator.#ctor(System.Data.Entity.Design.LanguageOption)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Entity.Design.EntityCodeGenerator" /> с заданным объектом <see cref="T:System.Data.Entity.Design.LanguageOption" />.</summary>
+      <param name="languageOption">Задает язык созданного кода.</param>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityCodeGenerator.EdmToObjectNamespaceMap">
+      <summary>Получает объект <see cref="T:System.Data.Entity.Design.EdmToObjectNamespaceMap" />, содержащий сопоставления CSDL и пространства имен кода.</summary>
+      <returns>Сопоставления CSDL с пространством имен кода.</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityCodeGenerator.GenerateCode(System.String,System.String)">
+      <summary>Создает файл исходного кода, содержащий код уровня объектов, сформированный из заданного файла на языке CSDL.</summary>
+      <returns>Список объектов <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />, содержащий все возникшие ошибки.</returns>
+      <param name="sourceEdmSchemaFilePath">Путь файла CSDL.</param>
+      <param name="targetPath">Путь к файлу, содержащему созданный код уровня объектов.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityCodeGenerator.GenerateCode(System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+      <summary>Создает файл исходного кода, содержащий код уровня объектов, сформированный из заданного файла на языке CSDL.Список путей к файлам схемы используется для разрешения ссылок, содержащихся в CSDL-файле.</summary>
+      <returns>Список объектов <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />, содержащий все возникшие ошибки.</returns>
+      <param name="sourceEdmSchemaFilePath">Путь файла CSDL.</param>
+      <param name="targetPath">Путь к файлу, содержащему созданный код уровня объектов.</param>
+      <param name="additionalEdmSchemaFilePaths">Список путей к файлам схемы, которые используются для разрешения ссылок в исходной схеме (CSDL-файл).Если в исходной схеме отсутствуют зависимости, передается пустой список.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityCodeGenerator.GenerateCode(System.Xml.XmlReader,System.IO.TextWriter)">
+      <summary>Создает код уровня объектов, используя CSDL, указанный в объекте <see cref="T:System.Xml.XmlReader" />, и записывает созданный код в объект <see cref="T:System.IO.TextWriter" />.</summary>
+      <returns>Список объектов <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />, содержащий все возникшие ошибки.</returns>
+      <param name="sourceEdmSchema">Объект <see cref="T:System.Xml.XmlReader" />, содержащий CSDL.</param>
+      <param name="target">Объект <see cref="T:System.IO.TextWriter" />, в который записывается код уровня объектов.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityCodeGenerator.GenerateCode(System.Xml.XmlReader,System.IO.TextWriter,System.Collections.Generic.IEnumerable{System.Xml.XmlReader})">
+      <summary>Создает код уровня объектов на основе CSDL, указанного в объекте <see cref="T:System.Xml.XmlReader" />, а затем записывает созданный код в объект <see cref="T:System.IO.TextWriter" />.Список <see cref="T:System.Collections.IList" /> объектов <see cref="T:System.Xml.XmlReader" /> используется для разрешения ссылок, содержащихся в CSDL-файле.</summary>
+      <returns>Список объектов <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />, содержащий все возникшие ошибки.</returns>
+      <param name="sourceEdmSchema">Объект <see cref="T:System.Xml.XmlReader" />, содержащий CSDL.</param>
+      <param name="target">Объект <see cref="T:System.IO.TextWriter" />, в который следует записывать созданный код уровня объектов.</param>
+      <param name="additionalEdmSchemas">Список объектов <see cref="T:System.Xml.XmlReader" />, содержащих схемы, на которые ссылается исходная схема (CSDL).Если в исходной схеме отсутствуют зависимости, передается пустой объект <see cref="T:System.Collections.IList" />.</param>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityCodeGenerator.LanguageOption">
+      <summary>Получает или задает значение <see cref="T:System.Data.Entity.Design.LanguageOption" />, указывающее язык создаваемого кода. </summary>
+      <returns>Одно из значений <see cref="T:System.Data.Entity.Design.LanguageOption" />.</returns>
+    </member>
+    <member name="T:System.Data.Entity.Design.EntityFrameworkVersions">
+      <summary>Предоставляет сведения о различных версиях Entity Framework.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityFrameworkVersions.GetSchemaXsd(System.Version,System.Data.Metadata.Edm.DataSpace)">
+      <summary>Возвращает поток XSD, соответствующий заданной версии Entity Framework, с именами модели по умолчанию, как указано в параметре <see cref="T:System.Data.Metadata.Edm.DataSpace" />.</summary>
+      <returns>Объект <see cref="T:System.IO.Stream" /> XSD, соответствующий заданной версии Entity Framework и <see cref="T:System.Data.Metadata.Edm.DataSpace" />.</returns>
+      <param name="entityFrameworkVersion">Свойство объекта <see cref="T:System.Data.Entity.Design.EntityFrameworkVersions" />, соответствующее целевой версии Entity Framework.</param>
+      <param name="dataSpace">Желаемый объект <see cref="T:System.Data.Metadata.Edm.DataSpace" /> XSD.</param>
+    </member>
+    <member name="F:System.Data.Entity.Design.EntityFrameworkVersions.Version1">
+      <summary>Свойство, доступное только для чтения, представляющее версию 1 Entity Framework.</summary>
+      <returns>Объект <see cref="T:System.Version" />, представляющий версию 1 Entity Framework.</returns>
+    </member>
+    <member name="F:System.Data.Entity.Design.EntityFrameworkVersions.Version2">
+      <summary>Свойство, доступное только для чтения, представляющее версию 2 Entity Framework.</summary>
+      <returns>Объект <see cref="T:System.Version" />, представляющий версию 2 Entity Framework.</returns>
+    </member>
+    <member name="T:System.Data.Entity.Design.EntityModelSchemaGenerator">
+      <summary>Генерирует CSDL и MSL на основе SSDL.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityModelSchemaGenerator.#ctor(System.Data.Metadata.Edm.EntityContainer)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Entity.Design.EntityModelSchemaGenerator" />.</summary>
+      <param name="storeEntityContainer">Объект <see cref="T:System.Data.Metadata.Edm.EntityContainer" /> модели хранения, по которому создаются концептуальные метаданные и метаданные сопоставления.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityModelSchemaGenerator.#ctor(System.Data.Metadata.Edm.EntityContainer,System.String,System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Entity.Design.EntityModelSchemaGenerator" />.</summary>
+      <param name="storeEntityContainer">Объект <see cref="T:System.Data.Metadata.Edm.EntityContainer" /> модели хранения, по которому создаются концептуальные метаданные и метаданные сопоставления.</param>
+      <param name="namespaceName">Имя пространства имен концептуальной модели.Если указано значение null, имя объекта <paramref name="storeEntityContainer" /> используется как имя пространства имен.</param>
+      <param name="modelEntityContainerName">Имя объекта EntityContainer, объявленное в концептуальной модели.</param>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityModelSchemaGenerator.EdmItemCollection">
+      <summary>Получает объект <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" />, созданный методом <see cref="M:System.Data.Entity.Design.EntityModelSchemaGenerator.GenerateMetadata" />.</summary>
+      <returns>Объект <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" />, содержащий CSDL.</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityModelSchemaGenerator.EntityContainer">
+      <summary>Получает объект <see cref="T:System.Data.Metadata.Edm.EntityContainer" /> концептуальной модели, созданный при помощи метода <see cref="M:System.Data.Entity.Design.EntityModelSchemaGenerator.GenerateMetadata" />.</summary>
+      <returns>Объект <see cref="T:System.Data.Metadata.Edm.EntityContainer" />, содержащий объект EntityContainer концептуальной модели.</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityModelSchemaGenerator.GenerateForeignKeyProperties">
+      <summary>Получает или задает флаг для создания свойств внешнего ключа в концептуальной модели.</summary>
+      <returns>Если этому свойству присвоено значение true, в концептуальной модели создаются свойства внешнего ключа; в противном случае создание свойств внешнего ключа в концептуальной модели не производится.</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityModelSchemaGenerator.GenerateMetadata">
+      <summary>Генерирует сведения о метаданных концептуальной модели и возвращает ошибки схемы.</summary>
+      <returns>Коллекция объектов <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />.</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityModelSchemaGenerator.GenerateMetadata(System.Version)">
+      <summary>Генерирует сведения о метаданных концептуальной модели и возвращает ошибки схемы.</summary>
+      <returns>Коллекция объектов <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />.</returns>
+      <param name="targetEntityFrameworkVersion">Свойство объекта <see cref="T:System.Data.Entity.Design.EntityFrameworkVersions" />, соответствующее целевой версии Entity Framework.</param>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityModelSchemaGenerator.PluralizationService">
+      <summary>Получает или задает значение <see cref="T:System.Data.Entity.Design.PluralizationServices.PluralizationService" />, указывающее службу, которая использовалась при формировании модели.</summary>
+      <returns>Значение <see cref="T:System.Data.Entity.Design.PluralizationServices.PluralizationService" />, указывающее службу, которая использовалась при формировании модели.</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityModelSchemaGenerator.WriteModelSchema(System.String)">
+      <summary>Записывает созданную схему на языке CSDL в заданный файл.</summary>
+      <param name="outputFileName">Имя выходного файла.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityModelSchemaGenerator.WriteModelSchema(System.Xml.XmlWriter)">
+      <summary>Записывает созданную схему на языке CSDL в объект <see cref="T:System.Xml.XmlWriter" />.</summary>
+      <param name="writer">Объект <see cref="T:System.Xml.XmlWriter" />, в который записывается CSDL.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityModelSchemaGenerator.WriteStorageMapping(System.String)">
+      <summary>Записывает созданный код MSL в заданный файл.</summary>
+      <param name="outputFileName">Имя выходного файла.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityModelSchemaGenerator.WriteStorageMapping(System.Xml.XmlWriter)">
+      <summary>Записывает созданный код MSL в объект <see cref="T:System.Xml.XmlWriter" />.</summary>
+      <param name="writer">Объект <see cref="T:System.Xml.XmlWriter" />, в который записывается MSL.</param>
+    </member>
+    <member name="T:System.Data.Entity.Design.EntityStoreSchemaFilterEffect">
+      <summary>Указывает, нужно ли включить или исключить объекты базы данных, соответствующие шаблону, заданному в параметре <see cref="T:System.Data.Entity.Design.EntityStoreSchemaFilterEntry" />.</summary>
+    </member>
+    <member name="F:System.Data.Entity.Design.EntityStoreSchemaFilterEffect.Allow">
+      <summary>Включает записи, соответствующие заданному шаблону.</summary>
+    </member>
+    <member name="F:System.Data.Entity.Design.EntityStoreSchemaFilterEffect.Exclude">
+      <summary>Исключает записи, соответствующие заданному шаблону.</summary>
+    </member>
+    <member name="T:System.Data.Entity.Design.EntityStoreSchemaFilterEntry">
+      <summary>Представляет одну запись фильтра.Фильтр используется для включения или исключения определенных объектов базы данных во время создания.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityStoreSchemaFilterEntry.#ctor(System.String,System.String,System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Entity.Design.EntityStoreSchemaFilterEntry" /> с указанными фильтрами каталогов, схем и имен. </summary>
+      <param name="catalog">Шаблон, используемый для выбора соответствующего каталога.</param>
+      <param name="schema">Шаблон, используемый для выбора соответствующей схемы, или значение NULL для снятия ограничений по схеме.</param>
+      <param name="name">Шаблон, используемый для выбора соответствующего имени, или значение NULL для снятия ограничений по имени.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityStoreSchemaFilterEntry.#ctor(System.String,System.String,System.String,System.Data.Entity.Design.EntityStoreSchemaFilterObjectTypes,System.Data.Entity.Design.EntityStoreSchemaFilterEffect)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Entity.Design.EntityStoreSchemaFilterEntry" /> указанными фильтрами каталогов, схем, имен и типов, а также параметром воздействия фильтра.</summary>
+      <param name="catalog">Шаблон, используемый для выбора соответствующего каталога, или значение NULL для снятия ограничений по каталогу.</param>
+      <param name="schema">Шаблон, используемый для выбора соответствующей схемы, или значение NULL для снятия ограничений по схеме.</param>
+      <param name="name">Шаблон, используемый для выбора соответствующего имени, или значение NULL для снятия ограничений по имени.</param>
+      <param name="types">Тип объектов, к которым применяется фильтр.</param>
+      <param name="effect">Значение <see cref="T:System.Data.Entity.Design.EntityStoreSchemaFilterEffect" />, указывающее, следует ли включать или исключать записи, удовлетворяющие условиям заданных фильтров.</param>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityStoreSchemaFilterEntry.Catalog">
+      <summary>Получает шаблон, который будет использоваться для выбора соответствующего каталога.</summary>
+      <returns>Часть, обозначающая каталог, в имени базы данных. Формат имени базы данных: Каталог.Схема.Имя.</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityStoreSchemaFilterEntry.Effect">
+      <summary>Получает воздействие фильтра на результаты.</summary>
+      <returns>Значение <see cref="T:System.Data.Entity.Design.EntityStoreSchemaFilterEffect" />, указывающее, следует ли включать или исключать записи, удовлетворяющие условиям заданных фильтров.</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityStoreSchemaFilterEntry.Name">
+      <summary>Получает шаблон, который будет использоваться для выбора соответствующего имени.</summary>
+      <returns>Часть, обозначающая имя, в имени базы данных. Формат имени базы данных: Каталог.Схема.Имя.</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityStoreSchemaFilterEntry.Schema">
+      <summary>Получает шаблон, который будет использоваться для выбора соответствующей схемы.</summary>
+      <returns>Часть, обозначающая схему, в имени базы данных. Формат имени базы данных: Каталог.Схема.Имя.</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityStoreSchemaFilterEntry.Types">
+      <summary>Получает тип объектов, к которым применяется фильтр.</summary>
+      <returns>Значение <see cref="T:System.Data.Entity.Design.EntityStoreSchemaFilterObjectTypes" />, указывающее типы объектов, к которым должен применяться фильтр.</returns>
+    </member>
+    <member name="T:System.Data.Entity.Design.EntityStoreSchemaFilterObjectTypes">
+      <summary>Задает тип объекта хранилища, к которому применяется фильтр схемы.</summary>
+    </member>
+    <member name="F:System.Data.Entity.Design.EntityStoreSchemaFilterObjectTypes.None">
+      <summary>Исходное значение.Это значение недопустимо.</summary>
+    </member>
+    <member name="F:System.Data.Entity.Design.EntityStoreSchemaFilterObjectTypes.Table">
+      <summary>Применить фильтр к табличным типам объектов.</summary>
+    </member>
+    <member name="F:System.Data.Entity.Design.EntityStoreSchemaFilterObjectTypes.View">
+      <summary>Применить фильтр к типам объектов представлений.</summary>
+    </member>
+    <member name="F:System.Data.Entity.Design.EntityStoreSchemaFilterObjectTypes.Function">
+      <summary>Применить фильтр к типам объектов функций.</summary>
+    </member>
+    <member name="F:System.Data.Entity.Design.EntityStoreSchemaFilterObjectTypes.All">
+      <summary>Применить фильтр ко всем типам объектов.</summary>
+    </member>
+    <member name="T:System.Data.Entity.Design.EntityStoreSchemaGenerator">
+      <summary>Предоставляет методы и свойства для загрузки сведений о схеме базы данных и создании SSDL-схемы.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityStoreSchemaGenerator.#ctor(System.String,System.String,System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Entity.Design.EntityStoreSchemaGenerator" />. </summary>
+      <param name="providerInvariantName">Неизменяемое имя поставщика.Это неизменяемое имя можно использовать программно для ссылки на поставщик данных.Сведения обо всех поставщиках, установленных на локальном компьютере, можно получить с помощью метода <see cref="M:System.Data.Common.DbProviderFactories.GetFactoryClasses" />.</param>
+      <param name="connectionString">Подключение, которое используется для открытия базы данных.</param>
+      <param name="namespaceName">Имя пространства имен для SSDL.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityStoreSchemaGenerator.CreateStoreSchemaConnection(System.String,System.String)">
+      <summary>Создает объект <see cref="T:System.Data.EntityClient.EntityConnection" />, загруженный с метаданными концептуальной схемы заданного поставщика.</summary>
+      <returns>Объект <see cref="T:System.Data.EntityClient.EntityConnection" />, который может запросить поставщик у объекта <see cref="F:System.Data.Common.DbProviderManifest.ConceptualSchemaDefinition" />.</returns>
+      <param name="providerInvariantName">Неизменяемое имя поставщика.Это неизменяемое имя можно использовать программно для ссылки на поставщик данных.Сведения обо всех поставщиках, установленных на локальном компьютере, можно получить с помощью метода <see cref="M:System.Data.Common.DbProviderFactories.GetFactoryClasses" />.</param>
+      <param name="connectionString">Подключение, которое используется для открытия базы данных.</param>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityStoreSchemaGenerator.EntityContainer">
+      <summary>Получает созданную модель хранения <see cref="T:System.Data.Metadata.Edm.EntityContainer" />.Возвращенный объект <see cref="T:System.Data.Metadata.Edm.EntityContainer" /> совпадает с объектом <see cref="T:System.Data.Metadata.Edm.EntityContainer" /> в коллекции <see cref="T:System.Data.Metadata.Edm.StoreItemCollection" />, возвращаемой свойством <see cref="P:System.Data.Entity.Design.EntityStoreSchemaGenerator.StoreItemCollection" />.</summary>
+      <returns>Объект <see cref="T:System.Data.Metadata.Edm.EntityContainer" />.</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityStoreSchemaGenerator.GenerateForeignKeyProperties">
+      <summary>Получает или задает флаг для создания свойств внешнего ключа в модели хранения.</summary>
+      <returns>Значение равно true (True в Visual Basic), если свойства внешнего ключа создаются в модели хранения; в противном случае значение равно false (False в Visual Basic).</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityStoreSchemaGenerator.GenerateStoreMetadata">
+      <summary>Создает метаданные хранилища и возвращает все ошибки схемы.</summary>
+      <returns>Коллекция объектов <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" /></returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityStoreSchemaGenerator.GenerateStoreMetadata(System.Collections.Generic.IEnumerable{System.Data.Entity.Design.EntityStoreSchemaFilterEntry})">
+      <summary>Создает метаданные хранилища и возвращает все ошибки схемы.</summary>
+      <returns>Коллекция объектов <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />.</returns>
+      <param name="filters">Объект <see cref="T:System.Data.Entity.Design.EntityStoreSchemaFilterEntry" />, указывающий, какие объекты базы данных следует включить или исключить во время создания.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityStoreSchemaGenerator.GenerateStoreMetadata(System.Collections.Generic.IEnumerable{System.Data.Entity.Design.EntityStoreSchemaFilterEntry},System.Version)">
+      <summary>Создает код SSDL и возвращает все ошибки схемы.</summary>
+      <returns>Коллекция объектов <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />.</returns>
+      <param name="filters">Объект <see cref="T:System.Data.Entity.Design.EntityStoreSchemaFilterEntry" />, указывающий, какие объекты базы данных следует включить или исключить во время создания.</param>
+      <param name="targetEntityFrameworkVersion">Свойство объекта <see cref="T:System.Data.Entity.Design.EntityFrameworkVersions" />, соответствующее целевой версии Entity Framework.</param>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityStoreSchemaGenerator.StoreItemCollection">
+      <summary>Получает созданный объект <see cref="T:System.Data.Metadata.Edm.StoreItemCollection" />.</summary>
+      <returns>Объект <see cref="T:System.Data.Metadata.Edm.StoreItemCollection" />.</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityStoreSchemaGenerator.WriteStoreSchema(System.String)">
+      <summary>Записывает созданный код на языке SSDL в файл.</summary>
+      <param name="outputFileName">Имя выходного файла.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityStoreSchemaGenerator.WriteStoreSchema(System.Xml.XmlWriter)">
+      <summary>Записывает созданный код на языке SSDL в объект <see cref="T:System.Xml.XmlWriter" />.</summary>
+      <param name="writer">Объект <see cref="T:System.Xml.XmlWriter" />, в который записывается SSDL.</param>
+    </member>
+    <member name="T:System.Data.Entity.Design.EntityViewGenerator">
+      <summary>Формирует представления для экстентов в объекте <see cref="T:System.Data.Mapping.StorageMappingItemCollection" /> и создает файл исходного кода для типа, который будет кэшировать эти представления.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityViewGenerator.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Entity.Design.EntityViewGenerator" /> с параметром языка <see cref="F:System.Data.Entity.Design.LanguageOption.GenerateCSharpCode" />.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityViewGenerator.#ctor(System.Data.Entity.Design.LanguageOption)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Entity.Design.EntityViewGenerator" /> с заданным объектом <see cref="T:System.Data.Entity.Design.LanguageOption" />.</summary>
+      <param name="languageOption">Одно из значений объекта <see cref="T:System.Data.Entity.Design.LanguageOption" />, указывающее язык создаваемого кода.По умолчанию используется язык C#.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityViewGenerator.GenerateViews(System.Data.Mapping.StorageMappingItemCollection,System.IO.TextWriter)">
+      <summary>Формирует представления во время компиляции для экстентов в объекте <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />.Отправляет файл исходного кода в объект <see cref="T:System.IO.TextWriter" />, чтобы представления были доступны во время выполнения.</summary>
+      <returns>Список, содержащий все возникшие ошибки.</returns>
+      <param name="mappingCollection">Коллекция <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />, из которой будут формироваться представления. </param>
+      <param name="outputWriter">Объект <see cref="T:System.IO.TextWriter" />, в который будет отправлен созданный код.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityViewGenerator.GenerateViews(System.Data.Mapping.StorageMappingItemCollection,System.IO.TextWriter,System.Version)">
+      <summary>Формирует представления во время компиляции для экстентов в объекте <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />.Отправляет файл исходного кода в объект <see cref="T:System.IO.TextWriter" />, чтобы представления были доступны во время выполнения.</summary>
+      <returns>Список, содержащий все возникшие ошибки.</returns>
+      <param name="mappingCollection">Объект <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />, подлежащий проверке.</param>
+      <param name="outputWriter">Объект <see cref="T:System.IO.TextWriter" />, в который записываются выходные данные.</param>
+      <param name="targetEntityFrameworkVersion">Свойство объекта <see cref="T:System.Data.Entity.Design.EntityFrameworkVersions" />, соответствующее целевой версии Entity Framework.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityViewGenerator.GenerateViews(System.Data.Mapping.StorageMappingItemCollection,System.String)">
+      <summary>Формирует представления во время компиляции для экстентов в объекте <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />.Записывает в указанное расположение файл исходного кода, благодаря которому представления доступны во время выполнения.</summary>
+      <returns>Список, содержащий все возникшие ошибки.</returns>
+      <param name="mappingCollection">Коллекция <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />, из которой будут формироваться представления.</param>
+      <param name="outputPath">Объект <see cref="T:System.String" />, задающий расположение, в которое будет записан файл исходного кода.</param>
+    </member>
+    <member name="P:System.Data.Entity.Design.EntityViewGenerator.LanguageOption">
+      <summary>Получает или задает значение <see cref="T:System.Data.Entity.Design.LanguageOption" />, указывающее язык создаваемого кода.</summary>
+      <returns>Одно из значений <see cref="T:System.Data.Entity.Design.LanguageOption" />.Значение по умолчанию — <see cref="F:System.Data.Entity.Design.LanguageOption.GenerateCSharpCode" />.</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityViewGenerator.Validate(System.Data.Mapping.StorageMappingItemCollection)">
+      <summary>Проверяет объект <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />.</summary>
+      <returns>Список, содержащий все возникшие ошибки.</returns>
+      <param name="mappingCollection">Объект <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />, подлежащий проверке.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.EntityViewGenerator.Validate(System.Data.Mapping.StorageMappingItemCollection,System.Version)">
+      <summary>Проверяет объект <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />.</summary>
+      <returns>Список, содержащий все возникшие при проверке ошибки. </returns>
+      <param name="mappingCollection">Объект <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />, подлежащий проверке.</param>
+      <param name="targetEntityFrameworkVersion">Свойство объекта <see cref="T:System.Data.Entity.Design.EntityFrameworkVersions" />, соответствующее целевой версии Entity Framework.</param>
+    </member>
+    <member name="T:System.Data.Entity.Design.LanguageOption">
+      <summary>Задает язык созданного кода.</summary>
+    </member>
+    <member name="F:System.Data.Entity.Design.LanguageOption.GenerateCSharpCode">
+      <summary>Код C#.Это значение по умолчанию.</summary>
+    </member>
+    <member name="F:System.Data.Entity.Design.LanguageOption.GenerateVBCode">
+      <summary>Код Visual Basic. </summary>
+    </member>
+    <member name="T:System.Data.Entity.Design.MetadataItemCollectionFactory">
+      <summary>Представляет набор методов для создания экземпляров <see cref="T:System.Data.Metadata.Edm.ItemCollection" /> метаданных.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.MetadataItemCollectionFactory.CreateEdmItemCollection(System.Collections.Generic.IEnumerable{System.Xml.XmlReader},System.Collections.Generic.IList{System.Data.Metadata.Edm.EdmSchemaError}@)">
+      <summary>Создает коллекцию <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" /> и загружает метаданные, содержащиеся в коллекции <see cref="T:System.Collections.IEnumerable" /> объекта <see cref="T:System.Xml.XmlReader" />.</summary>
+      <returns>Коллекция <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" />, содержащая заданные метаданные.</returns>
+      <param name="readers">Коллекция <see cref="T:System.Collections.IEnumerable" /> объекта <see cref="T:System.Xml.XmlReader" />, которая содержит файлы метаданных.</param>
+      <param name="errors">Свойство <see cref="T:System.Collections.IList" /> объекта <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />.В этот список добавляются все ошибки, произошедшие во время создания коллекции <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" />.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.MetadataItemCollectionFactory.CreateEdmItemCollection(System.Collections.Generic.IEnumerable{System.Xml.XmlReader},System.Version,System.Collections.Generic.IList{System.Data.Metadata.Edm.EdmSchemaError}@)">
+      <summary>Создает коллекцию <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" /> и загружает метаданные, содержащиеся в коллекции <see cref="T:System.Collections.IEnumerable" /> объекта <see cref="T:System.Xml.XmlReader" />.</summary>
+      <returns>Коллекция <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" />, содержащая заданные метаданные.</returns>
+      <param name="readers">Коллекция <see cref="T:System.Collections.IEnumerable" /> объекта <see cref="T:System.Xml.XmlReader" />, которая содержит файлы метаданных.</param>
+      <param name="targetEntityFrameworkVersion">Свойство объекта <see cref="T:System.Data.Entity.Design.EntityFrameworkVersions" />, соответствующее целевой версии Entity Framework.</param>
+      <param name="errors">Свойство <see cref="T:System.Collections.IList" /> объекта <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />.В этот список добавляются все ошибки, произошедшие во время создания коллекции <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" />.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.MetadataItemCollectionFactory.CreateStorageMappingItemCollection(System.Data.Metadata.Edm.EdmItemCollection,System.Data.Metadata.Edm.StoreItemCollection,System.Collections.Generic.IEnumerable{System.Xml.XmlReader},System.Collections.Generic.IList{System.Data.Metadata.Edm.EdmSchemaError}@)">
+      <summary>Создает коллекцию <see cref="T:System.Data.Mapping.StorageMappingItemCollection" /> и загружает метаданные, которые содержатся в заданной коллекции <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" />, коллекции <see cref="T:System.Data.Metadata.Edm.StoreItemCollection" /> и коллекции объектов <see cref="T:System.Xml.XmlReader" />.</summary>
+      <returns>Коллекция <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />, содержащая заданные метаданные.</returns>
+      <param name="edmCollection">Объект <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" />.</param>
+      <param name="storeCollection">Объект <see cref="T:System.Data.Metadata.Edm.StoreItemCollection" />.</param>
+      <param name="readers">Коллекция <see cref="T:System.Collections.IEnumerable" /> объектов <see cref="T:System.Xml.XmlReader" />, которая содержит файлы метаданных.</param>
+      <param name="errors">Свойство <see cref="T:System.Collections.IList" /> объекта <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />.В этот список добавляются все ошибки, произошедшие во время создания коллекции <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.MetadataItemCollectionFactory.CreateStorageMappingItemCollection(System.Data.Metadata.Edm.EdmItemCollection,System.Data.Metadata.Edm.StoreItemCollection,System.Collections.Generic.IEnumerable{System.Xml.XmlReader},System.Version,System.Collections.Generic.IList{System.Data.Metadata.Edm.EdmSchemaError}@)">
+      <summary>Создает объект <see cref="T:System.Data.Mapping.StorageMappingItemCollection" /> из информации о сопоставлении в объектах <see cref="T:System.Xml.XmlReader" /> и метаданных в указанных объектах <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" /> и <see cref="T:System.Data.Metadata.Edm.StoreItemCollection" />.</summary>
+      <returns>Коллекция <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />, содержащая заданные метаданные.</returns>
+      <param name="edmCollection">Объект <see cref="T:System.Data.Metadata.Edm.EdmItemCollection" />.</param>
+      <param name="storeCollection">Объект <see cref="T:System.Data.Metadata.Edm.StoreItemCollection" />.</param>
+      <param name="readers">Коллекция <see cref="T:System.Collections.IEnumerable" /> объектов <see cref="T:System.Xml.XmlReader" />, которая содержит файлы метаданных.</param>
+      <param name="targetEntityFrameworkVersion">Свойство объекта <see cref="T:System.Data.Entity.Design.EntityFrameworkVersions" />, соответствующее целевой версии Entity Framework.</param>
+      <param name="errors">Свойство <see cref="T:System.Collections.IList" /> объекта <see cref="T:System.Data.Metadata.Edm.EdmSchemaError" />.В этот список добавляются все ошибки, произошедшие во время создания коллекции <see cref="T:System.Data.Mapping.StorageMappingItemCollection" />.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.MetadataItemCollectionFactory.CreateStoreItemCollection(System.Collections.Generic.IEnumerable{System.Xml.XmlReader},System.Collections.Generic.IList{System.Data.Metadata.Edm.EdmSchemaError}@)">
+      <summary>Создает коллекцию <see cref="T:System.Data.Metadata.Edm.StoreItemCollection" /> и предоставляет список ошибок и предупреждений.</summary>
+      <returns>Объект <see cref="T:System.Data.Metadata.Edm.StoreItemCollection" />.</returns>
+      <param name="readers">Коллекция объектов <see cref="T:System.Xml.XmlReader" />, каждый из которых выполняет чтение из файла модели хранения.Файл модели хранения написан на языке SSDL.</param>
+      <param name="errors">Список ошибок, обнаруженных во время загрузки метаданных SSDL.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.MetadataItemCollectionFactory.CreateStoreItemCollection(System.Collections.Generic.IEnumerable{System.Xml.XmlReader},System.Version,System.Collections.Generic.IList{System.Data.Metadata.Edm.EdmSchemaError}@)">
+      <summary>Создает коллекцию <see cref="T:System.Data.Metadata.Edm.StoreItemCollection" /> и предоставляет список ошибок и предупреждений.</summary>
+      <returns>Объект <see cref="T:System.Data.Metadata.Edm.StoreItemCollection" />.</returns>
+      <param name="readers">Коллекция объектов <see cref="T:System.Xml.XmlReader" />, каждый из которых выполняет чтение из файла модели хранения.Файл модели хранения написан на языке SSDL.</param>
+      <param name="targetEntityFrameworkVersion">Свойство объекта <see cref="T:System.Data.Entity.Design.EntityFrameworkVersions" />, соответствующее целевой версии Entity Framework.</param>
+      <param name="errors">Список ошибок, обнаруженных во время загрузки метаданных SSDL.</param>
+    </member>
+    <member name="T:System.Data.Entity.Design.PropertyGeneratedEventArgs">
+      <summary>Данные для события <see cref="E:System.Data.Entity.Design.EntityClassGenerator.OnPropertyGenerated" />. </summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.PropertyGeneratedEventArgs.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Entity.Design.PropertyGeneratedEventArgs" />.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.PropertyGeneratedEventArgs.#ctor(System.Data.Metadata.Edm.MetadataItem,System.String,System.CodeDom.CodeTypeReference)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Entity.Design.PropertyGeneratedEventArgs" /> с указанным источником свойства, именем поддерживающего поля и возвращаемым типом.</summary>
+      <param name="propertySource">Объект <see cref="T:System.Data.Metadata.Edm.MetadataItem" />, являющийся источником свойства.</param>
+      <param name="backingFieldName">Имя поля, поддерживающего свойство.</param>
+      <param name="returnType">Базовый тип свойства.</param>
+    </member>
+    <member name="P:System.Data.Entity.Design.PropertyGeneratedEventArgs.AdditionalAttributes">
+      <summary>Получает список List(CodeAttributeDeclaration) атрибутов, добавляемых к свойству.</summary>
+      <returns>Коллекция, содержащая атрибуты, которые будут добавлены к свойству.Если атрибуты не добавляются, возвращается пустая коллекция.</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.PropertyGeneratedEventArgs.AdditionalGetStatements">
+      <summary>Получает список List(CodeStatement), содержащий инструкции GET, которые будут добавлены к свойству.</summary>
+      <returns>Коллекция, содержащая инструкции GET, которые будут добавлены к свойству.</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.PropertyGeneratedEventArgs.AdditionalSetStatements">
+      <summary>Получает список List(CodeStatement), содержащий инструкции SET, которые будут добавлены к свойству.</summary>
+      <returns>Коллекция, содержащая инструкции SET, которые будут добавлены к свойству. </returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.PropertyGeneratedEventArgs.BackingFieldName">
+      <summary>Получает имя поля, поддерживающего свойство.</summary>
+      <returns>Имя поля, поддерживающего свойство.Может принимать значение null для свойств навигации.</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.PropertyGeneratedEventArgs.PropertySource">
+      <summary>Получает объект <see cref="T:System.Data.Metadata.Edm.MetadataItem" />, являющийся источником свойства.</summary>
+      <returns>Объект <see cref="T:System.Data.Metadata.Edm.MetadataItem" />, являющийся источником свойства.</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.PropertyGeneratedEventArgs.ReturnType">
+      <summary>Получает или задает тип свойства.</summary>
+      <returns>Тип свойства. </returns>
+    </member>
+    <member name="T:System.Data.Entity.Design.PropertyGeneratedEventHandler">
+      <summary>Представляет метод обработки события <see cref="E:System.Data.Entity.Design.EntityClassGenerator.OnPropertyGenerated" />. </summary>
+      <param name="sender">Источник события.</param>
+      <param name="e">Данные события.</param>
+    </member>
+    <member name="T:System.Data.Entity.Design.TypeGeneratedEventArgs">
+      <summary>Данные для события <see cref="E:System.Data.Entity.Design.EntityClassGenerator.OnTypeGenerated" />. </summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.TypeGeneratedEventArgs.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Entity.Design.TypeGeneratedEventArgs" />.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.TypeGeneratedEventArgs.#ctor(System.Data.Metadata.Edm.GlobalItem,System.CodeDom.CodeTypeReference)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Entity.Design.TypeGeneratedEventArgs" /> указанным источником и базовым типом. </summary>
+      <param name="typeSource">Источник типа.</param>
+      <param name="baseType">Базовый тип.</param>
+    </member>
+    <member name="P:System.Data.Entity.Design.TypeGeneratedEventArgs.AdditionalAttributes">
+      <summary>Получает список List(CodeAttributeDeclaration) атрибутов, которые будут добавлены к типу.</summary>
+      <returns>Коллекция, содержащая атрибуты, которые будут добавлены к типу.Если добавляемые атрибуты отсутствуют, возвращается пустая коллекция.</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.TypeGeneratedEventArgs.AdditionalInterfaces">
+      <summary>Получает список List(Type) интерфейсов, которые будут добавлены к типу.</summary>
+      <returns>Коллекция, содержащая интерфейсы, которые будут добавлены к типу.Если интерфейсы не добавляются, возвращается пустая коллекция.</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.TypeGeneratedEventArgs.AdditionalMembers">
+      <summary>Получает список List(CodeTypeMember) элементов, которые будут добавлены к типу.</summary>
+      <returns>Коллекция, содержащая элементы, которые будут добавлены к типу.Если элементы не добавляются, возвращается пустая коллекция.</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.TypeGeneratedEventArgs.BaseType">
+      <summary>Получает или задает базовый тип.</summary>
+      <returns>Базовый тип.По умолчанию: <see cref="T:System.Data.Objects.DataClasses.EntityObject" />, <see cref="T:System.Data.Objects.DataClasses.ComplexObject" /> или <see cref="T:System.Data.Objects.ObjectContext" />, в зависимости от значения свойства <see cref="P:System.Data.Entity.Design.TypeGeneratedEventArgs.TypeSource" />.</returns>
+    </member>
+    <member name="P:System.Data.Entity.Design.TypeGeneratedEventArgs.TypeSource">
+      <summary>Получает объект <see cref="T:System.Data.Metadata.Edm.GlobalItem" />, являющийся источником типа.</summary>
+      <returns>Объект <see cref="T:System.Data.Metadata.Edm.GlobalItem" />, являющийся источником типа.</returns>
+    </member>
+    <member name="T:System.Data.Entity.Design.TypeGeneratedEventHandler">
+      <summary>Представляет метод обработки события <see cref="E:System.Data.Entity.Design.EntityClassGenerator.OnTypeGenerated" />.</summary>
+      <param name="sender">Источник события.</param>
+      <param name="e">Данные события.</param>
+    </member>
+    <member name="T:System.Data.Entity.Design.AspNet.EntityDesignerBuildProvider">
+      <summary>Извлекает части, соответствующие модели и сопоставлению, из EDMX-файлов в каталоге App_Code веб-сайта ASP.NET и внедряет их в виде ресурсов в сборку, которая динамически компилируется средой выполнения ASP.NET. </summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.EntityDesignerBuildProvider.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Entity.Design.AspNet.EntityDesignerBuildProvider" />.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.EntityDesignerBuildProvider.GenerateCode(System.Web.Compilation.AssemblyBuilder)">
+      <summary>Создает код на C# или Visual Basic в зависимости от модели и сопоставления в EDMX-файле.</summary>
+      <param name="assemblyBuilder">Контейнер для построения сборки.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.EntityDesignerBuildProvider.GetResultFlags(System.CodeDom.Compiler.CompilerResults)">
+      <summary>Предоставляет инструкции по построению проекта компилятору ASP.NET.</summary>
+      <returns>Необходимый порядок построения виртуального пути.</returns>
+      <param name="results">Результаты компиляции, возвращаемые компилятором ASP.NET.</param>
+    </member>
+    <member name="T:System.Data.Entity.Design.AspNet.EntityModelBuildProvider">
+      <summary>Представляет поставщик построения CSDL для среды построения ASP.NET.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.EntityModelBuildProvider.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Entity.Design.AspNet.EntityModelBuildProvider" />.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.EntityModelBuildProvider.GenerateCode(System.Web.Compilation.AssemblyBuilder)">
+      <summary>Создает исходный код для поставщика построения модели сущностей и добавляет исходный код в заданный построитель сборок.</summary>
+      <param name="assemblyBuilder">Построитель сборок, который ссылается на исходный код, созданный поставщиком построения.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.EntityModelBuildProvider.GetResultFlags(System.CodeDom.Compiler.CompilerResults)">
+      <summary>Возвращает значение, указывающее действия, необходимые при создании поставщика построения модели сущностей.</summary>
+      <returns>Значение <see cref="F:System.Web.Compilation.BuildProviderResultFlags.ShutdownAppDomainOnChange" />, указывающее, что контейнер <see cref="T:System.AppDomain" /> будет выгружен и перезапущен.</returns>
+      <param name="results">Результат компиляции для поставщика построения.</param>
+    </member>
+    <member name="T:System.Data.Entity.Design.AspNet.MappingModelBuildProvider">
+      <summary>Представляет поставщик построения MSL для среды построения ASP.NET.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.MappingModelBuildProvider.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Entity.Design.AspNet.MappingModelBuildProvider" />.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.MappingModelBuildProvider.GenerateCode(System.Web.Compilation.AssemblyBuilder)">
+      <summary>Внедряет MSL-файл в качестве ресурса в заданный построитель сборок.</summary>
+      <param name="assemblyBuilder">Построитель сборок, который ссылается на исходный код, созданный поставщиком построения.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.MappingModelBuildProvider.GetResultFlags(System.CodeDom.Compiler.CompilerResults)">
+      <summary>Возвращает значение, указывающее действия, необходимые при создании поставщика построения модели хранения.</summary>
+      <returns>Значение <see cref="F:System.Web.Compilation.BuildProviderResultFlags.ShutdownAppDomainOnChange" />, указывающее, что контейнер <see cref="T:System.AppDomain" /> будет выгружен и перезапущен.</returns>
+      <param name="results">Результат компиляции для поставщика построения.</param>
+    </member>
+    <member name="T:System.Data.Entity.Design.AspNet.StorageModelBuildProvider">
+      <summary>Представляет поставщик построения SSDL для среды построения ASP.NET.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.StorageModelBuildProvider.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Entity.Design.AspNet.StorageModelBuildProvider" />.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.StorageModelBuildProvider.GenerateCode(System.Web.Compilation.AssemblyBuilder)">
+      <summary>Внедряет SSDL-файл в качестве ресурса в заданный построитель сборок.</summary>
+      <param name="assemblyBuilder">Построитель сборок, который ссылается на исходный код, созданный поставщиком построения.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.AspNet.StorageModelBuildProvider.GetResultFlags(System.CodeDom.Compiler.CompilerResults)">
+      <summary>Возвращает значение, указывающее действия, необходимые при создании поставщика построения модели хранения.</summary>
+      <returns>Значение <see cref="F:System.Web.Compilation.BuildProviderResultFlags.ShutdownAppDomainOnChange" />, указывающее, что контейнер <see cref="T:System.AppDomain" /> будет выгружен и перезапущен.</returns>
+      <param name="results">Результат компиляции для поставщика построения.</param>
+    </member>
+    <member name="T:System.Data.Entity.Design.PluralizationServices.ICustomPluralizationMapping">
+      <summary>Представляет коллекцию форм единственного и множественного числа для слов.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.PluralizationServices.ICustomPluralizationMapping.AddWord(System.String,System.String)">
+      <summary>Добавляет формы единственного и множественного числа слова в объект <see cref="T:System.Data.Entity.Design.PluralizationServices.ICustomPluralizationMapping" />.</summary>
+      <param name="singular">Форма единственного числа слова, добавляемая в объект <see cref="T:System.Data.Entity.Design.PluralizationService" />.</param>
+      <param name="plural">Форма множественного числа слова, добавляемая в объект <see cref="T:System.Data.Entity.Design.PluralizationService" />.</param>
+    </member>
+    <member name="T:System.Data.Entity.Design.PluralizationServices.PluralizationService">
+      <summary>Предоставляет методы образования форм множественного и единственного числа слов.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.PluralizationServices.PluralizationService.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Entity.Design.PluralizationServices" />.</summary>
+    </member>
+    <member name="M:System.Data.Entity.Design.PluralizationServices.PluralizationService.CreateService(System.Globalization.CultureInfo)">
+      <summary>Создает объект <see cref="T:System.Data.Entity.Design.PluralizationServices.PluralizationService" />, который применяет языковые правила, соответствующие указанному объекту <see cref="T:System.Globalization.CultureInfo" />.</summary>
+      <returns>Объект <see cref="T:System.Data.Entity.Design.PluralizationServices.PluralizationService" />.</returns>
+      <param name="culture">Объект <see cref="T:System.Globalization.CultureInfo" />, соответствующий языковым правилам, применяемым для форм единственного и множественного числа слов.</param>
+    </member>
+    <member name="P:System.Data.Entity.Design.PluralizationServices.PluralizationService.Culture">
+      <summary>Получает или задает язык и региональные параметры объекта <see cref="T:System.Data.Entity.Design.PluralizationServices.PluralizationService" />.</summary>
+      <returns>Объект, задающий, какие языковые правила должны применяться для форм единственного и множественного числа.</returns>
+    </member>
+    <member name="M:System.Data.Entity.Design.PluralizationServices.PluralizationService.IsPlural(System.String)">
+      <summary>Определяет, находится ли указанное слово во множественном числе.</summary>
+      <returns>Значение true, если слово стоит во множественном числе; в противном случае — значение false.</returns>
+      <param name="word">Анализируемое значение <see cref="T:System.String" />.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.PluralizationServices.PluralizationService.IsSingular(System.String)">
+      <summary>Определяет, находится ли указанное слово в единственном числе.</summary>
+      <returns>Значение true, если слово стоит в единственном числе; в противном случае — значение false.</returns>
+      <param name="word">Анализируемое значение.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.PluralizationServices.PluralizationService.Pluralize(System.String)">
+      <summary>Возвращает форму множественного числа заданного слова</summary>
+      <returns>Объект <see cref="T:System.String" />, являющийся множественным числом входного параметра.</returns>
+      <param name="word">Слово, которое требуется поставить во множественное число.</param>
+    </member>
+    <member name="M:System.Data.Entity.Design.PluralizationServices.PluralizationService.Singularize(System.String)">
+      <summary>Возвращает форму единственного числа заданного слова.</summary>
+      <returns>Форма единственного числа входного параметра.</returns>
+      <param name="word">Слово, которое требуется поставить во единственное число.</param>
+    </member>
+  </members>
+</doc>

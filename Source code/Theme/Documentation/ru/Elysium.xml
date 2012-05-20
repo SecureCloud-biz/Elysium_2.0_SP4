@@ -3168,7 +3168,7 @@
         Значение типа <see cref="T:System.Windows.GridLength" />.
         Результат зависит от значения параметра <paramref name="parameter" />:
         <list type="bullet"><item><description>
-              "Auto": <see cref="F:System.Windows.GridLength.Auto">GridLength.Auto</see>. Значение параметра <paramref name="value" /> игнорируется.
+              "Auto": <see cref="P:System.Windows.GridLength.Auto">GridLength.Auto</see>. Значение параметра <paramref name="value" /> игнорируется.
             </description></item><item><description>
               "*": Значение выражается как взвешенная пропорция доступного пространства. Значение доли должно быть указано в параметре <paramref name="value" />.
             </description></item><item><description>
@@ -3186,7 +3186,7 @@
       <param name="parameter">Параметр конвертера. Должен быть строкой и принимать одно из следующих значений: "Auto", "*" или null.</param>
       <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
       <returns>
-        Значение типа <see cref="T:System.Double" />. Результатом является значение <see cref="F:System.Windows.GridLength.Value" /> или
+        Значение типа <see cref="T:System.Double" />. Результатом является значение <see cref="P:System.Windows.GridLength.Value" /> или
         <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>, в случае несовпадения типов ("Auto", "*" или количество пикселей) <paramref name="value" /> и <paramref name="parameter" /> или неудачного выполнения метода.
       </returns>
     </member>
@@ -3206,7 +3206,7 @@
       <param name="parameter">Параметр конвертера. Должен быть строкой и принимать одно из следующих значений: "Auto", "*" или null.</param>
       <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
       <returns>
-        Значение типа <see cref="T:System.Double" />. Результатом является значение <see cref="F:System.Windows.GridLength.Value" /> или
+        Значение типа <see cref="T:System.Double" />. Результатом является значение <see cref="P:System.Windows.GridLength.Value" /> или
         <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>, в случае несовпадения типов ("Auto", "*" или количество пикселей) <paramref name="value" /> и <paramref name="parameter" /> или неудачного выполнения метода.
       </returns>
     </member>
@@ -3224,7 +3224,7 @@
         Значение типа <see cref="T:System.Windows.GridLength" />.
         Результат зависит от значения параметра <paramref name="parameter" />:
         <list type="bullet"><item><description>
-              "Auto": <see cref="F:System.Windows.GridLength.Auto">GridLength.Auto</see>. Значение параметра <paramref name="value" /> игнорируется.
+              "Auto": <see cref="P:System.Windows.GridLength.Auto">GridLength.Auto</see>. Значение параметра <paramref name="value" /> игнорируется.
             </description></item><item><description>
               "*": Значение выражается как взвешенная пропорция доступного пространства. Значение доли должно быть указано в параметре <paramref name="value" />.
             </description></item><item><description>
@@ -3438,7 +3438,7 @@
     </member>
     <member name="M:Elysium.Controls.Automation.ApplicationBarAutomationPeer.GetClassNameCore">
       <summary>
-        Возвращает имя класса <see cref="T:Elysium.Controls.ApplicationBar" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />. Данный метод вызывается методом <see cref="T:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
+        Возвращает имя класса <see cref="T:Elysium.Controls.ApplicationBar" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
       </summary>
       <returns>
         Строка со значением "ApplicationBar".
@@ -3447,7 +3447,7 @@
     </member>
     <member name="M:Elysium.Controls.Automation.ApplicationBarAutomationPeer.GetAutomationControlTypeCore">
       <summary>
-        Возвращает тип элемента управления для объекта <see cref="T:Elysium.Controls.ApplicationBar" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />. Данный метод вызывается методом <see cref="T:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType" />.
+        Возвращает тип элемента управления для объекта <see cref="T:Elysium.Controls.ApplicationBar" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType" />.
       </summary>
       <returns>
         Значение <see cref="F:System.Windows.Automation.Peers.AutomationControlType.Menu">AutomationControlType.Menu</see>.
@@ -3481,7 +3481,7 @@
     </member>
     <member name="M:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer.GetAutomationControlTypeCore">
       <summary>
-        Возвращает тип элемента управления для объекта-наследника класса <see cref="T:Elysium.Controls.Primitives.CommandButtonBase" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer" />. Данный метод вызывается методом <see cref="T:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType" />.
+        Возвращает тип элемента управления для объекта-наследника класса <see cref="T:Elysium.Controls.Primitives.CommandButtonBase" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer" />. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType" />.
       </summary>
       <returns>
         Значение <see cref="F:System.Windows.Automation.Peers.AutomationControlType.Button">AutomationControlType.Button</see>.
@@ -3503,7 +3503,7 @@
     </member>
     <member name="M:Elysium.Controls.Automation.CommandButtonAutomationPeer.GetClassNameCore">
       <summary>
-        Возвращает имя класса <see cref="T:Elysium.Controls.CommandButton" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />. Данный метод вызывается методом <see cref="T:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
+        Возвращает имя класса <see cref="T:Elysium.Controls.CommandButton" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
       </summary>
       <returns>
         Строка со значением "CommandButton".
@@ -3543,7 +3543,7 @@
     </member>
     <member name="M:Elysium.Controls.Automation.DropDownCommandButtonAutomationPeer.GetClassNameCore">
       <summary>
-        Возвращает имя класса <see cref="T:Elysium.Controls.DropDownCommandButton" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />. Данный метод вызывается методом <see cref="T:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
+        Возвращает имя класса <see cref="T:Elysium.Controls.DropDownCommandButton" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
       </summary>
       <returns>
         Строка со значением "DropDownCommandButton".
@@ -3595,7 +3595,7 @@
     </member>
     <member name="M:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer.GetClassNameCore">
       <summary>
-        Возвращает имя класса <see cref="T:Elysium.Controls.ToggleCommandButton" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />. Данный метод вызывается методом <see cref="T:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
+        Возвращает имя класса <see cref="T:Elysium.Controls.ToggleCommandButton" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
       </summary>
       <returns>
         Строка со значением "ToggleCommandButton".
@@ -3651,7 +3651,7 @@
     </member>
     <member name="M:Elysium.Controls.Automation.ToggleSwitchAutomationPeer.GetClassNameCore">
       <summary>
-        Возвращает имя класса <see cref="T:Elysium.Controls.ToggleSwitch" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />. Данный метод вызывается методом <see cref="T:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
+        Возвращает имя класса <see cref="T:Elysium.Controls.ToggleSwitch" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
       </summary>
       <returns>
         Строка со значением "ToggleSwitch".
@@ -3660,7 +3660,7 @@
     </member>
     <member name="M:Elysium.Controls.Automation.ToggleSwitchAutomationPeer.GetAutomationControlTypeCore">
       <summary>
-        Возвращает тип элемента управления для элемента управления <see cref="T:Elysium.Controls.ToggleSwitch" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer" />. Данный метод вызывается методом <see cref="T:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType" />.
+        Возвращает тип элемента управления для элемента управления <see cref="T:Elysium.Controls.ToggleSwitch" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer" />. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType" />.
       </summary>
       <returns>
         Значение <see cref="F:System.Windows.Automation.Peers.AutomationControlType.Slider">AutomationControlType.Slider</see>.
@@ -3716,7 +3716,7 @@
     </member>
     <member name="M:Elysium.Controls.Automation.ProgressBarAutomationPeer.GetClassNameCore">
       <summary>
-        Возвращает имя класса для наследника <see cref="T:Elysium.Controls.Primitives.ProgressBarBase" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ProgressBarAutomationPeer" />. Данный метод вызывается методом <see cref="T:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
+        Возвращает имя класса для наследника <see cref="T:Elysium.Controls.Primitives.ProgressBarBase" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ProgressBarAutomationPeer" />. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
       </summary>
       <returns>
         Строка со значением "ProgressBar".
@@ -3725,7 +3725,7 @@
     </member>
     <member name="M:Elysium.Controls.Automation.ProgressBarAutomationPeer.GetAutomationControlTypeCore">
       <summary>
-        Возвращает тип элемента управления для объекта-наследника класса <see cref="T:Elysium.Controls.Primitives.ProgressBarBase" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ProgressBarAutomationPeer" />. Данный метод вызывается методом <see cref="T:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType" />.
+        Возвращает тип элемента управления для объекта-наследника класса <see cref="T:Elysium.Controls.Primitives.ProgressBarBase" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ProgressBarAutomationPeer" />. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType" />.
       </summary>
       <returns>
         Значение <see cref="F:System.Windows.Automation.Peers.AutomationControlType.ProgressBar">AutomationControlType.ProgressBar</see>.
@@ -3788,7 +3788,7 @@
     </member>
     <member name="M:Elysium.Controls.Automation.SubmenuAutomationPeer.GetClassNameCore">
       <summary>
-        Возвращает имя класса <see cref="T:Elysium.Controls.Submenu" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.SubmenuAutomationPeer" />. Данный метод вызывается методом <see cref="T:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
+        Возвращает имя класса <see cref="T:Elysium.Controls.Submenu" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.SubmenuAutomationPeer" />. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
       </summary>
       <returns>
         Строка со значением "Submenu".
@@ -3797,12 +3797,448 @@
     </member>
     <member name="M:Elysium.Controls.Automation.SubmenuAutomationPeer.GetAutomationControlTypeCore">
       <summary>
-        Возвращает тип элемента управления для объекта <see cref="T:Elysium.Controls.Submenu" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.SubmenuAutomationPeer" />. Данный метод вызывается методом <see cref="T:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType" />.
+        Возвращает тип элемента управления для объекта <see cref="T:Elysium.Controls.Submenu" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.SubmenuAutomationPeer" />. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType" />.
       </summary>
       <returns>
         Значение <see cref="F:System.Windows.Automation.Peers.AutomationControlType.Menu">AutomationControlType.Menu</see>.
       </returns>
       <ensures>Возвращаемое значение всегда является значением AutomationControlType.Menu.</ensures>
+    </member>
+    <member name="T:Elysium.Controls.ApplicationBarPanel">
+      <summary>
+        Панель, на которой размещаются дочерние элементы класса <see cref="T:Elysium.Controls.ApplicationBar" />.
+      </summary>
+    </member>
+    <member name="M:Elysium.Controls.ApplicationBarPanel.MeasureOverride(System.Windows.Size)">
+      <inheritdoc />
+    </member>
+    <member name="M:Elysium.Controls.ApplicationBarPanel.ArrangeOverride(System.Windows.Size)">
+      <inheritdoc />
+    </member>
+    <member name="T:Elysium.Controls.Primitives.CommandButtonBase">
+      <summary>
+        Базовый класс для кнопок управления (command buttons).
+      </summary>
+    </member>
+    <member name="P:Elysium.Controls.Primitives.CommandButtonBase.Header">
+      <summary>
+        Возвращает или задает данные, используемые для заголовка элемента управления.
+      </summary>
+      <value>Объект заголовка. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.Header" />
+    </member>
+    <member name="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.OnHeaderChanged(System.Object,System.Object)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" />.
+      </summary>
+      <param name="oldHeader">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" />.
+      </param>
+      <param name="newHeader">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" />.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader">
+      <summary>
+        Возвращает значение, указывающее имеет ли заголовок значение null в данный момент.
+      </summary>
+      <value>
+        True, если значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" /> не равно null, в противном случае False. Значение по умолчанию — False.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.CommandButtonBase.HasHeaderProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.HasHeader" />
+    </member>
+    <member name="F:Elysium.Controls.Primitives.CommandButtonBase.HasHeaderProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" />.
+      </value>
+    </member>
+    <member name="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat">
+      <summary>
+        Возвращает или задает составную строку, которая определяет форматирование заголовка, если он отображается как строка.
+      </summary>
+      <value>Составная строка, которая определяет форматирование заголовка, если он отображается как строка. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormatProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.HeaderStringFormat" />
+    </member>
+    <member name="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormatProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.OnHeaderStringFormatChanged(System.String,System.String)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" />.
+      </summary>
+      <param name="oldHeaderStringFormat">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" />.
+      </param>
+      <param name="newHeaderStringFormat">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" />.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate">
+      <summary>
+        Возвращает или задает шаблон, используемый для отображения содержимого заголовка элемента управления.
+      </summary>
+      <value>Шаблон, используемый для отображения содержимого заголовка элемента управления. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <seealso cref="P:System.Windows.Controls.HeaderTemplateedContentControl.HeaderTemplate" />
+    </member>
+    <member name="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.OnHeaderTemplateChanged(System.Windows.DataTemplate,System.Windows.DataTemplate)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" />.
+      </summary>
+      <param name="oldHeaderTemplate">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" />.
+      </param>
+      <param name="newHeaderTemplate">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" />.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector">
+      <summary>
+        Возвращает или задает селектор шаблона данных, предоставляющий пользовательскую логику для выбора шаблона отображения содержимого заголовка элемента управления.
+      </summary>
+      <value>Экземпляр селектора шаблона данных. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelectorProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <seealso cref="P:System.Windows.Controls.HeaderTemplateSelectoredContentControl.HeaderTemplateSelector" />
+    </member>
+    <member name="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelectorProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.OnHeaderTemplateSelectorChanged(System.Windows.Controls.DataTemplateSelector,System.Windows.Controls.DataTemplateSelector)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector" />.
+      </summary>
+      <param name="oldHeaderTemplateSelector">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector" />.
+      </param>
+      <param name="newHeaderTemplateSelector">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector" />.
+      </param>
+    </member>
+    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.MeasureOverride(System.Windows.Size)">
+      <inheritdoc />
+    </member>
+    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.OnApplyTemplate">
+      <inheritdoc />
+    </member>
+    <member name="T:Elysium.Controls.CommandButton">
+      <summary>
+        Кнопка управления.
+      </summary>
+    </member>
+    <member name="M:Elysium.Controls.CommandButton.OnCreateAutomationPeer">
+      <inheritdoc />
+    </member>
+    <member name="M:Elysium.Controls.CommandButton.OnClick">
+      <inheritdoc />
+    </member>
+    <member name="T:Elysium.Controls.ToggleCommandButton">
+      <summary>
+        Кнопка управления, поддерживающая состояния "включено", "выключено" и "неопределено".
+      </summary>
+    </member>
+    <member name="P:Elysium.Controls.ToggleCommandButton.IsChecked">
+      <summary>
+        Возвращает или задает значение, указывающее, находится ли кнопка управления во включенном состоянии.
+      </summary>
+      <value>True, если кнопка управления находится во включенном состоянии; False — если в выключенном; иначе null. Значение по умолчанию — False.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleCommandButton.IsCheckedProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.BindsTwoWayByDefault" />
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Journal" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <seealso cref="P:System.Windows.Controls.IsCheckededContentControl.IsChecked" />
+    </member>
+    <member name="F:Elysium.Controls.ToggleCommandButton.IsCheckedProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ToggleCommandButton.IsChecked" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ToggleCommandButton.IsChecked" />.
+      </value>
+    </member>
+    <member name="E:Elysium.Controls.ToggleCommandButton.Checked">
+      <summary>
+        Событие генерируется при переходе в состояние "включено".
+      </summary>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleCommandButton.CheckedEvent" />
+            </description>
+          </item>
+          <item>
+            <term>Ассоциированный метод</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleCommandButton.OnChecked" />
+            </description>
+          </item>
+          <item>
+            <term>Стратегия маршрутизации</term>
+            <description>Восходящая маршрутизация событий</description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.ToggleCommandButton.CheckedEvent">
+      <summary>
+        Идентифицирует маршрутизируемое событие <see cref="E:Elysium.Controls.ToggleCommandButton.Checked" />.
+      </summary>
+      <value>
+        Идентификатор маршрутизируемого события <see cref="E:Elysium.Controls.ToggleCommandButton.Checked" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ToggleCommandButton.OnChecked(System.Windows.RoutedEventArgs)">
+      <summary>
+        Вызывается при генерации маршрутизируемого события <see cref="E:Elysium.Controls.ToggleCommandButton.Checked" />.
+      </summary>
+      <param name="e">Маршрутизируемое событие.</param>
+    </member>
+    <member name="E:Elysium.Controls.ToggleCommandButton.Unchecked">
+      <summary>
+        Событие генерируется при переходе в состояние "выключено".
+      </summary>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleCommandButton.UncheckedEvent" />
+            </description>
+          </item>
+          <item>
+            <term>Ассоциированный метод</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleCommandButton.OnUnchecked" />
+            </description>
+          </item>
+          <item>
+            <term>Стратегия маршрутизации</term>
+            <description>Восходящая маршрутизация событий</description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.ToggleCommandButton.UncheckedEvent">
+      <summary>
+        Идентифицирует маршрутизируемое событие <see cref="E:Elysium.Controls.ToggleCommandButton.Unchecked" />.
+      </summary>
+      <value>
+        Идентификатор маршрутизируемого события <see cref="E:Elysium.Controls.ToggleCommandButton.Unchecked" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ToggleCommandButton.OnUnchecked(System.Windows.RoutedEventArgs)">
+      <summary>
+        Вызывается при генерации маршрутизируемого события <see cref="E:Elysium.Controls.ToggleCommandButton.Unchecked" />.
+      </summary>
+      <param name="e">Маршрутизируемое событие.</param>
+    </member>
+    <member name="E:Elysium.Controls.ToggleCommandButton.Indeterminate">
+      <summary>
+        Событие генерируется при переходе в состояние "неопределено".
+      </summary>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleCommandButton.IndeterminateEvent" />
+            </description>
+          </item>
+          <item>
+            <term>Ассоциированный метод</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleCommandButton.OnIndeterminate" />
+            </description>
+          </item>
+          <item>
+            <term>Стратегия маршрутизации</term>
+            <description>Восходящая маршрутизация событий</description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.ToggleCommandButton.IndeterminateEvent">
+      <summary>
+        Идентифицирует маршрутизируемое событие <see cref="E:Elysium.Controls.ToggleCommandButton.Indeterminate" />.
+      </summary>
+      <value>
+        Идентификатор маршрутизируемого события <see cref="E:Elysium.Controls.ToggleCommandButton.Indeterminate" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ToggleCommandButton.OnIndeterminate(System.Windows.RoutedEventArgs)">
+      <summary>
+        Вызывается при генерации маршрутизируемого события <see cref="E:Elysium.Controls.ToggleCommandButton.Indeterminate" />.
+      </summary>
+      <param name="e">Маршрутизируемое событие.</param>
+    </member>
+    <member name="P:Elysium.Controls.ToggleCommandButton.IsThreeState">
+      <summary>
+        Возвращает или задает значение, указывающее, два или три состояния поддерживает элемент управления.
+      </summary>
+      <value>True, если кнопка управления поддерживает три состояния; в противном случае False. Значение по умолчанию — False.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleCommandButton.IsThreeStateProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <seealso cref="P:System.Windows.Controls.IsThreeStateedContentControl.IsThreeState" />
+    </member>
+    <member name="F:Elysium.Controls.ToggleCommandButton.IsThreeStateProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ToggleCommandButton.IsThreeState" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ToggleCommandButton.IsThreeState" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ToggleCommandButton.OnCreateAutomationPeer">
+      <inheritdoc />
+    </member>
+    <member name="M:Elysium.Controls.ToggleCommandButton.OnClick">
+      <inheritdoc />
+    </member>
+    <member name="M:Elysium.Controls.ToggleCommandButton.OnToggle">
+      <inheritdoc cref="M:System.Windows.Controls.Primitives.ToggleButton.OnToggle" />
+    </member>
+    <member name="T:Elysium.Controls.Submenu">
+      <summary>
+        Выпадающее меню.
+      </summary>
+    </member>
+    <member name="M:Elysium.Controls.Submenu.OnCreateAutomationPeer">
+      <inheritdoc />
     </member>
   </members>
 </doc>

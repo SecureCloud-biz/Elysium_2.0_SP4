@@ -1,0 +1,754 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Runtime.Caching</name>
+  </assembly>
+  <members>
+    <member name="T:System.Runtime.Caching.CacheEntryChangeMonitor">
+      <summary>Предоставляет базовый класс, представляющий тип <see cref="T:System.Runtime.Caching.ChangeMonitor" />, который можно реализовать для отслеживания изменений записей кэша. </summary>
+    </member>
+    <member name="M:System.Runtime.Caching.CacheEntryChangeMonitor.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Runtime.Caching.CacheEntryChangeMonitor" />.Этот конструктор вызывается конструкторами в производных классах для инициализации базового класса.</summary>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryChangeMonitor.CacheKeys">
+      <summary>Получает коллекцию ключей кэша, изменения которых отслеживаются. </summary>
+      <returns>Коллекция ключей кэша.</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryChangeMonitor.LastModified">
+      <summary>Получает значение, указывающее время последнего изменения (в формате UTC) отслеживаемой записи кэша.</summary>
+      <returns>Прошедшее время.</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryChangeMonitor.RegionName">
+      <summary>Получает имя области кэша.</summary>
+      <returns>Имя области кэша. </returns>
+    </member>
+    <member name="T:System.Runtime.Caching.CacheEntryRemovedArguments">
+      <summary>Предоставляет информацию об удаленной из кэша записи. </summary>
+    </member>
+    <member name="M:System.Runtime.Caching.CacheEntryRemovedArguments.#ctor(System.Runtime.Caching.ObjectCache,System.Runtime.Caching.CacheEntryRemovedReason,System.Runtime.Caching.CacheItem)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Runtime.Caching.CacheEntryRemovedArguments" />. </summary>
+      <param name="source">Экземпляр <see cref="T:System.Runtime.Caching.ObjectCache" />, из которого был удален элемент <paramref name="cacheItem" />. </param>
+      <param name="reason">Одно из значений перечисления, указывающее, почему был удален элемент <paramref name="cacheItem" />.</param>
+      <param name="cacheItem">Экземпляр удаленной кэшированной записи.</param>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="source" /> имеет значение null. –либо–Параметр <paramref name="cacheItem" /> имеет значение null. </exception>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryRemovedArguments.CacheItem">
+      <summary>Получает экземпляр удаленной из кэша записи. </summary>
+      <returns>Экземпляр класса <see cref="T:System.Runtime.Caching.CacheItem" />, удаленного из кэша. </returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryRemovedArguments.RemovedReason">
+      <summary>Получает значение, указывающее, почему была удалена запись кэша.</summary>
+      <returns>Одно из значений перечисления, указывающее, почему запись была удалена.</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryRemovedArguments.Source">
+      <summary>Получает ссылку на исходный экземпляр <see cref="T:System.Runtime.Caching.ObjectCache" />, который изначально содержал удаленную запись кэша. </summary>
+      <returns>Ссылка на кэш, который изначально содержал удаленную запись кэша.</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.CacheEntryRemovedCallback">
+      <summary>Определяет ссылку на метод, вызываемый после удаления записи из кэша.</summary>
+      <param name="arguments">Информация об удаленной из кэша записи.</param>
+    </member>
+    <member name="T:System.Runtime.Caching.CacheEntryRemovedReason">
+      <summary>Указывает причину, по которой запись кэша удалена или вскоре будет удалена.</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.CacheEntryRemovedReason.Removed">
+      <summary>Запись кэша удалена с помощью метода <see cref="M:System.Runtime.Caching.ObjectCache.Remove(System.String,System.String)" /> или <see cref="M:System.Runtime.Caching.ObjectCache.Set(System.String,System.Object,System.DateTimeOffset,System.String)" />. </summary>
+    </member>
+    <member name="F:System.Runtime.Caching.CacheEntryRemovedReason.Expired">
+      <summary>Запись удалена из кэша в связи с истечением срока действия.Срок действия может рассчитываться на основе абсолютного времени или скользящего срока действия.</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.CacheEntryRemovedReason.Evicted">
+      <summary>Запись кэша удалена, чтобы освободить память в кэше.Это происходит, если экземпляр кэша достигает ограничений памяти кэша или экземпляр процесса или кэша достигает ограничений памяти компьютера.</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.CacheEntryRemovedReason.ChangeMonitorChanged">
+      <summary>Удаление записи кэша было вызвано связанной зависимостью (например, файлом или другой записью кэша).</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.CacheEntryRemovedReason.CacheSpecificEviction">
+      <summary>Запись кэша удалена по причине, определяемой конкретной реализацией кэша.</summary>
+    </member>
+    <member name="T:System.Runtime.Caching.CacheEntryUpdateArguments">
+      <summary>Предоставляет информацию о записи, которая будет удалена из кэша. </summary>
+    </member>
+    <member name="M:System.Runtime.Caching.CacheEntryUpdateArguments.#ctor(System.Runtime.Caching.ObjectCache,System.Runtime.Caching.CacheEntryRemovedReason,System.String,System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Runtime.Caching.CacheEntryUpdateArguments" />. </summary>
+      <param name="source">Экземпляр <see cref="T:System.Runtime.Caching.ObjectCache" />, из которого будет удалена запись, на которую ссылается ключ <paramref name="key" />. </param>
+      <param name="reason">Одно из значений перечисления, указывающих, почему запись кэша будет удалена. </param>
+      <param name="key">Ключ записи кэша, который будет удален. </param>
+      <param name="regionName">Имя области кэша, из которой следует удалить запись кэша.Этот параметр является необязательным.Если области кэша не определены, параметр <paramref name="regionName" /> должен иметь значение null.</param>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="source" /> имеет значение null. </exception>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="key" /> имеет значение null. </exception>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryUpdateArguments.Key">
+      <summary>Получает уникальный идентификатор записи кэша, который должен быть вскоре удален. </summary>
+      <returns>Уникальный идентификатор записи кэша. </returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryUpdateArguments.RegionName">
+      <summary>Получает имя области кэша, содержащей запись. </summary>
+      <returns>Имя области кэша.Если регионы не используются, это значение равно null.</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryUpdateArguments.RemovedReason">
+      <summary>Получает причину, по которой запись вскоре будет удалена из кэша. </summary>
+      <returns>Одно из значений перечисления, описывающих, почему удаляется запись кэша.</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryUpdateArguments.Source">
+      <summary>Получает ссылку на экземпляр <see cref="T:System.Runtime.Caching.ObjectCache" />, содержащий запись кэша, которая вскоре будет удалена.</summary>
+      <returns>Ссылка на экземпляр кэша.</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryUpdateArguments.UpdatedCacheItem">
+      <summary>Получает или задает значение записи <see cref="T:System.Runtime.Caching.CacheItem" />, используемой для обновления объекта кэша. </summary>
+      <returns>Запись кэша, которую нужно обновить в объекте кэша.Значение по умолчанию — null.</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheEntryUpdateArguments.UpdatedCacheItemPolicy">
+      <summary>Получает или задает политику удаления или истечения срока действия кэша для обновленной записи <see cref="T:System.Runtime.Caching.CacheItem" />. </summary>
+      <returns>Политика удаления или истечения срока годности кэша для обновленного элемента кэша.Значение по умолчанию — null.</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.CacheEntryUpdateCallback">
+      <summary>Определяет ссылку на метод, вызываемый сразу перед удалением записи из кэша. </summary>
+      <param name="arguments">Информация о записи, которая вскоре будет удалена из кэша.</param>
+    </member>
+    <member name="T:System.Runtime.Caching.CacheItem">
+      <summary>Представляет отдельную запись в кэше. </summary>
+    </member>
+    <member name="M:System.Runtime.Caching.CacheItem.#ctor(System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Runtime.Caching.CacheItem" />, используя заданный ключ записи кэша. </summary>
+      <param name="key">Уникальный идентификатор записи <see cref="T:System.Runtime.Caching.CacheItem" />. </param>
+    </member>
+    <member name="M:System.Runtime.Caching.CacheItem.#ctor(System.String,System.Object)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Runtime.Caching.CacheItem" />, используя заданный ключ и значение записи кэша. </summary>
+      <param name="key">Уникальный идентификатор записи <see cref="T:System.Runtime.Caching.CacheItem" />.</param>
+      <param name="value">Данные записи <see cref="T:System.Runtime.Caching.CacheItem" />.</param>
+    </member>
+    <member name="M:System.Runtime.Caching.CacheItem.#ctor(System.String,System.Object,System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Runtime.Caching.CacheItem" />, используя заданный ключ, значение и область записи кэша. </summary>
+      <param name="key">Уникальный идентификатор записи <see cref="T:System.Runtime.Caching.CacheItem" />.</param>
+      <param name="value">Данные записи <see cref="T:System.Runtime.Caching.CacheItem" />.</param>
+      <param name="regionName">Имя области кэша, содержащей запись <see cref="T:System.Runtime.Caching.CacheItem" />.</param>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheItem.Key">
+      <summary>Получает или задает уникальный идентификатор экземпляра <see cref="T:System.Runtime.Caching.CacheItem" />. </summary>
+      <returns>Идентификатор экземпляра <see cref="T:System.Runtime.Caching.CacheItem" />.</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheItem.RegionName">
+      <summary>Получает или задает имя области кэша, содержащей запись <see cref="T:System.Runtime.Caching.CacheItem" />.</summary>
+      <returns>Имя области кэша.Значение по умолчанию — null.</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheItem.Value">
+      <summary>Получает или задает данные экземпляра <see cref="T:System.Runtime.Caching.CacheItem" />.</summary>
+      <returns>Данные для экземпляра <see cref="T:System.Runtime.Caching.CacheItem" />.Значение по умолчанию — null.</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.CacheItemPolicy">
+      <summary>Представляет набор подробностей об удалении и сроке действия конкретной записи кэша. </summary>
+    </member>
+    <member name="M:System.Runtime.Caching.CacheItemPolicy.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Runtime.Caching.CacheItemPolicy" />.</summary>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheItemPolicy.AbsoluteExpiration">
+      <summary>Получает или задает значение, указывающее, следует ли удалить запись кэша после определенного промежутка времени.</summary>
+      <returns>Промежуток времени до удаления записи кэша.Значение по умолчанию — <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" />, означающее, что срок действия записи не истекает.</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheItemPolicy.ChangeMonitors">
+      <summary>Получает коллекцию объектов <see cref="T:System.Runtime.Caching.ChangeMonitor" />, связанных с записью кэша. </summary>
+      <returns>Коллекция мониторов изменений.Значение по умолчанию — пустая коллекция.</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheItemPolicy.Priority">
+      <summary>Получает или задает параметр приоритета, на основании которого принимается решение об удалении записи кэша. </summary>
+      <returns>Одно из значений перечисления, определяющее приоритет удаления.Значение приоритета по умолчанию — <see cref="F:System.Runtime.Caching.CacheItemPriority.Default" />, что означает отсутствие приоритета.</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheItemPolicy.RemovedCallback">
+      <summary>Получает или задает ссылку на делегат <see cref="T:System.Runtime.Caching.CacheEntryRemovedCallback" />, вызываемый после удаления записи из кэша. </summary>
+      <returns>Ссылка на делегат, вызываемый реализацией кэша. </returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration">
+      <summary>Получает или задает значение, указывающее, следует ли удалить запись кэша, если к ней в течение определенного времени не осуществлялся доступ. </summary>
+      <returns>Промежуток времени, в течение которого должен быть осуществлен доступ к записи кэша, прежде чем она будет удалена из кэша.Значение по умолчанию — <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" />, что означает независимость истечения срока действия элемента от временного диапазона.</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.CacheItemPolicy.UpdateCallback">
+      <summary>Получает или задает ссылку на делегат <see cref="T:System.Runtime.Caching.CacheEntryUpdateCallback" />, вызываемый перед удалением записи из кэша.</summary>
+      <returns>Ссылка на делегат, вызываемый реализацией кэша.</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.CacheItemPriority">
+      <summary>Указывает параметр приоритета, на основании которого принимается решение об удалении записи кэша.</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.CacheItemPriority.Default">
+      <summary>Указывает, что удаление записи кэша выполняется без приоритета.</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.CacheItemPriority.NotRemovable">
+      <summary>Указывает, что запись не следует удалять из кэша.</summary>
+    </member>
+    <member name="T:System.Runtime.Caching.ChangeMonitor">
+      <summary>Предоставляет базовый класс производного пользовательского типа, отслеживающего изменения в состоянии данных, от которых зависит элемент кэша.</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.ChangeMonitor.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Runtime.Caching.ChangeMonitor" />.Этот конструктор вызывается конструкторами в производных классах для инициализации базового класса.</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.ChangeMonitor.Dispose">
+      <summary>Освобождает все ресурсы, используемые текущим экземпляром класса <see cref="T:System.Runtime.Caching.ChangeMonitor" />.</summary>
+      <exception cref="T:System.InvalidOperationException">Инициализация не завершена в производном классе монитора изменений, который вызвал базовый метод <see cref="M:System.Runtime.Caching.ChangeMonitor.Dispose" />. </exception>
+    </member>
+    <member name="M:System.Runtime.Caching.ChangeMonitor.Dispose(System.Boolean)">
+      <summary>Освобождает все управляемые и неуправляемые ресурсы и все ссылки на экземпляр <see cref="T:System.Runtime.Caching.ChangeMonitor" />.Эту перегрузку необходимо реализовывать в производных классах, контролирующих изменения.</summary>
+      <param name="disposing">Значение true, чтобы освободить управляемые и неуправляемые ресурсы и любые ссылки на экземпляр <see cref="T:System.Runtime.Caching.ChangeMonitor" />; значение false, чтобы освободить только неуправляемые ресурсы.Если передается значение false, метод <see cref="M:System.Runtime.Caching.ChangeMonitor.Dispose(System.Boolean)" /> вызывается потоком finalizer, а любые внешние управляемые ссылки в большинстве случаев становятся недействительными, так как они уже были очищены сборщиком мусора.</param>
+    </member>
+    <member name="P:System.Runtime.Caching.ChangeMonitor.HasChanged">
+      <summary>Получает значение, указывающее, что состояние, отслеживаемое классом <see cref="T:System.Runtime.Caching.ChangeMonitor" />, изменилось.</summary>
+      <returns>Значение true, если состояние отслеживаемое экземпляром <see cref="T:System.Runtime.Caching.ChangeMonitor" />, изменилось; в противном случае — значение false. </returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ChangeMonitor.InitializationComplete">
+      <summary>Вызывается из конструктора производных классов и указывает на завершение инициализации. </summary>
+    </member>
+    <member name="P:System.Runtime.Caching.ChangeMonitor.IsDisposed">
+      <summary>Получает значение, указывающее, что производный экземпляр класса <see cref="T:System.Runtime.Caching.ChangeMonitor" /> удален.</summary>
+      <returns>Значение true, если экземпляр удален; в противном случае — значение false. </returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ChangeMonitor.NotifyOnChanged(System.Runtime.Caching.OnChangedCallback)">
+      <summary>Вызывается средствами реализации кэша для регистрации обратного вызова и уведомления экземпляра <see cref="T:System.Runtime.Caching.ObjectCache" /> об изменении зависимости с использованием делегата <see cref="T:System.Runtime.Caching.OnChangedCallback" />. </summary>
+      <param name="onChangedCallback">Ссылка на метод, вызываемый при изменении зависимости.</param>
+      <exception cref="T:System.InvalidOperationException">Метод обратного вызова уже вызван. </exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="onChangedCallback" /> имеет значение null; </exception>
+    </member>
+    <member name="M:System.Runtime.Caching.ChangeMonitor.OnChanged(System.Object)">
+      <summary>Вызывается производными классами для создания события при изменении зависимости. </summary>
+      <param name="state">Данные для события изменения.Это значение может быть равно null.</param>
+    </member>
+    <member name="P:System.Runtime.Caching.ChangeMonitor.UniqueId">
+      <summary>Получает значение, представляющее экземпляр класса <see cref="T:System.Runtime.Caching.ChangeMonitor" />.</summary>
+      <returns>Идентификатор экземпляра монитора изменений.</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.DefaultCacheCapabilities">
+      <summary>Представляет набор свойств, предоставляемых реализацией кэша.</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.DefaultCacheCapabilities.None">
+      <summary>Реализация кэша не предоставляет функций, описанных в перечислении <see cref="T:System.Runtime.Caching.DefaultCacheCapabilities" />.</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.DefaultCacheCapabilities.InMemoryProvider">
+      <summary>Реализация кэша по крайней мере частично выполняется в памяти.В отличие от кэша, расположенного в памяти (например, класс <see cref="T:System.Runtime.Caching.MemoryCache" />), распределенный кэш не устанавливает этот флаг.</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.DefaultCacheCapabilities.OutOfProcessProvider">
+      <summary>Реализация кэша выполняется вне процессов.В отличие от распределенного кэша кэш, расположенный в памяти (например, класс <see cref="T:System.Runtime.Caching.MemoryCache" />), не устанавливает этот флаг.</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.DefaultCacheCapabilities.CacheEntryChangeMonitors">
+      <summary>Реализация кэша поддерживает создание мониторов изменений, отслеживающих записи.</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.DefaultCacheCapabilities.AbsoluteExpirations">
+      <summary>Реализация кэша поддерживает автоматическое удаление записей кэша в заданные дату и время.</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.DefaultCacheCapabilities.SlidingExpirations">
+      <summary>Реализация кэша поддерживает автоматическое удаление записей кэша, к которым в течение заданного времени не осуществлялся доступ.</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.DefaultCacheCapabilities.CacheEntryUpdateCallback">
+      <summary>Реализация кэша может создавать уведомления, что запись вскоре будет удалена из кэша.Этот параметр указывает также, что реализация кэша поддерживает автоматическую замену удаляемой записи новой записью кэша.</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.DefaultCacheCapabilities.CacheEntryRemovedCallback">
+      <summary>Реализация кэша может создавать уведомления, что запись удалена из кэша.</summary>
+    </member>
+    <member name="F:System.Runtime.Caching.DefaultCacheCapabilities.CacheRegions">
+      <summary>Реализация кэша поддерживает секционирование объема хранилища на области кэша, а также вставку и получение записей кэша из этих областей.</summary>
+    </member>
+    <member name="T:System.Runtime.Caching.FileChangeMonitor">
+      <summary>Представляет объект, отслеживающий изменения файлов.</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.FileChangeMonitor.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Runtime.Caching.FileChangeMonitor" />.Этот конструктор вызывается из конструкторов в производных классах для инициализации базового класса.</summary>
+    </member>
+    <member name="P:System.Runtime.Caching.FileChangeMonitor.FilePaths">
+      <summary>Получает коллекцию, содержащую пути к файлам, изменения которых отслеживаются.</summary>
+      <returns>Коллекция путей к файлам.</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.FileChangeMonitor.LastModified">
+      <summary>Получает значение, указывающее на время последнего изменения отслеживаемого файла.</summary>
+      <returns>Если отслеживается несколько файлов, время последнего изменения файла, который был изменен самым последним; в противном случае — время последнего изменения отслеживаемого файла.</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.HostFileChangeMonitor">
+      <summary>Контролирует каталоги и пути к файлам и уведомляет кэш об изменениях контролируемых элементов.Данный класс не может наследоваться.</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.HostFileChangeMonitor.#ctor(System.Collections.Generic.IList{System.String})">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Runtime.Caching.HostFileChangeMonitor" />. </summary>
+      <param name="filePaths">Список, содержащий один или более путей к каталогам или файлам, которые необходимо отслеживать. </param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="filePaths" /> имеет значение null; </exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="filePaths" /> содержит нуль элементов. — или —Путь в списке <paramref name="filePaths" /> равен null или пустой строке.</exception>
+    </member>
+    <member name="P:System.Runtime.Caching.HostFileChangeMonitor.FilePaths">
+      <summary>Получает коллекцию каталогов и путей к файлам, переданную конструктору <see cref="M:System.Runtime.Caching.HostFileChangeMonitor.#ctor(System.Collections.Generic.IList{System.String})" />.</summary>
+      <returns>Коллекция каталогов и путей к файлам.</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.HostFileChangeMonitor.LastModified">
+      <summary>Получает значение только для чтения, обозначающее время последней операции записи отслеживаемого файла или пути.</summary>
+      <returns>Время последней операции записи отслеживаемого файла или пути.</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.HostFileChangeMonitor.UniqueId">
+      <summary>Получает идентификатор экземпляра <see cref="T:System.Runtime.Caching.HostFileChangeMonitor" />, основанный на наборе контролируемых каталогов и путей к файлам. </summary>
+      <returns>Идентификатор для монитора изменений. </returns>
+    </member>
+    <member name="T:System.Runtime.Caching.MemoryCache">
+      <summary>Представляет тип, реализующий кэш, расположенный в памяти.</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.#ctor(System.String,System.Collections.Specialized.NameValueCollection)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Runtime.Caching.MemoryCache" />. </summary>
+      <param name="name">Имя, используемое для поиска сведений о конфигурации. ПримечаниеНе требуется, чтобы сведения о конфигурации существовали для каждого имени.Если существует соответствующая запись конфигурации, сведения о конфигурации используются для настройки экземпляра <see cref="T:System.Runtime.Caching.MemoryCache" />.Если соответствующей записи конфигурации не существует, доступ к имени можно получить через свойство <see cref="P:System.Runtime.Caching.MemoryCache.Name" />, так как заданное имя связано с экземпляром <see cref="T:System.Runtime.Caching.MemoryCache" />.Сведения о настройке кэша памяти см. в разделе <see cref="T:System.Runtime.Caching.Configuration.MemoryCacheElement" />.</param>
+      <param name="config">Коллекция пар "имя-значение" сведений о конфигурации, которую необходимо использовать для настройки кэша. </param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="name" /> имеет значение null; </exception>
+      <exception cref="T:System.ArgumentException">Параметр <paramref name="name" /> содержит пустую строку. </exception>
+      <exception cref="T:System.ArgumentException">Значение строки "default" (без учета регистра) назначается <paramref name="name" />.Значение "по умолчанию" не может быть назначено новому экземпляру <see cref="T:System.Runtime.Caching.MemoryCache" />, так как значение зарезервировано для использования свойством <see cref="P:System.Runtime.Caching.MemoryCache.Default" />.</exception>
+      <exception cref="T:System.Configuration.ConfigurationException">Значение в коллекции <paramref name="config" /> является недопустимым. </exception>
+      <exception cref="T:System.ArgumentException">Не удалось проанализировать имя или значение в параметре <paramref name="config" />.</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.AddOrGetExisting(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)">
+      <summary>Добавляет запись в кэш, используя заданный экземпляр <see cref="T:System.Runtime.Caching.CacheItem" /> и сведения о способе удаления записи.</summary>
+      <returns>Существующая запись кэша, если существует запись кэша с таким же ключом; в противном случае — значение null.</returns>
+      <param name="item">Добавляемый объект. </param>
+      <param name="policy">Объект, содержащий сведения о вытеснении для записи кэша.Данный объект предоставляет больше параметров для удаления, чем простой абсолютный срок действия.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="item" /> имеет значение null; </exception>
+      <exception cref="T:System.ArgumentNullException">Значение свойства <see cref="P:System.Runtime.Caching.CacheItem.Value" /> равно null.</exception>
+      <exception cref="T:System.ArgumentException">Предоставлено свойство <see cref="P:System.Runtime.Caching.CacheItemPolicy.UpdateCallback" />. ПримечаниеПерегрузки методов <see cref="Overload:System.Runtime.Caching.ObjectCache.Add" /> и <see cref="Overload:System.Runtime.Caching.ObjectCache.AddOrGetExisting" /> не поддерживают свойство <see cref="P:System.Runtime.Caching.CacheItemPolicy.UpdateCallback" />.Таким образом, чтобы задать свойству <see cref="P:System.Runtime.Caching.CacheItemPolicy.UpdateCallback" /> запись кэша, используйте перегрузки метода <see cref="Overload:System.Runtime.Caching.MemoryCache.Set" />.</exception>
+      <exception cref="T:System.ArgumentException">Как абсолютное, так и скользящее значение срока действия для объекта <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> устанавливаются отличными от значений полей <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> и <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" /> по умолчанию.Класс <see cref="T:System.Runtime.Caching.MemoryCache" /> не может установить политику ограничения срока действия, основываясь на комбинации абсолютного срока действия и скользящего срока действия.Только один параметр срока действия можно задать явным образом при использовании экземпляра <see cref="T:System.Runtime.Caching.MemoryCache" />.Другому параметру срока действия должно быть присвоено поле <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> или поле <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" />.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Для свойства <see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> задано значение меньше <see cref="F:System.TimeSpan.Zero" />. — или —Для свойства <see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> задано значение, превышающее один год.— или —Свойство <see cref="P:System.Runtime.Caching.CacheItemPolicy.Priority" /> не является значением перечисления <see cref="T:System.Runtime.Caching.CacheItemPriority" />.</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.AddOrGetExisting(System.String,System.Object,System.DateTimeOffset,System.String)">
+      <summary>Добавляет запись в кэш, используя заданную пару "ключ-значение" и абсолютное значение срока действия.</summary>
+      <returns>Существующая запись кэша, если существует запись кэша с таким же ключом; в противном случае — значение null.</returns>
+      <param name="key">Уникальный идентификатор записи кэша, который необходимо добавить. </param>
+      <param name="value">Данные для записи кэша. </param>
+      <param name="absoluteExpiration">Фиксированные дата и время истечения срока действия записи кэша. </param>
+      <param name="regionName">Именованная область кэша, в которую может быть добавлена запись кэша.Не следует передавать значение для данного параметра.По умолчанию значение данного параметра равняется null, поскольку класс <see cref="T:System.Runtime.Caching.MemoryCache" /> не содержит реализации областей.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="key" /> имеет значение null;</exception>
+      <exception cref="T:System.NotSupportedException">Значение <paramref name="regionName " /> не равно null. </exception>
+      <exception cref="T:System.ArgumentNullException">Значение <paramref name="value " /> не равно null.</exception>
+      <exception cref="T:System.ArgumentException">Предоставлено свойство <see cref="P:System.Runtime.Caching.CacheItemPolicy.UpdateCallback" />. ПримечаниеПерегрузки методов <see cref="Overload:System.Runtime.Caching.ObjectCache.Add" /> и <see cref="Overload:System.Runtime.Caching.ObjectCache.AddOrGetExisting" /> не поддерживают свойство <see cref="P:System.Runtime.Caching.CacheItemPolicy.UpdateCallback" />.Таким образом, чтобы задать свойству <see cref="P:System.Runtime.Caching.CacheItemPolicy.UpdateCallback" /> запись кэша, используйте перегрузки <see cref="Overload:System.Runtime.Caching.MemoryCache.Set" />.</exception>
+      <exception cref="T:System.ArgumentException">Как абсолютное, так и скользящее значение срока действия для объекта <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> устанавливаются отличными от значений полей <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> и <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" /> по умолчанию.Класс <see cref="T:System.Runtime.Caching.MemoryCache" /> не может установить политику ограничения срока действия, основываясь на комбинации абсолютного срока действия и скользящего срока действия.Только один параметр срока действия можно задать явным образом при использовании экземпляра <see cref="T:System.Runtime.Caching.MemoryCache" />.Другому параметру срока действия должно быть присвоено поле <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> или <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" />.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Для свойства <see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> задано значение меньше <see cref="F:System.TimeSpan.Zero" />. — или —Для свойства <see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> задано значение, превышающее один год.— или —Свойство <see cref="P:System.Runtime.Caching.CacheItemPolicy.Priority" /> не является значением перечисления <see cref="T:System.Runtime.Caching.CacheItemPriority" />.</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.AddOrGetExisting(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)">
+      <summary>Вставляет запись в кэш, используя указанную пару "ключ-значение" и заданные сведения о методе ее удаления.</summary>
+      <returns>Запись кэша, если соответствующая запись кэша уже существует; в противном случае — значение null.</returns>
+      <param name="key">Уникальный идентификатор записи кэша, который требуется добавить или получить. </param>
+      <param name="value">Данные для записи кэша.</param>
+      <param name="policy">Объект, содержащий сведения о вытеснении для записи кэша.Данный объект предоставляет больше параметров для удаления, чем простой абсолютный срок действия.</param>
+      <param name="regionName">Именованная область кэша, в которую может быть добавлена запись кэша.Не следует передавать значение для данного параметра.По умолчанию значение данного параметра — null, поскольку класс <see cref="T:System.Runtime.Caching.MemoryCache" /> не реализует области.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="key" /> имеет значение null;</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="value" /> имеет значение null;</exception>
+      <exception cref="T:System.ArgumentException">Как абсолютное, так и скользящее значение срока действия объекта <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> устанавливаются отличными от значений полей <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> и <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" /> по умолчанию.Класс <see cref="T:System.Runtime.Caching.MemoryCache" /> не может установить политику ограничения срока действия, основываясь на комбинации абсолютного и скользящего сроках действия.Только один параметр срока действия можно задать явным образом при использовании класса <see cref="T:System.Runtime.Caching.MemoryCache" />.Другую настройку необходимо установить как <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> или <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" />.— или —Для <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> указаны как обратный вызов удаления, так и обратный вызов обновления.<see cref="T:System.Runtime.Caching.MemoryCache" /> поддерживает использование только одного типа обратного вызова для записи кэша.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Для свойства <see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> задано значение меньше <see cref="F:System.TimeSpan.Zero" />.— или —Свойству <see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> присвоено значение, большее, чем один год.— или —Свойство <see cref="P:System.Runtime.Caching.CacheItemPolicy.Priority" /> не является значением перечисления <see cref="T:System.Runtime.Caching.CacheItemPriority" />.</exception>
+    </member>
+    <member name="P:System.Runtime.Caching.MemoryCache.CacheMemoryLimit">
+      <summary>Получает объем физической памяти на компьютере (в мегабайтах), который может использоваться кэшем. </summary>
+      <returns>Объем физической памяти в мегабайтах. </returns>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.Contains(System.String,System.String)">
+      <summary>Определяет, существует ли в кэше запись кэша.</summary>
+      <returns>Значение true, если в кэше содержится запись с ключом, соответствующим <paramref name="key" />; в противном случае — значение false.</returns>
+      <param name="key">Уникальный идентификатор записи кэша, который необходимо найти.</param>
+      <param name="regionName">Именованная область кэша, в которую была добавлена запись кэша.Не следует передавать значение для данного параметра.По умолчанию значение данного параметра равняется null, поскольку класс <see cref="T:System.Runtime.Caching.MemoryCache" /> не содержит реализации областей.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="key" /> имеет значение null;</exception>
+      <exception cref="T:System.NotSupportedException">Значение <paramref name="regionName " /> не равно null.</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.CreateCacheEntryChangeMonitor(System.Collections.Generic.IEnumerable{System.String},System.String)">
+      <summary>Создает объект <see cref="T:System.Runtime.Caching.CacheEntryChangeMonitor" />, который может активировать события в ответ на изменения указанных записей кэша.</summary>
+      <returns>Монитор изменений, следящий за записями в кэше.</returns>
+      <param name="keys">Перечисление ключей уникальных записей кэша для объекта <see cref="T:System.Runtime.Caching.CacheEntryChangeMonitor" />.</param>
+      <param name="regionName">Именованная область кэша, в которую может быть добавлена запись кэша.Не следует передавать значение для данного параметра.По умолчанию значение данного параметра равняется null, поскольку класс <see cref="T:System.Runtime.Caching.MemoryCache" /> не содержит реализации областей.</param>
+      <exception cref="T:System.NotSupportedException">Значение <paramref name="regionName " /> не равно null. </exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="keys" /> имеет значение null;</exception>
+      <exception cref="T:System.ArgumentException">Количество элементов в <paramref name="keys" /> равно нулю. </exception>
+      <exception cref="T:System.ArgumentException">Элемент в коллекции <paramref name="keys" /> имеет значение null. </exception>
+    </member>
+    <member name="P:System.Runtime.Caching.MemoryCache.Default">
+      <summary>Получает ссылку на экземпляр <see cref="T:System.Runtime.Caching.MemoryCache" /> по умолчанию. </summary>
+      <returns>Экземпляр кэша по умолчанию.</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.MemoryCache.DefaultCacheCapabilities">
+      <summary>Получает описание функций, предоставляемых кэшем.</summary>
+      <returns>Побитовое сочетание флагов, которое указывает возможности реализации кэша по умолчанию.</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.Dispose">
+      <summary>Освобождает все ресурсы, используемые текущим экземпляром класса <see cref="T:System.Runtime.Caching.MemoryCache" />.</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.Get(System.String,System.String)">
+      <summary>Возвращает запись из кэша. </summary>
+      <returns>Ссылка на запись кэша, определяемую ключом <paramref name="key" />, если запись существует; в противном случае — значение null.</returns>
+      <param name="key">Уникальный идентификатор записи кэша, которую требуется получить. </param>
+      <param name="regionName">Именованная область кэша, в которую была добавлена запись кэша.Не следует передавать значение для данного параметра.По умолчанию значение данного параметра равняется null, поскольку класс <see cref="T:System.Runtime.Caching.MemoryCache" /> не содержит реализации областей.</param>
+      <exception cref="T:System.NotSupportedException">Значение <paramref name="regionName " /> не равно null. </exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="key" /> имеет значение null;</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.GetCacheItem(System.String,System.String)">
+      <summary>Возвращает заданную запись из кэша в виде экземпляра <see cref="T:System.Runtime.Caching.CacheItem" />.</summary>
+      <returns>Ссылка на запись кэша, определяемую ключом <paramref name="key" />, если запись существует; в противном случае — значение null.</returns>
+      <param name="key">Уникальный идентификатор записи кэша, которую требуется получить. </param>
+      <param name="regionName">Именованная область кэша, в которую была добавлена запись кэша.Не следует передавать значение для данного параметра.По умолчанию значение данного параметра равняется null, поскольку класс <see cref="T:System.Runtime.Caching.MemoryCache" /> не содержит реализации областей.</param>
+      <exception cref="T:System.NotSupportedException">Значение <paramref name="regionName " /> не равно null. </exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="key" /> имеет значение null;</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.GetCount(System.String)">
+      <summary>Возвращает общее число записей в кэше. </summary>
+      <returns>Число записей в кэше. </returns>
+      <param name="regionName">Именованная область кэша, в которую была добавлена запись кэша.Не следует передавать значение для данного параметра.По умолчанию значение данного параметра равняется null, поскольку класс <see cref="T:System.Runtime.Caching.MemoryCache" /> не содержит реализации областей.</param>
+      <exception cref="T:System.NotSupportedException">Значение <paramref name="regionName " /> не равно null. </exception>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.GetEnumerator">
+      <summary>Создает перечислитель, который можно использовать для перебора коллекции записей кэша.</summary>
+      <returns>Объект перечислителя, предоставляющий доступ к элементам кэша.</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.GetValues(System.Collections.Generic.IEnumerable{System.String},System.String)">
+      <summary>Возвращает набор записей кэша, соответствующих заданным ключам.</summary>
+      <returns>Набор записей кэша, соответствующих заданным ключам.</returns>
+      <param name="keys">Набор уникальных идентификаторов записей кэша, которые необходимо вернуть. </param>
+      <param name="regionName">Именованная область кэша, в которую была добавлена запись кэша.Не следует передавать значение для данного параметра.Значение данного параметра по умолчанию — null, поскольку класс <see cref="T:System.Runtime.Caching.MemoryCache" /> не содержит реализации областей.</param>
+      <exception cref="T:System.NotSupportedException">Значение <paramref name="regionName " /> не равно null. </exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="keys" /> имеет значение null; </exception>
+      <exception cref="T:System.ArgumentException">Отдельный ключ в коллекции имеет значение null. </exception>
+    </member>
+    <member name="P:System.Runtime.Caching.MemoryCache.Item(System.String)">
+      <summary>Получает или задает значение в кэше, используя свойство индексатора по умолчанию для экземпляра класса <see cref="T:System.Runtime.Caching.MemoryCache" />.</summary>
+      <returns>Значение в экземпляре кэша для заданного ключа, если запись существует; в противном случае — значение null.</returns>
+      <param name="key">Уникальный идентификатор значения кэша, которое необходимо получить или задать.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="key" /> имеет значение null; — или —Вставляемое значение равно null.</exception>
+    </member>
+    <member name="P:System.Runtime.Caching.MemoryCache.Name">
+      <summary>Получает имя кэша. </summary>
+      <returns>Имя кэша. </returns>
+    </member>
+    <member name="P:System.Runtime.Caching.MemoryCache.PhysicalMemoryLimit">
+      <summary>Получает процентную долю физической памяти, которую может использовать кэш. </summary>
+      <returns>Процентная доля физической памяти, которую может использовать кэш.</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.MemoryCache.PollingInterval">
+      <summary>Получает максимальное время, после истечения которого кэш обновляет статистику памяти.</summary>
+      <returns>Максимальное время, которое может пройти до обновления статистики памяти.</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.Remove(System.String,System.String)">
+      <summary>Удаляет запись из кэша. </summary>
+      <returns>Если запись найдена в кэше, удаленная запись кэша; в противном случае — null. </returns>
+      <param name="key">Уникальный идентификатор записи кэша, который необходимо удалить. </param>
+      <param name="regionName">Именованная область кэша, в которую была добавлена запись кэша.Не следует передавать значение для данного параметра.По умолчанию значение данного параметра равняется null, поскольку класс <see cref="T:System.Runtime.Caching.MemoryCache" /> не содержит реализации областей.</param>
+      <exception cref="T:System.NotSupportedException">Значение <paramref name="regionName " /> не равно null. </exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="key" /> имеет значение null;</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.Set(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)">
+      <summary>Вставляет запись в кэш, используя экземпляр <see cref="T:System.Runtime.Caching.CacheItem" />, чтобы предоставить ключ и значение для записи кэша.</summary>
+      <param name="item">Объект, представляющий запись кэша, которую необходимо вставить. </param>
+      <param name="policy">Объект, содержащий сведения о вытеснении для записи кэша.Данный объект предоставляет больше параметров для удаления, чем простой абсолютный срок действия.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="item" /> имеет значение null;— или —Значение свойства <see cref="P:System.Runtime.Caching.CacheItem.Key" /> равно null.— или —Значение свойства <see cref="P:System.Runtime.Caching.CacheItem.Value" /> равно null. </exception>
+      <exception cref="T:System.ArgumentException">Было передано неправильное сочетание аргументов для записи кэша.Это происходит, если для записи кэша на объекте политики заданы следующие сведения срока действия:Если как абсолютное, так и скользящее значения срока действия для объекта <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> устанавливаются отличными от значений полей <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> и <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" /> по умолчанию.Класс <see cref="T:System.Runtime.Caching.MemoryCache" /> не может установить политику ограничения срока действия, основываясь на абсолютном и скользящем сроках действия.Только один параметр срока действия можно задать явным образом при использовании класса <see cref="T:System.Runtime.Caching.MemoryCache" />.Другому параметру должно быть присвоено свойство <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> или <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" />.Если для объекта <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> указаны как обратный вызов удаления, так и обратный вызов обновления.Класс <see cref="T:System.Runtime.Caching.MemoryCache" /> поддерживает использование только одного типа обратного вызова для записи кэша.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Для свойства <see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> задано значение меньше <see cref="F:System.TimeSpan.Zero" />. — или —Для свойства <see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> задано значение, превышающее один год.— или —Свойство <see cref="P:System.Runtime.Caching.CacheItemPolicy.Priority" /> не является значением перечисления <see cref="T:System.Runtime.Caching.CacheItemPriority" />.</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.Set(System.String,System.Object,System.DateTimeOffset,System.String)">
+      <summary>Вставляет запись в кэш, используя указанную пару "ключ-значение" и задает сведения о сроке действия на основе диапазона времени.</summary>
+      <param name="key">Уникальный идентификатор записи кэша, который необходимо вставить. </param>
+      <param name="value">Данные для записи кэша.</param>
+      <param name="absoluteExpiration">Фиксированные дата и время истечения срока действия записи кэша. </param>
+      <param name="regionName">Именованная область кэша, в которую может быть добавлена запись кэша.Не следует передавать значение для данного параметра.По умолчанию значение данного параметра равняется null, поскольку класс <see cref="T:System.Runtime.Caching.MemoryCache" /> не содержит реализации областей.</param>
+      <exception cref="T:System.NotSupportedException">Значение <paramref name="regionName " /> не равно null. </exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="key" /> имеет значение null;— или —<paramref name="Value" /> имеет значение null;</exception>
+      <exception cref="T:System.ArgumentException">Было передано неправильное сочетание аргументов для записи кэша.Это происходит, если для записи кэша на объекте политики заданы следующие сведения срока действия:Если как абсолютное, так и скользящее значения срока действия в объекте <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> устанавливаются отличными от значений полей <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> и <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" /> по умолчанию.Это случается потому, что класс <see cref="T:System.Runtime.Caching.MemoryCache" /> не поддерживает истекающие операций, основанные на абсолютном и скользящей сроках действия.Только один параметр срока действия можно задать явным образом при использовании класса <see cref="T:System.Runtime.Caching.MemoryCache" />.Другую настройку необходимо установить как <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> или <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" />.Если в объекте <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> указаны как обратный вызов удаления, так и обратный вызов обновления.Класс <see cref="T:System.Runtime.Caching.MemoryCache" /> поддерживает использование только одного типа обратного вызова для записи кэша.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Для свойства <see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> задано значение меньше <see cref="F:System.TimeSpan.Zero" />. — или —Для свойства <see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> задано значение, превышающее один год.— или —Свойство <see cref="P:System.Runtime.Caching.CacheItemPolicy.Priority" /> не является значением перечисления <see cref="T:System.Runtime.Caching.CacheItemPriority" />.</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.Set(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)">
+      <summary>Вставляет запись в кэш, используя указанную пару "ключ-значение" и удаление.</summary>
+      <param name="key">Уникальный идентификатор записи кэша, который необходимо вставить. </param>
+      <param name="value">Данные для записи кэша.</param>
+      <param name="policy">Объект, содержащий сведения о вытеснении для записи кэша.Данный объект предоставляет больше параметров для удаления, чем простой абсолютный срок действия.</param>
+      <param name="regionName">Именованная область кэша, в которую может быть добавлена запись кэша.Не следует передавать значение для данного параметра.По умолчанию значение данного параметра равняется null, поскольку класс <see cref="T:System.Runtime.Caching.MemoryCache" /> не содержит реализации областей.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="key" /> имеет значение null;— или —Значение параметра <paramref name="value" /> ― null.— или —Ссылка обратного вызова, которая была передан вспомогательному методу в свойстве <see cref="P:System.Runtime.Caching.CacheItemPolicy.UpdateCallback" />, имеет значение null.</exception>
+      <exception cref="T:System.ArgumentException">Существует неправильное сочетание аргументов для записи кэша.Это происходит, если для записи кэша на объекте политики заданы следующие сведения срока действия:Если как абсолютное, так и скользящее значения срока действия в объекте <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> устанавливаются отличными от значений полей <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> и <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" /> по умолчанию.Это происходит потому, что класс <see cref="T:System.Runtime.Caching.MemoryCache" /> не поддерживает истекающие операций, основанные на абсолютном и скользящей сроках действия.Только один параметр срока действия можно задать явным образом при использовании класса <see cref="T:System.Runtime.Caching.MemoryCache" />.Другую настройку необходимо установить как <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> или <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" />.Если в классе <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> указаны как обратный вызов удаления, так и обратный вызов обновления.Класс <see cref="T:System.Runtime.Caching.MemoryCache" /> поддерживает использование только одного типа обратного вызова для записи кэша.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Для свойства <see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> задано значение меньше <see cref="F:System.TimeSpan.Zero" />. — или —Для свойства <see cref="P:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration" /> задано значение, превышающее один год.— или —Свойство <see cref="P:System.Runtime.Caching.CacheItemPolicy.Priority" /> не является значением перечисления <see cref="T:System.Runtime.Caching.CacheItemPriority" />.</exception>
+      <exception cref="T:System.NotSupportedException">Значение <paramref name="regionName " /> не равно null.</exception>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.System#Collections#IEnumerable#GetEnumerator">
+      <summary>Предоставляет поддержку перебора элементов универсальной коллекции.</summary>
+      <returns>Объект перечислителя, предоставляющий доступ к записям кэша.</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.MemoryCache.Trim(System.Int32)">
+      <summary>Удаляет заданное процентное количество записей кэша из объекта кэша. </summary>
+      <returns>Число записей, удаляемых из кэша.</returns>
+      <param name="percent">Доля от всех записей кэша, которую надо удалить.</param>
+    </member>
+    <member name="T:System.Runtime.Caching.ObjectCache">
+      <summary>Представляет кэш объекта и предоставляет базовые методы и свойства для осуществления доступа к кэшу объекта.</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.#ctor">
+      <summary>Вызывается из конструкторов в производных классах, чтобы инициализировать класс <see cref="T:System.Runtime.Caching.ObjectCache" />.</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.Add(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)">
+      <summary>При переопределении в производном классе пытается вставить запись в кэш как экземпляр <see cref="T:System.Runtime.Caching.CacheItem" /> и добавляет сведения о том, как следует удалить эту запись.</summary>
+      <returns>Значение true, если вставка выполнена успешно, или false, если в кэше уже имеется запись с таким же ключом, как у <paramref name="item" /></returns>
+      <param name="item">Добавляемый объект.</param>
+      <param name="policy">Объект, содержащий сведения о вытеснении для записи кэша.Данный объект предоставляет больше параметров для удаления, чем простой абсолютный срок действия.</param>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.Add(System.String,System.Object,System.DateTimeOffset,System.String)">
+      <summary>При переопределении в производном классе используется для вставки записи в кэш, без перезаписи существующей в кэше записи. </summary>
+      <returns>Значение true, если вставка выполнена успешно, или false, если в кэше уже имеется запись с таким же ключом, как у <paramref name="key" /></returns>
+      <param name="key">Уникальный идентификатор записи кэша.</param>
+      <param name="value">Вставляемый объект. </param>
+      <param name="absoluteExpiration">Фиксированные дата и время истечения срока действия записи кэша.Этот параметр обязательно указывается при вызове метода <see cref="Overload:System.Runtime.Caching.ObjectCache.Add" />.</param>
+      <param name="regionName">Необязательный параметр.Именованная область кэша, в которую может быть добавлена запись кэша, если области реализованы.Поскольку в .NET Framework 4 области не реализованы, значение по умолчанию — null.</param>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.Add(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)">
+      <summary>При переопределении в производном классе вставляет запись в кэш и задает сведения о способе удаления записи.</summary>
+      <returns>Значение true, если вставка производится успешно, или false, если в кэше уже есть запись с таким же ключом, как у <paramref name="key" />.</returns>
+      <param name="key">Уникальный идентификатор записи кэша. </param>
+      <param name="value">Вставляемый объект. </param>
+      <param name="policy">Объект, содержащий сведения о вытеснении для записи кэша.Данный объект предоставляет больше параметров для удаления, чем простой абсолютный срок действия.</param>
+      <param name="regionName">Необязательный параметр.Именованная область кэша, в которую может быть добавлена запись кэша, если области реализованы.Значение необязательного параметра по умолчанию — null.</param>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.AddOrGetExisting(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)">
+      <summary>При переопределении в производном классе вставляет заданный объект <see cref="T:System.Runtime.Caching.CacheItem" /> в кэш и задает сведения о способе удаления записи.</summary>
+      <returns>Если существует запись кэша с таким же ключом, указанная запись кэша; в противном случае — значение null.</returns>
+      <param name="value">Вставляемый объект. </param>
+      <param name="policy">Объект, содержащий сведения о вытеснении для записи кэша.Данный объект предоставляет больше параметров для удаления, чем простой абсолютный срок действия.</param>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.AddOrGetExisting(System.String,System.Object,System.DateTimeOffset,System.String)">
+      <summary>При переопределении в производном классе вставляет запись в кэш, используя ключ, объект для записи кэша, абсолютное значение срока действия и (необязательно) область кэша для добавления.</summary>
+      <returns>Заданное значение записи кэша, если существует запись кэша с таким же ключом; в противном случае — значение null.</returns>
+      <param name="key">Уникальный идентификатор записи кэша. </param>
+      <param name="value">Вставляемый объект. </param>
+      <param name="absoluteExpiration">Фиксированные дата и время истечения срока действия записи кэша. </param>
+      <param name="regionName">Необязательный параметр.Именованная область кэша, в которую может быть добавлена запись кэша, если области реализованы.Значение необязательного параметра по умолчанию — null.</param>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.AddOrGetExisting(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)">
+      <summary>При переопределении в производном классе вставляет запись в кэш, задавая ключ и значение для записи кэша и сведения о способе удаления этой записи.</summary>
+      <returns>Заданное значение записи кэша, если существует запись кэша с таким же ключом; в противном случае — значение null.</returns>
+      <param name="key">Уникальный идентификатор записи кэша. </param>
+      <param name="value">Вставляемый объект.</param>
+      <param name="policy">Объект, содержащий сведения о вытеснении для записи кэша.Данный объект предоставляет больше параметров для удаления, чем простой абсолютный срок действия.</param>
+      <param name="regionName">Необязательный параметр.Именованная область кэша, в которую может быть добавлена запись кэша, если области реализованы.Значение необязательного параметра по умолчанию — null.</param>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.Contains(System.String,System.String)">
+      <summary>При переопределении в производном классе проверяет, существует ли такая запись в кэше.</summary>
+      <returns>Значение true, если в кэше содержится запись с таким же ключом, как <paramref name="key" />; в противном случае — значение false. </returns>
+      <param name="key">Уникальный идентификатор записи кэша. </param>
+      <param name="regionName">Необязательный компонент.Именованная область кэша, в которой может быть найден кэш, если области реализованы.Значение необязательного параметра по умолчанию — null.</param>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.CreateCacheEntryChangeMonitor(System.Collections.Generic.IEnumerable{System.String},System.String)">
+      <summary>При переопределении в производном классе создает объект <see cref="T:System.Runtime.Caching.CacheEntryChangeMonitor" />, который может активировать события в ответ на изменения указанных записей кэша. </summary>
+      <returns>Монитор изменений, следящий за записями в кэше. </returns>
+      <param name="keys">Уникальные идентификаторы записей кэша, которые необходимо отслеживать. </param>
+      <param name="regionName">Необязательный компонент.Именованная область кэша, в которой могут существовать ключи кэша в параметре <paramref name="keys" />, если области реализованы.Значение необязательного параметра по умолчанию — null.</param>
+    </member>
+    <member name="P:System.Runtime.Caching.ObjectCache.DefaultCacheCapabilities">
+      <summary>При переопределении в производном классе получает описание функций, предоставляемых реализацией кэша.</summary>
+      <returns>Битовое сочетание флагов, которое указывает возможности реализации кэша по умолчанию.</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.Get(System.String,System.String)">
+      <summary>При переопределении в производном классе получает из кэша указанную запись кэша в виде объекта.</summary>
+      <returns>Запись кэша, определяемая ключом <paramref name="key" />. </returns>
+      <param name="key">Уникальный идентификатор записи кэша, которую требуется получить. </param>
+      <param name="regionName">Необязательный компонент.Именованная область кэша, в которую была добавлена запись кэша, если области реализованы.Значение необязательного параметра по умолчанию — null.</param>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.GetCacheItem(System.String,System.String)">
+      <summary>При переопределении в производном классе получает из кэша указанную запись кэша в виде экземпляра <see cref="T:System.Runtime.Caching.CacheItem" />.</summary>
+      <returns>Запись кэша, определяемая ключом <paramref name="key" />.</returns>
+      <param name="key">Уникальный идентификатор записи кэша, которую требуется получить. </param>
+      <param name="regionName">Необязательный компонент.Именованная область кэша, в которую был добавлен кэш, если области реализованы.Поскольку в .NET Framework 4 области не реализованы, значение по умолчанию равняется null.</param>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.GetCount(System.String)">
+      <summary>При переопределении в производном классе получает общее число записей в кэше. </summary>
+      <returns>Число записей в кэше.Если значение <paramref name="regionName" /> не равно null, это число обозначает количество записей в указанной области кэша.</returns>
+      <param name="regionName">Необязательный компонент.Именованная область кэша, для которой необходимо вычислить количество записей кэша, если области реализованы.Значение необязательного параметра по умолчанию — null.</param>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.GetEnumerator">
+      <summary>При переопределении в производном классе создает перечислитель, который может использоваться для перебора записей кэша в коллекции. </summary>
+      <returns>Объект перечислителя, предоставляющий доступ к записям кэша.</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.GetValues(System.Collections.Generic.IEnumerable{System.String},System.String)">
+      <summary>При переопределении в производном классе получает набор записей кэша, соответствующих указанным ключам.</summary>
+      <returns>Словарь пар "ключ-значение", представляющих записи кэша. </returns>
+      <param name="keys">Коллекция уникальных идентификаторов записей кэша, которые необходимо получить. </param>
+      <param name="regionName">Необязательный компонент.Именованная область кэша, в которую были добавлены одна или несколько записей кэша, если области реализованы.Значение необязательного параметра по умолчанию — null.</param>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.GetValues(System.String,System.String[])">
+      <summary>Получает набор записей кэша, соответствующих указанным ключам.</summary>
+      <returns>Словарь пар "ключ-значение", представляющих записи кэша. </returns>
+      <param name="regionName">Необязательный компонент.Именованная область кэша, в которую были добавлены одна или несколько записей кэша, если области реализованы.Поскольку в .NET Framework 4 области не реализованы, значение по умолчанию равняется null.</param>
+      <param name="keys">Коллекция уникальных идентификаторов записей кэша, которые необходимо получить. </param>
+    </member>
+    <member name="P:System.Runtime.Caching.ObjectCache.Host">
+      <summary>Получает или задает ссылку на управляемую среду размещения, доступную реализациям <see cref="T:System.Runtime.Caching.ObjectCache" /> и способную предоставить определенные узлом службы реализациям <see cref="T:System.Runtime.Caching.ObjectCache" />.</summary>
+      <returns>Ссылка на управляемую среду размещения, содержащую средства выявления кэша. </returns>
+      <exception cref="T:System.ArgumentNullException">Значение, присваиваемое свойству, равно null. </exception>
+      <exception cref="T:System.InvalidOperationException">Предпринята попытка присвоить значение свойству более одного раза.</exception>
+    </member>
+    <member name="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration">
+      <summary>Получает значение, указывающее, что запись кэша не имеет абсолютного срока действия. </summary>
+      <returns>Значение даты и времени, установленное на максимально возможное.</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.ObjectCache.Item(System.String)">
+      <summary>Получает или задает индексатор по умолчанию для класса <see cref="T:System.Runtime.Caching.ObjectCache" />.</summary>
+      <returns>Ключ, служащий индексатором для экземпляра кэша.</returns>
+      <param name="key">Уникальный идентификатор записи кэша в кэше. </param>
+    </member>
+    <member name="P:System.Runtime.Caching.ObjectCache.Name">
+      <summary>Получает имя конкретного экземпляра <see cref="T:System.Runtime.Caching.ObjectCache" />. </summary>
+      <returns>Имя конкретного экземпляра кэша.</returns>
+    </member>
+    <member name="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration">
+      <summary>Указывает, что запись кэша не имеет скользящего срока действия.</summary>
+      <returns>Значение промежутка времени, равное нулю.</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.Remove(System.String,System.String)">
+      <summary>При переопределении в производном классе удаляет запись из кэша.</summary>
+      <returns>Объект, представляющий значение удаленной записи кэша, заданной данным ключом, или значение null, если заданная запись не найдена.</returns>
+      <param name="key">Уникальный идентификатор записи кэша. </param>
+      <param name="regionName">Необязательный компонент.Именованная область кэша, в которую была добавлена запись кэша, если области реализованы.Значение необязательного параметра по умолчанию — null.</param>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.Set(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)">
+      <summary>При переопределении в производном классе вставляет запись в кэш в виде экземпляра <see cref="T:System.Runtime.Caching.CacheItem" /> и задает сведения о способе удаления записи.</summary>
+      <param name="item">Добавляемый элемент кэша.</param>
+      <param name="policy">Объект, содержащий сведения о вытеснении для записи кэша.Данный объект предоставляет больше параметров для удаления, чем простой абсолютный срок действия.</param>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.Set(System.String,System.Object,System.DateTimeOffset,System.String)">
+      <summary>При переопределении в производном классе вставляет запись в кэш и задает сведения о сроке действия на основе диапазона времени. </summary>
+      <param name="key">Уникальный идентификатор записи кэша. </param>
+      <param name="value">Объект, который нужно вставить.</param>
+      <param name="absoluteExpiration">Фиксированные дата и время истечения срока действия записи кэша.</param>
+      <param name="regionName">Необязательный параметр.Именованная область кэша, в которую может быть добавлена запись кэша, если области реализованы.Значение необязательного параметра по умолчанию — null.</param>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.Set(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)">
+      <summary>При переопределении в производном классе вставляет запись в кэш. </summary>
+      <param name="key">Уникальный идентификатор записи кэша. </param>
+      <param name="value">Вставляемый объект.</param>
+      <param name="policy">Объект, содержащий сведения о вытеснении для записи кэша.Данный объект предоставляет больше параметров для удаления, чем простой абсолютный срок действия.</param>
+      <param name="regionName">Необязательный параметр.Именованная область кэша, в которую может быть добавлена запись кэша, если области реализованы.Значение необязательного параметра по умолчанию — null.</param>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.System#Collections#Generic#IEnumerable{T}#GetEnumerator">
+      <summary>Поддерживает простой перебор элементов строго типизированной коллекции.</summary>
+      <returns>Объект перечислителя, предоставляющий доступ к записям кэша.</returns>
+    </member>
+    <member name="M:System.Runtime.Caching.ObjectCache.System#Collections#IEnumerable#GetEnumerator">
+      <summary>Поддерживает перебор элементов универсальной коллекции.</summary>
+      <returns>Объект перечислителя, предоставляющий доступ к элементам кэша.</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.OnChangedCallback">
+      <summary>Определяет ссылку на метод, обрабатывающий изменения контролируемых элементов.</summary>
+      <param name="state">Состояние зависимого объекта, который был изменен. </param>
+    </member>
+    <member name="T:System.Runtime.Caching.SqlChangeMonitor">
+      <summary>Предоставляет слежение за изменениями для баз данных SQL Server.Этот класс не наследуется.</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.SqlChangeMonitor.#ctor(System.Data.SqlClient.SqlDependency)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Runtime.Caching.SqlChangeMonitor" />. </summary>
+      <param name="dependency">Объект, представляющий объект <see cref="T:System.Data.SqlClient.SqlDependency" /> ADO.NET.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="dependency" /> имеет значение null; </exception>
+    </member>
+    <member name="P:System.Runtime.Caching.SqlChangeMonitor.UniqueId">
+      <summary>Получает идентификатор для экземпляра <see cref="T:System.Runtime.Caching.SqlChangeMonitor" />. </summary>
+      <returns>Идентификатор для монитора изменений. </returns>
+    </member>
+    <member name="T:System.Runtime.Caching.Configuration.CachingSectionGroup">
+      <summary>Определяет раздел конфигурации для кэширования в платформе .NET Framework.Данный класс не может наследоваться.</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.Configuration.CachingSectionGroup.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Runtime.Caching.Configuration.CachingSectionGroup" />. </summary>
+    </member>
+    <member name="P:System.Runtime.Caching.Configuration.CachingSectionGroup.MemoryCaches">
+      <summary>Получает коллекцию объектов <see cref="T:System.Runtime.Caching.Configuration.MemoryCacheElement" />. </summary>
+      <returns>Коллекция объектов разделов кэша.</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.Configuration.MemoryCacheElement">
+      <summary>Определяет элемент, используемый для настройки кэша, основанного на классе <see cref="T:System.Runtime.Caching.MemoryCache" />.Данный класс не может наследоваться.</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.Configuration.MemoryCacheElement.#ctor(System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Runtime.Caching.Configuration.MemoryCacheElement" />. </summary>
+      <param name="name">Уникальное имя заданной конфигурации кэша. </param>
+    </member>
+    <member name="P:System.Runtime.Caching.Configuration.MemoryCacheElement.CacheMemoryLimitMegabytes">
+      <summary>Получает или задает максимальный объем памяти (в мегабайтах), до которого может увеличиться объект <see cref="T:System.Runtime.Caching.MemoryCache" />.</summary>
+      <returns>Максимальный объем памяти в мегабайтах.Значение по умолчанию — 0, что означает, что экземпляры <see cref="T:System.Runtime.Caching.MemoryCache" /> управляют собственной памятью с учетом количества установленной на компьютере памяти.</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.Configuration.MemoryCacheElement.Name">
+      <summary>Получает или задает имя определенной конфигурации кэша.</summary>
+      <returns>Имя конфигурации кэша.</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.Configuration.MemoryCacheElement.PhysicalMemoryLimitPercentage">
+      <summary>Получает или задает долю памяти сервера, которая может использоваться кэшем.</summary>
+      <returns>Доля физической памяти, которая может использоваться кэшем, выраженная в виде целого числа от 1 до 100.Значение по умолчанию — 0, что означает, что экземпляры <see cref="T:System.Runtime.Caching.MemoryCache" /> управляют собственной памятью с учетом количества установленной на компьютере памяти.</returns>
+    </member>
+    <member name="P:System.Runtime.Caching.Configuration.MemoryCacheElement.PollingInterval">
+      <summary>Получает или задает значение, обозначающее интервал времени, по истечении которого реализация кэша сравнивает текущую загрузку памяти с абсолютными и относительными ограничениями памяти, заданными для экземпляра кэша. </summary>
+      <returns>Интервал времени, после которого реализация кэша сравнивает текущую загрузку памяти с абсолютными и процентными ограничениями памяти, заданными для экземпляра кэша.По умолчанию — две минуты.</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.Configuration.MemoryCacheSection">
+      <summary>Определяет раздел конфигурации кэша на основе класса <see cref="T:System.Runtime.Caching.MemoryCache" />.Данный класс не может наследоваться.</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.Configuration.MemoryCacheSection.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Runtime.Caching.Configuration.MemoryCacheSection" />. </summary>
+    </member>
+    <member name="P:System.Runtime.Caching.Configuration.MemoryCacheSection.NamedCaches">
+      <summary>Получает коллекцию параметров конфигурации для именованных экземпляров <see cref="T:System.Runtime.Caching.MemoryCache" />. </summary>
+      <returns>Коллекция параметров для каждого именованного кэша.</returns>
+    </member>
+    <member name="T:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection">
+      <summary>Представляет коллекцию объектов <see cref="T:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection" />.Данный класс не может наследоваться.</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection" />. </summary>
+    </member>
+    <member name="P:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection.CollectionType">
+      <summary>Получает тип коллекции конфигураций.</summary>
+      <returns>Тип коллекции. </returns>
+    </member>
+    <member name="P:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection.Item(System.Int32)">
+      <summary>Получает элемент <see cref="T:System.Runtime.Caching.Configuration.MemoryCacheElement" /> с указанным индексом.</summary>
+      <returns>Элемент по указанному индексу. </returns>
+      <param name="index">Отсчитываемый с нуля индекс элемента в коллекции.</param>
+    </member>
+    <member name="P:System.Runtime.Caching.Configuration.MemoryCacheSettingsCollection.Item(System.String)">
+      <summary>Получает элемент <see cref="T:System.Runtime.Caching.Configuration.MemoryCacheElement" /> с указанным ключом.</summary>
+      <returns>Элемент, заданный ключом. </returns>
+      <param name="key">Уникальный идентификатор элемента.</param>
+    </member>
+    <member name="T:System.Runtime.Caching.Hosting.IApplicationIdentifier">
+      <summary>Определяет идентификатор для доменов приложений, которые могут использоваться реализацией кэша для взаимодействия со средой узла. </summary>
+    </member>
+    <member name="M:System.Runtime.Caching.Hosting.IApplicationIdentifier.GetApplicationId">
+      <summary>Получает идентификатор для домена приложения. </summary>
+      <returns>Уникальный идентификатор для текущего домена приложения. </returns>
+    </member>
+    <member name="T:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem">
+      <summary>Определяет способ предоставления пользовательского объекта <see cref="T:System.Runtime.Caching.FileChangeMonitor" /> реализации кэша.</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring(System.String,System.Runtime.Caching.OnChangedCallback,System.Object@,System.DateTimeOffset@,System.Int64@)">
+      <summary>Регистрирует путь к файлу для мониторинга в среде узла. </summary>
+      <param name="filePath">Полный физический путь каталога или файла для отслеживания изменений.</param>
+      <param name="onChangedCallback">Ссылка на метод, реализующий делегат <see cref="T:System.Runtime.Caching.OnChangedCallback" />.При изменении отслеживаемого файла или каталога реализация среды узла интерфейса <see cref="T:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem" /> создает событие, вызывая класс <see cref="T:System.Runtime.Caching.OnChangedCallback" />.</param>
+      <param name="state">Состояние, предоставляемое средой узла.Реализации кэша и пользовательские мониторы изменений должны рассматривать значение состояния как непрозрачное.Однако состояние должно храниться, чтобы при вызове метода <see cref="M:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StopMonitoring(System.String,System.Object)" /> реализацией кэша состояние можно было отправлять в среду узла.</param>
+      <param name="lastWriteTime">При возвращении этот метод содержит дату и время последней операции записи для <paramref name="filePath" />.Этот параметр передается неинициализированным.Этот параметр возвращается из среды узла.</param>
+      <param name="fileSize">При возвращении этот метод содержит общий размер отслеживаемого пути <paramref name="filePath" />.Этот параметр передается неинициализированным.Этот параметр возвращается из среды узла.</param>
+    </member>
+    <member name="M:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StopMonitoring(System.String,System.Object)">
+      <summary>Завершает отслеживание изменений.</summary>
+      <param name="filePath">Путь файла или папки для остановки мониторинга.Должен совпадать со значением пути к файлу, переданным в более раннем вызове метода <see cref="M:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring(System.String,System.Runtime.Caching.OnChangedCallback,System.Object@,System.DateTimeOffset@,System.Int64@)" />.</param>
+      <param name="state">Сведения о состоянии, изначально предоставленные средой узла в более раннем вызове метода <see cref="M:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring(System.String,System.Runtime.Caching.OnChangedCallback,System.Object@,System.DateTimeOffset@,System.Int64@)" />.</param>
+    </member>
+    <member name="T:System.Runtime.Caching.Hosting.IMemoryCacheManager">
+      <summary>Определяет интерфейс, используемый кэшем для передачи использования памяти кэша в среду узла.</summary>
+    </member>
+    <member name="M:System.Runtime.Caching.Hosting.IMemoryCacheManager.ReleaseCache(System.Runtime.Caching.MemoryCache)">
+      <summary>Удаляет все ссылки на кэш в среде узла.</summary>
+      <param name="cache">Ссылка на кэш.</param>
+    </member>
+    <member name="M:System.Runtime.Caching.Hosting.IMemoryCacheManager.UpdateCacheSize(System.Int64,System.Runtime.Caching.MemoryCache)">
+      <summary>Сообщает размер текущего кэша.</summary>
+      <param name="size">Размер потребляемой кэшем памяти в байтах.</param>
+      <param name="cache">Ссылка на кэш.</param>
+    </member>
+  </members>
+</doc>

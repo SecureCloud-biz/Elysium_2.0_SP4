@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Microsoft.Build.Conversion.v4.0</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.Build.Conversion.ProjectFileConverter">
+      <summary>Преобразует файл проекта Visual Studio в формат файла проекта Visual Studio 2010. </summary>
+    </member>
+    <member name="M:Microsoft.Build.Conversion.ProjectFileConverter.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:Microsoft.Build.Conversion.ProjectFileConverter" />.</summary>
+    </member>
+    <member name="P:Microsoft.Build.Conversion.ProjectFileConverter.ConversionSkippedBecauseProjectAlreadyConverted">
+      <summary>Возвращает значение, позволяющее определить, не было ли последнее преобразование пропущено потому, что файл проекта уже записан в новейшем формате.</summary>
+      <returns>Если последнее преобразование было пропущено потому, что файл уже записан в новейшем формате, значение true; если нет, значение false.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:Microsoft.Build.Conversion.ProjectFileConverter.ConversionWarnings">
+      <summary>Возвращает список предупреждений, созданных во время преобразования.</summary>
+      <returns>Массив строк, в котором содержатся все предупреждения, созданные во время преобразования.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:Microsoft.Build.Conversion.ProjectFileConverter.Convert">
+      <summary>Преобразует проект, заданный свойством <see cref="P:Microsoft.Build.Conversion.ProjectFileConverter.OldProjectFile" />, и сохраняет его в файле, заданном свойством <see cref="P:Microsoft.Build.Conversion.ProjectFileConverter.NewProjectFile" />.</summary>
+    </member>
+    <member name="M:Microsoft.Build.Conversion.ProjectFileConverter.Convert(Microsoft.Build.BuildEngine.ProjectLoadSettings)">
+      <summary>Преобразует проект, заданный свойством <see cref="P:Microsoft.Build.Conversion.ProjectFileConverter.OldProjectFile" />, и сохраняет его в файле, заданном свойством <see cref="P:Microsoft.Build.Conversion.ProjectFileConverter.NewProjectFile" />.</summary>
+      <param name="projectLoadSettings">Флаг <see cref="T:Microsoft.Build.BuildEngine.ProjectLoadSettings" />, позволяющий указать, будут ли игнорироваться несуществующие файлы .target при загрузке проекта.</param>
+    </member>
+    <member name="M:Microsoft.Build.Conversion.ProjectFileConverter.Convert(System.String)">
+      <summary>Это метод точки входа, выполняющий преобразование формата файла проекта.Данный метод перезаписывает файл "newProjectFile", если он уже существует, поэтому вызывающий объект данного метода должен предложить пользователю подтвердить выполнение этой операции.</summary>
+      <param name="msbuildBinPath">Полный путь к MSBuild.exe.</param>
+    </member>
+    <member name="M:Microsoft.Build.Conversion.ProjectFileConverter.ConvertInMemory">
+      <summary>Создает в памяти новый проект на основе свойства <see cref="P:Microsoft.Build.Conversion.ProjectFileConverter.OldProjectFile" />.</summary>
+    </member>
+    <member name="M:Microsoft.Build.Conversion.ProjectFileConverter.ConvertInMemory(Microsoft.Build.BuildEngine.Engine)">
+      <summary>Создает в памяти новый проект на основе свойства <see cref="P:Microsoft.Build.Conversion.ProjectFileConverter.OldProjectFile" />.</summary>
+      <param name="engine">Объект <see cref="T:Microsoft.Build.BuildEngine.Engine" />, в котором необходимо создать новый проект.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:Microsoft.Build.Conversion.ProjectFileConverter.ConvertInMemory(Microsoft.Build.BuildEngine.Engine,Microsoft.Build.BuildEngine.ProjectLoadSettings)">
+      <summary>Это метод точки входа, выполняющий преобразование формата файла проекта.Данный метод лишь создает новый объект проекта MSBuild в памяти, не пытаясь записать его на диск.</summary>
+      <param name="engine">Объект <see cref="T:Microsoft.Build.BuildEngine.Engine" />, в котором необходимо создать новый проект.</param>
+      <param name="projectLoadSettings">Флаг <see cref="T:Microsoft.Build.BuildEngine.ProjectLoadSettings" />, позволяющий указать, будут ли игнорироваться несуществующие файлы .target при загрузке проекта.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:Microsoft.Build.Conversion.ProjectFileConverter.IsUserFile">
+      <summary>Возвращает или задает значение, позволяющее определить, является ли преобразованный файл проекта файлом .user.</summary>
+      <returns>Если преобразованный файл проекта является файлом .user, значение true; если нет, значение false.</returns>
+    </member>
+    <member name="P:Microsoft.Build.Conversion.ProjectFileConverter.NewProjectFile">
+      <summary>Возвращает или задает имя нового файла проекта.</summary>
+      <returns>Строка, соответствующая новому имени файла проекта.</returns>
+    </member>
+    <member name="P:Microsoft.Build.Conversion.ProjectFileConverter.OldProjectFile">
+      <summary>Возвращает или задает имя старого файла проекта.</summary>
+      <returns>Старое имя файла проекта.</returns>
+    </member>
+    <member name="P:Microsoft.Build.Conversion.ProjectFileConverter.SolutionFile">
+      <summary>Возвращает или задает имя файла решения, в котором содержится преобразовываемый проект.</summary>
+      <returns>Имя файла решения, в котором содержится преобразовываемый проект.</returns>
+    </member>
+  </members>
+</doc>

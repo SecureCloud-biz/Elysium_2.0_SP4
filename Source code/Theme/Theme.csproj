@@ -443,14 +443,12 @@
     </None>
     <None Include="Parameters.ru.xml">
       <DependentUpon>Parameters.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </None>
     <None Include="Theme.ru.xml">
       <DependentUpon>Theme.cs</DependentUpon>
     </None>
     <None Include="ThemeManager.ru.xml">
       <DependentUpon>ThemeManager.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </None>
     <None Include="Extensions\Tree helpers\LogicalTreeHelperExtensions.ru.xml">
       <DependentUpon>LogicalTreeHelperExtensions.cs</DependentUpon>
@@ -508,7 +506,6 @@
     </None>
     <None Include="Controls\ApplicationBar\Automation\ApplicationBarAutomationPeer.ru.xml">
       <DependentUpon>ApplicationBarAutomationPeer.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </None>
     <None Include="Controls\CommandButtons\Automation\CommandButtonBaseAutomationPeer.ru.xml">
       <DependentUpon>CommandButtonBaseAutomationPeer.cs</DependentUpon>
@@ -530,6 +527,21 @@
     </None>
     <None Include="Controls\Menus\Automation\SubmenuAutomationPeer.ru.xml">
       <DependentUpon>SubmenuAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ApplicationBar\ApplicationBarPanel.ru.xml">
+      <DependentUpon>ApplicationBarPanel.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\Primitives\CommandButtonBase.ru.xml">
+      <DependentUpon>CommandButtonBase.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\CommandButton.ru.xml">
+      <DependentUpon>CommandButton.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\ToggleCommandButton.ru.xml">
+      <DependentUpon>ToggleCommandButton.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Menus\Submenu.ru.xml">
+      <DependentUpon>Submenu.cs</DependentUpon>
     </None>
     <None Include="Properties\Key.snk" />
   </ItemGroup>

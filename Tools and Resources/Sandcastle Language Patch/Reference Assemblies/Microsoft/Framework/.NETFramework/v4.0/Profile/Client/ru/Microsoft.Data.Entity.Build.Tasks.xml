@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Microsoft.Data.Entity.Build.Tasks</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.Data.Entity.Build.Tasks.EntityClean">
+      <summary>Вызывается MSBuild для удаления промежуточных файлов, созданных в рамках задачи <see cref="T:Microsoft.Data.Entity.Build.Tasks.EntityDeploy" />.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Entity.Build.Tasks.EntityClean.#ctor">
+      <summary>Вызывается MSBuild для инициализации нового экземпляра класса <see cref="T:Microsoft.Data.Entity.Build.Tasks.EntityClean" />.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Entity.Build.Tasks.EntityClean.Execute">
+      <summary>Вызывается с помощью MSBuild, чтобы удалить файлы модели и сопоставления, когда они не внедрены в качестве ресурсов.</summary>
+      <returns>Значение true, если метод был выполнен успешно; в противном случае — значение false.</returns>
+    </member>
+    <member name="P:Microsoft.Data.Entity.Build.Tasks.EntityClean.OutputPath">
+      <summary>Возвращает путь, по которому удалены файлы модели и сопоставления.</summary>
+      <returns>Путь, по которому удалены файлы модели и сопоставления.</returns>
+    </member>
+    <member name="P:Microsoft.Data.Entity.Build.Tasks.EntityClean.ResourceOutputPath">
+      <summary>Возвращает путь, по которому удалены файлы модели и сопоставления. </summary>
+      <returns>Путь, по которому удалены файлы модели и сопоставления.</returns>
+    </member>
+    <member name="P:Microsoft.Data.Entity.Build.Tasks.EntityClean.Sources">
+      <summary>Массив указателей на EDMX-файлы.Каждый файл передается в MSBuild как элемент построения.</summary>
+      <returns>Массив дескрипторов вывода <see cref="T:Microsoft.Build.Framework.ITaskItem" />.Каждый элемент массива является указателем на EDMX-файл.</returns>
+    </member>
+    <member name="T:Microsoft.Data.Entity.Build.Tasks.EntityDeploy">
+      <summary>A build task that is used to deploy the Entity Framework artifacts that are generated from .edmx files.These artifacts can be embedded as resources or written to a file.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Entity.Build.Tasks.EntityDeploy.#ctor">
+      <summary>Called by MSBuild to initialize a new instance of <see cref="T:Microsoft.Data.Entity.Build.Tasks.EntityDeploy" />.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Entity.Build.Tasks.EntityDeploy.Execute">
+      <summary>Called by MSBuild to embed mapping and modeling files as resources or to write them to a file.</summary>
+      <returns>true if the method was successful, false otherwise.</returns>
+    </member>
+    <member name="P:Microsoft.Data.Entity.Build.Tasks.EntityDeploy.OutputPath">
+      <summary>The path to which Entity Framework artifacts are written when they are not embedded as resources.</summary>
+      <returns>A <see cref="T:System.String" /> that represents the path to which Entity Framework artifacts are written when they are not embedded as resources.</returns>
+    </member>
+    <member name="P:Microsoft.Data.Entity.Build.Tasks.EntityDeploy.Sources">
+      <summary>An array of pointers to .edmx files.Each file is passed to MSBuild as a build item.</summary>
+      <returns>An array of <see cref="T:Microsoft.Build.Framework.ITaskItem" />.Each element of the array is a pointer to a .edmx file.</returns>
+    </member>
+    <member name="T:Microsoft.Data.Entity.Build.Tasks.EntityDeploySetLogicalNames">
+      <summary>Присваивает правильное имя LogicalName ресурсам, отмеченным для внедрения. </summary>
+    </member>
+    <member name="M:Microsoft.Data.Entity.Build.Tasks.EntityDeploySetLogicalNames.#ctor">
+      <summary>Инициализирует новый экземпляр <see cref="T:Microsoft.Data.Entity.Build.Tasks.EntityDeploySetLogicalNames" />. </summary>
+    </member>
+    <member name="M:Microsoft.Data.Entity.Build.Tasks.EntityDeploySetLogicalNames.Execute">
+      <summary>Выполняет задачу EntityDeploySetLogicalNames.</summary>
+      <returns>Значение true, если задача построения успешно завершена; в противном случае — значение false.</returns>
+    </member>
+    <member name="P:Microsoft.Data.Entity.Build.Tasks.EntityDeploySetLogicalNames.ResourceOutputPath">
+      <summary>Путь, по которому считываются ресурсы, отмеченные для внедрения.</summary>
+      <returns>Путь, по которому считываются ресурсы, отмеченные для внедрения.</returns>
+    </member>
+    <member name="P:Microsoft.Data.Entity.Build.Tasks.EntityDeploySetLogicalNames.ResourcesToEmbed">
+      <summary>Массив <see cref="T:Microsoft.Build.Framework.ITaskItem" />, содержащий сведения о файлах модели и сопоставления, включая правильные имена LogicalNames, которые будут внедрены в качестве ресурсов.</summary>
+      <returns>Массив, содержащий сведения о файлах модели и сопоставления, которые будут внедрены в качестве ресурсов.</returns>
+    </member>
+    <member name="P:Microsoft.Data.Entity.Build.Tasks.EntityDeploySetLogicalNames.Sources">
+      <summary>Массив <see cref="T:Microsoft.Build.Framework.ITaskItem" />, содержащий сведения о ресурсах, отмеченных для внедрения.</summary>
+      <returns>Массив, содержащий сведения о ресурсах, отмеченных для внедрения.</returns>
+    </member>
+    <member name="T:Microsoft.Data.Entity.Build.Tasks.EntityDeploySplit">
+      <summary>Группирует файлы EDMX в зависимости от того, будут ли соответствующие файлы модели и сопоставления внедряться в качестве ресурсов или копироваться в выходной каталог.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Entity.Build.Tasks.EntityDeploySplit.#ctor">
+      <summary>Инициализирует новый экземпляр <see cref="T:Microsoft.Data.Entity.Build.Tasks.EntityDeploySplit" />.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Entity.Build.Tasks.EntityDeploySplit.EmbeddingItems">
+      <summary>Массив <see cref="T:Microsoft.Build.Framework.ITaskItem" />, содержащий сведения о файлах модели и сопоставления, которые будут внедрены в качестве ресурсов.</summary>
+      <returns>Массив, содержащий сведения о файлах модели и сопоставления, которые будут внедрены в качестве ресурсов.</returns>
+    </member>
+    <member name="M:Microsoft.Data.Entity.Build.Tasks.EntityDeploySplit.Execute">
+      <summary>Выполняет задачу EntityDeploySplit.</summary>
+      <returns>Значение true, если задача выполнена успешно; в противном случае — значение false.</returns>
+    </member>
+    <member name="P:Microsoft.Data.Entity.Build.Tasks.EntityDeploySplit.NonEmbeddingItems">
+      <summary>Массив <see cref="T:Microsoft.Build.Framework.ITaskItem" />, содержащий сведения о файлах модели и сопоставления, которые будут скопированы в выходной каталог.</summary>
+      <returns>Массив, содержащий сведения о файлах модели и сопоставления, которые будут внедрены в качестве ресурсов.</returns>
+    </member>
+    <member name="P:Microsoft.Data.Entity.Build.Tasks.EntityDeploySplit.Sources">
+      <summary>Массив <see cref="T:Microsoft.Build.Framework.ITaskItem" />, содержащий сведения о файлах EDMX, подлежащих обработке.</summary>
+      <returns>Массив, содержащий сведения о файлах EDMX, подлежащих обработке.</returns>
+    </member>
+  </members>
+</doc>

@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Microsoft.Build.Utilities.v3.5</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.Build.Utilities.AppDomainIsolatedTask">
+      <summary>Provides the same functionality as <see cref="T:Microsoft.Build.Utilities.Task" />, but also derives from <see cref="T:System.MarshalByRefObject" /> so that it can be instantiated in its own app domain.</summary>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.AppDomainIsolatedTask.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.Utilities.AppDomainIsolatedTask" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.AppDomainIsolatedTask.#ctor(System.Resources.ResourceManager)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.Utilities.AppDomainIsolatedTask" /> class and allows derived <see cref="T:Microsoft.Build.Utilities.Task" /> classes to register their resources.</summary>
+      <param name="taskResources">The task resources.</param>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.AppDomainIsolatedTask.#ctor(System.Resources.ResourceManager,System.String)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.Utilities.AppDomainIsolatedTask" /> class and allows derived <see cref="T:Microsoft.Build.Utilities.Task" /> classes to register their resources, as well as provide a prefix for composing help keywords from string resource names.</summary>
+      <param name="taskResources">The task resources.</param>
+      <param name="helpKeywordPrefix">The Help keyword prefix.</param>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.AppDomainIsolatedTask.BuildEngine">
+      <summary>Gets or sets the build engine interface that is available to tasks.</summary>
+      <returns>The <see cref="T:Microsoft.Build.Framework.IBuildEngine" /> that is available to tasks.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.AppDomainIsolatedTask.Execute">
+      <summary>Runs the task.</summary>
+      <returns>true if successful; otherwise, false.</returns>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.AppDomainIsolatedTask.HelpKeywordPrefix">
+      <summary>Gets or sets the prefix that is used to compose Help keywords from string resource names.</summary>
+      <returns>A <see cref="T:System.String" /> that is used to compose Help keywords. This value can be null.</returns>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.AppDomainIsolatedTask.HostObject">
+      <summary>Gets or sets a host object instance that is associated with the derived <see cref="T:Microsoft.Build.Utilities.Task" />.</summary>
+      <returns>The <see cref="T:Microsoft.Build.Framework.ITaskHost" /> host object instance that is associated with the derived <see cref="T:Microsoft.Build.Utilities.Task" />. This value can be null.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.AppDomainIsolatedTask.InitializeLifetimeService">
+      <summary>When overridden in a derived class, gives tasks infinite lease time.</summary>
+      <returns>null to specify an infinite lifetime.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.AppDomainIsolatedTask.Log">
+      <summary>Gets an instance of a task logging helper object that contains task logging methods.</summary>
+      <returns>A <see cref="T:Microsoft.Build.Utilities.TaskLoggingHelper" /> that contains task logging methods.</returns>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.AppDomainIsolatedTask.TaskResources">
+      <summary>Gets or sets culture-specific resources of the derived <see cref="T:Microsoft.Build.Utilities.Task" />.</summary>
+      <returns>A <see cref="T:System.Resources.ResourceManager" /> that is a culture-specific resource of the derived <see cref="T:Microsoft.Build.Utilities.Task" />. This value can be null.</returns>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.CommandLineBuilder.#ctor(System.Boolean)"></member>
+    <member name="M:Microsoft.Build.Utilities.CommandLineBuilder.AppendQuotedTextToBuffer(System.Text.StringBuilder,System.String)"></member>
+    <member name="T:Microsoft.Build.Utilities.HostObjectInitializationStatus">
+      <summary>Defines the next action for <see cref="T:Microsoft.Build.Utilities.ToolTask" /> after an attempt to initialize the host object.</summary>
+    </member>
+    <member name="F:Microsoft.Build.Utilities.HostObjectInitializationStatus.UseHostObjectToExecute">
+      <summary>Indicates that an appropriate host object for this task exists, which can support all of the parameters passed in and should be invoked to do the real work of the task.</summary>
+    </member>
+    <member name="F:Microsoft.Build.Utilities.HostObjectInitializationStatus.UseAlternateToolToExecute">
+      <summary>Indicates that either a host object is not available, or that the host object is not capable of supporting all of the features required for this build. Therefore, <see cref="T:Microsoft.Build.Utilities.ToolTask" /> should fallback to an alternate means of doing the build, such as invoking the command-line tool.</summary>
+    </member>
+    <member name="F:Microsoft.Build.Utilities.HostObjectInitializationStatus.NoActionReturnSuccess">
+      <summary>Indicates that the host object is up to date, and that no further action is necessary.</summary>
+    </member>
+    <member name="F:Microsoft.Build.Utilities.HostObjectInitializationStatus.NoActionReturnFailure">
+      <summary>Indicates that some of the parameters being passed into the task are invalid, and that the task should fail immediately.</summary>
+    </member>
+    <member name="T:Microsoft.Build.Utilities.ProcessorArchitecture">
+      <summary>Determines the correct tool in the Toolset that MSBuild should use, based on the current system's processor architecture.</summary>
+    </member>
+    <member name="F:Microsoft.Build.Utilities.ProcessorArchitecture.AMD64">
+      <summary>Represents the AMD64 processor.</summary>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.ProcessorArchitecture.CurrentProcessArchitecture">
+      <summary>Gets the current processor architecture of the system.</summary>
+      <returns>A string containing the processor architecture value.</returns>
+    </member>
+    <member name="F:Microsoft.Build.Utilities.ProcessorArchitecture.IA64">
+      <summary>Represents the IA64 processor.</summary>
+    </member>
+    <member name="F:Microsoft.Build.Utilities.ProcessorArchitecture.MSIL">
+      <summary>Represents MSIL.</summary>
+    </member>
+    <member name="F:Microsoft.Build.Utilities.ProcessorArchitecture.X86">
+      <summary>Represents an x86 processor.</summary>
+    </member>
+    <member name="T:Microsoft.Build.Utilities.TargetDotNetFrameworkVersion">
+      <summary>Specifies the version of the .NET Framework to use with the methods in <see cref="T:Microsoft.Build.Utilities.ToolLocationHelper" />.</summary>
+    </member>
+    <member name="F:Microsoft.Build.Utilities.TargetDotNetFrameworkVersion.Version11">
+      <summary>Specifies .NET Framework version 1.1.</summary>
+    </member>
+    <member name="F:Microsoft.Build.Utilities.TargetDotNetFrameworkVersion.Version20">
+      <summary>Specifies .NET Framework version 2.0.</summary>
+    </member>
+    <member name="F:Microsoft.Build.Utilities.TargetDotNetFrameworkVersion.Version30">
+      <summary>Specifies .NET Framework version 3.0.</summary>
+    </member>
+    <member name="F:Microsoft.Build.Utilities.TargetDotNetFrameworkVersion.Version35">
+      <summary>Specifies .NET Framework version 3.5.</summary>
+    </member>
+    <member name="F:Microsoft.Build.Utilities.TargetDotNetFrameworkVersion.VersionLatest">
+      <summary>Specifies the most recent released version of the .NET Framework.</summary>
+    </member>
+    <member name="T:Microsoft.Build.Utilities.Task">
+      <summary>When overridden in a derived form, provides functionality for tasks.</summary>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.Task.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.Utilities.Task" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.Task.#ctor(System.Resources.ResourceManager)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.Utilities.Task" /> class with the specified <see cref="P:Microsoft.Build.Utilities.Task.TaskResources" />.</summary>
+      <param name="taskResources">The task resources.</param>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.Task.#ctor(System.Resources.ResourceManager,System.String)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.Utilities.Task" /> class with the specified <see cref="P:Microsoft.Build.Utilities.Task.TaskResources" /> and <see cref="P:Microsoft.Build.Utilities.Task.HelpKeywordPrefix" />.</summary>
+      <param name="taskResources">The task resources.</param>
+      <param name="helpKeywordPrefix">The prefix to append to string resources to create Help keywords.</param>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.Task.BuildEngine">
+      <summary>Gets or sets the instance of the <see cref="T:Microsoft.Build.Framework.IBuildEngine" /> object used by the task.</summary>
+      <returns>The <see cref="T:Microsoft.Build.Framework.IBuildEngine" /> available to tasks.</returns>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.Task.BuildEngine2">
+      <summary>Gets the instance of the <see cref="T:Microsoft.Build.Framework.IBuildEngine2" /> object used by the task.</summary>
+      <returns>The <see cref="T:Microsoft.Build.Framework.IBuildEngine2" /> available to tasks.</returns>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.Task.Execute">
+      <summary>When overridden in a derived class, executes the task.</summary>
+      <returns>true if the task successfully executed; otherwise, false.</returns>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.Task.HelpKeywordPrefix">
+      <summary>Gets or sets the prefix used to compose Help keywords from resource names.</summary>
+      <returns>The prefix used to compose Help keywords from resource names.</returns>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.Task.HostObject">
+      <summary>Gets or sets the host object associated with the task.</summary>
+      <returns>The host object associated with the task. This value can be null.</returns>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.Task.Log">
+      <summary>Gets an instance of a <see cref="T:Microsoft.Build.Utilities.TaskLoggingHelper" /> class containing task logging methods.</summary>
+      <returns>The logging helper object.</returns>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.Task.TaskResources">
+      <summary>Gets or sets the culture-specific resources associated with the task.</summary>
+      <returns>The culture-specific resources associated with the task. This value can be null.</returns>
+    </member>
+    <member name="T:Microsoft.Build.Utilities.TaskItem">
+      <summary>Defines a single item of the project as it is passed into a task.</summary>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.TaskItem.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.Utilities.TaskItem" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.TaskItem.#ctor(Microsoft.Build.Framework.ITaskItem)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.Utilities.TaskItem" /> class using the specified source <see cref="T:Microsoft.Build.Framework.ITaskItem" />.</summary>
+      <param name="sourceItem">The item to copy.</param>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.TaskItem.#ctor(System.String)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.Utilities.TaskItem" /> class using the specified item-specification string.</summary>
+      <param name="itemSpec">The item specification.</param>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.TaskItem.#ctor(System.String,System.Collections.IDictionary)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.Utilities.TaskItem" /> class using the specified item-specification string and its metadata.</summary>
+      <param name="itemSpec">The item specification.</param>
+      <param name="itemMetadata">The custom metadata for the item specification.</param>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.TaskItem.CloneCustomMetadata">
+      <summary>Clones the collection of custom metadata for the item specification.</summary>
+      <returns>An <see cref="T:System.Collections.IDictionary" /> that represents a clone of the custom metadata.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.TaskItem.CopyMetadataTo(Microsoft.Build.Framework.ITaskItem)">
+      <summary>Copies the item-specification metadata to the specified destination task item.</summary>
+      <param name="destinationItem">The item that this method will copy metadata to.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.TaskItem.GetMetadata(System.String)">
+      <summary>Retrieves the specified metadata on the item.</summary>
+      <returns>A <see cref="T:System.String" /> that represents the metadata value.</returns>
+      <param name="metadataName">The name of the metadata to retrieve.</param>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.TaskItem.InitializeLifetimeService">
+      <summary>When overridden in a derived class, gives task items infinite lease time.</summary>
+      <returns>null to specify an infinite lifetime.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.TaskItem.ItemSpec">
+      <summary>Gets or sets the item specification.</summary>
+      <returns>A <see cref="T:System.String" /> that represents the item specification.</returns>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.TaskItem.MetadataCount">
+      <summary>Gets the number of metadata set on the item.</summary>
+      <returns>An <see cref="T:System.Int32" /> that represents the count of metadata set on the item.</returns>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.TaskItem.MetadataNames">
+      <summary>Gets the names of all the metadata on the item.</summary>
+      <returns>An <see cref="T:System.Collections.ICollection" /> of metadata names.</returns>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.TaskItem.op_Explicit(Microsoft.Build.Utilities.TaskItem)~System.String">
+      <summary>Allows an explicit type cast from a <see cref="T:Microsoft.Build.Utilities.TaskItem" /> to a <see cref="T:System.String" />, and returns the <see cref="P:Microsoft.Build.Utilities.TaskItem.ItemSpec" /> for that item.</summary>
+      <returns>The <see cref="P:Microsoft.Build.Utilities.TaskItem.ItemSpec" /> for the item.</returns>
+      <param name="taskItemToCast">The item to operate on.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.TaskItem.RemoveMetadata(System.String)">
+      <summary>Removes the specified metadata on the item.</summary>
+      <param name="metadataName">The name of metadata to remove.</param>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.TaskItem.SetMetadata(System.String,System.String)">
+      <summary>Sets or modifies the value of the specified metadata on the item.</summary>
+      <param name="metadataName">The name of metadata to set or modify.</param>
+      <param name="metadataValue">The new value of metadata.</param>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.TaskItem.ToString">
+      <summary>Gets the item specification.</summary>
+      <returns>A <see cref="T:System.String" /> that represents the item specification.</returns>
+    </member>
+    <member name="T:Microsoft.Build.Utilities.ToolLocationHelper">
+      <summary>Provides utility methods for locating .NET Framework and .NET Framework SDK files and directories.</summary>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkRootRegistryKey(Microsoft.Build.Utilities.TargetDotNetFrameworkVersion)">
+      <summary>Gets the full name of the .NET Framework root registry key.</summary>
+      <returns>A string containing the full name of the .NET Framework root registry key.</returns>
+      <param name="version">The version of the .NET Framework to target.</param>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkSdkInstallKeyValue(Microsoft.Build.Utilities.TargetDotNetFrameworkVersion)">
+      <summary>Gets the name of the value under the <see cref="M:Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkRootRegistryKey(Microsoft.Build.Utilities.TargetDotNetFrameworkVersion)" /> that contains the .NET Framework SDK installation path.</summary>
+      <returns>Returns a string containing the name of the registry key value under the <see cref="M:Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkRootRegistryKey(Microsoft.Build.Utilities.TargetDotNetFrameworkVersion)" /> that contains the .NET Framework SDK installation path.</returns>
+      <param name="version">The version of the .NET Framework to target.</param>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkSdkRootRegistryKey(Microsoft.Build.Utilities.TargetDotNetFrameworkVersion)">
+      <summary>Returns the full name of the .NET Framework SDK root registry key.</summary>
+      <returns>Returns a string representation of the registry key root which indicates where to find the .NETFramework sdk.</returns>
+      <param name="version">Version of the targeted .NET Framework</param>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkVersionFolderPrefix(Microsoft.Build.Utilities.TargetDotNetFrameworkVersion)">
+      <summary>Gets the prefix of the .NET Framework folder.</summary>
+      <returns>Returns the prefix of the .NET Framework folder.</returns>
+      <param name="version">The version of the .NET Framework to target.</param>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFramework(Microsoft.Build.Utilities.TargetDotNetFrameworkVersion)">
+      <summary>Gets a fully qualified path to the .NET Framework root directory.</summary>
+      <returns>A string containing the fully qualified path to the .NET Framework root directory, or a null reference (Nothing in Visual Basic) if the targeted version of the .NET Framework is not installed.</returns>
+      <param name="version">The version of the .NET Framework to target.</param>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkFile(System.String,Microsoft.Build.Utilities.TargetDotNetFrameworkVersion)">
+      <summary>Gets a fully qualified path to a file in the .NET Framework directory.</summary>
+      <returns>A string containing the fully qualified path to the specified file, or a null reference (Nothing in Visual Basic) if the targeted version of the .NET Framework is not installed.</returns>
+      <param name="fileName">The file to locate in the .NET Framework directory.</param>
+      <param name="version">The version of the .NET Framework to target.</param>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkReferenceAssemblies(Microsoft.Build.Utilities.TargetDotNetFrameworkVersion)">
+      <summary>Returns the path to the reference assemblies location for the given framework version.</summary>
+      <returns>Returns a string containing the fully qualified path to the Reference Assemblies folder, or a null reference (Nothing in Visual Basic) if the targeted version of the .NET Framework is not installed. </returns>
+      <param name="version">Version of the targeted .NET Framework</param>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkSdk(Microsoft.Build.Utilities.TargetDotNetFrameworkVersion)">
+      <summary>Gets the fully qualified path to the \bin directory of the .NET Framework SDK.</summary>
+      <returns>A string containing the fully qualified path to the \bin directory of the .NET Framework SDK, or a null reference (Nothing in Visual Basic) if the targeted version of the .NET Framework SDK is not installed.</returns>
+      <param name="version">The version of the .NET Framework to target.</param>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkSdkFile(System.String,Microsoft.Build.Utilities.TargetDotNetFrameworkVersion)">
+      <summary>Gets the fully qualified path to a file in the .NET Framework SDK.</summary>
+      <returns>A string containing the fully qualified path to the \bin directory of the .NET Framework SDK, or a null reference (Nothing in Visual Basic) if the targeted version of the .NET Framework SDK is not installed.</returns>
+      <param name="fileName">The file to locate in the .NET Framework SDK.</param>
+      <param name="version">The version of the .NET Framework to target.</param>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolLocationHelper.GetPathToSystemFile(System.String)">
+      <summary>Gets a fully qualified path to a file in the system directory.</summary>
+      <returns>A string containing the fully qualified path to the the file in the system directory.</returns>
+      <param name="fileName">The file to locate in the System folder.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.ToolLocationHelper.PathToSystem">
+      <summary>Gets the fully qualified path of the system directory.</summary>
+      <returns>A string containing a directory path to the system directory.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:Microsoft.Build.Utilities.ToolTask">
+      <summary>When overridden in a derived form, provides functionality for a task that wraps a command line tool.</summary>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolTask.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.Utilities.ToolTask" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolTask.#ctor(System.Resources.ResourceManager)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.Utilities.ToolTask" /> class with the specified <see cref="T:System.Resources.ResourceManager" />.</summary>
+      <param name="taskResources">The <see cref="T:System.Resources.ResourceManager" /> for task resources.</param>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolTask.#ctor(System.Resources.ResourceManager,System.String)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.Build.Utilities.ToolTask" /> class with the specified <see cref="T:System.Resources.ResourceManager" /> and Help keyword prefix.</summary>
+      <param name="taskResources">The <see cref="T:System.Resources.ResourceManager" /> for task resources.</param>
+      <param name="helpKeywordPrefix">The Help keyword to use for messages raised by the task.</param>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolTask.CallHostObjectToExecute">
+      <summary>Calls the host object to perform the work of the task.</summary>
+      <returns>true if the method was successfule; otherwise, false.</returns>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolTask.DeleteTempFile(System.String)">
+      <summary>Deletes the specified temporary file.</summary>
+      <param name="fileName">The name of the temporary file to delete.</param>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.ToolTask.EnvironmentOverride">
+      <summary>Gets a set of environment variable name-value pairs. Designed to be overridden in a custom task class (derived from ToolTask) to return a set of new or altered environment variables to create the execution context of the associated tool. </summary>
+      <returns>Returns a set of environment variables. Each dictionary key is the name of the environment variable to override and the dictionary value is the value to set for that environment variable. The default implementation of EnvironmentOverride returns null.</returns>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolTask.Execute">
+      <summary>Runs the exectuable file with the specified task parameters.</summary>
+      <returns>true if the task runs successfully; otherwise, false.</returns>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolTask.ExecuteTool(System.String,System.String,System.String)">
+      <summary>Creates a temporoary response (.rsp) file and runs the executable file.</summary>
+      <returns>The returned exit code of the executable file. If the task logged errors, but the executable returned an exit code of 0, this method returns -1.</returns>
+      <param name="pathToTool">The path to the executable file.</param>
+      <param name="responseFileCommands">The command line arguments to place in the .rsp file.</param>
+      <param name="commandLineCommands">The command line arguments to pass directly to the executable file.</param>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.ToolTask.ExitCode">
+      <summary>Gets the returned exit code of the executable file.</summary>
+      <returns>The returned exit code of the executable file. If the task logged errors, but the executable returned an exit code of 0, this method returns -1.</returns>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolTask.GenerateCommandLineCommands">
+      <summary>Returns a string value containing the command line arguments to pass directly to the executable file.</summary>
+      <returns>A string value containing the command line arguments to pass directly to the executable file.</returns>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolTask.GenerateFullPathToTool">
+      <summary>Returns the fully qualified path to the executable file.</summary>
+      <returns>The fully qualified path to the executable file.</returns>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolTask.GenerateResponseFileCommands">
+      <summary>Returns a string value containing the command line arguments to add to the response (.rsp) file before running the executable file.</summary>
+      <returns>a string value containing the command line arguments to add to the response (.rsp) file before running the executable file.</returns>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolTask.GetResponseFileSwitch(System.String)">
+      <summary>Returns the command line switch used by the executable file to specifiy a response (.rsp) file.</summary>
+      <returns>The command line switch used by the executable file to specifiy a response (.rsp) file.</returns>
+      <param name="responseFilePath">The full path to the temporary .rsp file.</param>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolTask.GetWorkingDirectory">
+      <summary>Returns the directory in which to run the executable file.</summary>
+      <returns>The directory in which to run the executable file, or a null reference (Nothing in Visual Basic) if the executable file should be run in the current directory.</returns>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolTask.HandleTaskExecutionErrors">
+      <summary>Handles execution errors raised by the executable file.</summary>
+      <returns>true if the method runs successfully; otherwise, false.</returns>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.ToolTask.HasLoggedErrors">
+      <summary>Whether this ToolTask has logged any errors</summary>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolTask.InitializeHostObject">
+      <summary>Initializes the host object of the task.</summary>
+      <returns>The <see cref="T:Microsoft.Build.Utilities.HostObjectInitializationStatus" /> of the host object.</returns>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolTask.LogEventsFromTextOutput(System.String,Microsoft.Build.Framework.MessageImportance)">
+      <summary>Parses a single line of text to identify any errors or warnings in canonical format.</summary>
+      <param name="singleLine">A single line of text for the method to parse.</param>
+      <param name="messageImportance">A value of <see cref="T:Microsoft.Build.Framework.MessageImportance" /> that indicates the importance level with which to log the message.</param>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolTask.LogPathToTool(System.String,System.String)">
+      <summary>Logs the tool name and path to all registered loggers.</summary>
+      <param name="toolName">The executable file name.</param>
+      <param name="pathToTool">The path to the executable file.</param>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolTask.LogToolCommand(System.String)">
+      <summary>Logs the starting point of the run to all registered loggers.</summary>
+      <param name="message">A descriptive message to provide loggers, usually the command line and switches.</param>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.ToolTask.ResponseFileEncoding">
+      <summary>Gets the <see cref="T:System.Text.Encoding" /> of the response file.</summary>
+      <returns>The <see cref="T:System.Text.Encoding" /> of the response file.</returns>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolTask.SkipTaskExecution">
+      <summary>Indicates whether task execution should be skipped.</summary>
+      <returns>true to skip task execution; otherwise, false.</returns>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.ToolTask.StandardErrorEncoding">
+      <summary>Gets the <see cref="T:System.Text.Encoding" /> of the standard error stream of the task.</summary>
+      <returns>The <see cref="T:System.Text.Encoding" /> of the response file.</returns>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.ToolTask.StandardErrorImportance">
+      <summary>Task Parameter: Importance with which to log text from the standard error stream.</summary>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.ToolTask.StandardErrorLoggingImportance">
+      <summary>Gets the <see cref="T:Microsoft.Build.Framework.MessageImportance" /> with which to log errors.</summary>
+      <returns>The <see cref="T:Microsoft.Build.Framework.MessageImportance" /> with which to log errors.</returns>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.ToolTask.StandardOutputEncoding">
+      <summary>Gets the <see cref="T:System.Text.Encoding" /> of the standard output stream of the task.</summary>
+      <returns>The <see cref="T:System.Text.Encoding" /> of the response file.</returns>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.ToolTask.StandardOutputImportance">
+      <summary>Task Parameter: Importance with which to log text from the standard out stream.</summary>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.ToolTask.StandardOutputLoggingImportance">
+      <summary>Gets the <see cref="T:Microsoft.Build.Framework.MessageImportance" /> with which to log errors.</summary>
+      <returns>The <see cref="T:Microsoft.Build.Framework.MessageImportance" /> with which to log errors.</returns>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.ToolTask.Timeout">
+      <summary>Gets or sets the amount of time after which the task executable is terminated.</summary>
+      <returns>The time-out length, in milliseconds.</returns>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.ToolTask.ToolExe">
+      <summary>Projects may set this to override a task's ToolName. Tasks may override this to prevent that.</summary>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.ToolTask.ToolName">
+      <summary>Gets the name of the executable file to run.</summary>
+      <returns>The name of the executable file to run.</returns>
+    </member>
+    <member name="P:Microsoft.Build.Utilities.ToolTask.ToolPath">
+      <summary>Gets or sets the path of the executable file to run.</summary>
+      <returns>The path of the file to run.</returns>
+    </member>
+    <member name="M:Microsoft.Build.Utilities.ToolTask.ValidateParameters">
+      <summary>Indicates whether all task paratmeters are valid.</summary>
+      <returns>true if all task parameters are valid; otherwise, false.</returns>
+    </member>
+  </members>
+</doc>

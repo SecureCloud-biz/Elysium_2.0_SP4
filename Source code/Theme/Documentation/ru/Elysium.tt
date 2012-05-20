@@ -58,6 +58,14 @@
     paths.Add(@"Controls\ProgressBars\Automation\ProgressBarAutomationPeer.ru.xml");
     
     paths.Add(@"Controls\Menus\Automation\SubmenuAutomationPeer.ru.xml");
+
+    paths.Add(@"Controls\ApplicationBar\ApplicationBarPanel.ru.xml");
+
+    paths.Add(@"Controls\CommandButtons\Primitives\CommandButtonBase.ru.xml");
+    paths.Add(@"Controls\CommandButtons\CommandButton.ru.xml");
+    paths.Add(@"Controls\CommandButtons\ToggleCommandButton.ru.xml");
+
+    paths.Add(@"Controls\Menus\Submenu.ru.xml");
     
     var documentation = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
     

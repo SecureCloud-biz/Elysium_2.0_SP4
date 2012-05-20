@@ -25,7 +25,7 @@
         <list type="bullet">
           <item>
             <description>
-              "Auto": <see cref="F:System.Windows.GridLength.Auto">GridLength.Auto</see>. Значение параметра <paramref name="value"/> игнорируется.
+              "Auto": <see cref="P:System.Windows.GridLength.Auto">GridLength.Auto</see>. Значение параметра <paramref name="value"/> игнорируется.
             </description>
           </item>
           <item>
@@ -52,7 +52,7 @@
       <param name="parameter">Параметр конвертера. Должен быть строкой и принимать одно из следующих значений: "Auto", "*" или null.</param>
       <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
       <returns>
-        Значение типа <see cref="T:System.Double"/>. Результатом является значение <see cref="F:System.Windows.GridLength.Value"/> или
+        Значение типа <see cref="T:System.Double"/>. Результатом является значение <see cref="P:System.Windows.GridLength.Value"/> или
         <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>, в случае несовпадения типов ("Auto", "*" или количество пикселей) <paramref name="value"/> и <paramref name="parameter"/> или неудачного выполнения метода.
       </returns>
     </method>

@@ -1,0 +1,638 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Deployment</name>
+  </assembly>
+  <members>
+    <member name="T:System.Deployment.Application.ApplicationDeployment">
+      <summary>Поддерживает программное обновление текущего развертывания и обрабатывает загрузку файлов по требованию.Этот класс нельзя унаследовать.</summary>
+    </member>
+    <member name="P:System.Deployment.Application.ApplicationDeployment.ActivationUri">
+      <summary>Возвращает URL-адрес, использованный для запуска манифеста развертывания приложения. </summary>
+      <returns>Пустая строка, если свойство TrustUrlParameters манифеста развертывание имеет значение false, или же если пользователь предоставил UNC-путь для развертывания или открыл его локально.В противном случае будет возвращен полный URL-адрес, который был использован для запуска приложения, включая параметры запуска.</returns>
+    </member>
+    <member name="M:System.Deployment.Application.ApplicationDeployment.CheckForDetailedUpdate">
+      <summary>Выполняет те же действия, что и метод <see cref="M:System.Deployment.Application.ApplicationDeployment.CheckForUpdate" />, однако возвращает развернутые сведения о доступном обновлении.</summary>
+      <returns>Класс <see cref="T:System.Deployment.Application.UpdateCheckInfo" /> для доступного обновления.</returns>
+      <exception cref="T:System.InvalidOperationException">Для текущего приложения не настроена поддержка обновлений либо уже выполняется другая операция проверки обновлений.</exception>
+      <exception cref="T:System.Deployment.Application.DeploymentDownloadException">Невозможно загрузить манифест развертывания.Данное исключение появится в свойстве <see cref="P:System.ComponentModel.AsyncCompletedEventArgs.Error" /> события <see cref="E:System.Deployment.Application.ApplicationDeployment.CheckForUpdateCompleted" />.</exception>
+      <exception cref="T:System.Deployment.Application.InvalidDeploymentException">Манифест развертывания поврежден.Восстановите манифест приложения, перед тем, как пытаться развернуть его для пользователей.Данное исключение появится в свойстве <see cref="P:System.ComponentModel.AsyncCompletedEventArgs.Error" /> события <see cref="E:System.Deployment.Application.ApplicationDeployment.CheckForUpdateCompleted" />.</exception>
+    </member>
+    <member name="M:System.Deployment.Application.ApplicationDeployment.CheckForDetailedUpdate(System.Boolean)">
+      <summary>Выполняет те же действия, что и метод <see cref="M:System.Deployment.Application.ApplicationDeployment.CheckForUpdate" />, однако возвращает развернутые сведения о доступном обновлении.</summary>
+      <returns>Класс <see cref="T:System.Deployment.Application.UpdateCheckInfo" /> для доступного обновления.</returns>
+      <param name="persistUpdateCheckResult">Если false, обновление будет применено молча и никакое диалоговое окно не будет показано.</param>
+    </member>
+    <member name="M:System.Deployment.Application.ApplicationDeployment.CheckForUpdate">
+      <summary>Проверяет свойство <see cref="P:System.Deployment.Application.ApplicationDeployment.UpdateLocation" /> чтобы определить наличие нового обновления.</summary>
+      <returns>Значение true, если новое обновление доступно; в противном случае — значение false.</returns>
+      <exception cref="T:System.InvalidOperationException">ClickOnce генерирует это исключение сразу после вызова метода <see cref="M:System.Deployment.Application.ApplicationDeployment.CheckForUpdate" />, когда уже выполняется операция обновления.</exception>
+      <exception cref="T:System.Deployment.Application.DeploymentDownloadException">Невозможно загрузить манифест развертывания. </exception>
+      <exception cref="T:System.Deployment.Application.InvalidDeploymentException">Манифест развертывания поврежден.Для устранения этой проблемы может понадобиться выполнить повторное развертывание приложения.</exception>
+    </member>
+    <member name="M:System.Deployment.Application.ApplicationDeployment.CheckForUpdate(System.Boolean)">
+      <summary>Проверяет свойство <see cref="P:System.Deployment.Application.ApplicationDeployment.UpdateLocation" /> чтобы определить наличие нового обновления.</summary>
+      <returns>Значение true, если новое обновление доступно; в противном случае — значение false.</returns>
+      <param name="persistUpdateCheckResult">Если false, обновление будет применено молча и никакое диалоговое окно не будет показано.</param>
+    </member>
+    <member name="M:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync">
+      <summary>Асинхронно проверяет свойство <see cref="P:System.Deployment.Application.ApplicationDeployment.UpdateLocation" /> чтобы определить наличие нового обновления.</summary>
+      <exception cref="T:System.InvalidOperationException">ClickOnce генерирует это исключение сразу после вызова метода <see cref="M:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync" />, когда уже выполняется операция обновления.</exception>
+      <exception cref="T:System.Deployment.Application.DeploymentDownloadException">Невозможно загрузить манифест развертывания.Данное исключение появится в свойстве <see cref="P:System.ComponentModel.AsyncCompletedEventArgs.Error" /> события <see cref="E:System.Deployment.Application.ApplicationDeployment.CheckForUpdateCompleted" />.</exception>
+      <exception cref="T:System.Deployment.Application.InvalidDeploymentException">Манифест развертывания поврежден.Для устранения этой проблемы может понадобиться выполнить повторное развертывание приложения.Данное исключение появится в свойстве <see cref="P:System.ComponentModel.AsyncCompletedEventArgs.Error" /> события <see cref="E:System.Deployment.Application.ApplicationDeployment.CheckForUpdateCompleted" />.</exception>
+    </member>
+    <member name="M:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsyncCancel">
+      <summary>Отменяет асинхронную проверку обновлений.</summary>
+    </member>
+    <member name="E:System.Deployment.Application.ApplicationDeployment.CheckForUpdateCompleted">
+      <summary>Происходит после завершения работы метода <see cref="M:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync" />.</summary>
+    </member>
+    <member name="E:System.Deployment.Application.ApplicationDeployment.CheckForUpdateProgressChanged">
+      <summary>Происходит, когда доступные сведения о ходе выполнения обновления при вызове метода <see cref="M:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync" />.</summary>
+    </member>
+    <member name="P:System.Deployment.Application.ApplicationDeployment.CurrentDeployment">
+      <summary>Возвращает текущий класс <see cref="T:System.Deployment.Application.ApplicationDeployment" /> для данного развертывания.</summary>
+      <returns>Текущее развертывание.</returns>
+      <exception cref="T:System.Deployment.Application.InvalidDeploymentException">Предпринята попытка вызова данного статического свойства из приложения, которое не является приложением ClickOnce. </exception>
+    </member>
+    <member name="P:System.Deployment.Application.ApplicationDeployment.CurrentVersion">
+      <summary>Возвращает версию развертывания для текущего выполняемого экземпляра приложения.</summary>
+      <returns>Текущая версия развертывания.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.ApplicationDeployment.DataDirectory">
+      <summary>Возвращает путь к каталогу данных ClickOnce.</summary>
+      <returns>Строка, содержащая путь к каталогу данных приложения на локальном диске.</returns>
+    </member>
+    <member name="M:System.Deployment.Application.ApplicationDeployment.DownloadFileGroup(System.String)">
+      <summary>Загружает по требованию набор необязательных файлов.</summary>
+      <param name="groupName">Именованная группа файлов для загрузки.Для всех файлов, помеченных как "необязательные" в приложении ClickOnce, следует указать имя группы.</param>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="groupName" /> имеет значение null или нулевую длину.</exception>
+    </member>
+    <member name="M:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync(System.String)">
+      <summary>Загружает по требованию набор необязательных файлов в фоновом режиме.</summary>
+      <param name="groupName">Именованная группа файлов для загрузки.Для всех файлов, помеченных как "необязательные" в приложении ClickOnce, следует указать имя группы.</param>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="groupName" /> имеет значение null или нулевую длину.</exception>
+      <exception cref="T:System.InvalidOperationException">Невозможно одновременно инициировать более одной операции загрузки <paramref name="groupName" />.</exception>
+    </member>
+    <member name="M:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync(System.String,System.Object)">
+      <summary>Загружает по требованию набор необязательных файлов в фоновом режиме и передает фрагмент состояния приложения обратным вызовам события.</summary>
+      <param name="groupName">Именованная группа файлов для загрузки.Для всех файлов, помеченных как "необязательные" в приложении ClickOnce, следует указать имя группы.</param>
+      <param name="userState">Произвольный объект, содержащий сведения о состоянии для асинхронной операции.</param>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="groupName" /> имеет значение null или нулевую длину.</exception>
+      <exception cref="T:System.InvalidOperationException">Невозможно одновременно инициировать более одной операции загрузки <paramref name="groupName" />.</exception>
+    </member>
+    <member name="M:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsyncCancel(System.String)">
+      <summary>Отменяет асинхронную операцию загрузки файла.</summary>
+      <param name="groupName">Именованная группа файлов для загрузки.Для всех файлов, помеченных как "необязательные" в приложении ClickOnce, следует указать имя группы.</param>
+      <exception cref="T:System.ArgumentNullException">Аргумент <paramref name="groupName" /> не может иметь значение null.</exception>
+    </member>
+    <member name="E:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupCompleted">
+      <summary>Происходит для главного потока приложения после завершения загрузки файла.</summary>
+    </member>
+    <member name="E:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupProgressChanged">
+      <summary>Происходит, когда доступны сведения о состоянии операции загрузки файла, инициированной вызовом <see cref="Overload:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync" />.</summary>
+    </member>
+    <member name="M:System.Deployment.Application.ApplicationDeployment.IsFileGroupDownloaded(System.String)">
+      <summary>Проверяет, загружена ли уже именованная группа файлов на клиентском компьютере.</summary>
+      <returns>Значение true, если группа файлов уже была загружена для текущей версии данного приложения; в противном случае — значение false.Если новая версия приложения была установлена, но при этом она не добавила, не удалила или же не изменила файлы в группе файлов, метод <see cref="M:System.Deployment.Application.ApplicationDeployment.IsFileGroupDownloaded(System.String)" /> вернет значение true.</returns>
+      <param name="groupName">Именованная группа файлов для загрузки.Для всех файлов, помеченных как "необязательные" в приложении ClickOnce, следует указать имя группы.</param>
+      <exception cref="T:System.Deployment.Application.InvalidDeploymentException">
+        <paramref name="groupName" /> не является группой файлов, заданной в манифесте приложения.</exception>
+    </member>
+    <member name="P:System.Deployment.Application.ApplicationDeployment.IsFirstRun">
+      <summary>Возвращает значение, которое сообщает, выполняется ли данное приложение на клиентском компьютере впервые. </summary>
+      <returns>true, если данная версия приложения никогда ранее не выполнялась на клиентском компьютере; в противном случае — значение false.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed">
+      <summary>Возвращает значение, определяющее, является ли текущее приложение приложением ClickOnce.</summary>
+      <returns>Значение true, если приложение является приложением ClickOnce; в противном случае — false.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.ApplicationDeployment.TimeOfLastUpdateCheck">
+      <summary>Возвращает дату и время последней проверки на наличие обновлений для приложения ClickOnce.</summary>
+      <returns>Класс <see cref="T:System.DateTime" /> последней проверки обновлений.</returns>
+    </member>
+    <member name="M:System.Deployment.Application.ApplicationDeployment.Update">
+      <summary>Инициирует операцию синхронной загрузки и установки последней версии данного приложения. </summary>
+      <returns>true, если коллекция была обновлена; в противном случае — false.</returns>
+      <exception cref="T:System.Deployment.Application.TrustNotGrantedException">Локальный компьютер не предоставляет приложению запрошенный уровень разрешений для выполнения.</exception>
+      <exception cref="T:System.Deployment.Application.InvalidDeploymentException">Развертывание ClickOnce повреждено.Советы по диагностике и устранению этой проблемы см. в разделе Troubleshooting ClickOnce Deployments.</exception>
+      <exception cref="T:System.Deployment.Application.DeploymentDownloadException">Новое развертывание не удалось скачать из сетевого расположения.</exception>
+      <exception cref="T:System.InvalidOperationException">Приложение в настоящий момент загружается.</exception>
+    </member>
+    <member name="M:System.Deployment.Application.ApplicationDeployment.UpdateAsync">
+      <summary>Инициирует операцию асинхронной загрузки и установки последней версии данного приложения.</summary>
+      <exception cref="T:System.Deployment.Application.TrustNotGrantedException">Локальный компьютер не предоставляет приложению запрошенный уровень разрешений для выполнения.</exception>
+      <exception cref="T:System.Deployment.Application.InvalidDeploymentException">Развертывание ClickOnce повреждено.Советы по диагностике и устранению этой проблемы см. в разделе Troubleshooting ClickOnce Deployments.</exception>
+      <exception cref="T:System.Deployment.Application.DeploymentDownloadException">Новое развертывание не удалось скачать из сетевого расположения.</exception>
+    </member>
+    <member name="M:System.Deployment.Application.ApplicationDeployment.UpdateAsyncCancel">
+      <summary>Отменяет асинхронное обновление, инициированное методом <see cref="M:System.Deployment.Application.ApplicationDeployment.UpdateAsync" />.</summary>
+    </member>
+    <member name="E:System.Deployment.Application.ApplicationDeployment.UpdateCompleted">
+      <summary>Происходит, когда ClickOnce заканчивает обновлять приложение после вызова метода <see cref="M:System.Deployment.Application.ApplicationDeployment.UpdateAsync" />.</summary>
+    </member>
+    <member name="P:System.Deployment.Application.ApplicationDeployment.UpdatedApplicationFullName">
+      <summary>Возвращает полное имя приложения после обновления.</summary>
+      <returns>Строка <see cref="T:System.String" />, содержащая полное имя приложения.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.ApplicationDeployment.UpdatedVersion">
+      <summary>Возвращает версию последнего загруженного обновления.</summary>
+      <returns>
+        <see cref="T:System.Version" /> описывает версию обновления.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.ApplicationDeployment.UpdateLocation">
+      <summary>Возвращает веб-сайт или общую папку, из которой осуществлялось обновление приложения.</summary>
+      <returns>Путь обновления может ссылаться на HTTP, HTTPS, URL-адрес файла или сетевой путь Windows (UNC) к файлу.</returns>
+    </member>
+    <member name="E:System.Deployment.Application.ApplicationDeployment.UpdateProgressChanged">
+      <summary>Происходит, когда ClickOnce содержит новые сведения о состоянии для операции обновления, инициированной вызовом метода <see cref="M:System.Deployment.Application.ApplicationDeployment.UpdateAsync" />.</summary>
+    </member>
+    <member name="T:System.Deployment.Application.CheckForUpdateCompletedEventArgs">
+      <summary>Предоставляет детализированные сведения об обновлении, полученные с помощью обращения к методу <see cref="M:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync" />.</summary>
+    </member>
+    <member name="P:System.Deployment.Application.CheckForUpdateCompletedEventArgs.AvailableVersion">
+      <summary>Возвращает номер последней удаленной версии.</summary>
+      <returns>
+        <see cref="T:System.Version" /> отображает номер редакции, а также основной и младший номер сборки последней версии.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.CheckForUpdateCompletedEventArgs.IsUpdateRequired">
+      <summary>Возвращает значение, отражающее необходимость установки обновления. </summary>
+      <returns>true, если обновление необходимо; в противном случае — значение false.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.CheckForUpdateCompletedEventArgs.MinimumRequiredVersion">
+      <summary>Возвращает минимальный номер версии, которая должна быть установлена на компьютере пользователя. </summary>
+      <returns>Объект <see cref="T:System.Version" /> отображает наименьший номер версии, которую пользователю необходимо установить.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.CheckForUpdateCompletedEventArgs.UpdateAvailable">
+      <summary>Возвращает значение, сообщающее о том, что доступно неустановленное обновление.</summary>
+      <returns>true, если доступна новая версия приложения; в противном случае — false.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.CheckForUpdateCompletedEventArgs.UpdateSizeBytes">
+      <summary>Возвращает размер доступного обновления.</summary>
+      <returns>
+        <see cref="T:System.Int64" /> представляет общий размер доступного обновления в байтах.Если нет доступных обновлений — возвращает значение 0.</returns>
+    </member>
+    <member name="T:System.Deployment.Application.CheckForUpdateCompletedEventHandler">
+      <summary>Предоставляет метод, обрабатывающий событие <see cref="E:System.Deployment.Application.ApplicationDeployment.CheckForUpdateCompleted" /><see cref="T:System.Deployment.Application.ApplicationDeployment" />. </summary>
+      <param name="sender">Источник события.</param>
+      <param name="e">
+        <see cref="T:System.Deployment.Application.CheckForUpdateCompletedEventArgs" />, содержащий данные события. </param>
+    </member>
+    <member name="T:System.Deployment.Application.CompatibleFramework">
+      <summary>Представляет версию платформы .NET Framework, в которой можно устанавливать и запускать приложения.</summary>
+    </member>
+    <member name="P:System.Deployment.Application.CompatibleFramework.Profile">
+      <summary>Задает профиль версии платформы .NET Framework, в которой можно устанавливать и запускать приложения.</summary>
+      <returns>Строка, представляющая профиль.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.CompatibleFramework.SupportedRuntime">
+      <summary>Задает номер версии среды выполнения .NET Framework, в которой можно устанавливать и запускать приложения.</summary>
+      <returns>Строка, представляющая версию среды выполнения.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.CompatibleFramework.TargetVersion">
+      <summary>Задает версию платформы .NET Framework, в которой можно устанавливать и запускать приложения.</summary>
+      <returns>Строка, которая представляет версию.</returns>
+    </member>
+    <member name="T:System.Deployment.Application.CompatibleFrameworkMissingException">
+      <summary>Это исключение создается, если не удается найти версию .NET Framework, совместимую с данным приложением.</summary>
+    </member>
+    <member name="M:System.Deployment.Application.CompatibleFrameworkMissingException.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.CompatibleFrameworkMissingException" /> системным сообщением, содержащим описание ошибки.</summary>
+    </member>
+    <member name="M:System.Deployment.Application.CompatibleFrameworkMissingException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.CompatibleFrameworkMissingException" /> с сериализованными данными.</summary>
+      <param name="serializationInfo">Объект, содержащий сериализованные данные объекта. </param>
+      <param name="streamingContext">Контекстные сведения об источнике или назначении. </param>
+    </member>
+    <member name="M:System.Deployment.Application.CompatibleFrameworkMissingException.#ctor(System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.CompatibleFrameworkMissingException" /> с заданным сообщение, содержащим описание ошибки.</summary>
+      <param name="message">Сообщение с описанием исключения.Код, вызывающий этот конструктор, должен обеспечить локализацию данной строки в соответствии с текущим языком и региональными параметрами системы.</param>
+    </member>
+    <member name="M:System.Deployment.Application.CompatibleFrameworkMissingException.#ctor(System.String,System.Exception)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.CompatibleFrameworkMissingException" /> с указанным сообщением об ошибке и ссылкой на внутреннее исключение, вызвавшее это исключение.</summary>
+      <param name="message">Сообщение с описанием исключения.Код, вызывающий этот конструктор, должен обеспечить локализацию данной строки в соответствии с текущим языком и региональными параметрами системы.</param>
+      <param name="innerException">Исключение, являющееся причиной текущего исключения.Если значение параметра <paramref name="innerException" /> не равно null, текущее исключение сгенерировано в блоке catch, обрабатывающем внутреннее исключение.</param>
+    </member>
+    <member name="P:System.Deployment.Application.CompatibleFrameworkMissingException.CompatibleFrameworks">
+      <summary>Получает список версий .NET Framework, в которых можно устанавливать и запускать это приложение.</summary>
+      <returns>Список версий .NET Framework, в которых можно устанавливать и запускать это приложение.</returns>
+    </member>
+    <member name="M:System.Deployment.Application.CompatibleFrameworkMissingException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.CompatibleFrameworkMissingException" /> с сериализованными данными.</summary>
+      <param name="info">Объект, содержащий сериализованные данные объекта. </param>
+      <param name="context">Контекстные сведения об источнике или назначении. </param>
+    </member>
+    <member name="T:System.Deployment.Application.CompatibleFrameworks">
+      <summary>Предоставляет сведения о версии платформы .NET Framework, в которой можно устанавливать и запускать данное приложение.</summary>
+    </member>
+    <member name="P:System.Deployment.Application.CompatibleFrameworks.Frameworks">
+      <summary>Получает список версий .NET Framework, в которых можно устанавливать и запускать это приложение.</summary>
+      <returns>Список объектов <see cref="T:System.Deployment.Application.CompatibleFramework" />, задающих версии .NET Framework, в которых можно устанавливать и запускать это приложение.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.CompatibleFrameworks.SupportUrl">
+      <summary>Получает объект <see cref="T:System.Uri" />, который предоставляет пользователю инструкции по установке версии платформы .NET Framework, в которой можно устанавливать и запускать это приложение.</summary>
+      <returns>Объект <see cref="T:System.Uri" />, который предоставляет пользователю инструкции по установке версии платформы .NET Framework, в которой можно устанавливать и запускать это приложение.</returns>
+    </member>
+    <member name="T:System.Deployment.Application.DependentPlatformMissingException">
+      <summary>Исключение, которое создается, если во время активации развернутого экземпляра ClickOnce не была найдена зависимость платформы и экземпляр не запущен.</summary>
+    </member>
+    <member name="M:System.Deployment.Application.DependentPlatformMissingException.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.DependentPlatformMissingException" />. </summary>
+    </member>
+    <member name="M:System.Deployment.Application.DependentPlatformMissingException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.DependentPlatformMissingException" />. </summary>
+      <param name="serializationInfo">Объект, содержащий сериализованные данные объекта. </param>
+      <param name="streamingContext">Контекстные сведения об источнике или назначении. </param>
+    </member>
+    <member name="M:System.Deployment.Application.DependentPlatformMissingException.#ctor(System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.DependentPlatformMissingException" /> с заданным сообщение, содержащим описание ошибки. </summary>
+      <param name="message">Сообщение с описанием исключения.Код, вызывающий этот конструктор, должен обеспечить локализацию данной строки в соответствии с текущим языком и региональными параметрами системы.</param>
+    </member>
+    <member name="M:System.Deployment.Application.DependentPlatformMissingException.#ctor(System.String,System.Exception)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.DependentPlatformMissingException" /> с указанным сообщением об ошибке и ссылкой на внутреннее исключение, вызвавшее это исключение. </summary>
+      <param name="message">Сообщение с описанием исключения.Код, вызывающий этот конструктор, должен обеспечить локализацию данной строки в соответствии с текущим языком и региональными параметрами системы.</param>
+      <param name="innerException">Исключение, являющееся причиной текущего исключения.Если значение параметра <paramref name="innerException" /> не равно null, текущее исключение сгенерировано в блоке catch, обрабатывающем внутреннее исключение.</param>
+    </member>
+    <member name="M:System.Deployment.Application.DependentPlatformMissingException.#ctor(System.String,System.Uri)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.DependentPlatformMissingException" />. </summary>
+      <param name="message">Сообщение об исключении.</param>
+      <param name="supportUrl">URL-адрес для получения дополнительных сведений от службы поддержки продукта.</param>
+    </member>
+    <member name="M:System.Deployment.Application.DependentPlatformMissingException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Получает данные объекта.</summary>
+      <param name="info">Объект, содержащий сериализованные данные объекта.</param>
+      <param name="context">Контекстные сведения об источнике или назначении.</param>
+    </member>
+    <member name="P:System.Deployment.Application.DependentPlatformMissingException.SupportUrl">
+      <summary>Получает универсальный код ресурса (URI), который указывает, где можно получить поддержку в случае возникновения заданной проблемы.</summary>
+      <returns>Универсальный код ресурса (URI), который указывает, где можно получить поддержку в случае возникновения заданной проблемы.</returns>
+    </member>
+    <member name="T:System.Deployment.Application.DeploymentDownloadException">
+      <summary>Указывает на наличие ошибки при загрузке манифестов ClickOnce или файлов развертывания на клиентский компьютер. </summary>
+    </member>
+    <member name="M:System.Deployment.Application.DeploymentDownloadException.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.DeploymentDownloadException" />. </summary>
+    </member>
+    <member name="M:System.Deployment.Application.DeploymentDownloadException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.DeploymentDownloadException" />. </summary>
+      <param name="serializationInfo">Объект, содержащий сериализованные данные объекта. </param>
+      <param name="streamingContext">Контекстные сведения об источнике или назначении. </param>
+    </member>
+    <member name="M:System.Deployment.Application.DeploymentDownloadException.#ctor(System.String)">
+      <summary>Выполняет инициализацию нового экземпляра класса <see cref="T:System.Deployment.Application.DeploymentDownloadException" /> с использованием сообщения, содержащего описание исключения. </summary>
+      <param name="message">Сообщение с описанием исключения.Код, вызывающий этот конструктор, должен обеспечить локализацию данной строки в соответствии с текущим языком и региональными параметрами системы.</param>
+    </member>
+    <member name="M:System.Deployment.Application.DeploymentDownloadException.#ctor(System.String,System.Exception)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.DeploymentDownloadException" />. </summary>
+      <param name="message">Сообщение с описанием исключения.Код, вызывающий этот конструктор, должен обеспечить локализацию данной строки в соответствии с текущим языком и региональными параметрами системы.</param>
+      <param name="innerException">Исключение, являющееся причиной текущего исключения.Если значение параметра <paramref name="innerException" /> не равно null, текущее исключение сгенерировано в блоке catch, обрабатывающем внутреннее исключение.</param>
+    </member>
+    <member name="T:System.Deployment.Application.DeploymentException">
+      <summary>Определяет базовый класс для всех связанных с развертыванием исключений.</summary>
+    </member>
+    <member name="M:System.Deployment.Application.DeploymentException.#ctor">
+      <summary>Инициализирует новый экземпляр <see cref="T:System.Deployment.Application.DeploymentException" />. </summary>
+    </member>
+    <member name="M:System.Deployment.Application.DeploymentException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Initializes a new instance of the <see cref="T:System.Deployment.Application.DeploymentException" /> class. </summary>
+    </member>
+    <member name="M:System.Deployment.Application.DeploymentException.#ctor(System.String)">
+      <summary>Выполняет инициализацию нового экземпляра класса <see cref="T:System.Deployment.Application.DeploymentException" />. </summary>
+    </member>
+    <member name="M:System.Deployment.Application.DeploymentException.#ctor(System.String,System.Exception)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.DeploymentException" />. </summary>
+    </member>
+    <member name="M:System.Deployment.Application.DeploymentException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)"></member>
+    <member name="T:System.Deployment.Application.DeploymentProgressChangedEventArgs">
+      <summary>Представляет состояние хода выполнения асинхронной операции.</summary>
+    </member>
+    <member name="P:System.Deployment.Application.DeploymentProgressChangedEventArgs.BytesCompleted">
+      <summary>Возвращает общее количество байтов для данной операции загрузки.</summary>
+      <returns>
+        <see cref="T:System.Int64" /> представляет количество переданных байтов данных. </returns>
+    </member>
+    <member name="P:System.Deployment.Application.DeploymentProgressChangedEventArgs.BytesTotal">
+      <summary>Возвращает общее количество байтов операции загрузки.</summary>
+      <returns>
+        <see cref="T:System.Int64" /> представляет общий размер загруженных данных в байтах.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.DeploymentProgressChangedEventArgs.Group">
+      <summary>Возвращает имя загруженной группы файлов.</summary>
+      <returns>
+        <see cref="T:System.String" /> содержит имя группы файлов, если событие произошло в результате обращения к <see cref="Overload:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync" />; в противном случае — пустая строка. </returns>
+    </member>
+    <member name="P:System.Deployment.Application.DeploymentProgressChangedEventArgs.State">
+      <summary>Возвращает действие, которое процесс выполняет в данный момент.</summary>
+      <returns>Значение <see cref="T:System.Deployment.Application.DeploymentProgressState" /> указывает, какой элемент или элементы операции сейчас загружаются. </returns>
+    </member>
+    <member name="T:System.Deployment.Application.DeploymentProgressChangedEventHandler">
+      <summary>Предоставляет метод, обрабатывающий события <see cref="E:System.Deployment.Application.ApplicationDeployment.CheckForUpdateProgressChanged" />, <see cref="E:System.Deployment.Application.ApplicationDeployment.UpdateProgressChanged" /> или событие <see cref="E:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupProgressChanged" /><see cref="T:System.Deployment.Application.ApplicationDeployment" />. </summary>
+      <param name="sender">Источник события. </param>
+      <param name="e">
+        <see cref="T:System.Deployment.Application.DeploymentProgressChangedEventArgs" />, содержащий данные события.</param>
+    </member>
+    <member name="T:System.Deployment.Application.DeploymentProgressState">
+      <summary>Указывает текущее состояние операции загрузки ClickOnce.</summary>
+    </member>
+    <member name="F:System.Deployment.Application.DeploymentProgressState.DownloadingDeploymentInformation">
+      <summary>ClickOnce загружает манифест развертывания.</summary>
+    </member>
+    <member name="F:System.Deployment.Application.DeploymentProgressState.DownloadingApplicationInformation">
+      <summary>ClickOnce загружает манифест приложения.</summary>
+    </member>
+    <member name="F:System.Deployment.Application.DeploymentProgressState.DownloadingApplicationFiles">
+      <summary>ClickOnce загружает библиотеки DLL и файлы данных приложения.</summary>
+    </member>
+    <member name="T:System.Deployment.Application.DeploymentServiceCom">
+      <summary>Предоставляет внутренние службы для API развертывания ClickOnce. </summary>
+    </member>
+    <member name="M:System.Deployment.Application.DeploymentServiceCom.#ctor">
+      <summary>Создает новый экземпляр <see cref="T:System.Deployment.Application.DeploymentServiceCom" />.</summary>
+    </member>
+    <member name="M:System.Deployment.Application.DeploymentServiceCom.ActivateApplicationExtension(System.String,System.String,System.String)">
+      <summary>Активизирует расширение приложения.</summary>
+      <param name="textualSubId">Внутренний идентификатор развертывания.</param>
+      <param name="deploymentProviderUrl">URL-адрес развертывания.</param>
+      <param name="targetAssociatedFile">Целевой файл.</param>
+    </member>
+    <member name="M:System.Deployment.Application.DeploymentServiceCom.ActivateDeployment(System.String,System.Boolean)">
+      <summary>Начинает развертывание на клиентском компьютере. </summary>
+      <param name="deploymentLocation">Расположение манифеста развертывания на диске.</param>
+      <param name="isShortcut">Указывает, является <paramref name="deploymentLocation" /> ярлыком или реальным файлом.</param>
+    </member>
+    <member name="M:System.Deployment.Application.DeploymentServiceCom.ActivateDeploymentEx(System.String,System.Int32,System.Int32)">
+      <summary>Начинает развертывание на клиентском компьютере.</summary>
+      <param name="deploymentLocation">Расположение манифеста развертывания.</param>
+      <param name="unsignedPolicy">Политика, используемая для неподписанных приложений.</param>
+      <param name="signedPolicy">Политика, используемая для подписанных приложений.</param>
+    </member>
+    <member name="M:System.Deployment.Application.DeploymentServiceCom.CheckForDeploymentUpdate(System.String)">
+      <summary>Проверяет расположение обновления, чтобы выяснить, доступна ли обновленная версия данного развертывания.</summary>
+      <param name="textualSubId">Внутренний идентификатор развертывания.</param>
+    </member>
+    <member name="M:System.Deployment.Application.DeploymentServiceCom.CleanOnlineAppCache">
+      <summary>Удаляет все установленные на компьютере приложения ClickOnce, которые работают только при подключении к Интернет.</summary>
+    </member>
+    <member name="M:System.Deployment.Application.DeploymentServiceCom.EndServiceRightNow">
+      <summary>Немедленно прекращает обновление развертывания. </summary>
+    </member>
+    <member name="M:System.Deployment.Application.DeploymentServiceCom.MaintainSubscription(System.String)">
+      <summary>Управляет подпиской на обновления. </summary>
+      <param name="textualSubId">Внутренний идентификатор развертывания.</param>
+    </member>
+    <member name="T:System.Deployment.Application.DownloadApplicationCompletedEventArgs">
+      <summary>Предоставляет данные для события <see cref="E:System.Deployment.Application.InPlaceHostingManager.DownloadApplicationCompleted" />. </summary>
+    </member>
+    <member name="P:System.Deployment.Application.DownloadApplicationCompletedEventArgs.LogFilePath">
+      <summary>Получает путь файла журнала ClickOnce. </summary>
+      <returns>Путь файла журнала ClickOnce.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.DownloadApplicationCompletedEventArgs.ShortcutAppId">
+      <summary>Получает содержимое файла .appref-ms, который может запускать данное приложение ClickOnce.</summary>
+      <returns>Содержимое файла .appref-ms.</returns>
+    </member>
+    <member name="T:System.Deployment.Application.DownloadFileGroupCompletedEventArgs">
+      <summary>Описывает последнюю завершенную загрузку файла. </summary>
+    </member>
+    <member name="P:System.Deployment.Application.DownloadFileGroupCompletedEventArgs.Group">
+      <summary>Возвращает имя загруженной группы файлов.</summary>
+      <returns>
+        <see cref="T:System.String" /> соответствует имени группы файлов.</returns>
+    </member>
+    <member name="T:System.Deployment.Application.DownloadFileGroupCompletedEventHandler">
+      <summary>Предоставляет метод, обрабатывающий событие <see cref="E:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupCompleted" /><see cref="T:System.Deployment.Application.ApplicationDeployment" />. </summary>
+      <param name="sender">Источник события. </param>
+      <param name="e">
+        <see cref="T:System.Deployment.Application.DownloadFileGroupCompletedEventArgs" />, содержащий данные события.</param>
+    </member>
+    <member name="T:System.Deployment.Application.DownloadProgressChangedEventArgs">
+      <summary>Предоставляет данные для события <see cref="E:System.Deployment.Application.InPlaceHostingManager.DownloadProgressChanged" />. </summary>
+    </member>
+    <member name="P:System.Deployment.Application.DownloadProgressChangedEventArgs.BytesDownloaded">
+      <summary>Возвращает количество байтов данных, загруженных на локальный компьютер.</summary>
+      <returns>
+        <see cref="T:System.Int64" /> представляет количество загруженных байтов данных. </returns>
+    </member>
+    <member name="P:System.Deployment.Application.DownloadProgressChangedEventArgs.State">
+      <summary>Возвращает состояние хода выполнения загрузки.</summary>
+      <returns>Значение <see cref="T:System.Deployment.Application.DeploymentProgressState" /> указывает, какая часть приложения ClickOnce загружается.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.DownloadProgressChangedEventArgs.TotalBytesToDownload">
+      <summary>Возвращает общее количество байтов для операции загрузки. </summary>
+      <returns>
+        <see cref="T:System.Int64" /> представляет общий размер загруженных данных в байтах.</returns>
+    </member>
+    <member name="T:System.Deployment.Application.GetManifestCompletedEventArgs">
+      <summary>Предоставляет данные для события <see cref="E:System.Deployment.Application.InPlaceHostingManager.GetManifestCompleted" /><see cref="T:System.Deployment.Application.InPlaceHostingManager" />.</summary>
+    </member>
+    <member name="P:System.Deployment.Application.GetManifestCompletedEventArgs.ActivationContext">
+      <summary>Возвращает контекст для текущего приложения ClickOnce.</summary>
+      <returns>Объект <see cref="T:System.ActivationContext" />, представляющий контекст для текущего приложения.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.GetManifestCompletedEventArgs.ApplicationIdentity">
+      <summary>Возвращает описание приложения ClickOnce. </summary>
+      <returns>Объект <see cref="T:System.ApplicationIdentity" />.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.GetManifestCompletedEventArgs.ApplicationManifest">
+      <summary>Возвращает манифест приложения ClickOnce для развертывания.</summary>
+      <returns>
+        <see cref="T:System.Xml.XmlReader" /> представляет манифест приложения.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.GetManifestCompletedEventArgs.DeploymentManifest">
+      <summary>Возвращает манифест развертывания ClickOnce для данного развертывания.</summary>
+      <returns>
+        <see cref="T:System.Xml.XmlReader" /> представляет манифест развертывания.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.GetManifestCompletedEventArgs.IsCached">
+      <summary>Возвращает значение, показывающее, кэшировано ли приложение ClickOnce.</summary>
+      <returns>true, если приложение кэшировано; иначе  false.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.GetManifestCompletedEventArgs.LogFilePath">
+      <summary>Возвращает расположение журнала ошибок ClickOnce.</summary>
+      <returns>
+        <see cref="T:System.String" />, содержащий расположение журнала ошибок ClickOnce.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.GetManifestCompletedEventArgs.ProductName">
+      <summary>Возвращает имя приложения ClickOnce.</summary>
+      <returns>
+        <see cref="T:System.String" /> представляет имя продукта приложения ClickOnce, так, как хранится в метаданных сборки главного исполняемого файла приложения.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.GetManifestCompletedEventArgs.SubscriptionIdentity">
+      <summary>Возвращает строку, идентифицирующую подписку.</summary>
+      <returns>Строка с данными, идентифицирующими подписку.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.GetManifestCompletedEventArgs.SupportUri">
+      <summary>Возвращает размещение веб-страницы, которую могут посещать пользователи для получения  от службы поддержки продукта дополнительных сведений о приложении ClickOnce.</summary>
+      <returns>
+        <see cref="T:System.Uri" /> содержит значение из атрибута supportUrl тега манифеста развертывания &lt;description&gt;.Дополнительные сведения см. в разделе Манифест развертывания ClickOnce.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.GetManifestCompletedEventArgs.Version">
+      <summary>Возвращает версию обновления для приложения ClickOnce.</summary>
+      <returns>
+        <see cref="T:System.Version" /> представляет номер версии, содержащийся в загруженном манифесте.</returns>
+    </member>
+    <member name="T:System.Deployment.Application.InPlaceHostingManager">
+      <summary>Устанавливает или обновляет развернутый на компьютере экземпляр ClickOnce.</summary>
+    </member>
+    <member name="M:System.Deployment.Application.InPlaceHostingManager.#ctor(System.Uri)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Deployment.Application.InPlaceHostingManager" /> для загрузки и установки заданного приложения, размещенного в обозревателе.</summary>
+      <param name="deploymentManifest">Универсальный код ресурса (<see cref="T:System.Uri" />) для манифеста развертывания приложения ClickOnce.</param>
+      <exception cref="T:System.PlatformNotSupportedException">
+        <see cref="T:System.Deployment.Application.InPlaceHostingManager" /> может использоваться только в операционной системе Microsoft Windows XP или более поздних версиях операционной системы Microsoft Windows.</exception>
+      <exception cref="T:System.ArgumentNullException">Невозможно передать null аргументу <paramref name="deploymentManifest" />.</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="deploymentManifest" /> использует схему URI, которая не поддерживается ClickOnce.</exception>
+    </member>
+    <member name="M:System.Deployment.Application.InPlaceHostingManager.#ctor(System.Uri,System.Boolean)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Deployment.Application.InPlaceHostingManager" /> для загрузки и установки определенного приложения, которое может быть как независимым приложением типа Windows Forms, так и приложением, которое выполняется в браузере.</summary>
+      <param name="deploymentManifest">Универсальный код ресурса (URI) для манифеста развертывания устанавливаемого приложения.</param>
+      <param name="launchInHostProcess">Будет ли данное приложение запускаться в узле, например веб-браузере.Для отдельного приложения установите значение false.</param>
+      <exception cref="T:System.PlatformNotSupportedException">
+        <see cref="T:System.Deployment.Application.InPlaceHostingManager" /> может использоваться только в операционной системе Microsoft Windows XP или более поздних версиях операционной системы Microsoft Windows.</exception>
+      <exception cref="T:System.ArgumentNullException">Невозможно передать null аргументу <paramref name="deploymentManifest" />.</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="deploymentManifest" /> использует схему URI, которая не поддерживается ClickOnce.</exception>
+    </member>
+    <member name="M:System.Deployment.Application.InPlaceHostingManager.AssertApplicationRequirements">
+      <summary>Определяет, имеет ли приложение ClickOnce необходимые разрешения и платформозависимые данные для запуска на локальном компьютере.</summary>
+      <exception cref="T:System.InvalidOperationException">Исключение возникает, если этот метод был вызван перед методом <see cref="M:System.Deployment.Application.InPlaceHostingManager.GetManifestAsync" />.</exception>
+    </member>
+    <member name="M:System.Deployment.Application.InPlaceHostingManager.AssertApplicationRequirements(System.Boolean)">
+      <summary>Определяет, имеет ли приложение ClickOnce необходимые разрешения и платформозависимые данные для запуска на локальном компьютере.</summary>
+      <param name="grantApplicationTrust">Если равно true, приложение пытается поднять свои права до требуемого уровня.</param>
+    </member>
+    <member name="M:System.Deployment.Application.InPlaceHostingManager.CancelAsync">
+      <summary>Отменяет асинхронную операцию загрузки.</summary>
+    </member>
+    <member name="M:System.Deployment.Application.InPlaceHostingManager.Dispose">
+      <summary>Освобождает все ресурсы, используемые объектом <see cref="T:System.Deployment.Application.InPlaceHostingManager" />. </summary>
+    </member>
+    <member name="M:System.Deployment.Application.InPlaceHostingManager.DownloadApplicationAsync">
+      <summary>Загружает обновление приложения в фоновом режиме.</summary>
+      <exception cref="T:System.InvalidOperationException">Исключение возникает, если этот метод был вызван перед методами <see cref="M:System.Deployment.Application.InPlaceHostingManager.GetManifestAsync" /> и <see cref="M:System.Deployment.Application.InPlaceHostingManager.AssertApplicationRequirements" />.</exception>
+    </member>
+    <member name="E:System.Deployment.Application.InPlaceHostingManager.DownloadApplicationCompleted">
+      <summary>Происходит того, как загрузка приложения на локальный компьютер завершена.</summary>
+    </member>
+    <member name="E:System.Deployment.Application.InPlaceHostingManager.DownloadProgressChanged">
+      <summary>Происходит, когда изменяется состояние загрузки приложения или манифеста.</summary>
+    </member>
+    <member name="M:System.Deployment.Application.InPlaceHostingManager.Execute">
+      <summary>Запускает приложение ClickOnce только в том случае, если это приложение типа Windows Presentation Foundation, которое выполняется в браузере.</summary>
+      <returns>Класс <see cref="T:System.Runtime.Remoting.ObjectHandle" /> соответствует запущенному приложению.</returns>
+    </member>
+    <member name="M:System.Deployment.Application.InPlaceHostingManager.GetManifestAsync">
+      <summary>Загружает манифест развертывания приложения ClickOnce в фоновом режиме, после чего будет сгенерировано событие независимо от результата завершении операции (операция может быть завершена успешно или с ошибкой).</summary>
+    </member>
+    <member name="E:System.Deployment.Application.InPlaceHostingManager.GetManifestCompleted">
+      <summary>Происходит после того, как загрузка манифеста развертывания на локальный компьютер была завершена.</summary>
+    </member>
+    <member name="M:System.Deployment.Application.InPlaceHostingManager.UninstallCustomAddIn(System.String)">
+      <summary>Удаляет все ранее установленные пользовательские компоненты приложения.</summary>
+      <param name="subscriptionId">Строка, содержащая идентификатор подписки, который задает удаляемую надстройку.</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="subscriptionId" /> не является допустимым удостоверением подписки или не содержит имени, маркера открытого ключа, сведений об архитектуре процессора или номере версии.</exception>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="subscriptionId" /> имеет значение null.</exception>
+    </member>
+    <member name="M:System.Deployment.Application.InPlaceHostingManager.UninstallCustomUXApplication(System.String)">
+      <summary>Удаляет приложение ClickOnce, включающее элемент &lt;customUX&gt;.</summary>
+      <param name="subscriptionId">Строка, содержащая идентификатор подписки, который задает удаляемое приложение ClickOnce.</param>
+    </member>
+    <member name="T:System.Deployment.Application.InvalidDeploymentException">
+      <summary>Указывает на то, что ClickOnce не удалось прочитать манифест развертывания или манифест приложения.</summary>
+    </member>
+    <member name="M:System.Deployment.Application.InvalidDeploymentException.#ctor">
+      <summary>Инициализирует новый экземпляр <see cref="T:System.Deployment.Application.InvalidDeploymentException" />. </summary>
+    </member>
+    <member name="M:System.Deployment.Application.InvalidDeploymentException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.InvalidDeploymentException" />. </summary>
+      <param name="serializationInfo">Объект, содержащий сериализованные данные объекта. </param>
+      <param name="streamingContext">Контекстные сведения об источнике или назначении. </param>
+    </member>
+    <member name="M:System.Deployment.Application.InvalidDeploymentException.#ctor(System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.InvalidDeploymentException" /> с использованием заданного сообщения, содержащего описание исключения. </summary>
+      <param name="message">Сообщение с описанием исключения.Код, вызывающий этот конструктор, должен обеспечить локализацию данной строки в соответствии с текущим языком и региональными параметрами системы.</param>
+    </member>
+    <member name="M:System.Deployment.Application.InvalidDeploymentException.#ctor(System.String,System.Exception)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.InvalidDeploymentException" />. </summary>
+      <param name="message">Сообщение с описанием исключения.Код, вызывающий этот конструктор, должен обеспечить локализацию данной строки в соответствии с текущим языком и региональными параметрами системы.</param>
+      <param name="innerException">Исключение, являющееся причиной текущего исключения.Если значение параметра <paramref name="innerException" /> не равно null, текущее исключение сгенерировано в блоке catch, обрабатывающем внутреннее исключение.</param>
+    </member>
+    <member name="T:System.Deployment.Application.SupportedRuntimeMissingException">
+      <summary>Это исключение создается, если не удается найти версию среды выполнения, совместимую с данным приложением.</summary>
+    </member>
+    <member name="M:System.Deployment.Application.SupportedRuntimeMissingException.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.SupportedRuntimeMissingException" /> системным сообщением, содержащим описание ошибки.</summary>
+    </member>
+    <member name="M:System.Deployment.Application.SupportedRuntimeMissingException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.SupportedRuntimeMissingException" /> с сериализованными данными.</summary>
+      <param name="serializationInfo">Объект, содержащий сериализованные данные объекта. </param>
+      <param name="streamingContext">Контекстные сведения об источнике или назначении. </param>
+    </member>
+    <member name="M:System.Deployment.Application.SupportedRuntimeMissingException.#ctor(System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.SupportedRuntimeMissingException" /> с заданным сообщение, содержащим описание ошибки.</summary>
+      <param name="message">Сообщение с описанием исключения.Код, вызывающий этот конструктор, должен обеспечить локализацию данной строки в соответствии с текущим языком и региональными параметрами системы.</param>
+    </member>
+    <member name="M:System.Deployment.Application.SupportedRuntimeMissingException.#ctor(System.String,System.Exception)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.SupportedRuntimeMissingException" /> с указанным сообщением об ошибке и ссылкой на внутреннее исключение, вызвавшее это исключение.</summary>
+      <param name="message">Сообщение с описанием исключения.Код, вызывающий этот конструктор, должен обеспечить локализацию данной строки в соответствии с текущим языком и региональными параметрами системы.</param>
+      <param name="innerException">Исключение, являющееся причиной текущего исключения.Если значение параметра <paramref name="innerException" /> не равно null, текущее исключение сгенерировано в блоке catch, обрабатывающем внутреннее исключение.</param>
+    </member>
+    <member name="M:System.Deployment.Application.SupportedRuntimeMissingException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.SupportedRuntimeMissingException" /> с сериализованными данными.</summary>
+      <param name="info">Объект, содержащий сериализованные данные объекта. </param>
+      <param name="context">Контекстные сведения об источнике или назначении. </param>
+    </member>
+    <member name="P:System.Deployment.Application.SupportedRuntimeMissingException.SupportedRuntimeVersion">
+      <summary>Получает версию среды выполнения, в которой можно устанавливать и запускать данное приложение.</summary>
+      <returns>Строка, содержащая номер версии среды выполнения.</returns>
+    </member>
+    <member name="T:System.Deployment.Application.TrustNotGrantedException">
+      <summary>Указывает, что приложение не имеет соответствующего уровня доверия для запуска на локальном компьютере.</summary>
+    </member>
+    <member name="M:System.Deployment.Application.TrustNotGrantedException.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.TrustNotGrantedException" /> системным сообщением, содержащим описание ошибки.</summary>
+    </member>
+    <member name="M:System.Deployment.Application.TrustNotGrantedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.TrustNotGrantedException" /> с сериализованными данными.</summary>
+      <param name="serializationInfo">Объект, содержащий сериализованные данные объекта. </param>
+      <param name="streamingContext">Контекстные сведения об источнике или назначении. </param>
+    </member>
+    <member name="M:System.Deployment.Application.TrustNotGrantedException.#ctor(System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.TrustNotGrantedException" /> заданным сообщение, содержащим описание ошибки.</summary>
+      <param name="message">Сообщение с описанием исключения.Код, вызывающий этот конструктор, должен обеспечить локализацию данной строки в соответствии с текущим языком и региональными параметрами системы.</param>
+    </member>
+    <member name="M:System.Deployment.Application.TrustNotGrantedException.#ctor(System.String,System.Exception)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Deployment.Application.TrustNotGrantedException" /> с указанным сообщением об ошибке и ссылкой на внутреннее исключение, вызвавшее это исключение.</summary>
+      <param name="message">Сообщение с описанием исключения.Код, вызывающий этот конструктор, должен обеспечить локализацию данной строки в соответствии с текущим языком и региональными параметрами системы.</param>
+      <param name="innerException">Исключение, являющееся причиной текущего исключения.Если значение параметра <paramref name="innerException" /> не равно null, текущее исключение сгенерировано в блоке catch, обрабатывающем внутреннее исключение.</param>
+    </member>
+    <member name="T:System.Deployment.Application.UpdateCheckInfo">
+      <summary>Предоставляет детализированные сведения об обновлении, полученные с помощью обращения к методу <see cref="M:System.Deployment.Application.ApplicationDeployment.CheckForDetailedUpdate" />.</summary>
+    </member>
+    <member name="P:System.Deployment.Application.UpdateCheckInfo.AvailableVersion">
+      <summary>Возвращает номер последней удаленной версии.</summary>
+      <returns>
+        <see cref="T:System.Version" /> отображает номер редакции, а также основной и младший номер сборки последней версии.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.UpdateCheckInfo.IsUpdateRequired">
+      <summary>Возвращает значение, отражающее необходимость установки обновления. </summary>
+      <returns>true, если обновление необходимо; в противном случае — значение false.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.UpdateCheckInfo.MinimumRequiredVersion">
+      <summary>Возвращает минимальный номер версии, которая должна быть установлена на компьютере пользователя.</summary>
+      <returns>
+        <see cref="T:System.Version" /> отображает последний номер версии, которую пользователю необходимо установить.</returns>
+      <exception cref="T:System.InvalidOperationException">Новая версия отсутствует.</exception>
+    </member>
+    <member name="P:System.Deployment.Application.UpdateCheckInfo.UpdateAvailable">
+      <summary>Возвращает значение, сообщающее о том, что доступно неустановленное обновление.</summary>
+      <returns>true, если доступна новая версия приложения; в противном случае — false.</returns>
+    </member>
+    <member name="P:System.Deployment.Application.UpdateCheckInfo.UpdateSizeBytes">
+      <summary>Возвращает размер доступного обновления.</summary>
+      <returns>
+        <see cref="T:System.Int64" /> представляет общий размер доступного обновления в байтах.Если нет доступных обновлений — возвращает значение 0.</returns>
+    </member>
+  </members>
+</doc>

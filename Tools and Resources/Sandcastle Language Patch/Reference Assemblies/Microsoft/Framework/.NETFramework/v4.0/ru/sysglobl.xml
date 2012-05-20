@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>sysglobl</name>
+  </assembly>
+  <members>
+    <member name="T:System.Globalization.CultureAndRegionInfoBuilder">
+      <summary>Определяет пользовательский язык и региональные параметры, которые или являются новыми, или основываются на другом языке и региональных параметрах или на другой стране и регионе.Пользовательский язык и региональные параметры могут быть установлены на компьютере и в последующем использованы любым приложением, запущенным на этом компьютере.Этот класс не может быть унаследован.</summary>
+    </member>
+    <member name="M:System.Globalization.CultureAndRegionInfoBuilder.#ctor(System.String,System.Globalization.CultureAndRegionModifiers)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" />. </summary>
+      <param name="cultureName">Имя языка и региональных параметров.</param>
+      <param name="flags">Одно из значений <see cref="T:System.Globalization.CultureAndRegionModifiers" />, указывающее, является ли новый объект <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" /> нейтральным языком и региональными параметрами, заменой существующему языку и региональным параметрам или же новым языком и региональными параметрами. </param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="cultureName" /> имеет значение null;</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="cultureName" /> является пустой строкой ("").— или —Параметр <paramref name="cultureName" /> содержит символы, отличные от символов от "0" до "9", от "a" до "z", от "A" до "Z", дефиса (-) и подчеркивания (_).— или —Параметр <paramref name="cultureName" /> содержит дефисы (-) для разделения компонентов, однако один или несколько компонентов <paramref name="prefix" />, <paramref name="language" />, <paramref name="region" /> или <paramref name="suffix" /> отсутствуют.То есть два и более дефиса прилегают друг к другу.— или —<paramref name="cultureName" /> длиннее 84 символов.— или —Параметр <paramref name="cultureName" /> содержит дефисы для разделения компонентов, однако один или несколько компонентов длиннее 8 символов.— или —Параметр <paramref name="cultureName" /> содержит начальный или конечный дефис (-) или подчеркивание (_).— или —Параметр <paramref name="cultureName" /> определяет альтернативный язык и региональные параметры сортировки для замены вместо языка и региональных параметров .NET Framework.Например, значение параметра <paramref name="culturenName" /> равно "de-de_phoneb", язык и региональные параметры, которые служат для сортировки строк так же, как они отображаются в немецкой телефонной книге, а не как в региональных параметрах немецкого языка (Германия) "de-DE".— или —Параметр <paramref name="flags" /> содержит недопустимое сочетание значений <see cref="T:System.Globalization.CultureAndRegionModifiers" />.— или —Параметр <paramref name="flags" /> содержит <see cref="F:System.Globalization.CultureAndRegionModifiers.Replacement" /> или <see cref="F:System.Globalization.CultureAndRegionModifiers.Neutral" />, а <paramref name="cultureName" /> указывает язык и региональные параметры, которые не были найдены.— или —Параметр <paramref name="flags" /> содержит <see cref="F:System.Globalization.CultureAndRegionModifiers.Replacement" />, а параметр <paramref name="cultureName" /> служит для указания пользовательского языка и региональных параметров, которые не служат заменой для языка и региональных параметров, входящих в состав платформы .NET Framework.— или —Параметр <paramref name="flags" /> содержит <see cref="F:System.Globalization.CultureAndRegionModifiers.Neutral" />, а параметр <paramref name="cultureName" /> указывает язык и региональные параметры, которые не являются нейтральными.— или —Параметр <paramref name="flags" /> содержит <see cref="F:System.Globalization.CultureAndRegionModifiers.Neutral" />, а параметр <paramref name="cultureName" /> служит для указания пользовательского языка и региональных параметров, которые служат для замены определенного языка и региональных параметров, входящих в состав платформы .NET Framework.</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.AvailableCalendars">
+      <summary>Возвращает или задает массив календарей, поддерживаемый этим объектом <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" />.</summary>
+      <returns>Массив календарей.</returns>
+      <exception cref="T:System.ArgumentNullException">В наборе операций назначенный массив равен null или элемент назначенного массива null.</exception>
+      <exception cref="T:System.NotSupportedException">Это свойство не поддерживается нейтральными языками и региональными параметрами.— или —В наборе операций назначенный массив содержит <see cref="T:System.Globalization.PersianCalendar" />, <see cref="T:System.Globalization.TaiwanLunisolarCalendar" />, <see cref="T:System.Globalization.KoreanLunisolarCalendar" />, <see cref="T:System.Globalization.JapaneseLunisolarCalendar" />, <see cref="T:System.Globalization.ChineseLunisolarCalendar" /> или <see cref="T:System.Globalization.JulianCalendar" />.</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.CompareInfo">
+      <summary>Возвращает или задает объект <see cref="T:System.Globalization.CompareInfo" /> для определения способа сравнения строк в данном языке и региональных параметрах.</summary>
+      <returns>Объект <see cref="T:System.Globalization.CompareInfo" /> для определения способа сравнения строк в данном языке и региональных параметрах.</returns>
+      <exception cref="T:System.ArgumentNullException">В наборе операций назначенное значение равно null.</exception>
+      <exception cref="T:System.NotSupportedException">Этот язык и региональные параметры служат переопределением встроенного языка и региональных параметров.</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.ConsoleFallbackUICulture">
+      <summary>Возвращает или задает альтернативный язык и региональные параметры интерфейса пользователя, подходящие для приложений консоли, если при этом неприменим язык и региональные параметры графического пользовательского интерфейса по умолчанию.</summary>
+      <returns>Альтернативный язык и региональные параметры, используемые для чтения и отображения текста на консоли.</returns>
+      <exception cref="T:System.ArgumentException">В наборе операций, где определенный язык и региональные параметры не равны null, свойство <see cref="P:System.Globalization.CultureAndRegionInfoBuilder.ConsoleFallbackUICulture" /> определенного языка и региональных параметров не равно определенному языку и региональным параметрам. </exception>
+    </member>
+    <member name="M:System.Globalization.CultureAndRegionInfoBuilder.CreateFromLdml(System.String)">
+      <summary>Воссоздает объект <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" /> из указанного XML-файла, содержащего представление объекта.</summary>
+      <returns>Новый объект <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" />, эквивалентный сведениям, хранящимся в параметре <paramref name="xmlFileName" />.</returns>
+      <param name="xmlFileName">Имя файла, содержащее XML-представление объекта <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" />.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="xmlFileName" /> имеет значение null;</exception>
+      <exception cref="T:System.ArgumentException">Значением <paramref name="xmlFileName" /> является пустая строка (""), или недопустимое имя файла или пути.</exception>
+      <exception cref="T:System.Xml.XmlException">Данные параметра <paramref name="xmlFileName" /> не являются допустимым форматом XML.— или —При доступе к <paramref name="xmlFileName" /> произошла ошибка ввода/вывода.</exception>
+      <exception cref="T:System.Xml.Schema.XmlSchemaValidationException">Данные параметра <paramref name="xmlFileName" /> не являются допустимым форматом LDML.</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.CultureEnglishName">
+      <summary>Возвращает или задает имя языка и региональных параметров на английском языке.</summary>
+      <returns>Имя языка и региональных параметров на английском языке.</returns>
+      <exception cref="T:System.ArgumentNullException">Для данного свойства задано значение null.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Длина значения в наборе операций не находится в диапазоне от 0 до 79 знаков.</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.CultureName">
+      <summary>Возвращает имя созданного языка и региональных параметров.</summary>
+      <returns>Имя языка и региональных параметров текущего объекта <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" />.</returns>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.CultureNativeName">
+      <summary>Возвращает или задает имя языка и региональных параметров в том формате и на том языке, которые заданы для отображения в этом языке и региональных параметрах.</summary>
+      <returns>Имя культуры в том формате и на том языке, которые заданы для отображения в этом языке и региональных параметрах.</returns>
+      <exception cref="T:System.ArgumentNullException">Для данного свойства задано значение null.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Длина значения в наборе операций не находится в диапазоне от 0 до 79 знаков.</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.CultureTypes">
+      <summary>Возвращает значение <see cref="T:System.Globalization.CultureTypes" />, описывающее язык и региональные параметры, представленные текущим объектом <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" />.</summary>
+      <returns>Одно из значений <see cref="T:System.Globalization.CultureTypes" />.</returns>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.CurrencyEnglishName">
+      <summary>Возвращает или задает на английском языке имя валюты, используемое в стране или регионе и представленное объектом <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" />.</summary>
+      <returns>Имя валюты, используемой в регионе, на английском языке.</returns>
+      <exception cref="T:System.ArgumentNullException">Для данного свойства задано значение null.</exception>
+      <exception cref="T:System.ArgumentException">Значение в наборе операций является пустой строкой ("").</exception>
+      <exception cref="T:System.NotSupportedException">Текущий объект <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" /> является нейтральным языком и региональными параметрами.</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.CurrencyNativeName">
+      <summary>Возвращает или задает исходное имя валюты, используемое в стране или регионе и представленное объектом <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" />.</summary>
+      <returns>Имя валюты, используемой в стране или регионе и представленной текущим объектом <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" />, отформатированном в соответствии с правилами языка, связанными с кодом страны региона по стандарту ISO 3166. </returns>
+      <exception cref="T:System.ArgumentNullException">Для данного свойства задано значение null.</exception>
+      <exception cref="T:System.ArgumentException">Значение в наборе операций является пустой строкой ("").</exception>
+      <exception cref="T:System.NotSupportedException">Текущий объект <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" /> является нейтральным языком и региональными параметрами.</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.GeoId">
+      <summary>Возвращает или задает уникальный номер идентификации географического региона, страны, города или местности.</summary>
+      <returns>32-битный номер со знаком, который служит для уникального определения географического местоположения.</returns>
+      <exception cref="T:System.NotSupportedException">Текущий объект <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" /> определяет нейтральный язык и региональные параметры.</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.GregorianDateTimeFormat">
+      <summary>Возвращает или задает объект <see cref="T:System.Globalization.DateTimeFormatInfo" />, служащий для определения формата даты и времени в соответствии с григорианским календарем.</summary>
+      <returns>Объект <see cref="T:System.Globalization.DateTimeFormatInfo" />. </returns>
+      <exception cref="T:System.ArgumentNullException">Для данного свойства задано значение null.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Свойство значения в наборе операций возвратило недопустимое значение свойства.</exception>
+      <exception cref="T:System.NotSupportedException">Текущий объект <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" /> является нейтральным языком и региональными параметрами.</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.IetfLanguageTag">
+      <summary>Возвращает или задает имя языка и региональных параметров в соответствии со стандартом RFC 4646, посвященном тегам идентификации языков.</summary>
+      <returns>Имя языка и региональных параметров, отформатированных в соответствии с RFC 4646.</returns>
+      <exception cref="T:System.ArgumentNullException">В наборе операций значением является null.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">В наборе операций длина значения не находится в диапазоне от 1 до 84 знаков.</exception>
+      <exception cref="T:System.ArgumentException">В наборе операций компонент имени, указанный в значении, является пустым или превышает 8 знаков, содержит символы, не являющиеся буквенно-цифровыми или дефисом (-), или имя содержит начальный или конечный дефис. </exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.IsMetric">
+      <summary>Возвращает или задает значение, указывающее, использует ли страна или регион метрическую систему.</summary>
+      <returns>Значение true, если страна или регион использует метрическую систему мер, в противном случае значение false.</returns>
+      <exception cref="T:System.NotSupportedException">Эта операция недопустима для нейтрального языка и региональных параметров.</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.ISOCurrencySymbol">
+      <summary>Возвращает или задает трехзначный символ денежной единицы в формате ISO 4217, связанный со страной или регионом.</summary>
+      <returns>Трехзначный символ денежной единицы в формате ISO 4217, связанный со страной или регионом.</returns>
+      <exception cref="T:System.NotSupportedException">Это нейтральный язык и региональные параметры.</exception>
+      <exception cref="T:System.ArgumentNullException">В наборе операций значением является null.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">В наборе операций длина значения не находится в диапазоне от 0 до 8 знаков.</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.IsRightToLeft">
+      <summary>Возвращает или задает преобладающее направление строк текста в системе письма, связанном с текущим объектом <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" />. </summary>
+      <returns>true, если преобладающее направление строк текста в текущей системе письма справа налево, в противном случае — false.</returns>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.KeyboardLayoutId">
+      <summary>Возвращает или задает активный идентификатор языка ввода.</summary>
+      <returns>32-битный номер со знаком, указывающий идентификатор языка ввода.</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">В операции задания значением является нуль.</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.LCID">
+      <summary>Возвращает идентификатор языка и региональных параметров для текущего объекта <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" />.</summary>
+      <returns>Идентификатор языка и региональных параметров для текущего объекта <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" />.</returns>
+    </member>
+    <member name="M:System.Globalization.CultureAndRegionInfoBuilder.LoadDataFromCultureInfo(System.Globalization.CultureInfo)">
+      <summary>Задает свойства текущего объекта <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" /> с соответствующими свойствами указанного объекта <see cref="T:System.Globalization.CultureInfo" />.</summary>
+      <param name="culture">Объект <see cref="T:System.Globalization.CultureInfo" /> для чтения.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="culture" /> имеет значение null;</exception>
+    </member>
+    <member name="M:System.Globalization.CultureAndRegionInfoBuilder.LoadDataFromRegionInfo(System.Globalization.RegionInfo)">
+      <summary>Задает свойства текущего объекта <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" /> с соответствующими свойствами указанного объекта <see cref="T:System.Globalization.RegionInfo" />.</summary>
+      <param name="region">Объект <see cref="T:System.Globalization.RegionInfo" /> для чтения.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="region" /> имеет значение null;</exception>
+      <exception cref="T:System.ArgumentException">Невозможно задать сведения о стране или регионе, потому что текущий объект <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" /> определяет нейтральный язык и региональные параметры.</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.NumberFormat">
+      <summary>Возвращает или задает объект <see cref="T:System.Globalization.NumberFormatInfo" />, определяющий формат отображения чисел, денежной единицы и процентов, соответствующий языку и региональным параметрам.</summary>
+      <returns>Объект <see cref="T:System.Globalization.NumberFormatInfo" />, определяющий формат отображения чисел, денежной единицы и процентов, соответствующий языку и региональным параметрам.</returns>
+      <exception cref="T:System.ArgumentNullException">Для данного свойства задано значение null.</exception>
+      <exception cref="T:System.NotSupportedException">Эта операция недопустима для нейтрального языка и региональных параметров.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Спецификация свойства числа, денежной единицы или процента для этого языка и региональных параметров содержит слишком много цифр или выходит за пределы диапазона.</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.Parent">
+      <summary>Возвращает или задает объект <see cref="T:System.Globalization.CultureInfo" />, представляющий родительский язык и региональные параметры текущего пользовательского языка и региональных параметров.</summary>
+      <returns>Объект <see cref="T:System.Globalization.CultureInfo" />, представляющий родительский язык и региональные параметры текущего пользовательского языка и региональных параметров.</returns>
+      <exception cref="T:System.InvalidOperationException">Невозможно найти значение языка и региональных параметров в наборе операций.Возможно, назначенное значение является незарегистрированным пользовательским языком и региональными параметрами.</exception>
+      <exception cref="T:System.ArgumentNullException">В наборе операций значением является null.</exception>
+      <exception cref="T:System.ArgumentException">В наборе операций, который обходит предков текущего языка и региональных параметров, невозможно обнаружить инвариантный язык и региональные параметры в 10 поколениях предков. — или — В наборе операций была обнаружена циклическая ссылка: назначенное значение является предком текущего пользовательского языка и региональных параметров. </exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.RegionEnglishName">
+      <summary>Возвращает или задает полное имя страны или региона на английском языке.</summary>
+      <returns>Полное имя страны или региона на английском языке.</returns>
+      <exception cref="T:System.NotSupportedException">Эта операция недопустима для нейтрального языка и региональных параметров.</exception>
+      <exception cref="T:System.ArgumentNullException">Для данного свойства задано значение null.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Длина значения в наборе операций не находится в диапазоне от 0 до 79 знаков.</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.RegionName">
+      <summary>Получает имя страны или региона для текущего объекта <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" />.</summary>
+      <returns>Имя страны или региона для текущего объекта <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" />.</returns>
+      <exception cref="T:System.NotSupportedException">Эта операция недопустима для нейтрального языка и региональных параметров.</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.RegionNativeName">
+      <summary>Возвращает или задает полное имя страны или региона на родном жителей этого настраиваемого региона.</summary>
+      <returns>Локальное имя страны или региона.</returns>
+      <exception cref="T:System.NotSupportedException">Эта операция недопустима для нейтрального языка и региональных параметров.</exception>
+      <exception cref="T:System.ArgumentNullException">Для данного свойства задано значение null.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Длина значения в наборе операций не находится в диапазоне от 1 до 79 знаков.</exception>
+    </member>
+    <member name="M:System.Globalization.CultureAndRegionInfoBuilder.Register">
+      <summary>Сохраняет текущий объект <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" /> в качестве пользовательского языки и региональных параметров на локальном компьютере и делает этот язык и региональные параметры доступными для приложений.Для этого требуются полномочия администратора.</summary>
+      <exception cref="T:System.InvalidOperationException">Пользовательский язык и региональные параметры уже зарегистрированы.— или —Текущий объект <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" /> содержит свойство, которое следует задать перед регистрацией языка и региональных параметров.Все языки и региональные параметры, которые являются нейтральными или определенными, должны содержать заданные параметры <see cref="P:System.Globalization.CultureAndRegionInfoBuilder.TextInfo" /> и <see cref="P:System.Globalization.CultureAndRegionInfoBuilder.CompareInfo" />.Определенные языки и региональные параметры также должны содержать заданные параметры <see cref="P:System.Globalization.CultureAndRegionInfoBuilder.NumberFormat" />, <see cref="P:System.Globalization.CultureAndRegionInfoBuilder.GregorianDateTimeFormat" /> и <see cref="P:System.Globalization.CultureAndRegionInfoBuilder.AvailableCalendars" />.Также этот метод выдает <see cref="T:System.InvalidOperationException" />, если не указаны следующие свойства:<see cref="P:System.Globalization.CultureAndRegionInfoBuilder.CultureEnglishName" /><see cref="P:System.Globalization.CultureAndRegionInfoBuilder.CultureNativeName" /><see cref="P:System.Globalization.CultureAndRegionInfoBuilder.CurrencyEnglishName" /><see cref="P:System.Globalization.CultureAndRegionInfoBuilder.CurrencyNativeName" /><see cref="P:System.Globalization.CultureAndRegionInfoBuilder.ISOCurrencySymbol" /><see cref="P:System.Globalization.CultureAndRegionInfoBuilder.Parent" /><see cref="P:System.Globalization.CultureAndRegionInfoBuilder.RegionEnglishName" /><see cref="P:System.Globalization.CultureAndRegionInfoBuilder.RegionNativeName" /><see cref="P:System.Globalization.CultureAndRegionInfoBuilder.ThreeLetterISOLanguageName" /><see cref="P:System.Globalization.CultureAndRegionInfoBuilder.ThreeLetterISORegionName" /><see cref="P:System.Globalization.CultureAndRegionInfoBuilder.ThreeLetterWindowsLanguageName" /><see cref="P:System.Globalization.CultureAndRegionInfoBuilder.ThreeLetterWindowsRegionName" /><see cref="P:System.Globalization.CultureAndRegionInfoBuilder.TwoLetterISOLanguageName" /><see cref="P:System.Globalization.CultureAndRegionInfoBuilder.TwoLetterISORegionName" /></exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Значение свойства объекта <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" /> превышает максимальную длину или значение.</exception>
+      <exception cref="T:System.UnauthorizedAccessException">Пользователь не имеет прав администратора.</exception>
+    </member>
+    <member name="M:System.Globalization.CultureAndRegionInfoBuilder.Save(System.String)">
+      <summary>Создает XML-представление текущего объекта <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" /> в указанном файле.</summary>
+      <param name="filename">Имя файла, в котором будет содержаться XM-представление этого пользовательского языка и региональных параметров.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="filename" /> имеет значение null;</exception>
+      <exception cref="T:System.ArgumentException">Параметр <paramref name="filename" /> является пустой строкой ("").</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Значение свойства объекта <see cref="T:System.Globalization.DateTimeFormatInfo" />, <see cref="T:System.Globalization.TextInfo" />, or <see cref="T:System.Globalization.NumberFormatInfo" />, содержащееся в текущем объекте <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" />, является недопустимым.</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.TextInfo">
+      <summary>Возвращает или задает объект <see cref="T:System.Globalization.TextInfo" />, который служит для определения системы письма, связанной с этим пользовательским языком и региональными параметрами.</summary>
+      <returns>Объект <see cref="T:System.Globalization.TextInfo" />, который служит для определения системы письма, связанной с этим пользовательским языком и региональными параметрами.</returns>
+      <exception cref="T:System.NotSupportedException">Эта операция не поддерживается для языков и региональных параметров на замену.</exception>
+      <exception cref="T:System.ArgumentNullException">Для данного свойства задано значение null.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Число знаков в разделителе списков не находится в диапазоне от 0 до 3 знаков.</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.ThreeLetterISOLanguageName">
+      <summary>Возвращает или задает трехбуквенный код ISO 639-2 для языка текущего языка и региональных параметров.</summary>
+      <returns>Трехбуквенный код ISO 639-2 для языка текущего объекта <see cref="T:System.Globalization.CultureInfo" />.</returns>
+      <exception cref="T:System.ArgumentNullException">Для данного свойства задано значение null.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Длина значения в наборе операций не находится в диапазоне от 1 до 8 знаков. </exception>
+      <exception cref="T:System.ArgumentException">Значение в наборе операций содержит символ, который не входит в диапазоны от "a" до "z", от "A" до "Z" или от "0" до "9".</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.ThreeLetterISORegionName">
+      <summary>Возвращает или задает код из трех букв, определенный в формате ISO 3166 для страны или региона.</summary>
+      <returns>Код из трех букв, определенный в формате ISO 3166 для страны или региона.</returns>
+      <exception cref="T:System.ArgumentNullException">Для данного свойства задано значение null.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Длина значения в наборе операций не находится в диапазоне от 1 до 8 знаков. </exception>
+      <exception cref="T:System.ArgumentException">Значение в наборе операций содержит символ, который не входит в диапазоны от "a" до "z", от "A" до "Z" или от "0" до "9".</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.ThreeLetterWindowsLanguageName">
+      <summary>Возвращает или задает трехбуквенный код для языка, определенный в формате Windows API.</summary>
+      <returns>Трехбуквенный код для языка, определенный в формате Windows API.</returns>
+      <exception cref="T:System.ArgumentNullException">Для данного свойства задано значение null.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Длина значения в наборе операций не находится в диапазоне от 1 до 8 знаков.</exception>
+      <exception cref="T:System.ArgumentException">Значение в наборе операций содержит символ, который не входит в диапазоны от "a" до "z", от "A" до "Z" или от "0" до "9".</exception>
+      <exception cref="T:System.NotSupportedException">В наборе операций текущим пользовательским языком и региональными параметрами является язык и региональные параметры на замену.</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.ThreeLetterWindowsRegionName">
+      <summary>Возвращает или задает код из трех букв, присвоенный операционной системой Windows стране или региону, представленный текущим пользовательским языком и региональными параметрами.</summary>
+      <returns>Возвращает код из трех букв, присвоенный операционной системой Windows стране или региону, представленный этим объектом <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" />.</returns>
+      <exception cref="T:System.ArgumentNullException">Для данного свойства задано значение null.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Длина значения в наборе операций не находится в диапазоне от 1 до 8 знаков.</exception>
+      <exception cref="T:System.ArgumentException">Значение в наборе операций содержит символ, который не входит в диапазоны от "a" до "z", от "A" до "Z" или от "0" до "9".</exception>
+      <exception cref="T:System.NotSupportedException">В наборе операций текущим пользовательским языком и региональными параметрами является язык и региональные параметры на замену или нейтральный язык и региональные параметры.</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.TwoLetterISOLanguageName">
+      <summary>Возвращает или задает двухбуквенный код ISO 639-1 для языка текущего объекта <see cref="T:System.Globalization.CultureInfo" />.</summary>
+      <returns>Возвращает двухбуквенный код ISO 639-1 для языка текущего объекта <see cref="T:System.Globalization.CultureInfo" />.</returns>
+      <exception cref="T:System.ArgumentNullException">Для данного свойства задано значение null.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Длина значения в наборе операций не находится в диапазоне от 1 до 8 знаков. </exception>
+      <exception cref="T:System.ArgumentException">Значение в наборе операций содержит символ, который не входит в диапазоны от "a" до "z", от "A" до "Z" или от "0" до "9".</exception>
+    </member>
+    <member name="P:System.Globalization.CultureAndRegionInfoBuilder.TwoLetterISORegionName">
+      <summary>Возвращает или задает код из двух букв, определенный в формате ISO 3166 для страны или региона.</summary>
+      <returns>Код из двух букв, определенный в формате ISO 3166 для страны или региона.</returns>
+      <exception cref="T:System.ArgumentNullException">Для данного свойства задано значение null.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Длина значения в наборе операций не находится в диапазоне от 1 до 8 знаков.</exception>
+      <exception cref="T:System.ArgumentException">Значение в наборе операций содержит символ, который не входит в диапазоны от "a" до "z", от "A" до "Z" или от "0" до "9".</exception>
+      <exception cref="T:System.NotSupportedException">В наборе операций текущим пользовательским языком и региональными параметрами является нейтральный язык и региональные параметры.</exception>
+    </member>
+    <member name="M:System.Globalization.CultureAndRegionInfoBuilder.Unregister(System.String)">
+      <summary>Удаляет пользовательский язык и региональные параметры с локального компьютера.</summary>
+      <param name="cultureName">Имя пользовательского языка и региональных параметров.</param>
+      <exception cref="T:System.InvalidOperationException">
+        <paramref name="cultureName" /> является родительским языком и региональными параметрами или базовым языком и параметрами пользовательского интерфейса консоли по отношению к зависимому языку и региональным параметрам.</exception>
+      <exception cref="T:System.UnauthorizedAccessException">Приложение не имеет прав администратора.</exception>
+      <exception cref="T:System.ArgumentException">В параметре <paramref name="cultureName" /> указан язык и региональные параметры, которые не были найдены.</exception>
+    </member>
+    <member name="T:System.Globalization.CultureAndRegionModifiers">
+      <summary>Указывает постоянные значения, которые определяют объект <see cref="T:System.Globalization.CultureAndRegionInfoBuilder" />. </summary>
+    </member>
+    <member name="F:System.Globalization.CultureAndRegionModifiers.None">
+      <summary>Определенный дополняющий пользовательский язык и региональные параметры.</summary>
+    </member>
+    <member name="F:System.Globalization.CultureAndRegionModifiers.Neutral">
+      <summary>Нейтральный пользовательский язык и региональные параметры.</summary>
+    </member>
+    <member name="F:System.Globalization.CultureAndRegionModifiers.Replacement">
+      <summary>Пользовательский язык и региональные параметры замещают существующий язык и региональные параметры .NET Framework или языковой стандарт Windows.</summary>
+    </member>
+  </members>
+</doc>

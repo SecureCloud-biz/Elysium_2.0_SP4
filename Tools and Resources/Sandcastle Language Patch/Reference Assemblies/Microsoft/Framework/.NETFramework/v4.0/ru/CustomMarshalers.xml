@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>CustomMarshalers</name>
+  </assembly>
+  <members>
+    <member name="T:System.Runtime.InteropServices.CustomMarshalers.EnumerableToDispatchMarshaler">
+      <summary>Выполняет маршалинг COM-интерфейса IDispatch в интерфейс .NET Framework <see cref="T:System.Collections.IEnumerable" /> и обратно.</summary>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.EnumerableToDispatchMarshaler.CleanUpManagedData(System.Object)">
+      <summary>Выполняет необходимую очистку управляемых данных, если они больше не нужны.</summary>
+      <param name="pManagedObj">Управляемый объект, который необходимо уничтожить.</param>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.EnumerableToDispatchMarshaler.CleanUpNativeData(System.IntPtr)">
+      <summary>Выполняет необходимую очистку неуправляемых данных, если они больше не нужны.</summary>
+      <param name="pNativeData">Указатель на неуправляемые данные, которые необходимо уничтожить.</param>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.EnumerableToDispatchMarshaler.GetInstance(System.String)">
+      <summary>Возвращает экземпляр пользовательского модуля маршалинга.</summary>
+      <returns>Экземпляр пользовательского модуля маршалинга.</returns>
+      <param name="pstrCookie">Строковый параметр "cookie", который может использоваться пользовательским модулем маршалинга.</param>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.EnumerableToDispatchMarshaler.GetNativeDataSize">
+      <summary>Возвращает размер в байтах неуправляемых данных для маршалинга.</summary>
+      <returns>-1 указывает, что обрабатываемый данным модулем маршалинга тип не является типом значения.</returns>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.EnumerableToDispatchMarshaler.MarshalManagedToNative(System.Object)">
+      <summary>Выполняет маршалинг объекта из управляемого кода в неуправляемый.</summary>
+      <returns>Указатель на неуправляемый объект.</returns>
+      <param name="pManagedObj">Управляемый объект, который необходимо преобразовать.</param>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="pManagedObj" /> имеет значение null.</exception>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.EnumerableToDispatchMarshaler.MarshalNativeToManaged(System.IntPtr)">
+      <summary>Выполняет маршалинг объекта из неуправляемого кода в управляемый.</summary>
+      <returns>Управляемый объект.</returns>
+      <param name="pNativeData">Указатель на неуправляемый объект, который необходимо преобразовать.</param>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="pNativeData" /> имеет значение null.</exception>
+    </member>
+    <member name="T:System.Runtime.InteropServices.CustomMarshalers.EnumeratorToEnumVariantMarshaler">
+      <summary>Маршалирует COM-интерфейс IEnumVARIANT в интерфейс .NET Framework <see cref="T:System.Collections.IEnumerator" /> и обратно.</summary>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.EnumeratorToEnumVariantMarshaler.CleanUpManagedData(System.Object)">
+      <summary>Выполняет необходимую очистку управляемых данных, если они больше не нужны.</summary>
+      <param name="pManagedObj">Управляемый объект, который необходимо уничтожить.</param>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.EnumeratorToEnumVariantMarshaler.CleanUpNativeData(System.IntPtr)">
+      <summary>Выполняет необходимую очистку неуправляемых данных, если они больше не нужны.</summary>
+      <param name="pNativeData">Указатель на неуправляемые данные, которые необходимо уничтожить.</param>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.EnumeratorToEnumVariantMarshaler.GetInstance(System.String)">
+      <summary>Возвращает экземпляр пользовательского модуля маршалинга.</summary>
+      <returns>Экземпляр пользовательского модуля маршалинга.</returns>
+      <param name="pstrCookie">Строковый параметр "cookie", который может использоваться пользовательским модулем маршалинга.</param>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.EnumeratorToEnumVariantMarshaler.GetNativeDataSize">
+      <summary>Возвращает размер в байтах неуправляемых данных для маршалинга.</summary>
+      <returns>-1 указывает, что обрабатываемый данным модулем маршалинга тип не является типом значения.</returns>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.EnumeratorToEnumVariantMarshaler.MarshalManagedToNative(System.Object)">
+      <summary>Выполняет маршалинг объекта из управляемого кода в неуправляемый.</summary>
+      <returns>Указатель на неуправляемый объект.</returns>
+      <param name="pManagedObj">Управляемый объект, который необходимо преобразовать.</param>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="pManagedObj" /> имеет значение null.</exception>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.EnumeratorToEnumVariantMarshaler.MarshalNativeToManaged(System.IntPtr)">
+      <summary>Выполняет маршалинг объекта из неуправляемого кода в управляемый.</summary>
+      <returns>Управляемый объект.</returns>
+      <param name="pNativeData">Указатель на неуправляемый объект, который необходимо преобразовать.</param>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="pNativeData" /> имеет значение null.</exception>
+      <exception cref="T:System.InvalidCastException">Невозможно преобразовать неуправляемый объект, на который указывает <paramref name="pNativeData" />.</exception>
+    </member>
+    <member name="T:System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler">
+      <summary>Выполняет маршалинг COM-интерфейса IDispatchEx либо в интерфейс .NET Framework <see cref="T:System.Runtime.InteropServices.Expando.IExpando" />, либо в интерфейс <see cref="T:System.Reflection.IReflect" />, и обратно.</summary>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler.CleanUpManagedData(System.Object)">
+      <summary>Выполняет необходимую очистку управляемых данных, если они больше не нужны.</summary>
+      <param name="pManagedObj">Управляемый объект, который необходимо уничтожить.</param>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler.CleanUpNativeData(System.IntPtr)">
+      <summary>Выполняет необходимую очистку неуправляемых данных, если они больше не нужны.</summary>
+      <param name="pNativeData">Указатель на неуправляемые данные, которые необходимо уничтожить.</param>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler.GetInstance(System.String)">
+      <summary>Возвращает экземпляр пользовательского модуля маршалинга.</summary>
+      <returns>Экземпляр пользовательского модуля маршалинга.</returns>
+      <param name="pstrCookie">Строковый параметр "cookie", который может использоваться пользовательским модулем маршалинга.</param>
+      <exception cref="T:System.ArgumentException">Недопустимое значение параметра <paramref name="pstrCookie" />.</exception>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler.GetNativeDataSize">
+      <summary>Возвращает размер в байтах неуправляемых данных для маршалинга.</summary>
+      <returns>-1 указывает, что обрабатываемый данным модулем маршалинга тип не является типом значения.</returns>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler.MarshalManagedToNative(System.Object)">
+      <summary>Выполняет маршалинг объекта из управляемого кода в неуправляемый.</summary>
+      <returns>Указатель на неуправляемый объект.</returns>
+      <param name="pManagedObj">Управляемый объект, который необходимо преобразовать.</param>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="pManagedObj" /> имеет значение null.</exception>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler.MarshalNativeToManaged(System.IntPtr)">
+      <summary>Выполняет маршалинг объекта из неуправляемого кода в управляемый.</summary>
+      <returns>Управляемый объект. </returns>
+      <param name="pNativeData">Указатель на неуправляемый объект, который необходимо преобразовать.</param>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="pNativeData" /> имеет значение null.</exception>
+    </member>
+    <member name="T:System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler">
+      <summary>Выполняет маршалинг неуправляемого интерфейса ITypeInfo в управляемый класс <see cref="T:System.Type" />, а управляемого класса <see cref="T:System.Type" /> — в неуправляемый интерфейс ITypeInfo.</summary>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.CleanUpManagedData(System.Object)">
+      <summary>Выполняет необходимую очистку управляемых данных, если они больше не нужны.</summary>
+      <param name="pManagedObj">Управляемый объект, который необходимо уничтожить.</param>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.CleanUpNativeData(System.IntPtr)">
+      <summary>Выполняет необходимую очистку неуправляемых данных, если они больше не нужны.</summary>
+      <param name="pNativeData">Указатель на неуправляемые данные, которые необходимо уничтожить.</param>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.GetInstance(System.String)">
+      <summary>Возвращает экземпляр пользовательского модуля маршалинга.</summary>
+      <returns>Экземпляр пользовательского модуля маршалинга.</returns>
+      <param name="pstrCookie">Строковый параметр "cookie", который может использоваться пользовательским модулем маршалинга.</param>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.GetNativeDataSize">
+      <summary>Возвращает размер в байтах неуправляемых данных для маршалинга.</summary>
+      <returns>-1 указывает, что обрабатываемый данным модулем маршалинга тип не является типом значения.</returns>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.MarshalManagedToNative(System.Object)">
+      <summary>Выполняет маршалинг объекта из управляемого кода в неуправляемый.</summary>
+      <returns>Указатель на неуправляемый объект.</returns>
+      <param name="pManagedObj">Управляемый объект, который необходимо преобразовать.</param>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="pManagedObj" /> имеет значение null.</exception>
+    </member>
+    <member name="M:System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.MarshalNativeToManaged(System.IntPtr)">
+      <summary>Выполняет маршалинг объекта из неуправляемого кода в управляемый.</summary>
+      <returns>Управляемый объект.</returns>
+      <param name="pNativeData">Указатель на неуправляемый объект, который необходимо преобразовать.</param>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="pNativeData" /> имеет значение null.</exception>
+    </member>
+  </members>
+</doc>

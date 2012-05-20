@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Xaml.Hosting</name>
+  </assembly>
+  <members>
+    <member name="T:System.Xaml.Hosting.XamlBuildProvider">
+      <summary>Поставщик построения для XAML-документов (с расширением XAMLX) на стороне сервера.</summary>
+    </member>
+    <member name="M:System.Xaml.Hosting.XamlBuildProvider.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Xaml.Hosting.XamlBuildProvider" />. </summary>
+    </member>
+    <member name="M:System.Xaml.Hosting.XamlBuildProvider.GetGeneratedType(System.CodeDom.Compiler.CompilerResults)">
+      <summary>Возвращает тип, сформированный поставщиком построения на основе виртуального пути.</summary>
+      <returns>Тип, сформированный поставщиком построения для виртуального пути.</returns>
+      <param name="results">Результат компиляции для виртуального пути поставщика компоновки.</param>
+    </member>
+    <member name="M:System.Xaml.Hosting.XamlBuildProvider.GetResultFlags(System.CodeDom.Compiler.CompilerResults)">
+      <summary>Возвращает значение, указывающее необходимые действия при создании виртуального пути.</summary>
+      <returns>Значение <see cref="T:System.Web.Compilation.BuildProviderResultFlags" />, указывающее действия, которые должны быть выполнены после построения виртуального пути.</returns>
+      <param name="results">Результат компиляции для виртуального пути поставщика компоновки.</param>
+    </member>
+    <member name="T:System.Xaml.Hosting.Configuration.HandlerElement">
+      <summary>Управляет свойством обработчика HTTP элемента XAML в файле конфигурации.</summary>
+    </member>
+    <member name="M:System.Xaml.Hosting.Configuration.HandlerElement.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Xaml.Hosting.Configuration.HandlerElement" />.</summary>
+    </member>
+    <member name="M:System.Xaml.Hosting.Configuration.HandlerElement.#ctor(System.String,System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Xaml.Hosting.Configuration.HandlerElement" /> с указанными именами типов обработчика HTTP и корневого элемента XAML.</summary>
+      <param name="xamlType">Имя корневого элемента XAML в файле конфигурации.</param>
+      <param name="handlerType">Имя свойства обработчика HTTP элемента XAML в файле конфигурации.</param>
+    </member>
+    <member name="P:System.Xaml.Hosting.Configuration.HandlerElement.HttpHandlerType">
+      <summary>Возвращает или задает имя типа свойства обработчика HTTP элемента XAML в файле конфигурации.</summary>
+      <returns>
+        <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:System.Xaml.Hosting.Configuration.HandlerElement.XamlRootElementType">
+      <summary>Возвращает или задает имя типа корневого элемента XAML в файле конфигурации.</summary>
+      <returns>
+        <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="T:System.Xaml.Hosting.Configuration.HandlerElementCollection">
+      <summary>Управляет коллекцией элементов обработчика файла конфигурации.</summary>
+    </member>
+    <member name="M:System.Xaml.Hosting.Configuration.HandlerElementCollection.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Xaml.Hosting.Configuration.HandlerElementCollection" /> с инициализированным параметром средства сравнения строк.</summary>
+    </member>
+    <member name="M:System.Xaml.Hosting.Configuration.HandlerElementCollection.Add(System.Xaml.Hosting.Configuration.HandlerElement)">
+      <summary>Добавляет элемент конфигурации обработчика в коллекцию <see cref="T:System.Xaml.Hosting.Configuration.HandlerElementCollection" />.</summary>
+      <param name="handlerElement">Элемент конфигурации обработчика HTTP.</param>
+    </member>
+    <member name="M:System.Xaml.Hosting.Configuration.HandlerElementCollection.Clear">
+      <summary>Удаляет все элементы из <see cref="T:System.Xaml.Hosting.Configuration.HandlerElementCollection" />. </summary>
+    </member>
+    <member name="P:System.Xaml.Hosting.Configuration.HandlerElementCollection.CollectionType">
+      <summary>Возвращает тип коллекции элементов обработчика HTTP.</summary>
+      <returns>
+        <see cref="T:System.Configuration.ConfigurationElementCollectionType" />.</returns>
+    </member>
+    <member name="P:System.Xaml.Hosting.Configuration.HandlerElementCollection.Item(System.Int32)">
+      <summary>Возвращает элемент обработчика HTTP по указанному индексу в коллекции элементов обработчика.</summary>
+      <returns>
+        <see cref="T:System.Xaml.Hosting.Configuration.HandlerElement" />.</returns>
+      <param name="index">Индекс в коллекции элементов обработчика. </param>
+    </member>
+    <member name="M:System.Xaml.Hosting.Configuration.HandlerElementCollection.Remove(System.String)">
+      <summary>Удаляет указанный корневой элемент XAML из коллекции <see cref="T:System.Xaml.Hosting.Configuration.HandlerElementCollection" />.</summary>
+      <param name="xamlRootElementType">Корневой элемент XAML, который нужно удалить из коллекции.</param>
+    </member>
+    <member name="M:System.Xaml.Hosting.Configuration.HandlerElementCollection.Remove(System.Xaml.Hosting.Configuration.HandlerElement)">
+      <summary>Удаляет указанный элемент конфигурации обработчика из коллекции <see cref="T:System.Xaml.Hosting.Configuration.HandlerElementCollection" />.</summary>
+      <param name="handlerElement">Элемент обработчика HTTP, который нужно удалить из коллекции.</param>
+    </member>
+    <member name="M:System.Xaml.Hosting.Configuration.HandlerElementCollection.RemoveAt(System.Int32)">
+      <summary>Удаляет элемент из коллекции <see cref="T:System.Xaml.Hosting.Configuration.HandlerElementCollection" /> по указанному индексу.</summary>
+      <param name="index">Индекс элемента обработчика, удаляемого из коллекции. </param>
+    </member>
+    <member name="T:System.Xaml.Hosting.Configuration.XamlHostingSection">
+      <summary>Возвращает пустую коллекцию элементов обработчика HTTP. </summary>
+    </member>
+    <member name="M:System.Xaml.Hosting.Configuration.XamlHostingSection.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Xaml.Hosting.Configuration.XamlHostingSection" />.</summary>
+    </member>
+    <member name="P:System.Xaml.Hosting.Configuration.XamlHostingSection.Handlers">
+      <summary>Возвращает пустую коллекцию элементов обработчика HTTP.</summary>
+      <returns>
+        <see cref="T:System.Xaml.Hosting.Configuration.HandlerElementCollection" />.</returns>
+    </member>
+    <member name="T:System.Xaml.Hosting.Configuration.XamlHostingSectionGroup">
+      <summary>Возвращает раздел XAML файла конфигурации.</summary>
+    </member>
+    <member name="M:System.Xaml.Hosting.Configuration.XamlHostingSectionGroup.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Xaml.Hosting.Configuration.XamlHostingSectionGroup" />.</summary>
+    </member>
+    <member name="P:System.Xaml.Hosting.Configuration.XamlHostingSectionGroup.XamlHostingSection">
+      <summary>Возвращает раздел XAML файла конфигурации.</summary>
+      <returns>
+        <see cref="T:System.Xaml.Hosting.Configuration.XamlHostingSection" />.</returns>
+    </member>
+  </members>
+</doc>

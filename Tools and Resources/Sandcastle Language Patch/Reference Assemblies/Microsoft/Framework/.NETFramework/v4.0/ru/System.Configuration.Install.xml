@@ -1,0 +1,505 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Configuration.Install</name>
+  </assembly>
+  <members>
+    <member name="T:System.Configuration.Install.AssemblyInstaller">
+      <summary>Загружает сборку и запускает все имеющиеся в ней установщики.</summary>
+    </member>
+    <member name="M:System.Configuration.Install.AssemblyInstaller.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Configuration.Install.AssemblyInstaller" />.</summary>
+    </member>
+    <member name="M:System.Configuration.Install.AssemblyInstaller.#ctor(System.Reflection.Assembly,System.String[])">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Configuration.Install.AssemblyInstaller" /> и задает устанавливаемую сборку и командную строку, которая используется при создании нового объекта <see cref="T:System.Configuration.Install.InstallContext" />.</summary>
+      <param name="assembly">
+        <see cref="T:System.Reflection.Assembly" /> для установки. </param>
+      <param name="commandLine">Командная строка, используемая при создании нового объекта <see cref="T:System.Configuration.Install.InstallContext" /> для установки сборки.Может иметь значение NULL.</param>
+    </member>
+    <member name="M:System.Configuration.Install.AssemblyInstaller.#ctor(System.String,System.String[])">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Configuration.Install.AssemblyInstaller" /> и задает одновременно имя файла устанавливаемой сборки и командную строку, используемую для установки сборки при создании нового объекта <see cref="T:System.Configuration.Install.InstallContext" />.</summary>
+      <param name="fileName">Имя файла устанавливаемой сборки. </param>
+      <param name="commandLine">Командная строка, используемая при создании нового объекта <see cref="T:System.Configuration.Install.InstallContext" /> для установки сборки.Может иметь значение NULL.</param>
+    </member>
+    <member name="P:System.Configuration.Install.AssemblyInstaller.Assembly">
+      <summary>Получает или задает устанавливаемую сборку.</summary>
+      <returns>
+        <see cref="T:System.Reflection.Assembly" />, определяющий устанавливаемую сборку.</returns>
+      <exception cref="T:System.ArgumentNullException">Значение свойства — null. </exception>
+    </member>
+    <member name="M:System.Configuration.Install.AssemblyInstaller.CheckIfInstallable(System.String)">
+      <summary>Проверяет возможность установки указанной сборки.</summary>
+      <param name="assemblyName">Сборка, в которой производится поиск установщиков. </param>
+      <exception cref="T:System.Exception">Указанная сборка не может быть установлена. </exception>
+    </member>
+    <member name="P:System.Configuration.Install.AssemblyInstaller.CommandLine">
+      <summary>Получает или задает командную строку, используемую для установки сборки при создании нового объекта <see cref="T:System.Configuration.Install.InstallContext" />.</summary>
+      <returns>Массив типа <see cref="T:System.String" />, представляющий командную строку, используемую при создании нового объекта<see cref="T:System.Configuration.Install.InstallContext" /> для установки сборки.</returns>
+    </member>
+    <member name="M:System.Configuration.Install.AssemblyInstaller.Commit(System.Collections.IDictionary)">
+      <summary>Завершает транзакцию установки.</summary>
+      <param name="savedState">
+        <see cref="T:System.Collections.IDictionary" />, содержащий состояние компьютера после того, как завершилось выполнение всех установщиков коллекции. </param>
+      <exception cref="T:System.ArgumentException">Значение параметра <paramref name="savedState" /> — null.— или — Словарь сохраненного состояния <see cref="T:System.Collections.IDictionary" /> мог быть искажен.— или — Не удалось найти файл. </exception>
+      <exception cref="T:System.Exception">Произошла ошибка в обработчике событий <see cref="E:System.Configuration.Install.Installer.Committing" /> одного из установщиков коллекции.— или — Произошла ошибка в обработчике событий <see cref="E:System.Configuration.Install.Installer.Committed" /> одного из установщиков коллекции.— или — Возникло исключение во время фазы <see cref="M:System.Configuration.Install.AssemblyInstaller.Commit(System.Collections.IDictionary)" /> установки.Исключение игнорируется, и установка продолжается.Однако после завершения установки приложение может работать неверно.— или — В одной из сборок не удалось найти типы установщиков.— или — Не удалось создать экземпляр одного из типов установщиков. </exception>
+      <exception cref="T:System.Configuration.Install.InstallException">Возникло исключение во время фазы <see cref="M:System.Configuration.Install.AssemblyInstaller.Commit(System.Collections.IDictionary)" /> установки.Исключение игнорируется, и установка продолжается.Однако после завершения установки приложение может работать неверно.</exception>
+    </member>
+    <member name="P:System.Configuration.Install.AssemblyInstaller.HelpText">
+      <summary>Получает текст справки для всех установщиков из коллекции установщиков.</summary>
+      <returns>Текст справки для всех установщиков в коллекции установщиков (включая описание действий, выполняемых каждым установщиком, и параметры командной строки для программы установки), который может передаваться и восприниматься каждым установщиком.</returns>
+    </member>
+    <member name="M:System.Configuration.Install.AssemblyInstaller.Install(System.Collections.IDictionary)">
+      <summary>Производит установку.</summary>
+      <param name="savedState">Набор параметров <see cref="T:System.Collections.IDictionary" />, используемый для сохранения информации, необходимой для выполнения фиксации, отката к предыдущей точке или операции деинсталляции. </param>
+      <exception cref="T:System.ArgumentException">Значение параметра <paramref name="savedState" /> — null.— или — Не удалось найти файл. </exception>
+      <exception cref="T:System.Exception">Возникло исключение в обработчике событий <see cref="E:System.Configuration.Install.Installer.BeforeInstall" /> одного из установщиков коллекции.— или — Возникло исключение в обработчике событий <see cref="E:System.Configuration.Install.Installer.AfterInstall" /> одного из установщиков коллекции.— или — В одной из сборок не удалось найти типы установщиков.— или — Не удалось создать экземпляр одного из типов установщиков. </exception>
+    </member>
+    <member name="P:System.Configuration.Install.AssemblyInstaller.Path">
+      <summary>Получает или задает путь к устанавливаемой сборке.</summary>
+      <returns>Путь к устанавливаемой сборке.</returns>
+    </member>
+    <member name="M:System.Configuration.Install.AssemblyInstaller.Rollback(System.Collections.IDictionary)">
+      <summary>Возвращает компьютер в состояние, в котором он находился до установки.</summary>
+      <param name="savedState">Набор параметров <see cref="T:System.Collections.IDictionary" />, содержащих состояние компьютера до установки. </param>
+      <exception cref="T:System.ArgumentException">Значение параметра <paramref name="savedState" /> — null.— или — Словарь сохраненного состояния <see cref="T:System.Collections.IDictionary" /> мог быть искажен.— или — Не удалось найти файл. </exception>
+      <exception cref="T:System.Exception">Возникло исключение в обработчике событий <see cref="E:System.Configuration.Install.Installer.BeforeRollback" /> одного из установщиков коллекции.— или — Возникло исключение в обработчике событий <see cref="E:System.Configuration.Install.Installer.AfterRollback" /> одного из установщиков коллекции.— или — Возникло исключение во время фазы <see cref="M:System.Configuration.Install.AssemblyInstaller.Rollback(System.Collections.IDictionary)" /> установки.Исключение игнорируется, и откат продолжается.Однако по завершении отката компьютер может быть возвращен в свое первоначальное состояние не полностью.— или — В одной из сборок не удалось найти типы установщиков.— или — Не удалось создать экземпляр одного из типов установщиков. </exception>
+      <exception cref="T:System.Configuration.Install.InstallException">Возникло исключение во время фазы <see cref="M:System.Configuration.Install.AssemblyInstaller.Rollback(System.Collections.IDictionary)" /> установки.Исключение игнорируется, и откат продолжается.Однако по завершении отката компьютер может быть возвращен в свое первоначальное состояние не полностью.</exception>
+    </member>
+    <member name="M:System.Configuration.Install.AssemblyInstaller.Uninstall(System.Collections.IDictionary)">
+      <summary>Удаляет компоненты установки.</summary>
+      <param name="savedState">Набор параметров <see cref="T:System.Collections.IDictionary" />, содержащих состояние компьютера после установки. </param>
+      <exception cref="T:System.ArgumentException">Словарь сохраненного состояния <see cref="T:System.Collections.IDictionary" /> мог быть искажен.— или — Не удалось найти файл. </exception>
+      <exception cref="T:System.Exception">Произошла ошибка в обработчике событий <see cref="E:System.Configuration.Install.Installer.BeforeUninstall" /> одного из установщиков коллекции.— или — Произошла ошибка в обработчике событий <see cref="E:System.Configuration.Install.Installer.AfterUninstall" /> одного из установщиков коллекции.— или — При отмене установки возникло исключение.Исключение игнорируется, и отмена установки продолжается.Однако после завершения отмены установки приложение может быть удалено не полностью.— или — В одной из сборок не удалось найти типы установщиков.— или — Не удалось создать экземпляр одного из типов установщиков.— или — Не удалось удалить файл. </exception>
+      <exception cref="T:System.Configuration.Install.InstallException">При отмене установки возникло исключение.Исключение игнорируется, и отмена установки продолжается.Однако после завершения отмены установки приложение может быть удалено не полностью.</exception>
+    </member>
+    <member name="P:System.Configuration.Install.AssemblyInstaller.UseNewContext">
+      <summary>Получает или задает значение, указывающее на необходимость создания для установки сборки нового объекта <see cref="T:System.Configuration.Install.InstallContext" />.</summary>
+      <returns>true, если для установки сборки должен быть создан новый объект <see cref="T:System.Configuration.Install.InstallContext" />, иначе — false.Значение по умолчанию равно true.</returns>
+    </member>
+    <member name="T:System.Configuration.Install.ComponentInstaller">
+      <summary>Задает установщик, копирующий свойства из компонента для использования во время установки.</summary>
+    </member>
+    <member name="M:System.Configuration.Install.ComponentInstaller.#ctor">
+      <summary>Выполняет инициализацию нового экземпляра класса <see cref="T:System.Configuration.Install.ComponentInstaller" />.</summary>
+    </member>
+    <member name="M:System.Configuration.Install.ComponentInstaller.CopyFromComponent(System.ComponentModel.IComponent)">
+      <summary>При переопределении в наследующем классе копирует из заданного компонента все свойства, необходимые во время установки.</summary>
+      <param name="component">Копируемый компонент. </param>
+    </member>
+    <member name="M:System.Configuration.Install.ComponentInstaller.IsEquivalentInstaller(System.Configuration.Install.ComponentInstaller)">
+      <summary>Определяет, устанавливает ли указанный установщик тот же объект, что и текущий установщик.</summary>
+      <returns>true, если текущий установщик и установщик, заданный параметром <paramref name="otherInstaller" />, устанавливают один и тот же объект; иначе — false.</returns>
+      <param name="otherInstaller">Установщик для сравнения. </param>
+    </member>
+    <member name="T:System.Configuration.Install.IManagedInstaller">
+      <summary>Обеспечивает интерфейс для управляемого установщика.</summary>
+    </member>
+    <member name="M:System.Configuration.Install.IManagedInstaller.ManagedInstall(System.String,System.Int32)">
+      <summary>Выполняет управляемую установку.</summary>
+      <returns>Код возврата для installutil.exe.A successful installation returns 0.Other values indicate failure.</returns>
+      <param name="commandLine">Командная строка, в которой задается установка.</param>
+      <param name="hInstall">Дескриптор для установки.</param>
+    </member>
+    <member name="T:System.Configuration.Install.InstallContext">
+      <summary>Содержит сведения о текущей установке.</summary>
+    </member>
+    <member name="M:System.Configuration.Install.InstallContext.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:System.Configuration.Install.InstallContext" /> class.</summary>
+    </member>
+    <member name="M:System.Configuration.Install.InstallContext.#ctor(System.String,System.String[])">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Configuration.Install.InstallContext" /> и создает файл журнала для установки.</summary>
+      <param name="logFilePath">Путь к файлу журнала для данной установки или null, если файл журнала не должен быть создан. </param>
+      <param name="commandLine">Параметры командной строки, введенные при запуске программы установки, или null, если параметры не были введены. </param>
+    </member>
+    <member name="M:System.Configuration.Install.InstallContext.IsParameterTrue(System.String)">
+      <summary>Определяет, имеет ли заданный параметр командной строки значение true.</summary>
+      <returns>true, если заданный параметр установлен в значение "yes", "true", "1" или является пустой строкой (""); иначе - false.</returns>
+      <param name="paramName">Имя проверяемого параметра командной строки. </param>
+    </member>
+    <member name="M:System.Configuration.Install.InstallContext.LogMessage(System.String)">
+      <summary>Записывает сообщение на консоль и в файл журнала установки.</summary>
+      <param name="message">Записываемое сообщение. </param>
+    </member>
+    <member name="P:System.Configuration.Install.InstallContext.Parameters">
+      <summary>Получает параметры командной строки, введенные во время запуска InstallUtil.exe.</summary>
+      <returns>
+        <see cref="T:System.Collections.Specialized.StringDictionary" /> с параметрами командной строки, введенными во время запуска исполняемого кода установки.</returns>
+    </member>
+    <member name="M:System.Configuration.Install.InstallContext.ParseCommandLine(System.String[])">
+      <summary>Выполняет разбор параметров командной строки в словарь строк.</summary>
+      <returns>
+        <see cref="T:System.Collections.Specialized.StringDictionary" /> с разобранными параметрами командной строки.</returns>
+      <param name="args">Массив, содержащий параметры командной строки. </param>
+    </member>
+    <member name="T:System.Configuration.Install.Installer">
+      <summary>Предоставляет основу для пользовательских установок.</summary>
+    </member>
+    <member name="M:System.Configuration.Install.Installer.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Configuration.Install.Installer" />.</summary>
+    </member>
+    <member name="E:System.Configuration.Install.Installer.AfterInstall">
+      <summary>Происходит после выполнения методов <see cref="M:System.Configuration.Install.Installer.Install(System.Collections.IDictionary)" /> всех установщиков из свойства <see cref="P:System.Configuration.Install.Installer.Installers" />.</summary>
+    </member>
+    <member name="E:System.Configuration.Install.Installer.AfterRollback">
+      <summary>Происходит после отката установок всех установщиков из свойства <see cref="P:System.Configuration.Install.Installer.Installers" />.</summary>
+    </member>
+    <member name="E:System.Configuration.Install.Installer.AfterUninstall">
+      <summary>Происходит после выполнения действий по отмене установки всеми установщиками из свойства <see cref="P:System.Configuration.Install.Installer.Installers" />.</summary>
+    </member>
+    <member name="E:System.Configuration.Install.Installer.BeforeInstall">
+      <summary>Происходит до того, как был запущен метод <see cref="M:System.Configuration.Install.Installer.Install(System.Collections.IDictionary)" /> каждого установщика из коллекции установщиков.</summary>
+    </member>
+    <member name="E:System.Configuration.Install.Installer.BeforeRollback">
+      <summary>Происходит до отката установщиков из свойства <see cref="P:System.Configuration.Install.Installer.Installers" />.</summary>
+    </member>
+    <member name="E:System.Configuration.Install.Installer.BeforeUninstall">
+      <summary>Происходит до выполнения действий по отмене установки установщиками из свойства <see cref="P:System.Configuration.Install.Installer.Installers" />.</summary>
+    </member>
+    <member name="M:System.Configuration.Install.Installer.Commit(System.Collections.IDictionary)">
+      <summary>Завершает транзакцию установки, если переопределен в наследующем классе.</summary>
+      <param name="savedState">
+        <see cref="T:System.Collections.IDictionary" />, содержащий состояние компьютера после выполнения всех установщиков из коллекции. </param>
+      <exception cref="T:System.ArgumentException">Значение параметра <paramref name="savedState" /> — null.— или — Словарь сохраненного состояния <see cref="T:System.Collections.IDictionary" /> мог быть искажен. </exception>
+      <exception cref="T:System.Configuration.Install.InstallException">Возникло исключение во время фазы <see cref="M:System.Configuration.Install.Installer.Commit(System.Collections.IDictionary)" /> установки.Исключение игнорируется, и установка продолжается.Однако после завершения установки приложение может работать неверно.</exception>
+    </member>
+    <member name="E:System.Configuration.Install.Installer.Committed">
+      <summary>Происходит после фиксации установки всеми установщиками из свойства <see cref="P:System.Configuration.Install.Installer.Installers" />.</summary>
+    </member>
+    <member name="E:System.Configuration.Install.Installer.Committing">
+      <summary>Происходит до фиксации установок установщиками из свойства <see cref="P:System.Configuration.Install.Installer.Installers" />.</summary>
+    </member>
+    <member name="P:System.Configuration.Install.Installer.Context">
+      <summary>Получает или задает сведения о текущей установке.</summary>
+      <returns>
+        <see cref="T:System.Configuration.Install.InstallContext" /> со сведениями о текущей установке.</returns>
+    </member>
+    <member name="P:System.Configuration.Install.Installer.HelpText">
+      <summary>Получает текст справки для всех установщиков из коллекции установщиков.</summary>
+      <returns>Текст справки для всех установщиков из коллекции, включающий описание действий установщика и параметры командной строки для исполняемого кода установки (например, для служебной программы InstallUtil.exe), которые могут быть переданы данному установщику и поняты им.</returns>
+      <exception cref="T:System.NullReferenceException">Один из установщиков из коллекции установщиков содержит пустую ссылку вместо текста справки.Возможной причиной этого исключения является то, что поле, содержащее текст справки, определено, но не инициализировано.</exception>
+    </member>
+    <member name="M:System.Configuration.Install.Installer.Install(System.Collections.IDictionary)">
+      <summary>Производит установку, если переопределен в наследующем классе.</summary>
+      <param name="stateSaver">Набор параметров <see cref="T:System.Collections.IDictionary" />, используемый для сохранения информации, необходимой для выполнения фиксации, отката к предыдущей точке или операции деинсталляции. </param>
+      <exception cref="T:System.ArgumentException">Значение параметра <paramref name="stateSaver" /> — null. </exception>
+      <exception cref="T:System.Exception">Возникло исключение в обработчике событий <see cref="E:System.Configuration.Install.Installer.BeforeInstall" /> одного из установщиков коллекции.— или — Возникло исключение в обработчике событий <see cref="E:System.Configuration.Install.Installer.AfterInstall" /> одного из установщиков коллекции. </exception>
+    </member>
+    <member name="P:System.Configuration.Install.Installer.Installers">
+      <summary>Получает коллекцию установщиков, содержащуюся в данном установщике.</summary>
+      <returns>
+        <see cref="T:System.Configuration.Install.InstallerCollection" />, содержащий коллекцию установщиков, которая связана с данным установщиком.</returns>
+    </member>
+    <member name="M:System.Configuration.Install.Installer.OnAfterInstall(System.Collections.IDictionary)">
+      <summary>Вызывает событие <see cref="E:System.Configuration.Install.Installer.AfterInstall" />.</summary>
+      <param name="savedState">
+        <see cref="T:System.Collections.IDictionary" />, содержащий состояние компьютера после завершения установки всех установщиков из свойства <see cref="P:System.Configuration.Install.Installer.Installers" />. </param>
+    </member>
+    <member name="M:System.Configuration.Install.Installer.OnAfterRollback(System.Collections.IDictionary)">
+      <summary>Вызывает событие <see cref="E:System.Configuration.Install.Installer.AfterRollback" />.</summary>
+      <param name="savedState">
+        <see cref="T:System.Collections.IDictionary" />, содержащий состояние компьютера после отката всех установщиков из свойства <see cref="P:System.Configuration.Install.Installer.Installers" />. </param>
+    </member>
+    <member name="M:System.Configuration.Install.Installer.OnAfterUninstall(System.Collections.IDictionary)">
+      <summary>Вызывает событие <see cref="E:System.Configuration.Install.Installer.AfterUninstall" />.</summary>
+      <param name="savedState">
+        <see cref="T:System.Collections.IDictionary" />, содержащий состояние компьютера после отмены установки для всех установщиков из свойства <see cref="P:System.Configuration.Install.Installer.Installers" />. </param>
+    </member>
+    <member name="M:System.Configuration.Install.Installer.OnBeforeInstall(System.Collections.IDictionary)">
+      <summary>Вызывает событие <see cref="E:System.Configuration.Install.Installer.BeforeInstall" />.</summary>
+      <param name="savedState">
+        <see cref="T:System.Collections.IDictionary" />, содержащий состояние компьютера до установки установщиков из свойства <see cref="P:System.Configuration.Install.Installer.Installers" />.В этом случае данный объект <see cref="T:System.Collections.IDictionary" /> должен быть пустым.</param>
+    </member>
+    <member name="M:System.Configuration.Install.Installer.OnBeforeRollback(System.Collections.IDictionary)">
+      <summary>Вызывает событие <see cref="E:System.Configuration.Install.Installer.BeforeRollback" />.</summary>
+      <param name="savedState">
+        <see cref="T:System.Collections.IDictionary" />, содержащий состояние компьютера до отката установщиков из свойства <see cref="P:System.Configuration.Install.Installer.Installers" />. </param>
+    </member>
+    <member name="M:System.Configuration.Install.Installer.OnBeforeUninstall(System.Collections.IDictionary)">
+      <summary>Вызывает событие <see cref="E:System.Configuration.Install.Installer.BeforeUninstall" />.</summary>
+      <param name="savedState">
+        <see cref="T:System.Collections.IDictionary" />, содержащий состояние компьютера до отмены установок установщиками из свойства <see cref="P:System.Configuration.Install.Installer.Installers" />. </param>
+    </member>
+    <member name="M:System.Configuration.Install.Installer.OnCommitted(System.Collections.IDictionary)">
+      <summary>Вызывает событие <see cref="E:System.Configuration.Install.Installer.Committed" />.</summary>
+      <param name="savedState">
+        <see cref="T:System.Collections.IDictionary" />, содержащий состояние компьютера после запуска всех установщиков из свойства <see cref="P:System.Configuration.Install.Installer.Installers" />. </param>
+    </member>
+    <member name="M:System.Configuration.Install.Installer.OnCommitting(System.Collections.IDictionary)">
+      <summary>Вызывает событие <see cref="E:System.Configuration.Install.Installer.Committing" />.</summary>
+      <param name="savedState">
+        <see cref="T:System.Collections.IDictionary" />, содержащий состояние компьютера до фиксации установщиков из свойства <see cref="P:System.Configuration.Install.Installer.Installers" />. </param>
+    </member>
+    <member name="P:System.Configuration.Install.Installer.Parent">
+      <summary>Получает или задает установщик, содержащий коллекцию, к которой принадлежит данный установщик.</summary>
+      <returns>
+        <see cref="T:System.Configuration.Install.Installer" />, содержащий коллекцию, к которой принадлежит данный экземпляр, или null, если данный экземпляр не принадлежит к коллекции.</returns>
+    </member>
+    <member name="M:System.Configuration.Install.Installer.Rollback(System.Collections.IDictionary)">
+      <summary>Восстанавливает состояние компьютера до установки, если переопределен в наследующем классе.</summary>
+      <param name="savedState">Набор параметров <see cref="T:System.Collections.IDictionary" />, содержащих состояние компьютера до установки. </param>
+      <exception cref="T:System.ArgumentException">Значение параметра <paramref name="savedState" /> — null.— или — Словарь сохраненного состояния <see cref="T:System.Collections.IDictionary" /> мог быть искажен. </exception>
+      <exception cref="T:System.Configuration.Install.InstallException">Возникло исключение во время фазы <see cref="M:System.Configuration.Install.Installer.Rollback(System.Collections.IDictionary)" /> установки.Исключение игнорируется, и откат продолжается.Однако по завершении отката компьютер может быть возвращен в свое первоначальное состояние не полностью.</exception>
+    </member>
+    <member name="M:System.Configuration.Install.Installer.Uninstall(System.Collections.IDictionary)">
+      <summary>Отменяет установку, если переопределен в наследующем классе.</summary>
+      <param name="savedState">
+        <see cref="T:System.Collections.IDictionary" />, содержащий состояние компьютера после завершения установки. </param>
+      <exception cref="T:System.ArgumentException">Словарь сохраненного состояния <see cref="T:System.Collections.IDictionary" /> мог быть искажен. </exception>
+      <exception cref="T:System.Configuration.Install.InstallException">При отмене установки возникло исключение.Исключение игнорируется, и продолжается отмена установки.Однако после завершения отмены установки приложение может быть удалено не полностью.</exception>
+    </member>
+    <member name="T:System.Configuration.Install.InstallerCollection">
+      <summary>Содержит коллекцию установщиков, запускаемых во время установки.</summary>
+    </member>
+    <member name="M:System.Configuration.Install.InstallerCollection.Add(System.Configuration.Install.Installer)">
+      <summary>Добавляет указанный установщик в данную коллекцию установщиков.</summary>
+      <returns>Индекс добавленного установщика (индексация ведется от нуля).</returns>
+      <param name="value">Экземпляр <see cref="T:System.Configuration.Install.Installer" />, представляющий установщик, добавляемый в коллекцию. </param>
+    </member>
+    <member name="M:System.Configuration.Install.InstallerCollection.AddRange(System.Configuration.Install.Installer[])">
+      <summary>Добавляет указанный массив установщиков в данную коллекцию.</summary>
+      <param name="value">Массив типа <see cref="T:System.Configuration.Install.Installer" />, содержащий установщики, добавляемые в данную коллекцию. </param>
+    </member>
+    <member name="M:System.Configuration.Install.InstallerCollection.AddRange(System.Configuration.Install.InstallerCollection)">
+      <summary>Добавляет указанный установщик в данную коллекцию установщиков.</summary>
+      <param name="value">Экземпляр <see cref="T:System.Configuration.Install.InstallerCollection" />, содержащий установщики, добавляемые в данную коллекцию. </param>
+    </member>
+    <member name="M:System.Configuration.Install.InstallerCollection.Contains(System.Configuration.Install.Installer)">
+      <summary>Определяет, включен ли указанный установщик в коллекцию.</summary>
+      <returns>true, если указанный установщик включен в коллекцию; иначе — false.</returns>
+      <param name="value">Экземпляр <see cref="T:System.Configuration.Install.Installer" />, представляющий искомый установщик. </param>
+    </member>
+    <member name="M:System.Configuration.Install.InstallerCollection.CopyTo(System.Configuration.Install.Installer[],System.Int32)">
+      <summary>Копирует элементы из коллекции в массив, начиная с заданного индекса.</summary>
+      <param name="array">Массив, в который выполняется копирование. </param>
+      <param name="index">Индекс в массиве, с позиции которого требуется вставить коллекцию. </param>
+    </member>
+    <member name="M:System.Configuration.Install.InstallerCollection.IndexOf(System.Configuration.Install.Installer)">
+      <summary>Определяет индекс указанного установщика в коллекции.</summary>
+      <returns>Индекс установщика в коллекции (индексация ведется от нуля).</returns>
+      <param name="value">
+        <see cref="T:System.Configuration.Install.Installer" /> для поиска в коллекции. </param>
+    </member>
+    <member name="M:System.Configuration.Install.InstallerCollection.Insert(System.Int32,System.Configuration.Install.Installer)">
+      <summary>Вставляет указанный установщик в коллекцию по заданному индексу.</summary>
+      <param name="index">Индекс, с позиции которого требуется вставить установщик (индексация ведется от нуля). </param>
+      <param name="value">
+        <see cref="T:System.Configuration.Install.Installer" /> для вставки. </param>
+    </member>
+    <member name="P:System.Configuration.Install.InstallerCollection.Item(System.Int32)">
+      <summary>Получает или задает установщик по заданному индексу.</summary>
+      <returns>Экземпляр <see cref="T:System.Configuration.Install.Installer" />, представляющий установщик по заданному индексу.</returns>
+      <param name="index">Индекс установщика для считывания или установки (индексация ведется от нуля). </param>
+    </member>
+    <member name="M:System.Configuration.Install.InstallerCollection.OnInsert(System.Int32,System.Object)">
+      <summary>Выполняет дополнительные пользовательские действия перед вставкой нового установщика в коллекцию.</summary>
+      <param name="index">Начинающийся с нуля индекс, по которому следует вставить <paramref name="value" />.</param>
+      <param name="value">Новое значение установщика в параметре <paramref name="index" />.</param>
+    </member>
+    <member name="M:System.Configuration.Install.InstallerCollection.OnRemove(System.Int32,System.Object)">
+      <summary>Выполняет дополнительные пользовательские действия удалением нового установщика из коллекции.</summary>
+      <param name="index">Начинающийся с нуля индекс положения параметра <paramref name="value" />.</param>
+      <param name="value">Установщик, который следует удалить из <paramref name="index" />. </param>
+    </member>
+    <member name="M:System.Configuration.Install.InstallerCollection.OnSet(System.Int32,System.Object,System.Object)">
+      <summary>Выполняет дополнительные пользовательские действия перед установкой нового значения для существующего установщика.</summary>
+      <param name="index">Начинающийся с нуля индекс, по которому следует заменить <paramref name="oldValue" />.</param>
+      <param name="oldValue">Значение, которое нужно заменить параметром <paramref name="newValue." />.</param>
+      <param name="newValue">Новое значение установщика в параметре <paramref name="index" />.</param>
+    </member>
+    <member name="M:System.Configuration.Install.InstallerCollection.Remove(System.Configuration.Install.Installer)">
+      <summary>Removes the specified <see cref="T:System.Configuration.Install.Installer" /> from the collection.</summary>
+      <param name="value">Экземпляр <see cref="T:System.Configuration.Install.Installer" />, представляющий удаляемый установщик. </param>
+    </member>
+    <member name="T:System.Configuration.Install.InstallEventArgs">
+      <summary>Предоставляет данные для событий <see cref="E:System.Configuration.Install.Installer.BeforeInstall" />, <see cref="E:System.Configuration.Install.Installer.AfterInstall" />, <see cref="E:System.Configuration.Install.Installer.Committing" />, <see cref="E:System.Configuration.Install.Installer.Committed" />, <see cref="E:System.Configuration.Install.Installer.BeforeRollback" />, <see cref="E:System.Configuration.Install.Installer.AfterRollback" />, <see cref="E:System.Configuration.Install.Installer.BeforeUninstall" />, <see cref="E:System.Configuration.Install.Installer.AfterUninstall" />.</summary>
+    </member>
+    <member name="M:System.Configuration.Install.InstallEventArgs.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Configuration.Install.InstallEventArgs" />, оставляя свойство <see cref="P:System.Configuration.Install.InstallEventArgs.SavedState" /> пустым.</summary>
+    </member>
+    <member name="M:System.Configuration.Install.InstallEventArgs.#ctor(System.Collections.IDictionary)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Configuration.Install.InstallEventArgs" /> и задает значение свойству <see cref="P:System.Configuration.Install.InstallEventArgs.SavedState" />.</summary>
+      <param name="savedState">
+        <see cref="T:System.Collections.IDictionary" />, который содержит сведения о текущем состоянии установки. </param>
+    </member>
+    <member name="P:System.Configuration.Install.InstallEventArgs.SavedState">
+      <summary>Получает <see cref="T:System.Collections.IDictionary" /> с текущим состоянием установки.</summary>
+      <returns>
+        <see cref="T:System.Collections.IDictionary" />, который содержит сведения о текущем состоянии установки.</returns>
+    </member>
+    <member name="T:System.Configuration.Install.InstallEventHandler">
+      <summary>Представляет метод, обрабатывающий события <see cref="E:System.Configuration.Install.Installer.BeforeInstall" />, <see cref="E:System.Configuration.Install.Installer.AfterInstall" />, <see cref="E:System.Configuration.Install.Installer.Committing" />, <see cref="E:System.Configuration.Install.Installer.Committed" />, <see cref="E:System.Configuration.Install.Installer.BeforeRollback" />, <see cref="E:System.Configuration.Install.Installer.AfterRollback" />, <see cref="E:System.Configuration.Install.Installer.BeforeUninstall" /> или событие <see cref="E:System.Configuration.Install.Installer.AfterUninstall" /> для <see cref="T:System.Configuration.Install.Installer" />.</summary>
+      <param name="sender">Источник события. </param>
+      <param name="e">Параметр <see cref="T:System.Configuration.Install.InstallEventArgs" />, содержащий данные события. </param>
+    </member>
+    <member name="T:System.Configuration.Install.InstallException">
+      <summary>Исключение, которое вызывается во время установки при возникновении ошибок в фазе фиксации, отката или отмены установки.</summary>
+    </member>
+    <member name="M:System.Configuration.Install.InstallException.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:System.Configuration.Install.InstallException" /> class.</summary>
+    </member>
+    <member name="M:System.Configuration.Install.InstallException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Initializes a new instance of the <see cref="T:System.Configuration.Install.InstallException" /> class with serialized data.</summary>
+      <param name="info">Объект <see cref="T:System.Runtime.Serialization.SerializationInfo" />, содержащий сериализованные данные объекта о выбрасываемом исключении. </param>
+      <param name="context">Объект <see cref="T:System.Runtime.Serialization.StreamingContext" />, содержащий контекстные сведения об источнике или назначении. </param>
+    </member>
+    <member name="M:System.Configuration.Install.InstallException.#ctor(System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Configuration.Install.InstallException" /> и задает сообщение, отображаемое для пользователя.</summary>
+      <param name="message">Сообщение, отображаемое для пользователя. </param>
+    </member>
+    <member name="M:System.Configuration.Install.InstallException.#ctor(System.String,System.Exception)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Configuration.Install.InstallException" /> и задает отображаемое сообщение и ссылку на внутреннее исключение, ставшее причиной данного исключения.</summary>
+      <param name="message">Сообщение, отображаемое для пользователя. </param>
+      <param name="innerException">Объект, являющийся причиной текущего исключения.Если параметр <paramref name="innerException" /> не имеет значения null, текущее исключение вызывается в блоке catch, обрабатывающем внутреннее исключение.</param>
+    </member>
+    <member name="T:System.Configuration.Install.ManagedInstallerClass">
+      <summary>Представляет управляемую установку.</summary>
+    </member>
+    <member name="M:System.Configuration.Install.ManagedInstallerClass.#ctor">
+      <summary>Инициализирует новый экземпляр <see cref="T:System.Configuration.Install.ManagedInstallerClass" />. </summary>
+    </member>
+    <member name="M:System.Configuration.Install.ManagedInstallerClass.InstallHelper(System.String[])">
+      <summary>Управляет функциональными возможностями средства Installutil.exe (инструмент для установки).</summary>
+      <param name="args">Аргументы, передаваемые в установщик.</param>
+    </member>
+    <member name="M:System.Configuration.Install.ManagedInstallerClass.System#Configuration#Install#IManagedInstaller#ManagedInstall(System.String,System.Int32)">
+      <summary>For a description of this member, see <see cref="M:System.Configuration.Install.IManagedInstaller.ManagedInstall(System.String,System.Int32)" />.</summary>
+      <returns>Код возврата для installutil.exe.A successful installation returns 0.Other values indicate failure.</returns>
+      <param name="argString">Строка команды для установки.</param>
+      <param name="hInstall">Дескриптор для установки.</param>
+    </member>
+    <member name="T:System.Configuration.Install.TransactedInstaller">
+      <summary>Определяет установщик, который либо завершается успешно, либо, если происходит сбой, оставляет компьютер в исходном состоянии.</summary>
+    </member>
+    <member name="M:System.Configuration.Install.TransactedInstaller.#ctor">
+      <summary>Выполняет инициализацию нового экземпляра класса <see cref="T:System.Configuration.Install.TransactedInstaller" />.</summary>
+    </member>
+    <member name="M:System.Configuration.Install.TransactedInstaller.Install(System.Collections.IDictionary)">
+      <summary>Производит установку.</summary>
+      <param name="savedState">
+        <see cref="T:System.Collections.IDictionary" />, используемый данным методом для сохранения сведений, необходимых для осуществления фиксации, отката или отмены установки. </param>
+      <exception cref="T:System.ArgumentException">Значение параметра <paramref name="savedState" /> — null. </exception>
+      <exception cref="T:System.Exception">Не удалось произвести установку, производится откат. </exception>
+    </member>
+    <member name="M:System.Configuration.Install.TransactedInstaller.Uninstall(System.Collections.IDictionary)">
+      <summary>Удаляет компоненты установки.</summary>
+      <param name="savedState">
+        <see cref="T:System.Collections.IDictionary" />, содержащий состояние компьютера после завершения установки. </param>
+    </member>
+    <member name="T:System.Configuration.Install.UninstallAction">
+      <summary>Задает действия установщика во время отмены установки.</summary>
+    </member>
+    <member name="F:System.Configuration.Install.UninstallAction.Remove">
+      <summary>Удаляет созданный установщиком ресурс.</summary>
+    </member>
+    <member name="F:System.Configuration.Install.UninstallAction.NoAction">
+      <summary>Оставляет созданный установщиком ресурс без изменений.</summary>
+    </member>
+    <member name="T:System.Diagnostics.EventLogInstaller">
+      <summary>Позволяет устанавливать и настраивать журнал событий, используемый для считывания и записи данных при запуске приложения. </summary>
+    </member>
+    <member name="M:System.Diagnostics.EventLogInstaller.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Diagnostics.EventLogInstaller" />. </summary>
+    </member>
+    <member name="P:System.Diagnostics.EventLogInstaller.CategoryCount">
+      <summary>Получает или задает число категорий в файле ресурсов категорий.</summary>
+      <returns>Число категорий в файле ресурсов категории.По умолчанию используется значение 0.</returns>
+    </member>
+    <member name="P:System.Diagnostics.EventLogInstaller.CategoryResourceFile">
+      <summary>Получает или задает путь к файлу ресурсов, содержащему строки категорий источника.</summary>
+      <returns>Путь к файлу ресурсов категории.Значением по умолчанию является пустая строка ("").</returns>
+    </member>
+    <member name="M:System.Diagnostics.EventLogInstaller.CopyFromComponent(System.ComponentModel.IComponent)">
+      <summary>Копирует значения свойств компонента <see cref="T:System.Diagnostics.EventLog" />, которые требуются во время установки журнала событий.</summary>
+      <param name="component">Объект <see cref="T:System.ComponentModel.IComponent" /> для использования в качестве шаблона для <see cref="T:System.Diagnostics.EventLogInstaller" />. </param>
+      <exception cref="T:System.ArgumentException">Указанный компонент не является объектом <see cref="T:System.Diagnostics.EventLog" />.— или — Свойство <see cref="P:System.Diagnostics.EventLog.Log" /> или <see cref="P:System.Diagnostics.EventLog.Source" /> указанного компонента имеет значение null, либо является пустым. </exception>
+    </member>
+    <member name="M:System.Diagnostics.EventLogInstaller.Install(System.Collections.IDictionary)">
+      <summary>Выполняет установку и записывает в реестр сведения о журнале событий.</summary>
+      <param name="stateSaver">Класс <see cref="T:System.Collections.IDictionary" /> используется для сохранения сведений, которые необходимы для выполнения отката или операции удаления. </param>
+      <exception cref="T:System.PlatformNotSupportedException">Используемая платформа отличается от Windows NT 4.0 и более поздних версий. </exception>
+      <exception cref="T:System.ArgumentException">Имя, указанное в свойстве <see cref="P:System.Diagnostics.EventLogInstaller.Source" /> уже зарегистрировано для другого журнала событий.</exception>
+    </member>
+    <member name="M:System.Diagnostics.EventLogInstaller.IsEquivalentInstaller(System.Configuration.Install.ComponentInstaller)">
+      <summary>Определяет, ссылается ли установщик на тот же источник, что и другой указанный установщик.</summary>
+      <returns>Значение true, если текущий установщик и установщик, указанный в параметре <paramref name="otherInstaller" />, должны устанавливать или удалять один и тот же источник; в противном случае — false.</returns>
+      <param name="otherInstaller">Установщик для сравнения. </param>
+    </member>
+    <member name="P:System.Diagnostics.EventLogInstaller.Log">
+      <summary>Получает или задает имя журнала, для которого задается источник.</summary>
+      <returns>Имя журнала.Существуют следующие имена: журнал приложения, журнал системы или имя, указанное пользователем.Значением по умолчанию является пустая строка ("").</returns>
+    </member>
+    <member name="P:System.Diagnostics.EventLogInstaller.MessageResourceFile">
+      <summary>Получает или задает путь к файлу ресурсов, содержащий сообщение о форматировании строк источника.</summary>
+      <returns>Путь файла ресурсов сообщения.Значение по умолчанию — пустая строка ("").</returns>
+    </member>
+    <member name="P:System.Diagnostics.EventLogInstaller.ParameterResourceFile">
+      <summary>Получает или задает путь к файлу ресурсов, содержащему строки параметров сообщения источника.</summary>
+      <returns>Путь к параметру файла ресурсов.Значением по умолчанию является пустая строка ("").</returns>
+    </member>
+    <member name="M:System.Diagnostics.EventLogInstaller.Rollback(System.Collections.IDictionary)">
+      <summary>Восстанавливает исходное состояние компьютера (до установки) путем отмены данных журнала событий, внесенных в реестр в процессе установки.</summary>
+      <param name="savedState">Набор параметров <see cref="T:System.Collections.IDictionary" />, содержащих сведения о состоянии компьютера до установки. </param>
+    </member>
+    <member name="P:System.Diagnostics.EventLogInstaller.Source">
+      <summary>Получает или задает имя источника, регистрируемого в журнале.</summary>
+      <returns>Имя, регистрируемое в журнале событий как имя источника записей.Значением по умолчанию является пустая строка ("").</returns>
+    </member>
+    <member name="M:System.Diagnostics.EventLogInstaller.Uninstall(System.Collections.IDictionary)">
+      <summary>Удаляет из реестра сведения о журнале событий.</summary>
+      <param name="savedState">Набор параметров <see cref="T:System.Collections.IDictionary" />, содержащих сведения о состоянии компьютера до установки. </param>
+    </member>
+    <member name="P:System.Diagnostics.EventLogInstaller.UninstallAction">
+      <summary>Получает или задает значение, указывающее, должен ли объект Installutil.exe (инструмент для установки) удалить журнал событий или оставить его в текущем состоянии во время удаления.</summary>
+      <returns>Одно из значений <see cref="T:System.Configuration.Install.UninstallAction" />, показывающее состояние, в котором нужно оставить журнал событий при удалении <see cref="T:System.Diagnostics.EventLog" />.Значение по умолчанию — Remove.</returns>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">Объект <see cref="P:System.Diagnostics.EventLogInstaller.UninstallAction" /> содержит недопустимое значение.Допустимые значения этого свойства Remove и NoAction.</exception>
+    </member>
+    <member name="T:System.Diagnostics.PerformanceCounterInstaller">
+      <summary>Задает установщик для компонента <see cref="T:System.Diagnostics.PerformanceCounter" />.</summary>
+    </member>
+    <member name="M:System.Diagnostics.PerformanceCounterInstaller.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Diagnostics.PerformanceCounterInstaller" />. </summary>
+    </member>
+    <member name="P:System.Diagnostics.PerformanceCounterInstaller.CategoryHelp">
+      <summary>Возвращает или задает сообщение с описанием для счетчика производительности.</summary>
+      <returns>Сообщение с описанием для счетчика производительности.</returns>
+      <exception cref="T:System.ArgumentNullException">Значение установлено равным null. </exception>
+    </member>
+    <member name="P:System.Diagnostics.PerformanceCounterInstaller.CategoryName">
+      <summary>Возвращает или задает имя категории производительности для счетчика производительности.</summary>
+      <returns>Имя категории производительности для счетчика производительности.</returns>
+      <exception cref="T:System.ArgumentNullException">Значение установлено равным null. </exception>
+      <exception cref="T:System.ArgumentException">Значение не является допустимым именем категории.</exception>
+    </member>
+    <member name="P:System.Diagnostics.PerformanceCounterInstaller.CategoryType">
+      <summary>Возвращает или задает тип категории счетчика производительности.</summary>
+      <returns>Одно из значений <see cref="T:System.Diagnostics.PerformanceCounterCategoryType" />. </returns>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">Значение не является типом <see cref="T:System.Diagnostics.PerformanceCounterCategoryType" />.</exception>
+    </member>
+    <member name="M:System.Diagnostics.PerformanceCounterInstaller.CopyFromComponent(System.ComponentModel.IComponent)">
+      <summary>Копирует все свойства из заданного компонента, которые требуются во время установки для счетчика производительности.</summary>
+      <param name="component">Копируемый компонент. </param>
+      <exception cref="T:System.ArgumentException">Указанный компонент не является счетчиком <see cref="T:System.Diagnostics.PerformanceCounter" />.-или- Указанный счетчик <see cref="T:System.Diagnostics.PerformanceCounter" /> является неполным.-или- Предпринята попытка установки нескольких счетчиков разных категорий. </exception>
+    </member>
+    <member name="P:System.Diagnostics.PerformanceCounterInstaller.Counters">
+      <summary>Возвращает набор данных, относящихся к устанавливаемым счетчикам.</summary>
+      <returns>Коллекция <see cref="T:System.Diagnostics.CounterCreationDataCollection" />, содержащая имена, справочные сообщения и типы устанавливаемых счетчиков.</returns>
+    </member>
+    <member name="M:System.Diagnostics.PerformanceCounterInstaller.Install(System.Collections.IDictionary)">
+      <summary>Производит установку.</summary>
+      <param name="stateSaver">Класс <see cref="T:System.Collections.IDictionary" />, используемый для сохранения информации, необходимой для выполнения фиксации, отката или операции удаления. </param>
+    </member>
+    <member name="M:System.Diagnostics.PerformanceCounterInstaller.Rollback(System.Collections.IDictionary)">
+      <summary>Возвращает компьютер в состояние, в котором он находился до установки.</summary>
+      <param name="savedState">Набор параметров <see cref="T:System.Collections.IDictionary" />, содержащих сведения о состоянии компьютера до установки. </param>
+    </member>
+    <member name="M:System.Diagnostics.PerformanceCounterInstaller.Uninstall(System.Collections.IDictionary)">
+      <summary>Удаляет компоненты установки.</summary>
+      <param name="savedState">Набор параметров <see cref="T:System.Collections.IDictionary" />, содержащих сведения о состоянии компьютера после установки. </param>
+    </member>
+    <member name="P:System.Diagnostics.PerformanceCounterInstaller.UninstallAction">
+      <summary>Возвращает значение, позволяющее определить, нужно или удалять счетчик производительности во время удаления приложения.</summary>
+      <returns>Одно из значений <see cref="T:System.Configuration.Install.UninstallAction" />.Значение по умолчанию — Remove.</returns>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">Значение свойства не равно <see cref="T:System.Configuration.Install.UninstallAction" />.</exception>
+    </member>
+  </members>
+</doc>

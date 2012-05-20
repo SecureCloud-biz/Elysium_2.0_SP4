@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Web.Entity</name>
+  </assembly>
+  <members>
+    <member name="T:System.Web.UI.WebControls.EntityDataSource">
+      <summary>Представляет модель EDM для элементов управления с привязкой к данным в приложении ASP.NET.</summary>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSource.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Web.UI.WebControls.EntityDataSource" />. </summary>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSource.#ctor(System.Data.EntityClient.EntityConnection)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> с заданным подключением.</summary>
+      <param name="connection">Объект <see cref="T:System.Data.EntityClient.EntityConnection" /> подключения к модели EDM.</param>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.AutoGenerateOrderByClause">
+      <summary>Возвращает или задает значение, определяющее, создает ли динамически элемент управления <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> предложение ORDER BY, основываясь на значениях из коллекции <see cref="P:System.Data.WebControls.EntityDataSource.OrderByParameters" />.</summary>
+      <returns>Значение true, если элемент управления <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> создает предложение ORDER BY; в противном случае — значение false.Значение по умолчанию — false.</returns>
+      <exception cref="T:System.InvalidOperationException">Когда свойство <see cref="P:System.Web.UI.WebControls.EntityDataSource.AutoGenerateOrderByClause" /> имеет значение true, а свойство <see cref="P:System.Web.UI.WebControls.EntityDataSource.OrderBy" /> — null.</exception>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.AutoGenerateWhereClause">
+      <summary>Возвращает или задает значение, определяющее, создает ли динамически элемент управления <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> предложение WHERE, основываясь на значениях, определенных в коллекции <see cref="P:System.Web.UI.WebControls.EntityDataSource.WhereParameters" />.</summary>
+      <returns>true, если элемент управления <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> создает предложение WHERE; в противном случае — false.Значение по умолчанию — false.</returns>
+      <exception cref="T:System.InvalidOperationException">Когда свойство <see cref="P:System.Web.UI.WebControls.EntityDataSource.AutoGenerateWhereClause" /> имеет значение true, а свойство <see cref="P:System.Web.UI.WebControls.EntityDataSource.Where" /> — null.</exception>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.AutoPage">
+      <summary>Возвращает или задает значение, определяющее поддержку перехода между частями данных во время выполнения элементом управления <see cref="T:System.Web.UI.WebControls.EntityDataSource" />.</summary>
+      <returns>Значение true, если пользователь пролистывать данные; в противном случае — значение false.По умолчанию используется значение true.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.AutoSort">
+      <summary>Возвращает или задает значение, определяющее поддержку сортировки во время выполнения элементом управления <see cref="T:System.Web.UI.WebControls.EntityDataSource" />.</summary>
+      <returns>Значение true, если пользователь может сортировать; в противном случае — значение false.По умолчанию используется значение true.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.CommandParameters">
+      <summary>Возвращает коллекцию параметров для запроса.</summary>
+      <returns>Коллекция <see cref="T:System.Web.UI.WebControls.ParameterCollection" />, содержащая параметры, переданные команде запроса.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.CommandText">
+      <summary>Возвращает или задает команду Entity SQL, идентифицирующую запрос.</summary>
+      <returns>Значение типа string, являющееся запросом Entity SQL.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.ConnectionString">
+      <summary>Возвращает или задает строку подключения, используемую для выполнения запроса.</summary>
+      <returns>Строка подключения для запроса.</returns>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.ContextCreated">
+      <summary>Происходит, когда объект <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> завершил создание объекта <see cref="T:System.Data.Objects.ObjectContext" />, используемого для работы с объектами данных сущностей. </summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.ContextCreating">
+      <summary>Происходит, когда объект <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> создает объекта <see cref="T:System.Data.Objects.ObjectContext" />, используемого для работы с объектами данных сущностей. </summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.ContextDisposing">
+      <summary>Происходит перед удалением объекта <see cref="T:System.Data.Objects.ObjectContext" />. </summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.ContextType">
+      <summary>Возвращает или задает типизированный объект <see cref="T:System.Data.Objects.ObjectContext" />, используемый элементом управления <see cref="T:System.Web.UI.WebControls.EntityDataSource" />.</summary>
+      <returns>Объект, являющийся производным от <see cref="T:System.Data.Objects.ObjectContext" />.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.ContextTypeName">
+      <summary>Возвращает или задает полное имя типизированного объекта <see cref="T:System.Data.Objects.ObjectContext" />, используемого элементом управления <see cref="T:System.Web.UI.WebControls.EntityDataSource" />.</summary>
+      <returns>Строка <see cref="T:System.String" />, являющаяся полным именем типа.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.DefaultContainerName">
+      <summary>Возвращает или задает имя контейнера по умолчанию.</summary>
+      <returns>Объект <see cref="T:System.String" />, являющийся именем контейнера по умолчанию.</returns>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.Deleted">
+      <summary>Происходит после удаления объекта из источника данных.</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.DeleteParameters">
+      <summary>Возвращает коллекцию параметров, которые используются во время операции удаления.</summary>
+      <returns>Параметры, которые используются во время операции удаления.</returns>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.Deleting">
+      <summary>Происходит перед удалением объекта из источника данных.</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.EnableDelete">
+      <summary>Возвращает или задает значение, указывающее, могут ли объекты быть удалены при помощи элемента управления <see cref="T:System.Web.UI.WebControls.EntityDataSource" />.</summary>
+      <returns>true, если автоматическое удаление включено; в противном случае false.По умолчанию используется значение false.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.EnableFlattening">
+      <summary>Получает или задает значение, указывающее, требуется ли отключить создание программы-оболочки. </summary>
+      <returns>Значение True, если свойства будут выровнены; в противном случае — значение false.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.EnableInsert">
+      <summary>Возвращает или задает значение, указывающее, могут ли объекты быть добавлены при помощи элемента управления <see cref="T:System.Web.UI.WebControls.EntityDataSource" />.</summary>
+      <returns>true, если автоматическая вставки включена; в противном случае false.По умолчанию используется значение false.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.EnableUpdate">
+      <summary>Возвращает или задает значение, указывающее, могут ли объекты быть изменены при помощи элемента управления <see cref="T:System.Web.UI.WebControls.EntityDataSource" />.</summary>
+      <returns>true, если автоматическое обновление включено; в противном случае false.По умолчанию используется значение false.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.EntitySetName">
+      <summary>Возвращает или задает имя набора сущностей, используемого элементом управления <see cref="T:System.Web.UI.WebControls.EntityDataSource" />.</summary>
+      <returns>Имя набора сущностей.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.EntityTypeFilter">
+      <summary>Возвращает или задает выражение, ограничивающее запрос результатами определенного производного типа.</summary>
+      <returns>Выражение фильтра.</returns>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSource.GetView(System.String)">
+      <summary>Возвращает именованное представление источника данных, связанное с элементом управления источником данных.</summary>
+      <returns>Объект <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" />, связанный с элементом управления <see cref="T:System.Web.UI.WebControls.EntityDataSource" />.</returns>
+      <param name="viewName">Имя извлекаемого представления.Поскольку объект <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> поддерживает только одно представление, параметр <paramref name="viewName" /> игнорируется.</param>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSource.GetViewNames">
+      <summary>Возвращает коллекцию имен, представляющих список объектов представления, связанных с элементом управления <see cref="T:System.Web.UI.WebControls.EntityDataSource" />.</summary>
+      <returns>Коллекция <see cref="T:System.Collections.ICollection" />, содержащая имена представлений, связанных с элементом управления <see cref="T:System.Web.UI.WebControls.EntityDataSource" />.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.GroupBy">
+      <summary>Возвращает или задает выражение Entity SQL, определяющее, как следует сгруппировать результаты запроса.</summary>
+      <returns>Предложение GROUP BY.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.Include">
+      <summary>Возвращает или задает выражение, определяющее связанные объекты для включения в результаты запроса.</summary>
+      <returns>Разделенный запятыми список путей запроса для возврата в результатах запроса.</returns>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.Inserted">
+      <summary>Происходит после создания нового объекта в источнике данных. </summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.Inserting">
+      <summary>Происходит перед сохранением нового объекта в источнике данных.</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.InsertParameters">
+      <summary>Возвращает коллекцию параметров, которые используются во время операции вставки.</summary>
+      <returns>Параметры, которые используются во время операции вставки.</returns>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSource.LoadControlState(System.Object)">
+      <summary>Загружает состояние свойства в элемент управления <see cref="T:System.Web.UI.WebControls.EntityDataSource" />, который необходимо сохранить.</summary>
+      <param name="savedState">
+        <see cref="T:System.Object" />, содержащий информацию состояния. </param>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSource.OnInit(System.EventArgs)">
+      <summary>Добавляет обработчик событий <see cref="E:System.Web.UI.Page.LoadComplete" /> в элемент управления <see cref="T:System.Web.UI.Page" />, содержащий элемент управления <see cref="T:System.Web.UI.WebControls.EntityDataSource" />.</summary>
+      <param name="e">Объект <see cref="T:System.EventArgs" />, содержащий данные события. </param>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSource.OnUnload(System.EventArgs)">
+      <summary>Вызывает событие <see cref="E:System.Web.UI.Control.Unload" />.</summary>
+      <param name="e">Объект <see cref="T:System.EventArgs" />, содержащий данные события.  </param>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.OrderBy">
+      <summary>Возвращает или задает выражение Entity SQL, определяющее, как следует упорядочить результаты запроса.</summary>
+      <returns>Предложение ORDER BY.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.OrderByParameters">
+      <summary>Возвращает коллекцию параметров, которые используются для создания предложения ORDER BY.</summary>
+      <returns>Параметры, которые используются для создания предложения ORDER BY.</returns>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.QueryCreated">
+      <summary>Происходит после того, как объект <see cref="E:System.Web.UI.WebControls.EntityDataSource" /> создает запрос Entity SQL, заданный в процессе конфигурации элемента управления <see cref="T:System.Web.UI.WebControls.EntityDataSource" />.</summary>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSource.SaveControlState">
+      <summary>Сохраняет состояние свойств в элементе управления <see cref="T:System.Web.UI.WebControls.EntityDataSource" />, который необходимо сохранить.</summary>
+      <returns>
+        <see cref="T:System.Object" />, содержащий информацию состояния.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.Select">
+      <summary>Возвращает или задает проекцию, определяющую свойства для включения в результаты запроса.</summary>
+      <returns>Параметры, которые используются для создания предложения ORDER BY.</returns>
+      <exception cref="T:System.InvalidOperationException">Когда свойство <see cref="P:System.Web.UI.WebControls.EntityDataSource.Select" /> задает проекцию запроса и значением <see cref="P:System.Web.UI.WebControls.EntityDataSource.EnableUpdate" />, <see cref="P:System.Web.UI.WebControls.EntityDataSource.EnableDelete" /> или <see cref="P:System.Web.UI.WebControls.EntityDataSource.EnableInsert" /> является true.</exception>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.Selected">
+      <summary>Происходит после выполнения запроса.</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.Selecting">
+      <summary>Происходит перед составлением и выполнением запроса.</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.SelectParameters">
+      <summary>Возвращает коллекцию параметров, которые используются для создания проекции.</summary>
+      <returns>Параметры, которые используются для создания проекции.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.StoreOriginalValuesInViewState">
+      <summary>Возвращает или задает значение, определяющее необходимость хранения данных из источника данных в состоянии просмотра для гарантии неизменности данных другим процессом перед их обновлением или удалением.</summary>
+      <returns>Значение true, если значения сохраняются в состоянии представления; в противном случае — значение false.По умолчанию используется значение true.</returns>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.System#Web#DynamicData#IDynamicDataSource#Exception">
+      <summary>Происходит, когда проверка в частичных методах завершается неудачей или генерируется исключение. </summary>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSource.System#Web#UI#WebControls#IQueryableDataSource#RaiseViewChanged">
+      <summary>Сообщает элементу управления с привязкой к данным, что объект параметра изменился и элемент управления с привязкой к данным нужно обновить.</summary>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSource.TrackViewState"></member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.Updated">
+      <summary>Происходит после сохранения внесенных в объект изменений в источнике данных.</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.UpdateParameters">
+      <summary>Возвращает коллекцию параметров, которые используются во время операции обновления.</summary>
+      <returns>Параметры, которые используются во время операции обновления.</returns>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSource.Updating">
+      <summary>Происходит перед сохранением внесенных в объект изменений в источнике данных.</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.Where">
+      <summary>Возвращает или задает выражение Entity SQL, определяющее, как следует фильтровать результаты запроса.</summary>
+      <returns>Предложение WHERE.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSource.WhereParameters">
+      <summary>Возвращает коллекцию параметров, которые используются для создания предложения WHERE.</summary>
+      <returns>Параметры, которые используются для создания предложения WHERE.</returns>
+    </member>
+    <member name="T:System.Web.UI.WebControls.EntityDataSourceChangedEventArgs">
+      <summary>Provides data for the <see cref="E:System.Web.UI.WebControls.EntityDataSource.Inserted" />, <see cref="E:System.Web.UI.WebControls.EntityDataSource.Updated" />, and <see cref="E:System.Web.UI.WebControls.EntityDataSource.Deleted" /> events.</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceChangedEventArgs.Context">
+      <summary>Возвращает объект <see cref="T:System.Data.Objects.ObjectContext" />, используемый источником данных.</summary>
+      <returns>The <see cref="T:System.Data.Objects.ObjectContext" />.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceChangedEventArgs.Entity">
+      <summary>Возвращает объект, который был добавлен, измене или обновлен.</summary>
+      <returns>Объект <see cref="T:System.Object" />, являющийся сущностью.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceChangedEventArgs.Exception">
+      <summary>Возвращает исключение, выбрасываемое при выполнении операции вставки, обновления или удаления.</summary>
+      <returns>Исключение, если произошла ошибка; в противном случае — указатель null (Nothing в Visual Basic).</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceChangedEventArgs.ExceptionHandled">
+      <summary>Возвращает или задает значение, позволяющее определить, было ли обработано исключение и должно ли оно выбрасываться снова.</summary>
+      <returns>true, если исключение обработано; в противном случае —false. </returns>
+    </member>
+    <member name="T:System.Web.UI.WebControls.EntityDataSourceChangingEventArgs">
+      <summary>Provides data for the <see cref="E:System.Web.UI.WebControls.EntityDataSource.Inserting" />, <see cref="E:System.Web.UI.WebControls.EntityDataSource.Updating" />, and <see cref="E:System.Web.UI.WebControls.EntityDataSource.Deleting" /> events.</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceChangingEventArgs.Context">
+      <summary>Возвращает объект <see cref="T:System.Data.Objects.ObjectContext" />, используемый источником данных.</summary>
+      <returns>Контекст объекта, используемый источником данных.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceChangingEventArgs.Entity">
+      <summary>Возвращает объект, который добавляется, изменяется или обновляется.</summary>
+      <returns>Объект <see cref="T:System.Object" />, являющийся сущностью.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceChangingEventArgs.Exception">
+      <summary>Возвращает исключение, выбрасываемое при проверке данных перед выполнением операции вставки, обновления или удаления.</summary>
+      <returns>Исключение, если произошла ошибка; в противном случае — указатель null (Nothing в Visual Basic).</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceChangingEventArgs.ExceptionHandled">
+      <summary>Возвращает или задает значение, позволяющее определить, было ли обработано исключение и должно ли оно выбрасываться снова.</summary>
+      <returns>true, если исключение обработано; в противном случае —false. </returns>
+    </member>
+    <member name="T:System.Web.UI.WebControls.EntityDataSourceContextCreatedEventArgs">
+      <summary>Provides data for the <see cref="E:System.Web.UI.WebControls.EntityDataSource.ContextCreated" /> event.</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceContextCreatedEventArgs.Context">
+      <summary>Возвращает объект <see cref="T:System.Data.Objects.ObjectContext" />, используемый источником данных.</summary>
+      <returns>Контекст объекта, используемый источником данных. </returns>
+    </member>
+    <member name="T:System.Web.UI.WebControls.EntityDataSourceContextCreatingEventArgs">
+      <summary>Предоставляет данные для события <see cref="E:System.Web.UI.WebControls.EntityDataSource.ContextCreating" />.</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceContextCreatingEventArgs.Context">
+      <summary>Возвращает объект <see cref="T:System.Data.Objects.ObjectContext" />, используемый источником данных. </summary>
+      <returns>Контекст объекта, используемый источником данных.</returns>
+    </member>
+    <member name="T:System.Web.UI.WebControls.EntityDataSourceContextDisposingEventArgs">
+      <summary>Предоставляет данные для события <see cref="E:System.Web.UI.WebControls.EntityDataSource.ContextDisposing" />.</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceContextDisposingEventArgs.Context">
+      <summary>Возвращает объект <see cref="T:System.Data.Objects.ObjectContext" />, используемый источником данных.</summary>
+      <returns>Контекст объекта, используемый источником данных. </returns>
+    </member>
+    <member name="T:System.Web.UI.WebControls.EntityDataSourceSelectedEventArgs">
+      <summary>Provides data for the <see cref="E:System.Web.UI.WebControls.EntityDataSource.Selected" /> event.</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceSelectedEventArgs.Context">
+      <summary>Возвращает объект <see cref="T:System.Data.Objects.ObjectContext" />, используемый источником данных.</summary>
+      <returns>The <see cref="T:System.Data.Objects.ObjectContext" />.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceSelectedEventArgs.Exception">
+      <summary>Возвращает исключение, выброшенное во время выполнения запроса.</summary>
+      <returns>Исключение, если произошла ошибка; в противном случае — указатель null (Nothing в Visual Basic).</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceSelectedEventArgs.ExceptionHandled">
+      <summary>Возвращает или задает значение, позволяющее определить, было ли обработано исключение и должно ли оно выбрасываться снова.</summary>
+      <returns>true, если исключение обработано; в противном случае —false.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceSelectedEventArgs.Results">
+      <summary>Возвращает объекты, возвращенные запросом.</summary>
+      <returns>Объекты, возвращенные запросом.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceSelectedEventArgs.SelectArguments">
+      <summary>Возвращает значение, определяющее способ возврата данных.</summary>
+      <returns>Объект, содержащий значения для определения способа возврата данных.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceSelectedEventArgs.TotalRowCount">
+      <summary>Возвращает общее число объектов, возвращенных запросом.</summary>
+      <returns>Общее число возвращенных объектов. </returns>
+    </member>
+    <member name="T:System.Web.UI.WebControls.EntityDataSourceSelectingEventArgs">
+      <summary>Provides data for the <see cref="E:System.Web.UI.WebControls.EntityDataSource.Selecting" /> event.</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceSelectingEventArgs.DataSource">
+      <summary>Возвращает экземпляр класса <see cref="T:System.Web.UI.WebControls.EntityDataSource" />, сгенерировавший событие <see cref="E:System.Web.UI.WebControls.EntityDataSource.Selecting" />.</summary>
+      <returns>Источник данных, сгенерировавший событие <see cref="E:System.Web.UI.WebControls.EntityDataSource.Selecting" />. </returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceSelectingEventArgs.SelectArguments">
+      <summary>Возвращает значение, определяющее способ возврата данных.</summary>
+      <returns>Объект, содержащий значения для определения способа возврата данных. </returns>
+    </member>
+    <member name="T:System.Web.UI.WebControls.EntityDataSourceValidationException">
+      <summary>Представляет ошибки, происходящие при проверке свойств источника динамических данных.</summary>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSourceValidationException.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Web.UI.WebControls.EntityDataSourceValidationException" /> с системным сообщением, содержащим описание ошибки.</summary>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSourceValidationException.#ctor(System.String)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Web.UI.WebControls.EntityDataSourceValidationException" /> с использованием заданного сообщения, содержащего описание ошибки.</summary>
+      <param name="message">Сообщение с описанием исключения.Код, вызывающий этот конструктор, должен обеспечить локализацию данной строки в соответствии с текущим языком и региональными параметрами системы.</param>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSourceValidationException.#ctor(System.String,System.Exception)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Web.UI.WebControls.EntityDataSourceValidationException" /> с указанным сообщением об ошибке и ссылкой на внутреннее исключение, которое стало причиной данного исключения.</summary>
+      <param name="message">Сообщение с описанием исключения.Код, вызывающий этот конструктор, должен обеспечить локализацию данной строки в соответствии с текущим языком и региональными параметрами системы.</param>
+      <param name="innerException">Исключение, являющееся причиной текущего исключения.Если значение параметра <paramref name="innerException" /> не равно null, текущее исключение вызывается в блоке catch, обрабатывающем внутреннее исключение.</param>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSourceValidationException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Создает новый экземпляр <see cref="T:System.Web.UI.WebControls.EntityDataSourceValidationException" /> с сериализованными данными.</summary>
+      <param name="info">Объект, содержащий сериализованные данные объекта. </param>
+      <param name="context">Контекстные сведения об источнике или назначении. </param>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceValidationException.System#Web#DynamicData#IDynamicValidatorException#InnerExceptions">
+      <summary>Возвращает исключение, произошедшее при проверке поля новых или измененных данных.</summary>
+      <returns>Коллекция, содержащая все произошедшие исключения. </returns>
+    </member>
+    <member name="T:System.Web.UI.WebControls.EntityDataSourceView">
+      <summary>Supports the <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> control and provides an interface for data-bound controls to perform queries and other operations against entity data.</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceView.CanDelete">
+      <summary>Gets a value that indicates whether the <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> object that is associated with the current <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> control supports the delete operation.</summary>
+      <returns>true if the operation is supported; otherwise, false. </returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceView.CanInsert">
+      <summary>Gets a value that indicates whether the <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> object that is associated with the current <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> control supports the insert operation.</summary>
+      <returns>true if the operation is supported; otherwise, false. </returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceView.CanPage">
+      <summary>Gets a value that indicates whether the <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> object that is associated with the current <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> control supports paging of retrieved data.</summary>
+      <returns>true if the operation is supported; otherwise, false.</returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceView.CanRetrieveTotalRowCount">
+      <summary>Gets a value that indicates whether the <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> object that is associated with the current <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> control supports retrieving the total number of data rows, in addition to retrieving the data.</summary>
+      <returns>true if the operation is supported; otherwise, false. </returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceView.CanSort">
+      <summary>Gets a value that indicates whether the <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> object that is associated with the current <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> control supports a sorted view of the retrieved data.</summary>
+      <returns>true if the operation is supported; otherwise, false. </returns>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceView.CanUpdate">
+      <summary>Gets a value that indicates whether the <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> object that is associated with the current <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> control supports the update operation.</summary>
+      <returns>true if the operation is supported; otherwise, false. </returns>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.ContextCreated">
+      <summary>Occurs when the <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> has finished creating the <see cref="T:System.Data.Objects.ObjectContext" /> used to bind data to controls. </summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.ContextCreating">
+      <summary>Occurs when the <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> creates the <see cref="T:System.Data.Objects.ObjectContext" /> used in data binding. </summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.ContextDisposing">
+      <summary>Occurs before an <see cref="T:System.Data.Objects.ObjectContext" /> is disposed. </summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.Deleted">
+      <summary>Occurs after an object has been deleted from the data source.</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.Deleting">
+      <summary>Occurs before an object is deleted from the data source.</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.Exception">
+      <summary>Occurs when validation fails in a partial methods or when an exception is raised. </summary>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSourceView.GetViewSchema">
+      <summary>Returns a table that represents the <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" />.</summary>
+      <returns>A table that contains the properties of the <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" />.</returns>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.Inserted">
+      <summary>Occurs after a new object is created at the data source. </summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.Inserting">
+      <summary>Occurs before a new object is persisted to the data source.</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.QueryCreated">
+      <summary>Occurs after the <see cref="E:System.Web.UI.WebControls.EntityDataSource" /> has created an Entity SQL query that was specified during the configuration of the <see cref="T:System.Web.UI.WebControls.EntityDataSource" /> control.</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.Selected">
+      <summary>Occurs after a query has been executed.</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.Selecting">
+      <summary>Occurs before a query is constructed and executed.</summary>
+    </member>
+    <member name="P:System.Web.UI.WebControls.EntityDataSourceView.System#Web#UI#IStateManager#IsTrackingViewState">
+      <summary>Gets a value that indicates whether the <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> object is saving changes to its view state.</summary>
+      <returns>true if the data source view is marked to save its state; otherwise, false. </returns>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSourceView.System#Web#UI#IStateManager#LoadViewState(System.Object)">
+      <summary>Restores the previously saved view state for the data source view.</summary>
+      <param name="savedState">The <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> control state to restore. </param>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSourceView.System#Web#UI#IStateManager#SaveViewState">
+      <summary>Saves the changes to view state for the <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> control since the time that the page was posted back to the server.</summary>
+      <returns>The object that contains the changes to the <see cref="T:System.Web.UI.WebControls.EntityDataSourceView" /> control's view state, or null (Nothing in Visual Basic) if there is no view state associated with the object.</returns>
+    </member>
+    <member name="M:System.Web.UI.WebControls.EntityDataSourceView.System#Web#UI#IStateManager#TrackViewState">
+      <summary>Tracks view state changes.</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.Updated">
+      <summary>Occurs after changes to an object have been persisted to the data source.</summary>
+    </member>
+    <member name="E:System.Web.UI.WebControls.EntityDataSourceView.Updating">
+      <summary>Occurs before changes to an object are persisted to the data source.</summary>
+    </member>
+  </members>
+</doc>

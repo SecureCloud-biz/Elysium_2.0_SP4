@@ -31,7 +31,7 @@
     </property>
     <method name="M:Elysium.Controls.Automation.ProgressBarAutomationPeer.GetClassNameCore">
       <summary>
-        Возвращает имя класса для наследника <see cref="T:Elysium.Controls.Primitives.ProgressBarBase"/>, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ProgressBarAutomationPeer"/>. Данный метод вызывается методом <see cref="T:System.Windows.Automation.Peers.AutomationPeer.GetClassName"/>.
+        Возвращает имя класса для наследника <see cref="T:Elysium.Controls.Primitives.ProgressBarBase"/>, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ProgressBarAutomationPeer"/>. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetClassName"/>.
       </summary>
       <returns>
         Строка со значением "ProgressBar".
@@ -40,7 +40,7 @@
     </method>
     <method name="M:Elysium.Controls.Automation.ProgressBarAutomationPeer.GetAutomationControlTypeCore">
       <summary>
-        Возвращает тип элемента управления для объекта-наследника класса <see cref="T:Elysium.Controls.Primitives.ProgressBarBase"/>, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ProgressBarAutomationPeer"/>. Данный метод вызывается методом <see cref="T:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType"/>.
+        Возвращает тип элемента управления для объекта-наследника класса <see cref="T:Elysium.Controls.Primitives.ProgressBarBase"/>, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ProgressBarAutomationPeer"/>. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType"/>.
       </summary>
       <returns>
         Значение <see cref="F:System.Windows.Automation.Peers.AutomationControlType.ProgressBar">AutomationControlType.ProgressBar</see>.

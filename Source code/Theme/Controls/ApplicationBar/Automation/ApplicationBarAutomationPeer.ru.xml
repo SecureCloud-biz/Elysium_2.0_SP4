@@ -19,7 +19,7 @@
     </method>
     <method name="M:Elysium.Controls.Automation.ApplicationBarAutomationPeer.GetClassNameCore">
       <summary>
-        Возвращает имя класса <see cref="T:Elysium.Controls.ApplicationBar"/>, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer"/>. Данный метод вызывается методом <see cref="T:System.Windows.Automation.Peers.AutomationPeer.GetClassName"/>.
+        Возвращает имя класса <see cref="T:Elysium.Controls.ApplicationBar"/>, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer"/>. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetClassName"/>.
       </summary>
       <returns>
         Строка со значением "ApplicationBar".
@@ -28,7 +28,7 @@
     </method>
     <method name="M:Elysium.Controls.Automation.ApplicationBarAutomationPeer.GetAutomationControlTypeCore">
       <summary>
-        Возвращает тип элемента управления для объекта <see cref="T:Elysium.Controls.ApplicationBar"/>, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer"/>. Данный метод вызывается методом <see cref="T:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType"/>.
+        Возвращает тип элемента управления для объекта <see cref="T:Elysium.Controls.ApplicationBar"/>, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer"/>. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType"/>.
       </summary>
       <returns>
         Значение <see cref="F:System.Windows.Automation.Peers.AutomationControlType.Menu">AutomationControlType.Menu</see>.

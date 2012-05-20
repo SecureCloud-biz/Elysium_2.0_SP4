@@ -1,0 +1,2257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Data.Services</name>
+  </assembly>
+  <members>
+    <member name="T:System.Data.Services.ChangeInterceptorAttribute">
+      <summary>Атрибут <see cref="T:System.Data.Services.ChangeInterceptorAttribute" /> метода используется для обработки обновлений набора сущностей с указанным именем.</summary>
+    </member>
+    <member name="M:System.Data.Services.ChangeInterceptorAttribute.#ctor(System.String)">
+      <summary>Создает новый перехватчик изменений для набора сущностей, заданного параметром <paramref name="entitySetName" />.</summary>
+      <param name="entitySetName">Имя набора сущностей, содержащее сущность, к которой применяется перехватчик.</param>
+    </member>
+    <member name="P:System.Data.Services.ChangeInterceptorAttribute.EntitySetName">
+      <summary>Получает имя набора сущностей, к которой применяется перехватчик.</summary>
+      <returns>Строковое значение, представляющая имя набора сущностей.</returns>
+    </member>
+    <member name="T:System.Data.Services.DataService`1">
+      <summary>Главная точка входа для разработки службы данных ADO.NET. </summary>
+      <typeparam name="T">Тип, определяющий службу данных.</typeparam>
+    </member>
+    <member name="M:System.Data.Services.DataService`1.#ctor">
+      <summary>Создает новую службу данных, предоставляющую данные, тип которых задан шаблонным классом.</summary>
+    </member>
+    <member name="M:System.Data.Services.DataService`1.AttachHost(System.Data.Services.IDataServiceHost2)">
+      <summary>Присоединяет основное приложение службы данных к службе, идентифицируемой параметром <paramref name="host" />.</summary>
+      <param name="host">Экземпляр класса <see cref="T:System.Data.Services.IDataServiceHost2" />.</param>
+    </member>
+    <member name="M:System.Data.Services.DataService`1.CreateDataSource">
+      <summary>Создает источник данных шаблонного класса, который будет использоваться службой данных.</summary>
+      <returns>Экземпляр источника данных.</returns>
+    </member>
+    <member name="P:System.Data.Services.DataService`1.CurrentDataSource">
+      <summary>Получает экземпляр источника данных, используемого в данный момент для обработки запроса.</summary>
+      <returns>Экземпляр источника данных для службы.</returns>
+    </member>
+    <member name="M:System.Data.Services.DataService`1.HandleException(System.Data.Services.HandleExceptionArgs)">
+      <summary>Вызывается в том случае, когда при обработке запроса было сгенерировано исключение.</summary>
+      <param name="args">Аргументы исключения.</param>
+    </member>
+    <member name="M:System.Data.Services.DataService`1.OnStartProcessingRequest(System.Data.Services.ProcessRequestArgs)">
+      <summary>Вызывается перед обработкой каждого запроса.Для пакетных запросов вызывается один раз в начале обработки пакета и для каждой операции.</summary>
+      <param name="args">Объект <see cref="T:System.Data.Services.ProcessRequestArgs" />, содержащий информацию о запросе.</param>
+    </member>
+    <member name="P:System.Data.Services.DataService`1.ProcessingPipeline">
+      <summary>Получает объект, определяющий события для конвейера обработки службы данных.</summary>
+      <returns>Объект<see cref="T:System.Data.Services.DataServiceProcessingPipeline" />, который используется для определения событий для конвейера обработки службы данных.</returns>
+    </member>
+    <member name="M:System.Data.Services.DataService`1.ProcessRequest">
+      <summary>Обрабатывает HTTP-запрос.</summary>
+    </member>
+    <member name="M:System.Data.Services.DataService`1.ProcessRequestForMessage(System.IO.Stream)">
+      <summary>Обрабатывает HTTP-запрос.</summary>
+      <returns>Ответное сообщение.</returns>
+      <param name="messageBody">Основная часть HTTP-запроса.</param>
+    </member>
+    <member name="T:System.Data.Services.DataServiceBehavior">
+      <summary>Добавляет параметры, определяющие поведение пользовательской службы данных.</summary>
+    </member>
+    <member name="P:System.Data.Services.DataServiceBehavior.AcceptCountRequests">
+      <summary>Получает или задает значение, указывающее, принимаются ли запросы с сегментом пути $count или параметрами запроса $inlinecount.</summary>
+      <returns>true, если числовые запросы поддерживается; в противном случае — значение false.</returns>
+    </member>
+    <member name="P:System.Data.Services.DataServiceBehavior.AcceptProjectionRequests">
+      <summary>Получает или задает значение, указывающее, должны ли быть приняты запросы проекций.</summary>
+      <returns>true, если запросы проекций поддерживается; в противном случае — значение false.</returns>
+    </member>
+    <member name="P:System.Data.Services.DataServiceBehavior.InvokeInterceptorsOnLinkDelete">
+      <summary>Получает или задает значение, указывающее, нужно ли вызывать перехватчики метода Change при удалении ссылки.</summary>
+      <returns>Значение <see cref="T:System.Boolean" />, равное true, если требуется вызывать перехватчики; в противном случае — значение false. </returns>
+    </member>
+    <member name="P:System.Data.Services.DataServiceBehavior.MaxProtocolVersion">
+      <summary>Получает или задает максимальную версию протокола, поддерживаемую ответом, который отправляется службой данных.</summary>
+      <returns>
+        <see cref="T:System.Data.Services.Common.DataServiceProtocolVersion" />, который представляет собой максимальную допустимую версию в ответе.</returns>
+    </member>
+    <member name="T:System.Data.Services.DataServiceConfiguration">
+      <summary>Управляет конфигурацией Службы данных WCF.</summary>
+    </member>
+    <member name="P:System.Data.Services.DataServiceConfiguration.DataServiceBehavior">
+      <summary>Получает объект <see cref="T:System.Data.Services.DataServiceBehavior" />, определяющий дополнительные типы поведения службы данных.</summary>
+      <returns>Объект <see cref="T:System.Data.Services.DataServiceBehavior" />.</returns>
+    </member>
+    <member name="M:System.Data.Services.DataServiceConfiguration.EnableTypeAccess(System.String)">
+      <summary>Регистрирует тип данных со средой выполнения службы для использования пользовательским поставщиком службы данных.</summary>
+      <param name="typeName">Проверенное имя пространства имен типа, включенного для использования с пользовательским поставщиком службы данных.</param>
+    </member>
+    <member name="P:System.Data.Services.DataServiceConfiguration.EnableTypeConversion">
+      <summary>Получает или задает значение, указывающее, должна ли среда выполнения службы данных преобразовывать тип, содержащийся в полезных данных, в фактический тип свойства, заданный в запросе.</summary>
+      <returns>Логическое значение, указывающее, следует ли выполнять преобразование.</returns>
+    </member>
+    <member name="P:System.Data.Services.DataServiceConfiguration.MaxBatchCount">
+      <summary>Получает или задает максимальное количество наборов изменений и операций запросов, разрешенных в одном пакете.</summary>
+      <returns>Значение, представляющее максимальное количество наборов изменений.</returns>
+    </member>
+    <member name="P:System.Data.Services.DataServiceConfiguration.MaxChangesetCount">
+      <summary>Получает или задает максимальное количество изменений, которые могут быть включены в один набор.</summary>
+      <returns>Максимальное допустимое количество изменений.</returns>
+    </member>
+    <member name="P:System.Data.Services.DataServiceConfiguration.MaxExpandCount">
+      <summary>Получает или задает максимальное количество связанных сущностей, которые могут быть включены в один запрос с помощью оператора $expand.</summary>
+      <returns>Максимальное допустимое количество связанных сущностей.</returns>
+    </member>
+    <member name="P:System.Data.Services.DataServiceConfiguration.MaxExpandDepth">
+      <summary>Получает или задает максимальное количество связанных сущностей, которые могут быть включены в один запрос по пути $expand.</summary>
+      <returns>Максимальная глубина пути $expand.</returns>
+    </member>
+    <member name="P:System.Data.Services.DataServiceConfiguration.MaxObjectCountOnInsert">
+      <summary>Получает или задает максимальное количество вставляемых объектов, которые могут содержаться в одном запросе POST.</summary>
+      <returns>Максимальное количество объектов.</returns>
+    </member>
+    <member name="P:System.Data.Services.DataServiceConfiguration.MaxResultsPerCollection">
+      <summary>Получает или задает максимальное количество элементов в каждой возвращаемой коллекции.</summary>
+      <returns>Максимальное количество элементов.</returns>
+    </member>
+    <member name="M:System.Data.Services.DataServiceConfiguration.RegisterKnownType(System.Type)">
+      <summary>Добавляет тип в список типов, распознаваемых службой данных. </summary>
+      <param name="type">Тип, добавляемый в коллекцию известных типов.</param>
+    </member>
+    <member name="M:System.Data.Services.DataServiceConfiguration.SetEntitySetAccessRule(System.String,System.Data.Services.EntitySetRights)">
+      <summary>Задает разрешения для указанного ресурса набора сущностей.</summary>
+      <param name="name">Имя набора сущностей, для которого требуется задать разрешения.</param>
+      <param name="rights">Права доступа, которые необходимо предоставить данному ресурсу, передаваемые в качестве значения <see cref="T:System.Data.Services.EntitySetRights" />.</param>
+    </member>
+    <member name="M:System.Data.Services.DataServiceConfiguration.SetEntitySetPageSize(System.String,System.Int32)">
+      <summary>Задает максимальный размер страницы для ресурса набора сущностей.</summary>
+      <param name="name">Имя ресурса набора сущностей, для которого требуется задать размер страницы.</param>
+      <param name="size">Размер страницы для ресурса набора сущностей, заданного в <paramref name="name" />.</param>
+    </member>
+    <member name="M:System.Data.Services.DataServiceConfiguration.SetServiceOperationAccessRule(System.String,System.Data.Services.ServiceOperationRights)">
+      <summary>Задает разрешения для указанной операции службы.</summary>
+      <param name="name">Имя операции службы, для которой требуется задать разрешения.</param>
+      <param name="rights">Права доступа, которые необходимо предоставить данному ресурсу, передаваемые в качестве значения <see cref="T:System.Data.Services.ServiceOperationRights" />.</param>
+    </member>
+    <member name="P:System.Data.Services.DataServiceConfiguration.UseVerboseErrors">
+      <summary>Получает или задает значение, указывающее, должна ли служба данных возвращать полные сообщения об ошибках.</summary>
+      <returns>Возвращаются ли полные сообщения об ошибках.</returns>
+    </member>
+    <member name="T:System.Data.Services.DataServiceException">
+      <summary>Представляет экземпляр класса <see cref="T:System.Data.Services.DataServiceException" /> с заданным сообщением, содержащим описание ошибки. </summary>
+    </member>
+    <member name="M:System.Data.Services.DataServiceException.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Services.DataServiceException" /> системным сообщением, содержащим описание ошибки.</summary>
+    </member>
+    <member name="M:System.Data.Services.DataServiceException.#ctor(System.Int32,System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Services.DataServiceException" />. </summary>
+      <param name="statusCode">Код состояния HTTP, возвращаемый исключением.</param>
+      <param name="message">Сообщение об ошибке для исключения.</param>
+    </member>
+    <member name="M:System.Data.Services.DataServiceException.#ctor(System.Int32,System.String,System.String,System.String,System.Exception)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Services.DataServiceException" />. </summary>
+      <param name="statusCode">Код состояния HTTP для исключения.</param>
+      <param name="errorCode">Строковое значение, содержащее код ошибки.</param>
+      <param name="message">Строковое значение, содержащее сообщение об ошибке.</param>
+      <param name="messageXmlLang">Строковое значение, обозначающее язык сообщения об ошибке.</param>
+      <param name="innerException">Исключение, являющееся причиной текущего исключения.</param>
+    </member>
+    <member name="M:System.Data.Services.DataServiceException.#ctor(System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Services.DataServiceException" /> с заданным сообщение, содержащим описание ошибки.</summary>
+      <param name="message">Сообщение с описанием исключения.Код, вызывающий этот конструктор, должен обеспечить локализацию данной строки в соответствии с текущим языком и региональными параметрами системы.</param>
+    </member>
+    <member name="M:System.Data.Services.DataServiceException.#ctor(System.String,System.Exception)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Services.DataServiceException" /> указанным сообщением об ошибке и ссылкой на внутреннее исключение, которое стало причиной данного исключения.</summary>
+      <param name="message">Сообщение с описанием исключения.Код, вызывающий этот конструктор, должен обеспечить локализацию данной строки в соответствии с текущим языком и региональными параметрами системы.</param>
+      <param name="innerException">Исключение, являющееся причиной текущего исключения. </param>
+    </member>
+    <member name="P:System.Data.Services.DataServiceException.ErrorCode">
+      <summary>Получает код ошибки.</summary>
+      <returns>Целое значение, представляющее код ошибки.</returns>
+    </member>
+    <member name="M:System.Data.Services.DataServiceException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Получает данные по объекту, ставшему причиной возникновения исключения.</summary>
+      <param name="info">
+        <see cref="T:System.Runtime.Serialization.SerializationInfo" />.</param>
+      <param name="context">
+        <see cref="T:System.Runtime.Serialization.StreamingContext" />.</param>
+    </member>
+    <member name="P:System.Data.Services.DataServiceException.MessageLanguage">
+      <summary>Возвращает язык сообщения об ошибке.</summary>
+      <returns>Строковое значение, представляющее язык сообщения.</returns>
+    </member>
+    <member name="P:System.Data.Services.DataServiceException.StatusCode">
+      <summary>Получает код состояния HTTP, возвращаемого исключением.</summary>
+      <returns>Код состояния HTTP для исключения.</returns>
+    </member>
+    <member name="T:System.Data.Services.DataServiceHost">
+      <summary>Класс Службы данных WCF, производный от класса <see cref="T:System.ServiceModel.Web.WebServiceHost" />, который используется для создания экземпляров служб данных.</summary>
+    </member>
+    <member name="M:System.Data.Services.DataServiceHost.#ctor(System.Type,System.Uri[])">
+      <summary>Создает новый экземпляр объекта <see cref="T:System.Data.Services.DataServiceHost" /> для Службы данных WCF.</summary>
+      <param name="serviceType">Идентифицирует Службы данных WCF с точки зрения узла.</param>
+      <param name="baseAddresses">URI-имя узла основного приложения.</param>
+    </member>
+    <member name="T:System.Data.Services.DataServiceHostFactory">
+      <summary>Класс, используемый инфраструктурой Службы данных WCF для подключения к Windows Communication Foundation (WCF). </summary>
+    </member>
+    <member name="M:System.Data.Services.DataServiceHostFactory.#ctor">
+      <summary>Создает новый экземпляр DataServiceHostFactory.</summary>
+    </member>
+    <member name="M:System.Data.Services.DataServiceHostFactory.CreateServiceHost(System.Type,System.Uri[])">
+      <summary>Создает новый объект <see cref="T:System.Data.Services.DataServiceHost" /> по указанному URI.</summary>
+      <returns>Новый объект <see cref="T:System.Data.Services.DataServiceHost" /></returns>
+      <param name="serviceType">Задает тип обслуживаемой WCF-службы.</param>
+      <param name="baseAddresses">Массив базовых адресов службы. </param>
+    </member>
+    <member name="T:System.Data.Services.DataServiceOperationContext">
+      <summary>Представляет текущую обрабатываемую операцию.</summary>
+    </member>
+    <member name="P:System.Data.Services.DataServiceOperationContext.AbsoluteRequestUri">
+      <summary>Получает запрос URI для текущей операции.</summary>
+      <returns>
+        <see cref="T:System.Uri" /> операции.</returns>
+    </member>
+    <member name="P:System.Data.Services.DataServiceOperationContext.AbsoluteServiceUri">
+      <summary>Получает базовую службу URI для запроса.</summary>
+      <returns>Базовый <see cref="T:System.Uri" /> операции.</returns>
+    </member>
+    <member name="P:System.Data.Services.DataServiceOperationContext.IsBatchRequest">
+      <summary>Получает значение, указывающее, входит ли текущая операция в состав пакетного запроса.</summary>
+      <returns>Значение true, если операция является частью пакетного запроса; в противном случае — значение false.</returns>
+    </member>
+    <member name="P:System.Data.Services.DataServiceOperationContext.RequestHeaders">
+      <summary>Получает заголовки запроса для текущей операции.</summary>
+      <returns>Объект <see cref="T:System.Net.WebHeaderCollection" />, содержащий заголовки запроса.</returns>
+    </member>
+    <member name="P:System.Data.Services.DataServiceOperationContext.RequestMethod">
+      <summary>Получает метод запроса HTTP для операции.</summary>
+      <returns>Метод HTTP-запроса.</returns>
+    </member>
+    <member name="P:System.Data.Services.DataServiceOperationContext.ResponseHeaders">
+      <summary>Получает заголовки ответа для текущей операции.</summary>
+      <returns>Объект <see cref="T:System.Net.WebHeaderCollection" />, содержащий заголовки ответа.</returns>
+    </member>
+    <member name="P:System.Data.Services.DataServiceOperationContext.ResponseStatusCode">
+      <summary>Получает или задает код состояния ответа.</summary>
+      <returns>Код состояния ответа операции. </returns>
+    </member>
+    <member name="T:System.Data.Services.DataServiceProcessingPipeline">
+      <summary>Определяет события для конвейера обработки службы данных.</summary>
+    </member>
+    <member name="M:System.Data.Services.DataServiceProcessingPipeline.#ctor">
+      <summary>Создает новый экземпляр <see cref="T:System.Data.Services.DataServiceProcessingPipeline" />. </summary>
+    </member>
+    <member name="E:System.Data.Services.DataServiceProcessingPipeline.ProcessedChangeset">
+      <summary>Происходит после обработки набора изменений.</summary>
+    </member>
+    <member name="E:System.Data.Services.DataServiceProcessingPipeline.ProcessedRequest">
+      <summary>Происходит после обработки запроса.</summary>
+    </member>
+    <member name="E:System.Data.Services.DataServiceProcessingPipeline.ProcessingChangeset">
+      <summary>Происходит перед обработкой набора изменений.</summary>
+    </member>
+    <member name="E:System.Data.Services.DataServiceProcessingPipeline.ProcessingRequest">
+      <summary>Происходит перед обработкой запроса. </summary>
+    </member>
+    <member name="T:System.Data.Services.DataServiceProcessingPipelineEventArgs">
+      <summary>Класс аргументов события для событий <see cref="T:System.Data.Services.DataServiceProcessingPipeline" />.</summary>
+    </member>
+    <member name="P:System.Data.Services.DataServiceProcessingPipelineEventArgs.OperationContext">
+      <summary>Получает контекст операции, вызвавшей событие.</summary>
+      <returns>
+        <see cref="T:System.Data.Services.DataServiceOperationContext" />, представляющий собой контекст операции. </returns>
+    </member>
+    <member name="T:System.Data.Services.EntitySetRights">
+      <summary>Перечисление, используемое для определения прав доступа к данным, предоставляемым Службы данных WCF.</summary>
+    </member>
+    <member name="F:System.Data.Services.EntitySetRights.None">
+      <summary>Запрещает доступ к данным.</summary>
+    </member>
+    <member name="F:System.Data.Services.EntitySetRights.ReadSingle">
+      <summary>Разрешение на чтение одиночных элементов данных.</summary>
+    </member>
+    <member name="F:System.Data.Services.EntitySetRights.ReadMultiple">
+      <summary>Разрешение на чтение наборов данных.</summary>
+    </member>
+    <member name="F:System.Data.Services.EntitySetRights.WriteAppend">
+      <summary>Разрешение на создание новых элементов в наборах данных.</summary>
+    </member>
+    <member name="F:System.Data.Services.EntitySetRights.WriteReplace">
+      <summary>Разрешение на замену данных.</summary>
+    </member>
+    <member name="F:System.Data.Services.EntitySetRights.WriteDelete">
+      <summary>Разрешение на удаление элементов из наборов данных.</summary>
+    </member>
+    <member name="F:System.Data.Services.EntitySetRights.WriteMerge">
+      <summary>Разрешение на слияние данных.</summary>
+    </member>
+    <member name="F:System.Data.Services.EntitySetRights.AllRead">
+      <summary>Разрешение на чтение данных.</summary>
+    </member>
+    <member name="F:System.Data.Services.EntitySetRights.AllWrite">
+      <summary>Разрешение на запись данных.</summary>
+    </member>
+    <member name="F:System.Data.Services.EntitySetRights.All">
+      <summary>Разрешение на создание, чтение, обновление и удаление данных.</summary>
+    </member>
+    <member name="T:System.Data.Services.ETagAttribute">
+      <summary>Данный атрибут типа сущности используется для задания свойств, определяющих изменения в содержимом.</summary>
+    </member>
+    <member name="M:System.Data.Services.ETagAttribute.#ctor(System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Services.ETagAttribute" />. </summary>
+      <param name="propertyName">Строковое значение, содержащее свойства, которые используется в значении eTag.</param>
+    </member>
+    <member name="M:System.Data.Services.ETagAttribute.#ctor(System.String[])">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Services.ETagAttribute" />.</summary>
+      <param name="propertyNames">Строковое значение, содержащее свойства, которые используется в значении eTag.</param>
+    </member>
+    <member name="P:System.Data.Services.ETagAttribute.PropertyNames">
+      <summary>Возвращает имена свойств, использованных в атрибуте <see cref="T:System.Data.Services.ETagAttribute" />.</summary>
+      <returns>Строковое значение, содержащее имена свойств.</returns>
+    </member>
+    <member name="T:System.Data.Services.ExpandSegment">
+      <summary>Сегмент запроса, обозначающий, должны ли данные встраиваться, а не возвращаться в виде отдельно загружаемого содержимого. </summary>
+    </member>
+    <member name="M:System.Data.Services.ExpandSegment.#ctor(System.String,System.Linq.Expressions.Expression)">
+      <summary>Инициализирует объект <see cref="T:System.Data.Services.ExpandSegment" />, с заданным именем свойства и фильтрующим выражением, возможно равным null.</summary>
+      <param name="name">Имя разворачиваемого свойства.</param>
+      <param name="filter">Параметр фильтра в запросе, к которому применяется сегмент развертывания.</param>
+    </member>
+    <member name="P:System.Data.Services.ExpandSegment.ExpandedProperty">
+      <summary>Получает свойство для расширения.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.ExpandSegment.Filter">
+      <summary>Параметр фильтра в запросе, к которому применяется сегмент развертывания.</summary>
+      <returns>Выражение, задающее фильтр для целевых данных.</returns>
+    </member>
+    <member name="P:System.Data.Services.ExpandSegment.HasFilter">
+      <summary>Логическое значение, указывающее, используется ли фильтрующее выражение с сегментом расширения.</summary>
+      <returns>True или false.</returns>
+    </member>
+    <member name="P:System.Data.Services.ExpandSegment.MaxResultsExpected">
+      <summary>Возвращает максимальное количество ожидаемых результатов.</summary>
+      <returns>Целое значение, указывающее максимальное количество результатов.</returns>
+    </member>
+    <member name="P:System.Data.Services.ExpandSegment.Name">
+      <summary>Имя разворачиваемого свойства.</summary>
+      <returns>Строковое значение, содержащее имя свойства.</returns>
+    </member>
+    <member name="M:System.Data.Services.ExpandSegment.PathHasFilter(System.Collections.Generic.IEnumerable{System.Data.Services.ExpandSegment})">
+      <summary>Логическое значение, указывающее, включает ли маршрут параметр фильтрации целевых данных.</summary>
+      <returns>True, если для какого-либо из сегментов в маршруте имеется фильтр; в противном случае — false.</returns>
+      <param name="path">Перечисление сегментов, в который проверяется наличие фильтров.</param>
+    </member>
+    <member name="T:System.Data.Services.ExpandSegmentCollection">
+      <summary>Сегменты запроса, которые могут быть развернуты с помощью предложения $expand, следующего за запросом.</summary>
+    </member>
+    <member name="M:System.Data.Services.ExpandSegmentCollection.#ctor">
+      <summary>Создает коллекцию сегментов развертывания для запроса.</summary>
+    </member>
+    <member name="M:System.Data.Services.ExpandSegmentCollection.#ctor(System.Int32)">
+      <summary>Инициализирует пустую коллекцию сегментов развертывания, имеющую указанный начальный размер.</summary>
+      <param name="capacity">Число сегментов развертывания, которое может изначально сохранить в новой коллекции.</param>
+    </member>
+    <member name="P:System.Data.Services.ExpandSegmentCollection.HasFilter">
+      <summary>Логическое значение, указывающее, содержат ли развертываемые сегменты фильтр.</summary>
+      <returns>Логическое значение, указывающее, содержат ли развертываемые сегменты фильтр. </returns>
+    </member>
+    <member name="T:System.Data.Services.HandleExceptionArgs">
+      <summary>Указывает детали возникшего исключения и связанного с ним HTTP-ответа.</summary>
+    </member>
+    <member name="P:System.Data.Services.HandleExceptionArgs.Exception">
+      <summary>Возвращает или задает исключение, которое будет обработано и возвращено в ответе.</summary>
+      <returns>Исключение, которое будет обработано и возвращено в ответе.</returns>
+    </member>
+    <member name="P:System.Data.Services.HandleExceptionArgs.ResponseContentType">
+      <summary>Возвращает тип содержимого ответа.</summary>
+      <returns>Строковое значение, указывающее формат ответа.</returns>
+    </member>
+    <member name="P:System.Data.Services.HandleExceptionArgs.ResponseStatusCode">
+      <summary>Возвращает код состояния, отправленный в HTTP-заголовке ответа в случае возникновения ошибки в службе данных.</summary>
+      <returns>Целое значение кода состояния HTTP-ответа. </returns>
+    </member>
+    <member name="P:System.Data.Services.HandleExceptionArgs.ResponseWritten">
+      <summary>Возвращает значение, указывающее, был ли выдан ответ. </summary>
+      <returns>Логическое значение, указывающее, был ли выдан ответ.</returns>
+    </member>
+    <member name="P:System.Data.Services.HandleExceptionArgs.UseVerboseErrors">
+      <summary>Возвращает или задает логическое значение, указывающее, будут ли выдаваться полные сообщения об ошибках.</summary>
+      <returns>Логическое значение, указывающее, будут ли выданы полные сообщения об ошибках.</returns>
+    </member>
+    <member name="T:System.Data.Services.IDataServiceConfiguration">
+      <summary>Интерфейс <see cref="T:System.Data.Services.IDataServiceConfiguration" /> используется Службы данных WCF для настройки поведения службы, в том числе прав на наборы сущностей и выполнение операций, ограничений на допустимые запросы, регистрацию типов, не обнаруживаемых по умолчанию, а также уровень детализации сообщений об ошибках, используемый по умолчанию.</summary>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceConfiguration.MaxBatchCount">
+      <summary>Возвращает максимальное количество запросов, которое может быть обработано в пакете.</summary>
+      <returns>Целое значение, указывающее максимальное число запросов, которые могут быть обработаны в пакете.</returns>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceConfiguration.MaxChangesetCount">
+      <summary>Возвращает максимальное количество наборов изменений, которое может быть обработано в пакете.</summary>
+      <returns>Целое значение, указывающее максимальное число наборов изменений, которые могут быть обработаны в пакете.</returns>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceConfiguration.MaxExpandCount">
+      <summary>Возвращает или задает максимальное количество сегментов, которые могут быть развернуты параметром запроса $expand к службе данных.  </summary>
+      <returns>Максимальное число сегментов для расширения.</returns>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceConfiguration.MaxExpandDepth">
+      <summary>Возвращает или задает максимальное количество сегментов, поддерживаемых в одиночном маршруте $expand для всех запросов к службе данных.</summary>
+      <returns>Целое значение, представляющее максимальное количество поддерживаемых сегментов в маршруте $expand.</returns>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceConfiguration.MaxObjectCountOnInsert">
+      <summary>Возвращает или задает максимальное число объектов, которые могут быть вставлены при обработке одного запроса. </summary>
+      <returns>Целое значение, содержащее максимальное количество объектов, которые могут быть вставлены при обработке одного запроса.</returns>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceConfiguration.MaxResultsPerCollection">
+      <summary>Возвращает максимальное количество результатов в одной коллекции.</summary>
+      <returns>Целое значение, указывающее максимальное число результатов в одной коллекции.</returns>
+    </member>
+    <member name="M:System.Data.Services.IDataServiceConfiguration.RegisterKnownType(System.Type)">
+      <summary>Регистрирует тип ресурса для использования службой данных.</summary>
+      <param name="type">Тип регистрируемого ресурса.</param>
+    </member>
+    <member name="M:System.Data.Services.IDataServiceConfiguration.SetEntitySetAccessRule(System.String,System.Data.Services.EntitySetRights)">
+      <summary>Устанавливает правила доступа к указанному набору сущностей.</summary>
+      <param name="name">Имя набора сущностей, для которого настраивается доступ.</param>
+      <param name="rights">Права, заданные для набора сущностей.</param>
+    </member>
+    <member name="M:System.Data.Services.IDataServiceConfiguration.SetServiceOperationAccessRule(System.String,System.Data.Services.ServiceOperationRights)">
+      <summary>Устанавливает правила доступа к указанной операции.</summary>
+      <param name="name">Имя операции, для которой задаются права доступа.</param>
+      <param name="rights">Задаваемые права в соответствии с перечислением <see cref="T:System.Data.Services.ServiceOperationRights" />. </param>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceConfiguration.UseVerboseErrors">
+      <summary>Возвращает или задает уровень показа ошибок, используемый по умолчанию для всех ответов службы данных.  </summary>
+      <returns>Логическое значение, указывающее, следует ли выдавать полные сообщения об ошибках.</returns>
+    </member>
+    <member name="T:System.Data.Services.IDataServiceHost">
+      <summary>Интерфейс, определяющий взаимодействие между Службы данных WCF и средой размещения.</summary>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceHost.AbsoluteRequestUri">
+      <summary>Получает абсолютный универсальный код ресурса, представляющий собой универсальный код ресурса в том виде, в каком он был отправлен клиентом.</summary>
+      <returns>Строка, представляющая собой абсолютный универсальный код ресурса запроса.</returns>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceHost.AbsoluteServiceUri">
+      <summary>Получает абсолютный универсальный код ресурса, являющийся корневым универсальным кодом ресурса службы данных.</summary>
+      <returns>Строка, являющаяся абсолютным корневым универсальным кодом ресурса службы данных.</returns>
+    </member>
+    <member name="M:System.Data.Services.IDataServiceHost.GetQueryStringItem(System.String)">
+      <summary>Получает элемент данных, идентифицируемый ключем, который содержится в параметре метода.</summary>
+      <returns>Запрашиваемый элемент данных, сериализованный в виде строки.</returns>
+      <param name="item">Строковое значение, содержащие ключ идентификации запрашиваемого элемента.</param>
+    </member>
+    <member name="M:System.Data.Services.IDataServiceHost.ProcessException(System.Data.Services.HandleExceptionArgs)">
+      <summary>Обрабатывает исключение службы данных с помощью информации, переданной в параметре <paramref name="args" />.</summary>
+      <param name="args">Объект <see cref="T:System.Data.Services.HandleExceptionArgs" />, содержащий информацию об объекте исключения.</param>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceHost.RequestAccept">
+      <summary>Транспортный протокол, заданный в заголовке Accept.</summary>
+      <returns>Строка, обозначающая транспортный протокол, который требуется для данного запроса.</returns>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceHost.RequestAcceptCharSet">
+      <summary>Получает строку, представляющую значение HTTP-заголовка Accept-Charset.</summary>
+      <returns>Строка, представляющая значение HTTP-заголовка Accept-Charset.</returns>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceHost.RequestContentType">
+      <summary>Получает транспортный протокол, заданный заголовком Content-Type.</summary>
+      <returns>Строковое значение, обозначающее тип содержимого.</returns>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceHost.RequestHttpMethod">
+      <summary>Получает метод запроса – GET, PUT, POST или DELETE.</summary>
+      <returns>Строковое значение, обозначающее метод запроса.</returns>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceHost.RequestIfMatch">
+      <summary>Получает значение заголовка If-Match текущего запроса.</summary>
+      <returns>Строковое значение заголовка If-Match текущего запроса.</returns>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceHost.RequestIfNoneMatch">
+      <summary>Получает значение заголовка If-None-Match текущего запроса.</summary>
+      <returns>Строковое значение заголовка If-None-Match текущего запроса.</returns>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceHost.RequestMaxVersion">
+      <summary>Получает значение, обозначающее самую старшую версию, которая может быть обработана клиентом запроса.</summary>
+      <returns>Строка, содержащая самую старшую версию, которую может обработать клиент запроса, возможно null.</returns>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceHost.RequestStream">
+      <summary>Получает поток, содержащий основную часть HTTP-запроса.</summary>
+      <returns>Объект <see cref="T:System.IO.Stream" />, содержащий основную часть запроса.</returns>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceHost.RequestVersion">
+      <summary>Получает значение, которое идентифицирует версию запроса, переданную клиентом, возможно null.</summary>
+      <returns>Строка, которая идентифицирует версию запроса, переданную клиентом, возможно null.</returns>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceHost.ResponseCacheControl">
+      <summary>Получает строковое значение, представляющее информацию об управлении кэшем.</summary>
+      <returns>Строковое значение, представляющее информацию об управлении кэшем.</returns>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceHost.ResponseContentType">
+      <summary>Получает транспортный протокол ответа.</summary>
+      <returns>Строковое значение, содержащие тип содержимого.</returns>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceHost.ResponseETag">
+      <summary>Получает значение eTag, представляющее состояние данных в ответе.</summary>
+      <returns>Строковое значение, которое представляет значение состояния eTag.</returns>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceHost.ResponseLocation">
+      <summary>Возвращает или задает адрес службы.</summary>
+      <returns>Строка, содержащая адрес службы.</returns>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceHost.ResponseStatusCode">
+      <summary>Возвращает или задает код ответа, обозначающий результаты обработки запроса.</summary>
+      <returns>Целое значение, содержащее код ответа.</returns>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceHost.ResponseStream">
+      <summary>Получает поток ответа, куда записывается основная часть HTTP-ответа.</summary>
+      <returns>Поток <see cref="T:System.IO.Stream" />, куда будет записана основная часть ответа.</returns>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceHost.ResponseVersion">
+      <summary>Получает версию, используемую основным приложением для запроса.</summary>
+      <returns>Строковое значение, содержащее версию основного приложения.</returns>
+    </member>
+    <member name="T:System.Data.Services.IDataServiceHost2">
+      <summary>Определяет расширения к <see cref="T:System.Data.Services.IDataServiceHost" />, необходимые для заголовков запроса и ответа в HTTP.</summary>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceHost2.RequestHeaders">
+      <summary>Заголовок для запроса HTTP.</summary>
+      <returns>Строковое значение заголовка.</returns>
+    </member>
+    <member name="P:System.Data.Services.IDataServiceHost2.ResponseHeaders">
+      <summary>Заголовок для ответа HTTP. </summary>
+      <returns>Строковое значение заголовка.</returns>
+    </member>
+    <member name="T:System.Data.Services.IExpandedResult">
+      <summary>Объявляет члены, необходимые для поддержки перечислителей результатов и связанных сегментов параметра запроса $expand службы данных Службы данных WCF.</summary>
+    </member>
+    <member name="P:System.Data.Services.IExpandedResult.ExpandedElement">
+      <summary>Возвращает элемент с развернутыми свойствами.</summary>
+      <returns>Объект в свойстве, развернутом интерфейсом <see cref="T:System.Data.Services.IExpandedResult" />.</returns>
+    </member>
+    <member name="M:System.Data.Services.IExpandedResult.GetExpandedPropertyValue(System.String)">
+      <summary>Получает значение именованного свойства результата.</summary>
+      <returns>Значение свойства.</returns>
+      <param name="name">Имя свойства, для которого нужно получить перечисляемые результаты.</param>
+    </member>
+    <member name="T:System.Data.Services.IExpandProvider">
+      <summary>Этот интерфейс объявляет методы, необходимые для поддержки параметра запроса $expand для службы данных Службы данных WCF.</summary>
+    </member>
+    <member name="M:System.Data.Services.IExpandProvider.ApplyExpansions(System.Linq.IQueryable,System.Collections.Generic.ICollection{System.Data.Services.ExpandSegmentCollection})">
+      <summary>Применяет развертывание к указанному параметру <paramref name="queryable" />.</summary>
+      <returns>Объект <see cref="T:System.Collections.IEnumerable" /> такого же типа, что и предоставленный объект <paramref name="queryable" />, включающий указанные <paramref name="expandPaths" />.</returns>
+      <param name="queryable">Разворачиваемый объект <see cref="T:System.Linq.IQueryable`1" />.</param>
+      <param name="expandPaths">Коллекция развертываемых маршрутов <see cref="T:System.Data.Services.ExpandSegmentCollection" />. </param>
+    </member>
+    <member name="T:System.Data.Services.IgnorePropertiesAttribute">
+      <summary>Управляет видимостью свойства или свойств средствами Службы данных WCF.</summary>
+    </member>
+    <member name="M:System.Data.Services.IgnorePropertiesAttribute.#ctor(System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Services.IgnorePropertiesAttribute" />. </summary>
+      <param name="propertyName">Строковое значение, содержащее свойство или свойства, которым назначается атрибут.</param>
+    </member>
+    <member name="M:System.Data.Services.IgnorePropertiesAttribute.#ctor(System.String[])">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Services.IgnorePropertiesAttribute" />. </summary>
+      <param name="propertyNames">Строковое значение, содержащее свойство или свойства, которым назначается атрибут.</param>
+    </member>
+    <member name="P:System.Data.Services.IgnorePropertiesAttribute.PropertyNames">
+      <summary>Возвращает или задает имя или имена свойств, управляемых атрибутом <see cref="T:System.Data.Services.IgnorePropertiesAttribute" />.</summary>
+    </member>
+    <member name="T:System.Data.Services.IRequestHandler">
+      <summary>Предоставляет доступ к членам, которые управляют обработкой сообщений-запросов. </summary>
+    </member>
+    <member name="M:System.Data.Services.IRequestHandler.ProcessRequestForMessage(System.IO.Stream)">
+      <summary>Предоставляет точку входа для запроса. </summary>
+      <returns>Итоговое сообщение для предоставленного запроса.</returns>
+      <param name="messageBody">Объект <see cref="T:System.IO.Stream" />, содержащий запрос.</param>
+    </member>
+    <member name="T:System.Data.Services.IUpdatable">
+      <summary>Интерфейс, используемый для вставки или обновления ресурса с помощью метода HTTP POST.</summary>
+    </member>
+    <member name="M:System.Data.Services.IUpdatable.AddReferenceToCollection(System.Object,System.String,System.Object)">
+      <summary>Добавляет в коллекцию указанное значение.</summary>
+      <param name="targetResource">Целевой объект, определяющий свойство.</param>
+      <param name="propertyName">Имя свойства коллекции, к которой нужно добавить ресурс.</param>
+      <param name="resourceToBeAdded">Непрозрачный объект, который представляет добавляемый ресурс.</param>
+    </member>
+    <member name="M:System.Data.Services.IUpdatable.ClearChanges">
+      <summary>Отменяет изменение данных.</summary>
+    </member>
+    <member name="M:System.Data.Services.IUpdatable.CreateResource(System.String,System.String)">
+      <summary>Создает ресурс указанного типа и принадлежащий указанному контейнеру.</summary>
+      <returns>Объект, представляющий ресурс указанного типа и принадлежащий указанному контейнеру.</returns>
+      <param name="containerName">Имя набора сущностей, к которому принадлежит ресурс.</param>
+      <param name="fullTypeName">Полное имя типа ресурса с указанием пространства имен.</param>
+    </member>
+    <member name="M:System.Data.Services.IUpdatable.DeleteResource(System.Object)">
+      <summary>Удаляет указанный ресурс.</summary>
+      <param name="targetResource">Удаляемый ресурс.</param>
+    </member>
+    <member name="M:System.Data.Services.IUpdatable.GetResource(System.Linq.IQueryable,System.String)">
+      <summary>Возвращает ресурс заданного типа, который идентифицируется запросом и именем типа. </summary>
+      <returns>Непрозрачный объект, представляющий ресурс указанного типа, на который ссылается указанный запрос.</returns>
+      <param name="query">LINQ-запрос, указывающий на определенный ресурс.</param>
+      <param name="fullTypeName">Полное имя типа ресурса.</param>
+    </member>
+    <member name="M:System.Data.Services.IUpdatable.GetValue(System.Object,System.String)">
+      <summary>Возвращает значение указанного свойства целевого объекта.</summary>
+      <returns>Значение объекта.</returns>
+      <param name="targetResource">Непрозрачный объект, который предоставляет ресурс.</param>
+      <param name="propertyName">Имя свойства, значение которого требуется извлечь.</param>
+    </member>
+    <member name="M:System.Data.Services.IUpdatable.RemoveReferenceFromCollection(System.Object,System.String,System.Object)">
+      <summary>Удаляет указанное значение из коллекции.</summary>
+      <param name="targetResource">Целевой объект, определяющий свойство.</param>
+      <param name="propertyName">Имя свойства, значение которого требуется обновить.</param>
+      <param name="resourceToBeRemoved">Значение свойства, которое требуется удалить.</param>
+    </member>
+    <member name="M:System.Data.Services.IUpdatable.ResetResource(System.Object)">
+      <summary>Сбрасывает ресурс, идентифицируемый параметром <paramref name="resource " />, восстанавливая значение по умолчанию.</summary>
+      <returns>Ресурс, значение которого сброшено на значение по умолчанию.</returns>
+      <param name="resource">Обновляемый ресурс.</param>
+    </member>
+    <member name="M:System.Data.Services.IUpdatable.ResolveResource(System.Object)">
+      <summary>Возвращает экземпляр ресурса, представляемого указанным ресурсным объектом.</summary>
+      <returns>Возвращает экземпляр ресурса, представляемого указанным ресурсным объектом.</returns>
+      <param name="resource">Объект, представляющий ресурс, экземпляр которого требуется извлечь.</param>
+    </member>
+    <member name="M:System.Data.Services.IUpdatable.SaveChanges">
+      <summary>Сохраняет все изменения, сделанные с помощью API <see cref="T:System.Data.Services.IUpdatable" /> APIs.</summary>
+    </member>
+    <member name="M:System.Data.Services.IUpdatable.SetReference(System.Object,System.String,System.Object)">
+      <summary>Задает значение указанного ссылочного свойства целевого объекта.</summary>
+      <param name="targetResource">Целевой объект, определяющий свойство.</param>
+      <param name="propertyName">Имя свойства, значение которого требуется обновить.</param>
+      <param name="propertyValue">Значение обновляемого свойства.</param>
+    </member>
+    <member name="M:System.Data.Services.IUpdatable.SetValue(System.Object,System.String,System.Object)">
+      <summary>Устанавливает значение свойства целевого ресурса с указанным именем равным указанному значению.</summary>
+      <param name="targetResource">Целевой объект, определяющий свойство.</param>
+      <param name="propertyName">Имя свойства, значение которого требуется обновить.</param>
+      <param name="propertyValue">Значение обновляемого свойства.</param>
+    </member>
+    <member name="T:System.Data.Services.MimeTypeAttribute">
+      <summary>Указывает MIME-тип HTTP-запроса.</summary>
+    </member>
+    <member name="M:System.Data.Services.MimeTypeAttribute.#ctor(System.String,System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Services.MimeTypeAttribute" />. </summary>
+      <param name="memberName">Имя атрибута.</param>
+      <param name="mimeType">MIME-тип атрибута.</param>
+    </member>
+    <member name="P:System.Data.Services.MimeTypeAttribute.MemberName">
+      <summary>Возвращает имя атрибута.</summary>
+      <returns>Строковое значение, содержащее имя атрибута. </returns>
+    </member>
+    <member name="P:System.Data.Services.MimeTypeAttribute.MimeType">
+      <summary>Получает MIME-тип запроса.</summary>
+      <returns>Строка, содержащая MIME-тип.</returns>
+    </member>
+    <member name="T:System.Data.Services.ProcessRequestArgs">
+      <summary>Представляет аргументы, используемые HTTP-запросом к службе данных. </summary>
+    </member>
+    <member name="P:System.Data.Services.ProcessRequestArgs.IsBatchOperation">
+      <summary>Получает логическое значение, указывающее, является ли HTTP-запрос к сервису данных пакетной операцией.</summary>
+      <returns>Логическое значение, указывающее, является ли HTTP-запрос к сервису данных пакетной операцией. </returns>
+    </member>
+    <member name="P:System.Data.Services.ProcessRequestArgs.OperationContext">
+      <summary>Получает контекст, содержащий сведения о текущей обрабатываемой операции.</summary>
+      <returns>Объект <see cref="T:System.Data.Services.DataServiceOperationContext" />, содержащий сведения о текущей операции. </returns>
+    </member>
+    <member name="P:System.Data.Services.ProcessRequestArgs.RequestUri">
+      <summary>Получает URI обрабатываемого HTTP-запроса.</summary>
+      <returns>Экземпляр <see cref="T:System.Uri" />, в котором содержится URI обрабатываемого запроса.</returns>
+    </member>
+    <member name="T:System.Data.Services.QueryInterceptorAttribute">
+      <summary>Атрибут <see cref="T:System.Data.Services.QueryInterceptorAttribute" /> для метода помечает его как перехватчик запроса для указанного набора сущностей.</summary>
+    </member>
+    <member name="M:System.Data.Services.QueryInterceptorAttribute.#ctor(System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Services.QueryInterceptorAttribute" /> для набора сущностей, заданного параметром <paramref name="entitySetName" />.</summary>
+      <param name="entitySetName">Имя набора сущностей, содержащее сущность, к которой применяется перехватчик.</param>
+    </member>
+    <member name="P:System.Data.Services.QueryInterceptorAttribute.EntitySetName">
+      <summary>Получает имя набора сущностей, содержащее сущность, к которой применяется перехватчик.</summary>
+      <returns>Строка, указывающая имя набора сущностей, содержащее сущность, к которой применяется перехватчик.</returns>
+    </member>
+    <member name="T:System.Data.Services.ServiceOperationRights">
+      <summary>Перечисление, используемое для определения прав доступа к операциям служб, предоставляемым Службы данных WCF.</summary>
+    </member>
+    <member name="F:System.Data.Services.ServiceOperationRights.None">
+      <summary>Запрет на доступ к операции службы.</summary>
+    </member>
+    <member name="F:System.Data.Services.ServiceOperationRights.ReadSingle">
+      <summary>Разрешение на чтение одиночных данных с помощью операции службы.</summary>
+    </member>
+    <member name="F:System.Data.Services.ServiceOperationRights.ReadMultiple">
+      <summary>Разрешение на чтение множественных данных с помощью операции службы.</summary>
+    </member>
+    <member name="F:System.Data.Services.ServiceOperationRights.AllRead">
+      <summary>Разрешение на чтение одиночных или множественных данных, предоставляемых операцией службы.</summary>
+    </member>
+    <member name="F:System.Data.Services.ServiceOperationRights.All">
+      <summary>Все права, назначенные операции службы.</summary>
+    </member>
+    <member name="F:System.Data.Services.ServiceOperationRights.OverrideEntitySetRights">
+      <summary>Переопределяет права набора сущностей, явно определенные в службе данных с правами операции службы.</summary>
+    </member>
+    <member name="T:System.Data.Services.SingleResultAttribute">
+      <summary>Атрибут, используемый сервисными операциями для указания на то, что они возвращают одиночный экземпляр возвращаемого ими элемента. </summary>
+    </member>
+    <member name="M:System.Data.Services.SingleResultAttribute.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Services.SingleResultAttribute" />. </summary>
+    </member>
+    <member name="T:System.Data.Services.UpdateOperations">
+      <summary>Перечисление, используемое для задания операций обновления, выполняемых с сущностью. </summary>
+    </member>
+    <member name="F:System.Data.Services.UpdateOperations.None">
+      <summary>Никаких операций с ресурсом не проводилось.</summary>
+    </member>
+    <member name="F:System.Data.Services.UpdateOperations.Add">
+      <summary>Сущность была добавлена.</summary>
+    </member>
+    <member name="F:System.Data.Services.UpdateOperations.Change">
+      <summary>Сущность была изменена.</summary>
+    </member>
+    <member name="F:System.Data.Services.UpdateOperations.Delete">
+      <summary>Сущность была удалена.</summary>
+    </member>
+    <member name="T:System.Data.Services.Internal.ExpandedWrapper`1">
+      <summary>Этот класс используется внутри системы для реализации поддержки запросов с безотлагательной загрузкой связанных сущностей.</summary>
+      <typeparam name="TExpandedElement">Тип разворачиваемого элемента.</typeparam>
+    </member>
+    <member name="M:System.Data.Services.Internal.ExpandedWrapper`1.#ctor">
+      <summary>Creates an instance of the <see cref="T:System.Data.Services.Internal.ExpandedWrapper`1" /> class.</summary>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`1.Description">
+      <summary>Возвращает или задает описание для объекта <see cref="T:System.Data.Services.Internal.ExpandedWrapper`1" />.</summary>
+      <returns>The description of the <see cref="T:System.Data.Services.Internal.ExpandedWrapper`1" />.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`1.ExpandedElement">
+      <summary>Возвращает или задает элемент с развернутыми свойствами.</summary>
+      <returns>Объект в свойстве, развернутом интерфейсом <see cref="T:System.Data.Services.IExpandedResult" />.</returns>
+    </member>
+    <member name="M:System.Data.Services.Internal.ExpandedWrapper`1.GetExpandedPropertyValue(System.String)">
+      <summary>Возвращает значение развернутого свойства.</summary>
+      <returns>Значение свойства.</returns>
+      <param name="name">Имя свойства. </param>
+    </member>
+    <member name="M:System.Data.Services.Internal.ExpandedWrapper`1.InternalGetExpandedPropertyValue(System.Int32)">
+      <summary>Возвращает объект-свойство развернутого свойства.</summary>
+      <returns>Значение свойства.</returns>
+      <param name="nameIndex">Индекс свойства. </param>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`1.System#Data#Services#IExpandedResult#ExpandedElement">
+      <summary>Возвращает или задает элемент с развернутыми свойствами.</summary>
+      <returns>Объект в свойстве, развернутом интерфейсом <see cref="T:System.Data.Services.IExpandedResult" />.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ExpandedWrapper`10">
+      <summary>Этот класс используется внутри системы для реализации поддержки запросов с безотлагательной загрузкой связанных сущностей.</summary>
+      <typeparam name="TExpandedElement">Тип разворачиваемого элемента.</typeparam>
+      <typeparam name="TProperty0">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty1">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty2">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty3">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty4">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty5">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty6">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty7">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty8">Тип разворачиваемого свойства.</typeparam>
+    </member>
+    <member name="M:System.Data.Services.Internal.ExpandedWrapper`10.#ctor">
+      <summary>Creates an instance of the <see cref="T:System.Data.Services.Internal.ExpandedWrapper`10" /> class.</summary>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`10.ProjectedProperty0">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`10.ProjectedProperty1">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`10.ProjectedProperty2">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`10.ProjectedProperty3">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`10.ProjectedProperty4">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`10.ProjectedProperty5">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`10.ProjectedProperty6">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`10.ProjectedProperty7">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`10.ProjectedProperty8">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ExpandedWrapper`11">
+      <summary>Этот класс используется внутри системы для реализации поддержки запросов с безотлагательной загрузкой связанных сущностей.</summary>
+      <typeparam name="TExpandedElement">Тип разворачиваемого элемента.</typeparam>
+      <typeparam name="TProperty0">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty1">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty2">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty3">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty4">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty5">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty6">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty7">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty8">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty9">Тип разворачиваемого свойства.</typeparam>
+    </member>
+    <member name="M:System.Data.Services.Internal.ExpandedWrapper`11.#ctor">
+      <summary>Creates an instance of the <see cref="T:System.Data.Services.Internal.ExpandedWrapper`11" /> class.</summary>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`11.ProjectedProperty0">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`11.ProjectedProperty1">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`11.ProjectedProperty2">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`11.ProjectedProperty3">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`11.ProjectedProperty4">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`11.ProjectedProperty5">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`11.ProjectedProperty6">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`11.ProjectedProperty7">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`11.ProjectedProperty8">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`11.ProjectedProperty9">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ExpandedWrapper`12">
+      <summary>Этот класс используется внутри системы для реализации поддержки запросов с безотлагательной загрузкой связанных сущностей.</summary>
+      <typeparam name="TExpandedElement">Тип разворачиваемого элемента.</typeparam>
+      <typeparam name="TProperty0">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty1">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty2">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty3">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty4">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty5">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty6">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty7">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty8">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty9">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty10">Тип разворачиваемого свойства.</typeparam>
+    </member>
+    <member name="M:System.Data.Services.Internal.ExpandedWrapper`12.#ctor">
+      <summary>Creates an instance of the <see cref="T:System.Data.Services.Internal.ExpandedWrapper`12" /> class.</summary>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`12.ProjectedProperty0">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`12.ProjectedProperty1">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`12.ProjectedProperty10">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`12.ProjectedProperty2">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`12.ProjectedProperty3">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`12.ProjectedProperty4">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`12.ProjectedProperty5">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`12.ProjectedProperty6">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`12.ProjectedProperty7">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`12.ProjectedProperty8">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`12.ProjectedProperty9">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ExpandedWrapper`13">
+      <summary>Этот класс используется внутри системы для реализации поддержки запросов с безотлагательной загрузкой связанных сущностей.</summary>
+      <typeparam name="TExpandedElement">Тип разворачиваемого элемента.</typeparam>
+      <typeparam name="TProperty0">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty1">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty2">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty3">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty4">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty5">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty6">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty7">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty8">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty9">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty10">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty11">Тип разворачиваемого свойства.</typeparam>
+    </member>
+    <member name="M:System.Data.Services.Internal.ExpandedWrapper`13.#ctor">
+      <summary>Creates an instance of the <see cref="T:System.Data.Services.Internal.ExpandedWrapper`13" /> class.</summary>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`13.ProjectedProperty0">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`13.ProjectedProperty1">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`13.ProjectedProperty10">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`13.ProjectedProperty11">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`13.ProjectedProperty2">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`13.ProjectedProperty3">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`13.ProjectedProperty4">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`13.ProjectedProperty5">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`13.ProjectedProperty6">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`13.ProjectedProperty7">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`13.ProjectedProperty8">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`13.ProjectedProperty9">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ExpandedWrapper`2">
+      <summary>Этот класс используется внутри системы для реализации поддержки запросов с безотлагательной загрузкой связанных сущностей.</summary>
+      <typeparam name="TExpandedElement">Тип разворачиваемого элемента.</typeparam>
+      <typeparam name="TProperty0">Тип разворачиваемого свойства.</typeparam>
+    </member>
+    <member name="M:System.Data.Services.Internal.ExpandedWrapper`2.#ctor">
+      <summary>Creates an instance of the <see cref="T:System.Data.Services.Internal.ExpandedWrapper`2" /> class.</summary>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`2.ProjectedProperty0">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ExpandedWrapper`3">
+      <summary>Этот класс используется внутри системы для реализации поддержки запросов с безотлагательной загрузкой связанных сущностей.</summary>
+      <typeparam name="TExpandedElement">Тип разворачиваемого элемента.</typeparam>
+      <typeparam name="TProperty0">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty1">Тип разворачиваемого свойства.</typeparam>
+    </member>
+    <member name="M:System.Data.Services.Internal.ExpandedWrapper`3.#ctor">
+      <summary>Creates an instance of the <see cref="T:System.Data.Services.Internal.ExpandedWrapper`3" /> class.</summary>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`3.ProjectedProperty0">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`3.ProjectedProperty1">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ExpandedWrapper`4">
+      <summary>Этот класс используется внутри системы для реализации поддержки запросов с безотлагательной загрузкой связанных сущностей.</summary>
+      <typeparam name="TExpandedElement">Тип разворачиваемого элемента.</typeparam>
+      <typeparam name="TProperty0">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty1">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty2">Тип разворачиваемого свойства.</typeparam>
+    </member>
+    <member name="M:System.Data.Services.Internal.ExpandedWrapper`4.#ctor">
+      <summary>Creates an instance of the <see cref="T:System.Data.Services.Internal.ExpandedWrapper`4" /> class.</summary>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`4.ProjectedProperty0">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`4.ProjectedProperty1">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`4.ProjectedProperty2">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ExpandedWrapper`5">
+      <summary>Этот класс используется внутри системы для реализации поддержки запросов с безотлагательной загрузкой связанных сущностей.</summary>
+      <typeparam name="TExpandedElement">Тип разворачиваемого элемента.</typeparam>
+      <typeparam name="TProperty0">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty1">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty2">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty3">Тип разворачиваемого свойства.</typeparam>
+    </member>
+    <member name="M:System.Data.Services.Internal.ExpandedWrapper`5.#ctor">
+      <summary>Creates an instance of the <see cref="T:System.Data.Services.Internal.ExpandedWrapper`4" /> class.</summary>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`5.ProjectedProperty0">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`5.ProjectedProperty1">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`5.ProjectedProperty2">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`5.ProjectedProperty3">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ExpandedWrapper`6">
+      <summary>Этот класс используется внутри системы для реализации поддержки запросов с безотлагательной загрузкой связанных сущностей.</summary>
+      <typeparam name="TExpandedElement">Тип разворачиваемого элемента.</typeparam>
+      <typeparam name="TProperty0">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty1">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty2">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty3">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty4">Тип разворачиваемого свойства.</typeparam>
+    </member>
+    <member name="M:System.Data.Services.Internal.ExpandedWrapper`6.#ctor">
+      <summary>Creates an instance of the <see cref="T:System.Data.Services.Internal.ExpandedWrapper`6" /> class.</summary>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`6.ProjectedProperty0">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`6.ProjectedProperty1">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`6.ProjectedProperty2">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`6.ProjectedProperty3">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`6.ProjectedProperty4">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ExpandedWrapper`7">
+      <summary>Этот класс используется внутри системы для реализации поддержки запросов с безотлагательной загрузкой связанных сущностей.</summary>
+      <typeparam name="TExpandedElement">Тип разворачиваемого элемента.</typeparam>
+      <typeparam name="TProperty0">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty1">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty2">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty3">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty4">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty5">Тип разворачиваемого свойства.</typeparam>
+    </member>
+    <member name="M:System.Data.Services.Internal.ExpandedWrapper`7.#ctor">
+      <summary>Creates an instance of the <see cref="T:System.Data.Services.Internal.ExpandedWrapper`7" /> class.</summary>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`7.ProjectedProperty0">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`7.ProjectedProperty1">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`7.ProjectedProperty2">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`7.ProjectedProperty3">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`7.ProjectedProperty4">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`7.ProjectedProperty5">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ExpandedWrapper`8">
+      <summary>Этот класс используется внутри системы для реализации поддержки запросов с безотлагательной загрузкой связанных сущностей.</summary>
+      <typeparam name="TExpandedElement">Тип разворачиваемого элемента.</typeparam>
+      <typeparam name="TProperty0">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty1">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty2">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty3">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty4">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty5">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty6">Тип разворачиваемого свойства.</typeparam>
+    </member>
+    <member name="M:System.Data.Services.Internal.ExpandedWrapper`8.#ctor">
+      <summary>Creates an instance of the <see cref="T:System.Data.Services.Internal.ExpandedWrapper`8" /> class.</summary>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`8.ProjectedProperty0">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`8.ProjectedProperty1">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`8.ProjectedProperty2">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`8.ProjectedProperty3">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`8.ProjectedProperty4">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`8.ProjectedProperty5">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`8.ProjectedProperty6">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ExpandedWrapper`9">
+      <summary>Этот класс используется внутри системы для реализации поддержки запросов с безотлагательной загрузкой связанных сущностей.</summary>
+      <typeparam name="TExpandedElement">Тип разворачиваемого элемента.</typeparam>
+      <typeparam name="TProperty0">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty1">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty2">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty3">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty4">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty5">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty6">Тип разворачиваемого свойства.</typeparam>
+      <typeparam name="TProperty7">Тип разворачиваемого свойства.</typeparam>
+    </member>
+    <member name="M:System.Data.Services.Internal.ExpandedWrapper`9.#ctor">
+      <summary>Creates an instance of the <see cref="T:System.Data.Services.Internal.ExpandedWrapper`9" /> class.</summary>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`9.ProjectedProperty0">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`9.ProjectedProperty1">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`9.ProjectedProperty2">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`9.ProjectedProperty3">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`9.ProjectedProperty4">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`9.ProjectedProperty5">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`9.ProjectedProperty6">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ExpandedWrapper`9.ProjectedProperty7">
+      <summary>Возвращает или задает разворачиваемое свойство.</summary>
+      <returns>Разворачиваемое свойство.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ProjectedWrapper">
+      <summary>Обеспечивает программу-оболочку для результирующего элемента с возможностью проекции подмножества свойств.</summary>
+    </member>
+    <member name="M:System.Data.Services.Internal.ProjectedWrapper.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Data.Services.Internal.ProjectedWrapper" />.</summary>
+    </member>
+    <member name="M:System.Data.Services.Internal.ProjectedWrapper.GetProjectedPropertyValue(System.String)">
+      <summary>Получает значение именованного свойства результата.</summary>
+      <returns>Значение именованного свойства результата.</returns>
+      <param name="propertyName">Имя свойства, для которого необходимо возвратить значение.</param>
+    </member>
+    <member name="M:System.Data.Services.Internal.ProjectedWrapper.InternalGetProjectedPropertyValue(System.Int32)">
+      <summary>Получает значение заданного свойства согласно его индексу.</summary>
+      <returns>Значение для свойства.</returns>
+      <param name="propertyIndex">Индекс свойства, для которого необходимо возвратить значение.</param>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper.PropertyNameList">
+      <summary>Получает список имен свойств в виде текста в формате с разделителями-запятыми.</summary>
+      <returns>Список имен, разделенных запятыми.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper.ResourceTypeName">
+      <summary>Получает полное имя <see cref="T:System.Data.Services.Providers.ResourceType" />, представляющее собой тип данного результата.</summary>
+      <returns>Полное имя типа.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ProjectedWrapper0">
+      <summary>Обеспечивает программу-оболочку для результирующего элемента с возможностью проекции подмножества свойств.</summary>
+    </member>
+    <member name="M:System.Data.Services.Internal.ProjectedWrapper0.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Data.Services.Internal.ProjectedWrapper0" />.</summary>
+    </member>
+    <member name="T:System.Data.Services.Internal.ProjectedWrapper1">
+      <summary>Обеспечивает программу-оболочку для результирующего элемента с возможностью проекции подмножества свойств.</summary>
+    </member>
+    <member name="M:System.Data.Services.Internal.ProjectedWrapper1.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Data.Services.Internal.ProjectedWrapper1" />.</summary>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper1.ProjectedProperty0">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ProjectedWrapper2">
+      <summary>Обеспечивает программу-оболочку для результирующего элемента с возможностью проекции подмножества свойств.</summary>
+    </member>
+    <member name="M:System.Data.Services.Internal.ProjectedWrapper2.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Data.Services.Internal.ProjectedWrapper2" />.</summary>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper2.ProjectedProperty0">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper2.ProjectedProperty1">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ProjectedWrapper3">
+      <summary>Обеспечивает программу-оболочку для результирующего элемента и возможность проекции подмножества свойств.</summary>
+    </member>
+    <member name="M:System.Data.Services.Internal.ProjectedWrapper3.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Data.Services.Internal.ProjectedWrapper3" />.</summary>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper3.ProjectedProperty0">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper3.ProjectedProperty1">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper3.ProjectedProperty2">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ProjectedWrapper4">
+      <summary>Обеспечивает программу-оболочку для результирующего элемента с возможностью проекции подмножества свойств.</summary>
+    </member>
+    <member name="M:System.Data.Services.Internal.ProjectedWrapper4.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Data.Services.Internal.ProjectedWrapper4" />.</summary>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper4.ProjectedProperty0">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper4.ProjectedProperty1">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper4.ProjectedProperty2">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper4.ProjectedProperty3">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ProjectedWrapper5">
+      <summary>Обеспечивает программу-оболочку для результирующих элементов и возможность проекции подмножества свойств.</summary>
+    </member>
+    <member name="M:System.Data.Services.Internal.ProjectedWrapper5.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Data.Services.Internal.ProjectedWrapper5" />.</summary>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper5.ProjectedProperty0">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper5.ProjectedProperty1">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper5.ProjectedProperty2">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper5.ProjectedProperty3">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper5.ProjectedProperty4">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ProjectedWrapper6">
+      <summary>Обеспечивает программу-оболочку для результирующих элементов с возможностью проекции подмножества свойств.</summary>
+    </member>
+    <member name="M:System.Data.Services.Internal.ProjectedWrapper6.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Data.Services.Internal.ProjectedWrapper6" />.</summary>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper6.ProjectedProperty0">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper6.ProjectedProperty1">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper6.ProjectedProperty2">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper6.ProjectedProperty3">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper6.ProjectedProperty4">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper6.ProjectedProperty5">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ProjectedWrapper7">
+      <summary>Обеспечивает программу-оболочку для результирующих элементов с возможностью проекции подмножества свойств.</summary>
+    </member>
+    <member name="M:System.Data.Services.Internal.ProjectedWrapper7.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Data.Services.Internal.ProjectedWrapper7" />.</summary>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper7.ProjectedProperty0">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper7.ProjectedProperty1">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper7.ProjectedProperty2">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper7.ProjectedProperty3">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper7.ProjectedProperty4">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper7.ProjectedProperty5">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper7.ProjectedProperty6">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ProjectedWrapper8">
+      <summary>Обеспечивает программу-оболочку для результирующих элементов с возможностью проекции подмножества свойств.</summary>
+    </member>
+    <member name="M:System.Data.Services.Internal.ProjectedWrapper8.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Data.Services.Internal.ProjectedWrapper8" />.</summary>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper8.ProjectedProperty0">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper8.ProjectedProperty1">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper8.ProjectedProperty2">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper8.ProjectedProperty3">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper8.ProjectedProperty4">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper8.ProjectedProperty5">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper8.ProjectedProperty6">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapper8.ProjectedProperty7">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ProjectedWrapperMany">
+      <summary>Обеспечивает программу-оболочку для результирующих элементов с возможностью проекции подмножества свойств.</summary>
+    </member>
+    <member name="M:System.Data.Services.Internal.ProjectedWrapperMany.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Data.Services.Internal.ProjectedWrapperMany" />.</summary>
+    </member>
+    <member name="M:System.Data.Services.Internal.ProjectedWrapperMany.InternalGetProjectedPropertyValue(System.Int32)">
+      <summary>Получает значение заданного свойства согласно его индексу.</summary>
+      <returns>Значение для свойства.</returns>
+      <param name="propertyIndex">Индекс свойства, для которого необходимо возвратить значение.</param>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapperMany.Next">
+      <summary>Получает или задает еще один экземпляр <see cref="T:System.Data.Services.Internal.ProjectedWrapperMany" />, который содержит набор из восьми следующих проецируемых свойств и, возможно, еще одну ссылку.</summary>
+      <returns>Следующий набор свойств.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapperMany.ProjectedProperty0">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapperMany.ProjectedProperty1">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapperMany.ProjectedProperty2">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapperMany.ProjectedProperty3">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapperMany.ProjectedProperty4">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapperMany.ProjectedProperty5">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapperMany.ProjectedProperty6">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="P:System.Data.Services.Internal.ProjectedWrapperMany.ProjectedProperty7">
+      <summary>Получает или задает проецируемое свойство.</summary>
+      <returns>Проецируемое свойство.</returns>
+    </member>
+    <member name="T:System.Data.Services.Internal.ProjectedWrapperManyEnd">
+      <summary>экземпляр данного класса присвоен последнему объекту <see cref="P:System.Data.Services.Internal.ProjectedWrapperMany.Next" /> из списка.</summary>
+    </member>
+    <member name="M:System.Data.Services.Internal.ProjectedWrapperManyEnd.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Data.Services.Internal.ProjectedWrapperManyEnd" />.</summary>
+    </member>
+    <member name="T:System.Data.Services.Providers.DataServiceProviderMethods">
+      <summary>Выполняет операции с поздней привязкой в отношении наборов ресурсов совместно с пользовательским поставщиком службы данных.</summary>
+    </member>
+    <member name="M:System.Data.Services.Providers.DataServiceProviderMethods.Convert(System.Object,System.Data.Services.Providers.ResourceType)">
+      <summary>Приводит значение к заданному типу.</summary>
+      <returns>Значение <paramref name="value" />, приводимое к запрошенному типу <paramref name="type" />.</returns>
+    </member>
+    <member name="M:System.Data.Services.Providers.DataServiceProviderMethods.GetSequenceValue``1(System.Object,System.Data.Services.Providers.ResourceProperty)">
+      <summary>Получает из указанного объекта именованное значение в виде последовательности.</summary>
+      <returns>Экземпляр <see cref="T:System.Collections.Generic.IEnumerable`1" />, содержащий запрошенное значение в виде последовательности.</returns>
+      <param name="value">Объект, содержащий значение.</param>
+      <param name="property">Объект <see cref="T:System.Data.Services.Providers.ResourceProperty" />, представляющий собой свойство, значение которого необходимо возвратить.</param>
+      <typeparam name="T">Тип результирующей последовательности.</typeparam>
+    </member>
+    <member name="M:System.Data.Services.Providers.DataServiceProviderMethods.GetValue(System.Object,System.Data.Services.Providers.ResourceProperty)">
+      <summary>Получает именованное значение из указанного объекта.</summary>
+      <returns>Объект, который представляет собой запрошенное значение.</returns>
+      <param name="value">Объект, содержащий значение.</param>
+      <param name="property">Объект <see cref="T:System.Data.Services.Providers.ResourceProperty" />, представляющий собой свойство, значение которого необходимо возвратить.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.DataServiceProviderMethods.TypeIs(System.Object,System.Data.Services.Providers.ResourceType)">
+      <summary>Определяет, относится ли значение к заданному типу.</summary>
+      <returns>Значение <see cref="T:System.Boolean" />, равное true, если данное значение относится к указанному типу; в противном случае значение равно false.</returns>
+      <param name="value">Проверяемое значение.</param>
+      <param name="type">Тип <see cref="T:System.Data.Services.Providers.ResourceType" />, сравнение с которым необходимо произвести.</param>
+    </member>
+    <member name="T:System.Data.Services.Providers.IDataServiceMetadataProvider">
+      <summary>Поддерживает метаданные о пользовательском поставщике службы данных. </summary>
+    </member>
+    <member name="P:System.Data.Services.Providers.IDataServiceMetadataProvider.ContainerName">
+      <summary>Имя контейнера для источника данных.</summary>
+      <returns>Строка, содержащая имя контейнера.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.IDataServiceMetadataProvider.ContainerNamespace">
+      <summary>Имя пространства имен для источника данных.</summary>
+      <returns>Строка, содержащая имя пространства имен.</returns>
+    </member>
+    <member name="M:System.Data.Services.Providers.IDataServiceMetadataProvider.GetDerivedTypes(System.Data.Services.Providers.ResourceType)">
+      <summary>Пытается вернуть все типы, которые являются производными от указанного типа ресурса.</summary>
+      <returns>Коллекция <see cref="T:System.Collections.Generic.IEnumerable`1" /> производных объектов <see cref="T:System.Data.Services.Providers.ResourceType" />.</returns>
+      <param name="resourceType">Базовый тип <see cref="T:System.Data.Services.Providers.ResourceType" />.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.IDataServiceMetadataProvider.GetResourceAssociationSet(System.Data.Services.Providers.ResourceSet,System.Data.Services.Providers.ResourceType,System.Data.Services.Providers.ResourceProperty)">
+      <summary>Получает экземпляр <see cref="T:System.Data.Services.Providers.ResourceAssociationSet" /> при получении окончания исходной ассоциации.</summary>
+      <returns>Экземпляр <see cref="T:System.Data.Services.Providers.ResourceAssociationSet" />.</returns>
+      <param name="resourceSet">Набор ресурсов окончания исходной ассоциации.</param>
+      <param name="resourceType">Тип ресурсов окончания исходной ассоциации.</param>
+      <param name="resourceProperty">Свойство ресурса окончания исходной ассоциации.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.IDataServiceMetadataProvider.HasDerivedTypes(System.Data.Services.Providers.ResourceType)">
+      <summary>Определяет, имеет ли тип ресурса производные типы.</summary>
+      <returns>Значение равно true, когда тип <paramref name="resourceType" /> представляет сущность, имеющую производные типы; в противном случае значение равно false.</returns>
+      <param name="resourceType">Объект <see cref="T:System.Data.Services.Providers.ResourceType" />, подлежащий оценке.</param>
+    </member>
+    <member name="P:System.Data.Services.Providers.IDataServiceMetadataProvider.ResourceSets">
+      <summary>Получает все доступные контейнеры.</summary>
+      <returns>Коллекция <see cref="T:System.Collections.Generic.IEnumerable`1" /> объектов <see cref="T:System.Data.Services.Providers.ResourceSet" />.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.IDataServiceMetadataProvider.ServiceOperations">
+      <summary>Возвращает все операции службы в этом источнике данных.</summary>
+      <returns>Коллекция <see cref="T:System.Collections.Generic.IEnumerable`1" /> объектов <see cref="T:System.Data.Services.Providers.ServiceOperation" />.</returns>
+    </member>
+    <member name="M:System.Data.Services.Providers.IDataServiceMetadataProvider.TryResolveResourceSet(System.String,System.Data.Services.Providers.ResourceSet@)">
+      <summary>Пытается возвратить набор ресурсов на основании указанного имени.</summary>
+      <returns>Значение равно true, если найден набор ресурсов с заданным именем <paramref name="name" />; в противном случае значение равно false.</returns>
+      <param name="name">Имя набора <see cref="T:System.Data.Services.Providers.ResourceSet" />, подлежащего преобразованию.</param>
+      <param name="resourceSet">Возвращает набор ресурсов или значение null, если не найден набор ресурсов с заданным именем <paramref name="name" />.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.IDataServiceMetadataProvider.TryResolveResourceType(System.String,System.Data.Services.Providers.ResourceType@)">
+      <summary>Пытается возвратить тип ресурса на основании указанного имени.</summary>
+      <returns>Значение равно true, если найден тип ресурса с заданным именем <paramref name="name" />; в противном случае значение равно false.</returns>
+      <param name="name">Имя типа, подлежащего преобразованию.</param>
+      <param name="resourceType">Возвращает тип ресурса или значение null, если не найден тип ресурса с заданным именем <paramref name="name" />.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.IDataServiceMetadataProvider.TryResolveServiceOperation(System.String,System.Data.Services.Providers.ServiceOperation@)">
+      <summary>Пытается возвратить операцию службы на основании указанного имени.</summary>
+      <returns>Значение равно true, если найдена операция службы с заданным именем <paramref name="name" />; в противном случае значение равно false.</returns>
+      <param name="name">Имя операции службы, подлежащей преобразованию.</param>
+      <param name="serviceOperation">Возвращает операцию службы или значение null, если не найдена операция службы с заданным именем <paramref name="name" />.</param>
+    </member>
+    <member name="P:System.Data.Services.Providers.IDataServiceMetadataProvider.Types">
+      <summary>Возвращает все типы в этом источнике данных.</summary>
+      <returns>Коллекция <see cref="T:System.Collections.Generic.IEnumerable`1" /> объектов <see cref="T:System.Data.Services.Providers.ResourceType" />.</returns>
+    </member>
+    <member name="T:System.Data.Services.Providers.IDataServicePagingProvider">
+      <summary>Обеспечивает поддержку разбиения по страницам для клиентов пользовательского поставщика службы данных.</summary>
+    </member>
+    <member name="M:System.Data.Services.Providers.IDataServicePagingProvider.GetContinuationToken(System.Collections.IEnumerator)">
+      <summary>Возвращает токен следующей страницы, который необходимо поместить в параметр запроса $skiptoken.</summary>
+      <returns>токен следующей страницы в виде коллекции типов-примитивов.</returns>
+      <param name="enumerator">Перечислитель, для которого запрашивается токен продолжения.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.IDataServicePagingProvider.SetContinuationToken(System.Linq.IQueryable,System.Data.Services.Providers.ResourceType,System.Object[])">
+      <summary>Получает токен следующей страницы из параметра запроса $skiptoken в универсальном коде ресурса запроса.</summary>
+      <param name="query">Запрос, для которого предоставляется токен продолжения.</param>
+      <param name="resourceType">Тип ресурса результата, к которому необходимо применить токен $skip.</param>
+      <param name="continuationToken">Токен продолжения разбивается на значения типов-примитивов.</param>
+    </member>
+    <member name="T:System.Data.Services.Providers.IDataServiceQueryProvider">
+      <summary>Определяет реализацию метаданных и источника запросов для пользовательского поставщика службы данных.</summary>
+    </member>
+    <member name="P:System.Data.Services.Providers.IDataServiceQueryProvider.CurrentDataSource">
+      <summary>Объект источника данных, предоставляющий данные.</summary>
+      <returns>Источник данных.</returns>
+    </member>
+    <member name="M:System.Data.Services.Providers.IDataServiceQueryProvider.GetOpenPropertyValue(System.Object,System.String)">
+      <summary>Получает значение общедоступного свойства.</summary>
+      <returns>Значение общедоступного свойства.</returns>
+      <param name="target">Экземпляр типа, объявляющего общедоступное свойство.</param>
+      <param name="propertyName">Имя общедоступного свойства.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.IDataServiceQueryProvider.GetOpenPropertyValues(System.Object)">
+      <summary>Получает имена и значения всех свойств, определенных в данном экземпляре открытого типа.</summary>
+      <returns>Коллекция имен и значений всех общедоступных свойств.</returns>
+      <param name="target">Экземпляр типа, объявляющего общедоступное свойство.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.IDataServiceQueryProvider.GetPropertyValue(System.Object,System.Data.Services.Providers.ResourceProperty)">
+      <summary>Получает значение общедоступного свойства.</summary>
+      <returns>Значение для свойства.</returns>
+      <param name="target">Экземпляр типа, объявляющего общедоступное свойство.</param>
+      <param name="resourceProperty">Значение для общедоступного свойства.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.IDataServiceQueryProvider.GetQueryRootForResourceSet(System.Data.Services.Providers.ResourceSet)">
+      <summary>Получает объект <see cref="T:System.Linq.IQueryable`1" />, представляющий контейнер. </summary>
+      <returns>Объект <see cref="T:System.Linq.IQueryable`1" />, представляющий набор ресурсов, или значение null, если набор ресурсов для заданного объекта <paramref name="resourceSet" /> отсутствует.</returns>
+      <param name="resourceSet">Набор ресурсов.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.IDataServiceQueryProvider.GetResourceType(System.Object)">
+      <summary>Получает тип ресурса для экземпляра, заданного параметром.</summary>
+      <returns>Тип <see cref="T:System.Data.Services.Providers.ResourceType" /> предоставленного объекта. </returns>
+      <param name="target">Экземпляр, из которого извлекается тип ресурса.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.IDataServiceQueryProvider.InvokeServiceOperation(System.Data.Services.Providers.ServiceOperation,System.Object[])">
+      <summary>Вызывает заданную операцию службы и возвращает результаты.</summary>
+      <returns>Результат операции службы или значение null для операции службы, возвращающей значение void.</returns>
+      <param name="serviceOperation">Вызываемая операция службы.</param>
+      <param name="parameters">Значения параметров, которые необходимо передать операции службы.</param>
+    </member>
+    <member name="P:System.Data.Services.Providers.IDataServiceQueryProvider.IsNullPropagationRequired">
+      <summary>Получает значение, указывающее на то, необходимо ли распространение пустых значений в деревьях выражения.</summary>
+      <returns>Значение <see cref="T:System.Boolean" />, указывающее на то, необходимо ли распространение пустых значений.</returns>
+    </member>
+    <member name="T:System.Data.Services.Providers.IDataServiceStreamProvider">
+      <summary>Определяет контракт между компонентом сервера данных и реализацией потока источника данных.</summary>
+    </member>
+    <member name="M:System.Data.Services.Providers.IDataServiceStreamProvider.DeleteStream(System.Object,System.Data.Services.DataServiceOperationContext)">
+      <summary>Данный метод вызывается платформой служб данных с целью получения метаданных о потоке, связанном с указанной сущностью <paramref name="entity" />. </summary>
+      <param name="entity">Сущность, для которой необходимо возвратить объект дескриптора.</param>
+      <param name="operationContext">Экземпляр <see cref="T:System.Data.Services.DataServiceOperationContext" />, обрабатывающий запрос.</param>
+      <exception cref="T:System.ArgumentNullException">Если <paramref name="entity" /> или <paramref name="operationContext" /> имеет значение null.</exception>
+      <exception cref="T:System.ArgumentException">Когда <paramref name="entity" /> не сущность, у которой есть двоичное свойство для потока.</exception>
+      <exception cref="T:System.Data.Services.DataServiceException">Когда поток, связанный с <paramref name="entity" /> не может быть удален.</exception>
+    </member>
+    <member name="M:System.Data.Services.Providers.IDataServiceStreamProvider.GetReadStream(System.Object,System.String,System.Nullable{System.Boolean},System.Data.Services.DataServiceOperationContext)">
+      <summary>Возвращает поток по умолчанию, связанный с сущностью, которая имеет двоичное свойство.</summary>
+      <returns>Поток данных <see cref="T:System.IO.Stream" />, содержащий двоичные данные свойств сущности <paramref name="entity" />.</returns>
+      <param name="entity">Сущность, имеющая связанный с ней двоичный поток.</param>
+      <param name="etag">Значение eTag, отправляемое в составе HTTP-запроса службе данных.</param>
+      <param name="checkETagForEquality">Значение <see cref="T:System.Boolean" />, допускающее значение null и определяющее используемый тип eTag. </param>
+      <param name="operationContext">Экземпляр <see cref="T:System.Data.Services.DataServiceOperationContext" />, который используется службой данных для обработки запроса.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.IDataServiceStreamProvider.GetReadStreamUri(System.Object,System.Data.Services.DataServiceOperationContext)">
+      <summary>Возвращает универсальный код ресурса, используемый для запроса потока данных, который связан с двоичным свойством какой-либо сущности.</summary>
+      <returns>Значение <see cref="T:System.Uri" />, используемое для запроса двоичного потока данных.</returns>
+      <param name="entity">Сущность, имеющая связанный с ней двоичный поток данных.</param>
+      <param name="operationContext">Экземпляр <see cref="T:System.Data.Services.DataServiceOperationContext" />, который используется службой данных для обработки запроса.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.IDataServiceStreamProvider.GetStreamContentType(System.Object,System.Data.Services.DataServiceOperationContext)">
+      <summary>Возвращает тип содержимого потока, связанного с заданной сущностью.</summary>
+      <returns>Допустимый заголовок двоичных данных Content-Type.</returns>
+      <param name="entity">Сущность, имеющая связанный с ней двоичный поток данных.</param>
+      <param name="operationContext">Экземпляр <see cref="T:System.Data.Services.DataServiceOperationContext" />, который используется службой данных для обработки запроса.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.IDataServiceStreamProvider.GetStreamETag(System.Object,System.Data.Services.DataServiceOperationContext)">
+      <summary>Возвращает eTag потока данных, связанного с заданной сущностью.</summary>
+      <returns>eTag потока, связанного с сущностью <paramref name="entity" />.</returns>
+      <param name="entity">Сущность, имеющая связанный с ней двоичный поток данных.</param>
+      <param name="operationContext">Экземпляр <see cref="T:System.Data.Services.DataServiceOperationContext" />, который используется службой данных для обработки запроса.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.IDataServiceStreamProvider.GetWriteStream(System.Object,System.String,System.Nullable{System.Boolean},System.Data.Services.DataServiceOperationContext)">
+      <summary>Возвращает поток, используемый службой данных для записи содержимого двоичного свойства, которое связано с какой-либо сущностью.</summary>
+      <returns>Допустимый поток <see cref="T:System.Stream" />, используемый службой данных для записи содержимого двоичного свойства, которое связано с данной сущностью <paramref name="entity" />.</returns>
+      <param name="entity">Сущность, имеющая связанный с ней двоичный поток.</param>
+      <param name="etag">Значение eTag, отправляемое в составе HTTP-запроса службе данных.</param>
+      <param name="checkETagForEquality">Значение <see cref="T:System.Boolean" />, допускающее значение null и определяющее используемый тип eTag. </param>
+      <param name="operationContext">Экземпляр <see cref="T:System.Data.Services.DataServiceOperationContext" />, который используется службой данных для обработки запроса.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.IDataServiceStreamProvider.ResolveType(System.String,System.Data.Services.DataServiceOperationContext)">
+      <summary>Возвращает имя типа с уточнением пространства имен, представляющее тип, который среда выполнения службы данных должна создать для медиа-ссылки, связанной с потоком данных для вставляемого медиа-ресурса.</summary>
+      <returns>Имя типа с уточнением пространства имен.</returns>
+      <param name="entitySetName">Полное имя набора сущностей.</param>
+      <param name="operationContext">Экземпляр <see cref="T:System.Data.Services.DataServiceOperationContext" />, который используется службой данных для обработки запроса.</param>
+    </member>
+    <member name="P:System.Data.Services.Providers.IDataServiceStreamProvider.StreamBufferSize">
+      <summary>Получает размер буфера потока.</summary>
+      <returns>Целое число, обозначающее размер буфера.</returns>
+    </member>
+    <member name="T:System.Data.Services.Providers.IDataServiceUpdateProvider">
+      <summary>Определяет методы, которые необходимо реализовать для предоставления значений eTag пользовательскому поставщику службы данных.</summary>
+    </member>
+    <member name="M:System.Data.Services.Providers.IDataServiceUpdateProvider.SetConcurrencyValues(System.Object,System.Nullable{System.Boolean},System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
+      <summary>Предоставляет значение eTag для указанного ресурса сущности.</summary>
+      <param name="resourceCookie">Файл Cookie, представляющий ресурс.</param>
+      <param name="checkForEquality">Значение <see cref="T:System.Boolean" />, равное true при необходимости в сравнении значений свойства для проверки на равенство; при необходимости в сравнении значений свойства для проверки на неравенство значение равно false.</param>
+      <param name="concurrencyValues">Список <see cref="T:System.Collections.Generic.IEnumerable`1" />, содержащий имена свойств eTag и соответствующие значения.</param>
+    </member>
+    <member name="T:System.Data.Services.Providers.OpenTypeMethods">
+      <summary>Используется для выполнения операций с поздней привязкой в отношении общедоступных свойств.</summary>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Add(System.Object,System.Object)">
+      <summary>Складывает два значения.</summary>
+      <returns>Результат арифметической операции.</returns>
+      <param name="left">Первое из складываемых значений.</param>
+      <param name="right">Второе из складываемых значений.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.AndAlso(System.Object,System.Object)">
+      <summary>Выполняет логическую операцию and в отношении двух выражений.</summary>
+      <returns>Результат логической операции and.</returns>
+      <param name="left">Левое значение.</param>
+      <param name="right">Правое значение.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Ceiling(System.Object)">
+      <summary>Возвращает максимальную величину заданного значения.</summary>
+      <returns>Максимальная величина заданного значения.</returns>
+      <param name="value">Объект <see cref="T:System.Decimal" /> или <see cref="T:System.Double" />.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Concat(System.Object,System.Object)">
+      <summary>Сцепляет два строковых значения.</summary>
+      <returns>Новый экземпляр, представляющий собой сцепленную строку.</returns>
+      <param name="first">Первая строка.</param>
+      <param name="second">Вторая строка.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Convert(System.Object,System.Data.Services.Providers.ResourceType)">
+      <summary>Преобразует значение в заданный тип.</summary>
+      <returns>Преобразованное значение.</returns>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Day(System.Object)">
+      <summary>Возвращает значение дня заданного экземпляра <see cref="T:System.DateTime" />.</summary>
+      <returns>Значение дня заданного экземпляра <see cref="T:System.DateTime" />.</returns>
+      <param name="dateTime">Объект <see cref="T:System.DateTime" />.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Divide(System.Object,System.Object)">
+      <summary>Делит значение на другое.</summary>
+      <returns>Делимое значение.</returns>
+      <param name="left">Первое значение (делимое).</param>
+      <param name="right">Второе значение (делитель).</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.EndsWith(System.Object,System.Object)">
+      <summary>Определяет, совпадает ли окончание одной строки с другой.</summary>
+      <returns>Возвращает значение true, когда строка <paramref name="targetString" /> заканчивается объектом <paramref name="substring" />; в противном случае возвращает значение false.</returns>
+      <param name="targetString">Сравниваемая строка.</param>
+      <param name="substring">Строка, сравнение с которой необходимо выполнить.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Equal(System.Object,System.Object)">
+      <summary>Определяет, равны ли два рассматриваемых объекта.</summary>
+      <returns>Значение <see cref="T:System.Boolean" />, равное true при равенстве двух объектов; в противном случае значение равно false.</returns>
+      <param name="left">Первый сравниваемый объект.</param>
+      <param name="right">Второй сравниваемый объект.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Floor(System.Object)">
+      <summary>Возвращает минимальную величину заданного значения.</summary>
+      <returns>Возвращает минимальное значение заданного объекта.</returns>
+      <param name="value">Объект <see cref="T:System.Decimal" /> или <see cref="T:System.Double" />, подлежащий оценке.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.GetValue(System.Object,System.String)">
+      <summary>Возвращает значение, полученное от указанного свойства заданного объекта.</summary>
+      <returns>Запрошенное значение; null, если значение невозможно определить.</returns>
+      <param name="value">Объект, из которого необходимо возвратить значение свойства.</param>
+      <param name="propertyName">Имя свойства, из которого необходимо возвратить значение.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.GreaterThan(System.Object,System.Object)">
+      <summary>Определяет, превышает ли значение одного объекта значение другого объекта.</summary>
+      <returns>Возвращает значение true, когда значение первого объекта превышает значение второго объекта; в противном случае возвращает значение false.</returns>
+      <param name="left">Первое значение.</param>
+      <param name="right">Второе значение.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.GreaterThanOrEqual(System.Object,System.Object)">
+      <summary>Определяет, превышает ли значение одного объекта значение другого объекта, или равны ли эти значения.</summary>
+      <returns>Возвращает значение true, когда значение первого объекта превышает значение второго объекта или равно этому значению; в противном случае возвращает значение false.</returns>
+      <param name="left">Первое значение.</param>
+      <param name="right">Второе значение.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Hour(System.Object)">
+      <summary>Возвращает значение часа заданного экземпляра <see cref="T:System.DateTime" />.</summary>
+      <returns>Значение часа заданного экземпляра <see cref="T:System.DateTime" />.</returns>
+      <param name="dateTime">Объект <see cref="T:System.DateTime" />.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.IndexOf(System.Object,System.Object)">
+      <summary>Возвращает индекс подстроки в целевой строке.</summary>
+      <returns>Возвращает индекс расположения подстроки <paramref name="substring" /> в строке <paramref name="targetString" />.</returns>
+      <param name="targetString">Целевая строка.</param>
+      <param name="substring">Подстрока для поиска.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Length(System.Object)">
+      <summary>Получает число знаков в предоставленном строковом объекте. </summary>
+      <returns>Длина строкового значения.</returns>
+      <param name="value">Строка, предназначенная для проверки.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.LessThan(System.Object,System.Object)">
+      <summary>Определяет, меньше ли значение одного объекта значения другого объекта.</summary>
+      <returns>Возвращает значение true, когда значение первого объекта меньше значения второго объекта; в противном случае возвращает значение false.</returns>
+      <param name="left">Первое значение.</param>
+      <param name="right">Второе значение.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.LessThanOrEqual(System.Object,System.Object)">
+      <summary>Определяет, меньше ли значение одного объекта значения другого объекта, или равны ли эти значения.</summary>
+      <returns>Возвращает значение true, когда значение первого объекта меньше значения второго объекта или равно этому значению; в противном случае возвращает значение false.</returns>
+      <param name="left">Первое значение.</param>
+      <param name="right">Второе значение.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Minute(System.Object)">
+      <summary>Возвращает значение минут заданного экземпляра <see cref="T:System.DateTime" />.</summary>
+      <returns>Значение минут заданного экземпляра <see cref="T:System.DateTime" />.</returns>
+      <param name="dateTime">Объект <see cref="T:System.DateTime" />.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Modulo(System.Object,System.Object)">
+      <summary>Вычисляет остаток от арифметической операции деления одного значения на другое. </summary>
+      <returns>Значение остатка.</returns>
+      <param name="left">Первое значение (делимое).</param>
+      <param name="right">Второе значение (делитель).</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Month(System.Object)">
+      <summary>Возвращает значение месяца заданного экземпляра <see cref="T:System.DateTime" />.</summary>
+      <returns>Значение месяца заданного экземпляра <see cref="T:System.DateTime" />.</returns>
+      <param name="dateTime">Объект <see cref="T:System.DateTime" />.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Multiply(System.Object,System.Object)">
+      <summary>Перемножает два значения.</summary>
+      <returns>Произведение двух значений.</returns>
+      <param name="left">Первое значение.</param>
+      <param name="right">Второе значение.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Negate(System.Object)">
+      <summary>Возвращает результат умножения заданного значения на минус единицу.</summary>
+      <returns>Произведение значения <paramref name="value" /> и минус единицы.</returns>
+      <param name="value">Значение, у которого необходимо изменить знак.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Not(System.Object)">
+      <summary>Выполняет битовую (логическую) операцию дополнения предоставленного значения.</summary>
+      <returns>Побитовое дополнение предоставленного значения.</returns>
+      <param name="value">Значение, над которым необходимо произвести логическую операцию дополнения.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.NotEqual(System.Object,System.Object)">
+      <summary>Выполняет логическое сравнение двух значений с целью определения их равенства или неравенства.</summary>
+      <returns>Значение <see cref="T:System.Boolean" />, равное true при неравенстве объектов; в противном случае значение равно false.</returns>
+      <param name="left">Первое значение.</param>
+      <param name="right">Второе значение.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.OrElse(System.Object,System.Object)">
+      <summary>Выполняет логическую операцию OR над двумя значениями.</summary>
+      <returns>Результат логической операции OR.</returns>
+      <param name="left">Первое значение.</param>
+      <param name="right">Второе значение.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Replace(System.Object,System.Object,System.Object)">
+      <summary>Заменяет в целевой строке одну подстроку на другую.</summary>
+      <returns>Новая строка с подстрокой, замененной на новую подстроку.</returns>
+      <param name="targetString">Строка с подстрокой, которую необходимо заменить.</param>
+      <param name="substring">Подстрока, которую необходимо заменить.</param>
+      <param name="newString">Новая подстрока.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Round(System.Object)">
+      <summary>Округляет предоставленное значение.</summary>
+      <returns>Округленное значение.</returns>
+      <param name="value">Объект <see cref="T:System.Decimal" /> или <see cref="T:System.Double" />, предназначенный для округления.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Second(System.Object)">
+      <summary>Возвращает значение секунд заданного экземпляра <see cref="T:System.DateTime" />.</summary>
+      <returns>Значение секунд заданного экземпляра <see cref="T:System.DateTime" />.</returns>
+      <param name="dateTime">Объект <see cref="T:System.DateTime" />.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.StartsWith(System.Object,System.Object)">
+      <summary>Проверяет, начинается ли целевая строка с подстроки.</summary>
+      <returns>Возвращает значение true, если целевая строка начинается с заданной подстроки; в противном случае возвращает значение false.</returns>
+      <param name="targetString">Сравниваемая строка.</param>
+      <param name="substring">Подстрока, с которой может начинаться целевая строка <paramref name="targetString" />.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Substring(System.Object,System.Object)">
+      <summary>Возвращает подстроку после расположения указанного начального индекса.</summary>
+      <returns>Подстрока.</returns>
+      <param name="targetString">Строка, из которой необходимо возвратить подстроку.</param>
+      <param name="startIndex">Начальный индекс для подстроки.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Substring(System.Object,System.Object,System.Object)">
+      <summary>Возвращает подстроку заданной длины после расположения указанного начального индекса.</summary>
+      <returns>Подстрока.</returns>
+      <param name="targetString">Строка, из которой необходимо возвратить подстроку.</param>
+      <param name="startIndex">Начальный индекс для подстроки.</param>
+      <param name="length">Длина подстроки.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.SubstringOf(System.Object,System.Object)">
+      <summary>Определяет, имеется ли подстрока в другой строке.</summary>
+      <returns>Значение равно true, когда подстрока <paramref name="substring" /> находится в целевой строке <paramref name="targetString" />; в противном случае значение равно false.</returns>
+      <param name="substring">Подстрока, которую требуется найти.</param>
+      <param name="targetString">Строка для поиска.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Subtract(System.Object,System.Object)">
+      <summary>Вычитает одно значение из другого.</summary>
+      <returns>Результат арифметической операции.</returns>
+      <param name="left">Первое значение операции вычитания.</param>
+      <param name="right">Второе значение операции вычитания.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.ToLower(System.Object)">
+      <summary>Возвращает копию строки, переведенную в нижний регистр.</summary>
+      <returns>Новое строковое значение только в нижнем регистре.</returns>
+      <param name="targetString">Преобразуемая строка.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.ToUpper(System.Object)">
+      <summary>Возвращает копию строки, переведенную в верхний регистр.</summary>
+      <returns>Новое строковое значение только в верхнем регистре.</returns>
+      <param name="targetString">Преобразуемая строка.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Trim(System.Object)">
+      <summary>Удаляет из строки все начальные и конечные знаки пустого пространства.</summary>
+      <returns>Сокращенная строка.</returns>
+      <param name="targetString">Строка, которую необходимо усечь.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.TypeIs(System.Object,System.Data.Services.Providers.ResourceType)">
+      <summary>Проверяет тип заданного значения.</summary>
+      <returns>Значение <see cref="T:System.Boolean" />, равное true, если данное значение относится к заданному типу ресурсов; в противном случае — значение false.</returns>
+      <param name="value">Проверяемое значение.</param>
+      <param name="type">Тип ресурса, для которого производится проверка.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.OpenTypeMethods.Year(System.Object)">
+      <summary>Возвращает значение года заданного экземпляра <see cref="T:System.DateTime" />.</summary>
+      <returns>Значение года заданного экземпляра <see cref="T:System.DateTime" />.</returns>
+      <param name="dateTime">Объект <see cref="T:System.DateTime" />.</param>
+    </member>
+    <member name="T:System.Data.Services.Providers.ResourceAssociationSet">
+      <summary>Описывает ассоциацию между двумя наборами ресурсов.</summary>
+    </member>
+    <member name="M:System.Data.Services.Providers.ResourceAssociationSet.#ctor(System.String,System.Data.Services.Providers.ResourceAssociationSetEnd,System.Data.Services.Providers.ResourceAssociationSetEnd)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Data.Services.Providers.ResourceAssociationSet" />.</summary>
+      <param name="name">Имя набора ассоциаций.</param>
+      <param name="end1">Объект <see cref="T:System.Data.Services.Providers.ResourceAssociationSetEnd" />, находящийся на исходном окончании набора ассоциаций.</param>
+      <param name="end2">Объект <see cref="T:System.Data.Services.Providers.ResourceAssociationSetEnd" />, находящийся на целевом окончании набора ассоциаций.</param>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceAssociationSet.End1">
+      <summary>Получает исходное окончание набора ассоциаций.</summary>
+      <returns>Объект <see cref="T:System.Data.Services.Providers.ResourceAssociationSetEnd" />, находящийся на исходном окончании набора ассоциаций.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceAssociationSet.End2">
+      <summary>Получает целевое окончание набора ассоциаций.</summary>
+      <returns>Объект <see cref="T:System.Data.Services.Providers.ResourceAssociationSetEnd" />, находящийся на целевом окончании набора ассоциаций.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceAssociationSet.Name">
+      <summary>Получает имя набора ассоциаций.</summary>
+      <returns>Имя набора ассоциаций.</returns>
+    </member>
+    <member name="T:System.Data.Services.Providers.ResourceAssociationSetEnd">
+      <summary>Описывает конечную точку набора ассоциаций ресурсов.</summary>
+    </member>
+    <member name="M:System.Data.Services.Providers.ResourceAssociationSetEnd.#ctor(System.Data.Services.Providers.ResourceSet,System.Data.Services.Providers.ResourceType,System.Data.Services.Providers.ResourceProperty)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Data.Services.Providers.ResourceAssociationSetEnd" />.</summary>
+      <param name="resourceSet">Набор ресурсов, которому принадлежит окончание <see cref="T:System.Data.Services.Providers.ResourceAssociationSetEnd" />.</param>
+      <param name="resourceType">Тип ресурса, которому принадлежит окончание <see cref="T:System.Data.Services.Providers.ResourceAssociationSetEnd" />.</param>
+      <param name="resourceProperty">Свойство ресурса, которое возвращает окончание <see cref="T:System.Data.Services.Providers.ResourceAssociationSetEnd" />.</param>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceAssociationSetEnd.ResourceProperty">
+      <summary>Получает свойство ресурса, возвращающее окончание <see cref="T:System.Data.Services.Providers.ResourceAssociationSetEnd" />.</summary>
+      <returns>Свойство ресурса.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceAssociationSetEnd.ResourceSet">
+      <summary>Получает набор ресурсов для окончания <see cref="T:System.Data.Services.Providers.ResourceAssociationSetEnd" />.</summary>
+      <returns>Набор ресурсов.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceAssociationSetEnd.ResourceType">
+      <summary>Получает тип ресурса для окончания <see cref="T:System.Data.Services.Providers.ResourceAssociationSetEnd" />.</summary>
+      <returns>Тип ресурса.</returns>
+    </member>
+    <member name="T:System.Data.Services.Providers.ResourceProperty">
+      <summary>Предоставляет тип, предназначенный для описания свойства какого-либо ресурса.</summary>
+    </member>
+    <member name="M:System.Data.Services.Providers.ResourceProperty.#ctor(System.String,System.Data.Services.Providers.ResourcePropertyKind,System.Data.Services.Providers.ResourceType)">
+      <summary>Инициализирует новое свойство <see cref="T:System.Data.Services.Providers.ResourceProperty" /> для общедоступного свойства.</summary>
+      <param name="name">Имя свойства для данного свойства в виде строки.</param>
+      <param name="kind">
+        <see cref="T:System.Data.Services.Providers.ResourcePropertyKind" />.</param>
+      <param name="propertyResourceType">Тип <see cref="T:System.Data.Services.Providers.ResourceType" /> ресурса, на который ссылается данное свойство.</param>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceProperty.CanReflectOnInstanceTypeProperty">
+      <summary>Получает или задает значение, указывающее на то, возможен ли доступ к данному свойству посредством отражения от объявленного типа экземпляра ресурса.</summary>
+      <returns>Значение равно true, если доступ к свойству посредством отражения возможен; в противном случае значение равно false.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceProperty.CustomState">
+      <summary>Получает или задает пользовательские сведения о состоянии свойства ресурса, определяемого разработчиком.</summary>
+      <returns>Сведения о состоянии.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceProperty.IsReadOnly">
+      <summary>Получает логическое значение, указывающее на то, является ли свойство доступным только для чтения.</summary>
+      <returns>Значение равно True, если свойство доступно только для чтения.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceProperty.Kind">
+      <summary>Получает вид свойства ресурса относительно данного ресурса.</summary>
+      <returns>Значение <see cref="T:System.Data.Services.Providers.ResourcePropertyKind" />.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceProperty.MimeType">
+      <summary>Получает или задает тип MIME для данного свойства.</summary>
+      <returns>Строковое значение, обозначающее тип MIME.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceProperty.Name">
+      <summary>Получает имя свойства ресурса.</summary>
+      <returns>Имя свойства ресурса в виде строки.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceProperty.ResourceType">
+      <summary>Получает тип свойства ресурса.</summary>
+      <returns>Тип <see cref="T:System.Data.Services.Providers.ResourceType" /> свойства ресурса.</returns>
+    </member>
+    <member name="M:System.Data.Services.Providers.ResourceProperty.SetReadOnly">
+      <summary>Делает свойство ресурса доступным только для чтения.</summary>
+    </member>
+    <member name="T:System.Data.Services.Providers.ResourcePropertyKind">
+      <summary>Перечисление видов свойств, которыми может отличаться ресурс.</summary>
+    </member>
+    <member name="F:System.Data.Services.Providers.ResourcePropertyKind.Primitive">
+      <summary>Свойство типа-примитива.</summary>
+    </member>
+    <member name="F:System.Data.Services.Providers.ResourcePropertyKind.Key">
+      <summary>Свойство, представляющее собой часть ключа.</summary>
+    </member>
+    <member name="F:System.Data.Services.Providers.ResourcePropertyKind.ComplexType">
+      <summary>Сложное или составное свойство.</summary>
+    </member>
+    <member name="F:System.Data.Services.Providers.ResourcePropertyKind.ResourceReference">
+      <summary>Ссылка на другой ресурс.</summary>
+    </member>
+    <member name="F:System.Data.Services.Providers.ResourcePropertyKind.ResourceSetReference">
+      <summary>Ссылка на набор ресурсов.</summary>
+    </member>
+    <member name="F:System.Data.Services.Providers.ResourcePropertyKind.ETag">
+      <summary>Свойство ETag.</summary>
+    </member>
+    <member name="T:System.Data.Services.Providers.ResourceSet">
+      <summary>Представляет коллекцию типов-примитивов, сложных типов или типов сущности службы данных.</summary>
+    </member>
+    <member name="M:System.Data.Services.Providers.ResourceSet.#ctor(System.String,System.Data.Services.Providers.ResourceType)">
+      <summary>Создает новую коллекцию типов-примитивов, сложных типов или типов сущности службы данных.</summary>
+      <param name="name">Имя набора элементов в виде строки.</param>
+      <param name="elementType">Тип <see cref="T:System.Data.Services.Providers.ResourceType" /> элементов в наборе.</param>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceSet.CustomState">
+      <summary>Пользовательские сведения о состоянии, определяемые разработчиком.</summary>
+      <returns>Сведения о состоянии, определяемые разработчиком.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceSet.IsReadOnly">
+      <summary>Получает логическое значение, указывающее на то, является ли набор доступным только для чтения.</summary>
+      <returns>Логическое значение, указывающее на то, является ли ресурс доступным только для чтения.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceSet.Name">
+      <summary>Получает имя коллекции.</summary>
+      <returns>Строковое значение, содержащее имя набора ресурсов.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceSet.ResourceType">
+      <summary>Получает тип коллекции.</summary>
+      <returns>Словарь <see cref="T:System.Data.Services.Providers.ResourceType" />.</returns>
+    </member>
+    <member name="M:System.Data.Services.Providers.ResourceSet.SetReadOnly">
+      <summary>Получает или задает состояние коллекции "только для чтения".</summary>
+    </member>
+    <member name="T:System.Data.Services.Providers.ResourceType">
+      <summary>Представляет тип-примитив, сложный тип или тип сущности службы данных.</summary>
+    </member>
+    <member name="M:System.Data.Services.Providers.ResourceType.#ctor(System.Type,System.Data.Services.Providers.ResourceTypeKind,System.Data.Services.Providers.ResourceType,System.String,System.String,System.Boolean)">
+      <summary>Создает экземпляр службы данных <see cref="T:System.Data.Services.Providers.ResourceType" />.</summary>
+      <param name="instanceType">Тип среды CLR, который представляет формат в среде выполнения Службы данных WCF.</param>
+      <param name="resourceTypeKind">Вид <see cref="T:System.Data.Services.Providers.ResourceTypeKind" /> типа ресурса.</param>
+      <param name="baseType">Базовый тип типа ресурса в виде строки.</param>
+      <param name="namespaceName">Имя пространства имен типа ресурса в виде строки.</param>
+      <param name="name">Имя заданного типа ресурса в виде строки.</param>
+      <param name="isAbstract">Логическое значение, указывающее на то, является ли тип ресурса абстрактным типом.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.ResourceType.AddEntityPropertyMappingAttribute(System.Data.Services.Common.EntityPropertyMappingAttribute)">
+      <summary>Добавляет атрибут <see cref="T:System.Data.Services.Common.EntityPropertyMappingAttribute" /> для типа ресурса.</summary>
+      <param name="attribute">Объект <see cref="T:System.Data.Services.Common.EntityPropertyMappingAttribute" />, предназначенный для добавления.</param>
+    </member>
+    <member name="M:System.Data.Services.Providers.ResourceType.AddProperty(System.Data.Services.Providers.ResourceProperty)">
+      <summary>Добавляет к типу свойство, предоставленное параметром <paramref name="resourceProperty" />.</summary>
+      <param name="property">Подлежащее добавлению свойство <see cref="T:System.Data.Services.Providers.ResourceProperty" />.</param>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceType.BaseType">
+      <summary>Получает ссылку на базовый тип ресурса, если таковой имеется.</summary>
+      <returns>Тип ресурса <see cref="T:System.Data.Services.Providers.ResourceType" /> базового типа.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceType.CanReflectOnInstanceType">
+      <summary>Получает данные о том, представляет ли соответствующий тип экземпляра тип среды CLR данной сущности.</summary>
+      <returns>Значение равно true, если тип экземпляра представляет тип среды CLR; в противном случае значение равно false.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceType.CustomState">
+      <summary>Получает или задает прототип для хранения пользовательских сведений о состоянии типа ресурса, определяемых разработчиком.</summary>
+      <returns>Пользовательские сведения о состоянии, определяемые разработчиком.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceType.ETagProperties">
+      <summary>Получает список свойств для данного типа.</summary>
+      <returns>Коллекция <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> типов <see cref="T:System.Data.Services.Providers.ResourceType" />.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceType.FullName">
+      <summary>Получает полное имя ресурса.</summary>
+      <returns>Полное имя типа ресурса в виде строки.</returns>
+    </member>
+    <member name="M:System.Data.Services.Providers.ResourceType.GetPrimitiveResourceType(System.Type)">
+      <summary>Получает ресурс, представляющий тип-примитив, при получении объекта <see cref="T:System.Type" />.</summary>
+      <returns>Тип ресурса.</returns>
+      <param name="type">Тип <see cref="T:System.Type" />, из которого необходимо возвратить тип-примитив.</param>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceType.InstanceType">
+      <summary>Ссылка на тип среды CLR, представляемый данным ресурсом.</summary>
+      <returns>Тип экземпляра в виде <see cref="T:System.Data.Services.Providers.ResourceType" />.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceType.IsAbstract">
+      <summary>Получает логическое значение, указывающее на то, является ли этот тип абстрактным.</summary>
+      <returns>Значение равно true, если тип <see cref="T:System.Data.Services.Providers.ResourceType" /> является абстрактным.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceType.IsMediaLinkEntry">
+      <summary>Получает или задает логическое значение, равное true, если тип ресурса включает поток по умолчанию.</summary>
+      <returns>Логическое значение, равное true, если тип ресурса включает поток по умолчанию.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceType.IsOpenType">
+      <summary>Получает данные о том, имеет ли тип ресурса общедоступные свойства.</summary>
+      <returns>Значение равно true, если тип ресурса имеет определенные общедоступные свойства; в противном случае значение равно false.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceType.IsReadOnly">
+      <summary>Задает логическое значение, равное true, если данный тип ресурса сделан доступным только для чтения.</summary>
+      <returns>Значение равно true, если данный тип ресурса сделан доступным только для чтения; в противном случае значение равно false.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceType.KeyProperties">
+      <summary>Получает список свойств ключа для данного типа</summary>
+      <returns>Коллекция <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> свойств <see cref="T:System.Data.Services.Providers.ResourceProperty" />.</returns>
+    </member>
+    <member name="M:System.Data.Services.Providers.ResourceType.LoadPropertiesDeclaredOnThisType">
+      <summary>Возвращает список свойств, объявленных данным типом ресурсов. </summary>
+      <returns>Список свойств, объявленных для этого типа.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceType.Name">
+      <summary>Получает имя типа ресурса.</summary>
+      <returns>Имя типа ресурса в виде строки.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceType.Namespace">
+      <summary>Получает пространство имен типа ресурса.</summary>
+      <returns>Пространство имен типа ресурса в виде строки.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceType.Properties">
+      <summary>Получает список свойств, объявленных для данного типа, в который включены только те свойства, что определены для данного типа, а не в базовом типе.</summary>
+      <returns>Коллекция <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> свойств <see cref="T:System.Data.Services.Providers.ResourceProperty" />.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceType.PropertiesDeclaredOnThisType">
+      <summary>Список свойств, объявленных для этого типа.</summary>
+      <returns>Коллекция <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> свойств <see cref="T:System.Data.Services.Providers.ResourceProperty" />.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ResourceType.ResourceTypeKind">
+      <summary>Получает вид <see cref="T:System.Data.Services.Providers.ResourceTypeKind" /> для данного типа.</summary>
+      <returns>
+        <see cref="T:System.Data.Services.Providers.ResourceTypeKind" />.</returns>
+    </member>
+    <member name="M:System.Data.Services.Providers.ResourceType.SetReadOnly">
+      <summary>Делает тип ресурса доступным только для чтения.</summary>
+    </member>
+    <member name="T:System.Data.Services.Providers.ResourceTypeKind">
+      <summary>Перечисление видов ключей ресурсов.</summary>
+    </member>
+    <member name="F:System.Data.Services.Providers.ResourceTypeKind.EntityType">
+      <summary>Ресурс типа сущности.</summary>
+    </member>
+    <member name="F:System.Data.Services.Providers.ResourceTypeKind.ComplexType">
+      <summary>Ресурс сложного типа.</summary>
+    </member>
+    <member name="F:System.Data.Services.Providers.ResourceTypeKind.Primitive">
+      <summary>Ресурс типа-примитива.</summary>
+    </member>
+    <member name="T:System.Data.Services.Providers.ServiceOperation">
+      <summary>Представляет пользовательскую операцию службы.</summary>
+    </member>
+    <member name="M:System.Data.Services.Providers.ServiceOperation.#ctor(System.String,System.Data.Services.Providers.ServiceOperationResultKind,System.Data.Services.Providers.ResourceType,System.Data.Services.Providers.ResourceSet,System.String,System.Collections.Generic.IEnumerable{System.Data.Services.Providers.ServiceOperationParameter})">
+      <summary>Создает новый экземпляр операции службы.</summary>
+      <param name="name">Имя данной операции службы.</param>
+      <param name="resultKind">Объект <see cref="T:System.Data.Services.Providers.ServiceOperationResultKind" />, представляющий собой вид результата, ожидаемый от этой операции.</param>
+      <param name="resultType">Объект <see cref="T:System.Data.Services.Providers.ResourceType" />, представляющий собой результат данной операции.</param>
+      <param name="resultSet">Объект <see cref="T:System.Data.Services.Providers.ResourceSet" />, представляющий собой результат данной операции.</param>
+      <param name="method">Метод протокола, на который реагирует операция службы.</param>
+      <param name="parameters">Упорядоченная коллекция объектов <see cref="T:System.Data.Services.Providers.ServiceOperationParameter" />, являющихся параметрами данной операции.</param>
+    </member>
+    <member name="P:System.Data.Services.Providers.ServiceOperation.CustomState">
+      <summary>Получает или задает пользовательские сведения о состоянии операции службы.</summary>
+      <returns>Сведения о состоянии.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ServiceOperation.IsReadOnly">
+      <summary>Указывает на то, доступна ли операция службы только для чтения.</summary>
+      <returns>Логическое значение, указывающее на то, является ли операция службы доступной только для чтения.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ServiceOperation.Method">
+      <summary>Получает метод HTTP-протокола, на который реагирует операция службы.</summary>
+      <returns>Имя метода HTTP.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ServiceOperation.MimeType">
+      <summary>Тип MIME, указанный для результатов примитивов; возможно значение null.</summary>
+      <returns>Значение типа MIME.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ServiceOperation.Name">
+      <summary>Имя операции службы.</summary>
+      <returns>Имя строки.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ServiceOperation.Parameters">
+      <summary>Коллекция упорядоченных параметров для операции службы.</summary>
+      <returns>Коллекция <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> объектов <see cref="T:System.Data.Services.Providers.ServiceOperationParameter" />.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ServiceOperation.ResourceSet">
+      <summary>Получает набор сущностей, из которого считываются сущности.</summary>
+      <returns>Набор сущностей в виде объекта <see cref="T:System.Data.Services.Providers.ResourceSet" />.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ServiceOperation.ResultKind">
+      <summary>Вид результата, ожидаемый данной операцией службы.</summary>
+      <returns>Объект <see cref="T:System.Data.Services.Providers.ServiceOperationResultKind" />, представляющий собой вид результата, ожидаемый от этой операции.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ServiceOperation.ResultType">
+      <summary>Тип результатов, возвращаемых данной операцией службы.</summary>
+      <returns>Тип результатов в виде <see cref="T:System.Data.Services.Providers.ResourceType" />.</returns>
+    </member>
+    <member name="M:System.Data.Services.Providers.ServiceOperation.SetReadOnly">
+      <summary>Делает операцию службы доступной только для чтения или отменяет это изменение.</summary>
+    </member>
+    <member name="T:System.Data.Services.Providers.ServiceOperationParameter">
+      <summary>Представляет сведения о параметрах операций службы.</summary>
+    </member>
+    <member name="M:System.Data.Services.Providers.ServiceOperationParameter.#ctor(System.String,System.Data.Services.Providers.ResourceType)">
+      <summary>Создает новый экземпляр <see cref="T:System.Data.Services.Providers.ServiceOperationParameter" />.</summary>
+      <param name="name">Имя параметра.</param>
+      <param name="parameterType">Тип данных параметра.</param>
+    </member>
+    <member name="P:System.Data.Services.Providers.ServiceOperationParameter.CustomState">
+      <summary>Пользовательские сведения о состоянии параметра операции службы, определяемые разработчиком.</summary>
+      <returns>Пользовательские сведения о состоянии, определяемые разработчиком.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ServiceOperationParameter.IsReadOnly">
+      <summary>Получает логическое значение, которое определяет, является ли параметр доступным только для чтения.</summary>
+      <returns>Логическое значение, которое определяет, является ли параметр доступным только для чтения.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ServiceOperationParameter.Name">
+      <summary>Получает имя параметра операции службы.</summary>
+      <returns>Строка, определяющая имя параметра операции службы.</returns>
+    </member>
+    <member name="P:System.Data.Services.Providers.ServiceOperationParameter.ParameterType">
+      <summary>Получает тип данных параметра операции службы.</summary>
+      <returns>Тип данных параметра операции службы в виде <see cref="T:System.Data.Services.Providers.ResourceType" />.</returns>
+    </member>
+    <member name="M:System.Data.Services.Providers.ServiceOperationParameter.SetReadOnly">
+      <summary>Делает параметр операции службы доступным только для чтения.</summary>
+    </member>
+    <member name="T:System.Data.Services.Providers.ServiceOperationResultKind">
+      <summary>Перечисление, описывающее вид результатов, которые обеспечивает операция службы.</summary>
+    </member>
+    <member name="F:System.Data.Services.Providers.ServiceOperationResultKind.DirectValue">
+      <summary>Одиночное значение, дальнейшую компоновку которого произвести невозможно.</summary>
+    </member>
+    <member name="F:System.Data.Services.Providers.ServiceOperationResultKind.Enumeration">
+      <summary>Перечисление значений, дальнейшую компоновку которых произвести невозможно.</summary>
+    </member>
+    <member name="F:System.Data.Services.Providers.ServiceOperationResultKind.QueryWithMultipleResults">
+      <summary>Доступный для запросов объект, возвращающий несколько элементов.</summary>
+    </member>
+    <member name="F:System.Data.Services.Providers.ServiceOperationResultKind.QueryWithSingleResult">
+      <summary>Запрос, возвращающий один элемент.</summary>
+    </member>
+    <member name="F:System.Data.Services.Providers.ServiceOperationResultKind.Void">
+      <summary>Результаты отсутствуют.</summary>
+    </member>
+  </members>
+</doc>

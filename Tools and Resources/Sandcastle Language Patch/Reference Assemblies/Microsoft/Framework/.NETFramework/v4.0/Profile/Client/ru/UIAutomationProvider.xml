@@ -1,0 +1,670 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>UIAutomationProvider</name>
+  </assembly>
+  <members>
+    <member name="T:System.Windows.Automation.Provider.AutomationInteropProvider">
+      <summary>Обеспечивает поддержку взаимодействия между приложениями-поставщиками автоматизации пользовательского интерфейса и приложением-клиентом автоматизации пользовательского интерфейса.</summary>
+    </member>
+    <member name="F:System.Windows.Automation.Provider.AutomationInteropProvider.AppendRuntimeId">
+      <summary>Содержит значение, которое, будучи возвращенным в первом элементе массива, переданного поставщиком автоматизации пользовательского интерфейса методу <see cref="M:System.Windows.Automation.Provider.IRawElementProviderFragment.GetRuntimeId" />, указывает, что этот идентификатор является частичным и должен быть дополнен идентификатором, предоставленным базовым поставщиком.</summary>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.AutomationInteropProvider.ClientsAreListening">
+      <summary>Возвращает значение, указывающее, подписано ли хоть одно приложение-клиент автоматизации пользовательского интерфейса на события Модель автоматизации пользовательского интерфейса.</summary>
+      <returns>true, если имеется клиент, подписанный на события; в противном случае — false.</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.AutomationInteropProvider.HostProviderFromHandle(System.IntPtr)">
+      <summary>Возвращает поставщик автоматизации пользовательского интерфейса, представляющий заданное окно. </summary>
+      <returns>поставщик необработанных элементов для заданного окна.</returns>
+      <param name="hwnd">Дескриптор окна.</param>
+    </member>
+    <member name="F:System.Windows.Automation.Provider.AutomationInteropProvider.InvalidateLimit">
+      <summary>Задает максимальное количество событий, которые должны быть отправлены, прежде чем будет выполнено их пакетирование. </summary>
+    </member>
+    <member name="F:System.Windows.Automation.Provider.AutomationInteropProvider.ItemsInvalidateLimit"></member>
+    <member name="M:System.Windows.Automation.Provider.AutomationInteropProvider.RaiseAutomationEvent(System.Windows.Automation.AutomationEvent,System.Windows.Automation.Provider.IRawElementProviderSimple,System.Windows.Automation.AutomationEventArgs)">
+      <summary>Генерирует событие шаблона для специализированного элемента управления.</summary>
+      <param name="eventId">Идентификатор события.</param>
+      <param name="provider">Элемент, связанный с данным событием.</param>
+      <param name="e">Сведения о событии.</param>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.AutomationInteropProvider.RaiseAutomationPropertyChangedEvent(System.Windows.Automation.Provider.IRawElementProviderSimple,System.Windows.Automation.AutomationPropertyChangedEventArgs)">
+      <summary>Генерирует событие при изменении свойства Модель автоматизации пользовательского интерфейса. </summary>
+      <param name="element">Элемент, связанный с данным событием.</param>
+      <param name="e">Сведения о событии.</param>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.AutomationInteropProvider.RaiseStructureChangedEvent(System.Windows.Automation.Provider.IRawElementProviderSimple,System.Windows.Automation.StructureChangedEventArgs)">
+      <summary>Генерирует событие при изменении дерева Модель автоматизации пользовательского интерфейса.</summary>
+      <param name="provider">Элемент, связанный с данным событием.</param>
+      <param name="e">Сведения о событии.</param>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.AutomationInteropProvider.ReturnRawElementProvider(System.IntPtr,System.IntPtr,System.IntPtr,System.Windows.Automation.Provider.IRawElementProviderSimple)">
+      <summary>Возвращает поставщик автоматизации пользовательского интерфейса для элемента в ответ на сообщение WM_GETOBJECT. </summary>
+      <returns>Указатель на данные, которые следует присвоить <see cref="P:System.Windows.Forms.Message.Result" /> до передачи сообщения процедуре базового окна.</returns>
+      <param name="hwnd">Дескриптор окна элемента.</param>
+      <param name="wParam">Член wParam сообщения WM_GETOBJECT .</param>
+      <param name="lParam">Член lParam сообщения WM_GETOBJECT.</param>
+      <param name="el">Поставщик автоматизации пользовательского интерфейса для элемента.</param>
+    </member>
+    <member name="F:System.Windows.Automation.Provider.AutomationInteropProvider.RootObjectId">
+      <summary>Содержит значение, используемое членом lParam сообщения WM_GETOBJECT, указывающее, что сервер должен вернуть указатель на поставщик корневого необработанного элемента. </summary>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.IDockProvider">
+      <summary>Предоставляет методы и свойства для поддержки доступа клиента автоматизации пользовательского интерфейса к элементам управления, предоставляющим свойства для закрепления в контейнере. </summary>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IDockProvider.DockPosition">
+      <summary>Возвращает текущее значение <see cref="T:System.Windows.Automation.DockPosition" /> элемента управления в контейнере закрепления.</summary>
+      <returns>
+        <see cref="T:System.Windows.Automation.DockPosition" /> элемента управления относительно границ контейнера закрепления и других элементов, находящихся в этом же контейнере.</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IDockProvider.SetDockPosition(System.Windows.Automation.DockPosition)">
+      <summary>Закрепляет элемент управления в контейнере закрепления.</summary>
+      <param name="dockPosition">Позиция закрепления относительно границ контейнера закрепления и других элементов, находящихся в этом же контейнере.</param>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.IExpandCollapseProvider">
+      <summary>Предоставляет методы и свойства для поддержки доступа клиента автоматизации пользовательского интерфейса к элементам управления, которые визуально разворачиваются для отображения содержимого и сворачиваются для сокрытия содержимого.</summary>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IExpandCollapseProvider.Collapse">
+      <summary>Скрывает все узлы, элементы управления или содержимое, которые являются наследниками элемента управления.</summary>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IExpandCollapseProvider.Expand">
+      <summary>Отображает все дочерние узлы, элементы управления или содержимое элемента управления.</summary>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IExpandCollapseProvider.ExpandCollapseState">
+      <summary>Возвращает состояние элемента управления — развернут или свернут.</summary>
+      <returns>Состояние элемента управления — развернут или свернут.</returns>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.IGridItemProvider">
+      <summary>Предоставляет методы и свойства для поддержки доступа клиента автоматизации пользовательского интерфейса к отдельным дочерним элементам управления контейнеров, реализующих интерфейс <see cref="T:System.Windows.Automation.Provider.IGridProvider" />. </summary>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IGridItemProvider.Column">
+      <summary>Возвращает порядковый номер столбца, содержащего ячейку или элемент.</summary>
+      <returns>Порядковый номер столбца (с нуля), содержащего ячейку или элемент.</returns>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IGridItemProvider.ColumnSpan">
+      <summary>Возвращает количество столбцов, занятых ячейкой или элементом.</summary>
+      <returns>Количество занятых столбцов. </returns>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IGridItemProvider.ContainingGrid">
+      <summary>Возвращает поставщик автоматизации пользовательского интерфейса, который реализует интерфейс <see cref="T:System.Windows.Automation.Provider.IGridProvider" /> и представляет контейнер ячейки или элемента.</summary>
+      <returns>Поставщик автоматизации пользовательского интерфейса, который реализует интерфейс <see cref="T:System.Windows.Automation.GridPattern" /> и представляет контейнер ячейки или элемента. </returns>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IGridItemProvider.Row">
+      <summary>Возвращает порядковый номер строки, содержащей ячейку или элемент.</summary>
+      <returns>Порядковый номер строки (с нуля), содержащей ячейку или элемент. </returns>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IGridItemProvider.RowSpan">
+      <summary>Возвращает количество строк, занятых ячейкой или элементом.</summary>
+      <returns>Число занятых строк. </returns>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.IGridProvider">
+      <summary>Предоставляет методы и свойства для поддержки доступа клиента автоматизации пользовательского интерфейса к элементам управления, которые являются контейнерами для коллекций дочерних элементов.Дочерние элементы этого элемента должны реализовывать интерфейс <see cref="T:System.Windows.Automation.Provider.IGridItemProvider" /> и быть организованы в двумерную логическую систему координат, которую можно обходить (то есть клиент автоматизации пользовательского интерфейса может переходить между соседними элементами управления) с помощью клавиатуры.</summary>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IGridProvider.ColumnCount">
+      <summary>Возвращает общее число столбцов в сетке.</summary>
+      <returns>Общее число столбцов в сетке.</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IGridProvider.GetItem(System.Int32,System.Int32)">
+      <summary>Извлекает поставщик автоматизации пользовательского интерфейса для заданной ячейки.</summary>
+      <returns>Поставщик автоматизации пользовательского интерфейса для заданной ячейки.</returns>
+      <param name="row">Порядковый номер требуемой строки.</param>
+      <param name="column">Порядковый номер требуемого столбца.</param>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IGridProvider.RowCount">
+      <summary>Gets the total number of rows in a grid.</summary>
+      <returns>Общее число строк в сетке.</returns>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.IInvokeProvider">
+      <summary>Предоставляет методы и свойства для поддержки доступа клиента автоматизации пользовательского интерфейса к элементам управления, которые инициируют или выполняют одно определенное действие и не поддерживают состояние при активизации. </summary>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IInvokeProvider.Invoke">
+      <summary>Направляет запрос на активацию элемента управления и инициирует его единственное, однозначное действие.</summary>
+      <exception cref="T:System.Windows.Automation.ElementNotEnabledException">Если элемент управления не включен.</exception>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.IItemContainerProvider">
+      <summary>Предоставляет методы, позволяющие приложению искать элементы в контейнере как в виртуализированном списке.</summary>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IItemContainerProvider.FindItemByProperty(System.Windows.Automation.Provider.IRawElementProviderSimple,System.Int32,System.Object)">
+      <summary>Извлекает элемент по указанному значению свойства.</summary>
+      <returns>Первый элемент, соответствующий критерию поиска; в противном случае — значение null, если критерию не соответствует ни один элемент.</returns>
+      <param name="startAfter">Элемент в контейнере, после которого следует начать поиск.</param>
+      <param name="propertyId">Свойство, содержащее извлекаемое значение.</param>
+      <param name="value">Извлекаемое значение.</param>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.IMultipleViewProvider">
+      <summary>Предоставляет методы и свойства для поддержки доступа клиента автоматизации пользовательского интерфейса к элементам управления, которые предоставляют несколько представлений одного набора информации или дочерних элементов управления и могут переключаться между этими представлениями.</summary>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IMultipleViewProvider.CurrentView">
+      <summary>Возвращает текущее представление, специфическое для элемента управления.</summary>
+      <returns>Значение для текущего представления элемента автоматизации пользовательского интерфейса. </returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IMultipleViewProvider.GetSupportedViews">
+      <summary>Извлекает коллекцию специфических для элемента управления идентификаторов представлений.</summary>
+      <returns>коллекция значений, идентифицирующих представления, доступные для элемента автоматизации пользовательского интерфейса. </returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IMultipleViewProvider.GetViewName(System.Int32)">
+      <summary>Retrieves the name of a control-specific view.</summary>
+      <returns>Локализованное имя представления.</returns>
+      <param name="viewId">Идентификатор представления.</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="viewId" /> не является членом коллекции поддерживаемых представлений.</exception>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IMultipleViewProvider.SetCurrentView(System.Int32)">
+      <summary>Устанавливает текущее представление, специфическое для элемента управления. </summary>
+      <param name="viewId">Идентификатор представления.</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="viewId" /> не является членом коллекции поддерживаемых представлений.</exception>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.IRangeValueProvider">
+      <summary>Предоставляет методы и свойства для поддержки доступа клиента автоматизации пользовательского интерфейса к элементам управления, для которых может быть задано значение в диапазоне.</summary>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IRangeValueProvider.IsReadOnly">
+      <summary>Возвращает значение, указывающее, является ли значение элемента управления доступным только для чтения. </summary>
+      <returns>true, если значение доступно только для чтения; false, если его можно изменять. </returns>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IRangeValueProvider.LargeChange">
+      <summary>Возвращает значение, добавляемое к значению свойства <see cref="P:System.Windows.Automation.Provider.IRangeValueProvider.Value" /> или вычитаемое из него при внесении большого изменения, например, при нажатии кнопки PAGE DOWN.</summary>
+      <returns>Поддерживаемое элементом управления значение большого изменения или null (Nothing в Microsoft Visual Basic .NET), если элемент управления не поддерживает <see cref="P:System.Windows.Automation.Provider.IRangeValueProvider.LargeChange" />. </returns>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IRangeValueProvider.Maximum">
+      <summary>Возвращает максимальное значение диапазона, поддерживаемое элементом управления.</summary>
+      <returns>Максимальное значение, поддерживаемое элементом управления, или null (Nothing в Microsoft Visual Basic .NET), если элемент управления не поддерживает<see cref="P:System.Windows.Automation.Provider.IRangeValueProvider.Maximum" />. </returns>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IRangeValueProvider.Minimum">
+      <summary>Возвращает минимальное значение диапазона, поддерживаемое элементом управления.</summary>
+      <returns>Минимальное значение, поддерживаемое элементом управления, или null (Nothing в Microsoft Visual Basic .NET), если элемент управления не поддерживает<see cref="P:System.Windows.Automation.Provider.IRangeValueProvider.Minimum" />. </returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IRangeValueProvider.SetValue(System.Double)">
+      <summary>Устанавливает значение элемента управления.</summary>
+      <param name="value">The value to set.</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">Когда <paramref name="value" /> меньше минимального или больше максимального значения элемента управления.</exception>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IRangeValueProvider.SmallChange">
+      <summary>Возвращает значение, добавляемое к значению свойства <see cref="P:System.Windows.Automation.Provider.IRangeValueProvider.Value" /> или вычитаемое из него при внесении малого изменения, например, при нажатии кнопки СТРЕЛКА ВНИЗ.</summary>
+      <returns>Значение малого изменения или null (Nothing в Microsoft Visual Basic .NET), если элемент управления не поддерживает<see cref="P:System.Windows.Automation.Provider.IRangeValueProvider.SmallChange" />. </returns>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IRangeValueProvider.Value">
+      <summary>Возвращает значение элемента управления.</summary>
+      <returns>Значение элемента управления или null (Nothing в Microsoft Visual Basic .NET), если элемент управления не поддерживает<see cref="P:System.Windows.Automation.Provider.IRangeValueProvider.Value" />.</returns>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.IRawElementProviderAdviseEvents">
+      <summary>Предоставляет методы, вызываемые для уведомления корневого элемента фрагмента о начале и окончании прослушивания событий приложением клиента автоматизации пользовательского интерфейса. </summary>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IRawElementProviderAdviseEvents.AdviseEventAdded(System.Int32,System.Int32[])">
+      <summary>Уведомляет поставщик автоматизации пользовательского интерфейса о начале прослушивания клиентом автоматизации пользовательского интерфейса определенного события, включая событие изменения свойства. </summary>
+      <param name="eventId">Идентификатор добавляемого события.</param>
+      <param name="properties">Идентификаторы добавляемых свойств или null, если добавляемый прослушиватель событий не прослушивает события свойств.</param>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IRawElementProviderAdviseEvents.AdviseEventRemoved(System.Int32,System.Int32[])">
+      <summary>Уведомляет поставщик автоматизации пользовательского интерфейса о прекращении прослушивания клиентом автоматизации пользовательского интерфейса определенного события, включая событие изменения свойства. </summary>
+      <param name="eventId">Идентификатор удаляемого события.</param>
+      <param name="properties">Идентификаторы удаляемых свойств или null, если удаляемый прослушиватель событий не прослушивает события свойств.</param>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.IRawElementProviderFragment">
+      <summary>Предоставляет методы и свойства элементов пользовательский интерфейс, которые являются частью многоуровневой структуры, такой как список или элемент списка.Реализуется поставщиками автоматизации пользовательского интерфейса.</summary>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IRawElementProviderFragment.BoundingRectangle">
+      <summary>Возвращает ограничивающий прямоугольник данного элемента.</summary>
+      <returns>Ограничивающий прямоугольник в экранных координатах.</returns>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IRawElementProviderFragment.FragmentRoot">
+      <summary>Извлекает корневой узел фрагмента.</summary>
+      <returns>Корневой узел. </returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IRawElementProviderFragment.GetEmbeddedFragmentRoots">
+      <summary>Извлекает массив корней фрагментов, внедренных в дерево элементов Модель автоматизации пользовательского интерфейса с корнем в текущем элементе.</summary>
+      <returns>Массив корневых фрагментов или null.</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IRawElementProviderFragment.GetRuntimeId">
+      <summary>Извлекает для элемента идентификатор времени выполнения. </summary>
+      <returns>Уникальный идентификатор времени выполнения для элемента.</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IRawElementProviderFragment.Navigate(System.Windows.Automation.Provider.NavigateDirection)">
+      <summary>Извлекает элемент Модель автоматизации пользовательского интерфейса в заданном направлении в дереве.</summary>
+      <returns>Элемент в заданном направлении или значение null, если в этом направлении нет элемента.</returns>
+      <param name="direction">Направление перехода.</param>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IRawElementProviderFragment.SetFocus">
+      <summary>Передает элементу управления фокус ввода. </summary>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.IRawElementProviderFragmentRoot">
+      <summary>Предоставляет доступ к метода и свойствам корневого элемента во фрагменте. </summary>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IRawElementProviderFragmentRoot.ElementProviderFromPoint(System.Double,System.Double)">
+      <summary>Извлекает элемент, расположенной в заданной точке этого фрагмента. </summary>
+      <returns>Поставщик дочернего элемента в заданной точке, если таковой имеется, или поставщик корневого элемента, если эта точка находится в пределах этого элемента, но не на одном из дочерних элементов.В противном случае возвращает значение null.</returns>
+      <param name="x">Координата х.</param>
+      <param name="y">Координата y.</param>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IRawElementProviderFragmentRoot.GetFocus">
+      <summary>Извлекает элемент, расположенной в этом фрагменте, имеющий фокус ввода.</summary>
+      <returns>Поставщик элемента, расположенного в этом фрагменте и имеющего фокус ввода, если таковой элемент имеется; в противном случае — указатель null (Nothing в Visual Basic).</returns>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.IRawElementProviderHwndOverride">
+      <summary>Предоставляет метод, позволяющий изменять расположение оконных элементов в дереве Модель автоматизации пользовательского интерфейса фрагмента. </summary>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IRawElementProviderHwndOverride.GetOverrideProviderForHwnd(System.IntPtr)">
+      <summary>Извлекает поставщик автоматизации пользовательского интерфейса для заданного элемента. </summary>
+      <returns>Поставщик заданного элемента или указатель null (Nothing в Microsoft Visual Basic .NET), если используемый по умолчанию поставщик элемента не переопределен.</returns>
+      <param name="hwnd">Дескриптор окна элемента.</param>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.IRawElementProviderSimple">
+      <summary>Предоставляет методы и свойства для доступа к базовой информации об элементах пользовательского интерфейса.</summary>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IRawElementProviderSimple.GetPatternProvider(System.Int32)">
+      <summary>Извлекает объект, предоставляющий доступ к шаблону элемента управления для элемента Модель автоматизации пользовательского интерфейса.</summary>
+      <returns>Объект, реализующий интерфейс шаблона, или null, если шаблон не поддерживается.</returns>
+      <param name="patternId">Идентификатор шаблона.</param>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IRawElementProviderSimple.GetPropertyValue(System.Int32)">
+      <summary>Извлекает значение свойства, поддерживаемого поставщиком автоматизации пользовательского интерфейса.</summary>
+      <returns>Значение свойства или null, если свойство не поддерживается этим поставщиком, или <see cref="F:System.Windows.Automation.AutomationElementIdentifiers.NotSupported" />, если оно вообще не поддерживается.</returns>
+      <param name="propertyId">Идентификатор свойства.</param>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IRawElementProviderSimple.HostRawElementProvider">
+      <summary>Возвращает базовый поставщик для этого элемента.</summary>
+      <returns>Базовый поставщик или null.</returns>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IRawElementProviderSimple.ProviderOptions">
+      <summary>Возвращает значение, определяющее характеристики поставщика автоматизации пользовательского интерфейса; например, является он клиентским или серверным поставщиком. </summary>
+      <returns>Либо <see cref="F:System.Windows.Automation.Provider.ProviderOptions.ClientSideProvider" />, либо <see cref="F:System.Windows.Automation.Provider.ProviderOptions.ServerSideProvider" />.</returns>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.IScrollItemProvider">
+      <summary>Предоставляет методы и свойства для поддержки доступа клиента автоматизации пользовательского интерфейса к отдельным дочерним элементам управления контейнеров, реализующих интерфейс <see cref="T:System.Windows.Automation.Provider.IScrollProvider" />.</summary>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IScrollItemProvider.ScrollIntoView">
+      <summary>Прокручивает область содержимого контейнерного объекта для отображения элемента управления в видимой области (окне просмотра) контейнера.</summary>
+      <exception cref="T:System.InvalidOperationException">Элемент не может быть отображен путем прокрутки.</exception>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.IScrollProvider">
+      <summary>Предоставляет методы и свойства для поддержки доступа клиента автоматизации пользовательского интерфейса к элементам управления, которые действуют как прокручиваемые контейнеры для коллекций дочерних объектов.Дочерние элементы данного элемента управления должны реализовывать интерфейс <see cref="T:System.Windows.Automation.Provider.IScrollItemProvider" />.</summary>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IScrollProvider.HorizontallyScrollable">
+      <summary>Возвращает значение, указывающее, может ли элемент управления выполнять горизонтальную прокрутку.</summary>
+      <returns>true, если элемент управления может выполнять горизонтальную прокрутку; в противном случае — false.</returns>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IScrollProvider.HorizontalScrollPercent">
+      <summary>Возвращает текущую позицию прокрутки по горизонтали.</summary>
+      <returns>Позиция прокрутки по горизонтали как процент от общей области содержимого элемента управления.</returns>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IScrollProvider.HorizontalViewSize">
+      <summary>Возвращает размер текущего представления по горизонтали.</summary>
+      <returns>Размер области просмотра по горизонтали как процент от общей области содержимого элемента управления. </returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IScrollProvider.Scroll(System.Windows.Automation.ScrollAmount,System.Windows.Automation.ScrollAmount)">
+      <summary>Прокручивает видимую область содержимого по горизонтали и по вертикали.</summary>
+      <param name="horizontalAmount">The horizontal increment specific to the control.<see cref="F:System.Windows.Automation.ScrollPatternIdentifiers.NoScroll" /> should be passed in if the control cannot be scrolled in this direction.</param>
+      <param name="verticalAmount">The vertical increment specific to the control.<see cref="F:System.Windows.Automation.ScrollPatternIdentifiers.NoScroll" /> should be passed in if the control cannot be scrolled in this direction.</param>
+      <exception cref="T:System.ArgumentException">Если элемент управления поддерживает значения <see cref="F:System.Windows.Automation.ScrollAmount.SmallIncrement" /> только для горизонтальной или только для вертикальной прокрутки, но значение <see cref="F:System.Windows.Automation.ScrollAmount.LargeIncrement" /> передается.</exception>
+      <exception cref="T:System.InvalidOperationException">Предпринята попытка прокрутки в неподдерживаемом направлении.</exception>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IScrollProvider.SetScrollPercent(System.Double,System.Double)">
+      <summary>Устанавливает позицию вертикальной и горизонтальной прокрутки как процент от общей области содержимого в элементе управления.</summary>
+      <param name="horizontalPercent">The horizontal position as a percentage of the content area's total range.<see cref="F:System.Windows.Automation.ScrollPatternIdentifiers.NoScroll" /> should be passed in if the control cannot be scrolled in this direction.</param>
+      <param name="verticalPercent">The vertical position as a percentage of the content area's total range.<see cref="F:System.Windows.Automation.ScrollPatternIdentifiers.NoScroll" /> should be passed in if the control cannot be scrolled in this direction.</param>
+      <exception cref="T:System.ArgumentException">Передано значение, которое не может быть преобразовано в тип данных double.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Переданное значение больше 100 или меньше 0 (за исключением -1, которое эквивалентно <see cref="F:System.Windows.Automation.ScrollPatternIdentifiers.NoScroll" />).Значения <see cref="P:System.Windows.Automation.Provider.IScrollProvider.HorizontalScrollPercent" /> и <see cref="P:System.Windows.Automation.Provider.IScrollProvider.VerticalScrollPercent" /> нормализуются к 100 процентам или 0 процентов.</exception>
+      <exception cref="T:System.InvalidOperationException">Предпринята попытка прокрутки в неподдерживаемом направлении.</exception>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IScrollProvider.VerticallyScrollable">
+      <summary>Возвращает значение, указывающее, может ли элемент управления выполнять вертикальную прокрутку.</summary>
+      <returns>true, если элемент управления может выполнять вертикальную прокрутку; в противном случае — false. </returns>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IScrollProvider.VerticalScrollPercent">
+      <summary>Возвращает текущую позицию прокрутки по вертикали.</summary>
+      <returns>Позиция прокрутки по вертикали как процент от общей области содержимого элемента управления. </returns>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IScrollProvider.VerticalViewSize">
+      <summary>Возвращает размер текущего представления по вертикали.</summary>
+      <returns>Размер области просмотра по вертикали как процент от общей области содержимого элемента управления. </returns>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.ISelectionItemProvider">
+      <summary>Предоставляет методы и свойства для поддержки доступа клиента автоматизации пользовательского интерфейса к отдельным выделяемым элементам управления контейнеров, реализующих интерфейс <see cref="T:System.Windows.Automation.Provider.ISelectionProvider" />.</summary>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ISelectionItemProvider.AddToSelection">
+      <summary>Добавляет текущий элемент в коллекцию выделенных элементов.</summary>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.ISelectionItemProvider.IsSelected">
+      <summary>Возвращает значение, указывающее, выделен ли элемент. </summary>
+      <returns>true, если элемент выделен; в противном случае — false.</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ISelectionItemProvider.RemoveFromSelection">
+      <summary>Удаляет текущий элемент из коллекции выделенных элементов.</summary>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ISelectionItemProvider.Select">
+      <summary>Снимает выделение всех элементов, затем выделяет текущий элемент.</summary>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.ISelectionItemProvider.SelectionContainer">
+      <summary>Возвращает поставщик автоматизации пользовательского интерфейса, который реализует интерфейс <see cref="T:System.Windows.Automation.Provider.ISelectionProvider" /> и действует как контейнер вызывающего объекта.</summary>
+      <returns>Поставщик, поддерживающий <see cref="T:System.Windows.Automation.Provider.ISelectionProvider" />. </returns>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.ISelectionProvider">
+      <summary>Предоставляет методы и свойства для поддержки доступа клиента автоматизации пользовательского интерфейса к элементам управления, которые являются контейнерами для коллекций отдельных выбираемых элементов управления.Дочерние элементы данного элемента управления должны реализовывать интерфейс <see cref="T:System.Windows.Automation.Provider.ISelectionItemProvider" />.</summary>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.ISelectionProvider.CanSelectMultiple">
+      <summary>Возвращает значение, указывающее, позволяет ли поставщик автоматизации пользовательского интерфейса одновременных выбор более чем одного дочернего элемента.</summary>
+      <returns>true, если множественный выбор разрешен; в противном случае — false.</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ISelectionProvider.GetSelection">
+      <summary>Извлекает поставщик автоматизации пользовательского интерфейса для каждого выделенного дочернего элемента управления.</summary>
+      <returns>Коллекция поставщиков автоматизации пользовательского интерфейса. </returns>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.ISelectionProvider.IsSelectionRequired">
+      <summary>Возвращает значение, указывающее, требует ли поставщик автоматизации пользовательского интерфейса, чтобы был выделен хотя бы один элемент.</summary>
+      <returns>true, если выделение является обязательным; в противном случае — false.</returns>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.ISynchronizedInputProvider">
+      <summary>Предоставляет методы для упрощения доступа клиента автоматизации пользовательского интерфейса к элементам управления, поддерживающим синхронизированный ввод.</summary>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ISynchronizedInputProvider.Cancel">
+      <summary>Останавливает ожидание входных данных.</summary>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ISynchronizedInputProvider.StartListening(System.Windows.Automation.SynchronizedInputType)">
+      <summary>Означает, что поставщик начал ожидать входные данные указанного типа.</summary>
+      <param name="inputType">Тип ожидаемых входных данных.</param>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.ITableItemProvider">
+      <summary>Предоставляет методы и свойства для поддержки доступа клиента автоматизации пользовательского интерфейса к дочерним элементам управления контейнеров, реализующих интерфейс <see cref="T:System.Windows.Automation.Provider.ITableProvider" />. </summary>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITableItemProvider.GetColumnHeaderItems">
+      <summary>Извлекает коллекцию поставщиков автоматизации пользовательского интерфейса, представляющую заголовки всех столбцов, связанных с табличным элементом или ячейкой.</summary>
+      <returns>Коллекция поставщиков автоматизации пользовательского интерфейса. </returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITableItemProvider.GetRowHeaderItems">
+      <summary>Извлекает коллекцию поставщиков автоматизации пользовательского интерфейса, представляющую заголовки всех строк, связанных с табличным элементом или ячейкой.</summary>
+      <returns>Коллекция поставщиков автоматизации пользовательского интерфейса. </returns>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.ITableProvider">
+      <summary>Предоставляет методы и свойства для поддержки доступа клиента автоматизации пользовательского интерфейса к элементам управления, которые являются контейнерами для коллекций дочерних элементов.Дочерние элементы этого элемента должны реализовывать интерфейс <see cref="T:System.Windows.Automation.Provider.ITableItemProvider" /> и быть организованы в двумерную логическую систему координат, которую можно обходить (то есть клиент автоматизации пользовательского интерфейса может переходить между соседними элементами управления) с помощью клавиатуры.</summary>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITableProvider.GetColumnHeaders">
+      <summary>Возвращает коллекцию поставщиков автоматизации пользовательского интерфейса, представляющую заголовки всех столбцов таблице.</summary>
+      <returns>Коллекция поставщиков автоматизации пользовательского интерфейса. </returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITableProvider.GetRowHeaders">
+      <summary>Извлекает коллекцию поставщиков автоматизации пользовательского интерфейса, представляющую заголовки всех строк таблице.</summary>
+      <returns>Коллекция поставщиков автоматизации пользовательского интерфейса.</returns>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.ITableProvider.RowOrColumnMajor">
+      <summary>Извлекает главное направление обхода таблицы.</summary>
+      <returns>Главное направление обхода таблицы. </returns>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.ITextProvider">
+      <summary>Предоставляет методы и свойства для поддержки доступа клиента автоматизации пользовательского интерфейса к элементам управления, содержащим текст.</summary>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.ITextProvider.DocumentRange">
+      <summary>Возвращает текстовый диапазон, включающий основной текст документа. </summary>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITextProvider.GetSelection">
+      <summary>Извлекает коллекцию раздельных текстовых диапазонов, связанных с текущим выделением или выделениями текста. </summary>
+      <returns>Коллекция раздельных текстовых диапазонов.</returns>
+      <exception cref="T:System.InvalidOperationException">Если поставщик автоматизации пользовательского интерфейса не поддерживает выделение текста.</exception>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITextProvider.GetVisibleRanges">
+      <summary>Возвращает массив раздельных текстовых диапазонов из текстового контейнера, где каждый диапазон начинается с первой частично видимой строки и оканчивается последней частично видимой строкой. </summary>
+      <returns>Коллекция видимых текстовых диапазонов в контейнере или пустом массиве.Указатель null (Nothing в Microsoft Visual Basic .NET) никогда не возвращается.</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITextProvider.RangeFromChild(System.Windows.Automation.Provider.IRawElementProviderSimple)">
+      <summary>Извлекает текстовый диапазон, включающий дочерний элемент, такой как изображение, гиперссылка или другой внедренный объект. </summary>
+      <returns>Диапазон, охватывающий дочерний элемент.</returns>
+      <param name="childElement">Включенный объект.</param>
+      <exception cref="T:System.ArgumentException">Если дочерний элемент является указателем null (Nothing в Microsoft Visual Basic .NET).</exception>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITextProvider.RangeFromPoint(System.Windows.Point)">
+      <summary>Возвращает вырожденный (пустой) текстовый диапазон, ближайший к заданным экранным координатам. </summary>
+      <returns>Вырожденный диапазон, ближайший к заданному местоположению.Указатель null (Nothing в Microsoft Visual Basic .NET) никогда не возвращается.</returns>
+      <param name="screenLocation">Местоположение в экранных координатах. </param>
+      <exception cref="T:System.ArgumentException">Если заданная точка находится за пределами элемента Модель автоматизации пользовательского интерфейса, связанного с текстовым шаблоном.</exception>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.ITextProvider.SupportedTextSelection">
+      <summary>Возвращает значение, указывающее, поддерживает ли поставщик текста выделение, и если да, то какого типа.</summary>
+      <returns>Одно из значений: None, Single или Multiple — из <see cref="T:System.Windows.Automation.SupportedTextSelection" />.</returns>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.ITextRangeProvider">
+      <summary>Предоставляет методы и свойства для поддержки доступа клиента автоматизации пользовательского интерфейса к диапазону непрерывного текста в текстовом контейнере, реализующем <see cref="T:System.Windows.Automation.Provider.ITextProvider" />.</summary>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITextRangeProvider.AddToSelection">
+      <summary>Добавляет в коллекцию выделенного текста в текстовом контейнере, поддерживающем раздельное множественное выделение.</summary>
+      <exception cref="T:System.InvalidOperationException">Если поставщик текста не поддерживает раздельное множественное выделение (то есть, <see cref="P:System.Windows.Automation.Provider.ITextProvider.SupportedTextSelection" /> должно иметь значение Multiple).</exception>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITextRangeProvider.Clone">
+      <summary>Возвращает новый <see cref="T:System.Windows.Automation.Provider.ITextRangeProvider" />, идентичный исходному <see cref="T:System.Windows.Automation.Provider.ITextRangeProvider" /> и наследующий все его свойства. </summary>
+      <returns>Новый текстовый диапазон.Указатель null (Nothing в Microsoft Visual Basic .NET) никогда не возвращается.</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITextRangeProvider.Compare(System.Windows.Automation.Provider.ITextRangeProvider)">
+      <summary>Возвращает значение, указывающее, является ли расположение (от конечной точки <see cref="F:System.Windows.Automation.Text.TextPatternRangeEndpoint.Start" /> до конечной точки <see cref="F:System.Windows.Automation.Text.TextPatternRangeEndpoint.End" />) текстового диапазона таким же, как расположение другого текстового диапазона. </summary>
+      <returns>true, если расположение текстовых диапазонов идентично; в противном случае — false. </returns>
+      <param name="range">Текстовый диапазон для сравнения.</param>
+      <exception cref="T:System.ArgumentException">Если сравниваемый диапазон не принадлежит тому же поставщику текста.</exception>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITextRangeProvider.CompareEndpoints(System.Windows.Automation.Text.TextPatternRangeEndpoint,System.Windows.Automation.Provider.ITextRangeProvider,System.Windows.Automation.Text.TextPatternRangeEndpoint)">
+      <summary>Возвращает значение, указывающее, имеют ли два текстовых диапазона одинаковые конечные точки.  </summary>
+      <returns>Возвращает отрицательное значение, если конечная точка вызывающего объекта размещена ближе к началу, чем конечная точка целевого объекта. Возвращает значение нуль, если конечные точки вызывающего и целевого объектов имеют одинаковое расположение. Возвращает положительное значение, если конечная точка вызывающего объекта размещена дальше конечной точки целевого объекта. </returns>
+      <param name="endpoint">Конечная точка <see cref="F:System.Windows.Automation.Text.TextPatternRangeEndpoint.Start" /> или <see cref="F:System.Windows.Automation.Text.TextPatternRangeEndpoint.End" /> вызывающего объекта.</param>
+      <param name="targetRange">Целевой диапазон для сравнения.</param>
+      <param name="targetEndpoint">Конечная точка <see cref="F:System.Windows.Automation.Text.TextPatternRangeEndpoint.Start" /> или <see cref="F:System.Windows.Automation.Text.TextPatternRangeEndpoint.End" /> целевого объекта.</param>
+      <exception cref="T:System.ArgumentException">Если <paramref name="targetRange" /> принадлежит другому поставщику текста.</exception>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITextRangeProvider.ExpandToEnclosingUnit(System.Windows.Automation.Text.TextUnit)">
+      <summary>Расширяет текстовый диапазон до заданной единицы текста.</summary>
+      <param name="unit">Единица текста.</param>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITextRangeProvider.FindAttribute(System.Int32,System.Object,System.Boolean)">
+      <summary>Возвращает подмножество текстового диапазона, имеющее заданное значение атрибута. </summary>
+      <returns>Текстовый диапазон, имеющий соответствующий атрибут с заданным значением; в противном случае — null (Nothing в Microsoft Visual Basic .NET). </returns>
+      <param name="attribute">Искомый атрибут.</param>
+      <param name="value">Искомое значение атрибута.Это значение должно соответствовать заданному для атрибута типу.</param>
+      <param name="backward">true, если вместо первого должно быть возвращено последнее вхождение текстового диапазона; в противном случае — false. </param>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITextRangeProvider.FindText(System.String,System.Boolean,System.Boolean)">
+      <summary>Возвращает подмножество текстового диапазона, содержащее заданный текст.</summary>
+      <returns>Текстовый диапазон, соответствующий заданному тексту; в противном случае — null (Nothing в Microsoft Visual Basic .NET).</returns>
+      <param name="text">Искомая текстовая строка.</param>
+      <param name="backward">true, если вместо первого должно быть возвращено последнее вхождение текстового диапазона; в противном случае — false.</param>
+      <param name="ignoreCase">true, если регистр следует игнорировать; в противном случае — false.</param>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITextRangeProvider.GetAttributeValue(System.Int32)">
+      <summary>Извлекает значение заданного атрибута для текстового диапазона. </summary>
+      <returns>Извлекает объект, представляющий значение заданного атрибута.Например, GetAttributeValue(TextPattern.FontNameAttribute) вернет строку, представляющую имя шрифта текстового диапазона, а GetAttributeValue(TextPattern.IsItalicAttribute) вернет значение типа <see cref="T:System.Boolean" />.Возвращает <see cref="F:System.Windows.Automation.TextPattern.MixedAttributeValue" />, если значение заданного атрибута различается в пределах текстового диапазона.Возвращает <see cref="F:System.Windows.Automation.AutomationElement.NotSupported" />, если заданный атрибут не поддерживается поставщиком или элементом управления. </returns>
+      <param name="attribute">Атрибут текста.</param>
+      <exception cref="T:System.ArgumentException">Если заданный атрибут недопустим.</exception>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITextRangeProvider.GetBoundingRectangles">
+      <summary>Извлекает коллекцию ограничивающих прямоугольников для каждой полностью или частично видимой строки текста в текстовом диапазоне.</summary>
+      <returns>Массив ограничивающих прямоугольников для каждой полной или частичной строки текста в текстовом диапазоне.Для вырожденного диапазона — пустой массив.Пустой массив, если экранные координаты текстового диапазона которого полностью находятся вне экрана, он перемещен за пределы экрана в результате прокрутки или заслонен другим окном.</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITextRangeProvider.GetChildren">
+      <summary>Извлекает коллекцию всех внедренных объектов, попадающих в текстовый диапазон. </summary>
+      <returns>Коллекция дочерних объектов, попадающих в текстовый диапазон.Дочерний объект, пересекающийся с текстовым диапазоном, но не полностью в нем находящийся, также будет включен в коллекцию.Возвращает пустую коллекцию, если нет ни одного дочернего объекта.</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITextRangeProvider.GetEnclosingElement">
+      <summary>Возвращает самый внутренний элемент управления, который содержит текстовый диапазон. </summary>
+      <returns>Охватывающий элемент управления, обычно поставщик текста, предоставляющий текстовый диапазон.Однако если поставщик текста содержит дочерние элементы управления, такие как таблицы или гиперссылки, охватывающий элемент должен быть наследником поставщика текста.</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITextRangeProvider.GetText(System.Int32)">
+      <summary>Извлекает содержимое текстового диапазона в виде обычного текста. </summary>
+      <returns>Содержимое текстового диапазона в виде обычного текста, возможно, обрезанное до заданной в параметре <paramref name="maxLength" /> длины. </returns>
+      <param name="maxLength">Максимальная длина возвращаемой строки.Если длина не ограничена, задайте значение -1.</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">Если значение параметра <paramref name="maxLength" /> меньше -1.</exception>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITextRangeProvider.Move(System.Windows.Automation.Text.TextUnit,System.Int32)">
+      <summary>Перемещает текстовый диапазон на заданное количество единиц текста.</summary>
+      <returns>Количество единиц текста, на которое выполнено перемещение.Оно может быть меньше запрошенного количества, если одна из новых конечных точек текстового диапазона больше или меньше конечных точек <see cref="P:System.Windows.Automation.Provider.ITextProvider.DocumentRange" />.</returns>
+      <param name="unit">Граница единицы текста.</param>
+      <param name="count">Количество единиц текста, на которое следует выполнить перемещение.Положительное значение соответствует перемещению текстового диапазона вперед, отрицательное — назад, а при значении 0 перемещение не выполняется.</param>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITextRangeProvider.MoveEndpointByRange(System.Windows.Automation.Text.TextPatternRangeEndpoint,System.Windows.Automation.Provider.ITextRangeProvider,System.Windows.Automation.Text.TextPatternRangeEndpoint)">
+      <summary>Moves one endpoint of a text range to the specified endpoint of a second text range. </summary>
+      <param name="endpoint">Перемещаемая конечная точка.</param>
+      <param name="targetRange">Второй диапазон от того же поставщика текста.</param>
+      <param name="targetEndpoint">Конечная точка второго диапазона.</param>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITextRangeProvider.MoveEndpointByUnit(System.Windows.Automation.Text.TextPatternRangeEndpoint,System.Windows.Automation.Text.TextUnit,System.Int32)">
+      <summary>Перемещает конечную точку текстового диапазона на заданное количество единиц текста в диапазоне всего документа. </summary>
+      <returns>Количество единиц, на которое выполнено перемещение; оно может быть меньше запрошенного количества единиц, если при перемещении конечная точка достигает начала или конца документа.</returns>
+      <param name="endpoint">Перемещаемая конечная точка.</param>
+      <param name="unit">Единица текста.</param>
+      <param name="count">Количество единиц текста, на которое следует выполнить перемещение.При положительном значении выполняется перемещение вперед.При отрицательном значении выполняется перемещение назад.При значении 0 перемещение не выполняется.</param>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITextRangeProvider.RemoveFromSelection">
+      <summary>Удаляет выделенный текст, соответствующий конечным точкам <see cref="F:System.Windows.Automation.Text.TextPatternRangeEndpoint.Start" /> и <see cref="F:System.Windows.Automation.Text.TextPatternRangeEndpoint.End" /> вызывающего объекта, из коллекции выделенного текста в текстовом контейнере, поддерживающем раздельное множественное выделение.</summary>
+      <exception cref="T:System.InvalidOperationException">Если поставщик текста не поддерживает раздельное множественное выделение (например, <see cref="P:System.Windows.Automation.TextPattern.SupportedTextSelection" /> должно иметь значение Multiple).</exception>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITextRangeProvider.ScrollIntoView(System.Boolean)">
+      <summary>Заставляет текстовый элемент управления выполнять вертикальную прокрутку, пока текстовый диапазон не появится в окне просмотра. </summary>
+      <param name="alignToTop">true, если текстовый элемент управления должен выполнить прокрутку так, чтобы текстовый диапазон отобразился у верхней границы окна просмотра; false, если текстовый диапазон должен отобразиться у верхней границы окна просмотра. </param>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITextRangeProvider.Select">
+      <summary>Выделает в текстовом элементе управления текст, соответствующий конечным точкам <see cref="F:System.Windows.Automation.Text.TextPatternRangeEndpoint.Start" /> и <see cref="F:System.Windows.Automation.Text.TextPatternRangeEndpoint.End" /> текстового диапазона. </summary>
+      <exception cref="T:System.InvalidOperationException">Происходит, когда выделение текста не поддерживается текстовым элементом управления.</exception>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.IToggleProvider">
+      <summary>Предоставляет методы и свойства для поддержки доступа клиента автоматизации пользовательского интерфейса к элементам управления, которые могут переключаться между разными состояниями и поддерживать установленное для них состояние.</summary>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IToggleProvider.Toggle">
+      <summary>Выполняет переключение состояния элемента управления.</summary>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IToggleProvider.ToggleState">
+      <summary>Возвращает состояние элемента управления (из числа тех, в которые он может переключаться).</summary>
+      <returns>Значение свойства <see cref="T:System.Windows.Automation.ToggleState" /> элемента управления. </returns>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.ITransformProvider">
+      <summary>Предоставляет методы и свойства для поддержки доступа клиента автоматизации пользовательского интерфейса к элементам управления, которые можно перемещать, масштабировать и поворачивать в двумерном пространстве.</summary>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.ITransformProvider.CanMove">
+      <summary>Возвращает значение, указывающее, возможно ли перемещение элемента управления.</summary>
+      <returns>true, если элемент управления можно перемещать; в противном случае — false. </returns>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.ITransformProvider.CanResize">
+      <summary>Возвращает значение, указывающее, возможно ли изменение размеров элемента управления Модель автоматизации пользовательского интерфейса.</summary>
+      <returns>true, если размеры элемента управления можно изменять; в противном случае — false. </returns>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.ITransformProvider.CanRotate">
+      <summary>Возвращает значение, указывающее, возможно ли вращение элемента управления.</summary>
+      <returns>true, если элемент управления можно вращать; в противном случае — false. </returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITransformProvider.Move(System.Double,System.Double)">
+      <summary>Перемещает элемент управления.</summary>
+      <param name="x">Абсолютные экранные координаты левого края элемента управления.</param>
+      <param name="y">Абсолютные экранные координаты верхнего края элемента управления.</param>
+      <exception cref="T:System.InvalidOperationException">Если свойство <see cref="P:System.Windows.Automation.Provider.ITransformProvider.CanMove" /> имеет значение false.</exception>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITransformProvider.Resize(System.Double,System.Double)">
+      <summary>Изменяет размеры элемент управления. </summary>
+      <param name="width">Новая ширина окна в точках.</param>
+      <param name="height">Новая высота окна в точках.</param>
+      <exception cref="T:System.InvalidOperationException">Если свойство <see cref="P:System.Windows.Automation.Provider.ITransformProvider.CanResize" /> имеет значение false.</exception>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.ITransformProvider.Rotate(System.Double)">
+      <summary>Поворачивает элемент управления.</summary>
+      <param name="degrees">Угол поворота элемента управления в градусах.Положительное значение соответствует повороту по часовой стрелке, отрицательное — против часовой стрелки.</param>
+      <exception cref="T:System.InvalidOperationException">Если свойство <see cref="P:System.Windows.Automation.Provider.ITransformProvider.CanRotate" />имеет значение false.</exception>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.IValueProvider">
+      <summary>Предоставляет методы и свойства для поддержки доступа клиента автоматизации пользовательского интерфейса к элементам управления, внутреннее значение которых не имеет диапазона и может быть представлено в виде строки. </summary>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IValueProvider.IsReadOnly">
+      <summary>Возвращает значение, указывающее, является ли значение элемента управления доступным только для чтения. </summary>
+      <returns>true, если значение доступно только для чтения; false, если его можно изменять. </returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IValueProvider.SetValue(System.String)">
+      <summary>Устанавливает значение элемента управления.</summary>
+      <exception cref="T:System.InvalidOperationException">Если информация для конкретного языкового стандарта передается элементу управления в неправильном формате, например в неверном формате даты. </exception>
+      <exception cref="T:System.ArgumentException">Если новое значение не может быть преобразовано из строкового формата в формат, распознаваемый элементом управления.</exception>
+      <exception cref="T:System.Windows.Automation.ElementNotEnabledException">При попытке манипулирования отключенным элементом управления.</exception>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IValueProvider.Value">
+      <summary>Возвращает значение элемента управления.</summary>
+      <returns>Значение элемента управления в виде строки. </returns>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.IVirtualizedItemProvider">
+      <summary>Предоставляет методы, поддерживающие виртуализованные элементы шаблона элемента управления.</summary>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IVirtualizedItemProvider.Realize">
+      <summary>Делает виртуальный элемент полностью доступным как элемент модели автоматизации пользовательского интерфейса.</summary>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.IWindowProvider">
+      <summary>Предоставляет методы и свойства для поддержки доступа клиента автоматизации пользовательского интерфейса к элементам управления, которые предоставляют базовую оконную функциональность в традиционном GUI (graphical user interface  — графический интерфейс пользователя). </summary>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IWindowProvider.Close">
+      <summary>Пытается закрыть окно.</summary>
+      <exception cref="T:System.InvalidOperationException">Когда элемент управления не может выполнить запрошенное действие.</exception>
+      <exception cref="T:System.Windows.Automation.ElementNotAvailableException">Когда целевой элемент управления более не доступен (например, окно закрыто).</exception>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IWindowProvider.InteractionState">
+      <summary>Возвращает состояние взаимодействия окна. </summary>
+      <returns>Значение свойства <see cref="T:System.Windows.Automation.WindowInteractionState" /> элемента управления. </returns>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IWindowProvider.IsModal">
+      <summary>Возвращает значение, указывающее, является ли окно модальным.</summary>
+      <returns>true, если окно является модальным; в противном случае — false.</returns>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IWindowProvider.IsTopmost">
+      <summary>Возвращает значение, указывающее, является ли окно самым верхним элементом согласно z-порядку.</summary>
+      <returns>true, если окно является самым верхним; в противном случае — false.</returns>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IWindowProvider.Maximizable">
+      <summary>Возвращает значение, указывающее, можно ли развернуть окно.</summary>
+      <returns>true, если окно можно развернуть; в противном случае — false.</returns>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IWindowProvider.Minimizable">
+      <summary>Возвращает значение, указывающее, можно ли свернуть окно. </summary>
+      <returns>true, если окно можно свернуть; в противном случае — false.</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IWindowProvider.SetVisualState(System.Windows.Automation.WindowVisualState)">
+      <summary>Изменяет визуальное состояние окна.Например, сворачивает его или разворачивает.</summary>
+      <param name="state">Запрошенное визуальное состояние окна.</param>
+      <exception cref="T:System.InvalidOperationException">Когда элемент управления не поддерживает запрошенное поведение.</exception>
+    </member>
+    <member name="P:System.Windows.Automation.Provider.IWindowProvider.VisualState">
+      <summary>Возвращает визуальное состояние окна. </summary>
+      <returns>Визуальное состояние окна. </returns>
+    </member>
+    <member name="M:System.Windows.Automation.Provider.IWindowProvider.WaitForInputIdle(System.Int32)">
+      <summary>Блокирует вызывающий код в течение заданного промежутка времени или до того момента, как связанный процесс перейдет в состояние бездействия, смотря, что произойдет раньше. </summary>
+      <returns>true, если окно перешло в состояние бездействия; false в случае таймаута.</returns>
+      <param name="milliseconds">Количество времени в миллисекундах для ожидания перехода связанного процесса в состояние бездействия.Максимальное значение — <see cref="F:System.Int32.MaxValue" />.</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">Если параметр не является допустимым числом.</exception>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.NavigateDirection">
+      <summary>Содержит значения, используемые для задания направления перехода по дереву Модель автоматизации пользовательского интерфейса.</summary>
+    </member>
+    <member name="F:System.Windows.Automation.Provider.NavigateDirection.Parent">
+      <summary>Переход в направлении родительского объекта.</summary>
+    </member>
+    <member name="F:System.Windows.Automation.Provider.NavigateDirection.NextSibling">
+      <summary>Переход в направлении следующего родственного узла. </summary>
+    </member>
+    <member name="F:System.Windows.Automation.Provider.NavigateDirection.PreviousSibling">
+      <summary>Переход в направлении предыдущего родственного узла. </summary>
+    </member>
+    <member name="F:System.Windows.Automation.Provider.NavigateDirection.FirstChild">
+      <summary>Переход в направлении первого дочернего узла. </summary>
+    </member>
+    <member name="F:System.Windows.Automation.Provider.NavigateDirection.LastChild">
+      <summary>Переход в направлении последнего дочернего узла. </summary>
+    </member>
+    <member name="T:System.Windows.Automation.Provider.ProviderOptions">
+      <summary>Содержит значения, определяющие тип поставщика автоматизации пользовательского интерфейса. </summary>
+    </member>
+    <member name="F:System.Windows.Automation.Provider.ProviderOptions.ClientSideProvider">
+      <summary>Этот поставщик автоматизации пользовательского интерфейса является клиентским поставщиком. </summary>
+    </member>
+    <member name="F:System.Windows.Automation.Provider.ProviderOptions.ServerSideProvider">
+      <summary>Этот поставщик автоматизации пользовательского интерфейса является серверным поставщиком. </summary>
+    </member>
+    <member name="F:System.Windows.Automation.Provider.ProviderOptions.NonClientAreaProvider">
+      <summary>Этот поставщик автоматизации пользовательского интерфейса не является поставщиком клиентской области. </summary>
+    </member>
+    <member name="F:System.Windows.Automation.Provider.ProviderOptions.OverrideProvider">
+      <summary>Этот поставщик автоматизации пользовательского интерфейса является переопределенной версией другого поставщика.</summary>
+    </member>
+    <member name="F:System.Windows.Automation.Provider.ProviderOptions.ProviderOwnsSetFocus">
+      <summary>Этот поставщик автоматизации пользовательского интерфейса поддерживает собственный фокус и не желает, чтобы Модель автоматизации пользовательского интерфейса устанавливал фокус на ближайшее окно при вызове <see cref="M:System.Windows.Automation.AutomationElement.SetFocus" />.Эта возможность обычно используется поставщиками для окон, которые кажутся получившими фокус, когда на самом деле они не получают фокус Win32, таких как меню и раскрывающиеся меню.</summary>
+    </member>
+    <member name="F:System.Windows.Automation.Provider.ProviderOptions.UseComThreading">
+      <summary />
+    </member>
+  </members>
+</doc>

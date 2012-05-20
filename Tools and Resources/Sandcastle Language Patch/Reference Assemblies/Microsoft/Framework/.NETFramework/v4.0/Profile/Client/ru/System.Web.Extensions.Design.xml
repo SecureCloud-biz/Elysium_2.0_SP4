@@ -1,0 +1,689 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Web.Extensions.Design</name>
+  </assembly>
+  <members>
+    <member name="T:System.Web.UI.Design.AsyncPostBackTriggerControlIDConverter">
+      <summary>Предоставляет преобразователь типа, возвращающий список идентификаторов элементов управления в текущем контейнере. </summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.AsyncPostBackTriggerControlIDConverter.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Web.UI.Design.AsyncPostBackTriggerControlIDConverter" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.AsyncPostBackTriggerControlIDConverter.GetStandardValues(System.ComponentModel.ITypeDescriptorContext)">
+      <summary>Возвращает коллекцию идентификаторов элементов управления из контейнера в объекте <see cref="T:System.ComponentModel.Design.IDesignerHost" /> для заданного контекста формата.</summary>
+      <returns>Объект, хранящий набор строк, представляющих идентификаторы элементов управления в текущем контейнере.Если контейнер не содержит элементов управления, возвращает пустую коллекцию.Если контекст представляет собой значение null или если текущий контейнер отсутствует, возвращает значение null.</returns>
+      <param name="context">Объект, предоставляющий контекст формата, который может быть использован для извлечения дополнительных сведений о среде, из которой вызван этот преобразователь.Этот параметр или свойства этого параметра могут иметь значение null.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.AsyncPostBackTriggerControlIDConverter.GetStandardValuesExclusive(System.ComponentModel.ITypeDescriptorContext)">
+      <summary>Возвращает значение, показывающее, является ли коллекция стандартных значений, возвращенная методом <see cref="M:System.Web.UI.Design.AsyncPostBackTriggerControlIDConverter.GetStandardValues(System.ComponentModel.ITypeDescriptorContext)" />, исчерпывающим списком возможных значений, используя заданный контекст.</summary>
+      <returns>Значение true, если объект <see cref="T:System.ComponentModel.TypeConverter.StandardValuesCollection" />, возвращаемый методом <see cref="M:System.Web.UI.Design.AsyncPostBackTriggerControlIDConverter.GetStandardValues(System.ComponentModel.ITypeDescriptorContext)" />, предоставляет исчерпывающий список возможных значений; значение false, если возможны другие значения.Значение по умолчанию — false</returns>
+      <param name="context">Объект, предоставляющий контекст формата.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.AsyncPostBackTriggerControlIDConverter.GetStandardValuesSupported(System.ComponentModel.ITypeDescriptorContext)">
+      <summary>Возвращает значение, показывающее, поддерживает ли этот преобразователь стандартный набор идентификаторов элементов управления, которые могут быть выбраны в списке, используя заданный контекст.</summary>
+      <returns>Значение true, если метод <see cref="M:System.Web.UI.Design.AsyncPostBackTriggerControlIDConverter.GetStandardValues(System.ComponentModel.ITypeDescriptorContext)" /> должен вызываться для поиска общего набора идентификаторов элементов управления, поддерживаемых объектом; в противном случае — значение false.Значение по умолчанию — true.</returns>
+      <param name="context">Объект, предоставляющий контекст формата.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.Web.UI.Design.AsyncPostBackTriggerEventNameConverter">
+      <summary>Предоставляет преобразователь типа, возвращающий список событий для элемента управления в текущем контейнере.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.AsyncPostBackTriggerEventNameConverter.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Web.UI.Design.AsyncPostBackTriggerEventNameConverter" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.AsyncPostBackTriggerEventNameConverter.GetStandardValues(System.ComponentModel.ITypeDescriptorContext)">
+      <summary>Возвращает коллекцию имен событий для элемента управления в контейнере в экземпляре <see cref="T:System.ComponentModel.Design.IDesignerHost" /> для заданного контекста формата.</summary>
+      <returns>Коллекция строк, представляющая имена событий элемента управления в текущем контейнере.Если контейнер не содержит элементов управления, метод возвращает пустую коллекцию.Если контекстом является значение null или если текущий контейнер отсутствует, этот метод возвращает null.</returns>
+      <param name="context">Объект контекста формата, который может использоваться для получения дополнительных сведений о среде, из которой вызывается этот преобразователь.Этот параметр или его свойства могут иметь значение null.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.AsyncPostBackTriggerEventNameConverter.GetStandardValuesExclusive(System.ComponentModel.ITypeDescriptorContext)">
+      <summary>Возвращает значение, показывающее, является ли коллекция стандартных значений, возвращенная методом <see cref="M:System.Web.UI.Design.AsyncPostBackTriggerEventNameConverter.GetStandardValues(System.ComponentModel.ITypeDescriptorContext)" />, исчерпывающим списком возможных значений для заданного контекста.</summary>
+      <returns>Значение true, если коллекция <see cref="T:System.ComponentModel.TypeConverter.StandardValuesCollection" />, возвращенная методом <see cref="M:System.Web.UI.Design.AsyncPostBackTriggerEventNameConverter.GetStandardValues(System.ComponentModel.ITypeDescriptorContext)" />, является исчерпывающим списком возможных значений; значение false, если возможны другие значения.Реализация по умолчанию возвращает false.</returns>
+      <param name="context">Контекст формата.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.AsyncPostBackTriggerEventNameConverter.GetStandardValuesSupported(System.ComponentModel.ITypeDescriptorContext)">
+      <summary>Возвращает значение, показывающее, поддерживает ли этот преобразователь стандартный набор имен событий элемента управления, которые могут быть выбраны в списке.</summary>
+      <returns>Значение true, если метод <see cref="M:System.Web.UI.Design.AsyncPostBackTriggerEventNameConverter.GetStandardValues(System.ComponentModel.ITypeDescriptorContext)" /> должен быть вызван для поиска общего набора значений идентификаторов элементов управления, поддерживаемых объектом; в противном случае — значение false.Реализация по умолчанию возвращает true.</returns>
+      <param name="context">Контекст формата.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.Web.UI.Design.CollectionEditorBase">
+      <summary>Предоставляет пользовательский интерфейс, позволяющий пользователям редактировать объекты <see cref="T:System.Web.UI.ScriptReferenceCollection" />, <see cref="T:System.Web.UI.ServiceReferenceCollection" /> и <see cref="T:System.Web.UI.UpdatePanelTriggerCollection" /> во время разработки.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.CollectionEditorBase.#ctor(System.Type)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Web.UI.Design.CollectionEditorBase" />, используя указанный тип коллекции.</summary>
+      <param name="type">Тип редактируемой коллекции.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.CollectionEditorBase.CreateCollectionForm">
+      <summary>Создает новую форму для отображения и редактирования текущей коллекции.</summary>
+      <returns>Объект, предоставляемый в качестве пользовательского интерфейса для редактирования коллекции.</returns>
+    </member>
+    <member name="T:System.Web.UI.Design.ExtenderControlDesigner">
+      <summary>Предоставляет поддержку пользовательского интерфейса для работы с управляющими элементами- расширителями во время разработки.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.ExtenderControlDesigner.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:System.Web.UI.Design.ExtenderControlDesigner" /> class.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.ExtenderControlDesigner.Dispose(System.Boolean)">
+      <summary>Releases the unmanaged resources that are used by the <see cref="T:System.Web.UI.Design.ExtenderControlDesigner" /> and optionally releases the managed resources. </summary>
+      <param name="disposing">Значение true позволяет освободить управляемые и неуправляемые ресурсы; значение false позволяет освободить только неуправляемые ресурсы. </param>
+    </member>
+    <member name="M:System.Web.UI.Design.ExtenderControlDesigner.GetDesignTimeHtml">
+      <summary>Получает стандартную HTML-отрисовку управляющего элемента-расширителя во время разработки, включая сведения о типе и идентификаторе.</summary>
+      <returns>HTML-отрисовка элемента управления во время разработки.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.ExtenderControlDesigner.Initialize(System.ComponentModel.IComponent)">
+      <summary>Инициализирует заданный компонент и добавляет его в службу изменения компонентов.</summary>
+      <param name="component">Компонент типа <see cref="T:System.Web.UI.IExtenderControl" />, реализующий интерфейс <see cref="T:System.ComponentModel.IComponent" />.</param>
+    </member>
+    <member name="M:System.Web.UI.Design.ExtenderControlDesigner.PreFilterProperties(System.Collections.IDictionary)">
+      <summary>Настраивает элементы, перечисленные в таблице свойств элемента управления.</summary>
+      <param name="properties">Словарь, содержащий свойства элемента управления.</param>
+    </member>
+    <member name="P:System.Web.UI.Design.ExtenderControlDesigner.Visible">
+      <summary>Возвращает значение, показывающее, отображается ли текущий элемент управления в области разработки, чтобы его можно было выбрать, а его свойства изменить.</summary>
+      <returns>Значение true, если текущий элемент управления отображается; в противном случае — значение false.</returns>
+    </member>
+    <member name="T:System.Web.UI.Design.ExtenderControlToolboxItem">
+      <summary>Позволяет определить, какие целевые элементы управления могут быть расширены определенным управляющим элементом-расширителем в Панели элементов.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.ExtenderControlToolboxItem.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Web.UI.Design.ExtenderControlToolboxItem" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.ExtenderControlToolboxItem.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Web.UI.Design.ExtenderControlToolboxItem" />, используя указанные параметры.</summary>
+      <param name="info">Объект, предоставляющий информацию сериализации.</param>
+      <param name="context">Объект, описывающий источник и назначение сериализованного потока.</param>
+    </member>
+    <member name="M:System.Web.UI.Design.ExtenderControlToolboxItem.#ctor(System.Type)">
+      <summary>Инициализирует новый экземпляр <see cref="T:System.Web.UI.Design.ExtenderControlToolboxItem" />, используя указанный тип.</summary>
+      <param name="type">Тип конечного элемента управления.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.ExtenderControlToolboxItem.GetTargetControlTypes(System.ComponentModel.Design.IDesignerHost)">
+      <summary>Возвращает коллекцию целевых типов.</summary>
+      <returns>Доступная только для чтения коллекция целевых типов.</returns>
+      <param name="host">Контейнер элементов управления.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.ExtenderControlToolboxItem.Initialize(System.Type)">
+      <summary>Предварительно заполняет запись кэша целевых типов заданным типом.</summary>
+      <param name="type">Тип конечного элемента управления.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.Web.UI.Design.PostBackTriggerControlIDConverter">
+      <summary>Предоставляет преобразователь типа, возвращающий список идентификаторов элементов управления в текущем контейнере.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.PostBackTriggerControlIDConverter.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Web.UI.Design.PostBackTriggerControlIDConverter" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.PostBackTriggerControlIDConverter.GetStandardValues(System.ComponentModel.ITypeDescriptorContext)">
+      <summary>Возвращает коллекцию идентификаторов элементов управления из контейнера в объекте <see cref="T:System.ComponentModel.Design.IDesignerHost" /> для заданного контекста формата.</summary>
+      <returns>Коллекция строк, представляющая идентификаторы элементов управления в текущем контейнере.Если контейнер не содержит элементов управления, метод возвращает пустую коллекцию.Если контекст представляет собой значение null или текущий контейнер отсутствует, метод возвращает null.</returns>
+      <param name="context">Контекст формата может быть использован для извлечения дополнительных сведений о среде, из которой вызывается этот преобразователь.Этот параметр или свойства этого параметра могут иметь значение null.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.PostBackTriggerControlIDConverter.GetStandardValuesExclusive(System.ComponentModel.ITypeDescriptorContext)">
+      <summary>Возвращает значение, показывающее, является ли коллекция стандартных значений, возвращенная методом <see cref="M:System.Web.UI.Design.PostBackTriggerControlIDConverter.GetStandardValues(System.ComponentModel.ITypeDescriptorContext)" />, исчерпывающим списком возможных значений, используя заданный контекст.</summary>
+      <returns>Значение true, если объект <see cref="T:System.ComponentModel.TypeConverter.StandardValuesCollection" />, возвращаемый методом <see cref="M:System.Web.UI.Design.PostBackTriggerControlIDConverter.GetStandardValues(System.ComponentModel.ITypeDescriptorContext)" />, предоставляет исчерпывающий список возможных значений; значение false, если возможны другие значения.Значение по умолчанию — false.</returns>
+      <param name="context">Контекст формата.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.PostBackTriggerControlIDConverter.GetStandardValuesSupported(System.ComponentModel.ITypeDescriptorContext)">
+      <summary>Возвращает значение, показывающее, поддерживает ли этот преобразователь стандартный набор идентификаторов элементов управления, которые могут быть выбраны в списке, используя заданный контекст.</summary>
+      <returns>Значение true, если метод <see cref="M:System.Web.UI.Design.PostBackTriggerControlIDConverter.GetStandardValues(System.ComponentModel.ITypeDescriptorContext)" /> должен вызываться для поиска общего набора идентификаторов элементов управления, поддерживаемых объектом; в противном случае — значение false.Значение по умолчанию — true.</returns>
+      <param name="context">Контекст формата.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.Web.UI.Design.QueryExtenderDesigner">
+      <summary>Предоставляет функциональность конструктора для элемента управления <see cref="T:System.Web.UI.WebControls.QueryExtender" />.</summary>
+    </member>
+    <member name="M:System.Web.UI.Design.QueryExtenderDesigner.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Web.UI.Design.QueryExtenderDesigner" />.</summary>
+    </member>
+    <member name="M:System.Web.UI.Design.QueryExtenderDesigner.GetDesignTimeHtml">
+      <summary>Получает HTML местозаполнителя для элемента управления <see cref="T:System.Web.UI.WebControls.QueryExtender" /> во время разработки.</summary>
+      <returns>HTML местозаполнителя для элемента управления во время разработки.</returns>
+    </member>
+    <member name="T:System.Web.UI.Design.ScriptManagerDesigner">
+      <summary>Предоставляет поддержку во время разработки для элемента управления <see cref="T:System.Web.UI.ScriptManager" /> в визуальном конструкторе.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.ScriptManagerDesigner.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Web.UI.Design.ScriptManagerDesigner" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.ScriptManagerDesigner.GetApplicationServices(System.Web.UI.ScriptManager,System.Collections.Generic.IEnumerable{System.Web.UI.ScriptManagerProxy})">
+      <summary>Возвращает код ECMAScript (JavaScript), представляющий свойства службы профилей, определенные в элементе управления <see cref="T:System.Web.UI.ScriptManager" /> и элементах управления <see cref="T:System.Web.UI.ScriptManagerProxy" /> веб-страницы.</summary>
+      <returns>Код JavaScript, определяющий свойства службы профилей.</returns>
+      <param name="scriptManager">Элемент управления <see cref="T:System.Web.UI.ScriptManager" />, связанный с веб-страницей.</param>
+      <param name="proxies">Коллекция элементов управления <see cref="T:System.Web.UI.ScriptManagerProxy" />, связанных с веб-страницей.</param>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="scriptManager" /> имеет значение null.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.ScriptManagerDesigner.GetDesignTimeHtml">
+      <summary>Возвращает разметку HTML, представляющую элемент управления <see cref="T:System.Web.UI.ScriptManager" /> во время разработки.</summary>
+      <returns>Разметка, используемая для визуализации объекта <see cref="T:System.Web.UI.ScriptManager" /> во время разработки.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.ScriptManagerDesigner.GetProxyScript(System.Web.UI.ScriptManager,System.Web.UI.ServiceReference)"></member>
+    <member name="M:System.Web.UI.Design.ScriptManagerDesigner.GetProxyUrl(System.Web.UI.ScriptManager,System.Web.UI.ServiceReference)"></member>
+    <member name="M:System.Web.UI.Design.ScriptManagerDesigner.GetScriptFromWebResource(System.Reflection.Assembly,System.String,System.Globalization.CultureInfo)">
+      <summary>Возвращает код ECMAScript (JavaScript), определенный атрибутом <see cref="T:System.Web.UI.ScriptResourceAttribute" />.</summary>
+      <returns>Ресурс JavaScript.</returns>
+      <param name="assembly">Сборка, содержащая ресурс.</param>
+      <param name="resourceName">Полное имя ресурса в сборке.</param>
+      <param name="culture">Язык и региональные параметры, для которых определен ресурс.</param>
+    </member>
+    <member name="M:System.Web.UI.Design.ScriptManagerDesigner.GetScriptReferences(System.Web.UI.ScriptManager,System.Collections.Generic.IEnumerable{System.Web.UI.ScriptManagerProxy})">
+      <summary>Returns a collection of all <see cref="T:System.Web.UI.ScriptReference" /> controls that are defined in a Web page's <see cref="T:System.Web.UI.ScriptManager" /> control and <see cref="T:System.Web.UI.ScriptManagerProxy" /> controls.</summary>
+      <returns>Доступная только для чтения коллекция элементов управления <see cref="T:System.Web.UI.ScriptReference" />.</returns>
+      <param name="scriptManager">Элемент управления <see cref="T:System.Web.UI.ScriptManager" />, связанный с веб-страницей.</param>
+      <param name="proxies">Коллекция элементов управления <see cref="T:System.Web.UI.ScriptManagerProxy" />, связанных с веб-страницей.</param>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="scriptManager" /> имеет значение null.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.ScriptManagerDesigner.GetServiceReferences(System.Web.UI.ScriptManager,System.Collections.Generic.IEnumerable{System.Web.UI.ScriptManagerProxy})">
+      <summary>Возвращает коллекцию всех элементов управления <see cref="T:System.Web.UI.ServiceReference" />, определенных в элементе управления <see cref="T:System.Web.UI.ScriptManager" /> и элементах управления <see cref="T:System.Web.UI.ScriptManagerProxy" /> веб-страницы.</summary>
+      <returns>A read-only collection of <see cref="T:System.Web.UI.ServiceReference" /> controls.</returns>
+      <param name="scriptManager">Элемент управления <see cref="T:System.Web.UI.ScriptManager" />, связанный с веб-страницей.</param>
+      <param name="proxies">Коллекция элементов управления <see cref="T:System.Web.UI.ScriptManagerProxy" />, связанных с в веб-страницей.</param>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="scriptManager" /> имеет значение null.</exception>
+    </member>
+    <member name="M:System.Web.UI.Design.ScriptManagerDesigner.Initialize(System.ComponentModel.IComponent)">
+      <summary>Инициализирует заданный компонент.</summary>
+      <param name="component">A Microsoft.Web.UI.ScriptManager Class component that implements the <see cref="T:System.ComponentModel.IComponent" /> interface.</param>
+    </member>
+    <member name="T:System.Web.UI.Design.ScriptManagerProxyDesigner">
+      <summary>Предоставляет поддержку во время разработки для элемента управления <see cref="T:System.Web.UI.ScriptManagerProxy" /> в визуальном конструкторе.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.ScriptManagerProxyDesigner.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Web.UI.Design.ScriptManagerProxyDesigner" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.ScriptManagerProxyDesigner.GetDesignTimeHtml">
+      <summary>Возвращает разметку HTML, представляющую элемент управления <see cref="T:System.Web.UI.ScriptManagerProxy" /> во время разработки.</summary>
+      <returns>Строка, содержащая разметку, используемая для визуализации <see cref="T:System.Web.UI.ScriptManagerProxy" /> во время разработки.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.ScriptManagerProxyDesigner.Initialize(System.ComponentModel.IComponent)">
+      <summary>Инициализирует заданный компонент.</summary>
+      <param name="component">Компонент <see cref="T:System.Web.UI.ScriptManagerProxy" />, реализующий интерфейс <see cref="T:System.ComponentModel.IComponent" />.</param>
+    </member>
+    <member name="T:System.Web.UI.Design.ServiceReferenceCollectionEditor">
+      <summary>Предоставляет редактор компонентов для коллекции ссылок на службы в элементе управления <see cref="T:System.Web.UI.ServiceReference" />.</summary>
+    </member>
+    <member name="M:System.Web.UI.Design.ServiceReferenceCollectionEditor.#ctor(System.Type)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Web.UI.Design.ServiceReferenceCollectionEditor" />, используя указанный тип коллекции. </summary>
+      <param name="type">Тип редактируемой коллекции.</param>
+    </member>
+    <member name="M:System.Web.UI.Design.ServiceReferenceCollectionEditor.CanSelectMultipleInstances">
+      <summary>Получает значение, указывающее, можно ли одновременно выбрать несколько ссылочных экземпляров скриптов.</summary>
+      <returns>Значение true, если одновременно можно выбрать несколько ссылочных экземпляров скриптов; в противном случае — значение false.</returns>
+    </member>
+    <member name="M:System.Web.UI.Design.ServiceReferenceCollectionEditor.CreateNewItemTypes">
+      <summary>Получает типы данных, которые может создавать этот редактор коллекции.</summary>
+      <returns>Типы данных, которые может создавать класс <see cref="T:System.Web.UI.Design.ServiceReferenceCollectionEditor" />.</returns>
+    </member>
+    <member name="T:System.Web.UI.Design.TimerDesigner">
+      <summary>Предоставляет поддержку во время разработки для элемента управления <see cref="T:System.Web.UI.Timer" /> в визуальном конструкторе.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.TimerDesigner.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Web.UI.Design.TimerDesigner" />. </summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.TimerDesigner.GetDesignTimeHtml">
+      <summary>Возвращает разметку HTML, используемую для визуализации связанного элемента управления <see cref="T:System.Web.UI.Timer" /> во время разработки.</summary>
+      <returns>Строка, содержащая разметку, используемую для визуализации элемента управления <see cref="T:System.Web.UI.Timer" /> во время разработки.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.Web.UI.Design.UpdatePanelDesigner">
+      <summary>Предоставляет поддержку во время разработки для элемента управления <see cref="T:System.Web.UI.UpdatePanel" /> в визуальном конструкторе.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.UpdatePanelDesigner.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Web.UI.Design.UpdatePanelDesigner" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.UpdatePanelDesigner.GetDesignTimeHtml(System.Web.UI.Design.DesignerRegionCollection)">
+      <summary>Возвращает разметку HTML, используемую для отображения элемента управления <see cref="T:System.Web.UI.UpdatePanel" />, и заполняет коллекцию текущими областями конструктора элемента управления.</summary>
+      <returns>Разметка HTML времени разработки для связанного элемента управления, содержащая все области конструктора элемента управления.</returns>
+      <param name="regions">Области конструктора для связанного элемента управления.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.UpdatePanelDesigner.GetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion)">
+      <summary>Возвращает содержимое для редактируемой области представления времени разработки для элемента управления <see cref="T:System.Web.UI.UpdatePanel" />.</summary>
+      <returns>Сериализированная копия шаблона, используемая для визуализации связанного элемента управления <see cref="T:System.Web.UI.UpdatePanel" /> во время разработки.</returns>
+      <param name="region">Обновляемая область.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.UpdatePanelDesigner.Initialize(System.ComponentModel.IComponent)">
+      <summary>Инициализирует заданный компонент.</summary>
+      <param name="component">Компонент <see cref="T:System.Web.UI.UpdatePanel" />, реализующий интерфейс <see cref="T:System.ComponentModel.IComponent" />.</param>
+    </member>
+    <member name="M:System.Web.UI.Design.UpdatePanelDesigner.OnComponentChanged(System.Object,System.ComponentModel.Design.ComponentChangedEventArgs)">
+      <summary>Определяет содержание редактируемой области элемента управления <see cref="T:System.Web.UI.UpdatePanel" /> во время разработки.</summary>
+      <param name="sender">Обновляемая область.</param>
+      <param name="ce">Сериализированный шаблон для связанного элемента управления.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.UpdatePanelDesigner.SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion,System.String)">
+      <summary>Вызывается при изменении связанного элемента управления <see cref="T:System.Web.UI.UpdatePanel" />.</summary>
+      <param name="region">Источник события.</param>
+      <param name="content">Данные события.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.UpdatePanelDesigner.UsePreviewControl">
+      <summary>Возвращает значение, показывающее, должен ли конструктор использовать временную копию элемента управления <see cref="T:System.Web.UI.UpdatePanel" /> для создания разметки времени разработки вместо использования фактического элемента управления, связанного с конструктором.</summary>
+      <returns>Всегда true.</returns>
+    </member>
+    <member name="T:System.Web.UI.Design.UpdatePanelTriggerCollectionEditor">
+      <summary>Предоставляет редактор компонентов для коллекции <see cref="P:System.Web.UI.UpdatePanel.Triggers" /> элементов управления <see cref="T:System.Web.UI.UpdatePanel" /> controls.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.UpdatePanelTriggerCollectionEditor.#ctor(System.Type)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Web.UI.Design.UpdatePanelTriggerCollectionEditor" />.</summary>
+      <param name="type">Тип редактируемого триггера.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.UpdatePanelTriggerCollectionEditor.CanSelectMultipleInstances">
+      <summary>Возвращает значение, показывающее, могут ли быть выбраны одновременно несколько триггеров.</summary>
+      <returns>Всегда false.</returns>
+    </member>
+    <member name="M:System.Web.UI.Design.UpdatePanelTriggerCollectionEditor.CreateCollectionItemType">
+      <summary>Получает тип данных, редактируемой этой коллекцией.</summary>
+      <returns>Объект <see cref="T:System.Web.UI.UpdatePanelTrigger" />.</returns>
+    </member>
+    <member name="M:System.Web.UI.Design.UpdatePanelTriggerCollectionEditor.CreateNewItemTypes">
+      <summary>Получает несколько типов данных, которые может создать редактор коллекции.</summary>
+      <returns>Массив типов данных, которые может создавать <see cref="T:System.Web.UI.Design.UpdatePanelTriggerCollectionEditor" />.</returns>
+    </member>
+    <member name="M:System.Web.UI.Design.UpdatePanelTriggerCollectionEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+      <summary>Изменяет значение указанного объекта с помощью заданного поставщика служб и контекста.</summary>
+      <returns>Новое значение объекта.</returns>
+      <param name="context">Объект <see cref="T:System.ComponentModel.ITypeDescriptorContext" />, предоставляющий дополнительные сведения о контексте.</param>
+      <param name="provider">Объект поставщика служб, предоставляющий службы редактирования.</param>
+      <param name="value">Объект, значение которого будет редактироваться.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.Web.UI.Design.UpdateProgressAssociatedUpdatePanelIDConverter">
+      <summary>Предоставляет преобразователь типа, возвращающий список идентификаторов элементов управления в текущем контейнере.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.UpdateProgressAssociatedUpdatePanelIDConverter.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Web.UI.Design.UpdateProgressAssociatedUpdatePanelIDConverter" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.UpdateProgressAssociatedUpdatePanelIDConverter.GetStandardValues(System.ComponentModel.ITypeDescriptorContext)">
+      <summary>Возвращает коллекцию идентификаторов элементов управления из контейнера в объекте <see cref="T:System.ComponentModel.Design.IDesignerHost" /> для заданного контекста формата.</summary>
+      <returns>Коллекция строк, представляющая идентификаторы элементов управления в текущем контейнере.Если контейнер в данный момент не содержит элементов управления, метод возвращает пустую коллекцию.Если контекстом является значение null или если текущий контейнер отсутствует, этот метод возвращает null.</returns>
+      <param name="context">Контекст, который можно использовать для дополнительных сведений о среде, из которой вызывается этот преобразователь.Этот параметр и его свойства могут быть значениями null.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.UpdateProgressAssociatedUpdatePanelIDConverter.GetStandardValuesExclusive(System.ComponentModel.ITypeDescriptorContext)">
+      <summary>Возвращает значение, показывающее, является ли коллекция стандартных значений, возвращенная методом <see cref="M:System.Web.UI.Design.UpdateProgressAssociatedUpdatePanelIDConverter.GetStandardValues(System.ComponentModel.ITypeDescriptorContext)" />, исчерпывающим списком возможных значений для заданного контекста.</summary>
+      <returns>Значение true, если коллекция <see cref="T:System.ComponentModel.TypeConverter.StandardValuesCollection" />, возвращенная методом <see cref="M:System.Web.UI.Design.UpdateProgressAssociatedUpdatePanelIDConverter.GetStandardValues(System.ComponentModel.ITypeDescriptorContext)" />, содержит список всех возможных значений; значение false, если список не является исчерпывающим.Значение по умолчанию — false.</returns>
+      <param name="context">Контекст формата.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.UpdateProgressAssociatedUpdatePanelIDConverter.GetStandardValuesSupported(System.ComponentModel.ITypeDescriptorContext)">
+      <summary>Возвращает значение, показывающее, поддерживает ли этот преобразователь набор значений идентификаторов элементов управления, которые можно выбрать в списке.</summary>
+      <returns>Значение true, если метод <see cref="M:System.Web.UI.Design.UpdateProgressAssociatedUpdatePanelIDConverter.GetStandardValues(System.ComponentModel.ITypeDescriptorContext)" /> должен вызываться для поиска общего набора значений идентификаторов элементов управления, поддерживаемых объектом; в противном случае — значение false.Значение по умолчанию — true.</returns>
+      <param name="context">Контекст формата.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.Web.UI.Design.UpdateProgressDesigner">
+      <summary>Предоставляет поддержку во время разработки для элемента управления <see cref="T:System.Web.UI.UpdateProgress" /> в визуальном конструкторе.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.UpdateProgressDesigner.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Web.UI.Design.UpdateProgressDesigner" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.UpdateProgressDesigner.GetDesignTimeHtml(System.Web.UI.Design.DesignerRegionCollection)">
+      <summary>Возвращает разметку HTML, чтобы отобразить элемент управления <see cref="T:System.Web.UI.UpdateProgress" />, и заполняет коллекцию текущими областями конструктора элемента управления.</summary>
+      <returns>Разметка HTML времени разработки для связанного элемента управления, содержащая все области конструктора элемента управления.</returns>
+      <param name="regions">Объект, содержащий области конструктора элемента управления для связанного элемента управления.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.UpdateProgressDesigner.GetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion)">
+      <summary>Возвращает содержание редактируемой области представления времени разработки для элемента управления <see cref="T:System.Web.UI.UpdateProgress" />.</summary>
+      <returns>Сериализированная копия шаблона, используемая для визуализации связанного элемента управления <see cref="T:System.Web.UI.UpdatePanel" /> во время разработки.</returns>
+      <param name="region">Объект <see cref="T:System.Web.UI.Design.EditableDesignerRegion" />, для которого выполняется выборка содержимого.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.UpdateProgressDesigner.SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion,System.String)">
+      <summary>Указывает содержимое редактируемой области элемента управления во время разработки.</summary>
+      <param name="region">Объект, содержащий имя изменяемой области.</param>
+      <param name="content">Сериализированный шаблон для связанного элемента управления.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.UpdateProgressDesigner.UsePreviewControl">
+      <summary>Возвращает значение, показывающее, должен ли конструктор использовать при создании разметки времени разработки временную копию вместо фактического элемента управления, связанного с конструктором.</summary>
+      <returns>Всегда true.</returns>
+    </member>
+    <member name="T:System.Web.UI.Design.WebControls.DataPagerDesigner">
+      <summary>Provides design-time support in a visual designer for the <see cref="T:System.Web.UI.WebControls.DataPager" /> control.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.DataPagerDesigner.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:System.Web.UI.Design.WebControls.DataPagerDesigner" /> class. </summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.DataPagerDesigner.ActionLists">
+      <summary>Gets the list of items that are used to create the smart tag panel for the associated <see cref="T:System.Web.UI.WebControls.DataPager" /> control.</summary>
+      <returns>The list of items that are used to create the smart tag panel for the associated <see cref="T:System.Web.UI.WebControls.DataPager" /> control.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.DataPagerDesigner.GetDesignTimeHtml">
+      <summary>Generates the HTML markup that is used to render the associated <see cref="T:System.Web.UI.WebControls.DataPager" /> control at design time.</summary>
+      <returns>The HTML markup that is used to render the associated <see cref="T:System.Web.UI.WebControls.DataPager" /> control at design time.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.DataPagerDesigner.GetEmptyDesignTimeHtml">
+      <summary>Generates the HTML markup that represents a <see cref="T:System.Web.UI.WebControls.DataPager" /> control at design time that has no visual representation at run time.</summary>
+      <returns>The HTML markup that represents an empty <see cref="T:System.Web.UI.WebControls.DataPager" /> control at design time.</returns>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.DataPagerDesigner.Initialize(System.ComponentModel.IComponent)">
+      <summary>Initializes the control designer and loads the specified control.</summary>
+      <param name="component">The control being designed.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.DataPagerDesigner.PagedControlID">
+      <summary>Gets or sets a value for the designer version of the <see cref="P:System.Web.UI.WebControls.DataPager.PagedControlID" /> property.</summary>
+      <returns>The value of the <see cref="P:System.Web.UI.WebControls.DataPager.PagedControlID" /> property.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.DataPagerDesigner.PreFilterProperties(System.Collections.IDictionary)">
+      <summary>Adds or removes properties from the property grid for the <see cref="T:System.Web.UI.WebControls.DataPager" /> control.</summary>
+      <param name="properties">A collection that contains the properties that are exposed in the property grid for the <see cref="T:System.Web.UI.WebControls.DataPager" /> control at design time.</param>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.DataPagerDesigner.TemplateGroups">
+      <summary>Gets a collection of template groups for the templated pager fields of the associated <see cref="T:System.Web.UI.WebControls.DataPager" /> control.</summary>
+      <returns>A collection of template groups for the templated pager fields of the associated <see cref="T:System.Web.UI.WebControls.DataPager" /> control.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.DataPagerDesigner.UsePreviewControl">
+      <summary>Gets a value that indicates whether the designer should use a temporary copy instead of the actual <see cref="T:System.Web.UI.WebControls.DataPager" /> control that is associated with the designer in order to generate the design-time markup.</summary>
+      <returns>true in all cases.</returns>
+    </member>
+    <member name="T:System.Web.UI.Design.WebControls.DataPagerFieldTypeEditor">
+      <summary>Предоставляет визуальный редактор для полей <see cref="T:System.Web.UI.WebControls.DataPager" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.DataPagerFieldTypeEditor.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Web.UI.Design.WebControls.DataPagerFieldTypeEditor" />. </summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.DataPagerFieldTypeEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+      <summary>Отображает визуальный редактор с использованием стиля, определенного методом <see cref="Overload:System.Web.UI.Design.WebControls.DataPagerFieldTypeEditor.GetEditStyle" />, для обновления свойства <see cref="P:System.Web.UI.WebControls.DataPager.Fields" />.</summary>
+      <returns>Новое значение объекта.</returns>
+      <param name="context">Контекстные сведения о среде конструирования.</param>
+      <param name="provider">Ссылка на сопоставленный конструктор.</param>
+      <param name="value">Редактируемый объект.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.DataPagerFieldTypeEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+      <summary>Получает стиль, который будет использоваться редактором.</summary>
+      <returns>Одно из значений перечисления, определяющее тип стиля, который будет использоваться редактором.</returns>
+      <param name="context">Контекстные сведения о среде конструирования.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.Web.UI.Design.WebControls.LinqDataSourceDesigner">
+      <summary>Предоставляет поддержку во время разработки в визуальном конструкторе для элемента управления <see cref="T:System.Web.UI.WebControls.LinqDataSource" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Web.UI.Design.WebControls.LinqDataSourceDesigner" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.ActionLists">
+      <summary>Получает список элементов, используемых для создания меню списка действий во время разработки.</summary>
+      <returns>Коллекция, которая содержит элементы списка действий.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.CanConfigure">
+      <summary>Получает значение, определяющее возможность вызова метода <see cref="M:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.Configure" /> основным приложением разработки.</summary>
+      <returns>Значение true, если метод <see cref="M:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.Configure" /> может быть вызван, в обратном случае — значение false.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.CanRefreshSchema">
+      <summary>Получает значение, определяющее возможность вызова метода <see cref="M:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.RefreshSchema(System.Boolean)" /> основным приложением разработки.</summary>
+      <returns>Значение true, если метод <see cref="M:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.RefreshSchema(System.Boolean)" /> может быть вызван, в обратном случае — значение false.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.Configure">
+      <summary>Запускает мастер настройки источника данных в основном приложении разработки.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.ContextTypeName">
+      <summary>Получает или задает имя типа, содержащего свойство, значение которого включает предназначенные для извлечения данные.</summary>
+      <returns>Имя класса, из которого должны извлекаться данные.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.Delete">
+      <summary>Получает или задает значение для операции удаления.</summary>
+      <returns>null.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.EnableDelete">
+      <summary>Получает или задает значение, указывающее, могут ли быть удалены строки из источника данных во время выполнения.</summary>
+      <returns>Значение true, если для пользователей сопоставленного экземпляра класса <see cref="T:System.Web.UI.WebControls.LinqDataSource" /> включена операция удаления; в обратном случае – значение false.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.EnableInsert">
+      <summary>Получает или задает значение, указывающее, могут ли быть вставлены строки в источник данных во время выполнения.</summary>
+      <returns>Значение true, если для пользователей сопоставленного экземпляра класса <see cref="T:System.Web.UI.WebControls.LinqDataSource" /> включена операция вставки; в обратном случае – значение false.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.EnableUpdate">
+      <summary>Получает или задает значение, указывающее, могут ли быть обновлены строки в источнике данных во время выполнения.</summary>
+      <returns>Значение true, если для пользователей сопоставленного экземпляра класса <see cref="T:System.Web.UI.WebControls.LinqDataSource" /> включена операция обновления; в обратном случае – значение false.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.GetView(System.String)">
+      <summary>Получает представление источника данных с указанным именем.</summary>
+      <returns>Объект, имя которого задано параметром <paramref name="viewName" />; в обратном случае – значение null.</returns>
+      <param name="viewName">Имя возвращаемого представления.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.GetViewNames">
+      <summary>Получает список доступных представлений.</summary>
+      <returns>Коллекция с одним элементом, которая содержит имя "DefaultView".</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.GroupBy">
+      <summary>Получает или задает значение, которое используется при создании предложения Group By.</summary>
+      <returns>Строка, которая содержит свойства, используемые для группировки данных.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.Initialize(System.ComponentModel.IComponent)">
+      <summary>Инициализирует конструктор элементов управления и загружает указанный компонент.</summary>
+      <param name="component">Подлежащий инициализации объект.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.Insert">
+      <summary>Получает или задает значение для операции удаления.</summary>
+      <returns>null.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.OrderBy">
+      <summary>Получает или задает значение, которое используется при создании предложения Order By.</summary>
+      <returns>Строка, которая содержит свойства, используемые для сортировки данных.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.OrderGroupsBy">
+      <summary>Получает или задает значение, которое используется при создании предложения Order Groups By.</summary>
+      <returns>Строка, которая содержит свойства, используемые для сортировки сгруппированных данных.</returns>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.PreFilterProperties(System.Collections.IDictionary)">
+      <summary>Используется в конструкторе для добавления свойств в сетку свойств или удаления их оттуда.</summary>
+      <param name="properties">Свойства для фильтрации.</param>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.RefreshSchema(System.Boolean)">
+      <summary>Обновляет схему на основе базового источника данных.</summary>
+      <param name="preferSilent">При значении true все события источника данных будут подавлены до обновления схемы.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.Select">
+      <summary>Получает или задает строку, содержащую значение для операции выбора.</summary>
+      <returns>Строка, используемая при создании предложения Select.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.ServiceProvider">
+      <summary>Получает поставщик службы, сопоставленный экземпляру класса <see cref="T:System.Web.UI.WebControls.LinqDataSource" />.</summary>
+      <returns>Объект, который представляет поставщик службы.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.TableName">
+      <summary>Получает или задает свойство <see cref="P:System.Web.UI.WebControls.LinqDataSource.TableName" /> экземпляра класса <see cref="T:System.Web.UI.WebControls.LinqDataSource" />.</summary>
+      <returns>Полное имя класса, который содержит нужные данные.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.Update">
+      <summary>Получает значение для операции обновления.</summary>
+      <returns>null.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDataSourceDesigner.Where">
+      <summary>Получает или задает свойство <see cref="P:System.Web.UI.WebControls.LinqDataSource.Where" /> элемента управления <see cref="T:System.Web.UI.WebControls.LinqDataSource" />.</summary>
+      <returns>Значение свойства <see cref="P:System.Web.UI.WebControls.LinqDataSource.Where" />.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.Web.UI.Design.WebControls.LinqDesignerDataSourceView">
+      <summary>Provides a design-time view of data for the <see cref="T:System.Web.UI.Design.WebControls.LinqDataSourceDesigner" /> class.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.LinqDesignerDataSourceView.#ctor(System.Web.UI.Design.WebControls.LinqDataSourceDesigner)">
+      <summary>Initializes a new instance of the <see cref="T:System.Web.UI.Design.WebControls.LinqDesignerDataSourceView" /> class with the provided data source designer and view name.</summary>
+      <param name="owner">The parent <see cref="T:System.Web.UI.Design.WebControls.LinqDataSourceDesigner" /> object.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDesignerDataSourceView.CanDelete">
+      <summary>Gets a value that indicates whether the <see cref="T:System.Web.UI.WebControls.LinqDataSourceView" /> object that is associated with the current <see cref="T:System.Web.UI.WebControls.LinqDataSource" /> control supports the <see cref="M:System.Web.UI.DataSourceView.ExecuteDelete(System.Collections.IDictionary,System.Collections.IDictionary)" /> method.</summary>
+      <returns>true if the <see cref="M:System.Web.UI.WebControls.LinqDataSourceView.ExecuteDelete(System.Collections.IDictionary,System.Collections.IDictionary)" /> method is supported; otherwise, false.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDesignerDataSourceView.CanInsert">
+      <summary>Gets a value that indicates whether the <see cref="T:System.Web.UI.WebControls.LinqDataSourceView" /> object that is associated with the current <see cref="T:System.Web.UI.WebControls.LinqDataSource" /> control supports the <see cref="M:System.Web.UI.DataSourceView.ExecuteInsert(System.Collections.IDictionary)" /> method.</summary>
+      <returns>true if the <see cref="M:System.Web.UI.WebControls.LinqDataSourceView.ExecuteInsert(System.Collections.IDictionary)" /> method is supported; otherwise, false.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDesignerDataSourceView.CanPage">
+      <summary>Gets a value that indicates whether the <see cref="T:System.Web.UI.WebControls.LinqDataSourceView" /> object that is associated with the current <see cref="T:System.Web.UI.WebControls.LinqDataSource" /> control supports paging through the data that is retrieved by the <see cref="M:System.Web.UI.WebControls.LinqDataSourceView.ExecuteSelect(System.Web.UI.DataSourceSelectArguments)" /> method.</summary>
+      <returns>true if paging through the data that is retrieved by the <see cref="M:System.Web.UI.WebControls.LinqDataSourceView.ExecuteSelect(System.Web.UI.DataSourceSelectArguments)" /> method is supported; otherwise, false.</returns>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDesignerDataSourceView.CanSort">
+      <summary>Gets a value that indicates whether the <see cref="T:System.Web.UI.WebControls.LinqDataSourceView" /> object that is associated with the current <see cref="T:System.Web.UI.WebControls.LinqDataSource" /> control supports a sorted view of the underlying data source.</summary>
+      <returns>true if a sorted view of the underlying data source is supported; otherwise, false.</returns>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDesignerDataSourceView.CanUpdate">
+      <summary>Gets a value that indicates whether the <see cref="T:System.Web.UI.WebControls.LinqDataSourceView" /> object that is associated with the current <see cref="T:System.Web.UI.WebControls.LinqDataSource" /> control supports the <see cref="M:System.Web.UI.WebControls.LinqDataSourceView.ExecuteUpdate(System.Collections.IDictionary,System.Collections.IDictionary,System.Collections.IDictionary)" /> method.</summary>
+      <returns>true if the <see cref="M:System.Web.UI.WebControls.LinqDataSourceView.ExecuteUpdate(System.Collections.IDictionary,System.Collections.IDictionary,System.Collections.IDictionary)" /> method is supported; otherwise, false.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.LinqDesignerDataSourceView.GetDesignTimeData(System.Int32,System.Boolean@)">
+      <summary>Gets the design-time data that matches the schema of the associated data source control by using the specified number of rows.Returns a value that indicates whether the data is sample or real data.</summary>
+      <returns>The data to display at design time.</returns>
+      <param name="minimumRows">The minimum number of rows to return.</param>
+      <param name="isSampleData">true to indicate that the returned data is sample data; false to indicate that the returned data is live data.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDesignerDataSourceView.IsDataContext">
+      <summary>Gets a value that indicates whether the <see cref="P:System.Web.UI.WebControls.LinqDataSourceView.ContextType" /> property contains an object that derives from <see cref="T:System.Data.Linq.DataContext" />.</summary>
+      <returns>true if the object in the <see cref="P:System.Web.UI.WebControls.LinqDataSourceView.ContextType" /> property is derived from <see cref="T:System.Data.Linq.DataContext" />; otherwise, false.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDesignerDataSourceView.IsTableTypeTable">
+      <summary>Gets a value that indicates whether the <see cref="P:System.Web.UI.WebControls.LinqDataSourceView.TableName" /> property returns a <see cref="T:System.Data.Linq.Table`1" /> type.</summary>
+      <returns>true if the <see cref="P:System.Web.UI.WebControls.LinqDataSourceView.TableName" /> property returns a <see cref="T:System.Data.Linq.Table`1" /> type; otherwise, false.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.LinqDesignerDataSourceView.Schema">
+      <summary>Gets the schema that describes the data source view that is represented by the current view object.</summary>
+      <returns>An object that represents the schema.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.Web.UI.Design.WebControls.ListViewDesigner">
+      <summary>Предоставляет поддержку во время разработки в визуальном конструкторе для элемента управления <see cref="T:System.Web.UI.WebControls.ListView" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.ListViewDesigner.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Web.UI.Design.WebControls.ListViewDesigner" />. </summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.ListViewDesigner.ActionLists">
+      <summary>Получает список элементов, которые используются для создания области смарт-тега для элемента управления <see cref="T:System.Web.UI.WebControls.ListView" />.</summary>
+      <returns>Объект <see cref="T:System.ComponentModel.Design.DesignerActionListCollection" />, сопоставленный данному конструктору.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.ListViewDesigner.GetDesignTimeHtml">
+      <summary>Генерирует HTML-разметку, используемую для отрисовки связанного элемента управления <see cref="T:System.Web.UI.WebControls.ListView" /> во время разработки.</summary>
+      <returns>HTML-разметка, которая используется для отрисовки связанного элемента управления <see cref="T:System.Web.UI.WebControls.ListView" /> во время разработки.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.ListViewDesigner.GetDesignTimeHtml(System.Web.UI.Design.DesignerRegionCollection)">
+      <summary>Генерирует HTML-разметку, используемую для отрисовки связанного элемента управления <see cref="T:System.Web.UI.WebControls.ListView" /> во время разработки, а также подставляет в заданную коллекцию выбранную в настоящий момент область конструктора.</summary>
+      <returns>HTML-разметка, которая используется для отрисовки связанного элемента управления <see cref="T:System.Web.UI.WebControls.ListView" /> во время разработки.</returns>
+      <param name="regions">Коллекция областей конструктора для сопоставленного элемента управления <see cref="T:System.Web.UI.WebControls.ListView" />.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.ListViewDesigner.GetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion)">
+      <summary>Получает содержимое заданной редактируемой области представления времени разработки сопоставленного элемента управления <see cref="T:System.Web.UI.WebControls.ListView" />.</summary>
+      <returns>HTML-разметка для области.</returns>
+      <param name="region">Область, для которой должно быть получено содержимое.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.ListViewDesigner.GetEmptyDesignTimeHtml">
+      <summary>Создает HTML-разметку, которая представляет во время разработки элемент управления <see cref="T:System.Web.UI.WebControls.ListView" />, не отображаемый во время выполнения.</summary>
+      <returns>HTML-разметка, которая представляет элемент управления <see cref="T:System.Web.UI.WebControls.ListView" /> во время разработки.</returns>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.ListViewDesigner.Initialize(System.ComponentModel.IComponent)">
+      <summary>Инициализирует конструктор элемента управления и загружает заданный элемент управления.</summary>
+      <param name="component">Элемент управления в разработке.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.ListViewDesigner.OnComponentChanged(System.Object,System.ComponentModel.Design.ComponentChangedEventArgs)">
+      <summary>Происходит при изменении сопоставленного элемента управления.</summary>
+      <param name="sender">Источник события.</param>
+      <param name="ce">Данные события.</param>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.ListViewDesigner.OnSchemaRefreshed">
+      <summary>Предотвращает обновление элемента управления <see cref="T:System.Web.UI.WebControls.ListView" />, если схема источника данных обновляется в конструкторе HTML.</summary>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.ListViewDesigner.SampleRowCount">
+      <summary>Получает число записей, которые отображаются для элемента управления <see cref="T:System.Web.UI.WebControls.ListView" /> в области разработки.</summary>
+      <returns>Число записей, которые отображаются для элемента управления <see cref="T:System.Web.UI.WebControls.ListView" /> в области разработки.</returns>
+    </member>
+    <member name="M:System.Web.UI.Design.WebControls.ListViewDesigner.SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion,System.String)">
+      <summary>Определяет содержимое редактируемой области элемента управления <see cref="T:System.Web.UI.WebControls.ListView" /> во время разработки.</summary>
+      <param name="region">Редактируемая область, которая содержится в элементе управления <see cref="T:System.Web.UI.WebControls.ListView" />.</param>
+      <param name="content">Содержимое, которое требуется присвоить редактируемой области разработки.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.Web.UI.Design.WebControls.ListViewDesigner.UsePreviewControl">
+      <summary>Получает значение, которое указывает, должен ли конструктор использовать временную копию вместо фактического элемента управления, <see cref="T:System.Web.UI.WebControls.ListView" /> который сопоставлен этому конструктору, для создания разметки времени разработки.</summary>
+      <returns>Во всех случаях — значение true.</returns>
+    </member>
+  </members>
+</doc>

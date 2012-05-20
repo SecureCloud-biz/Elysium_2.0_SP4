@@ -19,7 +19,7 @@
     </method>
     <method name="M:Elysium.Controls.Automation.DropDownCommandButtonAutomationPeer.GetClassNameCore">
       <summary>
-        Возвращает имя класса <see cref="T:Elysium.Controls.DropDownCommandButton"/>, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer"/>. Данный метод вызывается методом <see cref="T:System.Windows.Automation.Peers.AutomationPeer.GetClassName"/>.
+        Возвращает имя класса <see cref="T:Elysium.Controls.DropDownCommandButton"/>, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer"/>. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetClassName"/>.
       </summary>
       <returns>
         Строка со значением "DropDownCommandButton".

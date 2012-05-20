@@ -1,0 +1,623 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.ServiceModel.Routing</name>
+  </assembly>
+  <members>
+    <member name="T:System.ServiceModel.Dispatcher.EndpointNameMessageFilter">
+      <summary>Представляет запрос, который проверяет, получено ли сообщение в конечной точке с именем, которое совпадает с указанным именем.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.EndpointNameMessageFilter.#ctor(System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Dispatcher.EndpointNameMessageFilter" /> с указанным именем, по которому проверяется сообщение.</summary>
+      <param name="endpointName">Имя конечной точки, по которому проверяются сообщения</param>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.EndpointNameMessageFilter.Match(System.ServiceModel.Channels.Message)">
+      <summary>Проверяет, соответствует ли сообщение указанному имени конечной точки.</summary>
+      <returns>Значение true, если объект Message соответствует имени конечной точки, указанному в фильтре; в противном случае — значение false.</returns>
+      <param name="message">Проверяемый объект сообщения.</param>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.EndpointNameMessageFilter.Match(System.ServiceModel.Channels.MessageBuffer)">
+      <summary>Проверяет, удовлетворяет ли буферизованное сообщение указанному имени конечной точки.</summary>
+      <returns>Значение true, если объект Message соответствует имени конечной точки, указанному в фильтре; в противном случае — значение false.</returns>
+      <param name="buffer">Объект <see cref="T:System.ServiceModel.Channels.MessageBuffer" /> для проверки.</param>
+    </member>
+    <member name="T:System.ServiceModel.Dispatcher.StrictAndMessageFilter">
+      <summary>Представляет запрос, который проверяет, отвечает ли сообщение условиям обоих указанных объектов <see cref="T:System.ServiceModel.Dispatcher.MessageFilter" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.StrictAndMessageFilter.#ctor(System.ServiceModel.Dispatcher.MessageFilter,System.ServiceModel.Dispatcher.MessageFilter)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Dispatcher.StrictAndMessageFilter" /> с использованием указанных объектов <see cref="T:System.ServiceModel.Dispatcher.MessageFilter" />.</summary>
+      <param name="filter1">Объект <see cref="T:System.ServiceModel.Dispatcher.MessageFilter" />.</param>
+      <param name="filter2">Объект <see cref="T:System.ServiceModel.Dispatcher.MessageFilter" />.</param>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.StrictAndMessageFilter.CreateFilterTable``1">
+      <summary>Создает новый объект <see cref="T:System.ServiceModel.Dispatcher.IMessageFilterTable`1" />.</summary>
+      <returns>Новый объект <see cref="T:System.ServiceModel.Dispatcher.IMessageFilterTable`1" />.</returns>
+      <typeparam name="TFilterData">Тип данных, связанных с фильтром.</typeparam>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.StrictAndMessageFilter.Match(System.ServiceModel.Channels.Message)">
+      <summary>Проверяет, отвечает ли сообщение условиям обоих объектов <see cref="T:System.ServiceModel.Dispatcher.MessageFilter" />, указанных в этом фильтре.</summary>
+      <returns>Значение true, если сообщение отвечает обоим фильтрам, и значение false в противном случае.</returns>
+      <param name="message">Объект <see cref="T:System.ServiceModel.Channels.Message" /> для проверки.</param>
+    </member>
+    <member name="M:System.ServiceModel.Dispatcher.StrictAndMessageFilter.Match(System.ServiceModel.Channels.MessageBuffer)">
+      <summary>Проверяет, отвечает ли буферизованное сообщение условиям обоих объектов <see cref="T:System.ServiceModel.Dispatcher.MessageFilter" />, указанных в этом фильтре.</summary>
+      <returns>Значение true, если сообщение, содержащееся в буфере, отвечает обоим фильтрам, и значение false в противном случае.</returns>
+      <param name="buffer">Объект <see cref="T:System.ServiceModel.Channels.MessageBuffer" /> для проверки.</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.IDuplexSessionRouter">
+      <summary>Определяет интерфейс, необходимый для обработки сообщений из дуплексных каналов сеансов.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.IDuplexSessionRouter.BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)">
+      <summary>Инициализирует асинхронную обработку сообщения.</summary>
+      <returns>Асинхронный результат, который может использоваться для запроса или ожидания результатов или для того и другого. Это значение требуется также при вызове метода <see cref="M:System.ServiceModel.Routing.IDuplexSessionRouter.EndProcessMessage(System.IAsyncResult)" />.</returns>
+      <param name="message">Сообщение, которое нужно обработать.</param>
+      <param name="callback">Делегат асинхронного обратного вызова, который вызывается после завершения обработки сообщения.</param>
+      <param name="state">Определяемый пользователем объект состояния, передаваемый процедуре обратного вызова.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.IDuplexSessionRouter.EndProcessMessage(System.IAsyncResult)">
+      <summary>Завершает асинхронную обработку сообщения.</summary>
+      <param name="result">Асинхронный результат, возвращаемый вызовом метода <see cref="M:System.ServiceModel.Routing.IDuplexSessionRouter.BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)" />.</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.IRequestReplyRouter">
+      <summary>Определяет интерфейс, необходимый для обработки сообщений из каналов «запрос-ответ».</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.IRequestReplyRouter.BeginProcessRequest(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)">
+      <summary>Инициализирует асинхронную обработку сообщения.</summary>
+      <returns>Асинхронный результат, который может использоваться для запроса или ожидания результатов или для того и другого. Это значение требуется также при вызове метода <see cref="M:System.ServiceModel.Routing.IRequestReplyRouter.EndProcessRequest(System.IAsyncResult)" />.</returns>
+      <param name="message">Сообщение, которое нужно обработать.</param>
+      <param name="callback">Делегат асинхронного обратного вызова, который вызывается после завершения обработки сообщения.</param>
+      <param name="state">Определяемый пользователем объект состояния, передаваемый процедуре обратного вызова.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.IRequestReplyRouter.EndProcessRequest(System.IAsyncResult)">
+      <summary>Завершает асинхронную обработку сообщения.</summary>
+      <returns>Ответ.</returns>
+      <param name="result">Асинхронный результат, возвращаемый вызовом метода <see cref="M:System.ServiceModel.Routing.IRequestReplyRouter.BeginProcessRequest(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)" />.</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.ISimplexDatagramRouter">
+      <summary>Определяет интерфейс, необходимый для обработки сообщений из симплексной датаграммы.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.ISimplexDatagramRouter.BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)">
+      <summary>Инициализирует асинхронную обработку сообщения.</summary>
+      <returns>Асинхронный результат <see cref="T:System.IAsyncResult" />, который может использоваться для запроса или ожидания результатов или для того и другого; это значение требуется также при вызове метода <see cref="M:System.ServiceModel.Routing.ISimplexDatagramRouter.EndProcessMessage(System.IAsyncResult)" />.</returns>
+      <param name="message">Сообщение, которое нужно обработать.</param>
+      <param name="callback">Делегат <see cref="T:System.AsyncCallback" />, который вызывается после завершения обработки сообщения.</param>
+      <param name="state">Определяемый пользователем объект состояния, передаваемый процедуре обратного вызова.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.ISimplexDatagramRouter.EndProcessMessage(System.IAsyncResult)">
+      <summary>Завершает асинхронную обработку сообщения.</summary>
+      <param name="result">Асинхронный результат, возвращаемый вызовом метода <see cref="M:System.ServiceModel.Routing.ISimplexDatagramRouter.BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)" />.</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.ISimplexSessionRouter">
+      <summary>Определяет интерфейс, необходимый для обработки сообщений из симплексных каналов сеансов.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.ISimplexSessionRouter.BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)">
+      <summary>Инициализирует асинхронную обработку сообщения.</summary>
+      <returns>Асинхронный результат, который может использоваться для запроса или ожидания результатов или для того и другого. Это значение требуется также при вызове метода <see cref="M:System.ServiceModel.Routing.ISimplexSessionRouter.EndProcessMessage(System.IAsyncResult)" />.</returns>
+      <param name="message">Сообщение, которое нужно обработать.</param>
+      <param name="callback">Делегат асинхронного обратного вызова, который вызывается после завершения обработки сообщения.</param>
+      <param name="state">Определяемый пользователем объект состояния, передаваемый процедуре обратного вызова.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.ISimplexSessionRouter.EndProcessMessage(System.IAsyncResult)">
+      <summary>Завершает асинхронную обработку сообщения.</summary>
+      <param name="result">Асинхронный результат, возвращаемый вызовом метода <see cref="M:System.ServiceModel.Routing.ISimplexSessionRouter.BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)" />.</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.RoutingBehavior">
+      <summary>Определяет режим маршрутизации, который используется для настройки целевых конечных точек, фильтров и параметров фильтрации, применяемых в ходе маршрутизации.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingBehavior.#ctor(System.ServiceModel.Routing.RoutingConfiguration)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Routing.RoutingBehavior" />.</summary>
+      <param name="routingConfiguration">Конфигурация маршрутизации.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingBehavior.GetContractForDescription(System.ServiceModel.Description.ContractDescription)">
+      <summary>Возвращает тип контракта для указанного <see cref="T:System.ServiceModel.Description.ContractDescription" />.</summary>
+      <returns>Тип указанного <see cref="T:System.ServiceModel.Description.ContractDescription" />.</returns>
+      <param name="description">Описание контракта, для которого возвращается тип.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingBehavior.System#ServiceModel#Description#IServiceBehavior#AddBindingParameters(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase,System.Collections.ObjectModel.Collection{System.ServiceModel.Description.ServiceEndpoint},System.ServiceModel.Channels.BindingParameterCollection)">
+      <summary>Реализует метод <see cref="M:System.ServiceModel.Description.IServiceBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase,System.Collections.ObjectModel.Collection{System.ServiceModel.Description.ServiceEndpoint},System.ServiceModel.Channels.BindingParameterCollection)" /> для поддержки расширений функциональности.</summary>
+      <param name="serviceDescription">Описание службы.</param>
+      <param name="serviceHostBase">Основное приложение службы.</param>
+      <param name="endpoints">Конечные точки службы.</param>
+      <param name="bindingParameters">Настраиваемые объекты, к которым имеют доступ элементы привязки.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingBehavior.System#ServiceModel#Description#IServiceBehavior#ApplyDispatchBehavior(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)">
+      <summary>Реализует метод <see cref="M:System.ServiceModel.Description.IServiceBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)" /> для поддержки расширений функциональности.</summary>
+      <param name="serviceDescription">Описание службы.</param>
+      <param name="serviceHostBase">Основное приложение службы.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingBehavior.System#ServiceModel#Description#IServiceBehavior#Validate(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)">
+      <summary>Реализует метод <see cref="M:System.ServiceModel.Description.IServiceBehavior.Validate(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)" /> для поддержки расширений функциональности.</summary>
+      <param name="serviceDescription">Описание службы.</param>
+      <param name="serviceHostBase">Основное приложение службы.</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.RoutingConfiguration">
+      <summary>Определяет сведения о конфигурации, используемые объектом <see cref="T:System.ServiceModel.Routing.RoutingExtension" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingConfiguration.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Routing.RoutingConfiguration" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingConfiguration.#ctor(System.ServiceModel.Dispatcher.MessageFilterTable{System.Collections.Generic.IEnumerable{System.ServiceModel.Description.ServiceEndpoint}},System.Boolean)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Routing.RoutingConfiguration" /> с использованием указанного объекта <see cref="T:System.ServiceModel.Dispatcher.MessageFilterTable`1" /> и параметра routeOnHeadersOnly.</summary>
+      <param name="filterTable">Таблица фильтров сообщений, используемая для этой конфигурации.</param>
+      <param name="routeOnHeadersOnly">Значение true, если <see cref="T:System.ServiceModel.Dispatcher.MessageFilterTable`1" /> может проверять только заголовки сообщений, и значение false в противном случае.Значение по умолчанию — true.</param>
+    </member>
+    <member name="P:System.ServiceModel.Routing.RoutingConfiguration.FilterTable">
+      <summary>Возвращает или задает объект <see cref="T:System.ServiceModel.Dispatcher.MessageFilterTable`1" />, используемый этой конфигурацией.</summary>
+      <returns>Таблица фильтров сообщений.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.RoutingConfiguration.RouteOnHeadersOnly">
+      <summary>Возвращает или задает значение, показывающее, может ли фильтр проверять текст сообщения.</summary>
+      <returns>Значение true, если фильтр может проверять только заголовки сообщений, и значение false в противном случае.Значение по умолчанию — true.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.RoutingConfiguration.SoapProcessingEnabled">
+      <summary>Возвращает или задает значение, показывающее, нужно ли обрабатывать сообщения различных версий <see cref="T:System.ServiceModel.Channels.MessageVersion" /> SOAP. </summary>
+      <returns>Значение true, если нужно обрабатывать сообщения, и значение false в противном случае.Значение по умолчанию — true.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Routing.RoutingExtension">
+      <summary>Обеспечивает доступ к службе маршрутизации во время выполнения, чтобы вносить динамические изменения в конфигурацию маршрутизации.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingExtension.ApplyConfiguration(System.ServiceModel.Routing.RoutingConfiguration)">
+      <summary>Применяет новую <see cref="T:System.ServiceModel.Routing.RoutingConfiguration" /> к выполняющемуся экземпляру службы маршрутизации.</summary>
+      <param name="routingConfiguration">Конфигурация маршрутизации для применения.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingExtension.System#ServiceModel#IExtension{T}#Attach(System.ServiceModel.ServiceHostBase)">
+      <summary>Вызывается в случае, когда среда выполнения присоединяет расширение к экземпляру класса <see cref="T:System.ServiceModel.ServiceHostBase" />.Только для внутреннего использования.</summary>
+      <param name="owner">Основное приложение службы.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingExtension.System#ServiceModel#IExtension{T}#Detach(System.ServiceModel.ServiceHostBase)">
+      <summary>Вызывается в случае, когда среда выполнения отсоединяет расширение от экземпляра класса <see cref="T:System.ServiceModel.ServiceHostBase" />.Только для внутреннего использования.</summary>
+      <param name="owner">Основное приложение службы.</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.RoutingService">
+      <summary>Определяет службу маршрутизации, которая отвечает за маршрутизацию сообщений между конечными точками на основании условий фильтра.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingService.System#IDisposable#Dispose"></member>
+    <member name="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#IDuplexSessionRouter#BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)">
+      <summary>Инициализирует асинхронную обработку сообщения.</summary>
+      <returns>Асинхронный результат <see cref="T:System.IAsyncResult" />, который может использоваться для запроса или ожидания результатов или для того и другого; это значение требуется также при вызове метода <see cref="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#IDuplexSessionRouter#EndProcessMessage(System.IAsyncResult)" />.</returns>
+      <param name="message">Объект <see cref="T:System.ServiceModel.Channels.Message" />, требующий обработки.</param>
+      <param name="callback">Делегат <see cref="T:System.AsyncCallback" />, который вызывается после завершения обработки сообщения.</param>
+      <param name="state">Определяемый пользователем объект состояния, передаваемый процедуре обратного вызова.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#IDuplexSessionRouter#EndProcessMessage(System.IAsyncResult)">
+      <summary>Завершает асинхронную обработку сообщения.</summary>
+      <param name="result">Объект <see cref="T:System.IAsyncResult" />, возвращенный из вызова <see cref="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#IDuplexSessionRouter#BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)" /></param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#IRequestReplyRouter#BeginProcessRequest(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)">
+      <summary>Инициализирует асинхронную обработку сообщения.</summary>
+      <returns>Асинхронный результат <see cref="T:System.IAsyncResult" />, который может использоваться для запроса или ожидания результатов или для того и другого; это значение требуется также при вызове метода <see cref="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#IRequestReplyRouter#EndProcessRequest(System.IAsyncResult)" />.</returns>
+      <param name="message">Объект <see cref="T:System.ServiceModel.Channels.Message" />, требующий обработки.</param>
+      <param name="callback">Делегат <see cref="T:System.AsyncCallback" />, который вызывается после завершения обработки сообщения.</param>
+      <param name="state">Определяемый пользователем объект состояния, передаваемый процедуре обратного вызова.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#IRequestReplyRouter#EndProcessRequest(System.IAsyncResult)">
+      <summary>Завершает асинхронную обработку сообщения.</summary>
+      <returns>Объект <see cref="T:System.ServiceModel.Channels.Message" />, содержащий ответ.</returns>
+      <param name="result">Объект <see cref="T:System.IAsyncResult" />, возвращенный из вызова <see cref="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#IRequestReplyRouter#BeginProcessRequest(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)" /></param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#ISimplexDatagramRouter#BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)">
+      <summary>Инициализирует асинхронную обработку сообщения.</summary>
+      <returns>Асинхронный результат <see cref="T:System.IAsyncResult" />, который может использоваться для запроса или ожидания результатов или для того и другого; это значение требуется также при вызове метода <see cref="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#ISimplexDatagramRouter#EndProcessMessage(System.IAsyncResult)" />.</returns>
+      <param name="message">Объект <see cref="T:System.ServiceModel.Channels.Message" />, требующий обработки.</param>
+      <param name="callback">Делегат <see cref="T:System.AsyncCallback" />, который вызывается после завершения обработки сообщения.</param>
+      <param name="state">Определяемый пользователем объект состояния, передаваемый процедуре обратного вызова.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#ISimplexDatagramRouter#EndProcessMessage(System.IAsyncResult)">
+      <summary>Завершает асинхронную обработку сообщения.</summary>
+      <param name="result">Объект <see cref="T:System.IAsyncResult" />, возвращенный из вызова <see cref="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#ISimplexDatagramRouter#BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)" />.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#ISimplexSessionRouter#BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)">
+      <summary>Инициализирует асинхронную обработку сообщения.</summary>
+      <returns>Асинхронный результат <see cref="T:System.IAsyncResult" />, который может использоваться для запроса или ожидания результатов или для того и другого; это значение требуется также при вызове метода <see cref="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#ISimplexSessionRouter#EndProcessMessage(System.IAsyncResult)" />.</returns>
+      <param name="message">Объект <see cref="T:System.ServiceModel.Channels.Message" />, требующий обработки.</param>
+      <param name="callback">Делегат <see cref="T:System.AsyncCallback" />, который вызывается после завершения обработки сообщения.</param>
+      <param name="state">Определяемый пользователем объект состояния, передаваемый процедуре обратного вызова.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#ISimplexSessionRouter#EndProcessMessage(System.IAsyncResult)">
+      <summary>Завершает асинхронную обработку сообщения.</summary>
+      <param name="result">Объект <see cref="T:System.IAsyncResult" />, возвращенный из вызова <see cref="M:System.ServiceModel.Routing.RoutingService.System#ServiceModel#Routing#ISimplexSessionRouter#BeginProcessMessage(System.ServiceModel.Channels.Message,System.AsyncCallback,System.Object)" />.</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.SoapProcessingBehavior">
+      <summary>Определяет поведение конечной точки клиента, используемое для упаковки сообщений между различными типами привязок и версиями сообщения.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.SoapProcessingBehavior.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Routing.SoapProcessingBehavior" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.SoapProcessingBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)">
+      <summary>Добавляет новые элементы привязки в конечную точку.</summary>
+      <param name="endpoint">Конечная точка службы, к которой применяются элементы привязки.</param>
+      <param name="bindingParameters">Коллекция параметров привязки, применяемая к конечной точке.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.SoapProcessingBehavior.ApplyClientBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)">
+      <summary>Применяет к клиенту заданный режим конечной точки.</summary>
+      <param name="endpoint">Конечная точка службы, применяемая для клиента.</param>
+      <param name="clientRuntime">Среда выполнения на клиенте.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.SoapProcessingBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.EndpointDispatcher)">
+      <summary>Применяет заданный режим конечной точки к диспетчеру конечных точек.</summary>
+      <param name="endpoint">Конечная точка службы, применяемая для клиента.</param>
+      <param name="endpointDispatcher">Диспетчер конечных точек.</param>
+    </member>
+    <member name="P:System.ServiceModel.Routing.SoapProcessingBehavior.ProcessMessages">
+      <summary>Возвращает или задает значение, указывающее, нужно ли обрабатывать сообщения.</summary>
+      <returns>Значение true, если сообщения должны быть упакованы, и значение false — в противном случае.Значение по умолчанию — true.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.SoapProcessingBehavior.Validate(System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>Проверяет конечную точку службы.</summary>
+      <param name="endpoint">Конечная точка службы для проверки.</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.BackupEndpointCollection">
+      <summary>Представляет элемент конфигурации, содержащий коллекцию объектов <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointElement" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupEndpointCollection.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointCollection" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupEndpointCollection.Add(System.ServiceModel.Routing.Configuration.BackupEndpointElement)">
+      <summary>Добавляет в коллекцию новый объект <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointElement" />.</summary>
+      <param name="element">Элемент резервной конечной точки для добавления.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupEndpointCollection.Clear">
+      <summary>Удаляет из коллекции все элементы.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupEndpointCollection.CreateNewElement">
+      <summary>Создает новый объект <see cref="T:System.Configuration.ConfigurationElement" />.</summary>
+      <returns>Новый элемент конфигурации.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupEndpointCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+      <summary>Возвращает ключ элемента для указанного элемента конфигурации.</summary>
+      <returns>Ключ для указанного элемента конфигурации.</returns>
+      <param name="element">Элемент конфигурации, для которого возвращается ключ.</param>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.BackupEndpointCollection.Name">
+      <summary>Возвращает или задает имя, по которому эта коллекция элементов определяется в файле конфигурации.</summary>
+      <returns>Имя коллекции.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupEndpointCollection.Remove(System.ServiceModel.Routing.Configuration.BackupEndpointElement)">
+      <summary>Удаляет первое вхождение элемента <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointElement" /> из коллекции.</summary>
+      <param name="element">Резервный элемент, который нужно удалить из коллекции.</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.BackupEndpointElement">
+      <summary>Представляет элемент конфигурации, в котором задается элемент резервной конечной точки.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupEndpointElement.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointElement" />.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.BackupEndpointElement.EndpointName">
+      <summary>Возвращает или задает имя, по которому эта конечная точка определяется в файле конфигурации.</summary>
+      <returns>Имя.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.BackupListCollection">
+      <summary>Представляет элемент конфигурации, содержащий коллекцию экземпляров класса <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointCollection" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupListCollection.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Routing.Configuration.BackupListCollection" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupListCollection.Add(System.ServiceModel.Routing.Configuration.BackupEndpointCollection)">
+      <summary>Добавляет в коллекцию новый объект <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointCollection" />.</summary>
+      <param name="element">Резервная конечная точка для добавления.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupListCollection.Clear">
+      <summary>Удаляет из коллекции все элементы.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupListCollection.CreateNewElement">
+      <summary>Создает новый объект <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointCollection" />.</summary>
+      <returns>Новый элемент конфигурации.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupListCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+      <summary>Возвращает ключ элемента для указанного элемента конфигурации.</summary>
+      <returns>Ключ для указанного элемента конфигурации.</returns>
+      <param name="element">Элемент конфигурации, для которого возвращается ключ.</param>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.BackupListCollection.Item(System.String)">
+      <summary>Получение <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointCollection" /> с заданным индексом.</summary>
+      <returns>Резервная конечная точка, соответствующая указанному ключу.</returns>
+      <param name="name">Ключ элемента, к которому осуществляется доступ.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.BackupListCollection.Remove(System.ServiceModel.Routing.Configuration.BackupEndpointCollection)">
+      <summary>Удаляет первое вхождение заданного элемента <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointCollection" /> из коллекции.</summary>
+      <param name="element">Резервная конечная точка из коллекции.</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.FilterElement">
+      <summary>Представляет элемент конфигурации, определяющий элемент фильтра.Этот элемент используется для определения типа фильтра, а также других вспомогательных данных или параметров, необходимых фильтру.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterElement.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Routing.Configuration.FilterElement" />.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterElement.CustomType">
+      <summary>Возвращает или задает полное имя для пользовательского типа, используемого в качестве фильтра.</summary>
+      <returns>Полный тип.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterElement.Filter1">
+      <summary>Возвращает или задает данные filter1 для этого элемента конфигурации.Это значение используется, только если свойство <see cref="P:System.ServiceModel.Routing.Configuration.FilterElement.FilterType" /> имеет значение And.</summary>
+      <returns>Значение filter1 для этого элемента.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterElement.Filter2">
+      <summary>Возвращает или задает данные filter2 для этого элемента конфигурации.Это значение используется, только если свойство <see cref="P:System.ServiceModel.Routing.Configuration.FilterElement.FilterType" /> имеет значение AND.</summary>
+      <returns>Значение filter2 для этого элемента.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterElement.FilterData">
+      <summary>Возвращает или задает данные фильтра для этого элемента конфигурации.</summary>
+      <returns>Данные фильтра для этого элемента.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterElement.FilterType">
+      <summary>Возвращает или задает тип <see cref="T:System.ServiceModel.Routing.Configuration.FilterType" /> этого элемента конфигурации.</summary>
+      <returns>Тип фильтра для этого элемента.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterElement.Name">
+      <summary>Возвращает или задает имя данного элемента конфигурации.</summary>
+      <returns>Уникальное имя этого элемента конфигурации.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.FilterElementCollection">
+      <summary>Представляет коллекцию экземпляров класса <see cref="T:System.ServiceModel.Routing.Configuration.FilterElement" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterElementCollection.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Routing.Configuration.FilterElementCollection" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterElementCollection.Add(System.ServiceModel.Routing.Configuration.FilterElement)">
+      <summary>Добавляет в коллекцию новый объект <see cref="T:System.ServiceModel.Routing.Configuration.FilterElement" />.</summary>
+      <param name="element">Добавляемый элемент фильтра.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterElementCollection.Clear">
+      <summary>Удаляет из коллекции все элементы.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterElementCollection.CreateNewElement">
+      <summary>Создает новый объект <see cref="T:System.Configuration.ConfigurationElement" />.</summary>
+      <returns>Новый элемент конфигурации.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterElementCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+      <summary>Возвращает ключ указанного элемента <see cref="T:System.Configuration.ConfigurationElement" /> в коллекции.</summary>
+      <returns>Ключ для указанного элемента конфигурации.</returns>
+      <param name="element">Элемент конфигурации, для которого возвращается ключ.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterElementCollection.IsElementRemovable(System.Configuration.ConfigurationElement)">
+      <summary>Возвращает или задает значение, указывающее, можно ли удалить элемент.</summary>
+      <returns>Значение true, если элемент можно удалить, и значение false в противном случае.</returns>
+      <param name="element">Элемент конфигурации, для которого проверяется возможность удаления.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterElementCollection.IsReadOnly">
+      <summary>Возвращает значение, указывающее, доступен ли элемент только для чтения.</summary>
+      <returns>Значение true, если элемент доступен только для чтения, и значение false в противном случае.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterElementCollection.Item(System.Int32)">
+      <summary>Возвращает из коллекции элемент по указанному индексу.</summary>
+      <returns>Элемент, имеющий указанный индекс в коллекции.</returns>
+      <param name="index">Индекс элемента, извлекаемого из коллекции.</param>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterElementCollection.Item(System.String)">
+      <summary>Возвращает из коллекции элемент по указанному ключу.</summary>
+      <returns>Элемент коллекции, соответствующий указанному ключу.</returns>
+      <param name="name">Ключ элемента, извлекаемого из коллекции.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterElementCollection.Remove(System.ServiceModel.Routing.Configuration.FilterElement)">
+      <summary>Удаляет первое вхождение заданного элемента <see cref="T:System.ServiceModel.Routing.Configuration.FilterElement" /> из коллекции.</summary>
+      <param name="element">Элемент, который требуется удалить из коллекции.</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.FilterTableCollection">
+      <summary>Представляет элемент конфигурации, содержащий коллекцию экземпляров класса <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableCollection.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableCollection" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableCollection.Add(System.ServiceModel.Routing.Configuration.FilterTableEntryCollection)">
+      <summary>Добавляет в коллекцию новый объект <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection" />.</summary>
+      <param name="element">Запись таблицы фильтров, которую нужно добавить.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableCollection.Clear">
+      <summary>Удаляет из коллекции все элементы.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableCollection.CreateNewElement">
+      <summary>Создает новый объект <see cref="T:System.Configuration.ConfigurationElement" />.</summary>
+      <returns>Новый элемент конфигурации.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+      <summary>Возвращает ключ элемента для указанного элемента конфигурации.</summary>
+      <returns>Ключ для указанного элемента конфигурации.</returns>
+      <param name="element">Элемент конфигурации, для которого возвращается ключ.</param>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterTableCollection.Item(System.String)">
+      <summary>Получение <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection" /> с заданным индексом.</summary>
+      <returns>Запись в таблице фильтров, соответствующая указанному ключу.</returns>
+      <param name="name">Ключ элемента, к которому осуществляется доступ.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableCollection.Remove(System.ServiceModel.Routing.Configuration.FilterTableEntryCollection)">
+      <summary>Удаляет первое вхождение заданного элемента <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection" /> из коллекции.</summary>
+      <param name="element">Запись таблицы фильтров для удаления из коллекции.</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection">
+      <summary>Представляет элемент конфигурации, содержащий коллекцию экземпляров класса <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableEntryElement" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection.Add(System.ServiceModel.Routing.Configuration.FilterTableEntryElement)">
+      <summary>Добавляет в коллекцию новый объект <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableEntryElement" />.</summary>
+      <param name="element">Запись таблицы фильтров, которую нужно добавить.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection.Clear">
+      <summary>Удаляет из коллекции все элементы.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection.CreateNewElement">
+      <summary>Создает новый объект <see cref="T:System.Configuration.ConfigurationElement" />.</summary>
+      <returns>Новый элемент конфигурации.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+      <summary>Возвращает ключ элемента для указанного элемента конфигурации.</summary>
+      <returns>Ключ для указанного элемента конфигурации.</returns>
+      <param name="element">Элемент конфигурации, для которого возвращается ключ.</param>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection.Name">
+      <summary>Возвращает или задает имя данного элемента конфигурации.</summary>
+      <returns>Уникальное имя этого элемента конфигурации.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableEntryCollection.Remove(System.ServiceModel.Routing.Configuration.FilterTableEntryElement)">
+      <summary>Удаляет первое вхождение заданного элемента <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableEntryElement" /> из коллекции.</summary>
+      <param name="element">Запись таблицы фильтров для удаления из коллекции.</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.FilterTableEntryElement">
+      <summary>Представляет элемент конфигурации, определяющий элемент записи в таблице фильтров.Этот элемент содержит взаимосвязи между фильтрами, конечными точками и резервными конечными точками и служит для определения фильтра, который используется для маршрутизации сообщения.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.FilterTableEntryElement.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableEntryElement" />.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterTableEntryElement.BackupList">
+      <summary>Возвращает или задает значение, которое указывает ссылку на элемент резервных конечных точек.</summary>
+      <returns>Ссылка на элемент резервных конечных точек.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterTableEntryElement.EndpointName">
+      <summary>Возвращает или задает значение, указывающее ссылку на конечную точку клиента, которая отправляет сообщения, если сообщение отвечает связанному фильтру сообщений.</summary>
+      <returns>Ключ для конечной точки клиента.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterTableEntryElement.FilterName">
+      <summary>Возвращает или задает значение, которое указывает ссылку на элемент фильтра.</summary>
+      <returns>Ключ для элемента фильтра.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.FilterTableEntryElement.Priority">
+      <summary>Возвращает или задает значение, указывающее приоритет этой записи.</summary>
+      <returns>Приоритет этой записи.Значение по умолчанию — 0.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.FilterType">
+      <summary>Указывает тип фильтра, используемый во время маршрутизации сообщений.</summary>
+    </member>
+    <member name="F:System.ServiceModel.Routing.Configuration.FilterType.Action">
+      <summary>Фильтр <see cref="T:System.ServiceModel.Dispatcher.ActionMessageFilter" /> используется для фильтрации по действию.</summary>
+    </member>
+    <member name="F:System.ServiceModel.Routing.Configuration.FilterType.EndpointAddress">
+      <summary>Фильтр <see cref="T:System.ServiceModel.Dispatcher.EndpointAddressMessageFilter" /> вместе со свойством <see cref="P:System.ServiceModel.Dispatcher.EndpointAddressMessageFilter.IncludeHostNameInComparison" />, установленным в значение false, используется для фильтрации по адресу.</summary>
+    </member>
+    <member name="F:System.ServiceModel.Routing.Configuration.FilterType.PrefixEndpointAddress">
+      <summary>Фильтр <see cref="T:System.ServiceModel.Dispatcher.PrefixEndpointAddressMessageFilter" /> со свойством <see cref="P:System.ServiceModel.Dispatcher.PrefixEndpointAddressMessageFilter.IncludeHostNameInComparison" />, установленным в значение false, используется для фильтрации по адресу с применением сопоставления по самому длинному префиксу.</summary>
+    </member>
+    <member name="F:System.ServiceModel.Routing.Configuration.FilterType.And">
+      <summary>Фильтр <see cref="T:System.ServiceModel.Dispatcher.StrictAndMessageFilter" /> используется для фильтрации с помощью двух фильтров сообщений, к результатам которых применяется логическая операция «И».</summary>
+    </member>
+    <member name="F:System.ServiceModel.Routing.Configuration.FilterType.Custom">
+      <summary>Определяемый пользователем фильтр.</summary>
+    </member>
+    <member name="F:System.ServiceModel.Routing.Configuration.FilterType.EndpointName">
+      <summary>Фильтр <see cref="T:System.ServiceModel.Dispatcher.EndpointNameMessageFilter" /> используется для фильтрования по имени конечной точки службы.</summary>
+    </member>
+    <member name="F:System.ServiceModel.Routing.Configuration.FilterType.MatchAll">
+      <summary>Фильтр <see cref="T:System.ServiceModel.Dispatcher.MatchAllMessageFilter" /> соответствует всем сообщениям.</summary>
+    </member>
+    <member name="F:System.ServiceModel.Routing.Configuration.FilterType.XPath">
+      <summary>Фильтр <see cref="T:System.ServiceModel.Dispatcher.XPathMessageFilter" /> используется для фильтрации по выражению XPath.</summary>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.NamespaceElement">
+      <summary>Представляет элемент конфигурации, определяющий элемент пространства имен.Этот элемент содержит сопоставления пространств имен с префиксами, которые можно использовать в фильтрах XPath.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.NamespaceElement.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Routing.Configuration.NamespaceElement" />.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.NamespaceElement.Namespace">
+      <summary>Возвращает или задает пространство имен для этого элемента конфигурации.</summary>
+      <returns>Пространство имен этого элемента.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.NamespaceElement.Prefix">
+      <summary>Возвращает или задает префикс пространства имен для этого элемента конфигурации.</summary>
+      <returns>Префикс пространства имен для этого элемента.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.NamespaceElementCollection">
+      <summary>Представляет коллекцию экземпляров класса <see cref="T:System.ServiceModel.Routing.Configuration.NamespaceElement" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.NamespaceElementCollection.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Routing.Configuration.NamespaceElementCollection" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.NamespaceElementCollection.Add(System.ServiceModel.Routing.Configuration.NamespaceElement)">
+      <summary>Добавляет в коллекцию новый объект <see cref="T:System.ServiceModel.Routing.Configuration.NamespaceElement" />.</summary>
+      <param name="element">Элемент пространства имен для добавления.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.NamespaceElementCollection.Clear">
+      <summary>Удаляет из коллекции все элементы.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.NamespaceElementCollection.CreateNewElement">
+      <summary>Создает новый объект <see cref="T:System.Configuration.ConfigurationElement" />.</summary>
+      <returns>Новый элемент конфигурации.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.NamespaceElementCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+      <summary>Возвращает ключ для указанного элемента пространства имен.</summary>
+      <returns>Ключ для указанного элемента конфигурации.</returns>
+      <param name="element">Элемент конфигурации, для которого возвращается ключ.</param>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.NamespaceElementCollection.Item(System.Int32)">
+      <summary>Возвращает из коллекции элемент по указанному индексу.</summary>
+      <returns>Элемент пространства имен, имеющий указанный индекс в коллекции.</returns>
+      <param name="index">Индекс элемента, извлекаемого из коллекции.</param>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.NamespaceElementCollection.Item(System.String)">
+      <summary>Возвращает из коллекции элемент по указанному ключу.</summary>
+      <returns>Элемент пространства имен в коллекции, соответствующий указанному ключу.</returns>
+      <param name="name">Ключ элемента, извлекаемого из коллекции.</param>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.NamespaceElementCollection.Remove(System.ServiceModel.Routing.Configuration.NamespaceElement)">
+      <summary>Удаляет первое вхождение заданного элемента <see cref="T:System.ServiceModel.Routing.Configuration.NamespaceElement" /> из коллекции.</summary>
+      <param name="element">Элемент пространства имен для удаления.</param>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.RoutingExtensionElement">
+      <summary>Представляет элемент конфигурации, содержащий дочерние элементы, в которых указывается режим маршрутизации.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.RoutingExtensionElement.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Routing.Configuration.RoutingExtensionElement" />.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.RoutingExtensionElement.BehaviorType">
+      <summary>Возвращает тип поведения.</summary>
+      <returns>Тип поведения.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.RoutingExtensionElement.FilterTableName">
+      <summary>Возвращает или задает имя таблицы фильтров, используемой этой службой маршрутизации для маршрутизации сообщений.</summary>
+      <returns>Имя таблицы фильтров.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.RoutingExtensionElement.RouteOnHeadersOnly">
+      <summary>Возвращает или задает значение, которое показывает, разрешается ли фильтру доступ только к заголовкам сообщений или также к тексту сообщений.</summary>
+      <returns>Значение true, если фильтр имеет доступ только к заголовкам сообщений, и значение false в противном случае.Значение по умолчанию — true.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.RoutingExtensionElement.SoapProcessingEnabled">
+      <summary>Возвращает или задает значение, указывающее, нужно ли выполнять обработку SOAP.</summary>
+      <returns>Значение true, если сообщения должны быть упакованы, и значение false — в противном случае.Значение по умолчанию — true.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.RoutingSection">
+      <summary>Представляет коллекцию элементов, используемых для настройки маршрутизации.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.RoutingSection.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Routing.Configuration.RoutingSection" />.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.RoutingSection.BackupLists">
+      <summary>Возвращает элемент конфигурации, содержащий коллекцию объектов <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointElement" />.</summary>
+      <returns>Коллекция, определяющая раздел конфигурации, содержащий коллекцию объектов <see cref="T:System.ServiceModel.Routing.Configuration.BackupEndpointElement" />.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.RoutingSection.CreateFilterTable(System.String)">
+      <summary>Создает таблицу фильтров с использованием указанного имени.</summary>
+      <returns>Таблица фильтров с указанным именем.</returns>
+      <param name="name">Имя создаваемой таблицы фильтров.</param>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.RoutingSection.Filters">
+      <summary>Возвращает элемент конфигурации, содержащий коллекцию объектов <see cref="T:System.ServiceModel.Routing.Configuration.FilterElement" />.</summary>
+      <returns>Коллекция, определяющая раздел конфигурации, который содержит коллекцию объектов <see cref="T:System.ServiceModel.Routing.Configuration.FilterElement" />.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.RoutingSection.FilterTables">
+      <summary>Возвращает элемент конфигурации, содержащий коллекцию объектов <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableEntryElement" />.</summary>
+      <returns>Коллекция, определяющая раздел конфигурации, содержащий коллекцию объектов <see cref="T:System.ServiceModel.Routing.Configuration.FilterTableEntryElement" />.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.RoutingSection.NamespaceTable">
+      <summary>Возвращает элемент конфигурации, содержащий коллекцию объектов <see cref="T:System.ServiceModel.Routing.Configuration.NamespaceElement" />.</summary>
+      <returns>Коллекция, определяющая раздел конфигурации, содержащий коллекцию объектов <see cref="T:System.ServiceModel.Routing.Configuration.NamespaceElement" />.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Routing.Configuration.SoapProcessingExtensionElement">
+      <summary>Представляет элемент конфигурации, который определяет режим конечной точки для обработки SOAP.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.SoapProcessingExtensionElement.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Routing.Configuration.SoapProcessingExtensionElement" />.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.SoapProcessingExtensionElement.BehaviorType">
+      <summary>Возвращает тип режима.</summary>
+      <returns>Тип поведения.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Routing.Configuration.SoapProcessingExtensionElement.CreateBehavior">
+      <summary>Создает новый элемент для режима обработки SOAP на основании текущих параметров конфигурации.</summary>
+      <returns>Режим.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Routing.Configuration.SoapProcessingExtensionElement.ProcessMessages">
+      <summary>Возвращает или задает значение, показывающее, нужно ли выполнять упаковку сообщений между различными версиями SOAP.</summary>
+      <returns>Значение true, если сообщения должны быть упакованы, и значение false — в противном случае.Значение по умолчанию — true.</returns>
+    </member>
+  </members>
+</doc>

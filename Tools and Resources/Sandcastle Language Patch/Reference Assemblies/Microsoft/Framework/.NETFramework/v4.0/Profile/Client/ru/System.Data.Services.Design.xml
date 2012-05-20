@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Data.Services.Design</name>
+  </assembly>
+  <members>
+    <member name="T:System.Data.Services.BuildProvider.DataServiceBuildProvider">
+      <summary>Создает код на языке C# или Visual Basic для клиентского приложения Службы данных WCF на основе метаданных, возвращаемых службой данных.</summary>
+    </member>
+    <member name="M:System.Data.Services.BuildProvider.DataServiceBuildProvider.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.Data.Services.BuildProvider.DataServiceBuildProvider" />.</summary>
+    </member>
+    <member name="M:System.Data.Services.BuildProvider.DataServiceBuildProvider.GenerateCode(System.Web.Compilation.AssemblyBuilder)">
+      <summary>Создает код на языке C# или Visual Basic для клиентского приложения Службы данных WCF на основе метаданных, возвращаемых службой данных.</summary>
+      <param name="assemblyBuilder">Контейнер для построения сборки.</param>
+    </member>
+    <member name="T:System.Data.Services.Design.DataServiceCodeVersion">
+      <summary>Указывает конкретную версию Службы данных WCF, на которую необходимо ориентироваться при создании кода. </summary>
+    </member>
+    <member name="F:System.Data.Services.Design.DataServiceCodeVersion.V1">
+      <summary>Созданный код предназначен для версии 1.0.</summary>
+    </member>
+    <member name="F:System.Data.Services.Design.DataServiceCodeVersion.V2">
+      <summary>Созданный код предназначен для версии 2.0.</summary>
+    </member>
+    <member name="T:System.Data.Services.Design.EdmToObjectNamespaceMap">
+      <summary>Используется утилитами командной строки и инструментами Visual Studio, генерирующими код для генерации сильно типизированных клиентских объектов для взаимодействия со службами данных.</summary>
+    </member>
+    <member name="M:System.Data.Services.Design.EdmToObjectNamespaceMap.Add(System.String,System.String)">
+      <summary>Добавляет сопоставление между пространством имен модели "сущность-данные" и объектом.</summary>
+      <param name="edmNamespace">Строка, содержащая имя пространства имен.</param>
+      <param name="objectNamespace">Строка, содержащая пространство имен объектов.</param>
+    </member>
+    <member name="M:System.Data.Services.Design.EdmToObjectNamespaceMap.Clear">
+      <summary>Очищает <see cref="T:System.Data.Services.Design.EdmToObjectNamespaceMap" />.</summary>
+    </member>
+    <member name="M:System.Data.Services.Design.EdmToObjectNamespaceMap.Contains(System.String)">
+      <summary>Запрашивает, содержат ли сопоставления объект, указанный в параметре <paramref name="edmNamespace" />. </summary>
+      <returns>Значение true, если объект найден; в противном случае — значение false.</returns>
+      <param name="edmNamespace">Строковое значение, содержащее запрашиваемый объект сопоставления.</param>
+    </member>
+    <member name="P:System.Data.Services.Design.EdmToObjectNamespaceMap.Count">
+      <summary>Возвращает количество сопоставлений, содержащихся в <see cref="T:System.Data.Services.Design.EdmToObjectNamespaceMap" />.</summary>
+      <returns>Целое значение, содержащее количество сопоставлений.</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.EdmToObjectNamespaceMap.EdmNamespaces">
+      <summary>Возвращает элементы edmNamespace в объекте <see cref="T:System.Data.Services.Design.EdmToObjectNamespaceMap" />.</summary>
+      <returns>Строковое значение, содержащее элементы EdmNamespace.</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.EdmToObjectNamespaceMap.Item(System.String)">
+      <summary>Возвращает пространство имен, идентифицируемое параметром <paramref name="edmNamespace" />.</summary>
+      <returns>Объект EdmNamespace. </returns>
+      <param name="edmNamespace">Строковое значение, содержащее имя edmNamespace.</param>
+    </member>
+    <member name="M:System.Data.Services.Design.EdmToObjectNamespaceMap.Remove(System.String)">
+      <summary>Удаляет объект, идентифицируемый параметром <paramref name="edmNamespace" />.</summary>
+      <returns>Значение равно true, если операция выполнена успешно, в противном случае значение равно false.</returns>
+      <param name="edmNamespace">Строковое значение, содержащее объект сопоставления.</param>
+    </member>
+    <member name="M:System.Data.Services.Design.EdmToObjectNamespaceMap.TryGetObjectNamespace(System.String,System.String@)">
+      <summary>Проверяет, сопоставляется ли объект, идентифицируемый параметрами <paramref name="objectNamespace" /> и <paramref name="edmNamespace" />, в объекте <see cref="T:System.Data.Services.Design.EdmToObjectNamespaceMap" />.</summary>
+      <returns>Значение true если сопоставление возвращается; в противном случае — значение false.</returns>
+      <param name="edmNamespace">Строковое значение, содержащее имя пространства имен.</param>
+      <param name="objectNamespace">Строковое значение, идентифицирующее пространство имен объекта.</param>
+    </member>
+    <member name="T:System.Data.Services.Design.EntityClassGenerator">
+      <summary>Используется утилитами командной строки и инструментами Visual Studio, генерирующими код для генерации сильно типизированных клиентских объектов для взаимодействия со службами данных. </summary>
+    </member>
+    <member name="M:System.Data.Services.Design.EntityClassGenerator.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Services.Design.EntityClassGenerator" />. </summary>
+    </member>
+    <member name="M:System.Data.Services.Design.EntityClassGenerator.#ctor(System.Data.Services.Design.LanguageOption)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Services.Design.EntityClassGenerator" />. </summary>
+      <param name="languageOption">Выбирает язык программирования.</param>
+    </member>
+    <member name="P:System.Data.Services.Design.EntityClassGenerator.EdmToObjectNamespaceMap">
+      <summary>Возвращает объект EdmToObjectNamespaceMap, который используется при генерации класса сущности.</summary>
+      <returns>Объект EdmToObjectNamespaceMap.</returns>
+    </member>
+    <member name="M:System.Data.Services.Design.EntityClassGenerator.GenerateCode(System.Xml.XmlReader,System.IO.TextWriter,System.String)">
+      <summary>Генерирует код для модели данных, используя переключатели, заданные параметрами.</summary>
+      <returns>Список ошибок схемы, которые возникли в процессе создания.</returns>
+      <param name="sourceReader">Объект чтения XML.</param>
+      <param name="targetWriter">Базовый объект модуля записи текста.</param>
+      <param name="namespacePrefix">Строка, содержащая префикс пространства имен.</param>
+    </member>
+    <member name="M:System.Data.Services.Design.EntityClassGenerator.GenerateCode(System.Xml.XmlReader,System.String)">
+      <summary>Генерирует код для объектной модели.</summary>
+      <returns>Список ошибок схемы, которые возникли в процессе создания.</returns>
+      <param name="sourceReader">Объект чтения XML.</param>
+      <param name="targetFilePath">Строка, содержащая путь к целевому файлу.</param>
+    </member>
+    <member name="P:System.Data.Services.Design.EntityClassGenerator.LanguageOption">
+      <summary>Возвращает языковой параметр, использованный при генерации модели данных.</summary>
+      <returns>Языковой параметр.</returns>
+    </member>
+    <member name="E:System.Data.Services.Design.EntityClassGenerator.OnPropertyGenerated">
+      <summary>Происходит при генерации свойства. </summary>
+    </member>
+    <member name="E:System.Data.Services.Design.EntityClassGenerator.OnTypeGenerated">
+      <summary>Происходит при генерации типа.</summary>
+    </member>
+    <member name="P:System.Data.Services.Design.EntityClassGenerator.UseDataServiceCollection">
+      <summary>Получает или задает, нужно ли включать в создание кода код для поддержки привязки данных.</summary>
+      <returns>Значение <see cref="T:System.Boolean" />, равное true, если требуется код привязки данных; в противном случае — значение false.</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.EntityClassGenerator.Version">
+      <summary>Получает и задает версию Службы данных WCF, для которой предназначен созданный код.</summary>
+      <returns>Значение <see cref="T:System.Data.Services.Design.DataServiceCodeVersion" />, указывающее версию созданного кода.</returns>
+    </member>
+    <member name="T:System.Data.Services.Design.LanguageOption">
+      <summary>Используется утилитами командной строки и инструментами Visual Studio, генерирующими код для генерации сильно типизированных клиентских объектов для взаимодействия со службами данных.</summary>
+    </member>
+    <member name="F:System.Data.Services.Design.LanguageOption.GenerateCSharpCode">
+      <summary>Генерирует код на C#.</summary>
+    </member>
+    <member name="F:System.Data.Services.Design.LanguageOption.GenerateVBCode">
+      <summary>Генерирует код на Visual Basic. </summary>
+    </member>
+    <member name="T:System.Data.Services.Design.PropertyGeneratedEventArgs">
+      <summary>Используется утилитами командной строки и инструментами Visual Studio, генерирующими код для генерации сильно типизированных клиентских объектов для взаимодействия со службами данных. </summary>
+    </member>
+    <member name="M:System.Data.Services.Design.PropertyGeneratedEventArgs.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Services.Design.PropertyGeneratedEventArgs" />. </summary>
+    </member>
+    <member name="M:System.Data.Services.Design.PropertyGeneratedEventArgs.#ctor(System.Data.Metadata.Edm.MetadataItem,System.String,System.CodeDom.CodeTypeReference)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Services.Design.PropertyGeneratedEventArgs" />. </summary>
+      <param name="propertySource">Источник свойства.</param>
+      <param name="backingFieldName">Имя резервного поля.</param>
+      <param name="returnType">Тип возвращаемого значения.</param>
+    </member>
+    <member name="P:System.Data.Services.Design.PropertyGeneratedEventArgs.AdditionalAttributes">
+      <summary>Этот класс не предназначен для публичного использования и используется для генерации сильно-типизированных клиентских объектов для взаимодействия со службами данных.</summary>
+      <returns>Дополнительные атрибуты.</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.PropertyGeneratedEventArgs.AdditionalGetStatements">
+      <summary>Этот класс не предназначен для публичного использования и используется для генерации сильно-типизированных клиентских объектов для взаимодействия со службами данных.</summary>
+      <returns>Дополнительные инструкции Get.</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.PropertyGeneratedEventArgs.AdditionalSetStatements">
+      <summary>Этот класс не предназначен для публичного использования и используется для генерации сильно-типизированных клиентских объектов для взаимодействия со службами данных.</summary>
+      <returns>Дополнительные инструкции Set.</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.PropertyGeneratedEventArgs.BackingFieldName">
+      <summary>Этот класс не предназначен для публичного использования и используется для генерации сильно-типизированных клиентских объектов для взаимодействия со службами данных.</summary>
+      <returns>Имя резервного поля.</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.PropertyGeneratedEventArgs.PropertySource">
+      <summary>Этот класс не предназначен для публичного использования и используется для генерации сильно-типизированных клиентских объектов для взаимодействия со службами данных.</summary>
+      <returns>Источник свойства.</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.PropertyGeneratedEventArgs.ReturnType">
+      <summary>Этот класс не предназначен для публичного использования и используется для генерации сильно-типизированных клиентских объектов для взаимодействия со службами данных.</summary>
+      <returns>Тип возвращаемого значения.</returns>
+    </member>
+    <member name="T:System.Data.Services.Design.TypeGeneratedEventArgs">
+      <summary>Используется утилитами командной строки и инструментами Visual Studio, генерирующими код для генерации сильно типизированных клиентских объектов для взаимодействия со службами данных. </summary>
+    </member>
+    <member name="M:System.Data.Services.Design.TypeGeneratedEventArgs.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Services.Design.TypeGeneratedEventArgs" />. </summary>
+    </member>
+    <member name="M:System.Data.Services.Design.TypeGeneratedEventArgs.#ctor(System.Data.Metadata.Edm.GlobalItem,System.CodeDom.CodeTypeReference)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Data.Services.Design.TypeGeneratedEventArgs" />. </summary>
+      <param name="typeSource">Источник типа.</param>
+      <param name="baseType">Базовый тип.</param>
+    </member>
+    <member name="P:System.Data.Services.Design.TypeGeneratedEventArgs.AdditionalAttributes">
+      <summary>Этот класс не предназначен для публичного использования и используется для генерации сильно-типизированных клиентских объектов для взаимодействия со службами данных.</summary>
+      <returns>Дополнительные атрибуты.</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.TypeGeneratedEventArgs.AdditionalInterfaces">
+      <summary>Этот класс не предназначен для публичного использования и используется для генерации сильно-типизированных клиентских объектов для взаимодействия со службами данных.</summary>
+      <returns>Дополнительные интерфейсы.</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.TypeGeneratedEventArgs.AdditionalMembers">
+      <summary>Этот класс не предназначен для публичного использования и используется для генерации сильно-типизированных клиентских объектов для взаимодействия со службами данных.</summary>
+      <returns>Дополнительные члены.</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.TypeGeneratedEventArgs.BaseType">
+      <summary>Этот класс не предназначен для публичного использования и используется для генерации сильно-типизированных клиентских объектов для взаимодействия со службами данных.</summary>
+      <returns>Базовый тип.</returns>
+    </member>
+    <member name="P:System.Data.Services.Design.TypeGeneratedEventArgs.TypeSource">
+      <summary>Этот класс не предназначен для публичного использования и используется для генерации сильно-типизированных клиентских объектов для взаимодействия со службами данных.</summary>
+      <returns>Тип источника.</returns>
+    </member>
+  </members>
+</doc>

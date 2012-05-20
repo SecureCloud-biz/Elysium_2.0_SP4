@@ -5,13 +5,13 @@
 
   <xs:complexType name="doc">
     <xs:sequence>
-      <xs:element minOccurs="1" maxOccurs="1" name="assembly" type="assembly"/>
-      <xs:element minOccurs="1" maxOccurs="1" name="members" type="members"/>
+      <xs:element name="assembly" type="assembly"/>
+      <xs:element name="members" type="members"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="assembly">
     <xs:sequence>
-      <xs:element minOccurs="1" maxOccurs="1" name="name" type="xs:string"/>
+      <xs:element name="name" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
   
@@ -24,12 +24,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="member">
-    <xs:sequence minOccurs="1" maxOccurs="1">
+    <xs:sequence>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element name="inheritdoc" type="inheritdoc"/>
+          <xs:element minOccurs="0" name="summary" type="summary"/>
+        </xs:sequence>
+        <xs:element name="summary" type="summary"/>
+      </xs:choice>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="typeparam" type="typeparam"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="param" type="param"/>
-      <xs:element minOccurs="0" maxOccurs="1" name="value" type="value"/>
-      <xs:element minOccurs="0" maxOccurs="1" name="returns" type="returns"/>
-      <xs:element minOccurs="0" maxOccurs="1" name="remarks" type="remarks"/>
+      <xs:element minOccurs="0" name="value" type="value"/>
+      <xs:element minOccurs="0" name="returns" type="returns"/>
+      <xs:element minOccurs="0" name="remarks" type="remarks"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="example" type="example"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="exception" type="exception"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="requires" type="requires"/>
@@ -63,7 +70,7 @@
     <xs:complexContent>
       <xs:extension base="member">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="remarks" type="remarks"/>
+          <xs:element minOccurs="0" name="remarks" type="remarks"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="seealso" type="seealso"/>
         </xs:sequence>
         <xs:attribute name="name" use="required" type="namespaceIdentifier"/>
@@ -76,7 +83,7 @@
       <xs:extension base="member">
         <xs:sequence>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="typeparam" type="typeparam"/>
-          <xs:element minOccurs="0" maxOccurs="1" name="remarks" type="remarks"/>
+          <xs:element minOccurs="0" name="remarks" type="remarks"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="example" type="example"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="invariant" type="invariant"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="permission" type="permission"/>
@@ -93,8 +100,8 @@
         <xs:sequence>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="typeparam" type="typeparam"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="param" type="param"/>
-          <xs:element minOccurs="0" maxOccurs="1" name="returns" type="returns"/>
-          <xs:element minOccurs="0" maxOccurs="1" name="remarks" type="remarks"/>
+          <xs:element minOccurs="0" name="returns" type="returns"/>
+          <xs:element minOccurs="0" name="remarks" type="remarks"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="example" type="example"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="permission" type="permission"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="seealso" type="seealso"/>
@@ -108,8 +115,8 @@
     <xs:complexContent>
       <xs:extension base="member">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="value" type="value"/>
-          <xs:element minOccurs="0" maxOccurs="1" name="remarks" type="remarks"/>
+          <xs:element minOccurs="0" name="value" type="value"/>
+          <xs:element minOccurs="0" name="remarks" type="remarks"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="example" type="example"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="permission" type="permission"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="seealso" type="seealso"/>
@@ -123,14 +130,14 @@
     <xs:complexContent>
       <xs:extension base="member">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="getter" type="contracts"/>
-          <xs:element minOccurs="0" maxOccurs="1" name="setter" type="contracts"/>
+          <xs:element minOccurs="0" name="getter" type="contracts"/>
+          <xs:element minOccurs="0" name="setter" type="contracts"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="param" type="param"/>
-          <xs:choice>
+          <xs:choice minOccurs="0">
             <xs:element name="value" type="value"/>
             <xs:element name="returns" type="returns"/>
           </xs:choice>
-          <xs:element minOccurs="0" maxOccurs="1" name="remarks" type="remarks"/>
+          <xs:element minOccurs="0" name="remarks" type="remarks"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="example" type="example"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="exception" type="exception"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="permission" type="permission"/>
@@ -147,8 +154,8 @@
         <xs:sequence>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="typeparam" type="typeparam"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="param" type="param"/>
-          <xs:element minOccurs="0" maxOccurs="1" name="returns" type="returns"/>
-          <xs:element minOccurs="0" maxOccurs="1" name="remarks" type="remarks"/>
+          <xs:element minOccurs="0" name="returns" type="returns"/>
+          <xs:element minOccurs="0" name="remarks" type="remarks"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="example" type="example"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="exception" type="exception"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="requires" type="requires"/>
@@ -166,7 +173,7 @@
     <xs:complexContent>
       <xs:extension base="member">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="1" name="remarks" type="remarks"/>
+          <xs:element minOccurs="0" name="remarks" type="remarks"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="example" type="example"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="permission" type="permission"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="seealso" type="seealso"/>
@@ -177,13 +184,16 @@
   </xs:complexType>
   
   <xs:complexType name="member">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="1" name="inheritdoc" type="summary"/>
-      <xs:element minOccurs="1" maxOccurs="1" name="summary" type="summary"/>
-    </xs:sequence>
+    <xs:choice>
+      <xs:sequence>
+        <xs:element name="inheritdoc" type="inheritdoc"/>
+        <xs:element minOccurs="0" name="summary" type="summary"/>
+      </xs:sequence>
+      <xs:element name="summary" type="summary"/>
+    </xs:choice>
   </xs:complexType>
   <!-- END Alternative schema -->
-
+  
   <xs:complexType name="inheritdoc" mixed="false">
     <xs:attribute name="cref" use="optional" type="identifier"/>
     <xs:attribute name="select" use="optional" type="xs:string"/>
@@ -339,11 +349,11 @@
     <xs:sequence>
       <xs:choice>
         <xs:sequence>
-          <xs:element name="listheader" minOccurs="0" maxOccurs="1">
+          <xs:element name="listheader" minOccurs="0">
             <xs:complexType>
               <xs:sequence>
-                <xs:element minOccurs="0" maxOccurs="1" name="term" type="xs:string"/>
-                <xs:element minOccurs="0" maxOccurs="1" name="description">
+                <xs:element minOccurs="0" name="term" type="xs:string"/>
+                <xs:element minOccurs="0" name="description">
                   <xs:complexType>
                     <xs:complexContent>
                       <xs:extension base="content"/>
@@ -356,8 +366,8 @@
           <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
             <xs:complexType mixed="true">
               <xs:sequence>
-                <xs:element minOccurs="0" maxOccurs="1" name="term" type="xs:string"/>
-                <xs:element minOccurs="0" maxOccurs="1" name="description">
+                <xs:element minOccurs="0" name="term" type="xs:string"/>
+                <xs:element minOccurs="0" name="description">
                   <xs:complexType>
                     <xs:complexContent>
                       <xs:extension base="content"/>

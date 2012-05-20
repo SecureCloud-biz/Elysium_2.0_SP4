@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 
@@ -21,7 +22,7 @@ namespace Elysium.Controls
             KeyboardNavigation.DirectionalNavigationProperty.OverrideMetadata(typeof(Submenu), new FrameworkPropertyMetadata(KeyboardNavigationMode.Cycle));
         }
 
-        protected override System.Windows.Automation.Peers.AutomationPeer OnCreateAutomationPeer()
+        protected override AutomationPeer OnCreateAutomationPeer()
         {
             return new SubmenuAutomationPeer(this);
         }

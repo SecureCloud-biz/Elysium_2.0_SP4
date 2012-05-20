@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Activities.Core.Design</name>
+  </assembly>
+  <members>
+    <member name="T:System.Activities.Core.Design.ActivityCategoryEditor"></member>
+    <member name="M:System.Activities.Core.Design.ActivityCategoryEditor.#ctor"></member>
+    <member name="M:System.Activities.Core.Design.ActivityCategoryEditor.ConsumesProperty(System.Activities.Design.PropertyEditing.PropertyEntry)"></member>
+    <member name="P:System.Activities.Core.Design.ActivityCategoryEditor.EditorTemplate"></member>
+    <member name="P:System.Activities.Core.Design.ActivityCategoryEditor.EditorTemplateName"></member>
+    <member name="M:System.Activities.Core.Design.ActivityCategoryEditor.GetImage(System.Windows.Size)"></member>
+    <member name="P:System.Activities.Core.Design.ActivityCategoryEditor.TargetCategory"></member>
+    <member name="P:System.Activities.Core.Design.ActivityCategoryEditor.TargetCategoryImage"></member>
+    <member name="P:System.Activities.Core.Design.ActivityCategoryEditor.TargetCategoryName"></member>
+    <member name="T:System.Activities.Core.Design.ConnectionPointType">
+      <summary>Describes the different types of connection points. </summary>
+    </member>
+    <member name="F:System.Activities.Core.Design.ConnectionPointType.Default">
+      <summary>Default. </summary>
+    </member>
+    <member name="F:System.Activities.Core.Design.ConnectionPointType.Incoming">
+      <summary>Incoming. </summary>
+    </member>
+    <member name="F:System.Activities.Core.Design.ConnectionPointType.Outgoing">
+      <summary>Outgoing. </summary>
+    </member>
+    <member name="T:System.Activities.Core.Design.DesignerMetadata">
+      <summary>Contains the designer metadata. </summary>
+    </member>
+    <member name="M:System.Activities.Core.Design.DesignerMetadata.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:System.Activities.Core.Design.DesignerMetadata" /> class.</summary>
+    </member>
+    <member name="M:System.Activities.Core.Design.DesignerMetadata.Register">
+      <summary>Registers the runtime metadata.</summary>
+    </member>
+    <member name="T:System.Activities.Core.Design.FlowchartDesignerCommands"></member>
+    <member name="F:System.Activities.Core.Design.FlowchartDesignerCommands.ConnectNodesCommand"></member>
+    <member name="T:System.Activities.Core.Design.ForEach"></member>
+    <member name="M:System.Activities.Core.Design.ForEach.#ctor"></member>
+    <member name="M:System.Activities.Core.Design.ForEach.Create"></member>
+    <member name="T:System.Activities.Core.Design.ForEach`1">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Activities.Core.Design.ForEach`1.#ctor"></member>
+    <member name="M:System.Activities.Core.Design.ForEach`1.Create"></member>
+    <member name="T:System.Activities.Core.Design.GenericTypeArgumentConverter"></member>
+    <member name="M:System.Activities.Core.Design.GenericTypeArgumentConverter.#ctor"></member>
+    <member name="M:System.Activities.Core.Design.GenericTypeArgumentConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)"></member>
+    <member name="M:System.Activities.Core.Design.GenericTypeArgumentConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)"></member>
+    <member name="T:System.Activities.Core.Design.LocationChangedEventArgs">
+      <summary>Contains the arguments for the LocationChanged event. </summary>
+    </member>
+    <member name="M:System.Activities.Core.Design.LocationChangedEventArgs.#ctor(System.Windows.Point)">
+      <summary>Initializes a new instance of the <see cref="T:System.Activities.Core.Design.LocationChangedEventArgs" /> class. </summary>
+      <param name="newLocation">The new location. </param>
+    </member>
+    <member name="P:System.Activities.Core.Design.LocationChangedEventArgs.NewLocation">
+      <summary>Gets the new location. </summary>
+      <returns>Returns <see cref="T:System.Windows.Point" />.Contains the new location. </returns>
+    </member>
+    <member name="T:System.Activities.Core.Design.ParallelForEach"></member>
+    <member name="M:System.Activities.Core.Design.ParallelForEach.#ctor"></member>
+    <member name="M:System.Activities.Core.Design.ParallelForEach.Create"></member>
+    <member name="T:System.Activities.Core.Design.ParallelForEach`1">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Activities.Core.Design.ParallelForEach`1.#ctor"></member>
+    <member name="M:System.Activities.Core.Design.ParallelForEach`1.Create"></member>
+    <member name="T:System.Activities.Core.Design.Pick"></member>
+    <member name="M:System.Activities.Core.Design.Pick.#ctor"></member>
+    <member name="M:System.Activities.Core.Design.Pick.Create"></member>
+    <member name="T:System.Activities.Core.Design.Themes.DesignerStylesDictionary">
+      <summary>Contains a dictionary for designer styles.</summary>
+    </member>
+    <member name="M:System.Activities.Core.Design.Themes.DesignerStylesDictionary.InitializeComponent">
+      <summary>Initializes the current instance.</summary>
+    </member>
+    <member name="P:System.Activities.Core.Design.Themes.DesignerStylesDictionary.SequenceStyle"></member>
+    <member name="M:System.Activities.Core.Design.Themes.DesignerStylesDictionary.System#Windows#Markup#IComponentConnector#Connect(System.Int32,System.Object)">
+      <summary>Attaches events and names to compiled content. </summary>
+      <param name="connectionId">The connection ID.</param>
+      <param name="target">The target.</param>
+    </member>
+    <member name="T:System.ServiceModel.Activities.Design.ReceiveAndSendReply"></member>
+    <member name="M:System.ServiceModel.Activities.Design.ReceiveAndSendReply.#ctor"></member>
+    <member name="M:System.ServiceModel.Activities.Design.ReceiveAndSendReply.Create"></member>
+    <member name="T:System.ServiceModel.Activities.Design.SendAndReceiveReply"></member>
+    <member name="M:System.ServiceModel.Activities.Design.SendAndReceiveReply.#ctor"></member>
+    <member name="M:System.ServiceModel.Activities.Design.SendAndReceiveReply.Create"></member>
+  </members>
+</doc>

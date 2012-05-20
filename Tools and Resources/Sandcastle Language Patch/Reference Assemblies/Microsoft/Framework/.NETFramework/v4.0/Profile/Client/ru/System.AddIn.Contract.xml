@@ -1,0 +1,1517 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.AddIn.Contract</name>
+  </assembly>
+  <members>
+    <member name="T:System.AddIn.Contract.IContract">
+      <summary>Представляет базовый интерфейс для всех контрактов, используемых для коммуникации между компонентами, которые обновляются независимо друг от друга.</summary>
+    </member>
+    <member name="M:System.AddIn.Contract.IContract.AcquireLifetimeToken">
+      <summary>Указывает, что контракт доступен для клиента, до тех пор, пока клиент не отменит контракт.</summary>
+      <returns>Значение, известное так же, как маркер времени жизни, идентифицирующее запрос контракта клиентом.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IContract.GetRemoteHashCode">
+      <summary>Возвращает хэш-код для <see cref="T:System.AddIn.Contract.IContract" />.</summary>
+      <returns>Хэш-код для <see cref="T:System.AddIn.Contract.IContract" />.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IContract.QueryContract(System.String)">
+      <summary>Возвращает контракт, реализуемый данным контрактом.</summary>
+      <returns>Объект <see cref="T:System.AddIn.Contract.IContract" /> представляет контракт, запрашиваемый клиентом из текущего контракта; null, если текущий контракт не поддерживает запрашиваемый контракт.</returns>
+      <param name="contractIdentifier">Строка, определяющая, что контракт запрашивается.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IContract.RemoteEquals(System.AddIn.Contract.IContract)">
+      <summary>Указывает, идентичен ли выбранный контракт данному объекту <see cref="T:System.AddIn.Contract.IContract" />.</summary>
+      <returns>true если <paramref name="contract" /> идентичен <see cref="T:System.AddIn.Contract.IContract" />; в противном случае — значение false.</returns>
+      <param name="contract">Контракт, который требуется сравнить с <see cref="T:System.AddIn.Contract.IContract" />.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IContract.RemoteToString">
+      <summary>Возвращает строковое представление текущего объекта <see cref="T:System.AddIn.Contract.IContract" />.</summary>
+      <returns>Строковое представление текущего объекта <see cref="T:System.AddIn.Contract.IContract" />.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IContract.RevokeLifetimeToken(System.Int32)">
+      <summary>Указывает, что контракт больше не доступен для клиента.</summary>
+      <param name="token">Значение, известное так же, как маркер времени жизни, указывающее, что клиент отменяет контракт.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.IEnumeratorContract`1">
+      <summary>Перечисляет элементы в коллекции <see cref="T:System.AddIn.Contract.IListContract`1" />.</summary>
+      <typeparam name="T">Тип перечисляемых объектов. </typeparam>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IEnumeratorContract`1.GetCurrent">
+      <summary>Возвращает объект коллекции на текущую позицию перечислителя.</summary>
+      <returns>Объект <see cref="T:System.AddIn.Contract.IContract" />, соответствующий текущей позиции перечислителя в коллекции.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IEnumeratorContract`1.MoveNext">
+      <summary>Перемещает перечислитель на следующий элемент коллекции.</summary>
+      <returns>Значение true, если перечислитель был успешно перемещен к следующему элементу; значение false, если перечислитель достиг конца коллекции.</returns>
+      <exception cref="T:System.InvalidOperationException">Коллекция была изменена после создания перечислителя. </exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IEnumeratorContract`1.Reset">
+      <summary>Устанавливает перечислитель в исходное положение перед первым элементом коллекции.</summary>
+      <exception cref="T:System.InvalidOperationException">Коллекция была изменена после создания перечислителя. </exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.IExecutorExtensionContract">
+      <summary>Определяет интерфейс, который могут реализовывать узловые приложения для расширения выполнителей надстройки.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IExecutorExtensionContract.AssemblyLoaded(System.String)">
+      <summary>Вызывается после того, как выполнитель надстройки загружает сборку надстройки.</summary>
+      <param name="assemblyName">Имя загруженной сборки.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IExecutorExtensionContract.AssemblyLoadedFrom(System.String)">
+      <summary>Вызывается после того, как выполнитель надстройки загружает сборку надстройки из указанного места.</summary>
+      <param name="assemblyFile">Имя загруженной сборки.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IExecutorExtensionContract.AssemblyLoading(System.String)">
+      <summary>Вызывается непосредственно перед тем, как выполнитель надстройки загружает сборку надстройки.</summary>
+      <param name="assemblyName">Имя сборки, которая должна быть загружена.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IExecutorExtensionContract.AssemblyLoadingFrom(System.String)">
+      <summary>Вызывается непосредственно перед тем, как выполнитель надстройки загружает сборку надстройки из указанного места.</summary>
+      <param name="assemblyFile">Имя сборки, которая должна быть загружена.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IExecutorExtensionContract.EntryPointStarted(System.AddIn.Contract.IContract)">
+      <summary>Вызывается после того, как выполнитель надстройки создает точку входа сборки надстройки.</summary>
+      <param name="entryPoint">
+        <see cref="T:System.AddIn.Contract.IContract" />, представляющий созданную точку входа.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IExecutorExtensionContract.EntryPointStarting(System.String,System.String,System.AddIn.Contract.Collections.IRemoteArgumentArrayContract)">
+      <summary>Вызывается непосредственно перед тем, как выполнитель надстройки создает точку входа в сборке надстройки.</summary>
+      <param name="assemblyName">Имя сборки надстройки.</param>
+      <param name="startupClass">Имя класса, являющегося точкой входа для сборки надстройки.</param>
+      <param name="initArgs">
+        <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayContract" />, содержащий аргументы, будет передан конструктору для <paramref name="startupClass" />.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IExecutorExtensionContract.ExecutorCreated">
+      <summary>Вызывается после того, как загрузчик надстройки создает новый выполнитель надстройки.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.IListContract`1">
+      <summary>Представляет список параметров настройки типов, которые определяются контрактом и используются для передачи коллекций этого типа контракта между узлом и надстройкой.</summary>
+      <typeparam name="T">Тип контракта объектов в списке.</typeparam>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.Add(`0)">
+      <summary>Добавляет объект в коллекцию <see cref="T:System.AddIn.Contract.IListContract`1" />. </summary>
+      <param name="item">The object to add.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.Clear">
+      <summary>Removes all objects from an <see cref="T:System.AddIn.Contract.IListContract`1" /> collection. </summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.Contains(`0)">
+      <summary>Определяет, присутствует ли указанный элемент в коллекции <see cref="T:System.AddIn.Contract.IListContract`1" />.</summary>
+      <returns>true if <paramref name="item" /> is in the collection; otherwise, false. </returns>
+      <param name="item">The object to look for in the collection.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.GetCount">
+      <summary>Возвращает число элементов коллекции <see cref="T:System.AddIn.Contract.IListContract`1" />.</summary>
+      <returns>The number of items in the collection.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.GetEnumeratorContract">
+      <summary>Возвращает перечислитель, осуществляющий итерацию через <see cref="T:System.AddIn.Contract.IListContract`1" />.</summary>
+      <returns>Перечислитель <see cref="T:System.AddIn.Contract.IEnumeratorContract`1" />, осуществляющий итерацию в коллекции.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.GetIsReadOnly">
+      <summary>Определяет, доступна ли коллекция <see cref="T:System.AddIn.Contract.IListContract`1" /> только для чтения.</summary>
+      <returns>true if the collection is read-only; otherwise, false. </returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.GetItem(System.Int32)">
+      <summary>Возвращает элемент с заданным индексом в коллекции <see cref="T:System.AddIn.Contract.IListContract`1" />.</summary>
+      <returns>Элемент с заданным индексом.</returns>
+      <param name="index">The zero-based index of the item to get.</param>
+      <exception cref="T:System.IndexOutOfRangeException">Значение параметра <paramref name="index" /> меньше нуля.-или-<paramref name="index" /> is equal to or greater than the return value of <see cref="M:System.AddIn.Contract.IListContract`1.GetCount" />.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.IndexOf(`0)">
+      <summary>Возвращает индекс конкретного элемента в коллекции <see cref="T:System.AddIn.Contract.Collections.IListContract`1" />.</summary>
+      <returns>Индекс выбранного элемента.</returns>
+      <param name="item">Элемент коллекции.</param>
+      <exception cref="T:System.IndexOutOfRangeException">Значение параметра <paramref name="index" /> меньше нуля.-или-<paramref name="index" /> is equal to or greater than the return value of the <see cref="M:System.AddIn.Contract.IListContract`1.GetCount" /> method.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.Insert(System.Int32,`0)">
+      <summary>Вставляет элемент по указанному индексу в коллекцию <see cref="T:System.AddIn.Contract.IListContract`1" />.</summary>
+      <param name="index">The zero-based index at which to insert <paramref name="item" />.</param>
+      <param name="item">Объект <see cref="T:System.AddIn.Contract.IContract" />, вставляемый в коллекцию <see cref="T:System.AddIn.Contract.IListContract`1" />.</param>
+      <exception cref="T:System.IndexOutOfRangeException">Значение параметра <paramref name="index" /> меньше нуля.-или-Значение индекса массива <paramref name="index" /> больше или равно возвращаемого значения <see cref="M:System.AddIn.Contract.IListContract`1.GetCount" />.</exception>
+      <exception cref="T:System.NotSupportedException">Коллекция <see cref="T:System.AddIn.Contract.IListContract`1" /> доступна только для чтения.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.Remove(`0)">
+      <summary>Удаляет элемент из коллекции <see cref="T:System.AddIn.Contract.IListContract`1" /> указанного типа.</summary>
+      <returns>Значение true если элемент удален; в противном случае — значение false. </returns>
+      <param name="item">The item to remove from the collection.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.RemoveAt(System.Int32)">
+      <summary>Удаляет элемент с указанным индексом в коллекции <see cref="T:System.AddIn.Contract.IListContract`1" />.</summary>
+      <param name="index">Индекс удаляемого элемента.</param>
+      <exception cref="T:System.IndexOutOfRangeException">Значение параметра <paramref name="index" /> меньше нуля.-или-<paramref name="index" /> is equal to or greater than the return value of the <see cref="M:System.AddIn.Contract.IListContract`1.GetCount" /> method.</exception>
+      <exception cref="T:System.NotSupportedException">Коллекция <see cref="T:System.AddIn.Contract.IListContract`1" /> доступна только для чтения.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IListContract`1.SetItem(System.Int32,`0)">
+      <summary>Задает элемент с указанным индексу в коллекции <see cref="T:System.AddIn.Contract.IListContract`1" />.</summary>
+      <param name="index">Индекс (начиная с нуля) задаваемого элемента.</param>
+      <param name="item">Элемент, который необходимо вставить по указанному индексу.</param>
+      <exception cref="T:System.IndexOutOfRangeException">Значение параметра<paramref name="index" /> меньше нуля.-или-Значение индекса массива <paramref name="index" /> больше или равно возвращаемого значения метода <see cref="M:System.AddIn.Contract.IListContract`1.GetCount" />.</exception>
+      <exception cref="T:System.NotSupportedException">Коллекция <see cref="T:System.AddIn.Contract.IListContract`1" /> доступна только для чтения.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.INativeHandleContract">
+      <summary>Предоставляет доступ к дескриптору окна (Hwnd) из машинного кода. </summary>
+    </member>
+    <member name="M:System.AddIn.Contract.INativeHandleContract.GetHandle">
+      <summary>Получает дескриптор окна (Hwnd).</summary>
+      <returns>Объект <see cref="T:System.IntPtr" />, представляющий указатель на дескриптор окна.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.IProfferServiceContract">
+      <summary>Позволяет клиентам обслуживать компоненты, на которых реализуется контракт.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IProfferServiceContract.ProfferService(System.String,System.AddIn.Contract.IServiceProviderContract)">
+      <summary>Добавляет услугу к набору услуг, доступных для клиентов компонента. </summary>
+      <param name="serviceIdentifier">Строка, идентифицирующая предложенную услугу. </param>
+      <param name="service">Объект <see cref="T:System.AddIn.Contract.IServiceProviderContract" /> , реализующий предложенную услугу.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IProfferServiceContract.RevokeService(System.String)">
+      <summary>Удаляет услугу из набора услуг, предложенных компонентом. </summary>
+      <param name="serviceIdentifier">Строка, идентифицирующая отмененную услугу.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.ISerializableObjectContract">
+      <summary>Определяет контракт, предоставляющий информацию о сериализуемом объекте.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.ISerializableObjectContract.GetCanonicalName">
+      <summary>Возвращает каноническое имя типа объекта, описывающего <see cref="T:System.AddIn.Contract.ISerializableObjectContract" />.</summary>
+      <returns>Каноническое имя типа объекта, описывающего <see cref="T:System.AddIn.Contract.ISerializableObjectContract" />.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.ISerializableObjectContract.GetSerializableObjectData">
+      <summary>Возвращает данные, которые могут помочь десериализовать объект, описывающий <see cref="T:System.AddIn.Contract.ISerializableObjectContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.SerializableObjectData" />, содержащий сведения об объекте, описывающем <see cref="T:System.AddIn.Contract.ISerializableObjectContract" />.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.IServiceProviderContract">
+      <summary>Определяет механизм получения контракта на обслуживание от компонента.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.IServiceProviderContract.QueryService(System.String,System.String)">
+      <summary>Возвращает контракт на обслуживание, реализуемый данным объектом <see cref="T:System.AddIn.Contract.IServiceProviderContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.IContract" />, представляющий контракт на обслуживание, который клиент запрашивает из <see cref="T:System.AddIn.Contract.IServiceProviderContract" />; null если <see cref="T:System.AddIn.Contract.IServiceProviderContract" /> не реализует запрошенный контракт.</returns>
+      <param name="serviceIdentifier">Имя запрашиваемой службы.</param>
+      <param name="serviceContractIdentifier">Запрашиваемый контракт на обслуживание.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.RemoteArgument">
+      <summary>Представляет экземпляр класса, который может передаваться через границы процесса и домена приложения.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.AddIn.Contract.IContract)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.AddIn.Contract.IContract" />.</summary>
+      <param name="value">Аргумент <see cref="T:System.AddIn.Contract.IContract" />, который может передаваться через границы процесса или домена приложения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.AddIn.Contract.IContract,System.Boolean)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.AddIn.Contract.IContract" />, который может передаваться по ссылке.</summary>
+      <param name="value">Аргумент <see cref="T:System.AddIn.Contract.IContract" />, который может передаваться через границы процесса или домена приложения.</param>
+      <param name="isByRef">true если <paramref name="value" /> является аргументом, который передается по ссылке; в противном случае — значение false.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.AddIn.Contract.RemoteArgumentKind,System.TypeCode)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" /> с помощью указанных <see cref="T:System.AddIn.Contract.RemoteArgumentKind" /> и <see cref="T:System.TypeCode" /> для аргумента, который не передается по ссылке.</summary>
+      <param name="remoteArgKind">Одно из значений <see cref="T:System.AddIn.Contract.RemoteArgumentKind" />, которое указывает представляет ли <see cref="T:System.AddIn.Contract.RemoteArgument" /> значение встроенного типа, массива встроенных типов, <see cref="T:System.AddIn.Contract.IContract" />, или значение <see cref="F:System.Type.Missing" />.</param>
+      <param name="typeCode">
+        <see cref="T:System.TypeCode" />, определяющий базовый тип удаленного аргумента.</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="remoteArgKind" /> — <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" /> или <see cref="F:System.AddIn.Contract.RemoteArgumentKind.IntrinsicArray" />, и <paramref name="typeCode" /> — <see cref="F:System.TypeCode.Object" /> или <see cref="F:System.TypeCode.Empty" />.— или —<paramref name="remoteArgKind" /> имеет значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Missing" />, а <paramref name="typeCode" /> не имеет значения <see cref="F:System.TypeCode.Empty" />.— или —<paramref name="remoteArgKind" /> имеет значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Contract" />, а <paramref name="typeCode" /> не имеет значения <see cref="F:System.TypeCode.Object" />.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.AddIn.Contract.RemoteArgumentKind,System.TypeCode,System.Boolean)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" /> с помощью указанных <see cref="T:System.AddIn.Contract.RemoteArgumentKind" /> и <see cref="T:System.TypeCode" /> для аргумента, который может передаваться по ссылке.</summary>
+      <param name="remoteArgKind">Одно из значений <see cref="T:System.AddIn.Contract.RemoteArgumentKind" />, которое указывает, представляет ли <see cref="T:System.AddIn.Contract.RemoteArgument" /> значение встроенного типа, массива встроенных типов <see cref="T:System.AddIn.Contract.IContract" /> или значение <see cref="F:System.Type.Missing" />.</param>
+      <param name="typeCode">
+        <see cref="T:System.TypeCode" />, определяющий базовый тип удаленного аргумента.</param>
+      <param name="isByRef">true если удаленный аргумент передается по ссылке; в противном случае — значение false.</param>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="remoteArgKind" /> — <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" /> или <see cref="F:System.AddIn.Contract.RemoteArgumentKind.IntrinsicArray" />, и <paramref name="typeCode" /> — <see cref="F:System.TypeCode.Object" /> или <see cref="F:System.TypeCode.Empty" />.— или —<paramref name="remoteArgKind" /> имеет значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Missing" />, а <paramref name="typeCode" /> не имеет значения <see cref="F:System.TypeCode.Empty" />.— или —<paramref name="remoteArgKind" /> имеет значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Contract" />, а <paramref name="typeCode" /> не имеет значения <see cref="F:System.TypeCode.Object" />.</exception>
+      <exception cref="T:System.InvalidOperationException">Параметр <paramref name="remoteArgKind" /> не является допустимым значением <see cref="T:System.AddIn.Contract.RemoteArgumentKind" />. </exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Array)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.Array" />.</summary>
+      <param name="array">Аргумент <see cref="T:System.Array" />, который может передаваться через границы процесса или домена приложения.</param>
+      <exception cref="T:System.ArgumentException">Тип элемента массива не является базовым типом (то есть, метод <see cref="M:System.Type.GetTypeCode(System.Type)" /> типа элемента массива возвращает <see cref="F:System.TypeCode.Object" />).</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="array" /> имеет значение null;</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Array,System.Boolean)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.Array" />, который может передаваться по ссылке.</summary>
+      <param name="array">Аргумент <see cref="T:System.Array" />, который может передаваться через границы процесса или домена приложения.</param>
+      <param name="isByRef">true если <paramref name="array" /> является аргументом, который передается по ссылке; в противном случае — значение false.</param>
+      <exception cref="T:System.ArgumentException">Тип элемента массива не является базовым типом (то есть, метод <see cref="M:System.Type.GetTypeCode(System.Type)" /> типа элемента массива возвращает функцию <see cref="F:System.TypeCode.Object" /> для типа элемента массива).</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="array" /> имеет значение null;</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Boolean)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.Boolean" />.</summary>
+      <param name="value">Аргумент <see cref="T:System.Boolean" />, который может передаваться через границы процесса или домена приложения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Boolean,System.Boolean)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.Boolean" />, который может передаваться по ссылке.</summary>
+      <param name="value">Аргумент <see cref="T:System.Boolean" />, который может передаваться через границы процесса или домена приложения.</param>
+      <param name="isByRef">true если <paramref name="value" /> является аргументом, который передается по ссылке; в противном случае — значение false.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Byte)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.Byte" />.</summary>
+      <param name="value">Аргумент <see cref="T:System.Byte" />, который может передаваться через границы процесса или домена приложения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Byte,System.Boolean)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.Byte" />, который может передаваться по ссылке.</summary>
+      <param name="value">Аргумент <see cref="T:System.Byte" />, который может передаваться через границы процесса или домена приложения.</param>
+      <param name="isByRef">true если <paramref name="value" /> является аргументом, который передается по ссылке; в противном случае — значение false.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Char)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.Char" />.</summary>
+      <param name="value">Аргумент <see cref="T:System.Char" />, который может передаваться через границы процесса или домена приложения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Char,System.Boolean)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.Char" />, который может передаваться по ссылке.</summary>
+      <param name="value">Аргумент <see cref="T:System.Char" />, который может передаваться через границы процесса или домена приложения.</param>
+      <param name="isByRef">true если <paramref name="value" /> является аргументом, который передается по ссылке; в противном случае — значение false.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.DateTime)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.DateTime" />.</summary>
+      <param name="value">Аргумент <see cref="T:System.DateTime" />, который может передаваться через границы процесса или домена приложения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.DateTime,System.Boolean)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.DateTime" />, который может передаваться по ссылке.</summary>
+      <param name="value">Аргумент <see cref="T:System.DateTime" />, который может передаваться через границы процесса или домена приложения.</param>
+      <param name="isByRef">true если <paramref name="value" /> является аргументом, который передается по ссылке; в противном случае — значение false.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.DBNull)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.DBNull" />.</summary>
+      <param name="value">Аргумент <see cref="T:System.DBNull" />, который может передаваться через границы процесса или домена приложения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.DBNull,System.Boolean)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.DBNull" />, который может передаваться по ссылке.</summary>
+      <param name="value">Аргумент <see cref="T:System.DBNull" />, который может передаваться через границы процесса или домена приложения.</param>
+      <param name="isByRef">true если <paramref name="value" /> является аргументом, который передается по ссылке; в противном случае — значение false.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Decimal)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.Decimal" />.</summary>
+      <param name="value">Аргумент <see cref="T:System.Decimal" />, который может передаваться через границы процесса или домена приложения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Decimal,System.Boolean)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.Decimal" />, который может передаваться по ссылке.</summary>
+      <param name="value">Аргумент <see cref="T:System.Decimal" />, который может передаваться через границы процесса или домена приложения.</param>
+      <param name="isByRef">true если <paramref name="value" /> является аргументом, который передается по ссылке; в противном случае — значение false.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Double)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.Double" />.</summary>
+      <param name="value">Аргумент <see cref="T:System.Double" />, который может передаваться через границы процесса или домена приложения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Double,System.Boolean)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.Double" />, который может передаваться по ссылке.</summary>
+      <param name="value">Аргумент <see cref="T:System.Double" />, который может передаваться через границы процесса или домена приложения.</param>
+      <param name="isByRef">true если <paramref name="value" /> является аргументом, который передается по ссылке; в противном случае — значение false.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Int16)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.Int16" />.</summary>
+      <param name="value">Аргумент <see cref="T:System.Int16" />, который может передаваться через границы процесса или домена приложения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Int16,System.Boolean)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.Int16" />, который может передаваться по ссылке.</summary>
+      <param name="value">Аргумент <see cref="T:System.Int16" />, который может передаваться через границы процесса или домена приложения.</param>
+      <param name="isByRef">true если <paramref name="value" /> является аргументом, который передается по ссылке; в противном случае — значение false.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Int32)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.Int32" />.</summary>
+      <param name="value">Аргумент <see cref="T:System.Int32" />, который может передаваться через границы процесса или домена приложения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Int32,System.Boolean)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.Int32" />, который может передаваться по ссылке.</summary>
+      <param name="value">Аргумент <see cref="T:System.Int32" />, который может передаваться через границы процесса или домена приложения.</param>
+      <param name="isByRef">true если <paramref name="value" /> является аргументом, который передается по ссылке; в противном случае — значение false.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Int64)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.Int64" />.</summary>
+      <param name="value">Аргумент <see cref="T:System.Int64" />, который может передаваться через границы процесса или домена приложения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Int64,System.Boolean)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.Int64" />, который может передаваться по ссылке.</summary>
+      <param name="value">Аргумент <see cref="T:System.Int64" />, который может передаваться через границы процесса или домена приложения.</param>
+      <param name="isByRef">true если <paramref name="value" /> является аргументом, который передается по ссылке; в противном случае — значение false.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.SByte)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.SByte" />.</summary>
+      <param name="value">Аргумент <see cref="T:System.SByte" />, который может передаваться через границы процесса или домена приложения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.SByte,System.Boolean)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.SByte" />, который может передаваться по ссылке.</summary>
+      <param name="value">Аргумент <see cref="T:System.SByte" />, который может передаваться через границы процесса или домена приложения.</param>
+      <param name="isByRef">true если <paramref name="value" /> является аргументом, который передается по ссылке; в противном случае — значение false.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Single)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.Single" />.</summary>
+      <param name="value">Аргумент <see cref="T:System.Single" />, который может передаваться через границы процесса или домена приложения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.Single,System.Boolean)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.Single" />, который может передаваться по ссылке.</summary>
+      <param name="value">Аргумент <see cref="T:System.Single" />, который может передаваться через границы процесса или домена приложения.</param>
+      <param name="isByRef">true если <paramref name="value" /> является аргументом, который передается по ссылке; в противном случае — значение false.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.String" />.</summary>
+      <param name="value">Аргумент <see cref="T:System.String" />, который может передаваться через границы процесса или домена приложения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.String,System.Boolean)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.String" />, который может передаваться по ссылке.</summary>
+      <param name="value">Аргумент <see cref="T:System.String" />, который может передаваться через границы процесса или домена приложения.</param>
+      <param name="isByRef">true если <paramref name="value" /> является аргументом, который передается по ссылке; в противном случае — значение false.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.UInt16)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.UInt16" />.</summary>
+      <param name="value">Аргумент <see cref="T:System.UInt16" />, который может передаваться через границы процесса или домена приложения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.UInt16,System.Boolean)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.UInt16" />, который может передаваться по ссылке.</summary>
+      <param name="value">Аргумент <see cref="T:System.UInt16" />, который может передаваться через границы процесса или домена приложения.</param>
+      <param name="isByRef">true если <paramref name="value" /> является аргументом, который передается по ссылке; в противном случае — значение false.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.UInt32)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.UInt32" />.</summary>
+      <param name="value">Аргумент <see cref="T:System.UInt32" />, который может передаваться через границы процесса или домена приложения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.UInt32,System.Boolean)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.UInt32" />, который может передаваться по ссылке.</summary>
+      <param name="value">Аргумент <see cref="T:System.UInt32" />, который может передаваться через границы процесса или домена приложения.</param>
+      <param name="isByRef">true если <paramref name="value" /> является аргументом, который передается по ссылке; в противном случае — значение false.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.UInt64)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.UInt64" />.</summary>
+      <param name="value">Аргумент <see cref="T:System.UInt64" />, который может передаваться через границы процесса или домена приложения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.#ctor(System.UInt64,System.Boolean)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий аргумент <see cref="T:System.UInt64" />, который может передаваться по ссылке.</summary>
+      <param name="value">Аргумент <see cref="T:System.UInt64" />, который может передаваться через границы процесса или домена приложения.</param>
+      <param name="isByRef">true если <paramref name="value" /> является аргументом, который передается по ссылке; в противном случае — значение false.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.ArrayValue">
+      <summary>Возвращает или задает объект <see cref="T:System.Array" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />. </summary>
+      <returns>
+        <see cref="T:System.Array" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />; null если значение <see cref="T:System.AddIn.Contract.RemoteArgument" /> еще не было определено.</returns>
+      <exception cref="T:System.InvalidOperationException">Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> не присвоено значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.IntrinsicArray" />.— или —Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> присвоено значение <see cref="F:System.TypeCode.Object" />.— или —Это свойство задается, когда свойство <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> имеет значение false.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.BooleanValue">
+      <summary>Возвращает или задает объект <see cref="T:System.Boolean" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />. </summary>
+      <returns>
+        <see cref="T:System.Boolean" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />; false если значение <see cref="T:System.AddIn.Contract.RemoteArgument" /> еще не было определено.</returns>
+      <exception cref="T:System.InvalidOperationException">Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> не присвоено значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" />.— или —Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> не присвоено значение <see cref="F:System.TypeCode.Boolean" />.— или —Это свойство задается, когда свойство <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> имеет значение false.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.ByteValue">
+      <summary>Возвращает или задает объект <see cref="T:System.Byte" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />. </summary>
+      <returns>
+        <see cref="T:System.Byte" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />; 0 (zero) если значение <see cref="T:System.AddIn.Contract.RemoteArgument" /> еще не было определено.</returns>
+      <exception cref="T:System.InvalidOperationException">Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> не присвоено значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" />.— или —Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> не присвоено значение <see cref="F:System.TypeCode.Byte" />.— или —Это свойство задается, когда свойство <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> имеет значение false.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.CharValue">
+      <summary>Возвращает или задает объект <see cref="T:System.Char" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />. </summary>
+      <returns>
+        <see cref="T:System.Char" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />; <see cref="F:System.Char.MinValue" /> если значение <see cref="T:System.AddIn.Contract.RemoteArgument" /> еще не было определено.</returns>
+      <exception cref="T:System.InvalidOperationException">Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> не присвоено значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" />.— или —Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> не присвоено значение <see cref="F:System.TypeCode.Char" />.— или —Это свойство задается, когда свойство <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> имеет значение false.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.ContractValue">
+      <summary>Возвращает или задает объект <see cref="T:System.AddIn.Contract.IContract" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />. </summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.IContract" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />; null если значение <see cref="T:System.AddIn.Contract.RemoteArgument" /> еще не было определено.</returns>
+      <exception cref="T:System.InvalidOperationException">Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> не присвоено значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Contract" />.— или —Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> не присвоено значение <see cref="F:System.TypeCode.Object" />.— или —Это свойство задается, когда свойство <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> имеет значение false.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.CreateRemoteArgument(System.Object)">
+      <summary>Создает <see cref="T:System.AddIn.Contract.RemoteArgument" /> для аргумента, который не передается по ссылке. </summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий указанный аргумент.</returns>
+      <param name="value">Аргумент, который будет передаваться через границы процесса или домена приложения.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="value" /> имеет значение null;</exception>
+      <exception cref="T:System.ArgumentException">Свойство <see cref="T:System.TypeCode" /> параметра <paramref name="value" /> имеет значение <see cref="F:System.TypeCode.Object" />, а <paramref name="value" /> не имеет значения <see cref="T:System.AddIn.Contract.IContract" />.— или —Свойство <see cref="T:System.TypeCode" /> параметра <paramref name="value" /> имеет значение <see cref="F:System.TypeCode.Empty" />, а <paramref name="value" /> не присвоено значение <see cref="F:System.Reflection.Missing.Value" />.— или —Параметр <paramref name="value" /> не реализует интерфейс <see cref="T:System.IConvertible" />, и параметр<paramref name="value" /> не имеет значения <see cref="T:System.Array" />.— или —Параметр<paramref name="value" /> является <see cref="T:System.Array" />, содержащим элементы со значением <see cref="T:System.TypeCode" /> функции <see cref="F:System.TypeCode.Object" />.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.CreateRemoteArgument(System.Object,System.Boolean)">
+      <summary>Создает <see cref="T:System.AddIn.Contract.RemoteArgument" /> для аргумента, который передается по ссылке. </summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий указанный аргумент.</returns>
+      <param name="value">Аргумент, который будет передаваться через границы процесса или домена приложения.</param>
+      <param name="isByRef">true для передачи <paramref name="value" /> аргумента по ссылке; в противном случае — значение false.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="value" /> имеет значение null;</exception>
+      <exception cref="T:System.ArgumentException">Свойство <see cref="T:System.TypeCode" /> параметра <paramref name="value" /> имеет значение <see cref="F:System.TypeCode.Object" />, а <paramref name="value" /> не имеет значения <see cref="T:System.AddIn.Contract.IContract" />.— или —Свойство <see cref="T:System.TypeCode" /> параметра <paramref name="value" /> имеет значение <see cref="F:System.TypeCode.Empty" />, а <paramref name="value" /> не присвоено значение <see cref="F:System.Reflection.Missing.Value" />.— или —Параметр <paramref name="value" /> не реализует интерфейс <see cref="T:System.IConvertible" />, и параметр<paramref name="value" /> не имеет значения <see cref="T:System.Array" />.— или —Параметр<paramref name="value" /> является <see cref="T:System.Array" />, содержащим элементы со значением <see cref="T:System.TypeCode" /> функции <see cref="F:System.TypeCode.Object" />.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.RemoteArgument.CreateRemoteArgument(System.Object,System.Boolean,System.TypeCode)">
+      <summary>Создает <see cref="T:System.AddIn.Contract.RemoteArgument" /> для аргумента, который имеет заданный код типа и может передаваться по ссылке.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий указанный аргумент.</returns>
+      <param name="value">Аргумент, который будет передаваться через границы процесса или домена приложения.</param>
+      <param name="isByRef">true для передачи аргумента по ссылке; в противном случае — значение false.</param>
+      <param name="typeCodeToUse">Свойство <see cref="T:System.TypeCode" />, указывающее код типа параметра <paramref name="value" />, если <paramref name="value" /> не имеет значения <see cref="T:System.Array" />.В противном случае <see cref="T:System.TypeCode" />, указывающее код типа элементов в <paramref name="value" />.</param>
+      <exception cref="T:System.ArgumentException">Свойство <see cref="T:System.TypeCode" /> параметра <paramref name="value" /> имеет значение <see cref="F:System.TypeCode.Object" />, <paramref name="value" /> не имеет значения <see cref="T:System.AddIn.Contract.IContract" />, и <paramref name="value" /> не имеет значения null.— или —Свойство <see cref="T:System.TypeCode" /> параметра <paramref name="value" /> имеет значение <see cref="F:System.TypeCode.Empty" />, а <paramref name="value" /> не имеет значения <see cref="F:System.Reflection.Missing.Value" />.— или —Параметр <paramref name="value" /> не реализует интерфейс <see cref="T:System.IConvertible" />, <paramref name="value" /> не имеет значения null, и <paramref name="value" /> не имеет значения <see cref="T:System.Array" />. — или —Параметр<paramref name="value" /> является <see cref="T:System.Array" />, содержащим элементы со значением <see cref="T:System.TypeCode" /> функции <see cref="F:System.TypeCode.Object" />.</exception>
+      <exception cref="T:System.NotSupportedException">Свойство <see cref="T:System.TypeCode" /> параметра <paramref name="value" /> не имеет значения <see cref="F:System.TypeCode.DBNull" />, а <paramref name="typeCodeToUse" /> имеет значение <see cref="F:System.TypeCode.DBNull" />.</exception>
+      <exception cref="T:System.InvalidOperationException">
+        <paramref name="typeCodeToUse" /> не определяет допустимое значение <see cref="T:System.TypeCode" />.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.DateTimeValue">
+      <summary>Возвращает или задает объект <see cref="T:System.DateTime" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />. </summary>
+      <returns>
+        <see cref="T:System.DateTime" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />; <see cref="F:System.DateTime.MinValue" /> если значение <see cref="T:System.AddIn.Contract.RemoteArgument" /> еще не было определено.</returns>
+      <exception cref="T:System.InvalidOperationException">Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> не присвоено значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" />.— или —Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> не присвоено значение <see cref="F:System.TypeCode.DateTime" />.— или —Это свойство задается, когда свойство <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> имеет значение false.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.DBNullValue">
+      <summary>Возвращает или задает объект <see cref="T:System.DBNull" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />. </summary>
+      <returns>
+        <see cref="T:System.DBNull" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />; null если значение <see cref="T:System.AddIn.Contract.RemoteArgument" /> еще не было определено.</returns>
+      <exception cref="T:System.InvalidOperationException">Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> не присвоено значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" />.— или —Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> не присвоено значение <see cref="F:System.TypeCode.DBNull" />.— или —Это свойство задается, когда свойство <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> имеет значение false.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.DecimalValue">
+      <summary>Возвращает или задает объект <see cref="T:System.Decimal" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />. </summary>
+      <returns>
+        <see cref="T:System.Decimal" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />; 0 (zero) если значение <see cref="T:System.AddIn.Contract.RemoteArgument" /> еще не было определено.</returns>
+      <exception cref="T:System.InvalidOperationException">Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> не присвоено значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" />.— или —Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> не присвоено значение <see cref="F:System.TypeCode.Decimal" />.— или —Это свойство задается, когда свойство <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> имеет значение false.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.DoubleValue">
+      <summary>Возвращает или задает объект <see cref="T:System.Double" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />. </summary>
+      <returns>
+        <see cref="T:System.Double" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />; 0,0 если значение <see cref="T:System.AddIn.Contract.RemoteArgument" /> еще не было определено.</returns>
+      <exception cref="T:System.InvalidOperationException">Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> не присвоено значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" />.— или —Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> не присвоено значение <see cref="F:System.TypeCode.Double" />.— или —Это свойство задается, когда свойство <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> имеет значение false.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.Int16Value">
+      <summary>Возвращает или задает объект <see cref="T:System.Int16" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />. </summary>
+      <returns>
+        <see cref="T:System.Int16" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />; 0 (zero) если значение <see cref="T:System.AddIn.Contract.RemoteArgument" /> еще не было определено.</returns>
+      <exception cref="T:System.InvalidOperationException">Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> не присвоено значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" />.— или —Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> не присвоено значение <see cref="F:System.TypeCode.Int16" />.— или —Это свойство задается, когда свойство <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> имеет значение false.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.Int32Value">
+      <summary>Возвращает или задает объект <see cref="T:System.Int32" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />. </summary>
+      <returns>
+        <see cref="T:System.Int32" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />; 0 (zero) если значение <see cref="T:System.AddIn.Contract.RemoteArgument" /> еще не было определено.</returns>
+      <exception cref="T:System.InvalidOperationException">Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> не присвоено значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" />.— или —Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> не присвоено значение <see cref="F:System.TypeCode.Int32" />.— или —Это свойство задается, когда свойство <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> имеет значение false.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.Int64Value">
+      <summary>Возвращает или задает объект <see cref="T:System.Int64" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />. </summary>
+      <returns>
+        <see cref="T:System.Int64" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />; 0 (zero) если значение <see cref="T:System.AddIn.Contract.RemoteArgument" /> еще не было определено.</returns>
+      <exception cref="T:System.InvalidOperationException">Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> не присвоено значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" />.— или —Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> не присвоено значение <see cref="F:System.TypeCode.Int64" />.— или —Это свойство задается, когда свойство <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> имеет значение false.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.IsByRef">
+      <summary>Возвращает или задает значение, указывающее, представляет ли <see cref="T:System.AddIn.Contract.RemoteArgument" /> аргумент, который передается по ссылке.</summary>
+      <returns>true если <see cref="T:System.AddIn.Contract.RemoteArgument" /> представляет аргумент, который передается по ссылке; в противном случае — значение false.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.MissingValue">
+      <summary>Возвращает значение <see cref="F:System.Type.Missing" />. </summary>
+      <returns>Значение <see cref="F:System.Type.Missing" />.</returns>
+      <exception cref="T:System.InvalidOperationException">Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> не присвоено значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" />.— или —Это значение свойства извлекается, когда свойству <see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> не присвоено значение <see cref="F:System.TypeCode.Empty" />.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind">
+      <summary>Возвращает <see cref="T:System.AddIn.Contract.RemoteArgumentKind" />, который указывает вид аргумента, представляющего <see cref="T:System.AddIn.Contract.RemoteArgument" />.</summary>
+      <returns>Одно из значений <see cref="T:System.AddIn.Contract.RemoteArgumentKind" /> , которое указывает представляет ли <see cref="T:System.AddIn.Contract.RemoteArgument" /> значение встроенного типа, массива встроенных типов, <see cref="T:System.AddIn.Contract.IContract" />, или значение <see cref="F:System.Type.Missing" />.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.SByteValue">
+      <summary>Возвращает или задает объект <see cref="T:System.SByte" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />. </summary>
+      <returns>
+        <see cref="T:System.SByte" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />; 0 (zero) если значение <see cref="T:System.AddIn.Contract.RemoteArgument" /> еще не было определено.</returns>
+      <exception cref="T:System.InvalidOperationException">Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> не присвоено значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" />.— или —Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> не присвоено значение <see cref="F:System.TypeCode.SByte" />.— или —Это свойство задается, когда свойство <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> имеет значение false.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.SingleValue">
+      <summary>Возвращает или задает объект <see cref="T:System.Single" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />. </summary>
+      <returns>
+        <see cref="T:System.Single" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />; 0,0 если значение <see cref="T:System.AddIn.Contract.RemoteArgument" /> еще не было определено.</returns>
+      <exception cref="T:System.InvalidOperationException">Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> не присвоено значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" />.— или —Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> не присвоено значение <see cref="F:System.TypeCode.Single" />.— или —Это свойство задается, когда свойство <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> имеет значение false.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.StringValue">
+      <summary>Возвращает или задает объект <see cref="T:System.String" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />. </summary>
+      <returns>
+        <see cref="T:System.String" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />; null если значение <see cref="T:System.AddIn.Contract.RemoteArgument" /> еще не было определено.</returns>
+      <exception cref="T:System.InvalidOperationException">Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> не присвоено значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" />.— или —Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> не присвоено значение <see cref="F:System.TypeCode.String" />.— или —Это свойство задается, когда свойство <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> имеет значение false.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.TypeCode">
+      <summary>Возвращает <see cref="T:System.TypeCode" />, который указывает базовый тип аргумента, представляющего <see cref="T:System.AddIn.Contract.RemoteArgument" />.</summary>
+      <returns>
+        <see cref="T:System.TypeCode" />, который указывает базовый тип аргумента, представляющего <see cref="T:System.AddIn.Contract.RemoteArgument" />.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.UInt16Value">
+      <summary>Возвращает или задает объект <see cref="T:System.UInt16" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />. </summary>
+      <returns>
+        <see cref="T:System.UInt16" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />; 0 (zero) если значение <see cref="T:System.AddIn.Contract.RemoteArgument" /> еще не было определено.</returns>
+      <exception cref="T:System.InvalidOperationException">Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> не присвоено значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" />.— или —Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> не присвоено значение <see cref="F:System.TypeCode.UInt16" />.— или —Это свойство задается, когда свойство <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> имеет значение false.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.UInt32Value">
+      <summary>Возвращает или задает объект <see cref="T:System.UInt32" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />. </summary>
+      <returns>
+        <see cref="T:System.UInt32" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />; 0 (zero) если значение <see cref="T:System.AddIn.Contract.RemoteArgument" /> еще не было определено.</returns>
+      <exception cref="T:System.InvalidOperationException">Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> не присвоено значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" />.— или —Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> не присвоено значение <see cref="F:System.TypeCode.UInt32" />.— или —Это свойство задается, когда свойство <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> имеет значение false.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Contract.RemoteArgument.UInt64Value">
+      <summary>Возвращает или задает объект <see cref="T:System.UInt64" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />. </summary>
+      <returns>
+        <see cref="T:System.UInt64" />, представляющий <see cref="T:System.AddIn.Contract.RemoteArgument" />; 0 (zero) если значение <see cref="T:System.AddIn.Contract.RemoteArgument" /> еще не было определено.</returns>
+      <exception cref="T:System.InvalidOperationException">Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" /> не присвоено значение <see cref="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic" />.— или —Свойству <see cref="P:System.AddIn.Contract.RemoteArgument.TypeCode" /> не присвоено значение <see cref="F:System.TypeCode.UInt64" />.— или —Это свойство задается, когда свойство <see cref="P:System.AddIn.Contract.RemoteArgument.IsByRef" /> имеет значение false.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.RemoteArgumentKind">
+      <summary>Указывает вид аргумента, представляющего <see cref="T:System.AddIn.Contract.RemoteArgument" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.RemoteArgumentKind.Missing">
+      <summary>
+        <see cref="T:System.AddIn.Contract.RemoteArgument" /> представляет значение <see cref="F:System.Type.Missing" />.Это значение по умолчанию для свойства <see cref="P:System.AddIn.Contract.RemoteArgument.RemoteArgumentKind" />.</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.RemoteArgumentKind.Intrinsic">
+      <summary>
+        <see cref="T:System.AddIn.Contract.RemoteArgument" /> представляет встроенный тип данных.</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.RemoteArgumentKind.IntrinsicArray">
+      <summary>
+        <see cref="T:System.AddIn.Contract.RemoteArgument" /> представляет <see cref="T:System.Array" />, содержащий элементы встроенного типа данных.</summary>
+    </member>
+    <member name="F:System.AddIn.Contract.RemoteArgumentKind.Contract">
+      <summary>
+        <see cref="T:System.AddIn.Contract.RemoteArgument" /> представляет <see cref="T:System.AddIn.Contract.IContract" />.</summary>
+    </member>
+    <member name="T:System.AddIn.Contract.SerializableObjectData">
+      <summary>Предоставляет информацию о сериализуемом объекте. </summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.SerializableObjectData.DimensionLengths">
+      <summary>Представляет массив, содержащий длину каждого из измерений сериализуемого массива, описывающего <see cref="T:System.AddIn.Contract.SerializableObjectData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.SerializableObjectData.DimensionLowerBounds">
+      <summary>Представляет массив, длиной, равной нижнему пределу каждого из измерений сериализуемого массива, описывающего <see cref="T:System.AddIn.Contract.SerializableObjectData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.SerializableObjectData.ElementIndexes">
+      <summary>Представляет массив, который содержит индексы родительского массива, содержащего сериализуемый объект, описывающий <see cref="T:System.AddIn.Contract.SerializableObjectData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.SerializableObjectData.IsArray">
+      <summary>Указывает, описывает ли <see cref="T:System.AddIn.Contract.SerializableObjectData" /> сериализованный массив.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.SerializableObjectData.IsArrayElement">
+      <summary>Указывает, описывает ли <see cref="T:System.AddIn.Contract.SerializableObjectData" /> элемент в сериализованном массиве.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.SerializableObjectData.MemberName">
+      <summary>Представляет имя элемента сериализованного объекта, описывающего <see cref="T:System.AddIn.Contract.SerializableObjectData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.SerializableObjectData.ObjectId">
+      <summary>Представляет идентификатор сериализованного объекта, описывающего <see cref="T:System.AddIn.Contract.SerializableObjectData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.SerializableObjectData.ParentId">
+      <summary>Представляет идентификатор родителя сериализованного объекта, описывающего <see cref="T:System.AddIn.Contract.SerializableObjectData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.IRemoteDelegateContract">
+      <summary>Определяет контракт, который может использоваться компонентами для доступа к представителю через границы домена приложения и процесса.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteDelegateContract.InvokeDelegate(System.AddIn.Contract.Collections.IRemoteArgumentArrayContract)">
+      <summary>Вызывает представителя, указывающего <see cref="T:System.AddIn.Contract.Automation.IRemoteDelegateContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.RemoteArgument" />, указывающий возвращаемое значение вызванного представителя.</returns>
+      <param name="args">
+        <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayContract" />, указывающий параметры представителя.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.IRemoteEventInfoContract">
+      <summary>Определяет контракт, которым может использоваться компонентами для доступа к информации о событии через границы домена приложения и процесса.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteEventInfoContract.GetAddMethod">
+      <summary>Возвращает метод, который был использован для добавления обработчика событий представителя к событию, идентифицирующему <see cref="T:System.AddIn.Contract.Automation.IRemoteEventInfoContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract" />, представляющий метод, который был использован для добавления обработчика событий представителя к событию, указывающему <see cref="T:System.AddIn.Contract.Automation.IRemoteEventInfoContract" />.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteEventInfoContract.GetMemberData">
+      <summary>Возвращает информацию о событии, описывающем <see cref="T:System.AddIn.Contract.Automation.IRemoteEventInfoContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Automation.RemoteMemberData" />, обеспечивающий информацию о событии, идентифицирующем <see cref="T:System.AddIn.Contract.Automation.IRemoteEventInfoContract" />.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteEventInfoContract.GetRemoveMethod">
+      <summary>Возвращает метод, который был использован для удаления обработчика событий представителя из события, идентифицирующего <see cref="T:System.AddIn.Contract.Automation.IRemoteEventInfoContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract" />, представляющий метод, который был использован для удаления обработчика событий представителя из события, идентифицирующего <see cref="T:System.AddIn.Contract.Automation.IRemoteEventInfoContract" />.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.IRemoteFieldInfoContract">
+      <summary>Определяет контракт, который может использоваться компонентами для доступа к информации о поле через границы домена приложения или процесса.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteFieldInfoContract.GetFieldData">
+      <summary>Возвращает информацию о поле, описывающем <see cref="T:System.AddIn.Contract.Automation.IRemoteFieldInfoContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Automation.RemoteFieldData" />, обеспечивающий информацию о поле, которое идентифицирует <see cref="T:System.AddIn.Contract.Automation.IRemoteFieldInfoContract" />.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteFieldInfoContract.GetValue(System.AddIn.Contract.Automation.IRemoteObjectContract)">
+      <summary>Возвращает значение поля, описывающего <see cref="T:System.AddIn.Contract.Automation.IRemoteFieldInfoContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.RemoteArgument" />, указывающий значение поля.</returns>
+      <param name="obj">
+        <see cref="T:System.AddIn.Contract.Automation.IRemoteObjectContract" />, указывает содержащий поле объект.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteFieldInfoContract.SetValue(System.AddIn.Contract.Automation.IRemoteObjectContract,System.AddIn.Contract.RemoteArgument,System.Int32)">
+      <summary>Задает значение поля, представляющего <see cref="T:System.AddIn.Contract.Automation.IRemoteFieldInfoContract" />.</summary>
+      <param name="obj">
+        <see cref="T:System.AddIn.Contract.Automation.IRemoteObjectContract" />, указывает содержащий поле объект.</param>
+      <param name="value">
+        <see cref="T:System.AddIn.Contract.RemoteArgument" />, указывающий значение поля.</param>
+      <param name="localeId">Код языка, который будет использоваться полем для любых преобразований языкового стандарта.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract">
+      <summary>Определяет контракт, который может использоваться компонентами для доступа к информации о методе через границы домена приложения и процесса.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteMethodInfoContract.GetMethodData">
+      <summary>Возвращает информацию о методе, описывающем <see cref="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Automation.RemoteMethodData" />, содержащее информацию о методе, который идентифицирует <see cref="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract" />.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteMethodInfoContract.Invoke(System.AddIn.Contract.Automation.IRemoteObjectContract,System.Reflection.BindingFlags,System.AddIn.Contract.Collections.IRemoteArgumentArrayContract,System.Int32)">
+      <summary>Вызывает метод, идентифицирующий <see cref="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий возвращаемое значение вызванного метода.</returns>
+      <param name="target">
+        <see cref="T:System.AddIn.Contract.Automation.IRemoteObjectContract" />, идентифицирующий объект, который содержит метод для вызова.</param>
+      <param name="bindingFlags">Битовая комбинация значений <see cref="T:System.Reflection.BindingFlags" />, указывающая способ вызова метода.</param>
+      <param name="parameters">
+        <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayContract" />, указывающее параметры метода; значение null если метод не имеет параметров.</param>
+      <param name="localeId">Код языка, который будет использоваться методом для любого типа преобразований языкового стандарта аргумента или возвращаемого значения.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.IRemoteObjectContract">
+      <summary>Определяет контракт, который может использоваться компонентами для доступа к объекту через границы домена приложения или процесса.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteObjectContract.GetRemoteType">
+      <summary>Возвращает <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />, указывающий тип текущего <see cref="T:System.AddIn.Contract.Automation.IRemoteObjectContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />, указывающий тип текущего <see cref="T:System.AddIn.Contract.Automation.IRemoteObjectContract" />.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteObjectContract.RemoteCast(System.String)">
+      <summary>Приводит объект, определенный текущим <see cref="T:System.AddIn.Contract.Automation.IRemoteObjectContract" />, к указанному типу. </summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий собой результат операции приведения.</returns>
+      <param name="canonicalName">Каноническое имя типа, к которому необходимо привести объект.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract">
+      <summary>Определяет контракт, который может использоваться компонентами для доступа к информации о свойстве через границы домена приложения и процесса.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemotePropertyInfoContract.GetGetMethod">
+      <summary>Возвращает метод доступа к свойству get, указывающего <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract" />, представляющий метод доступа к свойству get, указывающего <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" />; null если свойство не имеет метода доступа get.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemotePropertyInfoContract.GetPropertyData">
+      <summary>Возвращает информацию о свойстве, описывающем <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Automation.RemotePropertyData" />, предоставляющий информацию о свойстве, идентифицирующем <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" />.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemotePropertyInfoContract.GetSetMethod">
+      <summary>Возвращает метод доступа к свойству set, которое <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" /> идентифицирует.</summary>
+      <returns>An <see cref="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract" /> that represents the set accessor of the property that this <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" /> identifies; null if the property does not have a set accessor.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemotePropertyInfoContract.GetValue(System.AddIn.Contract.Automation.IRemoteObjectContract,System.Reflection.BindingFlags,System.AddIn.Contract.Collections.IRemoteArgumentArrayContract,System.Int32)">
+      <summary>Возвращает значение свойства, описывающего <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.RemoteArgument" />, указывающий значение свойства.</returns>
+      <param name="obj">
+        <see cref="T:System.AddIn.Contract.Automation.IRemoteObjectContract" />, указывающий объект, который содержит свойство.</param>
+      <param name="bindingFlags">Битовая комбинация значений <see cref="T:System.Reflection.BindingFlags" />, указывающая способ вызова свойства.</param>
+      <param name="index">
+        <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayContract" />, указывающий значения индекса для индексированного свойства; null если свойство не индексировано.</param>
+      <param name="localeId">Код языка для локализационных преобразований, осуществляемых свойством.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemotePropertyInfoContract.SetValue(System.AddIn.Contract.Automation.IRemoteObjectContract,System.AddIn.Contract.RemoteArgument@,System.Reflection.BindingFlags,System.AddIn.Contract.Collections.IRemoteArgumentArrayContract,System.Int32)">
+      <summary>Задает значение свойства, описывающего <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" />.</summary>
+      <param name="target">
+        <see cref="T:System.AddIn.Contract.Automation.IRemoteObjectContract" />, указывающий объект, который содержит свойство.</param>
+      <param name="value">
+        <see cref="T:System.AddIn.Contract.RemoteArgument" />, указывающий значение свойства.</param>
+      <param name="bindingFlags">Битовая комбинация значений <see cref="T:System.Reflection.BindingFlags" />, указывающая способ вызова свойства.</param>
+      <param name="index">
+        <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayContract" />, указывающий значения индекса для индексированного свойства; null если свойство не индексировано.</param>
+      <param name="localeId">Код языка, который будет использоваться свойством для любых локализационных преобразований типа.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.IRemoteTypeContract">
+      <summary>Определяет контракт, который может использоваться компонентами для доступа к информации о типе и для вызова элементов через границы домена приложения и процесса.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetCanonicalName">
+      <summary>Возвращает каноническое имя текущего <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.</summary>
+      <returns>Каноническое имя текущего <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetEvent(System.String,System.Reflection.BindingFlags)">
+      <summary>Возвращает <see cref="T:System.AddIn.Contract.Automation.IRemoteEventInfoContract" />, обеспечивающий доступ к указанному событию текущего <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Automation.IRemoteEventInfoContract" />, обеспечивающий доступ к указанному событию, если найден; в противном случае — значение null.</returns>
+      <param name="name">Имя события текущего <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.</param>
+      <param name="bindingFlags">Битовая комбинация значений <see cref="T:System.Reflection.BindingFlags" />, указывающая способ поиска события.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetEvents(System.Reflection.BindingFlags)">
+      <summary>Возвращает коллекцию объектов <see cref="T:System.AddIn.Contract.Automation.IRemoteEventInfoContract" />, обеспечивающих доступ к указанным событиям текущего <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" /> объектов <see cref="T:System.AddIn.Contract.Automation.IRemoteEventInfoContract" />, обеспечивающее доступ к событиям, соответствующим выбранным ограничениям привязки; в противном случае — пустой <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" />.</returns>
+      <param name="bindingFlags">Битовая комбинация значений <see cref="T:System.Reflection.BindingFlags" />, указывающая способ поиска событий.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetField(System.String,System.Reflection.BindingFlags)">
+      <summary>Возвращает <see cref="T:System.AddIn.Contract.Automation.IRemoteFieldInfoContract" />, обеспечивающий доступ к указанному полю текущего <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Automation.IRemoteFieldInfoContract" />, обеспечивающий доступ к указанному полю, если найден; в противном случае — значение null.</returns>
+      <param name="name">Имя поля текущего <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.</param>
+      <param name="bindingFlags">Битовая комбинация значений <see cref="T:System.Reflection.BindingFlags" />, указывающая способ поиска поля.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetFields(System.Reflection.BindingFlags)">
+      <summary>Возвращает коллекцию объектов <see cref="T:System.AddIn.Contract.Automation.IRemoteFieldInfoContract" />, обеспечивающую доступ к указанным полям текущего <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" /> объектов <see cref="T:System.AddIn.Contract.Automation.IRemoteFieldInfoContract" />, обеспечивающее доступ к полям, соответствующим выбранным ограничениям привязки; в противном случае — пустой <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" />.</returns>
+      <param name="bindingFlags">Битовая комбинация значений <see cref="T:System.Reflection.BindingFlags" />, указывающая способ поиска полей.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetInterface(System.String)">
+      <summary>Возвращает интерфейс, который реализуется текущим <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.</summary>
+      <returns>An <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> that represents the interface with the specified canonical name that this <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> implements.null if this <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> does not implement an interface with the specified canonical name.</returns>
+      <param name="canonicalName">Каноническое имя интерфейса, который реализуется текущим <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetInterfaces">
+      <summary>Возвращает интерфейсы, которые реализуются текущим <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" /> объектов <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />, представляющее все интерфейсы, которые реализуются текущим <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetMember(System.String,System.Reflection.MemberTypes,System.Reflection.BindingFlags)">
+      <summary>Возвращает коллекцию объектов <see cref="T:System.AddIn.Contract.IContract" />, обеспечивающую с помощью указанных ограничений привязки доступ ко всем указанным элементам указанного типа элемента в текущем <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" /> объектов <see cref="T:System.AddIn.Contract.IContract" />, представляющее элементы текущего <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" /> с указанными именами и отвечающие условиям, указанным параметрами <paramref name="memberTypes" /> и <paramref name="bindingFlags" />.</returns>
+      <param name="name">Имя элемента текущего <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.Имя может представлять несколько элементов с одним и тем же именем.</param>
+      <param name="memberTypes">Битовая комбинация значений <see cref="T:System.Reflection.MemberTypes" />, указывающая элементы для поиска.</param>
+      <param name="bindingFlags">Битовая комбинация значений <see cref="T:System.Reflection.BindingFlags" />, указывающая способ поиска элементов.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetMembers(System.Reflection.BindingFlags)">
+      <summary>Возвращает коллекцию объектов <see cref="T:System.AddIn.Contract.IContract" />, обеспечивающую доступ ко всем элементам текущего <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />, соответствующим указанным ограничениями привязки.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" /> объектов <see cref="T:System.AddIn.Contract.IContract" />, предоставляющее доступ к элементам текущего <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />, соответствующим указанным ограничениями привязки.</returns>
+      <param name="bindingFlags">Битовая комбинация значений <see cref="T:System.Reflection.BindingFlags" />, указывающая способ поиска элементов.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetMethod(System.String,System.Reflection.BindingFlags,System.AddIn.Contract.Collections.IArrayContract{System.AddIn.Contract.Automation.IRemoteTypeContract})">
+      <summary>Возвращает <see cref="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract" />, обеспечивающий доступ к указанному методу текущего <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract" />, обеспечивающий доступ к указанному методу, если найден; в противном случае — значение null.</returns>
+      <param name="name">Имя метода текущего <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.</param>
+      <param name="bindingFlags">Битовая комбинация значений <see cref="T:System.Reflection.BindingFlags" />, указывающая способ поиска метода.</param>
+      <param name="remoteTypes">
+        <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" /> объектов <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />, представляющих число, порядок и тип параметров для метода, который необходимо получить.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetMethods(System.Reflection.BindingFlags)">
+      <summary>Возвращает коллекцию объектов <see cref="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract" />, обеспечивающую доступ к указанным методам текущего <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" /> объектов <see cref="T:System.AddIn.Contract.Automation.IRemoteMethodInfoContract" />, обеспечивающее доступ к методам, соответствующим выбранным ограничениям привязки.</returns>
+      <param name="bindingFlags">Битовая комбинация значений <see cref="T:System.Reflection.BindingFlags" />, указывающая способ поиска методов.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetProperties(System.Reflection.BindingFlags)">
+      <summary>Возвращает коллекцию объектов <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" />, обеспечивающую доступ к указанным свойствам текущего <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" /> объектов <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" />, обеспечивающее доступ к свойствам, соответствующим выбранным ограничениям привязки.</returns>
+      <param name="bindingFlags">Битовая комбинация значений <see cref="T:System.Reflection.BindingFlags" />, указывающая способ поиска свойств.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetProperty(System.String,System.Reflection.BindingFlags,System.AddIn.Contract.Automation.IRemoteTypeContract,System.AddIn.Contract.Collections.IArrayContract{System.AddIn.Contract.Automation.IRemoteTypeContract})">
+      <summary>Возвращает <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" />, обеспечивающий доступ к указанному свойству текущего <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Automation.IRemotePropertyInfoContract" />, обеспечивающий доступ к указанному свойству, если найден; в противном случае — значение null.</returns>
+      <param name="name">Имя свойства текущего <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.</param>
+      <param name="bindingFlags">Битовая комбинация значений <see cref="T:System.Reflection.BindingFlags" />, указывающая способ поиска метода.</param>
+      <param name="remoteReturnType">
+        <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />, указывающий возвращаемый тип свойства.</param>
+      <param name="remoteTypes">
+        <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" /> объектов <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />, представляющее параметры выбранного свойства.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.GetTypeData">
+      <summary>Возвращает информацию о типе объекта, указывающем текущий <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" />, содержащее информацию об объекте, указывающем текущий <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Automation.IRemoteTypeContract.InvokeMember(System.String,System.Reflection.BindingFlags,System.AddIn.Contract.Automation.IRemoteObjectContract,System.AddIn.Contract.Collections.IRemoteArgumentArrayContract,System.Boolean[],System.Int32)">
+      <summary>Вызывает выбранный элемент текущего <see cref="T:System.AddIn.Contract.Automation.IRemoteTypeContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.RemoteArgument" />, представляющий возвращаемое значение вызванного элемента.</returns>
+      <param name="name">Имя элемента, который предполагается вызвать.</param>
+      <param name="bindingFlags">Битовая комбинация значений <see cref="T:System.Reflection.BindingFlags" />, указывающая способ поиска элемента.</param>
+      <param name="target">
+        <see cref="T:System.AddIn.Contract.Automation.IRemoteObjectContract" />, для которого будет вызван указанный элемент.</param>
+      <param name="remoteArgs">
+        <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayContract" />, содержащий аргументы для передачи вызываемому элементу.</param>
+      <param name="remoteArgModifiers">Массив логических величин, указывающий передается ли каждое из значений <paramref name="remoteArgs" /> по ссылке. </param>
+      <param name="localeId">Код языка для использования при преобразованиях языкового стандарта, которые могут осуществляться вызываемым элементом. </param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.RemoteFieldData">
+      <summary>Предоставляет информацию о поле типа, к которому компоненты могут получать доступ через границы домена приложения или процесса.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteFieldData.Attributes">
+      <summary>Представляет атрибуты поля, описывающего <see cref="T:System.AddIn.Contract.Automation.RemoteFieldData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteFieldData.FieldType">
+      <summary>Представляет тип значения поля, описывающего <see cref="T:System.AddIn.Contract.Automation.RemoteFieldData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteFieldData.MemberData">
+      <summary>Представляет данные элемента для поля, описывающего <see cref="T:System.AddIn.Contract.Automation.RemoteFieldData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.RemoteMemberData">
+      <summary>Предоставляет информацию об элементе типа, к которому компоненты могут получать доступ через границы домена приложения и процесса.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteMemberData.DeclaringType">
+      <summary>Представляет тип, объявляющий элемент, описывающий <see cref="T:System.AddIn.Contract.Automation.RemoteMemberData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteMemberData.Name">
+      <summary>Представляет имя элемента, описывающего <see cref="T:System.AddIn.Contract.Automation.RemoteMemberData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.RemoteMethodData">
+      <summary>Предоставляет информацию о методе типа, к которому компоненты могут иметь доступ через границы домена приложения и процесса.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteMethodData.Attributes">
+      <summary>Представляет атрибуты метода, описывающего <see cref="T:System.AddIn.Contract.Automation.RemoteMethodData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteMethodData.MemberData">
+      <summary>Представляет данные элемента для метода, описывающего <see cref="T:System.AddIn.Contract.Automation.RemoteMethodData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteMethodData.Parameters">
+      <summary>Представляет информацию о параметрах метода, описывающего <see cref="T:System.AddIn.Contract.Automation.RemoteMethodData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteMethodData.ReturnParameter">
+      <summary>Представляет информацию о возвращаемом значении метода, описывающего <see cref="T:System.AddIn.Contract.Automation.RemoteMethodData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.RemoteParameterData">
+      <summary>Предоставляет информацию о параметре или возвращаемом значении метода, принадлежащего к типу, к которому компоненты могут иметь доступ через границы домена приложения и процесса.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteParameterData.Attributes">
+      <summary>Представляет атрибуты параметра метода, описывающего <see cref="T:System.AddIn.Contract.Automation.RemoteParameterData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteParameterData.DefaultValue">
+      <summary>Представляет значение по умолчанию параметра метода, описывающего <see cref="T:System.AddIn.Contract.Automation.RemoteParameterData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteParameterData.IsByRef">
+      <summary>Указывает, описывает ли <see cref="T:System.AddIn.Contract.Automation.RemoteParameterData" /> параметр метода, передающийся по ссылке.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteParameterData.IsParameterArray">
+      <summary>Указывает, описывает ли <see cref="T:System.AddIn.Contract.Automation.RemoteParameterData" /> параметр метода, который может иметь переменное число аргументов.</summary>
+      <returns>true если данные являются параметрическим массивом; в противном случае — значение false. </returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteParameterData.Name">
+      <summary>Представляет имя параметра метода, описывающего <see cref="T:System.AddIn.Contract.Automation.RemoteParameterData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteParameterData.ParameterType">
+      <summary>Представляет тип параметра метода или возвращаемое значение, описывающее <see cref="T:System.AddIn.Contract.Automation.RemoteParameterData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteParameterData.Position">
+      <summary>Представляет позицию параметра метода, описывающего <see cref="T:System.AddIn.Contract.Automation.RemoteParameterData" />, по отношению к другим параметрам метода.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.RemotePropertyData">
+      <summary>Предоставляет информацию о свойстве типа, к которому компоненты могут иметь доступ через границы домена приложения и процесса.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemotePropertyData.Attributes">
+      <summary>Представляет атрибуты свойства, описывающего <see cref="T:System.AddIn.Contract.Automation.RemotePropertyData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemotePropertyData.CanRead">
+      <summary>Указывает, описывает ли <see cref="T:System.AddIn.Contract.Automation.RemotePropertyData" /> свойство способности к прочтению.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemotePropertyData.CanWrite">
+      <summary>Указывает, описывает ли это <see cref="T:System.AddIn.Contract.Automation.RemotePropertyData" /> свойство способности к перезаписи.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemotePropertyData.IndexParameters">
+      <summary>Представляет параметры индексов для свойства, описывающего <see cref="T:System.AddIn.Contract.Automation.RemotePropertyData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemotePropertyData.MemberData">
+      <summary>Представляет данные об элементе для свойства, описывающего <see cref="T:System.AddIn.Contract.Automation.RemotePropertyData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemotePropertyData.PropertyType">
+      <summary>Представляет тип свойства, описывающего <see cref="T:System.AddIn.Contract.Automation.RemotePropertyData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Automation.RemoteTypeData">
+      <summary>Предоставляет информацию о типе, к которому компоненты могут иметь доступ через границы домена приложения и процесса. </summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteTypeData.ArrayRank">
+      <summary>Указывает ранг (то есть, число измерений) удаленного массива, описывающего <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteTypeData.AssemblyName">
+      <summary>Представляет полное имя сборки, содержащей удаленный тип, описывающий <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteTypeData.AssemblyQualifiedName">
+      <summary>Представляет имя удаленного типа, описывающий <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" />, дополненное именем сборки, содержащей тип.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteTypeData.Attributes">
+      <summary>Представляет атрибуты удаленного типа, описывающего <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteTypeData.BaseType">
+      <summary>Представляет базовый тип удаленного типа, описывающего <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteTypeData.ElementType">
+      <summary>Представляет тип элементов в типе удаленного массива, описывающего <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteTypeData.FullName">
+      <summary>Представляет имя удаленного типа, описывающего <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" />, уточненное пространством имен.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteTypeData.IsArray">
+      <summary>Указывает, описывает ли <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" /> тип массива.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteTypeData.IsByRef">
+      <summary>Указывает, описывает ли <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" /> тип, передающийся по ссылке.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteTypeData.MemberData">
+      <summary>Представляет данные элемента для удаленного типа, описывающего <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Automation.RemoteTypeData.TypeCode">
+      <summary>Представляет тип удаленного типа, описывающего <see cref="T:System.AddIn.Contract.Automation.RemoteTypeData" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.IArrayContract`1">
+      <summary>Представляет базовый массив объектов <see cref="T:System.AddIn.Contract.IContract" />.</summary>
+      <typeparam name="C">The type of elements in the array.<paramref name="C" /> must implement the <see cref="T:System.AddIn.Contract.IContract" /> interface.</typeparam>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IArrayContract`1.GetCount">
+      <summary>Возвращает количество элементов в <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" />.</summary>
+      <returns>Количество элементов в <see cref="T:System.AddIn.Contract.Collections.IArrayContract`1" />.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IArrayContract`1.GetItem(System.Int32)">
+      <summary>Возвращает элемент по указанному индексу. </summary>
+      <returns>Элемент по указанному индексу.</returns>
+      <param name="index">Индекс элемента (начиная с нуля) для возврата. </param>
+      <exception cref="T:System.IndexOutOfRangeException">
+        <paramref name="index" /> is less than zero.-или-<paramref name="index" /> is equal to or greater than the return value of <see cref="M:System.AddIn.Contract.Collections.IArrayContract`1.GetCount" />.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IArrayContract`1.SetItem(System.Int32,`0)">
+      <summary>Replaces the element at the specified index with the specified <see cref="T:System.AddIn.Contract.IContract" />.</summary>
+      <param name="index">Индекс элемента (начиная с нуля), который требуется заменить.</param>
+      <param name="value">Новое значение элемента по указанном индексу. </param>
+      <exception cref="T:System.IndexOutOfRangeException">Значение параметра <paramref name="index" /> меньше нуля.-или-Значение <paramref name="index" /> больше или равно возвращаемого значения метода <see cref="M:System.AddIn.Contract.Collections.IArrayContract`1.GetCount" />.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.ICollectionContract`1">
+      <summary>Представляет базовую коллекцию объектов <see cref="T:System.AddIn.Contract.IContract" />.</summary>
+      <typeparam name="C">Тип элементов в коллекции.Параметр <paramref name="C" /> должен реализовывать интерфейс <see cref="T:System.AddIn.Contract.IContract" />.</typeparam>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.ICollectionContract`1.Add(`0)">
+      <summary>Добавляет <see cref="T:System.AddIn.Contract.IContract" /> к <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" />.</summary>
+      <param name="item">
+        <see cref="T:System.AddIn.Contract.IContract" /> для добавления к <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" />.</param>
+      <exception cref="T:System.NotSupportedException">Объект <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" /> доступен только для чтения.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.ICollectionContract`1.Clear">
+      <summary>Удаляет все элементы из <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" />.</summary>
+      <exception cref="T:System.NotSupportedException">Объект <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" /> доступен только для чтения.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.ICollectionContract`1.Contains(`0)">
+      <summary>Возвращает значение, указывающее наличие выбранного <see cref="T:System.AddIn.Contract.IContract" /> в <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" />.</summary>
+      <returns>true если выбранный <see cref="T:System.AddIn.Contract.IContract" /> присутствует в <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" />; в противном случае — значение false.</returns>
+      <param name="item">
+        <see cref="T:System.AddIn.Contract.IContract" />, расположение которого в <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" /> необходимо определить.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.ICollectionContract`1.CopyTo(`0[],System.Int32)">
+      <summary>Копирует <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" /> целиком в совместимый одномерный массив, начиная с указанного индекса конечного массива. </summary>
+      <param name="array">Одномерный массив для приема элементов, копируемых из <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" />. </param>
+      <param name="arrayIndex">Отсчитываемый от нуля индекс в массиве <paramref name="array" />, с которого начинается копирование.</param>
+      <exception cref="T:System.ArgumentNullException">Параметр <paramref name="array" /> имеет значение null.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">Значение параметра <paramref name="arrayIndex" /> меньше 0.</exception>
+      <exception cref="T:System.ArgumentException">Параметр <paramref name="array" /> является многомерным–либо–Количество элементов в источнике <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" /> превышает доступное пространство от <paramref name="arrayIndex" /> до конца массива назначения.–либо–Тип <paramref name="C" /> не может быть автоматически приведен к типу массива назначения.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.ICollectionContract`1.GetCount">
+      <summary>Возвращает количество элементов в <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" />.</summary>
+      <returns>Количество элементов в <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" />.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.ICollectionContract`1.GetIsReadOnly">
+      <summary>Возвращает значение, указывающее доступен ли <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" /> только для чтения.</summary>
+      <returns>true если <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" /> — только для чтения; в противном случае — значение false.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.ICollectionContract`1.Remove(`0)">
+      <summary>Удаляет первое вхождение выбранного <see cref="T:System.AddIn.Contract.IContract" /> из <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" />.</summary>
+      <returns>true если <paramref name="item" /> успешно удален; в противном случае — значение false.Этот метод возвращает также false если <paramref name="item" /> не был найден в <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" />.</returns>
+      <param name="item">
+        <see cref="T:System.AddIn.Contract.IContract" /> для удаления из <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" />.</param>
+      <exception cref="T:System.NotSupportedException">Объект <see cref="T:System.AddIn.Contract.Collections.ICollectionContract`1" /> доступен только для чтения.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.IEnumerableContract`1">
+      <summary>Предоставляет перечислитель, поддерживающий простую итерацию по базовой коллекции объектов <see cref="T:System.AddIn.Contract.IContract" />.</summary>
+      <typeparam name="C">Тип объектов для перечисления.<paramref name="C" /> must implement the <see cref="T:System.AddIn.Contract.IContract" /> interface.</typeparam>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IEnumerableContract`1.GetEnumeratorContract">
+      <summary>Возвращает перечислитель, выполняющий итерацию в коллекции.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.IEnumeratorContract`1" />, который можно использовать для итерации коллекции.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.IEnumeratorContract`1">
+      <summary>Перечисляет элементы базовой коллекции объектов <see cref="T:System.AddIn.Contract.IContract" />.</summary>
+      <typeparam name="C">Тип объектов для перечисления.<paramref name="C" /> must implement the <see cref="T:System.AddIn.Contract.IContract" /> interface.</typeparam>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IEnumeratorContract`1.GetCurrent">
+      <summary>Возвращает объект <see cref="T:System.AddIn.Contract.IContract" />, в коллекции на текущей позиции перечислителя.</summary>
+      <returns>Объект <see cref="T:System.AddIn.Contract.IContract" />, соответствующий текущей позиции перечислителя в коллекции.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IEnumeratorContract`1.MoveNext">
+      <summary>Перемещает перечислитель на следующий элемент коллекции.</summary>
+      <returns>Значение true, если перечислитель был успешно перемещен к следующему элементу; значение false, если перечислитель достиг конца коллекции.</returns>
+      <exception cref="T:System.InvalidOperationException">Коллекция была изменена после создания перечислителя. </exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IEnumeratorContract`1.Reset">
+      <summary>Устанавливает перечислитель в исходное положение перед первым элементом коллекции.</summary>
+      <exception cref="T:System.InvalidOperationException">Коллекция была изменена после создания перечислителя. </exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.IListContract`1">
+      <summary>Представляет базовую коллекцию объектов <see cref="T:System.AddIn.Contract.IContract" /> с доступом по отдельности при помощи индекса.</summary>
+      <typeparam name="C">The type of objects in the list.<paramref name="C" /> must implement the <see cref="T:System.AddIn.Contract.IContract" /> interface.</typeparam>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IListContract`1.GetItem(System.Int32)">
+      <summary>Возвращает элемент с указанным индексом.</summary>
+      <returns>Элемент с указанным индексом.</returns>
+      <param name="index">The zero-based index of the element to get.</param>
+      <exception cref="T:System.IndexOutOfRangeException">Значение параметра <paramref name="index" /> меньше нуля.-или-<paramref name="index" /> is equal to or greater than the return value of <see cref="M:System.AddIn.Contract.Collections.ICollectionContract`1.GetCount" />.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IListContract`1.IndexOf(`0)">
+      <summary>Возвращает индекс конкретного элемента в <see cref="T:System.AddIn.Contract.Collections.IListContract`1" />.</summary>
+      <returns>Индекс <paramref name="item" /> если он найден в списке; в противном случае — -1.</returns>
+      <param name="item">
+        <see cref="T:System.AddIn.Contract.IContract" />, расположение которого в <see cref="T:System.AddIn.Contract.Collections.IListContract`1" /> необходимо определить.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IListContract`1.Insert(System.Int32,`0)">
+      <summary>Вставляет элемент в <see cref="T:System.AddIn.Contract.Collections.IListContract`1" /> по указанному индексу.</summary>
+      <param name="index">The zero-based index at which to insert <paramref name="item" />.</param>
+      <param name="item">
+        <see cref="T:System.AddIn.Contract.IContract" />, для вставки в <see cref="T:System.AddIn.Contract.Collections.IListContract`1" />.</param>
+      <exception cref="T:System.IndexOutOfRangeException">Значение параметра <paramref name="index" /> меньше нуля.-или-<paramref name="index" /> is equal to or greater than the return value of <see cref="M:System.AddIn.Contract.Collections.ICollectionContract`1.GetCount" />.</exception>
+      <exception cref="T:System.NotSupportedException">
+        <see cref="T:System.AddIn.Contract.Collections.IListContract`1" /> доступна только для чтения.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IListContract`1.RemoveAt(System.Int32)">
+      <summary>Removes the element at the specified index.</summary>
+      <param name="index">Индекс элемента, который должен быть удален.</param>
+      <exception cref="T:System.IndexOutOfRangeException">Значение параметра <paramref name="index" /> меньше нуля.-или-<paramref name="index" /> is equal to or greater than the return value of <see cref="M:System.AddIn.Contract.Collections.ICollectionContract`1.GetCount" />.</exception>
+      <exception cref="T:System.NotSupportedException">
+        <see cref="T:System.AddIn.Contract.Collections.IListContract`1" /> — только для чтения.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IListContract`1.SetItem(System.Int32,`0)">
+      <summary>Заменяет элемент по указанному индексу.</summary>
+      <param name="index">Индекс (начиная с нуля), по которому необходимо назначить элемент.</param>
+      <param name="value">Элемент, который необходимо назначить по указанному индексу.</param>
+      <exception cref="T:System.IndexOutOfRangeException">
+        <paramref name="index" /> меньше нуля.-или-<paramref name="index" /> идентичен или больше возвращаемого значения метода <see cref="M:System.AddIn.Contract.Collections.ICollectionContract`1.GetCount" />.</exception>
+      <exception cref="T:System.NotSupportedException">
+        <see cref="T:System.AddIn.Contract.Collections.IListContract`1" /> — только для чтения.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayContract">
+      <summary>Представляет массив объектов <see cref="T:System.AddIn.Contract.RemoteArgument" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentArrayContract.GetItem(System.Int32)">
+      <summary>Возвращает элемент по указанному индексу. </summary>
+      <returns>Элемент по указанному индексу.</returns>
+      <param name="index">Индекс элемента (начиная с нуля) для возврата.</param>
+      <exception cref="T:System.IndexOutOfRangeException">
+        <paramref name="index" /> is less than zero.-или-<paramref name="index" /> is equal to or greater than the return value of <see cref="M:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract.GetCount" />.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentArrayContract.SetItem(System.Int32,System.AddIn.Contract.RemoteArgument)">
+      <summary>Replaces the element at the specified index with the specified <see cref="T:System.AddIn.Contract.RemoteArgument" />.</summary>
+      <param name="index">Индекс элемента (начиная с нуля), который требуется заменить.</param>
+      <param name="value">Новое значение элемента по указанном индексу.</param>
+      <exception cref="T:System.IndexOutOfRangeException">Значение параметра <paramref name="index" /> меньше нуля.-или-Значение <paramref name="index" /> больше или равно возвращаемого значения метода <see cref="M:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract.GetCount" />.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract">
+      <summary>Представляет массив объектов <see cref="T:System.AddIn.Contract.RemoteArgument" />, по требованию динамически изменяющих свой размер.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract.Add(System.AddIn.Contract.RemoteArgument)">
+      <summary>Добавляет <see cref="T:System.AddIn.Contract.RemoteArgument" /> к концу <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" />.</summary>
+      <param name="newItem">The <see cref="T:System.AddIn.Contract.RemoteArgument" /> to be added to the end of the <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" />.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract.Clear">
+      <summary>Removes all elements from the <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract.Contains(System.AddIn.Contract.RemoteArgument)">
+      <summary>Указывает наличие выбранного <see cref="T:System.AddIn.Contract.RemoteArgument" /> в <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" />.</summary>
+      <returns>true если <paramref name="item" /> найден в <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" />; в противном случае — значение false.</returns>
+      <param name="item">The <see cref="T:System.AddIn.Contract.RemoteArgument" /> to locate in the <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" />.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract.IndexOf(System.AddIn.Contract.RemoteArgument)">
+      <summary>Возвращает индекс (начиная с нуля) первого появления выбранного <see cref="T:System.AddIn.Contract.RemoteArgument" /> в <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" />.</summary>
+      <returns>The zero-based index of the first occurrence of <paramref name="item" /> in the <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" />, if found; otherwise, -1.</returns>
+      <param name="item">
+        <see cref="T:System.AddIn.Contract.RemoteArgument" />, расположение которого в<see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" /> необходимо определить.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract.Insert(System.Int32,System.AddIn.Contract.RemoteArgument)">
+      <summary>Вставляет <see cref="T:System.AddIn.Contract.RemoteArgument" /> в <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" /> по указанному индексу.</summary>
+      <param name="index">The zero-based index at which to insert <paramref name="item" />.</param>
+      <param name="item">
+        <see cref="T:System.AddIn.Contract.RemoteArgument" /> для вставки.</param>
+      <exception cref="T:System.IndexOutOfRangeException">
+        <paramref name="index" /> is less than zero.-или-<paramref name="index" /> is equal to or greater than the return value of <see cref="M:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract.GetCount" />.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract.Remove(System.AddIn.Contract.RemoteArgument)">
+      <summary>Удаляет первое вхождение выбранного <see cref="T:System.AddIn.Contract.RemoteArgument" /> из <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" />. </summary>
+      <param name="item">The <see cref="T:System.AddIn.Contract.RemoteArgument" /> to remove.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract.RemoveAt(System.Int32)">
+      <summary>Удаляет элемент с указанным индексом <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentArrayListContract" />.</summary>
+      <param name="index">Индекс элемента (начиная с нуля), который требуется удалить.</param>
+      <exception cref="T:System.IndexOutOfRangeException">Значение параметра <paramref name="index" /> меньше нуля.-или-Значение <paramref name="index" /> больше или равно возвращаемого значения метода <see cref="M:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract.GetCount" />.</exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract">
+      <summary>Представляет коллекцию объектов <see cref="T:System.AddIn.Contract.RemoteArgument" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract.GetCount">
+      <summary>Возвращает количество элементов в семействе <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract" />.</summary>
+      <returns>Количество элементов в семействе <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract" />.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract">
+      <summary>Представляет коллекцию объектов <see cref="T:System.AddIn.Contract.RemoteArgument" />, хранящихся в виде пар ключ-значение.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract.Add(System.AddIn.Contract.RemoteArgument,System.AddIn.Contract.RemoteArgument)">
+      <summary>Добавляет элемент с указанными ключом и значением к <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" />.</summary>
+      <param name="key">
+        <see cref="T:System.AddIn.Contract.RemoteArgument" />, используемый в качестве ключа элемента при добавлении.</param>
+      <param name="value">
+        <see cref="T:System.AddIn.Contract.RemoteArgument" />, используемый в качестве значения элемента при добавлении.</param>
+      <exception cref="T:System.ArgumentException">An element with the same key already exists in the <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" />. </exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract.Clear">
+      <summary>Удаляет все элементы из <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract.ContainsKey(System.AddIn.Contract.RemoteArgument)">
+      <summary>Указывает, содержит ли <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> элемент с выбранным ключом.</summary>
+      <returns>true если <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> содержит элемент с выбранным ключом; в противном случае — значение false.</returns>
+      <param name="key">Ключ, расположение которого в <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> необходимо определить.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract.GetEnumeratorContract">
+      <summary>Возвращает <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryEnumeratorContract" />, используемый для итерации элементов в <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryEnumeratorContract" />, используемый для итерации элементов в <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" />.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract.GetItem(System.AddIn.Contract.RemoteArgument)">
+      <summary>Возвращает значение элемента с указанным ключом.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.RemoteArgument" />с указанным ключом.</returns>
+      <param name="key">Ключ значения, которое необходимо возвратить.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract.GetKeys">
+      <summary>Возвращает <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract" />, содержащий ключи объекта <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" />. </summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract" />, содержащий ключи объекта <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" />.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract.GetValues">
+      <summary>Возвращает <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract" />, содержащий значения объекта <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" />. </summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentCollectionContract" />, содержащий значения объекта <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" />. </returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract.Remove(System.AddIn.Contract.RemoteArgument)">
+      <summary>Удаляет элемент с указанным ключом из <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" />.</summary>
+      <returns>true если элемент успешно найден и удален; в противном случае — значение false.This method returns false if <paramref name="key" /> is not found in the <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" />.</returns>
+      <param name="key">The key of the element to remove. </param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract.SetItem(System.AddIn.Contract.RemoteArgument,System.AddIn.Contract.RemoteArgument)">
+      <summary>Заменяет значение элемента.</summary>
+      <param name="key">Ключ значения, которое необходимо заменить.</param>
+      <param name="value">Новое значение указанного элемента.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryEnumeratorContract">
+      <summary>Перечисляет элементы <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryEnumeratorContract.GetEntry">
+      <summary>Возвращает ключ и значение текущего входа <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.RemoteArgumentDictionaryEntry" />, содержащий ключ и значение текущего входа <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" />.</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryEnumeratorContract" /> располагается перед первым входом <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> или после последнего входа. </exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryEnumeratorContract.GetKey">
+      <summary>Возвращает ключ текущего входа <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.RemoteArgument" />, содержащий ключ текущего входа <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" />.</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryEnumeratorContract" /> располагается перед первым входом <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> или после последнего входа. </exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryEnumeratorContract.GetValue">
+      <summary>Возвращает значение текущего входа <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" />.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.RemoteArgument" />, содержащий значение текущего входа <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" />.</returns>
+      <exception cref="T:System.InvalidOperationException">
+        <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryEnumeratorContract" /> располагается перед первым входом <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" /> или после последнего входа. </exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.IRemoteArgumentEnumerableContract">
+      <summary>Предоставляет перечислитель, поддерживающий простую итерацию по базовой коллекции объектов <see cref="T:System.AddIn.Contract.RemoteArgument" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentEnumerableContract.GetEnumeratorContract">
+      <summary>Возвращает перечислитель, который можно использовать для выполнения итерации в коллекции.</summary>
+      <returns>
+        <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentEnumeratorContract" />, который можно использовать для выполнения итерации в коллекции.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.IRemoteArgumentEnumeratorContract">
+      <summary>Перечисляет элементы коллекции объектов <see cref="T:System.AddIn.Contract.RemoteArgument" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentEnumeratorContract.GetCurrent">
+      <summary>Возвращает <see cref="T:System.AddIn.Contract.RemoteArgument" /> в коллекцию на текущую позицию перечислителя.</summary>
+      <returns>Возвращает <see cref="T:System.AddIn.Contract.RemoteArgument" />в коллекцию на текущую позицию перечислителя.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentEnumeratorContract.MoveNext">
+      <summary>Перемещает перечислитель на следующий элемент коллекции.</summary>
+      <returns>Значение true, если перечислитель был успешно перемещен к следующему элементу; значение false, если перечислитель достиг конца коллекции.</returns>
+      <exception cref="T:System.InvalidOperationException">Коллекция была изменена после создания перечислителя. </exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.IRemoteArgumentEnumeratorContract.Reset">
+      <summary>Устанавливает перечислитель в исходное положение перед первым элементом коллекции.</summary>
+      <exception cref="T:System.InvalidOperationException">Коллекция была изменена после создания перечислителя. </exception>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Contract.Collections.RemoteArgumentDictionaryEntry">
+      <summary>Определяет пару ключ-значение в <see cref="T:System.AddIn.Contract.Collections.IRemoteArgumentDictionaryContract" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Contract.Collections.RemoteArgumentDictionaryEntry.#ctor(System.AddIn.Contract.RemoteArgument,System.AddIn.Contract.RemoteArgument)">
+      <summary>Инициализирует экземпляр структуры <see cref="T:System.AddIn.Contract.Collections.RemoteArgumentDictionaryEntry" /> с указанными ключом и значением.</summary>
+      <param name="key">
+        <see cref="T:System.AddIn.Contract.RemoteArgument" />, содержащая ключ в новом <see cref="T:System.AddIn.Contract.Collections.RemoteArgumentDictionaryEntry" />.</param>
+      <param name="value">
+        <see cref="T:System.AddIn.Contract.RemoteArgument" />, содержащая значение в новом <see cref="T:System.AddIn.Contract.Collections.RemoteArgumentDictionaryEntry" />.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Collections.RemoteArgumentDictionaryEntry.Key">
+      <summary>Представляет ключ в паре ключ-значение, которая представляет <see cref="T:System.AddIn.Contract.Collections.RemoteArgumentDictionaryEntry" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="F:System.AddIn.Contract.Collections.RemoteArgumentDictionaryEntry.Value">
+      <summary>Представляет значение в паре ключ-значение, которая представляет <see cref="T:System.AddIn.Contract.Collections.RemoteArgumentDictionaryEntry" />.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:System.AddIn.Pipeline.AddInContractAttribute">
+      <summary>Идентифицирует объект как контракт надстройки сегмента конвейера.</summary>
+    </member>
+    <member name="M:System.AddIn.Pipeline.AddInContractAttribute.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Pipeline.AddInContractAttribute" />. </summary>
+    </member>
+    <member name="T:System.AddIn.Pipeline.QualificationDataAttribute">
+      <summary>Предоставляет данные для сегмента конвейера, определенные разработчиком.</summary>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="M:System.AddIn.Pipeline.QualificationDataAttribute.#ctor(System.String,System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.AddIn.Pipeline.QualificationDataAttribute" />. </summary>
+      <param name="name">Любой идентификатор, служащий в качестве ключа в паре ключ-значение.</param>
+      <param name="value">Любое значение.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Pipeline.QualificationDataAttribute.Name">
+      <summary>Возвращает имя, служащее в качестве ключа в паре ключ-значение.</summary>
+      <returns>Имя, присвоенное атрибуту.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="P:System.AddIn.Pipeline.QualificationDataAttribute.Value">
+      <summary>Возвращает значение пары ключ-значение.</summary>
+      <returns>Значение, присвоенное атрибуту.</returns>
+      <filterpriority>2</filterpriority>
+    </member>
+  </members>
+</doc>

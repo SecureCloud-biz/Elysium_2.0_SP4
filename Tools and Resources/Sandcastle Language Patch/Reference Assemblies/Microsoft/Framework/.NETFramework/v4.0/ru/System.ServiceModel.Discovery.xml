@@ -1,0 +1,1921 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.ServiceModel.Discovery</name>
+  </assembly>
+  <members>
+    <member name="T:System.ServiceModel.Discovery.AnnouncementClient">
+      <summary>Используется службами для передачи сообщений с объявлениями об обнаружении.Клиенты могут использовать механизм обнаружения, в частности соответствующий класс <see cref="T:System.ServiceModel.Discovery.AnnouncementService" /> для прослушивания сообщений с объявлениями и выполнения соответствующих действий.Сообщение с объявлением содержит сведения о службе, в том числе полное имя контракта, любые области, в которых действует служба, а также любые пользовательские метаданные, которые служба желает передать.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.AnnouncementClient" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.#ctor(System.ServiceModel.Discovery.AnnouncementEndpoint)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.AnnouncementClient" /> с указанным объектом <see cref="T:System.ServiceModel.Discovery.AnnouncementEndpoint" />.</summary>
+      <param name="announcementEndpoint">Конечная точка объявления.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.#ctor(System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.AnnouncementClient" /> с заданной конфигурацией конечной точки.</summary>
+      <param name="endpointConfigurationName">Имя конфигурации конечной точки, которое должно использоваться.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.AnnounceOffline(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>Создает сообщение с объявлением объявления о выходе из сети (Bye) для рассылки с указанными метаданными обнаружения конечной точки.</summary>
+      <param name="discoveryMetadata">Метаданные обнаружения конечной точки.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.AnnounceOfflineAsync(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>Создает сообщение с объявлением о выходе из сети (Bye) для асинхронной рассылки с указанными метаданными обнаружения конечной точки.</summary>
+      <param name="discoveryMetadata">Метаданные обнаружения конечной точки.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.AnnounceOfflineAsync(System.ServiceModel.Discovery.EndpointDiscoveryMetadata,System.Object)">
+      <summary>Создает сообщение с объявлением о выходе из сети (Bye) для асинхронной рассылки с указанными метаданными обнаружения конечной точки и состоянием, определяемым пользователем.</summary>
+      <param name="discoveryMetadata">Метаданные обнаружения конечной точки.</param>
+      <param name="userState">Определенные пользователем данные о состоянии.</param>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.AnnouncementClient.AnnounceOfflineCompleted">
+      <summary>Происходит после завершения асинхронного объявления о выходе из сети (Bye).</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.AnnounceOnline(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>Создает подключенное сообщение объявления (Hello) для асинхронной рассылки.</summary>
+      <param name="discoveryMetadata">Метаданные обнаружения конечной точки.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.AnnounceOnlineAsync(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>Создает сообщение с объявлением о входе в сеть (Hello) для асинхронной рассылки с указанными метаданными обнаружения конечной точки.</summary>
+      <param name="discoveryMetadata">Метаданные обнаружения конечной точки.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.AnnounceOnlineAsync(System.ServiceModel.Discovery.EndpointDiscoveryMetadata,System.Object)">
+      <summary>Создает подключенное сообщение объявления (Hello) для асинхронной рассылки с указанными метаданными обнаружения конечной точки и определяемым пользователем состоянием.</summary>
+      <param name="discoveryMetadata">Метаданные обнаружения конечной точки.</param>
+      <param name="userState">Определенные пользователем данные о состоянии.</param>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.AnnouncementClient.AnnounceOnlineCompleted">
+      <summary>Происходит после завершения асинхронного объявления о входе в сеть (Hello).</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.BeginAnnounceOffline(System.ServiceModel.Discovery.EndpointDiscoveryMetadata,System.AsyncCallback,System.Object)">
+      <summary>Создает сообщение с объявлением о выходе из сети (Bye) для асинхронной рассылки с указанными метаданными обнаружения конечной точки и состоянием, определяемым пользователем.Указанный метод <see cref="T:System.AsyncCallback" /> вызывается при завершении операции.</summary>
+      <returns>Экземпляр <see cref="T:System.IAsyncResult" />.</returns>
+      <param name="discoveryMetadata">Метаданные обнаружения конечной точки.</param>
+      <param name="callback">Объект <see cref="T:System.AsyncCallback" />.</param>
+      <param name="state">Определенные пользователем данные о состоянии.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.BeginAnnounceOnline(System.ServiceModel.Discovery.EndpointDiscoveryMetadata,System.AsyncCallback,System.Object)">
+      <summary>Создает подключенное сообщение объявления (Hello) для асинхронной рассылки с указанными метаданными обнаружения конечной точки и определяемым пользователем состоянием.Указанный метод <see cref="T:System.AsyncCallback" /> вызывается при завершении операции.</summary>
+      <returns>Экземпляр <see cref="T:System.IAsyncResult" />.</returns>
+      <param name="discoveryMetadata">Метаданные обнаружения конечной точки.</param>
+      <param name="callback">Объект <see cref="T:System.AsyncCallback" />.</param>
+      <param name="state">Определенные пользователем данные о состоянии.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.AnnouncementClient.ChannelFactory">
+      <summary>Возвращает фабрику каналов, связанную с <see cref="T:System.ServiceModel.Discovery.AnnouncementClient" />.</summary>
+      <returns>Экземпляр <see cref="T:System.ServiceModel.ChannelFactory" />.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.AnnouncementClient.ClientCredentials">
+      <summary>Получает учетные данные клиента, связанные с <see cref="T:System.ServiceModel.Discovery.AnnouncementClient" />.</summary>
+      <returns>Экземпляр <see cref="T:System.ServiceModel.Description.ClientCredentials" />.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.Close">
+      <summary>Закрывает объект <see cref="T:System.ServiceModel.Discovery.AnnouncementClient" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.EndAnnounceOffline(System.IAsyncResult)">
+      <summary>Ожидает завершения отложенного асинхронного объявления о выходе из сети.</summary>
+      <param name="result">Ссылка на отложенную асинхронную операцию.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.EndAnnounceOnline(System.IAsyncResult)">
+      <summary>Ожидает завершения отложенного асинхронного объявления о входе в сеть.</summary>
+      <param name="result">Ссылка на отложенную асинхронную операцию.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.AnnouncementClient.Endpoint">
+      <summary>Возвращает тип <see cref="T:System.ServiceModel.Description.ServiceEndpoint" />, связанный с <see cref="T:System.ServiceModel.Discovery.AnnouncementClient" />.</summary>
+      <returns>Экземпляр <see cref="T:System.ServiceModel.Description.ServiceEndpoint" />.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.AnnouncementClient.InnerChannel">
+      <summary>Возвращает внутренний канал, связанный с <see cref="T:System.ServiceModel.Discovery.AnnouncementClient" />.</summary>
+      <returns>Экземпляр <see cref="T:System.ServiceModel.IClientChannel" />.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.AnnouncementClient.MessageSequenceGenerator">
+      <summary>Получает или задает генератор порядковых номеров сообщений, связанный с <see cref="T:System.ServiceModel.Discovery.AnnouncementClient" />.</summary>
+      <returns>Экземпляр <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator" />.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.Open">
+      <summary>Открывает <see cref="T:System.ServiceModel.Discovery.AnnouncementClient" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#IDisposable#Dispose"></member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#Abort"></member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#BeginClose(System.AsyncCallback,System.Object)"></member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#BeginClose(System.TimeSpan,System.AsyncCallback,System.Object)"></member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#BeginOpen(System.AsyncCallback,System.Object)"></member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#BeginOpen(System.TimeSpan,System.AsyncCallback,System.Object)"></member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#Close"></member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#Close(System.TimeSpan)"></member>
+    <member name="E:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#Closed"></member>
+    <member name="E:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#Closing"></member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#EndClose(System.IAsyncResult)"></member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#EndOpen(System.IAsyncResult)"></member>
+    <member name="E:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#Faulted"></member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#Open"></member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#Open(System.TimeSpan)"></member>
+    <member name="E:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#Opened"></member>
+    <member name="E:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#Opening"></member>
+    <member name="P:System.ServiceModel.Discovery.AnnouncementClient.System#ServiceModel#ICommunicationObject#State"></member>
+    <member name="T:System.ServiceModel.Discovery.AnnouncementEndpoint">
+      <summary>Стандартная конечная точка, используемая службами для отправки сообщений объявления. </summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementEndpoint.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.AnnouncementEndpoint" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementEndpoint.#ctor(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.AnnouncementEndpoint" /> с заданной привязкой и адресом.</summary>
+      <param name="binding">Привязка.</param>
+      <param name="address">Адрес.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementEndpoint.#ctor(System.ServiceModel.Discovery.DiscoveryVersion)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.AnnouncementEndpoint" />, который поддерживает указанную версию <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />.</summary>
+      <param name="discoveryVersion">Используемая версия обнаружения.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementEndpoint.#ctor(System.ServiceModel.Discovery.DiscoveryVersion,System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.AnnouncementEndpoint" />, который поддерживает указанную версию <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> с указанной привязкой и адресом.</summary>
+      <param name="discoveryVersion">Используемая версия обнаружения.</param>
+      <param name="binding">Используемая привязка.</param>
+      <param name="address">Адрес конечной точки.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.AnnouncementEndpoint.DiscoveryVersion">
+      <summary>Возвращает версию обнаружения, которую поддерживает данная конечная точка объявления.</summary>
+      <returns>Экземпляр <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.AnnouncementEndpoint.MaxAnnouncementDelay">
+      <summary>Возвращает или задает максимальную задержку объявления.</summary>
+      <returns>Экземпляр <see cref="T:System.TimeSpan" />, который содержит максимальную задержку объявления.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.AnnouncementEventArgs">
+      <summary>Используется для передачи аргументов событий объявлений.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.AnnouncementEventArgs.EndpointDiscoveryMetadata">
+      <summary>Возвращает метаданные службы, переданные службой как часть сообщения с объявлением от этого экземпляра <see cref="T:System.ServiceModel.Discovery.AnnouncementEventArgs" />.</summary>
+      <returns>Обнаруживаемые метаданные службы.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.AnnouncementEventArgs.MessageSequence">
+      <summary>Возвращает порядковый номер сообщения обнаружения из этого экземпляра <see cref="T:System.ServiceModel.Discovery.AnnouncementEventArgs" />.</summary>
+      <returns>Последовательность сообщений обнаружения.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.AnnouncementService">
+      <summary>Резидентная реализация службы объявлений. </summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementService.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.AnnouncementService" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementService.#ctor(System.Int32)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.AnnouncementService" /> с указанной длиной журнала продублированных сообщений.</summary>
+      <param name="duplicateMessageHistoryLength">Максимальное количество хэшей сообщений, используемых транспортом для идентификации повторяющихся сообщений.Значение по умолчанию — 0.</param>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.AnnouncementService.OfflineAnnouncementReceived">
+      <summary>Происходит, когда поступает объявление о выходе из сети (Bye).</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementService.OnBeginOfflineAnnouncement(System.ServiceModel.Discovery.DiscoveryMessageSequence,System.ServiceModel.Discovery.EndpointDiscoveryMetadata,System.AsyncCallback,System.Object)">
+      <summary>Начинает обработку входящих объявлений о выходе из сети (Bye).</summary>
+      <returns>Состояние отложенного асинхронного запроса.</returns>
+      <param name="messageSequence">Порядковый номер сообщения в последовательности для текущего уведомления.</param>
+      <param name="endpointDiscoveryMetadata">Объект, представляющий метаданные конечной точки, например области, URI для прослушивания, имена контрактов и адрес конечной точки.</param>
+      <param name="callback">Метод, который вызывается после завершения асинхронной операции.</param>
+      <param name="state">Определенные инфраструктурой данные о состоянии.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementService.OnBeginOnlineAnnouncement(System.ServiceModel.Discovery.DiscoveryMessageSequence,System.ServiceModel.Discovery.EndpointDiscoveryMetadata,System.AsyncCallback,System.Object)">
+      <summary>Начинает обработку поступающих объявлений о входе в сеть (Hello).</summary>
+      <returns>Состояние отложенного асинхронного запроса.</returns>
+      <param name="messageSequence">Порядковый номер сообщения в последовательности для текущего уведомления.</param>
+      <param name="endpointDiscoveryMetadata">Объект, представляющий метаданные конечной точки, например области, URI для прослушивания, имена контрактов и адрес конечной точки.</param>
+      <param name="callback">Метод, который вызывается после завершения асинхронной операции.</param>
+      <param name="state">Определенные инфраструктурой данные о состоянии.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementService.OnEndOfflineAnnouncement(System.IAsyncResult)">
+      <summary>Пользователи, наследующие от <see cref="T:System.ServiceModel.Discovery.AnnouncementService" /> для реализации пользовательской службы прослушивателя объявлений, должны переопределить этот метод и начать обработку входящих сообщений объявления в автономном режиме (Bye) здесь.</summary>
+      <param name="result">Асинхронный результат, возвращаемый соответствующим <see cref="M:System.ServiceModel.Discovery.DiscoveryProxyBase.OnBeginOnlineAnnouncement(System.ServiceModel.Discovery.AnnouncementMessage,System.AsyncCallback,System.Object)" />.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.AnnouncementService.OnEndOnlineAnnouncement(System.IAsyncResult)">
+      <summary>Пользователи, наследующие от <see cref="T:System.ServiceModel.Discovery.AnnouncementService" /> для реализации пользовательской службы прослушивателя объявлений, должны переопределить этот метод и начать обработку входящих сообщений объявления в автономном режиме (Bye) здесь.</summary>
+      <param name="result">Асинхронный результат, возвращаемый соответствующим <see cref="M:System.ServiceModel.Discovery.DiscoveryProxyBase.OnBeginOnlineAnnouncement(System.ServiceModel.Discovery.AnnouncementMessage,System.AsyncCallback,System.Object)" />.</param>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.AnnouncementService.OnlineAnnouncementReceived">
+      <summary>Происходит, когда поступает объявление о входе в сеть (Hello).</summary>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.DiscoveryClient">
+      <summary>Позволяет обнаружить доступные службы. </summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryClient" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.#ctor(System.ServiceModel.Discovery.DiscoveryEndpoint)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryClient" />.</summary>
+      <param name="discoveryEndpoint">Конечная точка обнаружения, которая используется при передаче сообщений об обнаружении.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.#ctor(System.String)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryClient" /> с заданной конфигурацией конечной точки.</summary>
+      <param name="endpointConfigurationName">Используемое имя конфигурации конечной точки.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.CancelAsync(System.Object)">
+      <summary>Отменяет асинхронную операцию в очереди.</summary>
+      <param name="userState">Заданный пользователем объект состояния, который передается в метод <see cref="M:System.ServiceModel.Discovery.DiscoveryClient.FindAsync" /> или один из методов <see cref="M:System.ServiceModel.Discovery.DiscoveryClient.ResolveAsync" />.Идентифицирует отложенную асинхронную операцию, которая должна быть отменена.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryClient.ChannelFactory">
+      <summary>Возвращает фабрику каналов для <see cref="T:System.ServiceModel.Discovery.DiscoveryClient" />.</summary>
+      <returns>Фабрика каналов.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryClient.ClientCredentials">
+      <summary>Получает учетные данные клиента для <see cref="T:System.ServiceModel.Discovery.DiscoveryClient" />.</summary>
+      <returns>Учетные данные клиента для <see cref="T:System.ServiceModel.Discovery.DiscoveryClient" />.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.Close">
+      <summary>Закрывает клиент обнаружения.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryClient.Endpoint">
+      <summary>Возвращает конечную точку, используемую для передачи сообщений обнаружения.</summary>
+      <returns>Конечная точка, используемая для передачи сообщений обнаружения.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.Find(System.ServiceModel.Discovery.FindCriteria)">
+      <summary>Передает запрос на поиск служб, соответствующих определенным критериям.</summary>
+      <returns>Обнаруживаемые метаданные соответствующих конечных точек службы.</returns>
+      <param name="criteria">Критерии для поиска служб.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.FindAsync(System.ServiceModel.Discovery.FindCriteria)">
+      <summary>Начинает асинхронную операцию поиска по заданным критериям.</summary>
+      <param name="criteria">Критерии для поиска служб.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.FindAsync(System.ServiceModel.Discovery.FindCriteria,System.Object)">
+      <summary>Начинает асинхронную операцию поиска с заданными критериями и состоянием объекта, определяемым пользователем.</summary>
+      <param name="criteria">Критерии для поиска служб.</param>
+      <param name="userState">Заданный пользователем объект для идентификации асинхронной операции поиска.</param>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.DiscoveryClient.FindCompleted">
+      <summary>Создается при завершении всей операции поиска.</summary>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.DiscoveryClient.FindProgressChanged">
+      <summary>Происходит каждый раз, когда клиент получает ответ от определенной службы. </summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryClient.InnerChannel">
+      <summary>Канал, используемый для передачи сообщений обнаружения.</summary>
+      <returns>Канал, используемый для передачи сообщений обнаружения. </returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.Open">
+      <summary>Открывает <see cref="T:System.ServiceModel.Discovery.DiscoveryClient" />.</summary>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.DiscoveryClient.ProxyAvailable">
+      <summary>Происходит, когда многоадресное сообщение отмены поступает от прокси-сервера обнаружения в ответ на операцию поиска или вызова службы.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.Resolve(System.ServiceModel.Discovery.ResolveCriteria)">
+      <summary>Начинает асинхронную операцию разрешения с указанными критериями.</summary>
+      <returns>Обнаруживаемые метаданные конечной точки службы по указанному адресу или значение null, если конечная точка службы по указанному адресу не обнаружена.</returns>
+      <param name="criteria">Критерии совпадения конечной точки службы.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.ResolveAsync(System.ServiceModel.Discovery.ResolveCriteria)">
+      <summary>Начинает асинхронную операцию разрешения с указанными критериями.</summary>
+      <param name="criteria">Критерии совпадения конечной точки службы.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.ResolveAsync(System.ServiceModel.Discovery.ResolveCriteria,System.Object)">
+      <summary>Начинает асинхронную операцию вызова службы с заданными критериями и состоянием объекта, определяемым пользователем.</summary>
+      <param name="criteria">Критерии совпадения конечной точки службы.</param>
+      <param name="userState">Заданный пользователем объект для идентификации асинхронной операции вызова службы.</param>
+    </member>
+    <member name="E:System.ServiceModel.Discovery.DiscoveryClient.ResolveCompleted">
+      <summary>Происходит, когда асинхронная операция вызова службы завершена.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#IDisposable#Dispose">
+      <summary>Реализация метода <see cref="M:System.IDisposible.Dispose" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#Abort"></member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#BeginClose(System.AsyncCallback,System.Object)"></member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#BeginClose(System.TimeSpan,System.AsyncCallback,System.Object)"></member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#BeginOpen(System.AsyncCallback,System.Object)"></member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#BeginOpen(System.TimeSpan,System.AsyncCallback,System.Object)"></member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#Close"></member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#Close(System.TimeSpan)"></member>
+    <member name="E:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#Closed"></member>
+    <member name="E:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#Closing"></member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#EndClose(System.IAsyncResult)"></member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#EndOpen(System.IAsyncResult)"></member>
+    <member name="E:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#Faulted"></member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#Open"></member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#Open(System.TimeSpan)"></member>
+    <member name="E:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#Opened"></member>
+    <member name="E:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#Opening"></member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryClient.System#ServiceModel#ICommunicationObject#State"></member>
+    <member name="T:System.ServiceModel.Discovery.DiscoveryClientBindingElement">
+      <summary>Элемент привязки, который можно добавить к клиентскому приложению , чтобы использовать преимущества клиентского канала обнаружения.Через клиентский канал обнаружения клиентское приложение  может получить доступ к обнаруживаемой службе, не зная заранее адрес конечной точки.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClientBindingElement.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryClientBindingElement" /> со значениями по умолчанию.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClientBindingElement.#ctor(System.ServiceModel.Discovery.DiscoveryEndpointProvider,System.ServiceModel.Discovery.FindCriteria)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryClientBindingElement" /> с указанными поставщиком конечной точки и критериями поиска службы.</summary>
+      <param name="discoveryEndpointProvider">Объект, который получает конечную точку обнаружения.</param>
+      <param name="findCriteria">Объект, который содержит необходимые сведения для поиска поставщика служб.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClientBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)">
+      <summary>Инициализирует фабрику каналов для создания каналов конкретного типа из контекста привязок.</summary>
+      <returns>Фабрика каналов указанного типа, инициализированная из контекста привязок.</returns>
+      <param name="context">Контекст привязок.</param>
+      <typeparam name="TChannel">Тип создаваемой фабрики каналов.</typeparam>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClientBindingElement.BuildChannelListener``1(System.ServiceModel.Channels.BindingContext)">
+      <summary>Клиентский канал обнаружения не поддерживает создание прослушивателя каналов.Этот метод можно переопределить, чтобы инициализировать прослушиватель каналов для приема каналов заданного типа из контекста привязок.</summary>
+      <returns>Прослушиватель каналов указанного типа, инициализированный из контекста.</returns>
+      <param name="context">Контекст привязок.</param>
+      <typeparam name="TChannel">Тип создаваемого прослушивателя каналов.</typeparam>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClientBindingElement.CanBuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)">
+      <summary>Возвращает значение, указывающее, может ли текущая привязка создать стек фабрик каналов на клиенте.</summary>
+      <returns>Значение true, если стек фабрик каналов может быть создан на клиенте; в противном случае — значение false.</returns>
+      <param name="context">Контекст привязок.</param>
+      <typeparam name="TChannel">Тип канала, для которого тестируется фабрика.</typeparam>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClientBindingElement.CanBuildChannelListener``1(System.ServiceModel.Channels.BindingContext)">
+      <summary>Поскольку клиентский канал обнаружения не поддерживает создание прослушивателя каналов, этот метод всегда возвращает значение false.Метод можно расширить, чтобы возвращаемое значение показывало, может ли элемент привязки создать прослушиватель для заданного типа канала.</summary>
+      <returns>Значение true, если можно создать прослушиватель <see cref="T:System.ServiceModel.Channels.IChannelListener`1" /> указанного типа с помощью элемента привязки; в противном случае — значение false.</returns>
+      <param name="context">Контекст привязок.</param>
+      <typeparam name="TChannel">Принимаемый прослушивателем тип канала.</typeparam>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClientBindingElement.Clone">
+      <summary>Создает копию элемента привязки.</summary>
+      <returns>Копия элемента привязки.</returns>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.DiscoveryClientBindingElement.DiscoveryEndpointAddress">
+      <summary>Статический временный адрес, выполняющий роль заполнителя, пока не будет вычислен настоящий адрес службы. </summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryClientBindingElement.DiscoveryEndpointProvider">
+      <summary>Возвращает поставщика конечной точки обнаружения.</summary>
+      <returns>Поставщик конечной точки.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryClientBindingElement.FindCriteria">
+      <summary>Возвращает или задает критерии поиска.</summary>
+      <returns>Критерий поиска.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryClientBindingElement.GetProperty``1(System.ServiceModel.Channels.BindingContext)">
+      <summary>Возвращает объект нужного типа, если он существует в стеке привязок.</summary>
+      <returns>Объект указанного типа, если он есть; в противном случае — null.</returns>
+      <param name="context">Контекст привязок.</param>
+      <typeparam name="T">Тип объекта, который нужно получить.</typeparam>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.DiscoveryEndpoint">
+      <summary>Стандартная конечная точка обнаружения.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryEndpoint.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryEndpoint" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryEndpoint.#ctor(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryEndpoint" /> с указанными привязкой и адресом конечной точки.</summary>
+      <param name="binding">Привязка.</param>
+      <param name="endpointAddress">Адрес конечной точки.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryEndpoint.#ctor(System.ServiceModel.Discovery.DiscoveryVersion,System.ServiceModel.Discovery.ServiceDiscoveryMode)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryEndpoint" /> с заданной версией протокола обнаружения и заданным режимом.</summary>
+      <param name="discoveryVersion">Перечисляемое значение, представляющее одну из версий протокола WS-Discovery.</param>
+      <param name="discoveryMode">Перечисляемое значение, представляющее один из режимов отправки сообщений обнаружения.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryEndpoint.#ctor(System.ServiceModel.Discovery.DiscoveryVersion,System.ServiceModel.Discovery.ServiceDiscoveryMode,System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryEndpoint" /> с указанной версией протокола обнаружения, режимом, привязкой и адресом конечной точки.</summary>
+      <param name="discoveryVersion">Перечисляемое значение, представляющее одну из версий протокола WS-Discovery.</param>
+      <param name="discoveryMode">Перечисляемое значение, представляющее один из режимов отправки сообщений обнаружения.</param>
+      <param name="binding">Элементы привязки, которые задают протоколы, транспорты и кодировщики сообщений, используемые для взаимодействия между клиентами и службами.</param>
+      <param name="endpointAddress">Уникальный адрес конечной точки обнаружения.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryEndpoint.DiscoveryMode">
+      <summary>Возвращает <see cref="T:System.ServiceModel.Discovery.DiscoveryMode" /> для конечной точки.</summary>
+      <returns>Одно из значений перечисления <see cref="T:System.ServiceModel.Discovery.DiscoveryMode" />.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryEndpoint.DiscoveryVersion">
+      <summary>Возвращает <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> для конечной точки.</summary>
+      <returns>Одно из значений перечисления <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryEndpoint.MaxResponseDelay">
+      <summary>Возвращает или задает максимальное время <see cref="T:System.Timespan" />, в течение которого должны быть отправлены все сообщения ProbeMatches от служб, соответствующих критериям в операции зондирования.</summary>
+      <returns>Экземпляр <see cref="T:System.TimeSpan" />. Он содержит максимальный период времени, в течение которого должны быть отправлены все сообщения ProbeMatches от служб, соответствующих критериям в операции зондирования. </returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.DiscoveryEndpointProvider">
+      <summary>Предоставляет конечную точку обнаружения.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryEndpointProvider.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryEndpointProvider" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryEndpointProvider.GetDiscoveryEndpoint">
+      <summary>Возвращает конечную точку обнаружения.</summary>
+      <returns>Конечная точка обнаружения.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.DiscoveryMessageSequence">
+      <summary>Представляет заголовок AppSequence, определенный в протоколе WS-Discovery. </summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryMessageSequence.CanCompareTo(System.ServiceModel.Discovery.DiscoveryMessageSequence)">
+      <summary>Возвращает значение, указывающее, сравним ли указанный экземпляр <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> с текущим экземпляром <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" />.</summary>
+      <returns>Значение true, если два порядковых номера сообщения обнаружения сравнимы; в противном случае — значение false.</returns>
+      <param name="other">Последовательность сообщений обнаружения для сравнения.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryMessageSequence.CompareTo(System.ServiceModel.Discovery.DiscoveryMessageSequence)">
+      <summary>Сравнивает указанный экземпляр <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> с текущим экземпляром <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" />.</summary>
+      <returns>0, если два порядковых номера сообщения обнаружения равны, и отрицательное число, если порядковый номер сообщения <paramref name="other" /> больше, чем порядковый номер сообщения в текущей последовательности обнаружения.</returns>
+      <param name="other">Последовательность сообщений обнаружения для сравнения.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryMessageSequence.Equals(System.Object)">
+      <summary>Определяет, равен ли указанный объект <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> текущему экземпляру.</summary>
+      <returns>Значение true, если указанный объект равен текущему порядковому номеру сообщения обнаружения.</returns>
+      <param name="obj">Объект для сравнения.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryMessageSequence.Equals(System.ServiceModel.Discovery.DiscoveryMessageSequence)">
+      <summary>Определяет, сравним ли указанный экземпляр <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> с текущим экземпляром <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" />.</summary>
+      <returns>Значение true, если два порядковых номера сообщения обнаружения сравнимы; в противном случае — значение false.</returns>
+      <param name="other">Последовательность сообщений обнаружения для сравнения.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryMessageSequence.GetHashCode">
+      <summary>Получает хэш-код для текущего экземпляра <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" />.</summary>
+      <returns>Значение хэш-кода.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryMessageSequence.InstanceId">
+      <summary>Получает идентификатор экземпляра.</summary>
+      <returns>Идентификатор экземпляра.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryMessageSequence.MessageNumber">
+      <summary>Возвращает номер сообщения.</summary>
+      <returns>Номер сообщения.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryMessageSequence.op_Equality(System.ServiceModel.Discovery.DiscoveryMessageSequence,System.ServiceModel.Discovery.DiscoveryMessageSequence)">
+      <summary>Определяет, равны ли два заданных экземпляра класса <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" />.</summary>
+      <returns>Значение true, если два экземпляра последовательности сообщений обнаружения равны; в противном случае — значение false.</returns>
+      <param name="messageSequence1">Последовательность сообщений обнаружения.</param>
+      <param name="messageSequence2">Последовательность сообщений обнаружения.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryMessageSequence.op_Inequality(System.ServiceModel.Discovery.DiscoveryMessageSequence,System.ServiceModel.Discovery.DiscoveryMessageSequence)">
+      <summary>Определяет неравенство двух заданных экземпляров класса <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" />.</summary>
+      <returns>Значение true, если два экземпляра последовательности сообщений обнаружения не равны; в противном случае — значение false.</returns>
+      <param name="messageSequence1">Последовательность сообщений обнаружения.</param>
+      <param name="messageSequence2">Последовательность сообщений обнаружения.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryMessageSequence.SequenceId">
+      <summary>Получает идентификатор последовательности.</summary>
+      <returns>Идентификатор последовательности.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryMessageSequence.ToString">
+      <summary>Создает строковое представление экземпляра <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" />.</summary>
+      <returns>Последовательность сообщений обнаружения.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator">
+      <summary>Вспомогательный класс, который создает экземпляры <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator.#ctor(System.Int64,System.Uri)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator" /> с заданным идентификатором экземпляра и идентификатором последовательности.</summary>
+      <param name="instanceId">Идентификатор экземпляра.</param>
+      <param name="sequenceId">Идентификатор последовательности.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator.Next">
+      <summary>Создает следующий объект <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" />.</summary>
+      <returns>Следующий объект <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" />.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.DiscoveryOperationContextExtension">
+      <summary>Расширение контекста операции, позволяющее сделать различные элементы конфигурации доступными для среды выполнения службы обнаружения.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryOperationContextExtension.DiscoveryMode">
+      <summary>Возвращает объект <see cref="T:System.ServiceModel.Discovery.ServiceDiscoveryMode" />.</summary>
+      <returns>Одно из значений перечисления <see cref="T:System.ServiceModel.Discovery.ServiceDiscoveryMode" />.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryOperationContextExtension.DiscoveryVersion">
+      <summary>Возвращает объект <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />.</summary>
+      <returns>Версия обнаружения.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryOperationContextExtension.MaxResponseDelay">
+      <summary>Возвращает значение <see cref="T:System.TimeSpan" />, которое задает максимальное время задержки ответа.</summary>
+      <returns>Максимальная задержка ответа.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryOperationContextExtension.System#ServiceModel#IExtension{T}#Attach(System.ServiceModel.OperationContext)"></member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryOperationContextExtension.System#ServiceModel#IExtension{T}#Detach(System.ServiceModel.OperationContext)"></member>
+    <member name="T:System.ServiceModel.Discovery.DiscoveryProxy">
+      <summary>Абстрактный базовый класс, используемый для реализации прокси-сервера обнаружения.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryProxy" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.#ctor(System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryProxy" /> с указанным объектом <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator" />.</summary>
+      <param name="messageSequenceGenerator">Генератор последовательности сообщений.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.#ctor(System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator,System.Int32)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryProxy" /> с указанным <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator" /> и длиной журнала дублированных сообщений.</summary>
+      <param name="messageSequenceGenerator">Генератор последовательности сообщений.</param>
+      <param name="duplicateMessageHistoryLength">Максимальное количество хэшей сообщений, используемых транспортом для идентификации повторяющихся сообщений.Значение по умолчанию — 0.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.BeginShouldRedirectFind(System.ServiceModel.Discovery.FindCriteria,System.AsyncCallback,System.Object)">
+      <summary>Переопределите этот метод, чтобы прокси-сервер обнаружения мог передавать многоадресные сообщения отмены, получив многоадресный запрос на поиск.</summary>
+      <returns>Ссылка на отложенную асинхронную операцию.</returns>
+      <param name="resolveCriteria">Критерии вызова служб, описывающие службу, которую нужно найти.</param>
+      <param name="callback">Делегат обратного вызова, вызываемый после окончания операции.</param>
+      <param name="state">Определенные пользователем данные о состоянии.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.BeginShouldRedirectResolve(System.ServiceModel.Discovery.ResolveCriteria,System.AsyncCallback,System.Object)">
+      <summary>Переопределите этот метод, чтобы прокси-сервер обнаружения мог передавать многоадресные сообщения отмены, получив многоадресный запрос на вызов службы.</summary>
+      <returns>Ссылка на отложенную асинхронную операцию.</returns>
+      <param name="findCriteria">Критерии поиска, описывающие службу, которую нужно найти.</param>
+      <param name="callback">Делегат обратного вызова, вызываемый по завершении операции.</param>
+      <param name="state">Определенные пользователем данные о состоянии.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.EndShouldRedirectFind(System.IAsyncResult,System.Collections.ObjectModel.Collection{System.ServiceModel.Discovery.EndpointDiscoveryMetadata}@)">
+      <summary>Переопределите этот метод, чтобы обработать окончание передачи многоадресного сообщения отмены для запросов на поиск.</summary>
+      <returns>Значение true, если операция поиска должна быть перенаправлена; в противном случае — значение false.</returns>
+      <param name="result">Ссылка на завершенную асинхронную операцию.</param>
+      <param name="redirectionEndpoints">Коллекция метаданных обнаружения конечной точки, описывающих конечные точки перенаправления.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.EndShouldRedirectResolve(System.IAsyncResult,System.Collections.ObjectModel.Collection{System.ServiceModel.Discovery.EndpointDiscoveryMetadata}@)">
+      <summary>Переопределите этот метод, чтобы обработать окончание передачи многоадресного сообщения отмены для запросов на вызов служб.</summary>
+      <returns>Значение true, если операция вызова должна быть перенаправлена; в противном случае — значение false.</returns>
+      <param name="result">Ссылка на завершенную асинхронную операцию.</param>
+      <param name="redirectionEndpoints">Коллекция метаданных обнаружения конечной точки, описывающих конечные точки перенаправления.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.OnBeginFind(System.ServiceModel.Discovery.FindRequestContext,System.AsyncCallback,System.Object)">
+      <summary>Переопределите этот метод, чтобы он обрабатывал операцию поиска.</summary>
+      <returns>Ссылка на отложенную асинхронную операцию.</returns>
+      <param name="findRequestContext">Контекст запроса поиска, описывающий службу, которую нужно обнаружить.</param>
+      <param name="callback">Делегат обратного вызова, вызываемый по завершении операции.</param>
+      <param name="state">Определенные пользователем данные о состоянии.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.OnBeginOfflineAnnouncement(System.ServiceModel.Discovery.DiscoveryMessageSequence,System.ServiceModel.Discovery.EndpointDiscoveryMetadata,System.AsyncCallback,System.Object)">
+      <summary>Переопределите этот метод для обработки сообщения с объявлением о выходе из сети.</summary>
+      <returns>Ссылка на отложенную асинхронную операцию.</returns>
+      <param name="messageSequence">Последовательность сообщений обнаружения.</param>
+      <param name="endpointDiscoveryMetadata">Метаданные обнаружения конечной точки.</param>
+      <param name="callback">Делегат обратного вызова, вызываемый по завершении операции.</param>
+      <param name="state">Определенные пользователем данные о состоянии.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.OnBeginOnlineAnnouncement(System.ServiceModel.Discovery.DiscoveryMessageSequence,System.ServiceModel.Discovery.EndpointDiscoveryMetadata,System.AsyncCallback,System.Object)">
+      <summary>Переопределите этот метод для обработки сообщения с объявлением о входе в сеть.</summary>
+      <returns>Ссылка на отложенную асинхронную операцию.</returns>
+      <param name="messageSequence">Последовательность сообщений обнаружения.</param>
+      <param name="endpointDiscoveryMetadata">Метаданные обнаружения конечной точки.</param>
+      <param name="callback">Делегат обратного вызова, вызываемый по завершении операции.</param>
+      <param name="state">Определенные пользователем данные о состоянии.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.OnBeginResolve(System.ServiceModel.Discovery.ResolveCriteria,System.AsyncCallback,System.Object)">
+      <summary>Переопределите этот метод, чтобы он выполнял операцию разрешения.</summary>
+      <returns>Ссылка на отложенную асинхронную операцию.</returns>
+      <param name="resolveCriteria">Критерии вызова служб, описывающие службу, которую нужно обнаружить.</param>
+      <param name="callback">Делегат обратного вызова, вызываемый по завершении операции.</param>
+      <param name="state">Определенные пользователем данные о состоянии.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.OnEndFind(System.IAsyncResult)">
+      <summary>Переопределите этот метод, чтобы он завершал операцию поиска.</summary>
+      <param name="result">Ссылка на завершенную асинхронную операцию.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.OnEndOfflineAnnouncement(System.IAsyncResult)">
+      <summary>Переопределите этот метод, чтобы обработать окончание передачи сообщение с объявлением о выходе из сети.</summary>
+      <param name="result">Ссылка на завершенную асинхронную операцию.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.OnEndOnlineAnnouncement(System.IAsyncResult)">
+      <summary>Переопределите этот метод, чтобы обработать окончание передачи сообщения с объявлением о входе в сеть.</summary>
+      <param name="result">Ссылка на завершенную асинхронную операцию.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryProxy.OnEndResolve(System.IAsyncResult)">
+      <summary>Переопределите этот метод, чтобы он завершал операцию разрешения.</summary>
+      <returns>Метаданные обнаружения конечной точки для разрешенной службы.</returns>
+      <param name="result">Ссылка на завершенную асинхронную операцию.</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.DiscoveryService">
+      <summary>Абстрактный базовый класс, используемый для реализации службы обнаружения.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryService.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryService" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryService.#ctor(System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryService" /> с указанным объектом <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator" />.</summary>
+      <param name="discoveryMessageSequenceGenerator">Генератор последовательности сообщений обнаружения.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryService.#ctor(System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator,System.Int32)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryService" /> с указанным <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequenceGenerator" /> и длиной журнала дублированных сообщений.</summary>
+      <param name="discoveryMessageSequenceGenerator">Генератор последовательности сообщений обнаружения.</param>
+      <param name="duplicateMessageHistoryLength">Максимальное количество хэшей сообщений, используемых транспортом для идентификации повторяющихся сообщений.Значение по умолчанию — 0.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryService.OnBeginFind(System.ServiceModel.Discovery.FindRequestContext,System.AsyncCallback,System.Object)">
+      <summary>Переопределите этот метод, чтобы он обрабатывал операцию поиска.</summary>
+      <returns>Ссылка на отложенную асинхронную операцию.</returns>
+      <param name="findRequestContext">Контекст запроса поиска, описывающий службу, которую нужно обнаружить.</param>
+      <param name="callback">Делегат обратного вызова, вызываемый по завершении операции.</param>
+      <param name="state">Определенные пользователем данные о состоянии.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryService.OnBeginResolve(System.ServiceModel.Discovery.ResolveCriteria,System.AsyncCallback,System.Object)">
+      <summary>Переопределите этот метод, чтобы он выполнял операцию разрешения.</summary>
+      <returns>Ссылка на отложенную асинхронную операцию.</returns>
+      <param name="resolveCriteria">Контекст запроса поиска, описывающий службу, которую нужно обнаружить.</param>
+      <param name="callback">Делегат обратного вызова, вызываемый по завершении операции.</param>
+      <param name="state">Определенные пользователем данные о состоянии.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryService.OnEndFind(System.IAsyncResult)">
+      <summary>Переопределите этот метод, чтобы он завершал операцию поиска.</summary>
+      <param name="result">Ссылка на завершенную асинхронную операцию.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryService.OnEndResolve(System.IAsyncResult)">
+      <summary>Переопределите этот метод, чтобы он завершал операцию разрешения.</summary>
+      <returns>Метаданные обнаружения конечной точки, которые описывают вызываемую службу.</returns>
+      <param name="result">Ссылка на завершенную асинхронную операцию.</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.DiscoveryServiceExtension">
+      <summary>Этот абстрактный класс расширения WCF позволяет задать пользовательскую службу обнаружения или получить опубликованные конечные точки.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryServiceExtension.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryServiceExtension" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryServiceExtension.GetDiscoveryService">
+      <summary>Переопределите этот метод, чтобы он возвращал пользовательскую реализацию <see cref="T:System.ServiceModel.Discovery.DiscoveryService" />.</summary>
+      <returns>Реализация пользовательской службы обнаружения.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryServiceExtension.PublishedEndpoints">
+      <summary>Получает коллекцию опубликованных конечных точек, доступную только для чтения.</summary>
+      <returns>Коллекция опубликованных конечных точек, доступная только для чтения.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryServiceExtension.System#ServiceModel#IExtension{T}#Attach(System.ServiceModel.ServiceHostBase)"></member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryServiceExtension.System#ServiceModel#IExtension{T}#Detach(System.ServiceModel.ServiceHostBase)"></member>
+    <member name="T:System.ServiceModel.Discovery.DiscoveryVersion">
+      <summary>Задает версию протокола WS-Discovery, которая должна использоваться.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryVersion.AdhocAddress">
+      <summary>Возвращает адрес, на который передаются сообщения нерегламентированного обнаружения.</summary>
+      <returns>Адрес обнаружения.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryVersion.FromName(System.String)">
+      <summary>Получает указанную версию протокола обнаружения.</summary>
+      <returns>Версия обнаружения.</returns>
+      <param name="name">Имя запрашиваемой версии протокола обнаружения.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryVersion.MessageVersion">
+      <summary>Возвращает версию сообщения.</summary>
+      <returns>Версия сообщения.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryVersion.Name">
+      <summary>Возвращает имя версии протокола обнаружения.</summary>
+      <returns>Имя версии обнаружения.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryVersion.Namespace">
+      <summary>Получает пространство имен версии протокола обнаружения.</summary>
+      <returns>Пространство имен версии протокола обнаружения.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DiscoveryVersion.ToString">
+      <summary>Создает строковое представление версии протокола WS-Discovery.</summary>
+      <returns>Версия протокола WS-Discovery.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryVersion.WSDiscovery11">
+      <summary>Возвращает версию 1.1 протокола WS-Discovery. </summary>
+      <returns>Версия 1.1 протокола WS-Discovery.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryVersion.WSDiscoveryApril2005">
+      <summary>Возвращает версию протокола WS-Discovery от апреля 2005 г.</summary>
+      <returns>Версия протокола WS-Discovery от апреля 2005 г.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DiscoveryVersion.WSDiscoveryCD1">
+      <summary>Возвращает версию Committee Draft 1 протокола WS-Discovery.</summary>
+      <returns>Версия Committee Draft 1 протокола WS-Discovery.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.DynamicEndpoint">
+      <summary>Конечная точка, которая использует WS-Discovery для динамического обнаружения адреса конечной точки во время выполнения.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.DynamicEndpoint.#ctor(System.ServiceModel.Description.ContractDescription,System.ServiceModel.Channels.Binding)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DynamicEndpoint" /> с заданными свойствами <see cref="T:System.ServiceModel.Description.ContractDescription" /> и <see cref="T:System.ServiceModel.Channels.Binding" />.</summary>
+      <param name="contract">Контракт.</param>
+      <param name="binding">Привязка.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DynamicEndpoint.DiscoveryEndpointProvider">
+      <summary>Возвращает или задает объект, который предоставляет конечную точку обнаружения.</summary>
+      <returns>Поставщик конечной точки обнаружения.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.DynamicEndpoint.FindCriteria">
+      <summary>Возвращает или задает объект <see cref="T:System.ServiceModel.Discovery.FindCriteria" />, используемый для поиска службы.</summary>
+      <returns>Критерий поиска.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.EndpointDiscoveryBehavior">
+      <summary>Управляет содержимым <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />, возвращаемым конечной точкой обнаружения.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.EndpointDiscoveryBehavior.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryBehavior" />.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.EndpointDiscoveryBehavior.ContractTypeNames">
+      <summary>Возвращает имена типа контракта, связанного с конечной точкой.</summary>
+      <returns>Имена типа контракта, связанного с конечной точкой.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.EndpointDiscoveryBehavior.Enabled">
+      <summary>Возвращает или задает значение, определяющее возможностью обнаружения соответствующей конечной точки.</summary>
+      <returns>Значение true, если конечная точка включена; в противном случае — значение false.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.EndpointDiscoveryBehavior.Extensions">
+      <summary>Возвращает расширения, связанные с конечной точкой.</summary>
+      <returns>Коллекция расширений, связанных с конечной точкой.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.EndpointDiscoveryBehavior.Scopes">
+      <summary>Возвращает области, связанные с конечной точкой.</summary>
+      <returns>Коллекция областей. </returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.EndpointDiscoveryBehavior.System#ServiceModel#Description#IEndpointBehavior#AddBindingParameters(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)">
+      <summary>Не реализовано.</summary>
+      <param name="endpoint">Не реализовано.</param>
+      <param name="bindingParameters">Не реализовано.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.EndpointDiscoveryBehavior.System#ServiceModel#Description#IEndpointBehavior#ApplyClientBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.ClientRuntime)">
+      <summary>Не реализовано.</summary>
+      <param name="endpoint">Не реализовано.</param>
+      <param name="clientRuntime">Не реализовано.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.EndpointDiscoveryBehavior.System#ServiceModel#Description#IEndpointBehavior#ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.EndpointDispatcher)">
+      <summary>Не реализовано.</summary>
+      <param name="endpoint">Не реализовано.</param>
+      <param name="endpointDispatcher">Не реализовано.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.EndpointDiscoveryBehavior.System#ServiceModel#Description#IEndpointBehavior#Validate(System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>Не реализовано.</summary>
+      <param name="endpoint">Не реализовано.</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata">
+      <summary>Содержит метаданные для обнаруживаемой службы.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.EndpointDiscoveryMetadata.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.EndpointDiscoveryMetadata.Address">
+      <summary>Получает или задает адрес конечной точки для конечной точки, описанной экземпляром <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />.</summary>
+      <returns>Получает или задает адрес конечной точки для службы конечной точки, описанной экземпляром <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.EndpointDiscoveryMetadata.ContractTypeNames">
+      <summary>Возвращает коллекцию имен типа контракта, реализованную службой, описанной в <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />.</summary>
+      <returns>Коллекция имен типа контракта.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.EndpointDiscoveryMetadata.Extensions">
+      <summary>Возвращает расширения, связанные с данным экземпляром <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />.</summary>
+      <returns>Коллекция расширений.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.EndpointDiscoveryMetadata.FromServiceEndpoint(System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>Создает новый <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> из <see cref="T:System.ServiceModel.Description.ServiceEndpoint" />.</summary>
+      <returns>Новый экземпляр <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />.</returns>
+      <param name="endpoint">Конечная точка службы.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.EndpointDiscoveryMetadata.FromServiceEndpoint(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Dispatcher.EndpointDispatcher)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />, используя указанную конечную точку службы и диспетчер конечной точки.</summary>
+      <returns>Новый экземпляр <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />.</returns>
+      <param name="endpoint">Конечная точка.</param>
+      <param name="endpointDispatcher">Диспетчер конечных точек.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.EndpointDiscoveryMetadata.ListenUris">
+      <summary>Возвращает URI прослушивания для службы, описанной этим экземпляром <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />.</summary>
+      <returns>Коллекция URI прослушивания.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.EndpointDiscoveryMetadata.Scopes">
+      <summary>Возвращает области, связанные с данным экземпляром <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />.</summary>
+      <returns>Коллекция абсолютных URI.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.EndpointDiscoveryMetadata.Version">
+      <summary>Получает или задает версию опубликованного экземпляра <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />.</summary>
+      <returns>Версия опубликованного экземпляра <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.FindCompletedEventArgs">
+      <summary>Аргументы для события <see cref="E:System.ServiceModel.Discovery.DiscoveryClient.FindCompleted" />.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.FindCompletedEventArgs.Result">
+      <summary>Получает <see cref="T:System.ServiceModel.Discovery.FindResponse" />, возвращенный операцией поиска.</summary>
+      <returns>Результаты операции поиска.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.FindCriteria">
+      <summary>Представляет критерии для поиска служб.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.FindCriteria.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.FindCriteria" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.FindCriteria.#ctor(System.Type)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.FindCriteria" /> с указанным именем типа контракта.</summary>
+      <param name="contractType">Имя типа контракта, который нужно найти. </param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.FindCriteria.ContractTypeNames">
+      <summary>Возвращает коллекцию имен типов контракта для поиска.</summary>
+      <returns>Имена типов контракта для поиска.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.FindCriteria.CreateMetadataExchangeEndpointCriteria">
+      <summary>Создает критерии конечной точки обмена метаданными, используемые при поиске служб.</summary>
+      <returns>Критерии конечной точки, используемой для поиска службы.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.FindCriteria.CreateMetadataExchangeEndpointCriteria(System.Collections.Generic.IEnumerable{System.Xml.XmlQualifiedName})">
+      <summary>Создает объект, который содержит критерии конечной точки обмена метаданными, производные от заданной коллекции полных имен XML.</summary>
+      <returns>Критерии конечной точки, используемой для поиска службы.</returns>
+      <param name="contractTypeNames">Коллекция перечислений, представляющих имена типов контракта.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.FindCriteria.CreateMetadataExchangeEndpointCriteria(System.Type)">
+      <summary>Создает объект, который содержит критерии конечной точки обмена метаданными, производные от заданного типа контракта.</summary>
+      <returns>Критерии конечной точки, используемой для поиска службы.</returns>
+      <param name="contractType">Тип контракта службы.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.FindCriteria.Duration">
+      <summary>Возвращает или задает значение <see cref="T:System.Timespan" />, указывающее время ожидания операции поиска.</summary>
+      <returns>Время ожидания операции поиска.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.FindCriteria.Extensions">
+      <summary>Возвращает коллекцию расширений в экземпляре <see cref="T:System.ServiceModel.Discovery.FindCriteria" />.</summary>
+      <returns>Расширения XML.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.FindCriteria.IsMatch(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>Определяет, соответствует ли набор критериев службе, описанной заданным экземпляром <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />.</summary>
+      <returns>Значение true, если служба соответствует критериям; в противном случае — значение false.</returns>
+      <param name="endpointDiscoveryMetadata">Метаданные обнаружения конечной точки, которые описывают соответствующую службу.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.FindCriteria.MaxResults">
+      <summary>Возвращает или задает максимальное количество ответов, требуемое от операции поиска.</summary>
+      <returns>Максимальное количество ответов, требуемое от операции поиска.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.FindCriteria.ScopeMatchBy">
+      <summary>Возвращает или задает URI, который указывает, как сопоставляются области.</summary>
+      <returns>URI, который указывает, как сопоставляются области.</returns>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.FindCriteria.ScopeMatchByExact">
+      <summary>Указывает, что области сопоставляются с учетом регистра (http://schemas.xmlsoap.org/ws/2004/10/discovery/strcmp0), как указано в спецификации WS-Discovery Specification.</summary>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.FindCriteria.ScopeMatchByLdap">
+      <summary>Указывает, что области сопоставляются с помощью метода LDAP (http://schemas.xmlsoap.org/ws/2004/10/discovery/ldap), как определено в спецификации WS-Discovery Specification.</summary>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.FindCriteria.ScopeMatchByNone">
+      <summary>Указывает, что области пропускается, как указано в спецификации WS-Discovery Specification.</summary>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.FindCriteria.ScopeMatchByPrefix">
+      <summary>Указывает, что области сопоставляются с помощью метода префикса (http://schemas.xmlsoap.org/ws/2004/10/discovery/rfc2396), как определено в спецификации WS-Discovery Specification.</summary>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.FindCriteria.ScopeMatchByUuid">
+      <summary>Указывает, что области сопоставляются с помощью метода UUID (http://schemas.xmlsoap.org/ws/2004/10/discovery/uuid), как определено в спецификации WS-Discovery Specification.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.FindCriteria.Scopes">
+      <summary>Возвращает коллекцию универсальных кодов ресурса (URI), представляющих области, которые используются для поиска службы.</summary>
+      <returns>Коллекция URI, используемая для поиска службы.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.FindProgressChangedEventArgs">
+      <summary>Аргументы для события <see cref="E:System.ServiceModel.Discovery.DiscoveryClient.FindProgressChanged" />. </summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.FindProgressChangedEventArgs.EndpointDiscoveryMetadata">
+      <summary>Возвращает экземпляр <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />, связанный с текущей операцией поиска.</summary>
+      <returns>Метаданные обнаружения конечной точки.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.FindProgressChangedEventArgs.MessageSequence">
+      <summary>Возвращает экземпляр <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" />, связанный с текущей операцией поиска.</summary>
+      <returns>Последовательность сообщений обнаружения. </returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.FindRequestContext">
+      <summary>Представляет запрос на поиск службы, отправленный клиентом.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.FindRequestContext.#ctor(System.ServiceModel.Discovery.FindCriteria)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.FindRequestContext" /> с использованием заданного объекта <see cref="T:System.ServiceModel.Discovery.FindCriteria" />.</summary>
+      <param name="criteria">Критерий поиска.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.FindRequestContext.AddMatchingEndpoint(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>Включает службу обнаружения для отправки результатов клиенту по мере их поступления.</summary>
+      <param name="matchingEndpoint">Метаданные обнаружения конечной точки для отправки обратно клиенту.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.FindRequestContext.Criteria">
+      <summary>Получает объект <see cref="T:System.ServiceModel.Discovery.FindCriteria" />, связанный с запросом <see cref="T:System.ServiceModel.Discovery.FindRequestContext" /> клиента. </summary>
+      <returns>Критерии поиска, переданные клиентом.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.FindRequestContext.OnAddMatchingEndpoint(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>Вызывается после того, как пользователь добавляет конечную точку к <see cref="T:System.ServiceModel.Discovery.FindRequestContext" />, вызывая <see cref="M:System.ServiceModel.Discovery.FindRequestContext.AddMatchingEndpoint(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)" />.</summary>
+      <param name="matchingEndpoint">Метаданные обнаружения конечной точки для отправки обратно клиенту.</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.FindResponse">
+      <summary>Представляет ответ от запроса на поиск службы.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.FindResponse.Endpoints">
+      <summary>Возвращает коллекцию <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" /> для обнаруживаемых служб, соответствующих запросу на поиск.</summary>
+      <returns>Коллекция метаданных обнаружения конечной точки.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.FindResponse.GetMessageSequence(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>Получает класс <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" />, связанный с заданным <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />.</summary>
+      <returns>Последовательность сообщений обнаружения.</returns>
+      <param name="endpointDiscoveryMetadata">Метаданные обнаружения конечной точки</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.ResolveCompletedEventArgs">
+      <summary>Аргументы для события <see cref="E:System.ServiceModel.Discovery.DiscoveryClient.ResolveCompleted" />.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.ResolveCompletedEventArgs.Result">
+      <summary>Получает ответ <see cref="T:System.ServiceModel.Discovery.ResolveResponse" /> на запрос вызова службы от операции Resolve.</summary>
+      <returns>Результаты операции Resolve.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.ResolveCriteria">
+      <summary>Представляет критерии, используемые при вызове известной службы.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.ResolveCriteria.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.ResolveCriteria" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.ResolveCriteria.#ctor(System.ServiceModel.EndpointAddress)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.ResolveCriteria" /> с указанным объектом <see cref="T:System.ServiceModel.EndpointAddress" />.</summary>
+      <param name="address">Адрес конечной точки.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.ResolveCriteria.Address">
+      <summary>Адрес конечной точки службы, которую нужно вызвать.</summary>
+      <returns>Адрес конечной точки.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.ResolveCriteria.Duration">
+      <summary>Возвращает или задает значение <see cref="T:System.Timespan" />, задающее интервал времени, в течение которого операция вызова должна закончиться, прежде чем произойдет таймаут.</summary>
+      <returns>Экземпляр <see cref="T:System.TimeSpan" />.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.ResolveCriteria.Extensions">
+      <summary>Возвращает коллекцию расширений в экземпляре <see cref="T:System.ServiceModel.Discovery.ResolveCriteria" />.</summary>
+      <returns>Экземпляр <see cref="T:System.Collections.ObjectModel.Collection`1" />, содержащий расширения XML.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.ResolveResponse">
+      <summary>Представляет ответ от запроса на вызов службы.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.ResolveResponse.EndpointDiscoveryMetadata">
+      <summary>Возвращает объект <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />, соответствующий запросу на вызов службы.</summary>
+      <returns>Метаданные обнаружения конечной точки.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.ResolveResponse.MessageSequence">
+      <summary>Возвращает тип <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" />, связанный с <see cref="T:System.ServiceModel.Discovery.ResolveResponse" />.</summary>
+      <returns>Последовательность сообщений обнаружения.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.ServiceDiscoveryBehavior">
+      <summary>Этот класс определяет возможность обнаружения конечных точек службы.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.ServiceDiscoveryBehavior.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.ServiceDiscoveryBehavior" />.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.ServiceDiscoveryBehavior.AnnouncementEndpoints">
+      <summary>Возвращает коллекцию конечных точек объявления.Используйте эту коллекцию, чтобы задать конечные точки, которые + будут использоваться для отправки сообщений с объявлениями.</summary>
+      <returns>Экземпляр <see cref="T:System.Collections.ObjectModel.Collection`1" />, который содержит коллекцию конечных точек объявления.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.ServiceDiscoveryBehavior.System#ServiceModel#Description#IServiceBehavior#AddBindingParameters(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase,System.Collections.ObjectModel.Collection{System.ServiceModel.Description.ServiceEndpoint},System.ServiceModel.Channels.BindingParameterCollection)">
+      <summary>Реализация метода <see cref="M:System.ServiceModel.Description.IServiceBehavior.AddBindingParameters((System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase,System.Collections.ObjectModel.Collection{System.ServiceModel.Description.ServiceEndpoint},System.ServiceModel.Channels.BindingParameterCollection)" />.</summary>
+      <param name="serviceDescription">Описание службы.</param>
+      <param name="serviceHostBase">Узел для службы.</param>
+      <param name="endpoints">Конечные точки, предоставляемые службой.</param>
+      <param name="bindingParameters">Параметры привязки, которые необходимо настроить для поддержки поведения службы.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.ServiceDiscoveryBehavior.System#ServiceModel#Description#IServiceBehavior#ApplyDispatchBehavior(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)">
+      <summary>Реализация метода <see cref="M:System.ServiceModel.Description.IServiceBehavior.ApplyDispatchBehavior((System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)" />.</summary>
+      <param name="serviceDescription">Описание службы.</param>
+      <param name="serviceHostBase">Узел для службы.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.ServiceDiscoveryBehavior.System#ServiceModel#Description#IServiceBehavior#Validate(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)">
+      <summary>Реализация метода <see cref="M:System.ServiceModel.Description.IServiceBehavior.Validate(System.ServiceModel.Description.ServiceDescription,System.ServiceModel.ServiceHostBase)" />.</summary>
+      <param name="serviceDescription">Описание службы.</param>
+      <param name="serviceHostBase">Узел для службы.</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.ServiceDiscoveryMode">
+      <summary>Указывает режим обнаружения, который должен использоваться.</summary>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.ServiceDiscoveryMode.Adhoc">
+      <summary>Нерегламентированный режим обнаружения.</summary>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.ServiceDiscoveryMode.Managed">
+      <summary>Управляемый режим обнаружения.</summary>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.UdpAnnouncementEndpoint">
+      <summary>Стандартная конечная точка, используемая службами для отправки сообщений объявления через привязку UDP.Эта конечная точка наследует от <see cref="T:System.ServiceModel.Discovery.AnnouncementEndpoint" /> и аналогично имеет фиксированный контракт и поддерживает две версии службы обнаружения.Кроме того, она имеет фиксированную привязку UDP и значение адреса по умолчанию, как определено в спецификациях WS-Discovery (WS-Discovery от апреля 2005 или WS-Discovery версии 1.1).Поэтому в самом простом случае нет необходимости задавать эти значения, когда создается конечная точка <see cref="T:System.ServiceModel.Discovery.AnnouncementEndpoint" /> и добавляется в службу.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpAnnouncementEndpoint.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.UdpAnnouncementEndpoint" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpAnnouncementEndpoint.#ctor(System.ServiceModel.Discovery.DiscoveryVersion)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.UdpAnnouncementEndpoint" />, который настроен на использование указанной версии <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />.</summary>
+      <param name="discoveryVersion">Версия протокола WS-Discovery для использования.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpAnnouncementEndpoint.#ctor(System.ServiceModel.Discovery.DiscoveryVersion,System.String)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.UdpAnnouncementEndpoint" />, использующего указанную <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> и адрес многоадресной рассылки.</summary>
+      <param name="discoveryVersion">Версия протокола WS-Discovery для использования.</param>
+      <param name="multicastAddress">Используемый адрес многоадресной рассылки.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpAnnouncementEndpoint.#ctor(System.ServiceModel.Discovery.DiscoveryVersion,System.Uri)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.UdpAnnouncementEndpoint" />, использующего указанную <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> и адрес многоадресной рассылки.</summary>
+      <param name="discoveryVersion">Версия протокола WS-Discovery для использования.</param>
+      <param name="multicastAddress">Используемый адрес многоадресной рассылки.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpAnnouncementEndpoint.#ctor(System.String)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.UdpAnnouncementEndpoint" /> с указанным адресом многоадресной рассылки.</summary>
+      <param name="multicastAddress">Адрес многоадресной рассылки.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpAnnouncementEndpoint.#ctor(System.Uri)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.UdpAnnouncementEndpoint" /> с указанным адресом многоадресной рассылки.</summary>
+      <param name="multicastAddress">Адрес многоадресной рассылки.</param>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.UdpAnnouncementEndpoint.DefaultIPv4MulticastAddress">
+      <summary>Адрес многоадресной рассылки UDP по умолчанию для IPv6.</summary>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.UdpAnnouncementEndpoint.DefaultIPv6MulticastAddress">
+      <summary>Адрес многоадресной рассылки UDP по умолчанию для IPv6.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpAnnouncementEndpoint.MulticastAddress">
+      <summary>Получает или задает адрес многоадресной рассылки для конечной точки.</summary>
+      <returns>Экземпляр <see cref="T:System.Uri" />.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpAnnouncementEndpoint.TransportSettings">
+      <summary>Возвращает параметры транспорта UDP, связанные с экземпляром <see cref="T:System.ServiceModel.Discovery.UdpAnnouncementEndpoint" />.</summary>
+      <returns>Параметры транспорта UDP.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.UdpDiscoveryEndpoint">
+      <summary>Стандартная конечная точка, заранее настроенная для операций обнаружения через привязку для многоадресной рассылки UDP.Эта конечная точка наследует от <see cref="T:System.ServiceModel.Discovery.DiscoveryEndpoint" /> и аналогично имеет фиксированный контракт и поддерживает две версии протокола WS-Discovery.Кроме того, она имеет фиксированную привязку UDP и значение адреса по умолчанию, как определено в спецификациях WS-Discovery (WS-Discovery от апреля 2005 или WS-Discovery версии 1.1).</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpDiscoveryEndpoint.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.UdpDiscoveryEndpoint" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpDiscoveryEndpoint.#ctor(System.ServiceModel.Discovery.DiscoveryVersion)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.UdpDiscoveryEndpoint" /> с указанным <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />.</summary>
+      <param name="discoveryVersion">Используемая версия <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpDiscoveryEndpoint.#ctor(System.ServiceModel.Discovery.DiscoveryVersion,System.String)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.UdpDiscoveryEndpoint" /> с указанным <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> и адресом многоадресной рассылки.</summary>
+      <param name="discoveryVersion">Используемая версия <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />.</param>
+      <param name="multicastAddress">Адрес многоадресной рассылки для конечной точки обнаружения UDP.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpDiscoveryEndpoint.#ctor(System.ServiceModel.Discovery.DiscoveryVersion,System.Uri)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.UdpDiscoveryEndpoint" /> с указанным <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> и адресом многоадресной рассылки.</summary>
+      <param name="discoveryVersion">Используемая версия <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />.</param>
+      <param name="multicastAddress">
+        <see cref="T:System.Uri" /> с адресом многоадресной рассылки. </param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpDiscoveryEndpoint.#ctor(System.String)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.UdpDiscoveryEndpoint" /> с указанным адресом многоадресной рассылки.</summary>
+      <param name="multicastAddress">Адрес многоадресной рассылки.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.UdpDiscoveryEndpoint.#ctor(System.Uri)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.UdpDiscoveryEndpoint" /> с указанным адресом многоадресной рассылки.</summary>
+      <param name="multicastAddress">Адрес многоадресной рассылки.</param>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.UdpDiscoveryEndpoint.DefaultIPv4MulticastAddress">
+      <summary>Адрес многоадресной рассылки UDP по умолчанию для IPv6.</summary>
+    </member>
+    <member name="F:System.ServiceModel.Discovery.UdpDiscoveryEndpoint.DefaultIPv6MulticastAddress">
+      <summary>Адрес многоадресной рассылки UDP по умолчанию для IPv6.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpDiscoveryEndpoint.MulticastAddress">
+      <summary>Получает или задает адрес многоадресной рассылки.</summary>
+      <returns>Экземпляр <see cref="T:System.Uri" />, содержащий адрес многоадресной рассылки.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpDiscoveryEndpoint.TransportSettings">
+      <summary>Возвращает экземпляр <see cref="T:System.ServiceModel.Discovery.UdpTransportSettings" />, связанный с <see cref="T:System.ServiceModel.Discovery.UdpDiscoveryEndpoint" />.</summary>
+      <returns>Определяет параметры транспорта UDP для конечной точки.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.UdpTransportSettings">
+      <summary>Позволяет задать параметры транспортного протокола UDP.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpTransportSettings.DuplicateMessageHistoryLength">
+      <summary>Возвращает или задает значение, указывающее максимальное количество хэшей сообщений, используемых транспортом для идентификации дубликатов сообщений.</summary>
+      <returns>Максимальное количество используемых хэшей сообщений.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpTransportSettings.MaxBufferPoolSize">
+      <summary>Возвращает или задает максимальное значение буферных пулов, используемых транспортом.</summary>
+      <returns>Максимальный размер буферного пула.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpTransportSettings.MaxMulticastRetransmitCount">
+      <summary>Возвращает или задает значение, задающее максимальное число повторных отправок сообщения для многоадресной доставки (помимо первой отправки).</summary>
+      <returns>Максимальное число повторных отправок сообщения для многоадресной доставки.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpTransportSettings.MaxPendingMessageCount">
+      <summary>Возвращает или задает максимальное число сообщений, принятых, но еще не удаленных из входной очереди для отдельного экземпляра канала.</summary>
+      <returns>Число сообщений.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpTransportSettings.MaxReceivedMessageSize">
+      <summary>Возвращает или задает максимальный размер сообщения, обрабатываемого привязкой.</summary>
+      <returns>Максимальный размер сообщения.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpTransportSettings.MaxUnicastRetransmitCount">
+      <summary>Возвращает или задает максимальное число повторных отправок сообщения для одноадресной доставки (помимо первой отправки).</summary>
+      <returns>Максимальное число повторных передач сообщения для одноадресной доставки.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpTransportSettings.MulticastInterfaceId">
+      <summary>Возвращает или задает значение, уникально определяющее сетевой адаптер, который используется при отправке и получении многоадресных сообщений.</summary>
+      <returns>Идентификатор сетевого адаптера. </returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpTransportSettings.SocketReceiveBufferSize">
+      <summary>Возвращает или задает размер буфера приема в базовом сокете WinSock.</summary>
+      <returns>Размер приемного буфера. </returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.UdpTransportSettings.TimeToLive">
+      <summary>Возвращает или задает количество межсегментных переходов, которое может выполнить многоадресный пакет.</summary>
+      <returns>Число переходов между сегментами сети. </returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.AnnouncementChannelEndpointElementCollection">
+      <summary>Представляет контейнер для элементов конфигурации <see cref="T:System.ServiceModel.Configuration.ChannelEndpointElement" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.AnnouncementChannelEndpointElementCollection.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Configuration.AnnouncementChannelEndpointElementCollection" />.</summary>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointCollectionElement">
+      <summary>Представляет контейнер для элементов конфигурации <see cref="T:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointCollectionElement.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointCollectionElement" />.</summary>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement">
+      <summary>Определяет элемент конфигурации для конечной точки объявления.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement.CreateServiceEndpoint(System.ServiceModel.Description.ContractDescription)">
+      <summary>При вызове или переопределении в производном классе создает и инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.AnnouncementEndpoint" />, использующий описание контракта в текущей версии протокола обнаружения.</summary>
+      <returns>Конечная точка объявления. </returns>
+      <param name="contractDescription">Не используется. </param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement.DiscoveryVersion">
+      <summary>Возвращает или задает версию спецификации WS-Discovery, поддерживаемой конечной точкой объявления.</summary>
+      <returns>Версия WS-Discovery.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement.EndpointType">
+      <summary>Возвращает тип конечной точки объявления.</summary>
+      <returns>Тип конечной точки объявления.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement.InitializeFrom(System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>Преобразует указанный объект <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> в объект <see cref="T:System.ServiceModel.Discovery.AnnouncementEndpoint" />.</summary>
+      <param name="endpoint">Объект конечной точки службы, который требуется преобразовать.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement.MaxAnnouncementDelay">
+      <summary>Возвращает или задает максимальную задержку, в течение которой служба ожидает отправки сообщений объявления. </summary>
+      <returns>Максимальная задержка.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement.OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Configuration.ChannelEndpointElement)">
+      <summary>При вызове или переопределении в производном классе преобразует указанный экземпляр объекта <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> в конечную точку объявления.</summary>
+      <param name="endpoint">Конечная точка службы, к которой применяются параметры конфигурации объявления.</param>
+      <param name="serviceEndpointElement">Не используется.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement.OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Configuration.ServiceEndpointElement)">
+      <summary>При вызове или переопределении в производном классе преобразует указанный экземпляр объекта <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> в конечную точку объявления.</summary>
+      <param name="endpoint">Конечная точка службы, к которой применяются параметры конфигурации объявления.</param>
+      <param name="serviceEndpointElement">Не используется.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement.OnInitializeAndValidate(System.ServiceModel.Configuration.ChannelEndpointElement)">
+      <summary>При вызове или переопределении в производном классе инициализирует и проверяет указанный экземпляр <see cref="T:System.ServiceModel.Configuration.ChannelEndpointElement" />.</summary>
+      <param name="channelEndpointElement">Элемент конечной точки канала для инициализации и проверки. </param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement.OnInitializeAndValidate(System.ServiceModel.Configuration.ServiceEndpointElement)">
+      <summary>При вызове или переопределении в производном классе инициализирует и проверяет указанный экземпляр <see cref="T:System.ServiceModel.Configuration.ServiceEndpointElement" />.</summary>
+      <param name="serviceEndpointElement">Элемент конечной точки службы для инициализации и проверки. </param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement.Properties">
+      <summary>При вызове или переопределении в производном классе возвращает коллекцию параметров конфигурации, содержащихся в экземпляре <see cref="T:System.ServiceModel.Discovery.Configuration.AnnouncementEndpointElement" />. </summary>
+      <returns>Коллекция параметров конфигурации. </returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.ContractTypeNameElement">
+      <summary>Представляет элемент рабочего процесса, который определяет имя, по которому выполняется поиск контракта службы рабочего процесса.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.ContractTypeNameElement.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Configuration.ContractTypeNameElement" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.ContractTypeNameElement.#ctor(System.String,System.String)">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Configuration.ContractTypeNameElement" />, используя указанное имя типа контракта и имя пространства имен.</summary>
+      <param name="name">Имя типа для контракта службы рабочего процесса.</param>
+      <param name="ns">Имя пространства имен для контракта службы рабочего процесса.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.ContractTypeNameElement.Name">
+      <summary>Возвращает или задает имя типа контракта.</summary>
+      <returns>Буквенно-цифровое имя.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.ContractTypeNameElement.Namespace">
+      <summary>Возвращает или задает пространство имен для типа контракта.</summary>
+      <returns>Буквенно-цифровое имя.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.ContractTypeNameElementCollection">
+      <summary>Представляет коллекцию объектов <see cref="T:System.ServiceModel.Discovery.Configuration.ContractTypeNameElement" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.ContractTypeNameElementCollection.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Configuration.ContractTypeNameElementCollection" />.</summary>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.DiscoveryClientElement">
+      <summary>Представляет элемент конфигурации, который позволяет клиентскому приложению автоматически искать службу рабочих процессов с возможностью обнаружения и определять ее адрес во время выполнения.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryClientElement.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Configuration.DiscoveryClientElement" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryClientElement.ApplyConfiguration(System.ServiceModel.Channels.BindingElement)">
+      <summary>Добавляет условия из указанного элемента привязки в текущий элемент <see cref="T:System.ServiceModel.Discovery.Configuration.DiscoveryClientElement" />.</summary>
+      <param name="bindingElement">Элемент, который создает фабрики каналов и прослушиватели каналов для различных типов каналов, используемых для обработки исходящих и входящих сообщений.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.DiscoveryClientElement.BindingElementType">
+      <summary>Возвращает тип результата <see cref="T:System.ServiceModel.Discovery.DiscoveryClientBindingElement" />.</summary>
+      <returns>Тип объекта.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryClientElement.CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement)">
+      <summary>Копирует содержимое указанного элемента <see cref="T:System.ServiceModel.Configuration.ServiceModelExtensionElement" /> в текущий элемент конфигурации.</summary>
+      <param name="from">Копируемый объект <see cref="T:System.ServiceModel.Configuration.ServiceModelExtensionElement" />.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.DiscoveryClientElement.DiscoveryEndpoint">
+      <summary>Возвращает элемент <see cref="T:System.ServiceModel.Configuration.ChannelEndpointElement" />, позволяющий клиентскому приложению автоматически искать необходимую службу рабочего процесса и находить ее адрес во время выполнения.</summary>
+      <returns>Конечная точка канала.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.DiscoveryClientElement.FindCriteria">
+      <summary>Возвращает элемент <see cref="T:System.ServiceModel.Discovery.Configuration.FindCriteriaElement" />, который обеспечивает набор критериев, используемых клиентским приложением для поиска службы обнаружения рабочего процесса.</summary>
+      <returns>Элемент критерия поиска.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.DiscoveryClientSettingsElement">
+      <summary>Предоставляет элемент конфигурации, параметры которого позволяют клиентскому приложению автоматически искать службу рабочих процессов с возможностью обнаружения и определять ее адрес во время выполнения.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryClientSettingsElement.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Configuration.DiscoveryClientSettingsElement" />.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.DiscoveryClientSettingsElement.DiscoveryEndpoint">
+      <summary>Возвращает элемент <see cref="T:System.ServiceModel.Configuration.ChannelEndpointElement" />, позволяющий клиентскому приложению автоматически искать необходимую службу рабочего процесса и находить ее адрес во время выполнения.</summary>
+      <returns>Конечная точка канала.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.DiscoveryClientSettingsElement.FindCriteria">
+      <summary>Возвращает элемент <see cref="T:System.ServiceModel.Discovery.Configuration.FindCriteriaElement" />, который обеспечивает набор критериев, используемых клиентским приложением для поиска службы обнаружения рабочего процесса.</summary>
+      <returns>Элемент критерия поиска.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointCollectionElement">
+      <summary>Представляет контейнер для элементов конфигурации <see cref="T:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointCollectionElement.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointCollectionElement" />.</summary>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement">
+      <summary>Определяет элемент конфигурации для конечной точки обнаружения.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.CreateServiceEndpoint(System.ServiceModel.Description.ContractDescription)">
+      <summary>При вызове или переопределении производным классом создает и инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryEndpoint" />, использующий версию и режим по умолчанию для протокола обнаружения.</summary>
+      <returns>Конечная точка обнаружения. </returns>
+      <param name="contractDescription">Не реализовано.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.DiscoveryMode">
+      <summary>Возвращает или задает режим обнаружения, используемый конечной точкой обнаружения. </summary>
+      <returns>Режим обнаружения.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.DiscoveryVersion">
+      <summary>Возвращает или задает версию спецификации WS-Discovery, которую должна использовать конечная точка обнаружения.</summary>
+      <returns>Версия WS-Discovery.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.EndpointType">
+      <summary>При вызове или переопределении в производном классе возвращает тип конечной точки обнаружения.</summary>
+      <returns>Тип конечной точки. </returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.InitializeFrom(System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>Инициализирует <see cref="T:System.ServiceModel.Discovery.DiscoveryEndpoint" /> из заданной конечной точки.</summary>
+      <param name="endpoint">Объект конечной точки службы, который требуется преобразовать.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.MaxResponseDelay">
+      <summary>Возвращает или задает максимальную продолжительность задержки, добавляемой службой между объектами ProbeMatch при отправке ответа клиенту. </summary>
+      <returns>Максимальная задержка ответа.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Configuration.ChannelEndpointElement)">
+      <summary>При вызове или переопределении в производном классе применяет ConfigurationProperties к указанному <see cref="T:System.ServiceModel.Discovery.DiscoveryEndpoint" />.</summary>
+      <param name="endpoint">Конечная точка службы, к которой применяются параметры конфигурации обнаружения.</param>
+      <param name="serviceEndpointElement">Не реализовано. </param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Configuration.ServiceEndpointElement)">
+      <summary>При вызове или переопределении в производном классе применяет ConfigurationProperties к указанному <see cref="T:System.ServiceModel.Discovery.DiscoveryEndpoint" />.</summary>
+      <param name="endpoint">Конечная точка службы, к которой применяются параметры конфигурации обнаружения.</param>
+      <param name="serviceEndpointElement">Не реализовано. </param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.OnInitializeAndValidate(System.ServiceModel.Configuration.ChannelEndpointElement)">
+      <summary>При вызове или переопределении в производном классе инициализирует и проверяет указанный экземпляр <see cref="T:System.ServiceModel.Configuration.ChannelEndpointElement" />. </summary>
+      <param name="channelEndpointElement">Элемент конечной точки канала для инициализации и проверки. </param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.OnInitializeAndValidate(System.ServiceModel.Configuration.ServiceEndpointElement)">
+      <summary>При вызове или переопределении в производном классе инициализирует и проверяет указанный экземпляр <see cref="T:System.ServiceModel.Configuration.ServiceEndpointElement" />. </summary>
+      <param name="serviceEndpointElement">Элемент конечной точки службы для инициализации и проверки. </param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement.Properties">
+      <summary>При вызове или переопределении производным классом возвращает коллекцию параметров конфигурации, содержащихся в экземпляре <see cref="T:System.ServiceModel.Discovery.Configuration.DiscoveryEndpointElement" />. </summary>
+      <returns>Коллекция параметров конфигурации. </returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.DiscoveryVersionConverter">
+      <summary>Предоставляет функции для изменения версии протокола WS-Discovery на другой тип.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryVersionConverter.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Configuration.DiscoveryVersionConverter" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryVersionConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+      <summary>Возвращает значение, которое показывает, можно ли изменить заданный объект <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> в соответствии с типом этого преобразователя, используя указанный контекст и данные о языке и региональных параметрах.</summary>
+      <returns>Значение true, если указанный объект <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> можно изменить в соответствии с типом этого преобразователя; в противном случае — значение false.</returns>
+      <param name="context">Информация о формате дескриптора типа, помогающая при преобразовании объекта <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> в другой тип.</param>
+      <param name="sourceType">Объект <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />, который изменяется в соответствии с типом этого преобразователя.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryVersionConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+      <summary>Возвращает значение, которое показывает, можно ли изменить заданный объект <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> в соответствии с указанным типом, используя указанный контекст и данные о языке и региональных параметрах.</summary>
+      <returns>Значение true, если указанный объект <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> можно изменить в соответствии с указанным типом; в противном случае — значение false.</returns>
+      <param name="context">Информация о формате дескриптора типа, помогающая при преобразовании объекта <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> в другой тип.</param>
+      <param name="destinationType">Тип, в соответствии с которым изменяется объект <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryVersionConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+      <summary>Преобразует заданный объект <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> в соответствии с типом этого преобразователя, используя указанный контекст и данные о языке и региональных параметрах.</summary>
+      <returns>Объект <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />, измененный в соответствии с типом этого преобразователя.</returns>
+      <param name="context">Информация о формате дескриптора типа, помогающая при преобразовании объекта <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> в другой тип.</param>
+      <param name="culture">Сведения о языке и региональных параметрах, используемых при преобразовании типов.</param>
+      <param name="value">Изменяемый объект <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DiscoveryVersionConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+      <summary>Преобразует заданный объект <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> к заданному типу, используя указанный контекст и сведения о языке и региональных параметрах.</summary>
+      <returns>Объект <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />, измененный в соответствии с указанным типом.</returns>
+      <param name="context">Информация о формате дескриптора типа, помогающая при преобразовании объекта <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" /> в другой тип.</param>
+      <param name="culture">Сведения о языке и региональных параметрах, используемых при преобразовании типов.</param>
+      <param name="value">Изменяемый объект <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />.</param>
+      <param name="destinationType">Тип, в соответствии с которым изменяется объект <see cref="T:System.ServiceModel.Discovery.DiscoveryVersion" />.</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.DynamicEndpointCollectionElement">
+      <summary>Представляет элемент конфигурации рабочего процесса, который предоставляет коллекцию конечных точек, содержащих сведения, позволяющие приложению работать в качестве клиентской программы, которая может выполнять поиск службы рабочих процессов и использовать ее во время выполнения.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DynamicEndpointCollectionElement.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Configuration.DynamicEndpointCollectionElement" />.</summary>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.DynamicEndpointElement">
+      <summary>Представляет элемент конфигурации, предоставляющий сведения, позволяющие приложению работать в качестве клиентской программы, которая может выполнять поиск службы рабочих процессов и использовать ее во время выполнения.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.DynamicEndpointElement.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Configuration.DynamicEndpointElement" />.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.DynamicEndpointElement.DiscoveryClientSettings">
+      <summary>Возвращает объект <see cref="T:System.ServiceModel.Discovery.Configuration.DiscoveryClientSettingsElement" />, который содержит параметры, необходимые приложению для участия в процессе обнаружения службы в качестве клиента.</summary>
+      <returns>Элемент, который содержит параметры обнаружения, необходимые клиентскому приложению.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.EndpointDiscoveryElement">
+      <summary>Элемент конфигурации, который управляет функциями обнаружения конечной точки. </summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.EndpointDiscoveryElement.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Configuration.EndpointDiscoveryElement" />.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.EndpointDiscoveryElement.BehaviorType">
+      <summary>Возвращает тип поведения, связанный с элементом <see cref="T:System.ServiceModel.Discovery.Configuration.EndpointDiscoveryElement" />.</summary>
+      <returns>Тип поведения. </returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.EndpointDiscoveryElement.ContractTypeNames">
+      <summary>Возвращает имена типа контракта, связанного с конечной точкой.</summary>
+      <returns>Имена типа контракта, связанного с конечной точкой.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.EndpointDiscoveryElement.Enabled">
+      <summary>Возвращает или задает значение, указывающее возможность обнаружения этой конечной точки.</summary>
+      <returns>Значение true, если для этой конечной точки включена возможность обнаружения; в противном случае — значение false. </returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.EndpointDiscoveryElement.Extensions">
+      <summary>Возвращает расширения, связанные с элементом <see cref="T:System.ServiceModel.Discovery.Configuration.EndpointDiscoveryElement" />.</summary>
+      <returns>Расширения.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.EndpointDiscoveryElement.Scopes">
+      <summary>Возвращает коллекцию областей для этой конечной точки.</summary>
+      <returns>Коллекция областей, связанных с этой конечной точкой.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.FindCriteriaElement">
+      <summary>Управляет элементом конфигурации, который содержит набор условий, используемых клиентским приложением для поиска служб рабочих процессов в сети или Интернете.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.FindCriteriaElement.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Configuration.FindCriteriaElement" />.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.FindCriteriaElement.ContractTypeNames">
+      <summary>Возвращает коллекцию элементов конфигурации, которые содержат имена типов для контрактов службы рабочего процесса.</summary>
+      <returns>Коллекция элементов.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.FindCriteriaElement.Duration">
+      <summary>Возвращает или задает максимальное время ожидания ответов от служб по сети или через Интернет.</summary>
+      <returns>Объект интервала времени, который определяет период ожидания.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.FindCriteriaElement.Extensions">
+      <summary>Возвращает объект <see cref="T:System.ServiceModel.Configuration.XmlElementElementCollection" />, который предоставляет расширения для <see cref="T:System.ServiceModel.Discovery.Configuration.FindCriteriaElement" />.</summary>
+      <returns>Коллекция элементов.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.FindCriteriaElement.MaxResults">
+      <summary>Возвращает или задает максимальное количество ответов, ожидаемых от служб по сети или через Интернет. </summary>
+      <returns>Максимальное количество.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.FindCriteriaElement.ScopeMatchBy">
+      <summary>Возвращает или задает URI, который обозначает имя и расположение искомой службы, с которой сопоставляются элементы коллекции <see cref="P:System.ServiceModel.Discovery.Configuration.FindCriteriaElement.Scopes" />.</summary>
+      <returns>URI служебного приложения.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.FindCriteriaElement.Scopes">
+      <summary>Возвращает коллекцию объектов <see cref="T:System.ServiceModel.Discovery.Configuration.FindCriteriaElement" />, содержащих абсолютные URI, по которым определяется расположение отдельных службы в ходе операции поиска.</summary>
+      <returns>Коллекция элементов, содержащих URI.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.ScopeElement">
+      <summary>Представляет URI области для конечной точки.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.ScopeElement.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Configuration.ScopeElement" />.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.ScopeElement.Scope">
+      <summary>Возвращает или задает URI области.</summary>
+      <returns>URI области.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.ScopeElementCollection">
+      <summary>Элемент конфигурации, содержащий коллекцию элементов области. </summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.ScopeElementCollection.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="M:System.ServiceModel.Discovery.Configuration.ScopeElementCollection.#ctor" />.</summary>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.ServiceDiscoveryElement">
+      <summary>Представляет элемент конфигурации, который управляет возможностью обнаружения службы.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.ServiceDiscoveryElement.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Configuration.ServiceDiscoveryElement" />.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.ServiceDiscoveryElement.AnnouncementEndpoints">
+      <summary>Возвращает коллекцию конечных точек объявления.</summary>
+      <returns>Коллекция <see cref="T:System.ServiceModel.Configuration.ChannelEndpointElementCollection" />, содержащая конечные точки объявления.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.ServiceDiscoveryElement.BehaviorType">
+      <summary>Возвращает тип поведения.</summary>
+      <returns>Тип поведения.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointCollectionElement">
+      <summary>Представляет контейнер для элементов конфигурации <see cref="T:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointCollectionElement.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointCollectionElement" />.</summary>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement">
+      <summary>Определяет элемент конфигурации для конечной точки объявления UDP.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.CreateServiceEndpoint(System.ServiceModel.Description.ContractDescription)">
+      <summary>При вызове или переопределении производным классом создает и инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.UdpAnnouncementEndpoint" />, использующего описание контракта в текущей версии и режиме протокола обнаружения.</summary>
+      <returns>Конечная точка объявления UDP.</returns>
+      <param name="contractDescription">Не реализовано.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.EndpointType">
+      <summary>При вызове или переопределении в производном классе возвращает тип конечной точки объявления UDP.</summary>
+      <returns>Тип конечной точки объявления UDP.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.InitializeFrom(System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>Преобразует указанную <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> в <see cref="T:System.ServiceModel.Discovery.UdpAnnouncementEndpoint." />.</summary>
+      <param name="endpoint">Объект конечной точки службы, который требуется преобразовать.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.MaxAnnouncementDelay">
+      <summary>Возвращает или задает максимальную задержку, в течение которой служба ожидает отправки сообщений объявления.</summary>
+      <returns>Максимальная задержка.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.MulticastAddress">
+      <summary>Возвращает или задает свойство <see cref="P:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.MulticastAddress" /> для элемента конечной точки объявления UDP.</summary>
+      <returns>URI-адрес.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Configuration.ChannelEndpointElement)">
+      <summary>При вызове или переопределении в производном классе преобразует указанный экземпляр объекта <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> в конечную точку объявления UDP.</summary>
+      <param name="endpoint">Конечная точка службы, к которой применяются параметры конфигурации объявления UDP.</param>
+      <param name="serviceEndpointElement">Не реализовано.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Configuration.ServiceEndpointElement)">
+      <summary>При вызове или переопределении в производном классе преобразует указанный экземпляр объекта <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> в конечную точку объявления UDP.</summary>
+      <param name="endpoint">Конечная точка службы, к которой применяются параметры конфигурации объявления UDP.</param>
+      <param name="serviceEndpointElement">Не реализовано.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.OnInitializeAndValidate(System.ServiceModel.Configuration.ChannelEndpointElement)">
+      <summary>При вызове или переопределении в производном классе инициализирует и проверяет указанный экземпляр <see cref="T:System.ServiceModel.Configuration.ChannelEndpointElement" />.</summary>
+      <param name="channelEndpointElement">Элемент конечной точки канала для инициализации и проверки.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.OnInitializeAndValidate(System.ServiceModel.Configuration.ServiceEndpointElement)">
+      <summary>При вызове или переопределении в производном классе инициализирует и проверяет указанный экземпляр <see cref="T:System.ServiceModel.Configuration.ServiceEndpointElement" />.</summary>
+      <param name="serviceEndpointElement">Элемент конечной точки службы для инициализации и проверки.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.Properties">
+      <summary>При вызове или переопределении в производном классе возвращает коллекцию параметров конфигурации, содержащихся в экземпляре <see cref="T:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement" />.</summary>
+      <returns>Коллекция параметров конфигурации.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpAnnouncementEndpointElement.TransportSettings">
+      <summary>Возвращает настройки привязки для элемента конфигурации транспорта UDP.</summary>
+      <returns>Элемент конфигурации UDP.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointCollectionElement">
+      <summary>Представляет контейнер для элементов конфигурации <see cref="T:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointCollectionElement.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointCollectionElement" />.</summary>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement">
+      <summary>Определяет элемент конфигурации для конечной точки обнаружения UDP.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.CreateServiceEndpoint(System.ServiceModel.Description.ContractDescription)">
+      <summary>При вызове или переопределении производным классом создает и инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.UdpDiscoveryEndpoint" />, использующего описание контракта в текущей версии и режиме протокола обнаружения.</summary>
+      <returns>Конечная точка обнаружения UDP.</returns>
+      <param name="contractDescription">Не реализовано.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.DiscoveryMode">
+      <summary>Возвращает или задает режим обнаружения, используемый конечной точкой обнаружения.</summary>
+      <returns>Режим обнаружения.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.EndpointType">
+      <summary>При вызове или переопределении в производном классе возвращает тип конечной точки обнаружения UDP.</summary>
+      <returns>Тип конечной точки обнаружения.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.InitializeFrom(System.ServiceModel.Description.ServiceEndpoint)">
+      <summary>Преобразует указанную <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> в <see cref="T:System.ServiceModel.Discovery.UdpDiscoveryEndpoint" />.</summary>
+      <param name="endpoint">Объект конечной точки службы, который требуется преобразовать.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.MaxResponseDelay">
+      <summary>Возвращает или задает максимальную продолжительность <see cref="T:System.Timespan" />, в течение которого отправляются все объекты ProbeMatch для службы, соответствующие операции зондирования.</summary>
+      <returns>Максимальная задержка.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.MulticastAddress">
+      <summary>Возвращает или задает свойство <see cref="P:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.MulticastAddress" /> для элемента конечной точки обнаружения UDP.</summary>
+      <returns>IP-адрес.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Configuration.ChannelEndpointElement)">
+      <summary>При вызове или переопределении в производном классе преобразует указанный экземпляр объекта <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> в конечную точку обнаружения UDP.</summary>
+      <param name="endpoint">Конечная точка службы, к которой применяются параметры конфигурации элемента.</param>
+      <param name="serviceEndpointElement">Не реализовано.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Configuration.ServiceEndpointElement)">
+      <summary>При вызове или переопределении в производном классе преобразует указанный экземпляр объекта <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> в конечную точку обнаружения UDP.</summary>
+      <param name="endpoint">Конечная точка службы, к которой применяются параметры конфигурации элемента.</param>
+      <param name="serviceEndpointElement">Не реализовано.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.OnInitializeAndValidate(System.ServiceModel.Configuration.ChannelEndpointElement)">
+      <summary>При вызове или переопределении в производном классе инициализирует и проверяет указанный экземпляр <see cref="T:System.ServiceModel.Configuration.ChannelEndpointElement" />.</summary>
+      <param name="channelEndpointElement">Элемент конечной точки канала для инициализации и проверки.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.OnInitializeAndValidate(System.ServiceModel.Configuration.ServiceEndpointElement)">
+      <summary>При вызове или переопределении в производном классе инициализирует и проверяет указанный экземпляр <see cref="T:System.ServiceModel.Configuration.ServiceEndpointElement" />.</summary>
+      <param name="serviceEndpointElement">Элемент конечной точки службы для инициализации и проверки.</param>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.Properties">
+      <summary>При вызове или переопределении производным классом возвращает коллекцию параметров конфигурации, содержащихся в экземпляре <see cref="T:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement" />.</summary>
+      <returns>Коллекция параметров конфигурации.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement.TransportSettings">
+      <summary>Возвращает настройки привязки для элемента конфигурации транспорта UDP.</summary>
+      <returns>Элемент конфигурации UDP.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement">
+      <summary>Позволяет задавать параметры транспортного протокола UDP. </summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.#ctor">
+      <summary>Создает новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement" />.</summary>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.DuplicateMessageHistoryLength">
+      <summary>Возвращает или задает значение свойства <see cref="P:System.ServiceModel.Discovery.UdpTransportSettings.DuplicateMessageHistoryLength" /> в элементе конфигурации транспорта UDP.</summary>
+      <returns>Максимальное количество хэшей сообщений, используемых транспортом для выявления повторяющихся сообщений.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.MaxBufferPoolSize">
+      <summary>Возвращает или задает максимальный объем памяти, выделяемой для процесса считывания страниц и записи страниц данных в память с диска.</summary>
+      <returns>Число, указывающее размер пула буферов.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.MaxMulticastRetransmitCount">
+      <summary>Возвращает или задает значение свойства <see cref="P:System.ServiceModel.Discovery.UdpTransportSettings.MaxMulticastRetransmitCount" /> в элементе конфигурации транспорта UDP.</summary>
+      <returns>Максимальное число событий повторной передачи сообщения многоадресной доставки.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.MaxPendingMessageCount">
+      <summary>Возвращает или задает значение свойства <see cref="P:System.ServiceModel.Discovery.UdpTransportSettings.MaxPendingMessageCount" /> в элементе конфигурации транспорта UDP.</summary>
+      <returns>Максимальное количество сообщений, которые получены, но еще не удалены из входной очереди для отдельного экземпляра канала.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.MaxReceivedMessageSize">
+      <summary>Возвращает или задает значение свойства <see cref="P:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.MaxReceivedMessageSize" /> в элементе конфигурации транспорта UDP.</summary>
+      <returns>Максимальный размер сообщения, которое может обрабатываться привязкой.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.MaxUnicastRetransmitCount">
+      <summary>Возвращает или задает значение свойства <see cref="P:System.ServiceModel.Discovery.UdpTransportSettings.MaxUnicastRetransmitCount" /> в элементе конфигурации транспорта UDP.</summary>
+      <returns>Максимальное число событий повторной передачи сообщения одноадресной доставки.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.MulticastInterfaceId">
+      <summary>Возвращает или задает значение свойства <see cref="P:System.ServiceModel.Discovery.UdpTransportSettings.MulticastInterfaceId" /> в элементе конфигурации транспорта UDP.</summary>
+      <returns>Сетевой адаптер, который используется для отправки и приема трафика многоадресной передачи на компьютерах с несколькими сетевыми адаптерами.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.SocketReceiveBufferSize">
+      <summary>Возвращает или задает значение свойства <see cref="P:System.ServiceModel.Discovery.UdpTransportSettings.SocketReceiveBufferSize" /> в элементе конфигурации транспорта UDP.</summary>
+      <returns>Размер буфера приема в базовом сокете WinSock.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.TimeToLive">
+      <summary>Возвращает или задает значение свойства <see cref="P:System.ServiceModel.Discovery.Configuration.UdpTransportSettingsElement.TimeToLive" /> в элементе конфигурации транспорта UDP.</summary>
+      <returns>Количество прыжков по сетевым сегментам, которое может выполнить многоадресный пакет. </returns>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Version11.DiscoveryMessageSequence11">
+      <summary>Представляет заголовок AppSequence, определенный в протоколе WS-Discovery версии 1.1.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.DiscoveryMessageSequence11.FromDiscoveryMessageSequence(System.ServiceModel.Discovery.DiscoveryMessageSequence)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Version11.DiscoveryMessageSequence11" /> из указанного экземпляра <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" />.</summary>
+      <returns>Экземпляр <see cref="T:System.ServiceModel.Discovery.Version11.DiscoveryMessageSequence11" />.</returns>
+      <param name="discoveryMessageSequence">Последовательность сообщений обнаружения.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.DiscoveryMessageSequence11.GetSchema">
+      <summary>Возвращает схему для заголовка AppSequence, определенную в версии 1.1 протокола WS-Discovery.</summary>
+      <returns>Схема для заголовка AppSequence.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.DiscoveryMessageSequence11.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>Возвращает схему для заголовка AppSequence, определенную в версии 1.1 протокола WS-Discovery, и добавляет ее в указанный набор схем, если она отсутствует в этом наборе.</summary>
+      <returns>Полное имя XML схемы.</returns>
+      <param name="schemaSet">Набор схем.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.DiscoveryMessageSequence11.ReadXml(System.Xml.XmlReader)">
+      <summary>Считывает последовательность сообщений обнаружения из XML.</summary>
+      <param name="reader">Модуль чтения XML, из которого выполняется чтение.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.DiscoveryMessageSequence11.ToDiscoveryMessageSequence">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> из текущего экземпляра <see cref="T:System.ServiceModel.Discovery.Version11.DiscoveryMessageSequence11" />.</summary>
+      <returns>Экземпляр <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" />.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.DiscoveryMessageSequence11.WriteXml(System.Xml.XmlWriter)">
+      <summary>Записывает экземпляр <see cref="T:System.ServiceModel.Discovery.Version11.DiscoveryMessageSequence11" /> в XML.</summary>
+      <param name="writer">Модуль записи XML, в который производится запись.</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11">
+      <summary>Содержит метаданные для службы с возможностью обнаружения на основе протокола WS-Discovery версии 1.1.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11.FromEndpointDiscoveryMetadata(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11" /> с указанным экземпляром <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />.</summary>
+      <returns>Экземпляр <see cref="T:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11" />.</returns>
+      <param name="endpointDiscoveryMetadata">Метаданные обнаружения конечной точки.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11.GetSchema">
+      <summary>Возвращает схему метаданных обнаружения конечной точки для версии 1.1 протокола WS-Discovery.</summary>
+      <returns>Полное имя XML схемы.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>Возвращает схему метаданных обнаружения конечной точки для протокола WS-Discovery версии 1.1 и добавляет ее к указанному набору схем, если она отсутствует в этом наборе.</summary>
+      <returns>Полное имя XML схемы.</returns>
+      <param name="schemaSet">Набор схем.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11.ReadXml(System.Xml.XmlReader)">
+      <summary>Считывает экземпляр <see cref="T:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11" /> из XML.</summary>
+      <param name="reader">Модуль чтения XML, из которого выполняется чтение.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11.ToEndpointDiscoveryMetadata">
+      <summary>Возвращает объект <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />, связанный с данным экземпляром <see cref="T:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11" />.</summary>
+      <returns>Экземпляр <see cref="T:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11" />.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11.WriteXml(System.Xml.XmlWriter)">
+      <summary>Записывает экземпляр <see cref="T:System.ServiceModel.Discovery.Version11.EndpointDiscoveryMetadata11" /> в XML.</summary>
+      <param name="writer">Модуль записи XML, в который производится запись.</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Version11.FindCriteria11">
+      <summary>Представляет условия, по которым выполняется поиск служб с использованием версии 1.1 протокола WS-Discovery.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.FindCriteria11.FromFindCriteria(System.ServiceModel.Discovery.FindCriteria)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Version11.FindCriteria11" />, используя указанный экземпляр <see cref="T:System.ServiceModel.Discovery.FindCriteria" />.</summary>
+      <returns>Новый экземпляр <see cref="T:System.ServiceModel.Discovery.Version11.FindCriteria11" />.</returns>
+      <param name="findCriteria">Критерий поиска.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.FindCriteria11.GetSchema">
+      <summary>Возвращает схему критериев поиска.</summary>
+      <returns>Схема критериев поиска.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.FindCriteria11.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>Возвращает схему критериев поиска из указанного <see cref="T:System.Xml.Schema.XmlSchemaSet" />. </summary>
+      <returns>
+        <see cref="T:System.Xml.XmlQualifiedName" /> схемы.</returns>
+      <param name="schemaSet">Набор схем.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.FindCriteria11.ReadXml(System.Xml.XmlReader)">
+      <summary>Загружает экземпляр <see cref="T:System.ServiceModel.Discovery.Version11.FindCriteria11" /> из XML.</summary>
+      <param name="reader">Модуль чтения XML, из которого выполняется чтение.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.FindCriteria11.ToFindCriteria">
+      <summary>Возвращает объект <see cref="T:System.ServiceModel.Discovery.FindCriteria" />, связанный с данным экземпляром <see cref="T:System.ServiceModel.Discovery.Version11.FindCriteria11" />.</summary>
+      <returns>Критерий поиска.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.FindCriteria11.WriteXml(System.Xml.XmlWriter)">
+      <summary>Записывает <see cref="T:System.ServiceModel.Discovery.Version11.FindCriteria11" /> в XML.</summary>
+      <param name="writer">Модуль записи XML, в который производится запись.</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.Version11.ResolveCriteria11">
+      <summary>Представляет условия, по которым выполняется разрешение службы с использованием версии 1.1 протокола WS-Discovery.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.ResolveCriteria11.FromResolveCriteria(System.ServiceModel.Discovery.ResolveCriteria)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.Version11.ResolveCriteria11" />, используя указанный экземпляр <see cref="T:System.ServiceModel.Discovery.ResolveCriteria" />.</summary>
+      <returns>Экземпляр <see cref="T:System.ServiceModel.Discovery.Version11.ResolveCriteria11" />.</returns>
+      <param name="resolveCriteria">Критерии разрешения.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.ResolveCriteria11.GetSchema">
+      <summary>Возвращает схему критериев разрешения.</summary>
+      <returns>Схема критериев разрешения.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.ResolveCriteria11.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>Возвращает схему критериев поиска из указанного <see cref="T:System.Xml.Schema.XmlSchemaSet" />.</summary>
+      <returns>
+        <see cref="T:System.Xml.XmlQualifiedName" /> схемы.</returns>
+      <param name="schemaSet">Набор схем.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.ResolveCriteria11.ReadXml(System.Xml.XmlReader)">
+      <summary>Загружает экземпляр <see cref="T:System.ServiceModel.Discovery.Version11.ResolveCriteria11" /> из XML.</summary>
+      <param name="reader">Модуль чтения XML, из которого выполняется чтение.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.ResolveCriteria11.ToResolveCriteria">
+      <summary>Возвращает объект <see cref="T:System.ServiceModel.Discovery.ResolveCriteria" />, связанный с данным экземпляром <see cref="T:System.ServiceModel.Discovery.Version11.ResolveCriteria11" />.</summary>
+      <returns>Критерии разрешения.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.Version11.ResolveCriteria11.WriteXml(System.Xml.XmlWriter)">
+      <summary>Записывает экземпляр <see cref="T:System.ServiceModel.Discovery.Version11.ResolveCriteria11" /> в XML.</summary>
+      <param name="writer">Модуль записи XML, в который производится запись.</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.VersionApril2005.DiscoveryMessageSequenceApril2005">
+      <summary>Представляет заголовок AppSequence, определенный в версии протокола WS-Discovery за апрель 2005 г.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.DiscoveryMessageSequenceApril2005.FromDiscoveryMessageSequence(System.ServiceModel.Discovery.DiscoveryMessageSequence)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.VersionApril2005.DiscoveryMessageSequenceApril2005" /> из указанного экземпляра <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" />.</summary>
+      <returns>Экземпляр <see cref="T:System.ServiceModel.Discovery.VersionApril2005.DiscoveryMessageSequenceApril2005" />.</returns>
+      <param name="discoveryMessageSequence">Последовательность сообщений обнаружения.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.DiscoveryMessageSequenceApril2005.GetSchema">
+      <summary>Возвращает схему заголовка AppSequence для версии протокола WS-Discovery от апреля 2005 года.</summary>
+      <returns>Схема для заголовка AppSequence.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.DiscoveryMessageSequenceApril2005.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>Возвращает схему для заголовка AppSequence, определенную в версии протокола WS-Discovery за апрель 2005 г., и добавляет ее в указанный набор схем, если она отсутствует в этом наборе.</summary>
+      <returns>Полное имя XML схемы.</returns>
+      <param name="schemaSet">Набор схем.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.DiscoveryMessageSequenceApril2005.ReadXml(System.Xml.XmlReader)">
+      <summary>Считывает последовательность сообщений обнаружения из XML.</summary>
+      <param name="reader">Модуль чтения XML, из которого выполняется чтение.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.DiscoveryMessageSequenceApril2005.ToDiscoveryMessageSequence">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> из экземпляра <see cref="T:System.ServiceModel.Discovery.VersionApril2005.DiscoveryMessageSequenceApril2005" />.</summary>
+      <returns>Экземпляр <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" />.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.DiscoveryMessageSequenceApril2005.WriteXml(System.Xml.XmlWriter)">
+      <summary>Записывает <see cref="T:System.ServiceModel.Discovery.VersionApril2005.DiscoveryMessageSequenceApril2005" /> в XML.</summary>
+      <param name="writer">Модуль записи XML, в который производится запись.</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005">
+      <summary>Содержит метаданные для службы с возможностью обнаружения на основе версии протокола WS-Discovery за апрель 2005 г.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005.FromEndpointDiscoveryMetadata(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>Инициализирует новый экземпляр <see cref="T:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005" /> с заданным экземпляром <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />.</summary>
+      <returns>Экземпляр <see cref="T:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005" />.</returns>
+      <param name="endpointDiscoveryMetadata">Метаданные обнаружения конечной точки.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005.GetSchema">
+      <summary>Возвращает схему метаданных обнаружения конечной точки для версии протокола WS-Discovery от апреля 2005 года.</summary>
+      <returns>Экземпляр <see cref="T:System.Xml.Schema.XmlSchema" />.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>Возвращает схему для метаданных обнаружения конечной точки для версии протокола WS-Discovery за апрель 2005 г. и добавляет ее к указанному набору схем, если она отсутствует в этом наборе.</summary>
+      <returns>Полное имя XML схемы.</returns>
+      <param name="schemaSet">Набор схем.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005.ReadXml(System.Xml.XmlReader)">
+      <summary>Загружает экземпляр <see cref="T:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005" /> из XML.</summary>
+      <param name="reader">Модуль чтения XML для чтения.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005.ToEndpointDiscoveryMetadata">
+      <summary>Возвращает объект <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />, связанный с данным экземпляром <see cref="T:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005" />.</summary>
+      <returns>Экземпляр <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005.WriteXml(System.Xml.XmlWriter)">
+      <summary>Записывает текущий экземпляр <see cref="T:System.ServiceModel.Discovery.VersionApril2005.EndpointDiscoveryMetadataApril2005" /> в XML.</summary>
+      <param name="writer">Модуль записи XML.</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005">
+      <summary>Представляет условия, по которым выполняется поиск служб с использованием версии протокола WS-Discovery за апрель 2005 г.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005.FromFindCriteria(System.ServiceModel.Discovery.FindCriteria)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005" /> с указанным экземпляром <see cref="T:System.ServiceModel.Discovery.FindCriteria" />.</summary>
+      <returns>Экземпляр <see cref="T:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005" />.</returns>
+      <param name="findCriteria">Критерий поиска.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005.GetSchema">
+      <summary>Возвращает схему критериев поиска для версии протокола WS-Discovery от апреля 2005 года.</summary>
+      <returns>Схема.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>Возвращает схему условий поиска для версии протокола WS-Discovery за апрель 2005 г. и добавляет ее к указанному набору схем, если она отсутствует в этом наборе.</summary>
+      <returns>Полное имя XML схемы.</returns>
+      <param name="schemaSet">Набор схем.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005.ReadXml(System.Xml.XmlReader)">
+      <summary>Считывает экземпляр <see cref="T:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005" /> из указанного модуля чтения XML.</summary>
+      <param name="reader">Средство чтения XML.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005.ToFindCriteria">
+      <summary>Возвращает объект <see cref="T:System.ServiceModel.Discovery.FindCriteria" />, связанный с данным экземпляром <see cref="T:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005" />.</summary>
+      <returns>Критерий поиска.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005.WriteXml(System.Xml.XmlWriter)">
+      <summary>Записывает текущий экземпляр <see cref="T:System.ServiceModel.Discovery.VersionApril2005.FindCriteriaApril2005" /> в XML.</summary>
+      <param name="writer">Модуль записи XML.</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005">
+      <summary>Представляет условия, по которым выполняется разрешение службы с использованием версии протокола WS-Discovery за апрель 2005 г.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005.FromResolveCriteria(System.ServiceModel.Discovery.ResolveCriteria)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005" /> с указанным экземпляром <see cref="T:System.ServiceModel.Discovery.ResolveCriteria" />.</summary>
+      <returns>Экземпляр <see cref="T:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005" />.</returns>
+      <param name="resolveCriteria">Критерии разрешения.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005.GetSchema">
+      <summary>Возвращает XML-схему для критериев разрешения, определенную в версии протокола WS-Discovery от апреля 2005 года.</summary>
+      <returns>Схема XML условий разрешения.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>Возвращает схему XML условий разрешения, определенную в версии протокола WS-Discovery за апрель 2005 г., и добавляет ее в указанный экземпляр <see cref="T:System.Xml.Schema.XmlSchemaSet" />.</summary>
+      <returns>Полное имя XML схемы. </returns>
+      <param name="schemaSet">Набор схем.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005.ReadXml(System.Xml.XmlReader)">
+      <summary>Загружает экземпляр <see cref="T:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005" /> из XML.</summary>
+      <param name="reader">Средство чтения XML.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005.ToResolveCriteria">
+      <summary>Возвращает экземпляр <see cref="T:System.ServiceModel.Discovery.ResolveCriteria" />, связанный с текущим экземпляром <see cref="T:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005" />.</summary>
+      <returns>Критерии разрешения.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005.WriteXml(System.Xml.XmlWriter)">
+      <summary>Записывает текущий экземпляр <see cref="T:System.ServiceModel.Discovery.VersionApril2005.ResolveCriteriaApril2005" /> в XML.</summary>
+      <param name="writer">Модуль записи XML.</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.VersionCD1.DiscoveryMessageSequenceCD1">
+      <summary>Представляет заголовок AppSequence, определенный в версии Committee Draft 1 протокола WS-Discovery.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.DiscoveryMessageSequenceCD1.FromDiscoveryMessageSequence(System.ServiceModel.Discovery.DiscoveryMessageSequence)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.VersionCD1.DiscoveryMessageSequenceCD1" /> из указанного экземпляра <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" />.</summary>
+      <returns>Экземпляр <see cref="T:System.ServiceModel.Discovery.VersionCD1.DiscoveryMessageSequenceCD1" />.</returns>
+      <param name="discoveryMessageSequence">Последовательность сообщений обнаружения.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.DiscoveryMessageSequenceCD1.GetSchema">
+      <summary>Возвращает схему для заголовка AppSequence, определенную в версии Committee Draft 1 протокола WS-Discovery.</summary>
+      <returns>Схема для заголовка AppSequence.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.DiscoveryMessageSequenceCD1.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>Возвращает схему для заголовка AppSequence, определенную в версии Committee Draft 1 протокола WS-Discovery, и добавляет ее в указанный набор схем, если она отсутствует в этом наборе.</summary>
+      <returns>Полное имя XML схемы.</returns>
+      <param name="schemaSet">Набор схем.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.DiscoveryMessageSequenceCD1.ReadXml(System.Xml.XmlReader)">
+      <summary>Считывает последовательность сообщений обнаружения из XML.</summary>
+      <param name="reader">Модуль чтения XML, из которого выполняется чтение.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.DiscoveryMessageSequenceCD1.ToDiscoveryMessageSequence">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" /> из текущего экземпляра <see cref="T:System.ServiceModel.Discovery.VersionCD1.DiscoveryMessageSequenceCD1" />.</summary>
+      <returns>Экземпляр <see cref="T:System.ServiceModel.Discovery.DiscoveryMessageSequence" />.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.DiscoveryMessageSequenceCD1.WriteXml(System.Xml.XmlWriter)">
+      <summary>Записывает экземпляр <see cref="T:System.ServiceModel.Discovery.VersionCD1.DiscoveryMessageSequenceCD1" /> в XML.</summary>
+      <param name="writer">Модуль записи XML, в который производится запись.</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1">
+      <summary>Содержит метаданные для службы с возможностью обнаружения на основе версии Committee Draft 1 протокола WS-Discovery.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1.FromEndpointDiscoveryMetadata(System.ServiceModel.Discovery.EndpointDiscoveryMetadata)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1" /> с указанным экземпляром <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />.</summary>
+      <returns>Экземпляр <see cref="T:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1" />.</returns>
+      <param name="endpointDiscoveryMetadata">Метаданные обнаружения конечной точки.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1.GetSchema">
+      <summary>Возвращает схему для метаданных обнаружения конечной точки, как определено в версии Committee Draft 1 протокола WS-Discovery.</summary>
+      <returns>Полное имя XML схемы.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>Возвращает схему для метаданных обнаружения конечной точки для версии Committee Draft 1 протокола WS-Discovery и добавляет ее к указанному набору схем, если она отсутствует в этом наборе.</summary>
+      <returns>Полное имя XML схемы.</returns>
+      <param name="schemaSet">Набор схем.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1.ReadXml(System.Xml.XmlReader)">
+      <summary>Считывает экземпляр <see cref="T:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1" /> из XML.</summary>
+      <param name="reader">Модуль чтения XML, из которого выполняется чтение.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1.ToEndpointDiscoveryMetadata">
+      <summary>Возвращает объект <see cref="T:System.ServiceModel.Discovery.EndpointDiscoveryMetadata" />, связанный с данным экземпляром <see cref="T:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1" />.</summary>
+      <returns>Экземпляр <see cref="T:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1" />.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1.WriteXml(System.Xml.XmlWriter)">
+      <summary>Записывает экземпляр <see cref="T:System.ServiceModel.Discovery.VersionCD1.EndpointDiscoveryMetadataCD1" /> в XML.</summary>
+      <param name="writer">Модуль записи XML, в который производится запись.</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1">
+      <summary>Представляет условия, по которым выполняется поиск служб с использованием версии Committee Draft 1 протокола WS-Discovery.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1.FromFindCriteria(System.ServiceModel.Discovery.FindCriteria)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1" />, используя указанный экземпляр <see cref="T:System.ServiceModel.Discovery.FindCriteria" />.</summary>
+      <returns>Новый экземпляр <see cref="T:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1" />.</returns>
+      <param name="findCriteria">Критерий поиска.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1.GetSchema">
+      <summary>Возвращает схему критериев поиска.</summary>
+      <returns>Схема критериев поиска.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>Возвращает схему критериев поиска из указанного <see cref="T:System.Xml.Schema.XmlSchemaSet" />. </summary>
+      <returns>
+        <see cref="T:System.Xml.XmlQualifiedName" /> схемы.</returns>
+      <param name="schemaSet">Набор схем.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1.ReadXml(System.Xml.XmlReader)">
+      <summary>Загружает экземпляр <see cref="T:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1" /> из XML.</summary>
+      <param name="reader">Модуль чтения XML, из которого выполняется чтение.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1.ToFindCriteria">
+      <summary>Возвращает объект <see cref="T:System.ServiceModel.Discovery.FindCriteria" />, связанный с данным экземпляром <see cref="T:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1" />.</summary>
+      <returns>Критерий поиска.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1.WriteXml(System.Xml.XmlWriter)">
+      <summary>Записывает <see cref="T:System.ServiceModel.Discovery.VersionCD1.FindCriteriaCD1" /> в XML.</summary>
+      <param name="writer">Модуль записи XML, в который производится запись.</param>
+    </member>
+    <member name="T:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1">
+      <summary>Представляет условия, по которым выполняется разрешение службы с использованием версии Committee Draft 1 протокола WS-Discovery.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1.FromResolveCriteria(System.ServiceModel.Discovery.ResolveCriteria)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1" />, используя указанный экземпляр <see cref="T:System.ServiceModel.Discovery.ResolveCriteria" />.</summary>
+      <returns>Экземпляр <see cref="T:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1" />.</returns>
+      <param name="resolveCriteria">Критерии разрешения.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1.GetSchema">
+      <summary>Возвращает схему критериев разрешения.</summary>
+      <returns>Схема критериев разрешения.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>Возвращает схему критериев поиска из указанного <see cref="T:System.Xml.Schema.XmlSchemaSet" />.</summary>
+      <returns>
+        <see cref="T:System.Xml.XmlQualifiedName" /> схемы.</returns>
+      <param name="schemaSet">Набор схем.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1.ReadXml(System.Xml.XmlReader)">
+      <summary>Загружает экземпляр <see cref="T:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1" /> из XML.</summary>
+      <param name="reader">Модуль чтения XML, из которого выполняется чтение.</param>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1.ToResolveCriteria">
+      <summary>Возвращает объект <see cref="T:System.ServiceModel.Discovery.ResolveCriteria" />, связанный с данным экземпляром <see cref="T:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1" />.</summary>
+      <returns>Критерии разрешения.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1.WriteXml(System.Xml.XmlWriter)">
+      <summary>Записывает экземпляр <see cref="T:System.ServiceModel.Discovery.VersionCD1.ResolveCriteriaCD1" /> в XML.</summary>
+      <param name="writer">Модуль записи XML, в который производится запись.</param>
+    </member>
+  </members>
+</doc>

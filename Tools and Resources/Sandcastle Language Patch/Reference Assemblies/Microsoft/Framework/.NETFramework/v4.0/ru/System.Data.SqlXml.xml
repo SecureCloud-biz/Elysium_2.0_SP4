@@ -1,0 +1,2026 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Data.SqlXml</name>
+  </assembly>
+  <members>
+    <member name="T:System.Xml.Xsl.Runtime.AncestorDocOrderIterator">
+      <summary>Выполняет перебор всех узлов-предков в соответствии с правилами оси узлов-предков <see cref="N:System.Xml.XPath" /> и возвращает узлы в порядке документа без дубликатов.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.AncestorDocOrderIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter,System.Boolean)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.AncestorDocOrderIterator" />.</summary>
+      <param name="context">Узел, с которого начинается обход предков.</param>
+      <param name="filter">Позволяет фильтровать узлы по имени.  </param>
+      <param name="orSelf">Значение true, если узел <paramref name="context" /> следует возвратить, а не отфильтровать, в результате перебора.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.AncestorDocOrderIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор. </summary>
+      <returns>Текущий результирующий навигатор.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.AncestorDocOrderIterator.MoveNext">
+      <summary>Помещает итератор на следующий узел-предок в порядке документа.</summary>
+      <returns>Значение true, если итератор был помещен на следующий узел-предок в порядке документа; в противном случае — значение false.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.AncestorIterator">
+      <summary>Выполняет перебор всех узлов-предков в соответствии с правилами оси узлов-предков <see cref="N:System.Xml.XPath" /> и возвращает узлы в обратном порядке документа.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.AncestorIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter,System.Boolean)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.AncestorIterator" />.</summary>
+      <param name="context">Узел, с которого начинается обход предков.</param>
+      <param name="filter">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />, позволяющий фильтровать узлы по их именам.Дополнительные сведения см. в разделе <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />.</param>
+      <param name="orSelf">Значение true, если узел <paramref name="context" /> следует возвратить, а не отфильтровать, в результате перебора.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.AncestorIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор.  </summary>
+      <returns>Текущий результирующий навигатор.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.AncestorIterator.MoveNext">
+      <summary>Помещает итератор на следующий узел-предок.  </summary>
+      <returns>Значение true, если следующий узел-предок существует; в противном случае — значение false. </returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.AttributeContentIterator">
+      <summary>Выполняет перебор всех узлов атрибутов и дочерних узлов содержимого.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.AttributeContentIterator.Create(System.Xml.XPath.XPathNavigator)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.AttributeContentIterator" />.</summary>
+      <param name="context">Узел, с которого начинается обход узлов атрибутов и дочерних узлов содержимого.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.AttributeContentIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор.  </summary>
+      <returns>Текущий результирующий навигатор.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.AttributeContentIterator.MoveNext">
+      <summary>Помещает итератор на следующий узел атрибута или дочерний узел содержимого.  </summary>
+      <returns>Значение true, если следующий узел атрибута или дочерний узел содержимого существует; в противном случае — значение false.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.AttributeIterator">
+      <summary>Выполняет перебор всех атрибутов.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.AttributeIterator.Create(System.Xml.XPath.XPathNavigator)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.AttributeIterator" />.</summary>
+      <param name="context">Узел, с которого начинается обход узлов атрибутов.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.AttributeIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор. </summary>
+      <returns>Текущий результирующий навигатор.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.AttributeIterator.MoveNext">
+      <summary>Помещает итератор на следующий узел атрибутов.  </summary>
+      <returns>Значение true, если следующий узел атрибутов существует; в противном случае — значение false.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.ContentIterator">
+      <summary>Выполняет перебор всех дочерних узлов содержимого текущего узла.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.ContentIterator.Create(System.Xml.XPath.XPathNavigator)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.ContentIterator" />.</summary>
+      <param name="context">Узел, с которого начинается обход дочерних узлов содержимого.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.ContentIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор. </summary>
+      <returns>Текущий результирующий навигатор.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.ContentIterator.MoveNext">
+      <summary>Помещает итератор на следующий дочерний узел содержимого.  </summary>
+      <returns>Значение true, если следующий дочерний узел содержимого существует; в противном случае — значение false.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.ContentMergeIterator">
+      <summary>Выполняет перебор дочерних узлов содержимого или последующих одноуровневых узлов.Сохраняет узлы в порядке документа.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.ContentMergeIterator.Create(System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.ContentMergeIterator" />.Объединяет несколько наборов узлов содержимого в порядке документа и удаляет дубликаты.</summary>
+      <param name="filter">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />, позволяющий фильтровать узлы по их именам.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.ContentMergeIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор.  </summary>
+      <returns>Текущий результирующий навигатор.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.ContentMergeIterator.MoveNext(System.Xml.XPath.XPathNavigator)">
+      <summary>Помещает итератор на следующий узел содержимого или одноуровневый узел.  </summary>
+      <returns>Возвращает значение <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.NoMoreNodes" />, если узлов содержимого или одноуровневых узлов больше не осталось.Возвращает значение <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.NeedInputNode" />, если сначала необходимо обратиться к следующему входному узлу.Возвращает значение <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.HaveCurrentNode" />, если при переборе узлов свойству <see cref="P:System.Xml.Xsl.Runtime.ContentMergeIterator.Current" /> был задан следующий узел.</returns>
+      <param name="input">Входные узлы. </param>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.DecimalAggregator">
+      <summary>Выполняет статистические вычисления для последовательности значений типа Decimal.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DecimalAggregator.Average(System.Decimal)">
+      <summary>Получает среднее для значений типа Decimal.  </summary>
+      <param name="value">Значение Decimal.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DecimalAggregator.AverageResult">
+      <summary>Получает среднее для последовательности значений типа Decimal.</summary>
+      <returns>Среднее для последовательности значений типа Decimal.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DecimalAggregator.Create">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.DecimalAggregator" />. </summary>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DecimalAggregator.IsEmpty">
+      <summary>Получает значение, показывающее, содержит ли объект <see cref="T:System.Xml.Xsl.Runtime.DecimalAggregator" /> результат.</summary>
+      <returns>Значение true, если объект <see cref="T:System.Xml.Xsl.Runtime.DecimalAggregator" /> содержит результат; в противном случае — значение false.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DecimalAggregator.Maximum(System.Decimal)">
+      <summary>Присваивает значение параметра <paramref name="value" /> существующему результату, если значение параметра <paramref name="value" /> больше существующего результата.  </summary>
+      <param name="value">Значение Decimal.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DecimalAggregator.MaximumResult">
+      <summary>Получает максимальное значение в последовательности значений типа Decimal.</summary>
+      <returns>Максимальное значение в последовательности значений типа Decimal.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DecimalAggregator.Minimum(System.Decimal)">
+      <summary>Присваивает значение параметра <paramref name="value" /> существующему результату, если значение параметра <paramref name="value" /> меньше существующего результата. </summary>
+      <param name="value">Значение Decimal.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DecimalAggregator.MinimumResult">
+      <summary>Получает минимальное значение в последовательности значений типа Decimal.</summary>
+      <returns>Минимальное значение в последовательности значений типа Decimal.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DecimalAggregator.Sum(System.Decimal)">
+      <summary>Прибавляет значение Decimal к существующему результату.  </summary>
+      <param name="value">Значение Decimal.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DecimalAggregator.SumResult">
+      <summary>Получает сумму последовательности значений типа Decimal.</summary>
+      <returns>Сумма последовательности значений типа Decimal.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.DescendantIterator">
+      <summary>Выполняет перебор всех узлов-потомков в соответствии с правилами оси потомков <see cref="N:System.Xml.XPath" />.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DescendantIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter,System.Boolean)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.DescendantIterator" />.</summary>
+      <param name="input">Объект <see cref="T:System.Xml.XPath.XPathNavigator" />, определяющий узел, с которого начинается обход потомков.</param>
+      <param name="filter">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />, позволяющий фильтровать узлы по их именам.Дополнительные сведения см. в разделе <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />.</param>
+      <param name="orSelf">Значение типа <see cref="T:System.Boolean" />, указывающее, возвращается текущий узел в результате перебора или отфильтровывается.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DescendantIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор.  </summary>
+      <returns>Текущий результирующий навигатор.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DescendantIterator.MoveNext">
+      <summary>Помещает итератор на следующий узел-потомок.</summary>
+      <returns>Значение true, если следующий узел-потомок существует; в противном случае — значение false.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.DescendantMergeIterator">
+      <summary>Выполняет перебор всех узлов-потомков содержимого в соответствии с правилами оси потомков XPath.Удаляет дубликаты за счет того, что узлы, содержащиеся в поддереве предыдущего узла, не опрашиваются.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DescendantMergeIterator.Create(System.Xml.Xsl.Runtime.XmlNavigatorFilter,System.Boolean)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.DescendantMergeIterator" />.Объединяет несколько наборов узлов-потомков в порядке документа и удаляет дубликаты.</summary>
+      <param name="filter">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />, позволяющий фильтровать узлы по их именам.Дополнительные сведения см. в разделе <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />.</param>
+      <param name="orSelf">Значение типа <see cref="T:System.Boolean" />, указывающее, возвращается текущий узел в результате перебора или отфильтровывается.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DescendantMergeIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор.  </summary>
+      <returns>Текущий результирующий навигатор.  </returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DescendantMergeIterator.MoveNext(System.Xml.XPath.XPathNavigator)">
+      <summary>Помещает данный итератор на следующий узел-потомок.  </summary>
+      <returns>Возвращает значение <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.NoMoreNodes" />, если узлов-потомков больше не осталось.Возвращает значение <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.NeedInputNode" />, если сначала необходимо обратиться к следующему входному узлу.Возвращает значение <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.HaveCurrentNode" />, если при переборе узлов свойству <see cref="P:System.Xml.Xsl.Runtime.DescendantMergeIterator.Current" /> был задан следующий узел.</returns>
+      <param name="input">Объект <see cref="T:System.Xml.XPath.XPathNavigator" />, определяющий входной узел.</param>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.DifferenceIterator">
+      <summary>Помещает итератор на следующий узел в разности двух наборов узлов.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DifferenceIterator.Create(System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.DifferenceIterator" />.</summary>
+      <param name="runtime">Объект <see cref="T:System.Xml.Xsl.Runtime.XmlQueryRuntime" />.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DifferenceIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор. </summary>
+      <returns>Текущий результирующий навигатор. </returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DifferenceIterator.MoveNext(System.Xml.XPath.XPathNavigator)">
+      <summary>Помещает данный итератор на следующий узел объединения.</summary>
+      <returns>Объект <see cref="T:System.Xml.Xsl.Runtime.SetIteratorResult" />.</returns>
+      <param name="nestedNavigator">Объект <see cref="T:System.Xml.XPath.XPathNavigator" />, определяющий текущий узел.</param>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.DodSequenceMerge">
+      <summary>Объединяет несколько последовательностей различающихся элементов в порядке документа в одну такую последовательность.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DodSequenceMerge.AddSequence(System.Collections.Generic.IList{System.Xml.XPath.XPathNavigator})">
+      <summary>Добавляет новую последовательность в список последовательностей, которые требуется объединить.</summary>
+      <param name="sequence">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XPathNavigator" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DodSequenceMerge.Create(System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>Инициализирует данный экземпляр <see cref="T:System.Xml.Xsl.Runtime.DodSequenceMerge" />.</summary>
+      <param name="runtime">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryRuntime" />, предоставляющий методы и свойства для поддержки обработчика XSLT.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DodSequenceMerge.MergeSequences">
+      <summary>Возвращает полностью объединенную последовательность.</summary>
+      <returns>Полностью объединенная последовательность.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.DoubleAggregator">
+      <summary>Выполняет статистические вычисления для последовательности значений типа double.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DoubleAggregator.Average(System.Double)">
+      <summary>Возвращает среднее элементов последовательности значений типа double.</summary>
+      <param name="value">Значение типа double.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DoubleAggregator.AverageResult">
+      <summary>Вычисляет среднее значение для последовательности значений типа double.</summary>
+      <returns>Среднее значение.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DoubleAggregator.Create">
+      <summary>Инициализирует последовательность значений типа double.</summary>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DoubleAggregator.IsEmpty">
+      <summary>Определяет, является ли последовательность значений типа double пустой.</summary>
+      <returns>Значение true, если результат является пустым; в противном случае — значение false.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DoubleAggregator.Maximum(System.Double)">
+      <summary>Присваивает значение параметра <paramref name="value" /> существующему результату, если значение параметра <paramref name="value" /> больше существующего результата. </summary>
+      <param name="value">Значение типа double.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DoubleAggregator.MaximumResult">
+      <summary>Возвращает максимальное значение, содержащееся в последовательности значений типа double.</summary>
+      <returns>Максимальный результат.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DoubleAggregator.Minimum(System.Double)">
+      <summary>Присваивает значение параметра <paramref name="value" /> существующему результату, если значение параметра <paramref name="value" /> меньше существующего результата. </summary>
+      <param name="value">Значение типа double.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DoubleAggregator.MinimumResult">
+      <summary>Возвращает минимальное значение, содержащееся в последовательности значений типа double.</summary>
+      <returns>Минимальный результат.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.DoubleAggregator.Sum(System.Double)">
+      <summary>Прибавляет значение Double к существующему результату.</summary>
+      <param name="value">Значение типа double.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.DoubleAggregator.SumResult">
+      <summary>Возвращает сумму элементов последовательности значений типа double.</summary>
+      <returns>Сумма всех результатов.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.ElementContentIterator">
+      <summary>Выполняет перебор всех дочерних элементов с соответствующими именами.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.ElementContentIterator.Create(System.Xml.XPath.XPathNavigator,System.String,System.String)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.ElementContentIterator" />.</summary>
+      <param name="context">Узел, с которого начинается обход дочерних элементов.</param>
+      <param name="localName">Локальное имя.</param>
+      <param name="ns">Пространство имен.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.ElementContentIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор. </summary>
+      <returns>Текущий результирующий навигатор.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.ElementContentIterator.MoveNext">
+      <summary>Помещает итератор на следующий дочерний элемент с соответствующим именем.</summary>
+      <returns>Значение true, если итератор был помещен на следующий дочерний элемент с соответствующим именем; в противном случае — значение false.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.FollowingSiblingIterator">
+      <summary>Выполняет перебор всех последующих одноуровневых узлов содержимого.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.FollowingSiblingIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.FollowingSiblingIterator" />.</summary>
+      <param name="context">Узел, с которого начинается обход дочерних узлов содержимого.</param>
+      <param name="filter">Позволяет фильтровать узлы по имени.  </param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.FollowingSiblingIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор. </summary>
+      <returns>Текущий результирующий навигатор.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.FollowingSiblingIterator.MoveNext">
+      <summary>Помещает итератор на следующий одноуровневый узел содержимого.  </summary>
+      <returns>Значение true, если следующий одноуровневый узел содержимого существует; в противном случае — значение false.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.FollowingSiblingMergeIterator">
+      <summary>Выполняет перебор дочерних узлов через одноуровневые узлы.  </summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.FollowingSiblingMergeIterator.Create(System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.FollowingSiblingMergeIterator" />.</summary>
+      <param name="filter">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />, позволяющий фильтровать узлы по их именам.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.FollowingSiblingMergeIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор.  </summary>
+      <returns>Текущий результирующий навигатор.  </returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.FollowingSiblingMergeIterator.MoveNext(System.Xml.XPath.XPathNavigator)">
+      <summary>Помещает итератор на следующий узел содержимого или одноуровневый узел.  </summary>
+      <returns>Возвращает значение <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.NoMoreNodes" />, если узлов содержимого или одноуровневых узлов больше не осталось.Возвращает значение <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.NeedInputNode" />, если сначала необходимо обратиться к следующему входному узлу.Возвращает значение <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.HaveCurrentNode" />, если при переборе узлов свойству <see cref="P:System.Xml.Xsl.Runtime.FollowingSiblingMergeIterator.Current" /> был задан следующий узел.</returns>
+      <param name="navigator">Объект <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.IdIterator">
+      <summary>Маркирует строку, содержащую значения IDREF, и разыменовывает значения по порядку, чтобы получить список элементов ID.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.IdIterator.Create(System.Xml.XPath.XPathNavigator,System.String)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.IdIterator" />.</summary>
+      <param name="context">Объект <see cref="T:System.Xml.XPath.XPathNavigator" />, содержащий контекст.</param>
+      <param name="value">Строка, которая должна содержать значение итератора.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.IdIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор.  </summary>
+      <returns>Текущий результирующий навигатор.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.IdIterator.MoveNext">
+      <summary>Помещает итератор на следующий элемент ID.  </summary>
+      <returns>Значение true, если следующий узел существует; в противном случае — значение false.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.Int32Aggregator">
+      <summary>Выполняет статистические вычисления для последовательности значений типа Int32.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.Int32Aggregator.Average(System.Int32)">
+      <summary>Находит среднее для последовательности значений типа Int32.</summary>
+      <param name="value">Значение типа Int32, определяющее группу элементов, для которых требуется определить среднее, например столбец или таблицу.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.Int32Aggregator.AverageResult">
+      <summary>Возвращает средний результат последовательности значений типа Int32.</summary>
+      <returns>Значение Int32, содержащее средний результат для последовательности значений типа Int32.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.Int32Aggregator.Create">
+      <summary>Инициализирует последовательность значений Int32.</summary>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.Int32Aggregator.IsEmpty">
+      <summary>Возвращает логическое значение, которое указывает, является ли последовательность пустой.</summary>
+      <returns>Значение true, если последовательность является пустой; в противном случае — значение false.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.Int32Aggregator.Maximum(System.Int32)">
+      <summary>Присваивает значение параметра <paramref name="value" /> существующему результату, если значение параметра <paramref name="value" /> больше существующего результата.</summary>
+      <param name="value">Значение типа Int32.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.Int32Aggregator.MaximumResult">
+      <summary>Возвращает максимальное значение в последовательности значений типа Int32.</summary>
+      <returns>Значение Int32, содержащее максимальное значение в последовательности значений типа Int32.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.Int32Aggregator.Minimum(System.Int32)">
+      <summary>Присваивает значение параметра <paramref name="value" /> существующему результату, если значение параметра <paramref name="value" /> меньше существующего результата.</summary>
+      <param name="value">Значение типа Int32.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.Int32Aggregator.MinimumResult">
+      <summary>Возвращает минимальное значение в последовательности значений типа Int32.</summary>
+      <returns>Значение Int32, содержащее минимальное значение в последовательности значений типа Int32.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.Int32Aggregator.Sum(System.Int32)">
+      <summary>Прибавляет значение Int32 к существующему результату.</summary>
+      <param name="value">Значение типа Int32.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.Int32Aggregator.SumResult">
+      <summary>Возвращает сумму элементов последовательности значений Int32.</summary>
+      <returns>Значение Int32, содержащее сумму элементов последовательности значений типа Int32.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.Int64Aggregator">
+      <summary>Выполняет статистические вычисления для последовательности значений типа Int64.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.Int64Aggregator.Average(System.Int64)">
+      <summary>Находит среднее для последовательности значений типа Int64.</summary>
+      <param name="value">Значение типа Int64.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.Int64Aggregator.AverageResult">
+      <summary>Возвращает значение типа Int64, содержащее среднее для последовательности значений типа Int64.</summary>
+      <returns>Значение типа Int64, содержащее среднее для последовательности значений типа Int64.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.Int64Aggregator.Create">
+      <summary>Инициализирует последовательность значений типа Int64.</summary>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.Int64Aggregator.IsEmpty">
+      <summary>Возвращает логическое значение, которое указывает, является ли последовательность значений типа Int64 пустой.</summary>
+      <returns>Значение true, если последовательность значений типа Int64 является пустой; в противном случае — значение false.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.Int64Aggregator.Maximum(System.Int64)">
+      <summary>Присваивает значение параметра <paramref name="value" /> существующему результату, если значение параметра <paramref name="value" /> больше существующего результата. </summary>
+      <param name="value">Значение типа Int64.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.Int64Aggregator.MaximumResult">
+      <summary>Получает максимальное значение типа Int64.</summary>
+      <returns>Максимальное значение типа Int64.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.Int64Aggregator.Minimum(System.Int64)">
+      <summary>Присваивает значение параметра <paramref name="value" /> существующему результату, если значение параметра <paramref name="value" /> меньше существующего результата. </summary>
+      <param name="value">Значение типа Int64.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.Int64Aggregator.MinimumResult">
+      <summary>Получает минимальное значение типа Int64.</summary>
+      <returns>Минимальное значение типа Int64.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.Int64Aggregator.Sum(System.Int64)">
+      <summary>Прибавляет значение типа Int64 к существующему результату.</summary>
+      <param name="value">Значение типа Int64.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.Int64Aggregator.SumResult">
+      <summary>Возвращает значение типа Int64, содержащее сумму элементов последовательности значений типа Int64.</summary>
+      <returns>Значение типа Int64, содержащее сумму элементов последовательности значений типа Int64.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.IntersectIterator">
+      <summary>Помещает итератор на следующий узел в пересечении двух наборов узлов.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.IntersectIterator.Create(System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.IntersectIterator" />.</summary>
+      <param name="runtime">Объект <see cref="T:System.Xml.Xsl.Runtime.XmlQueryRuntime" />.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.IntersectIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор. </summary>
+      <returns>Текущий результирующий навигатор. </returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.IntersectIterator.MoveNext(System.Xml.XPath.XPathNavigator)">
+      <summary>Помещает данный итератор на следующий узел объединения.</summary>
+      <returns>Объект <see cref="T:System.Xml.Xsl.Runtime.SetIteratorResult" />.</returns>
+      <param name="nestedNavigator">Объект <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.IteratorResult">
+      <summary>Перечислители, использующие контейнеры для управления вложенными итераторами, возвращают одно из значений данного перечисления.</summary>
+    </member>
+    <member name="F:System.Xml.Xsl.Runtime.IteratorResult.NoMoreNodes">
+      <summary>Перебор завершен. Больше узлов не осталось.</summary>
+    </member>
+    <member name="F:System.Xml.Xsl.Runtime.IteratorResult.NeedInputNode">
+      <summary>Прежде чем продолжить перебор, необходимо получить очередной узел из вложенного итератора.</summary>
+    </member>
+    <member name="F:System.Xml.Xsl.Runtime.IteratorResult.HaveCurrentNode">
+      <summary>Перебор завершен. Больше узлов не осталось.</summary>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.NamespaceIterator">
+      <summary>Выполняет перебор всех узлов пространств имен.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.NamespaceIterator.Create(System.Xml.XPath.XPathNavigator)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.NamespaceIterator" />.</summary>
+      <param name="context">Объект <see cref="T:System.Xml.XPath.XPathNavigator" />, идентифицирующий <see cref="T:System.Xml.Xsl.XsltContext" />.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.NamespaceIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор. </summary>
+      <returns>Текущий результирующий навигатор.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.NamespaceIterator.MoveNext">
+      <summary>Помещает итератор на следующий узел пространства имен.  </summary>
+      <returns>Значение true, если следующий узел пространства имен существует; в противном случае — значение false.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.NodeKindContentIterator">
+      <summary>Выполняет перебор всех дочерних узлов содержимого с совпадающим типом узла.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.NodeKindContentIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.XPath.XPathNodeType)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.NodeKindContentIterator" />.</summary>
+      <param name="context">Объект <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+      <param name="nodeType">Объект <see cref="T:System.Xml.XPath.XPathNodeType" />.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.NodeKindContentIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор. </summary>
+      <returns>Текущий результирующий навигатор.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.NodeKindContentIterator.MoveNext">
+      <summary>Помещает итератор на следующий дочерний узел содержимого с совпадающим типом узла.  </summary>
+      <returns>Значение true, если следующий дочерний узел содержимого с совпадающим типом узла существует; в противном случае — значение false.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.NodeRangeIterator">
+      <summary>Выполняет перебор в единичном узле, если начальный узел совпадает с конечным узлом.Выполняет перебор до конца документа, если начальный узел находится после конечного узла или в другом документе.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.NodeRangeIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter,System.Xml.XPath.XPathNavigator)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.NodeRangeIterator" />. </summary>
+      <param name="start">Узел, с которого начинается перебор.</param>
+      <param name="filter">Тестовое выражение, определяющее, нужно ли отфильтровывать узел.</param>
+      <param name="end">Узел, которым заканчивается перебор.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.NodeRangeIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор.</summary>
+      <returns>Текущий результирующий навигатор.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.NodeRangeIterator.MoveNext">
+      <summary>Помещает итератор на следующий узел.  </summary>
+      <returns>Значение true, если следующий узел существует; в противном случае — значение false.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.ParentIterator">
+      <summary>Выполняет перебор соответствующего родительского узла в соответствии с правилами родительской оси <see cref="N:System.Xml.XPath" />.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.ParentIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.ParentIterator" />.</summary>
+      <param name="context">Узел, с которого начинается обход узлов.</param>
+      <param name="filter">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />, позволяющий фильтровать узлы по их именам.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.ParentIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор. </summary>
+      <returns>Текущий результирующий навигатор.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.ParentIterator.MoveNext">
+      <summary>Помещает итератор на следующий соответствующий родительский узел.  </summary>
+      <returns>Значение true, если следующий соответствующий родительский узел существует; в противном случае — значение false.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.PrecedingIterator">
+      <summary>Выполняет перебор всех узлов содержимого, предшествующих начальному узлу, в порядке документа.Возвращает узлы в обратном порядке документа.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.PrecedingIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.PrecedingIterator" />.Объект <see cref="T:System.Xml.Xsl.Runtime.PrecedingIterator" /> не содержит дубликатов.</summary>
+      <param name="context">Узел, с которого начинается обход узлов.</param>
+      <param name="filter">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />, позволяющий фильтровать узлы по их именам.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.PrecedingIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор. </summary>
+      <returns>Текущий результирующий навигатор.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.PrecedingIterator.MoveNext">
+      <summary>Помещает итератор на следующий предшествующий узел в обратном порядке документа.  </summary>
+      <returns>Значение true, если следующий предшествующий узел существует; в противном случае — значение false.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.PrecedingSiblingDocOrderIterator">
+      <summary>Выполняет перебор всех предшествующих одноуровневых узлов содержимого в порядке документа.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.PrecedingSiblingDocOrderIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.PrecedingSiblingDocOrderIterator" />.</summary>
+      <param name="context">Узел, с которого начинается обход узлов.</param>
+      <param name="filter">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />, позволяющий фильтровать узлы по их именам.Дополнительные сведения см. в разделе <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.PrecedingSiblingDocOrderIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор. </summary>
+      <returns>Текущий результирующий навигатор.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.PrecedingSiblingDocOrderIterator.MoveNext">
+      <summary>Помещает итератор на следующий предшествующий одноуровневый узел.  </summary>
+      <returns>Значение true, если следующий предшествующий одноуровневый узел существует; в противном случае — значение false.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.PrecedingSiblingIterator">
+      <summary>Выполняет перебор всех предшествующих одноуровневых узлов в соответствии с правилами оси предшествующих одноуровневых узлов <see cref="N:System.Xml.XPath" /> и возвращает узлы в обратном порядке обхода документа.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.PrecedingSiblingIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.PrecedingSiblingIterator" />.</summary>
+      <param name="context">Узел, с которого начинается обход узлов.</param>
+      <param name="filter">Позволяет фильтровать узлы по имени. </param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.PrecedingSiblingIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор. </summary>
+      <returns>Текущий результирующий навигатор.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.PrecedingSiblingIterator.MoveNext">
+      <summary>Помещает итератор на следующий предшествующий одноуровневый узел в обратном порядке обхода документа. </summary>
+      <returns>Значение true, если следующий предшествующий одноуровневый узел существует; в противном случае — значение false.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.SetIteratorResult">
+      <summary>Задает итераторы для сочетаний элементов, образованных с помощью операций Union, Intersection и Difference; при этом для обработки двух вложенных итераторов используются контейнеры.Возвращает одно из значений перечисления <see cref="M:System.Xml.Xsl.Runtime.IdIterator.MoveNext" />.</summary>
+    </member>
+    <member name="F:System.Xml.Xsl.Runtime.SetIteratorResult.NoMoreNodes">
+      <summary>Перебор завершен. Больше узлов не осталось.</summary>
+    </member>
+    <member name="F:System.Xml.Xsl.Runtime.SetIteratorResult.InitRightIterator">
+      <summary>Инициализирует правый вложенный итератор.</summary>
+    </member>
+    <member name="F:System.Xml.Xsl.Runtime.SetIteratorResult.NeedLeftNode">
+      <summary>Следующий узел необходимо получить через левый вложенный итератор.</summary>
+    </member>
+    <member name="F:System.Xml.Xsl.Runtime.SetIteratorResult.NeedRightNode">
+      <summary>Следующий узел необходимо получить через правый вложенный итератор.</summary>
+    </member>
+    <member name="F:System.Xml.Xsl.Runtime.SetIteratorResult.HaveCurrentNode">
+      <summary>Свойство <see cref="P:System.Xml.XPath.XPathNodeIterator.Current" /> итератора устанавливается равным следующему узлу в последовательности перебора.</summary>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.StringConcat">
+      <summary>Сцепляет строки, когда число строк заранее не известно.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.StringConcat.Clear">
+      <summary>Очищает строку результата.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.StringConcat.Concat(System.String)">
+      <summary>Сцепляет результат с новой строкой.</summary>
+      <param name="value">Значение типа string, с которым следует сцепить результат.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.StringConcat.Delimiter">
+      <summary>Получает или задает строку, которая разделяет сцепленные строки.</summary>
+      <returns>Возвращает разделитель объектов <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.StringConcat.GetResult">
+      <summary>Получает строку результата.</summary>
+      <returns>Значение типа string, содержащее результат.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.UnionIterator">
+      <summary>Управляет двумя наборами узлов, которые уже выстроены в порядке документа и не содержат дубликатов, и возвращает объединение этих наборов в порядке документа без дубликатов.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.UnionIterator.Create(System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.UnionIterator" />.</summary>
+      <param name="runtime">Объект <see cref="T:System.Xml.Xsl.Runtime.XmlQueryRuntime" />.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.UnionIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор. </summary>
+      <returns>Текущий результирующий навигатор. </returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.UnionIterator.MoveNext(System.Xml.XPath.XPathNavigator)">
+      <summary>Помещает данный итератор на следующий узел объединения.</summary>
+      <returns>Объект <see cref="T:System.Xml.Xsl.Runtime.SetIteratorResult" />.</returns>
+      <param name="nestedNavigator">Объект <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XmlCollation">
+      <summary>Создает сортировку, использующую заданные параметры сравнения и языка и региональных параметров.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlCollation.Equals(System.Object)">
+      <summary>Возвращает значение true, если значения одной функции расширения XML совпадают со значениями другой функции расширения XML.</summary>
+      <returns>Возвращает значение true, если значения одной функции расширения XML совпадают со значениями другой функции расширения; в противном случае возвращает значение false.</returns>
+      <param name="obj">Объект <see cref="T:System.Object" />, равенство с которым необходимо определить.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlCollation.GetHashCode">
+      <summary>Возвращает хэш-код объекта.</summary>
+      <returns>Возвращает хэш-код объекта.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XmlILIndex">
+      <summary>Управляет узлами входного документа, индексированными по значениями ключа.Этот класс используется в качестве кэша узлов, индексированных с помощью инструкций xsl:key, и позволяет быстро обращаться к этим узлам.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILIndex.Add(System.String,System.Xml.XPath.XPathNavigator)">
+      <summary>Добавляет узел, индексированный указанным значением ключа.</summary>
+      <param name="key">Указанный ключ.</param>
+      <param name="navigator">Экземпляр класса <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILIndex.Lookup(System.String)">
+      <summary>Ищет последовательность узлов, индексированных указанным значением ключа.</summary>
+      <returns>Последовательность узлов, индексированных указанным значением ключа.</returns>
+      <param name="key">Указанный ключ.</param>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XmlILStorageConverter">
+      <summary>Этот внутренний класс содержит статические вспомогательные методы, получающие из <see cref="T:System.Xml.Xsl.Runtime.XmlQueryRuntime" /> преобразователи значений для преобразования одного и того же логического типа XML между несколькими физическими представлениями среды CLR.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.BooleanToAtomicValue(System.Boolean,System.Int32,System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>Преобразует логическое значение в объект <see cref="T:System.Xml.Schema.XmlAtomicValue" />.</summary>
+      <returns>Объект <see cref="T:System.Xml.Schema.XmlAtomicValue" />.</returns>
+      <param name="value">Преобразуемое значение Boolean.</param>
+      <param name="index">Значение типа Int32, задающее индекс подлежащего преобразованию элемента.</param>
+      <param name="runtime">Экземпляр класса <see cref="System.Xml.Xsl.Runtime.XmlQueryRuntime" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.BytesToAtomicValue(System.Byte[],System.Int32,System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>Преобразует массив байтов в объект <see cref="T:System.Xml.Schema.XmlAtomicValue" />.</summary>
+      <returns>Объект <see cref="T:System.Xml.Schema.XmlAtomicValue" />.</returns>
+      <param name="value">Массив значений bytes для преобразования.</param>
+      <param name="index">Значение типа Int32, задающее индекс подлежащего преобразованию элемента.</param>
+      <param name="runtime">Экземпляр класса <see cref="System.Xml.Xsl.Runtime.XmlQueryRuntime" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.DateTimeToAtomicValue(System.DateTime,System.Int32,System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>Преобразует значение DateTime в <see cref="T:System.Xml.Schema.XmlAtomicValue" />.</summary>
+      <returns>Объект <see cref="T:System.Xml.Schema.XmlAtomicValue" />.</returns>
+      <param name="value">Значение типа DateTime для преобразования.</param>
+      <param name="index">Значение типа Int32, задающее индекс подлежащего преобразованию элемента.</param>
+      <param name="runtime">Экземпляр класса <see cref="System.Xml.Xsl.Runtime.XmlQueryRuntime" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.DecimalToAtomicValue(System.Decimal,System.Int32,System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>Преобразует десятичное значение в объект <see cref="T:System.Xml.Schema.XmlAtomicValue" />.</summary>
+      <returns>Объект <see cref="T:System.Xml.Schema.XmlAtomicValue" />.</returns>
+      <param name="value">Значение типа decimal для преобразования.</param>
+      <param name="index">Значение типа Int32, задающее индекс подлежащего преобразованию элемента.</param>
+      <param name="runtime">Экземпляр класса <see cref="System.Xml.Xsl.Runtime.XmlQueryRuntime" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.DoubleToAtomicValue(System.Double,System.Int32,System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>Преобразует значение double в <see cref="T:System.Xml.Schema.XmlAtomicValue" />.</summary>
+      <returns>Объект <see cref="T:System.Xml.Schema.XmlAtomicValue" />.</returns>
+      <param name="value">Значение типа double для преобразования.</param>
+      <param name="index">Значение типа Int32, задающее индекс подлежащего преобразованию элемента.</param>
+      <param name="runtime">Экземпляр класса <see cref="System.Xml.Xsl.Runtime.XmlQueryRuntime" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.Int32ToAtomicValue(System.Int32,System.Int32,System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>Преобразует значение Int32 в <see cref="T:System.Xml.Schema.XmlAtomicValue" />.</summary>
+      <returns>Объект <see cref="T:System.Xml.Schema.XmlAtomicValue" />.</returns>
+      <param name="value">Значение типа Int32 для преобразования.</param>
+      <param name="index">Значение типа Int32, задающее индекс подлежащего преобразованию элемента.</param>
+      <param name="runtime">Экземпляр класса <see cref="System.Xml.Xsl.Runtime.XmlQueryRuntime" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.Int64ToAtomicValue(System.Int64,System.Int32,System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>Преобразует значение Int64 в <see cref="T:System.Xml.Schema.XmlAtomicValue" />.</summary>
+      <returns>Объект <see cref="T:System.Xml.Schema.XmlAtomicValue" />.</returns>
+      <param name="value">Значение типа Int64 для преобразования.</param>
+      <param name="index">Значение типа Int32, задающее индекс подлежащего преобразованию элемента.</param>
+      <param name="runtime">Экземпляр класса <see cref="System.Xml.Xsl.Runtime.XmlQueryRuntime" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.ItemsToNavigators(System.Collections.Generic.IList{System.Xml.XPath.XPathItem})">
+      <summary>Преобразует список или последовательность объектов <see cref="T:System.Xml.XPath.XPathItem" /> в последовательность значений или объектов <see cref="T:System.Xml.XPath.XPathNavigator" />.</summary>
+      <returns>Возвращает универсальный список типа <see cref="T:System.Xml.XPath.XPathNavigator" />.</returns>
+      <param name="listItems">Последовательность экземпляров <see cref="System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.NavigatorsToItems(System.Collections.Generic.IList{System.Xml.XPath.XPathNavigator})">
+      <summary>Преобразует последовательность значений или объектов <see cref="T:System.Xml.XPath.XPathNavigator" /> в список или последовательность объектов <see cref="T:System.Xml.XPath.XPathItem" />.</summary>
+      <returns>Возвращает универсальный список типа <see cref="T:System.Xml.XPath.XPathItem" />.</returns>
+      <param name="listNavigators">Последовательность экземпляров <see cref="System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.SingleToAtomicValue(System.Single,System.Int32,System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>Преобразует значение single в <see cref="T:System.Xml.Schema.XmlAtomicValue" />.</summary>
+      <returns>Объект <see cref="T:System.Xml.Schema.XmlAtomicValue" />.</returns>
+      <param name="value">Значение типа single для преобразования.</param>
+      <param name="index">Значение типа Int32, задающее индекс подлежащего преобразованию элемента.</param>
+      <param name="runtime">Экземпляр класса <see cref="System.Xml.Xsl.Runtime.XmlQueryRuntime" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.StringToAtomicValue(System.String,System.Int32,System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>Преобразует строковое значение в объект <see cref="T:System.Xml.Schema.XmlAtomicValue" />.</summary>
+      <returns>Объект <see cref="T:System.Xml.Schema.XmlAtomicValue" />.</returns>
+      <param name="value">Значение типа string для преобразования.</param>
+      <param name="index">Значение типа Int32, задающее индекс подлежащего преобразованию элемента.</param>
+      <param name="runtime">Экземпляр класса <see cref="System.Xml.Xsl.Runtime.XmlQueryRuntime" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.TimeSpanToAtomicValue(System.TimeSpan,System.Int32,System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>Преобразует значение <see cref="T:System.TimeSpan" /> в <see cref="T:System.Xml.Schema.XmlAtomicValue" />.</summary>
+      <returns>Объект <see cref="T:System.Xml.Schema.XmlAtomicValue" />.</returns>
+      <param name="value">Значение типа <see cref="T:System.TimeSpan" /> для преобразования.</param>
+      <param name="index">Значение типа Int32, задающее индекс подлежащего преобразованию элемента.</param>
+      <param name="runtime">Экземпляр класса <see cref="System.Xml.Xsl.Runtime.XmlQueryRuntime" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlILStorageConverter.XmlQualifiedNameToAtomicValue(System.Xml.XmlQualifiedName,System.Int32,System.Xml.Xsl.Runtime.XmlQueryRuntime)">
+      <summary>Преобразует значение <see cref="T:System.Xml.XmlQualifiedName" /> в <see cref="T:System.Xml.Schema.XmlAtomicValue" />.</summary>
+      <returns>Возвращает объект <see cref="T:System.Xml.Schema.XmlAtomicValue" />.</returns>
+      <param name="value">Экземпляр класса <see cref="System.Xml.XmlQualifiedName" /> для преобразования.</param>
+      <param name="index">Значение типа Int32, задающее индекс подлежащего преобразованию элемента.</param>
+      <param name="runtime">Экземпляр класса <see cref="System.Xml.Xsl.Runtime.XmlQueryRuntime" />.</param>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter">
+      <summary>XmlNavigatorFilter обеспечивает гибкую абстракцию фильтрации над уровнем <see cref="T:System.Xml.XPath.XPathNavigator" />.Вызывающим объектам не известен применяемый тип фильтрации; они просто вызывают метод <see cref="M:System.Xml.Xsl.Runtime.XmlNavigatorFilter.MoveToContent(System.Xml.XPath.XPathNavigator)" /> или <see cref="M:System.Xml.Xsl.Runtime.XmlNavigatorFilter.MoveToFollowingSibling(System.Xml.XPath.XPathNavigator)" />.Реализация фильтра вызывает соответствующую операцию <see cref="T:System.Xml.XPath.XPathNavigator" />, чтобы пропустить отфильтрованные узлы.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlNavigatorFilter.#ctor">
+      <summary>Обеспечивает гибкую абстракцию фильтрации над уровнем <see cref="T:System.Xml.XPath.XPathNavigator" />.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlNavigatorFilter.IsFiltered(System.Xml.XPath.XPathNavigator)">
+      <summary>Возвращает значение true, если текущий узел навигатора удовлетворяет условию фильтрации.</summary>
+      <returns>Значение true, если текущий узел удовлетворяет условию; в противном случае возвращает значение false.</returns>
+      <param name="navigator">Экземпляр класса <see cref="System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlNavigatorFilter.MoveToContent(System.Xml.XPath.XPathNavigator)">
+      <summary>Перемещает навигатор на первый соответствующий условию узел содержимого или атрибут и пропускает отфильтрованные узлы.Если подходящие узлы отсутствуют, навигатор не перемещается, а метод возвращает значение false.</summary>
+      <returns>Значение true, если навигатор перемещен на дочерний элемент с соответствующим именем; в противном случае — значение false.</returns>
+      <param name="navigator">Экземпляр класса <see cref="System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlNavigatorFilter.MoveToFollowing(System.Xml.XPath.XPathNavigator,System.Xml.XPath.XPathNavigator)">
+      <summary>Перемещает навигатор на следующий соответствующий условию узел содержимого или атрибут и пропускает отфильтрованные узлы.Если подходящие узлы отсутствуют, навигатор не перемещается, а метод возвращает значение false.</summary>
+      <returns>Значение true, если навигатор перемещен на следующий элемент с соответствующим именем; в противном случае — значение false.</returns>
+      <param name="navigator">Экземпляр класса <see cref="System.Xml.XPath.XPathNavigator" />, определяющий начало диапазона, по которому может перемещаться навигатор.</param>
+      <param name="navigatorEnd">Экземпляр класса <see cref="System.Xml.XPath.XPathNavigator" />, определяющий конец диапазона, по которому может перемещаться навигатор.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlNavigatorFilter.MoveToFollowingSibling(System.Xml.XPath.XPathNavigator)">
+      <summary>Перемещает навигатор на одноуровневый узел содержимого, соответствующий условию, или узел-потомок и пропускает отфильтрованные узлы.Если подходящие узлы отсутствуют, навигатор не перемещается, а метод возвращает значение false.</summary>
+      <returns>Значение true, если навигатор перемещен на следующий одноуровневый элемент с соответствующим именем; в противном случае — значение false.</returns>
+      <param name="navigator">Экземпляр класса <see cref="System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlNavigatorFilter.MoveToNextContent(System.Xml.XPath.XPathNavigator)">
+      <summary>Перемещает навигатор на следующий соответствующий условию узел содержимого или атрибут и пропускает отфильтрованные узлы.Если подходящие узлы отсутствуют, навигатор не перемещается, а метод возвращает значение false.</summary>
+      <returns>Значение true, если навигатор перемещен на следующий дочерний элемент с соответствующим именем; в противном случае — значение false.</returns>
+      <param name="navigator">Экземпляр класса <see cref="System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlNavigatorFilter.MoveToPreviousSibling(System.Xml.XPath.XPathNavigator)">
+      <summary>Перемещает навигатор на предыдущий одноуровневый узел, соответствующий условию, и пропускает отфильтрованные узлы.Если подходящие узлы отсутствуют, навигатор не перемещается, а метод возвращает значение false.</summary>
+      <returns>Значение true, если навигатор перемещен на предыдущий одноуровневый элемент с соответствующим именем; в противном случае — значение false.</returns>
+      <param name="navigator">Экземпляр класса <see cref="System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XmlQueryContext">
+      <summary>Контекст запроса состоит из всех предоставленных пользователем сведений, которые влияют на выполнение запроса.</summary>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryContext.DefaultDataSource">
+      <summary>Возвращает запрошенный документ по умолчанию, если в запросе явным образом не выбраны никакие источники данных.</summary>
+      <returns>Экземпляр класса <see cref="System.Xml.Xpath.XPathNavigator" />.</returns>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryContext.DefaultNameTable">
+      <summary>Возвращает таблицу имен, используемую источником данных по умолчанию, или NULL, если источник данных по умолчанию отсутствует.</summary>
+      <returns>Экземпляр класса <see cref="System.Xml.XmlNameTable" />.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryContext.GetDataSource(System.String,System.String)">
+      <summary>Получает источник данных, задаваемый параметрами <paramref name="uriRelative" /> и <paramref name="uriBase" />, из предоставленного пользователем объекта T:System.Xml.XmlResolver.</summary>
+      <returns>Экземпляр класса T:<see cref="System.Xml.Xpath.XPathNavigator" />.</returns>
+      <param name="uriRelative">Значение типа string.</param>
+      <param name="uriBase">Значение типа string.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryContext.GetLateBoundObject(System.String)">
+      <summary>Возвращает объект расширения, сопоставленный указанному пространству имен, или NULL, если ни один объект не сопоставлен.</summary>
+      <returns>Объект расширения.</returns>
+      <param name="namespaceUri">Значение типа string.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryContext.GetParameter(System.String,System.String)">
+      <summary>Получает именованный параметр из внешнего списка аргументов.</summary>
+      <returns>Значение null, если не задан ни один аргумент, или если параметр с таким именем отсутствует; в противном случае — именованный параметр из внешнего списка аргументов.</returns>
+      <param name="localName">Значение типа string.</param>
+      <param name="namespaceUri">Значение типа string.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryContext.InvokeXsltLateBoundFunction(System.String,System.String,System.Collections.Generic.IList{System.Xml.XPath.XPathItem}[])">
+      <summary>Получает объект расширения с поздней привязкой из внешнего списка аргументов.</summary>
+      <returns>Возвращает универсальный список типа <see cref="T:System.Xml.XPath.XPathItem" />.</returns>
+      <param name="name">Значение типа string.</param>
+      <param name="namespaceUri">Значение типа string.</param>
+      <param name="args">Последовательность экземпляров <see cref="System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryContext.LateBoundFunctionExists(System.String,System.String)">
+      <summary>Возвращает значение true, если заданный параметром <paramref name="namespaceUri" /> объект с поздней привязкой содержит метод с именем <paramref name="name" />.</summary>
+      <returns>Значение true, если объект с поздней привязкой соответствует имени; в противном случае — значение false.</returns>
+      <param name="name">Значение типа string.</param>
+      <param name="namespaceUri">Значение типа string.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryContext.OnXsltMessageEncountered(System.String)">
+      <summary>Порождает событие <see cref="E:System.Xml.Xsl.XsltArgumentList.XsltMessageEncountered" />.</summary>
+      <param name="message">Значение типа string.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryContext.QueryNameTable">
+      <summary>Получает экземпляр <see cref="T:System.Xml.XmlNameTable" />.</summary>
+      <returns>Возвращает экземпляр класса <see cref="T:System.Xml.XmlNameTable" />.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence">
+      <summary>Последовательность элементов XML, которая динамически расширяется и позволяет обращаться к элементам случайным образом.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryItemSequence.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" />. </summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryItemSequence.#ctor(System.Int32)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" />. </summary>
+      <param name="capacity">Значение типа Int32.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryItemSequence.#ctor(System.Xml.XPath.XPathItem)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" />. </summary>
+      <param name="item">Экземпляр класса <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryItemSequence.AddClone(System.Xml.XPath.XPathItem)">
+      <summary>Добавляет элемент в последовательность.Если элемент является навигатором, метод копирует его перед добавлением в последовательность.</summary>
+      <param name="item">Экземпляр класса <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryItemSequence.CreateOrReuse(System.Xml.Xsl.Runtime.XmlQueryItemSequence)">
+      <summary>Очищает и повторно использует объект <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" />, если он доступен.Если параметр <paramref name="seq" /> имеет значение NULL, создает новый объект <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" />.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" />.</returns>
+      <param name="seq">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryItemSequence.CreateOrReuse(System.Xml.Xsl.Runtime.XmlQueryItemSequence,System.Xml.XPath.XPathItem)">
+      <summary>Очищает и повторно использует объект <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" />, если он доступен.Если параметр <paramref name="seq" /> имеет значение NULL, создает новый объект <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" />.Затем этот метод добавляет новый элемент в старую или новую последовательность.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" />.</returns>
+      <param name="seq">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryItemSequence" />.</param>
+      <param name="item">Экземпляр класса <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="F:System.Xml.Xsl.Runtime.XmlQueryItemSequence.Empty">
+      <summary>Возвращает правильно инициализированный пустой объект <see cref="T:XmlQueryItemSequence" />.</summary>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence">
+      <summary>Последовательность узлов XML, которая динамически расширяется и позволяет обращаться к элементам случайным образом.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" />. </summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.#ctor(System.Collections.Generic.IList{System.Xml.XPath.XPathNavigator})">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" />. </summary>
+      <param name="list">Последовательность экземпляров <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.#ctor(System.Int32)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" />. </summary>
+      <param name="capacity">Значение типа Int32.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.#ctor(System.Xml.XPath.XPathNavigator)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" />. </summary>
+      <param name="navigator">Экземпляр класса <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.#ctor(System.Xml.XPath.XPathNavigator[],System.Int32)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" />. </summary>
+      <param name="array">Массив экземпляров класса <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+      <param name="size">Значение типа int.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.AddClone(System.Xml.XPath.XPathNavigator)">
+      <summary>Копирует навигатор и добавляет в последовательность узел.</summary>
+      <param name="navigator">Экземпляр класса <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.CreateOrReuse(System.Xml.Xsl.Runtime.XmlQueryNodeSequence)">
+      <summary>Очищает и повторно использует указанный объект <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" />, если он доступен.Если параметр <paramref name="seq" /> имеет значение null, создает новый объект <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" />.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" />.</returns>
+      <param name="seq">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.CreateOrReuse(System.Xml.Xsl.Runtime.XmlQueryNodeSequence,System.Xml.XPath.XPathNavigator)">
+      <summary>Очищает и повторно использует указанный объект <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" />, если он доступен.Если параметр <paramref name="seq" /> имеет значение null, создает новый объект <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" /> и добавляет в последовательность элемент <paramref name="navigator" />.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" />.</returns>
+      <param name="seq">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" />.</param>
+      <param name="navigator">Экземпляр класса <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.DocOrderDistinct(System.Collections.Generic.IComparer{System.Xml.XPath.XPathNavigator})">
+      <summary>Возвращает последовательность, содержащую все различающиеся узлы в кэше, отсортированные в порядке документа.</summary>
+      <returns>Последовательность экземпляров класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" />.</returns>
+      <param name="comparer">Последовательность экземпляров <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="F:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.Empty">
+      <summary>Получает пустой правильно инициализированный объект <see cref="T:System.Xml.Xsl.Runtime.XmlQueryNodeSequence" />.</summary>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.IsDocOrderDistinct">
+      <summary>Если это свойство имеет значение true, узлы в кэше содержатся в порядке документа без дубликатов.</summary>
+      <returns>Значение true, если узлы различаются; в противном случае — значение false.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.System#Collections#Generic#ICollection{T}#Add(System.Xml.XPath.XPathItem)">
+      <summary>Создает исключение <see cref="T:System.NotSupportedException" />. </summary>
+      <param name="value">Экземпляр класса <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.System#Collections#Generic#ICollection{T}#Clear">
+      <summary>Создает исключение <see cref="T:System.NotSupportedException" />. </summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.System#Collections#Generic#ICollection{T}#Contains(System.Xml.XPath.XPathItem)">
+      <summary>Возвращает значение true, если указанное значение принадлежит к последовательности.</summary>
+      <returns>Значение true, если значение присутствует в последовательности; в противном случае — значение false.</returns>
+      <param name="value">Экземпляр класса <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.System#Collections#Generic#ICollection{T}#CopyTo(System.Xml.XPath.XPathItem[],System.Int32)">
+      <summary>Копирует содержимое данной последовательности в заданный массив, начиная с указанного индекса в целевом массиве.</summary>
+      <param name="array">Массив экземпляров класса <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+      <param name="index">Значение типа int.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.System#Collections#Generic#ICollection{T}#IsReadOnly">
+      <summary>Указывает, что добавлять, удалять и изменять узлы через интерфейс <see cref="T:System.Collections.Generic.ICollection`1" /> невозможно.</summary>
+      <returns>Значение true, если коллекция доступна только для чтения; в противном случае — значение false.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.System#Collections#Generic#ICollection{T}#Remove(System.Xml.XPath.XPathItem)">
+      <summary>Создает исключение <see cref="T:System.NotSupportedException" />. </summary>
+      <returns>Значение true, если элемент удален; в противном случае — значение false.</returns>
+      <param name="value">Экземпляр класса <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.System#Collections#Generic#IEnumerable{T}#GetEnumerator">
+      <summary>Возвращает <see cref="T:System.Collections.Generic.IEnumerator" /> реализации <see cref="T:System.Xml.XPathItem" />.</summary>
+      <returns>Реализация IEnumerator&lt;XPathItem&gt;.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.System#Collections#Generic#IList{T}#IndexOf(System.Xml.XPath.XPathItem)">
+      <summary>Возвращает индекс указанного значения в последовательности.</summary>
+      <returns>Индекс указанного значения в последовательности.</returns>
+      <param name="value">Экземпляр класса <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.System#Collections#Generic#IList{T}#Insert(System.Int32,System.Xml.XPath.XPathItem)">
+      <summary>Создает исключение <see cref="T:System.NotSupportedException" />. </summary>
+      <param name="index">Значение типа int.</param>
+      <param name="value">Экземпляр класса <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.System#Collections#Generic#IList{T}#Item(System.Int32)">
+      <summary>Возвращает элемент по указанному индексу.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.XPath.XPathItem" />.</returns>
+      <param name="index">Значение типа Int32.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryNodeSequence.System#Collections#Generic#IList{T}#RemoveAt(System.Int32)">
+      <summary>Создает исключение <see cref="T:System.NotSupportedException" />. </summary>
+      <param name="index">Значение типа int.</param>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XmlQueryOutput">
+      <summary>Представляет объект <see cref="T:System.Xml.XmlWriter" />, обеспечивающий дополнительную функциональность, необходимую для вывода результатов преобразований XSLT. </summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.Close">
+      <summary>Этот метод реализован как пустой и не выполняет никаких действий.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.EndCopy(System.Xml.XPath.XPathNavigator)">
+      <summary>Завершает неполную копию текущего узла навигатора.Этот метод следует вызывать только для узлов элементов и документов.</summary>
+      <param name="navigator">Объект <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.EndTree">
+      <summary>Записывает конец дерева.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.Flush">
+      <summary>Этот метод реализован как пустой и не выполняет никаких действий.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.LookupPrefix(System.String)">
+      <summary>Выдает исключение <see cref="T:System.NotSupportedException" />.</summary>
+      <returns>Строка, содержащая префикс.</returns>
+      <param name="ns">Строка, содержащая имя пространства имен.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.StartCopy(System.Xml.XPath.XPathNavigator)">
+      <summary>Начинает неполную копию текущего узла навигатора для вывода. </summary>
+      <returns>Значение true, если для завершения операции копирования необходимо вызвать метод EndCopy; в противном случае — значение false.</returns>
+      <param name="navigator">Объект <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.StartElementContentUnchecked">
+      <summary>Вызывается после перечисления атрибутов элемента, но до перечисления хотя бы одного дочернего элемента.Предполагается, что используется правильный формат, поэтому дополнительная проверка не выполняется.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.StartTree(System.Xml.XPath.XPathNodeType)">
+      <summary>Начинает создание нового дерева.</summary>
+      <param name="rootType">Объект <see cref="T:System.Xml.XPath.XPathNodeType" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteBase64(System.Byte[],System.Int32,System.Int32)">
+      <summary>Выдает исключение <see cref="T:System.NotSupportedException" />.</summary>
+      <param name="buffer">Объект буфера <see cref="T:System.Byte" />, содержащий данные для записи.</param>
+      <param name="index">Объект типа <see cref="T:System.Int32" />, содержащий начальный индекс.</param>
+      <param name="count">Значение <see cref="T:System.Int32" />, содержащее количество байтов.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteCData(System.String)">
+      <summary> Пустая реализация, которая не выполняет никаких действий.</summary>
+      <param name="text">Строка, содержащая данные для записи.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteCharEntity(System.Char)">
+      <summary>Выдает исключение <see cref="T:System.NotSupportedException" />.</summary>
+      <param name="ch">Объект <see cref="T:System.Char" />, содержащий знак для записи.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteChars(System.Char[],System.Int32,System.Int32)">
+      <summary>Выдает исключение <see cref="T:System.NotSupportedException" />.</summary>
+      <param name="buffer">Массив <see cref="T:System.Char" /> буфера, содержащий данные для записи.</param>
+      <param name="index">Объект типа <see cref="T:System.Int32" />, содержащий начальный индекс.</param>
+      <param name="count">Объект <see cref="T:System.Int32" />, содержащий количество знаков для записи.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteComment(System.String)">
+      <summary>Записывает примечание.Этот метод не проверяет правильность формата.Для выполнения необходимых процедур проверки он вызывает другие методы.</summary>
+      <param name="text">Строка, содержащая примечание для записи.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteCommentString(System.String)">
+      <summary>Кэширует строку примечания.</summary>
+      <param name="text">Строка, содержащая примечание для записи.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteDocType(System.String,System.String,System.String,System.String)">
+      <summary>Выдает исключение <see cref="T:System.NotSupportedException" />.Никогда не должен вызываться.</summary>
+      <param name="name">Строка, содержащая имя документа.</param>
+      <param name="pubid">Строка, содержащая ИД публикации.</param>
+      <param name="sysid">Строка, содержащая ИД системы.</param>
+      <param name="subset">Строка, содержащая имя подмножества.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteEndAttribute">
+      <summary>Проверяет правильность формата атрибута и записывает конец атрибута.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteEndAttributeUnchecked">
+      <summary>Записывает конец атрибута.Предполагается, что используется правильный формат, поэтому дополнительная проверка не выполняется.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteEndComment">
+      <summary>Проверяет правильность формата примечания и записывает конец примечания.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteEndDocument">
+      <summary>Выдает исключение <see cref="T:System.NotSupportedException" />.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteEndElement">
+      <summary>Проверяет правильность формата элемента и записывает конец элемента.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteEndElementUnchecked(System.String)">
+      <summary>Записывает конец элемента с локальным именем.Предполагается, что используется правильный формат, поэтому дополнительная проверка не выполняется.</summary>
+      <param name="localName">Строка, содержащая локальное имя элемента.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteEndElementUnchecked(System.String,System.String,System.String)">
+      <summary>Записывает конец элемента с префиксом, локальным именем и пространством имен.Никакие процедуры проверки не выполняются.</summary>
+      <param name="prefix">Строка, содержащая префикс элемента.</param>
+      <param name="localName">Строка, содержащая локальное имя элемента.</param>
+      <param name="ns">Строка, содержащая имя пространства имен.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteEndNamespace">
+      <summary>Проверяет правильность формата пространства имен и записывает пространство имен.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteEndProcessingInstruction">
+      <summary>Проверяет правильность формата инструкций по обработке и записывает инструкции по обработке.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteEndRoot">
+      <summary>Записывает конец корневого элемента дерева и сбрасывает состояние.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteEntityRef(System.String)">
+      <summary>Выдает исключение <see cref="T:System.NotSupportedException" />.</summary>
+      <param name="name">Строка, содержащая имя сущности.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteFullEndElement">
+      <summary>Проверяет правильность формата элемента перед записью конца элемента.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteItem(System.Xml.XPath.XPathItem)">
+      <summary>Записывает элемент в вывод.Если в текущий момент выполняется создание дерева XML, элемент всегда копируется.На верхнем уровне идентификация элемента сохраняется, если она не является атомарным значением.</summary>
+      <param name="item">Объект <see cref="T:System.Xml.XPath.XPathItem" /> для записи.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteNamespaceDeclaration(System.String,System.String)">
+      <summary>Проверяет правильность формата объявления пространства имен и записывает объявление пространства имен.</summary>
+      <param name="prefix">Строка, содержащая префикс пространства имен.</param>
+      <param name="ns">Строка, содержащая имя пространства имен.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteNamespaceDeclarationUnchecked(System.String,System.String)">
+      <summary>Добавляет новое объявление пространства имен - xmlns:prefix="ns" в набор объявления в области действия.Этот метод не выполняет никаких дополнительных процедур проверки.</summary>
+      <param name="prefix">Строка, содержащая префикс пространства имен.</param>
+      <param name="ns">Строка, содержащая имя пространства имен.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteNamespaceString(System.String)">
+      <summary>Кэширует текст пространства имен.</summary>
+      <param name="text">Строка, содержащая полное пространство имен.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteProcessingInstruction(System.String,System.String)">
+      <summary>Записывает инструкцию по обработке.Этот метод не выполняет проверку правильности формата; вызываемые им методы при необходимости выполняют такую проверку.</summary>
+      <param name="target">Строка, содержащая целевой объект инструкции.</param>
+      <param name="text">Строка, содержащая текст инструкции.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteProcessingInstructionString(System.String)">
+      <summary>Кэширует текст инструкции по обработке.</summary>
+      <param name="text">Строка, содержащая инструкцию.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteRaw(System.Char[],System.Int32,System.Int32)">
+      <summary>Выдает исключение <see cref="T:System.NotSupportedException" />.</summary>
+      <param name="buffer">Массив буфера <see cref="T:System.Char" />, в который следует вести запись.</param>
+      <param name="index">Объект типа <see cref="T:System.Int32" />, содержащий начальный индекс.</param>
+      <param name="count">Объект <see cref="T:System.Int32" />, содержащий количество знаков для записи.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteRaw(System.String)">
+      <summary>Выдает исключение <see cref="T:System.NotSupportedException" />.</summary>
+      <param name="data">Строка, содержащая необработанные данные.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteRawUnchecked(System.String)">
+      <summary>Записывает блок текста без escape-символов.</summary>
+      <param name="text">Строка, содержащая текст для записи.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartAttribute(System.String,System.String,System.String)">
+      <summary>Проверяет правильность формата атрибута перед записью начала атрибута.</summary>
+      <param name="prefix">Строка, содержащая префикс атрибута.</param>
+      <param name="localName">Строка, содержащая локальное имя атрибута.</param>
+      <param name="ns">Строка, содержащая пространство имен атрибута.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartAttributeComputed(System.String,System.Int32)">
+      <summary>Записывает атрибут с именем, вычисляемым на основе имени тега prefix:localName и набора сопоставлений префиксов.</summary>
+      <param name="tagName">Строка, содержащая имя тега.</param>
+      <param name="prefixMappingsIndex">Значение <see cref="T:System.Int32" />, содержащее индекс сопоставления.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartAttributeComputed(System.String,System.String)">
+      <summary>Записывает атрибут с именем, вычисляемым на основе имени тега "prefix:localName" и набора сопоставлений префиксов.</summary>
+      <param name="tagName">Строка, содержащая имя тега атрибута.</param>
+      <param name="ns">Строка, содержащая пространство имен атрибута.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartAttributeComputed(System.Xml.XmlQualifiedName)">
+      <summary>Записывает атрибут с именем, вычисляемым на основе имени тега prefix:localName и набора сопоставлений префиксов.</summary>
+      <param name="name">Строка, содержащая имя атрибута.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartAttributeComputed(System.Xml.XPath.XPathNavigator)">
+      <summary>Записывает атрибут с именем, вычисляемым на основе имени тега prefix:localName и набора сопоставлений префиксов.</summary>
+      <param name="navigator">Объект <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartAttributeLocalName(System.String)">
+      <summary>Записывает начало атрибута с пустым префиксом, пространством имен и пустым (NULL) типом схемы.</summary>
+      <param name="localName">Строка, содержащая локальное имя.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartAttributeUnchecked(System.String)">
+      <summary>Записывает начало атрибута с локальным именем.</summary>
+      <param name="localName">Строка, содержащая локальное имя атрибута.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartAttributeUnchecked(System.String,System.String,System.String)">
+      <summary>Записывает начало атрибута с префиксом, локальным именем и пространством имен без проверки правильности формата.</summary>
+      <param name="prefix">Строка, содержащая префикс пространства имен.</param>
+      <param name="localName">Строка, содержащая локальное имя атрибута.</param>
+      <param name="ns">Строка, содержащая пространство имен.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartComment">
+      <summary>Проверяет правильность формата начала примечания и записывает начало примечания.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartDocument">
+      <summary>Выдает исключение <see cref="T:System.NotSupportedException" />.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartDocument(System.Boolean)">
+      <summary>Выдает исключение <see cref="T:System.NotSupportedException" />.</summary>
+      <param name="standalone">Логическое значение, определяющее, нужно ли записывать объявление XML вместе с номером версии, который указывается в начале документа.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartElement(System.String,System.String,System.String)">
+      <summary>Записывает начальный элемент после проверки правильности формата.</summary>
+      <param name="prefix">Строка, содержащая префикс пространства имен.</param>
+      <param name="localName">Строка, содержащая локальное имя элемента.</param>
+      <param name="ns">Строка, содержащая имя пространства имен.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartElementComputed(System.String,System.Int32)">
+      <summary>Записывает элемент с именем, вычисляемым на основе имени тега prefix:localName и набора сопоставлений префиксов.</summary>
+      <param name="tagName">Строка, содержащая имя тега.</param>
+      <param name="prefixMappingsIndex">Объект <see cref="T:System.Int32" />, содержащий индекс.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartElementComputed(System.String,System.String)">
+      <summary>Записывает элемент с именем, вычисляемым на основе имени тега prefix:localName и набора сопоставлений префиксов.</summary>
+      <param name="tagName">Строка, содержащая имя тега.</param>
+      <param name="ns">Строка, содержащая имя пространства имен.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartElementComputed(System.Xml.XmlQualifiedName)">
+      <summary>Записывает элемент с именем, вычисляемым на основе имени тега prefix:localName и набора сопоставлений префиксов.</summary>
+      <param name="name">Объект <see cref="T:System.Xml.XmlQualifiedName" />, который содержит имя.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartElementComputed(System.Xml.XPath.XPathNavigator)">
+      <summary>Записывает элемент с именем, вычисляемым на основе имени тега prefix:localName и набора сопоставлений префиксов.</summary>
+      <param name="navigator">Объект <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartElementLocalName(System.String)">
+      <summary>Записывает локальное имя с пустым префиксом и пространством имен.</summary>
+      <param name="localName">Строка, содержащая локальное имя.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartElementUnchecked(System.String)">
+      <summary>Записывает начало элемента.Предполагается, что используется правильный формат, поэтому дополнительная проверка не выполняется.</summary>
+      <param name="localName">Строка, содержащая локальное имя начального элемента.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartElementUnchecked(System.String,System.String,System.String)">
+      <summary>Записывает элемент с именем, вычисляемым на основе имени тега prefix:localName и набора сопоставлений префиксов.</summary>
+      <param name="prefix">Строка, содержащая префикс пространства имен.</param>
+      <param name="localName">Строка, содержащая локальное имя начального элемента.</param>
+      <param name="ns">Строка, содержащая имя пространства имен.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartNamespace(System.String)">
+      <summary>Проверяет правильность формата и записывает начало пространства имен.</summary>
+      <param name="prefix">Строка, содержащая префикс пространства имен.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartProcessingInstruction(System.String)">
+      <summary>Проверяет правильность формата примечания и записывает начало инструкции по обработке.</summary>
+      <param name="target">Строка, содержащая имя целевого объекта инструкции по обработке.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStartRoot">
+      <summary>Проверяет правильность формата корневого элемента дерева и записывает корневой элемент дерева.</summary>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteState">
+      <summary>Выдает исключение <see cref="T:System.NotSupportedException" />.</summary>
+      <returns>Объект <see cref="T:System.Xml.WriteState" />.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteString(System.String)">
+      <summary>Проверяет правильность формата строки и записывает текст.</summary>
+      <param name="text">Строка, содержащая текст для записи.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteStringUnchecked(System.String)">
+      <summary>Записывает текст.Предполагается, что используется правильный формат, поэтому проверка не выполняется.</summary>
+      <param name="text">Строка, содержащая текст для записи.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteSurrogateCharEntity(System.Char,System.Char)">
+      <summary>Выдает исключение <see cref="T:System.NotSupportedException" />.</summary>
+      <param name="lowChar">Значение <see cref="T:System.Char" /> младшего знака.</param>
+      <param name="highChar">Значение <see cref="T:System.Char" /> старшего знака.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.WriteWhitespace(System.String)">
+      <summary>Выдает исключение <see cref="T:System.NotSupportedException" />.</summary>
+      <param name="ws">Строка, содержащая пробел для записи.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryOutput.XmlLang">
+      <summary>Выдает исключение <see cref="T:System.NotSupportedException" />.</summary>
+      <returns>Строка, содержащая идентификатор языка.</returns>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryOutput.XmlSpace">
+      <summary>Выдает исключение <see cref="T:System.NotSupportedException" />.</summary>
+      <returns>Объект <see cref="T:System.Xml.XmlSpace" />.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryOutput.XsltCopyOf(System.Xml.XPath.XPathNavigator)">
+      <summary>Копирует узел по значению для вывода в соответствии со следующими правилами XSLT: ИД никогда не сохраняется, если элемент равен RTF, при копировании сохраняются подсказки сериализации, а если элемент является корневым узлом, копируются дочерние элементы корневого элемента.</summary>
+      <param name="navigator">Объект <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XmlQueryRuntime">
+      <summary>Предоставляет методы для поддержки обработчика XSLT.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.AddNewIndex(System.Xml.XPath.XPathNavigator,System.Int32,System.Xml.Xsl.Runtime.XmlILIndex)">
+      <summary>Добавляет новый индекс заданного документа контекста к существующей коллекции индексов.</summary>
+      <param name="context">Экземпляр класса <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+      <param name="indexId">Значение типа int.</param>
+      <param name="index">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlILIndex" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.ChangeTypeXsltArgument(System.Int32,System.Object,System.Type)">
+      <summary>Преобразует значение типа CLR параметра <paramref name="value" /> в тип <paramref name="destinationType" /> CLR с помощью правил XSLT V1.Преобразует любые значения фрагментов дерева результатов в узлы.</summary>
+      <returns>Значение типа object.</returns>
+      <param name="indexType">Значение типа Int32.</param>
+      <param name="value">Значение типа object.</param>
+      <param name="destinationType">Значение типа Type.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.ChangeTypeXsltResult(System.Int32,System.Object)">
+      <summary>Преобразует из типа CLR параметра <paramref name="value" /> в тип CLR по умолчанию, с помощью которого при создании промежуточного языка представляется тип XML, основанный на правилах преобразования типа XML.</summary>
+      <returns>Значение типа object.</returns>
+      <param name="indexType">Значение типа int.</param>
+      <param name="value">Значение типа object.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.ComparePosition(System.Xml.XPath.XPathNavigator,System.Xml.XPath.XPathNavigator)">
+      <summary>Сравнивает относительные положения двух навигаторов.</summary>
+      <returns>-1, если <paramref name="navigatorThis" /> расположен до <paramref name="navigatorThat" />; 1, если <paramref name="navigatorThis" /> расположен после <paramref name="navigatorThat" />; 0, если оба навигатора расположены на одном узле.</returns>
+      <param name="navigatorThis">Экземпляр класса <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+      <param name="navigatorThat">Экземпляр класса <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.CreateCollation(System.String)">
+      <summary>Создает параметры сортировки из строки.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlCollation" />.</returns>
+      <param name="collation">Значение типа string.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.DebugGetGlobalNames">
+      <summary>Возвращает массив, содержащий имена всех глобальных переменных и параметров, используемых в данном запросе.</summary>
+      <returns>Массив значений типа string.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.DebugGetGlobalValue(System.String)">
+      <summary>Получает значение глобальной переменной с указанным именем.</summary>
+      <returns>Последовательность экземпляров <see cref="T:System.Xml.XPath.XPathItem" /> или null, если глобальная переменная с указанным именем отсутствует.</returns>
+      <param name="name">Значение типа string.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.DebugGetXsltValue(System.Collections.IList)">
+      <summary>Преобразует последовательность в соответствующий тип XSLT.</summary>
+      <returns>Значение типа object.</returns>
+      <param name="seq">Экземпляр класса <see cref="T:System.Collections.IList" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.DebugSetGlobalValue(System.String,System.Object)">
+      <summary>Задает значение глобальной переменной с указанным именем.</summary>
+      <param name="name">Значение типа string.</param>
+      <param name="value">Значение типа object.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.DocOrderDistinct(System.Collections.Generic.IList{System.Xml.XPath.XPathNavigator})">
+      <summary>Получает различающиеся отсортированные узлы из указанной последовательности. </summary>
+      <returns>Коллекция <see cref="T:System.Collections.IList" /> объектов <see cref="T:System.Xml.XPath.XPathNavigator" />.</returns>
+      <param name="seq">Последовательность экземпляров <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.EarlyBoundFunctionExists(System.String,System.String)">
+      <summary>Определяет, содержит ли указанный объект с ранней привязкой метод с указанным именем.</summary>
+      <returns>Значение true, если заданный параметром <paramref name="namespaceUri" /> объект с ранней привязкой содержит метод с именем <paramref name="name" />; в противном случае — значение false.</returns>
+      <param name="name">Имя искомого метода.</param>
+      <param name="namespaceUri">Определяет объект с ранней привязкой.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.EndRtfConstruction(System.Xml.Xsl.Runtime.XmlQueryOutput@)">
+      <summary>Завершает создание RTF.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.XPath.XPathNavigator" />.</returns>
+      <param name="output">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryOutput" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.EndSequenceConstruction(System.Xml.Xsl.Runtime.XmlQueryOutput@)">
+      <summary>Завершает создание вложенной последовательности элементов.</summary>
+      <returns>Последовательность экземпляров класса <see cref="T:System.Xml.XPath.XPathItem" />.</returns>
+      <param name="output">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryOutput" />.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryRuntime.ExternalContext">
+      <summary>Возвращает объект, который управляет внешними сведениями контекста пользователя, например источниками данных, параметрами, объектами расширения и т. д.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.Xsl.XmlQueryContext" />.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.FindIndex(System.Xml.XPath.XPathNavigator,System.Int32,System.Xml.Xsl.Runtime.XmlILIndex@)">
+      <summary>Возвращает индекс с указанным ИД, если он уже был создан для указанного документа, и возвращает значение true.В противном случае создает новый пустой индекс и возвращает значение false.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlILIndex" />.</returns>
+      <param name="context">Документ контекста.</param>
+      <param name="indexId">Искомый ИД индекса.</param>
+      <param name="index">Возвращаемый индекс.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.GenerateId(System.Xml.XPath.XPathNavigator)">
+      <summary>Создает уникальный строковый идентификатор для указанного узла.</summary>
+      <returns>Значение типа string.</returns>
+      <param name="navigator">Экземпляр класса <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.GetAtomizedName(System.Int32)">
+      <summary>Получает атомизированное имя указанного индекса в массиве имен.</summary>
+      <returns>Значение типа string.</returns>
+      <param name="index">Значение типа int.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.GetCollation(System.Int32)">
+      <summary>Получает статически созданные правила сортировки.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlCollation" />.</returns>
+      <param name="index">Значение типа int.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.GetEarlyBoundObject(System.Int32)">
+      <summary>Получает указанный объект расширения с ранней привязкой.Если объект еще не существует, создает экземпляр с помощью соответствующего объекта <see cref="T:System.Reflection.ConstructorInfo" />.</summary>
+      <returns>Значение типа object.</returns>
+      <param name="index">Значение типа int.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.GetGlobalValue(System.Int32)">
+      <summary>Возвращает значение, привязанное к указанной глобальной переменной.Если значение еще не было вычислено, вычисляет его и сохраняет в глобальной переменной.</summary>
+      <returns>Значение, привязанное к указанной глобальной переменной. </returns>
+      <param name="index">Значение типа int.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.GetNameFilter(System.Int32)">
+      <summary>Получает фильтр имени по указанному индексу в массиве фильтров.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />.</returns>
+      <param name="index">Значение типа int.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.GetTypeFilter(System.Xml.XPath.XPathNodeType)">
+      <summary>Получает фильтр и отфильтровывает узлы определенного типа.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />.</returns>
+      <param name="nodeType">Экземпляр класса <see cref="T:System.Xml.XPath.XPathNodeType" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.IsGlobalComputed(System.Int32)">
+      <summary>Возвращает значение true, если указанная глобальная переменная уже вычислена.</summary>
+      <returns>Значение true, если значение уже вычислено; в противном случае — значение false.</returns>
+      <param name="index">Значение типа int.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.IsQNameEqual(System.Xml.XPath.XPathNavigator,System.Int32,System.Int32)">
+      <summary>Определяет, равны ли свойства <see cref="P:System.Xml.Xpath.LocalName" /> и <see cref="P:System.Xml.Xpath.NamespaceURI" /> указанного объекта <see cref="T:System.Xml.XPath.XPathNavigator" /> именам, заданным соответствующими параметрами.</summary>
+      <returns>Значение true, если имена равны; в противном случае — значение false.</returns>
+      <param name="navigator">Экземпляр класса <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+      <param name="indexLocalName">Значение типа int.</param>
+      <param name="indexNamespaceUri">Значение типа int.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.IsQNameEqual(System.Xml.XPath.XPathNavigator,System.Xml.XPath.XPathNavigator)">
+      <summary>Сравнивает свойства <see cref="P:System.Xml.Xpath.LocalName" /> и <see cref="P:System.Xml.Xpath.NamespaceURI" /> двух экземпляров <see cref="T:System.Xml.XPath.XPathNavigator" />, чтобы определить, равны ли они.</summary>
+      <returns>Значение true, если имена равны; в противном случае — значение false.</returns>
+      <param name="n1">Экземпляр класса <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+      <param name="n2">Экземпляр класса <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.MatchesXmlType(System.Collections.Generic.IList{System.Xml.XPath.XPathItem},System.Int32)">
+      <summary>Возвращает значение true, если тип каждого из элементов указанной последовательности совпадает с типом XML, который задается указанным индексом.</summary>
+      <returns>Значение true, если тип параметра <paramref name="seq" /> является подтипом указанного типа <paramref name="indexType" />; в противном случае — значение false.</returns>
+      <param name="seq">Список <see cref="T:System.Collections.Generic.IList" /> объектов <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+      <param name="indexType">Индекс.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.MatchesXmlType(System.Collections.Generic.IList{System.Xml.XPath.XPathItem},System.Xml.Schema.XmlTypeCode)">
+      <summary>Определяет, является ли тип указанной последовательности подтипом указанного одиночного типа.</summary>
+      <returns>Значение true, если тип параметра <paramref name="seq" /> является подтипом типа, заданного параметром <paramref name="code" />; в противном случае — значение false.</returns>
+      <param name="seq">Последовательность экземпляров <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+      <param name="code">Одиночный тип.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.MatchesXmlType(System.Xml.XPath.XPathItem,System.Int32)">
+      <summary>Возвращает значение true, если тип указанного объекта <see cref="T:System.Xml.XPath.XPathItem" /> совпадает с указанным типом XML.</summary>
+      <returns>Значение true, если тип указанного объекта <see cref="T:System.Xml.XPathItem" /> совпадает с указанным типом XML; в противном случае — значение false.</returns>
+      <param name="item">Экземпляр класса <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+      <param name="indexType">Индекс в массиве типов XML.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.MatchesXmlType(System.Xml.XPath.XPathItem,System.Xml.Schema.XmlTypeCode)">
+      <summary>Возвращает значение true, если тип объекта <see cref="T:System.Xml.XPath.XPathItem" /> является подтипом типа, который определяется указанным объектом <see cref="T:System.Xml.Schema.XmlTypeCode" />.</summary>
+      <returns>Возвращает значение true, если тип объекта <see cref="T:System.Xml.XPath.XPathItem" /> является подтипом типа, который определяется указанным объектом <see cref="T:System.Xml.Schema.XmlTypeCode" />; в противном случае возвращает значение false.</returns>
+      <param name="item">Экземпляр класса <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+      <param name="code">Экземпляр класса <see cref="T:System.Xml.Schema.XmlTypeCode" />.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryRuntime.NameTable">
+      <summary>Возвращает таблицу имен, используемую для атомизации всех используемых в запросе имен.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.XmlNameTable" />.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.OnCurrentNodeChanged(System.Xml.XPath.XPathNavigator)">
+      <summary>Используется для отладки в Visual Studio.Вызывается после изменения текущего узла.</summary>
+      <returns>Целое число, обозначающее состояние изменения.Используется только для внутреннего тестирования.</returns>
+      <param name="currentNode">Объект <see cref="T:System.Xml.XPath.XPathNavigator" />, определяющий узел.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryRuntime.Output">
+      <summary>Получает выходной объект записи.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryOutput" />.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.ParseTagName(System.String,System.Int32)">
+      <summary>Обрабатывает имя указанного тега и распознает полученный префикс.Если распознать префикс не удается, создается исключение.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.XmlQualifiedName" />.</returns>
+      <param name="tagName">Имя тега.</param>
+      <param name="indexPrefixMappings">Индекс. </param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.ParseTagName(System.String,System.String)">
+      <summary>Анализирует имя указанного тега.Возвращает объект <see cref="T:System.Xml.XmlQualifiedName" />, состоящий из проанализированного локального имени и указанного пространства имен.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.XmlQualifiedName" />.</returns>
+      <param name="tagName">Имя тега.</param>
+      <param name="ns">Пространство имен.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.SendMessage(System.String)">
+      <summary>Передает сведения о выполнении запроса обработчику события.</summary>
+      <param name="message">Значение типа string.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.SetGlobalValue(System.Int32,System.Object)">
+      <summary>Возвращает значение, привязанное к указанной глобальной переменной или параметру.</summary>
+      <param name="index">Значение типа int.</param>
+      <param name="value">Значение типа object.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.StartRtfConstruction(System.String,System.Xml.Xsl.Runtime.XmlQueryOutput@)">
+      <summary>Начинает создание RTF и возвращает новый объект <see cref="T:System.Xml.Xsl.Runtime.XmlQueryOutput" />, который будет использоваться для создания данного RTF.</summary>
+      <param name="baseUri">Значение типа string.</param>
+      <param name="output">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryOutput" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.StartSequenceConstruction(System.Xml.Xsl.Runtime.XmlQueryOutput@)">
+      <summary>Начинает создание вложенной последовательности элементов.Возвращает объект <see cref="T:System.Xml.Xsl.Runtime.XmlQueryOutput" />, который будет использоваться для создания новой последовательности.</summary>
+      <param name="output">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQueryOutput" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.TextRtfConstruction(System.String,System.String)">
+      <summary>Создает новый объект <see cref="T:System.Xml.XPath.XPathNavigator" /> из заданного текста.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.XPath.XPathNavigator" />.</returns>
+      <param name="text">Значение типа string.</param>
+      <param name="baseUri">Значение типа string.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQueryRuntime.ThrowException(System.String)">
+      <summary>Создает исключение XML, содержащее указанный текст сообщения.</summary>
+      <param name="text">Значение типа string.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQueryRuntime.XsltFunctions">
+      <summary>Возвращает объект, управляющий состоянием.Объект состояния требуется для реализации различных функций XSLT.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XsltLibrary" />.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1">
+      <summary>Последовательность значений XML, которая динамически расширяется и позволяет обращаться к элементам случайным образом.</summary>
+      <typeparam name="T">Тип данной последовательности <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" />.</typeparam>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" />. </summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.#ctor(System.Int32)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" />. </summary>
+      <param name="capacity">Размер данной коллекции.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.#ctor(`0)">
+      <summary>Создает кортеж <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" />, единственным элементом которого является <paramref name="value" />.</summary>
+      <param name="value">Единственное значение данного кортежа <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.#ctor(`0[],System.Int32)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" />. </summary>
+      <param name="array">Массив экземпляров класса <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence" />.</param>
+      <param name="size">Размер массива.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.Add(`0)">
+      <summary>Создает исключение <see cref="T:System.NotSupportedException" />. </summary>
+      <param name="value">Объект, добавляемый в коллекцию.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.Clear">
+      <summary>Создает исключение <see cref="T:System.NotSupportedException" />. </summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.Contains(`0)">
+      <summary>Возвращает значение true, если указанное значение принадлежит к последовательности.</summary>
+      <returns>Значение true, если указанное значение принадлежит к последовательности; в противном случае — значение false.</returns>
+      <param name="value">Значение, которое требуется найти в коллекции <see cref="T:System.Collections.Generic.ICollection`1" />. </param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.CopyTo(`0[],System.Int32)">
+      <summary>Копирует содержимое данной последовательности в заданный массив, начиная с указанного индекса в массиве.</summary>
+      <param name="array">Массив, в который копируется содержимое коллекции <see cref="T:System.Collections.Generic.ICollection`1collection" />. </param>
+      <param name="index">Значение типа int.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQuerySequence`1.Count">
+      <summary>Возвращает число элементов в последовательности.</summary>
+      <returns>Значение типа int.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.CreateOrReuse(System.Xml.Xsl.Runtime.XmlQuerySequence{`0})">
+      <summary>Очищает и повторно использует указанный объект <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" />, если он доступен.Если параметр <paramref name="seq" /> имеет значение null, создает новый объект <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" />.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence" />.</returns>
+      <param name="seq">Экземпляр <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" />, который можно использовать повторно.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.CreateOrReuse(System.Xml.Xsl.Runtime.XmlQuerySequence{`0},`0)">
+      <summary>Очищает и повторно использует указанный объект <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" />, если он доступен.Если параметр <paramref name="seq" /> имеет значение null, создает новый объект <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" /> и добавляет в коллекцию элемент <paramref name="item" />.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" />.</returns>
+      <param name="seq">Экземпляр <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" />, который можно использовать повторно.</param>
+      <param name="item">Добавляемый элемент. </param>
+    </member>
+    <member name="F:System.Xml.Xsl.Runtime.XmlQuerySequence`1.Empty">
+      <summary>Создает новый экземпляр <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence" />.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.GetEnumerator">
+      <summary>Возвращает объект <see cref="T:System.Collections.Generic.IEnumerator`1" />.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Collections.Generic.IEnumerator`1" />.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.IndexOf(`0)">
+      <summary>Возвращает индекс указанного значения в последовательности.</summary>
+      <returns>Индекс.</returns>
+      <param name="value">Значение, для которого необходимо получить индекс.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQuerySequence`1.Item(System.Int32)">
+      <summary>Возвращает элемент по указанному индексу.</summary>
+      <returns>Элемент с заданным индексом. </returns>
+      <param name="index">Значение типа int.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.OnItemsChanged">
+      <summary>Вызывается, если один или более элементов в кэше были добавлены или удалены.Этот метод также можно вызывать из метода <see cref="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.SortByKeys(System.Array)" />.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.SortByKeys(System.Array)">
+      <summary>Сортирует элемент в кэше по ключам, содержащимся в указанном массиве.</summary>
+      <param name="keys">Значение типа array.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#Generic#ICollection{T}#Add(`0)">
+      <summary>Создает исключение <see cref="T:System.NotSupportedException" />.</summary>
+      <param name="value">Значение последовательности.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#Generic#ICollection{T}#Clear">
+      <summary>Создает исключение <see cref="T:System.NotSupportedException" />.</summary>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#Generic#ICollection{T}#IsReadOnly"></member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#Generic#ICollection{T}#Remove(`0)"></member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#Generic#IList{T}#Insert(System.Int32,`0)">
+      <summary>Создает исключение <see cref="T:System.NotSupportedException" />.</summary>
+      <param name="index">Индекс последовательности.</param>
+      <param name="value">Значение последовательности.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#Generic#IList{T}#RemoveAt(System.Int32)">
+      <summary>Создает исключение <see cref="T:System.NotSupportedException" />.</summary>
+      <param name="index">Индекс последовательности.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#ICollection#CopyTo(System.Array,System.Int32)">
+      <summary>Копирует содержимое данной последовательности в заданный массив, начиная с указанного индекса в целевом массиве.</summary>
+      <param name="array">Заданный массив.</param>
+      <param name="index">Заданный индекс.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#ICollection#IsSynchronized">
+      <summary>Возвращает false.Объект <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" /> не является потокобезопасным.</summary>
+      <returns>false</returns>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#ICollection#SyncRoot">
+      <summary>Возвращает данный экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" />.Этот экземпляр можно использовать для синхронизации доступа.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" />.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#IEnumerable#GetEnumerator">
+      <summary>Возвращает класс <see cref="T:System.Collections.IEnumerator" />.</summary>
+      <returns>Возвращает перечислитель<see cref="T:System.Collections.IEnumerator" /> последовательности коллекции запроса.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#IList#Add(System.Object)">
+      <summary>Создает исключение <see cref="T:System.NotSupportedException" />.</summary>
+      <param name="value">Значение последовательности.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#IList#Clear">
+      <summary>Создает исключение <see cref="T:System.NotSupportedException" />.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#IList#Contains(System.Object)">
+      <summary>Возвращает значение true, если указанное значение принадлежит к последовательности.</summary>
+      <returns>Значение true, если указанное значение принадлежит к последовательности; в противном случае — значение false.</returns>
+      <param name="value">Указанное значение.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#IList#IndexOf(System.Object)">
+      <summary>Возвращает индекс указанного значения в последовательности.</summary>
+      <returns>Индекс указанного значения в последовательности.</returns>
+      <param name="value">Указанное значение.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#IList#Insert(System.Int32,System.Object)">
+      <summary>Создает исключение <see cref="T:System.NotSupportedException" />.</summary>
+      <param name="index">Заданный индекс.</param>
+      <param name="value">Указанное значение.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#IList#IsFixedSize">
+      <summary>Возвращает значение true.Элементы нельзя добавлять, удалять или изменять.</summary>
+      <returns>Возвращает значение true.</returns>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#IList#IsReadOnly">
+      <summary>Если последовательность <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" /> доступна только для чтения, это свойство возвращает значение true.</summary>
+      <returns>Возвращает значение true, если последовательность <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence`1" /> доступна только для чтения; в противном случае — значение false.</returns>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#IList#Item(System.Int32)">
+      <summary>Возвращает элемент по указанному индексу.</summary>
+      <returns>Элемент с заданным индексом.</returns>
+      <param name="index">Заданный индекс.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#IList#Remove(System.Object)">
+      <summary>Не реализован.Создает исключение <see cref="T:System.NotSupportedException" />.</summary>
+      <param name="value">Указанное значение.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlQuerySequence`1.System#Collections#IList#RemoveAt(System.Int32)">
+      <summary>Создает исключение <see cref="T:System.NotSupportedException" />.</summary>
+      <param name="index">Заданный индекс.</param>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator">
+      <summary>Накапливает список ключей сортировки и сохраняет их в массиве.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator.AddDateTimeSortKey(System.Xml.Xsl.Runtime.XmlCollation,System.DateTime)">
+      <summary>Создает новый ключ сортировки <see cref="T:System.DateTime" /> и добавляет его к текущему набору ключей сортировки.</summary>
+      <param name="collation">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlCollation" />.</param>
+      <param name="value">Значение типа DateTime.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator.AddDecimalSortKey(System.Xml.Xsl.Runtime.XmlCollation,System.Decimal)">
+      <summary>Создает новый ключ сортировки <see cref="T:System.Decimal" /> и добавляет его к текущему набору ключей сортировки.</summary>
+      <param name="collation">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlCollation" />.</param>
+      <param name="value">Значение типа decimal.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator.AddDoubleSortKey(System.Xml.Xsl.Runtime.XmlCollation,System.Double)">
+      <summary>Создает новый ключ сортировки <see cref="T:System.Double" /> и добавляет его к текущему набору ключей сортировки.</summary>
+      <param name="collation">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlCollation" />.</param>
+      <param name="value">Значение типа double.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator.AddEmptySortKey(System.Xml.Xsl.Runtime.XmlCollation)">
+      <summary>Создает новый пустой ключ сортировки и добавляет его к текущему набору ключей сортировки.</summary>
+      <param name="collation">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlCollation" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator.AddIntegerSortKey(System.Xml.Xsl.Runtime.XmlCollation,System.Int64)">
+      <summary>Создает новый ключ сортировки <see cref="T:System.Int64" /> и добавляет его к текущему набору ключей сортировки.</summary>
+      <param name="collation">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlCollation" />.</param>
+      <param name="value">Значение типа Int64.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator.AddIntSortKey(System.Xml.Xsl.Runtime.XmlCollation,System.Int32)">
+      <summary>Создает новый ключ сортировки <see cref="T:System.Int32" /> и добавляет его к текущему набору ключей сортировки.</summary>
+      <param name="collation">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlCollation" />.</param>
+      <param name="value">Значение типа Int32.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator.AddStringSortKey(System.Xml.Xsl.Runtime.XmlCollation,System.String)">
+      <summary>Создает новый ключ сортировки <see cref="T:System.String" /> и добавляет его к текущему набору ключей сортировки.</summary>
+      <param name="collation">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlCollation" />.</param>
+      <param name="value">Значение типа string.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator.Create">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator" />.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator.FinishSortKeys">
+      <summary>Завершает создание текущего набора ключей сортировки и начинает новый набор.</summary>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator.Keys">
+      <summary>Получает массив ключей сортировки, созданный внутренним классом <see cref="T:System.Xml.Xsl.Runtime.XmlSortKeyAccumulator" />.</summary>
+      <returns>Массив ключей сортировки.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XPathFollowingIterator">
+      <summary>Выполняет перебор всех последующих узлов в соответствии с правилами оси последующих узлов XPath.  </summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XPathFollowingIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.XPathFollowingIterator" />.Объект <see cref="T:System.Xml.Xsl.Runtime.XPathFollowingIterator" /> не содержит дубликатов.</summary>
+      <param name="input">Объект <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+      <param name="filter">Объект <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XPathFollowingIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор. </summary>
+      <returns>Текущий результирующий навигатор.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XPathFollowingIterator.MoveNext">
+      <summary>Помещает итератор на очередной последующий узел.</summary>
+      <returns>Значение true, если итератор был помещен на очередной последующий узел; в противном случае — значение false.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XPathFollowingMergeIterator">
+      <summary>Выполняет перебор всех последующих узлов в соответствии с правилами оси последующих узлов XPath. </summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XPathFollowingMergeIterator.Create(System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.XPathFollowingMergeIterator" />.</summary>
+      <param name="filter">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />, позволяющий фильтровать узлы по их именам.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XPathFollowingMergeIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор.  </summary>
+      <returns>Текущий результирующий навигатор.  </returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XPathFollowingMergeIterator.MoveNext(System.Xml.XPath.XPathNavigator)">
+      <summary>Перемещает итератор к очередному последующему узлу.  </summary>
+      <returns>Возвращает значение <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.NoMoreNodes" />, если последующих узлов больше не осталось.Возвращает значение <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.NeedInputNode" />, если сначала необходимо обратиться к следующему входному узлу.Возвращает значение <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.HaveCurrentNode" />, если при переборе узлов свойству <see cref="P:System.Xml.Xsl.Runtime.XPathFollowingMergeIterator.Current" /> был задан следующий узел.</returns>
+      <param name="input">Объект <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XPathPrecedingDocOrderIterator">
+      <summary>Выполняет перебор всех предшествующих узлов в соответствии с правилами оси предшествующих узлов XPath и возвращает узлы в порядке документа без дубликатов.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XPathPrecedingDocOrderIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.XPathPrecedingDocOrderIterator" />.</summary>
+      <param name="input">Объект <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+      <param name="filter">Объект <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XPathPrecedingDocOrderIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор. </summary>
+      <returns>Текущий результирующий навигатор.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XPathPrecedingDocOrderIterator.MoveNext">
+      <summary>Помещает итератор на следующий предшествующий узел.</summary>
+      <returns>Значение true, если итератор был помещен на следующий предшествующий узел; в противном случае — значение false.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XPathPrecedingIterator">
+      <summary>Выполняет перебор всех предшествующих узлов в соответствии с правилами оси предшествующих узлов XPath и возвращает узлы в обратном порядке документа без дубликатов.  </summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XPathPrecedingIterator.Create(System.Xml.XPath.XPathNavigator,System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.XPathPrecedingIterator" />.</summary>
+      <param name="context">Узел, с которого начинается обход предков.</param>
+      <param name="filter">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />, позволяющий фильтровать узлы по их именам.Дополнительные сведения см. в разделе <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XPathPrecedingIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор. </summary>
+      <returns>Текущий результирующий навигатор.</returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XPathPrecedingIterator.MoveNext">
+      <summary>Помещает итератор на следующий предшествующий узел в обратном порядке документа.</summary>
+      <returns>Значение true, если итератор был помещен на следующий предшествующий узел; в противном случае — значение false.</returns>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XPathPrecedingMergeIterator">
+      <summary>Выполняет перебор всех предшествующих узлов в соответствии с правилами оси предшествующих узлов XPath, кроме узлов, которые всегда возвращаются в порядке документа.Объединяет несколько наборов предшествующих узлов в порядке документа и удаляет дубликаты.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XPathPrecedingMergeIterator.Create(System.Xml.Xsl.Runtime.XmlNavigatorFilter)">
+      <summary>Инициализирует объект <see cref="T:System.Xml.Xsl.Runtime.XPathPrecedingMergeIterator" />.</summary>
+      <param name="filter">Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlNavigatorFilter" />, позволяющий фильтровать узлы по их именам.</param>
+    </member>
+    <member name="P:System.Xml.Xsl.Runtime.XPathPrecedingMergeIterator.Current">
+      <summary>Возвращает текущий результирующий навигатор.  </summary>
+      <returns>Текущий результирующий навигатор.  </returns>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XPathPrecedingMergeIterator.MoveNext(System.Xml.XPath.XPathNavigator)">
+      <summary>Помещает итератор на следующий предшествующий узел в порядке документа.  </summary>
+      <returns>Возвращает значение <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.NoMoreNodes" />, если предшествующих узлов больше не осталось.Возвращает значение <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.NeedInputNode" />, если сначала необходимо обратиться к следующему входному узлу.Возвращает значение <see cref="F:System.Xml.Xsl.Runtime.IteratorResult.HaveCurrentNode" />, если при переборе узлов свойству <see cref="P:System.Xml.Xsl.Runtime.XPathPrecedingMergeIterator.Current" /> был задан следующий узел.</returns>
+      <param name="input">Входной узел. </param>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XsltConvert">
+      <summary>Содержит процедуры преобразования, используемые в XSLT.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.EnsureNodeSet(System.Collections.Generic.IList{System.Xml.XPath.XPathItem})">
+      <summary>Проверяет, что указанная последовательность объектов не является фрагментом результирующего дерева и может быть преобразована в набор узлов.</summary>
+      <returns>Последовательность экземпляров <see cref="T:System.Xml.XPath.XPathNavigator" />.</returns>
+      <param name="listItems">Последовательность экземпляров <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToBoolean(System.Collections.Generic.IList{System.Xml.XPath.XPathItem})">
+      <summary>Преобразует указанное значение в логический тип.</summary>
+      <returns>Значение типа bool.</returns>
+      <param name="listItems">Последовательность экземпляров <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToBoolean(System.Xml.XPath.XPathItem)">
+      <summary>Преобразует указанное значение в логический тип.</summary>
+      <returns>Значение типа bool.</returns>
+      <param name="item">Экземпляр класса <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToDateTime(System.String)">
+      <summary>Преобразует заданное значение к значению DateTime.</summary>
+      <returns>Значение типа DateTime.</returns>
+      <param name="value">Значение типа string.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToDecimal(System.Double)">
+      <summary>Преобразует указанное значение в тип decimal.</summary>
+      <returns>Значение типа decimal.</returns>
+      <param name="value">Значение типа double.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToDouble(System.Collections.Generic.IList{System.Xml.XPath.XPathItem})">
+      <summary>Преобразует указанное значение в тип double.</summary>
+      <returns>Значение типа double.</returns>
+      <param name="listItems">Последовательность экземпляров <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToDouble(System.Decimal)">
+      <summary>Преобразует указанное значение в тип double.</summary>
+      <returns>Значение типа double.</returns>
+      <param name="value">Значение типа decimal.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToDouble(System.Int32)">
+      <summary>Преобразует указанное значение в тип double.</summary>
+      <returns>Значение типа double.</returns>
+      <param name="value">Значение типа int.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToDouble(System.Int64)">
+      <summary>Преобразует указанное значение в тип double.</summary>
+      <returns>Значение типа double.</returns>
+      <param name="value">Значение типа Int64.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToDouble(System.String)">
+      <summary>Преобразует указанное значение в тип double.</summary>
+      <returns>Значение типа double.</returns>
+      <param name="value">Значение типа string.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToDouble(System.Xml.XPath.XPathItem)">
+      <summary>Преобразует указанное значение в тип double.</summary>
+      <returns>Значение типа double.</returns>
+      <param name="item">Экземпляр класса <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToInt(System.Double)">
+      <summary>Преобразует указанное значение в тип int.</summary>
+      <returns>Значение типа int.</returns>
+      <param name="value">Значение типа double.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToLong(System.Double)">
+      <summary>Преобразует указанное значение в тип long.</summary>
+      <returns>Значение типа long.</returns>
+      <param name="value">Значение типа double.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToNode(System.Collections.Generic.IList{System.Xml.XPath.XPathItem})">
+      <summary>Преобразует указанное значение в узел.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.XPath.XPathNavigator" />.</returns>
+      <param name="listItems">Последовательность экземпляров <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToNode(System.Xml.XPath.XPathItem)">
+      <summary>Преобразует указанное значение в узел.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.XPath.XPathNavigator" />.</returns>
+      <param name="item">Экземпляр класса <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToNodeSet(System.Collections.Generic.IList{System.Xml.XPath.XPathItem})">
+      <summary>Преобразует элементы в последовательность узлов.</summary>
+      <returns>Последовательность экземпляров <see cref="T:System.Xml.XPath.XPathNavigator" />.</returns>
+      <param name="listItems">Последовательность экземпляров <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToNodeSet(System.Xml.XPath.XPathItem)">
+      <summary>Преобразует указанное значение в узел.</summary>
+      <returns>Экземпляр класса <see cref="T:System.Xml.Xsl.Runtime.XmlQuerySequence" />.</returns>
+      <param name="item">Экземпляр класса <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToString(System.Collections.Generic.IList{System.Xml.XPath.XPathItem})">
+      <summary>Преобразует элементы в строку.</summary>
+      <returns>Значение типа string.</returns>
+      <param name="listItems">Последовательность экземпляров <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToString(System.DateTime)">
+      <summary>Преобразует указанное значение в строку.</summary>
+      <returns>Значение типа string.</returns>
+      <param name="value">Значение типа DateTime.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToString(System.Double)">
+      <summary>Преобразует указанное значение в строку.</summary>
+      <returns>Значение типа string.</returns>
+      <param name="value">Значение типа double.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltConvert.ToString(System.Xml.XPath.XPathItem)">
+      <summary>Преобразует указанное значение в строку.</summary>
+      <returns>Значение типа string.</returns>
+      <param name="item">Экземпляр класса <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XsltFunctions">
+      <summary>Функции XSLT и XPath.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.BaseUri(System.Xml.XPath.XPathNavigator)">
+      <summary>Возвращает значение базового универсального кода ресурса (URI) узла, переданного с помощью параметра <paramref name="navigator" />.Реализует функцию XPath baseUri в соответствии со спецификацией консорциума W3C.</summary>
+      <returns>Базовый универсальный идентификатор ресурса (URI) в виде <see cref="T:System.String" />.</returns>
+      <param name="navigator">Экземпляр <see cref="T:System.Xml.XPath.XPathNavigator" />, содержащий узел, который должен определяться кодом URI.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.Contains(System.String,System.String)">
+      <summary>Реализует функцию XPath contains в соответствии со спецификацией консорциума W3C.</summary>
+      <returns>Значение true, если строка первого аргумента содержит строку второго аргумента; в противном случае — значение false.</returns>
+      <param name="s1">Строка, в которой требуется найти <paramref name="s2" />.</param>
+      <param name="s2">Строка, которую требуется найти в s1. </param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.EXslObjectType(System.Collections.Generic.IList{System.Xml.XPath.XPathItem})">
+      <summary>Реализует exsl:object-type.</summary>
+      <returns>Тип объекта в виде <see cref="T:System.String" />.</returns>
+      <param name="value">Объект <see cref="T:System.Xml.XPath.XPathItem" />, для которого необходимо определить тип.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.Lang(System.String,System.Xml.XPath.XPathNavigator)">
+      <summary>Реализует функцию lang в соответствии со спецификацией XPath консорциума W3C.</summary>
+      <returns>
+        <see cref="T:System.Boolean" />.</returns>
+      <param name="value">Указанная строка.</param>
+      <param name="context">Объект <see cref="T:System.Xml.XPath.XPathNavigator" />, содержащий контекст.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.MSFormatDateTime(System.String,System.String,System.String,System.Boolean)">
+      <summary>Реализует функции расширения ms:format-date и ms-format-timeMicrosoft XPath.</summary>
+      <returns>Строка, содержащая отформатированные дату и время.</returns>
+      <param name="dateTime">Строка, содержащая данные о дате и времени.</param>
+      <param name="format">Строка, содержащая формат.</param>
+      <param name="lang">Строка, содержащая язык.</param>
+      <param name="isDate">Логическое значение, указывающее, содержит ли дату значение даты и времени.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.MSLocalName(System.String)">
+      <summary>Реализует функцию расширения Microsoft XPathms:local-name. </summary>
+      <returns>Имя в формате <see cref="T:System.String" />.</returns>
+      <param name="name">Имя.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.MSNamespaceUri(System.String,System.Xml.XPath.XPathNavigator)">
+      <summary>Реализует функцию расширения Microsoft XPathms:namespace-uri. </summary>
+      <returns>Код URI в виде <see cref="T:System.String" />.</returns>
+      <param name="name">Имя.</param>
+      <param name="currentNode">Экземпляр <see cref="T:System.Xml.XPath.XPathNavigator" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.MSNumber(System.Collections.Generic.IList{System.Xml.XPath.XPathItem})">
+      <summary>Реализует функцию расширения Microsoft XPathms:number.</summary>
+      <returns>
+        <see cref="T:System.Double" />.</returns>
+      <param name="value">Список <see cref="T:System.Collections.Generic.List`1" /> из элементов <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.MSStringCompare(System.String,System.String,System.String,System.String)">
+      <summary>Реализует функцию расширения Microsoft XPathms:string-compare. </summary>
+      <returns>Если <paramref name="s1" /> &lt; <paramref name="s2" />, метод возвращает -1.Если <paramref name="s1" /> == <paramref name="s2" />, метод возвращает 0.Если <paramref name="s1" /> &gt; <paramref name="s2" />, метод возвращает 1.</returns>
+      <param name="s1">Первая сравниваемая строка.</param>
+      <param name="s2">Вторая сравниваемая строка.</param>
+      <param name="lang">Язык.Необязателен</param>
+      <param name="options">Указывает, учитывается ли при сравнении регистр.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.MSUtc(System.String)">
+      <summary>Реализует функцию расширения Microsoft XPathms:utc.</summary>
+      <returns>Строка, содержащая сведения о дате и времени.При невозможности интерпретировать строку как допустимую строку, выражающую дату и время в формате XSD, функция возвращает пустую строку.</returns>
+      <param name="dateTime">Строка, содержащая данные о дате и времени.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.NormalizeSpace(System.String)">
+      <summary>Удаляет пробелы в начале и конце заданной строки и возвращает результат.Реализует функцию normalize-space из стандарта XPath консорциума W3C.</summary>
+      <returns>Нормализованная строка. </returns>
+      <param name="value">Указанная строка.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.OuterXml(System.Xml.XPath.XPathNavigator)">
+      <summary>Получает разметку, которая представляет открывающие и закрывающие теги узла, заданного аргументом <see cref="T:System.Xml.XPath.XPathNavigator" />, и всех его дочерних узлов.</summary>
+      <returns>Строка, которая содержит открывающие и закрывающие теги узла, заданного параметром <paramref name="navigator" />, и всех его дочерних узлов.</returns>
+      <param name="navigator">Объект <see cref="T:System.Xml.XPath.XPathNavigator" />, который задает узел.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.Round(System.Double)">
+      <summary>Округляет значение, используя правила округления XPath.Округление в сторону плюс бесконечности.Значения в диапазоне от -0,5 до -0,0 округляются до -0.0 (отрицательный нуль).</summary>
+      <returns>Округленное число типа <see cref="T:System.Double" />.</returns>
+      <param name="value">Округляемое число типа <see cref="T:System.Double" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.StartsWith(System.String,System.String)">
+      <summary>Реализует функцию XPath starts-with в соответствии со спецификацией консорциума W3C. </summary>
+      <returns>Значение true, если строка первого аргумента начинается со строки второго аргумента; в противном случае — значение false.</returns>
+      <param name="s1">Строка, начало которой сравнивается с <paramref name="s2" />.</param>
+      <param name="s2">Строка, сравниваемая с началом <paramref name="s1" />. </param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.Substring(System.String,System.Double)">
+      <summary>Реализует функцию XPath substring в соответствии со спецификацией консорциума W3C.</summary>
+      <returns>Подстрока первого аргумента, начиная с позиции, определяемой вторым аргументом.</returns>
+      <param name="value">Строка, из которой извлекается подстрока.</param>
+      <param name="startIndex">Положение начального знака подстроки в <paramref name="s" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.Substring(System.String,System.Double,System.Double)">
+      <summary>Реализует функцию XPath substring в соответствии со спецификацией консорциума W3C.</summary>
+      <returns>Подстрока первого аргумента, начиная с позиции, определяемой вторым аргументом, и длиной, определяемой третьим аргументом.</returns>
+      <param name="value">Строка, из которой извлекается подстрока.</param>
+      <param name="startIndex">Положение начального знака подстроки в <paramref name="s" />.</param>
+      <param name="length">Число символов в подстроке.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.SubstringAfter(System.String,System.String)">
+      <summary>Реализует функцию XPath substring-after в соответствии со спецификацией консорциума W3C.</summary>
+      <returns>Знаки в строке s1, находящиеся после s2, или пустая строка, если s1 не содержит s2.</returns>
+      <param name="s1">Строка, в которой требуется найти s2. </param>
+      <param name="s2">Строка, которую требуется найти в <paramref name="s1" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.SubstringBefore(System.String,System.String)">
+      <summary>Реализует функцию XPath substring-before в соответствии со спецификацией консорциума W3C.</summary>
+      <returns>Знаки в строке s1, находящиеся до s2, или пустая строка, если s1 не содержит s2.</returns>
+      <param name="s1">Строка, в которой требуется найти s2. </param>
+      <param name="s2">Строка, которую требуется найти в <paramref name="s1" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.SystemProperty(System.Xml.XmlQualifiedName)">
+      <summary>Реализует функцию XSLT system-property в соответствии со спецификацией консорциума W3C.</summary>
+      <returns>Значение системного свойства, определяемое параметром <paramref name="name" />.</returns>
+      <param name="name">Имя системного свойства.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltFunctions.Translate(System.String,System.String,System.String)">
+      <summary>Реализует функцию XPath translate в соответствии со спецификацией консорциума W3C.</summary>
+      <returns>Преобразованное значение в виде <see cref="T:System.String" />.</returns>
+      <param name="arg">Исходная строка.</param>
+      <param name="mapString">Подстрока в <paramref name="arg" />, которую требуется заменить на <paramref name="transString" />.</param>
+      <param name="transString">Строка, на которую требуется заменить <paramref name="mapString" />.</param>
+    </member>
+    <member name="T:System.Xml.Xsl.Runtime.XsltLibrary">
+      <summary>Реализует различные функции XPath и XSLT.</summary>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.CheckScriptNamespace(System.String)">
+      <summary>Проверяет, что пространства имен расширения и скрипта не противоречат друг другу.</summary>
+      <returns>Целое значение, которое используется только для внутренней инфраструктуры.</returns>
+      <param name="nsUri">Универсальный код ресурса (URI) пространства имен.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.ElementAvailable(System.Xml.XmlQualifiedName)">
+      <summary>Получает на основе аргумента строку, которая является полным именем XML.Этот метод реализует функцию element-available в соответствии со спецификацией XSL Transformations (XSLT) консорциума W3C.</summary>
+      <returns>Значение true, если расширенное имя является именем инструкции.Если код URI пространства имен expanded name равняется коду URI пространства имен XSLT, то имя указывает на определенный в XSLT элемент.В противном случае расширенное имя указывает на элемент расширения.Если код URI пространства имен expanded name имеет значение NULL, то функция element-available возвращает значение false.</returns>
+      <param name="name">Полное имя XML.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.EqualityOperator(System.Double,System.Collections.Generic.IList{System.Xml.XPath.XPathItem},System.Collections.Generic.IList{System.Xml.XPath.XPathItem})">
+      <summary>Определяет равенство коллекций типа <see cref="T:System.Xml.XPath.XPathItem" />.</summary>
+      <returns>Возвращает значение true, если коллекции равны; в противном случае возвращает значение false.</returns>
+      <param name="opCode">Значение типа <see cref="T:System.Double" />, определяющее операцию, которую требуется выполнить.</param>
+      <param name="left">
+        <see cref="T:System.Collections.Generic.IList" /> имеет тип данных <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+      <param name="right">
+        <see cref="T:System.Collections.Generic.IList" /> имеет тип данных <see cref="T:System.Xml.XPath.XPathItem" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.FormatMessage(System.String,System.Collections.Generic.IList{System.String})">
+      <summary>Форматирует сообщение исключение, составленное из строк формата, полученных из параметра <paramref name="res" /> и аргументов внутри параметра <paramref name="args" />.</summary>
+      <returns>Строка, содержащая форматированное сообщение исключения.</returns>
+      <param name="res">Строка, содержащая ресурс сообщения.</param>
+      <param name="args">Список строк, представляющих аргументы метода.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.FormatNumberDynamic(System.Double,System.String,System.Xml.XmlQualifiedName,System.String)">
+      <summary>Реализует функцию XSLT format-number().Дополнительные сведения см. в разделе форматирование чисел рекомендаций консорциума W3C.</summary>
+      <returns>Возвращает строку, задающую формат чисел.Дополнительные сведения см. в разделе форматирование чисел рекомендаций консорциума W3C.</returns>
+      <param name="value">Объект типа <see cref="T:System.Double" />, содержащий значение для форматирования.</param>
+      <param name="formatPicture">Строка, содержащая изображение формата.</param>
+      <param name="decimalFormatName">Объект <see cref="T:System.Xml.XmlQualifiedName" />, содержащий имя формата.</param>
+      <param name="errorMessageName">Строка, содержащая имя сообщения об ошибке.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.FormatNumberStatic(System.Double,System.Double)">
+      <summary>Реализует функцию XSLT format-number().Дополнительные сведения см. в разделе форматирование чисел рекомендаций консорциума W3C.</summary>
+      <returns>Строка, которая определяет формат.Дополнительные сведения см. в разделе форматирование чисел рекомендаций консорциума W3C.</returns>
+      <param name="value">Объект типа <see cref="T:System.Double" />, содержащий значение для форматирования.</param>
+      <param name="decimalFormatterIndex">Объект <see cref="T:System.Double" />, содержащий индекс модуля форматирования.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.FunctionAvailable(System.Xml.XmlQualifiedName)">
+      <summary>Реализует функцию XSLT function-available(). </summary>
+      <returns>Логическое значение true, если функция, определяемая параметром <paramref name="name" />, доступна.</returns>
+      <param name="name">Объект имени <see cref="T:System.Xml.XmlQualifiedName" />.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.IsSameNodeSort(System.Xml.XPath.XPathNavigator,System.Xml.XPath.XPathNavigator)">
+      <summary>Определяет, относятся ли два узла к одному и тому же типу узлов, и, если для данного типа узлов имеются расширенные имена, совпадают ли эти имена для данных узлов.</summary>
+      <returns>Логическое значение true, если два узла относятся к одному и тому же типу узлов, и, если для данного типа узлов имеются расширенные имена, эти имена для данных узлов совпадают.</returns>
+      <param name="nav1">Объект <see cref="T:System.Xml.XPath.XPathNavigator" /> для сравнения.</param>
+      <param name="nav2">Объект <see cref="T:System.Xml.XPath.XPathNavigator" /> для сравнения.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.LangToLcid(System.String,System.Boolean)">
+      <summary>Преобразует идентификатор языка (в соответствии с атрибутом xml:lang) в код языка (LCID).</summary>
+      <returns>Строка, содержащая код языка.</returns>
+      <param name="lang">Строка, определяющая язык.</param>
+      <param name="forwardCompatibility">Логическое значение, которое равняется true, если язык имеет прямую совместимость.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.NumberFormat(System.Collections.Generic.IList{System.Xml.XPath.XPathItem},System.String,System.Double,System.String,System.String,System.Double)">
+      <summary>Получает строку, задающую формат чисел.</summary>
+      <returns>Строка, задающая формат чисел.Используется только для внутренней инфраструктуры.</returns>
+      <param name="value">Список <see cref="T:System.Collections.Generic.IList" /> строк, представляющих аргументы метода.</param>
+      <param name="formatString">Объект <see cref="T:System.Double" />, задающий строку формата.</param>
+      <param name="lang">Объект <see cref="T:System.Double" />, задающий язык.</param>
+      <param name="letterValue">Строка, содержащая значение буквы.</param>
+      <param name="groupingSeparator">Строка, содержащая разделитель групп.</param>
+      <param name="groupingSize">Объект <see cref="T:System.Double" />, содержащий размер группы.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.RegisterDecimalFormat(System.Xml.XmlQualifiedName,System.String,System.String,System.String)">
+      <summary>Регистрирует формат десятичных чисел для заданного расширенного имени.Дополнительные сведения см. в разделе форматирование чисел рекомендаций консорциума W3C.</summary>
+      <returns>В текущей реализации всегда возвращает значение 0.</returns>
+      <param name="name">Объект <see cref="T:System.Xml.XmlQualifiedName" />, содержащий имя.</param>
+      <param name="infinitySymbol">Строка, содержащая символ бесконечности.</param>
+      <param name="nanSymbol">Строка, содержащая символ "не число".</param>
+      <param name="characters">Строка, содержащая знаки для форматирования.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.RegisterDecimalFormatter(System.String,System.String,System.String,System.String)">
+      <summary>Регистрирует объект десятичного модуля форматирования и возвращает присвоенный ему уникальный индекс.Объект десятичного модуля форматирования используется функцией XSLT format-number().Дополнительные сведения см. в разделе форматирование чисел рекомендаций консорциума W3C.</summary>
+      <returns>Возвращает уникальный индекс типа <see cref="T:System.Double" />, назначенный объекту десятичного модуля форматирования.</returns>
+      <param name="formatPicture">Строка, содержащая изображение формата.</param>
+      <param name="infinitySymbol">Строка, содержащая символ бесконечности.</param>
+      <param name="nanSymbol">Строка, содержащая символ "не число".</param>
+      <param name="characters">Строка, содержащая знаки для форматирования.</param>
+    </member>
+    <member name="M:System.Xml.Xsl.Runtime.XsltLibrary.RelationalOperator(System.Double,System.Collections.Generic.IList{System.Xml.XPath.XPathItem},System.Collections.Generic.IList{System.Xml.XPath.XPathItem})">
+      <summary>Определяет, как соотносятся между собой выражения <paramref name="left" /> и <paramref name="right" /> (больше, меньше, равно) на основе переданного значения <paramref name="opCode" />.</summary>
+      <returns>Логическое значение, равное true, если левое выражение больше или равно правому.</returns>
+      <param name="opCode">Задает процедуру вычисления двух выражений:</param>
+      <param name="left">Вычисляемое выражение.</param>
+      <param name="right">Вычисляемое выражение.</param>
+    </member>
+  </members>
+</doc>

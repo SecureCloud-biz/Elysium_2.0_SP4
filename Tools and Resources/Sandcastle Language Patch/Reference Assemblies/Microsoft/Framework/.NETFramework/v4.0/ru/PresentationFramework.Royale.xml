@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>PresentationFramework.Royale</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.Windows.Themes.BulletChrome">
+      <summary>Придает элементам управления Windows Presentation Foundation (WPF) <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> характерный внешний вид, соответствующий теме.Свойство <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> определяет внешний вид элементов управления <see cref="T:System.Windows.Controls.CheckBox" /> и <see cref="T:System.Windows.Controls.RadioButton" />.</summary>
+    </member>
+    <member name="M:Microsoft.Windows.Themes.BulletChrome.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:Microsoft.Windows.Themes.BulletChrome" />.</summary>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.BulletChrome.Background">
+      <summary>Получает или задает кисть, которая используется для заливки фона элемента управления <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" />.  </summary>
+      <returns>Кисть, которая используется для заливки фона элемента управления <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" />.</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.BulletChrome.BackgroundProperty">
+      <summary>Идентифицирует свойство зависимостей <see cref="P:Microsoft.Windows.Themes.BulletChrome.Background" />.</summary>
+      <returns>Идентификатор <see cref="P:Microsoft.Windows.Themes.BulletChrome.Background" /> свойства зависимостей.</returns>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.BulletChrome.BorderBrush">
+      <summary>Получает или задает кисть, которая используется для рисования внешней границы элемента управления <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" />.  </summary>
+      <returns>Кисть, которая используется для рисования внешней границы элемента управления <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" />.</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.BulletChrome.BorderBrushProperty">
+      <summary>Идентифицирует свойство зависимостей<see cref="P:Microsoft.Windows.Themes.BulletChrome.BorderBrush" />.</summary>
+      <returns>Идентификатор для свойства зависимостей <see cref="P:Microsoft.Windows.Themes.BulletChrome.BorderBrush" />.</returns>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.BulletChrome.BorderThickness">
+      <summary>Возвращает или задает ширину внешней границы элемента управления <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" />.  </summary>
+      <returns>Ширина границы элемента управления <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" />.</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.BulletChrome.BorderThicknessProperty">
+      <summary>Идентифицирует свойство зависимостей<see cref="P:Microsoft.Windows.Themes.BulletChrome.BorderThickness" />.</summary>
+      <returns>Идентификатор для свойства зависимостей <see cref="P:Microsoft.Windows.Themes.BulletChrome.BorderThickness" />.</returns>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.BulletChrome.IsChecked">
+      <summary>Получает или задает значение, показывающее, установлен ли элемент управления <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" />.  </summary>
+      <returns>Значение true, если элемент управления <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> установлен; значение false, если элемент управления <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> не установлен; в противном случае —  null.</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.BulletChrome.IsCheckedProperty">
+      <summary>Идентифицирует свойство зависимостей<see cref="P:Microsoft.Windows.Themes.BulletChrome.IsChecked" />.</summary>
+      <returns>Идентификатор для свойства зависимостей <see cref="P:Microsoft.Windows.Themes.BulletChrome.IsChecked" />.</returns>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.BulletChrome.IsRound">
+      <summary>Получает или задает значение, указывающее, имеет ли <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> скругленные углы.   </summary>
+      <returns>Значение true, если элемент управления <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> имеет скругленные углы; в противном случае — значение false.</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.BulletChrome.IsRoundProperty">
+      <summary>Идентифицирует свойство зависимостей<see cref="P:Microsoft.Windows.Themes.BulletChrome.IsRound" />.</summary>
+      <returns>Идентификатор для свойства зависимостей <see cref="P:Microsoft.Windows.Themes.BulletChrome.IsRound" />.</returns>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.BulletChrome.RenderMouseOver">
+      <summary>Получает или задает значение, определяющее, отображается ли элемент управления <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> так, как будто над ним находится указатель мыши.  </summary>
+      <returns>Значение true, если элемент управления <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> отображается так, будто над ним находится указатель мыши; в противном случае — значение false.</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.BulletChrome.RenderMouseOverProperty">
+      <summary>Идентифицирует свойство зависимостей<see cref="P:Microsoft.Windows.Themes.BulletChrome.RenderMouseOver" />.</summary>
+      <returns>Идентификатор для свойства зависимостей <see cref="P:Microsoft.Windows.Themes.BulletChrome.RenderMouseOver" />.</returns>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.BulletChrome.RenderPressed">
+      <summary>Получает или задает значение, определяющее, отображается ли элемент управления <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> нажатым.  </summary>
+      <returns>Значение true, если элемент управления <see cref="P:System.Windows.Controls.Primitives.BulletDecorator.Bullet" /> отображается нажатым, в противном случае —  false.</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.BulletChrome.RenderPressedProperty">
+      <summary>Идентифицирует свойство зависимостей<see cref="P:Microsoft.Windows.Themes.BulletChrome.RenderPressed" />.</summary>
+      <returns>Идентификатор для свойства зависимостей <see cref="P:Microsoft.Windows.Themes.BulletChrome.RenderPressed" />.</returns>
+    </member>
+    <member name="P:Microsoft.Windows.Themes.ButtonChrome.Fill">
+      <summary>Возвращает или задает кисть, которая используется для закрашивания внутренней части элемента управления <see cref="T:System.Windows.Controls.Button" />.  </summary>
+      <returns>Кисть.</returns>
+    </member>
+    <member name="F:Microsoft.Windows.Themes.ButtonChrome.FillProperty">
+      <summary>Идентифицирует свойство зависимостей <see cref="P:Microsoft.Windows.Themes.ButtonChrome.Fill" />.</summary>
+      <returns>Идентификатор для свойства зависимостей <see cref="P:Microsoft.Windows.Themes.ButtonChrome.Fill" />.</returns>
+    </member>
+    <member name="T:Microsoft.Windows.Themes.ProgressBarBrushConverter">
+      <summary>Создает объект <see cref="T:System.Windows.Media.Brush" />, который используется для рисования элемента управления <see cref="T:System.Windows.Controls.ProgressBar" />.</summary>
+    </member>
+    <member name="M:Microsoft.Windows.Themes.ProgressBarBrushConverter.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:Microsoft.Windows.Themes.ProgressBarBrushConverter" />.</summary>
+    </member>
+    <member name="M:Microsoft.Windows.Themes.ProgressBarBrushConverter.Convert(System.Object[],System.Type,System.Object,System.Globalization.CultureInfo)">
+      <summary>Создает объект <see cref="T:System.Windows.Media.DrawingBrush" /> для элемента управления <see cref="T:System.Windows.Controls.ProgressBar" />.</summary>
+      <returns>Объект <see cref="T:System.Windows.Media.DrawingBrush" />.</returns>
+      <param name="values">ForegroundBrush, IsIndeterminate, Indicator Width, Indicator Height, Track WidthОбъект <see cref="T:System.Windows.Media.Brush" /> используется для задания свойства <see cref="P:System.Windows.Controls.Control.Foreground" /> элемента управления <see cref="T:System.Windows.Controls.ProgressBar" />, операнд логического типа Boolean указывает, имеет ли свойство <see cref="P:System.Windows.Controls.ProgressBar.IsIndeterminate" /> значение true, операнд типа <see cref="T:System.Double" /> определяет свойство <see cref="P:System.Windows.FrameworkElement.Width" /> индикатора, операнд типа <see cref="T:System.Double" /> определяет свойство <see cref="P:System.Windows.FrameworkElement.Height" /> индикатора, операнд типа <see cref="T:System.Double" /> определяет ширину элемента <see cref="T:System.Windows.Controls.Primitives.Track" />. </param>
+      <param name="targetType">Этот параметр не используется.</param>
+      <param name="parameter">Этот параметр не используется.</param>
+      <param name="culture">Этот параметр не используется.</param>
+    </member>
+    <member name="M:Microsoft.Windows.Themes.ProgressBarBrushConverter.ConvertBack(System.Object,System.Type[],System.Object,System.Globalization.CultureInfo)">
+      <summary>Не реализован.</summary>
+      <returns>null.</returns>
+      <param name="value">Этот параметр не используется.</param>
+      <param name="targetTypes">Этот параметр не используется.</param>
+      <param name="parameter">Этот параметр не используется.</param>
+      <param name="culture">Этот параметр не используется.</param>
+    </member>
+  </members>
+</doc>

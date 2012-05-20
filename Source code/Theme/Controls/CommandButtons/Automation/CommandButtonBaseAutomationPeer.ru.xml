@@ -31,7 +31,7 @@
     </property>
     <method name="M:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer.GetAutomationControlTypeCore">
       <summary>
-        Возвращает тип элемента управления для объекта-наследника класса <see cref="T:Elysium.Controls.Primitives.CommandButtonBase"/>, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer"/>. Данный метод вызывается методом <see cref="T:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType"/>.
+        Возвращает тип элемента управления для объекта-наследника класса <see cref="T:Elysium.Controls.Primitives.CommandButtonBase"/>, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer"/>. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType"/>.
       </summary>
       <returns>
         Значение <see cref="F:System.Windows.Automation.Peers.AutomationControlType.Button">AutomationControlType.Button</see>.

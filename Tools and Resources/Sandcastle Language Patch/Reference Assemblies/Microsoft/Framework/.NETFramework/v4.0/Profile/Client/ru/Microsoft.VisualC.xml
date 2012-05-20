@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Microsoft.VisualC</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.VisualC.DebugInfoInPDBAttribute">
+      <summary>Атрибут, применяемый к собственным классам и "сообщающий" отладчику о необходимости искать сведения в PDB-файле, а не в метаданных.</summary>
+    </member>
+    <member name="M:Microsoft.VisualC.DebugInfoInPDBAttribute.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:Microsoft.VisualC.DebugInfoInPDBAttribute" />.</summary>
+    </member>
+    <member name="T:Microsoft.VisualC.DecoratedNameAttribute">
+      <summary>Атрибут, используемый компилятором для передачи внутреннего имени метода компоновщику.</summary>
+    </member>
+    <member name="M:Microsoft.VisualC.DecoratedNameAttribute.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualC.DecoratedNameAttribute" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualC.DecoratedNameAttribute.#ctor(System.String)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:Microsoft.VisualC.DecoratedNameAttribute" />, используя указанное внутреннее имя.</summary>
+      <param name="decoratedName">Внутреннее имя метода.</param>
+    </member>
+    <member name="T:Microsoft.VisualC.IsConstModifier">
+      <summary>Является модификатором const.</summary>
+    </member>
+    <member name="M:Microsoft.VisualC.IsConstModifier.#ctor">
+      <summary>Конструктор.</summary>
+    </member>
+    <member name="T:Microsoft.VisualC.IsCXXReferenceModifier">
+      <summary>Является модификатором ссылки C++.</summary>
+    </member>
+    <member name="M:Microsoft.VisualC.IsCXXReferenceModifier.#ctor">
+      <summary>Конструктор.</summary>
+    </member>
+    <member name="T:Microsoft.VisualC.IsLongModifier">
+      <summary>Является модификатором long.</summary>
+    </member>
+    <member name="M:Microsoft.VisualC.IsLongModifier.#ctor">
+      <summary>Конструктор.</summary>
+    </member>
+    <member name="T:Microsoft.VisualC.IsSignedModifier">
+      <summary>Является модификатором signed.</summary>
+    </member>
+    <member name="M:Microsoft.VisualC.IsSignedModifier.#ctor">
+      <summary>Конструктор.</summary>
+    </member>
+    <member name="T:Microsoft.VisualC.IsVolatileModifier">
+      <summary>Является модификатором volatile.</summary>
+    </member>
+    <member name="M:Microsoft.VisualC.IsVolatileModifier.#ctor">
+      <summary>Конструктор.</summary>
+    </member>
+    <member name="T:Microsoft.VisualC.MiscellaneousBitsAttribute">
+      <summary>Атрибут, сохраняющий различные сведения о типе в метаданных.</summary>
+    </member>
+    <member name="M:Microsoft.VisualC.MiscellaneousBitsAttribute.#ctor(System.Int32)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:Microsoft.VisualC.MiscellaneousBitsAttribute" />, используя указанную битовую маску.</summary>
+      <param name="miscellaneousBits">Битовая маска, содержащая сведения о типе.</param>
+    </member>
+    <member name="F:Microsoft.VisualC.MiscellaneousBitsAttribute.m_dwAttrs">
+      <summary>Битовая маска, содержащая сведения о типе.</summary>
+    </member>
+    <member name="T:Microsoft.VisualC.NeedsCopyConstructorModifier">
+      <summary>Настраиваемый модификатор, применяемый к параметрам и "сообщающий" среде CLR о необходимости вызова конструктора копии параметра при его маршалингу.</summary>
+    </member>
+    <member name="M:Microsoft.VisualC.NeedsCopyConstructorModifier.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:Microsoft.VisualC.NeedsCopyConstructorModifier" />.</summary>
+    </member>
+    <member name="T:Microsoft.VisualC.NoSignSpecifiedModifier">
+      <summary>Модификатор отсутствия знака.</summary>
+    </member>
+    <member name="M:Microsoft.VisualC.NoSignSpecifiedModifier.#ctor">
+      <summary>Конструктор.</summary>
+    </member>
+  </members>
+</doc>

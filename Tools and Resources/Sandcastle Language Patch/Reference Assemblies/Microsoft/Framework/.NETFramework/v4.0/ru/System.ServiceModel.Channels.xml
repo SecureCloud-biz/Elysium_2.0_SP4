@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.ServiceModel.Channels</name>
+  </assembly>
+  <members>
+    <member name="T:System.ServiceModel.Channels.ByteStreamMessageEncodingBindingElement">
+      <summary>Элемент привязки, который указывает кодировку сообщения в виде потока байтов и имеет параметр для указания кодировки символов.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Channels.ByteStreamMessageEncodingBindingElement.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Channels.ByteStreamMessageEncodingBindingElement" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Channels.ByteStreamMessageEncodingBindingElement.#ctor(System.Xml.XmlDictionaryReaderQuotas)">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Channels.ByteStreamMessageEncodingBindingElement" /> с указанной квотой.</summary>
+      <param name="quota">Ограничения по сложности сообщений XML, которые могут обрабатываться конечными точками, настроенными с использованием этого элемента привязки.</param>
+    </member>
+    <member name="M:System.ServiceModel.Channels.ByteStreamMessageEncodingBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)">
+      <summary>Выполняет на стороне клиента построение стека фабрики каналов, создающей каналы заданного типа для заданного контекста.</summary>
+      <returns>Фабрика каналов типа <paramref name="TChannel" /> для указанного контекста.</returns>
+      <param name="context">Контекст привязок для канала.</param>
+      <typeparam name="TChannel">Тип канала, создаваемого фабрикой каналов.</typeparam>
+    </member>
+    <member name="M:System.ServiceModel.Channels.ByteStreamMessageEncodingBindingElement.BuildChannelListener``1(System.ServiceModel.Channels.BindingContext)">
+      <summary>Создает прослушиватель каналов на стороне службы, принимающей заданный тип канала для заданного контекста.</summary>
+      <returns>Прослушиватель каналов типа <paramref name="TChannel" /> для указанного контекста.</returns>
+      <param name="context">Контекст привязок для прослушивателя.</param>
+      <typeparam name="TChannel">Тип канала, принимаемого прослушивателем каналов.</typeparam>
+    </member>
+    <member name="M:System.ServiceModel.Channels.ByteStreamMessageEncodingBindingElement.CanBuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)">
+      <summary>Возвращает значение, указывающее, может ли текущая привязка выполнить построение фабрики заданного типа каналов и контекста.</summary>
+      <returns>Значение true, если заданный стек фабрики каналов может быть построен в службе; в противном случае — значение false.</returns>
+      <param name="context">Контекст привязок для канала.</param>
+      <typeparam name="TChannel">Тип канала, создаваемого фабрикой каналов.</typeparam>
+    </member>
+    <member name="M:System.ServiceModel.Channels.ByteStreamMessageEncodingBindingElement.CanBuildChannelListener``1(System.ServiceModel.Channels.BindingContext)">
+      <summary>Возвращает значение, указывающее, может ли текущая привязка выполнить построение прослушивателя заданного типа каналов и контекста.</summary>
+      <returns>Значение true, если заданный стек прослушивателей каналов может быть построен на стороне службы; в противном случае — значение false.</returns>
+      <param name="context">Контекст привязок для прослушивателя.</param>
+      <typeparam name="TChannel">Тип канала, принимаемого прослушивателем каналов.</typeparam>
+    </member>
+    <member name="M:System.ServiceModel.Channels.ByteStreamMessageEncodingBindingElement.Clone">
+      <summary>Создает новый объект <see cref="T:System.ServiceModel.Channels.ByteStreamMessageEncodingBindingElement" />, инициализированный из текущего объекта.</summary>
+      <returns>Элемент привязки со значениями свойств, равными значениям свойств текущего элемента.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Channels.ByteStreamMessageEncodingBindingElement.CreateMessageEncoderFactory">
+      <summary>Создает фабрику для кодировщиков сообщений потоком байтов, которые используют версии SOAP и WS-Addressing и кодировку символов, заданную текущим элементом привязки кодирования.</summary>
+      <returns>Фабрика кодировщиков сообщений, которую создает этот элемент привязки.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Channels.ByteStreamMessageEncodingBindingElement.MessageVersion">
+      <summary>Возвращает или задает используемые или ожидаемые версии сообщения SOAP и WS-Addressing.</summary>
+      <returns>Ожидаемая или используемая версия сообщения.</returns>
+    </member>
+    <member name="P:System.ServiceModel.Channels.ByteStreamMessageEncodingBindingElement.ReaderQuotas">
+      <summary>Возвращает или задает ограничения по сложности сообщений XML, которые могут обрабатываться конечными точками, настроенными с этим элементом привязки.</summary>
+      <returns>Ограничения по сложности для участвующих в обмене сообщений SOAP.Значения по умолчанию для этих ограничений приведены в следующем разделе «Примечания».</returns>
+    </member>
+    <member name="M:System.ServiceModel.Channels.ByteStreamMessageEncodingBindingElement.ShouldSerializeMessageVersion">
+      <summary>Возвращает значение, указывающее изменено ли значение свойства <see cref="P:System.ServiceModel.Channels.ByteStreamMessageEncodingBindingElement.MessageVersion" /> и должно ли оно быть сериализовано.</summary>
+      <returns>false.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Channels.ByteStreamMessageEncodingBindingElement.ShouldSerializeReaderQuotas">
+      <summary>Возвращает значение, указывающее изменено ли значение свойства <see cref="P:System.ServiceModel.Channels.ByteStreamMessageEncodingBindingElement.ReaderQuotas" /> и должно ли оно быть сериализовано.</summary>
+      <returns>Значение true, если значение свойства <see cref="P:System.ServiceModel.Channels.ByteStreamMessageEncodingBindingElement.ReaderQuotas" /> следует сериализовать, в противном случае — false.</returns>
+    </member>
+    <member name="T:System.ServiceModel.Configuration.ByteStreamMessageEncodingElement">
+      <summary>Включает построение элемента конфигурации, определяющего параметры элемента кодирования сообщения потоком данных.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.ByteStreamMessageEncodingElement.#ctor">
+      <summary>Инициализирует новый экземпляр класса <see cref="T:System.ServiceModel.Configuration.ByteStreamMessageEncodingElement" />.</summary>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.ByteStreamMessageEncodingElement.ApplyConfiguration(System.ServiceModel.Channels.BindingElement)">
+      <summary>Применяет содержимое указанного элемента привязки к текущему объекту <see cref="T:System.ServiceModel.Configuration.ByteStreamMessageEncodingElement" />.</summary>
+      <param name="bindingElement">Элемент привязки, параметры которого должны быть применены к данному элементу конфигурации.</param>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.ByteStreamMessageEncodingElement.BindingElementType">
+      <summary>Возвращает тип результата <see cref="T:System.ServiceModel.Channels.ByteStreamMessageEncodingBindingElement" />.</summary>
+      <returns>Тип элемента конфигурации.</returns>
+    </member>
+    <member name="M:System.ServiceModel.Configuration.ByteStreamMessageEncodingElement.CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement)">
+      <summary>Копирует содержимое из указанного раздела конфигурации в текущий объект <see cref="T:System.ServiceModel.Configuration.ByteStreamMessageEncodingElement" />.</summary>
+      <param name="from">Копируемое содержимое.</param>
+    </member>
+    <member name="P:System.ServiceModel.Configuration.ByteStreamMessageEncodingElement.ReaderQuotas">
+      <summary>Возвращает элемент конфигурации <see cref="T:System.ServiceModel.Configuration.XmlDictionaryReaderQuotasElement" />, накладывающий ограничения на сложность сообщений SOAP, которые могут быть обработаны конечными точками, для которых задана эта кодировка.</summary>
+      <returns>Элемент конфигурации.</returns>
+    </member>
+  </members>
+</doc>
