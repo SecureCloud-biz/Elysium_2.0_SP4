@@ -99,10 +99,10 @@ namespace Elysium.Controls
         {
             ValidationHelper.NotNull(obj, () => obj);
             var instance = (ApplicationBar)obj;
-            instance.OnIsOpenChanged( /*BooleanBoxingHelper.Unbox(e.OldValue), */BooleanBoxingHelper.Unbox(e.NewValue));
+            instance.OnIsOpenChanged(/*BooleanBoxingHelper.Unbox(e.OldValue),*/ BooleanBoxingHelper.Unbox(e.NewValue));
         }
 
-        private void OnIsOpenChanged( /*bool oldIsOpen, */ bool newIsOpen)
+        private void OnIsOpenChanged(/*bool oldIsOpen,*/ bool newIsOpen)
         {
             if (newIsOpen)
             {

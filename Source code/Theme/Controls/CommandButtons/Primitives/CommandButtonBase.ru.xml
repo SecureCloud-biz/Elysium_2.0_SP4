@@ -84,6 +84,17 @@
         Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader"/>.
       </value>
     </field>
+    <method name="M:Elysium.Controls.Primitives.CommandButtonBase.OnHasHeaderChanged(System.Boolean,System.Boolean)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader"/>.
+      </summary>
+      <param name="oldHasHeader">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader"/>.
+      </param>
+      <param name="newHasHeader">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader"/>.
+      </param>
+    </method>
     <property name="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat">
       <summary>
         Возвращает или задает составную строку, которая определяет форматирование заголовка, если он отображается как строка.
@@ -147,7 +158,7 @@
           </item>
         </list>
       </remarks>
-      <seealso cref="P:System.Windows.Controls.HeaderTemplateedContentControl.HeaderTemplate"/>
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.HeaderTemplate"/>
     </property>
     <field name="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateProperty">
       <summary>
@@ -189,7 +200,7 @@
           </item>
         </list>
       </remarks>
-      <seealso cref="P:System.Windows.Controls.HeaderTemplateSelectoredContentControl.HeaderTemplateSelector"/>
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.HeaderTemplateSelector"/>
     </property>
     <field name="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelectorProperty">
       <summary>

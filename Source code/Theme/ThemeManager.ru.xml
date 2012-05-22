@@ -36,7 +36,7 @@
         <code lang="C#">
           var control = new TabControl();
           var currentValue = ThemeManager.GetTheme(control);
-          SetTheme(control, null);
+          ThemeManager.SetTheme(control, null);
         </code>
         <code lang="XAML">
           &lt;TabControl metro:ThemeManager.Theme="Light"/&gt;
@@ -99,7 +99,7 @@
         <code lang="C#">
           var control = new TabControl();
           var currentValue = ThemeManager.GetAccentBrush(control);
-          SetAccentBrush(control, null);
+          ThemeManager.SetAccentBrush(control, null);
         </code>
         <code lang="XAML">
           &lt;TabControl metro:ThemeManager.AccentBrush="{DynamicResource BlueBrush}"/&gt;
@@ -161,7 +161,7 @@
         <code lang="C#">
           var control = new TabControl();
           var currentValue = ThemeManager.GetContrastBrush(control);
-          SetContrastBrush(control, null);
+          ThemeManager.SetContrastBrush(control, null);
         </code>
         <code lang="XAML">
           &lt;TabControl metro:ThemeManager.ContrastBrush="White"/&gt;

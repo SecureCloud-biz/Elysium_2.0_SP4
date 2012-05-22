@@ -71,7 +71,7 @@ namespace Elysium.Controls.Primitives
 
         private static readonly DependencyPropertyKey HasHeaderPropertyKey =
             DependencyProperty.RegisterReadOnly("HasHeader", typeof(bool), typeof(CommandButtonBase),
-                                                new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox));
+                                                new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, OnHasHeaderChanged));
 
         [PublicAPI]
         public static readonly DependencyProperty HasHeaderProperty = HasHeaderPropertyKey.DependencyProperty;
@@ -83,6 +83,21 @@ namespace Elysium.Controls.Primitives
         {
             get { return BooleanBoxingHelper.Unbox(GetValue(HasHeaderProperty)); }
             private set { SetValue(HasHeaderPropertyKey, BooleanBoxingHelper.Box(value)); }
+        }
+
+        private static void OnHasHeaderChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            var instance = (CommandButtonBase)obj;
+            instance.OnHasHeaderChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
+        }
+
+        [PublicAPI]
+        [SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string")]
+// ReSharper disable VirtualMemberNeverOverriden.Global
+        protected virtual void OnHasHeaderChanged(bool oldHasHeader, bool newHasHeader)
+// ReSharper restore VirtualMemberNeverOverriden.Global
+        {
         }
 
         [PublicAPI]

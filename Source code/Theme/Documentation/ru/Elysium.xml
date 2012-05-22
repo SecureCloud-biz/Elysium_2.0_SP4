@@ -116,7 +116,7 @@
         <code lang="C#">
           var control = new TabControl();
           var currentValue = ThemeManager.GetTheme(control);
-          SetTheme(control, null);
+          ThemeManager.SetTheme(control, null);
         </code>
         <code lang="XAML">
           &lt;TabControl metro:ThemeManager.Theme="Light"/&gt;
@@ -179,7 +179,7 @@
         <code lang="C#">
           var control = new TabControl();
           var currentValue = ThemeManager.GetAccentBrush(control);
-          SetAccentBrush(control, null);
+          ThemeManager.SetAccentBrush(control, null);
         </code>
         <code lang="XAML">
           &lt;TabControl metro:ThemeManager.AccentBrush="{DynamicResource BlueBrush}"/&gt;
@@ -241,7 +241,7 @@
         <code lang="C#">
           var control = new TabControl();
           var currentValue = ThemeManager.GetContrastBrush(control);
-          SetContrastBrush(control, null);
+          ThemeManager.SetContrastBrush(control, null);
         </code>
         <code lang="XAML">
           &lt;TabControl metro:ThemeManager.ContrastBrush="White"/&gt;
@@ -345,7 +345,7 @@
         <code lang="C#">
           var control = new Window();
           var currentValue = Parameters.GetTitleFontSize(control);
-          SetTitleFontSize(control, 12d * (96d / 72d));
+          Parameters.SetTitleFontSize(control, 12d * (96d / 72d));
         </code>
         <code lang="XAML">
           &lt;Window metro:Parameters.TitleFontSize="12pt"/&gt;
@@ -413,8 +413,8 @@
       <example>
         <code lang="C#">
           var control = new TabControl();
-          var currentValue = Parameters.GetTitleFontSize(control);
-          SetTitleFontSize(control, 12d * (96d / 72d));
+          var currentValue = Parameters.GetHeaderFontSize(control);
+          Parameters.SetHeaderFontSize(control, 12d * (96d / 72d));
         </code>
         <code lang="XAML">
           &lt;TabControl metro:Parameters.TitleFontSize="12pt"/&gt;
@@ -482,7 +482,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetContentFontSize(control);
-          SetContentFontSize(control, 10d * (96d / 72d));
+          Parameters.SetContentFontSize(control, 10d * (96d / 72d));
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.ContentFontSize="10pt"/&gt;
@@ -552,7 +552,7 @@
         <code lang="C#">
           var control = new TextBox();
           var currentValue = Parameters.GetTextFontSize(control);
-          SetTextFontSize(control, 9d * (96d / 72d));
+          Parameters.SetTextFontSize(control, 9d * (96d / 72d));
         </code>
         <code lang="XAML">
           &lt;TextBox metro:Parameters.ContentFontSize="9pt"/&gt;
@@ -615,7 +615,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetDefaultThickness(control);
-          SetDefaultThickness(control, new Thickness(1d));
+          Parameters.SetDefaultThickness(control, new Thickness(1d));
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.DefaultThickness="1"/&gt;
@@ -678,7 +678,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetSemiBoldThickness(control);
-          SetSemiBoldThickness(control, new Thickness(1.5d));
+          Parameters.SetSemiBoldThickness(control, new Thickness(1.5d));
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.SemiBoldThickness="1.5px"/&gt;
@@ -741,7 +741,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetBoldThickness(control);
-          SetBoldThickness(control, new Thickness(2d));
+          Parameters.SetBoldThickness(control, new Thickness(2d));
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.BoldThickness="2"/&gt;
@@ -804,7 +804,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetDefaultThicknessValue(control);
-          SetDefaultThicknessValue(control, 1d);
+          Parameters.SetDefaultThicknessValue(control, 1d);
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.DefaultThicknessValue="1px"/&gt;
@@ -867,7 +867,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetSemiBoldThicknessValue(control);
-          SetSemiBoldThicknessValue(control, 1.5d);
+          Parameters.SetSemiBoldThicknessValue(control, 1.5d);
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.SemiBoldThicknessValue="1.5px"/&gt;
@@ -930,7 +930,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetBoldThicknessValue(control);
-          SetBoldThicknessValue(control, 2d);
+          Parameters.SetBoldThicknessValue(control, 2d);
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.BoldThicknessValue="2px"/&gt;
@@ -993,7 +993,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetDefaultPadding(control);
-          SetDefaultPadding(control, new Thickness(1d));
+          Parameters.SetDefaultPadding(control, new Thickness(1d));
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.DefaultPadding="1"/&gt;
@@ -1056,7 +1056,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetSemiBoldPadding(control);
-          SetSemiBoldPadding(control, new Thickness(2d));
+          Parameters.SetSemiBoldPadding(control, new Thickness(2d));
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.SemiBoldPadding="2px"/&gt;
@@ -1119,7 +1119,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetBoldPadding(control);
-          SetBoldPadding(control, new Thickness(5d));
+          Parameters.SetBoldPadding(control, new Thickness(5d));
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.BoldPadding="5px"/&gt;
@@ -1182,7 +1182,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetDefaultPaddingValue(control);
-          SetDefaultPaddingValue(control, 1d);
+          Parameters.SetDefaultPaddingValue(control, 1d);
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.DefaultPaddingValue="1px"/&gt;
@@ -1245,7 +1245,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetSemiBoldPaddingValue(control);
-          SetSemiBoldPaddingValue(control, 2d);
+          Parameters.SetSemiBoldPaddingValue(control, 2d);
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.SemiBoldPaddingValue="2px"/&gt;
@@ -1308,7 +1308,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetBoldPaddingValue(control);
-          SetBoldPaddingValue(control, 5d);
+          Parameters.SetBoldPaddingValue(control, 5d);
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.BoldPaddingValue="5px"/&gt;
@@ -1371,7 +1371,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetDefaultDuration(control);
-          SetDefaultDuration(control, new Duration(TimeSpan.FromSeconds(0d)));
+          Parameters.SetDefaultDuration(control, new Duration(TimeSpan.FromSeconds(0d)));
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.DefaultDuration="00:00:00.0"/&gt;
@@ -1433,7 +1433,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetMinimumDuration(control);
-          SetMinimumDuration(control, new Duration(TimeSpan.FromSeconds(0.2d)));
+          Parameters.SetMinimumDuration(control, new Duration(TimeSpan.FromSeconds(0.2d)));
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.MinimumDuration="00:00:00.2"/&gt;
@@ -1495,7 +1495,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetOptimumDuration(control);
-          SetOptimumDuration(control, new Duration(TimeSpan.FromSeconds(0.5d)));
+          Parameters.SetOptimumDuration(control, new Duration(TimeSpan.FromSeconds(0.5d)));
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.OptimumDuration="00:00:00.5"/&gt;
@@ -1557,7 +1557,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetMaximumDuration(control);
-          SetMaximumDuration(control, new Duration(TimeSpan.FromSeconds(1d)));
+          Parameters.SetMaximumDuration(control, new Duration(TimeSpan.FromSeconds(1d)));
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.MaximumDuration="00:00:01"/&gt;
@@ -1621,7 +1621,7 @@
         <code lang="C#">
           var control = new ComboBox();
           var currentValue = Parameters.GetShadowBrush(control);
-          SetShadowBrush(control, Brushes.Black);
+          Parameters.SetShadowBrush(control, Brushes.Black);
         </code>
         <code lang="XAML">
           &lt;ComboBox metro:Parameters.ShadowBrush="Black"/&gt;
@@ -1685,7 +1685,7 @@
         <code lang="C#">
           var control = new CommandButton();
           var currentValue = Parameters.GetCommandButtonMask(control);
-          SetCommandButtonMask(control, Brushes.Black);
+          Parameters.SetCommandButtonMask(control, Brushes.Black);
         </code>
         <code lang="XAML">
           &lt;CommandButton metro:Parameters.CommandButtonMask="Black"/&gt;
@@ -1747,7 +1747,7 @@
         <code lang="C#">
           var control = new CheckBox();
           var currentValue = Parameters.GetBulletDecoratorSize(control);
-          SetBulletDecoratorSize(control, 16d);
+          Parameters.SetBulletDecoratorSize(control, 16d);
         </code>
         <code lang="XAML">
           &lt;CheckBox metro:Parameters.BulletDecoratorSize="16px"/&gt;
@@ -1818,7 +1818,7 @@
         <code lang="C#">
           var control = new CheckBox();
           var currentValue = Parameters.GetBulletSize(control);
-          SetBulletSize(control, 8d);
+          Parameters.SetBulletSize(control, 8d);
         </code>
         <code lang="XAML">
           &lt;CheckBox metro:Parameters.BulletSize="8px"/&gt;
@@ -1889,7 +1889,7 @@
         <code lang="C#">
           var control = new CheckBox();
           var currentValue = Parameters.GetCheckSize(control);
-          SetCheckSize(control, 10d);
+          Parameters.SetCheckSize(control, 10d);
         </code>
         <code lang="XAML">
           &lt;CheckBox metro:Parameters.CheckSize="10px"/&gt;
@@ -1952,7 +1952,7 @@
         <code lang="C#">
           var control = new ToggleSwitch();
           var currentValue = Parameters.GetToggleSwitchTrackSize(control);
-          SetToggleSwitchTrackSize(control, 48d);
+          Parameters.SetToggleSwitchTrackSize(control, 48d);
         </code>
         <code lang="XAML">
           &lt;ToggleSwitch metro:Parameters.ToggleSwitchTrackSize="48px"/&gt;
@@ -2015,7 +2015,7 @@
         <code lang="C#">
           var control = new ToggleSwitch();
           var currentValue = Parameters.GetToggleSwitchThumbThickness(control);
-          SetToggleSwitchThumbThickness(control, 10d);
+          Parameters.SetToggleSwitchThumbThickness(control, 10d);
         </code>
         <code lang="XAML">
           &lt;ToggleSwitch metro:Parameters.ToggleSwitchThumbThickness="10px"/&gt;
@@ -2082,7 +2082,7 @@
         <code lang="C#">
           var control = new ComboBox();
           var currentValue = Parameters.GetComboBoxButtonSize(control);
-          SetComboBoxButtonSize(control, 18d);
+          Parameters.SetComboBoxButtonSize(control, 18d);
         </code>
         <code lang="XAML">
           &lt;ComboBox metro:Parameters.ComboBoxButtonSize="18px"/&gt;
@@ -2151,7 +2151,7 @@
         <code lang="C#">
           var control = new ComboBox();
           var currentValue = Parameters.GetComboBoxArrowSize(control);
-          SetComboBoxArrowSize(control, 8d);
+          Parameters.SetComboBoxArrowSize(control, 8d);
         </code>
         <code lang="XAML">
           &lt;ComboBox metro:Parameters.ComboBoxArrowSize="8px"/&gt;
@@ -2222,7 +2222,7 @@
         <code lang="C#">
           var control = new ComboBox();
           var currentValue = Parameters.GetComboBoxArrowMargin(control);
-          SetComboBoxArrowMargin(control, new Thickness(5d, 0d, 5d, 0d));
+          Parameters.SetComboBoxArrowMargin(control, new Thickness(5d, 0d, 5d, 0d));
         </code>
         <code lang="XAML">
           &lt;ComboBox metro:Parameters.ComboBoxArrowMargin="5,0,5,0"/&gt;
@@ -2289,7 +2289,7 @@
         <code lang="C#">
           var control = new Slider();
           var currentValue = Parameters.GetSliderTrackSize(control);
-          SetSliderTrackSize(control, 48d);
+          Parameters.SetSliderTrackSize(control, 48d);
         </code>
         <code lang="XAML">
           &lt;Slider metro:Parameters.SliderTrackSize="48px"/&gt;
@@ -2352,7 +2352,7 @@
         <code lang="C#">
           var control = new Slider();
           var currentValue = Parameters.GetSliderThumbThickness(control);
-          SetSliderThumbThickness(control, 6d);
+          Parameters.SetSliderThumbThickness(control, 6d);
         </code>
         <code lang="XAML">
           &lt;Slider metro:Parameters.SliderThumbThickness="6px"/&gt;
@@ -2415,7 +2415,7 @@
         <code lang="C#">
           var control = new LinearProgressBar();
           var currentValue = Parameters.GetProgressBarBusyElementSize(control);
-          SetProgressBarBusyElementSize(control, 4d);
+          Parameters.SetProgressBarBusyElementSize(control, 4d);
         </code>
         <code lang="XAML">
           &lt;LinearProgressBar metro:Parameters.ProgressBarBusyElementSize="4px"/&gt;
@@ -2480,7 +2480,7 @@
         <code lang="C#">
           var control = new ScrollBar();
           var currentValue = Parameters.GetScrollBarArrowSize(control);
-          SetScrollBarArrowSize(control, 6d);
+          Parameters.SetScrollBarArrowSize(control, 6d);
         </code>
         <code lang="XAML">
           &lt;ScrollBar metro:Parameters.ScrollBarArrowSize="6px"/&gt;
@@ -2545,7 +2545,7 @@
         <code lang="C#">
           var control = new TabControl();
           var currentValue = Parameters.GetTabControlIndicatorBrush(control);
-          SetTabControlIndicatorBrush(control, Brushes.LightGray);
+          Parameters.SetTabControlIndicatorBrush(control, Brushes.LightGray);
         </code>
         <code lang="XAML">
           &lt;CommandButton metro:Parameters.TabControlIndicatorBrush="LightGray"/&gt;
@@ -2615,7 +2615,7 @@
         <code lang="C#">
           var control = new TabControl();
           var currentValue = Parameters.GetTabControlIndicatorThickness(control);
-          SetTabControlIndicatorThickness(control, 2d);
+          Parameters.SetTabControlIndicatorThickness(control, 2d);
         </code>
         <code lang="XAML">
           &lt;Slider metro:Parameters.TabControlIndicatorThickness="2px"/&gt;
@@ -2732,7 +2732,7 @@
         <code lang="C#">
           var control = new MenuItem();
           var currentValue = Parameters.GetSubmenuItemBulletSize(control);
-          SetSubmenuItemBulletSize(control, 12d);
+          Parameters.SetSubmenuItemBulletSize(control, 12d);
         </code>
         <code lang="XAML">
           &lt;MenuItem metro:Parameters.SubmenuItemBulletSize="12px"/&gt;
@@ -2797,7 +2797,7 @@
         <code lang="C#">
           var control = new MenuItem();
           var currentValue = Parameters.GetSubmenuHeaderArrowSize(control);
-          SetSubmenuHeaderArrowSize(control, 8d);
+          Parameters.SetSubmenuHeaderArrowSize(control, 8d);
         </code>
         <code lang="XAML">
           &lt;MenuItem metro:Parameters.SubmenuHeaderArrowSize="8px"/&gt;
@@ -2868,7 +2868,7 @@
         <code lang="C#">
           var control = new MenuItem();
           var currentValue = Parameters.GetSubmenuHeaderArrowMargin(control);
-          SetSubmenuHeaderArrowMargin(control, new Thickness(3d, 0d, 3d, 0d));
+          Parameters.SetSubmenuHeaderArrowMargin(control, new Thickness(3d, 0d, 3d, 0d));
         </code>
         <code lang="XAML">
           &lt;MenuItem metro:Parameters.SubmenuHeaderArrowMargin="3,0,3,0"/&gt;
@@ -2937,7 +2937,7 @@
         <code lang="C#">
           var control = new Elysium.Controls.Window();
           var currentValue = Parameters.GetWindowResizeBorderThickness(control);
-          SetWindowResizeBorderThickness(control, 3d);
+          Parameters.SetWindowResizeBorderThickness(control, 3d);
         </code>
         <code lang="XAML">
           &lt;metro:Window metro:Parameters.WindowResizeBorderThickness="3px"/&gt;
@@ -3804,6 +3804,400 @@
       </returns>
       <ensures>Возвращаемое значение всегда является значением AutomationControlType.Menu.</ensures>
     </member>
+    <member name="T:Elysium.Controls.ApplicationBar">
+      <summary>
+        Панель управления приложением.
+      </summary>
+    </member>
+    <member name="P:Elysium.Controls.ApplicationBar.Dock">
+      <summary>
+        Получает или задаёт алгоритм размещения элемента управления внутри панели управления приложением.
+      </summary>
+      <value>Одно из значений перечисления <see cref="T:Elysium.Controls.ApplicationBarDock" />. Значение по умолчанию — <see cref="F:Elysium.Controls.ApplicationBarDock.Left" />.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ApplicationBar.DockProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new CommandButton();
+          var currentValue = ApplicationBar.GetDock(control);
+          ApplicationBar.SetDock(control, ApplicationBarDock.Left);
+        </code>
+        <code lang="XAML">
+          &lt;CommandButton metro:ApplicationBar.Dock="Left"/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Controls.ApplicationBar.DockProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ApplicationBar.Dock" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.Dock" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ApplicationBar.GetDock(System.Windows.UIElement)">
+      <summary>
+        Получает значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.Dock" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Алгоритм размещения элемента управления.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>Возвращаемое значение является положительным числом.</ensures>
+    </member>
+    <member name="M:Elysium.Controls.ApplicationBar.SetDock(System.Windows.UIElement,Elysium.Controls.ApplicationBarDock)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.Dock" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Алгоритм размещения элемента управления.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="P:Elysium.Controls.ApplicationBar.IsOpen">
+      <summary>
+        Возвращает или задает значение, указывающее, открыта ли в данный момент панель управления приложением.
+      </summary>
+      <value>True, если панель управления приложением открыто; иначе False. Значение по умолчанию — False.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ApplicationBar.IsOpenProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.BindsTwoWayByDefault" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.ApplicationBar.IsOpenProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ApplicationBar.IsOpen" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.IsOpen" />.
+      </value>
+    </member>
+    <member name="E:Elysium.Controls.ApplicationBar.Opening">
+      <summary>
+        Событие генерируется перед открытием панели управления приложением.
+      </summary>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ApplicationBar.OpeningEvent" />
+            </description>
+          </item>
+          <item>
+            <term>Ассоциированный метод</term>
+            <description>
+              <see cref="M:Elysium.Controls.ApplicationBar.OnOpening" />
+            </description>
+          </item>
+          <item>
+            <term>Стратегия маршрутизации</term>
+            <description>Нисходящая маршрутизация событий</description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.ApplicationBar.OpeningEvent">
+      <summary>
+        Идентифицирует маршрутизируемое событие <see cref="E:Elysium.Controls.ApplicationBar.Opening" />.
+      </summary>
+      <value>
+        Идентификатор маршрутизируемого события <see cref="E:Elysium.Controls.ApplicationBar.Opening" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ApplicationBar.OnOpening(System.Windows.RoutedEventArgs)">
+      <summary>
+        Вызывается при генерации маршрутизируемого события <see cref="E:Elysium.Controls.ApplicationBar.Opening" />.
+      </summary>
+      <param name="e">Маршрутизируемое событие.</param>
+    </member>
+    <member name="E:Elysium.Controls.ApplicationBar.Closing">
+      <summary>
+        Событие генерируется перед закрытием панели управления приложением.
+      </summary>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ApplicationBar.ClosingEvent" />
+            </description>
+          </item>
+          <item>
+            <term>Ассоциированный метод</term>
+            <description>
+              <see cref="M:Elysium.Controls.ApplicationBar.OnClosing" />
+            </description>
+          </item>
+          <item>
+            <term>Стратегия маршрутизации</term>
+            <description>Нисходящая маршрутизация событий</description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.ApplicationBar.ClosingEvent">
+      <summary>
+        Идентифицирует маршрутизируемое событие <see cref="E:Elysium.Controls.ApplicationBar.Closing" />.
+      </summary>
+      <value>
+        Идентификатор маршрутизируемого события <see cref="E:Elysium.Controls.ApplicationBar.Closing" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ApplicationBar.OnClosing(System.Windows.RoutedEventArgs)">
+      <summary>
+        Вызывается при генерации маршрутизируемого события <see cref="E:Elysium.Controls.ApplicationBar.Closing" />.
+      </summary>
+      <param name="e">Маршрутизируемое событие.</param>
+    </member>
+    <member name="E:Elysium.Controls.ApplicationBar.Opened">
+      <summary>
+        Событие генерируется после открытия панели управления приложением.
+      </summary>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ApplicationBar.OpenedEvent" />
+            </description>
+          </item>
+          <item>
+            <term>Ассоциированный метод</term>
+            <description>
+              <see cref="M:Elysium.Controls.ApplicationBar.OnOpened" />
+            </description>
+          </item>
+          <item>
+            <term>Стратегия маршрутизации</term>
+            <description>Восходящая маршрутизация событий</description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.ApplicationBar.OpenedEvent">
+      <summary>
+        Идентифицирует маршрутизируемое событие <see cref="E:Elysium.Controls.ApplicationBar.Opened" />.
+      </summary>
+      <value>
+        Идентификатор маршрутизируемого события <see cref="E:Elysium.Controls.ApplicationBar.Opened" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ApplicationBar.OnOpened(System.Windows.RoutedEventArgs)">
+      <summary>
+        Вызывается при генерации маршрутизируемого события <see cref="E:Elysium.Controls.ApplicationBar.Opened" />.
+      </summary>
+      <param name="e">Маршрутизируемое событие.</param>
+    </member>
+    <member name="E:Elysium.Controls.ApplicationBar.Closed">
+      <summary>
+        Событие генерируется после закрытия панели управления приложением.
+      </summary>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ApplicationBar.ClosedEvent" />
+            </description>
+          </item>
+          <item>
+            <term>Ассоциированный метод</term>
+            <description>
+              <see cref="M:Elysium.Controls.ApplicationBar.OnClosed" />
+            </description>
+          </item>
+          <item>
+            <term>Стратегия маршрутизации</term>
+            <description>Восходящая маршрутизация событий</description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.ApplicationBar.ClosedEvent">
+      <summary>
+        Идентифицирует маршрутизируемое событие <see cref="E:Elysium.Controls.ApplicationBar.Closed" />.
+      </summary>
+      <value>
+        Идентификатор маршрутизируемого события <see cref="E:Elysium.Controls.ApplicationBar.Closed" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ApplicationBar.OnClosed(System.Windows.RoutedEventArgs)">
+      <summary>
+        Вызывается при генерации маршрутизируемого события <see cref="E:Elysium.Controls.ApplicationBar.Closed" />.
+      </summary>
+      <param name="e">Маршрутизируемое событие.</param>
+    </member>
+    <member name="P:Elysium.Controls.ApplicationBar.StaysOpen">
+      <summary>
+        Возвращает или задает значение, указывающее, закрывается ли панель управления приложением при потере фокуса.
+      </summary>
+      <value>
+        True, если панель управления приложением закрывается, когда для свойства IsOpen задано значение False;
+        False, если панель управления приложением закрывается при возникновении события мыши или клавиатуры вне панели управления приложением.
+        Значение по умолчанию — True.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ApplicationBar.StaysOpenProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.ApplicationBar.StaysOpenProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ApplicationBar.StaysOpen" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.StaysOpen" />.
+      </value>
+    </member>
+    <member name="P:Elysium.Controls.ApplicationBar.PreventsOpen">
+      <summary>
+        Получает или задаёт значение, указывающее на возможность открытия панели управления приложением при щелчке правой кнопкой над указанным элементов управления.
+      </summary>
+      <value>True, если панель управления приложением может вызываться правым щелчком на указанном элементе управления; иначе False. Значение по умолчанию — True.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ApplicationBar.PreventsOpenProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Grid();
+          var currentValue = ApplicationBar.GetPreventsOpen(control);
+          ApplicationBar.SetPreventsOpen(control, true);
+        </code>
+        <code lang="XAML">
+          &lt;Grid metro:ApplicationBar.PreventsOpen="True"/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Controls.ApplicationBar.PreventsOpenProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ApplicationBar.PreventsOpen" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.PreventsOpen" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ApplicationBar.GetPreventsOpen(System.Windows.UIElement)">
+      <summary>
+        Получает значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.PreventsOpen" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Алгоритм размещения элемента управления.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>Возвращаемое значение является положительным числом.</ensures>
+    </member>
+    <member name="M:Elysium.Controls.ApplicationBar.SetPreventsOpen(System.Windows.UIElement,System.Boolean)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.PreventsOpen" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Алгоритм размещения элемента управления.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="P:Elysium.Controls.ApplicationBar.TransitionMode">
+      <summary>
+        Возвращает или задает значение, указывающее, какая анимация используется при открытии и закрытии панели управления приложением.
+      </summary>
+      <value>Одно из значений перечисления <see cref="T:Elysium.Controls.ApplicationBarTransitionMode" />. Значение по умолчанию — <see cref="T:Elysium.Controls.ApplicationBarTransitionMode.Slide">ApplicationBarTransitionMode.Slide</see>.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ApplicationBar.TransitionModeProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.ApplicationBar.TransitionModeProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ApplicationBar.TransitionMode" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.TransitionMode" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ApplicationBar.IsItemItsOwnContainerOverride(System.Object)">
+      <inheritdoc />
+    </member>
+    <member name="M:Elysium.Controls.ApplicationBar.GetContainerForItemOverride">
+      <inheritdoc />
+    </member>
+    <member name="M:Elysium.Controls.ApplicationBar.OnCreateAutomationPeer">
+      <inheritdoc />
+    </member>
+    <member name="M:Elysium.Controls.ApplicationBar.ArrangeOverride(System.Windows.Size)">
+      <inheritdoc />
+    </member>
     <member name="T:Elysium.Controls.ApplicationBarPanel">
       <summary>
         Панель, на которой размещаются дочерние элементы класса <see cref="T:Elysium.Controls.ApplicationBar" />.
@@ -3895,6 +4289,17 @@
         Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" />.
       </value>
     </member>
+    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.OnHasHeaderChanged(System.Boolean,System.Boolean)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" />.
+      </summary>
+      <param name="oldHasHeader">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" />.
+      </param>
+      <param name="newHasHeader">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" />.
+      </param>
+    </member>
     <member name="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat">
       <summary>
         Возвращает или задает составную строку, которая определяет форматирование заголовка, если он отображается как строка.
@@ -3958,7 +4363,7 @@
           </item>
         </list>
       </remarks>
-      <seealso cref="P:System.Windows.Controls.HeaderTemplateedContentControl.HeaderTemplate" />
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.HeaderTemplate" />
     </member>
     <member name="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateProperty">
       <summary>
@@ -4000,7 +4405,7 @@
           </item>
         </list>
       </remarks>
-      <seealso cref="P:System.Windows.Controls.HeaderTemplateSelectoredContentControl.HeaderTemplateSelector" />
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.HeaderTemplateSelector" />
     </member>
     <member name="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelectorProperty">
       <summary>
@@ -4038,6 +4443,216 @@
     <member name="M:Elysium.Controls.CommandButton.OnClick">
       <inheritdoc />
     </member>
+    <member name="T:Elysium.Controls.DropDownCommandButton">
+      <summary>
+        Кнопка управления с выпадающим меню.
+      </summary>
+    </member>
+    <member name="P:Elysium.Controls.DropDownCommandButton.Submenu">
+      <summary>
+        Возвращает или задает выпадающее меню.
+      </summary>
+      <value>Меню. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.DropDownCommandButton.SubmenuProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.DropDownCommandButton.SubmenuProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.Submenu" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.Submenu" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.DropDownCommandButton.OnSubmenuChanged(Elysium.Controls.Submenu,Elysium.Controls.Submenu)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.Submenu" />.
+      </summary>
+      <param name="oldSubmenu">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.Submenu" />.
+      </param>
+      <param name="newSubmenu">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.Submenu" />.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.DropDownCommandButton.HasSubmenu">
+      <summary>
+        Возвращает значение, указывающее имеет ли выпадающее меню значение null в данный момент.
+      </summary>
+      <value>
+        True, если значение свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.Submenu" /> не равно null, в противном случае False. Значение по умолчанию — False.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.DropDownCommandButton.HasSubmenuProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.DropDownCommandButton.HasSubmenuProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.HasSubmenu" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.HasSubmenu" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.DropDownCommandButton.OnHasSubmenuChanged(System.Boolean,System.Boolean)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.HasSubmenu" />.
+      </summary>
+      <param name="oldHasSubmenu">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.HasSubmenu" />.
+      </param>
+      <param name="newHasSubmenu">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.HasSubmenu" />.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen">
+      <summary>
+        Возвращает или задает значение, указывающее, открыто ли в данный момент выпадающее меню.
+      </summary>
+      <value>True, если выпадающее меню открыто; иначе False. Значение по умолчанию — False.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.DropDownCommandButton.IsDropDownOpenProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.DropDownCommandButton.IsDropDownOpenProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen" />.
+      </value>
+    </member>
+    <member name="E:Elysium.Controls.DropDownCommandButton.DropDownOpened">
+      <summary>
+        Событие генерируется при открытии выпадающего меню.
+      </summary>
+    </member>
+    <member name="M:Elysium.Controls.DropDownCommandButton.OnDropDownOpened(System.EventArgs)">
+      <summary>
+        Вызывается при генерации события <see cref="E:Elysium.Controls.DropDownCommandButton.DropDownOpened" />.
+      </summary>
+      <param name="e">Аргументы события.</param>
+    </member>
+    <member name="E:Elysium.Controls.DropDownCommandButton.DropDownClosed">
+      <summary>
+        Событие генерируется при закрытии выпадающего меню.
+      </summary>
+    </member>
+    <member name="M:Elysium.Controls.DropDownCommandButton.OnDropDownClosed(System.EventArgs)">
+      <summary>
+        Вызывается при генерации события <see cref="E:Elysium.Controls.DropDownCommandButton.DropDownClosed" />.
+      </summary>
+      <param name="e">Аргументы события.</param>
+    </member>
+    <member name="P:Elysium.Controls.DropDownCommandButton.DropDownDirection">
+      <summary>
+        Возвращает или задает направление выпадающего меню.
+      </summary>
+      <value>Одно из значений перечисления <see cref="T:Elysium.Controls.DropDownDirection" />. Значение по умолчанию — <see cref="F:Elysium.Controls.DropDownDirection.Up">DropDownDirection.Up</see>.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.DropDownCommandButton.DropDownDirectionProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.DropDownCommandButton.DropDownDirectionProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.DropDownDirection" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.DropDownDirection" />.
+      </value>
+    </member>
+    <member name="P:Elysium.Controls.DropDownCommandButton.MaxDropDownHeight">
+      <summary>
+        Возвращает или задает максимальный размер выпадающего меню.
+      </summary>
+      <value>Максимальный размер выпадающего меню. Значение по умолчанию — 300px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.DropDownCommandButton.MaxDropDownHeightProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.DropDownCommandButton.MaxDropDownHeightProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.MaxDropDownHeight" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.MaxDropDownHeight" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.DropDownCommandButton.OnCreateAutomationPeer">
+      <inheritdoc />
+    </member>
+    <member name="M:Elysium.Controls.DropDownCommandButton.OnApplyTemplate">
+      <inheritdoc />
+    </member>
+    <member name="M:Elysium.Controls.DropDownCommandButton.OnClick">
+      <inheritdoc />
+    </member>
     <member name="T:Elysium.Controls.ToggleCommandButton">
       <summary>
         Кнопка управления, поддерживающая состояния "включено", "выключено" и "неопределено".
@@ -4065,7 +4680,7 @@
           </item>
         </list>
       </remarks>
-      <seealso cref="P:System.Windows.Controls.IsCheckededContentControl.IsChecked" />
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.IsChecked" />
     </member>
     <member name="F:Elysium.Controls.ToggleCommandButton.IsCheckedProperty">
       <summary>
@@ -4090,7 +4705,7 @@
           <item>
             <term>Ассоциированный метод</term>
             <description>
-              <see cref="M:Elysium.Controls.ToggleCommandButton.OnChecked" />
+              <see cref="M:Elysium.Controls.ToggleCommandButton.OnChecked(System.Windows.RoutedEventArgs)" />
             </description>
           </item>
           <item>
@@ -4129,7 +4744,7 @@
           <item>
             <term>Ассоциированный метод</term>
             <description>
-              <see cref="M:Elysium.Controls.ToggleCommandButton.OnUnchecked" />
+              <see cref="M:Elysium.Controls.ToggleCommandButton.OnUnchecked(System.Windows.RoutedEventArgs)" />
             </description>
           </item>
           <item>
@@ -4168,7 +4783,7 @@
           <item>
             <term>Ассоциированный метод</term>
             <description>
-              <see cref="M:Elysium.Controls.ToggleCommandButton.OnIndeterminate" />
+              <see cref="M:Elysium.Controls.ToggleCommandButton.OnIndeterminate(System.Windows.RoutedEventArgs)" />
             </description>
           </item>
           <item>
@@ -4213,7 +4828,7 @@
           </item>
         </list>
       </remarks>
-      <seealso cref="P:System.Windows.Controls.IsThreeStateedContentControl.IsThreeState" />
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.IsThreeState" />
     </member>
     <member name="F:Elysium.Controls.ToggleCommandButton.IsThreeStateProperty">
       <summary>

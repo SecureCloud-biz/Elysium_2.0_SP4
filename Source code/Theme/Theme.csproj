@@ -528,6 +528,9 @@
     <None Include="Controls\Menus\Automation\SubmenuAutomationPeer.ru.xml">
       <DependentUpon>SubmenuAutomationPeer.cs</DependentUpon>
     </None>
+    <None Include="Controls\ApplicationBar\ApplicationBar.ru.xml">
+      <DependentUpon>ApplicationBar.cs</DependentUpon>
+    </None>
     <None Include="Controls\ApplicationBar\ApplicationBarPanel.ru.xml">
       <DependentUpon>ApplicationBarPanel.cs</DependentUpon>
     </None>
@@ -536,6 +539,9 @@
     </None>
     <None Include="Controls\CommandButtons\CommandButton.ru.xml">
       <DependentUpon>CommandButton.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\DropDownCommandButton.ru.xml">
+      <DependentUpon>DropDownCommandButton.cs</DependentUpon>
     </None>
     <None Include="Controls\CommandButtons\ToggleCommandButton.ru.xml">
       <DependentUpon>ToggleCommandButton.cs</DependentUpon>

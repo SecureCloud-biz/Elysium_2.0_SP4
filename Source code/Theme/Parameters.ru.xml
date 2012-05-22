@@ -47,7 +47,7 @@
         <code lang="C#">
           var control = new Window();
           var currentValue = Parameters.GetTitleFontSize(control);
-          SetTitleFontSize(control, 12d * (96d / 72d));
+          Parameters.SetTitleFontSize(control, 12d * (96d / 72d));
         </code>
         <code lang="XAML">
           &lt;Window metro:Parameters.TitleFontSize="12pt"/&gt;
@@ -121,8 +121,8 @@
       <example>
         <code lang="C#">
           var control = new TabControl();
-          var currentValue = Parameters.GetTitleFontSize(control);
-          SetTitleFontSize(control, 12d * (96d / 72d));
+          var currentValue = Parameters.GetHeaderFontSize(control);
+          Parameters.SetHeaderFontSize(control, 12d * (96d / 72d));
         </code>
         <code lang="XAML">
           &lt;TabControl metro:Parameters.TitleFontSize="12pt"/&gt;
@@ -267,7 +267,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetContentFontSize(control);
-          SetContentFontSize(control, 10d * (96d / 72d));
+          Parameters.SetContentFontSize(control, 10d * (96d / 72d));
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.ContentFontSize="10pt"/&gt;
@@ -367,7 +367,7 @@
         <code lang="C#">
           var control = new TextBox();
           var currentValue = Parameters.GetTextFontSize(control);
-          SetTextFontSize(control, 9d * (96d / 72d));
+          Parameters.SetTextFontSize(control, 9d * (96d / 72d));
         </code>
         <code lang="XAML">
           &lt;TextBox metro:Parameters.ContentFontSize="9pt"/&gt;
@@ -432,7 +432,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetDefaultThickness(control);
-          SetDefaultThickness(control, new Thickness(1d));
+          Parameters.SetDefaultThickness(control, new Thickness(1d));
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.DefaultThickness="1"/&gt;
@@ -496,7 +496,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetSemiBoldThickness(control);
-          SetSemiBoldThickness(control, new Thickness(1.5d));
+          Parameters.SetSemiBoldThickness(control, new Thickness(1.5d));
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.SemiBoldThickness="1.5px"/&gt;
@@ -560,7 +560,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetBoldThickness(control);
-          SetBoldThickness(control, new Thickness(2d));
+          Parameters.SetBoldThickness(control, new Thickness(2d));
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.BoldThickness="2"/&gt;
@@ -624,7 +624,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetDefaultThicknessValue(control);
-          SetDefaultThicknessValue(control, 1d);
+          Parameters.SetDefaultThicknessValue(control, 1d);
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.DefaultThicknessValue="1px"/&gt;
@@ -688,7 +688,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetSemiBoldThicknessValue(control);
-          SetSemiBoldThicknessValue(control, 1.5d);
+          Parameters.SetSemiBoldThicknessValue(control, 1.5d);
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.SemiBoldThicknessValue="1.5px"/&gt;
@@ -752,7 +752,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetBoldThicknessValue(control);
-          SetBoldThicknessValue(control, 2d);
+          Parameters.SetBoldThicknessValue(control, 2d);
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.BoldThicknessValue="2px"/&gt;
@@ -817,7 +817,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetDefaultPadding(control);
-          SetDefaultPadding(control, new Thickness(1d));
+          Parameters.SetDefaultPadding(control, new Thickness(1d));
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.DefaultPadding="1"/&gt;
@@ -881,7 +881,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetSemiBoldPadding(control);
-          SetSemiBoldPadding(control, new Thickness(2d));
+          Parameters.SetSemiBoldPadding(control, new Thickness(2d));
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.SemiBoldPadding="2px"/&gt;
@@ -945,7 +945,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetBoldPadding(control);
-          SetBoldPadding(control, new Thickness(5d));
+          Parameters.SetBoldPadding(control, new Thickness(5d));
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.BoldPadding="5px"/&gt;
@@ -1009,7 +1009,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetDefaultPaddingValue(control);
-          SetDefaultPaddingValue(control, 1d);
+          Parameters.SetDefaultPaddingValue(control, 1d);
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.DefaultPaddingValue="1px"/&gt;
@@ -1073,7 +1073,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetSemiBoldPaddingValue(control);
-          SetSemiBoldPaddingValue(control, 2d);
+          Parameters.SetSemiBoldPaddingValue(control, 2d);
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.SemiBoldPaddingValue="2px"/&gt;
@@ -1137,7 +1137,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetBoldPaddingValue(control);
-          SetBoldPaddingValue(control, 5d);
+          Parameters.SetBoldPaddingValue(control, 5d);
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.BoldPaddingValue="5px"/&gt;
@@ -1201,7 +1201,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetDefaultDuration(control);
-          SetDefaultDuration(control, new Duration(TimeSpan.FromSeconds(0d)));
+          Parameters.SetDefaultDuration(control, new Duration(TimeSpan.FromSeconds(0d)));
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.DefaultDuration="00:00:00.0"/&gt;
@@ -1263,7 +1263,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetMinimumDuration(control);
-          SetMinimumDuration(control, new Duration(TimeSpan.FromSeconds(0.2d)));
+          Parameters.SetMinimumDuration(control, new Duration(TimeSpan.FromSeconds(0.2d)));
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.MinimumDuration="00:00:00.2"/&gt;
@@ -1325,7 +1325,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetOptimumDuration(control);
-          SetOptimumDuration(control, new Duration(TimeSpan.FromSeconds(0.5d)));
+          Parameters.SetOptimumDuration(control, new Duration(TimeSpan.FromSeconds(0.5d)));
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.OptimumDuration="00:00:00.5"/&gt;
@@ -1387,7 +1387,7 @@
         <code lang="C#">
           var control = new Button();
           var currentValue = Parameters.GetMaximumDuration(control);
-          SetMaximumDuration(control, new Duration(TimeSpan.FromSeconds(1d)));
+          Parameters.SetMaximumDuration(control, new Duration(TimeSpan.FromSeconds(1d)));
         </code>
         <code lang="XAML">
           &lt;Button metro:Parameters.MaximumDuration="00:00:01"/&gt;
@@ -1452,7 +1452,7 @@
         <code lang="C#">
           var control = new ComboBox();
           var currentValue = Parameters.GetShadowBrush(control);
-          SetShadowBrush(control, Brushes.Black);
+          Parameters.SetShadowBrush(control, Brushes.Black);
         </code>
         <code lang="XAML">
           &lt;ComboBox metro:Parameters.ShadowBrush="Black"/&gt;
@@ -1517,7 +1517,7 @@
         <code lang="C#">
           var control = new CommandButton();
           var currentValue = Parameters.GetCommandButtonMask(control);
-          SetCommandButtonMask(control, Brushes.Black);
+          Parameters.SetCommandButtonMask(control, Brushes.Black);
         </code>
         <code lang="XAML">
           &lt;CommandButton metro:Parameters.CommandButtonMask="Black"/&gt;
@@ -1580,7 +1580,7 @@
         <code lang="C#">
           var control = new CheckBox();
           var currentValue = Parameters.GetBulletDecoratorSize(control);
-          SetBulletDecoratorSize(control, 16d);
+          Parameters.SetBulletDecoratorSize(control, 16d);
         </code>
         <code lang="XAML">
           &lt;CheckBox metro:Parameters.BulletDecoratorSize="16px"/&gt;
@@ -1651,7 +1651,7 @@
         <code lang="C#">
           var control = new CheckBox();
           var currentValue = Parameters.GetBulletSize(control);
-          SetBulletSize(control, 8d);
+          Parameters.SetBulletSize(control, 8d);
         </code>
         <code lang="XAML">
           &lt;CheckBox metro:Parameters.BulletSize="8px"/&gt;
@@ -1722,7 +1722,7 @@
         <code lang="C#">
           var control = new CheckBox();
           var currentValue = Parameters.GetCheckSize(control);
-          SetCheckSize(control, 10d);
+          Parameters.SetCheckSize(control, 10d);
         </code>
         <code lang="XAML">
           &lt;CheckBox metro:Parameters.CheckSize="10px"/&gt;
@@ -1786,7 +1786,7 @@
         <code lang="C#">
           var control = new ToggleSwitch();
           var currentValue = Parameters.GetToggleSwitchTrackSize(control);
-          SetToggleSwitchTrackSize(control, 48d);
+          Parameters.SetToggleSwitchTrackSize(control, 48d);
         </code>
         <code lang="XAML">
           &lt;ToggleSwitch metro:Parameters.ToggleSwitchTrackSize="48px"/&gt;
@@ -1849,7 +1849,7 @@
         <code lang="C#">
           var control = new ToggleSwitch();
           var currentValue = Parameters.GetToggleSwitchThumbThickness(control);
-          SetToggleSwitchThumbThickness(control, 10d);
+          Parameters.SetToggleSwitchThumbThickness(control, 10d);
         </code>
         <code lang="XAML">
           &lt;ToggleSwitch metro:Parameters.ToggleSwitchThumbThickness="10px"/&gt;
@@ -1917,7 +1917,7 @@
         <code lang="C#">
           var control = new ComboBox();
           var currentValue = Parameters.GetComboBoxButtonSize(control);
-          SetComboBoxButtonSize(control, 18d);
+          Parameters.SetComboBoxButtonSize(control, 18d);
         </code>
         <code lang="XAML">
           &lt;ComboBox metro:Parameters.ComboBoxButtonSize="18px"/&gt;
@@ -1986,7 +1986,7 @@
         <code lang="C#">
           var control = new ComboBox();
           var currentValue = Parameters.GetComboBoxArrowSize(control);
-          SetComboBoxArrowSize(control, 8d);
+          Parameters.SetComboBoxArrowSize(control, 8d);
         </code>
         <code lang="XAML">
           &lt;ComboBox metro:Parameters.ComboBoxArrowSize="8px"/&gt;
@@ -2057,7 +2057,7 @@
         <code lang="C#">
           var control = new ComboBox();
           var currentValue = Parameters.GetComboBoxArrowMargin(control);
-          SetComboBoxArrowMargin(control, new Thickness(5d, 0d, 5d, 0d));
+          Parameters.SetComboBoxArrowMargin(control, new Thickness(5d, 0d, 5d, 0d));
         </code>
         <code lang="XAML">
           &lt;ComboBox metro:Parameters.ComboBoxArrowMargin="5,0,5,0"/&gt;
@@ -2125,7 +2125,7 @@
         <code lang="C#">
           var control = new Slider();
           var currentValue = Parameters.GetSliderTrackSize(control);
-          SetSliderTrackSize(control, 48d);
+          Parameters.SetSliderTrackSize(control, 48d);
         </code>
         <code lang="XAML">
           &lt;Slider metro:Parameters.SliderTrackSize="48px"/&gt;
@@ -2188,7 +2188,7 @@
         <code lang="C#">
           var control = new Slider();
           var currentValue = Parameters.GetSliderThumbThickness(control);
-          SetSliderThumbThickness(control, 6d);
+          Parameters.SetSliderThumbThickness(control, 6d);
         </code>
         <code lang="XAML">
           &lt;Slider metro:Parameters.SliderThumbThickness="6px"/&gt;
@@ -2252,7 +2252,7 @@
         <code lang="C#">
           var control = new LinearProgressBar();
           var currentValue = Parameters.GetProgressBarBusyElementSize(control);
-          SetProgressBarBusyElementSize(control, 4d);
+          Parameters.SetProgressBarBusyElementSize(control, 4d);
         </code>
         <code lang="XAML">
           &lt;LinearProgressBar metro:Parameters.ProgressBarBusyElementSize="4px"/&gt;
@@ -2318,7 +2318,7 @@
         <code lang="C#">
           var control = new ScrollBar();
           var currentValue = Parameters.GetScrollBarArrowSize(control);
-          SetScrollBarArrowSize(control, 6d);
+          Parameters.SetScrollBarArrowSize(control, 6d);
         </code>
         <code lang="XAML">
           &lt;ScrollBar metro:Parameters.ScrollBarArrowSize="6px"/&gt;
@@ -2384,7 +2384,7 @@
         <code lang="C#">
           var control = new TabControl();
           var currentValue = Parameters.GetTabControlIndicatorBrush(control);
-          SetTabControlIndicatorBrush(control, Brushes.LightGray);
+          Parameters.SetTabControlIndicatorBrush(control, Brushes.LightGray);
         </code>
         <code lang="XAML">
           &lt;CommandButton metro:Parameters.TabControlIndicatorBrush="LightGray"/&gt;
@@ -2454,7 +2454,7 @@
         <code lang="C#">
           var control = new TabControl();
           var currentValue = Parameters.GetTabControlIndicatorThickness(control);
-          SetTabControlIndicatorThickness(control, 2d);
+          Parameters.SetTabControlIndicatorThickness(control, 2d);
         </code>
         <code lang="XAML">
           &lt;Slider metro:Parameters.TabControlIndicatorThickness="2px"/&gt;
@@ -2572,7 +2572,7 @@
         <code lang="C#">
           var control = new MenuItem();
           var currentValue = Parameters.GetSubmenuItemBulletSize(control);
-          SetSubmenuItemBulletSize(control, 12d);
+          Parameters.SetSubmenuItemBulletSize(control, 12d);
         </code>
         <code lang="XAML">
           &lt;MenuItem metro:Parameters.SubmenuItemBulletSize="12px"/&gt;
@@ -2637,7 +2637,7 @@
         <code lang="C#">
           var control = new MenuItem();
           var currentValue = Parameters.GetSubmenuHeaderArrowSize(control);
-          SetSubmenuHeaderArrowSize(control, 8d);
+          Parameters.SetSubmenuHeaderArrowSize(control, 8d);
         </code>
         <code lang="XAML">
           &lt;MenuItem metro:Parameters.SubmenuHeaderArrowSize="8px"/&gt;
@@ -2708,7 +2708,7 @@
         <code lang="C#">
           var control = new MenuItem();
           var currentValue = Parameters.GetSubmenuHeaderArrowMargin(control);
-          SetSubmenuHeaderArrowMargin(control, new Thickness(3d, 0d, 3d, 0d));
+          Parameters.SetSubmenuHeaderArrowMargin(control, new Thickness(3d, 0d, 3d, 0d));
         </code>
         <code lang="XAML">
           &lt;MenuItem metro:Parameters.SubmenuHeaderArrowMargin="3,0,3,0"/&gt;
@@ -2778,7 +2778,7 @@
         <code lang="C#">
           var control = new Elysium.Controls.Window();
           var currentValue = Parameters.GetWindowResizeBorderThickness(control);
-          SetWindowResizeBorderThickness(control, 3d);
+          Parameters.SetWindowResizeBorderThickness(control, 3d);
         </code>
         <code lang="XAML">
           &lt;metro:Window metro:Parameters.WindowResizeBorderThickness="3px"/&gt;

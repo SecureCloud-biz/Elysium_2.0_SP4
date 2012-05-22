@@ -24,7 +24,7 @@
     <SelfBranded>True</SelfBranded>
     <SyntaxFilters>CSharp, VisualBasic, XamlUsage</SyntaxFilters>
     <IncludeFavorites>False</IncludeFavorites>
-    <BuildAssemblerVerbosity>OnlyErrors</BuildAssemblerVerbosity>
+    <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
     <BuildLogFile>Elysium.log</BuildLogFile>
     <CopyrightHref>http://elysium.codeplex.com/license</CopyrightHref>
     <FooterText>Copyright %28c%29 2011 Alex F. Sherman</FooterText>

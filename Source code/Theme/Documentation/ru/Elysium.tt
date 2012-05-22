@@ -58,11 +58,13 @@
     paths.Add(@"Controls\ProgressBars\Automation\ProgressBarAutomationPeer.ru.xml");
     
     paths.Add(@"Controls\Menus\Automation\SubmenuAutomationPeer.ru.xml");
-
+    
+    paths.Add(@"Controls\ApplicationBar\ApplicationBar.ru.xml");
     paths.Add(@"Controls\ApplicationBar\ApplicationBarPanel.ru.xml");
 
     paths.Add(@"Controls\CommandButtons\Primitives\CommandButtonBase.ru.xml");
     paths.Add(@"Controls\CommandButtons\CommandButton.ru.xml");
+    paths.Add(@"Controls\CommandButtons\DropDownCommandButton.ru.xml");
     paths.Add(@"Controls\CommandButtons\ToggleCommandButton.ru.xml");
 
     paths.Add(@"Controls\Menus\Submenu.ru.xml");

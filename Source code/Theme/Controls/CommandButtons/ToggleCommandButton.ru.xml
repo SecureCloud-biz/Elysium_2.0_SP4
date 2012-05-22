@@ -31,7 +31,7 @@
           </item>
         </list>
       </remarks>
-      <seealso cref="P:System.Windows.Controls.IsCheckededContentControl.IsChecked"/>
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.IsChecked"/>
     </property>
     <field name="F:Elysium.Controls.ToggleCommandButton.IsCheckedProperty">
       <summary>
@@ -56,7 +56,7 @@
           <item>
             <term>Ассоциированный метод</term>
             <description>
-              <see cref="M:Elysium.Controls.ToggleCommandButton.OnChecked"/>
+              <see cref="M:Elysium.Controls.ToggleCommandButton.OnChecked(System.Windows.RoutedEventArgs)"/>
             </description>
           </item>
           <item>
@@ -95,7 +95,7 @@
           <item>
             <term>Ассоциированный метод</term>
             <description>
-              <see cref="M:Elysium.Controls.ToggleCommandButton.OnUnchecked"/>
+              <see cref="M:Elysium.Controls.ToggleCommandButton.OnUnchecked(System.Windows.RoutedEventArgs)"/>
             </description>
           </item>
           <item>
@@ -134,7 +134,7 @@
           <item>
             <term>Ассоциированный метод</term>
             <description>
-              <see cref="M:Elysium.Controls.ToggleCommandButton.OnIndeterminate"/>
+              <see cref="M:Elysium.Controls.ToggleCommandButton.OnIndeterminate(System.Windows.RoutedEventArgs)"/>
             </description>
           </item>
           <item>
@@ -179,7 +179,7 @@
           </item>
         </list>
       </remarks>
-      <seealso cref="P:System.Windows.Controls.IsThreeStateedContentControl.IsThreeState"/>
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.IsThreeState"/>
     </property>
     <field name="F:Elysium.Controls.ToggleCommandButton.IsThreeStateProperty">
       <summary>
