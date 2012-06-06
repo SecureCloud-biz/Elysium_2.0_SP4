@@ -11,7 +11,7 @@
     </type>
     <property name="P:Elysium.Controls.ToggleCommandButton.IsChecked">
       <summary>
-        Возвращает или задает значение, указывающее, находится ли кнопка управления во включенном состоянии.
+        Возвращает или задаёт значение, указывающее, находится ли кнопка управления во включенном состоянии.
       </summary>
       <value>True, если кнопка управления находится во включенном состоянии; False — если в выключенном; иначе null. Значение по умолчанию — False.</value>
       <remarks>
@@ -26,12 +26,10 @@
             <term>Метаданные</term>
             <description>
               <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.BindsTwoWayByDefault"/>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Journal"/>
             </description>
           </item>
         </list>
       </remarks>
-      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.IsChecked"/>
     </property>
     <field name="F:Elysium.Controls.ToggleCommandButton.IsCheckedProperty">
       <summary>
@@ -41,6 +39,17 @@
         Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ToggleCommandButton.IsChecked"/>.
       </value>
     </field>
+    <method name="M:Elysium.Controls.ToggleCommandButton.OnIsCheckedChanged(System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ToggleCommandButton.IsChecked"/>.
+      </summary>
+      <param name="oldIsChecked">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleCommandButton.IsChecked"/>.
+      </param>
+      <param name="newIsChecked">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleCommandButton.IsChecked"/>.
+      </param>
+    </method>
     <event name="E:Elysium.Controls.ToggleCommandButton.Checked">
       <summary>
         Событие генерируется при переходе в состояние "включено".
@@ -160,7 +169,7 @@
     </method>
     <property name="P:Elysium.Controls.ToggleCommandButton.IsThreeState">
       <summary>
-        Возвращает или задает значение, указывающее, два или три состояния поддерживает элемент управления.
+        Возвращает или задаёт значение, указывающее, два или три состояния поддерживает элемент управления.
       </summary>
       <value>True, если кнопка управления поддерживает три состояния; в противном случае False. Значение по умолчанию — False.</value>
       <remarks>
@@ -179,7 +188,6 @@
           </item>
         </list>
       </remarks>
-      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.IsThreeState"/>
     </property>
     <field name="F:Elysium.Controls.ToggleCommandButton.IsThreeStateProperty">
       <summary>
@@ -189,6 +197,17 @@
         Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ToggleCommandButton.IsThreeState"/>.
       </value>
     </field>
+    <method name="M:Elysium.Controls.ToggleCommandButton.OnIsThreeStateChanged(System.Boolean,System.Boolean)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ToggleCommandButton.IsThreeState"/>.
+      </summary>
+      <param name="oldIsThreeState">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleCommandButton.IsThreeState"/>.
+      </param>
+      <param name="newIsThreeState">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleCommandButton.IsThreeState"/>.
+      </param>
+    </method>
     <method name="M:Elysium.Controls.ToggleCommandButton.OnCreateAutomationPeer">
       <inheritdoc/>
     </method>

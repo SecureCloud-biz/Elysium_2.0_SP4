@@ -8,13 +8,12 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 
+using Elysium.Controls.Primitives;
 using Elysium.Extensions;
 
 using JetBrains.Annotations;
 
 using Microsoft.Expression.Shapes;
-
-using Elysium.Controls.Primitives;
 
 namespace Elysium.Controls
 {
@@ -38,7 +37,7 @@ namespace Elysium.Controls
         [PublicAPI]
         public static readonly DependencyProperty AngleProperty =
             DependencyProperty.RegisterAttached("Angle", typeof(double), typeof(CircularProgressBar),
-                                                new FrameworkPropertyMetadata(-1.0, FrameworkPropertyMetadataOptions.AffectsArrange));
+                                                new FrameworkPropertyMetadata(-1d, FrameworkPropertyMetadataOptions.AffectsArrange));
 
         [PublicAPI]
         [JetBrains.Annotations.Pure]

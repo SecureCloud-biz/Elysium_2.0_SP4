@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Controls.Primitives.ProgressBarBase">
+      <summary>
+        Базой класс для индикаторов выполнения.
+      </summary>
+    </type>
+    <property name="P:Elysium.Controls.Primitives.ProgressBarBase.Percent">
+      <summary>
+        Возвращает значение, указывающее процент заполненности индикатора.
+      </summary>
+      <value>
+        Процент заполненности индикатора, либо <see cref="F:System.Double.NaN">Dobuel.NaN</see>, если индикатор выполнения находится в состоянии "неопределено" или "занят". Значение по умолчанию — 0.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.ProgressBarBase.PercentProperty"/>
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None"/>
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </property>
+    <field name="F:Elysium.Controls.Primitives.ProgressBarBase.PercentProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.Percent"/>.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.Percent"/>.
+      </value>
+    </field>
+    <method name="M:Elysium.Controls.Primitives.ProgressBarBase.OnPercentChanged(System.Double,System.Double)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.Percent"/>.
+      </summary>
+      <param name="oldPercent">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.Percent"/>.
+      </param>
+      <param name="newPercent">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.Percent"/>.
+      </param>
+    </method>
+    <method name="M:Elysium.Controls.Primitives.ProgressBarBase.OnValueChanged(System.Double,System.Double)">
+      <inheritdoc/>
+    </method>
+    <property name="P:Elysium.Controls.Primitives.ProgressBarBase.State">
+      <summary>
+        Возвращает или задаёт значение, указывающее текущее состояние индикатора выполнения.
+      </summary>
+      <value>
+        Одно из значений перечисления <see cref="T:Elysium.Controls.ProgressBarState"/>. Значение по умолчанию — <see cref="F:Elysium.Controls.ProgressBarState.Normal">ProgressBarState.Normal</see>.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.ProgressBarBase.StateProperty"/>
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.BindsTwoWayByDefault"/>
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </property>
+    <field name="F:Elysium.Controls.Primitives.ProgressBarBase.StateProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.State"/>.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.State"/>.
+      </value>
+    </field>
+    <method name="M:Elysium.Controls.Primitives.ProgressBarBase.OnStateChanged(Elysium.Controls.ProgressBarState,Elysium.Controls.ProgressBarState)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.State"/>.
+      </summary>
+      <param name="oldState">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.State"/>.
+      </param>
+      <param name="newState">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.State"/>.
+      </param>
+    </method>
+    <property name="P:Elysium.Controls.Primitives.ProgressBarBase.IndeterminateAnimation">
+      <summary>
+        Возвращает или задаёт значение, являющееся раскадровкой анимации при состоянии "неопределено".
+      </summary>
+      <value>Раскадровка. Значение по умолчанию — экземпляр раскадровки стандартной анимации.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.ProgressBarBase.IndeterminateAnimationProperty"/>
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender"/>
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </property>
+    <field name="F:Elysium.Controls.Primitives.ProgressBarBase.IndeterminateAnimationProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.IndeterminateAnimation"/>.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.IndeterminateAnimation"/>.
+      </value>
+    </field>
+    <property name="P:Elysium.Controls.Primitives.ProgressBarBase.BusyAnimation">
+      <summary>
+        Возвращает или задаёт значение, являющееся раскадровкой анимации при состоянии "неопределено".
+      </summary>
+      <value>Раскадровка. Значение по умолчанию — экземпляр раскадровки стандартной анимации.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.ProgressBarBase.BusyAnimationProperty"/>
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender"/>
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </property>
+    <field name="F:Elysium.Controls.Primitives.ProgressBarBase.BusyAnimationProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.BusyAnimation"/>.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.BusyAnimation"/>.
+      </value>
+    </field>
+    <event name="E:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdating">
+      <summary>
+        Событие генерируется перед началом процедуры обновления анимации состояний.
+      </summary>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdatingEvent"/>
+            </description>
+          </item>
+          <item>
+            <term>Ассоциированный метод</term>
+            <description>
+              <see cref="M:Elysium.Controls.Primitives.ProgressBarBase.OnAnimationsUpdating(System.Windows.RoutedEventArgs)"/>
+            </description>
+          </item>
+          <item>
+            <term>Стратегия маршрутизации</term>
+            <description>Нисходящая маршрутизация событий</description>
+          </item>
+        </list>
+      </remarks>
+    </event>
+    <field name="F:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdatingEvent">
+      <summary>
+        Идентифицирует маршрутизируемое событие <see cref="E:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdating"/>.
+      </summary>
+      <value>
+        Идентификатор маршрутизируемого события <see cref="E:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdating"/>.
+      </value>
+    </field>
+    <method name="M:Elysium.Controls.Primitives.ProgressBarBase.OnAnimationsUpdating(System.Windows.RoutedEventArgs)">
+      <summary>
+        Вызывается при генерации маршрутизируемого события <see cref="E:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdating"/>.
+      </summary>
+      <param name="e">Маршрутизируемое событие.</param>
+    </method>
+    <event name="E:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdated">
+      <summary>
+        Событие генерируется после окончания процедуры обновления анимации состояний.
+      </summary>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdatedEvent"/>
+            </description>
+          </item>
+          <item>
+            <term>Ассоциированный метод</term>
+            <description>
+              <see cref="M:Elysium.Controls.Primitives.ProgressBarBase.OnAnimationsUpdated(System.Windows.RoutedEventArgs)"/>
+            </description>
+          </item>
+          <item>
+            <term>Стратегия маршрутизации</term>
+            <description>Восходящая маршрутизация событий</description>
+          </item>
+        </list>
+      </remarks>
+    </event>
+    <field name="F:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdatedEvent">
+      <summary>
+        Идентифицирует маршрутизируемое событие <see cref="E:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdated"/>.
+      </summary>
+      <value>
+        Идентификатор маршрутизируемого события <see cref="E:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdated"/>.
+      </value>
+    </field>
+    <method name="M:Elysium.Controls.Primitives.ProgressBarBase.OnAnimationsUpdated(System.Windows.RoutedEventArgs)">
+      <summary>
+        Вызывается при генерации маршрутизируемого события <see cref="E:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdated"/>.
+      </summary>
+      <param name="e">Маршрутизируемое событие.</param>
+    </method>
+    <method name="M:Elysium.Controls.Primitives.ProgressBarBase.OnApplyTemplate">
+      <inheritdoc/>
+    </method>
+    <method name="M:Elysium.Controls.Primitives.ProgressBarBase.OnCreateAutomationPeer">
+      <inheritdoc/>
+    </method>
+  </members>
+</doc>

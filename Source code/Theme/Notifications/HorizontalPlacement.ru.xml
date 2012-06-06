@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Notifications.HorizontalPlacement">
+      <summary>
+        Определяет, по какой стороне экрана выравниваются уведомления.
+      </summary>
+    </type>
+    <field name="F:Elysium.Notifications.HorizontalPlacement.Left">
+      <summary>
+        Уведомления выравниваются по левой стороне экрана.
+      </summary>
+    </field>
+    <field name="F:Elysium.Notifications.HorizontalPlacement.Right">
+      <summary>
+        Уведомления выравниваются по правой стороне экрана.
+      </summary>
+    </field>
+  </members>
+</doc>

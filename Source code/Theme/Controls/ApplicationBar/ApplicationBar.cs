@@ -99,10 +99,11 @@ namespace Elysium.Controls
         {
             ValidationHelper.NotNull(obj, () => obj);
             var instance = (ApplicationBar)obj;
-            instance.OnIsOpenChanged(/*BooleanBoxingHelper.Unbox(e.OldValue),*/ BooleanBoxingHelper.Unbox(e.NewValue));
+            instance.OnIsOpenChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
         }
 
-        private void OnIsOpenChanged(/*bool oldIsOpen,*/ bool newIsOpen)
+        [PublicAPI]
+        protected virtual void OnIsOpenChanged(bool oldIsOpen, bool newIsOpen)
         {
             if (newIsOpen)
             {
@@ -184,6 +185,8 @@ namespace Elysium.Controls
             EventManager.RegisterRoutedEvent("Opening", RoutingStrategy.Tunnel, typeof(RoutedEventHandler), typeof(ApplicationBar));
 
         [PublicAPI]
+        [Category("Behavior")]
+        [Description("Occurs before opening ApplicationBar instance.")]
         public event RoutedEventHandler Opening
         {
             add { AddHandler(OpeningEvent, value); }
@@ -201,6 +204,8 @@ namespace Elysium.Controls
             EventManager.RegisterRoutedEvent("Opened", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ApplicationBar));
 
         [PublicAPI]
+        [Category("Behavior")]
+        [Description("Occurs after ApplicationBar instance is opened.")]
         public event RoutedEventHandler Opened
         {
             add { AddHandler(OpenedEvent, value); }
@@ -218,6 +223,8 @@ namespace Elysium.Controls
             EventManager.RegisterRoutedEvent("Closing", RoutingStrategy.Tunnel, typeof(RoutedEventHandler), typeof(ApplicationBar));
 
         [PublicAPI]
+        [Category("Behavior")]
+        [Description("Occurs before closing ApplicationBar instance.")]
         public event RoutedEventHandler Closing
         {
             add { AddHandler(ClosingEvent, value); }
@@ -235,6 +242,8 @@ namespace Elysium.Controls
             EventManager.RegisterRoutedEvent("Closed", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ApplicationBar));
 
         [PublicAPI]
+        [Category("Behavior")]
+        [Description("Occurs after ApplicationBar instance is closed.")]
         public event RoutedEventHandler Closed
         {
             add { AddHandler(ClosedEvent, value); }
@@ -250,16 +259,27 @@ namespace Elysium.Controls
         [PublicAPI]
         public static readonly DependencyProperty StaysOpenProperty =
             DependencyProperty.Register("StaysOpen", typeof(bool), typeof(ApplicationBar),
-                                        new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, FrameworkPropertyMetadataOptions.None));
+                                        new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, FrameworkPropertyMetadataOptions.None, OnStaysOpenChanged));
 
         [PublicAPI]
-        [Bindable(true)]
         [Category("Behavior")]
         [Description("Indicates whether the ApplicationBar control closes when the control is no longer in focus.")]
         public bool StaysOpen
         {
             get { return BooleanBoxingHelper.Unbox(GetValue(StaysOpenProperty)); }
             set { SetValue(StaysOpenProperty, BooleanBoxingHelper.Box(value)); }
+        }
+
+        private static void OnStaysOpenChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            var instance = (ApplicationBar)obj;
+            instance.OnStaysOpenChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
+        }
+
+        [PublicAPI]
+        protected virtual void OnStaysOpenChanged(bool oldStaysOpen, bool newStaysOpen)
+        {
         }
 
         [PublicAPI]
@@ -288,16 +308,29 @@ namespace Elysium.Controls
         [PublicAPI]
         public static readonly DependencyProperty TransitionModeProperty =
             DependencyProperty.Register("TransitionMode", typeof(ApplicationBarTransitionMode), typeof(ApplicationBar),
-                                        new FrameworkPropertyMetadata(ApplicationBarTransitionMode.Slide, FrameworkPropertyMetadataOptions.None));
+                                        new FrameworkPropertyMetadata(ApplicationBarTransitionMode.Slide, FrameworkPropertyMetadataOptions.None,
+                                                                      OnTransitionModeChanged));
 
         [PublicAPI]
-        [Bindable(true)]
         [Category("Appearance")]
         [Description("Animation for the opening and closing of a ApplicationBar.")]
         public ApplicationBarTransitionMode TransitionMode
         {
             get { return BoxingHelper<ApplicationBarTransitionMode>.Unbox(GetValue(TransitionModeProperty)); }
             set { SetValue(TransitionModeProperty, value); }
+        }
+
+        private static void OnTransitionModeChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            var instance = (ApplicationBar)obj;
+            instance.OnTransitionModeChanged(BoxingHelper<ApplicationBarTransitionMode>.Unbox(e.OldValue),
+                                             BoxingHelper<ApplicationBarTransitionMode>.Unbox(e.NewValue));
+        }
+
+        [PublicAPI]
+        protected virtual void OnTransitionModeChanged(ApplicationBarTransitionMode oldTransitionMode, ApplicationBarTransitionMode newTransitionMode)
+        {
         }
 
         protected override bool IsItemItsOwnContainerOverride(object item)

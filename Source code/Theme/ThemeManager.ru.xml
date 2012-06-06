@@ -11,7 +11,7 @@
     </type>
     <property name="P:Elysium.ThemeManager.Theme">
       <summary>
-        Получает или задаёт значение, указывающее на текующий тип темы.
+        Возвращает или задаёт значение, указывающее на текующий тип темы.
       </summary>
       <value>
         Одно из значений перечисления <see cref="T:Elysium.Theme"/> или null, если элемент управления должен использовать значение, указанное для всего приложения. Значение по умолчанию — null.
@@ -54,7 +54,7 @@
     </field>
     <method name="M:Elysium.ThemeManager.GetTheme(System.Windows.FrameworkElement)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.ThemeManager.Theme"/> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.ThemeManager.Theme"/> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Текущий тип темы для указанного элемента управления.</returns>
@@ -76,7 +76,7 @@
     </method>
     <property name="P:Elysium.ThemeManager.AccentBrush">
       <summary>
-        Получает или задаёт акцентирующий цвет.
+        Возвращает или задаёт акцентирующий цвет.
       </summary>
       <value>Кисть, содержащая акцентирующий цвет, или null, если элемент управления должен использовать значение, указанное для всего приложения. Значение по умолчанию — null.</value>
       <remarks>
@@ -116,7 +116,7 @@
     </field>
     <method name="M:Elysium.ThemeManager.GetAccentBrush(System.Windows.FrameworkElement)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.ThemeManager.AccentBrush"/> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.ThemeManager.AccentBrush"/> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Текущий акцентирующий цвет для указанного элемента управления.</returns>
@@ -138,7 +138,7 @@
     </method>
     <property name="P:Elysium.ThemeManager.ContrastBrush">
       <summary>
-        Получает или задаёт контрастный (к акцентирующему) цвет.
+        Возвращает или задаёт контрастный (к акцентирующему) цвет.
       </summary>
       <value>Кисть, содержащая контрастный цвет, или null, если элемент управления должен использовать значение, указанное для всего приложения. Значение по умолчанию — null.</value>
       <remarks>
@@ -178,7 +178,7 @@
     </field>
     <method name="M:Elysium.ThemeManager.GetContrastBrush(System.Windows.FrameworkElement)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.ThemeManager.ContrastBrush"/> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.ThemeManager.ContrastBrush"/> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Текущий контрастный цвет для указанного элемента управления.</returns>

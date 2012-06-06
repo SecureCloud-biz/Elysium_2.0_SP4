@@ -26,36 +26,48 @@ namespace Elysium.Controls.Primitives
         [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
         static ProgressBarBase()
         {
-            ValueProperty.OverrideMetadata(typeof(ProgressBarBase), new FrameworkPropertyMetadata(OnValueChanged));
             MaximumProperty.OverrideMetadata(typeof(ProgressBarBase), new FrameworkPropertyMetadata(100d));
         }
 
-        private static readonly DependencyPropertyKey PercentKey =
-            DependencyProperty.RegisterReadOnly("Percent", typeof(double), typeof(ProgressBarBase), new FrameworkPropertyMetadata(0d));
+        private static readonly DependencyPropertyKey PercentPropertyKey =
+            DependencyProperty.RegisterReadOnly("Percent", typeof(double), typeof(ProgressBarBase),
+                                                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.None, OnPercentChanged));
 
         [PublicAPI]
-        public static readonly DependencyProperty PercentProperty = PercentKey.DependencyProperty;
+        public static readonly DependencyProperty PercentProperty = PercentPropertyKey.DependencyProperty;
 
         [PublicAPI]
+        [Browsable(false)]
         public double Percent
         {
             get { return BoxingHelper<double>.Unbox(GetValue(PercentProperty)); }
-            private set { SetValue(PercentKey, value); }
+            private set { SetValue(PercentPropertyKey, value); }
         }
 
-        private static void OnValueChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnPercentChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            var progressBar = (ProgressBarBase)obj;
-            progressBar.Percent = progressBar.State != ProgressBarState.Normal || progressBar.Maximum <= progressBar.Minimum
-                                      ? double.NaN
-                                      : (progressBar.Value - progressBar.Minimum) / (progressBar.Maximum - progressBar.Minimum);
+            var instance = (ProgressBarBase)obj;
+            instance.OnPercentChanged(BoxingHelper<double>.Unbox(e.OldValue), BoxingHelper<double>.Unbox(e.NewValue));
+        }
+
+        [PublicAPI]
+// ReSharper disable VirtualMemberNeverOverriden.Global
+        protected virtual void OnPercentChanged(double oldPercent, double newPercent)
+// ReSharper restore VirtualMemberNeverOverriden.Global
+        {
+        }
+
+        protected override void OnValueChanged(double oldValue, double newValue)
+        {
+            base.OnValueChanged(oldValue, newValue);
+            Percent = State != ProgressBarState.Normal || Maximum <= Minimum ? double.NaN : (Value - Minimum) / (Maximum - Minimum);
         }
 
         [PublicAPI]
         public static readonly DependencyProperty StateProperty =
             DependencyProperty.Register("State", typeof(ProgressBarState), typeof(ProgressBarBase),
-                                        new FrameworkPropertyMetadata(ProgressBarState.Normal, OnStateChanged));
+                                        new FrameworkPropertyMetadata(ProgressBarState.Normal, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnStateChanged));
 
         [PublicAPI]
         [Bindable(true)]
@@ -126,8 +138,7 @@ namespace Elysium.Controls.Primitives
             }
         }
 
-        [PublicAPI]
-        protected const string DefaultIndeterminateAnimationName = "DefaultIndeterminateAnimation";
+        internal const string DefaultIndeterminateAnimationName = "CF98B9E7-AB2F-4CBD-9EA6-54552441CD6A";
 
         [PublicAPI]
         public static readonly DependencyProperty IndeterminateAnimationProperty =
@@ -145,8 +156,7 @@ namespace Elysium.Controls.Primitives
             set { SetValue(IndeterminateAnimationProperty, value); }
         }
 
-        [PublicAPI]
-        protected const string DefaultBusyAnimationName = "DefaultBusyAnimation";
+        internal const string DefaultBusyAnimationName = "3CE2DDC1-D744-454F-A9E6-831D1FBA850B";
 
         [PublicAPI]
         public static readonly DependencyProperty BusyAnimationProperty =
@@ -169,7 +179,7 @@ namespace Elysium.Controls.Primitives
                                                                                                       typeof(RoutedEventHandler), typeof(ProgressBarBase));
 
         [PublicAPI]
-        [Category("Behavior")]
+        [Category("Appearance")]
         [Description("Occurs when a state's animations updating.")]
         public event RoutedEventHandler AnimationsUpdating
         {
@@ -190,7 +200,7 @@ namespace Elysium.Controls.Primitives
                                                                                                      typeof(RoutedEventHandler), typeof(ProgressBarBase));
 
         [PublicAPI]
-        [Category("Behavior")]
+        [Category("Appearance")]
         [Description("Occurs when a state's animations updated.")]
         public event RoutedEventHandler AnimationsUpdated
         {

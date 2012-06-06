@@ -20,7 +20,9 @@ namespace Elysium.Controls
     [PublicAPI]
     [TemplatePart(Name = IndicatorName, Type = typeof(Rectangle))]
     [TemplatePart(Name = BusyBarName, Type = typeof(Canvas))]
+// ReSharper disable ClassWithVirtualMembersNeverInherited.Global
     public class LinearProgressBar : ProgressBarBase
+// ReSharper restore ClassWithVirtualMembersNeverInherited.Global
     {
         private const string IndicatorName = "PART_Indicator";
         private const string BusyBarName = "PART_BusyBar";
@@ -37,7 +39,7 @@ namespace Elysium.Controls
         [PublicAPI]
         public static readonly DependencyProperty OrientationProperty =
             DependencyProperty.Register("Orientation", typeof(Orientation), typeof(ProgressBarBase),
-                                        new FrameworkPropertyMetadata(Orientation.Horizontal, FrameworkPropertyMetadataOptions.AffectsMeasure),
+                                        new FrameworkPropertyMetadata(Orientation.Horizontal, FrameworkPropertyMetadataOptions.AffectsMeasure, OnOrientationChanged),
                                         IsValidOrientation);
 
         [PublicAPI]
@@ -47,6 +49,20 @@ namespace Elysium.Controls
         {
             get { return BoxingHelper<Orientation>.Unbox(GetValue(OrientationProperty)); }
             set { SetValue(OrientationProperty, value); }
+        }
+
+        private static void OnOrientationChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            var instance = (LinearProgressBar)obj;
+            instance.OnOrientationChanged(BoxingHelper<Orientation>.Unbox(e.OldValue), BoxingHelper<Orientation>.Unbox(e.NewValue));
+        }
+
+        [PublicAPI]
+// ReSharper disable VirtualMemberNeverOverriden.Global
+        protected virtual void OnOrientationChanged(Orientation oldOrientation, Orientation newOrientation)
+// ReSharper restore VirtualMemberNeverOverriden.Global
+        {
         }
 
         private static bool IsValidOrientation(object value)

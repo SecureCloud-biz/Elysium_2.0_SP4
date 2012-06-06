@@ -11,7 +11,7 @@
     </type>
     <property name="P:Elysium.Controls.DropDownCommandButton.Submenu">
       <summary>
-        Возвращает или задает выпадающее меню.
+        Возвращает или задаёт выпадающее меню.
       </summary>
       <value>Меню. Значение по умолчанию — null.</value>
       <remarks>
@@ -25,7 +25,7 @@
           <item>
             <term>Метаданные</term>
             <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None"/>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.BindsTwoWayByDefault"/>
             </description>
           </item>
         </list>
@@ -95,7 +95,7 @@
     </method>
     <property name="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen">
       <summary>
-        Возвращает или задает значение, указывающее, открыто ли в данный момент выпадающее меню.
+        Возвращает или задаёт значение, указывающее, открыто ли в данный момент выпадающее меню.
       </summary>
       <value>True, если выпадающее меню открыто; иначе False. Значение по умолчанию — False.</value>
       <remarks>
@@ -123,6 +123,17 @@
         Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen"/>.
       </value>
     </field>
+    <method name="M:Elysium.Controls.DropDownCommandButton.OnIsDropDownOpenChanged(System.Boolean,System.Boolean)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen"/>.
+      </summary>
+      <param name="oldSubmenu">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen"/>.
+      </param>
+      <param name="newSubmenu">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen"/>.
+      </param>
+    </method>
     <event name="E:Elysium.Controls.DropDownCommandButton.DropDownOpened">
       <summary>
         Событие генерируется при открытии выпадающего меню.
@@ -147,7 +158,7 @@
     </method>
     <property name="P:Elysium.Controls.DropDownCommandButton.DropDownDirection">
       <summary>
-        Возвращает или задает направление выпадающего меню.
+        Возвращает или задаёт направление выпадающего меню.
       </summary>
       <value>Одно из значений перечисления <see cref="T:Elysium.Controls.DropDownDirection"/>. Значение по умолчанию — <see cref="F:Elysium.Controls.DropDownDirection.Up">DropDownDirection.Up</see>.</value>
       <remarks>
@@ -177,7 +188,7 @@
     </field>
     <property name="P:Elysium.Controls.DropDownCommandButton.MaxDropDownHeight">
       <summary>
-        Возвращает или задает максимальный размер выпадающего меню.
+        Возвращает или задаёт максимальный размер выпадающего меню.
       </summary>
       <value>Максимальный размер выпадающего меню. Значение по умолчанию — 300px.</value>
       <remarks>

@@ -1,9 +1,9 @@
 using JetBrains.Annotations;
 
-namespace Elysium.Controls
+namespace Elysium.Notifications
 {
     [PublicAPI]
-    public enum ToastNotificationAnimation
+    public enum Animation
     {
         [PublicAPI]
         None,

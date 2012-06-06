@@ -111,6 +111,7 @@
     <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
     <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
     <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
+    <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -388,10 +389,10 @@
     <Compile Include="Controls\ProgressBars\LinearProgressBar.cs" />
     <Compile Include="Controls\ProgressBars\Primitives\ProgressBarBase.cs" />
     <Compile Include="Controls\ProgressBars\ProgressBarState.cs" />
-    <Compile Include="Controls\ToastNotification\HorizontalPlacement.cs" />
+    <Compile Include="Notifications\HorizontalPlacement.cs" />
     <Compile Include="Controls\ToastNotification\ToastNotification.cs" />
-    <Compile Include="Controls\ToastNotification\ToastNotificationAnimation.cs" />
-    <Compile Include="Controls\ToastNotification\VerticalPlacement.cs" />
+    <Compile Include="Notifications\Animation.cs" />
+    <Compile Include="Notifications\VerticalPlacement.cs" />
     <Compile Include="Controls\ToggleSwitch\Automation\ToggleSwitchAutomationPeer.cs" />
     <Compile Include="Controls\ToggleSwitch\ToggleSwitch.cs" />
     <Compile Include="Controls\Window.cs" />
@@ -495,13 +496,13 @@
     <None Include="Controls\ProgressBars\ProgressBarState.ru.xml">
       <DependentUpon>ProgressBarState.cs</DependentUpon>
     </None>
-    <None Include="Controls\ToastNotification\ToastNotificationAnimation.ru.xml">
-      <DependentUpon>ToastNotificationAnimation.cs</DependentUpon>
+    <None Include="Notifications\Animation.ru.xml">
+      <DependentUpon>Animation.cs</DependentUpon>
     </None>
-    <None Include="Controls\ToastNotification\HorizontalPlacement.ru.xml">
+    <None Include="Notifications\HorizontalPlacement.ru.xml">
       <DependentUpon>HorizontalPlacement.cs</DependentUpon>
     </None>
-    <None Include="Controls\ToastNotification\VerticalPlacement.ru.xml">
+    <None Include="Notifications\VerticalPlacement.ru.xml">
       <DependentUpon>VerticalPlacement.cs</DependentUpon>
     </None>
     <None Include="Controls\ApplicationBar\Automation\ApplicationBarAutomationPeer.ru.xml">
@@ -549,7 +550,20 @@
     <None Include="Controls\Menus\Submenu.ru.xml">
       <DependentUpon>Submenu.cs</DependentUpon>
     </None>
+    <None Include="Controls\ProgressBars\Primitives\ProgressBarBase.ru.xml">
+      <DependentUpon>ProgressBarBase.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ProgressBars\LinearProgressBar.ru.xml">
+      <DependentUpon>LinearProgressBar.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ProgressBars\CircularProgressBar.ru.xml">
+      <DependentUpon>CircularProgressBar.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ToggleSwitch\ToggleSwitch.ru.xml">
+      <DependentUpon>ToggleSwitch.cs</DependentUpon>
+    </None>
     <None Include="Properties\Key.snk" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

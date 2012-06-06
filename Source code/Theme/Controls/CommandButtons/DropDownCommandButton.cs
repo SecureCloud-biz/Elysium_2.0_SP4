@@ -38,7 +38,7 @@ namespace Elysium.Controls
         [PublicAPI]
         public static readonly DependencyProperty SubmenuProperty =
             DependencyProperty.Register("Submenu", typeof(Submenu), typeof(DropDownCommandButton),
-                                        new FrameworkPropertyMetadata(null, OnSubmenuChanged));
+                                        new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnSubmenuChanged));
 
         [PublicAPI]
         [Bindable(true)]
@@ -70,7 +70,7 @@ namespace Elysium.Controls
 
         private static readonly DependencyPropertyKey HasSubmenuPropertyKey =
             DependencyProperty.RegisterReadOnly("HasSubmenu", typeof(bool), typeof(DropDownCommandButton),
-                                                new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, OnHasSubmenuChanged));
+                                                new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, FrameworkPropertyMetadataOptions.None, OnHasSubmenuChanged));
 
         [PublicAPI]
         public static readonly DependencyProperty HasSubmenuProperty = HasSubmenuPropertyKey.DependencyProperty;
@@ -106,11 +106,11 @@ namespace Elysium.Controls
         [PublicAPI]
         public static readonly DependencyProperty IsDropDownOpenProperty =
             DependencyProperty.Register("IsDropDownOpen", typeof(bool), typeof(DropDownCommandButton),
-                                        new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, OnIsDropDownOpenChanged, CoerceIsDropDownOpen));
+                                        new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
+                                                                      OnIsDropDownOpenChanged, CoerceIsDropDownOpen));
 
         [PublicAPI]
         [Bindable(true)]
-        [Browsable(false)]
         [Category("Appearance")]
         [Description("Indicates whether drop down is open.")]
         public bool IsDropDownOpen
@@ -126,7 +126,8 @@ namespace Elysium.Controls
             instance.OnIsDropDownOpenChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
         }
 
-        private void OnIsDropDownOpenChanged(bool oldIsDropDownOpen, bool newIsDropDownOpen)
+        [PublicAPI]
+        protected virtual void OnIsDropDownOpenChanged(bool oldIsDropDownOpen, bool newIsDropDownOpen)
         {
             var peer = UIElementAutomationPeer.FromElement(this) as DropDownCommandButtonAutomationPeer;
             if (peer != null)
@@ -164,6 +165,8 @@ namespace Elysium.Controls
         }
 
         [PublicAPI]
+        [Category("Behavior")]
+        [Description("Occurs when drop down is opened.")]
         public event EventHandler DropDownOpened;
 
         [PublicAPI]
@@ -181,6 +184,8 @@ namespace Elysium.Controls
         }
 
         [PublicAPI]
+        [Category("Behavior")]
+        [Description("Occurs when drop down is closed.")]
         public event EventHandler DropDownClosed;
 
         [PublicAPI]
@@ -200,7 +205,7 @@ namespace Elysium.Controls
         [PublicAPI]
         public static readonly DependencyProperty DropDownDirectionProperty =
             DependencyProperty.Register("DropDownDirection", typeof(DropDownDirection), typeof(DropDownCommandButton),
-                                        new FrameworkPropertyMetadata(DropDownDirection.Up));
+                                        new FrameworkPropertyMetadata(DropDownDirection.Up, FrameworkPropertyMetadataOptions.None));
 
         [PublicAPI]
         [Category("Layout")]
@@ -213,7 +218,7 @@ namespace Elysium.Controls
 
         [PublicAPI]
         public static readonly DependencyProperty MaxDropDownHeightProperty =
-            DependencyProperty.Register("MaxDropDownHeight", typeof(double), typeof(DropDownCommandButton), new FrameworkPropertyMetadata(300d));
+            DependencyProperty.Register("MaxDropDownHeight", typeof(double), typeof(DropDownCommandButton), new FrameworkPropertyMetadata(300d, FrameworkPropertyMetadataOptions.None));
 
         [PublicAPI]
         [Bindable(true)]

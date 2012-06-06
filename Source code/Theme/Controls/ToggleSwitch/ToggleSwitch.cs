@@ -44,10 +44,10 @@ namespace Elysium.Controls
         public static readonly DependencyProperty IsCheckedProperty =
             DependencyProperty.Register("IsChecked", typeof(bool), typeof(ToggleSwitch),
                                         new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox,
-                                                                      FrameworkPropertyMetadataOptions.BindsTwoWayByDefault |
-                                                                      FrameworkPropertyMetadataOptions.Journal, OnIsCheckedChanged));
+                                                                      FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnIsCheckedChanged));
 
         [PublicAPI]
+        [Bindable(true)]
         [Category("Appearance")]
         [Description("Indicates whether the button is checked.")]
         [Localizability(LocalizationCategory.None, Readability = Readability.Unreadable)]
@@ -65,7 +65,7 @@ namespace Elysium.Controls
         }
 
         [PublicAPI]
-        protected void OnIsCheckedChanged(bool oldIsChecked, bool newIsChecked)
+        protected virtual void OnIsCheckedChanged(bool oldIsChecked, bool newIsChecked)
         {
             var peer = UIElementAutomationPeer.FromElement(this) as ToggleSwitchAutomationPeer;
             if (peer != null)
@@ -96,7 +96,6 @@ namespace Elysium.Controls
         public event RoutedEventHandler Checked
         {
             add { AddHandler(CheckedEvent, value); }
-
             remove { RemoveHandler(CheckedEvent, value); }
         }
 
@@ -112,7 +111,6 @@ namespace Elysium.Controls
         public event RoutedEventHandler Unchecked
         {
             add { AddHandler(UncheckedEvent, value); }
-
             remove { RemoveHandler(UncheckedEvent, value); }
         }
 
@@ -128,12 +126,13 @@ namespace Elysium.Controls
 
         private static readonly DependencyPropertyKey IsSwitchingPropertyKey =
             DependencyProperty.RegisterReadOnly("IsSwitching", typeof(bool), typeof(ToggleSwitch),
-                                                new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, OnIsSwitchingChanged));
+                                                new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, FrameworkPropertyMetadataOptions.None, OnIsSwitchingChanged));
 
         [PublicAPI]
         public static readonly DependencyProperty IsSwitchingProperty = IsSwitchingPropertyKey.DependencyProperty;
 
         [PublicAPI]
+        [Browsable(false)]
         public bool IsSwitching
         {
             get { return BooleanBoxingHelper.Unbox(GetValue(IsSwitchingProperty)); }
@@ -144,10 +143,11 @@ namespace Elysium.Controls
         {
             ValidationHelper.NotNull(obj, () => obj);
             var instance = (ToggleSwitch)obj;
-            instance.OnIsSwitchingChanged(/*BooleanBoxingHelper.Unbox(e.OldValue), */BooleanBoxingHelper.Unbox(e.NewValue));
+            instance.OnIsSwitchingChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
         }
 
-        private void OnIsSwitchingChanged(/*bool oldIsSwitching, */bool newIsSwitchging)
+        [PublicAPI]
+        protected virtual void OnIsSwitchingChanged(bool oldIsSwitching, bool newIsSwitchging)
         {
             if (newIsSwitchging)
             {
@@ -170,7 +170,6 @@ namespace Elysium.Controls
         public event RoutedEventHandler SwitchStarted
         {
             add { AddHandler(SwitchStartedEvent, value); }
-
             remove { RemoveHandler(SwitchStartedEvent, value); }
         }
 
@@ -190,7 +189,6 @@ namespace Elysium.Controls
         public event RoutedEventHandler SwitchCompleted
         {
             add { AddHandler(SwitchCompletedEvent, value); }
-
             remove { RemoveHandler(SwitchCompletedEvent, value); }
         }
 

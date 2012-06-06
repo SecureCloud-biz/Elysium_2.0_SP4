@@ -91,7 +91,7 @@
     </member>
     <member name="P:Elysium.ThemeManager.Theme">
       <summary>
-        Получает или задаёт значение, указывающее на текующий тип темы.
+        Возвращает или задаёт значение, указывающее на текующий тип темы.
       </summary>
       <value>
         Одно из значений перечисления <see cref="T:Elysium.Theme" /> или null, если элемент управления должен использовать значение, указанное для всего приложения. Значение по умолчанию — null.
@@ -134,7 +134,7 @@
     </member>
     <member name="M:Elysium.ThemeManager.GetTheme(System.Windows.FrameworkElement)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.ThemeManager.Theme" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.ThemeManager.Theme" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Текущий тип темы для указанного элемента управления.</returns>
@@ -156,7 +156,7 @@
     </member>
     <member name="P:Elysium.ThemeManager.AccentBrush">
       <summary>
-        Получает или задаёт акцентирующий цвет.
+        Возвращает или задаёт акцентирующий цвет.
       </summary>
       <value>Кисть, содержащая акцентирующий цвет, или null, если элемент управления должен использовать значение, указанное для всего приложения. Значение по умолчанию — null.</value>
       <remarks>
@@ -196,7 +196,7 @@
     </member>
     <member name="M:Elysium.ThemeManager.GetAccentBrush(System.Windows.FrameworkElement)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.ThemeManager.AccentBrush" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.ThemeManager.AccentBrush" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Текущий акцентирующий цвет для указанного элемента управления.</returns>
@@ -218,7 +218,7 @@
     </member>
     <member name="P:Elysium.ThemeManager.ContrastBrush">
       <summary>
-        Получает или задаёт контрастный (к акцентирующему) цвет.
+        Возвращает или задаёт контрастный (к акцентирующему) цвет.
       </summary>
       <value>Кисть, содержащая контрастный цвет, или null, если элемент управления должен использовать значение, указанное для всего приложения. Значение по умолчанию — null.</value>
       <remarks>
@@ -258,7 +258,7 @@
     </member>
     <member name="M:Elysium.ThemeManager.GetContrastBrush(System.Windows.FrameworkElement)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.ThemeManager.ContrastBrush" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.ThemeManager.ContrastBrush" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Текущий контрастный цвет для указанного элемента управления.</returns>
@@ -316,7 +316,7 @@
     </member>
     <member name="P:Elysium.Parameters.TitleFontSize">
       <summary>
-        Получает или задаёт размер шрифта в заголовке окна.
+        Возвращает или задаёт размер шрифта в заголовке окна.
       </summary>
       <value>Размер шрифта в заголовке окна. Значение по умолчанию — 12pt.</value>
       <remarks>
@@ -362,7 +362,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetTitleFontSize(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.TitleFontSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.TitleFontSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер шрифта в заголовке окна.</returns>
@@ -385,7 +385,7 @@
     </member>
     <member name="P:Elysium.Parameters.HeaderFontSize">
       <summary>
-        Получает или задаёт размер шрифта в заголовке элемента управления.
+        Возвращает или задаёт размер шрифта в заголовке элемента управления.
       </summary>
       <value>Размер шрифта в заголовке элемента управления. Значение по умолчанию — 16pt.</value>
       <remarks>
@@ -431,7 +431,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetHeaderFontSize(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.HeaderFontSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.HeaderFontSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер шрифта в заголовке элемента управления.</returns>
@@ -454,7 +454,7 @@
     </member>
     <member name="P:Elysium.Parameters.ContentFontSize">
       <summary>
-        Получает или задаёт размер шрифта для содержимого элемента управления.
+        Возвращает или задаёт размер шрифта для содержимого элемента управления.
       </summary>
       <value>Размер шрифта для содержимого элемента управления. Значение по умолчанию — 10pt.</value>
       <remarks>
@@ -499,7 +499,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetContentFontSize(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.ContentFontSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ContentFontSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер шрифта для содержимого элемента управления.</returns>
@@ -522,7 +522,7 @@
     </member>
     <member name="P:Elysium.Parameters.TextFontSize">
       <summary>
-        Получает или задаёт размер шрифта текста.
+        Возвращает или задаёт размер шрифта текста.
       </summary>
       <value>Размер шрифта текста. Значение по умолчанию — 9pt.</value>
       <remarks>
@@ -569,7 +569,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetTextFontSize(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.TextFontSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.TextFontSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер шрифта текста.</returns>
@@ -592,7 +592,7 @@
     </member>
     <member name="P:Elysium.Parameters.DefaultThickness">
       <summary>
-        Получает или задаёт толщину линии по умолчанию.
+        Возвращает или задаёт толщину линии по умолчанию.
       </summary>
       <value>Толщина линии по умолчанию. Значение по умолчанию — 1px.</value>
       <remarks>
@@ -632,7 +632,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetDefaultThickness(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultThickness" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultThickness" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Толщина линии по умолчанию.</returns>
@@ -655,7 +655,7 @@
     </member>
     <member name="P:Elysium.Parameters.SemiBoldThickness">
       <summary>
-        Получает или задаёт толщину полужирной линии.
+        Возвращает или задаёт толщину полужирной линии.
       </summary>
       <value>Толщина полужирной линии. Значение по умолчанию — 1.5px.</value>
       <remarks>
@@ -695,7 +695,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetSemiBoldThickness(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.SemiBoldThickness" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.SemiBoldThickness" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Толщина полужирной линии.</returns>
@@ -718,7 +718,7 @@
     </member>
     <member name="P:Elysium.Parameters.BoldThickness">
       <summary>
-        Получает или задаёт толщину жирной линии.
+        Возвращает или задаёт толщину жирной линии.
       </summary>
       <value>Толщина жирной линии. Значение по умолчанию — 2px.</value>
       <remarks>
@@ -758,7 +758,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetBoldThickness(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.BoldThickness" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.BoldThickness" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Толщина жирной линии.</returns>
@@ -781,7 +781,7 @@
     </member>
     <member name="P:Elysium.Parameters.DefaultThicknessValue">
       <summary>
-        Получает или задаёт толщину линии по умолчанию.
+        Возвращает или задаёт толщину линии по умолчанию.
       </summary>
       <value>Толщина линии по умолчанию. Значение по умолчанию — 1px.</value>
       <remarks>
@@ -821,7 +821,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetDefaultThicknessValue(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultThicknessValue" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultThicknessValue" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Толщина линии по умолчанию.</returns>
@@ -844,7 +844,7 @@
     </member>
     <member name="P:Elysium.Parameters.SemiBoldThicknessValue">
       <summary>
-        Получает или задаёт толщину полужирной линии.
+        Возвращает или задаёт толщину полужирной линии.
       </summary>
       <value>Толщина полужирной линии. Значение по умолчанию — 1.5px.</value>
       <remarks>
@@ -884,7 +884,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetSemiBoldThicknessValue(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.SemiBoldThicknessValue" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.SemiBoldThicknessValue" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Толщина полужирной линии.</returns>
@@ -907,7 +907,7 @@
     </member>
     <member name="P:Elysium.Parameters.BoldThicknessValue">
       <summary>
-        Получает или задаёт толщину жирной линии.
+        Возвращает или задаёт толщину жирной линии.
       </summary>
       <value>Толщина жирной линии. Значение по умолчанию — 2px.</value>
       <remarks>
@@ -947,7 +947,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetBoldThicknessValue(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.BoldThicknessValue" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.BoldThicknessValue" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Толщина жирной линии.</returns>
@@ -970,7 +970,7 @@
     </member>
     <member name="P:Elysium.Parameters.DefaultPadding">
       <summary>
-        Получает или задаёт размер отступов по умолчанию.
+        Возвращает или задаёт размер отступов по умолчанию.
       </summary>
       <value>Размер отступов по умолчанию. Значение по умолчанию — 1px.</value>
       <remarks>
@@ -1010,7 +1010,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetDefaultPadding(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultPadding" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultPadding" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер отступов по умолчанию.</returns>
@@ -1033,7 +1033,7 @@
     </member>
     <member name="P:Elysium.Parameters.SemiBoldPadding">
       <summary>
-        Получает или задаёт величину отступов среднего размера.
+        Возвращает или задаёт величину отступов среднего размера.
       </summary>
       <value>Величина отступов среднего размера. Значение по умолчанию — 2px.</value>
       <remarks>
@@ -1073,7 +1073,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetSemiBoldPadding(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.SemiBoldPadding" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.SemiBoldPadding" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Величина отступов среднего размера.</returns>
@@ -1096,7 +1096,7 @@
     </member>
     <member name="P:Elysium.Parameters.BoldPadding">
       <summary>
-        Получает или задаёт величину наиболее большого отступа.
+        Возвращает или задаёт величину наиболее большого отступа.
       </summary>
       <value>Величина наиболее большого отступа. Значение по умолчанию — 5px.</value>
       <remarks>
@@ -1136,7 +1136,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetBoldPadding(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.BoldPadding" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.BoldPadding" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Величина наиболее большого отступа.</returns>
@@ -1159,7 +1159,7 @@
     </member>
     <member name="P:Elysium.Parameters.DefaultPaddingValue">
       <summary>
-        Получает или задаёт размер отступов по умолчанию.
+        Возвращает или задаёт размер отступов по умолчанию.
       </summary>
       <value>Размер отступов по умолчанию. Значение по умолчанию — 1px.</value>
       <remarks>
@@ -1199,7 +1199,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetDefaultPaddingValue(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultPaddingValue" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultPaddingValue" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер отступов по умолчанию.</returns>
@@ -1222,7 +1222,7 @@
     </member>
     <member name="P:Elysium.Parameters.SemiBoldPaddingValue">
       <summary>
-        Получает или задаёт величину отступов среднего размера.
+        Возвращает или задаёт величину отступов среднего размера.
       </summary>
       <value>Величина отступов среднего размера. Значение по умолчанию — 2px.</value>
       <remarks>
@@ -1262,7 +1262,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetSemiBoldPaddingValue(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.SemiBoldPaddingValue" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.SemiBoldPaddingValue" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Величина отступов среднего размера.</returns>
@@ -1285,7 +1285,7 @@
     </member>
     <member name="P:Elysium.Parameters.BoldPaddingValue">
       <summary>
-        Получает или задаёт величину наиболее большого отступа.
+        Возвращает или задаёт величину наиболее большого отступа.
       </summary>
       <value>Величина наиболее большого отступа. Значение по умолчанию — 5px.</value>
       <remarks>
@@ -1325,7 +1325,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetBoldPaddingValue(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.BoldPaddingValue" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.BoldPaddingValue" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Величина наиболее большого отступа.</returns>
@@ -1348,7 +1348,7 @@
     </member>
     <member name="P:Elysium.Parameters.DefaultDuration">
       <summary>
-        Получает или задаёт продолжительность анимации по умолчанию.
+        Возвращает или задаёт продолжительность анимации по умолчанию.
       </summary>
       <value>Продолжительность анимации по умолчанию. Значение по умолчанию — 0 сек.</value>
       <remarks>
@@ -1388,7 +1388,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetDefaultDuration(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultDuration" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultDuration" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Продолжительность анимации по умолчанию.</returns>
@@ -1410,7 +1410,7 @@
     </member>
     <member name="P:Elysium.Parameters.MinimumDuration">
       <summary>
-        Получает или задаёт минимальную продолжительность анимации.
+        Возвращает или задаёт минимальную продолжительность анимации.
       </summary>
       <value>Минимальная продолжительность анимации. Значение по умолчанию — 0.2 сек.</value>
       <remarks>
@@ -1450,7 +1450,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetMinimumDuration(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.MinimumDuration" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.MinimumDuration" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Минимальная продолжительность анимации.</returns>
@@ -1472,7 +1472,7 @@
     </member>
     <member name="P:Elysium.Parameters.OptimumDuration">
       <summary>
-        Получает или задаёт оптимальную продолжительность анимации.
+        Возвращает или задаёт оптимальную продолжительность анимации.
       </summary>
       <value>Оптимальная продолжительность анимации. Значение по умолчанию — 0.5 сек.</value>
       <remarks>
@@ -1512,7 +1512,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetOptimumDuration(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.OptimumDuration" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.OptimumDuration" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Оптимальная продолжительность анимации.</returns>
@@ -1534,7 +1534,7 @@
     </member>
     <member name="P:Elysium.Parameters.MaximumDuration">
       <summary>
-        Получает или задаёт максимальную продолжительность анимации.
+        Возвращает или задаёт максимальную продолжительность анимации.
       </summary>
       <value>Максимальная продолжительность анимации. Значение по умолчанию — 1 сек.</value>
       <remarks>
@@ -1574,7 +1574,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetMaximumDuration(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.MaximumDuration" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.MaximumDuration" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Максимальная продолжительность анимации.</returns>
@@ -1596,7 +1596,7 @@
     </member>
     <member name="P:Elysium.Parameters.ShadowBrush">
       <summary>
-        Получает или задаёт кисть, используемую при создании теней.
+        Возвращает или задаёт кисть, используемую при создании теней.
       </summary>
       <value>Кисть, используемая при создании тени. Значение по умолчанию — null.</value>
       <remarks>
@@ -1638,7 +1638,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetShadowBrush(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.ShadowBrush" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ShadowBrush" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Кисть, используемая при создании теней.</returns>
@@ -1660,7 +1660,7 @@
     </member>
     <member name="P:Elysium.Parameters.CommandButtonMask">
       <summary>
-        Получает или задаёт кисть, используемую для заливки содержимого кнопок управления — классов, наследующихся от класса <see cref="T:Elysium.Controls.Primitives.CommandButtonBase" />.
+        Возвращает или задаёт кисть, используемую для заливки содержимого кнопок управления — классов, наследующихся от класса <see cref="T:Elysium.Controls.Primitives.CommandButtonBase" />.
       </summary>
       <value>Кисть, используемая для заливки содержимого кнопок управления. Значение по умолчанию — null.</value>
       <remarks>
@@ -1702,7 +1702,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetCommandButtonMask(Elysium.Controls.Primitives.CommandButtonBase)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.CommandButtonMask" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.CommandButtonMask" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Кисть, используемая для заливки содержимого кнопок управления.</returns>
@@ -1724,7 +1724,7 @@
     </member>
     <member name="P:Elysium.Parameters.BulletDecoratorSize">
       <summary>
-        Получает или задаёт размер области, на которой располагается маркер у классов <see cref="T:System.Windows.Controls.CheckBox" /> и <see cref="T:System.Windows.Controls.RadioButton" />.
+        Возвращает или задаёт размер области, на которой располагается маркер у классов <see cref="T:System.Windows.Controls.CheckBox" /> и <see cref="T:System.Windows.Controls.RadioButton" />.
       </summary>
       <value>Размер области, на которой располагается маркер. Значение по умолчанию — 16px.</value>
       <remarks>
@@ -1764,7 +1764,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetBulletDecoratorSize(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.BulletDecoratorSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.BulletDecoratorSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер области, на которой располагается маркер.</returns>
@@ -1795,7 +1795,7 @@
     </member>
     <member name="P:Elysium.Parameters.BulletSize">
       <summary>
-        Получает или задаёт размер маркера в состоянии "не определено" у классов <see cref="T:System.Windows.Controls.CheckBox" /> и <see cref="T:System.Windows.Controls.RadioButton" />.
+        Возвращает или задаёт размер маркера в состоянии "не определено" у классов <see cref="T:System.Windows.Controls.CheckBox" /> и <see cref="T:System.Windows.Controls.RadioButton" />.
       </summary>
       <value>Размер маркера в состоянии "не определено". Значение по умолчанию — 8px.</value>
       <remarks>
@@ -1835,7 +1835,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetBulletSize(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.BulletSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.BulletSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер маркера в состоянии "не определено".</returns>
@@ -1866,7 +1866,7 @@
     </member>
     <member name="P:Elysium.Parameters.CheckSize">
       <summary>
-        Получает или задаёт размер маркера в состоянии "включен" для элемента управления <see cref="T:System.Windows.Controls.CheckBox" />.
+        Возвращает или задаёт размер маркера в состоянии "включен" для элемента управления <see cref="T:System.Windows.Controls.CheckBox" />.
       </summary>
       <value>Размер маркера в состоянии "включен". Значение по умолчанию — 10px.</value>
       <remarks>
@@ -1906,7 +1906,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetCheckSize(System.Windows.Controls.CheckBox)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.CheckSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.CheckSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер маркера в состоянии "включен".</returns>
@@ -1929,7 +1929,7 @@
     </member>
     <member name="P:Elysium.Parameters.ToggleSwitchTrackSize">
       <summary>
-        Получает или задаёт ширину переключателя в элементе управления <see cref="T:Elysium.Controls.ToggleSwitch" />.
+        Возвращает или задаёт ширину переключателя в элементе управления <see cref="T:Elysium.Controls.ToggleSwitch" />.
       </summary>
       <value>Ширина переключателя. Значение по умолчанию — 48px.</value>
       <remarks>
@@ -1969,7 +1969,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetToggleSwitchTrackSize(Elysium.Controls.ToggleSwitch)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.ToggleSwitchTrackSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ToggleSwitchTrackSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Ширина переключателя.</returns>
@@ -1992,7 +1992,7 @@
     </member>
     <member name="P:Elysium.Parameters.ToggleSwitchThumbThickness">
       <summary>
-        Получает или задаёт толщину переключателя в элементе управления <see cref="T:Elysium.Controls.ToggleSwitch" />.
+        Возвращает или задаёт толщину переключателя в элементе управления <see cref="T:Elysium.Controls.ToggleSwitch" />.
       </summary>
       <value>Толщина переключателя. Значение по умолчанию — 10px.</value>
       <remarks>
@@ -2032,7 +2032,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetToggleSwitchThumbThickness(Elysium.Controls.ToggleSwitch)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.ToggleSwitchThumbThickness" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ToggleSwitchThumbThickness" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Толщина переключателя.</returns>
@@ -2055,7 +2055,7 @@
     </member>
     <member name="P:Elysium.Parameters.ComboBoxButtonSize">
       <summary>
-        Получает или задаёт ширину кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
+        Возвращает или задаёт ширину кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
       </summary>
       <value>
         Ширина кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />. Значение по умолчанию — 18px.
@@ -2099,7 +2099,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetComboBoxButtonSize(System.Windows.Controls.ComboBox)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.ComboBoxButtonSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ComboBoxButtonSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>
@@ -2126,7 +2126,7 @@
     </member>
     <member name="P:Elysium.Parameters.ComboBoxArrowSize">
       <summary>
-        Получает или задаёт размер указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
+        Возвращает или задаёт размер указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
       </summary>
       <value>
         Размер указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />. Значение по умолчанию — 8px.
@@ -2168,7 +2168,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetComboBoxArrowSize(System.Windows.Controls.ComboBox)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.ComboBoxArrowSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ComboBoxArrowSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>
@@ -2195,7 +2195,7 @@
     </member>
     <member name="P:Elysium.Parameters.ComboBoxArrowMargin">
       <summary>
-        Получает или задаёт отступ указателя на возможность открытия (стрелки) от краёв кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
+        Возвращает или задаёт отступ указателя на возможность открытия (стрелки) от краёв кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
       </summary>
       <value>
         Отступ указателя на возможность открытия (стрелки) от краёв кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />. Значение по умолчанию — (5, 0, 5, 0).
@@ -2239,7 +2239,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetComboBoxArrowMargin(System.Windows.Controls.ComboBox)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.ComboBoxArrowMargin" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ComboBoxArrowMargin" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>
@@ -2266,7 +2266,7 @@
     </member>
     <member name="P:Elysium.Parameters.SliderTrackSize">
       <summary>
-        Получает или задаёт длину трека в элементе управления <see cref="T:System.Windows.Controls.Slider" />.
+        Возвращает или задаёт длину трека в элементе управления <see cref="T:System.Windows.Controls.Slider" />.
       </summary>
       <value>Длина трека. Значение по умолчанию — 48px.</value>
       <remarks>
@@ -2306,7 +2306,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetSliderTrackSize(System.Windows.Controls.Slider)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.SliderTrackSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.SliderTrackSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Длина трека.</returns>
@@ -2329,7 +2329,7 @@
     </member>
     <member name="P:Elysium.Parameters.SliderThumbThickness">
       <summary>
-        Получает или задаёт ширину ползунка в элементе управления <see cref="T:System.Windows.Controls.Slider" />.
+        Возвращает или задаёт ширину ползунка в элементе управления <see cref="T:System.Windows.Controls.Slider" />.
       </summary>
       <value>Ширина ползунка. Значение по умолчанию — 6px.</value>
       <remarks>
@@ -2369,7 +2369,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetSliderThumbThickness(System.Windows.Controls.Slider)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.SliderThumbThickness" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.SliderThumbThickness" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Ширина ползунка.</returns>
@@ -2392,7 +2392,7 @@
     </member>
     <member name="P:Elysium.Parameters.ProgressBarBusyElementSize">
       <summary>
-        Получает или задаёт размер элемента индикации состояния занятости (по умолчанию — кружка) для наследников класса <see cref="T:Elysium.Controls.Primitives.ProgressBarBase" />.
+        Возвращает или задаёт размер элемента индикации состояния занятости (по умолчанию — кружка) для наследников класса <see cref="T:Elysium.Controls.Primitives.ProgressBarBase" />.
       </summary>
       <value>Размер элемента индикации состояния занятости. Значение по умолчанию — 4px.</value>
       <remarks>
@@ -2432,7 +2432,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetProgressBarBusyElementSize(Elysium.Controls.Primitives.ProgressBarBase)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.ProgressBarBusyElementSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ProgressBarBusyElementSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер элемента индикации состояния занятости.</returns>
@@ -2455,7 +2455,7 @@
     </member>
     <member name="P:Elysium.Parameters.ScrollBarArrowSize">
       <summary>
-        Получает или задаёт размер указателя (стрелки) в элементе управления <see cref="T:System.Windows.Controls.Primitives.ScrollBar" />.
+        Возвращает или задаёт размер указателя (стрелки) в элементе управления <see cref="T:System.Windows.Controls.Primitives.ScrollBar" />.
       </summary>
       <value>
         Размер указателя (стрелки). Значение по умолчанию — 6px.
@@ -2497,7 +2497,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetScrollBarArrowSize(System.Windows.Controls.Primitives.ScrollBar)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.ScrollBarArrowSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ScrollBarArrowSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер указателя.</returns>
@@ -2520,7 +2520,7 @@
     </member>
     <member name="P:Elysium.Parameters.TabControlIndicatorBrush">
       <summary>
-        Получает или задаёт кисть, используемую для заливки индикатора текущей вкладки элемента управления <see cref="T:System.Windows.Controls.TabControl" />.
+        Возвращает или задаёт кисть, используемую для заливки индикатора текущей вкладки элемента управления <see cref="T:System.Windows.Controls.TabControl" />.
       </summary>
       <value>Кисть, используемая для заливки индикатора текущей вкладки. Значение по умолчанию — null.</value>
       <remarks>
@@ -2562,7 +2562,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetTabControlIndicatorBrush(System.Windows.DependencyObject)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.TabControlIndicatorBrush" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.TabControlIndicatorBrush" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Кисть, используемая для заливки индикатора текущей вкладки.</returns>
@@ -2592,7 +2592,7 @@
     </member>
     <member name="P:Elysium.Parameters.TabControlIndicatorThickness">
       <summary>
-        Получает или задаёт толщину индикатора текущей вкладки в элементе управления <see cref="T:System.Windows.Controls.TabControl" />.
+        Возвращает или задаёт толщину индикатора текущей вкладки в элементе управления <see cref="T:System.Windows.Controls.TabControl" />.
       </summary>
       <value>Толщина индикатора текущей вкладки. Значение по умолчанию — 2px.</value>
       <remarks>
@@ -2632,7 +2632,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetTabControlIndicatorThickness(System.Windows.Controls.TabControl)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.TabControlIndicatorThickness" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.TabControlIndicatorThickness" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Толщина индикатора текущей вкладки.</returns>
@@ -2655,7 +2655,7 @@
     </member>
     <member name="P:Elysium.Parameters.TabItemHeaderStyle">
       <summary>
-        Получает или задаёт стиль заголовка вкладки в элементе управления <see cref="T:System.Windows.Controls.TabItem" />.
+        Возвращает или задаёт стиль заголовка вкладки в элементе управления <see cref="T:System.Windows.Controls.TabItem" />.
       </summary>
       <value>Стиль заголовка вкладки. Значение по умолчанию — null.</value>
       <remarks>
@@ -2686,7 +2686,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetTabItemHeaderStyle(System.Windows.Controls.TabItem)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.TabItemHeaderStyle" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.TabItemHeaderStyle" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Стиль заголовка вкладки.</returns>
@@ -2708,7 +2708,7 @@
     </member>
     <member name="P:Elysium.Parameters.SubmenuItemBulletSize">
       <summary>
-        Получает или задаёт размер маркера у класса <see cref="T:System.Windows.Controls.MenuItem" />.
+        Возвращает или задаёт размер маркера у класса <see cref="T:System.Windows.Controls.MenuItem" />.
       </summary>
       <value>Размер маркера. Значение по умолчанию — 12px.</value>
       <remarks>
@@ -2749,7 +2749,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetSubmenuItemBulletSize(System.Windows.Controls.MenuItem)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.SubmenuItemBulletSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.SubmenuItemBulletSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер маркера.</returns>
@@ -2772,7 +2772,7 @@
     </member>
     <member name="P:Elysium.Parameters.SubmenuHeaderArrowSize">
       <summary>
-        Получает или задаёт размер указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.MenuItem" />.
+        Возвращает или задаёт размер указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.MenuItem" />.
       </summary>
       <value>
         Размер указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.MenuItem" />. Значение по умолчанию — 8px.
@@ -2814,7 +2814,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetSubmenuHeaderArrowSize(System.Windows.Controls.MenuItem)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.SubmenuHeaderArrowSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.SubmenuHeaderArrowSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>
@@ -2841,7 +2841,7 @@
     </member>
     <member name="P:Elysium.Parameters.SubmenuHeaderArrowMargin">
       <summary>
-        Получает или задаёт отступ указателя на возможность открытия (стрелки) от краёв элемента управления <see cref="T:System.Windows.Controls.MenuItem" />.
+        Возвращает или задаёт отступ указателя на возможность открытия (стрелки) от краёв элемента управления <see cref="T:System.Windows.Controls.MenuItem" />.
       </summary>
       <value>
         Отступ указателя на возможность открытия (стрелки) от краёв элемента управления <see cref="T:System.Windows.Controls.MenuItem" />. Значение по умолчанию — (3, 0, 3, 0).
@@ -2885,7 +2885,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetSubmenuHeaderArrowMargin(System.Windows.Controls.MenuItem)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.SubmenuHeaderArrowMargin" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.SubmenuHeaderArrowMargin" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>
@@ -2912,7 +2912,7 @@
     </member>
     <member name="P:Elysium.Parameters.WindowResizeBorderThickness">
       <summary>
-        Получает или задаёт толщину рамки изменения размера элемента управления <see cref="T:Elysium.Controls.Window" />.
+        Возвращает или задаёт толщину рамки изменения размера элемента управления <see cref="T:Elysium.Controls.Window" />.
       </summary>
       <value>
         Толщина рамки изменения размера окна. Значение по умолчанию — 3px.
@@ -2954,7 +2954,7 @@
     </member>
     <member name="M:Elysium.Parameters.GetWindowResizeBorderThickness(Elysium.Controls.Window)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Parameters.WindowResizeBorderThickness" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.WindowResizeBorderThickness" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Толщина рамки изменения размера окна.</returns>
@@ -3811,36 +3811,16 @@
     </member>
     <member name="P:Elysium.Controls.ApplicationBar.Dock">
       <summary>
-        Получает или задаёт алгоритм размещения элемента управления внутри панели управления приложением.
+        Возвращает или задаёт алгоритм размещения элемента управления внутри панели управления приложением.
       </summary>
-      <value>Одно из значений перечисления <see cref="T:Elysium.Controls.ApplicationBarDock" />. Значение по умолчанию — <see cref="F:Elysium.Controls.ApplicationBarDock.Left" />.</value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Идентификатор</term>
-            <description>
-              <see cref="F:Elysium.Controls.ApplicationBar.DockProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Метаданные</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />
-            </description>
-          </item>
-        </list>
-      </remarks>
-      <example>
-        <code lang="C#">
+      <value>Одно из значений перечисления <see cref="T:Elysium.Controls.ApplicationBarDock" />. Значение по умолчанию — <see cref="F:Elysium.Controls.ApplicationBarDock.Left" />ApplicationBarDock.Left</value>.
+      <remarks><list type="table"><item><term>Идентификатор</term><description><see cref="F:Elysium.Controls.ApplicationBar.DockProperty" /></description></item><item><term>Метаданные</term><description><see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" /></description></item></list></remarks><example><code lang="C#">
           var control = new CommandButton();
           var currentValue = ApplicationBar.GetDock(control);
           ApplicationBar.SetDock(control, ApplicationBarDock.Left);
-        </code>
-        <code lang="XAML">
+        </code><code lang="XAML">
           &lt;CommandButton metro:ApplicationBar.Dock="Left"/&gt;
-        </code>
-      </example>
-    </member>
+        </code></example></member>
     <member name="F:Elysium.Controls.ApplicationBar.DockProperty">
       <summary>
         Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ApplicationBar.Dock" />.
@@ -3851,7 +3831,7 @@
     </member>
     <member name="M:Elysium.Controls.ApplicationBar.GetDock(System.Windows.UIElement)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.Dock" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.Dock" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Алгоритм размещения элемента управления.</returns>
@@ -3859,7 +3839,6 @@
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
-      <ensures>Возвращаемое значение является положительным числом.</ensures>
     </member>
     <member name="M:Elysium.Controls.ApplicationBar.SetDock(System.Windows.UIElement,Elysium.Controls.ApplicationBarDock)">
       <summary>
@@ -3874,7 +3853,7 @@
     </member>
     <member name="P:Elysium.Controls.ApplicationBar.IsOpen">
       <summary>
-        Возвращает или задает значение, указывающее, открыта ли в данный момент панель управления приложением.
+        Возвращает или задаёт значение, указывающее, открыта ли в данный момент панель управления приложением.
       </summary>
       <value>True, если панель управления приложением открыто; иначе False. Значение по умолчанию — False.</value>
       <remarks>
@@ -3902,6 +3881,17 @@
         Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.IsOpen" />.
       </value>
     </member>
+    <member name="M:Elysium.Controls.ApplicationBar.OnIsOpenChanged(System.Boolean,System.Boolean)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.IsOpen" />.
+      </summary>
+      <param name="oldHeader">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.IsOpen" />.
+      </param>
+      <param name="newHeader">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.IsOpen" />.
+      </param>
+    </member>
     <member name="E:Elysium.Controls.ApplicationBar.Opening">
       <summary>
         Событие генерируется перед открытием панели управления приложением.
@@ -3917,7 +3907,7 @@
           <item>
             <term>Ассоциированный метод</term>
             <description>
-              <see cref="M:Elysium.Controls.ApplicationBar.OnOpening" />
+              <see cref="M:Elysium.Controls.ApplicationBar.OnOpening(System.Windows.RoutedEventArgs)" />
             </description>
           </item>
           <item>
@@ -3956,7 +3946,7 @@
           <item>
             <term>Ассоциированный метод</term>
             <description>
-              <see cref="M:Elysium.Controls.ApplicationBar.OnClosing" />
+              <see cref="M:Elysium.Controls.ApplicationBar.OnClosing(System.Windows.RoutedEventArgs)" />
             </description>
           </item>
           <item>
@@ -3995,7 +3985,7 @@
           <item>
             <term>Ассоциированный метод</term>
             <description>
-              <see cref="M:Elysium.Controls.ApplicationBar.OnOpened" />
+              <see cref="M:Elysium.Controls.ApplicationBar.OnOpened(System.Windows.RoutedEventArgs)" />
             </description>
           </item>
           <item>
@@ -4034,7 +4024,7 @@
           <item>
             <term>Ассоциированный метод</term>
             <description>
-              <see cref="M:Elysium.Controls.ApplicationBar.OnClosed" />
+              <see cref="M:Elysium.Controls.ApplicationBar.OnClosed(System.Windows.RoutedEventArgs)" />
             </description>
           </item>
           <item>
@@ -4060,7 +4050,7 @@
     </member>
     <member name="P:Elysium.Controls.ApplicationBar.StaysOpen">
       <summary>
-        Возвращает или задает значение, указывающее, закрывается ли панель управления приложением при потере фокуса.
+        Возвращает или задаёт значение, указывающее, закрывается ли панель управления приложением при потере фокуса.
       </summary>
       <value>
         True, если панель управления приложением закрывается, когда для свойства IsOpen задано значение False;
@@ -4092,9 +4082,20 @@
         Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.StaysOpen" />.
       </value>
     </member>
+    <member name="M:Elysium.Controls.ApplicationBar.OnStaysOpenChanged(System.Boolean,System.Boolean)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.StaysOpen" />.
+      </summary>
+      <param name="oldHeader">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.StaysOpen" />.
+      </param>
+      <param name="newHeader">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.StaysOpen" />.
+      </param>
+    </member>
     <member name="P:Elysium.Controls.ApplicationBar.PreventsOpen">
       <summary>
-        Получает или задаёт значение, указывающее на возможность открытия панели управления приложением при щелчке правой кнопкой над указанным элементов управления.
+        Возвращает или задаёт значение, указывающее на возможность открытия панели управления приложением при щелчке правой кнопкой над указанным элементов управления.
       </summary>
       <value>True, если панель управления приложением может вызываться правым щелчком на указанном элементе управления; иначе False. Значение по умолчанию — True.
       </value>
@@ -4135,7 +4136,7 @@
     </member>
     <member name="M:Elysium.Controls.ApplicationBar.GetPreventsOpen(System.Windows.UIElement)">
       <summary>
-        Получает значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.PreventsOpen" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.PreventsOpen" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Алгоритм размещения элемента управления.</returns>
@@ -4158,9 +4159,9 @@
     </member>
     <member name="P:Elysium.Controls.ApplicationBar.TransitionMode">
       <summary>
-        Возвращает или задает значение, указывающее, какая анимация используется при открытии и закрытии панели управления приложением.
+        Возвращает или задаёт значение, указывающее, какая анимация используется при открытии и закрытии панели управления приложением.
       </summary>
-      <value>Одно из значений перечисления <see cref="T:Elysium.Controls.ApplicationBarTransitionMode" />. Значение по умолчанию — <see cref="T:Elysium.Controls.ApplicationBarTransitionMode.Slide">ApplicationBarTransitionMode.Slide</see>.</value>
+      <value>Одно из значений перечисления <see cref="T:Elysium.Controls.ApplicationBarTransitionMode" />. Значение по умолчанию — <see cref="F:Elysium.Controls.ApplicationBarTransitionMode.Slide">ApplicationBarTransitionMode.Slide</see>.</value>
       <remarks>
         <list type="table">
           <item>
@@ -4185,6 +4186,17 @@
       <value>
         Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.TransitionMode" />.
       </value>
+    </member>
+    <member name="M:Elysium.Controls.ApplicationBar.OnTransitionModeChanged(Elysium.Controls.ApplicationBarTransitionMode,Elysium.Controls.ApplicationBarTransitionMode)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.TransitionMode" />.
+      </summary>
+      <param name="oldHeader">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.TransitionMode" />.
+      </param>
+      <param name="newHeader">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.TransitionMode" />.
+      </param>
     </member>
     <member name="M:Elysium.Controls.ApplicationBar.IsItemItsOwnContainerOverride(System.Object)">
       <inheritdoc />
@@ -4216,7 +4228,7 @@
     </member>
     <member name="P:Elysium.Controls.Primitives.CommandButtonBase.Header">
       <summary>
-        Возвращает или задает данные, используемые для заголовка элемента управления.
+        Возвращает или задаёт данные, используемые для заголовка элемента управления.
       </summary>
       <value>Объект заголовка. Значение по умолчанию — null.</value>
       <remarks>
@@ -4302,7 +4314,7 @@
     </member>
     <member name="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat">
       <summary>
-        Возвращает или задает составную строку, которая определяет форматирование заголовка, если он отображается как строка.
+        Возвращает или задаёт составную строку, которая определяет форматирование заголовка, если он отображается как строка.
       </summary>
       <value>Составная строка, которая определяет форматирование заголовка, если он отображается как строка. Значение по умолчанию — null.</value>
       <remarks>
@@ -4344,7 +4356,7 @@
     </member>
     <member name="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate">
       <summary>
-        Возвращает или задает шаблон, используемый для отображения содержимого заголовка элемента управления.
+        Возвращает или задаёт шаблон, используемый для отображения содержимого заголовка элемента управления.
       </summary>
       <value>Шаблон, используемый для отображения содержимого заголовка элемента управления. Значение по умолчанию — null.</value>
       <remarks>
@@ -4386,7 +4398,7 @@
     </member>
     <member name="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector">
       <summary>
-        Возвращает или задает селектор шаблона данных, предоставляющий пользовательскую логику для выбора шаблона отображения содержимого заголовка элемента управления.
+        Возвращает или задаёт селектор шаблона данных, предоставляющий пользовательскую логику для выбора шаблона отображения содержимого заголовка элемента управления.
       </summary>
       <value>Экземпляр селектора шаблона данных. Значение по умолчанию — null.</value>
       <remarks>
@@ -4450,7 +4462,7 @@
     </member>
     <member name="P:Elysium.Controls.DropDownCommandButton.Submenu">
       <summary>
-        Возвращает или задает выпадающее меню.
+        Возвращает или задаёт выпадающее меню.
       </summary>
       <value>Меню. Значение по умолчанию — null.</value>
       <remarks>
@@ -4464,7 +4476,7 @@
           <item>
             <term>Метаданные</term>
             <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.BindsTwoWayByDefault" />
             </description>
           </item>
         </list>
@@ -4534,7 +4546,7 @@
     </member>
     <member name="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen">
       <summary>
-        Возвращает или задает значение, указывающее, открыто ли в данный момент выпадающее меню.
+        Возвращает или задаёт значение, указывающее, открыто ли в данный момент выпадающее меню.
       </summary>
       <value>True, если выпадающее меню открыто; иначе False. Значение по умолчанию — False.</value>
       <remarks>
@@ -4562,6 +4574,17 @@
         Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen" />.
       </value>
     </member>
+    <member name="M:Elysium.Controls.DropDownCommandButton.OnIsDropDownOpenChanged(System.Boolean,System.Boolean)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen" />.
+      </summary>
+      <param name="oldSubmenu">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen" />.
+      </param>
+      <param name="newSubmenu">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen" />.
+      </param>
+    </member>
     <member name="E:Elysium.Controls.DropDownCommandButton.DropDownOpened">
       <summary>
         Событие генерируется при открытии выпадающего меню.
@@ -4586,7 +4609,7 @@
     </member>
     <member name="P:Elysium.Controls.DropDownCommandButton.DropDownDirection">
       <summary>
-        Возвращает или задает направление выпадающего меню.
+        Возвращает или задаёт направление выпадающего меню.
       </summary>
       <value>Одно из значений перечисления <see cref="T:Elysium.Controls.DropDownDirection" />. Значение по умолчанию — <see cref="F:Elysium.Controls.DropDownDirection.Up">DropDownDirection.Up</see>.</value>
       <remarks>
@@ -4616,7 +4639,7 @@
     </member>
     <member name="P:Elysium.Controls.DropDownCommandButton.MaxDropDownHeight">
       <summary>
-        Возвращает или задает максимальный размер выпадающего меню.
+        Возвращает или задаёт максимальный размер выпадающего меню.
       </summary>
       <value>Максимальный размер выпадающего меню. Значение по умолчанию — 300px.</value>
       <remarks>
@@ -4660,7 +4683,7 @@
     </member>
     <member name="P:Elysium.Controls.ToggleCommandButton.IsChecked">
       <summary>
-        Возвращает или задает значение, указывающее, находится ли кнопка управления во включенном состоянии.
+        Возвращает или задаёт значение, указывающее, находится ли кнопка управления во включенном состоянии.
       </summary>
       <value>True, если кнопка управления находится во включенном состоянии; False — если в выключенном; иначе null. Значение по умолчанию — False.</value>
       <remarks>
@@ -4675,12 +4698,10 @@
             <term>Метаданные</term>
             <description>
               <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.BindsTwoWayByDefault" />
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Journal" />
             </description>
           </item>
         </list>
       </remarks>
-      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.IsChecked" />
     </member>
     <member name="F:Elysium.Controls.ToggleCommandButton.IsCheckedProperty">
       <summary>
@@ -4689,6 +4710,17 @@
       <value>
         Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ToggleCommandButton.IsChecked" />.
       </value>
+    </member>
+    <member name="M:Elysium.Controls.ToggleCommandButton.OnIsCheckedChanged(System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ToggleCommandButton.IsChecked" />.
+      </summary>
+      <param name="oldIsChecked">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleCommandButton.IsChecked" />.
+      </param>
+      <param name="newIsChecked">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleCommandButton.IsChecked" />.
+      </param>
     </member>
     <member name="E:Elysium.Controls.ToggleCommandButton.Checked">
       <summary>
@@ -4809,7 +4841,7 @@
     </member>
     <member name="P:Elysium.Controls.ToggleCommandButton.IsThreeState">
       <summary>
-        Возвращает или задает значение, указывающее, два или три состояния поддерживает элемент управления.
+        Возвращает или задаёт значение, указывающее, два или три состояния поддерживает элемент управления.
       </summary>
       <value>True, если кнопка управления поддерживает три состояния; в противном случае False. Значение по умолчанию — False.</value>
       <remarks>
@@ -4828,7 +4860,6 @@
           </item>
         </list>
       </remarks>
-      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.IsThreeState" />
     </member>
     <member name="F:Elysium.Controls.ToggleCommandButton.IsThreeStateProperty">
       <summary>
@@ -4837,6 +4868,17 @@
       <value>
         Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ToggleCommandButton.IsThreeState" />.
       </value>
+    </member>
+    <member name="M:Elysium.Controls.ToggleCommandButton.OnIsThreeStateChanged(System.Boolean,System.Boolean)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ToggleCommandButton.IsThreeState" />.
+      </summary>
+      <param name="oldIsThreeState">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleCommandButton.IsThreeState" />.
+      </param>
+      <param name="newIsThreeState">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleCommandButton.IsThreeState" />.
+      </param>
     </member>
     <member name="M:Elysium.Controls.ToggleCommandButton.OnCreateAutomationPeer">
       <inheritdoc />
@@ -4853,6 +4895,1047 @@
       </summary>
     </member>
     <member name="M:Elysium.Controls.Submenu.OnCreateAutomationPeer">
+      <inheritdoc />
+    </member>
+    <member name="T:Elysium.Controls.Primitives.ProgressBarBase">
+      <summary>
+        Базой класс для индикаторов выполнения.
+      </summary>
+    </member>
+    <member name="P:Elysium.Controls.Primitives.ProgressBarBase.Percent">
+      <summary>
+        Возвращает значение, указывающее процент заполненности индикатора.
+      </summary>
+      <value>
+        Процент заполненности индикатора, либо <see cref="F:System.Double.NaN">Dobuel.NaN</see>, если индикатор выполнения находится в состоянии "неопределено" или "занят". Значение по умолчанию — 0.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.ProgressBarBase.PercentProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.Primitives.ProgressBarBase.PercentProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.Percent" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.Percent" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.Primitives.ProgressBarBase.OnPercentChanged(System.Double,System.Double)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.Percent" />.
+      </summary>
+      <param name="oldPercent">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.Percent" />.
+      </param>
+      <param name="newPercent">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.Percent" />.
+      </param>
+    </member>
+    <member name="M:Elysium.Controls.Primitives.ProgressBarBase.OnValueChanged(System.Double,System.Double)">
+      <inheritdoc />
+    </member>
+    <member name="P:Elysium.Controls.Primitives.ProgressBarBase.State">
+      <summary>
+        Возвращает или задаёт значение, указывающее текущее состояние индикатора выполнения.
+      </summary>
+      <value>
+        Одно из значений перечисления <see cref="T:Elysium.Controls.ProgressBarState" />. Значение по умолчанию — <see cref="F:Elysium.Controls.ProgressBarState.Normal">ProgressBarState.Normal</see>.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.ProgressBarBase.StateProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.BindsTwoWayByDefault" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.Primitives.ProgressBarBase.StateProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.State" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.State" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.Primitives.ProgressBarBase.OnStateChanged(Elysium.Controls.ProgressBarState,Elysium.Controls.ProgressBarState)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.State" />.
+      </summary>
+      <param name="oldState">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.State" />.
+      </param>
+      <param name="newState">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.State" />.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.Primitives.ProgressBarBase.IndeterminateAnimation">
+      <summary>
+        Возвращает или задаёт значение, являющееся раскадровкой анимации при состоянии "неопределено".
+      </summary>
+      <value>Раскадровка. Значение по умолчанию — экземпляр раскадровки стандартной анимации.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.ProgressBarBase.IndeterminateAnimationProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.Primitives.ProgressBarBase.IndeterminateAnimationProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.IndeterminateAnimation" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.IndeterminateAnimation" />.
+      </value>
+    </member>
+    <member name="P:Elysium.Controls.Primitives.ProgressBarBase.BusyAnimation">
+      <summary>
+        Возвращает или задаёт значение, являющееся раскадровкой анимации при состоянии "неопределено".
+      </summary>
+      <value>Раскадровка. Значение по умолчанию — экземпляр раскадровки стандартной анимации.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.ProgressBarBase.BusyAnimationProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.Primitives.ProgressBarBase.BusyAnimationProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.BusyAnimation" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBarBase.BusyAnimation" />.
+      </value>
+    </member>
+    <member name="E:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdating">
+      <summary>
+        Событие генерируется перед началом процедуры обновления анимации состояний.
+      </summary>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdatingEvent" />
+            </description>
+          </item>
+          <item>
+            <term>Ассоциированный метод</term>
+            <description>
+              <see cref="M:Elysium.Controls.Primitives.ProgressBarBase.OnAnimationsUpdating(System.Windows.RoutedEventArgs)" />
+            </description>
+          </item>
+          <item>
+            <term>Стратегия маршрутизации</term>
+            <description>Нисходящая маршрутизация событий</description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdatingEvent">
+      <summary>
+        Идентифицирует маршрутизируемое событие <see cref="E:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdating" />.
+      </summary>
+      <value>
+        Идентификатор маршрутизируемого события <see cref="E:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdating" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.Primitives.ProgressBarBase.OnAnimationsUpdating(System.Windows.RoutedEventArgs)">
+      <summary>
+        Вызывается при генерации маршрутизируемого события <see cref="E:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdating" />.
+      </summary>
+      <param name="e">Маршрутизируемое событие.</param>
+    </member>
+    <member name="E:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdated">
+      <summary>
+        Событие генерируется после окончания процедуры обновления анимации состояний.
+      </summary>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdatedEvent" />
+            </description>
+          </item>
+          <item>
+            <term>Ассоциированный метод</term>
+            <description>
+              <see cref="M:Elysium.Controls.Primitives.ProgressBarBase.OnAnimationsUpdated(System.Windows.RoutedEventArgs)" />
+            </description>
+          </item>
+          <item>
+            <term>Стратегия маршрутизации</term>
+            <description>Восходящая маршрутизация событий</description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdatedEvent">
+      <summary>
+        Идентифицирует маршрутизируемое событие <see cref="E:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdated" />.
+      </summary>
+      <value>
+        Идентификатор маршрутизируемого события <see cref="E:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdated" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.Primitives.ProgressBarBase.OnAnimationsUpdated(System.Windows.RoutedEventArgs)">
+      <summary>
+        Вызывается при генерации маршрутизируемого события <see cref="E:Elysium.Controls.Primitives.ProgressBarBase.AnimationsUpdated" />.
+      </summary>
+      <param name="e">Маршрутизируемое событие.</param>
+    </member>
+    <member name="M:Elysium.Controls.Primitives.ProgressBarBase.OnApplyTemplate">
+      <inheritdoc />
+    </member>
+    <member name="M:Elysium.Controls.Primitives.ProgressBarBase.OnCreateAutomationPeer">
+      <inheritdoc />
+    </member>
+    <member name="T:Elysium.Controls.LinearProgressBar">
+      <summary>
+        Линейный индикатор выполнения.
+      </summary>
+    </member>
+    <member name="P:Elysium.Controls.LinearProgressBar.Orientation">
+      <summary>
+        Возвращает или задаёт значение, указывающее ориентацию линейного индикатора выполнения в пространстве.
+      </summary>
+      <value>
+        Одно из значений перечисления <see cref="T:System.Windows.Controls.Orientation" />. Значение по умолчанию — <see cref="F:System.Windows.Controls.Orientation.Horizontal">Orientation.Horizontal</see>.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.LinearProgressBar.OrientationProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.LinearProgressBar.OrientationProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.LinearProgressBar.Orientation" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.LinearProgressBar.Orientation" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.LinearProgressBar.OnOrientationChanged(System.Windows.Controls.Orientation,System.Windows.Controls.Orientation)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.LinearProgressBar.Orientation" />.
+      </summary>
+      <param name="oldOrientation">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.LinearProgressBar.Orientation" />.
+      </param>
+      <param name="newOrientation">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.LinearProgressBar.Orientation" />.
+      </param>
+    </member>
+    <member name="M:Elysium.Controls.LinearProgressBar.OnAnimationsUpdating(System.Windows.RoutedEventArgs)">
+      <inheritdoc />
+    </member>
+    <member name="T:Elysium.Controls.CircularProgressBar">
+      <summary>
+        Кольцевой индикатор выполнения.
+      </summary>
+    </member>
+    <member name="P:Elysium.Controls.CircularProgressBar.Angle">
+      <summary>
+        Возвращает или задаёт значение угла (так, как если бы индикатор выполнения являлся бы единичной окружностью) для дочерних элементов индикатора.
+      </summary>
+      <value>
+        Значение угла (так, как если бы индикатор выполнения являлся бы единичной окружностью) для дочерних элементов индикатора
+        или -1d, если дочерний элемент расположен вне окружности. Значение по умолчанию — -1d.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.CircularProgressBar.AngleProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Ellipse();
+          var currentValue = CircularProgressBar.GetAngle(control);
+          CircularProgressBar.SetAngle(control, 180d);
+        </code>
+        <code lang="XAML">
+          &lt;Ellipse metro:CircularProgressBar.Angle="180"/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Controls.CircularProgressBar.AngleProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.CircularProgressBar.Angle" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.CircularProgressBar.Angle" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.CircularProgressBar.GetAngle(System.Windows.UIElement)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Controls.CircularProgressBar.Angle" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Значение угла для дочернего элемента индикатора выполнения.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="M:Elysium.Controls.CircularProgressBar.SetAngle(System.Windows.UIElement,System.Double)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Controls.CircularProgressBar.Angle" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Значение угла для дочернего элемента индикатора выполнения.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="M:Elysium.Controls.CircularProgressBar.MeasureOverride(System.Windows.Size)">
+      <inheritdoc />
+    </member>
+    <member name="M:Elysium.Controls.CircularProgressBar.ArrangeOverride(System.Windows.Size)">
+      <inheritdoc />
+    </member>
+    <member name="M:Elysium.Controls.CircularProgressBar.OnAnimationsUpdating(System.Windows.RoutedEventArgs)">
+      <inheritdoc />
+    </member>
+    <member name="T:Elysium.Controls.ToggleSwitch">
+      <summary>
+        Переключатель (toggle switch).
+      </summary>
+    </member>
+    <member name="P:Elysium.Controls.ToggleSwitch.IsChecked">
+      <summary>
+        Возвращает или задаёт значение, указывающее, находится ли переключатель во включенном состоянии.
+      </summary>
+      <value>True, если переключатель находится во включенном состоянии; иначе False. Значение по умолчанию — False.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleSwitch.IsCheckedProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.BindsTwoWayByDefault" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.ToggleSwitch.IsCheckedProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.IsChecked" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.IsChecked" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ToggleSwitch.OnIsCheckedChanged(System.Boolean,System.Boolean)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.IsChecked" />.
+      </summary>
+      <param name="oldIsChecked">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.IsChecked" />.
+      </param>
+      <param name="newIsChecked">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.IsChecked" />.
+      </param>
+    </member>
+    <member name="E:Elysium.Controls.ToggleSwitch.Checked">
+      <summary>
+        Событие генерируется при переходе в состояние "включено".
+      </summary>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleSwitch.CheckedEvent" />
+            </description>
+          </item>
+          <item>
+            <term>Ассоциированный метод</term>
+            <description>
+              <see cref="M:Elysium.Controls.ToggleSwitch.OnChecked(System.Windows.RoutedEventArgs)" />
+            </description>
+          </item>
+          <item>
+            <term>Стратегия маршрутизации</term>
+            <description>Восходящая маршрутизация событий</description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.ToggleSwitch.CheckedEvent">
+      <summary>
+        Идентифицирует маршрутизируемое событие <see cref="E:Elysium.Controls.ToggleSwitch.Checked" />.
+      </summary>
+      <value>
+        Идентификатор маршрутизируемого события <see cref="E:Elysium.Controls.ToggleSwitch.Checked" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ToggleSwitch.OnChecked(System.Windows.RoutedEventArgs)">
+      <summary>
+        Вызывается при генерации маршрутизируемого события <see cref="E:Elysium.Controls.ToggleSwitch.Checked" />.
+      </summary>
+      <param name="e">Маршрутизируемое событие.</param>
+    </member>
+    <member name="E:Elysium.Controls.ToggleSwitch.Unchecked">
+      <summary>
+        Событие генерируется при переходе в состояние "выключено".
+      </summary>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleSwitch.UncheckedEvent" />
+            </description>
+          </item>
+          <item>
+            <term>Ассоциированный метод</term>
+            <description>
+              <see cref="M:Elysium.Controls.ToggleSwitch.OnUnchecked(System.Windows.RoutedEventArgs)" />
+            </description>
+          </item>
+          <item>
+            <term>Стратегия маршрутизации</term>
+            <description>Восходящая маршрутизация событий</description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.ToggleSwitch.UncheckedEvent">
+      <summary>
+        Идентифицирует маршрутизируемое событие <see cref="E:Elysium.Controls.ToggleSwitch.Unchecked" />.
+      </summary>
+      <value>
+        Идентификатор маршрутизируемого события <see cref="E:Elysium.Controls.ToggleSwitch.Unchecked" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ToggleSwitch.OnUnchecked(System.Windows.RoutedEventArgs)">
+      <summary>
+        Вызывается при генерации маршрутизируемого события <see cref="E:Elysium.Controls.ToggleSwitch.Unchecked" />.
+      </summary>
+      <param name="e">Маршрутизируемое событие.</param>
+    </member>
+    <member name="P:Elysium.Controls.ToggleSwitch.IsSwitching">
+      <summary>
+        Возвращает значение, указывающее, производится ли в данный момент смена состояний переключателя.
+      </summary>
+      <value>True, если в данный момент смена состояний переключателя производится; иначе False. Значение по умолчанию — False.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleSwitch.IsSwitchingProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.ToggleSwitch.IsSwitchingProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.IsSwitching" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.IsSwitching" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ToggleSwitch.OnIsSwitchingChanged(System.Boolean,System.Boolean)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.IsSwitching" />.
+      </summary>
+      <param name="oldIsSwitching">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.IsSwitching" />.
+      </param>
+      <param name="newIsSwitching">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.IsSwitching" />.
+      </param>
+    </member>
+    <member name="E:Elysium.Controls.ToggleSwitch.SwitchStarted">
+      <summary>
+        Событие генерируется перед началом изменения состояния переключателя.
+      </summary>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleSwitch.SwitchStartedEvent" />
+            </description>
+          </item>
+          <item>
+            <term>Ассоциированный метод</term>
+            <description>
+              <see cref="M:Elysium.Controls.ToggleSwitch.OnSwitchStarted(System.Windows.RoutedEventArgs)" />
+            </description>
+          </item>
+          <item>
+            <term>Стратегия маршрутизации</term>
+            <description>Восходящая маршрутизация событий</description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.ToggleSwitch.SwitchStartedEvent">
+      <summary>
+        Идентифицирует маршрутизируемое событие <see cref="E:Elysium.Controls.ToggleSwitch.SwitchStarted" />.
+      </summary>
+      <value>
+        Идентификатор маршрутизируемого события <see cref="E:Elysium.Controls.ToggleSwitch.SwitchStarted" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ToggleSwitch.OnSwitchStarted(System.Windows.RoutedEventArgs)">
+      <summary>
+        Вызывается при генерации маршрутизируемого события <see cref="E:Elysium.Controls.ToggleSwitch.SwitchStarted" />.
+      </summary>
+      <param name="e">Маршрутизируемое событие.</param>
+    </member>
+    <member name="E:Elysium.Controls.ToggleSwitch.SwitchCompleted">
+      <summary>
+        Событие генерируется после завершения изменения состояния переключателя.
+      </summary>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleSwitch.SwitchCompletedEvent" />
+            </description>
+          </item>
+          <item>
+            <term>Ассоциированный метод</term>
+            <description>
+              <see cref="M:Elysium.Controls.ToggleSwitch.OnSwitchCompleted(System.Windows.RoutedEventArgs)" />
+            </description>
+          </item>
+          <item>
+            <term>Стратегия маршрутизации</term>
+            <description>Восходящая маршрутизация событий</description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.ToggleSwitch.SwitchCompletedEvent">
+      <summary>
+        Идентифицирует маршрутизируемое событие <see cref="E:Elysium.Controls.ToggleSwitch.SwitchCompleted" />.
+      </summary>
+      <value>
+        Идентификатор маршрутизируемого события <see cref="E:Elysium.Controls.ToggleSwitch.SwitchCompleted" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ToggleSwitch.OnSwitchCompleted(System.Windows.RoutedEventArgs)">
+      <summary>
+        Вызывается при генерации маршрутизируемого события <see cref="E:Elysium.Controls.ToggleSwitch.SwitchCompleted" />.
+      </summary>
+      <param name="e">Маршрутизируемое событие.</param>
+    </member>
+    <member name="P:Elysium.Controls.ToggleSwitch.OnHeader">
+      <summary>
+        Возвращает или задаёт данные, используемые для заголовка переключателя во включенном состоянии.
+      </summary>
+      <value>Объект заголовка переключателя во включенном состоянии. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleSwitch.OnHeaderProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.Header" />
+    </member>
+    <member name="F:Elysium.Controls.ToggleSwitch.OnHeaderProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OnHeader" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OnHeader" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ToggleSwitch.OnOnHeaderChanged(System.Object,System.Object)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OnHeader" />.
+      </summary>
+      <param name="oldOnHeader">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OnHeader" />.
+      </param>
+      <param name="newOnHeader">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OnHeader" />.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.ToggleSwitch.HasOnHeader">
+      <summary>
+        Возвращает значение, указывающее имеет ли заголовок переключателя во включенном состоянии значение null в данный момент.
+      </summary>
+      <value>
+        True, если значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OnHeader" /> не равно null, в противном случае False. Значение по умолчанию — False.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleSwitch.HasOnHeaderProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.HasHeader" />
+    </member>
+    <member name="F:Elysium.Controls.ToggleSwitch.HasOnHeaderProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.HasOnHeader" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.HasOnHeader" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ToggleSwitch.OnHasOnHeaderChanged(System.Boolean,System.Boolean)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.HasOnHeader" />.
+      </summary>
+      <param name="oldHasOnHeader">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.HasOnHeader" />.
+      </param>
+      <param name="newHasOnHeader">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.HasOnHeader" />.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.ToggleSwitch.OnHeaderStringFormat">
+      <summary>
+        Возвращает или задаёт составную строку, которая определяет форматирование заголовка переключателя во включенном состоянии, если он отображается как строка.
+      </summary>
+      <value>Составная строка, которая определяет форматирование заголовка переключателя во включенном состоянии, если он отображается как строка. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleSwitch.OnHeaderStringFormatProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.HeaderStringFormat" />
+    </member>
+    <member name="F:Elysium.Controls.ToggleSwitch.OnHeaderStringFormatProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderStringFormat" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderStringFormat" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ToggleSwitch.OnOnHeaderStringFormatChanged(System.String,System.String)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderStringFormat" />.
+      </summary>
+      <param name="oldOnHeaderStringFormat">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderStringFormat" />.
+      </param>
+      <param name="newOnHeaderStringFormat">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderStringFormat" />.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplate">
+      <summary>
+        Возвращает или задаёт шаблон, используемый для отображения содержимого заголовка переключателя во включенном состоянии.
+      </summary>
+      <value>Шаблон, используемый для отображения содержимого заголовка переключателя во включенном состоянии. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleSwitch.OnHeaderTemplateProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.HeaderTemplate" />
+    </member>
+    <member name="F:Elysium.Controls.ToggleSwitch.OnHeaderTemplateProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplate" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplate" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ToggleSwitch.OnOnHeaderTemplateChanged(System.Windows.DataTemplate,System.Windows.DataTemplate)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplate" />.
+      </summary>
+      <param name="oldOnHeaderTemplate">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplate" />.
+      </param>
+      <param name="newOnHeaderTemplate">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplate" />.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplateSelector">
+      <summary>
+        Возвращает или задаёт селектор шаблона данных, предоставляющий пользовательскую логику для выбора шаблона отображения содержимого заголовка переключателя во включенном состоянии.
+      </summary>
+      <value>Экземпляр селектора шаблона данных. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleSwitch.OnHeaderTemplateSelectorProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.HeaderTemplateSelector" />
+    </member>
+    <member name="F:Elysium.Controls.ToggleSwitch.OnHeaderTemplateSelectorProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplateSelector" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplateSelector" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ToggleSwitch.OnOnHeaderTemplateSelectorChanged(System.Windows.Controls.DataTemplateSelector,System.Windows.Controls.DataTemplateSelector)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplateSelector" />.
+      </summary>
+      <param name="oldOnHeaderTemplateSelector">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplateSelector" />.
+      </param>
+      <param name="newOnHeaderTemplateSelector">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplateSelector" />.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.ToggleSwitch.OffHeader">
+      <summary>
+        Возвращает или задаёт данные, используемые для заголовка переключателя в выключенном состоянии.
+      </summary>
+      <value>Объект заголовка переключателя в выключенном состоянии. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleSwitch.OffHeaderProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.Header" />
+    </member>
+    <member name="F:Elysium.Controls.ToggleSwitch.OffHeaderProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OffHeader" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OffHeader" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ToggleSwitch.OnOffHeaderChanged(System.Object,System.Object)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OffHeader" />.
+      </summary>
+      <param name="oldOffHeader">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OffHeader" />.
+      </param>
+      <param name="newOffHeader">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OffHeader" />.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.ToggleSwitch.HasOffHeader">
+      <summary>
+        Возвращает значение, указывающее имеет ли заголовок переключателя в выключенном состоянии значение null в данный момент.
+      </summary>
+      <value>
+        True, если значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OffHeader" /> не равно null, в противном случае False. Значение по умолчанию — False.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleSwitch.HasOffHeaderProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.HasHeader" />
+    </member>
+    <member name="F:Elysium.Controls.ToggleSwitch.HasOffHeaderProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.HasOffHeader" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.HasOffHeader" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ToggleSwitch.OnHasOffHeaderChanged(System.Boolean,System.Boolean)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.HasOffHeader" />.
+      </summary>
+      <param name="oldHasOffHeader">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.HasOffHeader" />.
+      </param>
+      <param name="newHasOffHeader">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.HasOffHeader" />.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.ToggleSwitch.OffHeaderStringFormat">
+      <summary>
+        Возвращает или задаёт составную строку, которая определяет форматирование заголовка переключателя в выключенном состоянии, если он отображается как строка.
+      </summary>
+      <value>Составная строка, которая определяет форматирование заголовка переключателя в выключенном состоянии, если он отображается как строка. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleSwitch.OffHeaderStringFormatProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.HeaderStringFormat" />
+    </member>
+    <member name="F:Elysium.Controls.ToggleSwitch.OffHeaderStringFormatProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderStringFormat" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderStringFormat" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ToggleSwitch.OnOffHeaderStringFormatChanged(System.String,System.String)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderStringFormat" />.
+      </summary>
+      <param name="oldOffHeaderStringFormat">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderStringFormat" />.
+      </param>
+      <param name="newOffHeaderStringFormat">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderStringFormat" />.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplate">
+      <summary>
+        Возвращает или задаёт шаблон, используемый для отображения содержимого заголовка переключателя в выключенном состоянии.
+      </summary>
+      <value>Шаблон, используемый для отображения содержимого заголовка переключателя в выключенном состоянии. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleSwitch.OffHeaderTemplateProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.HeaderTemplate" />
+    </member>
+    <member name="F:Elysium.Controls.ToggleSwitch.OffHeaderTemplateProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplate" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplate" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ToggleSwitch.OnOffHeaderTemplateChanged(System.Windows.DataTemplate,System.Windows.DataTemplate)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplate" />.
+      </summary>
+      <param name="oldOffHeaderTemplate">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplate" />.
+      </param>
+      <param name="newOffHeaderTemplate">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplate" />.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplateSelector">
+      <summary>
+        Возвращает или задаёт селектор шаблона данных, предоставляющий пользовательскую логику для выбора шаблона отображения содержимого заголовка переключателя в выключенном состоянии.
+      </summary>
+      <value>Экземпляр селектора шаблона данных. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ToggleSwitch.OffHeaderTemplateSelectorProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.HeaderTemplateSelector" />
+    </member>
+    <member name="F:Elysium.Controls.ToggleSwitch.OffHeaderTemplateSelectorProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplateSelector" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplateSelector" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ToggleSwitch.OnOffHeaderTemplateSelectorChanged(System.Windows.Controls.DataTemplateSelector,System.Windows.Controls.DataTemplateSelector)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplateSelector" />.
+      </summary>
+      <param name="oldOffHeaderTemplateSelector">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplateSelector" />.
+      </param>
+      <param name="newOffHeaderTemplateSelector">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplateSelector" />.
+      </param>
+    </member>
+    <member name="M:Elysium.Controls.ToggleSwitch.OnCreateAutomationPeer">
+      <inheritdoc />
+    </member>
+    <member name="M:Elysium.Controls.ToggleSwitch.OnApplyTemplate">
       <inheritdoc />
     </member>
   </members>

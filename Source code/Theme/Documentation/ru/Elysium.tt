@@ -68,6 +68,12 @@
     paths.Add(@"Controls\CommandButtons\ToggleCommandButton.ru.xml");
 
     paths.Add(@"Controls\Menus\Submenu.ru.xml");
+
+    paths.Add(@"Controls\ProgressBars\Primitives\ProgressBarBase.ru.xml");
+    paths.Add(@"Controls\ProgressBars\LinearProgressBar.ru.xml");
+    paths.Add(@"Controls\ProgressBars\CircularProgressBar.ru.xml");
+
+    paths.Add(@"Controls\ToggleSwitch\ToggleSwitch.ru.xml");
     
     var documentation = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
     

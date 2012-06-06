@@ -1,14 +1,14 @@
 using JetBrains.Annotations;
 
-namespace Elysium.Controls
+namespace Elysium.Notifications
 {
     [PublicAPI]
-    public enum VerticalPlacement
+    public enum HorizontalPlacement
     {
         [PublicAPI]
-        Top,
+        Left,
 
         [PublicAPI]
-        Bottom
+        Right
     }
 } ;

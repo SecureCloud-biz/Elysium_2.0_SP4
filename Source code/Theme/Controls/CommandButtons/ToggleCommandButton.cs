@@ -27,10 +27,10 @@ namespace Elysium.Controls
         public static readonly DependencyProperty IsCheckedProperty =
             DependencyProperty.Register("IsChecked", typeof(bool?), typeof(ToggleCommandButton),
                                         new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox,
-                                                                      FrameworkPropertyMetadataOptions.BindsTwoWayByDefault |
-                                                                      FrameworkPropertyMetadataOptions.Journal, OnIsCheckedChanged));
+                                                                      FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnIsCheckedChanged));
 
         [PublicAPI]
+        [Bindable(true)]
         [Category("Appearance")]
         [Description("Indicates whether the button is checked.")]
         [TypeConverter(typeof(NullableBoolConverter))]
@@ -48,7 +48,8 @@ namespace Elysium.Controls
             instance.OnIsCheckedChanged(NullableBooleanBoxingHelper.Unbox(e.OldValue), NullableBooleanBoxingHelper.Unbox(e.NewValue));
         }
 
-        private void OnIsCheckedChanged(bool? oldIsChecked, bool? newIsChecked)
+        [PublicAPI]
+        protected virtual void OnIsCheckedChanged(bool? oldIsChecked, bool? newIsChecked)
         {
             var peer = UIElementAutomationPeer.FromElement(this) as ToggleCommandButtonAutomationPeer;
             if (peer != null)
@@ -83,7 +84,6 @@ namespace Elysium.Controls
         public event RoutedEventHandler Checked
         {
             add { AddHandler(CheckedEvent, value); }
-
             remove { RemoveHandler(CheckedEvent, value); }
         }
 
@@ -103,7 +103,6 @@ namespace Elysium.Controls
         public event RoutedEventHandler Unchecked
         {
             add { AddHandler(UncheckedEvent, value); }
-
             remove { RemoveHandler(UncheckedEvent, value); }
         }
 
@@ -123,7 +122,6 @@ namespace Elysium.Controls
         public event RoutedEventHandler Indeterminate
         {
             add { AddHandler(IndeterminateEvent, value); }
-
             remove { RemoveHandler(IndeterminateEvent, value); }
         }
 
@@ -135,7 +133,8 @@ namespace Elysium.Controls
 
         [PublicAPI]
         public static readonly DependencyProperty IsThreeStateProperty =
-            DependencyProperty.Register("IsThreeState", typeof(bool), typeof(ToggleCommandButton), new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox));
+            DependencyProperty.Register("IsThreeState", typeof(bool), typeof(ToggleCommandButton),
+                                        new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, FrameworkPropertyMetadataOptions.None));
 
         [PublicAPI]
         [Bindable(true)]

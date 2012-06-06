@@ -39,7 +39,8 @@ namespace Elysium.Controls.Primitives
 
         [PublicAPI]
         public static readonly DependencyProperty HeaderProperty =
-            HeaderedContentControl.HeaderProperty.AddOwner(typeof(CommandButtonBase), new FrameworkPropertyMetadata((object)null, OnHeaderChanged));
+            HeaderedContentControl.HeaderProperty.AddOwner(typeof(CommandButtonBase),
+                                                           new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.None, OnHeaderChanged));
 
         [PublicAPI]
         [Bindable(true)]
@@ -71,7 +72,8 @@ namespace Elysium.Controls.Primitives
 
         private static readonly DependencyPropertyKey HasHeaderPropertyKey =
             DependencyProperty.RegisterReadOnly("HasHeader", typeof(bool), typeof(CommandButtonBase),
-                                                new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, OnHasHeaderChanged));
+                                                new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, FrameworkPropertyMetadataOptions.None,
+                                                                              OnHasHeaderChanged));
 
         [PublicAPI]
         public static readonly DependencyProperty HasHeaderProperty = HasHeaderPropertyKey.DependencyProperty;
@@ -103,7 +105,8 @@ namespace Elysium.Controls.Primitives
         [PublicAPI]
         public static readonly DependencyProperty HeaderStringFormatProperty =
             HeaderedContentControl.HeaderStringFormatProperty.AddOwner(typeof(CommandButtonBase),
-                                                                       new FrameworkPropertyMetadata(null, OnHeaderStringFormatChanged));
+                                                                       new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.None,
+                                                                                                     OnHeaderStringFormatChanged));
 
         [PublicAPI]
         [Bindable(true)]
@@ -133,7 +136,8 @@ namespace Elysium.Controls.Primitives
         [PublicAPI]
         public static readonly DependencyProperty HeaderTemplateProperty =
             HeaderedContentControl.HeaderTemplateProperty.AddOwner(typeof(CommandButtonBase),
-                                                                   new FrameworkPropertyMetadata(null, OnHeaderTemplateChanged));
+                                                                   new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.None,
+                                                                                                 OnHeaderTemplateChanged));
 
         [PublicAPI]
         [Bindable(true)]
@@ -164,7 +168,8 @@ namespace Elysium.Controls.Primitives
         [PublicAPI]
         public static readonly DependencyProperty HeaderTemplateSelectorProperty =
             HeaderedContentControl.HeaderTemplateSelectorProperty.AddOwner(typeof(CommandButtonBase),
-                                                                           new FrameworkPropertyMetadata(null, OnHeaderTemplateSelectorChanged));
+                                                                           new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.None,
+                                                                                                         OnHeaderTemplateSelectorChanged));
 
         [PublicAPI]
         [Bindable(true)]
