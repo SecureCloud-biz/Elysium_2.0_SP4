@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Elysium.Test</RootNamespace>
-    <AssemblyName>Test</AssemblyName>
+    <AssemblyName>Elysium.Test</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <ErrorReport>prompt</ErrorReport>
