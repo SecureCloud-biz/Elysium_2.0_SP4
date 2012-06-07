@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Elysium.Notifications.Server.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Lifetime" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:10</Value>
+    </Setting>
+    <Setting Name="Margin" Type="System.Windows.Thickness" Scope="User">
+      <Value Profile="(Default)">10,10,10,10</Value>
+    </Setting>
+    <Setting Name="Size" Type="System.Windows.Size" Scope="User">
+      <Value Profile="(Default)">480,64</Value>
+    </Setting>
+    <Setting Name="HorizontalPlacement" Type="Elysium.Notifications.HorizontalPlacement" Scope="User">
+      <Value Profile="(Default)">Right</Value>
+    </Setting>
+    <Setting Name="VerticalPlacement" Type="Elysium.Notifications.VerticalPlacement" Scope="User">
+      <Value Profile="(Default)">Top</Value>
+    </Setting>
+    <Setting Name="Animation" Type="Elysium.Notifications.Animation" Scope="User">
+      <Value Profile="(Default)">Slide</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

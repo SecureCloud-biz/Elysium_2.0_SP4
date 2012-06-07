@@ -3,6 +3,8 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
+using Elysium.Notifications;
+
 namespace Elysium.Test
 {
     public partial class MainWindow
@@ -30,6 +32,11 @@ namespace Elysium.Test
                 var accentBrush = (SolidColorBrush)((Rectangle)item.Icon).Fill;
                 Application.Current.ApplyTheme(null, accentBrush, null);
             }
+        }
+
+        private void NotificationClick(object sender, RoutedEventArgs e)
+        {
+            NotificationManager.Push("Message", "The quick brown fox jumps over the lazy dog");
         }
     }
 } ;

@@ -98,6 +98,13 @@
                     </metro:Submenu>
                 </metro:DropDownCommandButton.Submenu>
             </metro:DropDownCommandButton>
+            <metro:CommandButton Header="Show notification"
+                                 Click="NotificationClick"
+                                 Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">
+                <Rectangle Fill="Black"
+                           Stroke="Black"
+                           Width="24" Height="12"/>
+            </metro:CommandButton>
             <metro:DropDownCommandButton Header="Advanced"
                                          metro:ApplicationBar.Dock="Right"
                                          Margin="{Binding RelativeSource={RelativeSource Self}, Path=(metro:Parameters.BoldPadding), Mode=OneWay}">

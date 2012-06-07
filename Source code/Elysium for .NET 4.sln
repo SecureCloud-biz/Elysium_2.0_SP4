@@ -7,15 +7,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assembly dependencies", "Assembly dependencies", "{ADCE869D-0EF4-4394-8BCD-A3763B9EF424}"
 	ProjectSection(SolutionItems) = preProject
+		Install and run Elysium Notifications service (debug version).bat = Install and run Elysium Notifications service (debug version).bat
+		Install and run Elysium Notifications service (release version).bat = Install and run Elysium Notifications service (release version).bat
 		Install dependencies into GAC (32 bit).bat = Install dependencies into GAC (32 bit).bat
 		Install dependencies into GAC (64 bit).bat = Install dependencies into GAC (64 bit).bat
+		Stop and uninstall Elysium Notifications service (debug version).bat = Stop and uninstall Elysium Notifications service (debug version).bat
+		Stop and uninstall Elysium Notifications service (release version).bat = Stop and uninstall Elysium Notifications service (release version).bat
 		Uninstall dependencies from GAC (32 bit).bat = Uninstall dependencies from GAC (32 bit).bat
 		Uninstall dependencies from GAC (64 bit).bat = Uninstall dependencies from GAC (64 bit).bat
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notifications.Server", "Notifications.Server\Notifications.Server.csproj", "{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
+		SccNumberOfProjects = 4
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs34
 		SccLocalPath0 = .
@@ -25,6 +31,9 @@ Global
 		SccProjectUniqueName2 = Test\\Test.csproj
 		SccProjectName2 = Test
 		SccLocalPath2 = Test
+		SccProjectUniqueName3 = Notifications.Server\\Notifications.Server.csproj
+		SccProjectName3 = Notifications.Server
+		SccLocalPath3 = Notifications.Server
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Analysis|Mixed Platforms = Analysis|Mixed Platforms
@@ -44,6 +53,12 @@ Global
 		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Analysis|Mixed Platforms.ActiveCfg = Analysis|Any CPU
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Analysis|Mixed Platforms.Build.0 = Analysis|Any CPU
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

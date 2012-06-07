@@ -191,6 +191,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\Tools and Resources\Assembly dependencies\System.Windows.Interactivity.dll</HintPath>
       <Private>False</Private>
@@ -389,9 +391,12 @@
     <Compile Include="Controls\ProgressBars\LinearProgressBar.cs" />
     <Compile Include="Controls\ProgressBars\Primitives\ProgressBarBase.cs" />
     <Compile Include="Controls\ProgressBars\ProgressBarState.cs" />
+    <Compile Include="Notifications\Client\NotificationManager.cs" />
     <Compile Include="Notifications\HorizontalPlacement.cs" />
-    <Compile Include="Controls\ToastNotification\ToastNotification.cs" />
     <Compile Include="Notifications\Animation.cs" />
+    <Compile Include="Notifications\Internal\INotificationManager.cs" />
+    <Compile Include="Notifications\Internal\Notification.cs" />
+    <Compile Include="Notifications\NotificationManager.cs" />
     <Compile Include="Notifications\VerticalPlacement.cs" />
     <Compile Include="Controls\ToggleSwitch\Automation\ToggleSwitchAutomationPeer.cs" />
     <Compile Include="Controls\ToggleSwitch\ToggleSwitch.cs" />
@@ -418,6 +423,7 @@
     <Compile Include="Theme.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="Documentation\Documentation.xsd">
       <SubType>Designer</SubType>
     </None>

@@ -138,7 +138,7 @@ namespace Elysium.Controls.Primitives
             }
         }
 
-        internal const string DefaultIndeterminateAnimationName = "CF98B9E7-AB2F-4CBD-9EA6-54552441CD6A";
+        internal const string DefaultIndeterminateAnimationName = "CF98B9E7AB2F4CBD9EA654552441CD6A";
 
         [PublicAPI]
         public static readonly DependencyProperty IndeterminateAnimationProperty =
@@ -156,7 +156,7 @@ namespace Elysium.Controls.Primitives
             set { SetValue(IndeterminateAnimationProperty, value); }
         }
 
-        internal const string DefaultBusyAnimationName = "3CE2DDC1-D744-454F-A9E6-831D1FBA850B";
+        internal const string DefaultBusyAnimationName = "B45C62BF28AC49FDB8F172249BF56E5B";
 
         [PublicAPI]
         public static readonly DependencyProperty BusyAnimationProperty =
