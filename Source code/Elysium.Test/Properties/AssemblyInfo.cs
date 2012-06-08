@@ -17,5 +17,5 @@ using System.Windows;
 
 [assembly: NeutralResourcesLanguage("en-us")]
 
-[assembly: AssemblyVersion("1.5.180.0")]
-[assembly: AssemblyFileVersion("1.5.180.0")]
+[assembly: AssemblyVersion("1.5.185.0")]
+[assembly: AssemblyFileVersion("1.5.185.0")]

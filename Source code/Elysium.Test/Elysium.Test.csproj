@@ -77,9 +77,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Theme\Theme.csproj">
+    <ProjectReference Include="..\Elysium\Elysium.csproj">
       <Project>{5A65DA67-130D-43D8-9224-4559B523B6D4}</Project>
-      <Name>Theme</Name>
+      <Name>Elysium</Name>
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>

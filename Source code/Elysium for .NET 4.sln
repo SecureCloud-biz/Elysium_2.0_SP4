@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theme", "Theme\Theme.csproj", "{5A65DA67-130D-43D8-9224-4559B523B6D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elysium", "Elysium\Elysium.csproj", "{5A65DA67-130D-43D8-9224-4559B523B6D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{0B85401E-33FA-41EE-9627-8C17DA21505C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elysium.Test", "Elysium.Test\Elysium.Test.csproj", "{0B85401E-33FA-41EE-9627-8C17DA21505C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assembly dependencies", "Assembly dependencies", "{ADCE869D-0EF4-4394-8BCD-A3763B9EF424}"
 	ProjectSection(SolutionItems) = preProject
@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assembly dependencies", "As
 		Uninstall dependencies from GAC (64 bit).bat = Uninstall dependencies from GAC (64 bit).bat
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notifications.Server", "Notifications.Server\Notifications.Server.csproj", "{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elysium.Notifications.Server", "Elysium.Notifications.Server\Elysium.Notifications.Server.csproj", "{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -25,38 +25,59 @@ Global
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs34
 		SccLocalPath0 = .
-		SccProjectUniqueName1 = Theme\\Theme.csproj
-		SccProjectName1 = Theme
-		SccLocalPath1 = Theme
-		SccProjectUniqueName2 = Test\\Test.csproj
-		SccProjectName2 = Test
-		SccLocalPath2 = Test
-		SccProjectUniqueName3 = Notifications.Server\\Notifications.Server.csproj
-		SccProjectName3 = Notifications.Server
-		SccLocalPath3 = Notifications.Server
+		SccProjectUniqueName1 = Elysium\\Elysium.csproj
+		SccProjectName1 = Elysium
+		SccLocalPath1 = Elysium
+		SccProjectUniqueName2 = Elysium.Notifications.Server\\Elysium.Notifications.Server.csproj
+		SccProjectName2 = Elysium.Notifications.Server
+		SccLocalPath2 = Elysium.Notifications.Server
+		SccProjectUniqueName3 = Elysium.Test\\Elysium.Test.csproj
+		SccProjectName3 = Elysium.Test
+		SccLocalPath3 = Elysium.Test
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Analysis|Any CPU = Analysis|Any CPU
 		Analysis|Mixed Platforms = Analysis|Mixed Platforms
+		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Release|Any CPU = Release|Any CPU
 		Release|Mixed Platforms = Release|Mixed Platforms
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Analysis|Any CPU.ActiveCfg = Analysis|Any CPU
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Analysis|Any CPU.Build.0 = Analysis|Any CPU
 		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Analysis|Mixed Platforms.ActiveCfg = Analysis|Any CPU
 		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Analysis|Mixed Platforms.Build.0 = Analysis|Any CPU
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Analysis|Any CPU.ActiveCfg = Analysis|Any CPU
+		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Analysis|Any CPU.Build.0 = Analysis|Any CPU
 		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Analysis|Mixed Platforms.ActiveCfg = Analysis|Any CPU
 		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Analysis|Mixed Platforms.Build.0 = Analysis|Any CPU
+		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Analysis|Any CPU.ActiveCfg = Analysis|Any CPU
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Analysis|Any CPU.Build.0 = Analysis|Any CPU
 		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Analysis|Mixed Platforms.ActiveCfg = Analysis|Any CPU
 		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Analysis|Mixed Platforms.Build.0 = Analysis|Any CPU
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection

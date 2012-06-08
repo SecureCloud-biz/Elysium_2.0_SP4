@@ -128,7 +128,7 @@
     <DocumentationFile>
     </DocumentationFile>
     <NoWarn>1584</NoWarn>
-    <CodeAnalysisLogFile>..\..\Binary\Analysis\Elysium for .NET 4\AnyCPU\Elysium.Theme.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisLogFile>..\..\Binary\Analysis\Elysium for .NET 4\AnyCPU\Elysium.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
     <ErrorReport>prompt</ErrorReport>

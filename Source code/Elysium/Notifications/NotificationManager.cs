@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ServiceModel;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
@@ -77,6 +78,16 @@ namespace Elysium.Notifications
         }
 
         [PublicAPI]
+        public static Task<bool> PushAsync([NotNull] string message, [CanBeNull] string remark)
+        {
+            ValidationHelper.NotNullOrWhitespace(message, () => message);
+
+            var task = new Task<bool>(() => Push(message, remark));
+            task.Start();
+            return task;
+        }
+
+        [PublicAPI]
         public static bool Push([NotNull] string message, [CanBeNull] string remark)
         {
             ValidationHelper.NotNullOrWhitespace(message, () => message);
@@ -84,7 +95,7 @@ namespace Elysium.Notifications
             var window = new Window { Title = message, Focusable = false, ShowActivated = false, ShowInTaskbar = false, Topmost = true, WindowStyle = WindowStyle.ToolWindow };
             if (!string.IsNullOrWhiteSpace(remark))
             {
-                window.Content = new TextBlock { FontStyle = FontStyles.Italic, Margin = new Thickness(10, 0, 10, 5), Text = remark };
+                window.Content = new TextBlock { FontStyle = FontStyles.Italic, Margin = new Thickness(10d, 0d, 10d, 5d), Text = remark };
             }
 
             var slot = Reserve();
@@ -114,7 +125,7 @@ namespace Elysium.Notifications
 
             window.BeginAnimation(Window.ProgressPercentProperty, new DoubleAnimation(100d, 0d, slot.Lifetime));
 
-            timer.Change(slot.Lifetime, TimeSpan.FromSeconds(0));
+            timer.Change(slot.Lifetime, TimeSpan.FromSeconds(-1d));
 
             return true;
         }
