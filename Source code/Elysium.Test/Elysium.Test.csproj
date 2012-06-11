@@ -77,6 +77,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Elysium.Notifications\Elysium.Notifications.csproj">
+      <Project>{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}</Project>
+      <Name>Elysium.Notifications</Name>
+      <Private>False</Private>
+    </ProjectReference>
     <ProjectReference Include="..\Elysium\Elysium.csproj">
       <Project>{5A65DA67-130D-43D8-9224-4559B523B6D4}</Project>
       <Name>Elysium</Name>

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
+using System.Windows.Threading;
 
 using Elysium.Extensions;
 
@@ -31,21 +32,21 @@ namespace Elysium.Notifications
 #pragma warning restore 168
             {
                 notificationManager.Abort();
-                return null;
+                throw new ServerUnavailableException("Notification Server is unavailable.", faultException);
             }
 #pragma warning disable 168
             catch (CommunicationException communicationException)
 #pragma warning restore 168
             {
                 notificationManager.Abort();
-                return null;
+                throw new ServerUnavailableException("Notification Server is unavailable.", communicationException);
             }
 #pragma warning disable 168
             catch (TimeoutException timeoutException)
 #pragma warning restore 168
             {
                 notificationManager.Abort();
-                return null;
+                throw new ServerUnavailableException("Notification Server is unavailable.", timeoutException);
             }
         }
 
@@ -62,72 +63,142 @@ namespace Elysium.Notifications
 #pragma warning restore 168
             {
                 notificationManager.Abort();
+                throw new ServerUnavailableException("Notification Server is unavailable.", faultException);
             }
 #pragma warning disable 168
             catch (CommunicationException communicationException)
 #pragma warning restore 168
             {
                 notificationManager.Abort();
+                throw new ServerUnavailableException("Notification Server is unavailable.", communicationException);
             }
 #pragma warning disable 168
             catch (TimeoutException timeoutException)
 #pragma warning restore 168
             {
                 notificationManager.Abort();
+                throw new ServerUnavailableException("Notification Server is unavailable.", timeoutException);
             }
         }
 
         [PublicAPI]
-        public static Task<bool> PushAsync([NotNull] string message, [CanBeNull] string remark)
+        public static Task<bool> TryPushAsync([NotNull] string message, [CanBeNull] string remark)
         {
-            ValidationHelper.NotNullOrWhitespace(message, () => message);
-
-            var task = new Task<bool>(() => Push(message, remark));
+            var task = new Task<bool>(() =>
+            {
+                var result = true;
+                var thread = new Thread(() =>
+                {
+                    Application.Current.DispatcherUnhandledException += (sender, e) =>
+                    {
+                        if (e.Exception is ServerUnavailableException || e.Exception is PushNotificationFailedException)
+                        {
+                            result = false;
+                        }
+                    };
+                    PushInternal(message, remark, () => Dispatcher.CurrentDispatcher.InvokeShutdown());
+                    Dispatcher.Run();
+                });
+                thread.SetApartmentState(ApartmentState.STA);
+                thread.IsBackground = true;
+                thread.Start();
+                thread.Join();
+                return result;
+            });
             task.Start();
             return task;
         }
 
         [PublicAPI]
-        public static bool Push([NotNull] string message, [CanBeNull] string remark)
+        public static bool TryPush([NotNull] string message, [CanBeNull] string remark)
         {
-            ValidationHelper.NotNullOrWhitespace(message, () => message);
-
-            var window = new Window { Title = message, Focusable = false, ShowActivated = false, ShowInTaskbar = false, Topmost = true, WindowStyle = WindowStyle.ToolWindow };
-            if (!string.IsNullOrWhiteSpace(remark))
+            try
             {
-                window.Content = new TextBlock { FontStyle = FontStyles.Italic, Margin = new Thickness(10d, 0d, 10d, 5d), Text = remark };
+                Push(message, remark);
             }
-
-            var slot = Reserve();
-
-            if (slot == null)
+            catch
             {
                 return false;
             }
-
-            window.Left = slot.Position.X;
-            window.Top = slot.Position.Y;
-            window.Width = slot.Size.Width;
-            window.Height = slot.Size.Height;
-
-            var timer = new Timer(delegate { window.Dispatcher.Invoke(new Action(window.Close)); });
-
-            window.Closing += (s, e) =>
-            {
-                timer.Dispose();
-                Free(slot.ID);
-                CloseAnimation(window, slot);
-            };
-
-            BeginOpenAnimation(window, slot);
-            window.Show();
-            EndOpenAnimation(window, slot);
-
-            window.BeginAnimation(Window.ProgressPercentProperty, new DoubleAnimation(100d, 0d, slot.Lifetime));
-
-            timer.Change(slot.Lifetime, TimeSpan.FromSeconds(-1d));
-
             return true;
+        }
+
+        [PublicAPI]
+        public static void PushAsync([NotNull] string message, [CanBeNull] string remark)
+        {
+            var thread = new Thread(() =>
+            {
+                PushInternal(message, remark, () => Dispatcher.CurrentDispatcher.InvokeShutdown());
+                Dispatcher.Run();
+            });
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.IsBackground = true;
+            thread.Start();
+        }
+        
+        [PublicAPI]
+        public static void Push([NotNull] string message, [CanBeNull] string remark)
+        {
+            PushInternal(message, remark, null);
+        }
+
+        [PublicAPI]
+        private static void PushInternal([NotNull] string message, [CanBeNull] string remark, Action closingAction)
+        {
+            ValidationHelper.NotNullOrWhitespace(message, () => message);
+
+            try
+            {
+                var window = new Window
+                                 {
+                                     Title = message,
+                                     Focusable = false,
+                                     ShowActivated = false,
+                                     ShowInTaskbar = false,
+                                     Topmost = true,
+                                     WindowStyle = WindowStyle.ToolWindow
+                                 };
+                if (!string.IsNullOrWhiteSpace(remark))
+                {
+                    window.Content = new TextBlock { FontStyle = FontStyles.Italic, Margin = new Thickness(10d, 0d, 10d, 5d), Text = remark };
+                }
+
+                var slot = Reserve();
+
+                window.Left = slot.Position.X;
+                window.Top = slot.Position.Y;
+                window.Width = slot.Size.Width;
+                window.Height = slot.Size.Height;
+
+                var timer = new Timer(delegate { window.Dispatcher.Invoke(new Action(window.Close), DispatcherPriority.Normal); });
+
+                window.Closing += (s, e) =>
+                {
+                    timer.Dispose();
+                    Free(slot.ID);
+                    CloseAnimation(window, slot);
+                    if (closingAction != null)
+                    {
+                        closingAction();
+                    }
+                };
+
+                BeginOpenAnimation(window, slot);
+                window.Show();
+                EndOpenAnimation(window, slot);
+
+                window.BeginAnimation(Window.ProgressProperty, new DoubleAnimation(100d, 0d, slot.Lifetime));
+
+                timer.Change((int)Math.Ceiling(slot.Lifetime.TotalMilliseconds), -1);
+            }
+            catch (ServerUnavailableException)
+            {
+                throw;
+            }
+            catch (Exception exception)
+            {
+                throw new PushNotificationFailedException("Push notification failed.", exception);
+            }
         }
 
         private static void BeginOpenAnimation(Window window, Notification slot)

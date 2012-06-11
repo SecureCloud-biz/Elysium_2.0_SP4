@@ -1038,24 +1038,24 @@ namespace Elysium
 
         [PublicAPI]
         public static readonly DependencyProperty WindowResizeBorderThicknessProperty =
-            DependencyProperty.RegisterAttached("WindowResizeBorderThickness", typeof(double), typeof(Parameters),
-                                                new FrameworkPropertyMetadata(3d, FrameworkPropertyMetadataOptions.AffectsArrange,
-                                                                              null, DoubleUtil.CoerceNonNegative));
+            DependencyProperty.RegisterAttached("WindowResizeBorderThickness", typeof(Thickness), typeof(Parameters),
+                                                new FrameworkPropertyMetadata(new Thickness(3d), FrameworkPropertyMetadataOptions.AffectsArrange,
+                                                                              null, ThicknessUtil.CoerceNonNegative));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(Controls.Window))]
         [SuppressMessage("Microsoft.Contracts", "Ensures")]
         [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
-        public static double GetWindowResizeBorderThickness([NotNull] Controls.Window obj)
+        public static Thickness GetWindowResizeBorderThickness([NotNull] Controls.Window obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            DoubleUtil.EnsureNonNegative();
-            return BoxingHelper<double>.Unbox(obj.GetValue(WindowResizeBorderThicknessProperty));
+            ThicknessUtil.EnsureNonNegative();
+            return BoxingHelper<Thickness>.Unbox(obj.GetValue(WindowResizeBorderThicknessProperty));
         }
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
-        public static void SetWindowResizeBorderThickness([NotNull] Controls.Window obj, double value)
+        public static void SetWindowResizeBorderThickness([NotNull] Controls.Window obj, Thickness value)
         {
             ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(WindowResizeBorderThicknessProperty, value);

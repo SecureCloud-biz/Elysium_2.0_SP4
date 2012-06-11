@@ -153,8 +153,8 @@ namespace Elysium.Controls
 
         protected override void OnClick()
         {
-            OnToggle();
             base.OnClick();
+            OnToggle();
         }
 
         [PublicAPI]

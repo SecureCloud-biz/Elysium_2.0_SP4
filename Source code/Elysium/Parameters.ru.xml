@@ -2778,10 +2778,10 @@
         <code lang="C#">
           var control = new Elysium.Controls.Window();
           var currentValue = Parameters.GetWindowResizeBorderThickness(control);
-          Parameters.SetWindowResizeBorderThickness(control, 3d);
+          Parameters.SetWindowResizeBorderThickness(control, new Thickness(3d));
         </code>
         <code lang="XAML">
-          &lt;metro:Window metro:Parameters.WindowResizeBorderThickness="3px"/&gt;
+          &lt;metro:Window metro:Parameters.WindowResizeBorderThickness="3"/&gt;
         </code>
       </example>
     </property>
@@ -2803,9 +2803,9 @@
         Параметер <paramref name="obj"/> имеет значение null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
-      <ensures>Возвращаемое значение является положительным числом.</ensures>
+      <ensures>Возвращаемое значение всегда является положительным.</ensures>
     </method>
-    <method name="M:Elysium.Parameters.SetWindowResizeBorderThickness(Elysium.Controls.Window,System.Double)">
+    <method name="M:Elysium.Parameters.SetWindowResizeBorderThickness(Elysium.Controls.Window,System.Windows.Thickness)">
       <summary>
         Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.WindowResizeBorderThickness"/> для указанного элемента управления.
       </summary>

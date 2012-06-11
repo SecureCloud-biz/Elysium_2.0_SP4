@@ -43,17 +43,6 @@
         <Setter Property="UseLayoutRounding" Value="False"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         
-        <Setter Property="shell:WindowChrome.WindowChrome">
-            <Setter.Value>
-                <shell:WindowChrome CaptionHeight="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Window}}, Path=NonClientHeight, Mode=OneWay}"
-                                    CornerRadius="0"
-                                    GlassFrameThickness="0,0,0,1"
-                                    NonClientFrameEdges="None"
-                                    ResizeBorderThickness="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Window}}, Path=(root:Parameters.WindowResizeBorderThickness), Mode=OneWay}"
-                                    UseAeroCaptionButtons="False"/>
-            </Setter.Value>
-        </Setter>
-        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:Window}">                    
@@ -79,7 +68,7 @@
                                                             Grid.ColumnSpan="3"
                                                             Grid.Row="0"
                                                             Background="{x:Null}"
-                                                            Value="{TemplateBinding ProgressPercent}"
+                                                            Value="{TemplateBinding Progress}"
                                                             VerticalAlignment="Top"
                                                             Width="{TemplateBinding Width}" Height="2"/>
                                 <Border x:Name="PART_Title"
@@ -98,21 +87,16 @@
                                             shell:WindowChrome.IsHitTestVisibleInChrome="True">
                                     <controls:CommandButton x:Name="PART_Minimize"
                                                             BorderThickness="0"
+                                                            Command="{x:Static controls:WindowCommands.Minimize}"
                                                             Width="30" Height="30">
                                         <Path Data="{StaticResource MinimizeIcon}"
                                               Fill="Black"
                                               Stretch="None"
                                               Width="10" Height="10"/>
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="Click">
-                                                <ei:ChangePropertyAction TargetObject="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                                                         PropertyName="WindowState"
-                                                                         Value="{x:Static WindowState.Minimized}"/>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
                                     </controls:CommandButton>
                                     <controls:ToggleCommandButton x:Name="PART_MaximizeRestore"
                                                                   BorderThickness="0"
+                                                                  IsChecked="False"
                                                                   Width="30" Height="30">
                                         <controls:ToggleCommandButton.Resources>
                                             <Path x:Key="MaximizePath"
@@ -129,27 +113,18 @@
                                         <controls:ToggleCommandButton.Style>
                                             <Style TargetType="{x:Type controls:ToggleCommandButton}" BasedOn="{StaticResource {x:Type primitives:CommandButtonBase}}">
                                                 <Setter Property="Content" Value="{StaticResource MaximizePath}"/>
+                                                <Setter Property="Command" Value="{x:Static controls:WindowCommands.Maximize}"/>
                                                 <Style.Triggers>
                                                     <Trigger Property="IsChecked" Value="True">
                                                         <Setter Property="Content" Value="{StaticResource RestorePath}"/>
+                                                        <Setter Property="Command" Value="{x:Static controls:WindowCommands.Restore}"/>
                                                     </Trigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </controls:ToggleCommandButton.Style>
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="Click">
-                                                <ei:ChangePropertyAction TargetObject="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                                                         PropertyName="WindowState"
-                                                                         Value="{x:Static WindowState.Normal}"/>
-                                                <ei:ChangePropertyAction TargetObject="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                                                         PropertyName="WindowState"
-                                                                         Value="{x:Static WindowState.Maximized}"
-                                                                         IsEnabled="{Binding ElementName=PART_MaximizeRestore, Path=IsChecked}"/>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
                                     </controls:ToggleCommandButton>
                                     <controls:CommandButton x:Name="PART_Close"
-                                                            Command="{x:Static ApplicationCommands.Close}"
+                                                            Command="{x:Static controls:WindowCommands.Close}"
                                                             BorderThickness="0"
                                                             Width="30" Height="30">
                                         <Path Data="{StaticResource CloseIcon}"
@@ -178,6 +153,9 @@
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.TitleFontSize), Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
                             <Setter TargetName="Title" Property="TextOptions.TextFormattingMode" Value="Ideal"/>
                         </DataTrigger>
+                        <Trigger Property="IsBusy" Value="True">
+                            <Setter TargetName="PART_ProgressBar" Property="State" Value="Indeterminate"/>
+                        </Trigger>
                         <Trigger Property="IsMainWindow" Value="False">
                             <Setter TargetName="PART_Title" Property="Background" Value="{x:Null}"/>
                             <Setter TargetName="Title" Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
@@ -231,16 +209,6 @@
             <Trigger Property="HasDropShadow" Value="False">
                 <Trigger.Setters>
                     <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.BoldThicknessValue), Mode=OneWay}"/>
-                    <Setter Property="shell:WindowChrome.WindowChrome">
-                        <Setter.Value>
-                            <shell:WindowChrome CaptionHeight="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Window}}, Path=NonClientHeight, Mode=OneWay}"
-                                    CornerRadius="0"
-                                    GlassFrameThickness="0"
-                                    NonClientFrameEdges="None"
-                                    ResizeBorderThickness="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Window}}, Path=(root:Parameters.WindowResizeBorderThickness), Mode=OneWay}"
-                                    UseAeroCaptionButtons="False"/>
-                        </Setter.Value>
-                    </Setter>
                 </Trigger.Setters>
             </Trigger>
             <Trigger Property="WindowStyle" Value="{x:Static WindowStyle.None}">
