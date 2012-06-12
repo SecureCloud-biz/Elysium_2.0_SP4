@@ -42,10 +42,6 @@
     
     paths.Add(@"Controls\ProgressBars\ProgressBarState.ru.xml");
     
-    paths.Add(@"Controls\ToastNotification\ToastNotificationAnimation.ru.xml");
-    paths.Add(@"Controls\ToastNotification\HorizontalPlacement.ru.xml");
-    paths.Add(@"Controls\ToastNotification\VerticalPlacement.ru.xml");
-    
     paths.Add(@"Controls\ApplicationBar\Automation\ApplicationBarAutomationPeer.ru.xml");
     
     paths.Add(@"Controls\CommandButtons\Automation\CommandButtonBaseAutomationPeer.ru.xml");
@@ -74,6 +70,9 @@
     paths.Add(@"Controls\ProgressBars\CircularProgressBar.ru.xml");
 
     paths.Add(@"Controls\ToggleSwitch\ToggleSwitch.ru.xml");
+
+    paths.Add(@"Controls\Window\Window.ru.xml");
+    paths.Add(@"Controls\Window\WindowCommands.ru.xml");
     
     var documentation = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
     

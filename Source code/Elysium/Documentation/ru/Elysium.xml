@@ -2937,10 +2937,10 @@
         <code lang="C#">
           var control = new Elysium.Controls.Window();
           var currentValue = Parameters.GetWindowResizeBorderThickness(control);
-          Parameters.SetWindowResizeBorderThickness(control, 3d);
+          Parameters.SetWindowResizeBorderThickness(control, new Thickness(3d));
         </code>
         <code lang="XAML">
-          &lt;metro:Window metro:Parameters.WindowResizeBorderThickness="3px"/&gt;
+          &lt;metro:Window metro:Parameters.WindowResizeBorderThickness="3"/&gt;
         </code>
       </example>
     </member>
@@ -2962,9 +2962,9 @@
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
-      <ensures>Возвращаемое значение является положительным числом.</ensures>
+      <ensures>Возвращаемое значение всегда является положительным.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetWindowResizeBorderThickness(Elysium.Controls.Window,System.Double)">
+    <member name="M:Elysium.Parameters.SetWindowResizeBorderThickness(Elysium.Controls.Window,System.Windows.Thickness)">
       <summary>
         Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.WindowResizeBorderThickness" /> для указанного элемента управления.
       </summary>
@@ -3373,56 +3373,6 @@
         Состоние занятости.
       </summary>
     </member>
-    <member name="T:Elysium.Controls.ToastNotificationAnimation">
-      <summary>
-        Определяет анимацию появления и исчезания элемента управления <see cref="T:Elysium.Controls.ToastNotification" />.
-      </summary>
-    </member>
-    <member name="F:Elysium.Controls.ToastNotificationAnimation.None">
-      <summary>
-        Анимация отсутствует.
-      </summary>
-    </member>
-    <member name="F:Elysium.Controls.ToastNotificationAnimation.Fade">
-      <summary>
-        Элемент управления <see cref="T:Elysium.Controls.ToastNotification" /> меняет свою прозрачность с 0% до 100%.
-      </summary>
-    </member>
-    <member name="F:Elysium.Controls.ToastNotificationAnimation.Slide">
-      <summary>
-        Элемент управления <see cref="T:Elysium.Controls.ToastNotification" /> постепенно "выезжает" из-за указанного края экрана.
-      </summary>
-    </member>
-    <member name="T:Elysium.Controls.HorizontalPlacement">
-      <summary>
-        Определяет, по какой стороне экрана выравнивается элемент управления <see cref="T:Elysium.Controls.ToastNotification" />.
-      </summary>
-    </member>
-    <member name="F:Elysium.Controls.HorizontalPlacement.Left">
-      <summary>
-        Элемент управления <see cref="T:Elysium.Controls.ToastNotification" /> выравнивается по левой стороне экрана.
-      </summary>
-    </member>
-    <member name="F:Elysium.Controls.HorizontalPlacement.Right">
-      <summary>
-        Элемент управления <see cref="T:Elysium.Controls.ToastNotification" /> выравнивается по правой стороне экрана.
-      </summary>
-    </member>
-    <member name="T:Elysium.Controls.VerticalPlacement">
-      <summary>
-        Определяет, по какой стороне экрана выравнивается группа элементов <see cref="T:Elysium.Controls.ToastNotification" />.
-      </summary>
-    </member>
-    <member name="F:Elysium.Controls.VerticalPlacement.Top">
-      <summary>
-        Группа элементов <see cref="T:Elysium.Controls.ToastNotification" /> выравнивается по верхнему краю экрана.
-      </summary>
-    </member>
-    <member name="F:Elysium.Controls.VerticalPlacement.Bottom">
-      <summary>
-        Группа элементов <see cref="T:Elysium.Controls.ToastNotification" /> выравнивается по нижнему краю экрана.
-      </summary>
-    </member>
     <member name="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer">
       <summary>
         Является провайдером типа <see cref="T:Elysium.Controls.ApplicationBar" /> для технологии UI Automation.
@@ -3813,14 +3763,34 @@
       <summary>
         Возвращает или задаёт алгоритм размещения элемента управления внутри панели управления приложением.
       </summary>
-      <value>Одно из значений перечисления <see cref="T:Elysium.Controls.ApplicationBarDock" />. Значение по умолчанию — <see cref="F:Elysium.Controls.ApplicationBarDock.Left" />ApplicationBarDock.Left</value>.
-      <remarks><list type="table"><item><term>Идентификатор</term><description><see cref="F:Elysium.Controls.ApplicationBar.DockProperty" /></description></item><item><term>Метаданные</term><description><see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" /></description></item></list></remarks><example><code lang="C#">
+      <value>Одно из значений перечисления <see cref="T:Elysium.Controls.ApplicationBarDock" />. Значение по умолчанию — <see cref="F:Elysium.Controls.ApplicationBarDock.Left" />ApplicationBarDock.Left</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ApplicationBar.DockProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
           var control = new CommandButton();
           var currentValue = ApplicationBar.GetDock(control);
           ApplicationBar.SetDock(control, ApplicationBarDock.Left);
-        </code><code lang="XAML">
+        </code>
+        <code lang="XAML">
           &lt;CommandButton metro:ApplicationBar.Dock="Left"/&gt;
-        </code></example></member>
+        </code>
+      </example>
+    </member>
     <member name="F:Elysium.Controls.ApplicationBar.DockProperty">
       <summary>
         Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ApplicationBar.Dock" />.
@@ -3885,10 +3855,10 @@
       <summary>
         Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.IsOpen" />.
       </summary>
-      <param name="oldHeader">
+      <param name="oldIsOpen">
         Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.IsOpen" />.
       </param>
-      <param name="newHeader">
+      <param name="newIsOpen">
         Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.IsOpen" />.
       </param>
     </member>
@@ -4086,10 +4056,10 @@
       <summary>
         Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.StaysOpen" />.
       </summary>
-      <param name="oldHeader">
+      <param name="oldStaysOpen">
         Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.StaysOpen" />.
       </param>
-      <param name="newHeader">
+      <param name="newStaysOpen">
         Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.StaysOpen" />.
       </param>
     </member>
@@ -4191,10 +4161,10 @@
       <summary>
         Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.TransitionMode" />.
       </summary>
-      <param name="oldHeader">
+      <param name="oldTransitionMode">
         Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.TransitionMode" />.
       </param>
-      <param name="newHeader">
+      <param name="newTransitionMode">
         Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.TransitionMode" />.
       </param>
     </member>
@@ -4578,10 +4548,10 @@
       <summary>
         Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen" />.
       </summary>
-      <param name="oldSubmenu">
+      <param name="oldIsDropDownOpen">
         Старое значение свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen" />.
       </param>
-      <param name="newSubmenu">
+      <param name="newIsDropDownOpen">
         Новое значение свойства зависимостей <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen" />.
       </param>
     </member>
@@ -5937,6 +5907,297 @@
     </member>
     <member name="M:Elysium.Controls.ToggleSwitch.OnApplyTemplate">
       <inheritdoc />
+    </member>
+    <member name="T:Elysium.Controls.Window">
+      <summary>
+        Базовый класс для окон в Metro стиле.
+      </summary>
+    </member>
+    <member name="P:Elysium.Controls.Window.IsMainWindow">
+      <summary>
+        Возвращает или задаёт значение, указывающее является ли указанное окно главным. В приложении может быть только одно главное окно.
+      </summary>
+      <value>True, если окно является главным, иначе False.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Window.IsMainWindowProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      Это свойство применимо ко всем классам, наследующихся от класса <see cref="T:System.Windows.Window">System.Windows.Window</see>.
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Window();
+          var currentValue = Window.GetIsMainWindow(control);
+          Window.SetIsMainWindow(control, false);
+        </code>
+        <code lang="XAML">
+          &lt;Window metro:Window.IsMainWindow="False"/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Controls.Window.IsMainWindowProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Window.IsMainWindow" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Window.IsMainWindow" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.Window.GetIsMainWindow(System.Windows.Window)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Controls.Window.IsMainWindow" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Значение, указывающее является ли указанное окно главным.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="M:Elysium.Controls.Window.SetIsMainWindow(System.Windows.Window,System.Boolean)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Controls.Window.IsMainWindow" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Значение, указывающее является ли указанное окно главным.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="P:Elysium.Controls.Window.Progress">
+      <summary>
+        Возвращает или задаёт значение, указывающее процент выполнения задачи окном.
+      </summary>
+      <value>Значение, указывающее процент выполнения задачи окном. Значение по умолчанию — 0d.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Window.ProgressProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.Window.ProgressProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Window.Progress" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Window.Progress" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.Window.OnProgressChanged(System.Double,System.Double)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Window.Progress" />.
+      </summary>
+      <param name="oldProgress">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Window.Progress" />.
+      </param>
+      <param name="newProgress">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Window.Progress" />.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.Window.IsBusy">
+      <summary>
+        Возвращает или задаёт значение, указывающее, находится ли окно в данный момент в состоянии занятости.
+      </summary>
+      <value>True, если окно в данный момент находится в состоянии занятости; иначе False. Значение по умолчанию — False.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Window.IsBusyProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.Window.IsBusyProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Window.IsBusy" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Window.IsBusy" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.Window.OnIsBusyChanged(System.Boolean,System.Boolean)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Window.IsBusy" />.
+      </summary>
+      <param name="oldIsBusy">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Window.IsBusy" />.
+      </param>
+      <param name="newIsBusy">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Window.IsBusy" />.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.Window.HasDropShadow">
+      <summary>
+        Возвращает или задаёт значение, указывающее, имеет ли окно тень.
+      </summary>
+      <value>True, если окно имеет тень; иначе False. Значение по умолчанию — False.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Window.HasDropShadowProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.BindsTwoWayByDefault" />
+            </description>
+          </item>
+        </list>
+        По-умолчанию используется значение взятое из системных настроек (задаётся в стиле по-умолчанию).
+        При использовании Windows версии ниже Window Vista значение свойства всегда корректируется в значение False.
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.Window.HasDropShadowProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Window.HasDropShadow" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Window.HasDropShadow" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.Window.OnHasDropShadowChanged(System.Boolean,System.Boolean)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Window.HasDropShadow" />.
+      </summary>
+      <param name="oldHasDropShadow">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Window.HasDropShadow" />.
+      </param>
+      <param name="newHasDropShadow">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Window.HasDropShadow" />.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.Window.ApplicationBar">
+      <summary>
+        Возвращает или задаёт панель управления приложением для данного окна.
+      </summary>
+      <value>Панель управления приложением. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Window.ApplicationBarProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Window();
+          var currentValue = Window.GetApplicationBar(control);
+          Window.SetApplicationBar(control, new ApplicationBar());
+        </code>
+        <code lang="XAML">
+          &lt;metro:Window.ApplicationBar&gt;
+            &lt;metro:ApplicationBar&gt;
+                ...
+            &lt;/metro:ApplicationBar&gt;
+          &lt;/metro:Window.ApplicationBar&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Controls.Window.ApplicationBarProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Window.ApplicationBar" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Window.ApplicationBar" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.Window.GetApplicationBar(System.Windows.Window)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Controls.Window.ApplicationBar" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Панель управления приложением.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="M:Elysium.Controls.Window.SetApplicationBar(System.Windows.Window,Elysium.Controls.ApplicationBar)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Controls.Window.ApplicationBar" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Панель управления приложением.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="M:Elysium.Controls.Window.OnApplyTemplate">
+      <inheritdoc />
+    </member>
+    <member name="T:Elysium.Controls.WindowCommands">
+      <summary>
+        Предоставляет несколько базовых команд для управления окном типа <see cref="T:Elysium.Controls.Window" />.
+      </summary>
+    </member>
+    <member name="P:Elysium.Controls.WindowCommands.Minimize">
+      <summary>
+        Возвращает значение, содержащее команду сворачивания окна.
+      </summary>
+      <value>Команда сворачивания окна.</value>
+    </member>
+    <member name="P:Elysium.Controls.WindowCommands.Maximize">
+      <summary>
+        Возвращает значение, содержащее команду разворачивания окна на весь экран.
+      </summary>
+      <value>Команда разворачивания окна на весь экран.</value>
+    </member>
+    <member name="P:Elysium.Controls.WindowCommands.Restore">
+      <summary>
+        Возвращает значение, содержащее команду возвращения окна в обычное состояние.
+      </summary>
+      <value>Команда возвращения окна в обычное состояние.</value>
+    </member>
+    <member name="P:Elysium.Controls.WindowCommands.Close">
+      <summary>
+        Возвращает значение, содержащее команду закрытия окна.
+      </summary>
+      <value>Команда закрытия окна.</value>
     </member>
   </members>
 </doc>

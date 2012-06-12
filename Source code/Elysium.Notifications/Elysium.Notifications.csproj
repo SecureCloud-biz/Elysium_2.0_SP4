@@ -135,7 +135,6 @@
     <Reference Include="JetBrains.Annotations, Version=6.1.37.86, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
       <HintPath>..\..\Tools and Resources\Assembly dependencies\JetBrains.Annotations.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Windows.Shell, Version=3.5.41019.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -148,7 +147,7 @@
   <ItemGroup>
     <Compile Include="Animation.cs" />
     <Compile Include="Client\NotificationManager.cs" />
-    <Compile Include="Exceptions\PushNotificationFailed.cs" />
+    <Compile Include="Exceptions\PushNotificationFailedException.cs" />
     <Compile Include="Exceptions\ServerUnavailableException.cs" />
     <Compile Include="HorizontalPlacement.cs" />
     <Compile Include="Internal\INotificationManager.cs" />
@@ -158,21 +157,48 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Documentation\en\Elysium.Notifications.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Elysium.Notifications.xml</LastGenOutput>
+    </None>
+    <None Include="Documentation\ru\Elysium.Notifications.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Elysium.Notifications.xml</LastGenOutput>
+    </None>
     <None Include="Properties\Key.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Documentation\en\Elysium.Notifications.xml">
+      <DependentUpon>Elysium.Notifications.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Documentation\ru\Elysium.Notifications.xml">
+      <DependentUpon>Elysium.Notifications.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Animation.ru.xml">
       <DependentUpon>Animation.cs</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="HorizontalPlacement.ru.xml">
       <DependentUpon>HorizontalPlacement.cs</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="VerticalPlacement.ru.xml">
       <DependentUpon>VerticalPlacement.cs</DependentUpon>
+    </None>
+    <None Include="NotificationManager.ru.xml">
+      <DependentUpon>NotificationManager.cs</DependentUpon>
+    </None>
+    <None Include="Exceptions\PushNotificationFailedException.ru.xml">
+      <DependentUpon>PushNotificationFailedException.cs</DependentUpon>
+    </None>
+    <None Include="Exceptions\ServerUnavailableException.ru.xml">
+      <DependentUpon>ServerUnavailableException.cs</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +207,9 @@
       <Name>Elysium</Name>
       <Private>False</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

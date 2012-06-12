@@ -42,14 +42,14 @@ namespace Elysium.Controls
         [PublicAPI]
         [JetBrains.Annotations.Pure]
         [System.Diagnostics.Contracts.Pure]
-        public static double GetAngle(DependencyObject obj)
+        public static double GetAngle(UIElement obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
             return BoxingHelper<double>.Unbox(obj.GetValue(AngleProperty));
         }
 
         [PublicAPI]
-        public static void SetAngle(DependencyObject obj, double value)
+        public static void SetAngle(UIElement obj, double value)
         {
             ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(AngleProperty, value);

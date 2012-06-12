@@ -75,14 +75,14 @@ namespace Elysium.Controls
                 if (WindowChrome.GetWindowChrome(this) == _chrome)
                 {
                     _chrome = new WindowChrome
-                    {
-                        CaptionHeight = _chrome.CaptionHeight,
-                        CornerRadius = _chrome.CornerRadius,
-                        GlassFrameThickness = _chrome.GlassFrameThickness,
-                        NonClientFrameEdges = _chrome.NonClientFrameEdges,
-                        ResizeBorderThickness = Parameters.GetWindowResizeBorderThickness(this),
-                        UseAeroCaptionButtons = _chrome.UseAeroCaptionButtons
-                    };
+                                  {
+                                      CaptionHeight = _chrome.CaptionHeight,
+                                      CornerRadius = _chrome.CornerRadius,
+                                      GlassFrameThickness = _chrome.GlassFrameThickness,
+                                      NonClientFrameEdges = _chrome.NonClientFrameEdges,
+                                      ResizeBorderThickness = Parameters.GetWindowResizeBorderThickness(this),
+                                      UseAeroCaptionButtons = _chrome.UseAeroCaptionButtons
+                                  };
                     _chrome.Freeze();
                     WindowChrome.SetWindowChrome(this, _chrome);
                 }
@@ -274,12 +274,16 @@ namespace Elysium.Controls
         {
             ValidationHelper.NotNull(obj, () => obj);
             var instance = obj as System.Windows.Window;
-            if (instance != null && e.OldValue == null)
+            if (instance != null && e.OldValue != null)
+            {
+                instance.MouseRightButtonUp -= OnApplicationBarOpening;
+            }
+            if (instance != null && e.NewValue != null)
             {
                 instance.MouseRightButtonUp += OnApplicationBarOpening;
             }
             var window = obj as Window;
-            if (window != null && window._applicationBarHost != null)
+            if (window != null && window._applicationBarHost != null && e.NewValue != null)
             {
                 var newApplicationBar = (ApplicationBar)e.NewValue;
                 window._applicationBarHost.Child = newApplicationBar;

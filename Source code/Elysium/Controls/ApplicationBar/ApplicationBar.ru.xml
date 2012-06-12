@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Documentation\Documentation.xsd">
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\..\Documentation\Documentation.xsd">
   <assembly>
     <name>Elysium</name>
   </assembly>
@@ -13,7 +13,7 @@
       <summary>
         Возвращает или задаёт алгоритм размещения элемента управления внутри панели управления приложением.
       </summary>
-      <value>Одно из значений перечисления <see cref="T:Elysium.Controls.ApplicationBarDock"/>. Значение по умолчанию — <see cref="F:Elysium.Controls.ApplicationBarDock.Left"/>ApplicationBarDock.Left</value>.
+      <value>Одно из значений перечисления <see cref="T:Elysium.Controls.ApplicationBarDock"/>. Значение по умолчанию — <see cref="F:Elysium.Controls.ApplicationBarDock.Left"/>ApplicationBarDock.Left</value>
       <remarks>
         <list type="table">
           <item>
@@ -105,10 +105,10 @@
       <summary>
         Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.IsOpen"/>.
       </summary>
-      <param name="oldHeader">
+      <param name="oldIsOpen">
         Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.IsOpen"/>.
       </param>
-      <param name="newHeader">
+      <param name="newIsOpen">
         Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.IsOpen"/>.
       </param>
     </method>
@@ -306,10 +306,10 @@
       <summary>
         Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.StaysOpen"/>.
       </summary>
-      <param name="oldHeader">
+      <param name="oldStaysOpen">
         Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.StaysOpen"/>.
       </param>
-      <param name="newHeader">
+      <param name="newStaysOpen">
         Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.StaysOpen"/>.
       </param>
     </method>
@@ -411,10 +411,10 @@
       <summary>
         Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.TransitionMode"/>.
       </summary>
-      <param name="oldHeader">
+      <param name="oldTransitionMode">
         Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.TransitionMode"/>.
       </param>
-      <param name="newHeader">
+      <param name="newTransitionMode">
         Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ApplicationBar.TransitionMode"/>.
       </param>
     </method>

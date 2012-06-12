@@ -147,9 +147,9 @@ namespace Elysium.Controls
         }
 
         [PublicAPI]
-        protected virtual void OnIsSwitchingChanged(bool oldIsSwitching, bool newIsSwitchging)
+        protected virtual void OnIsSwitchingChanged(bool oldIsSwitching, bool newIsSwitching)
         {
-            if (newIsSwitchging)
+            if (newIsSwitching)
             {
                 OnSwitchStarted(new RoutedEventArgs(SwitchStartedEvent));
                 VisualStateManager.GoToState(this, "Switch", true);
@@ -255,7 +255,7 @@ namespace Elysium.Controls
 
         [PublicAPI]
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual void OnHasOnHeaderChanged(bool oldOnHeader, bool newOnHeader)
+        protected virtual void OnHasOnHeaderChanged(bool oldHasOnHeader, bool newHasOnHeader)
 // ReSharper restore VirtualMemberNeverOverriden.Global
         {
         }
@@ -410,7 +410,7 @@ namespace Elysium.Controls
 
         [PublicAPI]
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual void OnHasOffHeaderChanged(bool oldOffHeader, bool newOffHeader)
+        protected virtual void OnHasOffHeaderChanged(bool oldHasOffHeader, bool newHasOffHeader)
 // ReSharper restore VirtualMemberNeverOverriden.Global
         {
         }

@@ -82,36 +82,10 @@ namespace Elysium.Notifications
         }
 
         [PublicAPI]
-        public static Task<bool> TryPushAsync([NotNull] string message, [CanBeNull] string remark)
-        {
-            var task = new Task<bool>(() =>
-            {
-                var result = true;
-                var thread = new Thread(() =>
-                {
-                    Application.Current.DispatcherUnhandledException += (sender, e) =>
-                    {
-                        if (e.Exception is ServerUnavailableException || e.Exception is PushNotificationFailedException)
-                        {
-                            result = false;
-                        }
-                    };
-                    PushInternal(message, remark, () => Dispatcher.CurrentDispatcher.InvokeShutdown());
-                    Dispatcher.Run();
-                });
-                thread.SetApartmentState(ApartmentState.STA);
-                thread.IsBackground = true;
-                thread.Start();
-                thread.Join();
-                return result;
-            });
-            task.Start();
-            return task;
-        }
-
-        [PublicAPI]
         public static bool TryPush([NotNull] string message, [CanBeNull] string remark)
         {
+            ValidationHelper.NotNullOrWhitespace(message, () => message);
+
             try
             {
                 Push(message, remark);
@@ -124,26 +98,7 @@ namespace Elysium.Notifications
         }
 
         [PublicAPI]
-        public static void PushAsync([NotNull] string message, [CanBeNull] string remark)
-        {
-            var thread = new Thread(() =>
-            {
-                PushInternal(message, remark, () => Dispatcher.CurrentDispatcher.InvokeShutdown());
-                Dispatcher.Run();
-            });
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.IsBackground = true;
-            thread.Start();
-        }
-        
-        [PublicAPI]
-        public static void Push([NotNull] string message, [CanBeNull] string remark)
-        {
-            PushInternal(message, remark, null);
-        }
-
-        [PublicAPI]
-        private static void PushInternal([NotNull] string message, [CanBeNull] string remark, Action closingAction)
+        private static void Push([NotNull] string message, [CanBeNull] string remark)
         {
             ValidationHelper.NotNullOrWhitespace(message, () => message);
 
@@ -177,10 +132,6 @@ namespace Elysium.Notifications
                     timer.Dispose();
                     Free(slot.ID);
                     CloseAnimation(window, slot);
-                    if (closingAction != null)
-                    {
-                        closingAction();
-                    }
                 };
 
                 BeginOpenAnimation(window, slot);
