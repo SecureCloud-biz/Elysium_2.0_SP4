@@ -5,10 +5,8 @@
         <ResourceDictionary Source="/Elysium;component/Themes/Buttons/ButtonBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type RepeatButton}" BasedOn="{StaticResource ButtonsBaseStyle}">
-        
-        <Setter Property="OverridesDefaultStyle" Value="True"/>
-        
+    <Style TargetType="{x:Type RepeatButton}" BasedOn="{StaticResource ButtonsBaseStyle}">        
+        <Setter Property="OverridesDefaultStyle" Value="True"/>        
     </Style>
 
 </ResourceDictionary>

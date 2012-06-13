@@ -5,16 +5,13 @@
         <ResourceDictionary Source="/Elysium;component/Themes/TextBoxes/TextBoxBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type RichTextBox}" BasedOn="{StaticResource TextBoxBaseStyle}">
-        
+    <Style TargetType="{x:Type RichTextBox}" BasedOn="{StaticResource TextBoxBaseStyle}">        
         <Style.Resources>
-            <Style x:Key="{x:Type FlowDocument}" TargetType="{x:Type FlowDocument}">
+            <Style TargetType="{x:Type FlowDocument}">
                 <Setter Property="OverridesDefaultStyle" Value="True"/>
             </Style>
         </Style.Resources>
-
-        <Setter Property="OverridesDefaultStyle" Value="True"/>
-        
+        <Setter Property="OverridesDefaultStyle" Value="True"/>        
     </Style>
     
 </ResourceDictionary>

@@ -18,6 +18,7 @@
     paths.Add(@"AccentBrushes.ru.xml");
     paths.Add(@"Theme.ru.xml");
     paths.Add(@"ThemeManager.ru.xml");
+    paths.Add(@"Design\ThemeManager.ru.xml");
     paths.Add(@"Parameters.ru.xml");
     
     paths.Add(@"Extensions\Tree helpers\LogicalTreeHelperExtensions.ru.xml");

@@ -4,7 +4,9 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
+        <ResourceDictionary Source="/Elysium;component/Themes/Buttons/ToggleButton.xaml"/>
         <ResourceDictionary Source="/Elysium;component/Themes/Scrolls/ScrollBar.xaml"/>
+        <ResourceDictionary Source="/Elysium;component/Themes/Scrolls/ScrollViewer.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
     <Style x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">        
@@ -37,22 +39,16 @@
     </Style>
 
     <Style x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
-
         <Setter Property="CaretBrush" Value="{DynamicResource ForegroundBrush}"/>
         <Setter Property="SelectionBrush" Value="{DynamicResource MiddleLightBrush}"/>
-
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
-
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
-
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Control}">
+                <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
@@ -62,12 +58,10 @@
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
-        </Setter>
-        
+        </Setter>        
     </Style>
 
     <Style TargetType="{x:Type ComboBox}">
-
         <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThickness), Mode=OneWay}"/>
@@ -78,31 +72,23 @@
         <Setter Property="FontWeight" Value="Normal"/>
         <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
-        <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
-        
+        <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>        
         <Setter Property="root:Parameters.ShadowBrush" Value="{DynamicResource ForegroundBrush}"/>
-
         <Setter Property="Focusable" Value="True"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}"/>
-
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
         <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
-
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.BoldPadding), Mode=OneWay}"/>
-
         <Setter Property="OverridesDefaultStyle" Value="True"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
-        
+        <Setter Property="SnapsToDevicePixels" Value="True"/>        
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ComboBox}">
-                    
+                <ControlTemplate TargetType="{x:Type ComboBox}">                    
                     <Border x:Name="LayoutRoot"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
@@ -183,7 +169,6 @@
                             </Grid>
                         </Grid>
                     </Border>
-
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding ElementName=PopupRoot, Path=Tag}"  Value="True">
                             <Setter TargetName="PopupRoot" Property="Effect">
@@ -209,12 +194,10 @@
                         <Trigger Property="IsDropDownOpen" Value="True">
                             <Setter Property="Background" Value="{DynamicResource HighlightBrush}"/>
                         </Trigger>
-                    </ControlTemplate.Triggers>
-                    
+                    </ControlTemplate.Triggers>                    
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
         <Style.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
                 <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
@@ -226,8 +209,7 @@
             <Trigger Property="IsGrouping" Value="True">
                 <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
             </Trigger>
-        </Style.Triggers>
-        
+        </Style.Triggers>        
     </Style>
 
 </ResourceDictionary>

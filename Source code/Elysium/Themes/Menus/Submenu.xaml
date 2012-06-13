@@ -5,10 +5,10 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Elysium;component/Themes/Scrolls/ScrollBar.xaml"/>
+        <ResourceDictionary Source="/Elysium;component/Themes/Scrolls/ScrollViewer.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{x:Type controls:Submenu}" TargetType="{x:Type controls:Submenu}">
-        
+    <Style x:Key="{x:Type controls:Submenu}" TargetType="{x:Type controls:Submenu}">        
         <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThickness), Mode=OneWay}"/>
@@ -20,22 +20,16 @@
         <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
         <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
-
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
         <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
-
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-
+        <Setter Property="Grid.IsSharedSizeScope" Value="True"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.BoldPadding), Mode=OneWay}"/>
-
-        <Setter Property="Grid.IsSharedSizeScope" Value="True"/>
-        
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
-        
+        <Setter Property="SnapsToDevicePixels" Value="True"/>        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:Submenu}">
@@ -66,7 +60,6 @@
                                         KeyboardNavigation.DirectionalNavigation="Cycle"/>
                         </ScrollViewer>
                     </Border>
-
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding ElementName=LayoutRoot, Path=Tag}" Value="True">
                             <Setter TargetName="LayoutRoot" Property="Effect">
@@ -84,13 +77,11 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
         <Style.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
                 <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
             </DataTrigger>
-        </Style.Triggers>
-        
+        </Style.Triggers>        
     </Style>
 
 </ResourceDictionary>

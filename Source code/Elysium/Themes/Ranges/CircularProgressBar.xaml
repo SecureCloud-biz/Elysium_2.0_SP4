@@ -9,17 +9,13 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{x:Type controls:CircularProgressBar}" TargetType="{x:Type controls:CircularProgressBar}">
-
         <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource HighlightBrush}"/>
         <Setter Property="BorderThickness" Value="3.0"/>
-        <Setter Property="Foreground" Value="{DynamicResource AccentBrush}"/>
-        
+        <Setter Property="Foreground" Value="{DynamicResource AccentBrush}"/>        
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Focusable" Value="False"/>
-
         <Setter Property="SnapsToDevicePixels" Value="True"/>
-
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:CircularProgressBar}">
@@ -200,7 +196,6 @@
                             </Canvas>
                         </Canvas>
                     </Border>
-
                     <ControlTemplate.Triggers>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -217,23 +212,17 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
         <Style.Triggers>
-
             <Trigger Property="State" Value="Indeterminate">
                 <Setter Property="BorderBrush" Value="{x:Null}"/>
             </Trigger>
-
             <Trigger Property="State" Value="Busy">
                 <Setter Property="BorderBrush" Value="{x:Null}"/>
             </Trigger>
-
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
             </Trigger>
-
         </Style.Triggers>
-
     </Style>
     
 </ResourceDictionary>

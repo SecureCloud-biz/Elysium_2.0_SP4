@@ -7,13 +7,15 @@
                     xmlns:controls="clr-namespace:Elysium.Controls">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Elysium;component/Themes/Icons.xaml"/>
         <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
+        <ResourceDictionary Source="/Elysium;component/Themes/Ranges/LinearProgressBar.xaml"/>
         <ResourceDictionary Source="/Elysium;component/Themes/Buttons/CommandButtonBase.xaml"/>
+        <ResourceDictionary Source="/Elysium;component/Themes/Buttons/CommandButton.xaml"/>
+        <ResourceDictionary Source="/Elysium;component/Themes/Buttons/ToggleCommandButton.xaml"/>
+        <ResourceDictionary Source="/Elysium;component/Themes/Icons.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{x:Type controls:Window}" TargetType="{x:Type controls:Window}">
-
         <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>        
         <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
@@ -26,21 +28,15 @@
         <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
         <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
-
         <Setter Property="HasDropShadow" Value="{DynamicResource {x:Static SystemParameters.DropShadowKey}}"/>
-
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Focusable" Value="False"/>
-
         <Setter Property="ResizeMode" Value="CanResizeWithGrip"/>
-
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="Padding" Value="0"/>
-
         <Setter Property="UseLayoutRounding" Value="False"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
-        
+        <Setter Property="SnapsToDevicePixels" Value="True"/>        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:Window}">                    
@@ -146,7 +142,6 @@
                                         VerticalAlignment="Bottom"/>
                         </Grid>
                     </Border>
-
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.TitleFontSize), Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
                             <Setter TargetName="Title" Property="TextOptions.TextFormattingMode" Value="Ideal"/>
@@ -194,12 +189,10 @@
                                 <Setter TargetName="PART_Grip" Property="Visibility" Value="Visible"/>
                             </Trigger.Setters>
                         </Trigger>
-                    </ControlTemplate.Triggers>
-                    
+                    </ControlTemplate.Triggers>                    
                 </ControlTemplate>
             </Setter.Value>
-        </Setter>
-        
+        </Setter>        
         <Style.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
                 <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
@@ -215,8 +208,7 @@
             <Trigger Property="WindowStyle" Value="{x:Static WindowStyle.ToolWindow}">
                 <Setter Property="ResizeMode" Value="NoResize"/>
             </Trigger>            
-        </Style.Triggers>
-        
+        </Style.Triggers>        
     </Style>
     
 </ResourceDictionary>

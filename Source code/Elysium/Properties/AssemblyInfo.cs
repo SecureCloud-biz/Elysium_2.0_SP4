@@ -29,7 +29,9 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("http://schemas.codeplex.com/elysium/theme", "Elysium")]
 [assembly: XmlnsDefinition("http://schemas.codeplex.com/elysium/theme", "Elysium.Controls")]
 [assembly: XmlnsDefinition("http://schemas.codeplex.com/elysium/theme", "Elysium.Converters")]
+[assembly: XmlnsDefinition("http://schemas.codeplex.com/elysium/theme/design", "Elysium.Design")]
 [assembly: XmlnsPrefix("http://schemas.codeplex.com/elysium/theme", "metro")]
+[assembly: XmlnsPrefix("http://schemas.codeplex.com/elysium/theme/design", "design")]
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None,
@@ -38,5 +40,5 @@ using System.Windows.Markup;
 
 [assembly: NeutralResourcesLanguage("en-us")]
 
-[assembly: AssemblyVersion("1.5.487.0")]
-[assembly: AssemblyFileVersion("1.5.487.0")]
+[assembly: AssemblyVersion("1.5.491.0")]
+[assembly: AssemblyFileVersion("1.5.491.0")]

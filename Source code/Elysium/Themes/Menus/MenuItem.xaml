@@ -6,22 +6,17 @@
         <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
-    <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="{x:Type Separator}">
-        
+    <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="{x:Type Separator}">        
         <Setter Property="Background" Value="{x:Null}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource HighlightBrush}"/>
-        <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThickness), Mode=OneWay}"/>
-        
+        <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThickness), Mode=OneWay}"/>        
         <Setter Property="Focusable" Value="False"/>
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>        
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.SemiBoldPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Right'}"/>
-
         <Setter Property="OverridesDefaultStyle" Value="True"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
-        
+        <Setter Property="SnapsToDevicePixels" Value="True"/>        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Separator}">
@@ -39,8 +34,7 @@
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
-        </Setter>
-        
+        </Setter>        
     </Style>
     
     <ControlTemplate x:Key="{x:Static MenuItem.SubmenuItemTemplateKey}" TargetType="{x:Type MenuItem}">
@@ -203,7 +197,6 @@
     </ControlTemplate>
 
     <Style TargetType="{x:Type MenuItem}">
-
         <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=Background, Mode=OneWay}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
@@ -215,20 +208,15 @@
         <Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=FontWeight, Mode=OneWay}"/>
         <Setter Property="TextOptions.TextFormattingMode" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=(TextOptions.TextFormattingMode), Mode=OneWay}"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=(TextOptions.TextRenderingMode), Mode=OneWay}"/>
-        <Setter Property="RenderOptions.ClearTypeHint" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=(RenderOptions.ClearTypeHint), Mode=OneWay}"/>
-        
+        <Setter Property="RenderOptions.ClearTypeHint" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=(RenderOptions.ClearTypeHint), Mode=OneWay}"/>        
         <Setter Property="Focusable" Value="True"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}"/>
-
         <Setter Property="HorizontalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=HorizontalContentAlignment}"/>
         <Setter Property="VerticalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=VerticalContentAlignment}"/>
         <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=Padding}"/>
-
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
-
-        <Style.Triggers>
-            
+        <Style.Triggers>            
             <Trigger Property="Role" Value="TopLevelHeader">
                 <Setter Property="Template" Value="{StaticResource {x:Static MenuItem.TopLevelHeaderTemplateKey}}"/>
             </Trigger>
@@ -240,8 +228,7 @@
             </Trigger>
             <Trigger Property="Role" Value="SubmenuItem">
                 <Setter Property="Template" Value="{StaticResource {x:Static MenuItem.SubmenuItemTemplateKey}}"/>
-            </Trigger>
-            
+            </Trigger>            
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="Role" Value="SubmenuItem"/>
@@ -261,14 +248,11 @@
                     <Setter Property="Background" Value="{DynamicResource MiddleLightBrush}"/>
                     <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
                 </MultiTrigger.Setters>
-            </MultiTrigger>
-            
+            </MultiTrigger>            
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
-            </Trigger>
-            
-        </Style.Triggers>
-        
+            </Trigger>            
+        </Style.Triggers>        
     </Style>
     
 </ResourceDictionary>

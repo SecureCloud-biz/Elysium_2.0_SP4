@@ -5,18 +5,15 @@
         <ResourceDictionary Source="/Elysium;component/Themes/Buttons/ButtonBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ButtonsBaseStyle}">
-        
-        <Setter Property="OverridesDefaultStyle" Value="True"/>
-        
+    <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ButtonsBaseStyle}">        
+        <Setter Property="OverridesDefaultStyle" Value="True"/>        
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
                 <Setter Property="Background" Value="{DynamicResource MiddleLightBrush}"/>
                 <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
                 <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
             </Trigger>
-        </Style.Triggers>
-        
+        </Style.Triggers>        
     </Style>
 
 </ResourceDictionary>

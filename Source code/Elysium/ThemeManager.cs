@@ -38,9 +38,9 @@ namespace Elysium
         }
 
         [SuppressMessage("Microsoft.Contracts", "Nonnull-17-0")]
-        private static void OnThemeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnThemeChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            var control = d as FrameworkElement;
+            var control = obj as FrameworkElement;
             if (control != null)
             {
                 var theme = (Theme?)e.NewValue;
@@ -75,9 +75,9 @@ namespace Elysium
             obj.SetValue(AccentBrushProperty, value);
         }
 
-        private static void OnAccentBrushChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnAccentBrushChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            var control = d as FrameworkElement;
+            var control = obj as FrameworkElement;
             if (control != null)
             {
                 var accentBrush = (SolidColorBrush)e.NewValue;
@@ -112,9 +112,9 @@ namespace Elysium
             obj.SetValue(ContrastBrushProperty, value);
         }
 
-        private static void OnContrastBrushChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnContrastBrushChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            var control = d as FrameworkElement;
+            var control = obj as FrameworkElement;
             if (control != null)
             {
                 var contrastBrush = (SolidColorBrush)e.NewValue;

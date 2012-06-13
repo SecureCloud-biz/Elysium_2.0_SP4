@@ -5,13 +5,9 @@
         <ResourceDictionary Source="/Elysium;component/Themes/TextBoxes/TextBoxesBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="TextBoxBaseStyle" TargetType="{x:Type TextBoxBase}" BasedOn="{StaticResource TextBoxesBaseStyle}">
-        
+    <Style x:Key="TextBoxBaseStyle" TargetType="{x:Type TextBoxBase}" BasedOn="{StaticResource TextBoxesBaseStyle}">        
         <Setter Property="CaretBrush" Value="{DynamicResource ForegroundBrush}"/>
         <Setter Property="SelectionBrush" Value="{DynamicResource MiddleLightBrush}"/>
-
-        <Setter Property="OverridesDefaultStyle" Value="True"/>
-
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -23,8 +19,7 @@
                     <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
                 </MultiTrigger.Setters>
             </MultiTrigger>
-        </Style.Triggers>
-        
+        </Style.Triggers>        
     </Style>
     
 </ResourceDictionary>

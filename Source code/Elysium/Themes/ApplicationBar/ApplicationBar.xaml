@@ -2,13 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:root="clr-namespace:Elysium"
                     xmlns:controls="clr-namespace:Elysium.Controls">
-
+    
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-
-    <Style x:Key="{x:Type controls:ApplicationBar}" TargetType="{x:Type controls:ApplicationBar}">
-        
+    
+    <Style x:Key="{x:Type controls:ApplicationBar}" TargetType="{x:Type controls:ApplicationBar}">        
         <Setter Property="Background" Value="{DynamicResource HighlightBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
@@ -20,13 +19,10 @@
         <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
         <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
-
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.BoldPadding), Mode=OneWay}"/>
-
         <Setter Property="SnapsToDevicePixels" Value="True"/>
-
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:ApplicationBar}">
@@ -45,13 +41,11 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
         <Style.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
                 <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
             </DataTrigger>
         </Style.Triggers>
-
     </Style>
-
+    
 </ResourceDictionary>

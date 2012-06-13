@@ -7,7 +7,6 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type TabControl}">
-
         <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
@@ -19,20 +18,15 @@
         <Setter Property="FontWeight" Value="Normal"/>
         <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
-        <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
-        
+        <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>        
         <Setter Property="ClipToBounds" Value="True"/>
-
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Focusable" Value="False"/>
-
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.BoldPadding), Mode=OneWay}"/>
-
         <Setter Property="OverridesDefaultStyle" Value="True"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
-        
+        <Setter Property="SnapsToDevicePixels" Value="True"/>        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabControl}">
@@ -100,7 +94,6 @@
                             </Border>
                         </Grid>
                     </Border>
-
                     <ControlTemplate.Triggers>
                         <Trigger Property="TabStripPlacement" Value="Bottom">
                             <Setter TargetName="FirstRowDefinition" Property="Height" Value="*"/>
@@ -142,12 +135,10 @@
                             <Setter TargetName="Indicator" Property="HorizontalAlignment" Value="Left"/>
                             <Setter TargetName="Indicator" Property="VerticalAlignment" Value="Stretch"/>
                         </Trigger>
-                    </ControlTemplate.Triggers>
-                    
+                    </ControlTemplate.Triggers>                    
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
         <Style.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
                 <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
@@ -156,8 +147,7 @@
                 <Setter Property="BorderBrush" Value="{DynamicResource DisabledBrush}"/>
                 <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
             </Trigger>            
-        </Style.Triggers>
-        
+        </Style.Triggers>        
     </Style>
 
 </ResourceDictionary>

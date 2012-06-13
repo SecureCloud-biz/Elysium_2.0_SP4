@@ -8,28 +8,21 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{x:Type primitives:CommandButtonBase}" TargetType="{x:Type primitives:CommandButtonBase}">
-        
         <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.SemiBoldThickness), Mode=OneWay}"/>
+        <Setter Property="root:Parameters.CommandButtonMask" Value="{DynamicResource LowlightBrush}"/>  
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.ContentFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
         <Setter Property="FontStyle" Value="Normal"/>
-        <Setter Property="FontWeight" Value="Normal"/>
-
-        <Setter Property="root:Parameters.CommandButtonMask" Value="{DynamicResource LowlightBrush}"/>
-        
+        <Setter Property="FontWeight" Value="Normal"/>      
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}"/>
-
-        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.SemiBoldPadding), Mode=OneWay}"/>
-        
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.SemiBoldPadding), Mode=OneWay}"/>        
         <Setter Property="SnapsToDevicePixels" Value="True"/>
-
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type primitives:CommandButtonBase}">
-
                     <Grid Background="{DynamicResource TransparentBrush}"
                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <Grid.RowDefinitions>
@@ -77,18 +70,15 @@
                                           ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
                                           Margin="{TemplateBinding Padding}"
                                           HorizontalAlignment="Center"/>
-                    </Grid>
-                    
+                    </Grid>                    
                     <ControlTemplate.Triggers>
                         <Trigger Property="Header" Value="{x:Null}">
                             <Setter TargetName="PART_HeaderHost" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
-                    </ControlTemplate.Triggers>
-                    
+                    </ControlTemplate.Triggers>                    
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="BorderBrush" Value="{DynamicResource ForegroundBrush}"/>
@@ -104,8 +94,7 @@
                 <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
                 <Setter Property="root:Parameters.CommandButtonMask" Value="{DynamicResource DisabledBrush}"/>
             </Trigger>
-        </Style.Triggers>
-        
+        </Style.Triggers>        
     </Style>
 
 </ResourceDictionary>

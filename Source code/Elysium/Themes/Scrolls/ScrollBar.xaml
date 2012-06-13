@@ -6,21 +6,16 @@
         <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
-    <Style x:Key="ScrollBarLineDownButtonStyle" TargetType="{x:Type RepeatButton}">
-        
+    <Style x:Key="ScrollBarLineDownButtonStyle" TargetType="{x:Type RepeatButton}">        
         <Setter Property="Background" Value="{DynamicResource TransparentBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
-        <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThickness), Mode=OneWay}"/>
-        
+        <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultThickness), Mode=OneWay}"/>        
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Focusable" Value="False"/>
-
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False"/>
-
         <Setter Property="OverridesDefaultStyle" Value="True"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
-        
+        <Setter Property="SnapsToDevicePixels" Value="True"/>        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
@@ -38,7 +33,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        
         <Style.Triggers>            
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
@@ -49,8 +43,7 @@
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="BorderBrush" Value="{DynamicResource DisabledBrush}"/>
             </Trigger>            
-        </Style.Triggers>
-        
+        </Style.Triggers>        
     </Style>
 
     <Style x:Key="ScrollBarLineUpButtonStyle" TargetType="{x:Type RepeatButton}" BasedOn="{StaticResource ScrollBarLineDownButtonStyle}">
@@ -78,20 +71,15 @@
     </Style>
 
     <Style x:Key="ScrollBarPageButtonStyle" TargetType="{x:Type RepeatButton}">
-
         <Setter Property="Background" Value="{DynamicResource TransparentBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource TransparentBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
-
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Focusable" Value="False"/>
-
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False"/>
-
         <Setter Property="OverridesDefaultStyle" Value="True"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
-        
+        <Setter Property="SnapsToDevicePixels" Value="True"/>        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
@@ -101,27 +89,20 @@
                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                 </ControlTemplate>
             </Setter.Value>
-        </Setter>
-        
+        </Setter>        
     </Style>
 
     <Style x:Key="ScrollBarThumbStyle" TargetType="{x:Type Thumb}">
-
         <Setter Property="Background" Value="{DynamicResource MiddleLightBrush}"/>
         <Setter Property="BorderBrush" Value="{x:Null}"/>
         <Setter Property="BorderThickness" Value="0"/>
-
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Focusable" Value="False"/>
-
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False"/>
-
         <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Left}"/>
-
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
-
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
@@ -134,7 +115,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{DynamicResource LowlightBrush}"/>
@@ -146,7 +126,6 @@
                 <Setter Property="Background" Value="{DynamicResource DisabledBrush}"/>
             </Trigger>
         </Style.Triggers>
-
     </Style>
     
     <ControlTemplate x:Key="HorizontalScrollBarTemplate" TargetType="{x:Type ScrollBar}">
@@ -235,19 +214,13 @@
     </ControlTemplate>
 
     <Style TargetType="{x:Type ScrollBar}">
-
         <Setter Property="Background" Value="{x:Null}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
-
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="Focusable" Value="False"/>
-        
+        <Setter Property="Focusable" Value="False"/>        
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False"/>
-
-        <Setter Property="OverridesDefaultStyle" Value="True"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
-        
+        <Setter Property="SnapsToDevicePixels" Value="True"/>        
         <Style.Triggers>
             <Trigger Property="Orientation" Value="Horizontal">
                 <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.DefaultPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Bottom}"/>
@@ -263,8 +236,7 @@
                 <Setter Property="MaxWidth" Value="10"/>
                 <Setter Property="Template" Value="{StaticResource VerticalScrollBarTemplate}"/>
             </Trigger>
-        </Style.Triggers>
-        
+        </Style.Triggers>        
     </Style>
 
 </ResourceDictionary>

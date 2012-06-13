@@ -5,9 +5,9 @@
         <ResourceDictionary Source="/Elysium;component/Themes/Selectors/SelectorsItemsBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource SelectorsItemsBaseStyle}">  
-        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
-        
+    <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource SelectorsItemsBaseStyle}">        
+        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>        
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -25,7 +25,7 @@
                 <Setter Property="Background" Value="{DynamicResource DisabledBrush}"/>
                 <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
             </MultiTrigger>
-        </Style.Triggers>
+        </Style.Triggers>        
     </Style>
 
 </ResourceDictionary>

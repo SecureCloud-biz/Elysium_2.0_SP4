@@ -2,6 +2,12 @@
               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
               xmlns:metro="http://schemas.codeplex.com/elysium/theme"
+              xmlns:design="http://schemas.codeplex.com/elysium/theme/design"
+              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              mc:Ignorable="design"
+              design:ThemeManager.Theme="Light"
+              design:ThemeManager.AccentBrush="{x:Static metro:AccentBrushes.Viridian}"
+              design:ThemeManager.ContrastBrush="White"
               WindowStartupLocation="CenterScreen"
               Width="1024" Height="480">
     <metro:Window.ApplicationBar>

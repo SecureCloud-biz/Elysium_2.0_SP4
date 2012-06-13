@@ -355,6 +355,7 @@
     <Compile Include="Controls\CommandButtons\Automation\CommandButtonBaseAutomationPeer.cs" />
     <Compile Include="Controls\Window\WindowCommands.cs" />
     <Compile Include="Converters\IsGreaterThanConverter.cs" />
+    <Compile Include="Design\ThemeManager.cs" />
     <Compile Include="Extensions\Validation helpers\ContractExtensions.cs" />
     <Compile Include="Extensions\Validation helpers\DoubleUtil.cs" />
     <Compile Include="Extensions\Validation helpers\ThicknessUtil.cs" />
@@ -546,6 +547,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Design\ThemeManager.ru.xml">
+      <DependentUpon>ThemeManager.cs</DependentUpon>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
