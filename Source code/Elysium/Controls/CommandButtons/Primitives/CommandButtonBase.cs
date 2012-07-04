@@ -16,18 +16,15 @@ namespace Elysium.Controls.Primitives
 {
     [PublicAPI]
     [TemplatePart(Name = DecorName, Type = typeof(Ellipse))]
-    [TemplatePart(Name = MaskName, Type = typeof(Ellipse))]
     [TemplatePart(Name = HeaderHostName, Type = typeof(ContentPresenter))]
     [TemplatePart(Name = ContentHostName, Type = typeof(ContentPresenter))]
     public abstract class CommandButtonBase : ButtonBase
     {
         private const string DecorName = "PART_Decor";
-        private const string MaskName = "PART_Mask";
         private const string HeaderHostName = "PART_HeaderHost";
         private const string ContentHostName = "PART_ContentHost";
 
         private Ellipse _decor;
-        private Ellipse _mask;
         private ContentPresenter _headerHost;
         private ContentPresenter _contentHost;
 
@@ -211,14 +208,6 @@ namespace Elysium.Controls.Primitives
 
                 // NOTE: Lack of contracts: FindName is pure method
                 Contract.Assume(Template != null);
-                _mask = Template.FindName(MaskName, this) as Ellipse;
-                if (_mask == null)
-                {
-                    Trace.TraceError(MaskName + " not found.");
-                }
-
-                // NOTE: Lack of contracts: FindName is pure method
-                Contract.Assume(Template != null);
                 _headerHost = Template.FindName(HeaderHostName, this) as ContentPresenter;
                 if (_headerHost == null)
                 {
@@ -237,7 +226,7 @@ namespace Elysium.Controls.Primitives
 
         protected override Size MeasureOverride(Size constraint)
         {
-            if (_decor != null && _mask != null && _headerHost != null && _contentHost != null)
+            if (_decor != null && _headerHost != null && _contentHost != null)
             {
                 var infinitySize = new Size(double.PositiveInfinity, double.PositiveInfinity);
                 _contentHost.Measure(infinitySize);
@@ -250,9 +239,9 @@ namespace Elysium.Controls.Primitives
                 Contract.Assume(_headerHost.DesiredSize.Height >= 0d);
 
                 var contentSize = Math.Max(_contentHost.DesiredSize.Width, _contentHost.DesiredSize.Height);
+                var contentBoxSize = Math.Ceiling(contentSize * Math.Sqrt(2d));
 
                 // NOTE: Parity must be the same
-                var contentBoxSize = Math.Ceiling(contentSize * Math.Sqrt(2d));
                 if (((int)contentBoxSize % 2 == 0) ^ ((int)Math.Ceiling(contentSize) % 2 == 0))
                 {
                     contentBoxSize++;
@@ -270,20 +259,51 @@ namespace Elysium.Controls.Primitives
 
                 var boxSize = Math.Min(width, Math.Max(height - _headerHost.DesiredSize.Height, 0d));
 
+                // NOTE: Parity must be the same
+                if (((int)boxSize % 2 == 0) ^ ((int)Math.Ceiling(contentSize) % 2 == 0))
+                {
+                    boxSize--;
+                }
+
                 // NOTE: Lack of contracts: Math.Max and Math.Min doesn't contain ensures
                 Contract.Assume(boxSize >= 0d);
 
                 _decor.Width = boxSize;
                 _decor.Height = boxSize;
-                _mask.Width = boxSize;
-                _mask.Height = boxSize;
 
-                _contentHost.InvalidateMeasure();
-                _headerHost.InvalidateMeasure();
+                var finalSize = new Size(width, height);
+                _contentHost.Measure(finalSize);
+                _headerHost.Measure(finalSize);
 
-                return new Size(width, height);
+                return finalSize;
             }
             return base.MeasureOverride(constraint);
+        }
+
+        protected override Size ArrangeOverride(Size arrangeBounds)
+        {
+            if (_decor != null && _headerHost != null && _contentHost != null)
+            {
+                var infinitySize = new Size(double.PositiveInfinity, double.PositiveInfinity);
+                _contentHost.Measure(infinitySize);
+                _headerHost.Measure(infinitySize);
+
+                var contentSize = Math.Max(_contentHost.DesiredSize.Width, _contentHost.DesiredSize.Height);
+                var boxSize = Math.Min(arrangeBounds.Width, Math.Max(arrangeBounds.Height - _headerHost.DesiredSize.Height, 0d));
+
+                // NOTE: Parity must be the same
+                if (((int)boxSize % 2 == 0) ^ ((int)Math.Ceiling(contentSize) % 2 == 0))
+                {
+                    boxSize--;
+                }
+
+                _decor.Width = boxSize;
+                _decor.Height = boxSize;
+
+                _contentHost.Measure(arrangeBounds);
+                _headerHost.Measure(arrangeBounds);
+            }
+            return base.ArrangeOverride(arrangeBounds);
         }
     }
 } ;

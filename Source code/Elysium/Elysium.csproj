@@ -261,6 +261,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\Menus\Menu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\Menus\Submenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -354,6 +358,7 @@
     <Compile Include="AccentBrushes.cs" />
     <Compile Include="Controls\CommandButtons\Automation\CommandButtonBaseAutomationPeer.cs" />
     <Compile Include="Controls\Window\WindowCommands.cs" />
+    <Compile Include="Converters\ThicknessConverter.cs" />
     <Compile Include="Converters\IsGreaterThanConverter.cs" />
     <Compile Include="Design\ThemeManager.cs" />
     <Compile Include="Extensions\Validation helpers\ContractExtensions.cs" />
@@ -397,7 +402,20 @@
     <Compile Include="Extensions\Tree helpers\VisualTreeHelperExtensions.cs" />
     <Compile Include="Extensions\Tree helpers\LogicalTreeHelperExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Parameters.cs" />
+    <Compile Include="Parameters\CheckBox.cs" />
+    <Compile Include="Parameters\ComboBox.cs" />
+    <Compile Include="Parameters\CommandButtons.cs" />
+    <Compile Include="Parameters\DropDown.cs" />
+    <Compile Include="Parameters\General.cs" />
+    <Compile Include="Parameters\MenuBase.cs" />
+    <Compile Include="Parameters\ProgressBars.cs" />
+    <Compile Include="Parameters\ScrollBar.cs" />
+    <Compile Include="Parameters\Slider.cs" />
+    <Compile Include="Parameters\MenuItem.cs" />
+    <Compile Include="Parameters\TabControl.cs" />
+    <Compile Include="Parameters\TabItem.cs" />
+    <Compile Include="Parameters\ToggleSwitch.cs" />
+    <Compile Include="Parameters\Window.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -426,14 +444,53 @@
     <None Include="AccentBrushes.ru.xml">
       <DependentUpon>AccentBrushes.cs</DependentUpon>
     </None>
-    <None Include="Parameters.ru.xml">
-      <DependentUpon>Parameters.cs</DependentUpon>
-    </None>
     <None Include="Theme.ru.xml">
       <DependentUpon>Theme.cs</DependentUpon>
     </None>
     <None Include="ThemeManager.ru.xml">
       <DependentUpon>ThemeManager.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\General.ru.xml">
+      <DependentUpon>General.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\CheckBox.ru.xml">
+      <DependentUpon>CheckBox.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\ComboBox.ru.xml">
+      <DependentUpon>ComboBox.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\CommandButtons.ru.xml">
+      <DependentUpon>CommandButtons.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\DropDown.ru.xml">
+      <DependentUpon>DropDown.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\MenuBase.ru.xml">
+      <DependentUpon>MenuBase.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\MenuItem.ru.xml">
+      <DependentUpon>MenuItem.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\ProgressBars.ru.xml">
+      <DependentUpon>ProgressBars.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\ScrollBar.ru.xml">
+      <DependentUpon>ScrollBar.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\Slider.ru.xml">
+      <DependentUpon>Slider.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\TabControl.ru.xml">
+      <DependentUpon>TabControl.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\TabItem.ru.xml">
+      <DependentUpon>TabItem.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\ToggleSwitch.ru.xml">
+      <DependentUpon>ToggleSwitch.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\Window.ru.xml">
+      <DependentUpon>Window.cs</DependentUpon>
     </None>
     <None Include="Extensions\Tree helpers\LogicalTreeHelperExtensions.ru.xml">
       <DependentUpon>LogicalTreeHelperExtensions.cs</DependentUpon>
@@ -455,6 +512,9 @@
     </None>
     <None Include="Converters\ThicknessPositiveToNegativeConverter.ru.xml">
       <DependentUpon>ThicknessPositiveToNegativeConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\ThicknessConverter.ru.xml">
+      <DependentUpon>ThicknessConverter.cs</DependentUpon>
     </None>
     <None Include="Converters\DoubleToGridLengthConverter.ru.xml">
       <DependentUpon>DoubleToGridLengthConverter.cs</DependentUpon>
@@ -543,15 +603,13 @@
     <None Include="Controls\Window\WindowCommands.ru.xml">
       <DependentUpon>WindowCommands.cs</DependentUpon>
     </None>
+    <None Include="Design\ThemeManager.ru.xml">
+      <DependentUpon>ThemeManager.cs</DependentUpon>
+    </None>
     <None Include="Properties\Key.snk" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Design\ThemeManager.ru.xml">
-      <DependentUpon>ThemeManager.cs</DependentUpon>
-    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

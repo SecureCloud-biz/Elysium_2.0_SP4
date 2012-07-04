@@ -16,7 +16,7 @@ namespace Elysium
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
                 if (_blue == null)
                 {
-                    _blue = new SolidColorBrush(Color.FromArgb(0xFF, 0x1B, 0xA1, 0xE2));
+                    _blue = new SolidColorBrush(Color.FromArgb(0xFF, 0x01, 0x7B, 0xCD));
                     _blue.Freeze();
                 }
                 return _blue;
@@ -94,6 +94,23 @@ namespace Elysium
         private static SolidColorBrush _magenta;
 
         [PublicAPI]
+        public static SolidColorBrush Mango
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
+                if (_mango == null)
+                {
+                    _mango = new SolidColorBrush(Color.FromArgb(0xFF, 0xF0, 0x96, 0x09));
+                    _mango.Freeze();
+                }
+                return _mango;
+            }
+        }
+
+        private static SolidColorBrush _mango;
+
+        [PublicAPI]
         public static SolidColorBrush Orange
         {
             get
@@ -101,7 +118,7 @@ namespace Elysium
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
                 if (_orange == null)
                 {
-                    _orange = new SolidColorBrush(Color.FromArgb(0xFF, 0xF0, 0x96, 0x09));
+                    _orange = new SolidColorBrush(Color.FromArgb(0xFF, 0xCB, 0x52, 0x01));
                     _orange.Freeze();
                 }
                 return _orange;
@@ -135,7 +152,7 @@ namespace Elysium
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
                 if (_purple == null)
                 {
-                    _purple = new SolidColorBrush(Color.FromArgb(0xFF, 0xA2, 0x00, 0xFF));
+                    _purple = new SolidColorBrush(Color.FromArgb(0xFF, 0x69, 0x22, 0x7B));
                     _purple.Freeze();
                 }
                 return _purple;
@@ -162,6 +179,40 @@ namespace Elysium
         private static SolidColorBrush _red;
 
         [PublicAPI]
+        public static SolidColorBrush Rose
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
+                if (_rose == null)
+                {
+                    _rose = new SolidColorBrush(Color.FromArgb(0xFF, 0xD8, 0x00, 0x73));
+                    _rose.Freeze();
+                }
+                return _rose;
+            }
+        }
+
+        private static SolidColorBrush _rose;
+
+        [PublicAPI]
+        public static SolidColorBrush Sky
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
+                if (_sky == null)
+                {
+                    _sky = new SolidColorBrush(Color.FromArgb(0xFF, 0x1B, 0xA1, 0xE2));
+                    _sky.Freeze();
+                }
+                return _sky;
+            }
+        }
+
+        private static SolidColorBrush _sky;
+
+        [PublicAPI]
         public static SolidColorBrush Viridian
         {
             get
@@ -177,5 +228,22 @@ namespace Elysium
         }
 
         private static SolidColorBrush _viridian;
+
+        [PublicAPI]
+        public static SolidColorBrush Violet
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
+                if (_violet == null)
+                {
+                    _violet = new SolidColorBrush(Color.FromArgb(0xFF, 0xA2, 0x00, 0xFF));
+                    _violet.Freeze();
+                }
+                return _violet;
+            }
+        }
+
+        private static SolidColorBrush _violet;
     }
 } ;

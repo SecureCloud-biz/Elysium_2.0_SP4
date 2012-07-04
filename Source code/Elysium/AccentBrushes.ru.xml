@@ -11,9 +11,9 @@
     </type>
     <property name="P:Elysium.AccentBrushes.Blue">
       <summary>
-        Возвращает кисть сплошной заливки голубого цвета (#FF1BA1E2).
+        Возвращает кисть сплошной заливки синего цвета (#FF017BCD).
       </summary>
-      <value>Кисть со сплошной заливкой голубого цвета (#FF1BA1E2).</value>
+      <value>Кисть со сплошной заливкой синего цвета (#FF017BCD).</value>
     </property>
     <property name="P:Elysium.AccentBrushes.Brown">
       <summary>
@@ -39,17 +39,23 @@
       </summary>
       <value>Кисть со сплошной заливкой пурпурного цвета (#FFFF0097).</value>
     </property>
+    <property name="P:Elysium.AccentBrushes.Mango">
+      <summary>
+        Возвращает кисть сплошной заливки цвета манго (#FFF09609).
+      </summary>
+      <value>Кисть со сплошной заливкой цвета манго (#FFF09609).</value>
+    </property>
     <property name="P:Elysium.AccentBrushes.Orange">
       <summary>
-        Возвращает кисть сплошной заливки оранжевого цвета (#FFF09609).
+        Возвращает кисть сплошной заливки оранжевого цвета (#FFCB5201).
       </summary>
-      <value>Кисть со сплошной заливкой оранжевого цвета (#FFF09609).</value>
+      <value>Кисть со сплошной заливкой оранжевого цвета (#FFCB5201).</value>
     </property>
     <property name="P:Elysium.AccentBrushes.Pink">
       <summary>
-        Возвращает кисть сплошной заливки розового цвета (#FFE671B8).
+        Возвращает кисть сплошной заливки светло-розового цвета (#FFE671B8).
       </summary>
-      <value>Кисть со сплошной заливкой розового цвета (#FFE671B8).</value>
+      <value>Кисть со сплошной заливкой светло-розового цвета (#FFE671B8).</value>
     </property>
     <property name="P:Elysium.AccentBrushes.Purple">
       <summary>
@@ -62,6 +68,18 @@
         Возвращает кисть сплошной заливки красного цвета (#FFE51400).
       </summary>
       <value>Кисть со сплошной заливкой красного цвета (#FFE51400).</value>
+    </property>
+    <property name="P:Elysium.AccentBrushes.Rose">
+      <summary>
+        Возвращает кисть сплошной заливки розового цвета (#FFD80073).
+      </summary>
+      <value>Кисть со сплошной заливкой розового цвета (#FFD80073).</value>
+    </property>
+    <property name="P:Elysium.AccentBrushes.Sky">
+      <summary>
+        Возвращает кисть сплошной заливки голубого цвета (#FF1BA1E2).
+      </summary>
+      <value>Кисть со сплошной заливкой голубого цвета (#FF1BA1E2).</value>
     </property>
     <property name="P:Elysium.AccentBrushes.Viridian">
       <summary>

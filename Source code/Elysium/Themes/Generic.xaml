@@ -10,6 +10,7 @@
         
         <ResourceDictionary Source="/Elysium;component/Themes/ApplicationBar/ApplicationBar.xaml"/>
 
+        <ResourceDictionary Source="/Elysium;component/Themes/Menus/Menu.xaml"/>
         <ResourceDictionary Source="/Elysium;component/Themes/Menus/ContextMenu.xaml"/>
         <ResourceDictionary Source="/Elysium;component/Themes/Menus/Submenu.xaml"/>
         <ResourceDictionary Source="/Elysium;component/Themes/Menus/MenuItem.xaml"/>

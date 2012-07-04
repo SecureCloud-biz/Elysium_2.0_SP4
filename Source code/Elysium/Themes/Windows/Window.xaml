@@ -2,16 +2,13 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:shell="http://schemas.microsoft.com/winfx/2006/xaml/presentation/shell"
                     xmlns:system="clr-namespace:System;assembly=mscorlib"
-                    xmlns:root="clr-namespace:Elysium"
-                    xmlns:primitives="clr-namespace:Elysium.Controls.Primitives"
+                    xmlns:params="clr-namespace:Elysium.Parameters"
                     xmlns:controls="clr-namespace:Elysium.Controls">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
         <ResourceDictionary Source="/Elysium;component/Themes/Ranges/LinearProgressBar.xaml"/>
-        <ResourceDictionary Source="/Elysium;component/Themes/Buttons/CommandButtonBase.xaml"/>
         <ResourceDictionary Source="/Elysium;component/Themes/Buttons/CommandButton.xaml"/>
-        <ResourceDictionary Source="/Elysium;component/Themes/Buttons/ToggleCommandButton.xaml"/>
         <ResourceDictionary Source="/Elysium;component/Themes/Icons.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
@@ -21,7 +18,7 @@
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
         <Setter Property="FontFamily" Value="Segoe UI"/>
-        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.TextFontSize), Mode=OneWay}"/>
+        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.TextFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
         <Setter Property="FontStyle" Value="Normal"/>
         <Setter Property="FontWeight" Value="Normal"/>
@@ -35,8 +32,8 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="Padding" Value="0"/>
-        <Setter Property="UseLayoutRounding" Value="False"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>        
+        <Setter Property="UseLayoutRounding" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:Window}">                    
@@ -58,81 +55,85 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
                                 <controls:LinearProgressBar x:Name="PART_ProgressBar"
                                                             Grid.ColumnSpan="3"
                                                             Grid.Row="0"
                                                             Background="{x:Null}"
                                                             Value="{TemplateBinding Progress}"
                                                             VerticalAlignment="Top"
-                                                            Width="{TemplateBinding Width}" Height="2"/>
+                                                            Width="{TemplateBinding ActualWidth}" Height="2"/>
                                 <Border x:Name="PART_Title"
                                         Grid.Column="0"
+                                        Grid.Row="1"
                                         Background="{DynamicResource AccentBrush}"
                                         BorderThickness="0">
                                     <TextBlock x:Name="Title"
                                                Text="{TemplateBinding Title}"
                                                Foreground="{DynamicResource ContrastBrush}"
-                                               FontSize="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(root:Parameters.TitleFontSize), Mode=OneWay}"
+                                               FontSize="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.TitleFontSize), Mode=OneWay}"
                                                FontWeight="Normal"
                                                Margin="10,5"/>
                                 </Border>
-                                <StackPanel Grid.Column="2"
-                                            Orientation="Horizontal"
-                                            shell:WindowChrome.IsHitTestVisibleInChrome="True">
+                                <Grid Grid.Column="2"
+                                      Grid.Row="1"
+                                      shell:WindowChrome.IsHitTestVisibleInChrome="True">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="34"/>
+                                        <ColumnDefinition Width="34"/>
+                                        <ColumnDefinition Width="34"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="26"/>
+                                    </Grid.RowDefinitions>
                                     <controls:CommandButton x:Name="PART_Minimize"
+                                                            Grid.Column="0"
                                                             BorderThickness="0"
-                                                            Command="{x:Static controls:WindowCommands.Minimize}"
-                                                            Width="30" Height="30">
+                                                            Command="{x:Static controls:WindowCommands.Minimize}">
                                         <Path Data="{StaticResource MinimizeIcon}"
-                                              Fill="Black"
+                                              Fill="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:CommandButton}}, Path=(params:CommandButtons.Mask)}"
                                               Stretch="None"
                                               Width="10" Height="10"/>
                                     </controls:CommandButton>
-                                    <controls:ToggleCommandButton x:Name="PART_MaximizeRestore"
-                                                                  BorderThickness="0"
-                                                                  IsChecked="False"
-                                                                  Width="30" Height="30">
-                                        <controls:ToggleCommandButton.Resources>
-                                            <Path x:Key="MaximizePath"
-                                                  Data="{StaticResource MaximizeIcon}"
-                                                  Stroke="Black"
-                                                  Stretch="None"
-                                                  Width="10" Height="10"/>
-                                            <Path x:Key="RestorePath"
-                                                  Data="{StaticResource RestoreIcon}"
-                                                  Stroke="Black"
-                                                  Stretch="None"
-                                                  Width="10" Height="10"/>
-                                        </controls:ToggleCommandButton.Resources>
-                                        <controls:ToggleCommandButton.Style>
-                                            <Style TargetType="{x:Type controls:ToggleCommandButton}" BasedOn="{StaticResource {x:Type primitives:CommandButtonBase}}">
-                                                <Setter Property="Content" Value="{StaticResource MaximizePath}"/>
-                                                <Setter Property="Command" Value="{x:Static controls:WindowCommands.Maximize}"/>
-                                                <Style.Triggers>
-                                                    <Trigger Property="IsChecked" Value="True">
-                                                        <Setter Property="Content" Value="{StaticResource RestorePath}"/>
-                                                        <Setter Property="Command" Value="{x:Static controls:WindowCommands.Restore}"/>
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </controls:ToggleCommandButton.Style>
-                                    </controls:ToggleCommandButton>
-                                    <controls:CommandButton x:Name="PART_Close"
-                                                            Command="{x:Static controls:WindowCommands.Close}"
+                                    <controls:CommandButton x:Name="PART_Maximize"
+                                                            Grid.Column="1"
                                                             BorderThickness="0"
-                                                            Width="30" Height="30">
-                                        <Path Data="{StaticResource CloseIcon}"
-                                              Stroke="Black"
+                                                            Command="{x:Static controls:WindowCommands.Maximize}">
+                                        <Path Data="{StaticResource MaximizeIcon}"
+                                              Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:CommandButton}}, Path=(params:CommandButtons.Mask)}"
                                               Stretch="None"
                                               Width="10" Height="10"/>
                                     </controls:CommandButton>
-                                </StackPanel>
+                                    <controls:CommandButton x:Name="PART_Restore"
+                                                            Grid.Column="1"
+                                                            BorderThickness="0"
+                                                            Command="{x:Static controls:WindowCommands.Restore}"
+                                                            Visibility="Hidden">
+                                        <Path Data="{StaticResource RestoreIcon}"
+                                              Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:CommandButton}}, Path=(params:CommandButtons.Mask)}"
+                                              Stretch="None"
+                                              Width="10" Height="10"/>
+                                    </controls:CommandButton>
+                                    <controls:CommandButton x:Name="PART_Close"
+                                                            Grid.Column="2"
+                                                            BorderThickness="0"
+                                                            Command="{x:Static controls:WindowCommands.Close}">
+                                        <Path Data="{StaticResource CloseIcon}"
+                                              Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:CommandButton}}, Path=(params:CommandButtons.Mask)}"
+                                              Stretch="None"
+                                              Width="10" Height="10"/>
+                                    </controls:CommandButton>
+                                </Grid>
                             </Grid>
                             <AdornerDecorator Grid.Row="1">
                                 <ContentPresenter Margin="{TemplateBinding Padding}"/>
                             </AdornerDecorator>
-                            <Border x:Name="PART_ApplicationBarHost"
-                                    Grid.Row="1"/>
+                            <Decorator x:Name="PART_ApplicationBarHost"
+                                       Grid.Row="1"
+                                       controls:Window.IsApplicationBarHost="True"/>
                             <ResizeGrip x:Name="PART_Grip"
                                         Grid.Row="1"
                                         shell:WindowChrome.ResizeGripDirection="BottomRight"
@@ -143,7 +144,7 @@
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.TitleFontSize), Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.TitleFontSize), Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
                             <Setter TargetName="Title" Property="TextOptions.TextFormattingMode" Value="Ideal"/>
                         </DataTrigger>
                         <Trigger Property="IsBusy" Value="True">
@@ -158,30 +159,36 @@
                         </Trigger>
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="PART_LayoutRoot" Property="Margin" Value="{Binding Source={x:Static shell:SystemParameters2.Current}, Path=WindowResizeBorderThickness}"/>
+                            <Setter TargetName="PART_Maximize" Property="Visibility" Value="Hidden"/>
+                            <Setter TargetName="PART_Restore" Property="Visibility" Value="Visible"/>
                         </Trigger>
                         <Trigger Property="WindowStyle" Value="None">
                             <Trigger.Setters>
                                 <Setter TargetName="PART_Title" Property="Visibility" Value="Collapsed"/>
                                 <Setter TargetName="PART_Minimize" Property="Visibility" Value="Collapsed"/>
-                                <Setter TargetName="PART_MaximizeRestore" Property="Visibility" Value="Collapsed"/>
+                                <Setter TargetName="PART_Maximize" Property="Visibility" Value="Collapsed"/>
+                                <Setter TargetName="PART_Restore" Property="Visibility" Value="Collapsed"/>
                                 <Setter TargetName="PART_Close" Property="Visibility" Value="Collapsed"/>
                             </Trigger.Setters>
                         </Trigger>
                         <Trigger Property="WindowStyle" Value="ToolWindow">
                             <Trigger.Setters>
                                 <Setter TargetName="PART_Minimize" Property="Visibility" Value="Collapsed"/>
-                                <Setter TargetName="PART_MaximizeRestore" Property="Visibility" Value="Collapsed"/>
+                                <Setter TargetName="PART_Maximize" Property="Visibility" Value="Collapsed"/>
+                                <Setter TargetName="PART_Restore" Property="Visibility" Value="Collapsed"/>
                             </Trigger.Setters>
                         </Trigger>
                         <Trigger Property="ResizeMode" Value="NoResize">
                             <Trigger.Setters>
                                 <Setter TargetName="PART_Minimize" Property="Visibility" Value="Collapsed"/>
-                                <Setter TargetName="PART_MaximizeRestore" Property="Visibility" Value="Collapsed"/>
+                                <Setter TargetName="PART_Maximize" Property="Visibility" Value="Collapsed"/>
+                                <Setter TargetName="PART_Restore" Property="Visibility" Value="Collapsed"/>
                             </Trigger.Setters>
                         </Trigger>
                         <Trigger Property="ResizeMode" Value="CanMinimize">
                             <Trigger.Setters>
-                                <Setter TargetName="PART_MaximizeRestore" Property="Visibility" Value="Collapsed"/>
+                                <Setter TargetName="PART_Maximize" Property="Visibility" Value="Collapsed"/>
+                                <Setter TargetName="PART_Restore" Property="Visibility" Value="Collapsed"/>
                             </Trigger.Setters>
                         </Trigger>
                         <Trigger Property="ResizeMode" Value="CanResizeWithGrip">
@@ -199,7 +206,7 @@
             </DataTrigger>
             <Trigger Property="HasDropShadow" Value="False">
                 <Trigger.Setters>
-                    <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.BoldThicknessValue), Mode=OneWay}"/>
+                    <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldThicknessValue), Mode=OneWay}"/>
                 </Trigger.Setters>
             </Trigger>
             <Trigger Property="WindowStyle" Value="{x:Static WindowStyle.None}">

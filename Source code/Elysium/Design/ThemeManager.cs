@@ -12,11 +12,6 @@ namespace Elysium.Design
     [PublicAPI]
     public static class ThemeManager
     {
-        static ThemeManager()
-        {
-            Application.Current.ApplyTheme(Theme.Light, AccentBrushes.Viridian, Brushes.White);
-        }
-
         [PublicAPI]
         public static readonly DependencyProperty ThemeProperty =
             DependencyProperty.RegisterAttached("Theme", typeof(Theme?), typeof(ThemeManager),

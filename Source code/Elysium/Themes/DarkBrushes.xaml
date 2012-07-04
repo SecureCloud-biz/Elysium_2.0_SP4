@@ -6,7 +6,7 @@
                      Color="#00171717"
                      PresentationOptions:Freeze="True"/>
     <SolidColorBrush x:Key="SemitransparentBrush"
-                     Color="#AA171717"
+                     Color="#20171717"
                      PresentationOptions:Freeze="True"/>
     <SolidColorBrush x:Key="BackgroundBrush"
                      Color="#FF171717"
@@ -15,13 +15,13 @@
                      Color="#FFFFFFFF"
                      PresentationOptions:Freeze="True"/>
     <SolidColorBrush x:Key="HighlightBrush"
-                     Color="#FF333333"
+                     Color="#FF313131"
                      PresentationOptions:Freeze="True"/>
     <SolidColorBrush x:Key="MiddleLightBrush"
-                     Color="#FF666666"
+                     Color="#FF848484"
                      PresentationOptions:Freeze="True"/>
     <SolidColorBrush x:Key="LowlightBrush"
-                     Color="#FF999999"
+                     Color="#FFBABABA"
                      PresentationOptions:Freeze="True"/>
     <SolidColorBrush x:Key="DisabledBrush"
                      Color="#FF5C5956"

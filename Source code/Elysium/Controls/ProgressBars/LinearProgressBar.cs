@@ -38,7 +38,7 @@ namespace Elysium.Controls
 
         [PublicAPI]
         public static readonly DependencyProperty OrientationProperty =
-            DependencyProperty.Register("Orientation", typeof(Orientation), typeof(ProgressBarBase),
+            DependencyProperty.Register("Orientation", typeof(Orientation), typeof(LinearProgressBar),
                                         new FrameworkPropertyMetadata(Orientation.Horizontal, FrameworkPropertyMetadataOptions.AffectsMeasure, OnOrientationChanged),
                                         IsValidOrientation);
 
@@ -136,6 +136,11 @@ namespace Elysium.Controls
                 Contract.Assume(IndeterminateAnimation.Children != null);
                 IndeterminateAnimation.Children.Add(animation);
 
+                if (IndeterminateAnimation.CanFreeze)
+                {
+                    IndeterminateAnimation.Freeze();
+                }
+
                 if (isStarted)
                 {
                     IndeterminateAnimation.Begin(this, Template, true);
@@ -228,6 +233,11 @@ namespace Elysium.Controls
                 foreach (var animation in busyAnimations)
                 {
                     BusyAnimation.Children.Add(animation);
+                }
+
+                if (BusyAnimation.CanFreeze)
+                {
+                    BusyAnimation.Freeze();
                 }
 
                 if (isStarted)

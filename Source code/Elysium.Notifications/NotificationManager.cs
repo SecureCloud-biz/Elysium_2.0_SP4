@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;

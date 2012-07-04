@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:root="clr-namespace:Elysium">
+                    xmlns:params="clr-namespace:Elysium.Parameters">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
@@ -10,9 +10,9 @@
         <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="root:Parameters.TabControlIndicatorBrush" Value="{DynamicResource HighlightBrush}"/>
+        <Setter Property="params:TabControl.IndicatorBrush" Value="{DynamicResource HighlightBrush}"/>
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
-        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.TextFontSize), Mode=OneWay}"/>
+        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.TextFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
         <Setter Property="FontStyle" Value="Normal"/>
         <Setter Property="FontWeight" Value="Normal"/>
@@ -24,7 +24,7 @@
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.BoldPadding), Mode=OneWay}"/>
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Converter={StaticResource ThicknessConverter}, ConverterParameter='Top', Mode=OneWay}"/>
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>        
         <Setter Property="Template">
@@ -58,8 +58,8 @@
                             <Rectangle x:Name="Indicator"
                                        Grid.Column="0"
                                        Grid.Row="0"
-                                       Fill="{TemplateBinding root:Parameters.TabControlIndicatorBrush}"
-                                       Height="{TemplateBinding root:Parameters.TabControlIndicatorThickness}"
+                                       Fill="{TemplateBinding params:TabControl.IndicatorBrush}"
+                                       Height="{TemplateBinding params:TabControl.IndicatorThickness}"
                                        HorizontalAlignment="Stretch"
                                        VerticalAlignment="Bottom"/>
                             <TabPanel x:Name="HeaderPanel"
@@ -114,7 +114,7 @@
                             <Setter TargetName="Indicator" Property="Grid.Row" Value="0"/>
                             <Setter TargetName="HeaderPanel" Property="Grid.Row" Value="0"/>
                             <Setter TargetName="ContentPanel" Property="Grid.Row" Value="0"/>
-                            <Setter TargetName="Indicator" Property="Width" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.TabControlIndicatorThickness)}"/>
+                            <Setter TargetName="Indicator" Property="Width" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:TabControl.IndicatorThickness)}"/>
                             <Setter TargetName="Indicator" Property="Height" Value="NaN"/>
                             <Setter TargetName="Indicator" Property="HorizontalAlignment" Value="Right"/>
                             <Setter TargetName="Indicator" Property="VerticalAlignment" Value="Stretch"/>
@@ -130,7 +130,7 @@
                             <Setter TargetName="Indicator" Property="Grid.Row" Value="0"/>
                             <Setter TargetName="HeaderPanel" Property="Grid.Row" Value="0"/>
                             <Setter TargetName="ContentPanel" Property="Grid.Row" Value="0"/>
-                            <Setter TargetName="Indicator" Property="Width" Value="{Binding RelativeSource={RelativeSource Self}, Path=(root:Parameters.TabControlIndicatorThickness)}"/>
+                            <Setter TargetName="Indicator" Property="Width" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:TabControl.IndicatorThickness)}"/>
                             <Setter TargetName="Indicator" Property="Height" Value="NaN"/>
                             <Setter TargetName="Indicator" Property="HorizontalAlignment" Value="Left"/>
                             <Setter TargetName="Indicator" Property="VerticalAlignment" Value="Stretch"/>

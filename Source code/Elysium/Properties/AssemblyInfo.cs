@@ -30,8 +30,10 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("http://schemas.codeplex.com/elysium/theme", "Elysium.Controls")]
 [assembly: XmlnsDefinition("http://schemas.codeplex.com/elysium/theme", "Elysium.Converters")]
 [assembly: XmlnsDefinition("http://schemas.codeplex.com/elysium/theme/design", "Elysium.Design")]
+[assembly: XmlnsDefinition("http://schemas.codeplex.com/elysium/theme/params", "Elysium.Parameters")]
 [assembly: XmlnsPrefix("http://schemas.codeplex.com/elysium/theme", "metro")]
 [assembly: XmlnsPrefix("http://schemas.codeplex.com/elysium/theme/design", "design")]
+[assembly: XmlnsPrefix("http://schemas.codeplex.com/elysium/theme/params", "params")]
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None,

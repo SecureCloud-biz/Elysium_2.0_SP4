@@ -2,11 +2,11 @@
 
 namespace Elysium.Test
 {
-    public partial class App
+    public sealed partial class App
     {
         private void StartupHandler(object sender, System.Windows.StartupEventArgs e)
         {
-            this.ApplyTheme(Theme.Light, AccentBrushes.Viridian, Brushes.White);
+            this.ApplyTheme(Theme.Dark, AccentBrushes.Blue, Brushes.White);
         }
     }
 } ;

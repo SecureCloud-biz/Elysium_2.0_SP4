@@ -7,7 +7,7 @@ using JetBrains.Annotations;
 namespace Elysium.Notifications.Client
 {
     [UsedImplicitly]
-    internal class NotificationManager : ClientBase<INotificationManager>, INotificationManager
+    internal sealed class NotificationManager : ClientBase<INotificationManager>, INotificationManager
     {
         [UsedImplicitly]
         public NotificationManager() : base(new NetNamedPipeBinding(NetNamedPipeSecurityMode.None)

@@ -19,7 +19,21 @@
     paths.Add(@"Theme.en.xml");
     paths.Add(@"ThemeManager.en.xml");
     paths.Add(@"Design\ThemeManager.en.xml");
-    paths.Add(@"Parameters.en.xml");
+
+    paths.Add(@"Parameters\CheckBox.en.xml");
+    paths.Add(@"Parameters\ComboBox.en.xml");
+    paths.Add(@"Parameters\CommandButtons.en.xml");
+    paths.Add(@"Parameters\DropDown.en.xml");
+    paths.Add(@"Parameters\General.en.xml");
+    paths.Add(@"Parameters\MenuBase.en.xml");
+    paths.Add(@"Parameters\MenuItem.en.xml");
+    paths.Add(@"Parameters\ProgressBars.en.xml");
+    paths.Add(@"Parameters\ScrollBar.en.xml");
+    paths.Add(@"Parameters\Slider.en.xml");
+    paths.Add(@"Parameters\TabControl.en.xml");
+    paths.Add(@"Parameters\TabItem.en.xml");
+    paths.Add(@"Parameters\ToggleSwitch.en.xml");
+    paths.Add(@"Parameters\Window.en.xml");
     
     paths.Add(@"Extensions\Tree helpers\LogicalTreeHelperExtensions.en.xml");
     paths.Add(@"Extensions\Tree helpers\VisualTreeHelperExtensions.en.xml");
@@ -35,6 +49,7 @@
     paths.Add(@"Converters\GridLengthToDoubleConverter.en.xml");
     paths.Add(@"Converters\DoubleToThicknessConverter.en.xml");
     paths.Add(@"Converters\ThicknessToDoubleConverter.en.xml");
+    paths.Add(@"Converters\ThicknessConverter.en.xml");
     
     paths.Add(@"Controls\ApplicationBar\ApplicationBarDock.en.xml");
     paths.Add(@"Controls\ApplicationBar\ApplicationBarTransitionMode.en.xml");

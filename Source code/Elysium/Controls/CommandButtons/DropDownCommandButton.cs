@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
@@ -70,7 +71,8 @@ namespace Elysium.Controls
 
         private static readonly DependencyPropertyKey HasSubmenuPropertyKey =
             DependencyProperty.RegisterReadOnly("HasSubmenu", typeof(bool), typeof(DropDownCommandButton),
-                                                new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, FrameworkPropertyMetadataOptions.None, OnHasSubmenuChanged));
+                                                new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, FrameworkPropertyMetadataOptions.None,
+                                                                              OnHasSubmenuChanged));
 
         [PublicAPI]
         public static readonly DependencyProperty HasSubmenuProperty = HasSubmenuPropertyKey.DependencyProperty;
@@ -142,12 +144,6 @@ namespace Elysium.Controls
             switch (newIsDropDownOpen)
             {
                 case true:
-                    // BUG #959: When you move the mouse to select from the submenu it disappears before you can select from it.
-                    // Mouse.Capture(null);
-                    if (_popup != null)
-                    {
-                        Mouse.Capture(_popup, CaptureMode.SubTree);
-                    }
                     VisualStateManager.GoToState(this, "DropDown", true);
                     break;
                 case false:
@@ -184,7 +180,11 @@ namespace Elysium.Controls
 
         private void OnDropDownOpened(object sender, EventArgs e)
         {
-            OnDropDownOpened(e);
+            if (HasSubmenu)
+            {
+                Mouse.Capture((IInputElement)VisualTreeHelperExtensions.FindTopLevelParent(Submenu), CaptureMode.SubTree);
+                OnDropDownOpened(e);
+            }
         }
 
         [PublicAPI]
@@ -203,7 +203,11 @@ namespace Elysium.Controls
 
         private void OnDropDownClosed(object sender, EventArgs e)
         {
-            OnDropDownClosed(e);
+            if (HasSubmenu)
+            {
+                Mouse.Capture(null);
+                OnDropDownClosed(e);
+            }
         }
 
         [PublicAPI]
@@ -222,7 +226,8 @@ namespace Elysium.Controls
 
         [PublicAPI]
         public static readonly DependencyProperty MaxDropDownHeightProperty =
-            DependencyProperty.Register("MaxDropDownHeight", typeof(double), typeof(DropDownCommandButton), new FrameworkPropertyMetadata(300d, FrameworkPropertyMetadataOptions.None));
+            DependencyProperty.Register("MaxDropDownHeight", typeof(double), typeof(DropDownCommandButton),
+                                        new FrameworkPropertyMetadata(300d, FrameworkPropertyMetadataOptions.None));
 
         [PublicAPI]
         [Bindable(true)]
@@ -258,7 +263,7 @@ namespace Elysium.Controls
                 _popup = Template.FindName(PopupName, this) as Popup;
                 if (_popup == null)
                 {
-                    Trace.TraceWarning(PopupName + " not found.");
+                    Trace.TraceError(PopupName + " not found.");
                 }
                 else
                 {
@@ -275,7 +280,7 @@ namespace Elysium.Controls
 
         protected override void OnClick()
         {
-            IsDropDownOpen = true;
+            IsDropDownOpen = !IsDropDownOpen;
             base.OnClick();
         }
 

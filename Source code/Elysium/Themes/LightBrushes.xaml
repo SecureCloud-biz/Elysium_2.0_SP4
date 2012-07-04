@@ -6,7 +6,7 @@
                      Color="#00FFFFFF"
                      PresentationOptions:Freeze="True"/>
     <SolidColorBrush x:Key="SemitransparentBrush"
-                     Color="#AAFFFFFF"
+                     Color="#20FFFFFF"
                      PresentationOptions:Freeze="True"/>
     <SolidColorBrush x:Key="BackgroundBrush"
                      Color="#FFFFFFFF"
@@ -15,7 +15,7 @@
                      Color="#FF000000"
                      PresentationOptions:Freeze="True"/>
     <SolidColorBrush x:Key="HighlightBrush"
-                     Color="#FFE2E2E2"
+                     Color="#FFDEDEDE"
                      PresentationOptions:Freeze="True"/>
     <SolidColorBrush x:Key="MiddleLightBrush"
                      Color="#FF777777"

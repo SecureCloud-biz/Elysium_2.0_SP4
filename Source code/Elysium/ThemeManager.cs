@@ -195,29 +195,47 @@ namespace Elysium
 
             if (accentBrush != null)
             {
+                var accentBrushFrozen = !accentBrush.IsFrozen && accentBrush.CanFreeze ? accentBrush.GetAsFrozen() : accentBrush;
                 if (application.Resources.Contains("AccentBrush"))
                 {
                     // Set AccentBrush value, if key exist
-                    application.Resources["AccentBrush"] = accentBrush;
+                    application.Resources["AccentBrush"] = accentBrushFrozen;
                 }
                 else
                 {
                     // Add AccentBrush key and value, if key doesn't exist
-                    application.Resources.Add("AccentBrush", accentBrush);
+                    application.Resources.Add("AccentBrush", accentBrushFrozen);
                 }
             }
 
             if (contrastBrush != null)
             {
+                var contrastBrushFrozen = !contrastBrush.IsFrozen && contrastBrush.CanFreeze ? contrastBrush.GetAsFrozen() : contrastBrush;
                 if (application.Resources.Contains("ContrastBrush"))
                 {
                     // Set ContrastBrush value, if key exist
-                    application.Resources["ContrastBrush"] = contrastBrush;
+                    application.Resources["ContrastBrush"] = contrastBrushFrozen;
                 }
                 else
                 {
                     // Add ContrastBrush key and value, if key doesn't exist
-                    application.Resources.Add("ContrastBrush", contrastBrush);
+                    application.Resources.Add("ContrastBrush", contrastBrushFrozen);
+                }
+
+                var semitransparentContrastBrush = contrastBrush.Clone();
+                semitransparentContrastBrush.Opacity = 1d / 8d;
+                var semitransparentContrastBrushFrozen = !semitransparentContrastBrush.IsFrozen && semitransparentContrastBrush.CanFreeze
+                                                             ? semitransparentContrastBrush.GetAsFrozen()
+                                                             : semitransparentContrastBrush;
+                if (application.Resources.Contains("SemitransparentContrastBrush"))
+                {
+                    // Set SemitransparentContrastBrush value, if key exist
+                    application.Resources["SemitransparentContrastBrush"] = semitransparentContrastBrushFrozen;
+                }
+                else
+                {
+                    // Add SemitransparentContrastBrush key and value, if key doesn't exist
+                    application.Resources.Add("SemitransparentContrastBrush", semitransparentContrastBrushFrozen);
                 }
             }
 
@@ -353,29 +371,47 @@ namespace Elysium
 
             if (accentBrush != null)
             {
+                var accentBrushFrozen = !accentBrush.IsFrozen && accentBrush.CanFreeze ? accentBrush.GetAsFrozen() : accentBrush;
                 if (control.Resources.Contains("AccentBrush"))
                 {
                     // Set AccentBrush value, if key exist
-                    control.Resources["AccentBrush"] = accentBrush;
+                    control.Resources["AccentBrush"] = accentBrushFrozen;
                 }
                 else
                 {
                     // Add AccentBrush key and value, if key doesn't exist
-                    control.Resources.Add("AccentBrush", accentBrush);
+                    control.Resources.Add("AccentBrush", accentBrushFrozen);
                 }
             }
 
             if (contrastBrush != null)
             {
+                var contrastBrushFrozen = !contrastBrush.IsFrozen && contrastBrush.CanFreeze ? contrastBrush.GetAsFrozen() : contrastBrush;
                 if (control.Resources.Contains("ContrastBrush"))
                 {
                     // Set ContrastBrush value, if key exist
-                    control.Resources["ContrastBrush"] = contrastBrush;
+                    control.Resources["ContrastBrush"] = contrastBrushFrozen;
                 }
                 else
                 {
                     // Add ContrastBrush key and value, if key doesn't exist
-                    control.Resources.Add("ContrastBrush", contrastBrush);
+                    control.Resources.Add("ContrastBrush", contrastBrushFrozen);
+                }
+
+                var semitransparentContrastBrush = contrastBrush.Clone();
+                semitransparentContrastBrush.Opacity = 1d / 8d;
+                var semitransparentContrastBrushFrozen = !semitransparentContrastBrush.IsFrozen && semitransparentContrastBrush.CanFreeze
+                                                             ? semitransparentContrastBrush.GetAsFrozen()
+                                                             : semitransparentContrastBrush;
+                if (control.Resources.Contains("SemitransparentContrastBrush"))
+                {
+                    // Set SemitransparentContrastBrush value, if key exist
+                    control.Resources["SemitransparentContrastBrush"] = semitransparentContrastBrushFrozen;
+                }
+                else
+                {
+                    // Add SemitransparentContrastBrush key and value, if key doesn't exist
+                    control.Resources.Add("SemitransparentContrastBrush", semitransparentContrastBrushFrozen);
                 }
             }
 

@@ -64,7 +64,7 @@
         Отображает уведомление с заданными заголовком и примечанием, возвращая управление не дожидаясь его закрытия.
       </summary>
       <param name="message">Заголовок уведомления.</param>
-      <param name="ramark">Примечание.</param>
+      <param name="remark">Примечание.</param>
       <exception cref="T:System.ArgumentException">
         Параметер <paramref name="message" /> имеет значение null, является пустой строкой или состоит из пробелов.
       </exception>
@@ -82,7 +82,7 @@
         Возвращает значение, указывающее успешно ли выполнена операция.
       </summary>
       <param name="message">Заголовок уведомления.</param>
-      <param name="ramark">Примечание.</param>
+      <param name="remark">Примечание.</param>
       <returns>True, в случае успешного отображения уведомления, иначе False.</returns>
       <exception cref="T:System.ArgumentException">
         Параметер <paramref name="message" /> имеет значение null, является пустой строкой или состоит из пробелов.

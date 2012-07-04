@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elysium", "Elysium\Elysium.csproj", "{5A65DA67-130D-43D8-9224-4559B523B6D4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elysium.Test", "Elysium.Test\Elysium.Test.csproj", "{0B85401E-33FA-41EE-9627-8C17DA21505C}"
@@ -9,12 +9,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assembly dependencies", "As
 	ProjectSection(SolutionItems) = preProject
 		Install and run Elysium Notifications service (debug version).bat = Install and run Elysium Notifications service (debug version).bat
 		Install and run Elysium Notifications service (release version).bat = Install and run Elysium Notifications service (release version).bat
-		Install dependencies into GAC (32 bit).bat = Install dependencies into GAC (32 bit).bat
-		Install dependencies into GAC (64 bit).bat = Install dependencies into GAC (64 bit).bat
+		Install dependencies into GAC (32 bit) (Visual Studio 2010).bat = Install dependencies into GAC (32 bit) (Visual Studio 2010).bat
+		Install dependencies into GAC (32 bit) (Visual Studio 2012 RC).bat = Install dependencies into GAC (32 bit) (Visual Studio 2012 RC).bat
+		Install dependencies into GAC (64 bit) (Visual Studio 2010).bat = Install dependencies into GAC (64 bit) (Visual Studio 2010).bat
+		Install dependencies into GAC (64 bit) (Visual Studio 2012 RC).bat = Install dependencies into GAC (64 bit) (Visual Studio 2012 RC).bat
 		Stop and uninstall Elysium Notifications service (debug version).bat = Stop and uninstall Elysium Notifications service (debug version).bat
 		Stop and uninstall Elysium Notifications service (release version).bat = Stop and uninstall Elysium Notifications service (release version).bat
-		Uninstall dependencies from GAC (32 bit).bat = Uninstall dependencies from GAC (32 bit).bat
-		Uninstall dependencies from GAC (64 bit).bat = Uninstall dependencies from GAC (64 bit).bat
+		Uninstall dependencies from GAC (32 bit) (Visual Studio 2010).bat = Uninstall dependencies from GAC (32 bit) (Visual Studio 2010).bat
+		Uninstall dependencies from GAC (32 bit) (Visual Studio 2012 RC).bat = Uninstall dependencies from GAC (32 bit) (Visual Studio 2012 RC).bat
+		Uninstall dependencies from GAC (64 bit) (Visual Studio 2010).bat = Uninstall dependencies from GAC (64 bit) (Visual Studio 2010).bat
+		Uninstall dependencies from GAC (64 bit) (Visual Studio 2012 RC).bat = Uninstall dependencies from GAC (64 bit) (Visual Studio 2012 RC).bat
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elysium.Notifications.Server", "Elysium.Notifications.Server\Elysium.Notifications.Server.csproj", "{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}"
@@ -23,22 +27,22 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elysium.Notifications", "El
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs34
 		SccLocalPath0 = .
-		SccProjectUniqueName1 = Elysium\\Elysium.csproj
-		SccProjectName1 = Elysium
 		SccLocalPath1 = Elysium
-		SccProjectUniqueName2 = Elysium.Notifications.Server\\Elysium.Notifications.Server.csproj
-		SccProjectName2 = Elysium.Notifications.Server
 		SccLocalPath2 = Elysium.Notifications.Server
-		SccProjectUniqueName3 = Elysium.Test\\Elysium.Test.csproj
-		SccProjectName3 = Elysium.Test
 		SccLocalPath3 = Elysium.Test
-		SccProjectUniqueName4 = Elysium.Notifications\\Elysium.Notifications.csproj
-		SccProjectName4 = Elysium.Notifications
 		SccLocalPath4 = Elysium.Notifications
+		SccNumberOfProjects = 5
+		SccProjectName1 = Elysium
+		SccProjectName2 = Elysium.Notifications.Server
+		SccProjectName3 = Elysium.Test
+		SccProjectName4 = Elysium.Notifications
+		SccProjectUniqueName1 = Elysium\\Elysium.csproj
+		SccProjectUniqueName2 = Elysium.Notifications.Server\\Elysium.Notifications.Server.csproj
+		SccProjectUniqueName3 = Elysium.Test\\Elysium.Test.csproj
+		SccProjectUniqueName4 = Elysium.Notifications\\Elysium.Notifications.csproj
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs34
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Analysis|Any CPU = Analysis|Any CPU
@@ -46,30 +50,30 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Analysis|Any CPU.ActiveCfg = Analysis|Any CPU
-		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Analysis|Any CPU.Build.0 = Analysis|Any CPU
-		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Analysis|Any CPU.ActiveCfg = Analysis|Any CPU
 		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Analysis|Any CPU.Build.0 = Analysis|Any CPU
 		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Analysis|Any CPU.ActiveCfg = Analysis|Any CPU
-		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Analysis|Any CPU.Build.0 = Analysis|Any CPU
-		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Analysis|Any CPU.ActiveCfg = Analysis|Any CPU
 		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Analysis|Any CPU.Build.0 = Analysis|Any CPU
 		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Analysis|Any CPU.ActiveCfg = Analysis|Any CPU
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Analysis|Any CPU.Build.0 = Analysis|Any CPU
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Analysis|Any CPU.ActiveCfg = Analysis|Any CPU
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Analysis|Any CPU.Build.0 = Analysis|Any CPU
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

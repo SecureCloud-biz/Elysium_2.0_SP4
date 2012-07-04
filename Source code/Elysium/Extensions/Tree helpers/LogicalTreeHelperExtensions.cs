@@ -13,7 +13,7 @@ namespace Elysium.Extensions
         {
             var currentParent = LogicalTreeHelper.GetParent(current);
             var parent = currentParent as T;
-            return parent ?? FindParent<T>(currentParent);
+            return parent ?? (currentParent != null ? FindParent<T>(currentParent) : null);
         }
     }
 } ;

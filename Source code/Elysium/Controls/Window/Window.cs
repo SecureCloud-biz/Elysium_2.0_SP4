@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
@@ -24,9 +25,9 @@ namespace Elysium.Controls
     [TemplatePart(Name = TitleName, Type = typeof(FrameworkElement))]
     [TemplatePart(Name = ProgressBarName, Type = typeof(LinearProgressBar))]
     [TemplatePart(Name = MinimizeName, Type = typeof(FrameworkElement))]
-    [TemplatePart(Name = MaximizeRestoreName, Type = typeof(FrameworkElement))]
+    [TemplatePart(Name = MaximizeName, Type = typeof(FrameworkElement))]
+    [TemplatePart(Name = RestoreName, Type = typeof(FrameworkElement))]
     [TemplatePart(Name = CloseName, Type = typeof(FrameworkElement))]
-    [TemplatePart(Name = ApplicationBarHost, Type = typeof(Decorator))]
     [TemplatePart(Name = GripName, Type = typeof(ResizeGrip))]
     public class Window : System.Windows.Window
     {
@@ -35,13 +36,12 @@ namespace Elysium.Controls
         private const string CaptionName = "PART_Caption";
         private const string ProgressBarName = "PART_ProgressBar";
         private const string MinimizeName = "PART_Minimize";
-        private const string MaximizeRestoreName = "PART_MaximizeRestore";
+        private const string MaximizeName = "PART_Maximize";
+        private const string RestoreName = "PART_Restore";
         private const string CloseName = "PART_Close";
-        private const string ApplicationBarHost = "PART_ApplicationBarHost";
         private const string GripName = "PART_Grip";
 
         private FrameworkElement _caption;
-        private Decorator _applicationBarHost;
 
         private WindowChrome _chrome;
 
@@ -59,7 +59,7 @@ namespace Elysium.Controls
                               CornerRadius = new CornerRadius(0d),
                               GlassFrameThickness = new Thickness(0d),
                               NonClientFrameEdges = NonClientFrameEdges.None,
-                              ResizeBorderThickness = Parameters.GetWindowResizeBorderThickness(this),
+                              ResizeBorderThickness = Parameters.Window.GetResizeBorderThickness(this),
                               UseAeroCaptionButtons = false
                           };
             _chrome.Freeze();
@@ -69,10 +69,10 @@ namespace Elysium.Controls
             }
 
             var resizeBorderThicknessPropertyDescriptor =
-                DependencyPropertyDescriptor.FromProperty(Parameters.WindowResizeBorderThicknessProperty, typeof(Window));
+                DependencyPropertyDescriptor.FromProperty(Parameters.Window.ResizeBorderThicknessProperty, typeof(Window));
             resizeBorderThicknessPropertyDescriptor.AddValueChanged(this, delegate
             {
-                if (WindowChrome.GetWindowChrome(this) == _chrome)
+                if (Equals(WindowChrome.GetWindowChrome(this), _chrome))
                 {
                     _chrome = new WindowChrome
                                   {
@@ -80,7 +80,7 @@ namespace Elysium.Controls
                                       CornerRadius = _chrome.CornerRadius,
                                       GlassFrameThickness = _chrome.GlassFrameThickness,
                                       NonClientFrameEdges = _chrome.NonClientFrameEdges,
-                                      ResizeBorderThickness = Parameters.GetWindowResizeBorderThickness(this),
+                                      ResizeBorderThickness = Parameters.Window.GetResizeBorderThickness(this),
                                       UseAeroCaptionButtons = _chrome.UseAeroCaptionButtons
                                   };
                     _chrome.Freeze();
@@ -126,7 +126,7 @@ namespace Elysium.Controls
                 Action setMainWindow =
                     () =>
                     {
-                        foreach (var window in Application.Current.Windows.AsParallel().Cast<Window>().Where(window => window != instance))
+                        foreach (var window in Application.Current.Windows.AsParallel().Cast<Window>().Where(window => !Equals(window, instance)))
                         {
                             SetIsMainWindow(window, false);
                         }
@@ -215,7 +215,7 @@ namespace Elysium.Controls
         protected virtual void OnHasDropShadowChanged(bool oldHasDropShadow, bool newHasDropShadow)
 // ReSharper restore VirtualMemberNeverOverriden.Global
         {
-            if (WindowChrome.GetWindowChrome(this) == _chrome)
+            if (Equals(WindowChrome.GetWindowChrome(this), _chrome))
             {
                 _chrome = new WindowChrome
                               {
@@ -249,7 +249,7 @@ namespace Elysium.Controls
         [PublicAPI]
         public static readonly DependencyProperty ApplicationBarProperty =
             DependencyProperty.RegisterAttached("ApplicationBar", typeof(ApplicationBar), typeof(Window),
-                                                new FrameworkPropertyMetadata(null, (OnApplicationBarChanged)));
+                                                new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.None, OnApplicationBarChanged));
 
         [PublicAPI]
         [JetBrains.Annotations.Pure]
@@ -276,22 +276,17 @@ namespace Elysium.Controls
             var instance = obj as System.Windows.Window;
             if (instance != null && e.OldValue != null)
             {
-                instance.MouseRightButtonUp -= OnApplicationBarOpening;
+                instance.MouseRightButtonUp -= OnApplicationBarVisibilityChanged;
             }
             if (instance != null && e.NewValue != null)
             {
-                instance.MouseRightButtonUp += OnApplicationBarOpening;
-            }
-            var window = obj as Window;
-            if (window != null && window._applicationBarHost != null && e.NewValue != null)
-            {
-                var newApplicationBar = (ApplicationBar)e.NewValue;
-                window._applicationBarHost.Child = newApplicationBar;
+                instance.MouseRightButtonUp += OnApplicationBarVisibilityChanged;
             }
         }
 
-        private static void OnApplicationBarOpening(object sender, MouseButtonEventArgs e)
+        private static void OnApplicationBarVisibilityChanged(object sender, MouseButtonEventArgs e)
         {
+            //Trace.TraceInformation("ApplicationBar opened");
             var window = sender as System.Windows.Window;
             var source = e.OriginalSource as UIElement;
             if (window != null && source != null && !ApplicationBar.GetPreventsOpen(source))
@@ -299,7 +294,80 @@ namespace Elysium.Controls
                 var applicationBar = GetApplicationBar(window);
                 if (applicationBar != null)
                 {
-                    applicationBar.IsOpen = true;
+                    if (applicationBar.IsOpening || applicationBar.IsClosing)
+                    {
+                        if (applicationBar.IsOpening)
+                        {
+                            applicationBar.Opened += ChangeVisibilityAfterOpened;
+                        }
+                        else if (applicationBar.IsClosing)
+                        {
+                            applicationBar.Closed += ChangeVisibilityAfterClosed;
+                        }
+                    }
+                    else
+                    {
+                        applicationBar.IsOpen = !applicationBar.StaysOpen || !applicationBar.IsOpen;
+                    }
+                }
+            }
+        }
+
+        private static void ChangeVisibilityAfterOpened(object sender, EventArgs e)
+        {
+            var applicationBar = sender as ApplicationBar;
+            if (applicationBar != null)
+            {
+                applicationBar.IsOpen = !applicationBar.StaysOpen || !applicationBar.IsOpen;
+                applicationBar.Opened -= ChangeVisibilityAfterOpened;
+            }
+        }
+
+        private static void ChangeVisibilityAfterClosed(object sender, EventArgs e)
+        {
+            var applicationBar = sender as ApplicationBar;
+            if (applicationBar != null)
+            {
+                applicationBar.IsOpen = !applicationBar.StaysOpen || !applicationBar.IsOpen;
+                applicationBar.Closed -= ChangeVisibilityAfterClosed;
+            }
+        }
+
+        [PublicAPI]
+        public static readonly DependencyProperty IsApplicationBarHostProperty =
+            DependencyProperty.RegisterAttached("IsApplicationBarHost", typeof(bool), typeof(Window),
+                                                new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, FrameworkPropertyMetadataOptions.None,
+                                                                              OnIsApplicationBarHostChanged));
+
+        [PublicAPI]
+        [JetBrains.Annotations.Pure]
+        [System.Diagnostics.Contracts.Pure]
+        [AttachedPropertyBrowsableForType(typeof(Decorator))]
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static bool GetIsApplicationBarHost(Decorator obj)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            return BooleanBoxingHelper.Unbox(obj.GetValue(IsApplicationBarHostProperty));
+        }
+
+        [PublicAPI]
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        public static void SetIsApplicationBarHost(Decorator obj, bool value)
+        {
+            ValidationHelper.NotNull(obj, () => obj);
+            obj.SetValue(IsApplicationBarHostProperty, BooleanBoxingHelper.Box(value));
+        }
+
+        private static void OnIsApplicationBarHostChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            var host = obj as Decorator;
+            if (host != null)
+            {
+                var window = VisualTreeHelperExtensions.FindParent<System.Windows.Window>(host);
+                if (window != null)
+                {
+                    var applicationBar = GetApplicationBar(window);
+                    host.Child = BooleanBoxingHelper.Unbox(e.NewValue) ? applicationBar : null;
                 }
             }
         }
@@ -310,20 +378,6 @@ namespace Elysium.Controls
 
             if (Template != null)
             {
-                _applicationBarHost = Template.FindName(ApplicationBarHost, this) as Decorator;
-                if (_applicationBarHost == null)
-                {
-                    Trace.TraceWarning(ApplicationBarHost + " not found.");
-                }
-                else
-                {
-                    var applicationBar = GetApplicationBar(this);
-                    if (applicationBar != null)
-                    {
-                        _applicationBarHost.Child = applicationBar;
-                    }
-                }
-
                 // NOTE: Lack of contracts: FindName is pure method
                 Contract.Assume(Template != null);
                 _caption = Template.FindName(CaptionName, this) as FrameworkElement;
@@ -335,7 +389,7 @@ namespace Elysium.Controls
                 {
                     _caption.SizeChanged += (sender, e) =>
                     {
-                        if (WindowChrome.GetWindowChrome(this) == _chrome && e.HeightChanged)
+                        if (Equals(WindowChrome.GetWindowChrome(this), _chrome) && e.HeightChanged)
                         {
                             _chrome = new WindowChrome
                                           {

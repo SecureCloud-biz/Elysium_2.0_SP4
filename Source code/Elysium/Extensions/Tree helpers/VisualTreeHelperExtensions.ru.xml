@@ -17,5 +17,12 @@
       <param name="reference">Элемент, для которого осуществляется поиск родителя.</param>
       <returns>Родитель или null, если среди предков нет объектов указанного типа.</returns>
     </method>
+    <method name="M:Elysium.Extensions.VisualTreeHelperExtensions.FindTopLevelParent(System.Windows.DependencyObject)">
+      <summary>
+        Осуществляет поиск корневого элемента визуального дерева WPF для указанного объекта.
+      </summary>
+      <param name="reference">Элемент, для которого осуществляется поиск корневого элемента визуального дерева WPF.</param>
+      <returns>Корневой элемент визуального дерева WPF или null, если указанный объект является корневым элементом.</returns>
+    </method>
   </members>
 </doc>

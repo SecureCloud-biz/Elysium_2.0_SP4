@@ -10,6 +10,7 @@ using System.Windows.Media.Animation;
 using Elysium.Controls.Automation;
 using Elysium.Controls.Primitives;
 using Elysium.Extensions;
+using Elysium.Parameters;
 
 using JetBrains.Annotations;
 
@@ -47,8 +48,6 @@ namespace Elysium.Controls
 
             EventManager.RegisterClassHandler(typeof(ApplicationBar), Mouse.LostMouseCaptureEvent,
                                               new MouseEventHandler(OnLostMouseCapture));
-            EventManager.RegisterClassHandler(typeof(ApplicationBar), Mouse.PreviewMouseDownOutsideCapturedElementEvent,
-                                              new MouseButtonEventHandler(OnPreviewMouseButtonOutsideCapturedElement));
             EventManager.RegisterClassHandler(typeof(ApplicationBar), Mouse.PreviewMouseUpOutsideCapturedElementEvent,
                                               new MouseButtonEventHandler(OnPreviewMouseButtonOutsideCapturedElement));
         }
@@ -102,81 +101,145 @@ namespace Elysium.Controls
             instance.OnIsOpenChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
         }
 
+        internal bool IsOpening;
+        internal bool IsClosing;
+
         [PublicAPI]
         protected virtual void OnIsOpenChanged(bool oldIsOpen, bool newIsOpen)
         {
-            if (newIsOpen)
+            if (newIsOpen && !oldIsOpen)
             {
+                IsOpening = true;
+
                 OnOpening(new RoutedEventArgs(OpeningEvent, this));
 
-                _isOpen = true;
-                InvalidateArrange();
+                if (TransitionMode == ApplicationBarTransitionMode.None)
+                {
+                    Mouse.Capture(this, CaptureMode.SubTree);
 
-                var storyboard = new Storyboard { FillBehavior = FillBehavior.Stop };
-                Timeline animation;
-                switch (TransitionMode)
-                {
-                    case ApplicationBarTransitionMode.Fade:
-                        animation = new DoubleAnimation(0d, 1.0, Parameters.GetMinimumDuration(this));
-                        Storyboard.SetTarget(animation, this);
-                        Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
-                        break;
-                    default:
-                        animation = new DoubleAnimation(0d, DesiredSize.Height, Parameters.GetMinimumDuration(this));
-                        Storyboard.SetTarget(animation, this);
-                        Storyboard.SetTargetProperty(animation, new PropertyPath("Height"));
-                        break;
-                }
-                // NOTE: Lack of contracts
-                Contract.Assume(storyboard.Children != null);
-                storyboard.Children.Add(animation);
-                storyboard.Completed += (sender, e) =>
-                {
+                    _isOpen = true;
+                    InvalidateArrange();
+
                     OnOpened(new RoutedEventArgs(OpenedEvent, this));
 
-                    storyboard.Remove();
-                };
-                BeginStoryboard(storyboard);
+                    IsOpening = false;
+                }
+                else
+                {
+                    var storyboard = new Storyboard
+                                         {
+                                             FillBehavior = FillBehavior.Stop
+                                         };
 
-                Mouse.Capture(this, CaptureMode.SubTree);
+                    Timeline animation;
+                    switch (TransitionMode)
+                    {
+                        case ApplicationBarTransitionMode.Fade:
+                            animation = new DoubleAnimation(0d, 1d, General.GetMinimumDuration(this));
+                            Storyboard.SetTarget(animation, this);
+                            Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
+                            // NOTE: Lack of contracts
+                            Contract.Assume(storyboard.Children != null);
+                            storyboard.Children.Add(animation);
+                            break;
+                        case ApplicationBarTransitionMode.Slide:
+                            animation = new DoubleAnimation(0d, DesiredSize.Height, General.GetMinimumDuration(this));
+                            Storyboard.SetTarget(animation, this);
+                            Storyboard.SetTargetProperty(animation, new PropertyPath("Height"));
+                            // NOTE: Lack of contracts
+                            Contract.Assume(storyboard.Children != null);
+                            storyboard.Children.Add(animation);
+                            break;
+                    }
+
+                    storyboard.Completed += (sender, e) =>
+                    {
+                        storyboard.Stop(this);
+                        storyboard.Remove(this);
+
+                        OnOpened(new RoutedEventArgs(OpenedEvent, this));
+
+                        IsOpening = false;
+                    };
+
+                    if (!StaysOpen)
+                    {
+                        Mouse.Capture(this, CaptureMode.SubTree);
+                    }
+
+                    storyboard.Freeze();
+                    storyboard.Begin(this, true);
+
+                    _isOpen = true;
+                    InvalidateArrange();
+                }
             }
-            else
+            if (!newIsOpen && oldIsOpen)
             {
+                IsClosing = true;
+
                 OnClosing(new RoutedEventArgs(ClosingEvent, this));
 
-                if (Mouse.Captured == this)
+                if (TransitionMode == ApplicationBarTransitionMode.None)
                 {
                     Mouse.Capture(null);
-                }
 
-                var storyboard = new Storyboard { FillBehavior = FillBehavior.Stop };
-                Timeline animation;
-                switch (TransitionMode)
-                {
-                    case ApplicationBarTransitionMode.Fade:
-                        animation = new DoubleAnimation(1.0, 0d, Parameters.GetMinimumDuration(this));
-                        Storyboard.SetTarget(animation, this);
-                        Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
-                        break;
-                    default:
-                        animation = new DoubleAnimation(DesiredSize.Height, 0d, Parameters.GetMinimumDuration(this));
-                        Storyboard.SetTarget(animation, this);
-                        Storyboard.SetTargetProperty(animation, new PropertyPath("Height"));
-                        break;
-                }
-                // NOTE: Lack of contracts
-                Contract.Assume(storyboard.Children != null);
-                storyboard.Children.Add(animation);
-                storyboard.Completed += (sender, e) =>
-                {
                     _isOpen = false;
                     InvalidateArrange();
 
                     OnClosed(new RoutedEventArgs(ClosedEvent, this));
 
-                    storyboard.Remove();
-                };
-                BeginStoryboard(storyboard);
+                    IsClosing = false;
+                }
+                else
+                {
+                    var storyboard = new Storyboard
+                                         {
+                                             FillBehavior = FillBehavior.Stop
+                                         };
+
+                    Timeline animation;
+                    switch (TransitionMode)
+                    {
+                        case ApplicationBarTransitionMode.Fade:
+                            animation = new DoubleAnimation(1d, 0d, General.GetMinimumDuration(this));
+                            Storyboard.SetTarget(animation, this);
+                            Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
+                            // NOTE: Lack of contracts
+                            Contract.Assume(storyboard.Children != null);
+                            storyboard.Children.Add(animation);
+                            break;
+                        case ApplicationBarTransitionMode.Slide:
+                            animation = new DoubleAnimation(DesiredSize.Height, 0d, General.GetMinimumDuration(this));
+                            Storyboard.SetTarget(animation, this);
+                            Storyboard.SetTargetProperty(animation, new PropertyPath("Height"));
+                            // NOTE: Lack of contracts
+                            Contract.Assume(storyboard.Children != null);
+                            storyboard.Children.Add(animation);
+                            break;
+                    }
+
+                    storyboard.Completed += (sender, e) =>
+                    {
+                        storyboard.Stop(this);
+                        storyboard.Remove(this);
+
+                        if (!StaysOpen)
+                        {
+                            Mouse.Capture(null);
+                        }
+
+                        _isOpen = false;
+                        InvalidateArrange();
+
+                        OnClosed(new RoutedEventArgs(ClosedEvent, this));
+
+                        IsClosing = false;
+                    };
+
+                    storyboard.Freeze();
+                    storyboard.Begin(this, true);
+                }
             }
         }
 
@@ -259,7 +322,7 @@ namespace Elysium.Controls
         [PublicAPI]
         public static readonly DependencyProperty StaysOpenProperty =
             DependencyProperty.Register("StaysOpen", typeof(bool), typeof(ApplicationBar),
-                                        new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, FrameworkPropertyMetadataOptions.None, OnStaysOpenChanged));
+                                        new FrameworkPropertyMetadata(BooleanBoxingHelper.TrueBox, FrameworkPropertyMetadataOptions.None, OnStaysOpenChanged));
 
         [PublicAPI]
         [Category("Behavior")]
@@ -356,11 +419,12 @@ namespace Elysium.Controls
         private static void OnLostMouseCapture(object sender, MouseEventArgs e)
         {
             var instance = sender as ApplicationBar;
-            var source = e.Source as DependencyObject;
-            if (instance != null && source != null)
+            var source = e.OriginalSource as DependencyObject;
+            if (instance != null && source != null && !instance.StaysOpen)
             {
-                var parent = VisualTreeHelperExtensions.FindParent<ApplicationBar>(source);
-                if (instance == parent)
+                var visualParent = VisualTreeHelperExtensions.FindParent<ApplicationBar>(source);
+                var logicalParent = LogicalTreeHelperExtensions.FindParent<ApplicationBar>(source);
+                if (Equals(instance, visualParent) || Equals(instance, logicalParent) || (Mouse.Captured == null && instance.IsOpen))
                 {
                     Mouse.Capture(instance, CaptureMode.SubTree);
                     e.Handled = true;
@@ -371,11 +435,12 @@ namespace Elysium.Controls
         private static void OnPreviewMouseButtonOutsideCapturedElement(object sender, MouseButtonEventArgs e)
         {
             var instance = sender as ApplicationBar;
-            var source = e.Source as DependencyObject;
-            if (instance != null && source != null)
+            var source = e.OriginalSource as DependencyObject;
+            if (instance != null && source != null && !instance.StaysOpen)
             {
-                var parent = VisualTreeHelperExtensions.FindParent<ApplicationBar>(source);
-                if (instance != parent && instance.IsOpen && !instance.StaysOpen)
+                var visualParent = VisualTreeHelperExtensions.FindParent<ApplicationBar>(source);
+                var logicalParent = LogicalTreeHelperExtensions.FindParent<ApplicationBar>(source);
+                if (!(Equals(instance, visualParent) || Equals(instance, logicalParent)))
                 {
                     instance.IsOpen = false;
                 }

@@ -166,6 +166,11 @@ namespace Elysium.Controls
                 IndeterminateAnimation.Children.Add(startAngleAnimation);
                 IndeterminateAnimation.Children.Add(endAngleAnimation);
 
+                if (IndeterminateAnimation.CanFreeze)
+                {
+                    IndeterminateAnimation.Freeze();
+                }
+
                 if (isStarted)
                 {
                     IndeterminateAnimation.Begin(this, Template, true);
@@ -274,6 +279,11 @@ namespace Elysium.Controls
                 foreach (var animation in secondCycleAnimations)
                 {
                     BusyAnimation.Children.Add(animation);
+                }
+
+                if (BusyAnimation.CanFreeze)
+                {
+                    BusyAnimation.Freeze();
                 }
 
                 if (isStarted)

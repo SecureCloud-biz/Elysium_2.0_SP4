@@ -16,5 +16,17 @@ namespace Elysium.Extensions
             var parent = currentParent as T;
             return parent ?? (currentParent != null ? FindParent<T>(currentParent) : null);
         }
+
+        [PublicAPI]
+        public static DependencyObject FindTopLevelParent(DependencyObject reference)
+        {
+            var parent = VisualTreeHelper.GetParent(reference);
+            if (parent != null)
+            {
+                var nextParent = VisualTreeHelper.GetParent(parent);
+                return nextParent != null ? FindTopLevelParent(parent) : parent;
+            }
+            return null;
+        }
     }
 } ;

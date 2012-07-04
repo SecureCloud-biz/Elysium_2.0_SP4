@@ -16,7 +16,7 @@ namespace Elysium.Notifications.Server
         InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple, IncludeExceptionDetailInFaults = true)]
     internal sealed class NotificationManager : INotificationManager
     {
-        private static readonly Dictionary<byte, bool> _slots = new Dictionary<byte, bool>(5);
+        private static readonly Dictionary<byte, bool> Slots = new Dictionary<byte, bool>(5);
 
         private static TimeSpan _lifetimeCache = Settings.Default.Lifetime;
         private static Animation _animationCache = Settings.Default.Animation;
@@ -25,7 +25,9 @@ namespace Elysium.Notifications.Server
         private static HorizontalPlacement _horizontalPlacementCache = Settings.Default.HorizontalPlacement;
         private static VerticalPlacement _verticalPlacementCache = Settings.Default.VerticalPlacement;
 
+// ReSharper disable InconsistentNaming
         private static readonly object _lock = new object();
+// ReSharper restore InconsistentNaming
 
         [UsedImplicitly]
         public Notification Reserve(Rect workArea)
@@ -33,15 +35,15 @@ namespace Elysium.Notifications.Server
             byte slotIndex;
             lock (_lock)
             {
-                var freeSlots = _slots.AsParallel().Where(slot => !slot.Value).OrderBy(slot => slot.Key).ToList();
-                slotIndex = freeSlots.Any() ? freeSlots.First().Key : (byte)_slots.Count;
+                var freeSlots = Slots.AsParallel().Where(slot => !slot.Value).OrderBy(slot => slot.Key).ToList();
+                slotIndex = freeSlots.Any() ? freeSlots.First().Key : (byte)Slots.Count;
                 if (freeSlots.Any())
                 {
-                    _slots[slotIndex] = true;
+                    Slots[slotIndex] = true;
                 }
                 else
                 {
-                    _slots.Add(slotIndex, true);
+                    Slots.Add(slotIndex, true);
                 }
             }
 
@@ -65,9 +67,9 @@ namespace Elysium.Notifications.Server
         {
             lock (_lock)
             {
-                if (_slots.ContainsKey(id))
+                if (Slots.ContainsKey(id))
                 {
-                    _slots[id] = false;
+                    Slots[id] = false;
                 }
             }
         }

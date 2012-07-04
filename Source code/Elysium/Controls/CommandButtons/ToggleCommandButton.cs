@@ -51,26 +51,29 @@ namespace Elysium.Controls
         [PublicAPI]
         protected virtual void OnIsCheckedChanged(bool? oldIsChecked, bool? newIsChecked)
         {
-            var peer = UIElementAutomationPeer.FromElement(this) as ToggleCommandButtonAutomationPeer;
-            if (peer != null)
+            if (oldIsChecked != newIsChecked)
             {
-                peer.RaiseToggleStatePropertyChangedEvent(oldIsChecked, newIsChecked);
-            }
+                var peer = UIElementAutomationPeer.FromElement(this) as ToggleCommandButtonAutomationPeer;
+                if (peer != null)
+                {
+                    peer.RaiseToggleStatePropertyChangedEvent(oldIsChecked, newIsChecked);
+                }
 
-            switch (newIsChecked)
-            {
-                case true:
-                    OnChecked(new RoutedEventArgs(CheckedEvent));
-                    VisualStateManager.GoToState(this, "Checked", true);
-                    break;
-                case false:
-                    OnUnchecked(new RoutedEventArgs(UncheckedEvent));
-                    VisualStateManager.GoToState(this, "Normal", true);
-                    break;
-                case null:
-                    OnIndeterminate(new RoutedEventArgs(IndeterminateEvent));
-                    VisualStateManager.GoToState(this, "Indeterminate", true);
-                    break;
+                switch (newIsChecked)
+                {
+                    case true:
+                        OnChecked(new RoutedEventArgs(CheckedEvent));
+                        VisualStateManager.GoToState(this, "Checked", true);
+                        break;
+                    case false:
+                        OnUnchecked(new RoutedEventArgs(UncheckedEvent));
+                        VisualStateManager.GoToState(this, "Normal", true);
+                        break;
+                    case null:
+                        OnIndeterminate(new RoutedEventArgs(IndeterminateEvent));
+                        VisualStateManager.GoToState(this, "Indeterminate", true);
+                        break;
+                }
             }
         }
 

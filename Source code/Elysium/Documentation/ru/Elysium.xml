@@ -501,12 +501,545 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="T:Elysium.Parameters">
+    <member name="T:Elysium.Parameters.CheckBox">
       <summary>
-        Представляет класс, управляющий настройками стилей элементов управления.
+        Представляет класс, управляющий настройками стиля элемента управления <see cref="T:System.Windows.Controls.CheckBox" />.
       </summary>
     </member>
-    <member name="P:Elysium.Parameters.TitleFontSize">
+    <member name="P:Elysium.Parameters.CheckBox.CheckSize">
+      <summary>
+        Возвращает или задаёт размер маркера в состоянии "включен" для элемента управления <see cref="T:System.Windows.Controls.CheckBox" />.
+      </summary>
+      <value>Размер маркера в состоянии "включен". Значение по умолчанию — 10px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.CheckBox.CheckSizeProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new CheckBox();
+          var currentValue = Parameters.CheckBox.GetCheckSize(control);
+          Parameters.CheckBox.SetCheckSize(control, 10d);
+        </code>
+        <code lang="XAML">
+          &lt;CheckBox params:CheckBox.CheckSize="10px"/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Parameters.CheckBox.CheckSizeProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.CheckBox.CheckSize" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.CheckBox.CheckSize" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Parameters.CheckBox.GetCheckSize(System.Windows.Controls.CheckBox)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.CheckBox.CheckSize" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Размер маркера в состоянии "включен".</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>Возвращаемое значение является положительным числом.</ensures>
+    </member>
+    <member name="M:Elysium.Parameters.CheckBox.SetCheckSize(System.Windows.Controls.CheckBox,System.Double)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.CheckBox.CheckSize" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Размер маркера в состоянии "включен".</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="T:Elysium.Parameters.ComboBox">
+      <summary>
+        Представляет класс, управляющий настройками стиля элемента управления <see cref="T:System.Windows.Controls.ComboBox" />.
+      </summary>
+    </member>
+    <member name="P:Elysium.Parameters.ComboBox.ButtonSize">
+      <summary>
+        Возвращает или задаёт ширину кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
+      </summary>
+      <value>
+        Ширина кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />. Значение по умолчанию — 18px.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.ComboBox.ButtonSizeProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
+            </description>
+          </item>
+        </list>
+        Значение этого свойства используется только если элемент управления <see cref="T:System.Windows.Controls.ComboBox" /> объявлен как редактируемый.
+        В противном случае, значение игнорируется, а кнопка растягивается на всю ширину элемента управления.
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new ComboBox();
+          var currentValue = Parameters.ComboBox.GetButtonSize(control);
+          Parameters.ComboBox.SetButtonSize(control, 18d);
+        </code>
+        <code lang="XAML">
+          &lt;ComboBox params:ComboBox.ButtonSize="18px"/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Parameters.ComboBox.ButtonSizeProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.ComboBox.ButtonSize" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.ComboBox.ButtonSize" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Parameters.ComboBox.GetButtonSize(System.Windows.Controls.ComboBox)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ComboBox.ButtonSize" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>
+        Ширина кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
+      </returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>Возвращаемое значение является положительным числом.</ensures>
+    </member>
+    <member name="M:Elysium.Parameters.ComboBox.SetButtonSize(System.Windows.Controls.ComboBox,System.Double)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.ComboBox.ButtonSize" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">
+        Ширина кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
+      </param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="P:Elysium.Parameters.ComboBox.ArrowSize">
+      <summary>
+        Возвращает или задаёт размер указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
+      </summary>
+      <value>
+        Размер указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />. Значение по умолчанию — 8px.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.ComboBox.ArrowSizeProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new ComboBox();
+          var currentValue = Parameters.ComboBox.GetArrowSize(control);
+          Parameters.ComboBox.SetArrowSize(control, 8d);
+        </code>
+        <code lang="XAML">
+          &lt;ComboBox params:ComboBox.ArrowSize="8px"/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Parameters.ComboBox.ArrowSizeProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.ComboBox.ArrowSize" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.ComboBox.ArrowSize" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Parameters.ComboBox.GetArrowSize(System.Windows.Controls.ComboBox)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ComboBox.ArrowSize" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>
+        Размер указателя на возможность открытия в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
+      </returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>Возвращаемое значение является положительным числом.</ensures>
+    </member>
+    <member name="M:Elysium.Parameters.ComboBox.SetArrowSize(System.Windows.Controls.ComboBox,System.Double)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.ComboBox.ArrowSize" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">
+        Размер указателя на возможность открытия в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
+      </param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="P:Elysium.Parameters.ComboBox.ArrowMargin">
+      <summary>
+        Возвращает или задаёт отступ указателя на возможность открытия (стрелки) от краёв кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
+      </summary>
+      <value>
+        Отступ указателя на возможность открытия (стрелки) от краёв кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />. Значение по умолчанию — (5, 0, 5, 0).
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.ComboBox.ArrowMarginProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
+            </description>
+          </item>
+        </list>
+        В стиле по умолчанию используется значение только правого отступа, остальные значения игнорируются.
+        Тем не менее, при переопределении стиля вы можете использовать и значения других отступов.
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new ComboBox();
+          var currentValue = Parameters.ComboBox.GetArrowMargin(control);
+          Parameters.ComboBox.SetArrowMargin(control, new Thickness(5d, 0d, 5d, 0d));
+        </code>
+        <code lang="XAML">
+          &lt;ComboBox params:ComboBox.ArrowMargin="5,0,5,0"/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Parameters.ComboBox.ArrowMarginProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.ComboBox.ArrowMargin" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.ComboBox.ArrowMargin" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Parameters.ComboBox.GetArrowMargin(System.Windows.Controls.ComboBox)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ComboBox.ArrowMargin" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>
+        Отступ указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
+      </returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>Возвращаемое значение является положительным числом.</ensures>
+    </member>
+    <member name="M:Elysium.Parameters.ComboBox.SetArrowMargin(System.Windows.Controls.ComboBox,System.Windows.Thickness)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.ComboBox.ArrowMargin" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">
+        Отступ указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
+      </param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="T:Elysium.Parameters.CommandButtons">
+      <summary>
+        Представляет класс, управляющий настройками стилей кнопок управления.
+      </summary>
+    </member>
+    <member name="P:Elysium.Parameters.CommandButtons.Mask">
+      <summary>
+        Возвращает или задаёт кисть, используемую для заливки содержимого кнопок управления — классов, наследующихся от класса <see cref="T:Elysium.Controls.Primitives.CommandButtonBase" />.
+      </summary>
+      <value>Кисть, используемая для заливки содержимого кнопок управления. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.CommandButtons.MaskProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender" />
+            </description>
+          </item>
+        </list>
+        Это свойство устанавливается локально в стиле элемента управления и обычно имеет значение, сопадающее со значением ресурса MiddleLightBrush.
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new CommandButton();
+          var currentValue = Parameters.CommandButtons.GetMask(control);
+          Parameters.CommandButtons.SetMask(control, Brushes.Black);
+        </code>
+        <code lang="XAML">
+          &lt;CommandButton params:CommandButtons.Mask="Black"/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Parameters.CommandButtons.MaskProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.CommandButtons.Mask" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.CommandButtons.Mask" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Parameters.CommandButtons.GetMask(Elysium.Controls.Primitives.CommandButtonBase)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.CommandButtons.Mask" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Кисть, используемая для заливки содержимого кнопок управления.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="M:Elysium.Parameters.CommandButtons.SetMask(Elysium.Controls.Primitives.CommandButtonBase,System.Windows.Media.SolidColorBrush)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.CommandButtons.Mask" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Кисть, используемая для заливки содержимого кнопок управления.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="T:Elysium.Parameters.DropDown">
+      <summary>
+        Представляет класс, управляющий настройками стиля выпадающего списка (в т.ч. выпадающего субменю).
+      </summary>
+    </member>
+    <member name="P:Elysium.Parameters.DropDown.IsOpen">
+      <summary>
+        Возвращает или задаёт значение, указывающее открыт ли в данный момент выпадающий список.
+      </summary>
+      <value>True, если выпадающий список открыт; иначе False. Значение по умолчанию — False.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.DropDown.IsOpenProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Popup();
+          var currentValue = Parameters.DropDown.GetIsOpen(control);
+          Parameters.DropDown.SetIsOpen(control, true);
+        </code>
+        <code lang="XAML">
+          &lt;Trigger Property="IsSubmenuOpen" Value="True"&gt;
+            &lt;Setter TargetName="PART_Popup" Property="params:DropDown.IsOpen" Value="True"/&gt;
+          &lt;Trigger/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Parameters.DropDown.IsOpenProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.DropDown.IsOpen" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.DropDown.IsOpen" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Parameters.DropDown.GetIsOpen(System.Windows.UIElement)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.DropDown.IsOpen" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Значение, указывающее открыт ли в данный момент выпадающий список.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="M:Elysium.Parameters.DropDown.SetIsOpen(System.Windows.UIElement,System.Boolean)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.DropDown.IsOpen" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Значение, указывающее открыт ли в данный момент выпадающий список.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="P:Elysium.Parameters.DropDown.IsDefaultHorizontalPosition">
+      <summary>
+        Возвращает значение, указывающее сопадает ли текущее горизонтальное положение выпадающего списка и соответствующее значение по-умолчнию.
+      </summary>
+      <value>True, если значения сопадают; иначе False. Значение по умолчанию — False.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.DropDown.IsDefaultHorizontalPositionProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Popup();
+          var currentValue = Parameters.DropDown.GetIsDefaultHorizontalPosition(control);
+        </code>
+        <code lang="XAML">
+          &lt;Trigger SourceName="PART_Popup" Property="params:DropDown.IsDefaultHorizontalPosition" Value="True"&gt;
+            ...
+          &lt;Trigger/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Parameters.DropDown.IsDefaultHorizontalPositionProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.DropDown.IsDefaultHorizontalPosition" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.DropDown.IsDefaultHorizontalPosition" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Parameters.DropDown.GetIsDefaultHorizontalPosition(System.Windows.UIElement)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.DropDown.IsDefaultHorizontalPosition" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Значение, указывающее сопадает ли текущее горизонтальное положение выпадающего списка и соответствующее значение по-умолчнию.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="P:Elysium.Parameters.DropDown.IsDefaultVerticalPosition">
+      <summary>
+        Возвращает значение, указывающее сопадает ли текущее вертикальное положение выпадающего списка и соответствующее значение по-умолчнию.
+      </summary>
+      <value>True, если значения сопадают; иначе False. Значение по умолчанию — False.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.DropDown.IsDefaultVerticalPositionProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Popup();
+          var currentValue = Parameters.DropDown.GetIsDefaultVerticalPosition(control);
+        </code>
+        <code lang="XAML">
+          &lt;Trigger SourceName="PART_Popup" Property="params:DropDown.IsDefaultVerticalPosition" Value="True"&gt;
+            ...
+          &lt;Trigger/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Parameters.DropDown.IsDefaultVerticalPositionProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.DropDown.IsDefaultVerticalPosition" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.DropDown.IsDefaultVerticalPosition" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Parameters.DropDown.GetIsDefaultVerticalPosition(System.Windows.UIElement)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.DropDown.IsDefaultVerticalPosition" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Значение, указывающее сопадает ли текущее вертикальное положение выпадающего списка и соответствующее значение по-умолчнию.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="F:Elysium.Parameters.DropDown.PopupPlacementCallback">
+      <summary>
+        Возвращает делегат, используемый для вычисления положения выпадающего списка.
+      </summary>
+      <value>Делегат, используемый для вычисления положения выпадающего списка.</value>
+      <seealso cref="P:System.Windows.Controls.Primitives.Popup.CustomPopupPlacementCallback" />
+    </member>
+    <member name="T:Elysium.Parameters.General">
+      <summary>
+        Представляет класс, управляющий основными настройками стилей элементов управления.
+      </summary>
+    </member>
+    <member name="P:Elysium.Parameters.General.TitleFontSize">
       <summary>
         Возвращает или задаёт размер шрифта в заголовке окна.
       </summary>
@@ -516,7 +1049,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.TitleFontSizeProperty" />
+              <see cref="F:Elysium.Parameters.General.TitleFontSizeProperty" />
             </description>
           </item>
           <item>
@@ -540,21 +1073,21 @@
           Parameters.SetTitleFontSize(control, 12d * (96d / 72d));
         </code>
         <code lang="XAML">
-          &lt;Window metro:Parameters.TitleFontSize="12pt"/&gt;
+          &lt;Window params:General.TitleFontSize="12pt"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.TitleFontSizeProperty">
+    <member name="F:Elysium.Parameters.General.TitleFontSizeProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.TitleFontSize" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.TitleFontSize" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.TitleFontSize" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.TitleFontSize" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetTitleFontSize(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetTitleFontSize(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.TitleFontSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.TitleFontSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер шрифта в заголовке окна.</returns>
@@ -564,9 +1097,9 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetTitleFontSize(System.Windows.DependencyObject,System.Double)">
+    <member name="M:Elysium.Parameters.General.SetTitleFontSize(System.Windows.DependencyObject,System.Double)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.TitleFontSize" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.TitleFontSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Размер шрифта в заголовке окна.</param>
@@ -575,7 +1108,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.HeaderFontSize">
+    <member name="P:Elysium.Parameters.General.HeaderFontSize">
       <summary>
         Возвращает или задаёт размер шрифта в заголовке элемента управления.
       </summary>
@@ -585,7 +1118,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.HeaderFontSizeProperty" />
+              <see cref="F:Elysium.Parameters.General.HeaderFontSizeProperty" />
             </description>
           </item>
           <item>
@@ -609,21 +1142,21 @@
           Parameters.SetHeaderFontSize(control, 12d * (96d / 72d));
         </code>
         <code lang="XAML">
-          &lt;TabControl metro:Parameters.TitleFontSize="12pt"/&gt;
+          &lt;TabControl params:General.TitleFontSize="12pt"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.HeaderFontSizeProperty">
+    <member name="F:Elysium.Parameters.General.HeaderFontSizeProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.HeaderFontSize" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.HeaderFontSize" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.HeaderFontSize" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.HeaderFontSize" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetHeaderFontSize(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetHeaderFontSize(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.HeaderFontSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.HeaderFontSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер шрифта в заголовке элемента управления.</returns>
@@ -633,9 +1166,9 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetHeaderFontSize(System.Windows.DependencyObject,System.Double)">
+    <member name="M:Elysium.Parameters.General.SetHeaderFontSize(System.Windows.DependencyObject,System.Double)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.HeaderFontSize" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.HeaderFontSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Размер шрифта в заголовке элемента управления.</param>
@@ -644,7 +1177,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.ContentFontSize">
+    <member name="P:Elysium.Parameters.General.ContentFontSize">
       <summary>
         Возвращает или задаёт размер шрифта для содержимого элемента управления.
       </summary>
@@ -654,7 +1187,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.ContentFontSizeProperty" />
+              <see cref="F:Elysium.Parameters.General.ContentFontSizeProperty" />
             </description>
           </item>
           <item>
@@ -677,21 +1210,21 @@
           Parameters.SetContentFontSize(control, 10d * (96d / 72d));
         </code>
         <code lang="XAML">
-          &lt;Button metro:Parameters.ContentFontSize="10pt"/&gt;
+          &lt;Button params:General.ContentFontSize="10pt"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.ContentFontSizeProperty">
+    <member name="F:Elysium.Parameters.General.ContentFontSizeProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.ContentFontSize" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.ContentFontSize" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.ContentFontSize" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.ContentFontSize" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetContentFontSize(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetContentFontSize(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ContentFontSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.ContentFontSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер шрифта для содержимого элемента управления.</returns>
@@ -701,9 +1234,9 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetContentFontSize(System.Windows.DependencyObject,System.Double)">
+    <member name="M:Elysium.Parameters.General.SetContentFontSize(System.Windows.DependencyObject,System.Double)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.ContentFontSize" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.ContentFontSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Размер шрифта для содержимого элемента управления.</param>
@@ -712,7 +1245,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.TextFontSize">
+    <member name="P:Elysium.Parameters.General.TextFontSize">
       <summary>
         Возвращает или задаёт размер шрифта текста.
       </summary>
@@ -722,7 +1255,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.TextFontSizeProperty" />
+              <see cref="F:Elysium.Parameters.General.TextFontSizeProperty" />
             </description>
           </item>
           <item>
@@ -747,21 +1280,21 @@
           Parameters.SetTextFontSize(control, 9d * (96d / 72d));
         </code>
         <code lang="XAML">
-          &lt;TextBox metro:Parameters.ContentFontSize="9pt"/&gt;
+          &lt;TextBox params:General.ContentFontSize="9pt"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.TextFontSizeProperty">
+    <member name="F:Elysium.Parameters.General.TextFontSizeProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.TextFontSize" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.TextFontSize" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.TextFontSize" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.TextFontSize" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetTextFontSize(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetTextFontSize(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.TextFontSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.TextFontSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер шрифта текста.</returns>
@@ -771,9 +1304,9 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetTextFontSize(System.Windows.DependencyObject,System.Double)">
+    <member name="M:Elysium.Parameters.General.SetTextFontSize(System.Windows.DependencyObject,System.Double)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.TextFontSize" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.TextFontSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Размер шрифта текста.</param>
@@ -782,7 +1315,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.DefaultThickness">
+    <member name="P:Elysium.Parameters.General.DefaultThickness">
       <summary>
         Возвращает или задаёт толщину линии по умолчанию.
       </summary>
@@ -792,7 +1325,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.DefaultThicknessProperty" />
+              <see cref="F:Elysium.Parameters.General.DefaultThicknessProperty" />
             </description>
           </item>
           <item>
@@ -810,21 +1343,21 @@
           Parameters.SetDefaultThickness(control, new Thickness(1d));
         </code>
         <code lang="XAML">
-          &lt;Button metro:Parameters.DefaultThickness="1"/&gt;
+          &lt;Button params:General.DefaultThickness="1"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.DefaultThicknessProperty">
+    <member name="F:Elysium.Parameters.General.DefaultThicknessProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.DefaultThickness" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.DefaultThickness" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.DefaultThickness" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.DefaultThickness" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetDefaultThickness(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetDefaultThickness(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultThickness" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.DefaultThickness" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Толщина линии по умолчанию.</returns>
@@ -834,9 +1367,9 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение всегда является положительным.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetDefaultThickness(System.Windows.DependencyObject,System.Windows.Thickness)">
+    <member name="M:Elysium.Parameters.General.SetDefaultThickness(System.Windows.DependencyObject,System.Windows.Thickness)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultThickness" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.DefaultThickness" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Толщина линии по умолчанию.</param>
@@ -845,7 +1378,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.SemiBoldThickness">
+    <member name="P:Elysium.Parameters.General.SemiBoldThickness">
       <summary>
         Возвращает или задаёт толщину полужирной линии.
       </summary>
@@ -855,7 +1388,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.SemiBoldThicknessProperty" />
+              <see cref="F:Elysium.Parameters.General.SemiBoldThicknessProperty" />
             </description>
           </item>
           <item>
@@ -873,21 +1406,21 @@
           Parameters.SetSemiBoldThickness(control, new Thickness(1.5d));
         </code>
         <code lang="XAML">
-          &lt;Button metro:Parameters.SemiBoldThickness="1.5px"/&gt;
+          &lt;Button params:General.SemiBoldThickness="1.5px"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.SemiBoldThicknessProperty">
+    <member name="F:Elysium.Parameters.General.SemiBoldThicknessProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.SemiBoldThickness" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.SemiBoldThickness" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.SemiBoldThickness" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.SemiBoldThickness" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetSemiBoldThickness(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetSemiBoldThickness(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.SemiBoldThickness" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.SemiBoldThickness" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Толщина полужирной линии.</returns>
@@ -897,9 +1430,9 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение всегда является положительным.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetSemiBoldThickness(System.Windows.DependencyObject,System.Windows.Thickness)">
+    <member name="M:Elysium.Parameters.General.SetSemiBoldThickness(System.Windows.DependencyObject,System.Windows.Thickness)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.SemiBoldThickness" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.SemiBoldThickness" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Толщина полужирной линии.</param>
@@ -908,7 +1441,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.BoldThickness">
+    <member name="P:Elysium.Parameters.General.BoldThickness">
       <summary>
         Возвращает или задаёт толщину жирной линии.
       </summary>
@@ -918,7 +1451,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.BoldThicknessProperty" />
+              <see cref="F:Elysium.Parameters.General.BoldThicknessProperty" />
             </description>
           </item>
           <item>
@@ -936,21 +1469,21 @@
           Parameters.SetBoldThickness(control, new Thickness(2d));
         </code>
         <code lang="XAML">
-          &lt;Button metro:Parameters.BoldThickness="2"/&gt;
+          &lt;Button params:General.BoldThickness="2"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.BoldThicknessProperty">
+    <member name="F:Elysium.Parameters.General.BoldThicknessProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.BoldThickness" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.BoldThickness" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.BoldThickness" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.BoldThickness" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetBoldThickness(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetBoldThickness(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.BoldThickness" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.BoldThickness" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Толщина жирной линии.</returns>
@@ -960,9 +1493,9 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение всегда является положительным.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetBoldThickness(System.Windows.DependencyObject,System.Windows.Thickness)">
+    <member name="M:Elysium.Parameters.General.SetBoldThickness(System.Windows.DependencyObject,System.Windows.Thickness)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.BoldThickness" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.BoldThickness" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Толщина жирной линии.</param>
@@ -971,7 +1504,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.DefaultThicknessValue">
+    <member name="P:Elysium.Parameters.General.DefaultThicknessValue">
       <summary>
         Возвращает или задаёт толщину линии по умолчанию.
       </summary>
@@ -981,7 +1514,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.DefaultThicknessValueProperty" />
+              <see cref="F:Elysium.Parameters.General.DefaultThicknessValueProperty" />
             </description>
           </item>
           <item>
@@ -999,21 +1532,21 @@
           Parameters.SetDefaultThicknessValue(control, 1d);
         </code>
         <code lang="XAML">
-          &lt;Button metro:Parameters.DefaultThicknessValue="1px"/&gt;
+          &lt;Button params:General.DefaultThicknessValue="1px"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.DefaultThicknessValueProperty">
+    <member name="F:Elysium.Parameters.General.DefaultThicknessValueProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.DefaultThicknessValue" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.DefaultThicknessValue" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.DefaultThicknessValue" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.DefaultThicknessValue" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetDefaultThicknessValue(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetDefaultThicknessValue(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultThicknessValue" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.DefaultThicknessValue" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Толщина линии по умолчанию.</returns>
@@ -1023,9 +1556,9 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetDefaultThicknessValue(System.Windows.DependencyObject,System.Double)">
+    <member name="M:Elysium.Parameters.General.SetDefaultThicknessValue(System.Windows.DependencyObject,System.Double)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultThicknessValue" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.DefaultThicknessValue" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Толщина линии по умолчанию.</param>
@@ -1034,7 +1567,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.SemiBoldThicknessValue">
+    <member name="P:Elysium.Parameters.General.SemiBoldThicknessValue">
       <summary>
         Возвращает или задаёт толщину полужирной линии.
       </summary>
@@ -1044,7 +1577,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.SemiBoldThicknessValueProperty" />
+              <see cref="F:Elysium.Parameters.General.SemiBoldThicknessValueProperty" />
             </description>
           </item>
           <item>
@@ -1062,21 +1595,21 @@
           Parameters.SetSemiBoldThicknessValue(control, 1.5d);
         </code>
         <code lang="XAML">
-          &lt;Button metro:Parameters.SemiBoldThicknessValue="1.5px"/&gt;
+          &lt;Button params:General.SemiBoldThicknessValue="1.5px"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.SemiBoldThicknessValueProperty">
+    <member name="F:Elysium.Parameters.General.SemiBoldThicknessValueProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.SemiBoldThicknessValue" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.SemiBoldThicknessValue" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.SemiBoldThicknessValue" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.SemiBoldThicknessValue" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetSemiBoldThicknessValue(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetSemiBoldThicknessValue(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.SemiBoldThicknessValue" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.SemiBoldThicknessValue" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Толщина полужирной линии.</returns>
@@ -1086,9 +1619,9 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetSemiBoldThicknessValue(System.Windows.DependencyObject,System.Double)">
+    <member name="M:Elysium.Parameters.General.SetSemiBoldThicknessValue(System.Windows.DependencyObject,System.Double)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.SemiBoldThicknessValue" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.SemiBoldThicknessValue" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Толщина полужирной линии.</param>
@@ -1097,7 +1630,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.BoldThicknessValue">
+    <member name="P:Elysium.Parameters.General.BoldThicknessValue">
       <summary>
         Возвращает или задаёт толщину жирной линии.
       </summary>
@@ -1107,7 +1640,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.BoldThicknessValueProperty" />
+              <see cref="F:Elysium.Parameters.General.BoldThicknessValueProperty" />
             </description>
           </item>
           <item>
@@ -1125,21 +1658,21 @@
           Parameters.SetBoldThicknessValue(control, 2d);
         </code>
         <code lang="XAML">
-          &lt;Button metro:Parameters.BoldThicknessValue="2px"/&gt;
+          &lt;Button params:General.BoldThicknessValue="2px"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.BoldThicknessValueProperty">
+    <member name="F:Elysium.Parameters.General.BoldThicknessValueProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.BoldThicknessValue" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.BoldThicknessValue" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.BoldThicknessValue" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.BoldThicknessValue" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetBoldThicknessValue(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetBoldThicknessValue(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.BoldThicknessValue" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.BoldThicknessValue" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Толщина жирной линии.</returns>
@@ -1149,9 +1682,9 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetBoldThicknessValue(System.Windows.DependencyObject,System.Double)">
+    <member name="M:Elysium.Parameters.General.SetBoldThicknessValue(System.Windows.DependencyObject,System.Double)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.BoldThicknessValue" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.BoldThicknessValue" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Толщина жирной линии.</param>
@@ -1160,7 +1693,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.DefaultPadding">
+    <member name="P:Elysium.Parameters.General.DefaultPadding">
       <summary>
         Возвращает или задаёт размер отступов по умолчанию.
       </summary>
@@ -1170,7 +1703,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.DefaultPaddingProperty" />
+              <see cref="F:Elysium.Parameters.General.DefaultPaddingProperty" />
             </description>
           </item>
           <item>
@@ -1188,21 +1721,21 @@
           Parameters.SetDefaultPadding(control, new Thickness(1d));
         </code>
         <code lang="XAML">
-          &lt;Button metro:Parameters.DefaultPadding="1"/&gt;
+          &lt;Button params:General.DefaultPadding="1"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.DefaultPaddingProperty">
+    <member name="F:Elysium.Parameters.General.DefaultPaddingProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.DefaultPadding" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.DefaultPadding" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.DefaultPadding" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.DefaultPadding" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetDefaultPadding(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetDefaultPadding(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultPadding" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.DefaultPadding" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер отступов по умолчанию.</returns>
@@ -1212,9 +1745,9 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение всегда является положительным.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetDefaultPadding(System.Windows.DependencyObject,System.Windows.Thickness)">
+    <member name="M:Elysium.Parameters.General.SetDefaultPadding(System.Windows.DependencyObject,System.Windows.Thickness)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultPadding" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.DefaultPadding" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Размер отступов по умолчанию.</param>
@@ -1223,7 +1756,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.SemiBoldPadding">
+    <member name="P:Elysium.Parameters.General.SemiBoldPadding">
       <summary>
         Возвращает или задаёт величину отступов среднего размера.
       </summary>
@@ -1233,7 +1766,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.SemiBoldPaddingProperty" />
+              <see cref="F:Elysium.Parameters.General.SemiBoldPaddingProperty" />
             </description>
           </item>
           <item>
@@ -1251,21 +1784,21 @@
           Parameters.SetSemiBoldPadding(control, new Thickness(2d));
         </code>
         <code lang="XAML">
-          &lt;Button metro:Parameters.SemiBoldPadding="2px"/&gt;
+          &lt;Button params:General.SemiBoldPadding="2px"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.SemiBoldPaddingProperty">
+    <member name="F:Elysium.Parameters.General.SemiBoldPaddingProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.SemiBoldPadding" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.SemiBoldPadding" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.SemiBoldPadding" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.SemiBoldPadding" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetSemiBoldPadding(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetSemiBoldPadding(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.SemiBoldPadding" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.SemiBoldPadding" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Величина отступов среднего размера.</returns>
@@ -1275,9 +1808,9 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение всегда является положительным.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetSemiBoldPadding(System.Windows.DependencyObject,System.Windows.Thickness)">
+    <member name="M:Elysium.Parameters.General.SetSemiBoldPadding(System.Windows.DependencyObject,System.Windows.Thickness)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.SemiBoldPadding" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.SemiBoldPadding" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Величина отступов среднего размера.</param>
@@ -1286,7 +1819,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.BoldPadding">
+    <member name="P:Elysium.Parameters.General.BoldPadding">
       <summary>
         Возвращает или задаёт величину наиболее большого отступа.
       </summary>
@@ -1296,7 +1829,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.BoldPaddingProperty" />
+              <see cref="F:Elysium.Parameters.General.BoldPaddingProperty" />
             </description>
           </item>
           <item>
@@ -1314,21 +1847,21 @@
           Parameters.SetBoldPadding(control, new Thickness(5d));
         </code>
         <code lang="XAML">
-          &lt;Button metro:Parameters.BoldPadding="5px"/&gt;
+          &lt;Button params:General.BoldPadding="5px"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.BoldPaddingProperty">
+    <member name="F:Elysium.Parameters.General.BoldPaddingProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.BoldPadding" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.BoldPadding" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.BoldPadding" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.BoldPadding" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetBoldPadding(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetBoldPadding(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.BoldPadding" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.BoldPadding" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Величина наиболее большого отступа.</returns>
@@ -1338,9 +1871,9 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение всегда является положительным.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetBoldPadding(System.Windows.DependencyObject,System.Windows.Thickness)">
+    <member name="M:Elysium.Parameters.General.SetBoldPadding(System.Windows.DependencyObject,System.Windows.Thickness)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.BoldPadding" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.BoldPadding" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Величина наиболее большого отступа.</param>
@@ -1349,7 +1882,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.DefaultPaddingValue">
+    <member name="P:Elysium.Parameters.General.DefaultPaddingValue">
       <summary>
         Возвращает или задаёт размер отступов по умолчанию.
       </summary>
@@ -1359,7 +1892,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.DefaultPaddingValueProperty" />
+              <see cref="F:Elysium.Parameters.General.DefaultPaddingValueProperty" />
             </description>
           </item>
           <item>
@@ -1377,21 +1910,21 @@
           Parameters.SetDefaultPaddingValue(control, 1d);
         </code>
         <code lang="XAML">
-          &lt;Button metro:Parameters.DefaultPaddingValue="1px"/&gt;
+          &lt;Button params:General.DefaultPaddingValue="1px"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.DefaultPaddingValueProperty">
+    <member name="F:Elysium.Parameters.General.DefaultPaddingValueProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.DefaultPaddingValue" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.DefaultPaddingValue" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.DefaultPaddingValue" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.DefaultPaddingValue" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetDefaultPaddingValue(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetDefaultPaddingValue(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultPaddingValue" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.DefaultPaddingValue" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер отступов по умолчанию.</returns>
@@ -1401,9 +1934,9 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetDefaultPaddingValue(System.Windows.DependencyObject,System.Double)">
+    <member name="M:Elysium.Parameters.General.SetDefaultPaddingValue(System.Windows.DependencyObject,System.Double)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultPaddingValue" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.DefaultPaddingValue" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Размер отступов по умолчанию.</param>
@@ -1412,7 +1945,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.SemiBoldPaddingValue">
+    <member name="P:Elysium.Parameters.General.SemiBoldPaddingValue">
       <summary>
         Возвращает или задаёт величину отступов среднего размера.
       </summary>
@@ -1422,7 +1955,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.SemiBoldPaddingValueProperty" />
+              <see cref="F:Elysium.Parameters.General.SemiBoldPaddingValueProperty" />
             </description>
           </item>
           <item>
@@ -1440,21 +1973,21 @@
           Parameters.SetSemiBoldPaddingValue(control, 2d);
         </code>
         <code lang="XAML">
-          &lt;Button metro:Parameters.SemiBoldPaddingValue="2px"/&gt;
+          &lt;Button params:General.SemiBoldPaddingValue="2px"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.SemiBoldPaddingValueProperty">
+    <member name="F:Elysium.Parameters.General.SemiBoldPaddingValueProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.SemiBoldPaddingValue" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.SemiBoldPaddingValue" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.SemiBoldPaddingValue" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.SemiBoldPaddingValue" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetSemiBoldPaddingValue(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetSemiBoldPaddingValue(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.SemiBoldPaddingValue" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.SemiBoldPaddingValue" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Величина отступов среднего размера.</returns>
@@ -1464,9 +1997,9 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetSemiBoldPaddingValue(System.Windows.DependencyObject,System.Double)">
+    <member name="M:Elysium.Parameters.General.SetSemiBoldPaddingValue(System.Windows.DependencyObject,System.Double)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.SemiBoldPaddingValue" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.SemiBoldPaddingValue" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Величина отступов среднего размера.</param>
@@ -1475,7 +2008,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.BoldPaddingValue">
+    <member name="P:Elysium.Parameters.General.BoldPaddingValue">
       <summary>
         Возвращает или задаёт величину наиболее большого отступа.
       </summary>
@@ -1485,7 +2018,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.BoldPaddingValueProperty" />
+              <see cref="F:Elysium.Parameters.General.BoldPaddingValueProperty" />
             </description>
           </item>
           <item>
@@ -1503,21 +2036,21 @@
           Parameters.SetBoldPaddingValue(control, 5d);
         </code>
         <code lang="XAML">
-          &lt;Button metro:Parameters.BoldPaddingValue="5px"/&gt;
+          &lt;Button params:General.BoldPaddingValue="5px"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.BoldPaddingValueProperty">
+    <member name="F:Elysium.Parameters.General.BoldPaddingValueProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.BoldPaddingValue" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.BoldPaddingValue" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.BoldPaddingValue" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.BoldPaddingValue" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetBoldPaddingValue(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetBoldPaddingValue(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.BoldPaddingValue" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.BoldPaddingValue" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Величина наиболее большого отступа.</returns>
@@ -1527,9 +2060,9 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetBoldPaddingValue(System.Windows.DependencyObject,System.Double)">
+    <member name="M:Elysium.Parameters.General.SetBoldPaddingValue(System.Windows.DependencyObject,System.Double)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.BoldPaddingValue" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.BoldPaddingValue" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Величина наиболее большого отступа.</param>
@@ -1538,7 +2071,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.DefaultDuration">
+    <member name="P:Elysium.Parameters.General.DefaultDuration">
       <summary>
         Возвращает или задаёт продолжительность анимации по умолчанию.
       </summary>
@@ -1548,7 +2081,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.DefaultDurationProperty" />
+              <see cref="F:Elysium.Parameters.General.DefaultDurationProperty" />
             </description>
           </item>
           <item>
@@ -1566,21 +2099,21 @@
           Parameters.SetDefaultDuration(control, new Duration(TimeSpan.FromSeconds(0d)));
         </code>
         <code lang="XAML">
-          &lt;Button metro:Parameters.DefaultDuration="00:00:00.0"/&gt;
+          &lt;Button params:General.DefaultDuration="00:00:00.0"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.DefaultDurationProperty">
+    <member name="F:Elysium.Parameters.General.DefaultDurationProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.DefaultDuration" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.DefaultDuration" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.DefaultDuration" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.DefaultDuration" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetDefaultDuration(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetDefaultDuration(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultDuration" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.DefaultDuration" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Продолжительность анимации по умолчанию.</returns>
@@ -1589,9 +2122,9 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="M:Elysium.Parameters.SetDefaultDuration(System.Windows.DependencyObject,System.Windows.Duration)">
+    <member name="M:Elysium.Parameters.General.SetDefaultDuration(System.Windows.DependencyObject,System.Windows.Duration)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.DefaultDuration" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.DefaultDuration" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Продолжительность анимации по умолчанию.</param>
@@ -1600,7 +2133,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.MinimumDuration">
+    <member name="P:Elysium.Parameters.General.MinimumDuration">
       <summary>
         Возвращает или задаёт минимальную продолжительность анимации.
       </summary>
@@ -1610,7 +2143,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.MinimumDurationProperty" />
+              <see cref="F:Elysium.Parameters.General.MinimumDurationProperty" />
             </description>
           </item>
           <item>
@@ -1628,21 +2161,21 @@
           Parameters.SetMinimumDuration(control, new Duration(TimeSpan.FromSeconds(0.2d)));
         </code>
         <code lang="XAML">
-          &lt;Button metro:Parameters.MinimumDuration="00:00:00.2"/&gt;
+          &lt;Button params:General.MinimumDuration="00:00:00.2"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.MinimumDurationProperty">
+    <member name="F:Elysium.Parameters.General.MinimumDurationProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.MinimumDuration" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.MinimumDuration" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.MinimumDuration" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.MinimumDuration" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetMinimumDuration(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetMinimumDuration(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.MinimumDuration" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.MinimumDuration" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Минимальная продолжительность анимации.</returns>
@@ -1651,9 +2184,9 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="M:Elysium.Parameters.SetMinimumDuration(System.Windows.DependencyObject,System.Windows.Duration)">
+    <member name="M:Elysium.Parameters.General.SetMinimumDuration(System.Windows.DependencyObject,System.Windows.Duration)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.MinimumDuration" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.MinimumDuration" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Минимальная продолжительность анимации.</param>
@@ -1662,7 +2195,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.OptimumDuration">
+    <member name="P:Elysium.Parameters.General.OptimumDuration">
       <summary>
         Возвращает или задаёт оптимальную продолжительность анимации.
       </summary>
@@ -1672,7 +2205,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.OptimumDurationProperty" />
+              <see cref="F:Elysium.Parameters.General.OptimumDurationProperty" />
             </description>
           </item>
           <item>
@@ -1690,21 +2223,21 @@
           Parameters.SetOptimumDuration(control, new Duration(TimeSpan.FromSeconds(0.5d)));
         </code>
         <code lang="XAML">
-          &lt;Button metro:Parameters.OptimumDuration="00:00:00.5"/&gt;
+          &lt;Button params:General.OptimumDuration="00:00:00.5"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.OptimumDurationProperty">
+    <member name="F:Elysium.Parameters.General.OptimumDurationProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.OptimumDuration" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.OptimumDuration" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.OptimumDuration" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.OptimumDuration" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetOptimumDuration(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetOptimumDuration(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.OptimumDuration" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.OptimumDuration" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Оптимальная продолжительность анимации.</returns>
@@ -1713,9 +2246,9 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="M:Elysium.Parameters.SetOptimumDuration(System.Windows.DependencyObject,System.Windows.Duration)">
+    <member name="M:Elysium.Parameters.General.SetOptimumDuration(System.Windows.DependencyObject,System.Windows.Duration)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.OptimumDuration" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.OptimumDuration" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Оптимальная продолжительность анимации.</param>
@@ -1724,7 +2257,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.MaximumDuration">
+    <member name="P:Elysium.Parameters.General.MaximumDuration">
       <summary>
         Возвращает или задаёт максимальную продолжительность анимации.
       </summary>
@@ -1734,7 +2267,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.MaximumDurationProperty" />
+              <see cref="F:Elysium.Parameters.General.MaximumDurationProperty" />
             </description>
           </item>
           <item>
@@ -1752,21 +2285,21 @@
           Parameters.SetMaximumDuration(control, new Duration(TimeSpan.FromSeconds(1d)));
         </code>
         <code lang="XAML">
-          &lt;Button metro:Parameters.MaximumDuration="00:00:01"/&gt;
+          &lt;Button params:General.MaximumDuration="00:00:01"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.MaximumDurationProperty">
+    <member name="F:Elysium.Parameters.General.MaximumDurationProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.MaximumDuration" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.MaximumDuration" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.MaximumDuration" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.MaximumDuration" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetMaximumDuration(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetMaximumDuration(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.MaximumDuration" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.MaximumDuration" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Максимальная продолжительность анимации.</returns>
@@ -1775,9 +2308,9 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="M:Elysium.Parameters.SetMaximumDuration(System.Windows.DependencyObject,System.Windows.Duration)">
+    <member name="M:Elysium.Parameters.General.SetMaximumDuration(System.Windows.DependencyObject,System.Windows.Duration)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.MaximumDuration" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.MaximumDuration" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Максимальная продолжительность анимации.</param>
@@ -1786,7 +2319,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.ShadowBrush">
+    <member name="P:Elysium.Parameters.General.ShadowBrush">
       <summary>
         Возвращает или задаёт кисть, используемую при создании теней.
       </summary>
@@ -1796,7 +2329,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.ShadowBrushProperty" />
+              <see cref="F:Elysium.Parameters.General.ShadowBrushProperty" />
             </description>
           </item>
           <item>
@@ -1816,21 +2349,21 @@
           Parameters.SetShadowBrush(control, Brushes.Black);
         </code>
         <code lang="XAML">
-          &lt;ComboBox metro:Parameters.ShadowBrush="Black"/&gt;
+          &lt;ComboBox params:General.ShadowBrush="Black"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.ShadowBrushProperty">
+    <member name="F:Elysium.Parameters.General.ShadowBrushProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.ShadowBrush" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.ShadowBrush" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.ShadowBrush" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.ShadowBrush" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetShadowBrush(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetShadowBrush(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ShadowBrush" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.ShadowBrush" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Кисть, используемая при создании теней.</returns>
@@ -1839,9 +2372,9 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="M:Elysium.Parameters.SetShadowBrush(System.Windows.DependencyObject,System.Windows.Media.SolidColorBrush)">
+    <member name="M:Elysium.Parameters.General.SetShadowBrush(System.Windows.DependencyObject,System.Windows.Media.SolidColorBrush)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.ShadowBrush" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.ShadowBrush" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Кисть, используемая при создании теней.</param>
@@ -1850,73 +2383,9 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.CommandButtonMask">
+    <member name="P:Elysium.Parameters.General.BulletDecoratorSize">
       <summary>
-        Возвращает или задаёт кисть, используемую для заливки содержимого кнопок управления — классов, наследующихся от класса <see cref="T:Elysium.Controls.Primitives.CommandButtonBase" />.
-      </summary>
-      <value>Кисть, используемая для заливки содержимого кнопок управления. Значение по умолчанию — null.</value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Идентификатор</term>
-            <description>
-              <see cref="F:Elysium.Parameters.CommandButtonMaskProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Метаданные</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender" />
-            </description>
-          </item>
-        </list>
-        Это свойство устанавливается локально в стиле элемента управления и обычно имеет значение, сопадающее со значением ресурса MiddleLightBrush.
-      </remarks>
-      <example>
-        <code lang="C#">
-          var control = new CommandButton();
-          var currentValue = Parameters.GetCommandButtonMask(control);
-          Parameters.SetCommandButtonMask(control, Brushes.Black);
-        </code>
-        <code lang="XAML">
-          &lt;CommandButton metro:Parameters.CommandButtonMask="Black"/&gt;
-        </code>
-      </example>
-    </member>
-    <member name="F:Elysium.Parameters.CommandButtonMaskProperty">
-      <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.CommandButtonMask" />.
-      </summary>
-      <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.CommandButtonMask" />.
-      </value>
-    </member>
-    <member name="M:Elysium.Parameters.GetCommandButtonMask(Elysium.Controls.Primitives.CommandButtonBase)">
-      <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.CommandButtonMask" /> для указанного элемента управления.
-      </summary>
-      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Кисть, используемая для заливки содержимого кнопок управления.</returns>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </member>
-    <member name="M:Elysium.Parameters.SetCommandButtonMask(Elysium.Controls.Primitives.CommandButtonBase,System.Windows.Media.SolidColorBrush)">
-      <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.CommandButtonMask" /> для указанного элемента управления.
-      </summary>
-      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">Кисть, используемая для заливки содержимого кнопок управления.</param>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </member>
-    <member name="P:Elysium.Parameters.BulletDecoratorSize">
-      <summary>
-        Возвращает или задаёт размер области, на которой располагается маркер у классов <see cref="T:System.Windows.Controls.CheckBox" /> и <see cref="T:System.Windows.Controls.RadioButton" />.
+        Возвращает или задаёт размер области, на которой располагается маркер.
       </summary>
       <value>Размер области, на которой располагается маркер. Значение по умолчанию — 16px.</value>
       <remarks>
@@ -1924,7 +2393,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.BulletDecoratorSizeProperty" />
+              <see cref="F:Elysium.Parameters.General.BulletDecoratorSizeProperty" />
             </description>
           </item>
           <item>
@@ -1942,52 +2411,44 @@
           Parameters.SetBulletDecoratorSize(control, 16d);
         </code>
         <code lang="XAML">
-          &lt;CheckBox metro:Parameters.BulletDecoratorSize="16px"/&gt;
+          &lt;CheckBox params:General.BulletDecoratorSize="16px"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.BulletDecoratorSizeProperty">
+    <member name="F:Elysium.Parameters.General.BulletDecoratorSizeProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.BulletDecoratorSize" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.BulletDecoratorSize" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.BulletDecoratorSize" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.BulletDecoratorSize" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetBulletDecoratorSize(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetBulletDecoratorSize(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.BulletDecoratorSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.BulletDecoratorSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер области, на которой располагается маркер.</returns>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>
-      <exception cref="T:System.ArgumentException">
-        Параметер <paramref name="obj" /> не принадлежит к одному из следующих типов: <see cref="T:System.Windows.Controls.CheckBox" />, <see cref="T:System.Windows.Controls.RadioButton" />.
-      </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
-      <requires exception="T:System.ArgumentException">(obj is CheckBox) || (obj is RadioButton)</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetBulletDecoratorSize(System.Windows.DependencyObject,System.Double)">
+    <member name="M:Elysium.Parameters.General.SetBulletDecoratorSize(System.Windows.DependencyObject,System.Double)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.BulletDecoratorSize" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.BulletDecoratorSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Размер области, на которой располагается маркер.</param>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>
-      <exception cref="T:System.ArgumentException">
-        Параметер <paramref name="obj" /> не принадлежит к одному из следующих типов: <see cref="T:System.Windows.Controls.CheckBox" />, <see cref="T:System.Windows.Controls.RadioButton" />.
-      </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
-      <requires exception="T:System.ArgumentException">(obj is CheckBox) || (obj is RadioButton)</requires>
     </member>
-    <member name="P:Elysium.Parameters.BulletSize">
+    <member name="P:Elysium.Parameters.General.BulletSize">
       <summary>
-        Возвращает или задаёт размер маркера в состоянии "не определено" у классов <see cref="T:System.Windows.Controls.CheckBox" /> и <see cref="T:System.Windows.Controls.RadioButton" />.
+        Возвращает или задаёт размер маркера в состоянии "не определено".
       </summary>
       <value>Размер маркера в состоянии "не определено". Значение по умолчанию — 8px.</value>
       <remarks>
@@ -1995,7 +2456,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.BulletSizeProperty" />
+              <see cref="F:Elysium.Parameters.General.BulletSizeProperty" />
             </description>
           </item>
           <item>
@@ -2013,123 +2474,256 @@
           Parameters.SetBulletSize(control, 8d);
         </code>
         <code lang="XAML">
-          &lt;CheckBox metro:Parameters.BulletSize="8px"/&gt;
+          &lt;CheckBox params:General.BulletSize="8px"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.BulletSizeProperty">
+    <member name="F:Elysium.Parameters.General.BulletSizeProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.BulletSize" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.BulletSize" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.BulletSize" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.General.BulletSize" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetBulletSize(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.General.GetBulletSize(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.BulletSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.General.BulletSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер маркера в состоянии "не определено".</returns>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>
-      <exception cref="T:System.ArgumentException">
-        Параметер <paramref name="obj" /> не принадлежит к одному из следующих типов: <see cref="T:System.Windows.Controls.CheckBox" />, <see cref="T:System.Windows.Controls.RadioButton" />.
-      </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
-      <requires exception="T:System.ArgumentException">(obj is CheckBox) || (obj is RadioButton)</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetBulletSize(System.Windows.DependencyObject,System.Double)">
+    <member name="M:Elysium.Parameters.General.SetBulletSize(System.Windows.DependencyObject,System.Double)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.BulletSize" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.General.BulletSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Размер маркера в состоянии "не определено".</param>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>
-      <exception cref="T:System.ArgumentException">
-        Параметер <paramref name="obj" /> не принадлежит к одному из следующих типов: <see cref="T:System.Windows.Controls.CheckBox" />, <see cref="T:System.Windows.Controls.RadioButton" />.
-      </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
-      <requires exception="T:System.ArgumentException">(obj is CheckBox) || (obj is RadioButton)</requires>
     </member>
-    <member name="P:Elysium.Parameters.CheckSize">
+    <member name="T:Elysium.Parameters.MenuBase">
       <summary>
-        Возвращает или задаёт размер маркера в состоянии "включен" для элемента управления <see cref="T:System.Windows.Controls.CheckBox" />.
+        Представляет класс, управляющий настройками стиля меню.
       </summary>
-      <value>Размер маркера в состоянии "включен". Значение по умолчанию — 10px.</value>
+    </member>
+    <member name="P:Elysium.Parameters.MenuBase.SubmenuBackground">
+      <summary>
+        Возвращает или задаёт цвет фона выпадающего субменю.
+      </summary>
+      <value>Цвет фона выпадающего меню. Значение по умолчанию — null.</value>
       <remarks>
         <list type="table">
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.CheckSizeProperty" />
+              <see cref="F:Elysium.Parameters.MenuBase.SubmenuBackgroundProperty" />
             </description>
           </item>
           <item>
             <term>Метаданные</term>
             <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender" />
             </description>
           </item>
         </list>
       </remarks>
       <example>
         <code lang="C#">
-          var control = new CheckBox();
-          var currentValue = Parameters.GetCheckSize(control);
-          Parameters.SetCheckSize(control, 10d);
+          var control = new Menu();
+          var currentValue = Parameters.MenuBase.GetSubmenuBackground(control);
+          Parameters.MenuBase.SetSubmenuBackground(control, null);
         </code>
         <code lang="XAML">
-          &lt;CheckBox metro:Parameters.CheckSize="10px"/&gt;
+          &lt;Menu params:MenuBase.SubmenuBackground="{x:Null}"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.CheckSizeProperty">
+    <member name="F:Elysium.Parameters.MenuBase.SubmenuBackgroundProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.CheckSize" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.MenuBase.SubmenuBackground" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.CheckSize" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.MenuBase.SubmenuBackground" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetCheckSize(System.Windows.Controls.CheckBox)">
+    <member name="M:Elysium.Parameters.MenuBase.GetSubmenuBackground(System.Windows.Controls.MenuBase)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.CheckSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.MenuBase.SubmenuBackground" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Размер маркера в состоянии "включен".</returns>
+      <returns>Цвет фона выпадающего меню.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="M:Elysium.Parameters.MenuBase.SetSubmenuBackground(System.Windows.Controls.MenuBase,System.Double)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.MenuBase.SubmenuBackground" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Цвет фона выпадающего меню.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="P:Elysium.Parameters.MenuBase.SubmenuBorderBrush">
+      <summary>
+        Возвращает или задаёт цвет границы выпадающего субменю.
+      </summary>
+      <value>
+        Цвет границы выпадающего субменю. Значение по умолчанию — null.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.MenuBase.SubmenuBorderBrushProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Menu();
+          var currentValue = Parameters.MenuBase.GetSubmenuBorderBrush(control);
+          Parameters.MenuBase.SetSubmenuBorderBrush(control, null);
+        </code>
+        <code lang="XAML">
+          &lt;Menu params:MenuBase.SubmenuBorderBrush="{x:Null}"/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Parameters.MenuBase.SubmenuBorderBrushProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderBrush" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderBrush" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Parameters.MenuBase.GetSubmenuBorderBrush(System.Windows.Controls.MenuBase)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderBrush" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Цвет границы выпадающего субменю.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="M:Elysium.Parameters.MenuBase.SetSubmenuBorderBrush(System.Windows.Controls.MenuBase,System.Double)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderBrush" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Цвет границы выпадающего субменю.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="P:Elysium.Parameters.MenuBase.SubmenuBorderThickness">
+      <summary>
+        Возвращает или задаёт размер границы выпадающего субменю.
+      </summary>
+      <value>
+        Размер границы выпадающего субменю. Значение по умолчанию — (0, 0, 0, 0).
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.MenuBase.SubmenuBorderThicknessProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Menu();
+          var currentValue = Parameters.MenuBase.GetSubmenuBorderThickness(control);
+          Parameters.MenuBase.SetSubmenuBorderThickness(control, new Thickness(0d));
+        </code>
+        <code lang="XAML">
+          &lt;Menu params:MenuBase.SubmenuBorderThickness="0"/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Parameters.MenuBase.SubmenuBorderThicknessProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderThickness" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderThickness" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Parameters.MenuBase.GetSubmenuBorderThickness(System.Windows.Controls.MenuBase)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderThickness" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Размер границы выпадающего субменю.</returns>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetCheckSize(System.Windows.Controls.CheckBox,System.Double)">
+    <member name="M:Elysium.Parameters.MenuBase.SetSubmenuBorderThickness(System.Windows.Controls.MenuBase,System.Windows.Thickness)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.CheckSize" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderThickness" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">Размер маркера в состоянии "включен".</param>
+      <param name="value">Размер границы выпадающего субменю.</param>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.ToggleSwitchTrackSize">
+    <member name="T:Elysium.Parameters.MenuItem">
       <summary>
-        Возвращает или задаёт ширину переключателя в элементе управления <see cref="T:Elysium.Controls.ToggleSwitch" />.
+        Представляет класс, управляющий настройками стиля элемента управления <see cref="T:System.Windows.Controls.MenuItem" />.
       </summary>
-      <value>Ширина переключателя. Значение по умолчанию — 48px.</value>
+    </member>
+    <member name="P:Elysium.Parameters.MenuItem.BulletSize">
+      <summary>
+        Возвращает или задаёт размер маркера у класса <see cref="T:System.Windows.Controls.MenuItem" />.
+      </summary>
+      <value>Размер маркера. Значение по умолчанию — 12px.</value>
       <remarks>
         <list type="table">
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.ToggleSwitchTrackSizeProperty" />
+              <see cref="F:Elysium.Parameters.MenuItem.BulletSizeProperty" />
             </description>
           </item>
           <item>
@@ -2139,60 +2733,63 @@
             </description>
           </item>
         </list>
+        Это свойство имеет действие на элемент управления MenuItem, вложенный в выпадающее меню любого типа (будь то ContextMenu или Submenu) и не являющийся родительским элементом другого выпадающего меню.
       </remarks>
       <example>
         <code lang="C#">
-          var control = new ToggleSwitch();
-          var currentValue = Parameters.GetToggleSwitchTrackSize(control);
-          Parameters.SetToggleSwitchTrackSize(control, 48d);
+          var control = new MenuItem();
+          var currentValue = Parameters.MenuItem.GetBulletSize(control);
+          Parameters.MenuItem.SetBulletSize(control, 12d);
         </code>
         <code lang="XAML">
-          &lt;ToggleSwitch metro:Parameters.ToggleSwitchTrackSize="48px"/&gt;
+          &lt;MenuItem params:MenuItem.BulletSize="12px"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.ToggleSwitchTrackSizeProperty">
+    <member name="F:Elysium.Parameters.MenuItem.BulletSizeProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.ToggleSwitchTrackSize" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.MenuItem.BulletSize" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.ToggleSwitchTrackSize" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.MenuItem.BulletSize" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetToggleSwitchTrackSize(Elysium.Controls.ToggleSwitch)">
+    <member name="M:Elysium.Parameters.MenuItem.GetBulletSize(System.Windows.Controls.MenuItem)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ToggleSwitchTrackSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.MenuItem.BulletSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Ширина переключателя.</returns>
+      <returns>Размер маркера.</returns>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetToggleSwitchTrackSize(Elysium.Controls.ToggleSwitch,System.Double)">
+    <member name="M:Elysium.Parameters.MenuItem.SetBulletSize(System.Windows.Controls.MenuItem,System.Double)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.ToggleSwitchTrackSize" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.MenuItem.BulletSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">Ширина переключателя.</param>
+      <param name="value">Размер маркера.</param>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.ToggleSwitchThumbThickness">
+    <member name="P:Elysium.Parameters.MenuItem.ArrowSize">
       <summary>
-        Возвращает или задаёт толщину переключателя в элементе управления <see cref="T:Elysium.Controls.ToggleSwitch" />.
+        Возвращает или задаёт размер указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.MenuItem" />.
       </summary>
-      <value>Толщина переключателя. Значение по умолчанию — 10px.</value>
+      <value>
+        Размер указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.MenuItem" />. Значение по умолчанию — 8px.
+      </value>
       <remarks>
         <list type="table">
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.ToggleSwitchThumbThicknessProperty" />
+              <see cref="F:Elysium.Parameters.MenuItem.ArrowSizeProperty" />
             </description>
           </item>
           <item>
@@ -2205,97 +2802,30 @@
       </remarks>
       <example>
         <code lang="C#">
-          var control = new ToggleSwitch();
-          var currentValue = Parameters.GetToggleSwitchThumbThickness(control);
-          Parameters.SetToggleSwitchThumbThickness(control, 10d);
+          var control = new MenuItem();
+          var currentValue = Parameters.MenuItem.GetArrowSize(control);
+          Parameters.MenuItem.SetArrowSize(control, 8d);
         </code>
         <code lang="XAML">
-          &lt;ToggleSwitch metro:Parameters.ToggleSwitchThumbThickness="10px"/&gt;
+          &lt;MenuItem params:MenuItem.ArrowSize="8px"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.ToggleSwitchThumbThicknessProperty">
+    <member name="F:Elysium.Parameters.MenuItem.ArrowSizeProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.ToggleSwitchThumbThickness" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.MenuItem.ArrowSize" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.ToggleSwitchThumbThickness" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.MenuItem.ArrowSize" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetToggleSwitchThumbThickness(Elysium.Controls.ToggleSwitch)">
+    <member name="M:Elysium.Parameters.MenuItem.GetArrowSize(System.Windows.Controls.MenuItem)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ToggleSwitchThumbThickness" /> для указанного элемента управления.
-      </summary>
-      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Толщина переключателя.</returns>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-      <ensures>Возвращаемое значение является положительным числом.</ensures>
-    </member>
-    <member name="M:Elysium.Parameters.SetToggleSwitchThumbThickness(Elysium.Controls.ToggleSwitch,System.Double)">
-      <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.ToggleSwitchThumbThickness" /> для указанного элемента управления.
-      </summary>
-      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">Толщина переключателя.</param>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </member>
-    <member name="P:Elysium.Parameters.ComboBoxButtonSize">
-      <summary>
-        Возвращает или задаёт ширину кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
-      </summary>
-      <value>
-        Ширина кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />. Значение по умолчанию — 18px.
-      </value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Идентификатор</term>
-            <description>
-              <see cref="F:Elysium.Parameters.ComboBoxButtonSizeProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Метаданные</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
-            </description>
-          </item>
-        </list>
-        Значение этого свойства используется только если элемент управления <see cref="T:System.Windows.Controls.ComboBox" /> объявлен как редактируемый.
-        В противном случае, значение игнорируется, а кнопка растягивается на всю ширину элемента управления.
-      </remarks>
-      <example>
-        <code lang="C#">
-          var control = new ComboBox();
-          var currentValue = Parameters.GetComboBoxButtonSize(control);
-          Parameters.SetComboBoxButtonSize(control, 18d);
-        </code>
-        <code lang="XAML">
-          &lt;ComboBox metro:Parameters.ComboBoxButtonSize="18px"/&gt;
-        </code>
-      </example>
-    </member>
-    <member name="F:Elysium.Parameters.ComboBoxButtonSizeProperty">
-      <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.ComboBoxButtonSize" />.
-      </summary>
-      <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.ComboBoxButtonSize" />.
-      </value>
-    </member>
-    <member name="M:Elysium.Parameters.GetComboBoxButtonSize(System.Windows.Controls.ComboBox)">
-      <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ComboBoxButtonSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.MenuItem.ArrowSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>
-        Ширина кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
+        Размер указателя на возможность открытия в элементе управления <see cref="T:System.Windows.Controls.MenuItem" />.
       </returns>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
@@ -2303,32 +2833,32 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetComboBoxButtonSize(System.Windows.Controls.ComboBox,System.Double)">
+    <member name="M:Elysium.Parameters.MenuItem.SetArrowSize(System.Windows.Controls.MenuItem,System.Double)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.ComboBoxButtonSize" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.MenuItem.ArrowSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">
-        Ширина кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
+        Размер указателя на возможность открытия в элементе управления <see cref="T:System.Windows.Controls.MenuItem" />.
       </param>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.ComboBoxArrowSize">
+    <member name="P:Elysium.Parameters.MenuItem.ArrowMargin">
       <summary>
-        Возвращает или задаёт размер указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
+        Возвращает или задаёт размер отступа указателя на возможность открытия (стрелки) от краёв элемента управления <see cref="T:System.Windows.Controls.MenuItem" />.
       </summary>
       <value>
-        Размер указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />. Значение по умолчанию — 8px.
+        Размер отступ указателя на возможность открытия (стрелки) от краёв элемента управления <see cref="T:System.Windows.Controls.MenuItem" />. Значение по умолчанию — (3, 0, 3, 0).
       </value>
       <remarks>
         <list type="table">
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.ComboBoxArrowSizeProperty" />
+              <see cref="F:Elysium.Parameters.MenuItem.ArrowMarginProperty" />
             </description>
           </item>
           <item>
@@ -2341,30 +2871,30 @@
       </remarks>
       <example>
         <code lang="C#">
-          var control = new ComboBox();
-          var currentValue = Parameters.GetComboBoxArrowSize(control);
-          Parameters.SetComboBoxArrowSize(control, 8d);
+          var control = new MenuItem();
+          var currentValue = Parameters.MenuItem.GetArrowMargin(control);
+          Parameters.MenuItem.SetArrowMargin(control, new Thickness(3d, 0d, 3d, 0d));
         </code>
         <code lang="XAML">
-          &lt;ComboBox metro:Parameters.ComboBoxArrowSize="8px"/&gt;
+          &lt;MenuItem params:MenuItem.ArrowMargin="3,0,3,0"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.ComboBoxArrowSizeProperty">
+    <member name="F:Elysium.Parameters.MenuItem.ArrowMarginProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.ComboBoxArrowSize" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.MenuItem.ArrowMargin" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.ComboBoxArrowSize" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.MenuItem.ArrowMargin" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetComboBoxArrowSize(System.Windows.Controls.ComboBox)">
+    <member name="M:Elysium.Parameters.MenuItem.GetArrowMargin(System.Windows.Controls.MenuItem)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ComboBoxArrowSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.MenuItem.ArrowMargin" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>
-        Размер указателя на возможность открытия в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
+        Отступ указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.MenuItem" />.
       </returns>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
@@ -2372,217 +2902,25 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetComboBoxArrowSize(System.Windows.Controls.ComboBox,System.Double)">
+    <member name="M:Elysium.Parameters.MenuItem.SetArrowMargin(System.Windows.Controls.MenuItem,System.Windows.Thickness)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.ComboBoxArrowSize" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.MenuItem.ArrowMargin" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">
-        Размер указателя на возможность открытия в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
+        Размер отступа указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.MenuItem" />.
       </param>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.ComboBoxArrowMargin">
+    <member name="T:Elysium.Parameters.ProgressBars">
       <summary>
-        Возвращает или задаёт отступ указателя на возможность открытия (стрелки) от краёв кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
+        Представляет класс, управляющий настройками стилей элементов управления наследников класса <see cref="T:Elysium.Controls.Primitives.ProgressBarBase" />.
       </summary>
-      <value>
-        Отступ указателя на возможность открытия (стрелки) от краёв кнопки в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />. Значение по умолчанию — (5, 0, 5, 0).
-      </value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Идентификатор</term>
-            <description>
-              <see cref="F:Elysium.Parameters.ComboBoxArrowMarginProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Метаданные</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
-            </description>
-          </item>
-        </list>
-        В стиле по умолчанию используется значение только правого отступа, остальные значения игнорируются.
-        Тем не менее, при переопределении стиля вы можете использовать и значения других отступов.
-      </remarks>
-      <example>
-        <code lang="C#">
-          var control = new ComboBox();
-          var currentValue = Parameters.GetComboBoxArrowMargin(control);
-          Parameters.SetComboBoxArrowMargin(control, new Thickness(5d, 0d, 5d, 0d));
-        </code>
-        <code lang="XAML">
-          &lt;ComboBox metro:Parameters.ComboBoxArrowMargin="5,0,5,0"/&gt;
-        </code>
-      </example>
     </member>
-    <member name="F:Elysium.Parameters.ComboBoxArrowMarginProperty">
-      <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.ComboBoxArrowMargin" />.
-      </summary>
-      <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.ComboBoxArrowMargin" />.
-      </value>
-    </member>
-    <member name="M:Elysium.Parameters.GetComboBoxArrowMargin(System.Windows.Controls.ComboBox)">
-      <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ComboBoxArrowMargin" /> для указанного элемента управления.
-      </summary>
-      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>
-        Отступ указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
-      </returns>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-      <ensures>Возвращаемое значение является положительным числом.</ensures>
-    </member>
-    <member name="M:Elysium.Parameters.SetComboBoxArrowMargin(System.Windows.Controls.ComboBox,System.Windows.Thickness)">
-      <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.ComboBoxArrowMargin" /> для указанного элемента управления.
-      </summary>
-      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">
-        Отступ указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.ComboBox" />.
-      </param>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </member>
-    <member name="P:Elysium.Parameters.SliderTrackSize">
-      <summary>
-        Возвращает или задаёт длину трека в элементе управления <see cref="T:System.Windows.Controls.Slider" />.
-      </summary>
-      <value>Длина трека. Значение по умолчанию — 48px.</value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Идентификатор</term>
-            <description>
-              <see cref="F:Elysium.Parameters.SliderTrackSizeProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Метаданные</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
-            </description>
-          </item>
-        </list>
-      </remarks>
-      <example>
-        <code lang="C#">
-          var control = new Slider();
-          var currentValue = Parameters.GetSliderTrackSize(control);
-          Parameters.SetSliderTrackSize(control, 48d);
-        </code>
-        <code lang="XAML">
-          &lt;Slider metro:Parameters.SliderTrackSize="48px"/&gt;
-        </code>
-      </example>
-    </member>
-    <member name="F:Elysium.Parameters.SliderTrackSizeProperty">
-      <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.SliderTrackSize" />.
-      </summary>
-      <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.SliderTrackSize" />.
-      </value>
-    </member>
-    <member name="M:Elysium.Parameters.GetSliderTrackSize(System.Windows.Controls.Slider)">
-      <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.SliderTrackSize" /> для указанного элемента управления.
-      </summary>
-      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Длина трека.</returns>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-      <ensures>Возвращаемое значение является положительным числом.</ensures>
-    </member>
-    <member name="M:Elysium.Parameters.SetSliderTrackSize(System.Windows.Controls.Slider,System.Double)">
-      <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.SliderTrackSize" /> для указанного элемента управления.
-      </summary>
-      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">Длина трека.</param>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </member>
-    <member name="P:Elysium.Parameters.SliderThumbThickness">
-      <summary>
-        Возвращает или задаёт ширину ползунка в элементе управления <see cref="T:System.Windows.Controls.Slider" />.
-      </summary>
-      <value>Ширина ползунка. Значение по умолчанию — 6px.</value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Идентификатор</term>
-            <description>
-              <see cref="F:Elysium.Parameters.SliderThumbThicknessProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Метаданные</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
-            </description>
-          </item>
-        </list>
-      </remarks>
-      <example>
-        <code lang="C#">
-          var control = new Slider();
-          var currentValue = Parameters.GetSliderThumbThickness(control);
-          Parameters.SetSliderThumbThickness(control, 6d);
-        </code>
-        <code lang="XAML">
-          &lt;Slider metro:Parameters.SliderThumbThickness="6px"/&gt;
-        </code>
-      </example>
-    </member>
-    <member name="F:Elysium.Parameters.SliderThumbThicknessProperty">
-      <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.SliderThumbThickness" />.
-      </summary>
-      <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.SliderThumbThickness" />.
-      </value>
-    </member>
-    <member name="M:Elysium.Parameters.GetSliderThumbThickness(System.Windows.Controls.Slider)">
-      <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.SliderThumbThickness" /> для указанного элемента управления.
-      </summary>
-      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Ширина ползунка.</returns>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-      <ensures>Возвращаемое значение является положительным числом.</ensures>
-    </member>
-    <member name="M:Elysium.Parameters.SetSliderThumbThickness(System.Windows.Controls.Slider,System.Double)">
-      <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.SliderThumbThickness" /> для указанного элемента управления.
-      </summary>
-      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">Ширина ползунка.</param>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </member>
-    <member name="P:Elysium.Parameters.ProgressBarBusyElementSize">
+    <member name="P:Elysium.Parameters.ProgressBars.BusyElementSize">
       <summary>
         Возвращает или задаёт размер элемента индикации состояния занятости (по умолчанию — кружка) для наследников класса <see cref="T:Elysium.Controls.Primitives.ProgressBarBase" />.
       </summary>
@@ -2592,7 +2930,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.ProgressBarBusyElementSizeProperty" />
+              <see cref="F:Elysium.Parameters.ProgressBars.BusyElementSizeProperty" />
             </description>
           </item>
           <item>
@@ -2606,25 +2944,25 @@
       <example>
         <code lang="C#">
           var control = new LinearProgressBar();
-          var currentValue = Parameters.GetProgressBarBusyElementSize(control);
-          Parameters.SetProgressBarBusyElementSize(control, 4d);
+          var currentValue = Parameters.ProgressBars.GetBusyElementSize(control);
+          Parameters.ProgressBars.SetBusyElementSize(control, 4d);
         </code>
         <code lang="XAML">
-          &lt;LinearProgressBar metro:Parameters.ProgressBarBusyElementSize="4px"/&gt;
+          &lt;LinearProgressBar params:ProgressBars.BusyElementSize="4px"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.ProgressBarBusyElementSizeProperty">
+    <member name="F:Elysium.Parameters.ProgressBars.BusyElementSizeProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.ProgressBarBusyElementSize" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.ProgressBars.BusyElementSize" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.ProgressBarBusyElementSize" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.ProgressBars.BusyElementSize" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetProgressBarBusyElementSize(Elysium.Controls.Primitives.ProgressBarBase)">
+    <member name="M:Elysium.Parameters.ProgressBars.GetBusyElementSize(Elysium.Controls.Primitives.ProgressBarBase)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ProgressBarBusyElementSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ProgressBars.BusyElementSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер элемента индикации состояния занятости.</returns>
@@ -2634,9 +2972,9 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetProgressBarBusyElementSize(Elysium.Controls.Primitives.ProgressBarBase,System.Double)">
+    <member name="M:Elysium.Parameters.ProgressBars.SetBusyElementSize(Elysium.Controls.Primitives.ProgressBarBase,System.Double)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.ProgressBarBusyElementSize" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.ProgressBars.BusyElementSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Размер элемента индикации состояния занятости.</param>
@@ -2645,7 +2983,12 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.ScrollBarArrowSize">
+    <member name="T:Elysium.Parameters.ScrollBar">
+      <summary>
+        Представляет класс, управляющий настройками стиля элемента управления <see cref="T:System.Windows.Controls.Primitives.ScrollBar" />.
+      </summary>
+    </member>
+    <member name="P:Elysium.Parameters.ScrollBar.ArrowSize">
       <summary>
         Возвращает или задаёт размер указателя (стрелки) в элементе управления <see cref="T:System.Windows.Controls.Primitives.ScrollBar" />.
       </summary>
@@ -2657,7 +3000,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.ScrollBarArrowSizeProperty" />
+              <see cref="F:Elysium.Parameters.ScrollBar.ArrowSizeProperty" />
             </description>
           </item>
           <item>
@@ -2671,25 +3014,25 @@
       <example>
         <code lang="C#">
           var control = new ScrollBar();
-          var currentValue = Parameters.GetScrollBarArrowSize(control);
-          Parameters.SetScrollBarArrowSize(control, 6d);
+          var currentValue = Parameters.ScrollBar.GetArrowSize(control);
+          Parameters.ScrollBar.SetArrowSize(control, 6d);
         </code>
         <code lang="XAML">
-          &lt;ScrollBar metro:Parameters.ScrollBarArrowSize="6px"/&gt;
+          &lt;ScrollBar params:ScrollBar.ArrowSize="6px"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.ScrollBarArrowSizeProperty">
+    <member name="F:Elysium.Parameters.ScrollBar.ArrowSizeProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.ScrollBarArrowSize" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.ScrollBar.ArrowSize" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.ScrollBarArrowSize" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.ScrollBar.ArrowSize" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetScrollBarArrowSize(System.Windows.Controls.Primitives.ScrollBar)">
+    <member name="M:Elysium.Parameters.ScrollBar.GetArrowSize(System.Windows.Controls.Primitives.ScrollBar)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ScrollBarArrowSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ScrollBar.ArrowSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер указателя.</returns>
@@ -2699,9 +3042,9 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetScrollBarArrowSize(System.Windows.Controls.Primitives.ScrollBar,System.Double)">
+    <member name="M:Elysium.Parameters.ScrollBar.SetArrowSize(System.Windows.Controls.Primitives.ScrollBar,System.Double)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.ScrollBarArrowSize" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.ScrollBar.ArrowSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Размер указателя.</param>
@@ -2710,7 +3053,143 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.TabControlIndicatorBrush">
+    <member name="T:Elysium.Parameters.Slider">
+      <summary>
+        Представляет класс, управляющий настройками стиля элемента управления <see cref="T:System.Windows.Controls.Slider" />.
+      </summary>
+    </member>
+    <member name="P:Elysium.Parameters.Slider.TrackSize">
+      <summary>
+        Возвращает или задаёт длину трека в элементе управления <see cref="T:System.Windows.Controls.Slider" />.
+      </summary>
+      <value>Длина трека. Значение по умолчанию — 48px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Slider.TrackSizeProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Slider();
+          var currentValue = Parameters.Slider.GetTrackSize(control);
+          Parameters.Slider.SetTrackSize(control, 48d);
+        </code>
+        <code lang="XAML">
+          &lt;Slider params:Slider.TrackSize="48px"/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Parameters.Slider.TrackSizeProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Slider.TrackSize" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Slider.TrackSize" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Parameters.Slider.GetTrackSize(System.Windows.Controls.Slider)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Slider.TrackSize" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Длина трека.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>Возвращаемое значение является положительным числом.</ensures>
+    </member>
+    <member name="M:Elysium.Parameters.Slider.SetTrackSize(System.Windows.Controls.Slider,System.Double)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Slider.TrackSize" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Длина трека.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="P:Elysium.Parameters.Slider.ThumbThickness">
+      <summary>
+        Возвращает или задаёт ширину ползунка в элементе управления <see cref="T:System.Windows.Controls.Slider" />.
+      </summary>
+      <value>Ширина ползунка. Значение по умолчанию — 6px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Slider.ThumbThicknessProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Slider();
+          var currentValue = Parameters.Slider.GetThumbThickness(control);
+          Parameters.Slider.SetThumbThickness(control, 6d);
+        </code>
+        <code lang="XAML">
+          &lt;Slider params:Slider.ThumbThickness="6px"/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Parameters.Slider.ThumbThicknessProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Slider.ThumbThickness" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Slider.ThumbThickness" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Parameters.Slider.GetThumbThickness(System.Windows.Controls.Slider)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Slider.ThumbThickness" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Ширина ползунка.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>Возвращаемое значение является положительным числом.</ensures>
+    </member>
+    <member name="M:Elysium.Parameters.Slider.SetThumbThickness(System.Windows.Controls.Slider,System.Double)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Slider.ThumbThickness" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Ширина ползунка.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="T:Elysium.Parameters.TabControl">
+      <summary>
+        Представляет класс, управляющий настройками стиля элемента управления <see cref="T:System.Windows.Controls.TabControl" />.
+      </summary>
+    </member>
+    <member name="P:Elysium.Parameters.TabControl.IndicatorBrush">
       <summary>
         Возвращает или задаёт кисть, используемую для заливки индикатора текущей вкладки элемента управления <see cref="T:System.Windows.Controls.TabControl" />.
       </summary>
@@ -2720,7 +3199,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.TabControlIndicatorBrushProperty" />
+              <see cref="F:Elysium.Parameters.TabControl.IndicatorBrushProperty" />
             </description>
           </item>
           <item>
@@ -2736,25 +3215,25 @@
       <example>
         <code lang="C#">
           var control = new TabControl();
-          var currentValue = Parameters.GetTabControlIndicatorBrush(control);
-          Parameters.SetTabControlIndicatorBrush(control, Brushes.LightGray);
+          var currentValue = Parameters.TabControl.GetIndicatorBrush(control);
+          Parameters.TabControl.SetIndicatorBrush(control, Brushes.LightGray);
         </code>
         <code lang="XAML">
-          &lt;CommandButton metro:Parameters.TabControlIndicatorBrush="LightGray"/&gt;
+          &lt;CommandButton params:TabControl.IndicatorBrush="LightGray"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.TabControlIndicatorBrushProperty">
+    <member name="F:Elysium.Parameters.TabControl.IndicatorBrushProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.TabControlIndicatorBrush" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.TabControl.IndicatorBrush" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.TabControlIndicatorBrush" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.TabControl.IndicatorBrush" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetTabControlIndicatorBrush(System.Windows.DependencyObject)">
+    <member name="M:Elysium.Parameters.TabControl.GetIndicatorBrush(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.TabControlIndicatorBrush" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.TabControl.IndicatorBrush" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Кисть, используемая для заливки индикатора текущей вкладки.</returns>
@@ -2767,9 +3246,9 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <requires exception="T:System.ArgumentException">(obj is TabControl) || (obj is TabItem)</requires>
     </member>
-    <member name="M:Elysium.Parameters.SetTabControlIndicatorBrush(System.Windows.DependencyObject,System.Windows.Media.SolidColorBrush)">
+    <member name="M:Elysium.Parameters.TabControl.SetIndicatorBrush(System.Windows.DependencyObject,System.Windows.Media.SolidColorBrush)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.TabControlIndicatorBrush" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.TabControl.IndicatorBrush" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Кисть, используемая для заливки индикатора текущей вкладки.</param>
@@ -2782,7 +3261,7 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <requires exception="T:System.ArgumentException">(obj is TabControl) || (obj is TabItem)</requires>
     </member>
-    <member name="P:Elysium.Parameters.TabControlIndicatorThickness">
+    <member name="P:Elysium.Parameters.TabControl.IndicatorThickness">
       <summary>
         Возвращает или задаёт толщину индикатора текущей вкладки в элементе управления <see cref="T:System.Windows.Controls.TabControl" />.
       </summary>
@@ -2792,7 +3271,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.TabControlIndicatorThicknessProperty" />
+              <see cref="F:Elysium.Parameters.TabControl.IndicatorThicknessProperty" />
             </description>
           </item>
           <item>
@@ -2806,25 +3285,25 @@
       <example>
         <code lang="C#">
           var control = new TabControl();
-          var currentValue = Parameters.GetTabControlIndicatorThickness(control);
-          Parameters.SetTabControlIndicatorThickness(control, 2d);
+          var currentValue = Parameters.TabControl.GetIndicatorThickness(control);
+          Parameters.TabControl.SetIndicatorThickness(control, 2d);
         </code>
         <code lang="XAML">
-          &lt;Slider metro:Parameters.TabControlIndicatorThickness="2px"/&gt;
+          &lt;Slider params:TabControl.IndicatorThickness="2px"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.TabControlIndicatorThicknessProperty">
+    <member name="F:Elysium.Parameters.TabControl.IndicatorThicknessProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.TabControlIndicatorThickness" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.TabControl.IndicatorThickness" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.TabControlIndicatorThickness" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.TabControl.IndicatorThickness" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetTabControlIndicatorThickness(System.Windows.Controls.TabControl)">
+    <member name="M:Elysium.Parameters.TabControl.GetIndicatorThickness(System.Windows.Controls.TabControl)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.TabControlIndicatorThickness" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.TabControl.IndicatorThickness" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Толщина индикатора текущей вкладки.</returns>
@@ -2834,9 +3313,9 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetTabControlIndicatorThickness(System.Windows.Controls.TabControl,System.Double)">
+    <member name="M:Elysium.Parameters.TabControl.SetIndicatorThickness(System.Windows.Controls.TabControl,System.Double)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.TabControlIndicatorThickness" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.TabControl.IndicatorThickness" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Толщина индикатора текущей вкладки.</param>
@@ -2845,7 +3324,12 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.TabItemHeaderStyle">
+    <member name="T:Elysium.Parameters.TabItem">
+      <summary>
+        Представляет класс, управляющий настройками стиля элемента управления <see cref="T:System.Windows.Controls.TabItem" />.
+      </summary>
+    </member>
+    <member name="P:Elysium.Parameters.TabItem.HeaderStyle">
       <summary>
         Возвращает или задаёт стиль заголовка вкладки в элементе управления <see cref="T:System.Windows.Controls.TabItem" />.
       </summary>
@@ -2855,7 +3339,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.TabItemHeaderStyleProperty" />
+              <see cref="F:Elysium.Parameters.TabItem.HeaderStyleProperty" />
             </description>
           </item>
           <item>
@@ -2868,17 +3352,17 @@
         Это свойство обычно устанавливается локально в стиле элемента управления.
       </remarks>
     </member>
-    <member name="F:Elysium.Parameters.TabItemHeaderStyleProperty">
+    <member name="F:Elysium.Parameters.TabItem.HeaderStyleProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.TabItemHeaderStyle" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.TabItem.HeaderStyle" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.TabItemHeaderStyle" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.TabItem.HeaderStyle" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetTabItemHeaderStyle(System.Windows.Controls.TabItem)">
+    <member name="M:Elysium.Parameters.TabItem.GetHeaderStyle(System.Windows.Controls.TabItem)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.TabItemHeaderStyle" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.TabItem.HeaderStyle" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Стиль заголовка вкладки.</returns>
@@ -2887,9 +3371,9 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="M:Elysium.Parameters.SetTabItemHeaderStyle(System.Windows.Controls.TabItem,System.Windows.Style)">
+    <member name="M:Elysium.Parameters.TabItem.SetHeaderStyle(System.Windows.Controls.TabItem,System.Windows.Style)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.TabItemHeaderStyle" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.TabItem.HeaderStyle" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Стиль заголовка вкладки.</param>
@@ -2898,83 +3382,22 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.SubmenuItemBulletSize">
+    <member name="T:Elysium.Parameters.ToggleSwitch">
       <summary>
-        Возвращает или задаёт размер маркера у класса <see cref="T:System.Windows.Controls.MenuItem" />.
+        Представляет класс, управляющий настройками стиля элемента управления <see cref="T:Elysium.Controls.ToggleSwitch" />.
       </summary>
-      <value>Размер маркера. Значение по умолчанию — 12px.</value>
+    </member>
+    <member name="P:Elysium.Parameters.ToggleSwitch.TrackSize">
+      <summary>
+        Возвращает или задаёт ширину переключателя в элементе управления <see cref="T:Elysium.Controls.ToggleSwitch" />.
+      </summary>
+      <value>Ширина переключателя. Значение по умолчанию — 48px.</value>
       <remarks>
         <list type="table">
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.SubmenuItemBulletSizeProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Метаданные</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
-            </description>
-          </item>
-        </list>
-        Это свойство имеет действие на элемент управления MenuItem, вложенный в выпадающее меню любого типа (будь то ContextMenu или Submenu) и не являющийся родительским элементом другого выпадающего меню.
-      </remarks>
-      <example>
-        <code lang="C#">
-          var control = new MenuItem();
-          var currentValue = Parameters.GetSubmenuItemBulletSize(control);
-          Parameters.SetSubmenuItemBulletSize(control, 12d);
-        </code>
-        <code lang="XAML">
-          &lt;MenuItem metro:Parameters.SubmenuItemBulletSize="12px"/&gt;
-        </code>
-      </example>
-    </member>
-    <member name="F:Elysium.Parameters.SubmenuItemBulletSizeProperty">
-      <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.SubmenuItemBulletSize" />.
-      </summary>
-      <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.SubmenuItemBulletSize" />.
-      </value>
-    </member>
-    <member name="M:Elysium.Parameters.GetSubmenuItemBulletSize(System.Windows.Controls.MenuItem)">
-      <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.SubmenuItemBulletSize" /> для указанного элемента управления.
-      </summary>
-      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Размер маркера.</returns>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-      <ensures>Возвращаемое значение является положительным числом.</ensures>
-    </member>
-    <member name="M:Elysium.Parameters.SetSubmenuItemBulletSize(System.Windows.Controls.MenuItem,System.Double)">
-      <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.SubmenuItemBulletSize" /> для указанного элемента управления.
-      </summary>
-      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">Размер маркера.</param>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </member>
-    <member name="P:Elysium.Parameters.SubmenuHeaderArrowSize">
-      <summary>
-        Возвращает или задаёт размер указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.MenuItem" />.
-      </summary>
-      <value>
-        Размер указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.MenuItem" />. Значение по умолчанию — 8px.
-      </value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Идентификатор</term>
-            <description>
-              <see cref="F:Elysium.Parameters.SubmenuHeaderArrowSizeProperty" />
+              <see cref="F:Elysium.Parameters.ToggleSwitch.TrackSizeProperty" />
             </description>
           </item>
           <item>
@@ -2987,63 +3410,57 @@
       </remarks>
       <example>
         <code lang="C#">
-          var control = new MenuItem();
-          var currentValue = Parameters.GetSubmenuHeaderArrowSize(control);
-          Parameters.SetSubmenuHeaderArrowSize(control, 8d);
+          var control = new ToggleSwitch();
+          var currentValue = Parameters.ToggleSwitch.GetTrackSize(control);
+          Parameters.ToggleSwitch.SetTrackSize(control, 48d);
         </code>
         <code lang="XAML">
-          &lt;MenuItem metro:Parameters.SubmenuHeaderArrowSize="8px"/&gt;
+          &lt;ToggleSwitch params:ToggleSwitch.TrackSize="48px"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.SubmenuHeaderArrowSizeProperty">
+    <member name="F:Elysium.Parameters.ToggleSwitch.TrackSizeProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.SubmenuHeaderArrowSize" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.ToggleSwitch.TrackSize" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.SubmenuHeaderArrowSize" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.ToggleSwitch.TrackSize" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetSubmenuHeaderArrowSize(System.Windows.Controls.MenuItem)">
+    <member name="M:Elysium.Parameters.ToggleSwitch.GetTrackSize(Elysium.Controls.ToggleSwitch)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.SubmenuHeaderArrowSize" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ToggleSwitch.TrackSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>
-        Размер указателя на возможность открытия в элементе управления <see cref="T:System.Windows.Controls.MenuItem" />.
-      </returns>
+      <returns>Ширина переключателя.</returns>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetSubmenuHeaderArrowSize(System.Windows.Controls.MenuItem,System.Double)">
+    <member name="M:Elysium.Parameters.ToggleSwitch.SetTrackSize(Elysium.Controls.ToggleSwitch,System.Double)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.SubmenuHeaderArrowSize" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.ToggleSwitch.TrackSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">
-        Размер указателя на возможность открытия в элементе управления <see cref="T:System.Windows.Controls.MenuItem" />.
-      </param>
+      <param name="value">Ширина переключателя.</param>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.SubmenuHeaderArrowMargin">
+    <member name="P:Elysium.Parameters.ToggleSwitch.ThumbThickness">
       <summary>
-        Возвращает или задаёт отступ указателя на возможность открытия (стрелки) от краёв элемента управления <see cref="T:System.Windows.Controls.MenuItem" />.
+        Возвращает или задаёт толщину переключателя в элементе управления <see cref="T:Elysium.Controls.ToggleSwitch" />.
       </summary>
-      <value>
-        Отступ указателя на возможность открытия (стрелки) от краёв элемента управления <see cref="T:System.Windows.Controls.MenuItem" />. Значение по умолчанию — (3, 0, 3, 0).
-      </value>
+      <value>Толщина переключателя. Значение по умолчанию — 10px.</value>
       <remarks>
         <list type="table">
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.SubmenuHeaderArrowMarginProperty" />
+              <see cref="F:Elysium.Parameters.ToggleSwitch.ThumbThicknessProperty" />
             </description>
           </item>
           <item>
@@ -3053,56 +3470,55 @@
             </description>
           </item>
         </list>
-        В стиле по умолчанию используется значение только правого отступа, остальные значения игнорируются.
-        Тем не менее, при переопределении стиля вы можете использовать и значения других отступов.
       </remarks>
       <example>
         <code lang="C#">
-          var control = new MenuItem();
-          var currentValue = Parameters.GetSubmenuHeaderArrowMargin(control);
-          Parameters.SetSubmenuHeaderArrowMargin(control, new Thickness(3d, 0d, 3d, 0d));
+          var control = new ToggleSwitch();
+          var currentValue = Parameters.ToggleSwitch.GetThumbThickness(control);
+          Parameters.ToggleSwitch.SetThumbThickness(control, 10d);
         </code>
         <code lang="XAML">
-          &lt;MenuItem metro:Parameters.SubmenuHeaderArrowMargin="3,0,3,0"/&gt;
+          &lt;ToggleSwitch params:ToggleSwitch.ThumbThickness="10px"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.SubmenuHeaderArrowMarginProperty">
+    <member name="F:Elysium.Parameters.ToggleSwitch.ThumbThicknessProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.SubmenuHeaderArrowMargin" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.ToggleSwitch.ThumbThickness" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.SubmenuHeaderArrowMargin" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.ToggleSwitch.ThumbThickness" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetSubmenuHeaderArrowMargin(System.Windows.Controls.MenuItem)">
+    <member name="M:Elysium.Parameters.ToggleSwitch.GetThumbThickness(Elysium.Controls.ToggleSwitch)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.SubmenuHeaderArrowMargin" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ToggleSwitch.ThumbThickness" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>
-        Отступ указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.MenuItem" />.
-      </returns>
+      <returns>Толщина переключателя.</returns>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetSubmenuHeaderArrowMargin(System.Windows.Controls.MenuItem,System.Windows.Thickness)">
+    <member name="M:Elysium.Parameters.ToggleSwitch.SetThumbThickness(Elysium.Controls.ToggleSwitch,System.Double)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.SubmenuHeaderArrowMargin" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.ToggleSwitch.ThumbThickness" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">
-        Отступ указателя на возможность открытия (стрелки) в элементе управления <see cref="T:System.Windows.Controls.MenuItem" />.
-      </param>
+      <param name="value">Толщина переключателя.</param>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Parameters.WindowResizeBorderThickness">
+    <member name="T:Elysium.Parameters.Window">
+      <summary>
+        Представляет класс, управляющий основными настройками стилей элементов управления.
+      </summary>
+    </member>
+    <member name="P:Elysium.Parameters.Window.ResizeBorderThickness">
       <summary>
         Возвращает или задаёт толщину рамки изменения размера элемента управления <see cref="T:Elysium.Controls.Window" />.
       </summary>
@@ -3114,7 +3530,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.WindowResizeBorderThicknessProperty" />
+              <see cref="F:Elysium.Parameters.Window.ResizeBorderThicknessProperty" />
             </description>
           </item>
           <item>
@@ -3128,25 +3544,25 @@
       <example>
         <code lang="C#">
           var control = new Elysium.Controls.Window();
-          var currentValue = Parameters.GetWindowResizeBorderThickness(control);
-          Parameters.SetWindowResizeBorderThickness(control, new Thickness(3d));
+          var currentValue = Parameters.Window.GetResizeBorderThickness(control);
+          Parameters.Window.SetResizeBorderThickness(control, new Thickness(3d));
         </code>
         <code lang="XAML">
-          &lt;metro:Window metro:Parameters.WindowResizeBorderThickness="3"/&gt;
+          &lt;metro:Window params:Window.ResizeBorderThickness="3"/&gt;
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Parameters.WindowResizeBorderThicknessProperty">
+    <member name="F:Elysium.Parameters.Window.ResizeBorderThicknessProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.WindowResizeBorderThickness" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Window.ResizeBorderThickness" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.WindowResizeBorderThickness" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Window.ResizeBorderThickness" />.
       </value>
     </member>
-    <member name="M:Elysium.Parameters.GetWindowResizeBorderThickness(Elysium.Controls.Window)">
+    <member name="M:Elysium.Parameters.Window.GetResizeBorderThickness(Elysium.Controls.Window)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.WindowResizeBorderThickness" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Window.ResizeBorderThickness" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Толщина рамки изменения размера окна.</returns>
@@ -3156,9 +3572,9 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение всегда является положительным.</ensures>
     </member>
-    <member name="M:Elysium.Parameters.SetWindowResizeBorderThickness(Elysium.Controls.Window,System.Windows.Thickness)">
+    <member name="M:Elysium.Parameters.Window.SetResizeBorderThickness(Elysium.Controls.Window,System.Windows.Thickness)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.WindowResizeBorderThickness" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Window.ResizeBorderThickness" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Толщина рамки изменения размера окна.</param>
@@ -3192,6 +3608,13 @@
       <typeparam name="T">Тип родителя.</typeparam>
       <param name="reference">Элемент, для которого осуществляется поиск родителя.</param>
       <returns>Родитель или null, если среди предков нет объектов указанного типа.</returns>
+    </member>
+    <member name="M:Elysium.Extensions.VisualTreeHelperExtensions.FindTopLevelParent(System.Windows.DependencyObject)">
+      <summary>
+        Осуществляет поиск корневого элемента визуального дерева WPF для указанного объекта.
+      </summary>
+      <param name="reference">Элемент, для которого осуществляется поиск корневого элемента визуального дерева WPF.</param>
+      <returns>Корневой элемент визуального дерева WPF или null, если указанный объект является корневым элементом.</returns>
     </member>
     <member name="T:Elysium.Converters.AngleToCoordinateConverter">
       <summary>
@@ -3492,6 +3915,26 @@
       <returns>
         Значение типа <see cref="T:System.Windows.Thickness" />. Все стороны рамки, указанные в <paramref name="parameter" /> имеют значение <paramref name="value" />;
         остальные стороны имеют значение 0. В случае, если <paramref name="parameter" /> равен null, то все края рамки имеют значение <paramref name="value" />.
+        В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
+      </returns>
+    </member>
+    <member name="T:Elysium.Converters.ThicknessConverter">
+      <summary>
+        Обнуляет значения указанных краёв рамки.
+      </summary>
+    </member>
+    <member name="M:Elysium.Converters.ThicknessConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+      <summary>
+        Обнуляет значения указанных краёв рамки.
+      </summary>
+      <param name="value">
+        Исходное значение типа <see cref="T:System.Windows.Thickness" />.
+      </param>
+      <param name="targetType">Целевой тип. Значение игнорируется.</param>
+      <param name="parameter">Параметр конвертера. Должен быть строкой и принимать одно из следующих значений: "Left", "Top", "Right", "Bottom". Это значение соответствует краям рамки, которые должны быть сохранены.</param>
+      <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
+      <returns>
+        Значение типа <see cref="T:System.Windows.Thickness" />, идентичное значению <paramref name="value" />, за исключением обнулённых краёв.
         В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
       </returns>
     </member>
@@ -6309,7 +6752,7 @@
           <item>
             <term>Метаданные</term>
             <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
             </description>
           </item>
         </list>
@@ -6354,6 +6797,68 @@
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Панель управления приложением.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="P:Elysium.Controls.Window.IsApplicationBarHost">
+      <summary>
+        Возвращает или задаёт значение, указывающее, является ли указанный элемент управления объектом, на котором будет размещаться панель управления приложением.
+      </summary>
+      <value>Указывает, является ли указанный элемент управления объектом, на котором будет размещаться панель управления приложением. Значение по умолчанию — False.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Window.IsApplicationBarHostProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Decorator();
+          var currentValue = Window.GetIsApplicationBarHost(control);
+          Window.SetIsApplicationBarHost(control, true);
+        </code>
+        <code lang="XAML">
+          &lt;Decorator metro:Window.IsApplicationBarHost="True"/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Controls.Window.IsApplicationBarHostProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Window.IsApplicationBarHost" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Window.IsApplicationBarHost" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.Window.GetIsApplicationBarHost(System.Windows.Controls.Decorator)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Controls.Window.IsApplicationBarHost" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Указывает, является ли указанный элемент управления объектом, на котором будет размещаться панель управления приложением.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="M:Elysium.Controls.Window.SetIsApplicationBarHost(System.Windows.Controls.Decorator,System.Boolean)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Controls.Window.IsApplicationBarHost" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Указывает, является ли указанный элемент управления объектом, на котором будет размещаться панель управления приложением.</param>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>

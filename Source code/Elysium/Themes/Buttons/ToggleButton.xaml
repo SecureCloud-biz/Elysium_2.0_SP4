@@ -9,9 +9,9 @@
         <Setter Property="OverridesDefaultStyle" Value="True"/>        
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="{DynamicResource MiddleLightBrush}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource LowlightBrush}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource BackgroundBrush}"/>
             </Trigger>
         </Style.Triggers>        
     </Style>
