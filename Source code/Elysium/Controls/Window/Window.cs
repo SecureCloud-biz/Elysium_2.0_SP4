@@ -23,7 +23,7 @@ namespace Elysium.Controls
     [TemplatePart(Name = LayoutRootName, Type = typeof(Panel))]
     [TemplatePart(Name = CaptionName, Type = typeof(FrameworkElement))]
     [TemplatePart(Name = TitleName, Type = typeof(FrameworkElement))]
-    [TemplatePart(Name = ProgressBarName, Type = typeof(LinearProgressBar))]
+    [TemplatePart(Name = ProgressBarName, Type = typeof(ProgressBar))]
     [TemplatePart(Name = MinimizeName, Type = typeof(FrameworkElement))]
     [TemplatePart(Name = MaximizeName, Type = typeof(FrameworkElement))]
     [TemplatePart(Name = RestoreName, Type = typeof(FrameworkElement))]

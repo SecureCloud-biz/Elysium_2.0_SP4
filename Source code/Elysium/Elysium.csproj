@@ -273,11 +273,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Themes\Ranges\CircularProgressBar.xaml">
+    <Page Include="Themes\Ranges\ProgressRing.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Themes\Ranges\LinearProgressBar.xaml">
+    <Page Include="Themes\Ranges\ProgressBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -361,6 +361,7 @@
     <Compile Include="Converters\ThicknessConverter.cs" />
     <Compile Include="Converters\IsGreaterThanConverter.cs" />
     <Compile Include="Design\ThemeManager.cs" />
+    <Compile Include="Extensions\Tree helpers\ThemeManagerExtensions.cs" />
     <Compile Include="Extensions\Validation helpers\ContractExtensions.cs" />
     <Compile Include="Extensions\Validation helpers\DoubleUtil.cs" />
     <Compile Include="Extensions\Validation helpers\ThicknessUtil.cs" />
@@ -380,11 +381,11 @@
     <Compile Include="Controls\CommandButtons\ToggleCommandButton.cs" />
     <Compile Include="Controls\Menus\Automation\SubmenuAutomationPeer.cs" />
     <Compile Include="Controls\Menus\Submenu.cs" />
-    <Compile Include="Controls\ProgressBars\Automation\ProgressBarAutomationPeer.cs" />
-    <Compile Include="Controls\ProgressBars\CircularProgressBar.cs" />
-    <Compile Include="Controls\ProgressBars\LinearProgressBar.cs" />
-    <Compile Include="Controls\ProgressBars\Primitives\ProgressBarBase.cs" />
-    <Compile Include="Controls\ProgressBars\ProgressBarState.cs" />
+    <Compile Include="Controls\Progress\Automation\ProgressAutomationPeer.cs" />
+    <Compile Include="Controls\Progress\ProgressRing.cs" />
+    <Compile Include="Controls\Progress\ProgressBar.cs" />
+    <Compile Include="Controls\Progress\Primitives\ProgressBase.cs" />
+    <Compile Include="Controls\Progress\ProgressState.cs" />
     <Compile Include="Controls\ToggleSwitch\Automation\ToggleSwitchAutomationPeer.cs" />
     <Compile Include="Controls\ToggleSwitch\ToggleSwitch.cs" />
     <Compile Include="Controls\Window\Window.cs" />
@@ -408,7 +409,7 @@
     <Compile Include="Parameters\DropDown.cs" />
     <Compile Include="Parameters\General.cs" />
     <Compile Include="Parameters\MenuBase.cs" />
-    <Compile Include="Parameters\ProgressBars.cs" />
+    <Compile Include="Parameters\Progress.cs" />
     <Compile Include="Parameters\ScrollBar.cs" />
     <Compile Include="Parameters\Slider.cs" />
     <Compile Include="Parameters\MenuItem.cs" />
@@ -471,8 +472,8 @@
     <None Include="Parameters\MenuItem.ru.xml">
       <DependentUpon>MenuItem.cs</DependentUpon>
     </None>
-    <None Include="Parameters\ProgressBars.ru.xml">
-      <DependentUpon>ProgressBars.cs</DependentUpon>
+    <None Include="Parameters\Progress.ru.xml">
+      <DependentUpon>Progress.cs</DependentUpon>
     </None>
     <None Include="Parameters\ScrollBar.ru.xml">
       <DependentUpon>ScrollBar.cs</DependentUpon>
@@ -491,6 +492,9 @@
     </None>
     <None Include="Parameters\Window.ru.xml">
       <DependentUpon>Window.cs</DependentUpon>
+    </None>
+    <None Include="Extensions\Tree helpers\ThemeManagerExtensions.ru.xml">
+      <DependentUpon>ThemeManagerExtensions.cs</DependentUpon>
     </None>
     <None Include="Extensions\Tree helpers\LogicalTreeHelperExtensions.ru.xml">
       <DependentUpon>LogicalTreeHelperExtensions.cs</DependentUpon>
@@ -537,8 +541,8 @@
     <None Include="Controls\CommandButtons\DropDownDirection.ru.xml">
       <DependentUpon>DropDownDirection.cs</DependentUpon>
     </None>
-    <None Include="Controls\ProgressBars\ProgressBarState.ru.xml">
-      <DependentUpon>ProgressBarState.cs</DependentUpon>
+    <None Include="Controls\Progress\ProgressState.ru.xml">
+      <DependentUpon>ProgressState.cs</DependentUpon>
     </None>
     <None Include="Controls\ApplicationBar\Automation\ApplicationBarAutomationPeer.ru.xml">
       <DependentUpon>ApplicationBarAutomationPeer.cs</DependentUpon>
@@ -558,8 +562,8 @@
     <None Include="Controls\ToggleSwitch\Automation\ToggleSwitchAutomationPeer.ru.xml">
       <DependentUpon>ToggleSwitchAutomationPeer.cs</DependentUpon>
     </None>
-    <None Include="Controls\ProgressBars\Automation\ProgressBarAutomationPeer.ru.xml">
-      <DependentUpon>ProgressBarAutomationPeer.cs</DependentUpon>
+    <None Include="Controls\Progress\Automation\ProgressAutomationPeer.ru.xml">
+      <DependentUpon>ProgressAutomationPeer.cs</DependentUpon>
     </None>
     <None Include="Controls\Menus\Automation\SubmenuAutomationPeer.ru.xml">
       <DependentUpon>SubmenuAutomationPeer.cs</DependentUpon>
@@ -585,14 +589,14 @@
     <None Include="Controls\Menus\Submenu.ru.xml">
       <DependentUpon>Submenu.cs</DependentUpon>
     </None>
-    <None Include="Controls\ProgressBars\Primitives\ProgressBarBase.ru.xml">
-      <DependentUpon>ProgressBarBase.cs</DependentUpon>
+    <None Include="Controls\Progress\Primitives\ProgressBase.ru.xml">
+      <DependentUpon>ProgressBase.cs</DependentUpon>
     </None>
-    <None Include="Controls\ProgressBars\LinearProgressBar.ru.xml">
-      <DependentUpon>LinearProgressBar.cs</DependentUpon>
+    <None Include="Controls\Progress\ProgressBar.ru.xml">
+      <DependentUpon>ProgressBar.cs</DependentUpon>
     </None>
-    <None Include="Controls\ProgressBars\CircularProgressBar.ru.xml">
-      <DependentUpon>CircularProgressBar.cs</DependentUpon>
+    <None Include="Controls\Progress\ProgressRing.ru.xml">
+      <DependentUpon>ProgressRing.cs</DependentUpon>
     </None>
     <None Include="Controls\ToggleSwitch\ToggleSwitch.ru.xml">
       <DependentUpon>ToggleSwitch.cs</DependentUpon>
@@ -610,6 +614,8 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

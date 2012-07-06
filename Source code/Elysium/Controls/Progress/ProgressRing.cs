@@ -20,7 +20,7 @@ namespace Elysium.Controls
     [PublicAPI]
     [TemplatePart(Name = ArcName, Type = typeof(Arc))]
     [TemplatePart(Name = BusyBarName, Type = typeof(Canvas))]
-    public class CircularProgressBar : ProgressBarBase
+    public class ProgressRing : ProgressBase
     {
         private const string ArcName = "PART_Arc";
         private const string BusyBarName = "PART_BusyBar";
@@ -29,14 +29,14 @@ namespace Elysium.Controls
         private Canvas _busyBar;
 
         [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
-        static CircularProgressBar()
+        static ProgressRing()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(CircularProgressBar), new FrameworkPropertyMetadata(typeof(CircularProgressBar)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(ProgressRing), new FrameworkPropertyMetadata(typeof(ProgressRing)));
         }
 
         [PublicAPI]
         public static readonly DependencyProperty AngleProperty =
-            DependencyProperty.RegisterAttached("Angle", typeof(double), typeof(CircularProgressBar),
+            DependencyProperty.RegisterAttached("Angle", typeof(double), typeof(ProgressRing),
                                                 new FrameworkPropertyMetadata(-1d, FrameworkPropertyMetadataOptions.AffectsArrange));
 
         [PublicAPI]
@@ -116,11 +116,11 @@ namespace Elysium.Controls
         [SecurityCritical]
         private void UpdateIndeterminateAnimation()
         {
-            if (IndeterminateAnimation != null && IndeterminateAnimation.Name == DefaultIndeterminateAnimationName && Track != null && _arc != null)
+            if ((IndeterminateAnimation == null || (IndeterminateAnimation != null && IndeterminateAnimation.Name == DefaultIndeterminateAnimationName)) && Track != null && _arc != null)
             {
-                var isStarted = State == ProgressBarState.Indeterminate && IsEnabled;
-                if (isStarted)
+                if (IndeterminateAnimation != null && IsIndeterminateAnimationRunning)
                 {
+                    IsIndeterminateAnimationRunning = false;
                     IndeterminateAnimation.Stop(this);
                     IndeterminateAnimation.Remove(this);
                 }
@@ -171,9 +171,10 @@ namespace Elysium.Controls
                     IndeterminateAnimation.Freeze();
                 }
 
-                if (isStarted)
+                if (State == ProgressState.Indeterminate && IsEnabled)
                 {
                     IndeterminateAnimation.Begin(this, Template, true);
+                    IsIndeterminateAnimationRunning = true;
                 }
             }
         }
@@ -181,11 +182,11 @@ namespace Elysium.Controls
         [SecurityCritical]
         private void UpdateBusyAnimation()
         {
-            if (BusyAnimation != null && BusyAnimation.Name == DefaultBusyAnimationName && Track != null && _busyBar != null)
+            if ((BusyAnimation == null || (BusyAnimation != null && BusyAnimation.Name == DefaultBusyAnimationName)) && Track != null && _busyBar != null)
             {
-                var isStarted = State == ProgressBarState.Busy && IsEnabled;
-                if (isStarted)
+                if (BusyAnimation != null && IsBusyAnimationRunning)
                 {
+                    IsBusyAnimationRunning = false;
                     BusyAnimation.Stop(this);
                     BusyAnimation.Remove(this);
                 }
@@ -286,9 +287,10 @@ namespace Elysium.Controls
                     BusyAnimation.Freeze();
                 }
 
-                if (isStarted)
+                if (State == ProgressState.Busy && IsEnabled)
                 {
                     BusyAnimation.Begin(this, Template, true);
+                    IsBusyAnimationRunning = true;
                 }
             }
         }

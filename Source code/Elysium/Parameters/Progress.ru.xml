@@ -4,14 +4,14 @@
     <name>Elysium</name>
   </assembly>
   <members>
-    <type name="T:Elysium.Parameters.ProgressBars">
+    <type name="T:Elysium.Parameters.Progress">
       <summary>
-        Представляет класс, управляющий настройками стилей элементов управления наследников класса <see cref="T:Elysium.Controls.Primitives.ProgressBarBase"/>.
+        Представляет класс, управляющий настройками стилей элементов управления наследников класса <see cref="T:Elysium.Controls.Primitives.ProgressBase"/>.
       </summary>
     </type>
-    <property name="P:Elysium.Parameters.ProgressBars.BusyElementSize">
+    <property name="P:Elysium.Parameters.Progress.BusyElementSize">
       <summary>
-        Возвращает или задаёт размер элемента индикации состояния занятости (по умолчанию — кружка) для наследников класса <see cref="T:Elysium.Controls.Primitives.ProgressBarBase"/>.
+        Возвращает или задаёт размер элемента индикации состояния занятости (по умолчанию — кружка) для наследников класса <see cref="T:Elysium.Controls.Primitives.ProgressBase"/>.
       </summary>
       <value>Размер элемента индикации состояния занятости. Значение по умолчанию — 4px.</value>
       <remarks>
@@ -19,7 +19,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Parameters.ProgressBars.BusyElementSizeProperty"/>
+              <see cref="F:Elysium.Parameters.Progress.BusyElementSizeProperty"/>
             </description>
           </item>
           <item>
@@ -32,26 +32,26 @@
       </remarks>
       <example>
         <code lang="C#">
-          var control = new LinearProgressBar();
-          var currentValue = Parameters.ProgressBars.GetBusyElementSize(control);
-          Parameters.ProgressBars.SetBusyElementSize(control, 4d);
+          var control = new ProgressBar();
+          var currentValue = Parameters.Progress.GetBusyElementSize(control);
+          Parameters.Progress.SetBusyElementSize(control, 4d);
         </code>
         <code lang="XAML">
-          &lt;LinearProgressBar params:ProgressBars.BusyElementSize="4px"/&gt;
+          &lt;ProgressBar params:Progress.BusyElementSize="4px"/&gt;
         </code>
       </example>
     </property>
-    <field name="F:Elysium.Parameters.ProgressBars.BusyElementSizeProperty">
+    <field name="F:Elysium.Parameters.Progress.BusyElementSizeProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.ProgressBars.BusyElementSize"/>.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Progress.BusyElementSize"/>.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.ProgressBars.BusyElementSize"/>.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Progress.BusyElementSize"/>.
       </value>
     </field>
-    <method name="M:Elysium.Parameters.ProgressBars.GetBusyElementSize(Elysium.Controls.Primitives.ProgressBarBase)">
+    <method name="M:Elysium.Parameters.Progress.GetBusyElementSize(Elysium.Controls.Primitives.ProgressBase)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.ProgressBars.BusyElementSize"/> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Progress.BusyElementSize"/> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Размер элемента индикации состояния занятости.</returns>
@@ -61,9 +61,9 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </method>
-    <method name="M:Elysium.Parameters.ProgressBars.SetBusyElementSize(Elysium.Controls.Primitives.ProgressBarBase,System.Double)">
+    <method name="M:Elysium.Parameters.Progress.SetBusyElementSize(Elysium.Controls.Primitives.ProgressBase,System.Double)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.ProgressBars.BusyElementSize"/> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Progress.BusyElementSize"/> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Размер элемента индикации состояния занятости.</param>

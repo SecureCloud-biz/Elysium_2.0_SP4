@@ -224,6 +224,9 @@
     <method name="M:Elysium.Controls.Primitives.CommandButtonBase.MeasureOverride(System.Windows.Size)">
       <inheritdoc/>
     </method>
+    <method name="M:Elysium.Controls.Primitives.CommandButtonBase.ArrangeOverride(System.Windows.Size)">
+      <inheritdoc/>
+    </method>
     <method name="M:Elysium.Controls.Primitives.CommandButtonBase.OnApplyTemplate">
       <inheritdoc/>
     </method>

@@ -19,7 +19,8 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty ThemeProperty =
             DependencyProperty.RegisterAttached("Theme", typeof(Theme?), typeof(ThemeManager),
-                                                new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender, OnThemeChanged));
+                                                new FrameworkPropertyMetadata(null,
+                                                                              FrameworkPropertyMetadataOptions.AffectsRender, OnThemeChanged));
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Nonnull-72-0")]
@@ -58,7 +59,10 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty AccentBrushProperty =
             DependencyProperty.RegisterAttached("AccentBrush", typeof(SolidColorBrush), typeof(ThemeManager),
-                                                new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender, OnAccentBrushChanged));
+                                                new FrameworkPropertyMetadata(null,
+                                                                              FrameworkPropertyMetadataOptions.AffectsRender |
+                                                                              FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender,
+                                                                              OnAccentBrushChanged));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(FrameworkElement))]
@@ -95,7 +99,10 @@ namespace Elysium
         [PublicAPI]
         public static readonly DependencyProperty ContrastBrushProperty =
             DependencyProperty.RegisterAttached("ContrastBrush", typeof(SolidColorBrush), typeof(ThemeManager),
-                                                new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender, OnContrastBrushChanged));
+                                                new FrameworkPropertyMetadata(null,
+                                                                              FrameworkPropertyMetadataOptions.AffectsRender |
+                                                                              FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender,
+                                                                              OnContrastBrushChanged));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(FrameworkElement))]
@@ -135,6 +142,7 @@ namespace Elysium
             Application application, bool isRemoveTheme, bool isRemoveAccentBrush, bool isRemoveContrastBrush);
 
         [PublicAPI]
+        [SecuritySafeCritical]
         public static void ApplyTheme(this Application application, Theme? theme, SolidColorBrush accentBrush, SolidColorBrush contrastBrush)
         {
             ValidationHelper.NotNull(application, () => application);
@@ -143,29 +151,29 @@ namespace Elysium
                                           application, theme, accentBrush, contrastBrush);
         }
 
-        [SecuritySafeCritical]
+        [SecurityCritical]
         private static void ApplyThemeInternal(Application application, Theme? theme, SolidColorBrush accentBrush, SolidColorBrush contrastBrush)
         {
             ValidationHelper.NotNull(application, () => application);
 
             // Resource dictionaries paths
-            var lightColorsUri = new Uri("/Elysium;component/Themes/LightBrushes.xaml", UriKind.Relative);
-            var darkColorsUri = new Uri("/Elysium;component/Themes/DarkBrushes.xaml", UriKind.Relative);
+            var lightBrushesUri = new Uri("/Elysium;component/Themes/LightBrushes.xaml", UriKind.Relative);
+            var darkBrushesUri = new Uri("/Elysium;component/Themes/DarkBrushes.xaml", UriKind.Relative);
 
             // Resource dictionaries
-            var lightBrushesDictionary = new ResourceDictionary { Source = lightColorsUri };
-            var darkBrushesDictionary = new ResourceDictionary { Source = darkColorsUri };
+            var lightBrushesDictionary = new ResourceDictionary { Source = lightBrushesUri };
+            var darkBrushesDictionary = new ResourceDictionary { Source = darkBrushesUri };
 
             if (theme == Theme.Light)
             {
                 // Add LightBrushes.xaml, if not included
-                if (application.Resources.MergedDictionaries.All(dictionary => dictionary.Source != lightColorsUri))
+                if (application.Resources.MergedDictionaries.All(dictionary => dictionary.Source != lightBrushesUri))
                 {
                     application.Resources.MergedDictionaries.Add(lightBrushesDictionary);
                 }
 
                 // Remove DarkBrushes.xaml, if included
-                var darkColorsDictionaries = application.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == darkColorsUri).ToList();
+                var darkColorsDictionaries = application.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == darkBrushesUri).ToList();
                 foreach (var dictionary in darkColorsDictionaries)
                 {
                     application.Resources.MergedDictionaries.Remove(dictionary);
@@ -174,13 +182,13 @@ namespace Elysium
             if (theme == Theme.Dark)
             {
                 // Add DarkBrushes.xaml, if not included
-                if (application.Resources.MergedDictionaries.All(dictionary => dictionary.Source != darkColorsUri))
+                if (application.Resources.MergedDictionaries.All(dictionary => dictionary.Source != darkBrushesUri))
                 {
                     application.Resources.MergedDictionaries.Add(darkBrushesDictionary);
                 }
 
                 // Remove LightBrushes.xaml, if included
-                var lightColorsDictionaries = application.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == lightColorsUri).ToList();
+                var lightColorsDictionaries = application.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == lightBrushesUri).ToList();
                 foreach (var dictionary in lightColorsDictionaries)
                 {
                     application.Resources.MergedDictionaries.Remove(dictionary);
@@ -250,6 +258,7 @@ namespace Elysium
         }
 
         [PublicAPI]
+        [SecuritySafeCritical]
         public static void RemoveTheme(this Application application, bool isRemoveTheme, bool isRemoveAccentBrush, bool isRemoveContrastBrush)
         {
             ValidationHelper.NotNull(application, () => application);
@@ -258,7 +267,7 @@ namespace Elysium
                                           application, isRemoveTheme, isRemoveAccentBrush, isRemoveContrastBrush);
         }
 
-        [SecuritySafeCritical]
+        [SecurityCritical]
         private static void RemoveThemeInternal(this Application application, bool isRemoveTheme, bool isRemoveAccentBrush, bool isRemoveContrastBrush)
         {
             ValidationHelper.NotNull(application, () => application);
@@ -266,19 +275,19 @@ namespace Elysium
             if (isRemoveTheme)
             {
                 // Resource dictionaries paths
-                var lightColorsUri = new Uri("/Elysium;component/Themes/LightBrushes.xaml", UriKind.Relative);
-                var darkColorsUri = new Uri("/Elysium;component/Themes/DarkBrushes.xaml", UriKind.Relative);
+                var lightBrushesUri = new Uri("/Elysium;component/Themes/LightBrushes.xaml", UriKind.Relative);
+                var darkBrushesUri = new Uri("/Elysium;component/Themes/DarkBrushes.xaml", UriKind.Relative);
 
                 // Remove LightBrushes.xaml, if included
-                var lightColorsDictionaries = application.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == lightColorsUri).ToList();
-                foreach (var dictionary in lightColorsDictionaries)
+                var lightBrushesDictionaries = application.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == lightBrushesUri).ToList();
+                foreach (var dictionary in lightBrushesDictionaries)
                 {
                     application.Resources.MergedDictionaries.Remove(dictionary);
                 }
 
                 // Remove DarkBrushes.xaml, if included
-                var darkColorsDictionaries = application.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == darkColorsUri).ToList();
-                foreach (var dictionary in darkColorsDictionaries)
+                var darkBrushesDictionaries = application.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == darkBrushesUri).ToList();
+                foreach (var dictionary in darkBrushesDictionaries)
                 {
                     application.Resources.MergedDictionaries.Remove(dictionary);
                 }
@@ -311,6 +320,7 @@ namespace Elysium
         private delegate void RemoveThemeFromControlDelegate(FrameworkElement control, bool isRemoveTheme, bool isRemoveAccentBrush, bool isRemoveContrastBrush);
 
         [PublicAPI]
+        [SecuritySafeCritical]
         private static void ApplyTheme(this FrameworkElement control, Theme? theme, SolidColorBrush accentBrush, SolidColorBrush contrastBrush)
         {
             ValidationHelper.NotNull(control, () => control);
@@ -319,29 +329,29 @@ namespace Elysium
                                       control, theme, accentBrush, contrastBrush);
         }
 
-        [SecuritySafeCritical]
+        [SecurityCritical]
         private static void ApplyThemeInternal(this FrameworkElement control, Theme? theme, SolidColorBrush accentBrush, SolidColorBrush contrastBrush)
         {
             ValidationHelper.NotNull(control, () => control);
 
             // Resource dictionaries paths
-            var lightColorsUri = new Uri("/Elysium;component/Themes/LightBrushes.xaml", UriKind.Relative);
-            var darkColorsUri = new Uri("/Elysium;component/Themes/DarkBrushes.xaml", UriKind.Relative);
+            var lightBrushesUri = new Uri("/Elysium;component/Themes/LightBrushes.xaml", UriKind.Relative);
+            var darkBrushesUri = new Uri("/Elysium;component/Themes/DarkBrushes.xaml", UriKind.Relative);
 
             // Resource dictionaries
-            var lightBrushesDictionary = new ResourceDictionary { Source = lightColorsUri };
-            var darkBrushesDictionary = new ResourceDictionary { Source = darkColorsUri };
+            var lightBrushesDictionary = new ResourceDictionary { Source = lightBrushesUri };
+            var darkBrushesDictionary = new ResourceDictionary { Source = darkBrushesUri };
 
             if (theme == Theme.Light)
             {
                 // Add LightBrushes.xaml, if not included
-                if (control.Resources.MergedDictionaries.All(dictionary => dictionary.Source != lightColorsUri))
+                if (control.Resources.MergedDictionaries.All(dictionary => dictionary.Source != lightBrushesUri))
                 {
                     control.Resources.MergedDictionaries.Add(lightBrushesDictionary);
                 }
 
                 // Remove DarkBrushes.xaml, if included
-                var darkColorsDictionaries = control.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == darkColorsUri).ToList();
+                var darkColorsDictionaries = control.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == darkBrushesUri).ToList();
                 foreach (var dictionary in darkColorsDictionaries)
                 {
                     control.Resources.MergedDictionaries.Remove(dictionary);
@@ -350,13 +360,13 @@ namespace Elysium
             if (theme == Theme.Dark)
             {
                 // Add DarkBrushes.xaml, if not included
-                if (control.Resources.MergedDictionaries.All(dictionary => dictionary.Source != darkColorsUri))
+                if (control.Resources.MergedDictionaries.All(dictionary => dictionary.Source != darkBrushesUri))
                 {
                     control.Resources.MergedDictionaries.Add(darkBrushesDictionary);
                 }
 
                 // Remove LightBrushes.xaml, if included
-                var lightColorsDictionaries = control.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == lightColorsUri).ToList();
+                var lightColorsDictionaries = control.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == lightBrushesUri).ToList();
                 foreach (var dictionary in lightColorsDictionaries)
                 {
                     control.Resources.MergedDictionaries.Remove(dictionary);
@@ -426,6 +436,7 @@ namespace Elysium
         }
 
         [PublicAPI]
+        [SecuritySafeCritical]
         private static void RemoveTheme(this FrameworkElement control, bool isRemoveTheme, bool isRemoveAccentBrush, bool isRemoveContrastBrush)
         {
             ValidationHelper.NotNull(control, () => control);
@@ -434,7 +445,7 @@ namespace Elysium
                                       control, isRemoveTheme, isRemoveAccentBrush, isRemoveContrastBrush);
         }
 
-        [SecuritySafeCritical]
+        [SecurityCritical]
         private static void RemoveThemeInternal(this FrameworkElement control, bool isRemoveTheme, bool isRemoveAccentBrush, bool isRemoveContrastBrush)
         {
             ValidationHelper.NotNull(control, () => control);
@@ -442,19 +453,19 @@ namespace Elysium
             if (isRemoveTheme)
             {
                 // Resource dictionaries paths
-                var lightColorsUri = new Uri("/Elysium;component/Themes/LightBrushes.xaml", UriKind.Relative);
-                var darkColorsUri = new Uri("/Elysium;component/Themes/DarkBrushes.xaml", UriKind.Relative);
+                var lightBrushesUri = new Uri("/Elysium;component/Themes/LightBrushes.xaml", UriKind.Relative);
+                var darkBrushesUri = new Uri("/Elysium;component/Themes/DarkBrushes.xaml", UriKind.Relative);
 
                 // Remove LightBrushes.xaml, if included
-                var lightColorsDictionaries = control.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == lightColorsUri).ToList();
-                foreach (var dictionary in lightColorsDictionaries)
+                var lightBrushesDictionaries = control.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == lightBrushesUri).ToList();
+                foreach (var dictionary in lightBrushesDictionaries)
                 {
                     control.Resources.MergedDictionaries.Remove(dictionary);
                 }
 
                 // Remove DarkBrushes.xaml, if included
-                var darkColorsDictionaries = control.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == darkColorsUri).ToList();
-                foreach (var dictionary in darkColorsDictionaries)
+                var darkBrushesDictionaries = control.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == darkBrushesUri).ToList();
+                foreach (var dictionary in darkBrushesDictionaries)
                 {
                     control.Resources.MergedDictionaries.Remove(dictionary);
                 }

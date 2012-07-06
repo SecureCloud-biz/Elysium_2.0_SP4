@@ -76,7 +76,7 @@ namespace Elysium.Parameters
         [System.Diagnostics.Contracts.Pure]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.Primitives.MenuBase))]
         [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
-        public static Thickness GetSubmenuBorderThickness(DependencyObject obj)
+        public static Thickness GetSubmenuBorderThickness(System.Windows.Controls.Primitives.MenuBase obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
             ThicknessUtil.EnsureNonNegative();
@@ -85,7 +85,7 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
-        public static void SetSubmenuBorderThickness(DependencyObject obj, Thickness value)
+        public static void SetSubmenuBorderThickness(System.Windows.Controls.Primitives.MenuBase obj, Thickness value)
         {
             ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(SubmenuBorderThicknessProperty, value);

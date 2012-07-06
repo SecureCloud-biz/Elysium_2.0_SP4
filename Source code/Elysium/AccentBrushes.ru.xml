@@ -35,9 +35,9 @@
     </property>
     <property name="P:Elysium.AccentBrushes.Magenta">
       <summary>
-        Возвращает кисть сплошной заливки пурпурного цвета (#FFFF0097).
+        Возвращает кисть сплошной заливки цвета маджента (#FFFF0097).
       </summary>
-      <value>Кисть со сплошной заливкой пурпурного цвета (#FFFF0097).</value>
+      <value>Кисть со сплошной заливкой цвета маджента (#FFFF0097).</value>
     </property>
     <property name="P:Elysium.AccentBrushes.Mango">
       <summary>
@@ -59,9 +59,9 @@
     </property>
     <property name="P:Elysium.AccentBrushes.Purple">
       <summary>
-        Возвращает кисть сплошной заливки фиолетового цвета (#FFA200FF).
+        Возвращает кисть сплошной заливки пурпурного цвета (#FF69227B).
       </summary>
-      <value>Кисть со сплошной заливкой фиолетового цвета (#FFA200FF).</value>
+      <value>Кисть со сплошной заливкой пурпурного цвета (#FFA69227B).</value>
     </property>
     <property name="P:Elysium.AccentBrushes.Red">
       <summary>
@@ -86,6 +86,12 @@
         Возвращает кисть сплошной заливки морского цвета (#FF00ABA9).
       </summary>
       <value>Кисть со сплошной заливкой морского цвета (#FF00ABA9).</value>
+    </property>
+    <property name="P:Elysium.AccentBrushes.Violet">
+      <summary>
+        Возвращает кисть сплошной заливки фиолетового цвета (#FF00ABA9).
+      </summary>
+      <value>Кисть со сплошной заливкой фиолетового цвета (#FFA200FF).</value>
     </property>
   </members>
 </doc>

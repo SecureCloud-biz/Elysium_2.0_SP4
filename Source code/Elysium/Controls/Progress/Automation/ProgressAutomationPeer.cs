@@ -9,19 +9,19 @@ using JetBrains.Annotations;
 
 namespace Elysium.Controls.Automation
 {
-    public class ProgressBarAutomationPeer : RangeBaseAutomationPeer, IRangeValueProvider
+    public class ProgressAutomationPeer : RangeBaseAutomationPeer, IRangeValueProvider
     {
-        public ProgressBarAutomationPeer([NotNull] ProgressBarBase owner) : base(owner)
+        public ProgressAutomationPeer([NotNull] ProgressBase owner) : base(owner)
         {
         }
 
         [PublicAPI]
-        public new ProgressBarBase Owner
+        public new ProgressBase Owner
         {
             get
             {
-                Contract.Ensures(Contract.Result<ProgressBarBase>() != null);
-                var result = (ProgressBarBase)base.Owner;
+                Contract.Ensures(Contract.Result<ProgressBase>() != null);
+                var result = (ProgressBase)base.Owner;
                 Contract.Assume(result != null);
                 return result;
             }
@@ -42,7 +42,7 @@ namespace Elysium.Controls.Automation
         public override object GetPattern(PatternInterface patternInterface)
         {
             var state = Owner.State;
-            if (patternInterface == PatternInterface.RangeValue && (state == ProgressBarState.Indeterminate || state == ProgressBarState.Busy))
+            if (patternInterface == PatternInterface.RangeValue && (state == ProgressState.Indeterminate || state == ProgressState.Busy))
             {
                 return null;
             }

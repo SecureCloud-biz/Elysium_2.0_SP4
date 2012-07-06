@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Security;
@@ -11,26 +12,26 @@ using Elysium.Extensions;
 
 using JetBrains.Annotations;
 
-using ProgressBarAutomationPeer = Elysium.Controls.Automation.ProgressBarAutomationPeer;
+using ProgressAutomationPeer = Elysium.Controls.Automation.ProgressAutomationPeer;
 
 namespace Elysium.Controls.Primitives
 {
     [PublicAPI]
     [TemplatePart(Name = TrackName, Type = typeof(FrameworkElement))]
-    public abstract class ProgressBarBase : RangeBase
+    public abstract class ProgressBase : RangeBase
     {
         private const string TrackName = "PART_Track";
 
         internal FrameworkElement Track;
 
         [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
-        static ProgressBarBase()
+        static ProgressBase()
         {
-            MaximumProperty.OverrideMetadata(typeof(ProgressBarBase), new FrameworkPropertyMetadata(100d));
+            MaximumProperty.OverrideMetadata(typeof(ProgressBase), new FrameworkPropertyMetadata(100d));
         }
 
         private static readonly DependencyPropertyKey PercentPropertyKey =
-            DependencyProperty.RegisterReadOnly("Percent", typeof(double), typeof(ProgressBarBase),
+            DependencyProperty.RegisterReadOnly("Percent", typeof(double), typeof(ProgressBase),
                                                 new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.None, OnPercentChanged));
 
         [PublicAPI]
@@ -47,7 +48,7 @@ namespace Elysium.Controls.Primitives
         private static void OnPercentChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            var instance = (ProgressBarBase)obj;
+            var instance = (ProgressBase)obj;
             instance.OnPercentChanged(BoxingHelper<double>.Unbox(e.OldValue), BoxingHelper<double>.Unbox(e.NewValue));
         }
 
@@ -61,37 +62,38 @@ namespace Elysium.Controls.Primitives
         protected override void OnValueChanged(double oldValue, double newValue)
         {
             base.OnValueChanged(oldValue, newValue);
-            Percent = State != ProgressBarState.Normal || Maximum <= Minimum ? double.NaN : (Value - Minimum) / (Maximum - Minimum);
+            Percent = State != ProgressState.Normal || Maximum <= Minimum ? double.NaN : (Value - Minimum) / (Maximum - Minimum);
         }
 
         [PublicAPI]
         public static readonly DependencyProperty StateProperty =
-            DependencyProperty.Register("State", typeof(ProgressBarState), typeof(ProgressBarBase),
-                                        new FrameworkPropertyMetadata(ProgressBarState.Normal, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnStateChanged));
+            DependencyProperty.Register("State", typeof(ProgressState), typeof(ProgressBase),
+                                        new FrameworkPropertyMetadata(ProgressState.Normal, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
+                                                                      OnStateChanged));
 
         [PublicAPI]
         [Bindable(true)]
         [Category("Behavior")]
         [Description("Determines the state of control.")]
-        public ProgressBarState State
+        public ProgressState State
         {
-            get { return BoxingHelper<ProgressBarState>.Unbox(GetValue(StateProperty)); }
+            get { return BoxingHelper<ProgressState>.Unbox(GetValue(StateProperty)); }
             set { SetValue(StateProperty, value); }
         }
 
         private static void OnStateChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            var progressBar = (ProgressBarBase)obj;
-            progressBar.OnStateChanged(BoxingHelper<ProgressBarState>.Unbox(e.OldValue), BoxingHelper<ProgressBarState>.Unbox(e.NewValue));
+            var progressBar = (ProgressBase)obj;
+            progressBar.OnStateChanged(BoxingHelper<ProgressState>.Unbox(e.OldValue), BoxingHelper<ProgressState>.Unbox(e.NewValue));
         }
 
         [PublicAPI]
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual void OnStateChanged(ProgressBarState oldState, ProgressBarState newState)
+        protected virtual void OnStateChanged(ProgressState oldState, ProgressState newState)
 // ReSharper restore VirtualMemberNeverOverriden.Global
         {
-            var peer = UIElementAutomationPeer.FromElement(this) as ProgressBarAutomationPeer;
+            var peer = UIElementAutomationPeer.FromElement(this) as ProgressAutomationPeer;
             if (peer != null)
             {
                 peer.InvalidatePeer();
@@ -101,36 +103,42 @@ namespace Elysium.Controls.Primitives
             {
                 switch (newState)
                 {
-                    case ProgressBarState.Busy:
+                    case ProgressState.Busy:
                         VisualStateManager.GoToState(this, "Busy", true);
-                        if (IndeterminateAnimation != null)
+                        if (IndeterminateAnimation != null && IndeterminateAnimation.GetCurrentState() != ClockState.Stopped)
                         {
+                            IsIndeterminateAnimationRunning = false;
                             IndeterminateAnimation.Stop(this);
                         }
                         if (BusyAnimation != null)
                         {
                             BusyAnimation.Begin(this, Template, true);
+                            IsBusyAnimationRunning = true;
                         }
                         break;
-                    case ProgressBarState.Indeterminate:
+                    case ProgressState.Indeterminate:
                         VisualStateManager.GoToState(this, "Indeterminate", true);
-                        if (BusyAnimation != null)
+                        if (BusyAnimation != null && BusyAnimation.GetCurrentState() != ClockState.Stopped)
                         {
+                            IsBusyAnimationRunning = false;
                             BusyAnimation.Stop(this);
                         }
                         if (IndeterminateAnimation != null)
                         {
                             IndeterminateAnimation.Begin(this, Template, true);
+                            IsIndeterminateAnimationRunning = true;
                         }
                         break;
-                    case ProgressBarState.Normal:
+                    case ProgressState.Normal:
                         VisualStateManager.GoToState(this, "Normal", true);
-                        if (IndeterminateAnimation != null)
+                        if (IndeterminateAnimation != null && IndeterminateAnimation.GetCurrentState() != ClockState.Stopped)
                         {
+                            IsIndeterminateAnimationRunning = false;
                             IndeterminateAnimation.Stop(this);
                         }
-                        if (BusyAnimation != null)
+                        if (BusyAnimation != null && BusyAnimation.GetCurrentState() != ClockState.Stopped)
                         {
+                            IsBusyAnimationRunning = false;
                             BusyAnimation.Stop(this);
                         }
                         break;
@@ -142,9 +150,9 @@ namespace Elysium.Controls.Primitives
 
         [PublicAPI]
         public static readonly DependencyProperty IndeterminateAnimationProperty =
-            DependencyProperty.Register("IndeterminateAnimation", typeof(Storyboard), typeof(ProgressBarBase),
+            DependencyProperty.Register("IndeterminateAnimation", typeof(Storyboard), typeof(ProgressBase),
                                         new FrameworkPropertyMetadata(
-                                            new Storyboard { Name = DefaultIndeterminateAnimationName, RepeatBehavior = RepeatBehavior.Forever },
+                                            null, //new Storyboard { Name = DefaultIndeterminateAnimationName, RepeatBehavior = RepeatBehavior.Forever },
                                             FrameworkPropertyMetadataOptions.AffectsRender));
 
         [PublicAPI]
@@ -156,13 +164,29 @@ namespace Elysium.Controls.Primitives
             set { SetValue(IndeterminateAnimationProperty, value); }
         }
 
+        [PublicAPI]
+        protected static readonly DependencyPropertyKey IsIndeterminateAnimationRunningPropertyKey =
+            DependencyProperty.RegisterReadOnly("IsIndeterminateAnimationRunning", typeof(bool), typeof(ProgressBase),
+                                                new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, FrameworkPropertyMetadataOptions.None));
+
+        [PublicAPI]
+        public static readonly DependencyProperty IsIndeterminateAnimationRunningProperty = IsIndeterminateAnimationRunningPropertyKey.DependencyProperty;
+
+        [PublicAPI]
+        [Browsable(false)]
+        public bool IsIndeterminateAnimationRunning
+        {
+            get { return (bool)GetValue(IsIndeterminateAnimationRunningProperty); }
+            protected set { SetValue(IsIndeterminateAnimationRunningPropertyKey, value); }
+        }
+
         internal const string DefaultBusyAnimationName = "B45C62BF28AC49FDB8F172249BF56E5B";
 
         [PublicAPI]
         public static readonly DependencyProperty BusyAnimationProperty =
-            DependencyProperty.Register("BusyAnimation", typeof(Storyboard), typeof(ProgressBarBase),
+            DependencyProperty.Register("BusyAnimation", typeof(Storyboard), typeof(ProgressBase),
                                         new FrameworkPropertyMetadata(
-                                            new Storyboard { Name = DefaultBusyAnimationName, RepeatBehavior = RepeatBehavior.Forever },
+                                            null, //new Storyboard { Name = DefaultBusyAnimationName, RepeatBehavior = RepeatBehavior.Forever },
                                             FrameworkPropertyMetadataOptions.AffectsRender));
 
         [PublicAPI]
@@ -175,8 +199,24 @@ namespace Elysium.Controls.Primitives
         }
 
         [PublicAPI]
+        protected static readonly DependencyPropertyKey IsBusyAnimationRunningPropertyKey =
+            DependencyProperty.RegisterReadOnly("IsBusyAnimationRunning", typeof(bool), typeof(ProgressBase),
+                                                new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, FrameworkPropertyMetadataOptions.None));
+
+        [PublicAPI]
+        public static readonly DependencyProperty IsBusyAnimationRunningProperty = IsBusyAnimationRunningPropertyKey.DependencyProperty;
+
+        [PublicAPI]
+        [Browsable(false)]
+        public bool IsBusyAnimationRunning
+        {
+            get { return (bool)GetValue(IsBusyAnimationRunningProperty); }
+            protected set { SetValue(IsBusyAnimationRunningPropertyKey, value); }
+        }
+
+        [PublicAPI]
         public static readonly RoutedEvent AnimationsUpdatingEvent = EventManager.RegisterRoutedEvent("AnimationsUpdating", RoutingStrategy.Tunnel,
-                                                                                                      typeof(RoutedEventHandler), typeof(ProgressBarBase));
+                                                                                                      typeof(RoutedEventHandler), typeof(ProgressBase));
 
         [PublicAPI]
         [Category("Appearance")]
@@ -197,7 +237,7 @@ namespace Elysium.Controls.Primitives
 
         [PublicAPI]
         public static readonly RoutedEvent AnimationsUpdatedEvent = EventManager.RegisterRoutedEvent("AnimationsUpdated", RoutingStrategy.Bubble,
-                                                                                                     typeof(RoutedEventHandler), typeof(ProgressBarBase));
+                                                                                                     typeof(RoutedEventHandler), typeof(ProgressBase));
 
         [PublicAPI]
         [Category("Appearance")]
@@ -247,7 +287,7 @@ namespace Elysium.Controls.Primitives
 
         protected override AutomationPeer OnCreateAutomationPeer()
         {
-            return new ProgressBarAutomationPeer(this);
+            return new ProgressAutomationPeer(this);
         }
     }
 } ;

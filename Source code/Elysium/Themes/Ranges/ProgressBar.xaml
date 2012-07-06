@@ -7,7 +7,7 @@
         <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate x:Key="HorizontalProgressBarTemplate" TargetType="{x:Type controls:LinearProgressBar}">
+    <ControlTemplate x:Key="HorizontalProgressBarTemplate" TargetType="{x:Type controls:ProgressBar}">
         <Border Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
@@ -28,29 +28,29 @@
                         Visibility="Hidden">
                     <Ellipse Fill="{TemplateBinding Foreground}"
                              StrokeThickness="0"
-                             Canvas.Left="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:ProgressBars.BusyElementSize), Converter={StaticResource NumberPositiveToNegativeConverter}}"
-                             Width="{TemplateBinding params:ProgressBars.BusyElementSize}"
-                             Height="{TemplateBinding params:ProgressBars.BusyElementSize}"/>
+                             Canvas.Left="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Progress.BusyElementSize), Converter={StaticResource NumberPositiveToNegativeConverter}}"
+                             Width="{TemplateBinding params:Progress.BusyElementSize}"
+                             Height="{TemplateBinding params:Progress.BusyElementSize}"/>
                     <Ellipse Fill="{TemplateBinding Foreground}"
                              StrokeThickness="0"
-                             Canvas.Left="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:ProgressBars.BusyElementSize), Converter={StaticResource NumberPositiveToNegativeConverter}}"
-                             Width="{TemplateBinding params:ProgressBars.BusyElementSize}"
-                             Height="{TemplateBinding params:ProgressBars.BusyElementSize}"/>
+                             Canvas.Left="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Progress.BusyElementSize), Converter={StaticResource NumberPositiveToNegativeConverter}}"
+                             Width="{TemplateBinding params:Progress.BusyElementSize}"
+                             Height="{TemplateBinding params:Progress.BusyElementSize}"/>
                     <Ellipse Fill="{TemplateBinding Foreground}"
                              StrokeThickness="0"
-                             Canvas.Left="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:ProgressBars.BusyElementSize), Converter={StaticResource NumberPositiveToNegativeConverter}}"
-                             Width="{TemplateBinding params:ProgressBars.BusyElementSize}"
-                             Height="{TemplateBinding params:ProgressBars.BusyElementSize}"/>
+                             Canvas.Left="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Progress.BusyElementSize), Converter={StaticResource NumberPositiveToNegativeConverter}}"
+                             Width="{TemplateBinding params:Progress.BusyElementSize}"
+                             Height="{TemplateBinding params:Progress.BusyElementSize}"/>
                     <Ellipse Fill="{TemplateBinding Foreground}"
                              StrokeThickness="0"
-                             Canvas.Left="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:ProgressBars.BusyElementSize), Converter={StaticResource NumberPositiveToNegativeConverter}}"
-                             Width="{TemplateBinding params:ProgressBars.BusyElementSize}"
-                             Height="{TemplateBinding params:ProgressBars.BusyElementSize}"/>
+                             Canvas.Left="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Progress.BusyElementSize), Converter={StaticResource NumberPositiveToNegativeConverter}}"
+                             Width="{TemplateBinding params:Progress.BusyElementSize}"
+                             Height="{TemplateBinding params:Progress.BusyElementSize}"/>
                     <Ellipse Fill="{TemplateBinding Foreground}"
                              StrokeThickness="0"
-                             Canvas.Left="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:ProgressBars.BusyElementSize), Converter={StaticResource NumberPositiveToNegativeConverter}}"
-                             Width="{TemplateBinding params:ProgressBars.BusyElementSize}"
-                             Height="{TemplateBinding params:ProgressBars.BusyElementSize}"/>
+                             Canvas.Left="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Progress.BusyElementSize), Converter={StaticResource NumberPositiveToNegativeConverter}}"
+                             Width="{TemplateBinding params:Progress.BusyElementSize}"
+                             Height="{TemplateBinding params:Progress.BusyElementSize}"/>
                 </Canvas>
             </Canvas>
         </Border>
@@ -82,7 +82,7 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="VerticalProgressBarTemplate" TargetType="{x:Type controls:LinearProgressBar}">
+    <ControlTemplate x:Key="VerticalProgressBarTemplate" TargetType="{x:Type controls:ProgressBar}">
         <Border Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
@@ -107,29 +107,29 @@
                         Visibility="Hidden">
                     <Ellipse Fill="{TemplateBinding Foreground}"
                              StrokeThickness="0"
-                             Canvas.Top="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:ProgressBars.BusyElementSize), Converter={StaticResource NumberPositiveToNegativeConverter}}"
-                             Width="{TemplateBinding params:ProgressBars.BusyElementSize}"
-                             Height="{TemplateBinding params:ProgressBars.BusyElementSize}"/>
+                             Canvas.Top="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Progress.BusyElementSize), Converter={StaticResource NumberPositiveToNegativeConverter}}"
+                             Width="{TemplateBinding params:Progress.BusyElementSize}"
+                             Height="{TemplateBinding params:Progress.BusyElementSize}"/>
                     <Ellipse Fill="{TemplateBinding Foreground}"
                              StrokeThickness="0"
-                             Canvas.Top="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:ProgressBars.BusyElementSize), Converter={StaticResource NumberPositiveToNegativeConverter}}"
-                             Width="{TemplateBinding params:ProgressBars.BusyElementSize}"
-                             Height="{TemplateBinding params:ProgressBars.BusyElementSize}"/>
+                             Canvas.Top="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Progress.BusyElementSize), Converter={StaticResource NumberPositiveToNegativeConverter}}"
+                             Width="{TemplateBinding params:Progress.BusyElementSize}"
+                             Height="{TemplateBinding params:Progress.BusyElementSize}"/>
                     <Ellipse Fill="{TemplateBinding Foreground}"
                              StrokeThickness="0"
-                             Canvas.Top="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:ProgressBars.BusyElementSize), Converter={StaticResource NumberPositiveToNegativeConverter}}"
-                             Width="{TemplateBinding params:ProgressBars.BusyElementSize}"
-                             Height="{TemplateBinding params:ProgressBars.BusyElementSize}"/>
+                             Canvas.Top="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Progress.BusyElementSize), Converter={StaticResource NumberPositiveToNegativeConverter}}"
+                             Width="{TemplateBinding params:Progress.BusyElementSize}"
+                             Height="{TemplateBinding params:Progress.BusyElementSize}"/>
                     <Ellipse Fill="{TemplateBinding Foreground}"
                              StrokeThickness="0"
-                             Canvas.Top="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:ProgressBars.BusyElementSize), Converter={StaticResource NumberPositiveToNegativeConverter}}"
-                             Width="{TemplateBinding params:ProgressBars.BusyElementSize}"
-                             Height="{TemplateBinding params:ProgressBars.BusyElementSize}"/>
+                             Canvas.Top="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Progress.BusyElementSize), Converter={StaticResource NumberPositiveToNegativeConverter}}"
+                             Width="{TemplateBinding params:Progress.BusyElementSize}"
+                             Height="{TemplateBinding params:Progress.BusyElementSize}"/>
                     <Ellipse Fill="{TemplateBinding Foreground}"
                              StrokeThickness="0"
-                             Canvas.Top="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:ProgressBars.BusyElementSize), Converter={StaticResource NumberPositiveToNegativeConverter}}"
-                             Width="{TemplateBinding params:ProgressBars.BusyElementSize}"
-                             Height="{TemplateBinding params:ProgressBars.BusyElementSize}"/>
+                             Canvas.Top="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Progress.BusyElementSize), Converter={StaticResource NumberPositiveToNegativeConverter}}"
+                             Width="{TemplateBinding params:Progress.BusyElementSize}"
+                             Height="{TemplateBinding params:Progress.BusyElementSize}"/>
                 </Canvas>
             </Canvas>
         </Border>
@@ -161,7 +161,7 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style x:Key="{x:Type controls:LinearProgressBar}" TargetType="{x:Type controls:LinearProgressBar}">
+    <Style x:Key="{x:Type controls:ProgressBar}" TargetType="{x:Type controls:ProgressBar}">
         <Setter Property="Background" Value="{DynamicResource HighlightBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>

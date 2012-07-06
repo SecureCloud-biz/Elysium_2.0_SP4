@@ -27,7 +27,7 @@
     paths.Add(@"Parameters\General.en.xml");
     paths.Add(@"Parameters\MenuBase.en.xml");
     paths.Add(@"Parameters\MenuItem.en.xml");
-    paths.Add(@"Parameters\ProgressBars.en.xml");
+    paths.Add(@"Parameters\Progress.en.xml");
     paths.Add(@"Parameters\ScrollBar.en.xml");
     paths.Add(@"Parameters\Slider.en.xml");
     paths.Add(@"Parameters\TabControl.en.xml");
@@ -35,6 +35,7 @@
     paths.Add(@"Parameters\ToggleSwitch.en.xml");
     paths.Add(@"Parameters\Window.en.xml");
     
+    paths.Add(@"Extensions\Tree helpers\ThemeManagerExtensions.en.xml");
     paths.Add(@"Extensions\Tree helpers\LogicalTreeHelperExtensions.en.xml");
     paths.Add(@"Extensions\Tree helpers\VisualTreeHelperExtensions.en.xml");
     
@@ -56,7 +57,7 @@
     
     paths.Add(@"Controls\CommandButtons\DropDownDirection.en.xml");
     
-    paths.Add(@"Controls\ProgressBars\ProgressBarState.en.xml");
+    paths.Add(@"Controls\Progress\ProgressState.en.xml");
     
     paths.Add(@"Controls\ApplicationBar\Automation\ApplicationBarAutomationPeer.en.xml");
     
@@ -67,7 +68,7 @@
     
     paths.Add(@"Controls\ToggleSwitch\Automation\ToggleSwitchAutomationPeer.en.xml");
     
-    paths.Add(@"Controls\ProgressBars\Automation\ProgressBarAutomationPeer.en.xml");
+    paths.Add(@"Controls\Progress\Automation\ProgressAutomationPeer.en.xml");
     
     paths.Add(@"Controls\Menus\Automation\SubmenuAutomationPeer.en.xml");
     
@@ -81,9 +82,9 @@
 
     paths.Add(@"Controls\Menus\Submenu.en.xml");
 
-    paths.Add(@"Controls\ProgressBars\Primitives\ProgressBarBase.ru.xml");
-    paths.Add(@"Controls\ProgressBars\LinearProgressBar.ru.xml");
-    paths.Add(@"Controls\ProgressBars\CircularProgressBar.ru.xml");
+    paths.Add(@"Controls\Progress\Primitives\ProgressBase.ru.xml");
+    paths.Add(@"Controls\Progress\ProgressBar.ru.xml");
+    paths.Add(@"Controls\Progress\ProgressRing.ru.xml");
 
     paths.Add(@"Controls\ToggleSwitch\ToggleSwitch.ru.xml");
 

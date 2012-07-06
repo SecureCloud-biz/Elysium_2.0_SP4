@@ -19,14 +19,15 @@ namespace Elysium.Parameters
                                                                               OnIsOpenChanged));
 
         [PublicAPI]
-        public static bool GetIsOpen(DependencyObject obj)
+        [AttachedPropertyBrowsableForType(typeof(UIElement))]
+        public static bool GetIsOpen(UIElement obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
             return BooleanBoxingHelper.Unbox(obj.GetValue(IsOpenProperty));
         }
 
         [PublicAPI]
-        public static void SetIsOpen(DependencyObject obj, bool value)
+        public static void SetIsOpen(UIElement obj, bool value)
         {
             ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(IsOpenProperty, BooleanBoxingHelper.Box(value));
@@ -81,13 +82,14 @@ namespace Elysium.Parameters
         public static readonly DependencyProperty IsDefaultHorizontalPositionProperty = IsDefaultHorizontalPositionPropertyKey.DependencyProperty;
 
         [PublicAPI]
-        public static bool GetIsDefaultHorizontalPosition(DependencyObject obj)
+        [AttachedPropertyBrowsableForType(typeof(UIElement))]
+        public static bool GetIsDefaultHorizontalPosition(UIElement obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
             return BooleanBoxingHelper.Unbox(obj.GetValue(IsDefaultHorizontalPositionProperty));
         }
 
-        private static void SetIsDefaultHorizontalPosition(DependencyObject obj, bool value)
+        private static void SetIsDefaultHorizontalPosition(UIElement obj, bool value)
         {
             ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(IsDefaultHorizontalPositionPropertyKey, BooleanBoxingHelper.Box(value));
@@ -101,13 +103,14 @@ namespace Elysium.Parameters
         public static readonly DependencyProperty IsDefaultVerticalPositionProperty = IsDefaultVerticalPositionPropertyKey.DependencyProperty;
 
         [PublicAPI]
-        public static bool GetIsDefaultVerticalPosition(DependencyObject obj)
+        [AttachedPropertyBrowsableForType(typeof(UIElement))]
+        public static bool GetIsDefaultVerticalPosition(UIElement obj)
         {
             ValidationHelper.NotNull(obj, () => obj);
             return BooleanBoxingHelper.Unbox(obj.GetValue(IsDefaultVerticalPositionProperty));
         }
 
-        private static void SetIsDefaultVerticalPosition(DependencyObject obj, bool value)
+        private static void SetIsDefaultVerticalPosition(UIElement obj, bool value)
         {
             ValidationHelper.NotNull(obj, () => obj);
             obj.SetValue(IsDefaultVerticalPositionPropertyKey, BooleanBoxingHelper.Box(value));

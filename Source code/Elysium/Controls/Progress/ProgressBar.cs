@@ -21,7 +21,7 @@ namespace Elysium.Controls
     [TemplatePart(Name = IndicatorName, Type = typeof(Rectangle))]
     [TemplatePart(Name = BusyBarName, Type = typeof(Canvas))]
 // ReSharper disable ClassWithVirtualMembersNeverInherited.Global
-    public class LinearProgressBar : ProgressBarBase
+    public class ProgressBar : ProgressBase
 // ReSharper restore ClassWithVirtualMembersNeverInherited.Global
     {
         private const string IndicatorName = "PART_Indicator";
@@ -31,14 +31,14 @@ namespace Elysium.Controls
         private Canvas _busyBar;
 
         [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
-        static LinearProgressBar()
+        static ProgressBar()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(LinearProgressBar), new FrameworkPropertyMetadata(typeof(LinearProgressBar)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(ProgressBar), new FrameworkPropertyMetadata(typeof(ProgressBar)));
         }
 
         [PublicAPI]
         public static readonly DependencyProperty OrientationProperty =
-            DependencyProperty.Register("Orientation", typeof(Orientation), typeof(LinearProgressBar),
+            DependencyProperty.Register("Orientation", typeof(Orientation), typeof(ProgressBar),
                                         new FrameworkPropertyMetadata(Orientation.Horizontal, FrameworkPropertyMetadataOptions.AffectsMeasure, OnOrientationChanged),
                                         IsValidOrientation);
 
@@ -54,7 +54,7 @@ namespace Elysium.Controls
         private static void OnOrientationChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, () => obj);
-            var instance = (LinearProgressBar)obj;
+            var instance = (ProgressBar)obj;
             instance.OnOrientationChanged(BoxingHelper<Orientation>.Unbox(e.OldValue), BoxingHelper<Orientation>.Unbox(e.NewValue));
         }
 
@@ -104,11 +104,11 @@ namespace Elysium.Controls
 
         private void UpdateIndeterminateAnimation()
         {
-            if (IndeterminateAnimation != null && IndeterminateAnimation.Name == DefaultIndeterminateAnimationName && Track != null && _indicator != null)
+            if ((IndeterminateAnimation == null || (IndeterminateAnimation != null && IndeterminateAnimation.Name == DefaultIndeterminateAnimationName)) && Track != null && _indicator != null)
             {
-                var isStarted = State == ProgressBarState.Indeterminate && IsEnabled;
-                if (isStarted)
+                if (IndeterminateAnimation != null && IsIndeterminateAnimationRunning)
                 {
+                    IsIndeterminateAnimationRunning = false;
                     IndeterminateAnimation.Stop(this);
                     IndeterminateAnimation.Remove(this);
                 }
@@ -141,20 +141,21 @@ namespace Elysium.Controls
                     IndeterminateAnimation.Freeze();
                 }
 
-                if (isStarted)
+                if (State == ProgressState.Indeterminate && IsEnabled)
                 {
                     IndeterminateAnimation.Begin(this, Template, true);
+                    IsIndeterminateAnimationRunning = true;
                 }
             }
         }
 
         private void UpdateBusyAnimation()
         {
-            if (BusyAnimation != null && BusyAnimation.Name == DefaultBusyAnimationName && Track != null && _busyBar != null)
+            if ((BusyAnimation == null || (BusyAnimation != null && BusyAnimation.Name == DefaultBusyAnimationName)) && Track != null && _busyBar != null)
             {
-                var isStarted = State == ProgressBarState.Busy && IsEnabled;
-                if (isStarted)
+                if (BusyAnimation != null && IsBusyAnimationRunning)
                 {
+                    IsBusyAnimationRunning = false;
                     BusyAnimation.Stop(this);
                     BusyAnimation.Remove(this);
                 }
@@ -240,9 +241,10 @@ namespace Elysium.Controls
                     BusyAnimation.Freeze();
                 }
 
-                if (isStarted)
+                if (State == ProgressState.Busy && IsEnabled)
                 {
                     BusyAnimation.Begin(this, Template, true);
+                    IsBusyAnimationRunning = true;
                 }
             }
         }

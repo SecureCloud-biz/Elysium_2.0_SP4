@@ -41,8 +41,8 @@
         <ResourceDictionary Source="/Elysium;component/Themes/Ranges/ToggleSwitch.xaml"/>
         
         <ResourceDictionary Source="/Elysium;component/Themes/Ranges/Slider.xaml"/>
-        <ResourceDictionary Source="/Elysium;component/Themes/Ranges/LinearProgressBar.xaml"/>
-        <ResourceDictionary Source="/Elysium;component/Themes/Ranges/CircularProgressBar.xaml"/>
+        <ResourceDictionary Source="/Elysium;component/Themes/Ranges/ProgressBar.xaml"/>
+        <ResourceDictionary Source="/Elysium;component/Themes/Ranges/ProgressRing.xaml"/>
         
         <ResourceDictionary Source="/Elysium;component/Themes/Scrolls/ScrollBar.xaml"/>
         <ResourceDictionary Source="/Elysium;component/Themes/Scrolls/ScrollViewer.xaml"/>

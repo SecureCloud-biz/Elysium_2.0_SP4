@@ -7,7 +7,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
-        <ResourceDictionary Source="/Elysium;component/Themes/Ranges/LinearProgressBar.xaml"/>
+        <ResourceDictionary Source="/Elysium;component/Themes/Ranges/ProgressBar.xaml"/>
         <ResourceDictionary Source="/Elysium;component/Themes/Buttons/CommandButton.xaml"/>
         <ResourceDictionary Source="/Elysium;component/Themes/Icons.xaml"/>
     </ResourceDictionary.MergedDictionaries>
@@ -59,7 +59,7 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <controls:LinearProgressBar x:Name="PART_ProgressBar"
+                                <controls:ProgressBar x:Name="PART_ProgressBar"
                                                             Grid.ColumnSpan="3"
                                                             Grid.Row="0"
                                                             Background="{x:Null}"

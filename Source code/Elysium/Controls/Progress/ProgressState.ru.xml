@@ -4,22 +4,22 @@
     <name>Elysium</name>
   </assembly>
   <members>
-    <type name="T:Elysium.Controls.ProgressBarState">
+    <type name="T:Elysium.Controls.ProgressState">
       <summary>
-        Определяет состояние индикатора выполнения (один из наследников <see cref="T:Elysium.Controls.Primitives.ProgressBarBase"/>).
+        Определяет состояние индикатора выполнения (один из наследников <see cref="T:Elysium.Controls.Primitives.ProgressBase"/>).
       </summary>
     </type>
-    <field name="F:Elysium.Controls.ProgressBarState.Normal">
+    <field name="F:Elysium.Controls.ProgressState.Normal">
       <summary>
         Нормальное состояние.
       </summary>
     </field>
-    <field name="F:Elysium.Controls.ProgressBarState.Indeterminate">
+    <field name="F:Elysium.Controls.ProgressState.Indeterminate">
       <summary>
         Неопределённое состояние.
       </summary>
     </field>
-    <field name="F:Elysium.Controls.ProgressBarState.Busy">
+    <field name="F:Elysium.Controls.ProgressState.Busy">
       <summary>
         Состоние занятости.
       </summary>

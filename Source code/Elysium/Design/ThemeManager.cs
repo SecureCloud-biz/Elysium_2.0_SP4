@@ -49,7 +49,10 @@ namespace Elysium.Design
         [PublicAPI]
         public static readonly DependencyProperty AccentBrushProperty =
             DependencyProperty.RegisterAttached("AccentBrush", typeof(SolidColorBrush), typeof(ThemeManager),
-                                                new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender, OnAccentBrushChanged));
+                                                new FrameworkPropertyMetadata(null,
+                                                                              FrameworkPropertyMetadataOptions.AffectsRender |
+                                                                              FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender,
+                                                                              OnAccentBrushChanged));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(FrameworkElement))]
@@ -81,7 +84,10 @@ namespace Elysium.Design
         [PublicAPI]
         public static readonly DependencyProperty ContrastBrushProperty =
             DependencyProperty.RegisterAttached("ContrastBrush", typeof(SolidColorBrush), typeof(ThemeManager),
-                                                new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender, OnContrastBrushChanged));
+                                                new FrameworkPropertyMetadata(null,
+                                                                              FrameworkPropertyMetadataOptions.AffectsRender |
+                                                                              FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender,
+                                                                              OnContrastBrushChanged));
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(FrameworkElement))]

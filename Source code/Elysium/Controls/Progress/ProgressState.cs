@@ -3,7 +3,7 @@
 namespace Elysium.Controls
 {
     [PublicAPI]
-    public enum ProgressBarState
+    public enum ProgressState
     {
         [PublicAPI]
         Normal,

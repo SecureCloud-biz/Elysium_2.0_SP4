@@ -79,7 +79,7 @@
         <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
         <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
-        <Setter Property="params:General.ShadowBrush" Value="{DynamicResource ForegroundBrush}"/>
+        <Setter Property="params:General.ShadowBrush" Value="Red"/>
         <Setter Property="Focusable" Value="True"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>

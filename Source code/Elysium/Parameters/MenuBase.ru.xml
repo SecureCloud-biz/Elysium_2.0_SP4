@@ -50,7 +50,7 @@
         Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.MenuBase.SubmenuBackground"/>.
       </value>
     </field>
-    <method name="M:Elysium.Parameters.MenuBase.GetSubmenuBackground(System.Windows.Controls.MenuBase)">
+    <method name="M:Elysium.Parameters.MenuBase.GetSubmenuBackground(System.Windows.Controls.Primitives.MenuBase)">
       <summary>
         Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.MenuBase.SubmenuBackground"/> для указанного элемента управления.
       </summary>
@@ -61,7 +61,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
-    <method name="M:Elysium.Parameters.MenuBase.SetSubmenuBackground(System.Windows.Controls.MenuBase,System.Double)">
+    <method name="M:Elysium.Parameters.MenuBase.SetSubmenuBackground(System.Windows.Controls.Primitives.MenuBase,System.Windows.Media.Brush)">
       <summary>
         Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.MenuBase.SubmenuBackground"/> для указанного элемента управления.
       </summary>
@@ -115,7 +115,7 @@
         Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderBrush"/>.
       </value>
     </field>
-    <method name="M:Elysium.Parameters.MenuBase.GetSubmenuBorderBrush(System.Windows.Controls.MenuBase)">
+    <method name="M:Elysium.Parameters.MenuBase.GetSubmenuBorderBrush(System.Windows.Controls.Primitives.MenuBase)">
       <summary>
         Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderBrush"/> для указанного элемента управления.
       </summary>
@@ -126,7 +126,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
-    <method name="M:Elysium.Parameters.MenuBase.SetSubmenuBorderBrush(System.Windows.Controls.MenuBase,System.Double)">
+    <method name="M:Elysium.Parameters.MenuBase.SetSubmenuBorderBrush(System.Windows.Controls.Primitives.MenuBase,System.Windows.Media.Brush)">
       <summary>
         Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderBrush"/> для указанного элемента управления.
       </summary>
@@ -180,7 +180,7 @@
         Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderThickness"/>.
       </value>
     </field>
-    <method name="M:Elysium.Parameters.MenuBase.GetSubmenuBorderThickness(System.Windows.Controls.MenuBase)">
+    <method name="M:Elysium.Parameters.MenuBase.GetSubmenuBorderThickness(System.Windows.Controls.Primitives.MenuBase)">
       <summary>
         Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderThickness"/> для указанного элемента управления.
       </summary>
@@ -192,7 +192,7 @@
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>Возвращаемое значение является положительным числом.</ensures>
     </method>
-    <method name="M:Elysium.Parameters.MenuBase.SetSubmenuBorderThickness(System.Windows.Controls.MenuBase,System.Windows.Thickness)">
+    <method name="M:Elysium.Parameters.MenuBase.SetSubmenuBorderThickness(System.Windows.Controls.Primitives.MenuBase,System.Windows.Thickness)">
       <summary>
         Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderThickness"/> для указанного элемента управления.
       </summary>
