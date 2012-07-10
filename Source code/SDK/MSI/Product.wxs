@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?if $(sys.BUILDARCH) = x64 ?>
+    <?define x64 = "yes" ?>
+    <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
+    <?define SourceDir = "..\..\..\Binary\Elysium for .NET 4\Debug\x64"?>
+  <?else ?>
+    <?define x64 = "no" ?>
+    <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+  <?define SourceDir = "..\..\..\Binary\Elysium for .NET 4\Debug\x86"?>
+  <?endif ?>
+  
+	<Product Id="45E4BBBD-20C1-46FF-9239-16AF87C89C95" Name="Elysium SDK" Manufacturer="Alex F. Sherman and Codeplex Community"
+           Language="1033"
+           Version="1.5.507.0" UpgradeCode="990DDD4D-A5A4-4BFB-9D66-1C4EFBD4226F">
+		<Package InstallerVersion="200" Platform="$(sys.BUILDARCH)"
+             InstallPrivileges="elevated" InstallScope="perMachine"
+             Compressed="yes"/>
+		<MajorUpgrade AllowDowngrades="no" DowngradeErrorMessage="A newer version of [ProductName] is already installed."/>
+		<Feature Id="Elysium" Title="Elysium" Level="1">
+			<ComponentGroupRef Id="Elysium" />
+		</Feature>
+    <Feature Id="Elysium.Notifications" Title="Elysium Notifications" Level="2">
+      <ComponentGroupRef Id="Elysium.Notifications" />
+    </Feature>
+	</Product>
+
+  <Fragment>
+    <Media Id="1" Cabinet="Elysium.cab" EmbedCab="yes" CompressionLevel="high"/>
+  </Fragment>
+  
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="$(var.PlatformProgramFilesFolder)">
+				<Directory Id="INSTALLFOLDER" Name="Elysium SDK" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="Elysium" Directory="INSTALLFOLDER">
+			<Component Id="Base" Guid="52444618-B932-45A2-B2A5-374178BF0AC1">
+        <File Source="$(var.SourceDir)\Elysium.dll" KeyPath="no" Vital="yes"/>
+        <File Source="$(var.SourceDir)\Elysium.pdb" KeyPath="no" Vital="no"/>
+      </Component>
+      <Component Id="Base.CodeContracts" Guid="B4FABB3D-0723-4CF4-BDF2-5DBCB3CECA71">
+        <File Source="$(var.SourceDir)\CodeContracts\Elysium.Contracts.dll" KeyPath="no" Vital="yes"/>
+        <File Source="$(var.SourceDir)\CodeContracts\Elysium.Contracts.pdb" KeyPath="no" Vital="no"/>
+      </Component>
+		</ComponentGroup>
+    <ComponentGroup Id="Elysium.Notifications" Directory="INSTALLFOLDER">
+      <Component Id="Notifications" Guid="87849740-1671-4C5F-885C-2AAEA62C4B67">
+        <File Source="$(var.SourceDir)\Elysium.Notifications.dll"/>
+        <File Source="$(var.SourceDir)\Elysium.Notifications.pdb"/>
+      </Component>
+      <Component Id="Notifications.CodeContracts" Guid="8EF17AA7-8FBB-40F1-B5B0-1F607361CB6B">
+        <File Source="$(var.SourceDir)\CodeContracts\Elysium.Notifications.Contracts.dll"/>
+        <File Source="$(var.SourceDir)\CodeContracts\Elysium.Notifications.Contracts.pdb"/>
+      </Component>
+      <Component Id="Notifications.Server" Guid="19DEEDEC-B8A6-4FDF-9088-A2262E20284E">
+        <File Source="$(var.SourceDir)\Elysium.Notifications.Server.exe" KeyPath="yes" Vital="yes"/>
+        <File Source="$(var.SourceDir)\Elysium.Notifications.Server.exe.config" KeyPath="no" Vital="yes"/>
+        <File Source="$(var.SourceDir)\Elysium.Notifications.Server.pdb" KeyPath="no" Vital="no"/>
+        <ServiceInstall Type="ownProcess"
+                        Vital="yes"
+                        Name="ElysiumNotifications"
+                        DisplayName="Elysium Notifications"
+                        Start="auto"
+                        Account="LocalSystem"
+                        ErrorControl="normal"
+                        Interactive="no"/>
+        <ServiceControl Id="ElysiumNotifications" Name="ElysiumNotifications" Start="install" Stop="uninstall" Remove="uninstall" Wait="yes" />
+      </Component>
+    </ComponentGroup>
+	</Fragment>
+</Wix>

@@ -59,23 +59,23 @@
     <VisibleItems>InheritedMembers, Protected, ProtectedInternalAsProtected</VisibleItems>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\..\..\Binary\Debug\Elysium for .NET 4\AnyCPU\Elysium.dll" />
-<DocumentationSource sourceFile="..\..\..\Binary\Debug\Elysium for .NET 4\AnyCPU\Elysium.Notifications.dll" />
-<DocumentationSource sourceFile="..\..\Elysium.Notifications\Documentation\en\Elysium.Notifications.xml" />
-<DocumentationSource sourceFile="..\..\Elysium\Documentation\en\Elysium.xml" /></DocumentationSources>
+      <DocumentationSource sourceFile="..\..\..\Binary\Debug\Elysium for .NET 4\AnyCPU\Elysium.Notifications.dll" />
+      <DocumentationSource sourceFile="..\..\Elysium.Notifications\Documentation\en\Elysium.Notifications.xml" />
+      <DocumentationSource sourceFile="..\..\Elysium\Documentation\en\Elysium.xml" />
+    </DocumentationSources>
     <HelpFileFormat>HtmlHelp1</HelpFileFormat>
     <RootNamespaceContainer>True</RootNamespaceContainer>
     <RootNamespaceTitle>Elysium for .NET 4 documentation %28English%29</RootNamespaceTitle>
     <PlugInConfigurations>
-      <PlugInConfig id="DBCS Fix for CHM Builds" enabled="True">
-        <configuration>
-          <sbAppLocale path="C:\Program Files (x86)\SBAppLocale\SBAppLocale.exe" />
-        </configuration>
+      <PlugInConfig id="Additional Content Only" enabled="True">
+        <configuration />
       </PlugInConfig>
     </PlugInConfigurations>
     <MissingTags>Summary, Parameter, Returns, Value, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="Elysium" isDocumented="True" />
     </NamespaceSummaries>
+    <ApiFilter />
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
        order for Visual Studio to perform the build.  The others are optional

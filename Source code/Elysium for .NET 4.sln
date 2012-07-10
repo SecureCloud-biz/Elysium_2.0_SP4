@@ -1,81 +1,132 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elysium", "Elysium\Elysium.csproj", "{5A65DA67-130D-43D8-9224-4559B523B6D4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elysium.Test", "Elysium.Test\Elysium.Test.csproj", "{0B85401E-33FA-41EE-9627-8C17DA21505C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assembly dependencies", "Assembly dependencies", "{ADCE869D-0EF4-4394-8BCD-A3763B9EF424}"
 	ProjectSection(SolutionItems) = preProject
-		Install and run Elysium Notifications service (debug version).bat = Install and run Elysium Notifications service (debug version).bat
-		Install and run Elysium Notifications service (release version).bat = Install and run Elysium Notifications service (release version).bat
 		Install dependencies into GAC (32 bit) (Visual Studio 2010).bat = Install dependencies into GAC (32 bit) (Visual Studio 2010).bat
 		Install dependencies into GAC (32 bit) (Visual Studio 2012 RC).bat = Install dependencies into GAC (32 bit) (Visual Studio 2012 RC).bat
 		Install dependencies into GAC (64 bit) (Visual Studio 2010).bat = Install dependencies into GAC (64 bit) (Visual Studio 2010).bat
 		Install dependencies into GAC (64 bit) (Visual Studio 2012 RC).bat = Install dependencies into GAC (64 bit) (Visual Studio 2012 RC).bat
-		Stop and uninstall Elysium Notifications service (debug version).bat = Stop and uninstall Elysium Notifications service (debug version).bat
-		Stop and uninstall Elysium Notifications service (release version).bat = Stop and uninstall Elysium Notifications service (release version).bat
 		Uninstall dependencies from GAC (32 bit) (Visual Studio 2010).bat = Uninstall dependencies from GAC (32 bit) (Visual Studio 2010).bat
 		Uninstall dependencies from GAC (32 bit) (Visual Studio 2012 RC).bat = Uninstall dependencies from GAC (32 bit) (Visual Studio 2012 RC).bat
 		Uninstall dependencies from GAC (64 bit) (Visual Studio 2010).bat = Uninstall dependencies from GAC (64 bit) (Visual Studio 2010).bat
 		Uninstall dependencies from GAC (64 bit) (Visual Studio 2012 RC).bat = Uninstall dependencies from GAC (64 bit) (Visual Studio 2012 RC).bat
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{957D1E0C-F1C0-4B7D-82A6-9E46E11A72D0}"
+	ProjectSection(SolutionItems) = preProject
+		Install and run Elysium Notifications service (debug version).bat = Install and run Elysium Notifications service (debug version).bat
+		Install and run Elysium Notifications service (release version).bat = Install and run Elysium Notifications service (release version).bat
+		Stop and uninstall Elysium Notifications service (debug version).bat = Stop and uninstall Elysium Notifications service (debug version).bat
+		Stop and uninstall Elysium Notifications service (release version).bat = Stop and uninstall Elysium Notifications service (release version).bat
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elysium", "Elysium\Elysium.csproj", "{5A65DA67-130D-43D8-9224-4559B523B6D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elysium.Test", "Elysium.Test\Elysium.Test.csproj", "{0B85401E-33FA-41EE-9627-8C17DA21505C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B} = {E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elysium.Notifications.Server", "Elysium.Notifications.Server\Elysium.Notifications.Server.csproj", "{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elysium.Notifications", "Elysium.Notifications\Elysium.Notifications.csproj", "{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Software Development Kit", "Software Development Kit", "{FA20A796-1C37-43CC-B132-22B8AEF918FC}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Elysium.SDK.MSI", "SDK\MSI\Elysium.SDK.MSI.wixproj", "{88863322-5F6C-4933-A712-ECA1424A5711}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccLocalPath0 = .
 		SccLocalPath1 = Elysium
-		SccLocalPath2 = Elysium.Notifications.Server
-		SccLocalPath3 = Elysium.Test
-		SccLocalPath4 = Elysium.Notifications
-		SccNumberOfProjects = 5
+		SccLocalPath2 = Elysium.Notifications
+		SccLocalPath3 = Elysium.Notifications.Server
+		SccLocalPath4 = Elysium.Test
+		SccLocalPath5 = SDK\\MSI
+		SccNumberOfProjects = 6
 		SccProjectName1 = Elysium
-		SccProjectName2 = Elysium.Notifications.Server
-		SccProjectName3 = Elysium.Test
-		SccProjectName4 = Elysium.Notifications
+		SccProjectName2 = Elysium.Notifications
+		SccProjectName3 = Elysium.Notifications.Server
+		SccProjectName4 = Elysium.Test
+		SccProjectName5 = SDK/MSI
+		SccProjectTopLevelParentUniqueName5 = Elysium\u0020for\u0020.NET\u00204.sln
 		SccProjectUniqueName1 = Elysium\\Elysium.csproj
-		SccProjectUniqueName2 = Elysium.Notifications.Server\\Elysium.Notifications.Server.csproj
-		SccProjectUniqueName3 = Elysium.Test\\Elysium.Test.csproj
-		SccProjectUniqueName4 = Elysium.Notifications\\Elysium.Notifications.csproj
+		SccProjectUniqueName2 = Elysium.Notifications\\Elysium.Notifications.csproj
+		SccProjectUniqueName3 = Elysium.Notifications.Server\\Elysium.Notifications.Server.csproj
+		SccProjectUniqueName4 = Elysium.Test\\Elysium.Test.csproj
+		SccProjectUniqueName5 = SDK\\MSI\\Elysium.SDK.MSI.wixproj
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs34
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Analysis|Any CPU = Analysis|Any CPU
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
+		Analysis|x64 = Analysis|x64
+		Analysis|x86 = Analysis|x86
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Analysis|Any CPU.ActiveCfg = Analysis|Any CPU
-		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Analysis|Any CPU.Build.0 = Analysis|Any CPU
-		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Analysis|Any CPU.ActiveCfg = Analysis|Any CPU
-		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Analysis|Any CPU.Build.0 = Analysis|Any CPU
-		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Analysis|Any CPU.ActiveCfg = Analysis|Any CPU
-		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Analysis|Any CPU.Build.0 = Analysis|Any CPU
-		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Analysis|Any CPU.ActiveCfg = Analysis|Any CPU
-		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Analysis|Any CPU.Build.0 = Analysis|Any CPU
-		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Analysis|x64.ActiveCfg = Release|x64
+		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Analysis|x86.ActiveCfg = Release|x86
+		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Debug|x64.ActiveCfg = Debug|x64
+		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Debug|x64.Build.0 = Debug|x64
+		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Debug|x86.ActiveCfg = Debug|x86
+		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Debug|x86.Build.0 = Debug|x86
+		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Release|x64.ActiveCfg = Release|x64
+		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Release|x64.Build.0 = Release|x64
+		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Release|x86.ActiveCfg = Release|x86
+		{0B85401E-33FA-41EE-9627-8C17DA21505C}.Release|x86.Build.0 = Release|x86
+		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Analysis|x64.ActiveCfg = Analysis|x64
+		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Analysis|x64.Build.0 = Analysis|x64
+		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Analysis|x86.ActiveCfg = Analysis|x86
+		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Analysis|x86.Build.0 = Analysis|x86
+		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Debug|x64.ActiveCfg = Debug|x64
+		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Debug|x64.Build.0 = Debug|x64
+		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Debug|x86.ActiveCfg = Debug|x86
+		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Debug|x86.Build.0 = Debug|x86
+		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Release|x64.ActiveCfg = Release|x64
+		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Release|x64.Build.0 = Release|x64
+		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Release|x86.ActiveCfg = Release|x86
+		{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}.Release|x86.Build.0 = Release|x86
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Analysis|x64.ActiveCfg = Analysis|x64
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Analysis|x64.Build.0 = Analysis|x64
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Analysis|x86.ActiveCfg = Analysis|x86
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Analysis|x86.Build.0 = Analysis|x86
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Debug|x64.ActiveCfg = Debug|x64
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Debug|x64.Build.0 = Debug|x64
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Debug|x86.ActiveCfg = Debug|x86
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Debug|x86.Build.0 = Debug|x86
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Release|x64.ActiveCfg = Release|x64
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Release|x64.Build.0 = Release|x64
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Release|x86.ActiveCfg = Release|x86
+		{5A65DA67-130D-43D8-9224-4559B523B6D4}.Release|x86.Build.0 = Release|x86
+		{88863322-5F6C-4933-A712-ECA1424A5711}.Analysis|x64.ActiveCfg = Debug|x64
+		{88863322-5F6C-4933-A712-ECA1424A5711}.Analysis|x86.ActiveCfg = Debug|x86
+		{88863322-5F6C-4933-A712-ECA1424A5711}.Debug|x64.ActiveCfg = Debug|x64
+		{88863322-5F6C-4933-A712-ECA1424A5711}.Debug|x64.Build.0 = Debug|x64
+		{88863322-5F6C-4933-A712-ECA1424A5711}.Debug|x86.ActiveCfg = Debug|x86
+		{88863322-5F6C-4933-A712-ECA1424A5711}.Debug|x86.Build.0 = Debug|x86
+		{88863322-5F6C-4933-A712-ECA1424A5711}.Release|x64.ActiveCfg = Release|x64
+		{88863322-5F6C-4933-A712-ECA1424A5711}.Release|x86.ActiveCfg = Release|x86
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Analysis|x64.ActiveCfg = Analysis|x64
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Analysis|x64.Build.0 = Analysis|x64
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Analysis|x86.ActiveCfg = Analysis|x86
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Analysis|x86.Build.0 = Analysis|x86
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Debug|x64.ActiveCfg = Debug|x64
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Debug|x64.Build.0 = Debug|x64
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Debug|x86.ActiveCfg = Debug|x86
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Debug|x86.Build.0 = Debug|x86
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Release|x64.ActiveCfg = Release|x64
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Release|x64.Build.0 = Release|x64
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Release|x86.ActiveCfg = Release|x86
+		{E994DC8C-98CB-4F53-8A27-0CA80EE9E78B}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{88863322-5F6C-4933-A712-ECA1424A5711} = {FA20A796-1C37-43CC-B132-22B8AEF918FC}
 	EndGlobalSection
 EndGlobal
