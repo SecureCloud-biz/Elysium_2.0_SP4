@@ -294,7 +294,8 @@ namespace Elysium
 
                 // Remove Generic.xaml, if included
                 var genericDictionaryUri = new Uri("/Elysium;component/Themes/Generic.xaml", UriKind.Relative);
-                foreach (var genericDictionary in application.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == genericDictionaryUri))
+                var genericDictionaries = application.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == genericDictionaryUri).ToList();
+                foreach (var genericDictionary in genericDictionaries)
                 {
                     application.Resources.MergedDictionaries.Remove(genericDictionary);
                 }
@@ -472,7 +473,8 @@ namespace Elysium
 
                 // Remove Generic.xaml, if included
                 var genericDictionaryUri = new Uri("/Elysium;component/Themes/Generic.xaml", UriKind.Relative);
-                foreach (var genericDictionary in control.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == genericDictionaryUri))
+                var genericDictionaries = control.Resources.MergedDictionaries.Where(dictionary => dictionary.Source == genericDictionaryUri).ToList();
+                foreach (var genericDictionary in genericDictionaries)
                 {
                     control.Resources.MergedDictionaries.Remove(genericDictionary);
                 }

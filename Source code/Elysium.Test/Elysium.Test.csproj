@@ -61,6 +61,12 @@
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\App.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Properties\Icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="PresentationCore" />
@@ -97,13 +103,19 @@
     <ProjectReference Include="..\Elysium.Notifications\Elysium.Notifications.csproj">
       <Project>{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}</Project>
       <Name>Elysium.Notifications</Name>
-      <Private>False</Private>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Elysium\Elysium.csproj">
       <Project>{5A65DA67-130D-43D8-9224-4559B523B6D4}</Project>
       <Name>Elysium</Name>
-      <Private>False</Private>
+      <Private>True</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\App.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Properties\Icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

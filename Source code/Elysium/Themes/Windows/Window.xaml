@@ -82,17 +82,15 @@
                                       Grid.Row="1"
                                       shell:WindowChrome.IsHitTestVisibleInChrome="True">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="34"/>
-                                        <ColumnDefinition Width="34"/>
-                                        <ColumnDefinition Width="34"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="26"/>
-                                    </Grid.RowDefinitions>
                                     <controls:CommandButton x:Name="PART_Minimize"
                                                             Grid.Column="0"
                                                             BorderThickness="0"
-                                                            Command="{x:Static controls:WindowCommands.Minimize}">
+                                                            Command="{x:Static controls:WindowCommands.Minimize}"
+                                                            Width="34" Height="26">
                                         <Path Data="{StaticResource MinimizeIcon}"
                                               Fill="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:CommandButton}}, Path=(params:CommandButtons.Mask)}"
                                               Stretch="None"
@@ -101,7 +99,8 @@
                                     <controls:CommandButton x:Name="PART_Maximize"
                                                             Grid.Column="1"
                                                             BorderThickness="0"
-                                                            Command="{x:Static controls:WindowCommands.Maximize}">
+                                                            Command="{x:Static controls:WindowCommands.Maximize}"
+                                                            Width="34" Height="26">
                                         <Path Data="{StaticResource MaximizeIcon}"
                                               Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:CommandButton}}, Path=(params:CommandButtons.Mask)}"
                                               Stretch="None"
@@ -111,6 +110,7 @@
                                                             Grid.Column="1"
                                                             BorderThickness="0"
                                                             Command="{x:Static controls:WindowCommands.Restore}"
+                                                            Width="34" Height="26"
                                                             Visibility="Hidden">
                                         <Path Data="{StaticResource RestoreIcon}"
                                               Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:CommandButton}}, Path=(params:CommandButtons.Mask)}"
@@ -120,7 +120,8 @@
                                     <controls:CommandButton x:Name="PART_Close"
                                                             Grid.Column="2"
                                                             BorderThickness="0"
-                                                            Command="{x:Static controls:WindowCommands.Close}">
+                                                            Command="{x:Static controls:WindowCommands.Close}"
+                                                            Width="34" Height="26">
                                         <Path Data="{StaticResource CloseIcon}"
                                               Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:CommandButton}}, Path=(params:CommandButtons.Mask)}"
                                               Stretch="None"

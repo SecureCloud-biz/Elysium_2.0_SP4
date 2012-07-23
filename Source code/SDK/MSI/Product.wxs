@@ -1,27 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
   <?if $(sys.BUILDARCH) = x64 ?>
     <?define x64 = "yes" ?>
     <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
-    <?define SourceDir = "..\..\..\Binary\Elysium for .NET 4\Debug\x64"?>
+    <?define DebugFolder = "..\..\..\Binary\Elysium for .NET 4\Debug\x64" ?>
+    <?define ReleaseFolder = "..\..\..\Binary\Elysium for .NET 4\Release\x64" ?>
   <?else ?>
     <?define x64 = "no" ?>
     <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
-  <?define SourceDir = "..\..\..\Binary\Elysium for .NET 4\Debug\x86"?>
+    <?define DebugFolder = "..\..\..\Binary\Elysium for .NET 4\Debug\x86" ?>
+    <?define ReleaseFolder = "..\..\..\Binary\Elysium for .NET 4\Release\x86" ?>
   <?endif ?>
+  <?define AssemblyDependenciesFolder = "..\..\..\Tools and Resources\Assembly dependencies" ?>
+  <?define AnyCPUDebugFolder = "..\..\..\Binary\Elysium for .NET 4\Debug\AnyCPU\" ?>
+  <?define AnyCPUReleaseFolder = "..\..\..\Binary\Elysium for .NET 4\Release\AnyCPU\" ?>
+  <?define DocumentationFolder = "..\..\..\Binary\Elysium for .NET 4\Documentation\" ?>
   
-	<Product Id="45E4BBBD-20C1-46FF-9239-16AF87C89C95" Name="Elysium SDK" Manufacturer="Alex F. Sherman and Codeplex Community"
+	<Product Id="C0866E3A-961B-46FA-884E-415FA7B8BDC6"
+           Name="Elysium SDK for .NET Framework 4" Manufacturer="Alex F. Sherman and Codeplex Community"
            Language="1033"
-           Version="1.5.507.0" UpgradeCode="990DDD4D-A5A4-4BFB-9D66-1C4EFBD4226F">
+           Version="1.5.601.0" UpgradeCode="08BAF1B8-4D62-45DF-99CB-D42F14862D5B">
 		<Package InstallerVersion="200" Platform="$(sys.BUILDARCH)"
              InstallPrivileges="elevated" InstallScope="perMachine"
              Compressed="yes"/>
 		<MajorUpgrade AllowDowngrades="no" DowngradeErrorMessage="A newer version of [ProductName] is already installed."/>
-		<Feature Id="Elysium" Title="Elysium" Level="1">
+    <Property Id="ARPSYSTEMCOMPONENT" Value="1" />
+		<Feature Id="Elysium" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install" Absent="disallow">
+      <ComponentGroupRef Id="Prerequisites" />
+      <ComponentGroupRef Id="Prerequisites.Documentation" />
+      <ComponentGroupRef Id="Prerequisites.Design" />
+      <ComponentGroupRef Id="Prerequisites.Design.Resources" />
 			<ComponentGroupRef Id="Elysium" />
+			<ComponentGroupRef Id="Elysium.Contracts" />
+      <ComponentGroupRef Id="Elysium.Documentation" />
 		</Feature>
-    <Feature Id="Elysium.Notifications" Title="Elysium Notifications" Level="2">
+    <Feature Id="Notifications" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install">
       <ComponentGroupRef Id="Elysium.Notifications" />
+      <ComponentGroupRef Id="Elysium.Notifications.Contracts" />
+      <ComponentGroupRef Id="Elysium.Notifications.Documentation" />
+    </Feature>
+    <Feature Id="Documentation.en" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install">
+      <ComponentGroupRef Id="Prerequisites.Documentation.en" />
+      <ComponentGroupRef Id="Elysium.Documentation.en" />
+      <ComponentGroupRef Id="Elysium.Notifications.Documentation.en" />
+    </Feature>
+    <Feature Id="Documentation.ru" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install">
+      <ComponentGroupRef Id="Elysium.Documentation.ru" />
+      <ComponentGroupRef Id="Elysium.Notifications.Documentation.ru" />
+    </Feature>
+    <Feature Id="Test" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install">
+      <ComponentGroupRef Id="Elysium.Test" />
     </Feature>
 	</Product>
 
@@ -32,35 +61,85 @@
 	<Fragment>
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="$(var.PlatformProgramFilesFolder)">
-				<Directory Id="INSTALLFOLDER" Name="Elysium SDK" />
+        <Directory Id="ROOTFOLDER" Name="Elysium SDK">
+          <Directory Id="NETFOLDER" Name=".NET Framework 4">
+            <Directory Id="INSTALLDIR" Name="1.5">
+              <Directory Id="CONTRACTSFOLDER" Name="CodeContracts"/>
+              <Directory Id="DESIGNFOLDER" Name="Design">
+                <Directory Id="DESIGNRESOURCESFOLDER_EN" Name="en"/>
+              </Directory>
+              <Directory Id="LOCALIZATIONFOLDER_EN" Name="en"/>
+              <Directory Id="LOCALIZATIONFOLDER_RU" Name="ru"/>
+              <Directory Id="TESTFOLDER" Name="Test"/>
+            </Directory>
+          </Directory>
+        </Directory>
 			</Directory>
+      <Directory Id="CommonAppDataFolder">
+        <Directory Id="APPDATAMICROSOFTFOLDER" Name="Microsoft">
+          <Directory Id="APPDATAWINDOWSFOLDER" Name="Windows">
+            <Directory Id="APPDATASTARTMENUFOLDER" Name="Start Menu">
+              <Directory Id="APPDATAPROGRAMSFOLDER" Name="Programs">
+                <Directory Id="SDKFOLDER" Name="Elysium SDK">
+                  <Directory Id="PROGRAMSFOLDER" Name=".NET Framework 4"/>
+                </Directory>
+              </Directory>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
 		</Directory>
 	</Fragment>
 
 	<Fragment>
-		<ComponentGroup Id="Elysium" Directory="INSTALLFOLDER">
-			<Component Id="Base" Guid="52444618-B932-45A2-B2A5-374178BF0AC1">
-        <File Source="$(var.SourceDir)\Elysium.dll" KeyPath="no" Vital="yes"/>
-        <File Source="$(var.SourceDir)\Elysium.pdb" KeyPath="no" Vital="no"/>
+    <!-- Prerequisites -->
+    <ComponentGroup Id="Prerequisites" Directory="INSTALLDIR">
+      <Component Id="AssemblyDependencies.Microsoft.Expression.Drawing" Guid="8CCAE73E-1458-47F9-BC1C-14C9BA216881">
+        <File Source="$(var.AssemblyDependenciesFolder)\Microsoft.Expression.Drawing.dll" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
-      <Component Id="Base.CodeContracts" Guid="B4FABB3D-0723-4CF4-BDF2-5DBCB3CECA71">
-        <File Source="$(var.SourceDir)\CodeContracts\Elysium.Contracts.dll" KeyPath="no" Vital="yes"/>
-        <File Source="$(var.SourceDir)\CodeContracts\Elysium.Contracts.pdb" KeyPath="no" Vital="no"/>
+      <Component Id="AssemblyDependencies.Microsoft.Windows.Shell" Guid="D97C27DF-9B58-4B83-8404-B8C6C36BE741">
+        <File Source="$(var.AssemblyDependenciesFolder)\Microsoft.Windows.Shell.dll" Checksum="yes" KeyPath="yes" Vital="yes"/>
+        <File Source="$(var.AssemblyDependenciesFolder)\Microsoft.Windows.Shell.pdb" Checksum="yes" KeyPath="no" Vital="no"/>
+      </Component>
+    </ComponentGroup>
+    <ComponentGroup Id="Prerequisites.Design" Directory="DESIGNFOLDER">
+      <Component Id="AssemblyDependencies.Design" Guid="1635713A-1320-4D0B-8D67-78372044905B">
+        <File Source="$(var.AssemblyDependenciesFolder)\Design\Microsoft.Expression.Drawing.Design.dll" Checksum="yes" KeyPath="no" Vital="yes"/>
+      </Component>
+    </ComponentGroup>
+    <ComponentGroup Id="Prerequisites.Design.Resources" Directory="DESIGNRESOURCESFOLDER_EN">
+      <Component Id="AssemblyDependencies.Design.Resources" Guid="E0FC901C-944A-41EA-8CAD-D0DB2B608E13">
+        <File Source="$(var.AssemblyDependenciesFolder)\Design\en\Microsoft.Expression.Drawing.Design.resources.dll" Checksum="yes" KeyPath="no" Vital="yes"/>
+      </Component>
+    </ComponentGroup>
+    <!-- Elysium -->
+		<ComponentGroup Id="Elysium" Directory="INSTALLDIR">
+			<Component Id="Base" Guid="994D21AD-D164-4FA5-8613-174FFF89A94A">
+        <File Source="$(var.AnyCPUDebugFolder)\Elysium.dll" Checksum="yes" KeyPath="yes" Vital="yes"/>
+        <File Source="$(var.AnyCPUDebugFolder)\Elysium.pdb" Checksum="yes" KeyPath="no" Vital="no"/>
+        <?if $(sys.BUILDARCH) = x64 ?>
+          <RegistryValue Root="HKLM" Key="SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v4.0.30319\AssemblyFoldersEx\Elysium" Type="string" Value="[INSTALLDIR]"/>
+        <?else ?>
+          <RegistryValue Root="HKLM" Key="SOFTWARE\Microsoft\.NETFramework\v4.0.30319\AssemblyFoldersEx\Elysium" Type="string" Value="[INSTALLDIR]"/>
+        <?endif ?>
       </Component>
 		</ComponentGroup>
-    <ComponentGroup Id="Elysium.Notifications" Directory="INSTALLFOLDER">
-      <Component Id="Notifications" Guid="87849740-1671-4C5F-885C-2AAEA62C4B67">
-        <File Source="$(var.SourceDir)\Elysium.Notifications.dll"/>
-        <File Source="$(var.SourceDir)\Elysium.Notifications.pdb"/>
+    <ComponentGroup Id="Elysium.Contracts" Directory="CONTRACTSFOLDER">
+      <Component Id="Base.CodeContracts" Guid="3CB89E81-DA0F-4418-8B2A-4B02EF2BFCCA">
+        <File Source="$(var.AnyCPUDebugFolder)\CodeContracts\Elysium.Contracts.dll" Checksum="yes" KeyPath="no" Vital="yes"/>
+        <File Source="$(var.AnyCPUDebugFolder)\CodeContracts\Elysium.Contracts.pdb" Checksum="yes" KeyPath="no" Vital="no"/>
       </Component>
-      <Component Id="Notifications.CodeContracts" Guid="8EF17AA7-8FBB-40F1-B5B0-1F607361CB6B">
-        <File Source="$(var.SourceDir)\CodeContracts\Elysium.Notifications.Contracts.dll"/>
-        <File Source="$(var.SourceDir)\CodeContracts\Elysium.Notifications.Contracts.pdb"/>
+    </ComponentGroup>
+    <!-- Elysium Notifications system -->
+    <ComponentGroup Id="Elysium.Notifications" Directory="INSTALLDIR">
+      <Component Id="Notifications" Guid="F89F0610-328F-4EAC-8CE7-807592AA6F3B">
+        <File Source="$(var.AnyCPUDebugFolder)\Elysium.Notifications.dll" Checksum="yes" KeyPath="yes" Vital="yes"/>
+        <File Source="$(var.AnyCPUDebugFolder)\Elysium.Notifications.pdb" Checksum="yes" KeyPath="no" Vital="no"/>
       </Component>
-      <Component Id="Notifications.Server" Guid="19DEEDEC-B8A6-4FDF-9088-A2262E20284E">
-        <File Source="$(var.SourceDir)\Elysium.Notifications.Server.exe" KeyPath="yes" Vital="yes"/>
-        <File Source="$(var.SourceDir)\Elysium.Notifications.Server.exe.config" KeyPath="no" Vital="yes"/>
-        <File Source="$(var.SourceDir)\Elysium.Notifications.Server.pdb" KeyPath="no" Vital="no"/>
+      <Component Id="Notifications.Server" Guid="58C4BF97-0279-4F4F-AFC3-17176046D4F2">
+        <File Source="$(var.DebugFolder)\Elysium.Notifications.Server.exe" Checksum="yes" KeyPath="yes" Vital="yes"/>
+        <File Source="$(var.DebugFolder)\Elysium.Notifications.Server.exe.config" Checksum="yes" KeyPath="no" Vital="yes"/>
+        <File Source="$(var.DebugFolder)\Elysium.Notifications.Server.pdb" Checksum="yes" KeyPath="no" Vital="no"/>
         <ServiceInstall Type="ownProcess"
                         Vital="yes"
                         Name="ElysiumNotifications"
@@ -72,5 +151,116 @@
         <ServiceControl Id="ElysiumNotifications" Name="ElysiumNotifications" Start="install" Stop="uninstall" Remove="uninstall" Wait="yes" />
       </Component>
     </ComponentGroup>
-	</Fragment>
+    <ComponentGroup Id="Elysium.Notifications.Contracts" Directory="CONTRACTSFOLDER">
+      <Component Id="Notifications.CodeContracts" Guid="C3AC25A2-C6E1-4EF9-999F-2053241BDB8E">
+        <File Source="$(var.AnyCPUDebugFolder)\CodeContracts\Elysium.Notifications.Contracts.dll" Checksum="yes" KeyPath="no" Vital="yes"/>
+        <File Source="$(var.AnyCPUDebugFolder)\CodeContracts\Elysium.Notifications.Contracts.pdb" Checksum="yes" KeyPath="no" Vital="no"/>
+      </Component>
+    </ComponentGroup>
+    <!-- Elysium Test app -->
+    <ComponentGroup Id="Elysium.Test" Directory="TESTFOLDER">
+      <Component Id="Test" Guid="FE650031-68A6-4DD0-9C70-3A1AEAB462AB">
+        <File Id="Microsoft.Expression.Drawing.Test.dll" Source="$(var.AssemblyDependenciesFolder)\Microsoft.Expression.Drawing.dll" Checksum="yes" KeyPath="no" Vital="yes">
+          <?if $(sys.BUILDARCH) = x64 ?>
+            <netfx:NativeImage Id="Microsoft.Expression.Drawing.NativeImage" Platform="64bit" Priority="0" AppBaseDirectory="TESTFOLDER"/>
+          <?else ?>
+            <netfx:NativeImage Id="Microsoft.Expression.Drawing.NativeImage" Platform="32bit" Priority="0" AppBaseDirectory="TESTFOLDER"/>
+          <?endif ?>
+        </File>
+        <File Id="Microsoft.Windows.Shell.Test.dll" Source="$(var.AssemblyDependenciesFolder)\Microsoft.Windows.Shell.dll" Checksum="yes" KeyPath="no" Vital="yes">
+          <?if $(sys.BUILDARCH) = x64 ?>
+            <netfx:NativeImage Id="Microsoft.Windows.Shell.NativeImage" Platform="64bit" Priority="0" AppBaseDirectory="TESTFOLDER"/>
+          <?else ?>
+            <netfx:NativeImage Id="Microsoft.Windows.Shell.NativeImage" Platform="32bit" Priority="0" AppBaseDirectory="TESTFOLDER"/>
+          <?endif ?>
+        </File>
+        <File Id="Elysium.Test.dll" Source="$(var.AnyCPUReleaseFolder)\Elysium.dll" Checksum="yes" KeyPath="no" Vital="yes">
+          <?if $(sys.BUILDARCH) = x64 ?>
+            <netfx:NativeImage Id="Elysium.NativeImage" Platform="64bit" Priority="0" AppBaseDirectory="TESTFOLDER"/>
+          <?else ?>
+            <netfx:NativeImage Id="Elysium.NativeImage" Platform="32bit" Priority="0" AppBaseDirectory="TESTFOLDER"/>
+          <?endif ?>
+        </File>
+        <File Id="Elysium.Notifications.Test.dll" Source="$(var.AnyCPUReleaseFolder)\Elysium.Notifications.dll" Checksum="yes" KeyPath="no" Vital="yes">
+          <?if $(sys.BUILDARCH) = x64 ?>
+            <netfx:NativeImage Id="Elysium.Notifications.NativeImage" Platform="64bit" Priority="0" AppBaseDirectory="TESTFOLDER"/>
+          <?else ?>
+            <netfx:NativeImage Id="Elysium.Notifications.NativeImage" Platform="32bit" Priority="0" AppBaseDirectory="TESTFOLDER"/>
+          <?endif ?>
+        </File>
+        <File Source="$(var.ReleaseFolder)\Elysium.Test.exe" Checksum="yes" KeyPath="no" Vital="yes">
+          <?if $(sys.BUILDARCH) = x64 ?>
+            <netfx:NativeImage Id="Test.NativeImage" Platform="64bit" Priority="0" AppBaseDirectory="TESTFOLDER"/>
+          <?else ?>
+            <netfx:NativeImage Id="Test.NativeImage" Platform="32bit" Priority="0" AppBaseDirectory="TESTFOLDER"/>
+          <?endif ?>
+        </File>
+        <CreateFolder Directory="PROGRAMSFOLDER"/>
+        <Shortcut Id="Test.Shortcut"
+                  Name="Elysium Test app"
+                  Directory="PROGRAMSFOLDER"
+                  Target="[TESTFOLDER]Elysium.Test.exe"/>
+        <RemoveFolder Id="Test.PROGRAMSFOLDER" Directory="PROGRAMSFOLDER" On="uninstall"/>
+        <RegistryValue Root="HKLM" Key="Software\Elysium" Type="string" Value="" KeyPath="yes"/>
+      </Component>
+    </ComponentGroup>
+    <!-- Prerequisites documentation -->
+    <ComponentGroup Id="Prerequisites.Documentation" Directory="INSTALLDIR">
+      <Component Id="AssemblyDependencies.Documentation" Guid="E90D9A0F-B20A-4397-B7B2-FC8BB604C2BC">
+        <File Source="$(var.AssemblyDependenciesFolder)\Microsoft.Expression.Drawing.xml" Checksum="yes" KeyPath="no" Vital="no"/>
+      </Component>
+    </ComponentGroup>
+    <ComponentGroup Id="Prerequisites.Documentation.en" Directory="LOCALIZATIONFOLDER_EN">
+      <Component Id="AssemblyDependencies.Documentation.en" Guid="9D9FB4CE-8917-4EF8-9616-E019D6CBB72B">
+        <File Id="Microsoft.Expression.Drawing.en.xml" Source="$(var.AssemblyDependenciesFolder)\en\Microsoft.Expression.Drawing.xml" Checksum="yes" KeyPath="no" Vital="no"/>
+      </Component>
+    </ComponentGroup>
+    <!-- Elysium documentation -->
+    <ComponentGroup Id="Elysium.Documentation" Directory="INSTALLDIR">
+      <Component Id="Base.Documentation" Guid="D245AC0B-413B-4C9D-89CF-7B122DB13613">
+        <File Source="$(var.DocumentationFolder)\Elysium.xml" Checksum="yes" KeyPath="no" Vital="yes"/>
+      </Component>
+    </ComponentGroup>
+    <ComponentGroup Id="Elysium.Documentation.en" Directory="LOCALIZATIONFOLDER_EN">
+      <Component Id="Base.Documentation.en" Guid="6DF39380-65E0-4F2D-82F6-7F23E7786C53">
+        <File Id="Elysium.en.xml" Source="$(var.DocumentationFolder)\Elysium.xml" Checksum="yes" KeyPath="no" Vital="yes"/>
+        <File Id="Elysium.en.chm" Source="$(var.DocumentationFolder)\Elysium.chm" Checksum="yes" KeyPath="no" Vital="yes"/>
+        <CreateFolder Directory="PROGRAMSFOLDER"/>
+        <Shortcut Id="Documentation.en.Shortcut"
+                  Name="Elysium English documentation"
+                  Directory="PROGRAMSFOLDER"
+                  Target="[LOCALIZATIONFOLDER_EN]Elysium.chm"/>
+        <RemoveFolder Id="Documentation.en.PROGRAMSFOLDER" Directory="PROGRAMSFOLDER" On="uninstall"/>
+        <RegistryValue Root="HKLM" Key="Software\Elysium" Type="string" Value="" KeyPath="yes"/>
+      </Component>
+    </ComponentGroup>
+    <ComponentGroup Id="Elysium.Documentation.ru" Directory="LOCALIZATIONFOLDER_RU">
+      <Component Id="Base.Documentation.ru" Guid="E82739DF-197D-4FAD-B858-0CDF160C13EC">
+        <File Id="Elysium.ru.xml" Source="$(var.DocumentationFolder)\ru\Elysium.xml" Checksum="yes" KeyPath="no" Vital="yes"/>
+        <File Id="Elysium.ru.chm"  Source="$(var.DocumentationFolder)\ru\Elysium.chm" Checksum="yes" KeyPath="no" Vital="yes"/>
+        <CreateFolder Directory="PROGRAMSFOLDER"/>
+        <Shortcut Id="Documentation.ru.Shortcut"
+                  Name="Elysium Russian documentation"
+                  Directory="PROGRAMSFOLDER"
+                  Target="[LOCALIZATIONFOLDER_RU]Elysium.chm"/>
+        <RemoveFolder Id="Documentation.ru.PROGRAMSFOLDER" Directory="PROGRAMSFOLDER" On="uninstall"/>
+        <RegistryValue Root="HKLM" Key="Software\Elysium" Type="string" Value="" KeyPath="yes"/>
+      </Component>
+    </ComponentGroup>
+    <ComponentGroup Id="Elysium.Notifications.Documentation" Directory="INSTALLDIR">
+      <Component Id="Notifications.Documentation" Guid="FB38A1A2-3CE3-44B3-B333-E85F099AF97A">
+        <File Source="$(var.DocumentationFolder)\Elysium.Notifications.xml" Checksum="yes" KeyPath="no" Vital="yes"/>
+      </Component>
+    </ComponentGroup>
+    <ComponentGroup Id="Elysium.Notifications.Documentation.en" Directory="LOCALIZATIONFOLDER_EN">
+      <Component Id="Notifications.Documentation.en" Guid="F2D32ACF-1982-45D6-8397-3C541EFCE5A5">
+        <File Id="Elysium.Notifications.en.xml" Source="$(var.DocumentationFolder)\Elysium.Notifications.xml" Checksum="yes" KeyPath="no" Vital="yes"/>
+      </Component>
+    </ComponentGroup>
+    <ComponentGroup Id="Elysium.Notifications.Documentation.ru" Directory="LOCALIZATIONFOLDER_RU">
+      <Component Id="Notifications.Documentation.ru" Guid="D746F27F-F736-4EE2-8EAB-996FD8730F03">
+        <File Id="Elysium.Notifications.ru.xml"  Source="$(var.DocumentationFolder)\ru\Elysium.Notifications.xml" Checksum="yes" KeyPath="no" Vital="yes"/>
+      </Component>
+    </ComponentGroup>
+  </Fragment>
 </Wix>

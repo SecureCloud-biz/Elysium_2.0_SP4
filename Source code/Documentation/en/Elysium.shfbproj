@@ -5,9 +5,9 @@
          assemblies to include from solution and project documentation
          sources -->
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2ed0b9e6-ab08-4358-9f10-8ea35fa37366}</ProjectGuid>
+    <ProjectGuid>{e7b526d2-b5cc-4019-9ac8-f8b91f021a82}</ProjectGuid>
     <SHFBSchemaVersion>1.9.3.0</SHFBSchemaVersion>
     <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual
          Studio adds them anyway -->
@@ -15,7 +15,7 @@
     <RootNamespace>Documentation</RootNamespace>
     <Name>Documentation</Name>
     <!-- SHFB properties -->
-    <OutputPath>..\..\..\Binary\Debug\Elysium for .NET 4\AnyCPU\</OutputPath>
+    <OutputPath>..\..\..\Binary\Elysium for .NET 4\Documentation\</OutputPath>
     <HtmlHelpName>Elysium</HtmlHelpName>
     <Language>en-US</Language>
     <NamingMethod>Guid</NamingMethod>
@@ -27,7 +27,7 @@
     <BuildAssemblerVerbosity>OnlyErrors</BuildAssemblerVerbosity>
     <BuildLogFile>Elysium.log</BuildLogFile>
     <CopyrightHref>http://elysium.codeplex.com/license</CopyrightHref>
-    <FooterText>Copyright %28c%29 2011 Alex F. Sherman</FooterText>
+    <FooterText>Copyright %28c%29 2011-2012 Alex F. Sherman</FooterText>
     <HelpTitle>Elysium for .NET 4 documentation %28English%29</HelpTitle>
     <ComponentConfigurations>
       <ComponentConfig id="IntelliSense Component" enabled="True">
@@ -58,8 +58,8 @@
     </ComponentConfigurations>
     <VisibleItems>InheritedMembers, Protected, ProtectedInternalAsProtected</VisibleItems>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\..\..\Binary\Debug\Elysium for .NET 4\AnyCPU\Elysium.dll" />
-      <DocumentationSource sourceFile="..\..\..\Binary\Debug\Elysium for .NET 4\AnyCPU\Elysium.Notifications.dll" />
+      <DocumentationSource sourceFile="..\..\..\Binary\Elysium for .NET 4\Debug\x86\Elysium.dll" />
+      <DocumentationSource sourceFile="..\..\..\Binary\Elysium for .NET 4\Debug\x86\Elysium.Notifications.dll" />
       <DocumentationSource sourceFile="..\..\Elysium.Notifications\Documentation\en\Elysium.Notifications.xml" />
       <DocumentationSource sourceFile="..\..\Elysium\Documentation\en\Elysium.xml" />
     </DocumentationSources>
@@ -67,22 +67,25 @@
     <RootNamespaceContainer>True</RootNamespaceContainer>
     <RootNamespaceTitle>Elysium for .NET 4 documentation %28English%29</RootNamespaceTitle>
     <PlugInConfigurations>
-      <PlugInConfig id="Additional Content Only" enabled="True">
-        <configuration />
-      </PlugInConfig>
     </PlugInConfigurations>
-    <MissingTags>Summary, Parameter, Returns, Value, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
+    <MissingTags>None</MissingTags>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="Elysium" isDocumented="True" />
     </NamespaceSummaries>
     <ApiFilter />
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SdkLinkTarget>Blank</SdkLinkTarget>
+    <ContentPlacement>AboveNamespaces</ContentPlacement>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
        order for Visual Studio to perform the build.  The others are optional
        common platform types that may appear. -->
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  <!--PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
   </PropertyGroup>
@@ -95,7 +98,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Win32' ">
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
-  </PropertyGroup>
+  </PropertyGroup-->
   <ItemGroup>
     <Reference Include="JetBrains.Annotations, Version=6.1.37.86, Culture=neutral, PublicKeyToken=1010a0d8d6380325" />
     <Reference Include="Microsoft.Expression.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />

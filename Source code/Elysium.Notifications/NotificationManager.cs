@@ -124,13 +124,20 @@ namespace Elysium.Notifications
                 window.Width = slot.Size.Width;
                 window.Height = slot.Size.Height;
 
-                var timer = new Timer(delegate { window.Dispatcher.Invoke(new Action(window.Close), DispatcherPriority.Normal); });
+                // Capture closure
+                var closingSlot = slot;
+                var timer = new Timer(delegate
+                {
+                    closingSlot = slot;
+                    window.Dispatcher.Invoke(new Action(window.Close), DispatcherPriority.Normal);
+                });
 
                 window.Closing += (s, e) =>
                 {
+                    closingSlot = slot;
                     timer.Dispose();
-                    Free(slot.ID);
-                    CloseAnimation(window, slot);
+                    Free(closingSlot.ID);
+                    CloseAnimation(window, closingSlot);
                 };
 
                 BeginOpenAnimation(window, slot);

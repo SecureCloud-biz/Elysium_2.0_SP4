@@ -6,7 +6,7 @@
     <ProductVersion>3.6</ProductVersion>
     <ProjectGuid>88863322-5f6c-4933-a712-eca1424a5711</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>Elysium SDK</OutputName>
+    <OutputName>Installer</OutputName>
     <OutputType>Package</OutputType>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
@@ -26,8 +26,24 @@
     <OutputPath>..\..\..\Binary\Elysium for .NET 4\Debug\x64\SDK\MSI\</OutputPath>
     <IntermediateOutputPath>obj\x64\</IntermediateOutputPath>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DefineConstants>X86</DefineConstants>
+    <OutputPath>..\..\..\Binary\Elysium for .NET 4\Release\x86\SDK\MSI\</OutputPath>
+    <IntermediateOutputPath>obj\x86\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <DefineConstants>X64</DefineConstants>
+    <OutputPath>..\..\..\Binary\Elysium for .NET 4\Release\x64\SDK\MSI\</OutputPath>
+    <IntermediateOutputPath>obj\x64\</IntermediateOutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Product.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixNetFxExtension">
+      <HintPath>$(WixExtDir)\WixNetFxExtension.dll</HintPath>
+      <Name>WixNetFxExtension</Name>
+    </WixExtension>
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
 </Project>

@@ -12,10 +12,10 @@ namespace Elysium.Notifications.Client
         [UsedImplicitly]
         public NotificationManager() : base(new NetNamedPipeBinding(NetNamedPipeSecurityMode.None)
                                                 {
-                                                    OpenTimeout = TimeSpan.FromSeconds(2d),
-                                                    SendTimeout = TimeSpan.FromSeconds(2d),
-                                                    ReceiveTimeout = TimeSpan.FromSeconds(2d),
-                                                    CloseTimeout = TimeSpan.FromSeconds(2d),
+                                                    OpenTimeout = TimeSpan.FromMinutes(2d),
+                                                    SendTimeout = TimeSpan.FromMinutes(8d),
+                                                    ReceiveTimeout = TimeSpan.FromMinutes(8d),
+                                                    CloseTimeout = TimeSpan.FromMinutes(2d),
                                                     TransactionFlow = false,
                                                     TransferMode = TransferMode.Buffered,
                                                     TransactionProtocol = TransactionProtocol.OleTransactions,
