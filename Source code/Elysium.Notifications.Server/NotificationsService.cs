@@ -16,7 +16,7 @@ namespace Elysium.Notifications.Server
 
         internal NotificationsService()
         {
-            Debug();
+            //Debug();
             InitializeComponent();
         }
 
