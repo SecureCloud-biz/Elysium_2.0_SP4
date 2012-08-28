@@ -19,12 +19,15 @@
                         <ScrollViewer Background="{TemplateBinding Background}"
                                       BorderBrush="{TemplateBinding BorderBrush}"
                                       BorderThickness="{TemplateBinding BorderThickness}"
-                                      TextBlock.Foreground="{TemplateBinding Foreground}"
-                                      TextBlock.FontFamily="{TemplateBinding FontFamily}"
-                                      TextBlock.FontSize="{TemplateBinding FontSize}"
-                                      TextBlock.FontStretch="{TemplateBinding FontStretch}"
-                                      TextBlock.FontStyle="{TemplateBinding FontStyle}"
-                                      TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      FontFamily="{TemplateBinding FontFamily}"
+                                      FontSize="{TemplateBinding FontSize}"
+                                      FontStretch="{TemplateBinding FontStretch}"
+                                      FontStyle="{TemplateBinding FontStyle}"
+                                      FontWeight="{TemplateBinding FontWeight}"
+                                      TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                                      TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                                      RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
                                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                             <ScrollViewer.Resources>
                                 <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource {x:Type ScrollBar}}">
@@ -42,13 +45,13 @@
                         <DataTrigger Binding="{Binding ElementName=LayoutRoot, Path=Tag}" Value="True">
                             <Setter TargetName="LayoutRoot" Property="Effect">
                                 <Setter.Value>
-                                    <DropShadowEffect Color="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.ShadowBrush).(SolidColorBrush.Color)}"
+                                    <DropShadowEffect Color="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Submenu}}, Path=(params:General.ShadowBrush).(SolidColorBrush.Color)}"
                                                       BlurRadius="4" ShadowDepth="0"
                                                       Direction="90"
                                                       Opacity="0.7"/>
                                 </Setter.Value>
                             </Setter>
-                            <Setter TargetName="LayoutRoot" Property="Background" Value="{DynamicResource Transparent}"/>
+                            <Setter TargetName="LayoutRoot" Property="Background" Value="{StaticResource TransparentBrush}"/>
                             <Setter TargetName="LayoutRoot" Property="Padding" Value="4"/>
                         </DataTrigger>
                     </ControlTemplate.Triggers>
@@ -64,7 +67,16 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:DropDownCommandButton}">
-                    <Grid Background="{DynamicResource TransparentBrush}"
+                    <Grid Background="{StaticResource TransparentBrush}"
+                          TextBlock.Foreground="{TemplateBinding Foreground}"
+                          TextBlock.FontFamily="{TemplateBinding FontFamily}"
+                          TextBlock.FontSize="{TemplateBinding FontSize}"
+                          TextBlock.FontStretch="{TemplateBinding FontStretch}"
+                          TextBlock.FontStyle="{TemplateBinding FontStyle}"
+                          TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                          TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                          TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                          RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
@@ -115,8 +127,8 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsDropDownOpen" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
-                <Setter Property="params:CommandButtons.Mask" Value="{DynamicResource MiddleLightBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource MiddleLightBrush}"/>
+                <Setter Property="params:CommandButtons.Mask" Value="{StaticResource MiddleLightBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -128,7 +140,16 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:DropDownCommandButton}">
-                    <Grid Background="{DynamicResource TransparentBrush}"
+                    <Grid Background="{StaticResource TransparentBrush}"
+                          TextBlock.Foreground="{TemplateBinding Foreground}"
+                          TextBlock.FontFamily="{TemplateBinding FontFamily}"
+                          TextBlock.FontSize="{TemplateBinding FontSize}"
+                          TextBlock.FontStretch="{TemplateBinding FontStretch}"
+                          TextBlock.FontStyle="{TemplateBinding FontStyle}"
+                          TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                          TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                          TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                          RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
@@ -144,7 +165,7 @@
                                  VerticalAlignment="Center"/>
                         <Ellipse Grid.Row="0"
                                  Fill="{TemplateBinding params:CommandButtons.Mask}"
-                                 Stroke="{DynamicResource TransparentBrush}"
+                                 Stroke="{StaticResource TransparentBrush}"
                                  StrokeThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessToDoubleConverter}}"
                                  Stretch="Fill"
                                  HorizontalAlignment="Center"
@@ -195,9 +216,9 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsDropDownOpen" Value="True">
-                <Setter Property="Background" Value="{DynamicResource ContrastBrush}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource ContrastBrush}"/>
-                <Setter Property="params:CommandButtons.Mask" Value="{DynamicResource AccentBrush}"/>
+                <Setter Property="Background" Value="{StaticResource ContrastBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource ContrastBrush}"/>
+                <Setter Property="params:CommandButtons.Mask" Value="{StaticResource AccentBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>

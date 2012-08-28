@@ -6,11 +6,11 @@
         <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="TextBoxesBaseStyle" TargetType="{x:Type Control}">        
-        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
+    <Style x:Key="TextBoxesBaseStyle" TargetType="{x:Type Control}">
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MiddleLightBrush}"/>
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.DefaultThickness), Mode=OneWay}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.TextFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
         <Setter Property="FontStyle" Value="Normal"/>
@@ -52,14 +52,14 @@
                 <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
             </DataTrigger>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="BorderBrush" Value="{DynamicResource DisabledBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource DisabledBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource DisabledBrush}"/>
             </Trigger>
-        </Style.Triggers>        
+        </Style.Triggers>
     </Style>
 
 </ResourceDictionary>

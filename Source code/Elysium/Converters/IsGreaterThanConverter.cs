@@ -10,20 +10,20 @@ using JetBrains.Annotations;
 namespace Elysium.Converters
 {
     [PublicAPI]
-    [ValueConversion(typeof(Byte), typeof(Boolean))]
-    [ValueConversion(typeof(Int16), typeof(Boolean))]
-    [ValueConversion(typeof(Int32), typeof(Boolean))]
-    [ValueConversion(typeof(Int64), typeof(Boolean))]
-    [ValueConversion(typeof(Single), typeof(Boolean))]
-    [ValueConversion(typeof(Double), typeof(Boolean))]
-    [ValueConversion(typeof(Decimal), typeof(Boolean))]
+    [ValueConversion(typeof(byte), typeof(bool))]
+    [ValueConversion(typeof(short), typeof(bool))]
+    [ValueConversion(typeof(int), typeof(bool))]
+    [ValueConversion(typeof(long), typeof(bool))]
+    [ValueConversion(typeof(float), typeof(bool))]
+    [ValueConversion(typeof(double), typeof(bool))]
+    [ValueConversion(typeof(decimal), typeof(bool))]
     public sealed class IsGreaterThanConverter : IValueConverter
     {
         [PublicAPI]
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (!(value is Byte) && !(value is Int16) && !(value is Int32) && !(value is Int64) &&
-                !(value is Single) && !(value is Double) && !(value is Decimal))
+            if (!(value is byte) && !(value is short) && !(value is int) && !(value is long) &&
+                !(value is float) && !(value is double) && !(value is decimal))
             {
                 Trace.TraceError("Value must be a number.");
                 return DependencyProperty.UnsetValue;
@@ -45,8 +45,8 @@ namespace Elysium.Converters
                 return DependencyProperty.UnsetValue;
             }
 
-            if ((parameter is Byte) || (parameter is Int16) || (parameter is Int32) || (parameter is Int64) ||
-                (parameter is Single) || (parameter is Double) || (parameter is Decimal))
+            if ((parameter is byte) || (parameter is short) || (parameter is int) || (parameter is long) ||
+                (parameter is float) || (parameter is double) || (parameter is decimal))
             {
                 comparand = (double)parameter;
                 return number < comparand;
@@ -62,4 +62,4 @@ namespace Elysium.Converters
             throw new NotSupportedException();
         }
     }
-} ;
+}

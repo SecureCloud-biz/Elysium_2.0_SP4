@@ -6,11 +6,11 @@
         <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="TabItemHeaderStyle" TargetType="{x:Type ContentControl}">        
-        <Setter Property="Background" Value="{x:Null}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
+    <Style x:Key="TabItemHeaderStyle" TargetType="{x:Type ContentControl}">
+        <Setter Property="Background" Value="{StaticResource TransparentBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource LowlightBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{DynamicResource LowlightBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource LowlightBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.HeaderFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
         <Setter Property="FontStyle" Value="Normal"/>
@@ -30,7 +30,16 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
-                        <Grid HorizontalAlignment="Stretch"
+                        <Grid TextBlock.Foreground="{TemplateBinding Foreground}"
+                              TextBlock.FontFamily="{TemplateBinding FontFamily}"
+                              TextBlock.FontSize="{TemplateBinding FontSize}"
+                              TextBlock.FontStretch="{TemplateBinding FontStretch}"
+                              TextBlock.FontStyle="{TemplateBinding FontStyle}"
+                              TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                              TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                              TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                              RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
+                              HorizontalAlignment="Stretch"
                               VerticalAlignment="Stretch">
                             <Rectangle x:Name="Indicator"
                                        Fill="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabItem}}, Path=(params:TabControl.IndicatorBrush)}"
@@ -78,15 +87,15 @@
                 <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
             </DataTrigger>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
             </Trigger>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabItem}}, Path=IsSelected}" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
             </DataTrigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="BorderBrush" Value="{DynamicResource DisabledBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource DisabledBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource DisabledBrush}"/>
             </Trigger>
         </Style.Triggers>        
     </Style>
@@ -117,6 +126,9 @@
                 <ControlTemplate TargetType="{x:Type TabItem}">
                     <ContentControl x:Name="ContentHost"
                                     Content="{TemplateBinding Header}"
+                                    TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                                    TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                                    RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
                                     Style="{TemplateBinding params:TabItem.HeaderStyle}"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                 </ControlTemplate>
@@ -127,7 +139,7 @@
                 <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
             </DataTrigger>
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="params:TabControl.IndicatorBrush" Value="{DynamicResource AccentBrush}"/>
+                <Setter Property="params:TabControl.IndicatorBrush" Value="{StaticResource AccentBrush}"/>
             </Trigger>
         </Style.Triggers>        
     </Style>

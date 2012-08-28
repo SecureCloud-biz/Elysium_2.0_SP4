@@ -6,8 +6,10 @@
         Primary,
         Features,
         Progress,
+        Downgrade,
         Final,
         Canceled,
-        Fail
+        Fail,
+        Reboot
     }
-} ;
+}

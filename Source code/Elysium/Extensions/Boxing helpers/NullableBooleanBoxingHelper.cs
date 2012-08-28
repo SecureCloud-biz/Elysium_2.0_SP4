@@ -1,20 +1,24 @@
-﻿using JetBrains.Annotations;
+﻿using System.Diagnostics;
+
+using JetBrains.Annotations;
 
 namespace Elysium.Extensions
 {
-    [UsedImplicitly]
+    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
+    [DebuggerNonUserCode]
+    [System.Diagnostics.Contracts.Pure]
     internal static class NullableBooleanBoxingHelper
     {
-        [UsedImplicitly]
+        [Pure]
         internal static object Box(bool? value)
         {
             return value.HasValue ? BooleanBoxingHelper.Box(value.Value) : null;
         }
 
-        [UsedImplicitly]
+        [Pure]
         internal static bool? Unbox(object value)
         {
             return value == null ? new bool?() : BooleanBoxingHelper.Unbox(value);
         }
     }
-} ;
+}

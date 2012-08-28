@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Acquiring" xml:space="preserve">
-    <value>Acquiring:</value>
-  </data>
   <data name="Agreement" xml:space="preserve">
     <value>I agree to the License terms and conditions.</value>
   </data>
@@ -135,14 +132,11 @@
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
-  <data name="DestinationFolder" xml:space="preserve">
-    <value>Distination folder:</value>
+  <data name="InstallFolder" xml:space="preserve">
+    <value>Destination folder:</value>
   </data>
   <data name="Documentation_en" xml:space="preserve">
     <value>English documentation</value>
-  </data>
-  <data name="Documentation_ru" xml:space="preserve">
-    <value>Russian documentation</value>
   </data>
   <data name="Finish" xml:space="preserve">
     <value>Finish</value>
@@ -151,16 +145,16 @@
     <value>Install</value>
   </data>
   <data name="Canceled" xml:space="preserve">
-    <value>Installation has been cancelled.</value>
+    <value>Operation has been cancelled.</value>
   </data>
   <data name="Failed" xml:space="preserve">
-    <value>Installation failed.</value>
+    <value>Operation failed.</value>
   </data>
   <data name="Successful" xml:space="preserve">
-    <value>Installation successfully completed.</value>
+    <value>Operation successfully completed.</value>
   </data>
   <data name="InstallTo" xml:space="preserve">
-    <value>Installer will install Elysium to:</value>
+    <value>Installer will install Elysium SDK to:</value>
   </data>
   <data name="LicenseLink" xml:space="preserve">
     <value>License terms</value>
@@ -190,6 +184,33 @@
     <value>Uninstall</value>
   </data>
   <data name="Test" xml:space="preserve">
-    <value>Test app</value>
+    <value>Sample application</value>
+  </data>
+  <data name="Documentation_ru" xml:space="preserve">
+    <value>Russian documentation</value>
+  </data>
+  <data name="CancellationWarning" xml:space="preserve">
+    <value>Are you sure you want to cancel?</value>
+  </data>
+  <data name="NETFrameworkName" xml:space="preserve">
+    <value>.NET Framework 4</value>
+  </data>
+  <data name="SDKName" xml:space="preserve">
+    <value>Elysium SDK</value>
+  </data>
+  <data name="SDKVersion" xml:space="preserve">
+    <value>1.5</value>
+  </data>
+  <data name="Downgrade" xml:space="preserve">
+    <value>A newer version of Elysium SDK is already installed.</value>
+  </data>
+  <data name="RebootLater" xml:space="preserve">
+    <value>I want to manually reboot later</value>
+  </data>
+  <data name="RebootNow" xml:space="preserve">
+    <value>Reboot now</value>
+  </data>
+  <data name="Reboot" xml:space="preserve">
+    <value>You need to reboot to complete operation.</value>
   </data>
 </root>

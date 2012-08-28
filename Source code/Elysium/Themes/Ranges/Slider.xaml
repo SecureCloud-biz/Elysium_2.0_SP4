@@ -7,7 +7,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="SliderRepeatButtonStyle" TargetType="{x:Type RepeatButton}">
-        <Setter Property="Background" Value="{DynamicResource MiddleLightBrush}"/>
+        <Setter Property="Background" Value="{StaticResource MiddleLightBrush}"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
@@ -27,23 +27,23 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="{DynamicResource HighlightBrush}"/>
+                <Setter Property="Background" Value="{StaticResource HighlightBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
     
     <Style x:Key="SliderRepeatButtonValuableStyle" TargetType="{x:Type RepeatButton}" BasedOn="{StaticResource SliderRepeatButtonStyle}">        
-        <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>        
+        <Setter Property="Background" Value="{StaticResource AccentBrush}"/>        
         <Style.Triggers>            
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="{DynamicResource DisabledBrush}"/>
+                <Setter Property="Background" Value="{StaticResource DisabledBrush}"/>
             </Trigger>            
         </Style.Triggers>        
     </Style>
 
     <Style x:Key="SliderThumbStyle" TargetType="{x:Type Thumb}">        
-        <Setter Property="Background" Value="{DynamicResource MiddleLightBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource BackgroundBrush}"/>
+        <Setter Property="Background" Value="{StaticResource MiddleLightBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BackgroundBrush}"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
@@ -64,13 +64,13 @@
         </Setter>        
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource LowlightBrush}"/>
+                <Setter Property="Background" Value="{StaticResource LowlightBrush}"/>
             </Trigger>
             <Trigger Property="IsDragging" Value="True">
-                <Setter Property="Background" Value="{DynamicResource LowlightBrush}"/>
+                <Setter Property="Background" Value="{StaticResource LowlightBrush}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="{DynamicResource DisabledBrush}"/>
+                <Setter Property="Background" Value="{StaticResource DisabledBrush}"/>
             </Trigger>            
         </Style.Triggers>
     </Style>
@@ -90,7 +90,7 @@
                      Visibility="Collapsed"/>
             <Rectangle x:Name="PART_SelectionRange"
                        Grid.Row="1"
-                       Fill="{DynamicResource ForegroundBrush}"
+                       Fill="{StaticResource ForegroundBrush}"
                        StrokeThickness="0"
                        Height="{TemplateBinding params:Slider.TrackSize}"
                        Visibility="Hidden"/>
@@ -140,7 +140,7 @@
                      Visibility="Collapsed"/>
             <Rectangle x:Name="PART_SelectionRange"
                        Grid.Column="1"
-                       Fill="{DynamicResource ForegroundBrush}"
+                       Fill="{StaticResource ForegroundBrush}"
                        StrokeThickness="0"
                        Width="{TemplateBinding params:Slider.TrackSize}"
                        Visibility="Hidden"/>
@@ -177,9 +177,9 @@
 
     <Style TargetType="{x:Type Slider}">
         <Setter Property="Background" Value="{x:Null}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MiddleLightBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.ContentFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
         <Setter Property="FontStyle" Value="Normal"/>
@@ -191,7 +191,7 @@
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Style.Triggers>            
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="BorderBrush" Value="{DynamicResource DisabledBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource DisabledBrush}"/>
             </Trigger>            
             <Trigger Property="Orientation" Value="Horizontal">                
                 <Setter Property="MinHeight" Value="14"/>

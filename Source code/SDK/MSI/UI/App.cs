@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Interop;
 using System.Windows.Threading;
 
@@ -10,11 +11,11 @@ namespace Elysium.SDK.MSI.UI
 {
     public class App : BootstrapperApplication
     {
-        public static App Current { get; private set; }
+        internal static App Current { get; private set; }
 
-        public Dispatcher Dispatcher { get; private set; }
+        internal Dispatcher Dispatcher { get; private set; }
 
-        public int Result { get; set; }
+        internal int Result { get; set; }
 
         private MainView _mainView;
         private IntPtr _handle;
@@ -26,7 +27,8 @@ namespace Elysium.SDK.MSI.UI
 
         protected override void Run()
         {
-            Engine.Log(LogLevel.Verbose, "Running Elysium SDK for .NET 4 Framework setup");
+            Thread.CurrentThread.Join(TimeSpan.FromSeconds(20));
+            Engine.Log(LogLevel.Verbose, "Running Elysium SDK for .NET Framework 4 setup");
 
             Current = this;
             Dispatcher = Dispatcher.CurrentDispatcher;
@@ -44,7 +46,7 @@ namespace Elysium.SDK.MSI.UI
 
             Dispatcher.Run();
 
-            Engine.Log(LogLevel.Verbose, "Stopping Elysium SDK for .NET 4 Framework setup");
+            Engine.Log(LogLevel.Verbose, "Stopping Elysium SDK for .NET Framework 4 setup");
 
             Engine.Quit(Result);
         }
@@ -54,4 +56,4 @@ namespace Elysium.SDK.MSI.UI
             _mainView.Close();
         }
     }
-} ;
+}

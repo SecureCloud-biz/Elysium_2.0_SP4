@@ -6,6 +6,7 @@ using JetBrains.Annotations;
 namespace Elysium.Notifications
 {
     [PublicAPI]
+    [Serializable]
     public class PushNotificationFailedException : Exception
     {
         [PublicAPI]
@@ -31,4 +32,4 @@ namespace Elysium.Notifications
         {
         }
     }
-} ;
+}

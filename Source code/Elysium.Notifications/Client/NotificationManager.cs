@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 using System.ServiceModel;
 using System.Windows;
 
@@ -25,7 +26,7 @@ namespace Elysium.Notifications.Client
                                                     MaxConnections = 128,
                                                     MaxReceivedMessageSize = 16777215
                                                 },
-                                            new EndpointAddress("net.pipe://localhost/elysium/notifications"))
+                                            new EndpointAddress("net.pipe://localhost/elysium/v1.5.732.0/notifications"))
         {
 
         }
@@ -33,7 +34,11 @@ namespace Elysium.Notifications.Client
         [UsedImplicitly]
         public Notification Reserve(Rect workArea)
         {
-            return Channel.Reserve(workArea);
+            Contract.Ensures(Contract.Result<Notification>() != null);
+            var slot = Channel.Reserve(workArea);
+            // Can't be proven.
+            Contract.Assume(slot != null);
+            return slot;
         }
 
         [UsedImplicitly]
@@ -49,4 +54,4 @@ namespace Elysium.Notifications.Client
             Channel.Free(id);
         }
     }
-} ;
+}

@@ -18,20 +18,18 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.MenuItem))]
-        [SuppressMessage("Microsoft.Contracts", "Ensures")]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
         public static double GetBulletSize([NotNull] System.Windows.Controls.MenuItem obj)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(BulletSizeProperty));
         }
 
         [PublicAPI]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static void SetBulletSize([NotNull] System.Windows.Controls.MenuItem obj, double value)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(BulletSizeProperty, value);
         }
 
@@ -43,20 +41,18 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.MenuItem))]
-        [SuppressMessage("Microsoft.Contracts", "Ensures")]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
         public static double GetArrowSize([NotNull] System.Windows.Controls.MenuItem obj)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(ArrowSizeProperty));
         }
 
         [PublicAPI]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static void SetArrowSize([NotNull] System.Windows.Controls.MenuItem obj, double value)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(ArrowSizeProperty, value);
         }
 
@@ -68,21 +64,19 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.MenuItem))]
-        [SuppressMessage("Microsoft.Contracts", "Ensures")]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
         public static Thickness GetArrowMargin([NotNull] System.Windows.Controls.MenuItem obj)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             ThicknessUtil.EnsureNonNegative();
             return BoxingHelper<Thickness>.Unbox(obj.GetValue(ArrowMarginProperty));
         }
 
         [PublicAPI]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static void SetArrowMargin([NotNull] System.Windows.Controls.MenuItem obj, Thickness value)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(ArrowMarginProperty, value);
         }
     }
-} ;
+}

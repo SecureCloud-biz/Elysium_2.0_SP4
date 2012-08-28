@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Security;
 using System.ServiceModel;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,6 +14,7 @@ using JetBrains.Annotations;
 namespace Elysium.Notifications.Server
 {
     [UsedImplicitly]
+    [SecurityCritical]
     [ServiceBehavior(Namespace = "http://namespaces.codeplex.com/elysium/notifications", Name = "NotificationManager",
         InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple, IncludeExceptionDetailInFaults = true)]
     internal sealed class NotificationManager : INotificationManager
@@ -26,6 +29,7 @@ namespace Elysium.Notifications.Server
         private static VerticalPlacement _verticalPlacementCache = Settings.Default.VerticalPlacement;
 
 // ReSharper disable InconsistentNaming
+        [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1311:StaticReadonlyFieldsMustBeginWithUpperCaseLetter", Justification = "Suppression is OK here.")]
         private static readonly object _lock = new object();
 // ReSharper restore InconsistentNaming
 
@@ -103,4 +107,4 @@ namespace Elysium.Notifications.Server
             }
         }
     }
-} ;
+}

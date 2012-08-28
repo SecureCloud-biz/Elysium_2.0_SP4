@@ -1,0 +1,30 @@
+﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="mscorlib.dll" #>
+<#@ Assembly Name="System.Core.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ include file="..\..\Include\security.ttinclude" #>
+<#@ include file="..\..\Include\Versions.ttinclude" #>
+using System;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Security;
+
+[assembly: AssemblyTitle("Elysium.Notifications.Server.exe")]
+[assembly: AssemblyDescription("Elysium Notifications System Server")]
+[assembly: AssemblyProduct("Elysium Notifications System")]
+[assembly: AssemblyCopyright("<#= Versions.Copyright #>")]
+
+[assembly: SecurityRules(SecurityRuleSet.Level2)]
+
+[assembly: ComVisible(false)]
+[assembly: CLSCompliant(false)]
+
+[assembly: AssemblyVersion("<#= Versions.NotificationsServer #>")]
+[assembly: AssemblyFileVersion("<#= Versions.NotificationsServer #>")]
+[assembly: AssemblyInformationalVersion("<#= Versions.Version #>")]

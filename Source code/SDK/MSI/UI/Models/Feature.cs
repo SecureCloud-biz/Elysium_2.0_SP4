@@ -21,4 +21,4 @@
             get { return _allowAbsent; }
         }
     }
-} ;
+}

@@ -18,6 +18,7 @@ namespace Elysium.Controls.Automation
         {
         }
 
+        [PublicAPI]
         [JetBrains.Annotations.Pure]
         [System.Diagnostics.Contracts.Pure]
         protected override string GetClassNameCore()
@@ -26,6 +27,7 @@ namespace Elysium.Controls.Automation
             return "DropDownCommandButton";
         }
 
+        [PublicAPI]
         public override object GetPattern(PatternInterface patternInterface)
         {
             return patternInterface == PatternInterface.ExpandCollapse ? this : base.GetPattern(patternInterface);
@@ -47,8 +49,7 @@ namespace Elysium.Controls.Automation
             owner.IsDropDownOpen = false;
         }
 
-        [DebuggerHidden]
-        [ContractArgumentValidator]
+        [DebuggerNonUserCode]
         private void IsEnabledAndHasSubmenu()
         {
             if (!IsEnabled())
@@ -59,7 +60,6 @@ namespace Elysium.Controls.Automation
             {
                 throw new InvalidOperationException("Operation can't be perform");
             }
-            Contract.EndContractBlock();
         }
 
         [PublicAPI]
@@ -81,4 +81,4 @@ namespace Elysium.Controls.Automation
             }
         }
     }
-} ;
+}

@@ -27,4 +27,4 @@ namespace Elysium.Controls
             return new SubmenuAutomationPeer(this);
         }
     }
-} ;
+}

@@ -22,6 +22,7 @@ namespace Elysium.Controls.Automation
             {
                 Contract.Ensures(Contract.Result<CommandButtonBase>() != null);
                 var result = (CommandButtonBase)base.Owner;
+                // NOTE: Lack of contracts: Owner must ensure non-null value
                 Contract.Assume(result != null);
                 return result;
             }
@@ -35,4 +36,4 @@ namespace Elysium.Controls.Automation
             return AutomationControlType.Button;
         }
     }
-} ;
+}

@@ -16,10 +16,10 @@
             <Style TargetType="{x:Type controls:ToggleCommandButton}" BasedOn="{StaticResource ToggleCommandButtonApplicationBarStyle}"/>
             <Style TargetType="{x:Type controls:DropDownCommandButton}" BasedOn="{StaticResource DropDownCommandButtonApplicationBarStyle}"/>
         </Style.Resources>        
-        <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
+        <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource LowlightBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.ContentFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
         <Setter Property="FontStyle" Value="Normal"/>
@@ -43,6 +43,9 @@
                             TextBlock.FontStretch="{TemplateBinding FontStretch}"
                             TextBlock.FontStyle="{TemplateBinding FontStyle}"
                             TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                            TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                            TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                            RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <ItemsPresenter/>
                     </Border>

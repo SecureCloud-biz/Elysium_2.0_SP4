@@ -8,13 +8,13 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type Menu}">        
-        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource LowlightBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="params:MenuBase.SubmenuBackground" Value="{DynamicResource BackgroundBrush}"/>
-        <Setter Property="params:MenuBase.SubmenuBorderBrush" Value="{DynamicResource LowlightBrush}"/>
+        <Setter Property="params:MenuBase.SubmenuBackground" Value="{StaticResource BackgroundBrush}"/>
+        <Setter Property="params:MenuBase.SubmenuBorderBrush" Value="{StaticResource LowlightBrush}"/>
         <Setter Property="params:MenuBase.SubmenuBorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.DefaultThickness), Mode=OneWay}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.ContentFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
         <Setter Property="FontStyle" Value="Normal"/>
@@ -22,7 +22,7 @@
         <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
         <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
-        <Setter Property="params:General.ShadowBrush" Value="{DynamicResource ForegroundBrush}"/>
+        <Setter Property="params:General.ShadowBrush" Value="{StaticResource ForegroundBrush}"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -42,6 +42,9 @@
                             TextBlock.FontStretch="{TemplateBinding FontStretch}"
                             TextBlock.FontStyle="{TemplateBinding FontStyle}"
                             TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                            TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                            TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                            RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <ItemsPresenter Margin="{TemplateBinding Padding}" KeyboardNavigation.DirectionalNavigation="Cycle"/>
                     </Border>

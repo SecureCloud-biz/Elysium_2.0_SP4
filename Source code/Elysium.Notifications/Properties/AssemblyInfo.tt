@@ -1,0 +1,36 @@
+﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="mscorlib.dll" #>
+<#@ Assembly Name="System.Core.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ include file="..\..\Include\security.ttinclude" #>
+<#@ include file="..\..\Include\Versions.ttinclude" #>
+using System;
+using System.Reflection;
+using System.Resources;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Security;
+
+[assembly: AssemblyTitle("Elysium.Notifications.dll")]
+[assembly: AssemblyDescription("Metro style popup notifications for WPF")]
+[assembly: AssemblyProduct("Elysium Notifications System")]
+[assembly: AssemblyCopyright("<#= Versions.Copyright #>")]
+
+[assembly: SecurityRules(SecurityRuleSet.Level2)]
+[assembly: AllowPartiallyTrustedCallers]
+[assembly: InternalsVisibleTo("Elysium.Notifications.Server, PublicKey=<#= SigningKeys.PublicKey #>")]
+
+[assembly: ComVisible(false)]
+[assembly: CLSCompliant(true)]
+
+[assembly: NeutralResourcesLanguage("en-us")]
+
+[assembly: AssemblyVersion("<#= Versions.Notifications #>")]
+[assembly: AssemblyFileVersion("<#= Versions.Notifications #>")]
+[assembly: AssemblyInformationalVersion("<#= Versions.Version #>")]

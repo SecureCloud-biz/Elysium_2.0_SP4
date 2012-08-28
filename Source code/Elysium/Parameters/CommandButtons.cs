@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media;
 
 using Elysium.Controls.Primitives;
@@ -20,19 +19,17 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(CommandButtonBase))]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static SolidColorBrush GetMask([NotNull] CommandButtonBase obj)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             return (SolidColorBrush)obj.GetValue(MaskProperty);
         }
 
         [PublicAPI]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static void SetMask([NotNull] CommandButtonBase obj, SolidColorBrush value)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(MaskProperty, value);
         }
     }
-} ;
+}

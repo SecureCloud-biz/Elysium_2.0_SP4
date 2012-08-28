@@ -12,7 +12,7 @@ namespace Elysium.Controls
     [PublicAPI]
     public class CommandButton : CommandButtonBase
     {
-        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
+        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline", Justification = "We need to use static constructor for custom actions during dependency properties initialization")]
         static CommandButton()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CommandButton), new FrameworkPropertyMetadata(typeof(CommandButton)));
@@ -41,4 +41,4 @@ namespace Elysium.Controls
             OnClick();
         }
     }
-} ;
+}

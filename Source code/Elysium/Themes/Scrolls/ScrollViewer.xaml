@@ -8,10 +8,10 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type ScrollViewer}">
-        <Setter Property="Background" Value="{DynamicResource Background}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MiddleLightBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.TextFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
         <Setter Property="FontStyle" Value="Normal"/>
@@ -30,6 +30,13 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
+                            TextBlock.Foreground="{TemplateBinding Foreground}"
+                            TextBlock.FontSize="{TemplateBinding FontSize}"
+                            TextBlock.FontStretch="{TemplateBinding FontStretch}"
+                            TextBlock.FontStyle="{TemplateBinding FontStyle}"
+                            TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                            TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                            TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <Grid>
                             <Grid.ColumnDefinitions>

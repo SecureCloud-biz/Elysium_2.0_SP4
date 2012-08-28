@@ -24,7 +24,8 @@ namespace Elysium.Controls
     public class ApplicationBar : ItemsControl
 // ReSharper restore ClassWithVirtualMembersNeverInherited.Global
     {
-        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
+        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline",
+            Justification = "We need to use static constructor for custom actions during dependency properties initialization")]
         static ApplicationBar()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ApplicationBar), new FrameworkPropertyMetadata(typeof(ApplicationBar)));
@@ -61,18 +62,16 @@ namespace Elysium.Controls
         [JetBrains.Annotations.Pure]
         [System.Diagnostics.Contracts.Pure]
         [AttachedPropertyBrowsableForChildren]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static ApplicationBarDock GetDock([NotNull] UIElement obj)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             return BoxingHelper<ApplicationBarDock>.Unbox(obj.GetValue(DockProperty));
         }
 
         [PublicAPI]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static void SetDock([NotNull] UIElement obj, ApplicationBarDock value)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(DockProperty, value);
         }
 
@@ -96,12 +95,15 @@ namespace Elysium.Controls
 
         private static void OnIsOpenChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var instance = (ApplicationBar)obj;
             instance.OnIsOpenChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
         }
 
+        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1401:FieldsMustBePrivate", Justification = "Suppression is OK here.")]
         internal bool IsOpening;
+
+        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1401:FieldsMustBePrivate", Justification = "Suppression is OK here.")]
         internal bool IsClosing;
 
         [PublicAPI]
@@ -127,25 +129,29 @@ namespace Elysium.Controls
                 else
                 {
                     var storyboard = new Storyboard
-                                         {
-                                             FillBehavior = FillBehavior.Stop
-                                         };
+                        {
+                            FillBehavior = FillBehavior.Stop
+                        };
 
                     Timeline animation;
                     switch (TransitionMode)
                     {
                         case ApplicationBarTransitionMode.Fade:
                             animation = new DoubleAnimation(0d, 1d, General.GetMinimumDuration(this));
+
                             Storyboard.SetTarget(animation, this);
                             Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
+
                             // NOTE: Lack of contracts
                             Contract.Assume(storyboard.Children != null);
                             storyboard.Children.Add(animation);
                             break;
                         case ApplicationBarTransitionMode.Slide:
                             animation = new DoubleAnimation(0d, DesiredSize.Height, General.GetMinimumDuration(this));
+
                             Storyboard.SetTarget(animation, this);
                             Storyboard.SetTargetProperty(animation, new PropertyPath("Height"));
+
                             // NOTE: Lack of contracts
                             Contract.Assume(storyboard.Children != null);
                             storyboard.Children.Add(animation);
@@ -167,7 +173,7 @@ namespace Elysium.Controls
                         Mouse.Capture(this, CaptureMode.SubTree);
                     }
 
-                    storyboard.Freeze();
+                    storyboard.TryFreeze();
                     storyboard.Begin(this, true);
 
                     _isOpen = true;
@@ -194,25 +200,29 @@ namespace Elysium.Controls
                 else
                 {
                     var storyboard = new Storyboard
-                                         {
-                                             FillBehavior = FillBehavior.Stop
-                                         };
+                        {
+                            FillBehavior = FillBehavior.Stop
+                        };
 
                     Timeline animation;
                     switch (TransitionMode)
                     {
                         case ApplicationBarTransitionMode.Fade:
                             animation = new DoubleAnimation(1d, 0d, General.GetMinimumDuration(this));
+
                             Storyboard.SetTarget(animation, this);
                             Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
+
                             // NOTE: Lack of contracts
                             Contract.Assume(storyboard.Children != null);
                             storyboard.Children.Add(animation);
                             break;
                         case ApplicationBarTransitionMode.Slide:
                             animation = new DoubleAnimation(DesiredSize.Height, 0d, General.GetMinimumDuration(this));
+
                             Storyboard.SetTarget(animation, this);
                             Storyboard.SetTargetProperty(animation, new PropertyPath("Height"));
+
                             // NOTE: Lack of contracts
                             Contract.Assume(storyboard.Children != null);
                             storyboard.Children.Add(animation);
@@ -237,7 +247,7 @@ namespace Elysium.Controls
                         IsClosing = false;
                     };
 
-                    storyboard.Freeze();
+                    storyboard.TryFreeze();
                     storyboard.Begin(this, true);
                 }
             }
@@ -335,7 +345,7 @@ namespace Elysium.Controls
 
         private static void OnStaysOpenChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var instance = (ApplicationBar)obj;
             instance.OnStaysOpenChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
         }
@@ -353,18 +363,16 @@ namespace Elysium.Controls
         [PublicAPI]
         [JetBrains.Annotations.Pure]
         [System.Diagnostics.Contracts.Pure]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static bool GetPreventsOpen([NotNull] UIElement obj)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             return BooleanBoxingHelper.Unbox(obj.GetValue(PreventsOpenProperty));
         }
 
         [PublicAPI]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static void SetPreventsOpen([NotNull] UIElement obj, bool value)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(PreventsOpenProperty, BooleanBoxingHelper.Box(value));
         }
 
@@ -385,7 +393,7 @@ namespace Elysium.Controls
 
         private static void OnTransitionModeChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var instance = (ApplicationBar)obj;
             instance.OnTransitionModeChanged(BoxingHelper<ApplicationBarTransitionMode>.Unbox(e.OldValue),
                                              BoxingHelper<ApplicationBarTransitionMode>.Unbox(e.NewValue));
@@ -447,4 +455,4 @@ namespace Elysium.Controls
             }
         }
     }
-} ;
+}

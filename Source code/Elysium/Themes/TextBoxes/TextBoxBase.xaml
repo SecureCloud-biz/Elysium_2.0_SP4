@@ -6,8 +6,8 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="TextBoxBaseStyle" TargetType="{x:Type TextBoxBase}" BasedOn="{StaticResource TextBoxesBaseStyle}">        
-        <Setter Property="CaretBrush" Value="{DynamicResource ForegroundBrush}"/>
-        <Setter Property="SelectionBrush" Value="{DynamicResource MiddleLightBrush}"/>
+        <Setter Property="CaretBrush" Value="{StaticResource ForegroundBrush}"/>
+        <Setter Property="SelectionBrush" Value="{StaticResource MiddleLightBrush}"/>
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -15,8 +15,8 @@
                     <Condition Property="IsReadOnly" Value="False"/>
                 </MultiTrigger.Conditions>
                 <MultiTrigger.Setters>
-                    <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}"/>
-                    <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+                    <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
+                    <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
                 </MultiTrigger.Setters>
             </MultiTrigger>
         </Style.Triggers>        

@@ -13,12 +13,12 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Border Background="{DynamicResource TransparentBrush}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
+                    <Border Background="{StaticResource TransparentBrush}"
+                            BorderBrush="{StaticResource TransparentBrush}"
+                            BorderThickness="0"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <Polygon x:Name="ArrowGlyph"
-                                 Fill="{DynamicResource MiddleLightBrush}"
+                                 Fill="{StaticResource MiddleLightBrush}"
                                  StrokeThickness="0"
                                  Stretch="Uniform"
                                  Margin="{Binding RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}, Path=(params:ComboBox.ArrowMargin), Mode=OneWay}"
@@ -36,7 +36,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}, Path=IsDropDownOpen, Mode=OneWay}">
-                            <Setter TargetName="ArrowGlyph" Property="Fill" Value="{DynamicResource AccentBrush}"/>
+                            <Setter TargetName="ArrowGlyph" Property="Fill" Value="{StaticResource AccentBrush}"/>
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -45,8 +45,11 @@
     </Style>
 
     <Style x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
-        <Setter Property="CaretBrush" Value="{DynamicResource ForegroundBrush}"/>
-        <Setter Property="SelectionBrush" Value="{DynamicResource MiddleLightBrush}"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+        <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
+        <Setter Property="CaretBrush" Value="{StaticResource ForegroundBrush}"/>
+        <Setter Property="SelectionBrush" Value="{StaticResource MiddleLightBrush}"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
@@ -55,23 +58,38 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
+                    <Border Background="{StaticResource TransparentBrush}"
+                            BorderBrush="{StaticResource TransparentBrush}"
+                            BorderThickness="0"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <ScrollViewer x:Name="PART_ContentHost"
+                                      Background="{x:Null}"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      FontFamily="{TemplateBinding FontFamily}"
+                                      FontSize="{TemplateBinding FontSize}"
+                                      FontStretch="{TemplateBinding FontStretch}"
+                                      FontStyle="{TemplateBinding FontStyle}"
+                                      FontWeight="{TemplateBinding FontWeight}"
+                                      TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                                      TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                                      RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
                                       Margin="{TemplateBinding Padding}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
-        </Setter>        
+        </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
+                <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <Style TargetType="{x:Type ComboBox}">
-        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MiddleLightBrush}"/>
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.DefaultThickness), Mode=OneWay}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.ContentFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
         <Setter Property="FontStyle" Value="Normal"/>
@@ -79,7 +97,7 @@
         <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
         <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
-        <Setter Property="params:General.ShadowBrush" Value="Red"/>
+        <Setter Property="params:General.ShadowBrush" Value="{StaticResource ForegroundBrush}"/>
         <Setter Property="Focusable" Value="True"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
@@ -128,7 +146,7 @@
                                     <Border x:Name="PopupRoot"
                                             Tag="{DynamicResource {x:Static SystemParameters.DropShadowKey}}">
                                         <ScrollViewer x:Name="DropDownScrollViewer"
-                                                      Background="{DynamicResource BackgroundBrush}"
+                                                      Background="{StaticResource BackgroundBrush}"
                                                       BorderBrush="{TemplateBinding BorderBrush}"
                                                       BorderThickness="{TemplateBinding BorderThickness}"
                                                       Foreground="{TemplateBinding Foreground}"
@@ -148,8 +166,6 @@
                                 <ToggleButton x:Name="Button"
                                               Grid.Column="0"
                                               Grid.ColumnSpan="2"
-                                              Background="{TemplateBinding Background}"
-                                              BorderThickness="0"
                                               IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsDropDownOpen, Mode=TwoWay}"
                                               Style="{StaticResource ComboBoxToggleButton}"/>
                                 <ContentPresenter x:Name="ContentPresenter"
@@ -158,6 +174,14 @@
                                                   ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
                                                   ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                                                   ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                                  TextBlock.Foreground="{TemplateBinding Foreground}"
+                                                  TextBlock.FontSize="{TemplateBinding FontSize}"
+                                                  TextBlock.FontStretch="{TemplateBinding FontStretch}"
+                                                  TextBlock.FontStyle="{TemplateBinding FontStyle}"
+                                                  TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                                                  TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                                                  TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                                                  RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
                                                   IsHitTestVisible="False"
                                                   Margin="{TemplateBinding Padding}"
                                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -165,16 +189,18 @@
                                                   Visibility="Visible"/>
                                 <Grid x:Name="TextBoxLayout"
                                       Grid.Column="0"
-                                      Background="{DynamicResource BackgroundBrush}"
+                                      Background="{StaticResource BackgroundBrush}"
                                       Visibility="Collapsed">
                                     <TextBox x:Name="PART_EditableTextBox"
-                                               Foreground="{TemplateBinding Foreground}"
-                                               FontFamily="{TemplateBinding FontFamily}"
-                                               FontSize="{TemplateBinding FontSize}"
-                                               FontWeight="{TemplateBinding FontWeight}"
-                                               IsReadOnly="{TemplateBinding IsReadOnly}"
-                                               Margin="{TemplateBinding Padding}"
-                                               Style="{StaticResource ComboBoxTextBox}"/>
+                                             Foreground="{TemplateBinding Foreground}"
+                                             FontFamily="{TemplateBinding FontFamily}"
+                                             FontSize="{TemplateBinding FontSize}"
+                                             FontStretch="{TemplateBinding FontStretch}"
+                                             FontStyle="{TemplateBinding FontStyle}"
+                                             FontWeight="{TemplateBinding FontWeight}"
+                                             IsReadOnly="{TemplateBinding IsReadOnly}"
+                                             Margin="{TemplateBinding Padding}"
+                                             Style="{StaticResource ComboBoxTextBox}"/>
                                 </Grid>
                             </Grid>
                         </Border>
@@ -218,13 +244,13 @@
                             <MultiDataTrigger.Setters>
                                 <Setter TargetName="PopupRoot" Property="Effect">
                                     <Setter.Value>
-                                        <DropShadowEffect Color="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.ShadowBrush).(SolidColorBrush.Color)}"
+                                        <DropShadowEffect Color="{Binding RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}, Path=(params:General.ShadowBrush).(SolidColorBrush.Color)}"
                                                           BlurRadius="4" ShadowDepth="2"
                                                           Direction="315"
                                                           Opacity="0.3"/>
                                     </Setter.Value>
                                 </Setter>
-                                <Setter TargetName="PopupRoot" Property="Background" Value="{DynamicResource Transparent}"/>
+                                <Setter TargetName="PopupRoot" Property="Background" Value="{StaticResource TransparentBrush}"/>
                                 <Setter TargetName="PopupRoot" Property="Padding" Value="0,0,6,6"/>
                             </MultiDataTrigger.Setters>
                         </MultiDataTrigger>
@@ -236,13 +262,13 @@
                             <MultiDataTrigger.Setters>
                                 <Setter TargetName="PopupRoot" Property="Effect">
                                     <Setter.Value>
-                                        <DropShadowEffect Color="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.ShadowBrush).(SolidColorBrush.Color)}"
+                                        <DropShadowEffect Color="{Binding RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}, Path=(params:General.ShadowBrush).(SolidColorBrush.Color)}"
                                                           BlurRadius="4" ShadowDepth="0"
                                                           Direction="45"
                                                           Opacity="0.3"/>
                                     </Setter.Value>
                                 </Setter>
-                                <Setter TargetName="PopupRoot" Property="Background" Value="{DynamicResource Transparent}"/>
+                                <Setter TargetName="PopupRoot" Property="Background" Value="{StaticResource TransparentBrush}"/>
                                 <Setter TargetName="PopupRoot" Property="Padding" Value="0,4,4,0"/>
                             </MultiDataTrigger.Setters>
                         </MultiDataTrigger>
@@ -255,17 +281,17 @@
                 <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
             </DataTrigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="BorderBrush" Value="{DynamicResource DisabledBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource DisabledBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource DisabledBrush}"/>
             </Trigger>
             <Trigger Property="IsGrouping" Value="True">
                 <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource HighlightBrush}"/>
+                <Setter Property="Background" Value="{StaticResource HighlightBrush}"/>
             </Trigger>
             <Trigger Property="IsDropDownOpen" Value="True">
-                <Setter Property="Background" Value="{DynamicResource HighlightBrush}"/>
+                <Setter Property="Background" Value="{StaticResource HighlightBrush}"/>
             </Trigger>
         </Style.Triggers>        
     </Style>

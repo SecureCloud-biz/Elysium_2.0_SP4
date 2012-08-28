@@ -27,6 +27,7 @@ namespace Elysium.SDK.MSI.UI.Design
             {
                 throw new ArgumentNullException("obj");
             }
+
             if (ViewModelBase.IsInDesignModeStatic)
             {
                 var instance = obj as UIElement;
@@ -37,4 +38,4 @@ namespace Elysium.SDK.MSI.UI.Design
             }
         }
     }
-} ;
+}

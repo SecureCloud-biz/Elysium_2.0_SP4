@@ -25,10 +25,11 @@ namespace Elysium.Controls
         private const string ArcName = "PART_Arc";
         private const string BusyBarName = "PART_BusyBar";
 
+        [SecurityCritical]
         private Arc _arc;
         private Canvas _busyBar;
 
-        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
+        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline", Justification = "We need to use static constructor for custom actions during dependency properties initialization")]
         static ProgressRing()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ProgressRing), new FrameworkPropertyMetadata(typeof(ProgressRing)));
@@ -44,24 +45,26 @@ namespace Elysium.Controls
         [System.Diagnostics.Contracts.Pure]
         public static double GetAngle(UIElement obj)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             return BoxingHelper<double>.Unbox(obj.GetValue(AngleProperty));
         }
 
         [PublicAPI]
         public static void SetAngle(UIElement obj, double value)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(AngleProperty, value);
         }
 
         protected override Size MeasureOverride(Size constraint)
         {
             var desiredSize = base.MeasureOverride(constraint);
-            // NOTE: Lack of contracts: MeasureOverride can return size width non-negative width and height
+
+            // NOTE: Lack of contracts: MeasureOverride must ensure size with non-negative width and height
             Contract.Assume(desiredSize.Width >= 0d);
             Contract.Assume(desiredSize.Height >= 0d);
             var sizeValue = Math.Min(desiredSize.Width, desiredSize.Height);
+
             desiredSize.Width = sizeValue;
             desiredSize.Height = sizeValue;
             return desiredSize;
@@ -69,14 +72,21 @@ namespace Elysium.Controls
 
         protected override Size ArrangeOverride(Size arrangeBounds)
         {
-            // NOTE: Lack of contracts: arrangeBounds is size, which returned by MeasureOverride, but MeasureOverride can return size width non-negative width and height
-            Contract.Assume(arrangeBounds.Width >= 0d);
-            Contract.Assume(arrangeBounds.Height >= 0d);
+            // NOTE: Lack of contracts: ArrangeOverride must require non-negative width and height of arrangeBouns parameters
+            if (!(arrangeBounds.Width >= 0d && arrangeBounds.Height >= 0d))
+            {
+                throw new ArgumentOutOfRangeException("arrangeBounds");
+            }
+            Contract.EndContractBlock();
+
             var sizeValue = Math.Min(arrangeBounds.Width, arrangeBounds.Height);
+
+            // NOTE: Lack of contracts: Math.Min doesn't contains ensures
+            Contract.Assume(sizeValue >= 0);
             return base.ArrangeOverride(new Size(sizeValue, sizeValue));
         }
 
-        [SecuritySafeCritical]
+        [SecurityCritical]
         internal override void OnApplyTemplateInternal()
         {
             if (Template != null)
@@ -86,18 +96,20 @@ namespace Elysium.Controls
                 {
                     Trace.TraceWarning(ArcName + " not found.");
                 }
-                // NOTE: Lack of contracts: FindName is pure method
+
+                // NOTE: Lack of contracts: FindName must be marked as pure method
                 Contract.Assume(Template != null);
                 _busyBar = Template.FindName(BusyBarName, this) as Canvas;
                 if (_busyBar == null)
                 {
-                    Trace.TraceWarning(BusyBarName +" not found.");
+                    Trace.TraceWarning(BusyBarName + " not found.");
                 }
             }
 
             base.OnApplyTemplateInternal();
         }
 
+        [SecuritySafeCritical]
         protected override void OnAnimationsUpdating(RoutedEventArgs e)
         {
             base.OnAnimationsUpdating(e);
@@ -105,7 +117,7 @@ namespace Elysium.Controls
             OnAnimationsUpdatingInternal();
         }
 
-        [SecuritySafeCritical]
+        [SecurityCritical]
         private void OnAnimationsUpdatingInternal()
         {
             UpdateIndeterminateAnimation();
@@ -142,6 +154,7 @@ namespace Elysium.Controls
                 Storyboard.SetTargetProperty(endAngleSetValueAnimation, new PropertyPath(Arc.EndAngleProperty));
 
                 var startAngleAnimation = new DoubleAnimationUsingKeyFrames();
+
                 // NOTE: Lack of contracts: DoubleAnimationUsingKeyFrames.KeyFrames is always have collection instance
                 Contract.Assume(startAngleAnimation.KeyFrames != null);
                 startAngleAnimation.KeyFrames.Add(new EasingDoubleKeyFrame(360, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
@@ -150,6 +163,7 @@ namespace Elysium.Controls
                 Storyboard.SetTargetProperty(startAngleAnimation, new PropertyPath(Arc.StartAngleProperty));
 
                 var endAngleAnimation = new DoubleAnimationUsingKeyFrames();
+
                 // NOTE: Lack of contracts: DoubleAnimationUsingKeyFrames.KeyFrames is always have collection instance
                 Contract.Assume(endAngleAnimation.KeyFrames != null);
                 endAngleAnimation.KeyFrames.Add(new EasingDoubleKeyFrame(90, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
@@ -157,7 +171,8 @@ namespace Elysium.Controls
                 Storyboard.SetTarget(endAngleAnimation, _arc);
                 Storyboard.SetTargetProperty(endAngleAnimation, new PropertyPath(Arc.EndAngleProperty));
 
-                // NOTE: Lack of contracts
+                // NOTE: Bug in Code Contracts static checker: IndeterminateAnimation can't be null
+                // NOTE: Lack of contracts: IndeterminateAnimation.Children is always have collection instance
                 Contract.Assume(IndeterminateAnimation != null);
                 Contract.Assume(IndeterminateAnimation.Children != null);
 
@@ -295,4 +310,4 @@ namespace Elysium.Controls
             }
         }
     }
-} ;
+}

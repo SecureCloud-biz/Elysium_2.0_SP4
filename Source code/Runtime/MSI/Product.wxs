@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+
+  <?include RuntimeVariables.wxi ?>
+
+  <Product Id="C5179433-9F82-4EDC-B56B-7A774C81A21F"
+           Name="$(var.RuntimeName) for $(var.FrameworkName)" Manufacturer="Alex F. Sherman and Codeplex Community" Language="0"
+           Version="$(var.RuntimeVersion).$(var.RuntimeBuild).$(var.RuntimeRevision)" UpgradeCode="9F4F83D0-9D44-4130-A578-1E46F8765922">
+
+    <Package InstallerVersion="200" Platform="$(sys.BUILDARCH)"
+             InstallPrivileges="elevated" InstallScope="perMachine"
+             Compressed="yes"/>
+
+    <MajorUpgrade AllowDowngrades="no" DowngradeErrorMessage="A newer version of [ProductName] is already installed."/>
+
+    <Property Id="ARPSYSTEMCOMPONENT" Value="1" />
+
+    <!-- Features -->
+      
+    <Feature Id="Elysium" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install" Absent="disallow">
+      <ComponentGroupRef Id="Prerequisites"/>
+      <ComponentRef Id="Core"/>
+    </Feature>
+    
+    <Feature Id="Notifications" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install">
+      <ComponentGroupRef Id="Notifications"/>
+    </Feature>
+
+    <!-- Prerequisites components -->
+    
+    <ComponentGroup Id="Prerequisites">
+      <ComponentRef Id="Prerequisites.Microsoft.Expression.Drawing"/>
+      <ComponentRef Id="Prerequisites.Microsoft.Windows.Shell"/>
+    </ComponentGroup>
+
+    <!-- Notifications components -->
+    
+    <ComponentGroup Id="Notifications">
+      <ComponentRef Id="Notifications"/>
+      <ComponentRef Id="Notifications.Server"/>
+    </ComponentGroup>
+    
+    <!-- Files and folders -->
+    
+    <Media Id="1" Cabinet="Elysium.cab" EmbedCab="yes" CompressionLevel="high"/>
+    
+    <!-- Directories -->
+      
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="$(var.PlatformProgramFilesFolder)">
+        <Directory Id="ProgramFilesDir" Name="$(var.RuntimeName)">
+          <Directory Id="InstallNETFXDir" Name="$(var.FrameworkName)">
+            <Directory Id="InstallDir" Name="$(var.RuntimeVersion)"/>
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <DirectoryRef Id="InstallDir">
+
+      <!-- Prerequisites -->
+
+      <Component Id="Prerequisites.Microsoft.Expression.Drawing" Guid="25B65C82-5476-437E-8886-8F0DDFFC7FE8">
+        <File Source="$(var.AssemblyDependenciesFolder)\Microsoft.Expression.Drawing.dll" Assembly=".net" Checksum="yes" KeyPath="yes" Vital="yes">
+          <?if $(sys.BUILDARCH) = x64 ?>
+            <netfx:NativeImage Id="Microsoft.Expression.Drawing.NativeImage" Platform="64bit" Priority="1" AppBaseDirectory="InstallDir"/>
+          <?else ?>
+            <netfx:NativeImage Id="Microsoft.Expression.Drawing.NativeImage" Platform="32bit" Priority="1" AppBaseDirectory="InstallDir"/>
+          <?endif ?>
+        </File>
+      </Component>
+      <Component Id="Prerequisites.Microsoft.Windows.Shell" Guid="935D63D7-10DF-4012-BF2D-4FF5C66E3094">
+        <File Source="$(var.AssemblyDependenciesFolder)\Microsoft.Windows.Shell.dll" Assembly=".net" Checksum="yes" KeyPath="yes" Vital="yes">
+          <?if $(sys.BUILDARCH) = x64 ?>
+            <netfx:NativeImage Id="Microsoft.Windows.Shell.NativeImage" Platform="64bit" Priority="1" AppBaseDirectory="InstallDir"/>
+          <?else ?>
+            <netfx:NativeImage Id="Microsoft.Windows.Shell.NativeImage" Platform="32bit" Priority="1" AppBaseDirectory="InstallDir"/>
+          <?endif ?>
+        </File>
+      </Component>
+
+      <!-- Core -->
+
+      <Component Id="Core" Guid="DE45289E-19F2-414F-AAAC-953F928D8233">
+        <File Source="$(var.SourceFolder)\Elysium.dll" Assembly=".net" Checksum="yes" KeyPath="yes" Vital="yes">
+          <?if $(sys.BUILDARCH) = x64 ?>
+            <netfx:NativeImage Id="Elysium.NativeImage" Platform="64bit" Priority="1" AppBaseDirectory="InstallDir"/>
+          <?else ?>
+            <netfx:NativeImage Id="Elysium.NativeImage" Platform="32bit" Priority="1" AppBaseDirectory="InstallDir"/>
+          <?endif ?>
+        </File>
+      </Component>
+
+      <!-- Notifications -->
+
+      <Component Id="Notifications" Guid="6C8AF080-7695-4543-92CA-4A1AE67DD781">
+        <File Source="$(var.SourceFolder)\Elysium.Notifications.dll" Assembly=".net" Checksum="yes" KeyPath="yes" Vital="yes">
+          <?if $(sys.BUILDARCH) = x64 ?>
+            <netfx:NativeImage Id="Elysium.Notifications.NativeImage" Platform="64bit" Priority="1" AppBaseDirectory="InstallDir"/>
+          <?else ?>
+            <netfx:NativeImage Id="Elysium.Notifications.NativeImage" Platform="32bit" Priority="1" AppBaseDirectory="InstallDir"/>
+          <?endif ?>
+        </File>
+      </Component>
+      <Component Id="Notifications.Server" Guid="E04137B6-DE75-4520-AB29-21407B099EB9">
+        <File Source="$(var.PlatformSourceFolder)\Elysium.Notifications.Server.exe" Checksum="yes" KeyPath="yes" Vital="yes">
+          <?if $(sys.BUILDARCH) = x64 ?>
+            <netfx:NativeImage Id="Elysium.Notifications.Server.NativeImage" Platform="64bit" Priority="1" AppBaseDirectory="InstallDir"/>
+          <?else ?>
+            <netfx:NativeImage Id="Elysium.Notifications.Server.NativeImage" Platform="32bit" Priority="1" AppBaseDirectory="InstallDir"/>
+          <?endif ?>
+        </File>
+        <File Source="$(var.PlatformSourceFolder)\Elysium.Notifications.Server.exe.config" Checksum="yes" KeyPath="no" Vital="yes"/>
+        <ServiceInstall Type="ownProcess"
+                        Vital="yes"
+                        Name="ElysiumNotifications1.5.14.0"
+                        DisplayName="Elysium Notifications"
+                        Start="auto"
+                        Account="LocalSystem"
+                        ErrorControl="normal"
+                        Interactive="no"/>
+      </Component>
+    </DirectoryRef>
+    
+  </Product>
+
+</Wix>

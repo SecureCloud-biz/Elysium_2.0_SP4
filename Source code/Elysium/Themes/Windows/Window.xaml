@@ -13,7 +13,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{x:Type controls:Window}" TargetType="{x:Type controls:Window}">
-        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>        
+        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
@@ -62,7 +62,7 @@
                                 <controls:ProgressBar x:Name="PART_ProgressBar"
                                                             Grid.ColumnSpan="3"
                                                             Grid.Row="0"
-                                                            Background="{x:Null}"
+                                                            Background="{StaticResource TransparentBrush}"
                                                             Value="{TemplateBinding Progress}"
                                                             VerticalAlignment="Top"
                                                             Width="{TemplateBinding ActualWidth}" Height="2"/>
@@ -129,7 +129,10 @@
                                     </controls:CommandButton>
                                 </Grid>
                             </Grid>
-                            <AdornerDecorator Grid.Row="1">
+                            <AdornerDecorator Grid.Row="1"
+                                              TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                                              TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                                              RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}">
                                 <ContentPresenter Margin="{TemplateBinding Padding}"/>
                             </AdornerDecorator>
                             <Decorator x:Name="PART_ApplicationBarHost"
@@ -151,7 +154,7 @@
                         <Trigger Property="IsBusy" Value="True">
                             <Setter TargetName="PART_ProgressBar" Property="State" Value="Indeterminate"/>
                         </Trigger>
-                        <Trigger Property="IsMainWindow" Value="False">
+                        <Trigger Property="controls:Window.IsMainWindow" Value="False">
                             <Setter TargetName="PART_Title" Property="Background" Value="{x:Null}"/>
                             <Setter TargetName="Title" Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
                         </Trigger>

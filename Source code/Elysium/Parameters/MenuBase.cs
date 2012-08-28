@@ -22,18 +22,16 @@ namespace Elysium.Parameters
         [Pure]
         [System.Diagnostics.Contracts.Pure]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.Primitives.MenuBase))]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static Brush GetSubmenuBackground(System.Windows.Controls.Primitives.MenuBase obj)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             return (Brush)obj.GetValue(SubmenuBackgroundProperty);
         }
 
         [PublicAPI]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static void SetSubmenuBackground(System.Windows.Controls.Primitives.MenuBase obj, Brush value)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(SubmenuBackgroundProperty, value);
         }
 
@@ -48,18 +46,16 @@ namespace Elysium.Parameters
         [Pure]
         [System.Diagnostics.Contracts.Pure]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.Primitives.MenuBase))]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static Brush GetSubmenuBorderBrush(System.Windows.Controls.Primitives.MenuBase obj)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             return (Brush)obj.GetValue(SubmenuBorderBrushProperty);
         }
 
         [PublicAPI]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static void SetSubmenuBorderBrush(System.Windows.Controls.Primitives.MenuBase obj, Brush value)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(SubmenuBorderBrushProperty, value);
         }
 
@@ -75,20 +71,19 @@ namespace Elysium.Parameters
         [Pure]
         [System.Diagnostics.Contracts.Pure]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.Primitives.MenuBase))]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
         public static Thickness GetSubmenuBorderThickness(System.Windows.Controls.Primitives.MenuBase obj)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             ThicknessUtil.EnsureNonNegative();
             return BoxingHelper<Thickness>.Unbox(obj.GetValue(SubmenuBorderThicknessProperty));
         }
 
         [PublicAPI]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static void SetSubmenuBorderThickness(System.Windows.Controls.Primitives.MenuBase obj, Thickness value)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(SubmenuBorderThicknessProperty, value);
         }
     }
-} ;
+}

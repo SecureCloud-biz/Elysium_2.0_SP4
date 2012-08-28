@@ -14,8 +14,8 @@
                     <Condition Property="IsSelected" Value="True"/>
                 </MultiTrigger.Conditions>
                 <MultiTrigger.Setters>
-                    <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
-                    <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
+                    <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
+                    <Setter Property="Foreground" Value="{StaticResource ContrastBrush}"/>
                 </MultiTrigger.Setters>
             </MultiTrigger>
             <MultiTrigger>
@@ -24,8 +24,8 @@
                     <Condition Property="IsSelected" Value="True"/>
                 </MultiTrigger.Conditions>
                 <MultiTrigger.Setters>
-                    <Setter Property="Background" Value="{DynamicResource DisabledBrush}"/>
-                    <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
+                    <Setter Property="Background" Value="{StaticResource DisabledBrush}"/>
+                    <Setter Property="Foreground" Value="{StaticResource ContrastBrush}"/>
                 </MultiTrigger.Setters>
             </MultiTrigger>
         </Style.Triggers>        

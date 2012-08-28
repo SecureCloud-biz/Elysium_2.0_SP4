@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>3.6</ProductVersion>
+    <ProjectGuid>60ceb6b0-4bdd-4d86-b0d2-62727fcec143</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputName>Installer</OutputName>
+    <OutputType>Package</OutputType>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <IncludeSearchPaths>..\..\Include\</IncludeSearchPaths>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DefineConstants>X86</DefineConstants>
+    <OutputPath>..\..\..\Binary\Elysium for .NET 4\Debug\x86\Runtime\MSI\</OutputPath>
+    <IntermediateOutputPath>obj\x86\</IntermediateOutputPath>
+    <SuppressIces>ICE30</SuppressIces>
+    <Cultures>neutral</Cultures>
+    <WixVariables>Platform=x86</WixVariables>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DefineConstants>X64</DefineConstants>
+    <OutputPath>..\..\..\Binary\Elysium for .NET 4\Debug\x64\Runtime\MSI\</OutputPath>
+    <IntermediateOutputPath>obj\x64\</IntermediateOutputPath>
+    <SuppressIces>ICE30</SuppressIces>
+    <Cultures>neutral</Cultures>
+    <WixVariables>Platform=x64</WixVariables>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DefineConstants>X86</DefineConstants>
+    <OutputPath>..\..\..\Binary\Elysium for .NET 4\Release\x86\Runtime\MSI\</OutputPath>
+    <IntermediateOutputPath>obj\x86\</IntermediateOutputPath>
+    <SuppressIces>ICE30</SuppressIces>
+    <Cultures>neutral</Cultures>
+    <WixVariables>Platform=x86</WixVariables>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <DefineConstants>X64</DefineConstants>
+    <OutputPath>..\..\..\Binary\Elysium for .NET 4\Release\x64\Runtime\MSI\</OutputPath>
+    <IntermediateOutputPath>obj\x64\</IntermediateOutputPath>
+    <SuppressIces>ICE30</SuppressIces>
+    <Cultures>neutral</Cultures>
+    <WixVariables>Platform=x64</WixVariables>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Product.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixUtilExtension">
+      <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
+      <Name>WixUtilExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixNetFxExtension">
+      <HintPath>$(WixExtDir)\WixNetFxExtension.dll</HintPath>
+      <Name>WixNetFxExtension</Name>
+    </WixExtension>
+  </ItemGroup>
+  <Import Project="$(WixTargetsPath)" />
+  <PropertyGroup>
+    <PostBuildEvent>"..\..\..\..\..\..\Tools and Resources\Utilities\signtool\$(Platform)\signtool.exe" sign /f "..\..\..\..\..\..\Source code\SigningKey.pfx" "Installer.msi"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

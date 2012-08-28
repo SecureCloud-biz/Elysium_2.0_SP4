@@ -70,4 +70,4 @@ namespace Elysium.Converters
             return Convert(value, targetType, parameter, culture);
         }
     }
-} ;
+}

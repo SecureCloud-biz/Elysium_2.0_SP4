@@ -9,13 +9,13 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{x:Type controls:Submenu}" TargetType="{x:Type controls:Submenu}">        
-        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource LowlightBrush}"/>
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.DefaultThickness), Mode=OneWay}"/>
         <Setter Property="params:MenuBase.SubmenuBackground" Value="{Binding RelativeSource={RelativeSource Self}, Path=Background, Mode=OneWay}"/>
         <Setter Property="params:MenuBase.SubmenuBorderBrush" Value="{Binding RelativeSource={RelativeSource Self}, Path=BorderBrush, Mode=OneWay}"/>
         <Setter Property="params:MenuBase.SubmenuBorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=BorderThickness, Mode=OneWay}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.ContentFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
         <Setter Property="FontStyle" Value="Normal"/>
@@ -23,7 +23,7 @@
         <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
         <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
-        <Setter Property="params:General.ShadowBrush" Value="{DynamicResource ForegroundBrush}"/>
+        <Setter Property="params:General.ShadowBrush" Value="{StaticResource ForegroundBrush}"/>
         <Setter Property="Grid.IsSharedSizeScope" Value="True"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
@@ -55,13 +55,13 @@
                         <DataTrigger Binding="{Binding ElementName=LayoutRoot, Path=Tag}" Value="True">
                             <Setter TargetName="LayoutRoot" Property="Effect">
                                 <Setter.Value>
-                                    <DropShadowEffect Color="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.ShadowBrush).(SolidColorBrush.Color)}"
+                                    <DropShadowEffect Color="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Submenu}}, Path=(params:General.ShadowBrush).(SolidColorBrush.Color)}"
                                                       BlurRadius="4" ShadowDepth="2"
                                                       Direction="315"
                                                       Opacity="0.3"/>
                                 </Setter.Value>
                             </Setter>
-                            <Setter TargetName="LayoutRoot" Property="Background" Value="{DynamicResource Transparent}"/>
+                            <Setter TargetName="LayoutRoot" Property="Background" Value="{StaticResource TransparentBrush}"/>
                             <Setter TargetName="LayoutRoot" Property="Padding" Value="0,0,6,6"/>
                         </DataTrigger>
                     </ControlTemplate.Triggers>

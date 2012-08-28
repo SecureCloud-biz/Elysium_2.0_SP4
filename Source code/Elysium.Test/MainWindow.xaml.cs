@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -38,12 +41,12 @@ namespace Elysium.Test
 
         private void LightClick(object sender, RoutedEventArgs e)
         {
-            Application.Current.ApplyTheme(Theme.Light, null, null);
+            Application.Current.Apply(Theme.Light);
         }
 
         private void DarkClick(object sender, RoutedEventArgs e)
         {
-            Application.Current.ApplyTheme(Theme.Dark, null, null);
+            Application.Current.Apply(Theme.Dark);
         }
 
         private void AccentClick(object sender, RoutedEventArgs e)
@@ -52,18 +55,18 @@ namespace Elysium.Test
             if (item != null)
             {
                 var accentBrush = (SolidColorBrush)((Rectangle)item.Icon).Fill;
-                Application.Current.ApplyTheme(null, accentBrush, null);
+                Application.Current.Apply(accentBrush, null);
             }
         }
 
         private void WhiteClick(object sender, RoutedEventArgs e)
         {
-            Application.Current.ApplyTheme(null, null, Brushes.White);
+            Application.Current.Apply(null, Brushes.White);
         }
 
         private void BlackClick(object sender, RoutedEventArgs e)
         {
-            Application.Current.ApplyTheme(null, null, Brushes.Black);
+            Application.Current.Apply(null, Brushes.Black);
         }
 
         private void NotificationClick(object sender, RoutedEventArgs e)
@@ -86,4 +89,4 @@ namespace Elysium.Test
             Process.Start("http://elysium.codeplex.com/team/view");
         }
     }
-} ;
+}

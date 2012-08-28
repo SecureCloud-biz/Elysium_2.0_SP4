@@ -17,8 +17,9 @@
     
     /*paths.Add(@"AccentBrushes.en.xml");
     paths.Add(@"Theme.en.xml");
-    paths.Add(@"ThemeManager.en.xml");
-    paths.Add(@"Design\ThemeManager.en.xml");
+    paths.Add(@"Manager.en.xml");
+    paths.Add(@"Parameters\Design.en.xml");
+    paths.Add(@"Parameters\Manager.en.xml");
 
     paths.Add(@"Parameters\CheckBox.en.xml");
     paths.Add(@"Parameters\ComboBox.en.xml");
@@ -35,7 +36,6 @@
     paths.Add(@"Parameters\ToggleSwitch.en.xml");
     paths.Add(@"Parameters\Window.en.xml");
     
-    paths.Add(@"Extensions\Tree helpers\ThemeManagerExtensions.en.xml");
     paths.Add(@"Extensions\Tree helpers\LogicalTreeHelperExtensions.en.xml");
     paths.Add(@"Extensions\Tree helpers\VisualTreeHelperExtensions.en.xml");
     

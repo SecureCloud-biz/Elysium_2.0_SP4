@@ -1,0 +1,12 @@
+﻿<#+
+public static class Versions
+{
+	public static readonly string Copyright = "Copyright © Alex F. Sherman & Codeplex community 2011-" + DateTime.Now.Year.ToString();
+    public const string Version = "1.5";
+    public const string Elysium = "1.5.732.0";
+	public const string Notifications = "1.5.23.0";
+	public const string NotificationsServer = "1.5.14.0";
+	public const string Test = "1.5.221.0";
+	public const string SDK = "1.5.172.0";
+}
+#>

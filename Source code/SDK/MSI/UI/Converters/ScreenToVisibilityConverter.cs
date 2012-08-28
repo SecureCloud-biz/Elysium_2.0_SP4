@@ -27,4 +27,4 @@ namespace Elysium.SDK.MSI.UI.Converters
             throw new NotSupportedException();
         }
     }
-} ;
+}

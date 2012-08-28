@@ -6,12 +6,12 @@ using JetBrains.Annotations;
 
 namespace Elysium.Extensions
 {
-    [UsedImplicitly]
+    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
+    [DebuggerNonUserCode]
+    [System.Diagnostics.Contracts.Pure]
     internal static class ThicknessUtil
     {
-        [UsedImplicitly]
         [JetBrains.Annotations.Pure]
-        [System.Diagnostics.Contracts.Pure]
         internal static bool IsNonNegative(Thickness value)
         {
             return DoubleUtil.IsNonNegative(value.Left) &&
@@ -20,20 +20,17 @@ namespace Elysium.Extensions
                    DoubleUtil.IsNonNegative(value.Bottom);
         }
 
-        [DebuggerHidden]
-        [UsedImplicitly]
+        [Conditional("CONTRACTS_FULL")]
         [ContractAbbreviator]
         internal static void EnsureNonNegative()
         {
             Contract.Ensures(IsNonNegative(Contract.Result<Thickness>()));
         }
 
-        [UsedImplicitly]
         [JetBrains.Annotations.Pure]
-        [System.Diagnostics.Contracts.Pure]
         internal static object CoerceNonNegative(DependencyObject obj, object basevalue)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var value = BoxingHelper<Thickness>.Unbox(basevalue);
             if (!DoubleUtil.IsNonNegative(value.Left))
             {
@@ -54,4 +51,4 @@ namespace Elysium.Extensions
             return value;
         }
     }
-} ;
+}

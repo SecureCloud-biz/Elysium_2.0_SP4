@@ -18,20 +18,18 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.Slider))]
-        [SuppressMessage("Microsoft.Contracts", "Ensures")]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
         public static double GetTrackSize([NotNull] System.Windows.Controls.Slider obj)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(TrackSizeProperty));
         }
 
         [PublicAPI]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static void SetTrackSize([NotNull] System.Windows.Controls.Slider obj, double value)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(TrackSizeProperty, value);
         }
 
@@ -43,21 +41,19 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.Slider))]
-        [SuppressMessage("Microsoft.Contracts", "Ensures")]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
         public static double GetThumbThickness([NotNull] System.Windows.Controls.Slider obj)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(ThumbThicknessProperty));
         }
 
         [PublicAPI]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static void SetThumbThickness([NotNull] System.Windows.Controls.Slider obj, double value)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(ThumbThicknessProperty, value);
         }
     }
-} ;
+}

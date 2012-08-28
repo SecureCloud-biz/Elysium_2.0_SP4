@@ -7,10 +7,10 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type RadioButton}">        
-        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MiddleLightBrush}"/>
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.DefaultThickness), Mode=OneWay}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.ContentFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
         <Setter Property="FontStyle" Value="Normal"/>
@@ -24,31 +24,32 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
-                    <BulletDecorator TextBlock.Foreground="{TemplateBinding Foreground}"
-                                        TextBlock.FontFamily="{TemplateBinding FontFamily}"
-                                        TextBlock.FontSize="{TemplateBinding FontSize}"
-                                        TextBlock.FontWeight="{TemplateBinding FontWeight}"
-                                        FlowDirection="{TemplateBinding FlowDirection}"
-                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                    <BulletDecorator Background="{StaticResource TransparentBrush}"
+                                     TextBlock.Foreground="{TemplateBinding Foreground}"
+                                     TextBlock.FontFamily="{TemplateBinding FontFamily}"
+                                     TextBlock.FontSize="{TemplateBinding FontSize}"
+                                     TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                                     FlowDirection="{TemplateBinding FlowDirection}"
+                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <BulletDecorator.Bullet>
                             <Grid Width="{TemplateBinding params:General.BulletDecoratorSize}" Height="{TemplateBinding params:General.BulletDecoratorSize}">
                                 <Ellipse Fill="{TemplateBinding Background}"
-                                            Stroke="{TemplateBinding BorderBrush}"
-                                            StrokeThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Mode=OneWay, Converter={StaticResource ThicknessToDoubleConverter}}"/>
+                                         Stroke="{TemplateBinding BorderBrush}"
+                                         StrokeThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Mode=OneWay, Converter={StaticResource ThicknessToDoubleConverter}}"/>
                                 <Ellipse x:Name="CheckBullet"
-                                            Fill="{DynamicResource AccentBrush}"
-                                            StrokeThickness="0"
-                                            Visibility="Collapsed"
-                                            HorizontalAlignment="Center" VerticalAlignment="Center"
-                                            Width="{TemplateBinding params:General.BulletSize}" Height="{TemplateBinding params:General.BulletSize}">
+                                         Fill="{StaticResource AccentBrush}"
+                                         StrokeThickness="0"
+                                         Visibility="Collapsed"
+                                         HorizontalAlignment="Center" VerticalAlignment="Center"
+                                         Width="{TemplateBinding params:General.BulletSize}" Height="{TemplateBinding params:General.BulletSize}">
                                 </Ellipse>
                             </Grid>
                         </BulletDecorator.Bullet>
                         <Border Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.BoldPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Left}">
                             <ContentPresenter Margin="{TemplateBinding Padding}"
-                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                RecognizesAccessKey="True"/>
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              RecognizesAccessKey="True"/>
                         </Border>
                     </BulletDecorator>                    
                     <ControlTemplate.Triggers>                        
@@ -56,7 +57,7 @@
                             <Setter TargetName="CheckBullet" Property="Visibility" Value="Visible"/>
                         </Trigger>                        
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="CheckBullet" Property="Ellipse.Fill" Value="{DynamicResource DisabledBrush}"/>
+                            <Setter TargetName="CheckBullet" Property="Ellipse.Fill" Value="{StaticResource DisabledBrush}"/>
                         </Trigger>                        
                     </ControlTemplate.Triggers>                    
                 </ControlTemplate>
@@ -64,17 +65,17 @@
         </Setter>        
         <Style.Triggers>            
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource HighlightBrush}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
+                <Setter Property="Background" Value="{StaticResource HighlightBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource MiddleLightBrush}"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{DynamicResource HighlightBrush}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
+                <Setter Property="Background" Value="{StaticResource HighlightBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource LowlightBrush}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource DisabledBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
+                <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource DisabledBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource DisabledBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>

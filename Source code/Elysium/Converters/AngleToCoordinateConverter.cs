@@ -62,4 +62,4 @@ namespace Elysium.Converters
             throw new NotSupportedException();
         }
     }
-} ;
+}

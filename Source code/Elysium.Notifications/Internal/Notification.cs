@@ -78,4 +78,4 @@ namespace Elysium.Notifications
         [DataMember(Name = "Size")]
         private readonly Size _size;
     }
-} ;
+}

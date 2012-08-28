@@ -88,4 +88,4 @@ namespace Elysium.Converters
             return new Thickness((double)value);
         }
     }
-} ;
+}

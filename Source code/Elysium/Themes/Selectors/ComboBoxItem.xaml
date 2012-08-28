@@ -6,7 +6,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource SelectorsItemsBaseStyle}">        
-        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>        
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>        
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Style.Triggers>
             <MultiTrigger>
@@ -14,16 +14,16 @@
                     <Condition Property="IsEnabled" Value="True"/>
                     <Condition Property="IsHighlighted" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
+                <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource ContrastBrush}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsEnabled" Value="False"/>
                     <Condition Property="IsHighlighted" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{DynamicResource DisabledBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
+                <Setter Property="Background" Value="{StaticResource DisabledBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource ContrastBrush}"/>
             </MultiTrigger>
         </Style.Triggers>        
     </Style>

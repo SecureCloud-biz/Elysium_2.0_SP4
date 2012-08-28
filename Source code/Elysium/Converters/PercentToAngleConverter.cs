@@ -9,29 +9,41 @@ using JetBrains.Annotations;
 namespace Elysium.Converters
 {
     [PublicAPI]
-    [ValueConversion(typeof(Int16), typeof(Int16))]
-    [ValueConversion(typeof(Int32), typeof(Int32))]
-    [ValueConversion(typeof(Int64), typeof(Int64))]
-    [ValueConversion(typeof(Single), typeof(Single))]
-    [ValueConversion(typeof(Double), typeof(Double))]
-    [ValueConversion(typeof(Decimal), typeof(Decimal))]
+    [ValueConversion(typeof(short), typeof(short))]
+    [ValueConversion(typeof(int), typeof(int))]
+    [ValueConversion(typeof(long), typeof(long))]
+    [ValueConversion(typeof(float), typeof(float))]
+    [ValueConversion(typeof(double), typeof(double))]
+    [ValueConversion(typeof(decimal), typeof(decimal))]
     public sealed class PercentToAngleConverter : IValueConverter
     {
         [PublicAPI]
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is Int16)
-                return (Int16)((Int16)value * 360);
-            if (value is Int32)
-                return (Int32)value * 360;
-            if (value is Int64)
-                return (Int64)value * 360L;
-            if (value is Single)
-                return (Single)value * 360f;
-            if (value is Double)
-                return (Double)value * 360d;
-            if (value is Decimal)
-                return (Decimal)value * 360m;
+            if (value is short)
+            {
+                return (short)((short)value * 360);
+            }
+            if (value is int)
+            {
+                return (int)value * 360;
+            }
+            if (value is long)
+            {
+                return (long)value * 360L;
+            }
+            if (value is float)
+            {
+                return (float)value * 360f;
+            }
+            if (value is double)
+            {
+                return (double)value * 360d;
+            }
+            if (value is decimal)
+            {
+                return (decimal)value * 360m;
+            }
             Trace.TraceError("Value must be a number.");
             return DependencyProperty.UnsetValue;
         }
@@ -39,20 +51,32 @@ namespace Elysium.Converters
         [PublicAPI]
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is Int16)
-                return (Int16)((Int16)value * (1d / 360d));
-            if (value is Int32)
-                return (Int32)((Int32)value * (1d / 360d));
-            if (value is Int64)
-                return (Int64)((Int64)value * (1d / 360d));
-            if (value is Single)
-                return (Single)value * (1f / 360f);
-            if (value is Double)
-                return (Double)value * (1d / 360d);
-            if (value is Decimal)
-                return (Decimal)value * (1m / 360m);
+            if (value is short)
+            {
+                return (short)((short)value * (1d / 360d));
+            }
+            if (value is int)
+            {
+                return (int)((int)value * (1d / 360d));
+            }
+            if (value is long)
+            {
+                return (long)((long)value * (1d / 360d));
+            }
+            if (value is float)
+            {
+                return (float)value * (1f / 360f);
+            }
+            if (value is double)
+            {
+                return (double)value * (1d / 360d);
+            }
+            if (value is decimal)
+            {
+                return (decimal)value * (1m / 360m);
+            }
             Trace.TraceError("Value must be a number.");
             return DependencyProperty.UnsetValue;
         }
     }
-} ;
+}

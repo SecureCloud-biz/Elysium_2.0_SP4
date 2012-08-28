@@ -14,9 +14,12 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                 }
                 return _mainViewModel;
             }
-            set { _mainViewModel = value; }
+            set
+            {
+                _mainViewModel = value;
+            }
         }
 
         private static MainViewModel _mainViewModel;
     }
-} ;
+}

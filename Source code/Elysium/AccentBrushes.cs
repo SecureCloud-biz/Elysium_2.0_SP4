@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics.Contracts;
 using System.Windows.Media;
 
+using Elysium.Extensions;
+
 using JetBrains.Annotations;
 
 namespace Elysium
@@ -14,12 +16,7 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                if (_blue == null)
-                {
-                    _blue = new SolidColorBrush(Color.FromArgb(0xFF, 0x01, 0x7B, 0xCD));
-                    _blue.Freeze();
-                }
-                return _blue;
+                return _blue ?? (_blue = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0x01, 0x7B, 0xCD))));
             }
         }
 
@@ -31,12 +28,7 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                if (_brown == null)
-                {
-                    _brown = new SolidColorBrush(Color.FromArgb(0xFF, 0xA0, 0x50, 0x00));
-                    _brown.Freeze();
-                }
-                return _brown;
+                return _brown ?? (_brown = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0xA0, 0x50, 0x00))));
             }
         }
 
@@ -48,12 +40,7 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                if (_green == null)
-                {
-                    _green = new SolidColorBrush(Color.FromArgb(0xFF, 0x33, 0x99, 0x33));
-                    _green.Freeze();
-                }
-                return _green;
+                return _green ?? (_green = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0x33, 0x99, 0x33))));
             }
         }
 
@@ -65,12 +52,7 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                if (_lime == null)
-                {
-                    _lime = new SolidColorBrush(Color.FromArgb(0xFF, 0x8C, 0xBF, 0x26));
-                    _lime.Freeze();
-                }
-                return _lime;
+                return _lime ?? (_lime = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0x8C, 0xBF, 0x26))));
             }
         }
 
@@ -82,12 +64,7 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                if (_magenta == null)
-                {
-                    _magenta = new SolidColorBrush(Color.FromArgb(0xFF, 0xFF, 0x00, 0x97));
-                    _magenta.Freeze();
-                }
-                return _magenta;
+                return _magenta ?? (_magenta = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0xFF, 0x00, 0x97))));
             }
         }
 
@@ -99,12 +76,7 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                if (_mango == null)
-                {
-                    _mango = new SolidColorBrush(Color.FromArgb(0xFF, 0xF0, 0x96, 0x09));
-                    _mango.Freeze();
-                }
-                return _mango;
+                return _mango ?? (_mango = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0xF0, 0x96, 0x09))));
             }
         }
 
@@ -116,12 +88,7 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                if (_orange == null)
-                {
-                    _orange = new SolidColorBrush(Color.FromArgb(0xFF, 0xCB, 0x52, 0x01));
-                    _orange.Freeze();
-                }
-                return _orange;
+                return _orange ?? (_orange = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0xCB, 0x52, 0x01))));
             }
         }
 
@@ -133,12 +100,7 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                if (_pink == null)
-                {
-                    _pink = new SolidColorBrush(Color.FromArgb(0xFF, 0xE6, 0x71, 0xB8));
-                    _pink.Freeze();
-                }
-                return _pink;
+                return _pink ?? (_pink = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0xE6, 0x71, 0xB8))));
             }
         }
 
@@ -150,12 +112,7 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                if (_purple == null)
-                {
-                    _purple = new SolidColorBrush(Color.FromArgb(0xFF, 0x69, 0x22, 0x7B));
-                    _purple.Freeze();
-                }
-                return _purple;
+                return _purple ?? (_purple = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0x69, 0x22, 0x7B))));
             }
         }
 
@@ -167,12 +124,7 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                if (_red == null)
-                {
-                    _red = new SolidColorBrush(Color.FromArgb(0xFF, 0xE5, 0x14, 0x00));
-                    _red.Freeze();
-                }
-                return _red;
+                return _red ?? (_red = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0xE5, 0x14, 0x00))));
             }
         }
 
@@ -184,12 +136,7 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                if (_rose == null)
-                {
-                    _rose = new SolidColorBrush(Color.FromArgb(0xFF, 0xD8, 0x00, 0x73));
-                    _rose.Freeze();
-                }
-                return _rose;
+                return _rose ?? (_rose = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0xD8, 0x00, 0x73))));
             }
         }
 
@@ -201,12 +148,7 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                if (_sky == null)
-                {
-                    _sky = new SolidColorBrush(Color.FromArgb(0xFF, 0x1B, 0xA1, 0xE2));
-                    _sky.Freeze();
-                }
-                return _sky;
+                return _sky ?? (_sky = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0x1B, 0xA1, 0xE2))));
             }
         }
 
@@ -218,12 +160,7 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                if (_viridian == null)
-                {
-                    _viridian = new SolidColorBrush(Color.FromArgb(0xFF, 0x00, 0xAB, 0xA9));
-                    _viridian.Freeze();
-                }
-                return _viridian;
+                return _viridian ?? (_viridian = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0x00, 0xAB, 0xA9))));
             }
         }
 
@@ -235,15 +172,10 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                if (_violet == null)
-                {
-                    _violet = new SolidColorBrush(Color.FromArgb(0xFF, 0xA2, 0x00, 0xFF));
-                    _violet.Freeze();
-                }
-                return _violet;
+                return _violet ?? (_violet = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0xA2, 0x00, 0xFF))));
             }
         }
 
         private static SolidColorBrush _violet;
     }
-} ;
+}

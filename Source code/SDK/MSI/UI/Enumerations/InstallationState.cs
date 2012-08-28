@@ -1,12 +1,14 @@
 ﻿namespace Elysium.SDK.MSI.UI.Enumerations
 {
-    public enum InstallationState
+    internal enum InstallationState
     {
         Initializing,
         DetectedAbsent,
         DetectedPresent,
+        DetectedNewer,
         Applying,
         Successful,
-        Failed
+        Failed,
+        RebootRequired
     }
-} ;
+}

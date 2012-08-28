@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Linq;
+using System.Security;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -43,16 +43,43 @@ namespace Elysium.Controls
 
         private FrameworkElement _caption;
 
+        [SecurityCritical]
         private WindowChrome _chrome;
 
-        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
+        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline", Justification = "We need to use static constructor for custom actions during dependency properties initialization")]
         static Window()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Window), new FrameworkPropertyMetadata(typeof(Window)));
         }
 
-        public Window()
+        [SecuritySafeCritical]
+        public Window() : this(0)
         {
+            Initialize();
+
+            CommandBindings.Add(new CommandBinding(WindowCommands.Minimize, (sender, e) => WindowState = WindowState.Minimized));
+            CommandBindings.Add(new CommandBinding(WindowCommands.Maximize, (sender, e) => WindowState = WindowState.Maximized));
+            CommandBindings.Add(new CommandBinding(WindowCommands.Restore, (sender, e) => WindowState = WindowState.Normal));
+            CommandBindings.Add(new CommandBinding(WindowCommands.Close, (sender, e) => Close()));
+        }
+
+        public Window(int capacity)
+        {
+            if (capacity < 0)
+            {
+                throw new ArgumentOutOfRangeException("capacity");
+            }
+            Contract.EndContractBlock();
+        }
+
+        [SecurityCritical]
+        [SuppressMessage("Microsoft.Security", "CA2141:TransparentMethodsMustNotSatisfyLinkDemandsFxCopRule",
+            Justification = "We need to use Microsoft.Windows.Shell.dll version 3.5")]
+        private void Initialize()
+        {
+            // NOTE: Lack of contracts: SystemParameters2.Current must ensure non-null value
+            Contract.Assume(SystemParameters2.Current != null);
+
             _chrome = new WindowChrome
                           {
                               CaptionHeight = SystemParameters2.Current.WindowCaptionHeight,
@@ -62,7 +89,7 @@ namespace Elysium.Controls
                               ResizeBorderThickness = Parameters.Window.GetResizeBorderThickness(this),
                               UseAeroCaptionButtons = false
                           };
-            _chrome.Freeze();
+            _chrome.TryFreeze();
             if (WindowChrome.GetWindowChrome(this) == null)
             {
                 WindowChrome.SetWindowChrome(this, _chrome);
@@ -70,28 +97,30 @@ namespace Elysium.Controls
 
             var resizeBorderThicknessPropertyDescriptor =
                 DependencyPropertyDescriptor.FromProperty(Parameters.Window.ResizeBorderThicknessProperty, typeof(Window));
-            resizeBorderThicknessPropertyDescriptor.AddValueChanged(this, delegate
+            if (resizeBorderThicknessPropertyDescriptor != null)
             {
-                if (Equals(WindowChrome.GetWindowChrome(this), _chrome))
-                {
-                    _chrome = new WindowChrome
-                                  {
-                                      CaptionHeight = _chrome.CaptionHeight,
-                                      CornerRadius = _chrome.CornerRadius,
-                                      GlassFrameThickness = _chrome.GlassFrameThickness,
-                                      NonClientFrameEdges = _chrome.NonClientFrameEdges,
-                                      ResizeBorderThickness = Parameters.Window.GetResizeBorderThickness(this),
-                                      UseAeroCaptionButtons = _chrome.UseAeroCaptionButtons
-                                  };
-                    _chrome.Freeze();
-                    WindowChrome.SetWindowChrome(this, _chrome);
-                }
-            });
+                resizeBorderThicknessPropertyDescriptor.AddValueChanged(this, OnResizeBorderThicknessChanged);
+            }
+        }
 
-            CommandBindings.Add(new CommandBinding(WindowCommands.Minimize, (sender, e) => WindowState = WindowState.Minimized));
-            CommandBindings.Add(new CommandBinding(WindowCommands.Maximize, (sender, e) => WindowState = WindowState.Maximized));
-            CommandBindings.Add(new CommandBinding(WindowCommands.Restore, (sender, e) => WindowState = WindowState.Normal));
-            CommandBindings.Add(new CommandBinding(WindowCommands.Close, (sender, e) => Close()));
+        [SuppressMessage("Microsoft.Contracts", "Nonnull-36-0", Justification = "Bug in Code Contracts static checker: We should ignore value of _chrome field because it is overwritten.")]
+        [SecurityCritical]
+        private void OnResizeBorderThicknessChanged(object sender, EventArgs e)
+        {
+            if (Equals(WindowChrome.GetWindowChrome(this), _chrome))
+            {
+                _chrome = new WindowChrome
+                              {
+                                  CaptionHeight = _chrome.CaptionHeight,
+                                  CornerRadius = _chrome.CornerRadius,
+                                  GlassFrameThickness = _chrome.GlassFrameThickness,
+                                  NonClientFrameEdges = _chrome.NonClientFrameEdges,
+                                  ResizeBorderThickness = Parameters.Window.GetResizeBorderThickness(this),
+                                  UseAeroCaptionButtons = _chrome.UseAeroCaptionButtons
+                              };
+                _chrome.TryFreeze();
+                WindowChrome.SetWindowChrome(this, _chrome);
+            }
         }
 
         [PublicAPI]
@@ -103,18 +132,16 @@ namespace Elysium.Controls
         [JetBrains.Annotations.Pure]
         [System.Diagnostics.Contracts.Pure]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Window))]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static bool GetIsMainWindow([NotNull] System.Windows.Window obj)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             return BooleanBoxingHelper.Unbox(obj.GetValue(IsMainWindowProperty));
         }
 
         [PublicAPI]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static void SetIsMainWindow([NotNull] System.Windows.Window obj, bool value)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(IsMainWindowProperty, BooleanBoxingHelper.Box(value));
         }
 
@@ -211,9 +238,19 @@ namespace Elysium.Controls
         }
 
         [PublicAPI]
+        [SecuritySafeCritical]
 // ReSharper disable VirtualMemberNeverOverriden.Global
         protected virtual void OnHasDropShadowChanged(bool oldHasDropShadow, bool newHasDropShadow)
 // ReSharper restore VirtualMemberNeverOverriden.Global
+        {
+            OnHasDropShadowChangedInternal(newHasDropShadow);
+        }
+
+        [SuppressMessage("Microsoft.Security", "CA2141:TransparentMethodsMustNotSatisfyLinkDemandsFxCopRule",
+            Justification = "We need to use Microsoft.Windows.Shell.dll version 3.5")]
+        [SuppressMessage("Microsoft.Contracts", "Nonnull-36-0", Justification = "Bug in Code Contracts static checker: We should ignore value of _chrome field because it is overwritten.")]
+        [SecurityCritical]
+        private void OnHasDropShadowChangedInternal(bool newHasDropShadow)
         {
             if (Equals(WindowChrome.GetWindowChrome(this), _chrome))
             {
@@ -226,15 +263,16 @@ namespace Elysium.Controls
                                   ResizeBorderThickness = _chrome.ResizeBorderThickness,
                                   UseAeroCaptionButtons = _chrome.UseAeroCaptionButtons
                               };
-                _chrome.Freeze();
+                _chrome.TryFreeze();
                 WindowChrome.SetWindowChrome(this, _chrome);
             }
         }
 
-        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "Coerce- methods shouldn't throw exceptions")]
+        [SuppressMessage("Microsoft.Contracts", "Nonnull-29-0", Justification = "Lack of contracts")]
         private static object CoerceHasDropShadow(DependencyObject obj, object basevalue)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             try
             {
                 // NOTE: Ignore Code Contracts warnings
@@ -255,24 +293,22 @@ namespace Elysium.Controls
         [JetBrains.Annotations.Pure]
         [System.Diagnostics.Contracts.Pure]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Window))]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static ApplicationBar GetApplicationBar([NotNull] System.Windows.Window obj)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             return (ApplicationBar)obj.GetValue(ApplicationBarProperty);
         }
 
         [PublicAPI]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static void SetApplicationBar([NotNull] System.Windows.Window obj, ApplicationBar value)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(ApplicationBarProperty, value);
         }
 
         private static void OnApplicationBarChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var instance = obj as System.Windows.Window;
             if (instance != null && e.OldValue != null)
             {
@@ -286,7 +322,6 @@ namespace Elysium.Controls
 
         private static void OnApplicationBarVisibilityChanged(object sender, MouseButtonEventArgs e)
         {
-            //Trace.TraceInformation("ApplicationBar opened");
             var window = sender as System.Windows.Window;
             var source = e.OriginalSource as UIElement;
             if (window != null && source != null && !ApplicationBar.GetPreventsOpen(source))
@@ -343,18 +378,16 @@ namespace Elysium.Controls
         [JetBrains.Annotations.Pure]
         [System.Diagnostics.Contracts.Pure]
         [AttachedPropertyBrowsableForType(typeof(Decorator))]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static bool GetIsApplicationBarHost(Decorator obj)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             return BooleanBoxingHelper.Unbox(obj.GetValue(IsApplicationBarHostProperty));
         }
 
         [PublicAPI]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static void SetIsApplicationBarHost(Decorator obj, bool value)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(IsApplicationBarHostProperty, BooleanBoxingHelper.Box(value));
         }
 
@@ -372,14 +405,21 @@ namespace Elysium.Controls
             }
         }
 
+        [SecuritySafeCritical]
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 
+            OnApplyTemplateInternal();
+        }
+
+        [SecurityCritical]
+        [SuppressMessage("Microsoft.Security", "CA2141:TransparentMethodsMustNotSatisfyLinkDemandsFxCopRule",
+            Justification = "We need to use Microsoft.Windows.Shell.dll version 3.5")]
+        private void OnApplyTemplateInternal()
+        {
             if (Template != null)
             {
-                // NOTE: Lack of contracts: FindName is pure method
-                Contract.Assume(Template != null);
                 _caption = Template.FindName(CaptionName, this) as FrameworkElement;
                 if (_caption == null)
                 {
@@ -387,25 +427,30 @@ namespace Elysium.Controls
                 }
                 else
                 {
-                    _caption.SizeChanged += (sender, e) =>
-                    {
-                        if (Equals(WindowChrome.GetWindowChrome(this), _chrome) && e.HeightChanged)
-                        {
-                            _chrome = new WindowChrome
-                                          {
-                                              CaptionHeight = e.NewSize.Height,
-                                              CornerRadius = _chrome.CornerRadius,
-                                              GlassFrameThickness = _chrome.GlassFrameThickness,
-                                              NonClientFrameEdges = _chrome.NonClientFrameEdges,
-                                              ResizeBorderThickness = _chrome.ResizeBorderThickness,
-                                              UseAeroCaptionButtons = _chrome.UseAeroCaptionButtons
-                                          };
-                            _chrome.Freeze();
-                            WindowChrome.SetWindowChrome(this, _chrome);
-                        }
-                    };
+                    _caption.SizeChanged += OnCaptionSizeChanged;
                 }
             }
         }
+
+        [SuppressMessage("Microsoft.Contracts", "Nonnull-67-0", Justification = "Bug in Code Contracts static checker: We should ignore value of _chrome field because it is overwritten.")]
+        [SecurityCritical]
+        private void OnCaptionSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (Equals(WindowChrome.GetWindowChrome(this), _chrome) && e.HeightChanged)
+            {
+                _chrome = new WindowChrome
+                              {
+                                  CaptionHeight = e.NewSize.Height,
+                                  CornerRadius = _chrome.CornerRadius,
+                                  GlassFrameThickness = _chrome.GlassFrameThickness,
+                                  NonClientFrameEdges = _chrome.NonClientFrameEdges,
+                                  ResizeBorderThickness = _chrome.ResizeBorderThickness,
+                                  UseAeroCaptionButtons = _chrome.UseAeroCaptionButtons
+                              };
+                _chrome.TryFreeze();
+                WindowChrome.SetWindowChrome(this, _chrome);
+            }
+
+        }
     }
-} ;
+}

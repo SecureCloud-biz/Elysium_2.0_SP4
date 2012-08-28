@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
+using System.Reflection;
+using System.Security;
 using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Automation.Peers;
@@ -29,7 +30,7 @@ namespace Elysium.Controls
 
         private Popup _popup;
 
-        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
+        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline", Justification = "We need to use static constructor for custom actions during dependency properties initialization")]
         static DropDownCommandButton()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(DropDownCommandButton), new FrameworkPropertyMetadata(typeof(DropDownCommandButton)));
@@ -54,7 +55,7 @@ namespace Elysium.Controls
 
         private static void OnSubmenuChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var instance = (DropDownCommandButton)obj;
             instance.OnSubmenuChanged((Submenu)e.OldValue, (Submenu)e.NewValue);
         }
@@ -62,10 +63,7 @@ namespace Elysium.Controls
         [PublicAPI]
         protected virtual void OnSubmenuChanged(Submenu oldSubmenu, Submenu newSubmenu)
         {
-            if (_popup != null)
-            {
-                _popup.Child = newSubmenu;
-            }
+            ApplyTemplate();
             HasSubmenu = newSubmenu != null;
         }
 
@@ -88,7 +86,7 @@ namespace Elysium.Controls
 
         private static void OnHasSubmenuChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var instance = (DropDownCommandButton)obj;
             instance.OnHasSubmenuChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
         }
@@ -123,7 +121,7 @@ namespace Elysium.Controls
 
         private static void OnIsDropDownOpenChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var instance = (DropDownCommandButton)obj;
             instance.OnIsDropDownOpenChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
         }
@@ -154,7 +152,7 @@ namespace Elysium.Controls
 
         private static object CoerceIsDropDownOpen([NotNull] DependencyObject obj, object baseValue)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var instance = (DropDownCommandButton)obj;
             return instance.CoerceIsDropDownOpen(BooleanBoxingHelper.Unbox(baseValue));
         }
@@ -182,6 +180,8 @@ namespace Elysium.Controls
         {
             if (HasSubmenu)
             {
+                // HasSubmenu ensures that Submenu isn't null
+                Contract.Assume(Submenu != null);
                 Mouse.Capture((IInputElement)VisualTreeHelperExtensions.FindTopLevelParent(Submenu), CaptureMode.SubTree);
                 OnDropDownOpened(e);
             }
@@ -244,21 +244,49 @@ namespace Elysium.Controls
         {
             return new DropDownCommandButtonAutomationPeer(this);
         }
-
+        
+        [SecuritySafeCritical]
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
+            ApplyTemplateInternal();
+        }
 
+        [SecurityCritical]
+        private void ApplyTemplateInternal()
+        {
             if (Template != null)
             {
                 if (_popup != null)
                 {
                     _popup.Child = null;
+                    if (Submenu != null)
+                    {
+                        var popupRootInstance = VisualTreeHelperExtensions.FindTopLevelParent(Submenu);
+                        if (popupRootInstance != null)
+                        {
+                            var presentationFramework = Assembly.GetAssembly(typeof(System.Windows.Window));
+                            if (presentationFramework != null)
+                            {
+                                var popupRoot = presentationFramework.GetType("System.Windows.Controls.Primitives.PopupRoot");
+                                if (popupRoot != null)
+                                {
+                                    var popupRootChild = popupRoot.GetProperty("Child",
+                                                                               BindingFlags.Instance | BindingFlags.SetProperty | BindingFlags.NonPublic);
+                                    if (popupRootChild != null)
+                                    {
+                                        popupRootChild.SetValue(popupRootInstance, null, null);
+                                    }
+                                }
+                            }
+                        }
+                    }
                     _popup.Closed -= OnDropDownClosed;
                     _popup.Opened -= OnDropDownOpened;
                     _popup.CustomPopupPlacementCallback = null;
                 }
-                // NOTE: Lack of contracts: FindName is pure method
+
+                // Bug in Code Contracts static checker: Template is already checked to null
                 Contract.Assume(Template != null);
                 _popup = Template.FindName(PopupName, this) as Popup;
                 if (_popup == null)
@@ -340,4 +368,4 @@ namespace Elysium.Controls
             return null;
         }
     }
-} ;
+}

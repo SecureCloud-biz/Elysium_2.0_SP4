@@ -16,7 +16,8 @@ namespace Elysium.Controls
         {
             var infinitySize = new Size(double.PositiveInfinity, double.PositiveInfinity);
             var desiredSize = new Size(0, 0);
-
+            
+            // NOTE: Lack of contracts
             Contract.Assume(InternalChildren != null);
             var children = InternalChildren.Cast<UIElement>().ToList();
             foreach (var child in children.Where(child => child != null))
@@ -24,7 +25,8 @@ namespace Elysium.Controls
                 // NOTE: Code Contracts doesn't support closures
                 Contract.Assume(child != null);
                 child.Measure(infinitySize);
-                // NOTE: Lack of contracts: DesiredSize.Width is non-negative
+
+                // NOTE: Lack of contracts: DesiredSize.Width must ensure non-negative value
                 Contract.Assume(child.DesiredSize.Width >= 0d);
                 desiredSize.Width = Math.Max(desiredSize.Width, child.DesiredSize.Width);
                 desiredSize.Height = Math.Max(desiredSize.Height, child.DesiredSize.Height);
@@ -59,7 +61,7 @@ namespace Elysium.Controls
                 {
                     children.Add(smaller[index]);
                 }
-                
+
             }
 
             var maxWidth = 0d;
@@ -72,7 +74,10 @@ namespace Elysium.Controls
                 {
                     maxWidth = tempMaxWidth;
                 }
-                else break;
+                else
+                {
+                    break;
+                }
             }
 
             var leftFilledWidth = 0d;
@@ -98,4 +103,4 @@ namespace Elysium.Controls
             return finalSize;
         }
     }
-} ;
+}

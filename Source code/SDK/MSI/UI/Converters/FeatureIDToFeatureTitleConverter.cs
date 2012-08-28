@@ -19,13 +19,17 @@ namespace Elysium.SDK.MSI.UI.Converters
             {
                 return Properties.Resources.Notifications;
             }
-            if ((string)value == "Documentation.en")
+            if ((string)value == "Documentation.En")
             {
                 return Properties.Resources.Documentation_en;
             }
-            if ((string)value == "Documentation.ru")
+            if ((string)value == "Documentation.Ru")
             {
                 return Properties.Resources.Documentation_ru;
+            }
+            if ((string)value == "Test")
+            {
+                return Properties.Resources.Test;
             }
             return value;
         }
@@ -42,13 +46,17 @@ namespace Elysium.SDK.MSI.UI.Converters
             }
             if ((string)value == Properties.Resources.Documentation_en)
             {
-                return "Documentation.en";
+                return "Documentation.En";
             }
             if ((string)value == Properties.Resources.Documentation_ru)
             {
-                return "Documentation.ru";
+                return "Documentation.Ru";
+            }
+            if ((string)value == Properties.Resources.Test)
+            {
+                return "Test";
             }
             return value;
         }
     }
-} ;
+}

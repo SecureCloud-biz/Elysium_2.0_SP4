@@ -30,7 +30,7 @@ namespace Elysium.Controls
         private Rectangle _indicator;
         private Canvas _busyBar;
 
-        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
+        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline", Justification = "We need to use static constructor for custom actions during dependency properties initialization")]
         static ProgressBar()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ProgressBar), new FrameworkPropertyMetadata(typeof(ProgressBar)));
@@ -39,7 +39,8 @@ namespace Elysium.Controls
         [PublicAPI]
         public static readonly DependencyProperty OrientationProperty =
             DependencyProperty.Register("Orientation", typeof(Orientation), typeof(ProgressBar),
-                                        new FrameworkPropertyMetadata(Orientation.Horizontal, FrameworkPropertyMetadataOptions.AffectsMeasure, OnOrientationChanged),
+                                        new FrameworkPropertyMetadata(Orientation.Horizontal, FrameworkPropertyMetadataOptions.AffectsMeasure,
+                                                                      OnOrientationChanged),
                                         IsValidOrientation);
 
         [PublicAPI]
@@ -47,13 +48,19 @@ namespace Elysium.Controls
         [Description("Determines orientation of control.")]
         public Orientation Orientation
         {
-            get { return BoxingHelper<Orientation>.Unbox(GetValue(OrientationProperty)); }
-            set { SetValue(OrientationProperty, value); }
+            get
+            {
+                return BoxingHelper<Orientation>.Unbox(GetValue(OrientationProperty));
+            }
+            set
+            {
+                SetValue(OrientationProperty, value);
+            }
         }
 
         private static void OnOrientationChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var instance = (ProgressBar)obj;
             instance.OnOrientationChanged(BoxingHelper<Orientation>.Unbox(e.OldValue), BoxingHelper<Orientation>.Unbox(e.NewValue));
         }
@@ -71,7 +78,7 @@ namespace Elysium.Controls
             return orientation == Orientation.Horizontal || orientation == Orientation.Vertical;
         }
 
-        [SecuritySafeCritical]
+        [SecurityCritical]
         internal override void OnApplyTemplateInternal()
         {
             if (Template != null)
@@ -81,7 +88,8 @@ namespace Elysium.Controls
                 {
                     Trace.TraceWarning(IndicatorName + " not found.");
                 }
-                // NOTE: Lack of contracts: FindName is pure method
+
+                // NOTE: Lack of contracts: FindName must be marked as pure method
                 Contract.Assume(Template != null);
                 _busyBar = Template.FindName(BusyBarName, this) as Canvas;
                 if (_busyBar == null)
@@ -104,7 +112,8 @@ namespace Elysium.Controls
 
         private void UpdateIndeterminateAnimation()
         {
-            if ((IndeterminateAnimation == null || (IndeterminateAnimation != null && IndeterminateAnimation.Name == DefaultIndeterminateAnimationName)) && Track != null && _indicator != null)
+            if ((IndeterminateAnimation == null || (IndeterminateAnimation != null && IndeterminateAnimation.Name == DefaultIndeterminateAnimationName)) &&
+                Track != null && _indicator != null)
             {
                 if (IndeterminateAnimation != null && IsIndeterminateAnimationRunning)
                 {
@@ -122,6 +131,7 @@ namespace Elysium.Controls
                 var time = trackSize / 100;
 
                 var animation = new DoubleAnimationUsingKeyFrames { Duration = new Duration(TimeSpan.FromSeconds(time + 0.5)) };
+
                 // NOTE: Lack of contracts: DoubleAnimationUsingKeyFrames.KeyFrames is always have collection instance
                 Contract.Assume(animation.KeyFrames != null);
                 animation.KeyFrames.Add(new DiscreteDoubleKeyFrame(-indicatorSize - 1, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0))));
@@ -131,15 +141,13 @@ namespace Elysium.Controls
                 Storyboard.SetTargetProperty(animation,
                                              new PropertyPath(Orientation == Orientation.Horizontal ? Canvas.LeftProperty : Canvas.TopProperty));
 
-                // NOTE: Lack of contracts
+                // NOTE: Bug in Code Contracts static checker: IndeterminateAnimation can't be null
+                // NOTE: Lack of contracts: Children is always have collection instance
                 Contract.Assume(IndeterminateAnimation != null);
                 Contract.Assume(IndeterminateAnimation.Children != null);
                 IndeterminateAnimation.Children.Add(animation);
 
-                if (IndeterminateAnimation.CanFreeze)
-                {
-                    IndeterminateAnimation.Freeze();
-                }
+                IndeterminateAnimation.TryFreeze();
 
                 if (State == ProgressState.Indeterminate && IsEnabled)
                 {
@@ -170,6 +178,7 @@ namespace Elysium.Controls
                 const double beginTimeIncrement = time / 2;
                 const double shortPauseTime = time;
                 const double longPauseTime = time * 1.5;
+
                 var partMotionTime = (_busyBar.Children.Count - 1) * beginTimeIncrement + durationTime;
 
                 var busyAnimations = new Collection<DoubleAnimation>();
@@ -208,7 +217,6 @@ namespace Elysium.Controls
                 {
                     var element = (FrameworkElement)_busyBar.Children[_busyBar.Children.Count - i - 1];
 
-
                     if (element != null)
                     {
                         var elementWidth = element.Width;
@@ -218,7 +226,8 @@ namespace Elysium.Controls
                                           (Orientation == Orientation.Horizontal ? elementWidth : elementHeight) + 1;
 
                         var duration = new Duration(TimeSpan.FromSeconds(durationTime));
-                        var animation = new DoubleAnimation(endPosition, duration) { BeginTime = TimeSpan.FromSeconds(partMotionTime + shortPauseTime + i * beginTimeIncrement) };
+                        var animation = new DoubleAnimation(endPosition, duration)
+                            { BeginTime = TimeSpan.FromSeconds(partMotionTime + shortPauseTime + i * beginTimeIncrement) };
                         Storyboard.SetTarget(animation, element);
                         Storyboard.SetTargetProperty(animation,
                                                      new PropertyPath(Orientation == Orientation.Horizontal ? Canvas.LeftProperty : Canvas.TopProperty));
@@ -249,4 +258,4 @@ namespace Elysium.Controls
             }
         }
     }
-} ;
+}

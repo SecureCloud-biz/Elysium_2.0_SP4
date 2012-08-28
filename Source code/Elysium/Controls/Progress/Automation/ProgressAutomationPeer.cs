@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
@@ -22,6 +23,7 @@ namespace Elysium.Controls.Automation
             {
                 Contract.Ensures(Contract.Result<ProgressBase>() != null);
                 var result = (ProgressBase)base.Owner;
+                // NOTE: Lack of contracts: Owner must ensure non-null value
                 Contract.Assume(result != null);
                 return result;
             }
@@ -48,7 +50,8 @@ namespace Elysium.Controls.Automation
             }
             return base.GetPattern(patternInterface);
         }
-
+        
+        [SuppressMessage("Microsoft.Design", "CA1033:InterfaceMethodsShouldBeCallableByChildTypes", Justification = "Progress bar is read-only for UI Automation")]
         void IRangeValueProvider.SetValue(double value)
         {
             Contract.Ensures(false);
@@ -82,4 +85,4 @@ namespace Elysium.Controls.Automation
             }
         }
     }
-} ;
+}

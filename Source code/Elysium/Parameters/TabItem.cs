@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Windows;
+﻿using System.Windows;
 
 using Elysium.Extensions;
 
@@ -17,19 +16,17 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.TabItem))]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static Style GetHeaderStyle([NotNull] System.Windows.Controls.TabItem obj)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             return (Style)obj.GetValue(HeaderStyleProperty);
         }
 
         [PublicAPI]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static void SetHeaderStyle([NotNull] System.Windows.Controls.TabItem obj, Style value)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(HeaderStyleProperty, value);
         }
     }
-} ;
+}

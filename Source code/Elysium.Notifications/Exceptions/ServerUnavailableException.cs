@@ -7,6 +7,7 @@ using JetBrains.Annotations;
 namespace Elysium.Notifications
 {
     [PublicAPI]
+    [Serializable]
     public class ServerUnavailableException : CommunicationException
     {
         [PublicAPI]
@@ -32,4 +33,4 @@ namespace Elysium.Notifications
         {
         }
     }
-} ;
+}

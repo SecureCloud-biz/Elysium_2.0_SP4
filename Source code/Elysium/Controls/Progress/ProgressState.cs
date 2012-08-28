@@ -14,4 +14,4 @@ namespace Elysium.Controls
         [PublicAPI]
         Busy
     }
-} ;
+}

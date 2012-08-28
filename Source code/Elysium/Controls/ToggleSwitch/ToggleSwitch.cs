@@ -34,7 +34,7 @@ namespace Elysium.Controls
         private Thumb _thumb;
         private Button _switch;
 
-        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
+        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline", Justification = "We need to use static constructor for custom actions during dependency properties initialization")]
         static ToggleSwitch()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ToggleSwitch), new FrameworkPropertyMetadata(typeof(ToggleSwitch)));
@@ -59,7 +59,7 @@ namespace Elysium.Controls
 
         private static void OnIsCheckedChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
             instance.OnIsCheckedChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
         }
@@ -126,7 +126,8 @@ namespace Elysium.Controls
 
         private static readonly DependencyPropertyKey IsSwitchingPropertyKey =
             DependencyProperty.RegisterReadOnly("IsSwitching", typeof(bool), typeof(ToggleSwitch),
-                                                new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, FrameworkPropertyMetadataOptions.None, OnIsSwitchingChanged));
+                                                new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, FrameworkPropertyMetadataOptions.None,
+                                                                              OnIsSwitchingChanged));
 
         [PublicAPI]
         public static readonly DependencyProperty IsSwitchingProperty = IsSwitchingPropertyKey.DependencyProperty;
@@ -141,7 +142,7 @@ namespace Elysium.Controls
 
         private static void OnIsSwitchingChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
             instance.OnIsSwitchingChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
         }
@@ -200,7 +201,8 @@ namespace Elysium.Controls
 
         [PublicAPI]
         public static readonly DependencyProperty OnHeaderProperty =
-            DependencyProperty.Register("OnHeader", typeof(object), typeof(ToggleSwitch), new FrameworkPropertyMetadata("On", OnOnHeaderChanged));
+            DependencyProperty.Register("OnHeader", typeof(object), typeof(ToggleSwitch),
+                                        new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.None, OnOnHeaderChanged));
 
         [PublicAPI]
         [Bindable(true)]
@@ -215,7 +217,7 @@ namespace Elysium.Controls
 
         private static void OnOnHeaderChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
             instance.OnOnHeaderChanged(e.OldValue, e.NewValue);
             instance.HasOnHeader = e.NewValue != null;
@@ -248,7 +250,7 @@ namespace Elysium.Controls
 
         private static void OnHasOnHeaderChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
             instance.OnHasOnHeaderChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
         }
@@ -277,13 +279,13 @@ namespace Elysium.Controls
 
         private static void OnOnHeaderStringFormatChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
             instance.OnOnHeaderStringFormatChanged((string)e.OldValue, (string)e.NewValue);
         }
 
         [PublicAPI]
-        [SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string")]
+        [SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string", Justification = "String is not a type name. String is a part of phrase StringFormat.")]
 // ReSharper disable VirtualMemberNeverOverriden.Global
         protected virtual void OnOnHeaderStringFormatChanged(string oldOnHeaderStringFormat, string newOnHeaderStringFormat)
 // ReSharper restore VirtualMemberNeverOverriden.Global
@@ -307,7 +309,7 @@ namespace Elysium.Controls
 
         private static void OnOnHeaderTemplateChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
             instance.OnOnHeaderTemplateChanged((DataTemplate)e.OldValue, (DataTemplate)e.NewValue);
         }
@@ -318,7 +320,9 @@ namespace Elysium.Controls
 // ReSharper restore VirtualMemberNeverOverriden.Global
         {
             if (newOnHeaderTemplate != null && OnHeaderTemplateSelector != null)
+            {
                 Trace.TraceError("OnHeaderTemplate and OnHeaderTemplateSelector defined");
+            }
         }
 
         [PublicAPI]
@@ -338,7 +342,7 @@ namespace Elysium.Controls
 
         private static void OnOnHeaderTemplateSelectorChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
             instance.OnOnHeaderTemplateSelectorChanged((DataTemplateSelector)e.OldValue, (DataTemplateSelector)e.NewValue);
         }
@@ -350,12 +354,15 @@ namespace Elysium.Controls
 // ReSharper restore VirtualMemberNeverOverriden.Global
         {
             if (OnHeaderTemplate != null && newOnHeaderTemplateSelector != null)
+            {
                 Trace.TraceError("OnHeaderTemplate and OnHeaderTemplateSelector defined");
+            }
         }
 
         [PublicAPI]
         public static readonly DependencyProperty OffHeaderProperty =
-            DependencyProperty.Register("OffHeader", typeof(object), typeof(ToggleSwitch), new FrameworkPropertyMetadata("Off", OnOffHeaderChanged));
+            DependencyProperty.Register("OffHeader", typeof(object), typeof(ToggleSwitch),
+                                        new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.None, OnOffHeaderChanged));
 
         [PublicAPI]
         [Bindable(true)]
@@ -370,7 +377,7 @@ namespace Elysium.Controls
 
         private static void OnOffHeaderChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
             instance.OnOffHeaderChanged(e.OldValue, e.NewValue);
             instance.HasOffHeader = e.NewValue != null;
@@ -403,7 +410,7 @@ namespace Elysium.Controls
 
         private static void OnHasOffHeaderChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
             instance.OnHasOffHeaderChanged(BooleanBoxingHelper.Unbox(e.OldValue), BooleanBoxingHelper.Unbox(e.NewValue));
         }
@@ -432,13 +439,13 @@ namespace Elysium.Controls
 
         private static void OnOffHeaderStringFormatChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
             instance.OnOffHeaderStringFormatChanged((string)e.OldValue, (string)e.NewValue);
         }
 
         [PublicAPI]
-        [SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string")]
+        [SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string", Justification = "String is not a type name. String is a part of phrase StringFormat.")]
 // ReSharper disable VirtualMemberNeverOverriden.Global
         protected virtual void OnOffHeaderStringFormatChanged(string oldOffHeaderStringFormat, string newOffHeaderStringFormat)
 // ReSharper restore VirtualMemberNeverOverriden.Global
@@ -462,7 +469,7 @@ namespace Elysium.Controls
 
         private static void OnOffHeaderTemplateChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
             instance.OnOffHeaderTemplateChanged((DataTemplate)e.OldValue, (DataTemplate)e.NewValue);
         }
@@ -473,7 +480,9 @@ namespace Elysium.Controls
 // ReSharper restore VirtualMemberNeverOverriden.Global
         {
             if (newOffHeaderTemplate != null && OffHeaderTemplateSelector != null)
+            {
                 Trace.TraceError("OffHeaderTemplate and OffHeaderTemplateSelector defined");
+            }
         }
 
         [PublicAPI]
@@ -493,7 +502,7 @@ namespace Elysium.Controls
 
         private static void OnOffHeaderTemplateSelectorChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
             instance.OnOffHeaderTemplateSelectorChanged((DataTemplateSelector)e.OldValue, (DataTemplateSelector)e.NewValue);
         }
@@ -505,7 +514,9 @@ namespace Elysium.Controls
 // ReSharper restore VirtualMemberNeverOverriden.Global
         {
             if (OffHeaderTemplate != null && newOffHeaderTemplateSelector != null)
+            {
                 Trace.TraceError("OffHeaderTemplate and OffHeaderTemplateSelector defined");
+            }
         }
 
         internal virtual void OnToggle()
@@ -529,7 +540,8 @@ namespace Elysium.Controls
                 {
                     Trace.TraceWarning(TrackName + " not found.");
                 }
-                // NOTE: Lack of contracts: FindName is pure method
+
+                // NOTE: Lack of contracts: FindName must be marked as pure method
                 Contract.Assume(Template != null);
                 _fill = Template.FindName(FillName, this) as FrameworkElement;
                 if (_fill == null)
@@ -542,7 +554,8 @@ namespace Elysium.Controls
                     _thumb.DragDelta -= OnSwitchChanging;
                     _thumb.DragCompleted -= OnSwitchCompleted;
                 }
-                // NOTE: Lack of contracts: FindName is pure method
+
+                // NOTE: Lack of contracts: FindName must be marked as pure method
                 Contract.Assume(Template != null);
                 _thumb = Template.FindName(ThumbName, this) as Thumb;
                 if (_thumb == null)
@@ -562,7 +575,8 @@ namespace Elysium.Controls
                 {
                     _switch.Click -= OnToggle;
                 }
-                // NOTE: Lack of contracts: FindName is pure method
+
+                // NOTE: Lack of contracts: FindName must be marked as pure method
                 Contract.Assume(Template != null);
                 _switch = Template.FindName(SwitchName, this) as Button;
                 if (_switch == null)
@@ -583,6 +597,7 @@ namespace Elysium.Controls
 
         private void OnSwitchChanging(object sender, DragDeltaEventArgs e)
         {
+            // Method can be called only if all of listed fields is non-null
             Contract.Assume(_fill != null);
             Contract.Assume(_track != null);
             Contract.Assume(_thumb != null);
@@ -605,6 +620,7 @@ namespace Elysium.Controls
 
         private void OnSwitchCompleted(object sender, DragCompletedEventArgs e)
         {
+            // Method can be called only if all of listed fields is non-null
             Contract.Assume(_fill != null);
             Contract.Assume(_track != null);
             Contract.Assume(_thumb != null);
@@ -619,4 +635,4 @@ namespace Elysium.Controls
             OnToggle();
         }
     }
-} ;
+}

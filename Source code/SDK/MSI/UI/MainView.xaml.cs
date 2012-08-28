@@ -1,6 +1,4 @@
-﻿using System.Windows;
-
-namespace Elysium.SDK.MSI.UI
+﻿namespace Elysium.SDK.MSI.UI
 {
     public partial class MainView
     {
@@ -14,4 +12,4 @@ namespace Elysium.SDK.MSI.UI
             App.Current.Dispatcher.InvokeShutdown();
         }
     }
-} ;
+}

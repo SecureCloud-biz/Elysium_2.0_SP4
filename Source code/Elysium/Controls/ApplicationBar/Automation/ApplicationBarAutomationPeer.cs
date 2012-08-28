@@ -29,4 +29,4 @@ namespace Elysium.Controls.Automation
             return AutomationControlType.Menu;
         }
     }
-} ;
+}

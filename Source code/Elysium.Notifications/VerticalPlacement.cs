@@ -11,4 +11,4 @@ namespace Elysium.Notifications
         [PublicAPI]
         Bottom
     }
-} ;
+}

@@ -18,4 +18,4 @@ namespace Elysium.SDK.MSI.UI.Converters
             return value is Visibility ? ((Visibility)value == Visibility.Visible) : DependencyProperty.UnsetValue;
         }
     }
-} ;
+}

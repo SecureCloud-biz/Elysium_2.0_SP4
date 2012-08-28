@@ -11,4 +11,4 @@ namespace Elysium.Controls
         [PublicAPI]
         Right
     }
-} ;
+}

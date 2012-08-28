@@ -8,7 +8,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="ToggleSwitchSwitchStyle" TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="{DynamicResource HighlightBrush}"/>        
+        <Setter Property="Background" Value="{StaticResource HighlightBrush}"/>        
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
@@ -26,7 +26,7 @@
     </Style>
     
     <Style x:Key="ToggleSwitchThumbStyle" TargetType="{x:Type Thumb}">
-        <Setter Property="Background" Value="{DynamicResource MiddleLightBrush}"/>
+        <Setter Property="Background" Value="{StaticResource MiddleLightBrush}"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
@@ -47,26 +47,29 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource LowlightBrush}"/>
+                <Setter Property="Background" Value="{StaticResource LowlightBrush}"/>
             </Trigger>
             <Trigger Property="IsDragging" Value="True">
-                <Setter Property="Background" Value="{DynamicResource LowlightBrush}"/>
+                <Setter Property="Background" Value="{StaticResource LowlightBrush}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="{DynamicResource DisabledBrush}"/>
+                <Setter Property="Background" Value="{StaticResource DisabledBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
 
     <Style x:Key="{x:Type controls:ToggleSwitch}" TargetType="{x:Type controls:ToggleSwitch}">
-        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MiddleLightBrush}"/>
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.DefaultThickness), Mode=OneWay}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.ContentFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
         <Setter Property="FontStyle" Value="Normal"/>
         <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+        <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False"/>
@@ -77,8 +80,18 @@
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:ToggleSwitch}">                    
-                    <Grid SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                <ControlTemplate TargetType="{x:Type controls:ToggleSwitch}">
+                    <Grid Background="{x:Null}"
+                          TextBlock.Foreground="{TemplateBinding Foreground}"
+                          TextBlock.FontFamily="{TemplateBinding FontFamily}"
+                          TextBlock.FontSize="{TemplateBinding FontSize}"
+                          TextBlock.FontStretch="{TemplateBinding FontStretch}"
+                          TextBlock.FontStyle="{TemplateBinding FontStyle}"
+                          TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                          TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                          TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                          RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
+                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
@@ -90,12 +103,6 @@
                                           ContentStringFormat="{TemplateBinding OnHeaderStringFormat}"
                                           ContentTemplate="{TemplateBinding OnHeaderTemplate}"
                                           ContentTemplateSelector="{TemplateBinding OnHeaderTemplateSelector}"
-                                          TextBlock.Foreground="{TemplateBinding Foreground}"
-                                          TextBlock.FontFamily="{TemplateBinding FontFamily}"
-                                          TextBlock.FontSize="{TemplateBinding FontSize}"
-                                          TextBlock.FontStretch="{TemplateBinding FontStretch}"
-                                          TextBlock.FontStyle="{TemplateBinding FontStyle}"
-                                          TextBlock.FontWeight="{TemplateBinding FontWeight}"
                                           HorizontalAlignment="Left"
                                           VerticalAlignment="Center"
                                           Visibility="Collapsed"/>
@@ -105,12 +112,6 @@
                                           ContentStringFormat="{TemplateBinding OffHeaderStringFormat}"
                                           ContentTemplate="{TemplateBinding OffHeaderTemplate}"
                                           ContentTemplateSelector="{TemplateBinding OffHeaderTemplateSelector}"
-                                          TextBlock.Foreground="{TemplateBinding Foreground}"
-                                          TextBlock.FontFamily="{TemplateBinding FontFamily}"
-                                          TextBlock.FontSize="{TemplateBinding FontSize}"
-                                          TextBlock.FontStretch="{TemplateBinding FontStretch}"
-                                          TextBlock.FontStyle="{TemplateBinding FontStyle}"
-                                          TextBlock.FontWeight="{TemplateBinding FontWeight}"
                                           HorizontalAlignment="Left"
                                           VerticalAlignment="Center"
                                           Visibility="Collapsed"/>
@@ -122,7 +123,7 @@
                             <DockPanel>
                                 <Rectangle x:Name="PART_Fill"
                                            DockPanel.Dock="Left"
-                                           Fill="{DynamicResource AccentBrush}"
+                                           Fill="{StaticResource AccentBrush}"
                                            Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.DefaultThicknessValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Top, Bottom'}"
                                            Panel.ZIndex="0"
                                            Width="0"/>
@@ -149,7 +150,7 @@
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="OnHeaderHost" Property="Visibility" Value="Visible"/>
                             <Setter TargetName="PART_Fill" Property="DockPanel.Dock" Value="Right"/>
-                            <Setter TargetName="PART_Fill" Property="Fill" Value="{DynamicResource HighlightBrush}"/>
+                            <Setter TargetName="PART_Fill" Property="Fill" Value="{StaticResource HighlightBrush}"/>
                             <Setter TargetName="PART_Fill" Property="Margin" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.DefaultThicknessValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Right, Top, Bottom'}"/>
                             <Setter TargetName="PART_Thumb" Property="DockPanel.Dock" Value="Right"/>
                             <Setter TargetName="PART_Thumb" Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.DefaultThicknessValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Left}"/>
@@ -162,7 +163,7 @@
                                 <Condition Property="IsEnabled" Value="True"/>
                             </MultiTrigger.Conditions>
                             <MultiTrigger.Setters>
-                                <Setter TargetName="PART_Switch" Property="Background" Value="{DynamicResource AccentBrush}"/>
+                                <Setter TargetName="PART_Switch" Property="Background" Value="{StaticResource AccentBrush}"/>
                             </MultiTrigger.Setters>
                         </MultiTrigger>
                         <MultiTrigger>
@@ -188,10 +189,13 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
+                <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
+            </DataTrigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource DisabledBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
+                <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource DisabledBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource DisabledBrush}"/>
             </Trigger>
         </Style.Triggers>        
     </Style>

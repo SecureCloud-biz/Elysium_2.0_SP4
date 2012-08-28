@@ -21,6 +21,7 @@ namespace Elysium.Controls.Automation
             {
                 Contract.Ensures(Contract.Result<ToggleSwitch>() != null);
                 var result = (ToggleSwitch)base.Owner;
+                // NOTE: Lack of contracts: Owner must ensure non-null value
                 Contract.Assume(result != null);
                 return result;
             }
@@ -75,11 +76,11 @@ namespace Elysium.Controls.Automation
         {
             switch (value)
             {
-                case (true):
+                case true:
                     return ToggleState.On;
                 default:
                     return ToggleState.Off;
             }
         }
     }
-} ;
+}

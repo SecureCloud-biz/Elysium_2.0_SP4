@@ -7,11 +7,11 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type TabControl}">
-        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource LowlightBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="params:TabControl.IndicatorBrush" Value="{DynamicResource HighlightBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+        <Setter Property="params:TabControl.IndicatorBrush" Value="{StaticResource HighlightBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.TextFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
         <Setter Property="FontStyle" Value="Normal"/>
@@ -39,6 +39,9 @@
                             TextBlock.FontStretch="{TemplateBinding FontStretch}"
                             TextBlock.FontStyle="{TemplateBinding FontStyle}"
                             TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                            TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                            TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                            RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
                             KeyboardNavigation.DirectionalNavigation="Local"
                             ClipToBounds="{TemplateBinding ClipToBounds}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
@@ -144,8 +147,8 @@
                 <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
             </DataTrigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="BorderBrush" Value="{DynamicResource DisabledBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource DisabledBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource DisabledBrush}"/>
             </Trigger>            
         </Style.Triggers>        
     </Style>

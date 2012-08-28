@@ -6,9 +6,9 @@
         <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
-    <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="{x:Type Separator}">        
-        <Setter Property="Background" Value="{x:Null}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource HighlightBrush}"/>
+    <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="{x:Type Separator}">
+        <Setter Property="Background" Value="{StaticResource TransparentBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource HighlightBrush}"/>
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.DefaultThickness), Mode=OneWay}"/>        
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>        
@@ -42,11 +42,17 @@
                 Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
-                TextBlock.FontFamily="{TemplateBinding FontFamily}"
-                TextBlock.FontSize="{TemplateBinding FontSize}"
-                TextBlock.FontWeight="{TemplateBinding FontWeight}"
                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-            <Grid x:Name="ContentHost">
+            <Grid x:Name="ContentHost"
+                  TextBlock.Foreground="{TemplateBinding Foreground}"
+                  TextBlock.FontFamily="{TemplateBinding FontFamily}"
+                  TextBlock.FontSize="{TemplateBinding FontSize}"
+                  TextBlock.FontStretch="{TemplateBinding FontStretch}"
+                  TextBlock.FontStyle="{TemplateBinding FontStyle}"
+                  TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                  TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                  TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                  RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}">
                 <ContentPresenter x:Name="HeaderHost"
                                   ContentSource="Header"
                                   RecognizesAccessKey="True"
@@ -139,7 +145,7 @@
                                                           Opacity="0.3"/>
                         </Setter.Value>
                     </Setter>
-                    <Setter TargetName="PopupRoot" Property="Background" Value="{DynamicResource Transparent}"/>
+                    <Setter TargetName="PopupRoot" Property="Background" Value="{StaticResource TransparentBrush}"/>
                     <Setter TargetName="PopupRoot" Property="Padding" Value="0,0,6,6"/>
                 </MultiDataTrigger.Setters>
             </MultiDataTrigger>
@@ -157,7 +163,7 @@
                                                           Opacity="0.3"/>
                         </Setter.Value>
                     </Setter>
-                    <Setter TargetName="PopupRoot" Property="Background" Value="{DynamicResource Transparent}"/>
+                    <Setter TargetName="PopupRoot" Property="Background" Value="{StaticResource TransparentBrush}"/>
                     <Setter TargetName="PopupRoot" Property="Padding" Value="0,4,4,0"/>
                 </MultiDataTrigger.Setters>
             </MultiDataTrigger>
@@ -169,9 +175,15 @@
                 Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
+                TextBlock.Foreground="{TemplateBinding Foreground}"
                 TextBlock.FontFamily="{TemplateBinding FontFamily}"
                 TextBlock.FontSize="{TemplateBinding FontSize}"
+                TextBlock.FontStretch="{TemplateBinding FontStretch}"
+                TextBlock.FontStyle="{TemplateBinding FontStyle}"
                 TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
             <ContentPresenter x:Name="HeaderHost"
                                 ContentSource="Header"
@@ -185,11 +197,17 @@
                 Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
-                TextBlock.FontFamily="{TemplateBinding FontFamily}"
-                TextBlock.FontSize="{TemplateBinding FontSize}"
-                TextBlock.FontWeight="{TemplateBinding FontWeight}"
                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-            <Grid Margin="{TemplateBinding Padding}"
+            <Grid TextBlock.Foreground="{TemplateBinding Foreground}"
+                  TextBlock.FontFamily="{TemplateBinding FontFamily}"
+                  TextBlock.FontSize="{TemplateBinding FontSize}"
+                  TextBlock.FontStretch="{TemplateBinding FontStretch}"
+                  TextBlock.FontStyle="{TemplateBinding FontStyle}"
+                  TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                  TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                  TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                  RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
+                  Margin="{TemplateBinding Padding}"
                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                 <Grid.ColumnDefinitions>
@@ -213,7 +231,7 @@
                                   VerticalAlignment="Center"/>
                 <Polygon x:Name="ArrowGlyph"
                          Grid.Column="2"
-                         Fill="{DynamicResource MiddleLightBrush}"
+                         Fill="{StaticResource MiddleLightBrush}"
                          StrokeThickness="0"
                          Stretch="Uniform"
                          Margin="{TemplateBinding params:MenuItem.ArrowMargin}"
@@ -266,7 +284,7 @@
                 <Setter TargetName="IconHost" Property="Visibility" Value="Collapsed"/>
             </Trigger>
             <Trigger Property="IsSubmenuOpen" Value="True">
-                <Setter TargetName="ArrowGlyph" Property="Fill" Value="{DynamicResource AccentBrush}"/>
+                <Setter TargetName="ArrowGlyph" Property="Fill" Value="{StaticResource AccentBrush}"/>
             </Trigger>
             <Trigger Property="IsSuspendingPopupAnimation" Value="True">
                 <Setter TargetName="PART_Popup" Property="PopupAnimation" Value="None"/>
@@ -283,7 +301,7 @@
                                           Opacity="0.3"/>
                     </Setter.Value>
                 </Setter>
-                <Setter TargetName="PopupRoot" Property="Background" Value="{DynamicResource Transparent}"/>
+                <Setter TargetName="PopupRoot" Property="Background" Value="{StaticResource TransparentBrush}"/>
                 <Setter TargetName="PopupRoot" Property="Padding" Value="0,0,6,6"/>
             </DataTrigger>
         </ControlTemplate.Triggers>
@@ -293,11 +311,17 @@
         <Border Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
-                TextBlock.FontFamily="{TemplateBinding FontFamily}"
-                TextBlock.FontSize="{TemplateBinding FontSize}"
-                TextBlock.FontWeight="{TemplateBinding FontWeight}"
                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-            <Grid Margin="{TemplateBinding Padding}"
+            <Grid TextBlock.Foreground="{TemplateBinding Foreground}"
+                  TextBlock.FontFamily="{TemplateBinding FontFamily}"
+                  TextBlock.FontSize="{TemplateBinding FontSize}"
+                  TextBlock.FontStretch="{TemplateBinding FontStretch}"
+                  TextBlock.FontStyle="{TemplateBinding FontStyle}"
+                  TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                  TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                  TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                  RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
+                  Margin="{TemplateBinding Padding}"
                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                 <Grid.ColumnDefinitions>
@@ -309,7 +333,7 @@
                 </Grid.ColumnDefinitions>
                 <Path x:Name="CheckBullet"
                       Grid.Column="0"
-                      Stroke="{DynamicResource LowlightBrush}"
+                      Stroke="{StaticResource LowlightBrush}"
                       StrokeThickness="{TemplateBinding params:General.BoldThicknessValue}"
                       Stretch="Uniform"
                       Visibility="Collapsed"
@@ -355,8 +379,8 @@
     </ControlTemplate>
 
     <Style TargetType="{x:Type MenuItem}">
-        <Setter Property="Background" Value="{DynamicResource TransparentBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource TransparentBrush}"/>
+        <Setter Property="Background" Value="{StaticResource TransparentBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource TransparentBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=Foreground, Mode=OneWay}"/>
         <Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=FontFamily, Mode=OneWay}"/>
@@ -392,8 +416,8 @@
                 <Setter Property="Template" Value="{StaticResource {x:Static MenuItem.SubmenuItemTemplateKey}}"/>
             </Trigger>
             <Trigger Property="IsHighlighted" Value="True">
-                <Setter Property="Background" Value="{DynamicResource HighlightBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+                <Setter Property="Background" Value="{StaticResource HighlightBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -401,8 +425,8 @@
                     <Condition Property="IsHighlighted" Value="True"/>
                 </MultiTrigger.Conditions>
                 <MultiTrigger.Setters>
-                    <Setter Property="Background" Value="{DynamicResource HighlightBrush}"/>
-                    <Setter Property="BorderBrush" Value="{DynamicResource HighlightBrush}"/>
+                    <Setter Property="Background" Value="{StaticResource HighlightBrush}"/>
+                    <Setter Property="BorderBrush" Value="{StaticResource HighlightBrush}"/>
                 </MultiTrigger.Setters>
             </MultiTrigger>
             <MultiTrigger>
@@ -411,12 +435,12 @@
                     <Condition Property="IsHighlighted" Value="True"/>
                 </MultiTrigger.Conditions>
                 <MultiTrigger.Setters>
-                    <Setter Property="Background" Value="{DynamicResource HighlightBrush}"/>
-                    <Setter Property="BorderBrush" Value="{DynamicResource HighlightBrush}"/>
+                    <Setter Property="Background" Value="{StaticResource HighlightBrush}"/>
+                    <Setter Property="BorderBrush" Value="{StaticResource HighlightBrush}"/>
                 </MultiTrigger.Setters>
             </MultiTrigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource DisabledBrush}"/>
             </Trigger>            
         </Style.Triggers>        
     </Style>

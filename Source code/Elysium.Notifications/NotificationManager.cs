@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Contracts;
 using System.ServiceModel;
 using System.Threading;
 using System.Windows;
@@ -17,8 +19,11 @@ namespace Elysium.Notifications
     [PublicAPI]
     public static class NotificationManager
     {
+        [SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "NotificationManager disposed by Close method")]
         private static Notification Reserve()
         {
+            Contract.Ensures(Contract.Result<Notification>() != null);
+
             var notificationManager = new Client.NotificationManager();
             try
             {
@@ -49,6 +54,7 @@ namespace Elysium.Notifications
             }
         }
 
+        [SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "NotificationManager disposed by Close method")]
         private static void Free(byte id)
         {
             var notificationManager = new Client.NotificationManager();
@@ -83,13 +89,17 @@ namespace Elysium.Notifications
         [PublicAPI]
         public static bool TryPush([NotNull] string message, [CanBeNull] string remark)
         {
-            ValidationHelper.NotNullOrWhitespace(message, () => message);
+            ValidationHelper.NotNullOrWhitespace(message, "message");
 
             try
             {
                 Push(message, remark);
             }
-            catch
+            catch (ServerUnavailableException)
+            {
+                return false;
+            }
+            catch (PushNotificationFailedException)
             {
                 return false;
             }
@@ -99,7 +109,7 @@ namespace Elysium.Notifications
         [PublicAPI]
         private static void Push([NotNull] string message, [CanBeNull] string remark)
         {
-            ValidationHelper.NotNullOrWhitespace(message, () => message);
+            ValidationHelper.NotNullOrWhitespace(message, "message");
 
             try
             {
@@ -158,6 +168,8 @@ namespace Elysium.Notifications
             }
         }
 
+        [SuppressMessage("Microsoft.Contracts", "Nonnull-36-0")]
+        [SuppressMessage("Microsoft.Contracts", "Nonnull-57-0")]
         private static void BeginOpenAnimation(Window window, Notification slot)
         {
             switch (slot.Animation)
@@ -174,6 +186,8 @@ namespace Elysium.Notifications
             }
         }
 
+        [SuppressMessage("Microsoft.Contracts", "Nonnull-74-0")]
+        [SuppressMessage("Microsoft.Contracts", "Nonnull-124-0")]
         private static void EndOpenAnimation(Window window, Notification slot)
         {
             switch (slot.Animation)
@@ -193,6 +207,8 @@ namespace Elysium.Notifications
             }
         }
 
+        [SuppressMessage("Microsoft.Contracts", "Nonnull-74-0")]
+        [SuppressMessage("Microsoft.Contracts", "Nonnull-124-0")]
         private static void CloseAnimation(Window window, Notification slot)
         {
             switch (slot.Animation)
@@ -212,4 +228,4 @@ namespace Elysium.Notifications
             }
         }
     }
-} ;
+}

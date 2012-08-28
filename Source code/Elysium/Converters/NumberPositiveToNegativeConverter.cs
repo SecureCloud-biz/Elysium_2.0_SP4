@@ -8,32 +8,46 @@ using JetBrains.Annotations;
 namespace Elysium.Converters
 {
     [PublicAPI]
-    [ValueConversion(typeof(Byte), typeof(Byte))]
-    [ValueConversion(typeof(Int16), typeof(Int16))]
-    [ValueConversion(typeof(Int32), typeof(Int32))]
-    [ValueConversion(typeof(Int64), typeof(Int64))]
-    [ValueConversion(typeof(Single), typeof(Single))]
-    [ValueConversion(typeof(Double), typeof(Double))]
-    [ValueConversion(typeof(Decimal), typeof(Decimal))]
+    [ValueConversion(typeof(byte), typeof(byte))]
+    [ValueConversion(typeof(short), typeof(short))]
+    [ValueConversion(typeof(int), typeof(int))]
+    [ValueConversion(typeof(long), typeof(long))]
+    [ValueConversion(typeof(float), typeof(float))]
+    [ValueConversion(typeof(double), typeof(double))]
+    [ValueConversion(typeof(decimal), typeof(decimal))]
     public sealed class NumberPositiveToNegativeConverter : IValueConverter
     {
         [PublicAPI]
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is Byte)
-                return (Byte)((Byte)value * -1);
-            if (value is Int16)
-                return (Int16)((Int16)value * -1);
-            if (value is Int32)
-                return (Int32)value * -1;
-            if (value is Int64)
-                return (Int64)value * -1L;
-            if (value is Single)
-                return (Single)value * -1f;
-            if (value is Double)
-                return (Double)value * -1d;
-            if (value is Decimal)
-                return (Decimal)value * -1m;
+            if (value is byte)
+            {
+                return (byte)((byte)value * -1);
+            }
+            if (value is short)
+            {
+                return (short)((short)value * -1);
+            }
+            if (value is int)
+            {
+                return (int)value * -1;
+            }
+            if (value is long)
+            {
+                return (long)value * -1L;
+            }
+            if (value is float)
+            {
+                return (float)value * -1f;
+            }
+            if (value is double)
+            {
+                return (double)value * -1d;
+            }
+            if (value is decimal)
+            {
+                return (decimal)value * -1m;
+            }
             return DependencyProperty.UnsetValue;
         }
 
@@ -43,4 +57,4 @@ namespace Elysium.Converters
             return Convert(value, targetType, parameter, culture);
         }
     }
-} ;
+}

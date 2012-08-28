@@ -8,22 +8,34 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{x:Type primitives:CommandButtonBase}" TargetType="{x:Type primitives:CommandButtonBase}">
-        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource LowlightBrush}"/>
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldThickness), Mode=OneWay}"/>
-        <Setter Property="params:CommandButtons.Mask" Value="{DynamicResource LowlightBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+        <Setter Property="params:CommandButtons.Mask" Value="{StaticResource LowlightBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.ContentFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
         <Setter Property="FontStyle" Value="Normal"/>
         <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+        <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}"/>
         <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.SemiBoldPadding), Mode=OneWay}"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type primitives:CommandButtonBase}">
-                    <Grid Background="{DynamicResource TransparentBrush}"
+                    <Grid Background="{StaticResource TransparentBrush}"
+                          TextBlock.Foreground="{TemplateBinding Foreground}"
+                          TextBlock.FontFamily="{TemplateBinding FontFamily}"
+                          TextBlock.FontSize="{TemplateBinding FontSize}"
+                          TextBlock.FontStretch="{TemplateBinding FontStretch}"
+                          TextBlock.FontStyle="{TemplateBinding FontStyle}"
+                          TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                          TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                          TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                          RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
@@ -65,28 +77,31 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
+                <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
+            </DataTrigger>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource ForegroundBrush}"/>
-                <Setter Property="params:CommandButtons.Mask" Value="{DynamicResource ForegroundBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource ForegroundBrush}"/>
+                <Setter Property="params:CommandButtons.Mask" Value="{StaticResource ForegroundBrush}"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
-                <Setter Property="params:CommandButtons.Mask" Value="{DynamicResource MiddleLightBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource MiddleLightBrush}"/>
+                <Setter Property="params:CommandButtons.Mask" Value="{StaticResource MiddleLightBrush}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="BorderBrush" Value="{DynamicResource DisabledBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
-                <Setter Property="params:CommandButtons.Mask" Value="{DynamicResource DisabledBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource DisabledBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource DisabledBrush}"/>
+                <Setter Property="params:CommandButtons.Mask" Value="{StaticResource DisabledBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
 
     <Style x:Key="CommandButtonBaseApplicationBarStyle" TargetType="{x:Type primitives:CommandButtonBase}">
-        <Setter Property="Background" Value="{DynamicResource TransparentBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource ContrastBrush}"/>
+        <Setter Property="Background" Value="{StaticResource TransparentBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ContrastBrush}"/>
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldThickness), Mode=OneWay}"/>
-        <Setter Property="params:CommandButtons.Mask" Value="{DynamicResource ContrastBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
+        <Setter Property="params:CommandButtons.Mask" Value="{StaticResource ContrastBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource ContrastBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.ContentFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
         <Setter Property="FontStyle" Value="Normal"/>
@@ -98,7 +113,16 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type primitives:CommandButtonBase}">
-                    <Grid Background="{DynamicResource TransparentBrush}"
+                    <Grid Background="{StaticResource TransparentBrush}"
+                          TextBlock.Foreground="{TemplateBinding Foreground}"
+                          TextBlock.FontFamily="{TemplateBinding FontFamily}"
+                          TextBlock.FontSize="{TemplateBinding FontSize}"
+                          TextBlock.FontStretch="{TemplateBinding FontStretch}"
+                          TextBlock.FontStyle="{TemplateBinding FontStyle}"
+                          TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                          TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                          TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                          RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
@@ -114,7 +138,7 @@
                                  VerticalAlignment="Center"/>
                         <Ellipse Grid.Row="0"
                                  Fill="{TemplateBinding params:CommandButtons.Mask}"
-                                 Stroke="{DynamicResource TransparentBrush}"
+                                 Stroke="{StaticResource TransparentBrush}"
                                  StrokeThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessToDoubleConverter}}"
                                  Stretch="Fill"
                                  HorizontalAlignment="Center"
@@ -156,20 +180,23 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
+                <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
+            </DataTrigger>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource SemitransparentContrastBrush}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource ContrastBrush}"/>
-                <Setter Property="params:CommandButtons.Mask" Value="{DynamicResource ContrastBrush}"/>
+                <Setter Property="Background" Value="{StaticResource SemitransparentContrastBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource ContrastBrush}"/>
+                <Setter Property="params:CommandButtons.Mask" Value="{StaticResource ContrastBrush}"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{DynamicResource ContrastBrush}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource ContrastBrush}"/>
-                <Setter Property="params:CommandButtons.Mask" Value="{DynamicResource AccentBrush}"/>
+                <Setter Property="Background" Value="{StaticResource ContrastBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource ContrastBrush}"/>
+                <Setter Property="params:CommandButtons.Mask" Value="{StaticResource AccentBrush}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="BorderBrush" Value="{DynamicResource DisabledBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
-                <Setter Property="params:CommandButtons.Mask" Value="{DynamicResource DisabledBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource DisabledBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource DisabledBrush}"/>
+                <Setter Property="params:CommandButtons.Mask" Value="{StaticResource DisabledBrush}"/>
             </Trigger>
         </Style.Triggers>        
     </Style>

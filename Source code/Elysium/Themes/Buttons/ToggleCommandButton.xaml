@@ -11,8 +11,8 @@
     <Style x:Key="{x:Type controls:ToggleCommandButton}" TargetType="{x:Type controls:ToggleCommandButton}" BasedOn="{StaticResource {x:Type primitives:CommandButtonBase}}">        
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
-                <Setter Property="params:CommandButtons.Mask" Value="{DynamicResource MiddleLightBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource MiddleLightBrush}"/>
+                <Setter Property="params:CommandButtons.Mask" Value="{StaticResource MiddleLightBrush}"/>
             </Trigger>
         </Style.Triggers>        
     </Style>
@@ -20,9 +20,9 @@
     <Style x:Key="ToggleCommandButtonApplicationBarStyle" TargetType="{x:Type controls:ToggleCommandButton}" BasedOn="{StaticResource CommandButtonBaseApplicationBarStyle}">
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="{DynamicResource ContrastBrush}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource ContrastBrush}"/>
-                <Setter Property="params:CommandButtons.Mask" Value="{DynamicResource AccentBrush}"/>
+                <Setter Property="Background" Value="{StaticResource ContrastBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource ContrastBrush}"/>
+                <Setter Property="params:CommandButtons.Mask" Value="{StaticResource AccentBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>

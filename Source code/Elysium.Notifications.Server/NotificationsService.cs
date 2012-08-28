@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Security;
 using System.ServiceModel;
 using System.ServiceProcess;
 
@@ -6,9 +7,11 @@ namespace Elysium.Notifications.Server
 {
     internal sealed partial class NotificationsService : ServiceBase
     {
+        [SecurityCritical]
         private ServiceHost _serviceHost;
 
         [Conditional("DEBUG")]
+        [DebuggerStepThrough]
         private static void Debug()
         {
             Debugger.Launch();
@@ -16,10 +19,11 @@ namespace Elysium.Notifications.Server
 
         internal NotificationsService()
         {
-            //Debug();
+            Debug();
             InitializeComponent();
         }
 
+        [SecurityCritical]
         protected override void OnStart(string[] args)
         {
             if (_serviceHost != null)
@@ -30,6 +34,7 @@ namespace Elysium.Notifications.Server
             _serviceHost.Open();
         }
 
+        [SecurityCritical]
         protected override void OnStop()
         {
             if (_serviceHost != null)
@@ -39,4 +44,4 @@ namespace Elysium.Notifications.Server
             }
         }
     }
-} ;
+}

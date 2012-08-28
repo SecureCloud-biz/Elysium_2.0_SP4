@@ -14,4 +14,4 @@ namespace Elysium.Notifications
         [PublicAPI]
         Slide
     }
-} ;
+}

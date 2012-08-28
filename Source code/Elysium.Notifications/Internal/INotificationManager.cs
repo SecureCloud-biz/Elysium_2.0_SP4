@@ -22,4 +22,4 @@ namespace Elysium.Notifications
         [OperationContract]
         void Update(TimeSpan lifetime, Animation animation, Thickness margin, Size size, HorizontalPlacement horizontalPlacement, VerticalPlacement verticalPlacement);
     }
-} ;
+}

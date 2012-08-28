@@ -17,7 +17,7 @@ namespace Elysium.Controls
     public class ToggleCommandButton : CommandButtonBase
 // ReSharper restore ClassWithVirtualMembersNeverInherited.Global
     {
-        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
+        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline", Justification = "We need to use static constructor for custom actions during dependency properties initialization")]
         static ToggleCommandButton()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ToggleCommandButton), new FrameworkPropertyMetadata(typeof(ToggleCommandButton)));
@@ -43,7 +43,7 @@ namespace Elysium.Controls
 
         private static void OnIsCheckedChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleCommandButton)obj;
             instance.OnIsCheckedChanged(NullableBooleanBoxingHelper.Unbox(e.OldValue), NullableBooleanBoxingHelper.Unbox(e.NewValue));
         }
@@ -175,4 +175,4 @@ namespace Elysium.Controls
             IsChecked = isChecked;
         }
     }
-} ;
+}

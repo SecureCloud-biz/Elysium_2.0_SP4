@@ -26,7 +26,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Properties\Key.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\SigningKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +36,8 @@
     <Optimize>false</Optimize>
     <DebugType>full</DebugType>
     <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
     <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
@@ -79,7 +81,41 @@
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>False</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsInferRequires>False</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
+    <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
+    <CodeContractsSuggestRequires>True</CodeContractsSuggestRequires>
+    <CodeContractsSuggestEnsures>False</CodeContractsSuggestEnsures>
+    <CodeContractsSuggestObjectInvariants>False</CodeContractsSuggestObjectInvariants>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsBaseLineFile />
+    <CodeContractsCacheAnalysisResults>True</CodeContractsCacheAnalysisResults>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Analysis|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -93,7 +129,7 @@
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisLogFile>..\..\Binary\Elysium for .NET 4\Analysis\AnyCPU\Elysium.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
-    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
     <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
     <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
     <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
@@ -140,6 +176,8 @@
     <Reference Include="System.Core" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="UIAutomationProvider" />
     <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
@@ -148,47 +186,55 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Themes\ApplicationBar\ApplicationBar.xaml">
+    <None Include="Properties\AssemblyInfo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AssemblyInfo.cs</LastGenOutput>
+    </None>
+    <None Include="Themes\ApplicationBar\ApplicationBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Buttons\Button.xaml">
+    </None>
+    <None Include="Themes\Buttons\Button.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Buttons\ButtonBase.xaml">
+    </None>
+    <None Include="Themes\Buttons\ButtonBase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Buttons\CheckBox.xaml">
+    </None>
+    <None Include="Themes\Buttons\CheckBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Buttons\CommandButton.xaml">
+    </None>
+    <None Include="Themes\Buttons\CommandButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Buttons\CommandButtonBase.xaml">
+    </None>
+    <None Include="Themes\Buttons\CommandButtonBase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Buttons\DropDownCommandButton.xaml">
+    </None>
+    <None Include="Themes\Buttons\DropDownCommandButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\Buttons\ToggleCommandButton.xaml">
+    </None>
+    <None Include="Themes\Buttons\ToggleCommandButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\Buttons\RadioButton.xaml">
+    </None>
+    <None Include="Themes\Buttons\RadioButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\Buttons\RepeatButton.xaml">
+    </None>
+    <None Include="Themes\Buttons\RepeatButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Buttons\ToggleButton.xaml">
+    </None>
+    <None Include="Themes\Buttons\ToggleButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <Page Include="Themes\Brushes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -197,113 +243,120 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\Icons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Generic.tt</DependentUpon>
     </Page>
+    <None Include="Themes\Icons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
     <Page Include="Themes\LightBrushes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Themes\Menus\ContextMenu.xaml">
+    <None Include="Themes\Generic.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Generic.xaml</LastGenOutput>
+    </None>
+    <None Include="Themes\Menus\ContextMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Menus\Menu.xaml">
+    </None>
+    <None Include="Themes\Menus\Menu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\Menus\Submenu.xaml">
+    </None>
+    <None Include="Themes\Menus\Submenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\Menus\MenuItem.xaml">
+    </None>
+    <None Include="Themes\Menus\MenuItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Ranges\ProgressRing.xaml">
+    </None>
+    <None Include="Themes\Ranges\ProgressRing.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\Ranges\ProgressBar.xaml">
+    </None>
+    <None Include="Themes\Ranges\ProgressBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Ranges\Slider.xaml">
+    </None>
+    <None Include="Themes\Ranges\Slider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Ranges\ToggleSwitch.xaml">
+    </None>
+    <None Include="Themes\Ranges\ToggleSwitch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Scrolls\ScrollBar.xaml">
+    </None>
+    <None Include="Themes\Scrolls\ScrollBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Scrolls\ScrollViewer.xaml">
+    </None>
+    <None Include="Themes\Scrolls\ScrollViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Selectors\ComboBox.xaml">
+    </None>
+    <None Include="Themes\Selectors\ComboBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Selectors\ComboBoxItem.xaml">
+    </None>
+    <None Include="Themes\Selectors\ComboBoxItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Selectors\ListBox.xaml">
+    </None>
+    <None Include="Themes\Selectors\ListBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Selectors\ListBoxItem.xaml">
+    </None>
+    <None Include="Themes\Selectors\ListBoxItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Selectors\SelectorsItemsBase.xaml">
+    </None>
+    <None Include="Themes\Selectors\SelectorsItemsBase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\SharedResources.xaml">
+    </None>
+    <None Include="Themes\SharedResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\Tabs\TabControl.xaml">
+    </None>
+    <None Include="Themes\Tabs\TabControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Tabs\TabItem.xaml">
+    </None>
+    <None Include="Themes\Tabs\TabItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\TextBoxes\TextBoxesBase.xaml">
+    </None>
+    <None Include="Themes\TextBoxes\TextBoxesBase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\TextBoxes\PasswordBox.xaml">
+    </None>
+    <None Include="Themes\TextBoxes\PasswordBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\TextBoxes\RichTextBox.xaml">
+    </None>
+    <None Include="Themes\TextBoxes\RichTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\TextBoxes\TextBox.xaml">
+    </None>
+    <None Include="Themes\TextBoxes\TextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\TextBoxes\TextBoxBase.xaml">
+    </None>
+    <None Include="Themes\TextBoxes\TextBoxBase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Windows\Window.xaml">
+    </None>
+    <None Include="Themes\Windows\Window.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccentBrushes.cs" />
@@ -311,11 +364,14 @@
     <Compile Include="Controls\Window\WindowCommands.cs" />
     <Compile Include="Converters\ThicknessConverter.cs" />
     <Compile Include="Converters\IsGreaterThanConverter.cs" />
-    <Compile Include="Design\ThemeManager.cs" />
+    <Compile Include="Parameters\Design.cs" />
+    <Compile Include="Extensions\Boxing helpers\NullableBoxingHelper.cs" />
+    <Compile Include="Extensions\Collections\Extensions.cs" />
     <Compile Include="Extensions\Collections\IObservableDictionary.cs" />
     <Compile Include="Extensions\Collections\ObservableDictionary.cs" />
     <Compile Include="Extensions\Collections\ObservableKeyValuePair.cs" />
-    <Compile Include="Extensions\Tree helpers\ThemeManagerExtensions.cs" />
+    <Compile Include="Extensions\TryHelpers\FreezableExtensions.cs" />
+    <Compile Include="Extensions\Validation helpers\CodeAnalysisExtensions.cs" />
     <Compile Include="Extensions\Validation helpers\ContractExtensions.cs" />
     <Compile Include="Extensions\Validation helpers\DoubleUtil.cs" />
     <Compile Include="Extensions\Validation helpers\ThicknessUtil.cs" />
@@ -371,10 +427,14 @@
     <Compile Include="Parameters\TabItem.cs" />
     <Compile Include="Parameters\ToggleSwitch.cs" />
     <Compile Include="Parameters\Window.cs" />
+    <Compile Include="Parameters\Manager.cs" />
+    <Compile Include="Manager.cs" />
+    <Compile Include="Exceptions\InvalidStyleException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AssemblyInfo.tt</DependentUpon>
     </Compile>
-    <Compile Include="ThemeManager.cs" />
     <Compile Include="Theme.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -384,8 +444,8 @@
     </None>
     <None Include="Documentation\en\Elysium.xml">
       <AutoGen>True</AutoGen>
-      <DependentUpon>Elysium.tt</DependentUpon>
       <DesignTime>True</DesignTime>
+      <DependentUpon>Elysium.tt</DependentUpon>
     </None>
     <None Include="Documentation\ru\Elysium.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -393,8 +453,8 @@
     </None>
     <None Include="Documentation\ru\Elysium.xml">
       <AutoGen>True</AutoGen>
-      <DependentUpon>Elysium.tt</DependentUpon>
       <DesignTime>True</DesignTime>
+      <DependentUpon>Elysium.tt</DependentUpon>
     </None>
     <None Include="AccentBrushes.ru.xml">
       <DependentUpon>AccentBrushes.cs</DependentUpon>
@@ -403,8 +463,14 @@
     <None Include="Theme.ru.xml">
       <DependentUpon>Theme.cs</DependentUpon>
     </None>
-    <None Include="ThemeManager.ru.xml">
-      <DependentUpon>ThemeManager.cs</DependentUpon>
+    <None Include="Manager.ru.xml">
+      <DependentUpon>Manager.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\Design.ru.xml">
+      <DependentUpon>Design.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\Manager.ru.xml">
+      <DependentUpon>Manager.cs</DependentUpon>
     </None>
     <None Include="Parameters\General.ru.xml">
       <DependentUpon>General.cs</DependentUpon>
@@ -447,9 +513,6 @@
     </None>
     <None Include="Parameters\Window.ru.xml">
       <DependentUpon>Window.cs</DependentUpon>
-    </None>
-    <None Include="Extensions\Tree helpers\ThemeManagerExtensions.ru.xml">
-      <DependentUpon>ThemeManagerExtensions.cs</DependentUpon>
     </None>
     <None Include="Extensions\Tree helpers\LogicalTreeHelperExtensions.ru.xml">
       <DependentUpon>LogicalTreeHelperExtensions.cs</DependentUpon>
@@ -562,10 +625,16 @@
     <None Include="Controls\Window\WindowCommands.ru.xml">
       <DependentUpon>WindowCommands.cs</DependentUpon>
     </None>
-    <None Include="Design\ThemeManager.ru.xml">
-      <DependentUpon>ThemeManager.cs</DependentUpon>
-    </None>
-    <None Include="Properties\Key.snk" />
+  </ItemGroup>
+  <PropertyGroup>
+    <TransformOnBuild>true</TransformOnBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TextTemplating\Microsoft.TextTemplating.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>"..\..\..\..\Tools and Resources\Utilities\signtool\x86\signtool.exe" sign /f "..\..\..\..\Source code\SigningKey.pfx" "Elysium.dll"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

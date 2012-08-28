@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Manager">
+      <summary>
+        Представляет класс, управляющий базовыми настройками темы.
+      </summary>
+    </type>
+    <method name="M:Elysium.Manager.GetTheme(System.Windows.FrameworkElement)">
+      <summary>
+        Возвращает актуальный для элемента управления тип темы.
+      </summary>
+      <param name="reference">Элемент управления, для которого требуется узнать текущий тип темы.</param>
+      <returns>Тип темы для указанного элемента управления.</returns>
+    </method>
+    <method name="M:Elysium.Manager.GetTheme(System.Windows.Application)">
+      <summary>
+        Возвращает актуальный для приложения тип темы.
+      </summary>
+      <param name="reference">Экземпляр приложения, для которого требуется узнать текущий тип темы.</param>
+      <returns>Тип темы для указанного приложения.</returns>
+    </method>
+    <method name="M:Elysium.Manager.GetAccentBrush(System.Windows.FrameworkElement)">
+      <summary>
+        Возвращает значение акцентирующего цвета для указанного элемента управления.
+      </summary>
+      <param name="reference">Элемент управления, для которого требуется узнать акцентирующий цвет.</param>
+      <returns>Акцентирующий цвет для указанного элемента управления.</returns>
+    </method>
+    <method name="M:Elysium.Manager.GetAccentBrush(System.Windows.Application)">
+      <summary>
+        Возвращает значение акцентирующего цвета для указанного приложения.
+      </summary>
+      <param name="reference">Экземпляр приложения, для которого требуется узнать акцентирующий цвет.</param>
+      <returns>Акцентирующий цвет для указанного приложения.</returns>
+    </method>
+    <method name="M:Elysium.Manager.GetContrastBrush(System.Windows.FrameworkElement)">
+      <summary>
+        Возвращает значение контрастного (к акцентирующему) цвета для указанного элемента управления.
+      </summary>
+      <param name="reference">Элемент управления, для которого требуется узнать контрастный (к акцентирующему) цвет.</param>
+      <returns>Контрастный (к акцентирующему) цвет для указанного элемента управления.</returns>
+    </method>
+    <method name="M:Elysium.Manager.GetContrastBrush(System.Windows.Application)">
+      <summary>
+        Возвращает значение контрастного (к акцентирующему) цвета для указанного приложения.
+      </summary>
+      <param name="reference">Экземпляр приложения, для которого требуется узнать контрастный (к акцентирующему) цвет.</param>
+      <returns>Контрастный (к акцентирующему) цвет для указанного приложения.</returns>
+    </method>
+    <method name="M:Elysium.Manager.Apply(System.Windows.Application,System.Nullable{Elysium.Theme},System.Windows.Media.SolidColorBrush,System.Windows.Media.SolidColorBrush)">
+      <summary>
+        Задаёт настройки темы для всего приложения.
+      </summary>
+      <param name="application">Экземпляр приложения, для которого задаются настройки темы.</param>
+      <param name="theme">
+        Одно из значений перечисления <see cref="T:Elysium.Theme"/>, либо null.
+      </param>
+      <param name="accentBrush">
+        Кисть, содержащая акцентирующий цвет, либо null.
+      </param>
+      <param name="contrastBrush">
+        Кисть, содержащая контрастный цвет, либо null.
+      </param>
+      <remarks>
+        Если параметру задано значение null, то:
+        <list type="number">
+          <item>В случае, если ранее этот параметр уже задавался, то будет использовано его старое значение.</item>
+          <item>В случае, если ранее этот параметр не задавался, то будет использовано значение по-умолчанию.</item>
+        </list>
+      </remarks>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="application"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">application != null</requires>
+    </method>
+    <method name="M:Elysium.Manager.Remove(System.Windows.Application,System.Boolean,System.Boolean,System.Boolean)">
+      <summary>
+        Отключает тему в указанном приложении.
+      </summary>
+      <param name="application">Экземпляр приложения, для которого производится отключение темы.</param>
+      <param name="isRemoveTheme">Указывает, должен ли из параметров удаляться тип темы.</param>
+      <param name="isRemoveAccentBrush">Указывает, должен ли из параметров удаляться акцентирующий цвет.</param>
+      <param name="isRemoveContrastBrush">Указывает, должен ли из параметров удаляться контрастный цвет.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="application"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">application != null</requires>
+    </method>
+    <method name="M:Elysium.Manager.Apply(System.Windows.FrameworkElement,System.Nullable{Elysium.Theme},System.Windows.Media.SolidColorBrush,System.Windows.Media.SolidColorBrush)">
+      <summary>
+        Задаёт настройки темы для элемента управления и его дочерних элементов.
+      </summary>
+      <param name="application">Экземпляр приложения, для которого задаются настройки темы.</param>
+      <param name="theme">
+        Одно из значений перечисления <see cref="T:Elysium.Theme"/>, либо null, если необходимо использовать ранее заданный тип темы или тип темы по-умолчанию (в случае, если к элементу управления и приложению настройки ранее не применялись).
+      </param>
+      <param name="accentBrush">
+        Кисть, содержащая акцентирующий цвет, либо null, если необходимо использовать ранее заданный цвет или цвет по-умолчанию (в случае, если к элементу управления и приложению настройки ранее не применялись).
+      </param>
+      <param name="contrastBrush">
+        Кисть, содержащая контрастный цвет, либо null, если необходимо использовать ранее заданный цвет или цвет по-умолчанию (в случае, если к элементу управления и приложению настройки ранее не применялись).
+      </param>
+      <remarks>
+        Если параметру задано значение null, то:
+        <list type="number">
+          <item>В случае, если ранее этот параметр уже задавался, то будет использовано его старое значение.</item>
+          <item>В случае, если ранее этот параметр не задавался для элемента управления, то будет использовано значение параметра заданное для приложения.</item>
+          <item>В случае, если ранее этот параметр не задавался ни для элемента управления, ни для приложения, то будет использовано значение по-умолчанию.</item>
+        </list>
+      </remarks>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="application"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">application != null</requires>
+    </method>
+    <method name="M:Elysium.Manager.Remove(System.Windows.FrameworkElement,System.Boolean,System.Boolean,System.Boolean)">
+      <summary>
+        Отключает тему в указанном элементе управления и его дочерних элементах.
+      </summary>
+      <param name="application">Экземпляр приложения, для которого производится отключение темы.</param>
+      <param name="isRemoveTheme">Указывает, должен ли из параметров удаляться тип темы.</param>
+      <param name="isRemoveAccentBrush">Указывает, должен ли из параметров удаляться акцентирующий цвет.</param>
+      <param name="isRemoveContrastBrush">Указывает, должен ли из параметров удаляться контрастный цвет.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="control"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">control != null</requires>
+    </method>
+  </members>
+</doc>

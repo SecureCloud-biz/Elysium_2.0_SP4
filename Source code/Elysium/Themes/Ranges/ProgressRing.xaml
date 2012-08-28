@@ -9,10 +9,10 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{x:Type controls:ProgressRing}" TargetType="{x:Type controls:ProgressRing}">
-        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource HighlightBrush}"/>
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource HighlightBrush}"/>
         <Setter Property="BorderThickness" Value="3"/>
-        <Setter Property="Foreground" Value="{DynamicResource AccentBrush}"/>        
+        <Setter Property="Foreground" Value="{StaticResource AccentBrush}"/>        
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
@@ -220,7 +220,7 @@
                 <Setter Property="BorderBrush" Value="{x:Null}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource DisabledBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>

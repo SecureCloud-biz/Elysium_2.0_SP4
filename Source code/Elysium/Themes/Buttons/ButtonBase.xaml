@@ -7,10 +7,10 @@
     </ResourceDictionary.MergedDictionaries>
     
     <Style x:Key="ButtonsBaseStyle" TargetType="{x:Type ButtonBase}">        
-        <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}"/>
+        <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.DefaultThickness), Mode=OneWay}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource ContrastBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.ContentFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
         <Setter Property="FontStyle" Value="Normal"/>
@@ -37,6 +37,9 @@
                             TextBlock.FontStretch="{TemplateBinding FontStretch}"
                             TextBlock.FontStyle="{TemplateBinding FontStyle}"
                             TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                            TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                            TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                            RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <ContentPresenter Margin="{TemplateBinding Padding}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -51,19 +54,19 @@
                 <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
             </DataTrigger>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource ForegroundBrush}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource ForegroundBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource BackgroundBrush}"/>
+                <Setter Property="Background" Value="{StaticResource ForegroundBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource ForegroundBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource BackgroundBrush}"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{DynamicResource LowlightBrush}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource LowlightBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource BackgroundBrush}"/>
+                <Setter Property="Background" Value="{StaticResource LowlightBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource LowlightBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource BackgroundBrush}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="{DynamicResource DisabledBrush}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource DisabledBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource BackgroundBrush}"/>
+                <Setter Property="Background" Value="{StaticResource DisabledBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource DisabledBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource BackgroundBrush}"/>
             </Trigger>
         </Style.Triggers>        
     </Style>

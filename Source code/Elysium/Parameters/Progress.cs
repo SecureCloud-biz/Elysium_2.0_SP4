@@ -19,21 +19,19 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(ProgressBase))]
-        [SuppressMessage("Microsoft.Contracts", "Ensures")]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
+        [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
         public static double GetBusyElementSize([NotNull] ProgressBase obj)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
             return BoxingHelper<double>.Unbox(obj.GetValue(BusyElementSizeProperty));
         }
 
         [PublicAPI]
-        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static void SetBusyElementSize([NotNull] ProgressBase obj, double value)
         {
-            ValidationHelper.NotNull(obj, () => obj);
+            ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(BusyElementSizeProperty, value);
         }
     }
-} ;
+}

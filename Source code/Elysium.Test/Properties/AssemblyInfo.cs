@@ -1,19 +1,21 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
+using System.Security;
 using System.Windows;
 
-[assembly: AssemblyTitle("Elysium: Test assembly")]
-[assembly: AssemblyDescription("WPF Metro-style theme test application")]
+[assembly: AssemblyTitle("Elysium.Test.exe")]
+[assembly: AssemblyDescription("Test WPF Metro style application")]
 [assembly: AssemblyProduct("Elysium")]
-[assembly: AssemblyCopyright("Copyright © Alex F. Sherman & Codeplex Community 2011-2012")]
+[assembly: AssemblyCopyright("Copyright © Alex F. Sherman & Codeplex community 2011-2012")]
+
+[assembly: SecurityRules(SecurityRuleSet.Level2)]
 
 [assembly: ComVisible(false)]
+[assembly: CLSCompliant(false)]
 
-[assembly: ThemeInfo(
-    ResourceDictionaryLocation.None,
-    ResourceDictionaryLocation.SourceAssembly
-)]
+[assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
 
 [assembly: NeutralResourcesLanguage("en-us")]
 

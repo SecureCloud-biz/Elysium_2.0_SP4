@@ -45,4 +45,4 @@ namespace Elysium.Controls.Automation
                                                                  }), null);
         }
     }
-} ;
+}
