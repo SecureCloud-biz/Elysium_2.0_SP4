@@ -20,7 +20,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <OutputPath>..\..\..\..\..\..\..\Binary\Elysium for .NET 4\Debug\AnyCPU\</OutputPath>
+    <OutputPath>..\..\..\..\..\..\..\Binary\Debug\AnyCPU\</OutputPath>
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <DebugSymbols>true</DebugSymbols>
     <Optimize>false</Optimize>
@@ -28,7 +28,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <OutputPath>..\..\..\..\..\..\..\Binary\Elysium for .NET 4\Release\AnyCPU\</OutputPath>
+    <OutputPath>..\..\..\..\..\..\..\Binary\Release\AnyCPU\</OutputPath>
     <DefineConstants>TRACE;RELEASE</DefineConstants>
     <DebugSymbols>false</DebugSymbols>
     <Optimize>true</Optimize>

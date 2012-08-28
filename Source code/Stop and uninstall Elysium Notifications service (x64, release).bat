@@ -5,5 +5,5 @@ chdir /d %~dp0
 cd ..\
 @echo on
 net stop ElysiumNotifications1.5.14.0
-installutil /u "%CD%\Binary\Elysium for .NET 4\Release\x64\Elysium.Notifications.Server.exe"
+installutil /u "%CD%\Binary\Release\x64\Elysium.Notifications.Server.exe"
 pause

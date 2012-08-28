@@ -18,7 +18,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DefineConstants>X86</DefineConstants>
-    <OutputPath>..\..\..\Binary\Elysium for .NET 4\Debug\x86\Runtime\MSI\</OutputPath>
+    <OutputPath>..\..\..\Binary\Debug\x86\Runtime\MSI\</OutputPath>
     <IntermediateOutputPath>obj\x86\</IntermediateOutputPath>
     <SuppressIces>ICE30</SuppressIces>
     <Cultures>neutral</Cultures>
@@ -26,7 +26,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <DefineConstants>X64</DefineConstants>
-    <OutputPath>..\..\..\Binary\Elysium for .NET 4\Debug\x64\Runtime\MSI\</OutputPath>
+    <OutputPath>..\..\..\Binary\Debug\x64\Runtime\MSI\</OutputPath>
     <IntermediateOutputPath>obj\x64\</IntermediateOutputPath>
     <SuppressIces>ICE30</SuppressIces>
     <Cultures>neutral</Cultures>
@@ -34,7 +34,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DefineConstants>X86</DefineConstants>
-    <OutputPath>..\..\..\Binary\Elysium for .NET 4\Release\x86\Runtime\MSI\</OutputPath>
+    <OutputPath>..\..\..\Binary\Release\x86\Runtime\MSI\</OutputPath>
     <IntermediateOutputPath>obj\x86\</IntermediateOutputPath>
     <SuppressIces>ICE30</SuppressIces>
     <Cultures>neutral</Cultures>
@@ -42,7 +42,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
     <DefineConstants>X64</DefineConstants>
-    <OutputPath>..\..\..\Binary\Elysium for .NET 4\Release\x64\Runtime\MSI\</OutputPath>
+    <OutputPath>..\..\..\Binary\Release\x64\Runtime\MSI\</OutputPath>
     <IntermediateOutputPath>obj\x64\</IntermediateOutputPath>
     <SuppressIces>ICE30</SuppressIces>
     <Cultures>neutral</Cultures>
@@ -63,6 +63,6 @@
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <PropertyGroup>
-    <PostBuildEvent>"..\..\..\..\..\..\Tools and Resources\Utilities\signtool\$(Platform)\signtool.exe" sign /f "..\..\..\..\..\..\Source code\SigningKey.pfx" "Installer.msi"</PostBuildEvent>
+    <PostBuildEvent>"..\..\..\..\..\Tools and Resources\Utilities\signtool\$(Platform)\signtool.exe" sign /f "..\..\..\..\..\Source code\SigningKey.pfx" "Installer.msi"</PostBuildEvent>
   </PropertyGroup>
 </Project>

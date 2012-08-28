@@ -3,21 +3,21 @@
   
   <?if $(sys.BUILDARCH) = x64 ?>
     <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
-    <?define PlatformDebugFolder = "..\..\..\Binary\Elysium for .NET 4\Debug\x64" ?>
-    <?define PlatformReleaseFolder = "..\..\..\Binary\Elysium for .NET 4\Release\x64" ?>
-    <?define PlatformSourceFolder = "..\..\..\Binary\Elysium for .NET 4\$(var.Configuration)\x64" ?>
+    <?define PlatformDebugFolder = "..\..\..\Binary\Debug\x64" ?>
+    <?define PlatformReleaseFolder = "..\..\..\Binary\Release\x64" ?>
+    <?define PlatformSourceFolder = "..\..\..\Binary\$(var.Configuration)\x64" ?>
   <?else ?>
     <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
-    <?define PlatformDebugFolder = "..\..\..\Binary\Elysium for .NET 4\Debug\x86" ?>
-    <?define PlatformReleaseFolder = "..\..\..\Binary\Elysium for .NET 4\Release\x86" ?>
-    <?define PlatformSourceFolder = "..\..\..\Binary\Elysium for .NET 4\$(var.Configuration)\x86" ?>
+    <?define PlatformDebugFolder = "..\..\..\Binary\Debug\x86" ?>
+    <?define PlatformReleaseFolder = "..\..\..\Binary\Release\x86" ?>
+    <?define PlatformSourceFolder = "..\..\..\Binary\$(var.Configuration)\x86" ?>
   <?endif ?>
   
   <?define AssemblyDependenciesFolder = "..\..\..\Tools and Resources\Assembly dependencies" ?>
-  <?define AnyCPUDebugFolder = "..\..\..\Binary\Elysium for .NET 4\Debug\AnyCPU" ?>
-  <?define AnyCPUReleaseFolder = "..\..\..\Binary\Elysium for .NET 4\Release\AnyCPU" ?>
-  <?define AnyCPUSourceFolder = "..\..\..\Binary\Elysium for .NET 4\$(var.Configuration)\AnyCPU" ?>
-  <?define DocumentationFolder = "..\..\..\Binary\Elysium for .NET 4\Documentation" ?>
+  <?define AnyCPUDebugFolder = "..\..\..\Binary\Debug\AnyCPU" ?>
+  <?define AnyCPUReleaseFolder = "..\..\..\Binary\Release\AnyCPU" ?>
+  <?define AnyCPUSourceFolder = "..\..\..\Binary\$(var.Configuration)\AnyCPU" ?>
+  <?define DocumentationFolder = "..\..\..\Binary\Documentation" ?>
   <?define ProjectTemplatesFolder = ".\ProjectTemplates" ?>
   <?define ItemTemplatesFolder = ".\ItemTemplates" ?>
   
