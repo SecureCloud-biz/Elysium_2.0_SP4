@@ -10,7 +10,7 @@
               xmlns:viewmodels="clr-namespace:Elysium.SDK.MSI.UI.ViewModels"
               xmlns:properties="clr-namespace:Elysium.SDK.MSI.UI.Properties"
               mc:Ignorable="d"
-              params:Manager.Theme="Dark"
+              params:Design.Theme="Dark"
               params:Manager.AccentBrush="{x:Static metro:AccentBrushes.Blue}"
               params:Manager.ContrastBrush="White"
               DataContext="{Binding Source={x:Static viewmodels:Locator.MainViewModel}}"
@@ -18,15 +18,15 @@
               Closed="MainViewClosed"
               ResizeMode="CanMinimize"
               Width="450" Height="550">
-    <metro:Window.Resources>
-        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-        <converters:ScreenToVisibilityConverter x:Key="ScreenToVisibilityConverter"/>
-        <converters:FeatureIDToFeatureTitleConverter x:Key="FeatureIDToFeatureTitleConverter"/>
-        <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="TextWrapping" Value="Wrap"/>
-        </Style>
-    </metro:Window.Resources>
     <Grid>
+		<Grid.Resources>
+            <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <converters:ScreenToVisibilityConverter x:Key="ScreenToVisibilityConverter"/>
+            <converters:FeatureIDToFeatureTitleConverter x:Key="FeatureIDToFeatureTitleConverter"/>
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="TextWrapping" Value="Wrap"/>
+            </Style>
+		</Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height=".75*"/>
             <RowDefinition Height="*"/>
