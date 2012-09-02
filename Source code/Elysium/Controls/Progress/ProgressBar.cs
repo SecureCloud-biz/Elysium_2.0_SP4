@@ -128,7 +128,7 @@ namespace Elysium.Controls
 
                 var trackSize = Orientation == Orientation.Horizontal ? Track.ActualWidth : Track.ActualHeight;
 
-                var time = trackSize / 100;
+                var time = Math.Sqrt(trackSize) / 11;
 
                 var animation = new DoubleAnimationUsingKeyFrames { Duration = new Duration(TimeSpan.FromSeconds(time + 0.5)) };
 

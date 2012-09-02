@@ -2357,7 +2357,7 @@
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type controls:Window}">
           <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" UseLayoutRounding="{TemplateBinding UseLayoutRounding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-            <Grid x:Name="PART_LayoutRoot">
+            <Grid>
               <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -2418,7 +2418,6 @@
               <Setter TargetName="PART_Title" Property="Visibility" Value="Collapsed" />
             </Trigger>
             <Trigger Property="WindowState" Value="Maximized">
-              <Setter TargetName="PART_LayoutRoot" Property="Margin" Value="{Binding Source={x:Static shell:SystemParameters2.Current}, Path=WindowResizeBorderThickness}" />
               <Setter TargetName="PART_Maximize" Property="Visibility" Value="Hidden" />
               <Setter TargetName="PART_Restore" Property="Visibility" Value="Visible" />
             </Trigger>

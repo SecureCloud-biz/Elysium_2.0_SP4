@@ -36,6 +36,12 @@
     paths.Add(@"Parameters\ToggleSwitch.ru.xml");
     paths.Add(@"Parameters\Window.ru.xml");
     
+    paths.Add(@"Exceptions\InvalidStyleException.ru.xml");
+	
+    paths.Add(@"Extensions\Collections\IObservableDictionary.ru.xml");
+    paths.Add(@"Extensions\Collections\ObservableDictionary.ru.xml");
+    paths.Add(@"Extensions\Collections\ObservableKeyValuePair.ru.xml");
+
     paths.Add(@"Extensions\Tree helpers\LogicalTreeHelperExtensions.ru.xml");
     paths.Add(@"Extensions\Tree helpers\VisualTreeHelperExtensions.ru.xml");
     

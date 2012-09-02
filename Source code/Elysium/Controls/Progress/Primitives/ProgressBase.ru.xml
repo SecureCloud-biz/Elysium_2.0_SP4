@@ -234,6 +234,14 @@
         Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBase.IsBusyAnimationRunning"/>.
       </value>
     </field>
+    <field name="F:Elysium.Controls.Primitives.ProgressBase.IsBusyAnimationRunningPropertyKey">
+      <summary>
+        Идентифицирует свойство зависимостей только для чтения <see cref="P:Elysium.Controls.Primitives.ProgressBase.IsBusyAnimationRunning"/>.
+      </summary>
+      <value>
+        Идентификатор огранниченного доступа на запись для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBase.IsBusyAnimationRunning"/>.
+      </value>
+    </field>
     <event name="E:Elysium.Controls.Primitives.ProgressBase.AnimationsUpdating">
       <summary>
         Событие генерируется перед началом процедуры обновления анимации состояний.

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:System.Collections.ObjectModel.ObservableKeyValuePair`2">
+      <inheritdoc cref="T:System.Collections.Generic.KeyValuePair`2"/>
+    </type>
+    <method name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.#ctor(`0,`1)">
+      <inheritdoc cref="M:System.Collections.Generic.KeyValuePair`2.#ctor(`0,`1)"/>
+    </method>
+    <method name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.#ctor(`0,`1,System.Collections.Generic.IEqualityComparer{`0})">
+      <inheritdoc cref="M:System.Collections.Generic.KeyValuePair`2.#ctor(`0,`1)"/>
+      <param name="comparer">
+        Реализация <see cref="T:System.Collections.Generic.IEqualityComparer`1"/>, которую следует использовать при сравнении ключей, или null, если для данного типа ключа должна использоваться реализация <see cref="T:System.Collections.Generic.EqualityComparer`1"/> по умолчанию.
+      </param>
+    </method>
+    <property name="P:System.Collections.ObjectModel.ObservableKeyValuePair`2.Key">
+      <inheritdoc cref="P:System.Collections.Generic.KeyValuePair`2.Key"/>
+    </property>
+    <property name="P:System.Collections.ObjectModel.ObservableKeyValuePair`2.Value">
+      <summary>
+        Получает или задаёт значение в паре "ключ-значение".
+      </summary>
+      <value>Значение из пары "ключ-значение".</value>
+    </property>
+    <event name="E:System.Collections.ObjectModel.ObservableKeyValuePair`2.PropertyChanging">
+      <inheritdoc cref="E:System.ComponentModel.INotifyPropertyChanging.PropertyChanging"/>
+    </event>
+    <event name="E:System.Collections.ObjectModel.ObservableKeyValuePair`2.PropertyChanged">
+      <inheritdoc cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged"/>
+    </event>
+    <method name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.Equals(System.Object)">
+      <inheritdoc/>
+    </method>
+    <method name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.GetHashCode">
+      <inheritdoc/>
+    </method>
+    <method name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.ToString">
+      <inheritdoc/>
+    </method>
+  </members>
+</doc>

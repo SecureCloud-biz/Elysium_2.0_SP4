@@ -183,9 +183,8 @@ namespace Elysium
             return result;
         }
 
-        [SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId = "1#", Justification = "Do not change signature")]
         [PublicAPI]
-        public static bool GetAccentBrushCore([NotNull] FrameworkElement reference, out SolidColorBrush accentBrush)
+        private static bool GetAccentBrushCore([NotNull] FrameworkElement reference, out SolidColorBrush accentBrush)
         {
             ValidationHelper.NotNull(reference, "reference");
             Contract.Ensures(!Contract.Result<bool>() || !Equals(Contract.ValueAtReturn(out accentBrush), default(SolidColorBrush)));
@@ -272,9 +271,8 @@ namespace Elysium
             return result;
         }
 
-        [SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId = "1#", Justification = "Do not change signature")]
         [PublicAPI]
-        public static bool GetContrastBrushCore([NotNull] FrameworkElement reference, out SolidColorBrush contrastBrush)
+        private static bool GetContrastBrushCore([NotNull] FrameworkElement reference, out SolidColorBrush contrastBrush)
         {
             ValidationHelper.NotNull(reference, "reference");
             Contract.Ensures(!Contract.Result<bool>() || !Equals(Contract.ValueAtReturn(out contrastBrush), default(SolidColorBrush)));

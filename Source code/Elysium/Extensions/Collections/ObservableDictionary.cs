@@ -27,7 +27,6 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Security;
@@ -1013,7 +1012,7 @@ namespace System.Collections.ObjectModel
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Design", "CA1030:UseEventsWhereAppropriate", Justification = "Raise is correct prefix")]
-        protected virtual void RaisePropertyChanged(string propertyName)
+        protected virtual void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
             {
@@ -1032,13 +1031,13 @@ namespace System.Collections.ObjectModel
         [SuppressMessage("Microsoft.Design", "CA1030:UseEventsWhereAppropriate", Justification = "Raise is correct prefix")]
         [SuppressMessage("Microsoft.Contracts", "Nonnull-23-0",
             Justification = "Bug in Code Contracts static checker: CollectionChanged can't be null at this line")]
-        protected virtual void RaiseCollectionChanged(NotifyCollectionChangedEventArgs args)
+        protected virtual void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
         {
             if (CollectionChanged != null)
             {
                 using (BlockReentrancy())
                 {
-                    CollectionChanged(this, args);
+                    CollectionChanged(this, e);
                 }
             }
         }
@@ -1058,7 +1057,7 @@ namespace System.Collections.ObjectModel
         {
             RaiseCollectionChanged();
             item.PropertyChanging += RaiseItemChanging;
-            RaiseCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, item, index));
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, item, index));
         }
 
         private void RaiseReplaced(TKey key, TValue oldValue, TValue newValue, int index)
@@ -1069,7 +1068,7 @@ namespace System.Collections.ObjectModel
             var oldItem = new ObservableKeyValuePair<TKey, TValue>(key, oldValue);
             var newItem = new ObservableKeyValuePair<TKey, TValue>(key, newValue);
             newItem.PropertyChanging += RaiseItemChanging;
-            RaiseCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, newItem, oldItem, index));
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, newItem, oldItem, index));
         }
 
         private void RaiseRemoved(TKey key, TValue value, int index)
@@ -1082,13 +1081,13 @@ namespace System.Collections.ObjectModel
         private void RaiseRemoved(ObservableKeyValuePair<TKey, TValue> item, int index)
         {
             RaiseCollectionChanged();
-            RaiseCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, item, index));
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, item, index));
         }
 
         private void RaiseCleared(ObservableKeyValuePair<TKey, TValue>[] items)
         {
             RaiseCollectionChanged();
-            RaiseCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset, items));
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset, items));
         }
 
         private void RaiseItemChanging(object sender, PropertyChangingEventArgs e)
@@ -1099,16 +1098,16 @@ namespace System.Collections.ObjectModel
 
         private void RaiseCollectionChanged()
         {
-            RaisePropertyChanged("Count");
-            RaisePropertyChanged("Item[]");
-            RaisePropertyChanged("Keys");
-            RaisePropertyChanged("Values");
+            OnPropertyChanged("Count");
+            OnPropertyChanged("Item[]");
+            OnPropertyChanged("Keys");
+            OnPropertyChanged("Values");
         }
 
         private void RaiseItemChanged()
         {
-            RaisePropertyChanged("Item[]");
-            RaisePropertyChanged("Values");
+            OnPropertyChanged("Item[]");
+            OnPropertyChanged("Values");
         }
 
         #endregion

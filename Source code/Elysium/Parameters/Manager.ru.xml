@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\Documentation\Documentation.xsd">
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Documentation\Documentation.xsd">
   <assembly>
     <name>Elysium</name>
   </assembly>
@@ -31,6 +31,7 @@
             </description>
           </item>
         </list>
+        В случае, если параметр наследуется от приложения, гарантируется, что его значение будет обновлено при обновлении соответствующего значения для приложения.
       </remarks>
       <example>
         <code lang="C#">
@@ -93,6 +94,7 @@
             </description>
           </item>
         </list>
+        В случае, если параметр наследуется от приложения, гарантируется, что его значение будет обновлено при обновлении соответствующего значения для приложения.
       </remarks>
       <example>
         <code lang="C#">
@@ -155,6 +157,7 @@
             </description>
           </item>
         </list>
+        В случае, если параметр наследуется от приложения, гарантируется, что его значение будет обновлено при обновлении соответствующего значения для приложения.
       </remarks>
       <example>
         <code lang="C#">

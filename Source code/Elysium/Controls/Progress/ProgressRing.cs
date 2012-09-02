@@ -141,7 +141,7 @@ namespace Elysium.Controls
 
                 var trackSize = Math.Min(Track.ActualWidth, Track.ActualHeight);
 
-                var time = (trackSize * Math.PI) / 100;
+                var time = Math.Sqrt(trackSize * Math.PI) / 10;
 
                 var startAngleSetValueAnimation = new DoubleAnimation(0, new Duration(TimeSpan.FromSeconds(0d)));
 

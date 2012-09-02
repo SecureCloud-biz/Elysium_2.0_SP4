@@ -104,7 +104,7 @@ namespace Elysium.Controls.Primitives
                 {
                     case ProgressState.Busy:
                         VisualStateManager.GoToState(this, "Busy", true);
-                        if (IndeterminateAnimation != null && IndeterminateAnimation.GetCurrentState() != ClockState.Stopped)
+                        if (IndeterminateAnimation != null && IsIndeterminateAnimationRunning)
                         {
                             IsIndeterminateAnimationRunning = false;
                             IndeterminateAnimation.Stop(this);
@@ -117,7 +117,7 @@ namespace Elysium.Controls.Primitives
                         break;
                     case ProgressState.Indeterminate:
                         VisualStateManager.GoToState(this, "Indeterminate", true);
-                        if (BusyAnimation != null && BusyAnimation.GetCurrentState() != ClockState.Stopped)
+                        if (BusyAnimation != null && IsBusyAnimationRunning)
                         {
                             IsBusyAnimationRunning = false;
                             BusyAnimation.Stop(this);
@@ -130,12 +130,12 @@ namespace Elysium.Controls.Primitives
                         break;
                     case ProgressState.Normal:
                         VisualStateManager.GoToState(this, "Normal", true);
-                        if (IndeterminateAnimation != null && IndeterminateAnimation.GetCurrentState() != ClockState.Stopped)
+                        if (IndeterminateAnimation != null && IsIndeterminateAnimationRunning)
                         {
                             IsIndeterminateAnimationRunning = false;
                             IndeterminateAnimation.Stop(this);
                         }
-                        if (BusyAnimation != null && BusyAnimation.GetCurrentState() != ClockState.Stopped)
+                        if (BusyAnimation != null && IsBusyAnimationRunning)
                         {
                             IsBusyAnimationRunning = false;
                             BusyAnimation.Stop(this);

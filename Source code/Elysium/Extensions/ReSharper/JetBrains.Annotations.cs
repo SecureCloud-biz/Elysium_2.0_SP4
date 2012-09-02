@@ -600,7 +600,6 @@ namespace JetBrains.Annotations
     /// <summary>
     /// Indicates that the value of marked element could never be <c>null</c>
     /// </summary>
-    [UsedImplicitly]
     [DebuggerNonUserCode]
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]

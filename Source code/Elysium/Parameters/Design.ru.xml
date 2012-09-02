@@ -4,12 +4,12 @@
     <name>Elysium</name>
   </assembly>
   <members>
-    <type name="T:Elysium.Design">
+    <type name="T:Elysium.Parameters.Design">
       <summary>
         Представляет класс, предоставляющий свойства зависимостей для управления настройками темы элемента управления из XAML в режиме конструктора.
       </summary>
     </type>
-    <property name="P:Elysium.Design.Theme">
+    <property name="P:Elysium.Parameters.Design.Theme">
       <summary>
         Возвращает или задаёт значение, указывающее на текующий тип темы в режиме конструктора.
       </summary>
@@ -21,7 +21,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Design.ThemeProperty"/>
+              <see cref="F:Elysium.Parameters.Design.ThemeProperty"/>
             </description>
           </item>
           <item>
@@ -43,17 +43,17 @@
         </code>
       </example>
     </property>
-    <field name="F:Elysium.Design.ThemeProperty">
+    <field name="F:Elysium.Parameters.Design.ThemeProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Design.Theme"/>.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Design.Theme"/>.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Design.Theme"/>.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Design.Theme"/>.
       </value>
     </field>
-    <method name="M:Elysium.Design.GetTheme(System.Windows.FrameworkElement)">
+    <method name="M:Elysium.Parameters.Design.GetTheme(System.Windows.FrameworkElement)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Design.Theme"/> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.Theme"/> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Текущий тип темы для указанного элемента управления в режиме конструктора.</returns>
@@ -62,9 +62,9 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
-    <method name="M:Elysium.Design.SetTheme(System.Windows.FrameworkElement,System.Nullable{Elysium.Theme})">
+    <method name="M:Elysium.Parameters.Design.SetTheme(System.Windows.FrameworkElement,System.Nullable{Elysium.Theme})">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Design.Theme"/> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.Theme"/> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Новый тип темы для указанного элемента управления в режиме конструктора.</param>
@@ -73,7 +73,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
-    <property name="P:Elysium.Design.AccentBrush">
+    <property name="P:Elysium.Parameters.Design.AccentBrush">
       <summary>
         Возвращает или задаёт акцентирующий цвет в режиме конструктора.
       </summary>
@@ -83,7 +83,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Design.AccentBrushProperty"/>
+              <see cref="F:Elysium.Parameters.Design.AccentBrushProperty"/>
             </description>
           </item>
           <item>
@@ -105,17 +105,17 @@
         </code>
       </example>
     </property>
-    <field name="F:Elysium.Design.AccentBrushProperty">
+    <field name="F:Elysium.Parameters.Design.AccentBrushProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Design.AccentBrush"/>.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Design.AccentBrush"/>.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Design.AccentBrush"/>.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Design.AccentBrush"/>.
       </value>
     </field>
-    <method name="M:Elysium.Design.GetAccentBrush(System.Windows.FrameworkElement)">
+    <method name="M:Elysium.Parameters.Design.GetAccentBrush(System.Windows.FrameworkElement)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Design.AccentBrush"/> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.AccentBrush"/> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Текущий акцентирующий цвет для указанного элемента управления в режиме конструктора.</returns>
@@ -124,9 +124,9 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
-    <method name="M:Elysium.Design.SetAccentBrush(System.Windows.FrameworkElement,System.Windows.Media.SolidColorBrush)">
+    <method name="M:Elysium.Parameters.Design.SetAccentBrush(System.Windows.FrameworkElement,System.Windows.Media.SolidColorBrush)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Design.AccentBrush"/> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.AccentBrush"/> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Акцентирующий цвет для указанного элемента управления в режиме конструктора.</param>
@@ -135,7 +135,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
-    <property name="P:Elysium.Design.ContrastBrush">
+    <property name="P:Elysium.Parameters.Design.ContrastBrush">
       <summary>
         Возвращает или задаёт контрастный (к акцентирующему) цвет в режиме конструктора.
       </summary>
@@ -145,7 +145,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Design.ContrastBrushProperty"/>
+              <see cref="F:Elysium.Parameters.Design.ContrastBrushProperty"/>
             </description>
           </item>
           <item>
@@ -167,17 +167,17 @@
         </code>
       </example>
     </property>
-    <field name="F:Elysium.Design.ContrastBrushProperty">
+    <field name="F:Elysium.Parameters.Design.ContrastBrushProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Design.ContrastBrush"/>.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Design.ContrastBrush"/>.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Design.ContrastBrush"/>.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Design.ContrastBrush"/>.
       </value>
     </field>
-    <method name="M:Elysium.Design.GetContrastBrush(System.Windows.FrameworkElement)">
+    <method name="M:Elysium.Parameters.Design.GetContrastBrush(System.Windows.FrameworkElement)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Design.ContrastBrush"/> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.ContrastBrush"/> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Текущий контрастный цвет для указанного элемента управления в режиме конструктора.</returns>
@@ -186,9 +186,9 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
-    <method name="M:Elysium.Design.SetContrastBrush(System.Windows.FrameworkElement,System.Windows.Media.SolidColorBrush)">
+    <method name="M:Elysium.Parameters.Design.SetContrastBrush(System.Windows.FrameworkElement,System.Windows.Media.SolidColorBrush)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Design.ContrastBrush"/> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.ContrastBrush"/> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Контрастный цвет для указанного элемента управления в режиме конструктора.</param>

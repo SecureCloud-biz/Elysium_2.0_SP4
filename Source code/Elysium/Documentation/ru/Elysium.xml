@@ -113,12 +113,46 @@
         Представляет класс, управляющий базовыми настройками темы.
       </summary>
     </member>
+    <member name="P:Elysium.Manager.DefaultTheme">
+      <summary>
+        Возвращает тип темы по-умолчанию.
+      </summary>
+      <value>Одно из значений перечисления <see cref="T:Elysium.Theme" /></value>
+    </member>
+    <member name="P:Elysium.Manager.DefaultAccentBrush">
+      <summary>
+        Возвращает кисть сплошной заливки, содержащую акцентирующий цвет, используемый по-умолчанию.
+      </summary>
+      <value>Кисть со сплошной заливкой.</value>
+    </member>
+    <member name="P:Elysium.Manager.DefaultContrastBrush">
+      <summary>
+        Возвращает кисть сплошной заливки, содержащую контрастный (к акцентирующему) цвет, используемый по-умолчанию.
+      </summary>
+      <value>Кисть со сплошной заливкой.</value>
+    </member>
+    <member name="M:Elysium.Manager.TryGetTheme(System.Windows.FrameworkElement,Elysium.Theme@)">
+      <summary>
+        Возвращает актуальный для элемента управления тип темы безопасным методом без генерации исключений.
+      </summary>
+      <param name="reference">Элемент управления, для которого требуется узнать текущий тип темы.</param>
+      <param name="theme">Актуальный для указанного элемента управления тип темы.</param>
+      <returns>True, если выполнение метода прошло успешно, иначе False.</returns>
+    </member>
     <member name="M:Elysium.Manager.GetTheme(System.Windows.FrameworkElement)">
       <summary>
         Возвращает актуальный для элемента управления тип темы.
       </summary>
       <param name="reference">Элемент управления, для которого требуется узнать текущий тип темы.</param>
       <returns>Тип темы для указанного элемента управления.</returns>
+    </member>
+    <member name="M:Elysium.Manager.TryGetTheme(System.Windows.Application,Elysium.Theme@)">
+      <summary>
+        Возвращает актуальный для приложения тип темы безопасным методом без генерации исключений.
+      </summary>
+      <param name="reference">Экземпляр приложения, для которого требуется узнать текущий тип темы.</param>
+      <param name="theme">Актуальный для указанного приложения тип темы.</param>
+      <returns>True, если выполнение метода прошло успешно, иначе False.</returns>
     </member>
     <member name="M:Elysium.Manager.GetTheme(System.Windows.Application)">
       <summary>
@@ -127,12 +161,28 @@
       <param name="reference">Экземпляр приложения, для которого требуется узнать текущий тип темы.</param>
       <returns>Тип темы для указанного приложения.</returns>
     </member>
+    <member name="M:Elysium.Manager.TryGetAccentBrush(System.Windows.FrameworkElement,System.Windows.Media.SolidColorBrush@)">
+      <summary>
+        Возвращает значение акцентирующего цвета для указанного элемента управления безопасным методом без генерации исключений.
+      </summary>
+      <param name="reference">Элемент управления, для которого требуется узнать акцентирующий цвет.</param>
+      <param name="accentBrush">Акцентирующий цвет для указанного элемента управления.</param>
+      <returns>True, если выполнение метода прошло успешно, иначе False.</returns>
+    </member>
     <member name="M:Elysium.Manager.GetAccentBrush(System.Windows.FrameworkElement)">
       <summary>
         Возвращает значение акцентирующего цвета для указанного элемента управления.
       </summary>
-      <param name="reference">Элемент управления, для которого требуется узнать акцентирующий цвет.</param>
+      <param name="reference">Экземпляр приложения, для которого требуется узнать акцентирующий цвет.</param>
       <returns>Акцентирующий цвет для указанного элемента управления.</returns>
+    </member>
+    <member name="M:Elysium.Manager.TryGetAccentBrush(System.Windows.Application,System.Windows.Media.SolidColorBrush@)">
+      <summary>
+        Возвращает значение акцентирующего цвета для указанного приложения безопасным методом без генерации исключений.
+      </summary>
+      <param name="reference">Элемент управления, для которого требуется узнать акцентирующий цвет.</param>
+      <param name="accentBrush">Акцентирующий цвет для указанного приложения.</param>
+      <returns>True, если выполнение метода прошло успешно, иначе False.</returns>
     </member>
     <member name="M:Elysium.Manager.GetAccentBrush(System.Windows.Application)">
       <summary>
@@ -141,6 +191,14 @@
       <param name="reference">Экземпляр приложения, для которого требуется узнать акцентирующий цвет.</param>
       <returns>Акцентирующий цвет для указанного приложения.</returns>
     </member>
+    <member name="M:Elysium.Manager.TryGetContrastBrush(System.Windows.FrameworkElement,System.Windows.Media.SolidColorBrush@)">
+      <summary>
+        Возвращает значение контрастного (к акцентирующему) цвета для указанного элемента управления безопасным методом без генерации исключений.
+      </summary>
+      <param name="reference">Элемент управления, для которого требуется узнать контрастный (к акцентирующему) цвет.</param>
+      <param name="contrastBrush">Контрастный (к акцентирующему) цвет для указанного элемента управления.</param>
+      <returns>True, если выполнение метода прошло успешно, иначе False.</returns>
+    </member>
     <member name="M:Elysium.Manager.GetContrastBrush(System.Windows.FrameworkElement)">
       <summary>
         Возвращает значение контрастного (к акцентирующему) цвета для указанного элемента управления.
@@ -148,12 +206,72 @@
       <param name="reference">Элемент управления, для которого требуется узнать контрастный (к акцентирующему) цвет.</param>
       <returns>Контрастный (к акцентирующему) цвет для указанного элемента управления.</returns>
     </member>
+    <member name="M:Elysium.Manager.TryGetContrastBrush(System.Windows.Application,System.Windows.Media.SolidColorBrush@)">
+      <summary>
+        Возвращает значение контрастного (к акцентирующему) цвета для указанного приложения безопасным методом без генерации исключений.
+      </summary>
+      <param name="reference">Экземпляр приложения, для которого требуется узнать контрастный (к акцентирующему) цвет.</param>
+      <param name="contrastBrush">Контрастный (к акцентирующему) цвет для указанного приложения.</param>
+      <returns>True, если выполнение метода прошло успешно, иначе False.</returns>
+    </member>
     <member name="M:Elysium.Manager.GetContrastBrush(System.Windows.Application)">
       <summary>
         Возвращает значение контрастного (к акцентирующему) цвета для указанного приложения.
       </summary>
       <param name="reference">Экземпляр приложения, для которого требуется узнать контрастный (к акцентирующему) цвет.</param>
       <returns>Контрастный (к акцентирующему) цвет для указанного приложения.</returns>
+    </member>
+    <member name="M:Elysium.Manager.Apply(System.Windows.Application)">
+      <summary>
+        Задаёт настройки темы для всего приложения.
+      </summary>
+      <param name="application">Экземпляр приложения, для которого задаются настройки темы.</param>
+      <remarks>
+        Вызов данного метода эквивалентен вызову базового метода Apply со значением null для параметров theme, accentBrush и contrastBrush.
+      </remarks>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="application" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">application != null</requires>
+    </member>
+    <member name="M:Elysium.Manager.Apply(System.Windows.Application,System.Nullable{Elysium.Theme})">
+      <summary>
+        Задаёт настройки темы для всего приложения.
+      </summary>
+      <param name="application">Экземпляр приложения, для которого задаются настройки темы.</param>
+      <param name="theme">
+        Одно из значений перечисления <see cref="T:Elysium.Theme" />, либо null.
+      </param>
+      <remarks>
+        Если параметру задано значение null, то:
+        <list type="number"><item>В случае, если ранее этот параметр уже задавался, то будет использовано его старое значение.</item><item>В случае, если ранее этот параметр не задавался, то будет использовано значение по-умолчанию.</item></list>
+        Вызов данного метода эквивалентен вызову базового метода Apply со значением null для параметров accentBrush и contrastBrush.
+      </remarks>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="application" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">application != null</requires>
+    </member>
+    <member name="M:Elysium.Manager.Apply(System.Windows.Application,System.Windows.Media.SolidColorBrush,System.Windows.Media.SolidColorBrush)">
+      <summary>
+        Задаёт настройки темы для всего приложения.
+      </summary>
+      <param name="application">Экземпляр приложения, для которого задаются настройки темы.</param>
+      <param name="accentBrush">
+        Кисть, содержащая акцентирующий цвет, либо null.
+      </param>
+      <param name="contrastBrush">
+        Кисть, содержащая контрастный цвет, либо null.
+      </param>
+      <remarks>
+        Если параметру задано значение null, то:
+        <list type="number"><item>В случае, если ранее этот параметр уже задавался, то будет использовано его старое значение.</item><item>В случае, если ранее этот параметр не задавался, то будет использовано значение по-умолчанию.</item></list>
+        Вызов данного метода эквивалентен вызову базового метода Apply со значением null для параметра theme.
+      </remarks>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="application" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">application != null</requires>
     </member>
     <member name="M:Elysium.Manager.Apply(System.Windows.Application,System.Nullable{Elysium.Theme},System.Windows.Media.SolidColorBrush,System.Windows.Media.SolidColorBrush)">
       <summary>
@@ -177,60 +295,22 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">application != null</requires>
     </member>
-    <member name="M:Elysium.Manager.Remove(System.Windows.Application,System.Boolean,System.Boolean,System.Boolean)">
+    <member name="M:Elysium.Manager.Remove(System.Windows.Application)">
       <summary>
         Отключает тему в указанном приложении.
       </summary>
       <param name="application">Экземпляр приложения, для которого производится отключение темы.</param>
-      <param name="isRemoveTheme">Указывает, должен ли из параметров удаляться тип темы.</param>
-      <param name="isRemoveAccentBrush">Указывает, должен ли из параметров удаляться акцентирующий цвет.</param>
-      <param name="isRemoveContrastBrush">Указывает, должен ли из параметров удаляться контрастный цвет.</param>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="application" /> имеет значение null.
       </exception>
       <requires exception="T:System.ArgumentNullException">application != null</requires>
     </member>
-    <member name="M:Elysium.Manager.Apply(System.Windows.FrameworkElement,System.Nullable{Elysium.Theme},System.Windows.Media.SolidColorBrush,System.Windows.Media.SolidColorBrush)">
-      <summary>
-        Задаёт настройки темы для элемента управления и его дочерних элементов.
-      </summary>
-      <param name="application">Экземпляр приложения, для которого задаются настройки темы.</param>
-      <param name="theme">
-        Одно из значений перечисления <see cref="T:Elysium.Theme" />, либо null, если необходимо использовать ранее заданный тип темы или тип темы по-умолчанию (в случае, если к элементу управления и приложению настройки ранее не применялись).
-      </param>
-      <param name="accentBrush">
-        Кисть, содержащая акцентирующий цвет, либо null, если необходимо использовать ранее заданный цвет или цвет по-умолчанию (в случае, если к элементу управления и приложению настройки ранее не применялись).
-      </param>
-      <param name="contrastBrush">
-        Кисть, содержащая контрастный цвет, либо null, если необходимо использовать ранее заданный цвет или цвет по-умолчанию (в случае, если к элементу управления и приложению настройки ранее не применялись).
-      </param>
-      <remarks>
-        Если параметру задано значение null, то:
-        <list type="number"><item>В случае, если ранее этот параметр уже задавался, то будет использовано его старое значение.</item><item>В случае, если ранее этот параметр не задавался для элемента управления, то будет использовано значение параметра заданное для приложения.</item><item>В случае, если ранее этот параметр не задавался ни для элемента управления, ни для приложения, то будет использовано значение по-умолчанию.</item></list></remarks>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="application" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">application != null</requires>
-    </member>
-    <member name="M:Elysium.Manager.Remove(System.Windows.FrameworkElement,System.Boolean,System.Boolean,System.Boolean)">
-      <summary>
-        Отключает тему в указанном элементе управления и его дочерних элементах.
-      </summary>
-      <param name="application">Экземпляр приложения, для которого производится отключение темы.</param>
-      <param name="isRemoveTheme">Указывает, должен ли из параметров удаляться тип темы.</param>
-      <param name="isRemoveAccentBrush">Указывает, должен ли из параметров удаляться акцентирующий цвет.</param>
-      <param name="isRemoveContrastBrush">Указывает, должен ли из параметров удаляться контрастный цвет.</param>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="control" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">control != null</requires>
-    </member>
-    <member name="T:Elysium.Design">
+    <member name="T:Elysium.Parameters.Design">
       <summary>
         Представляет класс, предоставляющий свойства зависимостей для управления настройками темы элемента управления из XAML в режиме конструктора.
       </summary>
     </member>
-    <member name="P:Elysium.Design.Theme">
+    <member name="P:Elysium.Parameters.Design.Theme">
       <summary>
         Возвращает или задаёт значение, указывающее на текующий тип темы в режиме конструктора.
       </summary>
@@ -242,7 +322,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Design.ThemeProperty" />
+              <see cref="F:Elysium.Parameters.Design.ThemeProperty" />
             </description>
           </item>
           <item>
@@ -264,17 +344,17 @@
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Design.ThemeProperty">
+    <member name="F:Elysium.Parameters.Design.ThemeProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Design.Theme" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Design.Theme" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Design.Theme" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Design.Theme" />.
       </value>
     </member>
-    <member name="M:Elysium.Design.GetTheme(System.Windows.FrameworkElement)">
+    <member name="M:Elysium.Parameters.Design.GetTheme(System.Windows.FrameworkElement)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Design.Theme" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.Theme" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Текущий тип темы для указанного элемента управления в режиме конструктора.</returns>
@@ -283,9 +363,9 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="M:Elysium.Design.SetTheme(System.Windows.FrameworkElement,System.Nullable{Elysium.Theme})">
+    <member name="M:Elysium.Parameters.Design.SetTheme(System.Windows.FrameworkElement,System.Nullable{Elysium.Theme})">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Design.Theme" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.Theme" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Новый тип темы для указанного элемента управления в режиме конструктора.</param>
@@ -294,7 +374,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Design.AccentBrush">
+    <member name="P:Elysium.Parameters.Design.AccentBrush">
       <summary>
         Возвращает или задаёт акцентирующий цвет в режиме конструктора.
       </summary>
@@ -304,7 +384,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Design.AccentBrushProperty" />
+              <see cref="F:Elysium.Parameters.Design.AccentBrushProperty" />
             </description>
           </item>
           <item>
@@ -326,17 +406,17 @@
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Design.AccentBrushProperty">
+    <member name="F:Elysium.Parameters.Design.AccentBrushProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Design.AccentBrush" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Design.AccentBrush" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Design.AccentBrush" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Design.AccentBrush" />.
       </value>
     </member>
-    <member name="M:Elysium.Design.GetAccentBrush(System.Windows.FrameworkElement)">
+    <member name="M:Elysium.Parameters.Design.GetAccentBrush(System.Windows.FrameworkElement)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Design.AccentBrush" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.AccentBrush" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Текущий акцентирующий цвет для указанного элемента управления в режиме конструктора.</returns>
@@ -345,9 +425,9 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="M:Elysium.Design.SetAccentBrush(System.Windows.FrameworkElement,System.Windows.Media.SolidColorBrush)">
+    <member name="M:Elysium.Parameters.Design.SetAccentBrush(System.Windows.FrameworkElement,System.Windows.Media.SolidColorBrush)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Design.AccentBrush" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.AccentBrush" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Акцентирующий цвет для указанного элемента управления в режиме конструктора.</param>
@@ -356,7 +436,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="P:Elysium.Design.ContrastBrush">
+    <member name="P:Elysium.Parameters.Design.ContrastBrush">
       <summary>
         Возвращает или задаёт контрастный (к акцентирующему) цвет в режиме конструктора.
       </summary>
@@ -366,7 +446,7 @@
           <item>
             <term>Идентификатор</term>
             <description>
-              <see cref="F:Elysium.Design.ContrastBrushProperty" />
+              <see cref="F:Elysium.Parameters.Design.ContrastBrushProperty" />
             </description>
           </item>
           <item>
@@ -388,17 +468,17 @@
         </code>
       </example>
     </member>
-    <member name="F:Elysium.Design.ContrastBrushProperty">
+    <member name="F:Elysium.Parameters.Design.ContrastBrushProperty">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Design.ContrastBrush" />.
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Design.ContrastBrush" />.
       </summary>
       <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Design.ContrastBrush" />.
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Design.ContrastBrush" />.
       </value>
     </member>
-    <member name="M:Elysium.Design.GetContrastBrush(System.Windows.FrameworkElement)">
+    <member name="M:Elysium.Parameters.Design.GetContrastBrush(System.Windows.FrameworkElement)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Design.ContrastBrush" /> для указанного элемента управления.
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.ContrastBrush" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
       <returns>Текущий контрастный цвет для указанного элемента управления в режиме конструктора.</returns>
@@ -407,9 +487,9 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="M:Elysium.Design.SetContrastBrush(System.Windows.FrameworkElement,System.Windows.Media.SolidColorBrush)">
+    <member name="M:Elysium.Parameters.Design.SetContrastBrush(System.Windows.FrameworkElement,System.Windows.Media.SolidColorBrush)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Design.ContrastBrush" /> для указанного элемента управления.
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.ContrastBrush" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Контрастный цвет для указанного элемента управления в режиме конструктора.</param>
@@ -445,6 +525,7 @@
             </description>
           </item>
         </list>
+        В случае, если параметр наследуется от приложения, гарантируется, что его значение будет обновлено при обновлении соответствующего значения для приложения.
       </remarks>
       <example>
         <code lang="C#">
@@ -507,6 +588,7 @@
             </description>
           </item>
         </list>
+        В случае, если параметр наследуется от приложения, гарантируется, что его значение будет обновлено при обновлении соответствующего значения для приложения.
       </remarks>
       <example>
         <code lang="C#">
@@ -569,6 +651,7 @@
             </description>
           </item>
         </list>
+        В случае, если параметр наследуется от приложения, гарантируется, что его значение будет обновлено при обновлении соответствующего значения для приложения.
       </remarks>
       <example>
         <code lang="C#">
@@ -3693,6 +3776,177 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
+    <member name="T:Elysium.InvalidStyleException">
+      <summary>
+        Исключение, которое генерируется при проведении недопустимой операции связанной со стилем.
+      </summary>
+    </member>
+    <member name="M:Elysium.InvalidStyleException.#ctor">
+      <inheritdoc cref="M:System.Exception.#ctor" />
+    </member>
+    <member name="M:Elysium.InvalidStyleException.#ctor(System.String)">
+      <inheritdoc cref="M:System.Exception.#ctor(System.String)" />
+    </member>
+    <member name="M:Elysium.InvalidStyleException.#ctor(System.String,System.Exception)">
+      <inheritdoc cref="M:System.Exception.#ctor(System.String,System.Exception)" />
+    </member>
+    <member name="M:Elysium.InvalidStyleException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <inheritdoc cref="M:System.Exception.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" />
+    </member>
+    <member name="T:System.Collections.ObjectModel.IObservableDictionary`2">
+      <inheritdoc cref="T:System.Collections.Generic.IDictionary`2" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.IObservableDictionary`2.Item(`0)">
+      <inheritdoc cref="P:System.Collections.Generic.IDictionary`2.Item(`0)" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.IObservableDictionary`2.Keys">
+      <inheritdoc cref="P:System.Collections.Generic.IDictionary`2.Keys" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.IObservableDictionary`2.Values">
+      <inheritdoc cref="P:System.Collections.Generic.IDictionary`2.Values" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.IObservableDictionary`2.ContainsKey(`0)">
+      <inheritdoc cref="M:System.Collections.Generic.IDictionary`2.ContainsKey(`0)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.IObservableDictionary`2.Add(`0,`1)">
+      <inheritdoc cref="M:System.Collections.Generic.IDictionary`2.Add(`0,`1)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.IObservableDictionary`2.Remove(`0)">
+      <inheritdoc cref="M:System.Collections.Generic.IDictionary`2.Remove(`0)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.IObservableDictionary`2.TryGetValue(`0,`1@)">
+      <inheritdoc cref="M:System.Collections.Generic.IDictionary`2.TryGetValue(`0,`1@)" />
+    </member>
+    <member name="T:System.Collections.ObjectModel.ObservableDictionary`2">
+      <inheritdoc cref="T:System.Collections.Generic.Dictionary`2" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1})">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1})" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IEqualityComparer{`0})">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IEqualityComparer{`0})" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IEqualityComparer{`0})">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IEqualityComparer{`0})" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Collections.Generic.IEqualityComparer{`0})">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Collections.Generic.IEqualityComparer{`0})" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Int32)">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Int32)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Int32,System.Collections.Generic.IEqualityComparer{`0})">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Int32,System.Collections.Generic.IEqualityComparer{`0})" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.Add(`0,`1)">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.Add(`0,`1)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.Clear">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.Clear" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.ContainsKey(`0)">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.ContainsKey(`0)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.ContainsValue(`1)">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.ContainsValue(`1)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.Remove(`0)">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.Remove(`0)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.TryGetValue(`0,`1@)">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.TryGetValue(`0,`1@)" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Count">
+      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Count" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Item(`0)">
+      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Item(`0)" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Keys">
+      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Keys" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Values">
+      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Values" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Comparer">
+      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Comparer" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.GetEnumerator">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.GetEnumerator" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <inheritdoc />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.OnDeserialization(System.Object)">
+      <inheritdoc />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.BlockReentrancy">
+      <inheritdoc cref="M:System.Collections.ObjectModel.ObservableCollection`1.BlockReentrancy" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.CheckReentrancy">
+      <inheritdoc cref="M:System.Collections.ObjectModel.ObservableCollection`1.CheckReentrancy" />
+    </member>
+    <member name="E:System.Collections.ObjectModel.ObservableDictionary`2.PropertyChanged">
+      <inheritdoc cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged" />
+    </member>
+    <member name="E:System.Collections.ObjectModel.ObservableDictionary`2.CollectionChanged">
+      <inheritdoc cref="E:System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+      <inheritdoc cref="M:System.Collections.ObjectModel.ObservableCollection`1.OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.OnPropertyChanged(System.String)">
+      <inheritdoc cref="M:System.Collections.ObjectModel.ObservableCollection`1.OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs)" />
+      <param name="propertyName">Имя изменённого свойства.</param>
+    </member>
+    <member name="T:System.Collections.ObjectModel.ObservableDictionary`2.Enumerator">
+      <inheritdoc cref="T:System.Collections.Generic.Dictionary`2.Enumerator" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Enumerator.Current">
+      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Enumerator.Current" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.Enumerator.MoveNext">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.Enumerator.MoveNext" />
+    </member>
+    <member name="T:System.Collections.ObjectModel.ObservableKeyValuePair`2">
+      <inheritdoc cref="T:System.Collections.Generic.KeyValuePair`2" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.#ctor(`0,`1)">
+      <inheritdoc cref="M:System.Collections.Generic.KeyValuePair`2.#ctor(`0,`1)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.#ctor(`0,`1,System.Collections.Generic.IEqualityComparer{`0})">
+      <inheritdoc cref="M:System.Collections.Generic.KeyValuePair`2.#ctor(`0,`1)" />
+      <param name="comparer">
+        Реализация <see cref="T:System.Collections.Generic.IEqualityComparer`1" />, которую следует использовать при сравнении ключей, или null, если для данного типа ключа должна использоваться реализация <see cref="T:System.Collections.Generic.EqualityComparer`1" /> по умолчанию.
+      </param>
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableKeyValuePair`2.Key">
+      <inheritdoc cref="P:System.Collections.Generic.KeyValuePair`2.Key" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableKeyValuePair`2.Value">
+      <summary>
+        Получает или задаёт значение в паре "ключ-значение".
+      </summary>
+      <value>Значение из пары "ключ-значение".</value>
+    </member>
+    <member name="E:System.Collections.ObjectModel.ObservableKeyValuePair`2.PropertyChanging">
+      <inheritdoc cref="E:System.ComponentModel.INotifyPropertyChanging.PropertyChanging" />
+    </member>
+    <member name="E:System.Collections.ObjectModel.ObservableKeyValuePair`2.PropertyChanged">
+      <inheritdoc cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.Equals(System.Object)">
+      <inheritdoc />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.GetHashCode">
+      <inheritdoc />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.ToString">
+      <inheritdoc />
+    </member>
     <member name="T:Elysium.Extensions.LogicalTreeHelperExtensions">
       <summary>
         Предоставляет методы расширения для поиска по логическому дереву элементов WPF.
@@ -5850,6 +6104,14 @@
       </summary>
       <value>
         Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBase.IsBusyAnimationRunning" />.
+      </value>
+    </member>
+    <member name="F:Elysium.Controls.Primitives.ProgressBase.IsBusyAnimationRunningPropertyKey">
+      <summary>
+        Идентифицирует свойство зависимостей только для чтения <see cref="P:Elysium.Controls.Primitives.ProgressBase.IsBusyAnimationRunning" />.
+      </summary>
+      <value>
+        Идентификатор огранниченного доступа на запись для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBase.IsBusyAnimationRunning" />.
       </value>
     </member>
     <member name="E:Elysium.Controls.Primitives.ProgressBase.AnimationsUpdating">
