@@ -42,7 +42,7 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             UseLayoutRounding="{TemplateBinding UseLayoutRounding}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                        <Grid>
+                        <Grid x:Name="PART_LayoutRoot">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="*"/>

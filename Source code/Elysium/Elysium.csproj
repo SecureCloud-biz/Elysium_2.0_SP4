@@ -367,8 +367,10 @@
     <Compile Include="Converters\ThicknessConverter.cs" />
     <Compile Include="Converters\IsGreaterThanConverter.cs" />
     <Compile Include="Native\Interop.cs" />
+    <Compile Include="Native\Monitor.cs" />
     <Compile Include="Native\Taskbar.cs" />
     <Compile Include="Native\TaskbarPosition.cs" />
+    <Compile Include="Native\Window.cs" />
     <Compile Include="Native\Windows.cs" />
     <Compile Include="Parameters\Design.cs" />
     <Compile Include="Extensions\Boxing helpers\NullableBoxingHelper.cs" />

@@ -45,14 +45,20 @@ namespace Elysium.Controls
         private const string GripName = "PART_Grip";
 
         private FrameworkElement _caption;
+        private Panel _layoutRoot;
+
+        private Monitor _monitor;
+        private Native.Window _window;
 
         [SecurityCritical]
         private WindowChrome _chrome;
 
-        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline", Justification = "We need to use static constructor for custom actions during dependency properties initialization")]
+        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline",
+            Justification = "We need to use static constructor for custom actions during dependency properties initialization")]
         static Window()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Window), new FrameworkPropertyMetadata(typeof(Window)));
+            WindowStateProperty.OverrideMetadata(typeof(Window), new FrameworkPropertyMetadata(OnWindowStateChanged));
         }
 
         [SecuritySafeCritical]
@@ -89,8 +95,6 @@ namespace Elysium.Controls
                 WindowChrome.SetWindowChrome(this, _chrome);
             }
 
-            SourceInitialized += OnSourceInitialized;
-
             var resizeBorderThicknessPropertyDescriptor =
                 DependencyPropertyDescriptor.FromProperty(Parameters.Window.ResizeBorderThicknessProperty, typeof(Window));
             if (resizeBorderThicknessPropertyDescriptor != null)
@@ -99,13 +103,22 @@ namespace Elysium.Controls
             }
         }
 
+        [SecuritySafeCritical]
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            Hook();
+            base.OnSourceInitialized(e);
+        }
+
         [SecurityCritical]
-        private void OnSourceInitialized(object sender, EventArgs e)
+        private void Hook()
         {
             var handle = new WindowInteropHelper(this).EnsureHandle();
             var source = HwndSource.FromHwnd(handle);
             if (source != null)
             {
+                _monitor = new Monitor(handle);
+                _window = new Native.Window(handle);
                 source.AddHook(WndProc);
             }
         }
@@ -116,7 +129,7 @@ namespace Elysium.Controls
             switch (msg)
             {
                 case Interop.WM_GETMINMAXINFO:
-                    WMGetMinMaxInfo(hwnd, lParam);
+                    GetMinMaxInfo(lParam);
                     handled = true;
                     break;
             }
@@ -125,55 +138,38 @@ namespace Elysium.Controls
         }
 
         [SecurityCritical]
-        private void WMGetMinMaxInfo(IntPtr hwnd, IntPtr lParam)
+        private void GetMinMaxInfo(IntPtr lParam)
         {
             var info = (Interop.MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(Interop.MINMAXINFO));
 
-            var monitor = Interop.MonitorFromWindow(hwnd, Interop.MONITOR_DEFAULTTONEAREST);
-            if (monitor == IntPtr.Zero)
-            {
-                throw new Win32Exception();
-            }
-
-            var monitorInfo = new Interop.MONITORINFO { cbSize = Marshal.SizeOf(typeof(Interop.MONITORINFO)) };
-            var monitorInfoPtr = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(Interop.MONITORINFO)));
-            Marshal.StructureToPtr(monitorInfo, monitorInfoPtr, false);
-            if (!Interop.GetMonitorInfo(monitor, monitorInfoPtr))
-            {
-                throw new Win32Exception();
-            }
-            monitorInfo = (Interop.MONITORINFO)Marshal.PtrToStructure(monitorInfoPtr, typeof(Interop.MONITORINFO));
-            Marshal.FreeHGlobal(monitorInfoPtr);
-
+            _monitor.Invalidate();
             Taskbar.Invalidate();
 
-            var workArea = monitorInfo.rcWork;
-            info.ptMaxPosition.x = Taskbar.Position == TaskbarPosition.Left && Taskbar.AutoHide ? 1 : 0;
-            info.ptMaxPosition.y = Taskbar.Position == TaskbarPosition.Top && Taskbar.AutoHide ? 1 : 0;
-            info.ptMaxSize.x = workArea.right - workArea.left - (Taskbar.Position == TaskbarPosition.Right && Taskbar.AutoHide ? 1 : 0);
-            info.ptMaxSize.y = workArea.bottom - workArea.top - (Taskbar.Position == TaskbarPosition.Bottom && Taskbar.AutoHide ? 1 : 0);
-            
-            Marshal.StructureToPtr(info, lParam, true);
-        }
+            var bounds = _monitor.Bounds;
+            var workArea = _monitor.WorkArea;
+            info.ptMaxPosition.x = Math.Abs(bounds.left) + Taskbar.Position == TaskbarPosition.Left && Taskbar.AutoHide ? 1 : 0;
+            info.ptMaxPosition.y = Math.Abs(bounds.top) + Taskbar.Position == TaskbarPosition.Top && Taskbar.AutoHide ? 1 : 0;
+            info.ptMaxSize.x = info.ptMaxTrackSize.x =
+                               Math.Abs(workArea.right - workArea.left) - (Taskbar.Position == TaskbarPosition.Right && Taskbar.AutoHide ? 1 : 0);
+            info.ptMaxSize.y = info.ptMaxTrackSize.y =
+                               Math.Abs(workArea.bottom - workArea.top) - (Taskbar.Position == TaskbarPosition.Bottom && Taskbar.AutoHide ? 1 : 0);
 
-        [SuppressMessage("Microsoft.Contracts", "Nonnull-36-0", Justification = "Bug in Code Contracts static checker: We should ignore value of _chrome field because it is overwritten.")]
-        [SecurityCritical]
-        private void OnResizeBorderThicknessChanged(object sender, EventArgs e)
-        {
-            if (Equals(WindowChrome.GetWindowChrome(this), _chrome))
+            var source = PresentationSource.FromVisual(this);
+            if (source != null && source.CompositionTarget != null)
             {
-                _chrome = new WindowChrome
-                              {
-                                  CaptionHeight = _chrome.CaptionHeight,
-                                  CornerRadius = _chrome.CornerRadius,
-                                  GlassFrameThickness = _chrome.GlassFrameThickness,
-                                  NonClientFrameEdges = _chrome.NonClientFrameEdges,
-                                  ResizeBorderThickness = Parameters.Window.GetResizeBorderThickness(this),
-                                  UseAeroCaptionButtons = _chrome.UseAeroCaptionButtons
-                              };
-                _chrome.TryFreeze();
-                WindowChrome.SetWindowChrome(this, _chrome);
+                if (DoubleUtil.IsNonNegative(MaxWidth))
+                {
+                    info.ptMaxSize.x = info.ptMaxTrackSize.x =
+                                       Math.Min(info.ptMaxSize.x, (int)Math.Ceiling(MaxWidth * source.CompositionTarget.TransformFromDevice.M11));
+                }
+                if (DoubleUtil.IsNonNegative(MaxHeight))
+                {
+                    info.ptMaxSize.y = info.ptMaxTrackSize.y =
+                                       Math.Min(info.ptMaxSize.y, (int)Math.Ceiling(MaxHeight * source.CompositionTarget.TransformFromDevice.M22));
+                }
             }
+
+            Marshal.StructureToPtr(info, lParam, true);
         }
 
         [PublicAPI]
@@ -301,7 +297,8 @@ namespace Elysium.Controls
 
         [SuppressMessage("Microsoft.Security", "CA2141:TransparentMethodsMustNotSatisfyLinkDemandsFxCopRule",
             Justification = "We need to use Microsoft.Windows.Shell.dll version 3.5")]
-        [SuppressMessage("Microsoft.Contracts", "Nonnull-36-0", Justification = "Bug in Code Contracts static checker: We should ignore value of _chrome field because it is overwritten.")]
+        [SuppressMessage("Microsoft.Contracts", "Nonnull-36-0",
+            Justification = "Bug in Code Contracts static checker: We should ignore value of _chrome field because it is overwritten.")]
         [SecurityCritical]
         private void OnHasDropShadowChangedInternal(bool newHasDropShadow)
         {
@@ -329,7 +326,7 @@ namespace Elysium.Controls
             try
             {
                 // NOTE: Ignore Code Contracts warnings
-                return BooleanBoxingHelper.Unbox(basevalue) && Environment.OSVersion.Version.Major >= 6;
+                return BooleanBoxingHelper.Unbox(basevalue) && Windows.IsWindowVistaOrHigher;
             }
             catch
             {
@@ -482,10 +479,19 @@ namespace Elysium.Controls
                 {
                     _caption.SizeChanged += OnCaptionSizeChanged;
                 }
+
+                // NOTE: Lack of contracts: FindName must be marked as pure method
+                Contract.Assume(Template != null);
+                _layoutRoot = Template.FindName(LayoutRootName, this) as Panel;
+                if (_layoutRoot == null)
+                {
+                    Trace.TraceError(LayoutRootName + " not found.");
+                }
             }
         }
 
-        [SuppressMessage("Microsoft.Contracts", "Nonnull-67-0", Justification = "Bug in Code Contracts static checker: We should ignore value of _chrome field because it is overwritten.")]
+        [SuppressMessage("Microsoft.Contracts", "Nonnull-67-0",
+            Justification = "Bug in Code Contracts static checker: We should ignore value of _chrome field because it is overwritten.")]
         [SecurityCritical]
         private void OnCaptionSizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -502,6 +508,56 @@ namespace Elysium.Controls
                               };
                 _chrome.TryFreeze();
                 WindowChrome.SetWindowChrome(this, _chrome);
+            }
+        }
+
+        [SuppressMessage("Microsoft.Contracts", "Nonnull-36-0",
+            Justification = "Bug in Code Contracts static checker: We should ignore value of _chrome field because it is overwritten.")]
+        [SecurityCritical]
+        private void OnResizeBorderThicknessChanged(object sender, EventArgs e)
+        {
+            if (Equals(WindowChrome.GetWindowChrome(this), _chrome))
+            {
+                _chrome = new WindowChrome
+                              {
+                                  CaptionHeight = _chrome.CaptionHeight,
+                                  CornerRadius = _chrome.CornerRadius,
+                                  GlassFrameThickness = _chrome.GlassFrameThickness,
+                                  NonClientFrameEdges = _chrome.NonClientFrameEdges,
+                                  ResizeBorderThickness = Parameters.Window.GetResizeBorderThickness(this),
+                                  UseAeroCaptionButtons = _chrome.UseAeroCaptionButtons
+                              };
+                _chrome.TryFreeze();
+                WindowChrome.SetWindowChrome(this, _chrome);
+            }
+        }
+
+        [SecuritySafeCritical]
+        private static void OnWindowStateChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            ValidationHelper.NotNull(obj, "obj");
+            var instance = (Window)obj;
+            instance.OnWindowStateChanged(BoxingHelper<WindowState>.Unbox(e.OldValue), BoxingHelper<WindowState>.Unbox(e.NewValue));
+        }
+
+        [SecurityCritical]
+        private void OnWindowStateChanged(WindowState oldValue, WindowState newValue)
+        {
+            if (Equals(WindowChrome.GetWindowChrome(this), _chrome))
+            {
+                if (oldValue != WindowState.Maximized && newValue == WindowState.Maximized && !Taskbar.AutoHide)
+                {
+                    Taskbar.Invalidate();
+                    _window.Invalidate();
+                    _layoutRoot.Margin = new Thickness(_window.NonClientBorderWidth,
+                                                       _window.NonClientBorderHeight,
+                                                       _window.NonClientBorderWidth,
+                                                       _window.NonClientBorderHeight);
+                }
+                else if (oldValue == WindowState.Maximized && newValue != WindowState.Maximized)
+                {
+                    _layoutRoot.Margin = new Thickness();
+                }
             }
         }
     }
