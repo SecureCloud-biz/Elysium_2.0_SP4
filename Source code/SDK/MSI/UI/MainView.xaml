@@ -10,7 +10,7 @@
               xmlns:viewmodels="clr-namespace:Elysium.SDK.MSI.UI.ViewModels"
               xmlns:properties="clr-namespace:Elysium.SDK.MSI.UI.Properties"
               mc:Ignorable="d"
-              params:Design.Theme="Dark"
+              params:Manager.Theme="Dark"
               params:Manager.AccentBrush="{x:Static metro:AccentBrushes.Blue}"
               params:Manager.ContrastBrush="White"
               DataContext="{Binding Source={x:Static viewmodels:Locator.MainViewModel}}"

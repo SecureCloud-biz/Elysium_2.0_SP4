@@ -33,6 +33,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
 // ReSharper disable InconsistentNaming
         [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1311:StaticReadonlyFieldsMustBeginWithUpperCaseLetter", Justification = "Suppression is OK here.")]
         private static readonly object _lock = new object();
+
 // ReSharper restore InconsistentNaming
 
         public MainViewModel()
@@ -107,10 +108,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
 
         public Screen CurrentScreen
         {
-            get
-            {
-                return IsInDesignMode ? Screen.Primary : _currentScreen;
-            }
+            get { return IsInDesignMode ? Screen.Primary : _currentScreen; }
 
             private set
             {
@@ -133,11 +131,11 @@ namespace Elysium.SDK.MSI.UI.ViewModels
         {
             get
             {
-                var is64Bit = App.Current.Engine.EvaluateCondition("NOT VersionNT64");
-                var installFolder = is64Bit
-                                        ? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)
-                                        : Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) +
-                                          @"\" + Resources.SDKName + @"\" + Resources.NETFrameworkName + @"\" + Resources.SDKVersion + @"\";
+                var is64Bit = App.Current.Engine.EvaluateCondition("VersionNT64");
+                var installFolder = (is64Bit
+                                         ? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)
+                                         : Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86)) +
+                                    @"\" + Resources.SDKName + @"\" + Resources.NETFrameworkName + @"\" + Resources.SDKVersion + @"\";
                 if (IsInDesignMode)
                 {
                     return installFolder;
@@ -158,23 +156,20 @@ namespace Elysium.SDK.MSI.UI.ViewModels
         {
             get
             {
-                var is64Bit = App.Current.Engine.EvaluateCondition("NOT VersionNT64");
+                var is64Bit = App.Current.Engine.EvaluateCondition("VersionNT64");
                 if (IsInDesignMode)
                 {
-                    return is64Bit
-                               ? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)
-                               : Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) +
-                                 @"\" + Resources.SDKName + @"\" + Resources.NETFrameworkName + @"\" + Resources.SDKVersion + @"\Setup\";
+                    return (is64Bit
+                                ? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)
+                                : Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86)) +
+                           @"\" + Resources.SDKName + @"\" + Resources.NETFrameworkName + @"\" + Resources.SDKVersion + @"\Setup\";
                 }
                 return App.Current.Engine.StringVariables.Contains("WixBundleLayoutDirectory")
                            ? App.Current.Engine.StringVariables["WixBundleLayoutDirectory"]
                            : null;
             }
 
-            set
-            {
-                App.Current.Engine.StringVariables["WixBundleLayoutDirectory"] = value;
-            }
+            set { App.Current.Engine.StringVariables["WixBundleLayoutDirectory"] = value; }
         }
 
         public ICommand Browse
@@ -185,13 +180,13 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                 {
                     return null;
                 }
-                return _browse ?? (_browse = new RelayCommand(() => App.Current.Dispatcher.Invoke(DispatcherPriority.Render, (Action)(() =>
+                Action browse = delegate
                 {
                     var browserDialog = new WinForms.FolderBrowserDialog
-                        {
-                            RootFolder = Environment.SpecialFolder.MyComputer,
-                            SelectedPath = App.Current.Command.Action == LaunchAction.Layout ? InstallFolder : LayoutFolder
-                        };
+                                            {
+                                                RootFolder = Environment.SpecialFolder.MyComputer,
+                                                SelectedPath = App.Current.Command.Action == LaunchAction.Layout ? InstallFolder : LayoutFolder
+                                            };
 
                     var result = browserDialog.ShowDialog();
 
@@ -206,7 +201,8 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                             InstallFolder = browserDialog.SelectedPath;
                         }
                     }
-                })),
+                };
+                return _browse ?? (_browse = new RelayCommand(() => App.Current.Dispatcher.Invoke(DispatcherPriority.Render, browse),
                                                               () => App.Current.Command.Display == Display.Full));
             }
         }
@@ -221,7 +217,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                 {
                     return null;
                 }
-                return _command ?? (_command = new RelayCommand(() =>
+                return _command ?? (_command = new RelayCommand(delegate
                 {
                     var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
                     if (location != null)
@@ -237,10 +233,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
 
         public bool Agreement
         {
-            get
-            {
-                return IsInDesignMode || _agreement;
-            }
+            get { return IsInDesignMode || _agreement; }
             set
             {
                 if (_agreement != value)
@@ -264,13 +257,13 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                 if (IsInDesignMode)
                 {
                     return _features ?? (_features = new ObservableDictionary<Feature, bool>
-                        {
-                            { new Feature("Elysium", false), true },
-                            { new Feature(Resources.Notifications, true), false },
-                            { new Feature(Resources.Documentation_en, true), true },
-                            { new Feature(Resources.Documentation_ru, true), false },
-                            { new Feature(Resources.Test, true), false }
-                        });
+                                                         {
+                                                             { new Feature("Elysium", false), true },
+                                                             { new Feature(Resources.Notifications, true), false },
+                                                             { new Feature(Resources.Documentation_en, true), true },
+                                                             { new Feature(Resources.Documentation_ru, true), false },
+                                                             { new Feature(Resources.Test, true), false }
+                                                         });
                 }
                 if (_features == null)
                 {
@@ -281,8 +274,10 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                         {
                             _isProcessingFeatures = true;
                             _isComputedFeaturesSelected = true;
-                            var @checked = _features.All<KeyValuePair<Feature, bool>>(feature => !feature.Key.AllowAbsent || feature.Value);
-                            var @unchecked = _features.All<KeyValuePair<Feature, bool>>(feature => !feature.Key.AllowAbsent || !feature.Value);
+                            var @checked =
+                                _features.All<KeyValuePair<Feature, bool>>(feature => !feature.Key.AllowAbsent || feature.Value);
+                            var @unchecked =
+                                _features.All<KeyValuePair<Feature, bool>>(feature => !feature.Key.AllowAbsent || !feature.Value);
                             IsAllFeaturesSelected = @checked ? true : @unchecked ? false : (bool?)null;
                             _isProcessingFeatures = false;
                         }
@@ -296,10 +291,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
 
         public bool? IsAllFeaturesSelected
         {
-            get
-            {
-                return IsInDesignMode ? null : _isAllFeaturesSelected;
-            }
+            get { return IsInDesignMode ? null : _isAllFeaturesSelected; }
             set
             {
                 lock (_lock)
@@ -316,7 +308,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                     {
                         if (value.HasValue && !_isProcessingFeatures)
                         {
-                            App.Current.Dispatcher.Invoke(DispatcherPriority.Normal, (Action)(() =>
+                            App.Current.Dispatcher.Invoke(DispatcherPriority.Normal, (Action)delegate
                             {
                                 _isProcessingFeatures = true;
                                 var features = new LinkedList<ObservableKeyValuePair<Feature, bool>>(Features);
@@ -325,7 +317,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                                     Features[feature.Key] = value.Value;
                                 }
                                 _isProcessingFeatures = false;
-                            }));
+                            });
                         }
                         _isAllFeaturesSelected = value;
                         RaisePropertyChanged("IsAllFeaturesSelected");
@@ -338,10 +330,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
 
         public int Progress
         {
-            get
-            {
-                return IsInDesignMode ? 75 : _progress;
-            }
+            get { return IsInDesignMode ? 75 : _progress; }
             private set
             {
                 _progress = value;
@@ -353,10 +342,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
 
         public string Message
         {
-            get
-            {
-                return IsInDesignMode ? "Message" : _message;
-            }
+            get { return IsInDesignMode ? "Message" : _message; }
             private set
             {
                 if (_message != value)
@@ -429,11 +415,10 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                 {
                     return null;
                 }
-                return _install ?? (_install = new RelayCommand(() =>
+                return _install ?? (_install = new RelayCommand(delegate
                 {
                     Action = LaunchAction.Install;
                     Plan(LaunchAction.Install);
-
                 }));
             }
         }
@@ -460,7 +445,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                 {
                     return null;
                 }
-                return _modify ?? (_modify = new RelayCommand(() =>
+                return _modify ?? (_modify = new RelayCommand(delegate
                 {
                     Action = LaunchAction.Modify;
                     Plan(LaunchAction.Modify);
@@ -490,7 +475,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                 {
                     return null;
                 }
-                return _repair ?? (_repair = new RelayCommand(() =>
+                return _repair ?? (_repair = new RelayCommand(delegate
                 {
                     Action = LaunchAction.Repair;
                     Plan(LaunchAction.Repair);
@@ -520,7 +505,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                 {
                     return null;
                 }
-                return _uninstall ?? (_uninstall = new RelayCommand(() =>
+                return _uninstall ?? (_uninstall = new RelayCommand(delegate
                 {
                     Action = LaunchAction.Uninstall;
                     Plan(LaunchAction.Uninstall);
@@ -550,14 +535,13 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                 {
                     return null;
                 }
-                return _cancel ?? (_cancel = new RelayCommand(() =>
+                return _cancel ?? (_cancel = new RelayCommand(delegate
                 {
                     lock (_lock)
                     {
-                        Canceled = MessageBoxResult.Yes ==
-                                   MessageBox.Show(Resources.CancellationWarning,
-                                                   string.Format("{0} for {1}", Resources.SDKName, Resources.NETFrameworkName),
-                                                   MessageBoxButton.YesNo, MessageBoxImage.Error);
+                        Canceled = MessageBoxResult.Yes == MessageBox.Show(Resources.CancellationWarning,
+                                                                           string.Format("{0} for {1}", Resources.SDKName, Resources.NETFrameworkName),
+                                                                           MessageBoxButton.YesNo, MessageBoxImage.Error);
                     }
                 }));
             }
@@ -579,10 +563,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
 
         private bool Canceled
         {
-            get
-            {
-                return _canceled;
-            }
+            get { return _canceled; }
             set
             {
                 if (_canceled != value)
@@ -623,10 +604,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
 
         public bool IsReboot
         {
-            get
-            {
-                return IsInDesignMode || _isReboot;
-            }
+            get { return IsInDesignMode || _isReboot; }
 
             set
             {
@@ -639,10 +617,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
 
         private LaunchAction Action
         {
-            get
-            {
-                return _action;
-            }
+            get { return _action; }
             set
             {
                 if (_action != value)
@@ -657,10 +632,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
 
         private InstallationState State
         {
-            get
-            {
-                return _state;
-            }
+            get { return _state; }
             set
             {
                 if (_state != value)
@@ -675,10 +647,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
 
         private InstallationState PreApplyState
         {
-            get
-            {
-                return _preApplyState;
-            }
+            get { return _preApplyState; }
             set
             {
                 if (_preApplyState != value)
@@ -711,13 +680,10 @@ namespace Elysium.SDK.MSI.UI.ViewModels
         {
             if (e.PackageId.Equals("Elysium.SDK." + (App.Current.Dispatcher.Thread.CurrentCulture.LCID == 1049 ? "ru_ru" : "en_us"), StringComparison.Ordinal))
             {
-                App.Current.Dispatcher.Invoke(DispatcherPriority.Render, (Action)(() =>
-                {
-// ReSharper disable ConvertToLambdaExpression
-                    Features.Add(new Feature(e.FeatureId, !e.FeatureId.Equals("Elysium", StringComparison.Ordinal)),
-                                 e.FeatureId.Equals("Elysium", StringComparison.Ordinal) || e.State == FeatureState.Local);
-// ReSharper restore ConvertToLambdaExpression
-                }));
+                App.Current.Dispatcher.Invoke(
+                    DispatcherPriority.Render,
+                    (Action)(() => Features.Add(new Feature(e.FeatureId, !e.FeatureId.Equals("Elysium", StringComparison.Ordinal)),
+                                                e.FeatureId.Equals("Elysium", StringComparison.Ordinal) || e.State == FeatureState.Local)));
             }
         }
 
@@ -755,10 +721,10 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                 {
                     if (string.IsNullOrEmpty(App.Current.Command.LayoutDirectory))
                     {
-                        LayoutFolder = Environment.Is64BitOperatingSystem
-                                           ? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)
-                                           : Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) +
-                                             @"\" + Resources.SDKName + @"\" + Resources.NETFrameworkName + @"\" + Resources.SDKVersion + @"\Setup\";
+                        LayoutFolder = (App.Current.Engine.EvaluateCondition("VersionNT64")
+                                            ? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)
+                                            : Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86)) +
+                                       @"\" + Resources.SDKName + @"\" + Resources.NETFrameworkName + @"\" + Resources.SDKVersion + @"\Setup\";
 
                         if (App.Current.Command.Display == Display.Full)
                         {
@@ -798,7 +764,8 @@ namespace Elysium.SDK.MSI.UI.ViewModels
             {
                 e.State = RequestState.None;
             }
-            else if (e.PackageId.Equals("Elysium.SDK." + (App.Current.Dispatcher.Thread.CurrentCulture.LCID != 1049 ? "ru_ru" : "en_us"), StringComparison.Ordinal))
+            else if (e.PackageId.Equals("Elysium.SDK." + (App.Current.Dispatcher.Thread.CurrentCulture.LCID != 1049 ? "ru_ru" : "en_us"),
+                                        StringComparison.Ordinal))
             {
                 e.State = RequestState.None;
             }

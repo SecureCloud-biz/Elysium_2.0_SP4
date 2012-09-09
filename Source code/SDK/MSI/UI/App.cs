@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Windows.Interop;
 using System.Windows.Threading;
@@ -25,9 +26,17 @@ namespace Elysium.SDK.MSI.UI
             Engine.Apply(_handle);
         }
 
+        [Conditional("DEBUG")]
+        [DebuggerStepThrough]
+        private static void Debug()
+        {
+            Dispatcher.CurrentDispatcher.Thread.Join(TimeSpan.FromSeconds(20));
+        }
+
         protected override void Run()
         {
-            Thread.CurrentThread.Join(TimeSpan.FromSeconds(20));
+            Debug();
+
             Engine.Log(LogLevel.Verbose, "Running Elysium SDK for .NET Framework 4 setup");
 
             Current = this;

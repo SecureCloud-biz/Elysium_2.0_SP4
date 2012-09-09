@@ -656,6 +656,6 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TextTemplating\Microsoft.TextTemplating.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"..\..\..\Tools and Resources\Utilities\signtool\x86\signtool.exe" sign /f "..\..\..\Source code\SigningKey.pfx" "Elysium.dll"</PostBuildEvent>
+    <PostBuildEvent>"..\..\..\Tools and Resources\Utilities\signtool\signtool.exe" sign /f "..\..\..\Source code\SigningKey.pfx" "Elysium.dll"</PostBuildEvent>
   </PropertyGroup>
 </Project>
