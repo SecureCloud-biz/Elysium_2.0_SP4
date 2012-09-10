@@ -5,5 +5,5 @@ chdir /d %~dp0
 cd ..\
 @echo on
 installutil "%CD%\Binary\Debug\x86\Elysium.Notifications.Server.exe"
-net start ElysiumNotifications1.5.14.0
+net start ElysiumNotifications1.5.16.0
 pause

@@ -19,6 +19,6 @@ using System.Windows;
 
 [assembly: NeutralResourcesLanguage("en-us")]
 
-[assembly: AssemblyVersion("1.5.221.0")]
-[assembly: AssemblyFileVersion("1.5.221.0")]
+[assembly: AssemblyVersion("1.5.227.0")]
+[assembly: AssemblyFileVersion("1.5.227.0")]
 [assembly: AssemblyInformationalVersion("1.5")]
