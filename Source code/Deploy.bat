@@ -2,7 +2,7 @@
 
 chdir /d %~dp0
 del "..\Deploy\SDK\Elysium SDK (x86).zip"
-"..\Tools and Resources\Utilities\7za\7za.exe" a "..\Deploy\SDK\Elysium SDK (x86).zip" "..\Binary\Debug\AnyCPU\Elysium.dll" "..\Binary\Debug\AnyCPU\Elysium.pdb" "..\Binary\Debug\AnyCPU\Elysium.Notifications.dll" "..\Binary\Debug\AnyCPU\Elysium.Notifications.pdb" "..\Binary\Release\x86\Elysium.Notifications.Server.exe" "..\Binary\Release\x86\Elysium.Notifications.Server.exe.config" "..\Binary\Release\x86\Elysium.Test.exe"
+"..\Tools and Resources\Utilities\7za\7za.exe" a "..\Deploy\SDK\Elysium SDK (x86).zip" "..\Binary\Debug\AnyCPU\Elysium.dll" "..\Binary\Debug\AnyCPU\Elysium.pdb" "..\Binary\Debug\AnyCPU\Elysium.Notifications.dll" "..\Binary\Debug\AnyCPU\Elysium.Notifications.pdb" "..\Binary\Release\x86\Elysium.Notifications.Server.exe" "..\Binary\Release\x86\Elysium.Notifications.Server.exe.config" "..\Binary\Release\x86\Elysium.Test.exe" ".\SDK\ZIP\Tools\Run Elysium Notifications service.bat" ".\SDK\ZIP\Tools\Stop Elysium Notifications service.bat" ".\SDK\ZIP\Tools\x86\Install Elysium Notifications service.bat" ".\SDK\ZIP\Tools\x86\Uninstall Elysium Notifications service.bat"
 
 cd "..\Binary\Documentation"
 "..\Utilities\7za\7za.exe" u "..\..\Deploy\SDK\Elysium SDK (x86).zip" "en\*" "ru\*"
@@ -13,7 +13,7 @@ cd "..\Tools and Resources\Assembly dependencies\"
 
 chdir /d %~dp0
 del "..\Deploy\SDK\Elysium SDK (x64).zip"
-"..\Tools and Resources\Utilities\7za\7za.exe" a "..\Deploy\SDK\Elysium SDK (x64).zip" "..\Binary\Debug\AnyCPU\Elysium.dll" "..\Binary\Debug\AnyCPU\Elysium.pdb" "..\Binary\Debug\AnyCPU\Elysium.Notifications.dll" "..\Binary\Debug\AnyCPU\Elysium.Notifications.pdb" "..\Binary\Release\x64\Elysium.Notifications.Server.exe" "..\Binary\Release\x64\Elysium.Notifications.Server.exe.config" "..\Binary\Release\x64\Elysium.Test.exe"
+"..\Tools and Resources\Utilities\7za\7za.exe" a "..\Deploy\SDK\Elysium SDK (x64).zip" "..\Binary\Debug\AnyCPU\Elysium.dll" "..\Binary\Debug\AnyCPU\Elysium.pdb" "..\Binary\Debug\AnyCPU\Elysium.Notifications.dll" "..\Binary\Debug\AnyCPU\Elysium.Notifications.pdb" "..\Binary\Release\x64\Elysium.Notifications.Server.exe" "..\Binary\Release\x64\Elysium.Notifications.Server.exe.config" "..\Binary\Release\x64\Elysium.Test.exe" ".\SDK\ZIP\Tools\Run Elysium Notifications service.bat" ".\SDK\ZIP\Tools\Stop Elysium Notifications service.bat" ".\SDK\ZIP\Tools\x64\Install Elysium Notifications service.bat" ".\SDK\ZIP\Tools\x64\Uninstall Elysium Notifications service.bat"
 
 cd "..\Binary\Documentation"
 "..\Utilities\7za\7za.exe" u "..\..\Deploy\SDK\Elysium SDK (x86).zip" "en\*" "ru\*"

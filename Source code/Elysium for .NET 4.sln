@@ -129,16 +129,30 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VS2012_CSharp_1033_ItemTemp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VS2012_CSharp_1049_ItemTemplate", "SDK\MSI\ItemTemplates\Visual Studio 2012\CSharp\1049\VS2012_CSharp_1049_ItemTemplate.csproj", "{CB55D7CE-4B83-4FC6-A97E-18ED166F3782}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Signing", "Signing", "{23A05DC4-61AC-4A8D-95F9-D151EB5E1CBB}"
-	ProjectSection(SolutionItems) = preProject
-		InstallKeys.bat = InstallKeys.bat
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Batch", "Batch", "{A0A93B97-BCD5-4800-BD9B-56D133F63B8E}"
 	ProjectSection(SolutionItems) = preProject
 		Build.bat = Build.bat
 		Clean.bat = Clean.bat
 		Deploy.bat = Deploy.bat
+		InstallKeys.bat = InstallKeys.bat
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{AB4C292B-2046-4A5F-814F-646687991BBB}"
+	ProjectSection(SolutionItems) = preProject
+		SDK\ZIP\Tools\Run Elysium Notifications service.bat = SDK\ZIP\Tools\Run Elysium Notifications service.bat
+		SDK\ZIP\Tools\Stop Elysium Notifications service.bat = SDK\ZIP\Tools\Stop Elysium Notifications service.bat
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x86", "x86", "{DD801BCE-A888-4563-BFD5-57EF72725471}"
+	ProjectSection(SolutionItems) = preProject
+		SDK\ZIP\Tools\x86\Install Elysium Notifications service.bat = SDK\ZIP\Tools\x86\Install Elysium Notifications service.bat
+		SDK\ZIP\Tools\x86\Uninstall Elysium Notifications service.bat = SDK\ZIP\Tools\x86\Uninstall Elysium Notifications service.bat
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x64", "x64", "{4F10CCE2-FDE0-441D-8406-0E7D5D79532C}"
+	ProjectSection(SolutionItems) = preProject
+		SDK\ZIP\Tools\x64\Install Elysium Notifications service.bat = SDK\ZIP\Tools\x64\Install Elysium Notifications service.bat
+		SDK\ZIP\Tools\x64\Uninstall Elysium Notifications service.bat = SDK\ZIP\Tools\x64\Uninstall Elysium Notifications service.bat
 	EndProjectSection
 EndProject
 Global
@@ -514,6 +528,7 @@ Global
 		{A72E82C8-5E75-4178-8EDC-6FE3E2B4314F} = {FA20A796-1C37-43CC-B132-22B8AEF918FC}
 		{9C985B38-0A35-4704-A963-34621C6F0D44} = {FA20A796-1C37-43CC-B132-22B8AEF918FC}
 		{033799A7-E9A4-48F8-9187-621A5FF26FA6} = {FA20A796-1C37-43CC-B132-22B8AEF918FC}
+		{AB4C292B-2046-4A5F-814F-646687991BBB} = {FA20A796-1C37-43CC-B132-22B8AEF918FC}
 		{B95FB9C4-018A-4EA4-92FD-7C486B7E77F1} = {1E7E4B07-9758-4F25-96B6-5BD434317EAA}
 		{4A10A4A4-AEA2-480E-A6F9-C8D890E0E7C0} = {1E7E4B07-9758-4F25-96B6-5BD434317EAA}
 		{2ED0B9E6-AB08-4358-9F10-8EA35FA37366} = {B95FB9C4-018A-4EA4-92FD-7C486B7E77F1}
@@ -543,5 +558,7 @@ Global
 		{CB55D7CE-4B83-4FC6-A97E-18ED166F3782} = {39DF9D9D-A405-4416-8F86-DAFB2DAC6F86}
 		{D88E4914-15CE-4B60-9CC3-D937EE451A2F} = {E3E53B2F-1E9B-4C60-A10C-D3D1B7DAD751}
 		{CC022DF5-0E31-43F8-B95C-C1C802AEB130} = {BDE3AE59-B6CC-41A3-B140-8B33CEA8641D}
+		{DD801BCE-A888-4563-BFD5-57EF72725471} = {AB4C292B-2046-4A5F-814F-646687991BBB}
+		{4F10CCE2-FDE0-441D-8406-0E7D5D79532C} = {AB4C292B-2046-4A5F-814F-646687991BBB}
 	EndGlobalSection
 EndGlobal
