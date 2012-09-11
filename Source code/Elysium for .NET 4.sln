@@ -129,6 +129,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VS2012_CSharp_1033_ItemTemp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VS2012_CSharp_1049_ItemTemplate", "SDK\MSI\ItemTemplates\Visual Studio 2012\CSharp\1049\VS2012_CSharp_1049_ItemTemplate.csproj", "{CB55D7CE-4B83-4FC6-A97E-18ED166F3782}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Signing", "Signing", "{23A05DC4-61AC-4A8D-95F9-D151EB5E1CBB}"
+	ProjectSection(SolutionItems) = preProject
+		InstallKeys.bat = InstallKeys.bat
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 19

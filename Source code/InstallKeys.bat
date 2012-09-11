@@ -20,7 +20,7 @@ IF EXIST "%ProgramFiles(x86)%\Microsoft Visual Studio 11.0" (
 call %vcvarsall%
 chdir /d %~dp0
 
-@echo on
+certmgr.exe -add -c "RootCertificate.cer" -s -r localMachine root 
+sn -i "SigningKey.pfx" VS_KEY_495CE44A959FD928
 
-sn -i  SigningKey.pfx VS_KEY_495CE44A959FD928
 pause

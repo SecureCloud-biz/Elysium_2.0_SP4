@@ -8,7 +8,7 @@
               params:Design.ContrastBrush="White"
               Background="{DynamicResource BackgroundBrush}"
               WindowStartupLocation="CenterScreen"
-              Width="1024" Height="540">
+              SizeToContent="WidthAndHeight">
     <metro:Window.ApplicationBar>
         <metro:ApplicationBar>
             <metro:DropDownCommandButton Header="Theme type"

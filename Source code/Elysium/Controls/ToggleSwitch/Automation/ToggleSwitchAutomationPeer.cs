@@ -20,7 +20,9 @@ namespace Elysium.Controls.Automation
             get
             {
                 Contract.Ensures(Contract.Result<ToggleSwitch>() != null);
+
                 var result = (ToggleSwitch)base.Owner;
+
                 // NOTE: Lack of contracts: Owner must ensure non-null value
                 Contract.Assume(result != null);
                 return result;

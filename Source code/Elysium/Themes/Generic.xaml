@@ -2372,7 +2372,7 @@
                   <RowDefinition Height="Auto" />
                   <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <controls:ProgressBar x:Name="PART_ProgressBar" Grid.ColumnSpan="3" Grid.Row="0" Background="{StaticResource TransparentBrush}" Value="{TemplateBinding Progress}" VerticalAlignment="Top" Width="{TemplateBinding ActualWidth}" Height="2" />
+                <controls:ProgressBar x:Name="PART_ProgressBar" Grid.ColumnSpan="3" Grid.Row="0" Background="{StaticResource TransparentBrush}" Value="{TemplateBinding Progress}" VerticalAlignment="Top" Height="2" />
                 <Border x:Name="PART_Title" Grid.Column="0" Grid.Row="1" Background="{DynamicResource AccentBrush}" BorderThickness="0">
                   <TextBlock x:Name="Title" Text="{TemplateBinding Title}" Foreground="{DynamicResource ContrastBrush}" FontSize="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.TitleFontSize), Mode=OneWay}" FontWeight="Normal" Margin="10,5" />
                 </Border>

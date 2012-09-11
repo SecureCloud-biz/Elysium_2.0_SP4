@@ -28,7 +28,6 @@ namespace Elysium.Notifications.Client
                                                 },
                                             new EndpointAddress("net.pipe://localhost/elysium/v1.5.732.0/notifications"))
         {
-
         }
 
         [UsedImplicitly]
@@ -36,6 +35,7 @@ namespace Elysium.Notifications.Client
         {
             Contract.Ensures(Contract.Result<Notification>() != null);
             var slot = Channel.Reserve(workArea);
+
             // Can't be proven.
             Contract.Assume(slot != null);
             return slot;

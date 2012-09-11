@@ -168,10 +168,11 @@ namespace Elysium.Notifications
             }
         }
 
-        [SuppressMessage("Microsoft.Contracts", "Nonnull-36-0")]
-        [SuppressMessage("Microsoft.Contracts", "Nonnull-57-0")]
         private static void BeginOpenAnimation(Window window, Notification slot)
         {
+            // Can't be proven
+            Contract.Assume(window != null);
+
             switch (slot.Animation)
             {
                 case Animation.None:
@@ -186,10 +187,11 @@ namespace Elysium.Notifications
             }
         }
 
-        [SuppressMessage("Microsoft.Contracts", "Nonnull-74-0")]
-        [SuppressMessage("Microsoft.Contracts", "Nonnull-124-0")]
         private static void EndOpenAnimation(Window window, Notification slot)
         {
+            // Can't be proven
+            Contract.Assume(window != null);
+
             switch (slot.Animation)
             {
                 case Animation.None:
@@ -207,10 +209,11 @@ namespace Elysium.Notifications
             }
         }
 
-        [SuppressMessage("Microsoft.Contracts", "Nonnull-74-0")]
-        [SuppressMessage("Microsoft.Contracts", "Nonnull-124-0")]
         private static void CloseAnimation(Window window, Notification slot)
         {
+            // Can't be proven
+            Contract.Assume(window != null);
+
             switch (slot.Animation)
             {
                 case Animation.None:

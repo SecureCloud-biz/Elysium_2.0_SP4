@@ -114,11 +114,13 @@ namespace Elysium.Controls
         private void Hook()
         {
             var handle = new WindowInteropHelper(this).EnsureHandle();
+            _monitor = new Monitor(handle);
+            _window = new Native.Window(handle);
+            UpdateNonClientBorder(WindowState == WindowState.Maximized && SizeToContent == SizeToContent.Manual);
+
             var source = HwndSource.FromHwnd(handle);
             if (source != null)
             {
-                _monitor = new Monitor(handle);
-                _window = new Native.Window(handle);
                 source.AddHook(WndProc);
             }
         }
@@ -149,10 +151,8 @@ namespace Elysium.Controls
             var workArea = _monitor.WorkArea;
             info.ptMaxPosition.x = Math.Abs(bounds.left) + Taskbar.Position == TaskbarPosition.Left && Taskbar.AutoHide ? 1 : 0;
             info.ptMaxPosition.y = Math.Abs(bounds.top) + Taskbar.Position == TaskbarPosition.Top && Taskbar.AutoHide ? 1 : 0;
-            info.ptMaxSize.x = info.ptMaxTrackSize.x =
-                               Math.Abs(workArea.right - workArea.left) - (Taskbar.Position == TaskbarPosition.Right && Taskbar.AutoHide ? 1 : 0);
-            info.ptMaxSize.y = info.ptMaxTrackSize.y =
-                               Math.Abs(workArea.bottom - workArea.top) - (Taskbar.Position == TaskbarPosition.Bottom && Taskbar.AutoHide ? 1 : 0);
+            info.ptMaxSize.x = Math.Abs(workArea.right - workArea.left) - (Taskbar.Position == TaskbarPosition.Right && Taskbar.AutoHide ? 1 : 0);
+            info.ptMaxSize.y = Math.Abs(workArea.bottom - workArea.top) - (Taskbar.Position == TaskbarPosition.Bottom && Taskbar.AutoHide ? 1 : 0);
 
             var source = PresentationSource.FromVisual(this);
             if (source != null && source.CompositionTarget != null)
@@ -458,6 +458,21 @@ namespace Elysium.Controls
         [SecuritySafeCritical]
         public override void OnApplyTemplate()
         {
+            if (SizeToContent != SizeToContent.Manual)
+            {
+                var previousSizeToContent = SizeToContent;
+                SizeToContent = SizeToContent.Manual;
+
+                var previousVisibility = Visibility;
+                Visibility = Visibility.Hidden;
+
+                Dispatcher.BeginInvoke(DispatcherPriority.Loaded, (Action)(() =>
+                {
+                    SizeToContent = previousSizeToContent;
+                    Visibility = previousVisibility;
+                }));
+            }
+
             base.OnApplyTemplate();
 
             OnApplyTemplateInternal();
@@ -543,21 +558,39 @@ namespace Elysium.Controls
         [SecurityCritical]
         private void OnWindowStateChanged(WindowState oldValue, WindowState newValue)
         {
-            if (Equals(WindowChrome.GetWindowChrome(this), _chrome))
+            if (Equals(WindowChrome.GetWindowChrome(this), _chrome) && _window != null)
             {
                 if (oldValue != WindowState.Maximized && newValue == WindowState.Maximized && !Taskbar.AutoHide)
                 {
-                    Taskbar.Invalidate();
-                    _window.Invalidate();
-                    _layoutRoot.Margin = new Thickness(_window.NonClientBorderWidth,
-                                                       _window.NonClientBorderHeight,
-                                                       _window.NonClientBorderWidth,
-                                                       _window.NonClientBorderHeight);
+                    UpdateNonClientBorder(SizeToContent == SizeToContent.Manual);
                 }
                 else if (oldValue == WindowState.Maximized && newValue != WindowState.Maximized)
                 {
-                    _layoutRoot.Margin = new Thickness();
+                    UpdateNonClientBorder(false);
                 }
+            }
+        }
+
+        [SecurityCritical]
+        private void UpdateNonClientBorder(bool isMaximized)
+        {
+            if (_layoutRoot == null)
+            {
+                return;
+            }
+
+            if (isMaximized)
+            {
+                Taskbar.Invalidate();
+                _window.Invalidate();
+                _layoutRoot.Margin = new Thickness(_window.NonClientBorderWidth,
+                                                   _window.NonClientBorderHeight,
+                                                   _window.NonClientBorderWidth,
+                                                   _window.NonClientBorderHeight);
+            }
+            else
+            {
+                _layoutRoot.Margin = new Thickness();
             }
         }
     }

@@ -30,19 +30,19 @@
       <ComponentGroupRef Id="VisualStudio.Templates.Registration"/>
     </Feature>
     
-    <Feature Id="Notifications" Title="!(loc.FeatureTitle_Notifications)" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install">
+    <Feature Id="Notifications" Title="!(loc.FeatureTitle_Notifications)" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install" Level="2">
       <ComponentGroupRef Id="Notifications"/>
     </Feature>
     
-    <Feature Id="Documentation.En" Title="!(loc.FeatureTitle_Documentation.En)" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install">
+    <Feature Id="Documentation.En" Title="!(loc.FeatureTitle_Documentation.En)" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install" Level="2">
       <ComponentGroupRef Id="Documentation.En"/>
     </Feature>
     
-    <Feature Id="Documentation.Ru" Title="!(loc.FeatureTitle_Documentation.Ru)" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install">
+    <Feature Id="Documentation.Ru" Title="!(loc.FeatureTitle_Documentation.Ru)" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install" Level="2">
       <ComponentGroupRef Id="Documentation.Ru"/>
     </Feature>
     
-    <Feature Id="Test" Title="!(loc.FeatureTitle_Test)" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install">
+    <Feature Id="Test" Title="!(loc.FeatureTitle_Test)" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install" Level="2">
       <ComponentGroupRef Id="Test"/>
     </Feature>
 
@@ -50,14 +50,12 @@
     
     <ComponentGroup Id="Prerequisites">
       <ComponentRef Id="Prerequisites.Microsoft.Expression.Drawing"/>
-      <ComponentRef Id="Prerequisites.Microsoft.Expression.Drawing.Documentation"/>
       <ComponentRef Id="Prerequisites.Microsoft.Expression.Drawing.Design"/>
       <ComponentRef Id="Prerequisites.Microsoft.Windows.Shell"/>
     </ComponentGroup>
     
     <ComponentGroup Id="Prerequisites.Resources.En">
       <ComponentRef Id="Prerequisites.Microsoft.Expression.Drawing.Design.Resources.En"/>
-      <ComponentRef Id="Prerequisites.Microsoft.Expression.Drawing.Documentation.En"/>
     </ComponentGroup>
 
     <!-- Elysium components -->
@@ -80,6 +78,9 @@
     <!-- Documentation components -->
     
     <ComponentGroup Id="Documentation.En">
+      <ComponentRef Id="Prerequisites.Microsoft.Expression.Drawing.Documentation"/>
+      <ComponentRef Id="Prerequisites.Microsoft.Expression.Drawing.Documentation.En"/>
+      <ComponentRef Id="Prerequisites.Microsoft.Windows.Shell.Documentation"/>
       <ComponentRef Id="Core.Documentation.En.CHM"/>
       <ComponentRef Id="Core.Documentation.En.XML"/>
       <ComponentRef Id="Notifications.Documentation.En"/>
@@ -325,6 +326,9 @@
       <Component Id="Prerequisites.Microsoft.Windows.Shell" Guid="7435578F-C5D2-4241-9172-870CF87AC33F">
         <File Source="$(var.AssemblyDependenciesFolder)\Microsoft.Windows.Shell.dll" Checksum="yes" KeyPath="yes" Vital="yes"/>
         <File Source="$(var.AssemblyDependenciesFolder)\Microsoft.Windows.Shell.pdb" Checksum="yes" KeyPath="no" Vital="no"/>
+      </Component>
+      <Component Id="Prerequisites.Microsoft.Windows.Shell.Documentation" Guid="387A868E-1193-430B-AF2A-78617E7A09B1">
+        <File Source="$(var.AssemblyDependenciesFolder)\Microsoft.Windows.Shell.xml" Checksum="yes" KeyPath="yes" Vital="no"/>
       </Component>
       
       <!-- Core -->

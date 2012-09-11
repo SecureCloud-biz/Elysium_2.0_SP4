@@ -22,7 +22,9 @@ namespace Elysium.Controls.Automation
             get
             {
                 Contract.Ensures(Contract.Result<ProgressBase>() != null);
+
                 var result = (ProgressBase)base.Owner;
+
                 // NOTE: Lack of contracts: Owner must ensure non-null value
                 Contract.Assume(result != null);
                 return result;

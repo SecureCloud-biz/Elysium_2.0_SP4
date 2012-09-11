@@ -70,7 +70,7 @@
     <DefineConstants>X86;TRACE;RELEASE</DefineConstants>
     <DebugSymbols>false</DebugSymbols>
     <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
@@ -154,7 +154,7 @@
     <DefineConstants>X64;TRACE;RELEASE</DefineConstants>
     <DebugSymbols>false</DebugSymbols>
     <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
@@ -203,6 +203,34 @@
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
+  <Choose>
+    <When Condition="'$(BuildingInsideVisualStudio)' == 'true'">
+      <ItemGroup>
+        <ProjectReference Include="..\Elysium\Elysium.csproj">
+          <Project>{5a65da67-130d-43d8-9224-4559b523b6d4}</Project>
+          <Name>Elysium</Name>
+          <Private>True</Private>
+        </ProjectReference>
+        <ProjectReference Include="..\Elysium.Notifications\Elysium.Notifications.csproj">
+          <Project>{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}</Project>
+          <Name>Elysium.Notifications</Name>
+          <Private>True</Private>
+        </ProjectReference>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Elysium, Version=1.5.751.0, Culture=neutral, PublicKeyToken=f8966962afac6b6d, processorArchitecture=MSIL">
+          <HintPath>..\..\Binary\$(Configuration)\AnyCPU\Elysium.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Elysium.Notifications, Version=1.5.24.0, Culture=neutral, PublicKeyToken=f8966962afac6b6d, processorArchitecture=MSIL">
+          <HintPath>..\..\Binary\$(Configuration)\AnyCPU\Elysium.Notifications.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -231,18 +259,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>AssemblyInfo.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Elysium.Notifications\Elysium.Notifications.csproj">
-      <Project>{32D6CB94-F07A-4D84-A5E0-376E51EDFF1D}</Project>
-      <Name>Elysium.Notifications</Name>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\Elysium\Elysium.csproj">
-      <Project>{5A65DA67-130D-43D8-9224-4559B523B6D4}</Project>
-      <Name>Elysium</Name>
-      <Private>True</Private>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Properties\Icon.ico" />
