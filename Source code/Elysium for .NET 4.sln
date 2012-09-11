@@ -134,6 +134,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Signing", "Signing", "{23A0
 		InstallKeys.bat = InstallKeys.bat
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Batch", "Batch", "{A0A93B97-BCD5-4800-BD9B-56D133F63B8E}"
+	ProjectSection(SolutionItems) = preProject
+		Build.bat = Build.bat
+		Clean.bat = Clean.bat
+		Deploy.bat = Deploy.bat
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 19
