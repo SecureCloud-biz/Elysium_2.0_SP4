@@ -18,6 +18,9 @@ namespace Elysium.Native
 
         #region Constants
 
+        [MarshalAs(UnmanagedType.U4)]
+        internal const int MONITOR_DEFAULTTONEAREST = 0x00000002;
+
         [MarshalAs(UnmanagedType.SysUInt)]
         internal const int ABS_ALWAYSONTOP = 0x0000002;
 
@@ -31,9 +34,6 @@ namespace Elysium.Native
         internal const int ABM_GETTASKBARPOS = 0x00000005;
 
         internal const int WM_GETMINMAXINFO = 0x0024;
-
-        [MarshalAs(UnmanagedType.U4)]
-        internal const int MONITOR_DEFAULTTONEAREST = 0x00000002;
 
         #endregion
 
@@ -163,7 +163,7 @@ namespace Elysium.Native
 
         [SecurityCritical]
         [DllImport("user32.dll", EntryPoint = "FindWindow", ExactSpelling = false, CharSet = CharSet.Unicode, SetLastError = true)]
-        internal static extern IntPtr _FindWindow(string lpClassName, string lpWindowName);
+        private static extern IntPtr _FindWindow(string lpClassName, string lpWindowName);
 
         [SecurityCritical]
         internal static IntPtr FindWindow(string lpClassName, string lpWindowName)
@@ -181,7 +181,7 @@ namespace Elysium.Native
         [SecurityCritical]
         [DllImport("user32.dll", EntryPoint = "GetMonitorInfo", ExactSpelling = false, CharSet = CharSet.Unicode, SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        internal static extern bool _GetMonitorInfo(IntPtr hMonitor, [In] [Out] ref MONITORINFO lpmi);
+        private static extern bool _GetMonitorInfo(IntPtr hMonitor, [In] [Out] ref MONITORINFO lpmi);
 
         [SecurityCritical]
         internal static void GetMonitorInfo(IntPtr hMonitor, out MONITORINFO lpmi)
@@ -197,7 +197,7 @@ namespace Elysium.Native
         [SecurityCritical]
         [DllImport("user32.dll", EntryPoint = "GetWindowInfo", ExactSpelling = true, CharSet = CharSet.Auto, SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        internal static extern bool _GetWindowInfo(IntPtr hwnd, [In] [Out] ref WINDOWINFO pwi);
+        private static extern bool _GetWindowInfo(IntPtr hwnd, [In] [Out] ref WINDOWINFO pwi);
 
         [SecurityCritical]
         internal static void GetWindowInfo(IntPtr hwnd, out WINDOWINFO pwi)
@@ -212,7 +212,7 @@ namespace Elysium.Native
 
         [SecurityCritical]
         [DllImport("user32.dll", EntryPoint = "MonitorFromWindow", ExactSpelling = true, CharSet = CharSet.Auto, SetLastError = true)]
-        internal static extern IntPtr _MonitorFromWindow(IntPtr hwnd, [MarshalAs(UnmanagedType.U4)] int dwFlags);
+        private static extern IntPtr _MonitorFromWindow(IntPtr hwnd, [MarshalAs(UnmanagedType.U4)] int dwFlags);
 
         [SecurityCritical]
         internal static IntPtr MonitorFromWindow(IntPtr hwnd, int dwFlags)
@@ -230,7 +230,7 @@ namespace Elysium.Native
         [SecurityCritical]
         [DllImport("shell32.dll", EntryPoint = "SHAppBarMessage", ExactSpelling = true, CharSet = CharSet.Auto, SetLastError = false)]
         [return: MarshalAs(UnmanagedType.SysUInt)]
-        internal static extern IntPtr _SHAppBarMessage([MarshalAs(UnmanagedType.U4)] int dwMessage, [In] [Out] ref APPBARDATA pData);
+        private static extern IntPtr _SHAppBarMessage([MarshalAs(UnmanagedType.U4)] int dwMessage, [In] [Out] ref APPBARDATA pData);
 
         [SecurityCritical]
         internal static IntPtr SHAppBarMessage(int dwMessage, ref APPBARDATA pData)

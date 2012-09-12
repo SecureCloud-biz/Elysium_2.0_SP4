@@ -20,6 +20,8 @@ using JetBrains.Annotations;
 
 using Microsoft.Windows.Shell;
 
+using Monitor = Elysium.Native.Monitor;
+
 namespace Elysium.Controls
 {
     [PublicAPI]
@@ -151,12 +153,22 @@ namespace Elysium.Controls
             var workArea = _monitor.WorkArea;
             info.ptMaxPosition.x = Math.Abs(bounds.left) + Taskbar.Position == TaskbarPosition.Left && Taskbar.AutoHide ? 1 : 0;
             info.ptMaxPosition.y = Math.Abs(bounds.top) + Taskbar.Position == TaskbarPosition.Top && Taskbar.AutoHide ? 1 : 0;
-            info.ptMaxSize.x = Math.Abs(workArea.right - workArea.left) - (Taskbar.Position == TaskbarPosition.Right && Taskbar.AutoHide ? 1 : 0);
-            info.ptMaxSize.y = Math.Abs(workArea.bottom - workArea.top) - (Taskbar.Position == TaskbarPosition.Bottom && Taskbar.AutoHide ? 1 : 0);
+            info.ptMaxSize.x = info.ptMaxTrackSize.x =
+                Math.Abs(workArea.right - workArea.left) - (Taskbar.Position == TaskbarPosition.Right && Taskbar.AutoHide ? 1 : 0);
+            info.ptMaxSize.y = info.ptMaxTrackSize.y =
+                Math.Abs(workArea.bottom - workArea.top) - (Taskbar.Position == TaskbarPosition.Bottom && Taskbar.AutoHide ? 1 : 0);
 
             var source = PresentationSource.FromVisual(this);
             if (source != null && source.CompositionTarget != null)
             {
+                if (DoubleUtil.IsNonNegative(MinWidth))
+                {
+                    info.ptMinTrackSize.x = (int)Math.Ceiling(MinWidth * source.CompositionTarget.TransformFromDevice.M11);
+                }
+                if (DoubleUtil.IsNonNegative(MinHeight))
+                {
+                    info.ptMinTrackSize.y = (int)Math.Ceiling(MinHeight * source.CompositionTarget.TransformFromDevice.M22);
+                }
                 if (DoubleUtil.IsNonNegative(MaxWidth))
                 {
                     info.ptMaxSize.x = info.ptMaxTrackSize.x =
@@ -455,21 +467,44 @@ namespace Elysium.Controls
             }
         }
 
+        [PublicAPI]
+        [SecurityCritical] 
+        public new bool? ShowDialog()
+        {
+            if (SizeToContent != SizeToContent.Manual)
+            {
+                _dispatcherFrame = new DispatcherFrame();
+
+                Show();
+
+                Dispatcher.PushFrame(_dispatcherFrame);
+                _dispatcherFrame = null;
+                return base.ShowDialog();
+            }
+            return base.ShowDialog();
+        }
+
+        private DispatcherFrame _dispatcherFrame;
+
         [SecuritySafeCritical]
         public override void OnApplyTemplate()
         {
             if (SizeToContent != SizeToContent.Manual)
             {
-                var previousSizeToContent = SizeToContent;
-                SizeToContent = SizeToContent.Manual;
-
                 var previousVisibility = Visibility;
                 Visibility = Visibility.Hidden;
+
+                var previousSizeToContent = SizeToContent;
+                SizeToContent = SizeToContent.Manual;
 
                 Dispatcher.BeginInvoke(DispatcherPriority.Loaded, (Action)(() =>
                 {
                     SizeToContent = previousSizeToContent;
                     Visibility = previousVisibility;
+                    if (_dispatcherFrame != null)
+                    {
+                        _dispatcherFrame.Continue = false;
+                    }
                 }));
             }
 
