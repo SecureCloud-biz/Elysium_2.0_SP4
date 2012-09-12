@@ -49,10 +49,10 @@ IF ERRORLEVEL 1 goto showerror
 msbuild "Elysium.Test\Elysium.Test.csproj" /target:Clean /property:Configuration=Release;Platform=x64 /property:BuildProjectReferences=false /verbosity:minimal
 IF ERRORLEVEL 1 goto showerror
 
-::msbuild "Documentation\ru\Elysium.shfbproj" /target:Clean /property:Configuration=Debug;Platform=AnyCPU /verbosity:minimal
-::IF ERRORLEVEL 1 goto showerror
-::msbuild "Documentation\en\Elysium.shfbproj" /target:Clean /property:Configuration=Debug;Platform=AnyCPU /verbosity:minimal
-::IF ERRORLEVEL 1 goto showerror
+msbuild "Documentation\ru\Elysium.shfbproj" /target:Clean /property:Configuration=Debug;Platform=AnyCPU /verbosity:minimal
+IF ERRORLEVEL 1 goto showerror
+msbuild "Documentation\en\Elysium.shfbproj" /target:Clean /property:Configuration=Debug;Platform=AnyCPU /verbosity:minimal
+IF ERRORLEVEL 1 goto showerror
 
 msbuild "SDK\MSI\UI\Elysium.SDK.MSI.UI.csproj" /target:Clean /property:Configuration=Debug;Platform=AnyCPU /property:BuildProjectReferences=false /verbosity:minimal
 IF ERRORLEVEL 1 goto showerror

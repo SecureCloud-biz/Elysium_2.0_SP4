@@ -49,21 +49,37 @@ IF ERRORLEVEL 1 goto showerror
 msbuild "Elysium.Test\Elysium.Test.csproj" /target:Build /property:Configuration=Release;Platform=x64 /property:BuildProjectReferences=false /verbosity:minimal
 IF ERRORLEVEL 1 goto showerror
 
+tf checkout "SDK\MSI\ItemTemplates\Visual Studio 2010\CSharp\1033\" /lock:none /recursive
+tf checkout "SDK\MSI\ItemTemplates\Visual Studio 2010\CSharp\1033.zip" /lock:none
 msbuild "SDK\MSI\ItemTemplates\Visual Studio 2010\CSharp\1033\VS2010_CSharp_1033_ItemTemplate.csproj" /property:Configuration=Debug;Platform=AnyCPU /property:BuildProjectReferences=false /verbosity:minimal
 IF ERRORLEVEL 1 goto showerror
+tf checkout "SDK\MSI\ItemTemplates\Visual Studio 2010\CSharp\1049\" /lock:none /recursive
+tf checkout "SDK\MSI\ItemTemplates\Visual Studio 2010\CSharp\1049.zip" /lock:none
 msbuild "SDK\MSI\ItemTemplates\Visual Studio 2010\CSharp\1049\VS2010_CSharp_1049_ItemTemplate.csproj" /property:Configuration=Debug;Platform=AnyCPU /property:BuildProjectReferences=false /verbosity:minimal
 IF ERRORLEVEL 1 goto showerror
+tf checkout "SDK\MSI\ItemTemplates\Visual Studio 2012\CSharp\1033\" /lock:none /recursive
+tf checkout "SDK\MSI\ItemTemplates\Visual Studio 2012\CSharp\1033.zip" /lock:none
 msbuild "SDK\MSI\ItemTemplates\Visual Studio 2012\CSharp\1033\VS2012_CSharp_1033_ItemTemplate.csproj" /property:Configuration=Debug;Platform=AnyCPU /property:BuildProjectReferences=false /verbosity:minimal
 IF ERRORLEVEL 1 goto showerror
+tf checkout "SDK\MSI\ItemTemplates\Visual Studio 2012\CSharp\1049\" /lock:none /recursive
+tf checkout "SDK\MSI\ItemTemplates\Visual Studio 2012\CSharp\1049.zip" /lock:none
 msbuild "SDK\MSI\ItemTemplates\Visual Studio 2012\CSharp\1049\VS2012_CSharp_1049_ItemTemplate.csproj" /property:Configuration=Debug;Platform=AnyCPU /property:BuildProjectReferences=false /verbosity:minimal
 IF ERRORLEVEL 1 goto showerror
 
+tf checkout "SDK\MSI\ProjectTemplates\Visual Studio 2010\CSharp\1033\" /lock:none /recursive
+tf checkout "SDK\MSI\ProjectTemplates\Visual Studio 2010\CSharp\1033.zip" /lock:none
 msbuild "SDK\MSI\ProjectTemplates\Visual Studio 2010\CSharp\1033\VS2010_CSharp_1033_ProjectTemplate.csproj" /property:Configuration=Debug;Platform=AnyCPU /property:BuildProjectReferences=false /verbosity:minimal
 IF ERRORLEVEL 1 goto showerror
+tf checkout "SDK\MSI\ProjectTemplates\Visual Studio 2010\CSharp\1049\" /lock:none /recursive
+tf checkout "SDK\MSI\ProjectTemplates\Visual Studio 2010\CSharp\1049.zip" /lock:none
 msbuild "SDK\MSI\ProjectTemplates\Visual Studio 2010\CSharp\1049\VS2010_CSharp_1049_ProjectTemplate.csproj" /property:Configuration=Debug;Platform=AnyCPU /property:BuildProjectReferences=false /verbosity:minimal
 IF ERRORLEVEL 1 goto showerror
+tf checkout "SDK\MSI\ProjectTemplates\Visual Studio 2012\CSharp\1033\" /lock:none /recursive
+tf checkout "SDK\MSI\ProjectTemplates\Visual Studio 2012\CSharp\1033.zip" /lock:none
 msbuild "SDK\MSI\ProjectTemplates\Visual Studio 2012\CSharp\1033\VS2012_CSharp_1033_ProjectTemplate.csproj" /property:Configuration=Debug;Platform=AnyCPU /property:BuildProjectReferences=false /verbosity:minimal
 IF ERRORLEVEL 1 goto showerror
+tf checkout "SDK\MSI\ProjectTemplates\Visual Studio 2012\CSharp\1049\" /lock:none /recursive
+tf checkout "SDK\MSI\ProjectTemplates\Visual Studio 2012\CSharp\1049.zip" /lock:none
 msbuild "SDK\MSI\ProjectTemplates\Visual Studio 2012\CSharp\1049\VS2012_CSharp_1049_ProjectTemplate.csproj" /property:Configuration=Debug;Platform=AnyCPU /property:BuildProjectReferences=false /verbosity:minimal
 IF ERRORLEVEL 1 goto showerror
 
