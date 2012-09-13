@@ -133,8 +133,11 @@ namespace Elysium.Controls
             switch (msg)
             {
                 case Interop.WM_GETMINMAXINFO:
-                    GetMinMaxInfo(lParam);
-                    handled = true;
+                    if (Equals(WindowChrome.GetWindowChrome(this), _chrome))
+                    {
+                        GetMinMaxInfo(lParam);
+                        handled = true;
+                    }
                     break;
             }
 
@@ -214,7 +217,7 @@ namespace Elysium.Controls
                 Action setMainWindow =
                     () =>
                     {
-                        foreach (var window in Application.Current.Windows.AsParallel().Cast<Window>().Where(window => !Equals(window, instance)))
+                        foreach (var window in Application.Current.Windows.AsParallel().Cast<System.Windows.Window>().Where(window => !Equals(window, instance)))
                         {
                             SetIsMainWindow(window, false);
                         }
@@ -471,7 +474,7 @@ namespace Elysium.Controls
         [SecurityCritical] 
         public new bool? ShowDialog()
         {
-            if (SizeToContent != SizeToContent.Manual)
+            if (Equals(WindowChrome.GetWindowChrome(this), _chrome) && SizeToContent != SizeToContent.Manual)
             {
                 _dispatcherFrame = new DispatcherFrame();
 
@@ -486,10 +489,12 @@ namespace Elysium.Controls
 
         private DispatcherFrame _dispatcherFrame;
 
+        private bool _isInitialized;
+
         [SecuritySafeCritical]
         public override void OnApplyTemplate()
         {
-            if (SizeToContent != SizeToContent.Manual)
+            if (Equals(WindowChrome.GetWindowChrome(this), _chrome) && SizeToContent != SizeToContent.Manual && !_isInitialized)
             {
                 var previousVisibility = Visibility;
                 Visibility = Visibility.Hidden;
@@ -500,6 +505,19 @@ namespace Elysium.Controls
                 Dispatcher.BeginInvoke(DispatcherPriority.Loaded, (Action)(() =>
                 {
                     SizeToContent = previousSizeToContent;
+                    if (WindowStartupLocation == WindowStartupLocation.CenterScreen)
+                    {
+                        Left = SystemParameters.VirtualScreenLeft + SystemParameters.VirtualScreenWidth / 2 - ActualWidth / 2;
+                        Top = SystemParameters.VirtualScreenTop + SystemParameters.VirtualScreenHeight / 2 - ActualHeight / 2;
+                    }
+                    if (WindowStartupLocation == WindowStartupLocation.CenterOwner)
+                    {
+                        if (Owner != null)
+                        {
+                            Left = Owner.Left + Owner.ActualWidth / 2 - ActualWidth / 2;
+                            Top = Owner.Top + Owner.ActualHeight / 2 - ActualHeight / 2;
+                        }
+                    }
                     Visibility = previousVisibility;
                     if (_dispatcherFrame != null)
                     {
@@ -507,6 +525,8 @@ namespace Elysium.Controls
                     }
                 }));
             }
+
+            _isInitialized = true;
 
             base.OnApplyTemplate();
 
@@ -593,23 +613,20 @@ namespace Elysium.Controls
         [SecurityCritical]
         private void OnWindowStateChanged(WindowState oldValue, WindowState newValue)
         {
-            if (Equals(WindowChrome.GetWindowChrome(this), _chrome) && _window != null)
+            if (oldValue != WindowState.Maximized && newValue == WindowState.Maximized && !Taskbar.AutoHide)
             {
-                if (oldValue != WindowState.Maximized && newValue == WindowState.Maximized && !Taskbar.AutoHide)
-                {
-                    UpdateNonClientBorder(SizeToContent == SizeToContent.Manual);
-                }
-                else if (oldValue == WindowState.Maximized && newValue != WindowState.Maximized)
-                {
-                    UpdateNonClientBorder(false);
-                }
+                UpdateNonClientBorder(SizeToContent == SizeToContent.Manual);
+            }
+            else if (oldValue == WindowState.Maximized && newValue != WindowState.Maximized)
+            {
+                UpdateNonClientBorder(false);
             }
         }
 
         [SecurityCritical]
         private void UpdateNonClientBorder(bool isMaximized)
         {
-            if (_layoutRoot == null)
+            if (!Equals(WindowChrome.GetWindowChrome(this), _chrome) || _layoutRoot == null || _window == null)
             {
                 return;
             }
