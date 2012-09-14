@@ -143,10 +143,10 @@
           </row>
           <row>
             <entry>
-              <para>Установщик</para>
+              <para>Программа установки</para>
             </entry>
             <entry>
-              <para>В составе установщика (.exe) или msi-пакета <legacyBold>Elysium SDK</legacyBold></para>
+              <para>В составе программы установки (.exe) или msi-пакета <legacyBold>Elysium SDK</legacyBold></para>
             </entry>
             <entry>
               <para>В виде msi-пакета <legacyBold>Elysum Runtime</legacyBold></para>

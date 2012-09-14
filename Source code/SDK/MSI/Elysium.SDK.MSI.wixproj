@@ -72,6 +72,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="License.rtf" />
+    <Content Include="WixUIBannerBmp.bmp" />
+    <Content Include="WixUIDialogBmp.bmp" />
+    <Content Include="WixUIInfoIco.ico" />
+    <Content Include="WixUINewIco.ico" />
+    <Content Include="WixUIUpIco.ico" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources_en-us.wxl" />

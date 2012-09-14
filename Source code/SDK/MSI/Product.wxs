@@ -16,9 +16,6 @@
     <MajorUpgrade AllowDowngrades="no" DowngradeErrorMessage="!(loc.DowngradeError)"/>
 
     <WixVariable Id="WixUILicenseRtf" Value="License.rtf"/>
-
-    <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
-    <WixVariable Id="WixUISupportPerUser" Value="0" />
     
     <!-- Features -->
       
@@ -192,14 +189,12 @@
         <![CDATA[VS2012DEVENV AND VS2012_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND (VS2012_PROJECTTEMPLATES_DIR OR VS2012_ITEMTEMPLATES_DIR)]]>
       </Custom>
     </InstallExecuteSequence>
-    
-    <SetProperty Id="ARPINSTALLLOCATION" Value="[APPLICATIONFOLDER]" After="CostFinalize" />
 
     <!-- UI -->
     
     <UIRef Id="WixUI_Advanced"/>
     <UIRef Id="WixUI_ErrorProgressText"/>
-    
+      
     <UI>
       <ProgressText Action="VS2010InstallVSTemplates" Template="[1]">!(loc.VisualStudioTemplatesRegistration)</ProgressText>
       <ProgressText Action="VCSHARP2010InstallVSTemplates" Template="[1]">!(loc.VisualStudioTemplatesRegistration)</ProgressText>
@@ -215,13 +210,23 @@
       <ProgressText Action="NetFxExecuteNativeImageCommitUninstall" Template="[1]">!(loc.NativeImagesUninstalling)</ProgressText>
       <ProgressText Action="NetFxExecuteNativeImageCommitUninstall_64" Template="[1]">!(loc.NativeImagesUninstalling)</ProgressText>
     </UI>
+
+    <WixVariable Id="WixUIBannerBmp" Value="WixUIBannerBmp.bmp"/>
+    <WixVariable Id="WixUIDialogBmp" Value="WixUIDialogBmp.bmp"/>
+    <WixVariable Id="WixUIInfoIco" Value="WixUIInfoIco.ico"/>
+    <WixVariable Id="WixUINewIco" Value="WixUINewIco.ico"/>
+    <WixVariable Id="WixUIUpIco" Value="WixUIUpIco.ico"/>
+    
+    <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
+    <WixVariable Id="WixUISupportPerUser" Value="0" />
+    <SetProperty Id="ARPINSTALLLOCATION" Value="[APPLICATIONFOLDER]" After="CostFinalize" />
     
     <InstallUISequence>
       <Custom Action="OverwriteWixSetDefaultPerMachineFolder" After="WixSetDefaultPerMachineFolder"/>
     </InstallUISequence>
     
     <!-- Directories -->
-
+    
     <Property Id="ApplicationFolderName" Value="$(var.SDKName)\$(var.FrameworkName)\$(var.SDKVersion)" />
 
     <Directory Id="TARGETDIR" Name="SourceDir">

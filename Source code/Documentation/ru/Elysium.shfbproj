@@ -67,7 +67,7 @@
     <RootNamespaceContainer>True</RootNamespaceContainer>
     <RootNamespaceTitle>Документация по Elysium for .NET 4</RootNamespaceTitle>
     <PlugInConfigurations>
-      <PlugInConfig id="Additional Content Only" enabled="False">
+      <PlugInConfig id="Additional Content Only" enabled="True">
         <configuration />
       </PlugInConfig>
     </PlugInConfigurations>
@@ -144,104 +144,234 @@
     <None Include="Content\SDKInstallation.aml" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Media\1.1 Главный экран - Иконка.png">
-      <ImageId>1.1 Главный экран - Иконка</ImageId>
-      <AlternateText>1.1 Главный экран - Иконка</AlternateText>
-      <CopyToMedia>True</CopyToMedia>
-    </Image>
-    <Image Include="Media\1.1 Главный экран.png">
-      <ImageId>1.1 Главный экран</ImageId>
+    <Image Include="Media\Bootstrapper - 1.1 Главный экран - Иконка.png">
+      <ImageId>Bootstrapper - 1.1 Главный экран - Иконка</ImageId>
       <AlternateText>1.1 Главный экран</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
-    <Image Include="Media\1.2 Принятие лицензионного соглашения - Иконка.png">
-      <ImageId>1.2 Принятие лицензионного соглашения - Иконка</ImageId>
-      <AlternateText>1.2 Принятие лицензионного соглашения - Иконка</AlternateText>
+    <Image Include="Media\Bootstrapper - 1.1 Главный экран.png">
+      <ImageId>Bootstrapper - 1.1 Главный экран</ImageId>
+      <AlternateText>1.1 Главный экран</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
-    <Image Include="Media\1.2 Принятие лицензионного соглашения.png">
-      <ImageId>1.2 Принятие лицензионного соглашения</ImageId>
+    <Image Include="Media\Bootstrapper - 1.2 Принятие лицензионного соглашения - Иконка.png">
+      <ImageId>Bootstrapper - 1.2 Принятие лицензионного соглашения - Иконка</ImageId>
       <AlternateText>1.2 Принятие лицензионного соглашения</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
-    <Image Include="Media\1.3 Выбор компонентов - Иконка.png">
-      <ImageId>1.3 Выбор компонентов - Иконка</ImageId>
-      <AlternateText>1.3 Выбор компонентов - Иконка</AlternateText>
+    <Image Include="Media\Bootstrapper - 1.2 Принятие лицензионного соглашения.png">
+      <ImageId>Bootstrapper - 1.2 Принятие лицензионного соглашения</ImageId>
+      <AlternateText>1.2 Принятие лицензионного соглашения</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
-    <Image Include="Media\1.3 Выбор компонентов.png">
-      <ImageId>1.3 Выбор компонентов</ImageId>
+    <Image Include="Media\Bootstrapper - 1.3 Выбор компонентов - Иконка.png">
+      <ImageId>Bootstrapper - 1.3 Выбор компонентов - Иконка</ImageId>
       <AlternateText>1.3 Выбор компонентов</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
-    <Image Include="Media\1.4.1 Копирование новых файлов - Иконка.png">
-      <ImageId>1.4.1 Копирование новых файлов - Иконка</ImageId>
-      <AlternateText>1.4.1 Копирование новых файлов - Иконка</AlternateText>
+    <Image Include="Media\Bootstrapper - 1.3 Выбор компонентов.png">
+      <ImageId>Bootstrapper - 1.3 Выбор компонентов</ImageId>
+      <AlternateText>1.3 Выбор компонентов</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
-    <Image Include="Media\1.4.1 Копирование новых файлов.png">
-      <ImageId>1.4.1 Копирование новых файлов</ImageId>
+    <Image Include="Media\Bootstrapper - 1.4.1 Копирование новых файлов - Иконка.png">
+      <ImageId>Bootstrapper - 1.4.1 Копирование новых файлов - Иконка</ImageId>
       <AlternateText>1.4.1 Копирование новых файлов</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
-    <Image Include="Media\1.4.2 Создание образов в машинном коде - Иконка.png">
-      <ImageId>1.4.2 Создание образов в машинном коде - Иконка</ImageId>
-      <AlternateText>1.4.2 Создание образов в машинном коде - Иконка</AlternateText>
+    <Image Include="Media\Bootstrapper - 1.4.1 Копирование новых файлов.png">
+      <ImageId>Bootstrapper - 1.4.1 Копирование новых файлов</ImageId>
+      <AlternateText>1.4.1 Копирование новых файлов</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
-    <Image Include="Media\1.4.2 Создание образов в машинном коде.png">
-      <ImageId>1.4.2 Создание образов в машинном коде</ImageId>
+    <Image Include="Media\Bootstrapper - 1.4.2 Создание образов в машинном коде - Иконка.png">
+      <ImageId>Bootstrapper - 1.4.2 Создание образов в машинном коде - Иконка</ImageId>
       <AlternateText>1.4.2 Создание образов в машинном коде</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
-    <Image Include="Media\1.4.3 Запуск служб - Иконка.png">
-      <ImageId>1.4.3 Запуск служб - Иконка</ImageId>
-      <AlternateText>1.4.3 Запуск служб - Иконка</AlternateText>
+    <Image Include="Media\Bootstrapper - 1.4.2 Создание образов в машинном коде.png">
+      <ImageId>Bootstrapper - 1.4.2 Создание образов в машинном коде</ImageId>
+      <AlternateText>1.4.2 Создание образов в машинном коде</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
-    <Image Include="Media\1.4.3 Запуск служб.png">
-      <ImageId>1.4.3 Запуск служб</ImageId>
+    <Image Include="Media\Bootstrapper - 1.4.3 Запуск служб - Иконка.png">
+      <ImageId>Bootstrapper - 1.4.3 Запуск служб - Иконка</ImageId>
       <AlternateText>1.4.3 Запуск служб</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
-    <Image Include="Media\1.4.4 Обновление регистрации шаблонов Visual Studio - Иконка.png">
-      <ImageId>1.4.4 Обновление регистрации шаблонов Visual Studio - Иконка</ImageId>
-      <AlternateText>1.4.4 Обновление регистрации шаблонов Visual Studio - Иконка</AlternateText>
+    <Image Include="Media\Bootstrapper - 1.4.3 Запуск служб.png">
+      <ImageId>Bootstrapper - 1.4.3 Запуск служб</ImageId>
+      <AlternateText>1.4.3 Запуск служб</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
-    <Image Include="Media\1.4.4 Обновление регистрации шаблонов Visual Studio.png">
-      <ImageId>1.4.4 Обновление регистрации шаблонов Visual Studio</ImageId>
+    <Image Include="Media\Bootstrapper - 1.4.4 Обновление регистрации шаблонов Visual Studio - Иконка.png">
+      <ImageId>Bootstrapper - 1.4.4 Обновление регистрации шаблонов Visual Studio - Иконка</ImageId>
       <AlternateText>1.4.4 Обновление регистрации шаблонов Visual Studio</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
-    <Image Include="Media\2.1 Изменить, Восстановить, Удалить - Иконка.png">
-      <ImageId>2.1 Изменить, Восстановить, Удалить - Иконка</ImageId>
-      <AlternateText>2.1 Изменить, Восстановить, Удалить - Иконка</AlternateText>
+    <Image Include="Media\Bootstrapper - 1.4.4 Обновление регистрации шаблонов Visual Studio.png">
+      <ImageId>Bootstrapper - 1.4.4 Обновление регистрации шаблонов Visual Studio</ImageId>
+      <AlternateText>1.4.4 Обновление регистрации шаблонов Visual Studio</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
-    <Image Include="Media\2.1 Изменить, Восстановить, Удалить.png">
-      <ImageId>2.1 Изменить, Восстановить, Удалить</ImageId>
+    <Image Include="Media\Bootstrapper - 2.1 Изменить, Восстановить, Удалить - Иконка.png">
+      <ImageId>Bootstrapper - 2.1 Изменить, Восстановить, Удалить - Иконка</ImageId>
       <AlternateText>2.1 Изменить, Восстановить, Удалить</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
-    <Image Include="Media\2.2 Проверка установки - Иконка.png">
-      <ImageId>2.2 Проверка установки - Иконка</ImageId>
-      <AlternateText>2.2 Проверка установки - Иконка</AlternateText>
+    <Image Include="Media\Bootstrapper - 2.1 Изменить, Восстановить, Удалить.png">
+      <ImageId>Bootstrapper - 2.1 Изменить, Восстановить, Удалить</ImageId>
+      <AlternateText>2.1 Изменить, Восстановить, Удалить</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
-    <Image Include="Media\2.2 Проверка установки.png">
-      <ImageId>2.2 Проверка установки</ImageId>
+    <Image Include="Media\Bootstrapper - 2.2 Проверка установки - Иконка.png">
+      <ImageId>Bootstrapper - 2.2 Проверка установки - Иконка</ImageId>
       <AlternateText>2.2 Проверка установки</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
-    <Image Include="Media\3 Операция успешно завершена - Иконка.png">
-      <ImageId>3 Операция успешно завершена - Иконка</ImageId>
-      <AlternateText>3 Операция успешно завершена - Иконка</AlternateText>
+    <Image Include="Media\Bootstrapper - 2.2 Проверка установки.png">
+      <ImageId>Bootstrapper - 2.2 Проверка установки</ImageId>
+      <AlternateText>2.2 Проверка установки</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
-    <Image Include="Media\3 Операция успешно завершена.png">
-      <ImageId>3 Операция успешно завершена</ImageId>
+    <Image Include="Media\Bootstrapper - 3 Операция успешно завершена - Иконка.png">
+      <ImageId>Bootstrapper - 3 Операция успешно завершена - Иконка</ImageId>
       <AlternateText>3 Операция успешно завершена</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\Bootstrapper - 3 Операция успешно завершена.png">
+      <ImageId>Bootstrapper - 3 Операция успешно завершена</ImageId>
+      <AlternateText>3 Операция успешно завершена</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\MSI - 1.1 Главный экран - Иконка.png">
+      <ImageId>MSI - 1.1 Главный экран - Иконка</ImageId>
+      <AlternateText>1.1 Главный экран</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\MSI - 1.1 Главный экран.png">
+      <ImageId>MSI - 1.1 Главный экран</ImageId>
+      <AlternateText>1.1 Главный экран</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\MSI - 1.2 Принятие лицензионного соглашения - Иконка.png">
+      <ImageId>MSI - 1.2 Принятие лицензионного соглашения - Иконка</ImageId>
+      <AlternateText>1.2 Принятие лицензионного соглашения</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\MSI - 1.2 Принятие лицензионного соглашения.png">
+      <ImageId>MSI - 1.2 Принятие лицензионного соглашения</ImageId>
+      <AlternateText>1.2 Принятие лицензионного соглашения</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\MSI - 1.3.1 Выбор папки назначения - Иконка.png">
+      <ImageId>MSI - 1.3.1 Выбор папки назначения - Иконка</ImageId>
+      <AlternateText>1.3.1 Выбор папки назначения</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\MSI - 1.3.1 Выбор папки назначения.png">
+      <ImageId>MSI - 1.3.1 Выбор папки назначения</ImageId>
+      <AlternateText>1.3.1 Выбор папки назначения</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\MSI - 1.3.2 Выбор папки назначения - Иконка.png">
+      <ImageId>MSI - 1.3.2 Выбор папки назначения - Иконка</ImageId>
+      <AlternateText>1.3.2 Выбор папки назначения</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\MSI - 1.3.2 Выбор папки назначения.png">
+      <ImageId>MSI - 1.3.2 Выбор папки назначения</ImageId>
+      <AlternateText>1.3.2 Выбор папки назначения</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\MSI - 1.4 Выбор компонентов - Иконка.png">
+      <ImageId>MSI - 1.4 Выбор компонентов - Иконка</ImageId>
+      <AlternateText>1.4 Выбор компонентов</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\MSI - 1.4 Выбор компонентов.png">
+      <ImageId>MSI - 1.4 Выбор компонентов</ImageId>
+      <AlternateText>1.4 Выбор компонентов</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\MSI - 1.5.1 Копирование новых файлов - Иконка.png">
+      <ImageId>MSI - 1.5.1 Копирование новых файлов - Иконка</ImageId>
+      <AlternateText>1.5.1 Копирование новых файлов</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\MSI - 1.5.1 Копирование новых файлов.png">
+      <ImageId>MSI - 1.5.1 Копирование новых файлов</ImageId>
+      <AlternateText>1.5.1 Копирование новых файлов</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\MSI - 1.5.2 Запуск служб - Иконка.png">
+      <ImageId>MSI - 1.5.2 Запуск служб - Иконка</ImageId>
+      <AlternateText>1.5.2 Запуск служб</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\MSI - 1.5.2 Запуск служб.png">
+      <ImageId>MSI - 1.5.2 Запуск служб</ImageId>
+      <AlternateText>1.5.2 Запуск служб</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\MSI - 1.5.3 Обновление регистрации шаблонов Visual Studio - Иконка.png">
+      <ImageId>MSI - 1.5.3 Обновление регистрации шаблонов Visual Studio - Иконка</ImageId>
+      <AlternateText>1.5.3 Обновление регистрации шаблонов Visual Studio</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\MSI - 1.5.3 Обновление регистрации шаблонов Visual Studio.png">
+      <ImageId>MSI - 1.5.3 Обновление регистрации шаблонов Visual Studio</ImageId>
+      <AlternateText>1.5.3 Обновление регистрации шаблонов Visual Studio</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\MSI - 2.1 Начальный экран - Иконка.png">
+      <ImageId>MSI - 2.1 Начальный экран - Иконка</ImageId>
+      <AlternateText>2.1 Начальный экран</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\MSI - 2.1 Начальный экран.png">
+      <ImageId>MSI - 2.1 Начальный экран</ImageId>
+      <AlternateText>2.1 Начальный экран</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\MSI - 2.2 Изменить, Восстановить, Удалить - Иконка.png">
+      <ImageId>MSI - 2.2 Изменить, Восстановить, Удалить - Иконка</ImageId>
+      <AlternateText>2.2 Изменить, Восстановить, Удалить</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\MSI - 2.2 Изменить, Восстановить, Удалить.png">
+      <ImageId>MSI - 2.2 Изменить, Восстановить, Удалить</ImageId>
+      <AlternateText>2.2 Изменить, Восстановить, Удалить</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\MSI - 3 Операция успешно завершена - Иконка.png">
+      <ImageId>MSI - 3 Операция успешно завершена - Иконка</ImageId>
+      <AlternateText>3 Операция успешно завершена</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\MSI - 3 Операция успешно завершена.png">
+      <ImageId>MSI - 3 Операция успешно завершена</ImageId>
+      <AlternateText>3 Операция успешно завершена</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\NuGet - 1 Главный экран - Иконка.png">
+      <ImageId>NuGet - 1 Главный экран - Иконка</ImageId>
+      <AlternateText>Главный экран</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\NuGet - 1 Главный экран.png">
+      <ImageId>NuGet - 1 Главный экран</ImageId>
+      <AlternateText>1 Главный экран</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\NuGet - 2 Установка - Иконка.png">
+      <ImageId>NuGet - 2 Установка - Иконка</ImageId>
+      <AlternateText>2 Установка</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\NuGet - 2 Установка.png">
+      <ImageId>NuGet - 2 Установка</ImageId>
+      <AlternateText>2 Установка</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
   </ItemGroup>
