@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="6b3dc72b-108a-4cfa-b359-d5367ae55340" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+                               xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+    <introduction>
+      <para>
+        <legacyBold><token>Elysium</token></legacyBold> содержит большое количество изменений. Чтобы сделать переход с предыдущей версии более гладким, в данном разделе описываются
+        основные изменения и способы решения проблем с ними связаных.
+      </para>
+    </introduction>
+    
+    <section address="NamingChanges">
+      <title>Изменения в именовании и размещении сборок, пространств имён и типов</title>
+      <content>
+        <list class="bullet">
+          <listItem>
+            <para>
+              Сборка <legacyBold>Elysium.Theme.dll</legacyBold> разбита на две сборки:
+              <legacyBold>Elysium.dll</legacyBold> и <legacyBold>Elysium.Notifications.dll</legacyBold>.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Пространство имён <legacyBold>Elysium.Theme</legacyBold> переименовано в <codeEntityReference>N:Elysium</codeEntityReference>.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Перечисление <legacyBold>ThemeType</legacyBold> переименовано в перечисление <codeEntityReference>T:Elysium.Theme</codeEntityReference>.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Класс <legacyBold>AccentColors</legacyBold> заменён классом <codeEntityReference>T:Elysium.AccentBrushes</codeEntityReference>.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Классы <legacyBold>LightColors</legacyBold> и <legacyBold>DarkColors</legacyBold> удалены.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Класс <legacyBold>Parameters</legacyBold> разделён на несколько классов, которые находятся в пространстве имён
+              <codeEntityReference>N:Elysium.Parameters</codeEntityReference>. 
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Функциональность класса <legacyBold>ThemeManager</legacyBold> заменена на новую функциональность, поддержку которой осуществляют классы
+              <codeEntityReference>N:Elysium</codeEntityReference>.<codeEntityReference>T:Elysium.Manager</codeEntityReference>,
+              <codeEntityReference>N:Elysium.Parameters</codeEntityReference>.<codeEntityReference>T:Elysium.Parameters.Manager</codeEntityReference> и
+              <codeEntityReference>N:Elysium.Parameters</codeEntityReference>.<codeEntityReference>T:Elysium.Parameters.Design</codeEntityReference>.
+              Подробнее смотрите в разделе Новая модель управления настройками темы.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Пространства имён <legacyBold>Elysium.Theme.Commands</legacyBold> и <legacyBold>Elysium.Theme.ViewModels</legacyBold>, осуществляющие поддержку
+              модели <legacyBold>Model-View-ViewModel</legacyBold>, удалены.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Пространства имён <legacyBold>Elysium.Theme.Controls</legacyBold> переименовано в <codeEntityReference>N:Elysium.Controls</codeEntityReference>.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Классы <legacyBold>ProgressBarBase</legacyBold>, <legacyBold>LinearProgressBar</legacyBold> и <legacyBold>CircularProgressBar</legacyBold>
+              переименованы в <codeEntityReference>T:Elysium.Controls.ProgressBase</codeEntityReference>,
+              <codeEntityReference>T:Elysium.Controls.ProgressBar</codeEntityReference> и
+              <codeEntityReference>T:Elysium.Controls.ProgressRing</codeEntityReference> соответственно.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Перечисления <codeEntityReference>T:Elysium.Notifications.HorizontalPlacement</codeEntityReference> и
+              <codeEntityReference>T:Elysium.Notifications.VerticalPlacement</codeEntityReference> перемещены в пространство имён
+              <codeEntityReference>N:Elysium.Notifications</codeEntityReference> в сборке <legacyBold>Elysium.Notifications.dll</legacyBold>. 
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Класс <legacyBold>ToastNotification</legacyBold> упразднён. Функциональность системы уведомлений поддерживает класс
+              <codeEntityReference>T:Elysium.Notifications.NotificationManager</codeEntityReference>
+              из сборки <legacyBold>Elysium.Notifications.dll</legacyBold>. Подробнее смотрите в разделе Новая модель работы системы уведомлений. 
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Пространство имён <legacyBold>Elysium.Theme.Controls.Automation</legacyBold> переименовано в пространство имён
+              <codeEntityReference>N:Elysium.Controls.Automation</codeEntityReference>.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Пространство имён <legacyBold>Elysium.Theme.Converters</legacyBold> переименовано в пространство имён
+              <codeEntityReference>N:Elysium.Converters</codeEntityReference>.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Пространство имён <legacyBold>Elysium.Theme.Extensions</legacyBold> переименовано в пространство имён
+              <codeEntityReference>N:Elysium.Extensions</codeEntityReference>.
+            </para>
+          </listItem>
+        </list>
+      </content>
+    </section>
+
+    <section address="DistributionChanges">
+      <title>Изменения в составе распространяемых дистрибутивов (пакетов)</title>
+      <content>
+        <para>
+          <legacyBold><token>Elysium</token></legacyBold> распространяется в виде следущих пакетов:
+        </para>
+        <table>
+          <tableHeader>
+            <row>
+              <entry>
+                <para>Тип пакета</para>
+              </entry>
+              <entry>
+                <para>Доступно для использования при разработке</para>
+              </entry>
+              <entry>
+                <para>Доступно для распространения вместе с программой</para>
+              </entry>
+            </row>
+          </tableHeader>
+          <row>
+            <entry>
+              <para>Архив ZIP</para>
+            </entry>
+            <entry>
+              <para>Да (требует дополнительных действий)</para>
+            </entry>
+            <entry>
+              <para>Да (требует дополнительных действий)</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Установщик</para>
+            </entry>
+            <entry>
+              <para>В составе установщика (.exe) или msi-пакета <legacyBold>Elysium SDK</legacyBold></para>
+            </entry>
+            <entry>
+              <para>В виде msi-пакета <legacyBold>Elysum Runtime</legacyBold></para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>NuGet</para>
+            </entry>
+            <entry>
+              <para>Да (с ограничениями)</para>
+            </entry>
+            <entry>
+              <para>Да (с ограничениями)</para>
+            </entry>
+          </row>
+        </table>
+        <para>
+          Подробнее смотрите в статьях <link xlink:href="0405d96c-9fcd-487c-b0b3-b7ae711c937b"/> и Распространение Elysium вместе с программой. 
+        </para>
+      </content>
+    </section>
+      
+    <relatedTopics>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID"/>
+      <link xlink:href="Other Topic's ID">Link inner text</link>
+
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8270" />
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on CodePlex</linkText>
+          <linkAlternateText>Go to CodePlex</linkAlternateText>
+          <linkUri>http://shfb.codeplex.com</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

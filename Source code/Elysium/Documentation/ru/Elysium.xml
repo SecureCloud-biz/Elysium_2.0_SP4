@@ -7322,8 +7322,14 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
+    <member name="M:Elysium.Controls.Window.OnSourceInitialized(System.EventArgs)">
+      <inheritdoc />
+    </member>
     <member name="M:Elysium.Controls.Window.OnApplyTemplate">
       <inheritdoc />
+    </member>
+    <member name="M:Elysium.Controls.Window.ShowDialog">
+      <inheritdoc cref="M:System.Windows.Window.ShowDialog" />
     </member>
     <member name="T:Elysium.Controls.WindowCommands">
       <summary>

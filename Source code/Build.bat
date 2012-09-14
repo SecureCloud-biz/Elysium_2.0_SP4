@@ -21,16 +21,22 @@ call %vcvarsall%
 
 chdir /d %~dp0
 
+tf checkout "Elysium\Properties\AssemblyInfo.cs" /lock:none
+tf checkout "Elysium\Documentation\ru\Elysium.xml" "Elysium\Documentation\en\Elysium.xml" /lock:none
+tf checkout "Elysium\Themes\Generic.xaml" /lock:none
 msbuild "Elysium\Elysium.csproj" /target:Build /property:Configuration=Debug;Platform=AnyCPU /verbosity:minimal
 IF ERRORLEVEL 1 goto showerror
 msbuild "Elysium\Elysium.csproj" /target:Build /property:Configuration=Release;Platform=AnyCPU /verbosity:minimal
 IF ERRORLEVEL 1 goto showerror
 
+tf checkout "Elysium.Notifications\Properties\AssemblyInfo.cs" /lock:none
+tf checkout "Elysium.Notifications\Documentation\ru\Elysium.Notifications.xml" "Elysium.Notifications\Documentation\en\Elysium.Notifications.xml" /lock:none
 msbuild "Elysium.Notifications\Elysium.Notifications.csproj" /target:Build /property:Configuration=Debug;Platform=AnyCPU /property:BuildProjectReferences=false /verbosity:minimal
 IF ERRORLEVEL 1 goto showerror
 msbuild "Elysium.Notifications\Elysium.Notifications.csproj" /target:Build /property:Configuration=Release;Platform=AnyCPU /property:BuildProjectReferences=false /verbosity:minimal
 IF ERRORLEVEL 1 goto showerror
 
+tf checkout "Elysium.Notifications.Server\Properties\AssemblyInfo.cs" /lock:none
 msbuild "Elysium.Notifications.Server\Elysium.Notifications.Server.csproj" /target:Build /property:Configuration=Debug;Platform=x86 /property:BuildProjectReferences=false /verbosity:minimal
 IF ERRORLEVEL 1 goto showerror
 msbuild "Elysium.Notifications.Server\Elysium.Notifications.Server.csproj" /target:Build /property:Configuration=Release;Platform=x86 /property:BuildProjectReferences=false /verbosity:minimal
@@ -40,6 +46,7 @@ IF ERRORLEVEL 1 goto showerror
 msbuild "Elysium.Notifications.Server\Elysium.Notifications.Server.csproj" /target:Build /property:Configuration=Release;Platform=x64 /property:BuildProjectReferences=false /verbosity:minimal
 IF ERRORLEVEL 1 goto showerror
 
+tf checkout "Elysium.Test\Properties\AssemblyInfo.cs" /lock:none
 msbuild "Elysium.Test\Elysium.Test.csproj" /target:Build /property:Configuration=Debug;Platform=x86 /property:BuildProjectReferences=false /verbosity:minimal
 IF ERRORLEVEL 1 goto showerror
 msbuild "Elysium.Test\Elysium.Test.csproj" /target:Build /property:Configuration=Release;Platform=x86 /property:BuildProjectReferences=false /verbosity:minimal
@@ -87,11 +94,12 @@ call "SDK\MSI\Zip templates.bat"
 
 chdir /d %~dp0
 
-::msbuild "Documentation\ru\Elysium.shfbproj" /target:Build /property:Configuration=Debug;Platform=AnyCPU /verbosity:minimal
-::IF ERRORLEVEL 1 goto showerror
-::msbuild "Documentation\en\Elysium.shfbproj" /target:Build /property:Configuration=Debug;Platform=AnyCPU /verbosity:minimal
-::IF ERRORLEVEL 1 goto showerror
+msbuild "Documentation\ru\Elysium.shfbproj" /target:Build /property:Configuration=Debug;Platform=AnyCPU /verbosity:minimal
+IF ERRORLEVEL 1 goto showerror
+msbuild "Documentation\en\Elysium.shfbproj" /target:Build /property:Configuration=Debug;Platform=AnyCPU /verbosity:minimal
+IF ERRORLEVEL 1 goto showerror
 
+tf checkout "SDK\MSI\UI\Properties\AssemblyInfo.cs" /lock:none
 msbuild "SDK\MSI\UI\Elysium.SDK.MSI.UI.csproj" /target:Build /property:Configuration=Debug;Platform=AnyCPU /property:BuildProjectReferences=false /verbosity:minimal
 IF ERRORLEVEL 1 goto showerror
 msbuild "SDK\MSI\UI\Elysium.SDK.MSI.UI.csproj" /target:Build /property:Configuration=Release;Platform=AnyCPU /property:BuildProjectReferences=false /verbosity:minimal

@@ -15,7 +15,7 @@
   <?define FrameworkName = ".NET Framework 4"?>
   <?define RuntimeName = "Elysium"?>
   <?define RuntimeVersion = "1.5"?>
-  <?define RuntimeBuild = "732"?>
+  <?define RuntimeBuild = "754"?>
   <?define RuntimeRevision = "0"?>
   
 </Include>
