@@ -40,13 +40,13 @@
           </listItem>
           <listItem>
             <para>
-              <legacyItalic>Поддерживается</legacyItalic>: Microsoft Code Contracts tools 1.4.50813.1
+              <legacyItalic>Поддерживается</legacyItalic>: Microsoft Code Contracts tools 1.4.50910.0
             </para>
           </listItem>
         </list>
       </content>
     </prerequisites>
-
+      
     <procedure address="Installation">
       <title>Установка Elysium SDK с помощью программы установки</title>
       <steps class="ordered">
@@ -319,8 +319,7 @@
               <content>
                 <para>
                   Войдите в менеджер пакетов <legacyItalic>(рис. 1)</legacyItalic> и выполните поиск <legacyItalic>(рис. 2)</legacyItalic>
-                  пакета с именем <legacyBold>Elysium</legacyBold>. После короткого диалога установки NuGet добавит все необходимые файлы в ваш проект и
-                  вы сможете начать использовать <legacyBold>Elysium SDK</legacyBold>.
+                  пакета с именем <legacyBold>Elysium</legacyBold>.
                 </para>
                 <alert class="important">
                   <para>
@@ -358,16 +357,56 @@
                 </para>
               </content>
             </step>
+            <step>
+              <content>
+                <para>
+                  После короткого диалога установки NuGet добавит все необходимые файлы в ваш проект и
+                  вы сможете начать использовать <legacyBold>Elysium SDK</legacyBold>.
+                </para>
+              </content>
+            </step>
+          </steps>
+        </procedure>
+        <procedure address="ZIP">
+          <title>Установка Elysium SDK из архива</title>
+          <steps class="ordered">
+            <step>
+              <content>
+                <para>
+                  Загрузите архив, содержащий <legacyBold>Elysium SDK</legacyBold>, выбрав соответствующую версию для своей
+                  платформы - <legacyBold>x86 (32 бита)</legacyBold> или <legacyBold>x64 (64 бита)</legacyBold> и перейдя по
+                  <externalLink>
+                    <linkText>следующей ссылке.</linkText>
+                    <linkUri>http://elysium.codeplex.com/releases</linkUri>
+                  </externalLink>
+                </para>
+              </content>
+            </step>
+            <step>
+              <content>
+                <para>
+                  Распакуйте архив в папку назначения. При установке для всех пользователей наилучшим выбором будет папка в
+                  директории <legacyItalic>[Буква диска Windows]:\Program Files\</legacyItalic>, при установке для текущего
+                  пользователя - <legacyItalic>[Буква диска Windows]:\Users\[Имя пользователя]\AppData\Local\Apps\</legacyItalic>
+                </para>
+              </content>
+            </step>
+            <step>
+              <content>
+                <para>
+                  Запустите скрипт <legacyItalic>Install Elysium Notifications service.bat</legacyItalic> для
+                  установки <legacyBold>Системы уведомлений Elysium</legacyBold>. Во время отладки программы, для того чтобы иметь доступ к системе уведомлений
+                  необходимо запустить сервис ElysiumNotifications. Для этого запустите скрипт <legacyItalic>Run Elysium Notifications service.bat</legacyItalic>.
+                  Чтобы остановить сервис ElysiumNotifications запустите скрипт <legacyItalic>Stop Elysium Notifications service.bat</legacyItalic>.
+                  Чтобы удалить <legacyBold>Систему уведомлений Elysium</legacyBold> запустите
+                  скрипт <legacyItalic>Uninstall Elysium Notifications service.bat</legacyItalic>.
+                </para>
+              </content>
+            </step>
           </steps>
         </procedure>
       </content>
     </section>
-
-    <!-- Optional next steps info
-    <nextSteps>
-      <content><para>Next steps info goes here</para></content>
-    </nextSteps>
-    -->
 
     <relatedTopics>
       <!-- One or more of the following:

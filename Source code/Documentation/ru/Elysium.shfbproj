@@ -141,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\Backward compatibility.aml" />
+    <None Include="Content\RuntimeDeploy.aml" />
     <None Include="Content\SDKInstallation.aml" />
   </ItemGroup>
   <ItemGroup>
