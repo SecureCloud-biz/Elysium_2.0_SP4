@@ -2372,7 +2372,7 @@
                   <RowDefinition Height="Auto" />
                   <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <controls:ProgressBar x:Name="PART_ProgressBar" Grid.ColumnSpan="3" Grid.Row="0" Background="{StaticResource TransparentBrush}" Value="{TemplateBinding Progress}" VerticalAlignment="Top" Height="2" />
+                <controls:ProgressBar x:Name="PART_ProgressBar" Grid.ColumnSpan="3" Grid.Row="0" Background="{DynamicResource TransparentBrush}" Value="{TemplateBinding Progress}" VerticalAlignment="Top" Height="2" />
                 <Border x:Name="PART_Title" Grid.Column="0" Grid.Row="1" Background="{DynamicResource AccentBrush}" BorderThickness="0">
                   <TextBlock x:Name="Title" Text="{TemplateBinding Title}" Foreground="{DynamicResource ContrastBrush}" FontSize="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.TitleFontSize), Mode=OneWay}" FontWeight="Normal" Margin="10,5" />
                 </Border>
@@ -2382,18 +2382,37 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                   </Grid.ColumnDefinitions>
-                  <controls:CommandButton x:Name="PART_Minimize" Grid.Column="0" BorderThickness="0" Command="{x:Static controls:WindowCommands.Minimize}" Width="34" Height="26">
-                    <Path Data="{StaticResource MinimizeIcon}" Fill="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:CommandButton}}, Path=(params:CommandButtons.Mask)}" Stretch="None" Width="10" Height="10" />
-                  </controls:CommandButton>
-                  <controls:CommandButton x:Name="PART_Maximize" Grid.Column="1" BorderThickness="0" Command="{x:Static controls:WindowCommands.Maximize}" Width="34" Height="26">
-                    <Path Data="{StaticResource MaximizeIcon}" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:CommandButton}}, Path=(params:CommandButtons.Mask)}" Stretch="None" Width="10" Height="10" />
-                  </controls:CommandButton>
-                  <controls:CommandButton x:Name="PART_Restore" Grid.Column="1" BorderThickness="0" Command="{x:Static controls:WindowCommands.Restore}" Width="34" Height="26" Visibility="Hidden">
-                    <Path Data="{StaticResource RestoreIcon}" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:CommandButton}}, Path=(params:CommandButtons.Mask)}" Stretch="None" Width="10" Height="10" />
-                  </controls:CommandButton>
-                  <controls:CommandButton x:Name="PART_Close" Grid.Column="2" BorderThickness="0" Command="{x:Static controls:WindowCommands.Close}" Width="34" Height="26">
-                    <Path Data="{StaticResource CloseIcon}" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:CommandButton}}, Path=(params:CommandButtons.Mask)}" Stretch="None" Width="10" Height="10" />
-                  </controls:CommandButton>
+                  <Grid.Resources>
+                    <Style x:Key="{x:Type Button}" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+                      <Setter Property="Background" Value="{DynamicResource TransparentBrush}" />
+                      <Setter Property="BorderBrush" Value="{DynamicResource TransparentBrush}" />
+                      <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+                      <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                          <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
+                          <Setter Property="BorderBrush" Value="{DynamicResource HighlightBrush}" />
+                          <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                          <Setter Property="Background" Value="{DynamicResource AccentBrush}" />
+                          <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
+                          <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}" />
+                        </Trigger>
+                      </Style.Triggers>
+                    </Style>
+                  </Grid.Resources>
+                  <Button x:Name="PART_Minimize" Grid.Column="0" BorderThickness="0" Command="{x:Static controls:WindowCommands.Minimize}" Width="34" Height="26" MinWidth="34">
+                    <Path Data="{StaticResource MinimizeIcon}" Fill="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}" Stretch="None" Width="10" Height="10" />
+                  </Button>
+                  <Button x:Name="PART_Maximize" Grid.Column="1" BorderThickness="0" Command="{x:Static controls:WindowCommands.Maximize}" Width="34" Height="26" MinWidth="34">
+                    <Path Data="{StaticResource MaximizeIcon}" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}" Stretch="None" Width="10" Height="10" />
+                  </Button>
+                  <Button x:Name="PART_Restore" Grid.Column="1" BorderThickness="0" Command="{x:Static controls:WindowCommands.Restore}" Width="34" Height="26" MinWidth="34" Visibility="Hidden">
+                    <Path Data="{StaticResource RestoreIcon}" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}" Stretch="None" Width="10" Height="10" />
+                  </Button>
+                  <Button x:Name="PART_Close" Grid.Column="2" BorderThickness="0" Command="{x:Static controls:WindowCommands.Close}" Width="34" Height="26" MinWidth="34">
+                    <Path Data="{StaticResource CloseIcon}" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}" Stretch="None" Width="10" Height="10" />
+                  </Button>
                 </Grid>
               </Grid>
               <AdornerDecorator Grid.Row="1" TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}" TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}" RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}">
