@@ -3,8 +3,8 @@
 
   <?include SDKVariables.wxi ?>
   
-  <Bundle Name="Elysium SDK for .NET Framework 4" Manufacturer="Alex F. Sherman and Codeplex Community"
-          Version="1.5.732.0" UpgradeCode="ED0F0584-1CE1-45B0-9616-32ECC4DE5CAE"
+  <Bundle Name="$(var.SDKName) for $(var.FrameworkName)" Manufacturer="Alex F. Sherman and Codeplex Community"
+          Version="$(var.SDKVersion).$(var.SDKBuild).$(var.SDKRevision)" UpgradeCode="ED0F0584-1CE1-45B0-9616-32ECC4DE5CAE"
           AboutUrl="http://elysium.codeplex.com/" IconSourceFile="Icon.ico" Compressed="yes">
     
     <BootstrapperApplicationRef Id="ManagedBootstrapperApplicationHost">

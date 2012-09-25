@@ -137,10 +137,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content" />
+    <Folder Include="Content\Getting started" />
     <Folder Include="Media" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\Backward compatibility.aml" />
+    <None Include="Content\Getting started\Theme.aml" />
+    <None Include="Content\Getting started\CreatingYourFirstProject.aml" />
+    <None Include="Content\Getting started\GettingStarted.aml" />
     <None Include="Content\RuntimeDeploy.aml" />
     <None Include="Content\SDKInstallation.aml" />
   </ItemGroup>

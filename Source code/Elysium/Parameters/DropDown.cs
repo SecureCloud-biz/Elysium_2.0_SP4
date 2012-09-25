@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Diagnostics.Contracts;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
@@ -21,15 +20,15 @@ namespace Elysium.Parameters
                                                                               OnIsOpenChanged));
 
         [PublicAPI]
-        [AttachedPropertyBrowsableForType(typeof(UIElement))]
-        public static bool GetIsOpen(UIElement obj)
+        [AttachedPropertyBrowsableForType(typeof(Popup))]
+        public static bool GetIsOpen(Popup obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             return BooleanBoxingHelper.Unbox(obj.GetValue(IsOpenProperty));
         }
 
         [PublicAPI]
-        public static void SetIsOpen(UIElement obj, bool value)
+        public static void SetIsOpen(Popup obj, bool value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(IsOpenProperty, BooleanBoxingHelper.Box(value));
@@ -38,19 +37,18 @@ namespace Elysium.Parameters
         private static void OnIsOpenChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
-            var popup = obj as Popup;
-            if (popup != null)
+            ValidationHelper.OfType(obj, "obj", typeof(Popup));
+
+            var popup = (Popup)obj;
+            var oldIsOpen = BooleanBoxingHelper.Unbox(e.OldValue);
+            var newIsOpen = BooleanBoxingHelper.Unbox(e.NewValue);
+            if (!oldIsOpen && newIsOpen)
             {
-                var oldIsOpen = BooleanBoxingHelper.Unbox(e.OldValue);
-                var newIsOpen = BooleanBoxingHelper.Unbox(e.NewValue);
-                if (!oldIsOpen && newIsOpen)
-                {
-                    popup.Opened += OnOpened;
-                }
-                if (oldIsOpen && !newIsOpen)
-                {
-                    popup.Opened -= OnOpened;
-                }
+                popup.Opened += OnOpened;
+            }
+            if (oldIsOpen && !newIsOpen)
+            {
+                popup.Opened -= OnOpened;
             }
         }
 
@@ -87,14 +85,14 @@ namespace Elysium.Parameters
         public static readonly DependencyProperty IsDefaultHorizontalPositionProperty = IsDefaultHorizontalPositionPropertyKey.DependencyProperty;
 
         [PublicAPI]
-        [AttachedPropertyBrowsableForType(typeof(UIElement))]
-        public static bool GetIsDefaultHorizontalPosition(UIElement obj)
+        [AttachedPropertyBrowsableForType(typeof(Popup))]
+        public static bool GetIsDefaultHorizontalPosition(Popup obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             return BooleanBoxingHelper.Unbox(obj.GetValue(IsDefaultHorizontalPositionProperty));
         }
 
-        private static void SetIsDefaultHorizontalPosition(UIElement obj, bool value)
+        private static void SetIsDefaultHorizontalPosition(Popup obj, bool value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(IsDefaultHorizontalPositionPropertyKey, BooleanBoxingHelper.Box(value));
@@ -108,14 +106,14 @@ namespace Elysium.Parameters
         public static readonly DependencyProperty IsDefaultVerticalPositionProperty = IsDefaultVerticalPositionPropertyKey.DependencyProperty;
 
         [PublicAPI]
-        [AttachedPropertyBrowsableForType(typeof(UIElement))]
-        public static bool GetIsDefaultVerticalPosition(UIElement obj)
+        [AttachedPropertyBrowsableForType(typeof(Popup))]
+        public static bool GetIsDefaultVerticalPosition(Popup obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             return BooleanBoxingHelper.Unbox(obj.GetValue(IsDefaultVerticalPositionProperty));
         }
 
-        private static void SetIsDefaultVerticalPosition(UIElement obj, bool value)
+        private static void SetIsDefaultVerticalPosition(Popup obj, bool value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(IsDefaultVerticalPositionPropertyKey, BooleanBoxingHelper.Box(value));

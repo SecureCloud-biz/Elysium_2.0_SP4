@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Parameters.Bullet">
+      <summary>
+        Представляет класс, управляющий основными настройками флажка в стилях элементов управления <see cref="T:System.Windows.Controls.CheckBox"/> и
+        <see cref="T:System.Windows.Controls.RadioButton"/>.
+      </summary>
+    </type>
+    <property name="P:Elysium.Parameters.Bullet.DecoratorSize">
+      <summary>
+        Возвращает или задаёт размер области, на которой располагается маркер в элементах управления <see cref="T:System.Windows.Controls.CheckBox"/> и
+        <see cref="T:System.Windows.Controls.RadioButton"/>.
+      </summary>
+      <value>Размер области, на которой располагается маркер. Значение по умолчанию — 16px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Bullet.DecoratorSizeProperty"/>
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure"/>
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new CheckBox();
+          var currentValue = Parameters.GetDecoratorSize(control);
+          Parameters.SetDecoratorSize(control, 16d);
+        </code>
+        <code lang="XAML">
+          &lt;CheckBox params:Bullet.DecoratorSize="16px"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.Bullet.DecoratorSizeProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Bullet.DecoratorSize"/>.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Bullet.DecoratorSize"/>.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.Bullet.GetDecoratorSize(System.Windows.DependencyObject)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Bullet.DecoratorSize"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Размер области, на которой располагается маркер.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <exception cref="T:System.ArgumentException">
+        Параметер <paramref name="obj"/> не принадлежит к одному из следующих типов: <see cref="T:System.Windows.Controls.CheckBox"/>, <see cref="T:System.Windows.Controls.RadioButton"/>.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <requires exception="T:System.ArgumentException">(obj is CheckBox) || (obj is RadioButton)</requires>
+      <ensures>Возвращаемое значение является положительным числом.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.Bullet.SetDecoratorSize(System.Windows.DependencyObject,System.Double)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Bullet.DecoratorSize"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Размер области, на которой располагается маркер.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <exception cref="T:System.ArgumentException">
+        Параметер <paramref name="obj"/> не принадлежит к одному из следующих типов: <see cref="T:System.Windows.Controls.CheckBox"/>, <see cref="T:System.Windows.Controls.RadioButton"/>.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <requires exception="T:System.ArgumentException">(obj is CheckBox) || (obj is RadioButton)</requires>
+    </method>
+    <property name="P:Elysium.Parameters.Bullet.Size">
+      <summary>
+        Возвращает или задаёт размер маркера в состоянии "не определено" в элементах управления <see cref="T:System.Windows.Controls.CheckBox"/> и
+        <see cref="T:System.Windows.Controls.RadioButton"/>.
+      </summary>
+      <value>Размер маркера в состоянии "не определено". Значение по умолчанию — 8px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Bullet.SizeProperty"/>
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure"/>
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new CheckBox();
+          var currentValue = Parameters.GetSize(control);
+          Parameters.SetSize(control, 8d);
+        </code>
+        <code lang="XAML">
+          &lt;CheckBox params:Bullet.Size="8px"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.Bullet.SizeProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Bullet.Size"/>.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Bullet.Size"/>.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.Bullet.GetSize(System.Windows.DependencyObject)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Bullet.Size"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Размер маркера в состоянии "не определено".</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <exception cref="T:System.ArgumentException">
+        Параметер <paramref name="obj"/> не принадлежит к одному из следующих типов: <see cref="T:System.Windows.Controls.CheckBox"/>, <see cref="T:System.Windows.Controls.RadioButton"/>.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <requires exception="T:System.ArgumentException">(obj is CheckBox) || (obj is RadioButton)</requires>
+      <ensures>Возвращаемое значение является положительным числом.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.Bullet.SetSize(System.Windows.DependencyObject,System.Double)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Bullet.Size"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Размер маркера в состоянии "не определено".</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <exception cref="T:System.ArgumentException">
+        Параметер <paramref name="obj"/> не принадлежит к одному из следующих типов: <see cref="T:System.Windows.Controls.CheckBox"/>, <see cref="T:System.Windows.Controls.RadioButton"/>.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <requires exception="T:System.ArgumentException">(obj is CheckBox) || (obj is RadioButton)</requires>
+    </method>
+  </members>
+</doc>

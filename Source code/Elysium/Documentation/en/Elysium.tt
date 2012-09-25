@@ -20,7 +20,8 @@
     paths.Add(@"Manager.en.xml");
     paths.Add(@"Parameters\Design.en.xml");
     paths.Add(@"Parameters\Manager.en.xml");
-
+	
+    paths.Add(@"Parameters\Bullet.en.xml");
     paths.Add(@"Parameters\CheckBox.en.xml");
     paths.Add(@"Parameters\ComboBox.en.xml");
     paths.Add(@"Parameters\CommandButtons.en.xml");

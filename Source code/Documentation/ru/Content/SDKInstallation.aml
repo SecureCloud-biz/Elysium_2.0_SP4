@@ -327,6 +327,11 @@
                     Для того чтобы воспользоваться ею вы должны использовать один из альтернативных методов установки.
                   </para>
                 </alert>
+                <alert class="warning">
+                  <para>
+                    Шаблоны Visual Studio доступны только при установке <legacyBold>Elysium SDK</legacyBold> через программу установки или msi-пакет.
+                  </para>
+                </alert>
                 <para>
                   <markup>
                     <style type="text/css">
@@ -380,6 +385,11 @@
                     <linkUri>http://elysium.codeplex.com/releases</linkUri>
                   </externalLink>
                 </para>
+                <alert class="warning">
+                  <para>
+                    Шаблоны Visual Studio доступны только при установке <legacyBold>Elysium SDK</legacyBold> через программу установки или msi-пакет.
+                  </para>
+                </alert>
               </content>
             </step>
             <step>

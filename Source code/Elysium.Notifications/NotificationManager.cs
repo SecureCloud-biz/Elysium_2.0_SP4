@@ -124,7 +124,7 @@ namespace Elysium.Notifications
                                  };
                 if (!string.IsNullOrWhiteSpace(remark))
                 {
-                    window.Content = new TextBlock { FontStyle = FontStyles.Italic, Margin = new Thickness(10d, 0d, 10d, 5d), Text = remark };
+                    window.Content = new TextBlock { Margin = new Thickness(10d, 5d, 10d, 5d), Text = remark };
                 }
 
                 var slot = Reserve();

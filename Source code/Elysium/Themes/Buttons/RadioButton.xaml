@@ -32,7 +32,7 @@
                                      FlowDirection="{TemplateBinding FlowDirection}"
                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <BulletDecorator.Bullet>
-                            <Grid Width="{TemplateBinding params:General.BulletDecoratorSize}" Height="{TemplateBinding params:General.BulletDecoratorSize}">
+                            <Grid Width="{TemplateBinding params:Bullet.DecoratorSize}" Height="{TemplateBinding params:Bullet.DecoratorSize}">
                                 <Ellipse Fill="{TemplateBinding Background}"
                                          Stroke="{TemplateBinding BorderBrush}"
                                          StrokeThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Mode=OneWay, Converter={StaticResource ThicknessToDoubleConverter}}"/>
@@ -41,7 +41,7 @@
                                          StrokeThickness="0"
                                          Visibility="Collapsed"
                                          HorizontalAlignment="Center" VerticalAlignment="Center"
-                                         Width="{TemplateBinding params:General.BulletSize}" Height="{TemplateBinding params:General.BulletSize}">
+                                         Width="{TemplateBinding params:Bullet.Size}" Height="{TemplateBinding params:Bullet.Size}">
                                 </Ellipse>
                             </Grid>
                         </BulletDecorator.Bullet>

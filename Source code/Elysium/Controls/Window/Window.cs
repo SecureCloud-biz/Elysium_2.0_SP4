@@ -97,11 +97,57 @@ namespace Elysium.Controls
                 WindowChrome.SetWindowChrome(this, _chrome);
             }
 
+            Initialized += OnInitializedInternal;
+            Loaded += OnLoadedInternal;
+
             var resizeBorderThicknessPropertyDescriptor =
                 DependencyPropertyDescriptor.FromProperty(Parameters.Window.ResizeBorderThicknessProperty, typeof(Window));
             if (resizeBorderThicknessPropertyDescriptor != null)
             {
                 resizeBorderThicknessPropertyDescriptor.AddValueChanged(this, OnResizeBorderThicknessChanged);
+            }
+        }
+
+        private SizeToContent _previousSizeToContent = SizeToContent.Manual;
+
+        [SecurityCritical]
+        private void OnInitializedInternal(object sender, EventArgs e)
+        {
+            if (Equals(WindowChrome.GetWindowChrome(this), _chrome) && SizeToContent != SizeToContent.Manual)
+            {
+                _previousSizeToContent = SizeToContent;
+                SizeToContent = SizeToContent.Manual;
+            }
+        }
+
+        [SecurityCritical]
+        private void OnLoadedInternal(object sender, RoutedEventArgs e)
+        {
+            if (Equals(WindowChrome.GetWindowChrome(this), _chrome) && _previousSizeToContent != SizeToContent.Manual)
+            {
+                SizeToContent = _previousSizeToContent;
+                _previousSizeToContent = SizeToContent.Manual;
+
+                if (WindowStartupLocation == WindowStartupLocation.CenterScreen)
+                {
+                    Left = SystemParameters.VirtualScreenLeft + SystemParameters.VirtualScreenWidth / 2 - ActualWidth / 2;
+                    Top = SystemParameters.VirtualScreenTop + SystemParameters.VirtualScreenHeight / 2 - ActualHeight / 2;
+                }
+                if (WindowStartupLocation == WindowStartupLocation.CenterOwner)
+                {
+                    if (Owner != null)
+                    {
+                        Left = Owner.Left + Owner.ActualWidth / 2 - ActualWidth / 2;
+                        Top = Owner.Top + Owner.ActualHeight / 2 - ActualHeight / 2;
+                    }
+                }
+                
+                UpdateNonClientBorder(WindowState == WindowState.Maximized && SizeToContent == SizeToContent.Manual);
+
+                if (_dispatcherFrame != null)
+                {
+                    _dispatcherFrame.Continue = false;
+                }
             }
         }
 
@@ -489,45 +535,9 @@ namespace Elysium.Controls
 
         private DispatcherFrame _dispatcherFrame;
 
-        private bool _isInitialized;
-
         [SecuritySafeCritical]
         public override void OnApplyTemplate()
         {
-            if (Equals(WindowChrome.GetWindowChrome(this), _chrome) && SizeToContent != SizeToContent.Manual && !_isInitialized)
-            {
-                var previousVisibility = Visibility;
-                Visibility = Visibility.Hidden;
-
-                var previousSizeToContent = SizeToContent;
-                SizeToContent = SizeToContent.Manual;
-
-                Dispatcher.BeginInvoke(DispatcherPriority.Loaded, (Action)(() =>
-                {
-                    SizeToContent = previousSizeToContent;
-                    if (WindowStartupLocation == WindowStartupLocation.CenterScreen)
-                    {
-                        Left = SystemParameters.VirtualScreenLeft + SystemParameters.VirtualScreenWidth / 2 - ActualWidth / 2;
-                        Top = SystemParameters.VirtualScreenTop + SystemParameters.VirtualScreenHeight / 2 - ActualHeight / 2;
-                    }
-                    if (WindowStartupLocation == WindowStartupLocation.CenterOwner)
-                    {
-                        if (Owner != null)
-                        {
-                            Left = Owner.Left + Owner.ActualWidth / 2 - ActualWidth / 2;
-                            Top = Owner.Top + Owner.ActualHeight / 2 - ActualHeight / 2;
-                        }
-                    }
-                    Visibility = previousVisibility;
-                    if (_dispatcherFrame != null)
-                    {
-                        _dispatcherFrame.Continue = false;
-                    }
-                }));
-            }
-
-            _isInitialized = true;
-
             base.OnApplyTemplate();
 
             OnApplyTemplateInternal();

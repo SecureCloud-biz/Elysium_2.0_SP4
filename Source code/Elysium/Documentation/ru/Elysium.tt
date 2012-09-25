@@ -20,7 +20,8 @@
     paths.Add(@"Manager.ru.xml");
     paths.Add(@"Parameters\Design.ru.xml");
     paths.Add(@"Parameters\Manager.ru.xml");
-
+	
+    paths.Add(@"Parameters\Bullet.ru.xml");
     paths.Add(@"Parameters\CheckBox.ru.xml");
     paths.Add(@"Parameters\ComboBox.ru.xml");
     paths.Add(@"Parameters\CommandButtons.ru.xml");

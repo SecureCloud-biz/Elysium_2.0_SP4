@@ -523,53 +523,5 @@ namespace Elysium.Parameters
         }
 
         #endregion
-
-        #region Bullets
-
-        [PublicAPI]
-        public static readonly DependencyProperty BulletDecoratorSizeProperty =
-            DependencyProperty.RegisterAttached("BulletDecoratorSize", typeof(double), typeof(General),
-                                                new FrameworkPropertyMetadata(16d, FrameworkPropertyMetadataOptions.AffectsMeasure,
-                                                                              null, DoubleUtil.CoerceNonNegative));
-
-        [PublicAPI]
-        [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetBulletDecoratorSize([NotNull] DependencyObject obj)
-        {
-            ValidationHelper.NotNull(obj, "obj");
-            DoubleUtil.EnsureNonNegative();
-            return BoxingHelper<double>.Unbox(obj.GetValue(BulletDecoratorSizeProperty));
-        }
-
-        [PublicAPI]
-        public static void SetBulletDecoratorSize([NotNull] DependencyObject obj, double value)
-        {
-            ValidationHelper.NotNull(obj, "obj");
-            obj.SetValue(BulletDecoratorSizeProperty, value);
-        }
-
-        [PublicAPI]
-        public static readonly DependencyProperty BulletSizeProperty =
-            DependencyProperty.RegisterAttached("BulletSize", typeof(double), typeof(General),
-                                                new FrameworkPropertyMetadata(8d, FrameworkPropertyMetadataOptions.AffectsMeasure,
-                                                                              null, DoubleUtil.CoerceNonNegative));
-
-        [PublicAPI]
-        [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetBulletSize([NotNull] DependencyObject obj)
-        {
-            ValidationHelper.NotNull(obj, "obj");
-            DoubleUtil.EnsureNonNegative();
-            return BoxingHelper<double>.Unbox(obj.GetValue(BulletSizeProperty));
-        }
-
-        [PublicAPI]
-        public static void SetBulletSize([NotNull] DependencyObject obj, double value)
-        {
-            ValidationHelper.NotNull(obj, "obj");
-            obj.SetValue(BulletSizeProperty, value);
-        }
-
-        #endregion
     }
 }

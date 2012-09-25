@@ -16,7 +16,7 @@ namespace $safeprojectname$
     {
         private void StartupHandler(object sender, System.Windows.StartupEventArgs e)
         {
-            this.ApplyTheme(Theme.Dark, AccentBrushes.Blue, Brushes.White);
+            this.Apply(Theme.Dark, AccentBrushes.Blue, Brushes.White);
         }
     }
 }

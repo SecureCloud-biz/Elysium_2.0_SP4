@@ -51,7 +51,7 @@
         Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.DropDown.IsOpen"/>.
       </value>
     </field>
-    <method name="M:Elysium.Parameters.DropDown.GetIsOpen(System.Windows.UIElement)">
+    <method name="M:Elysium.Parameters.DropDown.GetIsOpen(System.Windows.Controls.Primitives.Popup)">
       <summary>
         Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.DropDown.IsOpen"/> для указанного элемента управления.
       </summary>
@@ -62,7 +62,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
-    <method name="M:Elysium.Parameters.DropDown.SetIsOpen(System.Windows.UIElement,System.Boolean)">
+    <method name="M:Elysium.Parameters.DropDown.SetIsOpen(System.Windows.Controls.Primitives.Popup,System.Boolean)">
       <summary>
         Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.DropDown.IsOpen"/> для указанного элемента управления.
       </summary>
@@ -114,7 +114,7 @@
         Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.DropDown.IsDefaultHorizontalPosition"/>.
       </value>
     </field>
-    <method name="M:Elysium.Parameters.DropDown.GetIsDefaultHorizontalPosition(System.Windows.UIElement)">
+    <method name="M:Elysium.Parameters.DropDown.GetIsDefaultHorizontalPosition(System.Windows.Controls.Primitives.Popup)">
       <summary>
         Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.DropDown.IsDefaultHorizontalPosition"/> для указанного элемента управления.
       </summary>
@@ -166,7 +166,7 @@
         Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.DropDown.IsDefaultVerticalPosition"/>.
       </value>
     </field>
-    <method name="M:Elysium.Parameters.DropDown.GetIsDefaultVerticalPosition(System.Windows.UIElement)">
+    <method name="M:Elysium.Parameters.DropDown.GetIsDefaultVerticalPosition(System.Windows.Controls.Primitives.Popup)">
       <summary>
         Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.DropDown.IsDefaultVerticalPosition"/> для указанного элемента управления.
       </summary>

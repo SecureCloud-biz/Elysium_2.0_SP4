@@ -35,8 +35,8 @@
                             <Border Background="{TemplateBinding Background}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
-                                    Width="{TemplateBinding params:General.BulletDecoratorSize}"
-                                    Height="{TemplateBinding params:General.BulletDecoratorSize}">
+                                    Width="{TemplateBinding params:Bullet.DecoratorSize}"
+                                    Height="{TemplateBinding params:Bullet.DecoratorSize}">
                                 <Grid>
                                     <Path x:Name="CheckBullet"
                                           Stroke="{StaticResource AccentBrush}"
@@ -57,7 +57,7 @@
                                           Stretch="Fill"
                                           Visibility="Collapsed"
                                           Margin="2"
-                                          Width="{TemplateBinding params:General.BulletSize}" Height="{TemplateBinding params:General.BulletSize}">
+                                          Width="{TemplateBinding params:Bullet.Size}" Height="{TemplateBinding params:Bullet.Size}">
                                         <Path.Data>
                                             <GeometryGroup>
                                                 <RectangleGeometry Rect="0,0,1,1"/>

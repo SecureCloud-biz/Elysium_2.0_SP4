@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/developer/vstemplate/2005">
   <TemplateData>
-    <Name>Metro Window</Name>
+    <Name>Окно в стиле Metro (WPF)</Name>
     <Description>Окно приложения Windows Presentation Foundation в стиле Metro</Description>
     <Icon Package="{b3bae735-386c-4030-8329-ef48eeda4036}" ID="4593" />
     <TemplateID>Elysium.CSharp.Window</TemplateID>
@@ -28,7 +28,7 @@
         <Assembly>PresentationFramework</Assembly>
       </Reference>
       <Reference>
-        <Assembly>Elysium, Version=1.5.754.0, Culture=neutral, PublicKeyToken=f8966962afac6b6d, processorArchitecture=MSIL</Assembly>
+        <Assembly>Elysium, Version=1.5.761.0, Culture=neutral, PublicKeyToken=f8966962afac6b6d, processorArchitecture=MSIL</Assembly>
       </Reference>
     </References>
     <ProjectItem ReplaceParameters="true" CustomTool="MSBuild:Compile">Window.xaml</ProjectItem>

@@ -149,7 +149,7 @@
         <ControlTemplate TargetType="{x:Type CheckBox}">
           <BulletDecorator Background="{StaticResource TransparentBrush}" TextBlock.Foreground="{TemplateBinding Foreground}" TextBlock.FontFamily="{TemplateBinding FontFamily}" TextBlock.FontSize="{TemplateBinding FontSize}" TextBlock.FontWeight="{TemplateBinding FontWeight}" FlowDirection="{TemplateBinding FlowDirection}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
             <BulletDecorator.Bullet>
-              <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Width="{TemplateBinding params:General.BulletDecoratorSize}" Height="{TemplateBinding params:General.BulletDecoratorSize}">
+              <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Width="{TemplateBinding params:Bullet.DecoratorSize}" Height="{TemplateBinding params:Bullet.DecoratorSize}">
                 <Grid>
                   <Path x:Name="CheckBullet" Stroke="{StaticResource AccentBrush}" StrokeThickness="{TemplateBinding params:General.BoldThicknessValue}" Stretch="Fill" Visibility="Collapsed" Width="{TemplateBinding params:CheckBox.CheckSize}" Height="{TemplateBinding params:CheckBox.CheckSize}">
                     <Path.Data>
@@ -159,7 +159,7 @@
                       </GeometryGroup>
                     </Path.Data>
                   </Path>
-                  <Path x:Name="IndeterminateBullet" Fill="{StaticResource AccentBrush}" StrokeThickness="0" Stretch="Fill" Visibility="Collapsed" Margin="2" Width="{TemplateBinding params:General.BulletSize}" Height="{TemplateBinding params:General.BulletSize}">
+                  <Path x:Name="IndeterminateBullet" Fill="{StaticResource AccentBrush}" StrokeThickness="0" Stretch="Fill" Visibility="Collapsed" Margin="2" Width="{TemplateBinding params:Bullet.Size}" Height="{TemplateBinding params:Bullet.Size}">
                     <Path.Data>
                       <GeometryGroup>
                         <RectangleGeometry Rect="0,0,1,1" />
@@ -230,9 +230,9 @@
         <ControlTemplate TargetType="{x:Type RadioButton}">
           <BulletDecorator Background="{StaticResource TransparentBrush}" TextBlock.Foreground="{TemplateBinding Foreground}" TextBlock.FontFamily="{TemplateBinding FontFamily}" TextBlock.FontSize="{TemplateBinding FontSize}" TextBlock.FontWeight="{TemplateBinding FontWeight}" FlowDirection="{TemplateBinding FlowDirection}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
             <BulletDecorator.Bullet>
-              <Grid Width="{TemplateBinding params:General.BulletDecoratorSize}" Height="{TemplateBinding params:General.BulletDecoratorSize}">
+              <Grid Width="{TemplateBinding params:Bullet.DecoratorSize}" Height="{TemplateBinding params:Bullet.DecoratorSize}">
                 <Ellipse Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Mode=OneWay, Converter={StaticResource ThicknessToDoubleConverter}}" />
-                <Ellipse x:Name="CheckBullet" Fill="{StaticResource AccentBrush}" StrokeThickness="0" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center" Width="{TemplateBinding params:General.BulletSize}" Height="{TemplateBinding params:General.BulletSize}"></Ellipse>
+                <Ellipse x:Name="CheckBullet" Fill="{StaticResource AccentBrush}" StrokeThickness="0" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center" Width="{TemplateBinding params:Bullet.Size}" Height="{TemplateBinding params:Bullet.Size}"></Ellipse>
               </Grid>
             </BulletDecorator.Bullet>
             <Border Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.BoldPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Left}">
