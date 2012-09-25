@@ -280,10 +280,10 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TextTemplating\Microsoft.TextTemplating.targets" />
   <PropertyGroup>
-    <MSBuildExtensionsPackPath>$(MSBuildExtensionsPath32)\ExtensionPack\4.0\MSBuild.ExtensionPack.tasks</MSBuildExtensionsPackPath>
-    <MSBuildExtensionsPackPath Condition="Exists('$(MSBuildExtensionsPath64)\ExtensionPack\4.0\MSBuild.ExtensionPack.tasks')">$(MSBuildExtensionsPath64)\ExtensionPack\4.0\MSBuild.ExtensionPack.tasks</MSBuildExtensionsPackPath>
+    <MSBuildExtensionPackPath>$(MSBuildExtensionsPath32)\ExtensionPack\4.0\MSBuild.ExtensionPack.tasks</MSBuildExtensionPackPath>
+    <MSBuildExtensionPackPath Condition="Exists('$(MSBuildExtensionsPath64)\ExtensionPack\4.0\MSBuild.ExtensionPack.tasks')">$(MSBuildExtensionsPath64)\ExtensionPack\4.0\MSBuild.ExtensionPack.tasks</MSBuildExtensionPackPath>
   </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPackPath)"/>
+  <Import Condition="Exists('$(MSBuildExtensionPackPath)')" Project="$(MSBuildExtensionPackPath)"/>
   <PropertyGroup>
     <PostBuildEvent>"..\..\..\Tools and Resources\Utilities\signtool\signtool.exe" sign /f "..\..\..\Source code\SigningKey.pfx" "Elysium.Test.exe"</PostBuildEvent>
   </PropertyGroup>
