@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>3.7</ProductVersion>
+    <ProjectGuid>a72e82c8-5e75-4178-8edc-6fe3e2b4314f</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputName>Setup</OutputName>
+    <OutputType>Bundle</OutputType>
+    <DefineSolutionProperties>False</DefineSolutionProperties>
+    <IncludeSearchPaths>..\..\..\Include\</IncludeSearchPaths>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <Name>Elysium.SDK.MSI</Name>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DefineConstants>Debug;X86</DefineConstants>
+    <OutputPath>..\..\..\..\Binary\Debug\x86\SDK\MSI\</OutputPath>
+    <IntermediateOutputPath>obj\x86\</IntermediateOutputPath>
+    <WixVariables>Configuration=Debug;Platform=x86</WixVariables>
+    <VerboseOutput>True</VerboseOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DefineConstants>Debug;X64</DefineConstants>
+    <OutputPath>..\..\..\..\Binary\Debug\x64\SDK\MSI\</OutputPath>
+    <IntermediateOutputPath>obj\x64\</IntermediateOutputPath>
+    <WixVariables>Configuration=Debug;Platform=x64</WixVariables>
+    <VerboseOutput>True</VerboseOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DefineConstants>X86</DefineConstants>
+    <OutputPath>..\..\..\..\Binary\Release\x86\SDK\MSI\</OutputPath>
+    <IntermediateOutputPath>obj\x86\</IntermediateOutputPath>
+    <WixVariables>Configuration=Release;Platform=x86</WixVariables>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <DefineConstants>X64</DefineConstants>
+    <OutputPath>..\..\..\..\Binary\Release\x64\SDK\MSI\</OutputPath>
+    <IntermediateOutputPath>obj\x64\</IntermediateOutputPath>
+    <WixVariables>Configuration=Release;Platform=x64</WixVariables>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Bundle.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixUtilExtension">
+      <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
+      <Name>WixUtilExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixNetFxExtension">
+      <HintPath>$(WixExtDir)\WixNetFxExtension.dll</HintPath>
+      <Name>WixNetFxExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixBalExtension">
+      <HintPath>$(WixExtDir)\WixBalExtension.dll</HintPath>
+      <Name>WixBalExtension</Name>
+    </WixExtension>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon.ico" />
+  </ItemGroup>
+  <Import Project="$(WixTargetsPath)" />
+  <PropertyGroup>
+    <PostBuildEvent>"$(WIX)bin\Insignia.exe" /ib "$(TargetPath)" -o "$(TargetDir)Engine.exe"
+"..\..\..\..\..\Tools and Resources\Utilities\signtool\signtool.exe" sign /f "..\..\..\..\..\Source code\SigningKey.pfx" "$(TargetDir)Engine.exe"
+"$(WIX)bin\Insignia.exe" /ab "$(TargetDir)Engine.exe" "$(TargetPath)" -o "$(TargetPath)"
+"..\..\..\..\..\Tools and Resources\Utilities\signtool\signtool.exe" sign /f "..\..\..\..\..\Source code\SigningKey.pfx" "$(TargetPath)"
+del /f /q "$(TargetDir)Engine.exe"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

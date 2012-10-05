@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="38e98c7d-0495-49a4-9dea-01d0dccd3302" revisionNumber="1">
+  <developerWalkthroughDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+                                xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <para>В данном разделе описывается создание простейшего приложения использующего возможности Elysium.</para>
+    </introduction>
+
+    <prerequisites>
+      <content>
+        <alert class="warning">
+          <para>
+            Шаблоны Visual Studio доступны только при установке <legacyBold>Elysium SDK</legacyBold> через программу установки или msi-пакет.
+            В данный момент поддерживаются только шаблоны для C#.
+          </para>
+        </alert>
+      </content>
+    </prerequisites>
+    
+    <procedure address="CreatingViaTemplate">
+      <title>Создание приложения с помощью шаблона Visual Studio</title>
+      <steps class="ordered">
+        <step>
+          <content>
+            <para>
+              В окне Visual Studio выберите пункт <legacyBold>Файл - Создать - Проект</legacyBold> | <legacyBold>File - New - Project</legacyBold>.
+            </para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              В диалоговом окне <legacyBold>Создать проект</legacyBold> | <legacyBold>New Project</legacyBold> выберите тип
+              шаблона <legacyBold>Visual C# - Windows</legacyBold>,
+              затем - <legacyBold>Приложение WPF в стиле Metro</legacyBold> | <legacyBold>WPF Metro Application</legacyBold> и нажмите <legacyBold>OK</legacyBold>.
+            </para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              Visual Studio создаст новый проект, автоматически подключит необходимые зависимости и создаст базовую инфраструктуру проекта.
+            </para>
+            <alert class="tip">
+              <para>
+                Для создания дополнительных окон вы можете воспользоваться
+                шаблоном <legacyBold>Окно в стиле Metro (WPF)</legacyBold> | <legacyBold>WPF Metro Window</legacyBold>. Для этого щёлкните на проекте правой кнопкой
+                и выберите пункт <legacyBold>Добавить - Создать элемент</legacyBold> | <legacyBold>Add - New item</legacyBold>. В появившемся окне выберите
+                тип шаблона <legacyBold>Visual C# - WPF</legacyBold>,
+                а затем - <legacyBold>Окно в стиле Metro (WPF)</legacyBold> | <legacyBold>WPF Metro Window</legacyBold>,
+                после чего нажмите <legacyBold>OK</legacyBold>.
+              </para>
+            </alert>
+          </content>
+        </step>
+      </steps>
+    </procedure>
+
+    <procedure address="CreatingManually">
+      <title>Создание приложения вручную</title>
+      <steps class="ordered">
+        <step>
+          <content>
+            <para>
+              В окне Visual Studio выберите пункт <legacyBold>Файл - Создать - Проект</legacyBold> | <legacyBold>File - New - Project</legacyBold>.
+            </para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              В диалоговом окне <legacyBold>Создать проект</legacyBold> | <legacyBold>New Project</legacyBold> выберите тип
+              шаблона <legacyBold>Visual C#</legacyBold>, затем - <legacyBold>Приложение WPF</legacyBold> | <legacyBold>WPF Application</legacyBold> и
+              нажмите <legacyBold>OK</legacyBold>.
+            </para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              После того, как Visual Studio создаст новый проект, добавьте необходимые зависимости.
+              Нажмите правой кнопкой <legacyBold>Ссылки</legacyBold> | <legacyBold>References</legacyBold> и выберите пункт
+              <legacyBold>Добавить ссылку...</legacyBold> | <legacyBold>Add reference...</legacyBold>. В появившемся окне выберите пункт
+              <legacyBold>Сборки - Расширения</legacyBold> | <legacyBold>Assemblies - Extensions</legacyBold>, затем выберите сборку <legacyBold>Elysium</legacyBold>
+              и нажмите <legacyBold>OK</legacyBold>.
+            </para>
+            <alert class="note">
+              <para>
+                Если вы используете Visual Studio 2010 и у вас не установлено расширение <legacyBold>Productivity Power Tools</legacyBold>, то в диалоге
+                <legacyItalic>Добавить ссылку</legacyItalic> вам нужно выбрать пункт <legacyBold>.NET</legacyBold>.
+              </para>
+            </alert>
+          </content>
+        </step>
+      </steps>
+    </procedure>
+
+    <relatedTopics>
+      <link xlink:href="0405d96c-9fcd-487c-b0b3-b7ae711c937b"/>
+    </relatedTopics>
+  </developerWalkthroughDocument>
+</topic>

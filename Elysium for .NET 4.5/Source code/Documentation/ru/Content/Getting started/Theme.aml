@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="2ac0683a-9c20-4cc9-86e2-48a3e25696ed" revisionNumber="1">
+  <developerUIReferenceDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+                                xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <para>Elysium предоставляет специальный набор API для работы с настройками темы приложения и отдельных элементов управления.</para>
+    </introduction>
+
+    <taskList>
+      <content>
+        <procedure address="Project">
+          <title>Добавление и изменение темы проекта</title>
+          <steps class="ordered">
+            <step>
+              <content>
+                <para>
+                  Откройте файл <legacyBold>App.xaml</legacyBold>.
+                </para>
+              </content>
+            </step>
+            <step>
+              <content>
+                <para>
+                  В ресурсы приложения добавьте словарь ресурсов <legacyBold>Generic.xaml</legacyBold>,
+                  а в код - обработчик события <codeEntityReference>E:System.Windows.Application.Startup</codeEntityReference>.
+                  Внутри обработчика события вызовите одну из перегрузок метода <codeEntityReference>M:Elysium.Manager.Apply</codeEntityReference>
+                  и задайте нужные параметры.
+                </para>
+                <code language="xaml">
+                  &lt;Application x:Class="Elysium.Test.App"
+                               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                               StartupUri="MainWindow.xaml" Startup="StartupHandler"&gt;
+                      &lt;Application.Resources&gt;
+                          &lt;ResourceDictionary&gt;
+                              &lt;ResourceDictionary.MergedDictionaries&gt;
+                                  &lt;ResourceDictionary Source="/Elysium;component/Themes/Generic.xaml"/&gt;
+                              &lt;/ResourceDictionary.MergedDictionaries&gt;
+                          &lt;/ResourceDictionary&gt;
+                      &lt;/Application.Resources&gt;
+                  &lt;/Application&gt;
+                </code>
+                <code language="csharp">
+                  public sealed partial class App : System.Windows.Application
+                  {
+                      private void StartupHandler(object sender, System.Windows.StartupEventArgs e)
+                      {
+                          Elysium.Manager.ApplyTheme(this, Elysium.Theme.Dark, Elysium.AccentBrushes.Blue, Elysium.Brushes.White);
+                      }
+                  }
+                </code>
+              </content>
+            </step>
+          </steps>
+        </procedure>
+        <procedure address="Control">
+          <title>Добавление и изменение темы элемента управления</title>
+          <steps class="ordered">
+            <step>
+              <content>
+                <para>
+                  Откройте файл разметки элемента управления (например, MainWindow.xaml).
+                </para>
+              </content>
+            </step>
+            <step>
+              <content>
+                <para>
+                  Подключите пространства имён XAML <codeInline>xmlns:metro="http://schemas.codeplex.com/elysium"</codeInline> и
+                  <codeInline>xmlns:params="http://schemas.codeplex.com/elysium/params"</codeInline>. Затем задайте значения вложенным свойствам зависимостей из
+                  класса <codeInline>params:</codeInline><codeEntityReference>T:Elysium.Parameters.Manager</codeEntityReference>.
+                </para>
+                <alert class="tip">
+                  <para>
+                    Значения акцентирующих цветов можно взять из
+                    класса <codeInline>params:</codeInline><codeEntityReference>T:Elysium.AccentBrushes</codeEntityReference>.
+                  </para>
+                </alert>
+                <alert class="important">
+                  <para>
+                    Все ресурсы темы (например, кисти - такие как <codeInline>BackgroundBrush</codeInline> или стили элементов управления)
+                    являются <legacyBold>динамическими</legacyBold>. Для того, чтобы воспользоваться ими, используйте
+                    расширение разметки <codeInline>DynamicResource</codeInline>.
+                  </para>
+                  <para>Единственные статические ресурсы, предоставляемые Elysium - это иконки.</para>
+                </alert>
+                <code language="xaml">
+                  &lt;metro:Window x:Class="Elysium.Test.MainWindow"
+                                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                xmlns:metro="http://schemas.codeplex.com/elysium"
+                                xmlns:params="http://schemas.codeplex.com/elysium/params"
+                                params:Manager.Theme="Dark"
+                                params:Manager.AccentBrush="{x:Static metro:AccentBrushes.Blue}"
+                                params:Manager.ContrastBrush="White"
+                                Background="{DynamicResource BackgroundBrush}"&gt;
+                        ...
+                  &lt;/metro:Window&gt;
+                </code>
+              </content>
+            </step>
+          </steps>
+        </procedure>    
+        <procedure address="DesignTime">
+          <title>Работа в режиме конструктора</title>
+          <steps class="ordered">
+            <step>
+              <content>
+                <para>
+                  Задайте значения вложенным свойствам зависимостей из
+                  класса <codeInline>params:</codeInline><codeEntityReference>T:Elysium.Parameters.Design</codeEntityReference> для корректного отображения стилей
+                  при работе в режиме конструктора.
+                </para>
+              </content>
+            </step>
+            <step>
+              <content>
+                <alert class="note">
+                  <para>
+                    Стили могут продолжать некорретно отображаться, если элемент управления, к которому применяются настройки стилей в режиме конструктора,
+                    содержит в себе какие-либо ресурсы. Для того чтобы обойти эту проблему, просто перенесите ресурсы на уровень ниже или выше.
+                  </para>
+                  <para>
+                    Данная проблема будет устранена в следующей версии.
+                  </para>
+                </alert>
+                <code language="xaml">
+                  &lt;metro:Window x:Class="Elysium.Test.MainWindow"
+                                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                xmlns:metro="http://schemas.codeplex.com/elysium"
+                                xmlns:params="http://schemas.codeplex.com/elysium/params"
+                                params:Design.Theme="Dark"
+                                params:Design.AccentBrush="{x:Static metro:AccentBrushes.Blue}"
+                                params:Design.ContrastBrush="White"&gt;
+                        ...
+                  &lt;/metro:Window&gt;
+                </code>
+              </content>
+            </step>
+          </steps>
+        </procedure>
+      </content>
+    </taskList>
+
+    <uiElementList address="Appendix">
+      <content>
+        <table>
+          <title>Список ресурсов темы</title>
+          <tableHeader>
+            <row>
+              <entry>
+                <para>Название ресурса</para>
+              </entry>
+              <entry>
+                <para>Назначение ресурса</para>
+              </entry>
+            </row>
+          </tableHeader>
+          <row>
+            <entry>
+              <para>TransparentBrush</para>
+            </entry>
+            <entry>
+              <para>Используется для создания прозрачного фона</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>SemitransparentBrush</para>
+            </entry>
+            <entry>
+              <para>Полупрозрачная кисть.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>BackgroundBrush</para>
+            </entry>
+            <entry>
+              <para>Используется для задания фона элементов управления.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>ForegroundBrush</para>
+            </entry>
+            <entry>
+              <para>Используется в местах, контрасных к фону (например, для текста).</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>HighlightBrush</para>
+            </entry>
+            <entry>
+              <para>
+                Наиболее бледная (по отношению к фону) кисть. Используется при необходимости очень слабо выделить элемент
+                (например, этой кистью заливается фон при наведении мыши на элемент выпадающего меню).
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>MiddleLightBrush</para>
+            </entry>
+            <entry>
+              <para>
+                Средняя по контрастности (по отношению к фону) кисть. Используется при необходимости умеренно выделить элемент
+                (например, эта кисть используется для выделения текста).
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>LowlightBrush</para>
+            </entry>
+            <entry>
+              <para>
+                Наиболее (но менее, чем ForegroundBrush) контрастная (по отношению к фону) кисть. В основном используется для контрастного выделения элементов
+                (например, этой кистью заливаются границы многих элементов управления, а также фон у элементов управления кнопка и ползунок при нажатии на них).
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>DisabledBrush</para>
+            </entry>
+            <entry>
+              <para>
+                Кисть "грязного" цвета, используется для обозначения того, что элемент управления неактивен.
+              </para>
+            </entry>
+          </row>
+        </table>
+        <table>
+          <title>Список иконок</title>
+          <tableHeader>
+            <row>
+              <entry>
+                <para>Название ресурса с иконкой</para>
+              </entry>
+              <entry>
+                <para>Предназначение иконки</para>
+              </entry>
+            </row>
+          </tableHeader>
+          <row>
+            <entry>
+              <para>AdvancedIcon</para>
+            </entry>
+            <entry>
+              <para>
+                Если некоторые пункты в панели управления приложением (ApplicationBar) необходимо вынести в отдельное меню (например,
+                если стандартный размер окна очень маленький), то можно создать кнопку <legacyItalic>Дополнительно</legacyItalic> с выпадающим меню и
+                назначить ей эту иконку.
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>MinimizeIcon</para>
+            </entry>
+            <entry>
+              <para>
+                Иконка сворачивания окна.
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>MaximizeIcon</para>
+            </entry>
+            <entry>
+              <para>
+                Иконка разворачивания окна на весь экран.
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>RestoreIcon</para>
+            </entry>
+            <entry>
+              <para>
+                Иконка восстановления прежнего размера окна.
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>CloseIcon</para>
+            </entry>
+            <entry>
+              <para>
+                Иконка закрытия окна.
+              </para>
+            </entry>
+          </row>
+        </table>
+      </content>
+    </uiElementList>
+      
+    <relatedTopics>
+      <codeEntityReference>N:Elysium</codeEntityReference>
+      <codeEntityReference>T:Elysium.Manager</codeEntityReference>
+      <codeEntityReference>T:Elysium.Parameters.Manager</codeEntityReference>
+      <codeEntityReference>T:Elysium.Parameters.Design</codeEntityReference>
+    </relatedTopics>
+  </developerUIReferenceDocument>
+</topic>
