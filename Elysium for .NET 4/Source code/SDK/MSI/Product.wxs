@@ -360,13 +360,13 @@
         <File Source="$(var.PlatformReleaseFolder)\Elysium.Notifications.Server.exe.config" Checksum="yes" KeyPath="no" Vital="yes"/>
         <ServiceInstall Type="ownProcess"
                         Vital="yes"
-                        Name="ElysiumNotifications1.5.16.0"
+                        Name="ElysiumNotifications-v1.5.17.0-v4.0"
                         DisplayName="Elysium Notifications"
                         Start="auto"
                         Account="LocalSystem"
                         ErrorControl="normal"
                         Interactive="no"/>
-        <ServiceControl Id="ElysiumNotifications" Name="ElysiumNotifications1.5.16.0" Start="install" Stop="uninstall" Remove="uninstall" Wait="yes"/>
+        <ServiceControl Id="ElysiumNotifications" Name="ElysiumNotifications-v1.5.17.0-v4.0" Start="install" Stop="uninstall" Remove="uninstall" Wait="yes"/>
       </Component>
       
       <!-- Visual Studio registration -->

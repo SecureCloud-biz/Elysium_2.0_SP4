@@ -26,7 +26,7 @@ namespace Elysium.Notifications.Client
                                                     MaxConnections = 128,
                                                     MaxReceivedMessageSize = 16777215
                                                 },
-                                            new EndpointAddress("net.pipe://localhost/elysium/v1.5/notifications"))
+                                            new EndpointAddress("net.pipe://localhost/elysium/v1.5/v4.0/notifications"))
         {
         }
 

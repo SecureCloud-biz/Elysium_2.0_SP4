@@ -6,20 +6,19 @@ ELSE goto x86
 :x86
 IF EXIST "%ProgramFiles%\Microsoft Visual Studio 11.0" (
   call "%ProgramFiles%\Microsoft Visual Studio 11.0\VC\vcvarsall.bat" x86
-) ELSE (
+) ELSE IF EXIST "%ProgramFiles%\Microsoft Visual Studio 10.0" (
   call "%ProgramFiles%\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" x86
 )
 
 :x64
 IF EXIST "%ProgramFiles(x86)%\Microsoft Visual Studio 11.0" (
   call "%ProgramFiles(x86)%\Microsoft Visual Studio 11.0\VC\vcvarsall.bat" x64
-) ELSE (
+) ELSE IF EXIST "%ProgramFiles%\Microsoft Visual Studio 10.0" (
   call "%ProgramFiles(x86)%\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" x64
 )
 
-call %vcvarsall%
-
 chdir /d %~dp0
+
 tf checkout "..\Deploy\" /lock:none /recursive
 
 chdir /d %~dp0
