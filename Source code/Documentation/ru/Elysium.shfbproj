@@ -67,7 +67,7 @@
     <RootNamespaceContainer>True</RootNamespaceContainer>
     <RootNamespaceTitle>Документация по Elysium for .NET 4</RootNamespaceTitle>
     <PlugInConfigurations>
-      <PlugInConfig id="Additional Content Only" enabled="True">
+      <PlugInConfig id="Additional Content Only" enabled="False">
         <configuration />
       </PlugInConfig>
     </PlugInConfigurations>
@@ -142,9 +142,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\Backward compatibility.aml" />
+    <None Include="Content\Getting started\Notifications.aml" />
+    <None Include="Content\Getting started\Parameters.aml" />
     <None Include="Content\Getting started\Theme.aml" />
     <None Include="Content\Getting started\CreatingYourFirstProject.aml" />
     <None Include="Content\Getting started\GettingStarted.aml" />
+    <None Include="Content\KnownIssuesAndLimitations.aml" />
     <None Include="Content\RuntimeDeploy.aml" />
     <None Include="Content\SDKInstallation.aml" />
   </ItemGroup>

@@ -702,10 +702,10 @@
     </member>
     <member name="P:Elysium.Parameters.Bullet.DecoratorSize">
       <summary>
-        Возвращает или задаёт размер области, на которой располагается маркер в элементах управления <see cref="T:System.Windows.Controls.CheckBox" /> и
+        Возвращает или задаёт размер области на которой располагается маркер в элементах управления <see cref="T:System.Windows.Controls.CheckBox" /> и
         <see cref="T:System.Windows.Controls.RadioButton" />.
       </summary>
-      <value>Размер области, на которой располагается маркер. Значение по умолчанию — 16px.</value>
+      <value>Размер области на которой располагается маркер. Значение по умолчанию — 16px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -746,7 +746,7 @@
         Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Bullet.DecoratorSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Размер области, на которой располагается маркер.</returns>
+      <returns>Размер области на которой располагается маркер.</returns>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>
@@ -762,7 +762,7 @@
         Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Bullet.DecoratorSize" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">Размер области, на которой располагается маркер.</param>
+      <param name="value">Размер области на которой располагается маркер.</param>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>
@@ -774,10 +774,10 @@
     </member>
     <member name="P:Elysium.Parameters.Bullet.Size">
       <summary>
-        Возвращает или задаёт размер маркера в состоянии "не определено" в элементах управления <see cref="T:System.Windows.Controls.CheckBox" /> и
+        Возвращает или задаёт размер маркера в элементах управления <see cref="T:System.Windows.Controls.CheckBox" /> и
         <see cref="T:System.Windows.Controls.RadioButton" />.
       </summary>
-      <value>Размер маркера в состоянии "не определено". Значение по умолчанию — 8px.</value>
+      <value>Размер маркера. Значение по умолчанию — 8px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -818,7 +818,7 @@
         Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Bullet.Size" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Размер маркера в состоянии "не определено".</returns>
+      <returns>Размер маркера.</returns>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>
@@ -834,7 +834,7 @@
         Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Bullet.Size" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">Размер маркера в состоянии "не определено".</param>
+      <param name="value">Размер маркера.</param>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>
@@ -1268,7 +1268,7 @@
     </member>
     <member name="P:Elysium.Parameters.DropDown.IsDefaultHorizontalPosition">
       <summary>
-        Возвращает значение, указывающее сопадает ли текущее горизонтальное положение выпадающего списка и соответствующее значение по-умолчнию.
+        Возвращает значение, указывающее совпадает ли текущее горизонтальное положение выпадающего списка и соответствующее значение по-умолчнию.
       </summary>
       <value>True, если значения сопадают; иначе False. Значение по умолчанию — False.</value>
       <remarks>
@@ -1312,7 +1312,7 @@
         Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.DropDown.IsDefaultHorizontalPosition" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Значение, указывающее сопадает ли текущее горизонтальное положение выпадающего списка и соответствующее значение по-умолчнию.</returns>
+      <returns>Значение, указывающее совпадает ли текущее горизонтальное положение выпадающего списка и соответствующее значение по-умолчнию.</returns>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>
@@ -1320,7 +1320,7 @@
     </member>
     <member name="P:Elysium.Parameters.DropDown.IsDefaultVerticalPosition">
       <summary>
-        Возвращает значение, указывающее сопадает ли текущее вертикальное положение выпадающего списка и соответствующее значение по-умолчнию.
+        Возвращает значение, указывающее совпадает ли текущее вертикальное положение выпадающего списка и соответствующее значение по-умолчнию.
       </summary>
       <value>True, если значения сопадают; иначе False. Значение по умолчанию — False.</value>
       <remarks>
@@ -1364,7 +1364,7 @@
         Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.DropDown.IsDefaultVerticalPosition" /> для указанного элемента управления.
       </summary>
       <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Значение, указывающее сопадает ли текущее вертикальное положение выпадающего списка и соответствующее значение по-умолчнию.</returns>
+      <returns>Значение, указывающее совпадает ли текущее вертикальное положение выпадающего списка и соответствующее значение по-умолчнию.</returns>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>

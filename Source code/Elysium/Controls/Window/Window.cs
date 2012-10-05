@@ -137,12 +137,34 @@ namespace Elysium.Controls
                 {
                     if (Owner != null)
                     {
-                        Left = Owner.Left + Owner.ActualWidth / 2 - ActualWidth / 2;
-                        Top = Owner.Top + Owner.ActualHeight / 2 - ActualHeight / 2;
+                        if (Owner.WindowState == WindowState.Maximized)
+                        {
+                            var source = PresentationSource.FromVisual(Owner);
+                            if (source != null && source.CompositionTarget != null)
+                            {
+                                var ownerHandle = new WindowInteropHelper(Owner).EnsureHandle();
+                                var ownerWindow = new Native.Window(ownerHandle);
+                                ownerWindow.Invalidate();
+                                Left = -ownerWindow.NonClientBorderWidth * source.CompositionTarget.TransformFromDevice.M11;
+                                Top = -ownerWindow.NonClientBorderHeight * source.CompositionTarget.TransformFromDevice.M22;
+                            }
+                            else
+                            {
+                                Left = 0;
+                                Top = 0;
+                            }
+                        }
+                        else
+                        {
+                            Left = Owner.Left;
+                            Top = Owner.Top;
+                        }
+                        Left += Owner.ActualWidth / 2 - ActualWidth / 2;
+                        Top += Owner.ActualHeight / 2 - ActualHeight / 2;
                     }
                 }
                 
-                UpdateNonClientBorder(WindowState == WindowState.Maximized && SizeToContent == SizeToContent.Manual);
+                UpdateNonClientBorder();
 
                 if (_dispatcherFrame != null)
                 {
@@ -164,7 +186,7 @@ namespace Elysium.Controls
             var handle = new WindowInteropHelper(this).EnsureHandle();
             _monitor = new Monitor(handle);
             _window = new Native.Window(handle);
-            UpdateNonClientBorder(WindowState == WindowState.Maximized && SizeToContent == SizeToContent.Manual);
+            UpdateNonClientBorder();
 
             var source = HwndSource.FromHwnd(handle);
             if (source != null)
@@ -384,10 +406,11 @@ namespace Elysium.Controls
         private static object CoerceHasDropShadow(DependencyObject obj, object basevalue)
         {
             ValidationHelper.NotNull(obj, "obj");
+
             try
             {
                 // NOTE: Ignore Code Contracts warnings
-                return BooleanBoxingHelper.Unbox(basevalue) && Windows.IsWindowVistaOrHigher;
+                return BooleanBoxingHelper.Unbox(basevalue) && SystemParameters.DropShadow && Windows.IsWindowVistaOrHigher;
             }
             catch
             {
@@ -617,33 +640,26 @@ namespace Elysium.Controls
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (Window)obj;
-            instance.OnWindowStateChanged(BoxingHelper<WindowState>.Unbox(e.OldValue), BoxingHelper<WindowState>.Unbox(e.NewValue));
+            instance.OnWindowStateChanged();
         }
 
         [SecurityCritical]
-        private void OnWindowStateChanged(WindowState oldValue, WindowState newValue)
+        private void OnWindowStateChanged()
         {
-            if (oldValue != WindowState.Maximized && newValue == WindowState.Maximized && !Taskbar.AutoHide)
-            {
-                UpdateNonClientBorder(SizeToContent == SizeToContent.Manual);
-            }
-            else if (oldValue == WindowState.Maximized && newValue != WindowState.Maximized)
-            {
-                UpdateNonClientBorder(false);
-            }
+            UpdateNonClientBorder();
         }
 
         [SecurityCritical]
-        private void UpdateNonClientBorder(bool isMaximized)
+        private void UpdateNonClientBorder()
         {
             if (!Equals(WindowChrome.GetWindowChrome(this), _chrome) || _layoutRoot == null || _window == null)
             {
                 return;
             }
-
-            if (isMaximized)
+            
+            Taskbar.Invalidate();
+            if (WindowState == WindowState.Maximized && !Taskbar.AutoHide && SizeToContent == SizeToContent.Manual)
             {
-                Taskbar.Invalidate();
                 _window.Invalidate();
                 _layoutRoot.Margin = new Thickness(_window.NonClientBorderWidth,
                                                    _window.NonClientBorderHeight,

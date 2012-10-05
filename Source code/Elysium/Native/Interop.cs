@@ -35,6 +35,7 @@ namespace Elysium.Native
 
         internal const int WM_GETMINMAXINFO = 0x0024;
 
+
         #endregion
 
         #region Enumerations

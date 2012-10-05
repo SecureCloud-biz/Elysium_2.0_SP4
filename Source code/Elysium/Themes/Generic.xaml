@@ -2333,7 +2333,7 @@
   </Style>
   <Style x:Key="{x:Type controls:Window}" TargetType="{x:Type controls:Window}">
     <Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
-    <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource HighlightBrush}" />
     <Setter Property="BorderThickness" Value="0" />
     <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
     <Setter Property="FontFamily" Value="Segoe UI" />
@@ -2372,7 +2372,7 @@
                   <RowDefinition Height="Auto" />
                   <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <controls:ProgressBar x:Name="PART_ProgressBar" Grid.ColumnSpan="3" Grid.Row="0" Background="{DynamicResource TransparentBrush}" Value="{TemplateBinding Progress}" VerticalAlignment="Top" Height="2" />
+                <controls:ProgressBar x:Name="PART_ProgressBar" Grid.ColumnSpan="3" Grid.Row="0" Background="{DynamicResource TransparentBrush}" Value="{TemplateBinding Progress}" VerticalAlignment="Top" Height="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldThicknessValue), Mode=OneWay}" />
                 <Border x:Name="PART_Title" Grid.Column="0" Grid.Row="1" Background="{DynamicResource AccentBrush}" BorderThickness="0">
                   <TextBlock x:Name="Title" Text="{TemplateBinding Title}" Foreground="{DynamicResource ContrastBrush}" FontSize="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.TitleFontSize), Mode=OneWay}" FontWeight="Normal" Margin="10,5" />
                 </Border>
@@ -2484,7 +2484,7 @@
       </DataTrigger>
       <Trigger Property="HasDropShadow" Value="False">
         <Trigger.Setters>
-          <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldThicknessValue), Mode=OneWay}" />
+          <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldThickness), Mode=OneWay}" />
         </Trigger.Setters>
       </Trigger>
       <Trigger Property="WindowStyle" Value="{x:Static WindowStyle.None}">

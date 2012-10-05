@@ -14,7 +14,7 @@
 
     <Style x:Key="{x:Type controls:Window}" TargetType="{x:Type controls:Window}">
         <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource MiddleLightBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource HighlightBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
         <Setter Property="FontFamily" Value="Segoe UI"/>
@@ -65,7 +65,7 @@
                                                       Background="{DynamicResource TransparentBrush}"
                                                       Value="{TemplateBinding Progress}"
                                                       VerticalAlignment="Top"
-                                                      Height="2"/>
+                                                      Height="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldThicknessValue), Mode=OneWay}"/>
                                 <Border x:Name="PART_Title"
                                         Grid.Column="0"
                                         Grid.Row="1"
@@ -232,7 +232,7 @@
             </DataTrigger>
             <Trigger Property="HasDropShadow" Value="False">
                 <Trigger.Setters>
-                    <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldThicknessValue), Mode=OneWay}"/>
+                    <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldThickness), Mode=OneWay}"/>
                 </Trigger.Setters>
             </Trigger>
             <Trigger Property="WindowStyle" Value="{x:Static WindowStyle.None}">
