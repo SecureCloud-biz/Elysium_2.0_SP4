@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Converters.PercentToAngleConverter">
+      <summary>
+        Converts a percent of the full angle in a value of the angle.
+      </summary>
+    </type>
+    <method name="M:Elysium.Converters.PercentToAngleConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+      <summary>
+        Converts a percent of the full angle in a value of the angle.
+      </summary>
+      <param name="value">
+        A percent of the full angle. Has to be one of the following types: <see cref="T:System.Int16" />, <see cref="T:System.Int32" />, <see cref="T:System.Int64" />, <see cref="T:System.Single" />, <see cref="T:System.Double" />, <see cref="T:System.Decimal" />.
+      </param>
+      <param name="targetType">A target type. The value is ignored.</param>
+      <param name="parameter">Converter's parameter. The value is ignored.</param>
+      <param name="culture">Language and local parameters used in converter. The value is ignored.</param>
+      <returns>
+        A value of the angle is the same type that <paramref name="value" /> is.
+        If there is a failure during method execution, following value will be returned <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
+      </returns>
+    </method>
+    <method name="M:Elysium.Converters.PercentToAngleConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+      <summary>
+        Converts a value of the angle in percent of the full angle.
+      </summary>
+      <param name="value">
+        A value of the angle. Has to be one of the following types: <see cref="T:System.Int16" />, <see cref="T:System.Int32" />, <see cref="T:System.Int64" />, <see cref="T:System.Single" />, <see cref="T:System.Double" />, <see cref="T:System.Decimal" />.
+      </param>
+      <param name="targetType">A target type. The value is ignored.</param>
+      <param name="parameter">Converter's parameter. The value is ignored.</param>
+      <param name="culture">Language and local parameters used in converter. The value is ignored.</param>
+      <returns>
+        A percent of the full angle is the same type that <paramref name="value" /> is.
+        If there is a failure during method execution, following value will be returned <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
+      </returns>
+    </method>
+  </members>
+</doc>

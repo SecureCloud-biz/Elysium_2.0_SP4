@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer">
+      <summary>
+        It is a base class for providers of successors of the class <see cref="T:Elysium.Controls.Primitives.CommandButtonBase" /> for UI Automation technology.
+      </summary>
+      <invariant>"Owner" property is never equal null.</invariant>
+    </type>
+    <method name="M:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer.#ctor(Elysium.Controls.Primitives.CommandButtonBase)">
+      <summary>
+        Creates a new instance of the class <see cref="T:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer" />.
+      </summary>
+      <param name="owner">
+        An instance of the class <see cref="T:Elysium.Controls.Primitives.CommandButtonBase" />, for which the provider will be used.
+      </param>
+    </method>
+    <property name="P:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer.Owner">
+      <summary>
+        An instance of the successor of the class <see cref="T:Elysium.Controls.Primitives.CommandButtonBase" />, for which the provider will be used.
+      </summary>
+      <getter>
+        <ensures>Value cant be null.</ensures>
+      </getter>
+      <value>
+        An instance of the successor of the class <see cref="T:Elysium.Controls.Primitives.CommandButtonBase" />, for which the provider will be used.
+      </value>
+    </property>
+    <method name="M:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer.GetAutomationControlTypeCore">
+      <summary>
+        Returns a type of the control for the object-successor of the class <see cref="T:Elysium.Controls.Primitives.CommandButtonBase" />, which is connected with current object <see cref="T:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer" />. This method is called by  <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType" />.
+      </summary>
+      <returns>
+        A value <see cref="F:System.Windows.Automation.Peers.AutomationControlType.Button">AutomationControlType.Button</see>.
+      </returns>
+      <ensures>The being returned value is a value of AutomationControlType.Button .</ensures>
+    </method>
+  </members>
+</doc>

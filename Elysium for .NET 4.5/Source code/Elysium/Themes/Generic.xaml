@@ -2376,7 +2376,7 @@
                 <Border x:Name="PART_Title" Grid.Column="0" Grid.Row="1" Background="{DynamicResource AccentBrush}" BorderThickness="0">
                   <TextBlock x:Name="Title" Text="{TemplateBinding Title}" Foreground="{DynamicResource ContrastBrush}" FontSize="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.TitleFontSize), Mode=OneWay}" FontWeight="Normal" Margin="10,5" />
                 </Border>
-                <Grid Grid.Column="2" Grid.Row="1" shell:WindowChrome.IsHitTestVisibleInChrome="True">
+                <Grid Grid.Column="2" Grid.Row="1" WindowChrome.IsHitTestVisibleInChrome="True">
                   <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
@@ -2419,7 +2419,7 @@
                 <ContentPresenter Margin="{TemplateBinding Padding}" />
               </AdornerDecorator>
               <Decorator x:Name="PART_ApplicationBarHost" Grid.Row="1" controls:Window.IsApplicationBarHost="True" />
-              <ResizeGrip x:Name="PART_Grip" Grid.Row="1" shell:WindowChrome.ResizeGripDirection="BottomRight" IsTabStop="False" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+              <ResizeGrip x:Name="PART_Grip" Grid.Row="1" WindowChrome.ResizeGripDirection="BottomRight" IsTabStop="False" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
             </Grid>
           </Border>
           <ControlTemplate.Triggers>

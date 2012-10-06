@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Parameters.Progress">
+      <summary>
+        Represents a class, which manages the settings of the styles of the controls, who are inherited from <see cref="T:Elysium.Controls.Primitives.ProgressBase" />.
+      </summary>
+    </type>
+    <property name="P:Elysium.Parameters.Progress.BusyElementSize">
+      <summary>
+        Gets or sets the default size of the indication element of a "busy" state (whose default shape is a circle) for successors of the class <see cref="T:Elysium.Controls.Primitives.ProgressBase" />.
+      </summary>
+      <value>The default size of the indication element of a "busy" state. Default value  — 4px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Progress.BusyElementSizeProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new ProgressBar();
+          var currentValue = Parameters.Progress.GetBusyElementSize(control);
+          Parameters.Progress.SetBusyElementSize(control, 4d);
+        </code>
+        <code lang="XAML">
+          &lt;ProgressBar params:Progress.BusyElementSize="4px"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.Progress.BusyElementSizeProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.Progress.BusyElementSize" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.Progress.BusyElementSize" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.Progress.GetBusyElementSize(Elysium.Controls.Primitives.ProgressBase)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.Progress.BusyElementSize" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>The default size of the indication element of a "busy" state.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.Progress.SetBusyElementSize(Elysium.Controls.Primitives.ProgressBase,System.Double)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.Progress.BusyElementSize" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">The default size of the indication element of a "busy" state.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+  </members>
+</doc>

@@ -10,8 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Elysium.Test</RootNamespace>
     <AssemblyName>Elysium.Test</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <FileAlignment>512</FileAlignment>
@@ -205,10 +204,10 @@
   </ItemGroup>
   <Target Name="Default">
     <MSBuild.ExtensionPack.Framework.Assembly TaskAction="GetInfo" NetAssembly="..\..\Binary\$(Configuration)\AnyCPU\Elysium.dll">
-      <Output TaskParameter="OutputItems" ItemName="Elysium"/>
+      <Output TaskParameter="OutputItems" ItemName="Elysium" />
     </MSBuild.ExtensionPack.Framework.Assembly>
     <MSBuild.ExtensionPack.Framework.Assembly TaskAction="GetInfo" NetAssembly="..\..\Binary\$(Configuration)\AnyCPU\Elysium.Notifications.dll">
-      <Output TaskParameter="OutputItems" ItemName="Elysium.Notifications"/>
+      <Output TaskParameter="OutputItems" ItemName="Elysium.Notifications" />
     </MSBuild.ExtensionPack.Framework.Assembly>
   </Target>
   <Choose>
@@ -263,6 +262,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="Properties\AssemblyInfo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>AssemblyInfo.cs</LastGenOutput>
@@ -283,8 +283,8 @@
     <MSBuildExtensionPackPath>$(MSBuildExtensionsPath32)\ExtensionPack\4.0\MSBuild.ExtensionPack.tasks</MSBuildExtensionPackPath>
     <MSBuildExtensionPackPath Condition="Exists('$(MSBuildExtensionsPath64)\ExtensionPack\4.0\MSBuild.ExtensionPack.tasks')">$(MSBuildExtensionsPath64)\ExtensionPack\4.0\MSBuild.ExtensionPack.tasks</MSBuildExtensionPackPath>
   </PropertyGroup>
-  <Import Condition="Exists('$(MSBuildExtensionPackPath)')" Project="$(MSBuildExtensionPackPath)"/>
+  <Import Condition="Exists('$(MSBuildExtensionPackPath)')" Project="$(MSBuildExtensionPackPath)" />
   <PropertyGroup>
-    <PostBuildEvent>"..\..\..\Tools and Resources\Utilities\signtool\signtool.exe" sign /f "..\..\..\Source code\SigningKey.pfx" "Elysium.Test.exe"</PostBuildEvent>
+    <PostBuildEvent>"..\..\..\Tools and Resources\Utilities\signtool\$(Platform)\signtool.exe" sign /f "..\..\..\Source code\SigningKey.pfx" "Elysium.Test.exe"</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -456,6 +456,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Elysium.tt</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Documentation\ru\Elysium.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -466,186 +467,368 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Elysium.tt</DependentUpon>
     </None>
+    <None Include="Exceptions\InvalidStyleException.en.xml">
+      <DependentUpon>InvalidStyleException.cs</DependentUpon>
+    </None>
     <None Include="Exceptions\InvalidStyleException.ru.xml">
       <DependentUpon>InvalidStyleException.cs</DependentUpon>
+    </None>
+    <None Include="AccentBrushes.en.xml">
+      <DependentUpon>AccentBrushes.cs</DependentUpon>
     </None>
     <None Include="AccentBrushes.ru.xml">
       <DependentUpon>AccentBrushes.cs</DependentUpon>
     </None>
+    <None Include="Theme.en.xml">
+      <DependentUpon>Theme.cs</DependentUpon>
+    </None>
     <None Include="Theme.ru.xml">
       <DependentUpon>Theme.cs</DependentUpon>
+    </None>
+    <None Include="Manager.en.xml">
+      <DependentUpon>Manager.cs</DependentUpon>
     </None>
     <None Include="Manager.ru.xml">
       <DependentUpon>Manager.cs</DependentUpon>
     </None>
+    <None Include="Parameters\Design.en.xml">
+      <DependentUpon>Design.cs</DependentUpon>
+    </None>
     <None Include="Parameters\Design.ru.xml">
       <DependentUpon>Design.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\Manager.en.xml">
+      <DependentUpon>Manager.cs</DependentUpon>
     </None>
     <None Include="Parameters\Manager.ru.xml">
       <DependentUpon>Manager.cs</DependentUpon>
     </None>
+    <None Include="Parameters\General.en.xml">
+      <DependentUpon>General.cs</DependentUpon>
+    </None>
     <None Include="Parameters\General.ru.xml">
       <DependentUpon>General.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\Bullet.en.xml">
+      <DependentUpon>Bullet.cs</DependentUpon>
     </None>
     <None Include="Parameters\Bullet.ru.xml">
       <DependentUpon>Bullet.cs</DependentUpon>
     </None>
+    <None Include="Parameters\CheckBox.en.xml">
+      <DependentUpon>CheckBox.cs</DependentUpon>
+    </None>
     <None Include="Parameters\CheckBox.ru.xml">
       <DependentUpon>CheckBox.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\ComboBox.en.xml">
+      <DependentUpon>ComboBox.cs</DependentUpon>
     </None>
     <None Include="Parameters\ComboBox.ru.xml">
       <DependentUpon>ComboBox.cs</DependentUpon>
     </None>
+    <None Include="Parameters\CommandButtons.en.xml">
+      <DependentUpon>CommandButtons.cs</DependentUpon>
+    </None>
     <None Include="Parameters\CommandButtons.ru.xml">
       <DependentUpon>CommandButtons.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\DropDown.en.xml">
+      <DependentUpon>DropDown.cs</DependentUpon>
     </None>
     <None Include="Parameters\DropDown.ru.xml">
       <DependentUpon>DropDown.cs</DependentUpon>
     </None>
+    <None Include="Parameters\MenuBase.en.xml">
+      <DependentUpon>MenuBase.cs</DependentUpon>
+    </None>
     <None Include="Parameters\MenuBase.ru.xml">
       <DependentUpon>MenuBase.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\MenuItem.en.xml">
+      <DependentUpon>MenuItem.cs</DependentUpon>
     </None>
     <None Include="Parameters\MenuItem.ru.xml">
       <DependentUpon>MenuItem.cs</DependentUpon>
     </None>
+    <None Include="Parameters\Progress.en.xml">
+      <DependentUpon>Progress.cs</DependentUpon>
+    </None>
     <None Include="Parameters\Progress.ru.xml">
       <DependentUpon>Progress.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\ScrollBar.en.xml">
+      <DependentUpon>ScrollBar.cs</DependentUpon>
     </None>
     <None Include="Parameters\ScrollBar.ru.xml">
       <DependentUpon>ScrollBar.cs</DependentUpon>
     </None>
+    <None Include="Parameters\Slider.en.xml">
+      <DependentUpon>Slider.cs</DependentUpon>
+    </None>
     <None Include="Parameters\Slider.ru.xml">
       <DependentUpon>Slider.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\TabControl.en.xml">
+      <DependentUpon>TabControl.cs</DependentUpon>
     </None>
     <None Include="Parameters\TabControl.ru.xml">
       <DependentUpon>TabControl.cs</DependentUpon>
     </None>
+    <None Include="Parameters\TabItem.en.xml">
+      <DependentUpon>TabItem.cs</DependentUpon>
+    </None>
     <None Include="Parameters\TabItem.ru.xml">
       <DependentUpon>TabItem.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\ToggleSwitch.en.xml">
+      <DependentUpon>ToggleSwitch.cs</DependentUpon>
     </None>
     <None Include="Parameters\ToggleSwitch.ru.xml">
       <DependentUpon>ToggleSwitch.cs</DependentUpon>
     </None>
+    <None Include="Parameters\Window.en.xml">
+      <DependentUpon>Window.cs</DependentUpon>
+    </None>
     <None Include="Parameters\Window.ru.xml">
       <DependentUpon>Window.cs</DependentUpon>
+    </None>
+    <None Include="Extensions\Collections\IObservableDictionary.en.xml">
+      <DependentUpon>IObservableDictionary.cs</DependentUpon>
     </None>
     <None Include="Extensions\Collections\IObservableDictionary.ru.xml">
       <DependentUpon>IObservableDictionary.cs</DependentUpon>
     </None>
+    <None Include="Extensions\Collections\ObservableKeyValuePair.en.xml">
+      <DependentUpon>ObservableKeyValuePair.cs</DependentUpon>
+    </None>
     <None Include="Extensions\Collections\ObservableKeyValuePair.ru.xml">
       <DependentUpon>ObservableKeyValuePair.cs</DependentUpon>
     </None>
+    <None Include="Extensions\Collections\ObservableDictionary.en.xml">
+      <DependentUpon>ObservableDictionary.cs</DependentUpon>
+    </None>
     <None Include="Extensions\Collections\ObservableDictionary.ru.xml">
       <DependentUpon>ObservableDictionary.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    </None>
+    <None Include="Extensions\Tree helpers\LogicalTreeHelperExtensions.en.xml">
+      <DependentUpon>LogicalTreeHelperExtensions.cs</DependentUpon>
     </None>
     <None Include="Extensions\Tree helpers\LogicalTreeHelperExtensions.ru.xml">
       <DependentUpon>LogicalTreeHelperExtensions.cs</DependentUpon>
     </None>
+    <None Include="Extensions\Tree helpers\VisualTreeHelperExtensions.en.xml">
+      <DependentUpon>VisualTreeHelperExtensions.cs</DependentUpon>
+    </None>
     <None Include="Extensions\Tree helpers\VisualTreeHelperExtensions.ru.xml">
       <DependentUpon>VisualTreeHelperExtensions.cs</DependentUpon>
+    </None>
+    <None Include="Converters\AngleToCoordinateConverter.en.xml">
+      <DependentUpon>AngleToCoordinateConverter.cs</DependentUpon>
     </None>
     <None Include="Converters\AngleToCoordinateConverter.ru.xml">
       <DependentUpon>AngleToCoordinateConverter.cs</DependentUpon>
     </None>
+    <None Include="Converters\PercentToAngleConverter.en.xml">
+      <DependentUpon>PercentToAngleConverter.cs</DependentUpon>
+    </None>
     <None Include="Converters\PercentToAngleConverter.ru.xml">
       <DependentUpon>PercentToAngleConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\IsGreaterThanConverter.en.xml">
+      <DependentUpon>IsGreaterThanConverter.cs</DependentUpon>
     </None>
     <None Include="Converters\IsGreaterThanConverter.ru.xml">
       <DependentUpon>IsGreaterThanConverter.cs</DependentUpon>
     </None>
+    <None Include="Converters\NumberPositiveToNegativeConverter.en.xml">
+      <DependentUpon>NumberPositiveToNegativeConverter.cs</DependentUpon>
+    </None>
     <None Include="Converters\NumberPositiveToNegativeConverter.ru.xml">
       <DependentUpon>NumberPositiveToNegativeConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\ThicknessPositiveToNegativeConverter.en.xml">
+      <DependentUpon>ThicknessPositiveToNegativeConverter.cs</DependentUpon>
     </None>
     <None Include="Converters\ThicknessPositiveToNegativeConverter.ru.xml">
       <DependentUpon>ThicknessPositiveToNegativeConverter.cs</DependentUpon>
     </None>
+    <None Include="Converters\ThicknessConverter.en.xml">
+      <DependentUpon>ThicknessConverter.cs</DependentUpon>
+    </None>
     <None Include="Converters\ThicknessConverter.ru.xml">
       <DependentUpon>ThicknessConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\DoubleToGridLengthConverter.en.xml">
+      <DependentUpon>DoubleToGridLengthConverter.cs</DependentUpon>
     </None>
     <None Include="Converters\DoubleToGridLengthConverter.ru.xml">
       <DependentUpon>DoubleToGridLengthConverter.cs</DependentUpon>
     </None>
+    <None Include="Converters\GridLengthToDoubleConverter.en.xml">
+      <DependentUpon>GridLengthToDoubleConverter.cs</DependentUpon>
+    </None>
     <None Include="Converters\GridLengthToDoubleConverter.ru.xml">
       <DependentUpon>GridLengthToDoubleConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\DoubleToThicknessConverter.en.xml">
+      <DependentUpon>DoubleToThicknessConverter.cs</DependentUpon>
     </None>
     <None Include="Converters\DoubleToThicknessConverter.ru.xml">
       <DependentUpon>DoubleToThicknessConverter.cs</DependentUpon>
     </None>
+    <None Include="Converters\ThicknessToDoubleConverter.en.xml">
+      <DependentUpon>ThicknessToDoubleConverter.cs</DependentUpon>
+    </None>
     <None Include="Converters\ThicknessToDoubleConverter.ru.xml">
       <DependentUpon>ThicknessToDoubleConverter.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ApplicationBar\ApplicationBarDock.en.xml">
+      <DependentUpon>ApplicationBarDock.cs</DependentUpon>
     </None>
     <None Include="Controls\ApplicationBar\ApplicationBarDock.ru.xml">
       <DependentUpon>ApplicationBarDock.cs</DependentUpon>
     </None>
+    <None Include="Controls\ApplicationBar\ApplicationBarTransitionMode.en.xml">
+      <DependentUpon>ApplicationBarTransitionMode.cs</DependentUpon>
+    </None>
     <None Include="Controls\ApplicationBar\ApplicationBarTransitionMode.ru.xml">
       <DependentUpon>ApplicationBarTransitionMode.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\DropDownDirection.en.xml">
+      <DependentUpon>DropDownDirection.cs</DependentUpon>
     </None>
     <None Include="Controls\CommandButtons\DropDownDirection.ru.xml">
       <DependentUpon>DropDownDirection.cs</DependentUpon>
     </None>
+    <None Include="Controls\Progress\ProgressState.en.xml">
+      <DependentUpon>ProgressState.cs</DependentUpon>
+    </None>
     <None Include="Controls\Progress\ProgressState.ru.xml">
       <DependentUpon>ProgressState.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ApplicationBar\Automation\ApplicationBarAutomationPeer.en.xml">
+      <DependentUpon>ApplicationBarAutomationPeer.cs</DependentUpon>
     </None>
     <None Include="Controls\ApplicationBar\Automation\ApplicationBarAutomationPeer.ru.xml">
       <DependentUpon>ApplicationBarAutomationPeer.cs</DependentUpon>
     </None>
+    <None Include="Controls\CommandButtons\Automation\CommandButtonBaseAutomationPeer.en.xml">
+      <DependentUpon>CommandButtonBaseAutomationPeer.cs</DependentUpon>
+    </None>
     <None Include="Controls\CommandButtons\Automation\CommandButtonBaseAutomationPeer.ru.xml">
       <DependentUpon>CommandButtonBaseAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\Automation\CommandButtonAutomationPeer.en.xml">
+      <DependentUpon>CommandButtonAutomationPeer.cs</DependentUpon>
     </None>
     <None Include="Controls\CommandButtons\Automation\CommandButtonAutomationPeer.ru.xml">
       <DependentUpon>CommandButtonAutomationPeer.cs</DependentUpon>
     </None>
+    <None Include="Controls\CommandButtons\Automation\DropDownCommandButtonAutomationPeer.en.xml">
+      <DependentUpon>DropDownCommandButtonAutomationPeer.cs</DependentUpon>
+    </None>
     <None Include="Controls\CommandButtons\Automation\DropDownCommandButtonAutomationPeer.ru.xml">
       <DependentUpon>DropDownCommandButtonAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\Automation\ToggleCommandButtonAutomationPeer.en.xml">
+      <DependentUpon>ToggleCommandButtonAutomationPeer.cs</DependentUpon>
     </None>
     <None Include="Controls\CommandButtons\Automation\ToggleCommandButtonAutomationPeer.ru.xml">
       <DependentUpon>ToggleCommandButtonAutomationPeer.cs</DependentUpon>
     </None>
+    <None Include="Controls\ToggleSwitch\Automation\ToggleSwitchAutomationPeer.en.xml">
+      <DependentUpon>ToggleSwitchAutomationPeer.cs</DependentUpon>
+    </None>
     <None Include="Controls\ToggleSwitch\Automation\ToggleSwitchAutomationPeer.ru.xml">
       <DependentUpon>ToggleSwitchAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Progress\Automation\ProgressAutomationPeer.en.xml">
+      <DependentUpon>ProgressAutomationPeer.cs</DependentUpon>
     </None>
     <None Include="Controls\Progress\Automation\ProgressAutomationPeer.ru.xml">
       <DependentUpon>ProgressAutomationPeer.cs</DependentUpon>
     </None>
+    <None Include="Controls\Menus\Automation\SubmenuAutomationPeer.en.xml">
+      <DependentUpon>SubmenuAutomationPeer.cs</DependentUpon>
+    </None>
     <None Include="Controls\Menus\Automation\SubmenuAutomationPeer.ru.xml">
       <DependentUpon>SubmenuAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ApplicationBar\ApplicationBar.en.xml">
+      <DependentUpon>ApplicationBar.cs</DependentUpon>
     </None>
     <None Include="Controls\ApplicationBar\ApplicationBar.ru.xml">
       <DependentUpon>ApplicationBar.cs</DependentUpon>
     </None>
+    <None Include="Controls\ApplicationBar\ApplicationBarPanel.en.xml">
+      <DependentUpon>ApplicationBarPanel.cs</DependentUpon>
+    </None>
     <None Include="Controls\ApplicationBar\ApplicationBarPanel.ru.xml">
       <DependentUpon>ApplicationBarPanel.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\Primitives\CommandButtonBase.en.xml">
+      <DependentUpon>CommandButtonBase.cs</DependentUpon>
     </None>
     <None Include="Controls\CommandButtons\Primitives\CommandButtonBase.ru.xml">
       <DependentUpon>CommandButtonBase.cs</DependentUpon>
     </None>
+    <None Include="Controls\CommandButtons\CommandButton.en.xml">
+      <DependentUpon>CommandButton.cs</DependentUpon>
+    </None>
     <None Include="Controls\CommandButtons\CommandButton.ru.xml">
       <DependentUpon>CommandButton.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\DropDownCommandButton.en.xml">
+      <DependentUpon>DropDownCommandButton.cs</DependentUpon>
     </None>
     <None Include="Controls\CommandButtons\DropDownCommandButton.ru.xml">
       <DependentUpon>DropDownCommandButton.cs</DependentUpon>
     </None>
+    <None Include="Controls\CommandButtons\ToggleCommandButton.en.xml">
+      <DependentUpon>ToggleCommandButton.cs</DependentUpon>
+    </None>
     <None Include="Controls\CommandButtons\ToggleCommandButton.ru.xml">
       <DependentUpon>ToggleCommandButton.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Menus\Submenu.en.xml">
+      <DependentUpon>Submenu.cs</DependentUpon>
     </None>
     <None Include="Controls\Menus\Submenu.ru.xml">
       <DependentUpon>Submenu.cs</DependentUpon>
     </None>
+    <None Include="Controls\Progress\Primitives\ProgressBase.en.xml">
+      <DependentUpon>ProgressBase.cs</DependentUpon>
+    </None>
     <None Include="Controls\Progress\Primitives\ProgressBase.ru.xml">
       <DependentUpon>ProgressBase.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Progress\ProgressBar.en.xml">
+      <DependentUpon>ProgressBar.cs</DependentUpon>
     </None>
     <None Include="Controls\Progress\ProgressBar.ru.xml">
       <DependentUpon>ProgressBar.cs</DependentUpon>
     </None>
+    <None Include="Controls\Progress\ProgressRing.en.xml">
+      <DependentUpon>ProgressRing.cs</DependentUpon>
+    </None>
     <None Include="Controls\Progress\ProgressRing.ru.xml">
       <DependentUpon>ProgressRing.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ToggleSwitch\ToggleSwitch.en.xml">
+      <DependentUpon>ToggleSwitch.cs</DependentUpon>
     </None>
     <None Include="Controls\ToggleSwitch\ToggleSwitch.ru.xml">
       <DependentUpon>ToggleSwitch.cs</DependentUpon>
     </None>
+    <None Include="Controls\Window\Window.en.xml">
+      <DependentUpon>Window.cs</DependentUpon>
+    </None>
     <None Include="Controls\Window\Window.ru.xml">
       <DependentUpon>Window.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Window\WindowCommands.en.xml">
+      <DependentUpon>WindowCommands.cs</DependentUpon>
     </None>
     <None Include="Controls\Window\WindowCommands.ru.xml">
       <DependentUpon>WindowCommands.cs</DependentUpon>

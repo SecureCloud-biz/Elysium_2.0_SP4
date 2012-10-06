@@ -12,10 +12,10 @@
   <?define AssemblyDependenciesFolder = "..\..\..\Tools and Resources\Assembly dependencies" ?>
   <?define SourceFolder = "..\..\..\Binary\Release\AnyCPU" ?>
   
-  <?define FrameworkName = ".NET Framework 4"?>
+  <?define FrameworkName = ".NET Framework 4.5"?>
   <?define RuntimeName = "Elysium"?>
   <?define RuntimeVersion = "1.5"?>
-  <?define RuntimeBuild = "769"?>
+  <?define RuntimeBuild = "791"?>
   <?define RuntimeRevision = "0"?>
   
 </Include>

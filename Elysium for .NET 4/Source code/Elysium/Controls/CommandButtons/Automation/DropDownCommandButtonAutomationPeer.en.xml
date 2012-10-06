@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Controls.Automation.DropDownCommandButtonAutomationPeer">
+      <summary>
+        Comes as a provider of the type <see cref="T:Elysium.Controls.DropDownCommandButton" /> for the UI Automation technology.
+      </summary>
+    </type>
+    <method name="M:Elysium.Controls.Automation.DropDownCommandButtonAutomationPeer.#ctor(Elysium.Controls.DropDownCommandButton)">
+      <summary>
+        Creates a new instance of the class <see cref="T:Elysium.Controls.Automation.DropDownCommandButtonAutomationPeer" />.
+      </summary>
+      <param name="owner">
+        An instance of the class <see cref="T:Elysium.Controls.DropDownCommandButton" />, for which the provider will be used.
+      </param>
+    </method>
+    <method name="M:Elysium.Controls.Automation.DropDownCommandButtonAutomationPeer.GetClassNameCore">
+      <summary>
+        Returns such a class name <see cref="T:Elysium.Controls.DropDownCommandButton" />, which is connected with current object<see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />. This method is called by <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
+      </summary>
+      <returns>
+        A string with a value "DropDownCommandButton".
+      </returns>
+      <ensures>Being returned string is always =  "DropDownCommandButton"</ensures>
+    </method>
+    <method name="M:Elysium.Controls.Automation.DropDownCommandButtonAutomationPeer.GetPattern(System.Windows.Automation.Peers.PatternInterface)">
+      <summary>
+        Returns a template of the control for an instance of the control <see cref="T:Elysium.Controls.DropDownCommandButton" />, which is connected with current object <see cref="T:Elysium.Controls.Automation.DropDownCommandButtonAutomationPeer" />.
+      </summary>
+      <param name="patternInterface">
+        A value of the enumeration <see cref="T:System.Windows.Automation.Peers.PatternInterface" />.
+      </param>
+      <returns>
+        If the parameter <paramref name="patternInterface" /> has a value <see cref="F:System.Windows.Automation.Peers.PatternInterface.ExpandCollapse" />,
+        the method will return "this", otherwise "null" will be returned.
+      </returns>
+    </method>
+    <method name="M:Elysium.Controls.Automation.DropDownCommandButtonAutomationPeer.Expand">
+      <summary>
+        Shows the DropDown menu.
+      </summary>
+      <exception cref="T:System.Windows.Automation.ElementNotEnabledException">The control is disabled.</exception>
+      <exception cref="T:System.InvalidOperationException">No dropDown menu is set for this instance.</exception>
+    </method>
+    <method name="M:Elysium.Controls.Automation.DropDownCommandButtonAutomationPeer.Collapse">
+      <summary>
+        Collapses the DropDown menu.
+      </summary>
+      <exception cref="T:System.Windows.Automation.ElementNotEnabledException">The control is disabled.</exception>
+      <exception cref="T:System.InvalidOperationException">No dropDown menu is set for this instance.</exception>
+    </method>
+    <property name="P:Elysium.Controls.Automation.DropDownCommandButtonAutomationPeer.ExpandCollapseState">
+      <summary>Returns the state of the control (visible or collapsed).</summary>
+      <summary>A state of the control (visible or collapsed).</summary>
+    </property>
+  </members>
+</doc>

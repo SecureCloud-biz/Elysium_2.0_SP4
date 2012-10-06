@@ -1,0 +1,1488 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Parameters.General">
+      <summary>
+        Represents a class that manages the settings of the styles of the controls.
+      </summary>
+    </type>
+    <property name="P:Elysium.Parameters.General.TitleFontSize">
+      <summary>
+        Gets or sets the size of the font of the window's title.
+      </summary>
+      <value>The size of the font of the window's title. Default value =  12 pt.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.General.TitleFontSizeProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
+            </description>
+          </item>
+        </list>
+        This property influences only the next classes:
+        <list type="bullet">
+          <item>
+            <description>
+              <see cref="T:Elysium.Controls.Window" /> (title only)
+            </description>
+          </item>
+        </list>
+        Despite this, it can be applied to any control, because it is  inherited.
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Window();
+          var currentValue = Parameters.GetTitleFontSize(control);
+          Parameters.SetTitleFontSize(control, 12d * (96d / 72d));
+        </code>
+        <code lang="XAML">
+          &lt;Window params:General.TitleFontSize="12pt"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.General.TitleFontSizeProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.General.TitleFontSize" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.General.TitleFontSize" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.General.GetTitleFontSize(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.General.TitleFontSize" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>The size of the font of the window's title.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.General.SetTitleFontSize(System.Windows.DependencyObject,System.Double)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.General.TitleFontSize" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">The size of the font of the window's title.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.General.HeaderFontSize">
+      <summary>
+        Gets or sets the size of the font of the control's title.
+      </summary>
+      <value>The size of the font of the control's title. Default value =  16pt.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.General.HeaderFontSizeProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
+            </description>
+          </item>
+        </list>
+        This property influences only the next classes:
+        <list type="bullet">
+          <item>
+            <description>
+              <see cref="T:System.Windows.Controls.TabItem" /> (title only)
+            </description>
+          </item>
+        </list>
+        Despite this, it can be applied to any control, because it is  inherited.
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new TabControl();
+          var currentValue = Parameters.GetHeaderFontSize(control);
+          Parameters.SetHeaderFontSize(control, 12d * (96d / 72d));
+        </code>
+        <code lang="XAML">
+          &lt;TabControl params:General.TitleFontSize="12pt"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.General.HeaderFontSizeProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.General.HeaderFontSize" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.General.HeaderFontSize" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.General.GetHeaderFontSize(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.General.HeaderFontSize" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>The size of the font of the control's title.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.General.SetHeaderFontSize(System.Windows.DependencyObject,System.Double)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.General.HeaderFontSize" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">The size of the font of the control's title.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.General.ContentFontSize">
+      <summary>
+        Gets or sets the size of the font of the control's content.
+      </summary>
+      <value>The size of the font of the control's content. Default value =  10pt.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.General.ContentFontSizeProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
+            </description>
+          </item>
+        </list>
+        This property influences only the next classes:
+        <list type="bullet">
+          <item>
+            <description>
+              <see cref="T:Elysium.Controls.ApplicationBar" />
+            </description>
+          </item>
+          <item>
+            <description>
+              <see cref="T:System.Windows.Controls.Button" />
+            </description>
+          </item>
+          <item>
+            <description>
+              <see cref="T:System.Windows.Controls.CheckBox" />
+            </description>
+          </item>
+          <item>
+            <description>
+              <see cref="T:System.Windows.Controls.ComboBox" />
+            </description>
+          </item>
+          <item>
+            <description>
+              <see cref="T:Elysium.Controls.CommandButton" />
+            </description>
+          </item>
+          <item>
+            <description>
+              <see cref="T:System.Windows.Controls.ContextMenu" />
+            </description>
+          </item>
+          <item>
+            <description>
+              <see cref="T:Elysium.Controls.DropDownCommandButton" />
+            </description>
+          </item>
+          <item>
+            <description>
+              <see cref="T:System.Windows.Controls.ListBox" />
+            </description>
+          </item>
+          <item>
+            <description>
+              <see cref="T:System.Windows.Controls.RadioButton" />
+            </description>
+          </item>
+          <item>
+            <description>
+              <see cref="T:System.Windows.Controls.Primitives.RepeatButton" />
+            </description>
+          </item>
+          <item>
+            <description>
+              <see cref="T:System.Windows.Controls.Slider" />
+            </description>
+          </item>
+          <item>
+            <description>
+              <see cref="T:Elysium.Controls.Submenu" />
+            </description>
+          </item>
+          <item>
+            <description>
+              <see cref="T:System.Windows.Controls.Primitives.ToggleButton" />
+            </description>
+          </item>
+          <item>
+            <description>
+              <see cref="T:Elysium.Controls.ToggleCommandButton" />
+            </description>
+          </item>
+          <item>
+            <description>
+              <see cref="T:Elysium.Controls.ToggleSwitch" />
+            </description>
+          </item>
+        </list>
+        Despite this, it can be applied to any control, because it is  inherited.
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Button();
+          var currentValue = Parameters.GetContentFontSize(control);
+          Parameters.SetContentFontSize(control, 10d * (96d / 72d));
+        </code>
+        <code lang="XAML">
+          &lt;Button params:General.ContentFontSize="10pt"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.General.ContentFontSizeProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.General.ContentFontSize" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.General.ContentFontSize" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.General.GetContentFontSize(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.General.ContentFontSize" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>The size of the font of the control's content.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.General.SetContentFontSize(System.Windows.DependencyObject,System.Double)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.General.ContentFontSize" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">The size of the font of the control's content.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.General.TextFontSize">
+      <summary>
+        Gets or sets the size of the font of the text.
+      </summary>
+      <value>The size of the font of the text. Default value =  9pt.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.General.TextFontSizeProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
+            </description>
+          </item>
+        </list>
+        This property influences only the next classes:
+        <list type="bullet">
+          <item>
+            <description>
+              <see cref="T:System.Windows.Controls.PasswordBox" />
+            </description>
+          </item>
+          <item>
+            <description>
+              <see cref="T:System.Windows.Controls.RichTextBox" />
+            </description>
+          </item>
+          <item>
+            <description>
+              <see cref="T:System.Windows.Controls.ScrollViewer" />
+            </description>
+          </item>
+          <item>
+            <description>
+              <see cref="T:System.Windows.Controls.TabControl" /> (content only)
+            </description>
+          </item>
+          <item>
+            <description>
+              <see cref="T:System.Windows.Controls.TextBox" />
+            </description>
+          </item>
+          <item>
+            <description>
+              <see cref="T:Elysium.Controls.Window" /> (content only)
+            </description>
+          </item>
+        </list>
+        Despite this, it can be applied to any control, because it is  inherited.
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new TextBox();
+          var currentValue = Parameters.GetTextFontSize(control);
+          Parameters.SetTextFontSize(control, 9d * (96d / 72d));
+        </code>
+        <code lang="XAML">
+          &lt;TextBox params:General.ContentFontSize="9pt"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.General.TextFontSizeProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.General.TextFontSize" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.General.TextFontSize" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.General.GetTextFontSize(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.General.TextFontSize" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>The size of the font of the text.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.General.SetTextFontSize(System.Windows.DependencyObject,System.Double)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.General.TextFontSize" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">The size of the font of the text.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.General.DefaultThickness">
+      <summary>
+        Gets or sets default thickness of the line.
+      </summary>
+      <value>Default thickness of the line. Default value  — 1px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.General.DefaultThicknessProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Button();
+          var currentValue = Parameters.GetDefaultThickness(control);
+          Parameters.SetDefaultThickness(control, new Thickness(1d));
+        </code>
+        <code lang="XAML">
+          &lt;Button params:General.DefaultThickness="1"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.General.DefaultThicknessProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.General.DefaultThickness" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.General.DefaultThickness" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.General.GetDefaultThicknessProperty(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.General.DefaultThickness" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>Толщина линии по умолчанию.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.General.SetDefaultThickness(System.Windows.DependencyObject,System.Windows.Thickness)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.General.DefaultThickness" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">Default thickness of the line.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.General.SemiBoldThickness">
+      <summary>
+        Gets or sets the value of the semibold line.
+      </summary>
+      <value>A thickness of the semibold line. Default value  — 1.5 px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.General.SemiBoldThicknessProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Button();
+          var currentValue = Parameters.GetSemiBoldThickness(control);
+          Parameters.SetSemiBoldThickness(control, new Thickness(1.5d));
+        </code>
+        <code lang="XAML">
+          &lt;Button params:General.SemiBoldThickness="1.5px"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.General.SemiBoldThicknessProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.General.SemiBoldThickness" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.General.SemiBoldThickness" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.General.GetSemiBoldThickness(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.General.SemiBoldThickness" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>A thickness of the semibold line.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.General.SetSemiBoldThickness(System.Windows.DependencyObject,System.Windows.Thickness)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.General.SemiBoldThickness" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">A thickness of the semibold line.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.General.BoldThickness">
+      <summary>
+        Gets or sets the value of the bold line.
+      </summary>
+      <value>A thickness of the bold line. Default value  — 2px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.General.BoldThicknessProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Button();
+          var currentValue = Parameters.GetBoldThickness(control);
+          Parameters.SetBoldThickness(control, new Thickness(2d));
+        </code>
+        <code lang="XAML">
+          &lt;Button params:General.BoldThickness="2"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.General.BoldThicknessProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.General.BoldThickness" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.General.BoldThickness" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.General.GetBoldThickness(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.General.BoldThickness" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>A thickness of the bold line.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.General.SetBoldThickness(System.Windows.DependencyObject,System.Windows.Thickness)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.General.BoldThickness" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">A thickness of the bold line.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.General.DefaultThicknessValue">
+      <summary>
+        Gets or sets default thickness of the line.
+      </summary>
+      <value>Default thickness of the line. Default value  — 1px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.General.DefaultThicknessValueProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Button();
+          var currentValue = Parameters.GetDefaultThicknessValue(control);
+          Parameters.SetDefaultThicknessValue(control, 1d);
+        </code>
+        <code lang="XAML">
+          &lt;Button params:General.DefaultThicknessValue="1px"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.General.DefaultThicknessValueProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.General.DefaultThicknessValue" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.General.DefaultThicknessValue" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.General.GetDefaultThicknessValue(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.General.DefaultThicknessValue" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>Defalut thickness of the line.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.General.SetDefaultThicknessValue(System.Windows.DependencyObject,System.Double)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.General.DefaultThicknessValue" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">Default thickness of the line.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.General.SemiBoldThicknessValue">
+      <summary>
+        Gets or sets the value of the semibold line.
+      </summary>
+      <value>A thickness of the semibold line. Default value  — 1.5 px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.General.SemiBoldThicknessValueProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Button();
+          var currentValue = Parameters.GetSemiBoldThicknessValue(control);
+          Parameters.SetSemiBoldThicknessValue(control, 1.5d);
+        </code>
+        <code lang="XAML">
+          &lt;Button params:General.SemiBoldThicknessValue="1.5px"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.General.SemiBoldThicknessValueProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.General.SemiBoldThicknessValue" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.General.SemiBoldThicknessValue" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.General.GetSemiBoldThicknessValue(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.General.SemiBoldThicknessValue" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>A thickness of the semibold line.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.General.SetSemiBoldThicknessValue(System.Windows.DependencyObject,System.Double)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.General.SemiBoldThicknessValue" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">A thickness of the semibold line.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.General.BoldThicknessValue">
+      <summary>
+        Gets or sets the value of the bold line.
+      </summary>
+      <value>A thickness of the bold line. Default value  — 2px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.General.BoldThicknessValueProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Button();
+          var currentValue = Parameters.GetBoldThicknessValue(control);
+          Parameters.SetBoldThicknessValue(control, 2d);
+        </code>
+        <code lang="XAML">
+          &lt;Button params:General.BoldThicknessValue="2px"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.General.BoldThicknessValueProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.General.BoldThicknessValue" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.General.BoldThicknessValue" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.General.GetBoldThicknessValue(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.General.BoldThicknessValue" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>A thickness of the bold line.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.General.SetBoldThicknessValue(System.Windows.DependencyObject,System.Double)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.General.BoldThicknessValue" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">A thickness of the bold line.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.General.DefaultPadding">
+      <summary>
+        Gets or sets the default value of padding.
+      </summary>
+      <value>Default value of the padding. Default value  — 1px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.General.DefaultPaddingProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Button();
+          var currentValue = Parameters.GetDefaultPadding(control);
+          Parameters.SetDefaultPadding(control, new Thickness(1d));
+        </code>
+        <code lang="XAML">
+          &lt;Button params:General.DefaultPadding="1"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.General.DefaultPaddingProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.General.DefaultPadding" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.General.DefaultPadding" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.General.GetDefaultPadding(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.General.DefaultPadding" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>Default value of padding.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.General.SetDefaultPadding(System.Windows.DependencyObject,System.Windows.Thickness)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.General.DefaultPadding" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">Default value of padding.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.General.SemiBoldPadding">
+      <summary>
+        Gets or sets the value of medium-size padding.
+      </summary>
+      <value>the value of medium-size padding. Default value  — 2px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.General.SemiBoldPaddingProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Button();
+          var currentValue = Parameters.GetSemiBoldPadding(control);
+          Parameters.SetSemiBoldPadding(control, new Thickness(2d));
+        </code>
+        <code lang="XAML">
+          &lt;Button params:General.SemiBoldPadding="2px"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.General.SemiBoldPaddingProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.General.SemiBoldPadding" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.General.SemiBoldPadding" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.General.GetSemiBoldPadding(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.General.SemiBoldPadding" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>The value of the medium-size padding.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.General.SetSemiBoldPadding(System.Windows.DependencyObject,System.Windows.Thickness)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.General.SemiBoldPadding" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">The value of medium-size padding.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.General.BoldPadding">
+      <summary>
+        Gets or sets the value of the biggest padding.
+      </summary>
+      <value>The value of the biggest padding. Default value  — 6px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.General.BoldPaddingProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Button();
+          var currentValue = Parameters.GetBoldPadding(control);
+          Parameters.SetBoldPadding(control, new Thickness(6d));
+        </code>
+        <code lang="XAML">
+          &lt;Button params:General.BoldPadding="6px"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.General.BoldPaddingProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.General.BoldPadding" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.General.BoldPadding" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.General.GetBoldPadding(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.General.BoldPadding" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>The value of the biggest padding.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.General.SetBoldPadding(System.Windows.DependencyObject,System.Windows.Thickness)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.General.BoldPadding" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">The value of the biggest padding.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.General.DefaultPaddingValue">
+      <summary>
+        Gets or sets the default value of padding.
+      </summary>
+      <value>Default value of the padding. Default value  — 1px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.General.DefaultPaddingValueProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Button();
+          var currentValue = Parameters.GetDefaultPaddingValue(control);
+          Parameters.SetDefaultPaddingValue(control, 1d);
+        </code>
+        <code lang="XAML">
+          &lt;Button params:General.DefaultPaddingValue="1px"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.General.DefaultPaddingValueProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.General.DefaultPaddingValue" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.General.DefaultPaddingValue" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.General.GetDefaultPaddingValue(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.General.DefaultPaddingValue" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>Default value of padding.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.General.SetDefaultPaddingValue(System.Windows.DependencyObject,System.Double)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.General.DefaultPaddingValue" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">Default value of padding.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.General.SemiBoldPaddingValue">
+      <summary>
+        Gets or sets the default value of medium-size padding.
+      </summary>
+      <value>the value of medium-size padding. Default value  — 2px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.General.SemiBoldPaddingValueProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Button();
+          var currentValue = Parameters.GetSemiBoldPaddingValue(control);
+          Parameters.SetSemiBoldPaddingValue(control, 2d);
+        </code>
+        <code lang="XAML">
+          &lt;Button params:General.SemiBoldPaddingValue="2px"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.General.SemiBoldPaddingValueProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.General.SemiBoldPaddingValue" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.General.SemiBoldPaddingValue" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.General.GetSemiBoldPaddingValue(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.General.SemiBoldPaddingValue" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>The value of the medium-size padding.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.General.SetSemiBoldPaddingValue(System.Windows.DependencyObject,System.Double)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.General.SemiBoldPaddingValue" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">The value of medium-size padding.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.General.BoldPaddingValue">
+      <summary>
+        Gets or sets the value of the biggest padding.
+      </summary>
+      <value>The value of the biggest padding. Default value  — 6px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.General.BoldPaddingValueProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />,
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Button();
+          var currentValue = Parameters.GetBoldPaddingValue(control);
+          Parameters.SetBoldPaddingValue(control, 6d);
+        </code>
+        <code lang="XAML">
+          &lt;Button params:General.BoldPaddingValue="6px"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.General.BoldPaddingValueProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.General.BoldPaddingValue" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.General.BoldPaddingValue" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.General.GetBoldPaddingValue(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.General.BoldPaddingValue" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>The value of the biggest padding.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.General.SetBoldPaddingValue(System.Windows.DependencyObject,System.Double)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.General.BoldPaddingValue" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">The value of the biggest padding.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.General.DefaultDuration">
+      <summary>
+        Gets or sets the default duration of the animation.
+      </summary>
+      <value>Default duration of the animation. Default value  — 0 sec.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.General.DefaultDurationProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Button();
+          var currentValue = Parameters.GetDefaultDuration(control);
+          Parameters.SetDefaultDuration(control, new Duration(TimeSpan.FromSeconds(0d)));
+        </code>
+        <code lang="XAML">
+          &lt;Button params:General.DefaultDuration="00:00:00.0"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.General.DefaultDurationProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.General.DefaultDuration" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.General.DefaultDuration" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.General.GetDefaultDuration(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.General.DefaultDuration" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>Default duration of the animation.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <method name="M:Elysium.Parameters.General.SetDefaultDuration(System.Windows.DependencyObject,System.Windows.Duration)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.General.DefaultDuration" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">Default duration of the animation.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.General.MinimumDuration">
+      <summary>
+        Gets or sets the minimum duration of the animation.
+      </summary>
+      <value>Minimum duration of the animation. Default value  — 0.2 sec.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.General.MinimumDurationProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Button();
+          var currentValue = Parameters.GetMinimumDuration(control);
+          Parameters.SetMinimumDuration(control, new Duration(TimeSpan.FromSeconds(0.2d)));
+        </code>
+        <code lang="XAML">
+          &lt;Button params:General.MinimumDuration="00:00:00.2"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.General.MinimumDurationProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.General.MinimumDuration" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.General.MinimumDuration" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.General.GetMinimumDuration(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.General.MinimumDuration" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>Minimum duration of the animation.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <method name="M:Elysium.Parameters.General.SetMinimumDuration(System.Windows.DependencyObject,System.Windows.Duration)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.General.MinimumDuration" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">Minimum duration of the animation.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.General.OptimumDuration">
+      <summary>
+        Gets or sets the optimum duration of the animation.
+      </summary>
+      <value>Optimum duration of the animation. Default value  — 0.5 sec.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.General.OptimumDurationProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Button();
+          var currentValue = Parameters.GetOptimumDuration(control);
+          Parameters.SetOptimumDuration(control, new Duration(TimeSpan.FromSeconds(0.5d)));
+        </code>
+        <code lang="XAML">
+          &lt;Button params:General.OptimumDuration="00:00:00.5"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.General.OptimumDurationProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.General.OptimumDuration" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Design.ThemeManager.OptimumDuration" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.General.GetOptimumDuration(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.General.OptimumDuration" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>Optimum duration of the animation.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <method name="M:Elysium.Parameters.General.SetOptimumDuration(System.Windows.DependencyObject,System.Windows.Duration)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.General.OptimumDuration" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">Optimum duration of the animation.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.General.MaximumDuration">
+      <summary>
+        Gets or sets the maximum duration of the animation.
+      </summary>
+      <value>Maximum duration of the animation. Default value  — 1 sec.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.General.MaximumDurationProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Button();
+          var currentValue = Parameters.GetMaximumDuration(control);
+          Parameters.SetMaximumDuration(control, new Duration(TimeSpan.FromSeconds(1d)));
+        </code>
+        <code lang="XAML">
+          &lt;Button params:General.MaximumDuration="00:00:01"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.General.MaximumDurationProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.General.MaximumDuration" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Design.ThemeManager.MaximumDuration" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.General.GetMaximumDuration(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.General.MaximumDuration" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>Maximum duration of the animation.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <method name="M:Elysium.Parameters.General.SetMaximumDuration(System.Windows.DependencyObject,System.Windows.Duration)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.General.MaximumDuration" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">Maximum duration of the animation.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.General.ShadowBrush">
+      <summary>
+        Gets or sets the brush used for shadow creation.
+      </summary>
+      <value>The brush used for shadow creation. Default value  — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.General.ShadowBrushProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
+            </description>
+          </item>
+        </list>
+        This property is set at the theme of the control locally and usually has the value, which is equal to the value of the resource ForegroundBrush with the value of transparency = 0.3.
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new ComboBox();
+          var currentValue = Parameters.GetShadowBrush(control);
+          Parameters.SetShadowBrush(control, Brushes.Black);
+        </code>
+        <code lang="XAML">
+          &lt;ComboBox params:General.ShadowBrush="Black"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.General.ShadowBrushProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.General.ShadowBrush" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Design.ThemeManager.ShadowBrush" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.General.GetShadowBrush(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.General.ShadowBrush" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>A brush, used for shadow creation.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <method name="M:Elysium.Parameters.General.SetShadowBrush(System.Windows.DependencyObject,System.Windows.Media.SolidColorBrush)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.General.ShadowBrush" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">A brush used for shadow creation.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+  </members>
+</doc>

@@ -10,8 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Elysium.Notifications</RootNamespace>
     <AssemblyName>Elysium.Notifications</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <FileAlignment>512</FileAlignment>
@@ -268,6 +267,6 @@
   </PropertyGroup>
   <Import Condition="Exists('$(MSBuildExtensionPackPath)')" Project="$(MSBuildExtensionPackPath)"/>
   <PropertyGroup>
-    <PostBuildEvent>"..\..\..\Tools and Resources\Utilities\signtool\signtool.exe" sign /f "..\..\..\Source code\SigningKey.pfx" "Elysium.Notifications.dll"</PostBuildEvent>
+    <PostBuildEvent>"..\..\..\Tools and Resources\Utilities\signtool\x86\signtool.exe" sign /f "..\..\..\Source code\SigningKey.pfx" "Elysium.Notifications.dll"</PostBuildEvent>
   </PropertyGroup>
 </Project>

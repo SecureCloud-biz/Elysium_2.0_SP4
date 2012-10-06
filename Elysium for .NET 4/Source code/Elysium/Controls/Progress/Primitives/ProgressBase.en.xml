@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Controls.Primitives.ProgressBase">
+      <summary>
+        A base class for progress bars.
+      </summary>
+    </type>
+    <property name="P:Elysium.Controls.Primitives.ProgressBase.Percent">
+      <summary>
+        Returns a value, which corresponds to the percentage of progress bar completion.
+      </summary>
+      <value>
+        A percentage of the progress bar completion, or <see cref="F:System.Double.NaN">Double.NaN</see>, if the progress bar is in "undefined" state or busy. Default value = 0.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.ProgressBase.PercentProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </property>
+    <field name="F:Elysium.Controls.Primitives.ProgressBase.PercentProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Controls.Primitives.ProgressBase.Percent" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Controls.Primitives.ProgressBase.Percent" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Controls.Primitives.ProgressBase.OnPercentChanged(System.Double,System.Double)">
+      <summary>
+        Called when the dependency property changes <see cref="P:Elysium.Controls.Primitives.ProgressBase.Percent" />.
+      </summary>
+      <param name="oldPercent">
+        An old value of the dependency property <see cref="P:Elysium.Controls.Primitives.ProgressBase.Percent" />.
+      </param>
+      <param name="newPercent">
+        A new value of the dependency property <see cref="P:Elysium.Controls.Primitives.ProgressBase.Percent" />.
+      </param>
+    </method>
+    <method name="M:Elysium.Controls.Primitives.ProgressBase.OnValueChanged(System.Double,System.Double)">
+      <inheritdoc />
+    </method>
+    <property name="P:Elysium.Controls.Primitives.ProgressBase.State">
+      <summary>
+        Gets or sets the value that indicates current state of the progress bar.
+      </summary>
+      <value>
+        A value of the enumeration <see cref="T:Elysium.Controls.ProgressState" />. Default value — <see cref="F:Elysium.Controls.ProgressState.Normal">ProgressState.Normal</see>.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.ProgressBase.StateProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.BindsTwoWayByDefault" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </property>
+    <field name="F:Elysium.Controls.Primitives.ProgressBase.StateProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Controls.Primitives.ProgressBase.State" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Controls.Primitives.ProgressBase.State" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Controls.Primitives.ProgressBase.OnStateChanged(Elysium.Controls.ProgressState,Elysium.Controls.ProgressState)">
+      <summary>
+        Called when the dependency property changes <see cref="P:Elysium.Controls.Primitives.ProgressBase.State" />.
+      </summary>
+      <param name="oldState">
+        An old value of the dependency property <see cref="P:Elysium.Controls.Primitives.ProgressBase.State" />.
+      </param>
+      <param name="newState">
+        A new value of the dependency property <see cref="P:Elysium.Controls.Primitives.ProgressBase.State" />.
+      </param>
+    </method>
+    <property name="P:Elysium.Controls.Primitives.ProgressBase.IndeterminateAnimation">
+      <summary>
+        Gets or sets the value, which is an animation storyboard during the "indeterminate" state.
+      </summary>
+      <value>Animation storyboard. Default value - an instance of the defalut animation storyboard.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.ProgressBase.IndeterminateAnimationProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </property>
+    <field name="F:Elysium.Controls.Primitives.ProgressBase.IndeterminateAnimationProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Controls.Primitives.ProgressBase.IndeterminateAnimation" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Controls.Primitives.ProgressBase.IndeterminateAnimation" />.
+      </value>
+    </field>
+    <property name="P:Elysium.Controls.Primitives.ProgressBase.IsIndeterminateAnimationRunning">
+      <summary>
+        Gets or sets (only for inheritors) the value, which corresponds to whether the animation of the "indeterminate" state is started.
+      </summary>
+      <value>True, if the animation of the "indeterminate" state is started; otherwise False. Default value =  false.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.ProgressBase.IsIndeterminateAnimationRunningProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </property>
+    <field name="F:Elysium.Controls.Primitives.ProgressBase.IsIndeterminateAnimationRunningProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Controls.Primitives.ProgressBase.IsIndeterminateAnimationRunning" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Controls.Primitives.ProgressBase.IsIndeterminateAnimationRunning" />.
+      </value>
+    </field>
+    <field name="F:Elysium.Controls.Primitives.ProgressBase.IsIndeterminateAnimationRunningPropertyKey">
+      <summary>
+        Identifies a read-only dependency property <see cref="P:Elysium.Controls.Primitives.ProgressBase.IsIndeterminateAnimationRunning" />.
+      </summary>
+      <value>
+        Identifier for the dependency property with special access rights for writing <see cref="P:Elysium.Controls.Primitives.ProgressBase.IsIndeterminateAnimationRunning" />.
+      </value>
+    </field>
+    <property name="P:Elysium.Controls.Primitives.ProgressBase.BusyAnimation">
+      <summary>
+        Gets or sets (only for inheritors) the value, which is an animation storyboard during the "busy" state.
+      </summary>
+      <value>Animation storyboard. Default value - an instance of the defalut animation storyboard.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.ProgressBase.BusyAnimationProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </property>
+    <field name="F:Elysium.Controls.Primitives.ProgressBase.BusyAnimationProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Control.Primitives.ProgressBase.BusyAnimation" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Control.Primitives.ProgressBase.BusyAnimation" />.
+      </value>
+    </field>
+    <field name="F:Elysium.Controls.Primitives.ProgressBase.BusyAnimationPropertyKey">
+      <summary>
+        Identifies a read-only dependency property <see cref="P:Elysium.Control.Primitives.ProgressBase.BusyAnimation" />.
+      </summary>
+      <value>
+        Identifier for the dependency property with special access rights for writing <see cref="P:Elysium.Control.Primitives.ProgressBase.BusyAnimation" />.
+      </value>
+    </field>
+    <property name="P:Elysium.Controls.Primitives.ProgressBase.IsBusyAnimationRunning">
+      <summary>
+        Gets or sets  the value, which corresponds to whether the animation of the "busy" state is started.
+      </summary>
+      <value>True, if the animation of the "busy" state is started; otherwise False. Default value =  false.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.ProgressBase.IsBusyAnimationRunningProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.none" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </property>
+    <field name="F:Elysium.Controls.Primitives.ProgressBase.IsBusyAnimationRunningProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Controls.Primitives.ProgressBase.IsBusyAnimationRunning" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Controls.Primitives.ProgressBase.IsBusyAnimationRunning" />.
+      </value>
+    </field>
+    <field name="F:Elysium.Controls.Primitives.ProgressBase.IsBusyAnimationRunningPropertyKey">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Controls.Primitives.ProgressBase.IsBusyAnimationRunning" />.
+      </summary>
+      <value>
+        Identifier for the dependency property with special access rights for writing <see cref="P:Elysium.Controls.Primitives.ProgressBase.IsBusyAnimationRunning" />.
+      </value>
+    </field>
+    <event name="E:Elysium.Controls.Primitives.ProgressBase.AnimationsUpdating">
+      <summary>
+        An event is fired before the procedure of updating animation states is started.
+      </summary>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.ProgressBase.AnimationsUpdatingEvent" />
+            </description>
+          </item>
+          <item>
+            <term>Associated method</term>
+            <description>
+              <see cref="M:Elysium.Controls.Primitives.ProgressBase.OnAnimationsUpdating(System.Windows.RoutedEventArgs)" />
+            </description>
+          </item>
+          <item>
+            <term>Routing strategy</term>
+            <description>A descending routing strategy</description>
+          </item>
+        </list>
+      </remarks>
+    </event>
+    <field name="F:Elysium.Controls.Primitives.ProgressBase.AnimationsUpdatingEvent">
+      <summary>
+        Identifies a routed event <see cref="E:Elysium.Controls.Primitives.ProgressBase.AnimationsUpdating" />.
+      </summary>
+      <value>
+        An identifier of the routed event <see cref="E:Elysium.Controls.Primitives.ProgressBase.AnimationsUpdating" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Controls.Primitives.ProgressBase.OnAnimationsUpdating(System.Windows.RoutedEventArgs)">
+      <summary>
+        Is called when the routed event is generated <see cref="E:Elysium.Controls.Primitives.ProgressBase.AnimationsUpdating" />.
+      </summary>
+      <param name="e">Routed event.</param>
+    </method>
+    <event name="E:Elysium.Controls.Primitives.ProgressBase.AnimationsUpdated">
+      <summary>
+        An event is fired after the procedure of updating animation states is finished.
+      </summary>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.ProgressBase.AnimationsUpdatedEvent" />
+            </description>
+          </item>
+          <item>
+            <term>Associated method</term>
+            <description>
+              <see cref="M:Elysium.Controls.Primitives.ProgressBase.OnAnimationsUpdated(System.Windows.RoutedEventArgs)" />
+            </description>
+          </item>
+          <item>
+            <term>Routing strategy</term>
+            <description>An ascending routing strategy</description>
+          </item>
+        </list>
+      </remarks>
+    </event>
+    <field name="F:Elysium.Controls.Primitives.ProgressBase.AnimationsUpdatedEvent">
+      <summary>
+        Identifies a routed event <see cref="E:Elysium.Controls.Primitives.ProgressBase.AnimationsUpdated" />.
+      </summary>
+      <value>
+        An identifier of the routed event <see cref="E:Elysium.Controls.Primitives.ProgressBase.AnimationsUpdated" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Controls.Primitives.ProgressBase.OnAnimationsUpdated(System.Windows.RoutedEventArgs)">
+      <summary>
+        Is called when the routed event is generated <see cref="E:Elysium.Controls.Primitives.ProgressBase.AnimationsUpdated" />.
+      </summary>
+      <param name="e">Routed event.</param>
+    </method>
+    <method name="M:Elysium.Controls.Primitives.ProgressBase.OnApplyTemplate">
+      <inheritdoc />
+    </method>
+    <method name="M:Elysium.Controls.Primitives.ProgressBase.OnCreateAutomationPeer">
+      <inheritdoc />
+    </method>
+  </members>
+</doc>

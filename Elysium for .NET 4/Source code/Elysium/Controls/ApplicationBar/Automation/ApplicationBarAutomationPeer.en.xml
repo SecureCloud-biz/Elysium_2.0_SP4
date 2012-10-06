@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer">
+      <summary>
+        Comes as a provider of the type <see cref="T:Elysium.Controls.ApplicationBar" /> for the UI Automation technology.
+      </summary>
+    </type>
+    <method name="M:Elysium.Controls.Automation.ApplicationBarAutomationPeer.#ctor(Elysium.Controls.ApplicationBar)">
+      <summary>
+        Creates a new instance of the class <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />.
+      </summary>
+      <param name="parameter">
+        An instance of the class <see cref="T:Elysium.Controls.ApplicationBar" />, for which the provider will be used.
+      </param>
+    </method>
+    <method name="M:Elysium.Controls.Automation.ApplicationBarAutomationPeer.GetClassNameCore">
+      <summary>
+        Returns such a class name <see cref="T:Elysium.Controls.ApplicationBar" />, which is connected with current object<see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />. This method is called by <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
+      </summary>
+      <returns>
+        A string with a value "ApplicationBar".
+      </returns>
+      <ensures>Being returned string is always =  "ApplicationBar"</ensures>
+    </method>
+    <method name="M:Elysium.Controls.Automation.ApplicationBarAutomationPeer.GetAutomationControlTypeCore">
+      <summary>
+        Returns such a type of the control <see cref="T:Elysium.Controls.ApplicationBar" />, which is connected with current object<see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />. This method is called by  <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType" />.
+      </summary>
+      <returns>
+        A value <see cref="F:System.Windows.Automation.Peers.AutomationControlType.Menu">AutomationControlType.Menu</see>.
+      </returns>
+      <ensures>The being returned value is a value of AutomationControlType.Menu .</ensures>
+    </method>
+  </members>
+</doc>

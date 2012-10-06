@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Converters.AngleToCoordinateConverter">
+      <summary>
+        Converts a value of an angle (by which the object is situated according to the centre of the circle) to coordinates.
+      </summary>
+    </type>
+    <method name="M:Elysium.Converters.AngleToCoordinateConverter.Convert(System.Object[],System.Type,System.Object,System.Globalization.CultureInfo)">
+      <summary>
+        Converts a value of an angle (by which the object is situated according to the centre of the circle) to coordinates.
+      </summary>
+      <param name="values">
+        Input values. Every value except first must be of type <see cref="T:System.Double" />.
+        There must be a first value. First value will be returned in case there is a fail during code executing.
+        Next three values are mandatory:
+        <list type="number">
+          <item>
+            <description>
+              An angle (by which the object is situated according to the centre of the circle) to coordinates.
+            </description>
+          </item>
+          <item>
+            <description>Witdh of the rectangle, in which the circle is entered.</description>
+          </item>
+          <item>
+            <description>Height of the rectange, in which the circle is entered.</description>
+          </item>
+        </list>
+        Next four values are mandatory:
+        <list type="number">
+          <item>
+            <description>Width of the object.</description>
+          </item>
+          <item>
+            <description>Height of the object.</description>
+          </item>
+          <item>
+            <description>X coordinate of the centre of the circle.</description>
+          </item>
+          <item>
+            <description>Y coordinate of the centre of the circle.</description>
+          </item>
+        </list>
+      </param>
+      <param name="targetType">A target type. The value is ignored.</param>
+      <param name="parameter">Converter's parameter. Has to be a string and can be one of the next values:  "X", "x", "Y", "y".</param>
+      <param name="culture">Language and local parameters used in converter. The value is ignored.</param>
+      <returns>
+        Object coordinates. In case of failure of the method's executing,  specified for the failure value will be returned. If the parameter <paramref name="values" /> is  null or it's lenght is more than 4, a value is returned <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
+      </returns>
+    </method>
+  </members>
+</doc>

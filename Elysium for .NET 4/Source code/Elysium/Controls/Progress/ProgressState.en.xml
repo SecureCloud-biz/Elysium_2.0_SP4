@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Controls.ProgressState">
+      <summary>
+        Defines the state of the progressBar (one of the controls, which was inherited from <see cref="T:Elysium.Controls.Primitives.ProgressBase" />).
+      </summary>
+    </type>
+    <field name="F:Elysium.Controls.ProgressState.Normal">
+      <summary>
+        Normal state.
+      </summary>
+    </field>
+    <field name="F:Elysium.Controls.ProgressState.Indeterminate">
+      <summary>
+        Unknown state.
+      </summary>
+    </field>
+    <field name="F:Elysium.Controls.ProgressState.Busy">
+      <summary>
+        Busy state.
+      </summary>
+    </field>
+  </members>
+</doc>

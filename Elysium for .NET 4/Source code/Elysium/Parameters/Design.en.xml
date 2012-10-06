@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Parameters.Design">
+      <summary>
+        Represents the class that controls theme's basic settings in design-time mode.
+      </summary>
+    </type>
+    <property name="P:Elysium.Parameters.Design.Theme">
+      <summary>
+        Gets or sets the value that indicates current theme type in design-time mode.
+      </summary>
+      <value>
+        It can be either one of the values of <see cref="T:Elysium.Theme" /> or null. It might be null when the control has to use the value that has been set for the entire application. Default value = null.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Design.ThemeProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new TabControl();
+          var currentValue = Parameters.Design.GetTheme(control);
+          Parameters.Design.SetTheme(control, null);
+        </code>
+        <code lang="XAML">
+          &lt;TabControl params:Design.Theme="Light"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.Design.ThemeProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.Design.Theme" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.Design.Theme" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.Design.GetTheme(System.Windows.FrameworkElement)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.Design.Theme" /> for the specified control.
+      </summary>
+      <param name="obj">The control, for which the value of the property is being got.</param>
+      <returns>Current theme type for the specified control in design-time mode.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <method name="M:Elysium.Parameters.Design.SetTheme(System.Windows.FrameworkElement,System.Nullable{Elysium.Theme})">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.Design.Theme" /> for the specified control.
+      </summary>
+      <param name="obj">The control, for which the value of the property is being got.</param>
+      <param name="value">The new theme type for the specified control. </param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.Design.AccentBrush">
+      <summary>
+        Gets or sets the accent colour in design-time mode.
+      </summary>
+      <value>The brush that contains the accent colour, or null, if the control has to use the value, which has been set for the entire application. Default value — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Design.AccentBrushProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new TabControl();
+          var currentValue = Parameters.Design.GetAccentBrush(control);
+          Parameters.Design.SetAccentBrush(control, null);
+        </code>
+        <code lang="XAML">
+          &lt;TabControl params:Design.AccentBrush="{DynamicResource BlueBrush}"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.Design.AccentBrushProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.Design.AccentBrush" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.Design.AccentBrush" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.Design.GetAccentBrush(System.Windows.FrameworkElement)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.Design.AccentBrush" /> for the specified control.
+      </summary>
+      <param name="obj">The control, for which the value of the property is being got.</param>
+      <returns>Current accent colour for the specified control in design-time mode.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <method name="M:Elysium.Parameters.Design.SetAccentBrush(System.Windows.FrameworkElement,System.Windows.Media.SolidColorBrush)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.Design.AccentBrush" /> for the specified control.
+      </summary>
+      <param name="obj">The control, for which the value of the property is being got.</param>
+      <param name="value">The accent colour for the specified control in construtor's mode. </param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.Design.ContrastBrush">
+      <summary>
+        Gets or sets the colour which is contrast to the accent colour in design-time mode.
+      </summary>
+      <value>The brush that contains the contrast colour, or null, if the control has to use the value, which has been set for the entire application. Default value — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Design.ContrastBrushProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new TabControl();
+          var currentValue = Parameters.Design.GetContrastBrush(control);
+          Parameters.Design.SetContrastBrush(control, null);
+        </code>
+        <code lang="XAML">
+          &lt;TabControl params:Design.ContrastBrush="White"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.Design.ContrastBrushProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.Design.ContrastBrush" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.Design.ContrastBrush" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.Design.GetContrastBrush(System.Windows.FrameworkElement)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.Design.ContrastBrush" /> for the specified control.
+      </summary>
+      <param name="obj">The control, for which the value of the property is being got.</param>
+      <returns>Current contrast colour for the specified control in design-time mode.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <method name="M:Elysium.Parameters.Design.SetContrastBrush(System.Windows.FrameworkElement,System.Windows.Media.SolidColorBrush)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.Design.ContrastBrush" /> for the specified control.
+      </summary>
+      <param name="obj">The control, for which the value of the property is being got.</param>
+      <param name="value">The contrast colour for the specified control in construtor's mode. </param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+  </members>
+</doc>

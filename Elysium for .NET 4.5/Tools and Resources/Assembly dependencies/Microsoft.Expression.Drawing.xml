@@ -364,9 +364,16 @@
             </summary>
             <param name="abbreviatedGeometry">A string in the path mini-language.</param>
         </member>
+        <member name="M:Microsoft.Expression.Drawing.Core.PathGeometryHelper.CopyAsPathGeometry(System.Windows.Media.Geometry)">
+            <summary>
+            Convert the given geometry into a single PathGeometry.  Always returns a new copy of path geometry.
+            </summary>
+        </member>
         <member name="M:Microsoft.Expression.Drawing.Core.PathGeometryHelper.AsPathGeometry(System.Windows.Media.Geometry)">
             <summary>
             Converts the given geometry into a single PathGeometry.
+            When input is already a path geometry, it won't copy it.
+            Otherwise, it will create a new copy of PathGeometry.
             </summary>
         </member>
         <member name="M:Microsoft.Expression.Drawing.Core.PathGeometryHelper.SyncPolylineGeometry(System.Windows.Media.Geometry@,System.Collections.Generic.IList{System.Windows.Point},System.Boolean)">
@@ -839,6 +846,11 @@
             Ensures the value is an instance of result type (T). If not, replace with a new instance of type (T).
             </summary>
         </member>
+        <member name="M:Microsoft.Expression.Drawing.Core.GeometryHelper.EnsureGeometryType``1(``0@,System.Collections.Generic.IList{System.Windows.Media.Geometry},System.Int32,System.Func{``0})">
+            <summary>
+            Ensures the value[index] is an instance of result type (T). If not, replace with a new instance of type (T).
+            </summary>
+        </member>
         <member name="M:Microsoft.Expression.Drawing.Core.GeometryHelper.EnsureSegmentType``1(``0@,System.Collections.Generic.IList{System.Windows.Media.PathSegment},System.Int32,System.Func{``0})">
             <summary>
             Ensures the list[index] is an instance of result type (T). If not, replace with a new instance of type (T).
@@ -908,6 +920,11 @@
         <member name="T:Microsoft.Expression.Drawing.Core.PathFigureHelper">
             <summary>
             Helper class to work with PathFigure.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Expression.Drawing.Core.PathFigureHelper.ApplyTransform(System.Windows.Media.PathFigure,System.Windows.Media.GeneralTransform)">
+            <summary>
+            Apply the given transform to the path figure and modify it inplace.
             </summary>
         </member>
         <member name="M:Microsoft.Expression.Drawing.Core.PathFigureHelper.FlattenFigure(System.Windows.Media.PathFigure,System.Collections.Generic.IList{System.Windows.Point},System.Double,System.Boolean)">
@@ -1116,7 +1133,7 @@
             Line segment has 2 points, Cubic bezier has 4 points.
             </summary>
         </member>
-        <member name="M:Microsoft.Expression.Drawing.Core.TransformExtensions.TransformEquals(System.Windows.Media.Transform,System.Windows.Media.Transform)">
+        <member name="M:Microsoft.Expression.Drawing.Core.TransformHelper.TransformEquals(System.Windows.Media.Transform,System.Windows.Media.Transform)">
             <summary>
             Compares two transforms for an exact match. Transforms with the same value but different structure (e.g. Translate(0,0) and Rotate(0) are not considered equivalent).
             </summary>
@@ -1765,6 +1782,27 @@
             Gets or sets the the distance between the center and the innermost point.
             </summary>
             <value>The distance between the center and the innermost point.</value>
+        </member>
+        <member name="T:Microsoft.Expression.Drawing.ExceptionStringTable">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Expression.Drawing.ExceptionStringTable.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Expression.Drawing.ExceptionStringTable.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Expression.Drawing.ExceptionStringTable.TypeNotSupported">
+            <summary>
+              Looks up a localized string similar to Type &quot;{0}&quot; is not supported..
+            </summary>
         </member>
     </members>
 </doc>

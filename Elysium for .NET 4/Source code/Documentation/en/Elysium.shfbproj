@@ -71,7 +71,7 @@
         <configuration />
       </PlugInConfig>
     </PlugInConfigurations>
-    <MissingTags>None</MissingTags>
+    <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="Elysium" isDocumented="True" />
     </NamespaceSummaries>

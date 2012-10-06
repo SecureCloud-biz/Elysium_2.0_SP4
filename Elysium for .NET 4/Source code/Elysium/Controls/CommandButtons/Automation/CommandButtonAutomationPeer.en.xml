@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Controls.Automation.CommandButtonAutomationPeer">
+      <summary>
+        Comes as a provider of the type <see cref="T:Elysium.Controls.CommandButton" /> for the UI Automation technology.
+      </summary>
+    </type>
+    <method name="M:Elysium.Controls.Automation.CommandButtonAutomationPeer.#ctor(Elysium.Controls.CommandButton)">
+      <summary>
+        Creates a new instance of the class <see cref="T:Elysium.Controls.Automation.CommandButtonAutomationPeer" />.
+      </summary>
+      <param name="owner">
+        An instance of the class <see cref="T:Elysium.Controls.CommandButton" />, for which the provider will be used.
+      </param>
+    </method>
+    <method name="M:Elysium.Controls.Automation.CommandButtonAutomationPeer.GetClassNameCore">
+      <summary>
+        Returns such a class name <see cref="T:Elysium.Controls.CommandButton" />, which is connected with current object<see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />. This method is called by <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
+      </summary>
+      <returns>
+        A string with a value "CommandButton".
+      </returns>
+      <ensures>Being returned string is always =  "CommandButton"</ensures>
+    </method>
+    <method name="M:Elysium.Controls.Automation.CommandButtonAutomationPeer.GetPattern(System.Windows.Automation.Peers.PatternInterface)">
+      <summary>
+        Returns a template of the control for an instance of the control <see cref="T:Elysium.Controls.CommandButton" />, which is connected with current object <see cref="T:Elysium.Controls.Automation.CommandButtonAutomationPeer" />.
+      </summary>
+      <param name="patternInterface">
+        A value of the enumeration <see cref="T:System.Windows.Automation.Peers.PatternInterface" />.
+      </param>
+      <returns>
+        If a parameter <paramref name="patternInterface" /> has a value <see cref="F:System.Windows.Automation.Peers.PatternInterface.Invoke" />,
+        the method will return "this", otherwise "null" will be returned.
+      </returns>
+    </method>
+    <method name="M:Elysium.Controls.Automation.CommandButtonAutomationPeer.Invoke">
+      <summary>
+        Sends a request for element's activation and initiates its only and unambiguous action.
+      </summary>
+      <exception cref="T:System.Windows.Automation.ElementNotEnabledException">The conrol is disabled.</exception>
+    </method>
+  </members>
+</doc>

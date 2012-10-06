@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Parameters.ToggleSwitch">
+      <summary>
+        Represents a class, which manages the settings of the control <see cref="T:System.Windows.Controls.ToggleSwitch" />.
+      </summary>
+    </type>
+    <property name="P:Elysium.Parameters.ToggleSwitch.TrackSize">
+      <summary>
+        Gets or sets the width of the switch in the control <see cref="T:System.Windows.Controls.ToggleSwitch" />.
+      </summary>
+      <value>Width of the switch. Default value  — 48px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.ToggleSwitch.TrackSizeProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new ToggleSwitch();
+          var currentValue = Parameters.ToggleSwitch.GetTrackSize(control);
+          Parameters.ToggleSwitch.SetTrackSize(control, 48d);
+        </code>
+        <code lang="XAML">
+          &lt;ToggleSwitch params:ToggleSwitch.TrackSize="48px"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.ToggleSwitch.TrackSizeProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.ToggleSwitch.TrackSize" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.ToggleSwitch.TrackSize" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.ToggleSwitch.GetTrackSize(Elysium.Controls.ToggleSwitch)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.ToggleSwitch.TrackSize" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>Width of the switch.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.ToggleSwitch.SetTrackSize(Elysium.Controls.ToggleSwitch,System.Double)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.ToggleSwitch.TrackSize" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">Width of the switch.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.ToggleSwitch.ThumbThickness">
+      <summary>
+        Gets or sets the thickness of the switch in the control <see cref="T:System.Windows.Controls.ToggleSwitch" />.
+      </summary>
+      <value>Thickness of the switch. Default value = 10 px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.ToggleSwitch.ThumbThicknessProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new ToggleSwitch();
+          var currentValue = Parameters.ToggleSwitch.GetThumbThickness(control);
+          Parameters.ToggleSwitch.SetThumbThickness(control, 10d);
+        </code>
+        <code lang="XAML">
+          &lt;ToggleSwitch params:ToggleSwitch.ThumbThickness="10px"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.ToggleSwitch.ThumbThicknessProperty">
+      <summary>
+        Identifies a dependency property <see cref="P:Elysium.Parameters.ToggleSwitch.ThumbThickness" />.
+      </summary>
+      <value>
+        Identifier for the dependency property <see cref="P:Elysium.Parameters.ToggleSwitch.ThumbThickness" />.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.ToggleSwitch.GetThumbThickness(Elysium.Controls.ToggleSwitch)">
+      <summary>
+        Returns the value of the dependency property <see cref="P:Elysium.Parameters.ToggleSwitch.ThumbThickness" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>Thickness of the switch.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.ToggleSwitch.SetThumbThickness(Elysium.Controls.ToggleSwitch,System.Double)">
+      <summary>
+        Sets the value of the dependency property <see cref="P:Elysium.Parameters.ToggleSwitch.ThumbThickness" /> for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">Thickness of the switch.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value = null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+  </members>
+</doc>

@@ -11,14 +11,13 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Interop;
+using System.Windows.Shell;
 using System.Windows.Threading;
 
 using Elysium.Extensions;
 using Elysium.Native;
 
 using JetBrains.Annotations;
-
-using Microsoft.Windows.Shell;
 
 using Monitor = Elysium.Native.Monitor;
 
@@ -79,12 +78,9 @@ namespace Elysium.Controls
         [SecurityCritical]
         private void Initialize()
         {
-            // NOTE: Lack of contracts: SystemParameters2.Current must ensure non-null value
-            Contract.Assume(SystemParameters2.Current != null);
-
             _chrome = new WindowChrome
                           {
-                              CaptionHeight = SystemParameters2.Current.WindowCaptionHeight,
+                              CaptionHeight = SystemParameters.WindowCaptionHeight,
                               CornerRadius = new CornerRadius(0d),
                               GlassFrameThickness = new Thickness(0d),
                               NonClientFrameEdges = NonClientFrameEdges.None,

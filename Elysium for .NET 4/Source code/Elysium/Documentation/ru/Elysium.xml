@@ -93,21 +93,6 @@
       </summary>
       <value>Кисть со сплошной заливкой фиолетового цвета (#FFA200FF).</value>
     </member>
-    <member name="T:Elysium.Theme">
-      <summary>
-        Определяет тип темы.
-      </summary>
-    </member>
-    <member name="F:Elysium.Theme.Dark">
-      <summary>
-        Элементы управления используют тёмную цветовую гамму по умолчанию.
-      </summary>
-    </member>
-    <member name="F:Elysium.Theme.Light">
-      <summary>
-        Элементы управления используют светлую цветовую гамму по умолчанию.
-      </summary>
-    </member>
     <member name="T:Elysium.Manager">
       <summary>
         Представляет класс, управляющий базовыми настройками темы.
@@ -305,394 +290,77 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">application != null</requires>
     </member>
-    <member name="T:Elysium.Parameters.Design">
+    <member name="T:Elysium.Theme">
       <summary>
-        Представляет класс, предоставляющий свойства зависимостей для управления настройками темы элемента управления из XAML в режиме конструктора.
+        Определяет тип темы.
       </summary>
     </member>
-    <member name="P:Elysium.Parameters.Design.Theme">
+    <member name="F:Elysium.Theme.Dark">
       <summary>
-        Возвращает или задаёт значение, указывающее на текующий тип темы в режиме конструктора.
-      </summary>
-      <value>
-        Одно из значений перечисления <see cref="T:Elysium.Theme" /> или null, если элемент управления должен использовать значение, указанное для всего приложения. Значение по умолчанию — null.
-      </value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Идентификатор</term>
-            <description>
-              <see cref="F:Elysium.Parameters.Design.ThemeProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Метаданные</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
-            </description>
-          </item>
-        </list>
-      </remarks>
-      <example>
-        <code lang="C#">
-          var control = new TabControl();
-          var currentValue = Parameters.Design.GetTheme(control);
-          Parameters.Design.SetTheme(control, null);
-        </code>
-        <code lang="XAML">
-          &lt;TabControl params:Design.Theme="Light"/&gt;
-        </code>
-      </example>
-    </member>
-    <member name="F:Elysium.Parameters.Design.ThemeProperty">
-      <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Design.Theme" />.
-      </summary>
-      <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Design.Theme" />.
-      </value>
-    </member>
-    <member name="M:Elysium.Parameters.Design.GetTheme(System.Windows.FrameworkElement)">
-      <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.Theme" /> для указанного элемента управления.
-      </summary>
-      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Текущий тип темы для указанного элемента управления в режиме конструктора.</returns>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </member>
-    <member name="M:Elysium.Parameters.Design.SetTheme(System.Windows.FrameworkElement,System.Nullable{Elysium.Theme})">
-      <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.Theme" /> для указанного элемента управления.
-      </summary>
-      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">Новый тип темы для указанного элемента управления в режиме конструктора.</param>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </member>
-    <member name="P:Elysium.Parameters.Design.AccentBrush">
-      <summary>
-        Возвращает или задаёт акцентирующий цвет в режиме конструктора.
-      </summary>
-      <value>Кисть, содержащая акцентирующий цвет, или null, если элемент управления должен использовать значение, указанное для всего приложения. Значение по умолчанию — null.</value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Идентификатор</term>
-            <description>
-              <see cref="F:Elysium.Parameters.Design.AccentBrushProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Метаданные</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
-            </description>
-          </item>
-        </list>
-      </remarks>
-      <example>
-        <code lang="C#">
-          var control = new TabControl();
-          var currentValue = Parameters.Design.GetAccentBrush(control);
-          Parameters.Design.SetAccentBrush(control, null);
-        </code>
-        <code lang="XAML">
-          &lt;TabControl params:Design.AccentBrush="{x:Static metro:AccentBrushes.Blue}"/&gt;
-        </code>
-      </example>
-    </member>
-    <member name="F:Elysium.Parameters.Design.AccentBrushProperty">
-      <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Design.AccentBrush" />.
-      </summary>
-      <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Design.AccentBrush" />.
-      </value>
-    </member>
-    <member name="M:Elysium.Parameters.Design.GetAccentBrush(System.Windows.FrameworkElement)">
-      <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.AccentBrush" /> для указанного элемента управления.
-      </summary>
-      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Текущий акцентирующий цвет для указанного элемента управления в режиме конструктора.</returns>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </member>
-    <member name="M:Elysium.Parameters.Design.SetAccentBrush(System.Windows.FrameworkElement,System.Windows.Media.SolidColorBrush)">
-      <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.AccentBrush" /> для указанного элемента управления.
-      </summary>
-      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">Акцентирующий цвет для указанного элемента управления в режиме конструктора.</param>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </member>
-    <member name="P:Elysium.Parameters.Design.ContrastBrush">
-      <summary>
-        Возвращает или задаёт контрастный (к акцентирующему) цвет в режиме конструктора.
-      </summary>
-      <value>Кисть, содержащая контрастный цвет, или null, если элемент управления должен использовать значение, указанное для всего приложения. Значение по умолчанию — null.</value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Идентификатор</term>
-            <description>
-              <see cref="F:Elysium.Parameters.Design.ContrastBrushProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Метаданные</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
-            </description>
-          </item>
-        </list>
-      </remarks>
-      <example>
-        <code lang="C#">
-          var control = new TabControl();
-          var currentValue = Parameters.Design.GetContrastBrush(control);
-          Parameters.Design.SetContrastBrush(control, null);
-        </code>
-        <code lang="XAML">
-          &lt;TabControl params:Design.ContrastBrush="White"/&gt;
-        </code>
-      </example>
-    </member>
-    <member name="F:Elysium.Parameters.Design.ContrastBrushProperty">
-      <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Design.ContrastBrush" />.
-      </summary>
-      <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Design.ContrastBrush" />.
-      </value>
-    </member>
-    <member name="M:Elysium.Parameters.Design.GetContrastBrush(System.Windows.FrameworkElement)">
-      <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.ContrastBrush" /> для указанного элемента управления.
-      </summary>
-      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Текущий контрастный цвет для указанного элемента управления в режиме конструктора.</returns>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </member>
-    <member name="M:Elysium.Parameters.Design.SetContrastBrush(System.Windows.FrameworkElement,System.Windows.Media.SolidColorBrush)">
-      <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.ContrastBrush" /> для указанного элемента управления.
-      </summary>
-      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">Контрастный цвет для указанного элемента управления в режиме конструктора.</param>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </member>
-    <member name="T:Elysium.Parameters.Manager">
-      <summary>
-        Представляет класс, предоставляющий свойства зависимостей для управления настройками темы элемента управления из XAML.
+        Элементы управления используют тёмную цветовую гамму по умолчанию.
       </summary>
     </member>
-    <member name="P:Elysium.Parameters.Manager.Theme">
+    <member name="F:Elysium.Theme.Light">
       <summary>
-        Возвращает или задаёт значение, указывающее на текующий тип темы.
+        Элементы управления используют светлую цветовую гамму по умолчанию.
       </summary>
-      <value>
-        Одно из значений перечисления <see cref="T:Elysium.Theme" /> или null, если элемент управления должен наследовать значение от родителя или использовать значение, указанное для всего приложения. Значение по умолчанию — null.
-      </value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Идентификатор</term>
-            <description>
-              <see cref="F:Elysium.Parameters.Manager.ThemeProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Метаданные</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
-            </description>
-          </item>
-        </list>
-        В случае, если параметр наследуется от приложения, гарантируется, что его значение будет обновлено при обновлении соответствующего значения для приложения.
-      </remarks>
-      <example>
-        <code lang="C#">
-          var control = new TabControl();
-          var currentValue = Parameters.Manager.GetTheme(control);
-          Parameters.Manager.SetTheme(control, null);
-        </code>
-        <code lang="XAML">
-          &lt;TabControl params:Manager.Theme="Light"/&gt;
-        </code>
-      </example>
     </member>
-    <member name="F:Elysium.Parameters.Manager.ThemeProperty">
+    <member name="T:Elysium.InvalidStyleException">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Manager.Theme" />.
+        Исключение, которое генерируется при проведении недопустимой операции связанной со стилем.
       </summary>
-      <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Manager.Theme" />.
-      </value>
     </member>
-    <member name="M:Elysium.Parameters.Manager.GetTheme(System.Windows.FrameworkElement)">
-      <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Manager.Theme" /> для указанного элемента управления.
-      </summary>
-      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Текущий тип темы для указанного элемента управления.</returns>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    <member name="M:Elysium.InvalidStyleException.#ctor">
+      <inheritdoc cref="M:System.Exception.#ctor" />
     </member>
-    <member name="M:Elysium.Parameters.Manager.SetTheme(System.Windows.FrameworkElement,System.Nullable{Elysium.Theme})">
-      <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Manager.Theme" /> для указанного элемента управления.
-      </summary>
-      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">Новый тип темы для указанного элемента управления.</param>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    <member name="M:Elysium.InvalidStyleException.#ctor(System.String)">
+      <inheritdoc cref="M:System.Exception.#ctor(System.String)" />
     </member>
-    <member name="P:Elysium.Parameters.Manager.AccentBrush">
-      <summary>
-        Возвращает или задаёт акцентирующий цвет.
-      </summary>
-      <value>Кисть, содержащая акцентирующий цвет, или null, если элемент управления должен наследовать значение от родителя или использовать значение, указанное для всего приложения. Значение по умолчанию — null.</value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Идентификатор</term>
-            <description>
-              <see cref="F:Elysium.Parameters.Manager.AccentBrushProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Метаданные</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
-            </description>
-          </item>
-        </list>
-        В случае, если параметр наследуется от приложения, гарантируется, что его значение будет обновлено при обновлении соответствующего значения для приложения.
-      </remarks>
-      <example>
-        <code lang="C#">
-          var control = new TabControl();
-          var currentValue = Parameters.Manager.GetAccentBrush(control);
-          Parameters.Manager.SetAccentBrush(control, null);
-        </code>
-        <code lang="XAML">
-          &lt;TabControl params:Manager.AccentBrush="{x:Static metro:AccentBrushes.Blue}"/&gt;
-        </code>
-      </example>
+    <member name="M:Elysium.InvalidStyleException.#ctor(System.String,System.Exception)">
+      <inheritdoc cref="M:System.Exception.#ctor(System.String,System.Exception)" />
     </member>
-    <member name="F:Elysium.Parameters.Manager.AccentBrushProperty">
-      <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Manager.AccentBrush" />.
-      </summary>
-      <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Manager.AccentBrush" />.
-      </value>
+    <member name="M:Elysium.InvalidStyleException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <inheritdoc cref="M:System.Exception.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" />
     </member>
-    <member name="M:Elysium.Parameters.Manager.GetAccentBrush(System.Windows.FrameworkElement)">
+    <member name="T:Elysium.Extensions.LogicalTreeHelperExtensions">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Manager.AccentBrush" /> для указанного элемента управления.
+        Предоставляет методы расширения для поиска по логическому дереву элементов WPF.
       </summary>
-      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Текущий акцентирующий цвет для указанного элемента управления.</returns>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="M:Elysium.Parameters.Manager.SetAccentBrush(System.Windows.FrameworkElement,System.Windows.Media.SolidColorBrush)">
+    <member name="M:Elysium.Extensions.LogicalTreeHelperExtensions.FindParent``1(System.Windows.DependencyObject)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Manager.AccentBrush" /> для указанного элемента управления.
+        Осуществляет поиск родителя указанного объекта в логическом дереве элементов WPF.
       </summary>
-      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">Акцентирующий цвет для указанного элемента управления.</param>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <typeparam name="T">Тип родителя.</typeparam>
+      <param name="reference">Элемент, для которого осуществляется поиск родителя.</param>
+      <returns>Родитель или null, если среди предков нет объектов указанного типа.</returns>
     </member>
-    <member name="P:Elysium.Parameters.Manager.ContrastBrush">
+    <member name="M:Elysium.Extensions.LogicalTreeHelperExtensions.FindTopLevelParent(System.Windows.DependencyObject)">
       <summary>
-        Возвращает или задаёт контрастный (к акцентирующему) цвет.
+        Осуществляет поиск корневого элемента логического дерева WPF для указанного объекта.
       </summary>
-      <value>Кисть, содержащая контрастный цвет, или null, если элемент управления должен наследовать значение от родителя или использовать значение, указанное для всего приложения. Значение по умолчанию — null.</value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Идентификатор</term>
-            <description>
-              <see cref="F:Elysium.Parameters.Manager.ContrastBrushProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Метаданные</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
-            </description>
-          </item>
-        </list>
-        В случае, если параметр наследуется от приложения, гарантируется, что его значение будет обновлено при обновлении соответствующего значения для приложения.
-      </remarks>
-      <example>
-        <code lang="C#">
-          var control = new TabControl();
-          var currentValue = Parameters.Manager.GetContrastBrush(control);
-          Parameters.Manager.SetContrastBrush(control, null);
-        </code>
-        <code lang="XAML">
-          &lt;TabControl params:Manager.ContrastBrush="White"/&gt;
-        </code>
-      </example>
+      <param name="reference">Элемент, для которого осуществляется поиск корневого элемента логического дерева WPF.</param>
+      <returns>Корневой элемент логического дерева WPF или null, если указанный объект является корневым элементом.</returns>
     </member>
-    <member name="F:Elysium.Parameters.Manager.ContrastBrushProperty">
+    <member name="T:Elysium.Extensions.VisualTreeHelperExtensions">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Manager.ContrastBrush" />.
+        Предоставляет методы расширения для поиска по визуальному дереву элементов WPF.
       </summary>
-      <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Manager.ContrastBrush" />.
-      </value>
     </member>
-    <member name="M:Elysium.Parameters.Manager.GetContrastBrush(System.Windows.FrameworkElement)">
+    <member name="M:Elysium.Extensions.VisualTreeHelperExtensions.FindParent``1(System.Windows.DependencyObject)">
       <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Manager.ContrastBrush" /> для указанного элемента управления.
+        Осуществляет поиск родителя указанного объекта в визуальном дереве элементов WPF.
       </summary>
-      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Текущий контрастный цвет для указанного элемента управления.</returns>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <typeparam name="T">Тип родителя.</typeparam>
+      <param name="reference">Элемент, для которого осуществляется поиск родителя.</param>
+      <returns>Родитель или null, если среди предков нет объектов указанного типа.</returns>
     </member>
-    <member name="M:Elysium.Parameters.Manager.SetContrastBrush(System.Windows.FrameworkElement,System.Windows.Media.SolidColorBrush)">
+    <member name="M:Elysium.Extensions.VisualTreeHelperExtensions.FindTopLevelParent(System.Windows.DependencyObject)">
       <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Manager.ContrastBrush" /> для указанного элемента управления.
+        Осуществляет поиск корневого элемента визуального дерева WPF для указанного объекта.
       </summary>
-      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">Контрастный цвет для указанного элемента управления.</param>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <param name="reference">Элемент, для которого осуществляется поиск корневого элемента визуального дерева WPF.</param>
+      <returns>Корневой элемент визуального дерева WPF или null, если указанный объект является корневым элементом.</returns>
     </member>
     <member name="T:Elysium.Parameters.Bullet">
       <summary>
@@ -1192,6 +860,199 @@
       </summary>
       <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
       <param name="value">Кисть, используемая для заливки содержимого кнопок управления.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="T:Elysium.Parameters.Design">
+      <summary>
+        Представляет класс, предоставляющий свойства зависимостей для управления настройками темы элемента управления из XAML в режиме конструктора.
+      </summary>
+    </member>
+    <member name="P:Elysium.Parameters.Design.Theme">
+      <summary>
+        Возвращает или задаёт значение, указывающее на текующий тип темы в режиме конструктора.
+      </summary>
+      <value>
+        Одно из значений перечисления <see cref="T:Elysium.Theme" /> или null, если элемент управления должен использовать значение, указанное для всего приложения. Значение по умолчанию — null.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Design.ThemeProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new TabControl();
+          var currentValue = Parameters.Design.GetTheme(control);
+          Parameters.Design.SetTheme(control, null);
+        </code>
+        <code lang="XAML">
+          &lt;TabControl params:Design.Theme="Light"/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Parameters.Design.ThemeProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Design.Theme" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Design.Theme" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Parameters.Design.GetTheme(System.Windows.FrameworkElement)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.Theme" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Текущий тип темы для указанного элемента управления в режиме конструктора.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="M:Elysium.Parameters.Design.SetTheme(System.Windows.FrameworkElement,System.Nullable{Elysium.Theme})">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.Theme" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Новый тип темы для указанного элемента управления в режиме конструктора.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="P:Elysium.Parameters.Design.AccentBrush">
+      <summary>
+        Возвращает или задаёт акцентирующий цвет в режиме конструктора.
+      </summary>
+      <value>Кисть, содержащая акцентирующий цвет, или null, если элемент управления должен использовать значение, указанное для всего приложения. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Design.AccentBrushProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new TabControl();
+          var currentValue = Parameters.Design.GetAccentBrush(control);
+          Parameters.Design.SetAccentBrush(control, null);
+        </code>
+        <code lang="XAML">
+          &lt;TabControl params:Design.AccentBrush="{x:Static metro:AccentBrushes.Blue}"/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Parameters.Design.AccentBrushProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Design.AccentBrush" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Design.AccentBrush" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Parameters.Design.GetAccentBrush(System.Windows.FrameworkElement)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.AccentBrush" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Текущий акцентирующий цвет для указанного элемента управления в режиме конструктора.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="M:Elysium.Parameters.Design.SetAccentBrush(System.Windows.FrameworkElement,System.Windows.Media.SolidColorBrush)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.AccentBrush" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Акцентирующий цвет для указанного элемента управления в режиме конструктора.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="P:Elysium.Parameters.Design.ContrastBrush">
+      <summary>
+        Возвращает или задаёт контрастный (к акцентирующему) цвет в режиме конструктора.
+      </summary>
+      <value>Кисть, содержащая контрастный цвет, или null, если элемент управления должен использовать значение, указанное для всего приложения. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Design.ContrastBrushProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new TabControl();
+          var currentValue = Parameters.Design.GetContrastBrush(control);
+          Parameters.Design.SetContrastBrush(control, null);
+        </code>
+        <code lang="XAML">
+          &lt;TabControl params:Design.ContrastBrush="White"/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Parameters.Design.ContrastBrushProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Design.ContrastBrush" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Design.ContrastBrush" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Parameters.Design.GetContrastBrush(System.Windows.FrameworkElement)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.ContrastBrush" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Текущий контрастный цвет для указанного элемента управления в режиме конструктора.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="M:Elysium.Parameters.Design.SetContrastBrush(System.Windows.FrameworkElement,System.Windows.Media.SolidColorBrush)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Design.ContrastBrush" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Контрастный цвет для указанного элемента управления в режиме конструктора.</param>
       <exception cref="T:System.ArgumentNullException">
         Параметер <paramref name="obj" /> имеет значение null.
       </exception>
@@ -2726,6 +2587,202 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
+    <member name="T:Elysium.Parameters.Manager">
+      <summary>
+        Представляет класс, предоставляющий свойства зависимостей для управления настройками темы элемента управления из XAML.
+      </summary>
+    </member>
+    <member name="P:Elysium.Parameters.Manager.Theme">
+      <summary>
+        Возвращает или задаёт значение, указывающее на текующий тип темы.
+      </summary>
+      <value>
+        Одно из значений перечисления <see cref="T:Elysium.Theme" /> или null, если элемент управления должен наследовать значение от родителя или использовать значение, указанное для всего приложения. Значение по умолчанию — null.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Manager.ThemeProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
+            </description>
+          </item>
+        </list>
+        В случае, если параметр наследуется от приложения, гарантируется, что его значение будет обновлено при обновлении соответствующего значения для приложения.
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new TabControl();
+          var currentValue = Parameters.Manager.GetTheme(control);
+          Parameters.Manager.SetTheme(control, null);
+        </code>
+        <code lang="XAML">
+          &lt;TabControl params:Manager.Theme="Light"/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Parameters.Manager.ThemeProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Manager.Theme" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Manager.Theme" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Parameters.Manager.GetTheme(System.Windows.FrameworkElement)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Manager.Theme" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Текущий тип темы для указанного элемента управления.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="M:Elysium.Parameters.Manager.SetTheme(System.Windows.FrameworkElement,System.Nullable{Elysium.Theme})">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Manager.Theme" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Новый тип темы для указанного элемента управления.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="P:Elysium.Parameters.Manager.AccentBrush">
+      <summary>
+        Возвращает или задаёт акцентирующий цвет.
+      </summary>
+      <value>Кисть, содержащая акцентирующий цвет, или null, если элемент управления должен наследовать значение от родителя или использовать значение, указанное для всего приложения. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Manager.AccentBrushProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
+            </description>
+          </item>
+        </list>
+        В случае, если параметр наследуется от приложения, гарантируется, что его значение будет обновлено при обновлении соответствующего значения для приложения.
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new TabControl();
+          var currentValue = Parameters.Manager.GetAccentBrush(control);
+          Parameters.Manager.SetAccentBrush(control, null);
+        </code>
+        <code lang="XAML">
+          &lt;TabControl params:Manager.AccentBrush="{x:Static metro:AccentBrushes.Blue}"/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Parameters.Manager.AccentBrushProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Manager.AccentBrush" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Manager.AccentBrush" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Parameters.Manager.GetAccentBrush(System.Windows.FrameworkElement)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Manager.AccentBrush" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Текущий акцентирующий цвет для указанного элемента управления.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="M:Elysium.Parameters.Manager.SetAccentBrush(System.Windows.FrameworkElement,System.Windows.Media.SolidColorBrush)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Manager.AccentBrush" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Акцентирующий цвет для указанного элемента управления.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="P:Elysium.Parameters.Manager.ContrastBrush">
+      <summary>
+        Возвращает или задаёт контрастный (к акцентирующему) цвет.
+      </summary>
+      <value>Кисть, содержащая контрастный цвет, или null, если элемент управления должен наследовать значение от родителя или использовать значение, указанное для всего приложения. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Manager.ContrastBrushProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
+            </description>
+          </item>
+        </list>
+        В случае, если параметр наследуется от приложения, гарантируется, что его значение будет обновлено при обновлении соответствующего значения для приложения.
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new TabControl();
+          var currentValue = Parameters.Manager.GetContrastBrush(control);
+          Parameters.Manager.SetContrastBrush(control, null);
+        </code>
+        <code lang="XAML">
+          &lt;TabControl params:Manager.ContrastBrush="White"/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Parameters.Manager.ContrastBrushProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Manager.ContrastBrush" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Manager.ContrastBrush" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Parameters.Manager.GetContrastBrush(System.Windows.FrameworkElement)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Manager.ContrastBrush" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Текущий контрастный цвет для указанного элемента управления.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="M:Elysium.Parameters.Manager.SetContrastBrush(System.Windows.FrameworkElement,System.Windows.Media.SolidColorBrush)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Manager.ContrastBrush" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Контрастный цвет для указанного элемента управления.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
     <member name="T:Elysium.Parameters.MenuBase">
       <summary>
         Представляет класс, управляющий настройками стиля меню.
@@ -3800,217 +3857,6 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="T:Elysium.InvalidStyleException">
-      <summary>
-        Исключение, которое генерируется при проведении недопустимой операции связанной со стилем.
-      </summary>
-    </member>
-    <member name="M:Elysium.InvalidStyleException.#ctor">
-      <inheritdoc cref="M:System.Exception.#ctor" />
-    </member>
-    <member name="M:Elysium.InvalidStyleException.#ctor(System.String)">
-      <inheritdoc cref="M:System.Exception.#ctor(System.String)" />
-    </member>
-    <member name="M:Elysium.InvalidStyleException.#ctor(System.String,System.Exception)">
-      <inheritdoc cref="M:System.Exception.#ctor(System.String,System.Exception)" />
-    </member>
-    <member name="M:Elysium.InvalidStyleException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-      <inheritdoc cref="M:System.Exception.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" />
-    </member>
-    <member name="T:System.Collections.ObjectModel.IObservableDictionary`2">
-      <inheritdoc cref="T:System.Collections.Generic.IDictionary`2" />
-    </member>
-    <member name="P:System.Collections.ObjectModel.IObservableDictionary`2.Item(`0)">
-      <inheritdoc cref="P:System.Collections.Generic.IDictionary`2.Item(`0)" />
-    </member>
-    <member name="P:System.Collections.ObjectModel.IObservableDictionary`2.Keys">
-      <inheritdoc cref="P:System.Collections.Generic.IDictionary`2.Keys" />
-    </member>
-    <member name="P:System.Collections.ObjectModel.IObservableDictionary`2.Values">
-      <inheritdoc cref="P:System.Collections.Generic.IDictionary`2.Values" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.IObservableDictionary`2.ContainsKey(`0)">
-      <inheritdoc cref="M:System.Collections.Generic.IDictionary`2.ContainsKey(`0)" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.IObservableDictionary`2.Add(`0,`1)">
-      <inheritdoc cref="M:System.Collections.Generic.IDictionary`2.Add(`0,`1)" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.IObservableDictionary`2.Remove(`0)">
-      <inheritdoc cref="M:System.Collections.Generic.IDictionary`2.Remove(`0)" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.IObservableDictionary`2.TryGetValue(`0,`1@)">
-      <inheritdoc cref="M:System.Collections.Generic.IDictionary`2.TryGetValue(`0,`1@)" />
-    </member>
-    <member name="T:System.Collections.ObjectModel.ObservableDictionary`2">
-      <inheritdoc cref="T:System.Collections.Generic.Dictionary`2" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1})">
-      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1})" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IEqualityComparer{`0})">
-      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IEqualityComparer{`0})" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IEqualityComparer{`0})">
-      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IEqualityComparer{`0})" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Collections.Generic.IEqualityComparer{`0})">
-      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Collections.Generic.IEqualityComparer{`0})" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Int32)">
-      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Int32)" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Int32,System.Collections.Generic.IEqualityComparer{`0})">
-      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Int32,System.Collections.Generic.IEqualityComparer{`0})" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.Add(`0,`1)">
-      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.Add(`0,`1)" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.Clear">
-      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.Clear" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.ContainsKey(`0)">
-      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.ContainsKey(`0)" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.ContainsValue(`1)">
-      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.ContainsValue(`1)" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.Remove(`0)">
-      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.Remove(`0)" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.TryGetValue(`0,`1@)">
-      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.TryGetValue(`0,`1@)" />
-    </member>
-    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Count">
-      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Count" />
-    </member>
-    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Item(`0)">
-      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Item(`0)" />
-    </member>
-    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Keys">
-      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Keys" />
-    </member>
-    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Values">
-      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Values" />
-    </member>
-    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Comparer">
-      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Comparer" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.GetEnumerator">
-      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.GetEnumerator" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-      <inheritdoc />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.OnDeserialization(System.Object)">
-      <inheritdoc />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.BlockReentrancy">
-      <inheritdoc cref="M:System.Collections.ObjectModel.ObservableCollection`1.BlockReentrancy" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.CheckReentrancy">
-      <inheritdoc cref="M:System.Collections.ObjectModel.ObservableCollection`1.CheckReentrancy" />
-    </member>
-    <member name="E:System.Collections.ObjectModel.ObservableDictionary`2.PropertyChanged">
-      <inheritdoc cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged" />
-    </member>
-    <member name="E:System.Collections.ObjectModel.ObservableDictionary`2.CollectionChanged">
-      <inheritdoc cref="E:System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
-      <inheritdoc cref="M:System.Collections.ObjectModel.ObservableCollection`1.OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.OnPropertyChanged(System.String)">
-      <inheritdoc cref="M:System.Collections.ObjectModel.ObservableCollection`1.OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs)" />
-      <param name="propertyName">Имя изменённого свойства.</param>
-    </member>
-    <member name="T:System.Collections.ObjectModel.ObservableDictionary`2.Enumerator">
-      <inheritdoc cref="T:System.Collections.Generic.Dictionary`2.Enumerator" />
-    </member>
-    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Enumerator.Current">
-      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Enumerator.Current" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.Enumerator.MoveNext">
-      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.Enumerator.MoveNext" />
-    </member>
-    <member name="T:System.Collections.ObjectModel.ObservableKeyValuePair`2">
-      <inheritdoc cref="T:System.Collections.Generic.KeyValuePair`2" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.#ctor(`0,`1)">
-      <inheritdoc cref="M:System.Collections.Generic.KeyValuePair`2.#ctor(`0,`1)" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.#ctor(`0,`1,System.Collections.Generic.IEqualityComparer{`0})">
-      <inheritdoc cref="M:System.Collections.Generic.KeyValuePair`2.#ctor(`0,`1)" />
-      <param name="comparer">
-        Реализация <see cref="T:System.Collections.Generic.IEqualityComparer`1" />, которую следует использовать при сравнении ключей, или null, если для данного типа ключа должна использоваться реализация <see cref="T:System.Collections.Generic.EqualityComparer`1" /> по умолчанию.
-      </param>
-    </member>
-    <member name="P:System.Collections.ObjectModel.ObservableKeyValuePair`2.Key">
-      <inheritdoc cref="P:System.Collections.Generic.KeyValuePair`2.Key" />
-    </member>
-    <member name="P:System.Collections.ObjectModel.ObservableKeyValuePair`2.Value">
-      <summary>
-        Получает или задаёт значение в паре "ключ-значение".
-      </summary>
-      <value>Значение из пары "ключ-значение".</value>
-    </member>
-    <member name="E:System.Collections.ObjectModel.ObservableKeyValuePair`2.PropertyChanging">
-      <inheritdoc cref="E:System.ComponentModel.INotifyPropertyChanging.PropertyChanging" />
-    </member>
-    <member name="E:System.Collections.ObjectModel.ObservableKeyValuePair`2.PropertyChanged">
-      <inheritdoc cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged" />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.Equals(System.Object)">
-      <inheritdoc />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.GetHashCode">
-      <inheritdoc />
-    </member>
-    <member name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.ToString">
-      <inheritdoc />
-    </member>
-    <member name="T:Elysium.Extensions.LogicalTreeHelperExtensions">
-      <summary>
-        Предоставляет методы расширения для поиска по логическому дереву элементов WPF.
-      </summary>
-    </member>
-    <member name="M:Elysium.Extensions.LogicalTreeHelperExtensions.FindParent``1(System.Windows.DependencyObject)">
-      <summary>
-        Осуществляет поиск родителя указанного объекта в логическом дереве элементов WPF.
-      </summary>
-      <typeparam name="T">Тип родителя.</typeparam>
-      <param name="reference">Элемент, для которого осуществляется поиск родителя.</param>
-      <returns>Родитель или null, если среди предков нет объектов указанного типа.</returns>
-    </member>
-    <member name="M:Elysium.Extensions.LogicalTreeHelperExtensions.FindTopLevelParent(System.Windows.DependencyObject)">
-      <summary>
-        Осуществляет поиск корневого элемента логического дерева WPF для указанного объекта.
-      </summary>
-      <param name="reference">Элемент, для которого осуществляется поиск корневого элемента логического дерева WPF.</param>
-      <returns>Корневой элемент логического дерева WPF или null, если указанный объект является корневым элементом.</returns>
-    </member>
-    <member name="T:Elysium.Extensions.VisualTreeHelperExtensions">
-      <summary>
-        Предоставляет методы расширения для поиска по визуальному дереву элементов WPF.
-      </summary>
-    </member>
-    <member name="M:Elysium.Extensions.VisualTreeHelperExtensions.FindParent``1(System.Windows.DependencyObject)">
-      <summary>
-        Осуществляет поиск родителя указанного объекта в визуальном дереве элементов WPF.
-      </summary>
-      <typeparam name="T">Тип родителя.</typeparam>
-      <param name="reference">Элемент, для которого осуществляется поиск родителя.</param>
-      <returns>Родитель или null, если среди предков нет объектов указанного типа.</returns>
-    </member>
-    <member name="M:Elysium.Extensions.VisualTreeHelperExtensions.FindTopLevelParent(System.Windows.DependencyObject)">
-      <summary>
-        Осуществляет поиск корневого элемента визуального дерева WPF для указанного объекта.
-      </summary>
-      <param name="reference">Элемент, для которого осуществляется поиск корневого элемента визуального дерева WPF.</param>
-      <returns>Корневой элемент визуального дерева WPF или null, если указанный объект является корневым элементом.</returns>
-    </member>
     <member name="T:Elysium.Converters.AngleToCoordinateConverter">
       <summary>
         Конвертирует значение угла, под которым находится объект по отношению к центру окружности, в координаты.
@@ -4032,131 +3878,6 @@
       <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
       <returns>
         Координаты объекта. В случае, если метод выполняется неудачно, возвращается указанное для этого случая значение. Если параметер <paramref name="values" /> имеет значение null или длину менее 4, возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
-      </returns>
-    </member>
-    <member name="T:Elysium.Converters.PercentToAngleConverter">
-      <summary>
-        Конвертирует процент от полного угла в значение угла.
-      </summary>
-    </member>
-    <member name="M:Elysium.Converters.PercentToAngleConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
-      <summary>
-        Конвертирует процент от полного угла в значение угла.
-      </summary>
-      <param name="value">
-        Процент от полного угла. Должен иметь один из следующих типов: <see cref="T:System.Int16" />, <see cref="T:System.Int32" />, <see cref="T:System.Int64" />, <see cref="T:System.Single" />, <see cref="T:System.Double" />, <see cref="T:System.Decimal" />.
-      </param>
-      <param name="targetType">Целевой тип. Значение игнорируется.</param>
-      <param name="parameter">Параметр конвертера. Значение игнорируется.</param>
-      <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
-      <returns>
-        Значение угла, того же типа, что и <paramref name="value" />.
-        В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
-      </returns>
-    </member>
-    <member name="M:Elysium.Converters.PercentToAngleConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
-      <summary>
-        Конвертирует значение угла в процент от полного угла.
-      </summary>
-      <param name="value">
-        Значение угла. Должен иметь один из следующих типов: <see cref="T:System.Int16" />, <see cref="T:System.Int32" />, <see cref="T:System.Int64" />, <see cref="T:System.Single" />, <see cref="T:System.Double" />, <see cref="T:System.Decimal" />.
-      </param>
-      <param name="targetType">Целевой тип. Значение игнорируется.</param>
-      <param name="parameter">Параметр конвертера. Значение игнорируется.</param>
-      <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
-      <returns>
-        Процент от полного угла, того же типа, что и <paramref name="value" />.
-        В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
-      </returns>
-    </member>
-    <member name="T:Elysium.Converters.IsGreaterThanConverter">
-      <summary>
-        Определяет, больше одно число другого или нет.
-      </summary>
-    </member>
-    <member name="M:Elysium.Converters.IsGreaterThanConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
-      <summary>
-        Определяет, больше одно число другого или нет, с двойной точностью.
-      </summary>
-      <param name="value">
-        Число, принадлежащее к одному из следующих типов: <see cref="T:System.Byte" />, <see cref="T:System.Int16" />, <see cref="T:System.Int32" />, <see cref="T:System.Int64" />, <see cref="T:System.Single" />, <see cref="T:System.Double" />, <see cref="T:System.Decimal" />."</param>
-      <param name="targetType">Целевой тип. Значение игнорируется.</param>
-      <param name="parameter">
-        Параметр конвертера. Второе сравниваемое значение. Должен быть строкой, и выражать число, которое может быть приведено к типу <see cref="T:System.Double" /></param>
-      <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
-      <returns>
-        True, если <paramref name="value" /> больше, чем <paramref name="parameter" />, иначе — False.
-        В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
-      </returns>
-    </member>
-    <member name="T:Elysium.Converters.NumberPositiveToNegativeConverter">
-      <summary>
-        Меняет знак числа на противоположный.
-      </summary>
-    </member>
-    <member name="M:Elysium.Converters.NumberPositiveToNegativeConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
-      <summary>
-        Меняет знак числа на противоположный.
-      </summary>
-      <param name="value">
-        Число. Должно принадлежать к одному из следующих типов: <see cref="T:System.Byte" />, <see cref="T:System.Int16" />, <see cref="T:System.Int32" />, <see cref="T:System.Int64" />, <see cref="T:System.Single" />, <see cref="T:System.Double" />, <see cref="T:System.Decimal" />.
-      </param>
-      <param name="targetType">Целевой тип. Значение игнорируется.</param>
-      <param name="parameter">Параметр конвертера. Значение игнорируется.</param>
-      <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
-      <returns>
-        Число, по модулю равное <paramref name="value" />, но с противоположным знаком.
-        В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
-      </returns>
-    </member>
-    <member name="M:Elysium.Converters.NumberPositiveToNegativeConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
-      <summary>
-        Меняет знак числа на противоположный.
-      </summary>
-      <param name="value">
-        Число. Должно принадлежать к одному из следующих типов: <see cref="T:System.Byte" />, <see cref="T:System.Int16" />, <see cref="T:System.Int32" />, <see cref="T:System.Int64" />, <see cref="T:System.Single" />, <see cref="T:System.Double" />, <see cref="T:System.Decimal" />.
-      </param>
-      <param name="targetType">Целевой тип. Значение игнорируется.</param>
-      <param name="parameter">Параметр конвертера. Значение игнорируется.</param>
-      <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
-      <returns>
-        Число, по модулю равное <paramref name="value" />, но с противоположным знаком.
-        В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
-      </returns>
-    </member>
-    <member name="T:Elysium.Converters.ThicknessPositiveToNegativeConverter">
-      <summary>
-        Меняет знак значений указанных краёв рамки на противоположный.
-      </summary>
-    </member>
-    <member name="M:Elysium.Converters.ThicknessPositiveToNegativeConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
-      <summary>
-        Меняет знак значений указанных краёв рамки на противоположный.
-      </summary>
-      <param name="value">
-        Исходное значение типа <see cref="T:System.Windows.Thickness" />.
-      </param>
-      <param name="targetType">Целевой тип. Значение игнорируется.</param>
-      <param name="parameter">Параметр конвертера. Должен быть строкой и принимать одно из следующих значений: "Left", "Top", "Right", "Bottom". Это значение соответствует краю рамки, который используется в расчётах.</param>
-      <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
-      <returns>
-        Значение типа <see cref="T:System.Windows.Thickness" />, в котором значение для каждого из краёв рамки равно соответствующему значению <paramref name="value" /> по модулю, но знак изменён на противоположный.
-        В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
-      </returns>
-    </member>
-    <member name="M:Elysium.Converters.ThicknessPositiveToNegativeConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
-      <summary>
-        Меняет знак значений указанных краёв рамки на противоположный.
-      </summary>
-      <param name="value">
-        Исходное значение типа <see cref="T:System.Windows.Thickness" />.
-      </param>
-      <param name="targetType">Целевой тип. Значение игнорируется.</param>
-      <param name="parameter">Параметр конвертера. Должен быть строкой и принимать одно из следующих значений: "Left", "Top", "Right", "Bottom". Это значение соответствует краю рамки, который используется в расчётах.</param>
-      <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
-      <returns>
-        Значение типа <see cref="T:System.Windows.Thickness" />, в котором значение для каждого из краёв рамки равно соответствующему значению <paramref name="value" /> по модулю, но знак изменён на противоположный.
-        В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
       </returns>
     </member>
     <member name="T:Elysium.Converters.DoubleToGridLengthConverter">
@@ -4200,6 +3921,62 @@
         <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>, в случае несовпадения типов ("Auto", "*" или количество пикселей) <paramref name="value" /> и <paramref name="parameter" /> или неудачного выполнения метода.
       </returns>
     </member>
+    <member name="T:Elysium.Converters.DoubleToThicknessConverter">
+      <summary>
+        Конвертирует значение типа <see cref="T:System.Double" /> в значение типа <see cref="T:System.Windows.Thickness" />.
+      </summary>
+    </member>
+    <member name="M:Elysium.Converters.DoubleToThicknessConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+      <summary>
+        Конвертирует значение типа <see cref="T:System.Double" /> в значение типа <see cref="T:System.Windows.Thickness" />.
+      </summary>
+      <param name="value">
+        Исходное значение типа <see cref="T:System.Double" />.
+      </param>
+      <param name="targetType">Целевой тип. Значение игнорируется.</param>
+      <param name="parameter">Параметр конвертера. Должен быть строкой и принимать одно из следующих значений: "Left", "Top", "Right", "Bottom" или null. Это значение соответствует краю рамки, который используется в расчётах.</param>
+      <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
+      <returns>
+        Значение типа <see cref="T:System.Windows.Thickness" />. Все стороны рамки, указанные в <paramref name="parameter" /> имеют значение <paramref name="value" />;
+        остальные стороны имеют значение 0. В случае, если <paramref name="parameter" /> равен null, то все края рамки имеют значение <paramref name="value" />.
+        В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
+      </returns>
+    </member>
+    <member name="M:Elysium.Converters.DoubleToThicknessConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+      <summary>
+        Конвертирует значение типа <see cref="T:System.Windows.GridLength" /> в значение типа <see cref="T:System.Double" />.
+      </summary>
+      <param name="value">
+        Исходное значение типа <see cref="T:System.Windows.GridLength" />.
+      </param>
+      <param name="targetType">Целевой тип. Значение игнорируется.</param>
+      <param name="parameter">Параметр конвертера. Должен быть строкой и принимать одно из следующих значений: "Left", "Top", "Right", "Bottom". Это значение соответствует краю рамки, который используется в расчётах.</param>
+      <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
+      <returns>
+        Усреднённое значение указанных сторон или всех сторон, если <paramref name="parameter" /> равен null.
+        В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
+      </returns>
+    </member>
+    <member name="T:Elysium.Converters.IsGreaterThanConverter">
+      <summary>
+        Определяет, больше одно число другого или нет.
+      </summary>
+    </member>
+    <member name="M:Elysium.Converters.IsGreaterThanConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+      <summary>
+        Определяет, больше одно число другого или нет, с двойной точностью.
+      </summary>
+      <param name="value">
+        Число, принадлежащее к одному из следующих типов: <see cref="T:System.Byte" />, <see cref="T:System.Int16" />, <see cref="T:System.Int32" />, <see cref="T:System.Int64" />, <see cref="T:System.Single" />, <see cref="T:System.Double" />, <see cref="T:System.Decimal" />."</param>
+      <param name="targetType">Целевой тип. Значение игнорируется.</param>
+      <param name="parameter">
+        Параметр конвертера. Второе сравниваемое значение. Должен быть строкой, и выражать число, которое может быть приведено к типу <see cref="T:System.Double" /></param>
+      <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
+      <returns>
+        True, если <paramref name="value" /> больше, чем <paramref name="parameter" />, иначе — False.
+        В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
+      </returns>
+    </member>
     <member name="T:Elysium.Converters.GridLengthToDoubleConverter">
       <summary>
         Конвертирует значение типа <see cref="T:System.Windows.GridLength" /> в значение типа <see cref="T:System.Double" />.
@@ -4241,39 +4018,128 @@
               null: Возвращается значение в пикселях. Количество пикселей должно быть указано в параметре <paramref name="value" />.
             </description></item></list></returns>
     </member>
-    <member name="T:Elysium.Converters.DoubleToThicknessConverter">
+    <member name="T:Elysium.Converters.NumberPositiveToNegativeConverter">
       <summary>
-        Конвертирует значение типа <see cref="T:System.Double" /> в значение типа <see cref="T:System.Windows.Thickness" />.
+        Меняет знак числа на противоположный.
       </summary>
     </member>
-    <member name="M:Elysium.Converters.DoubleToThicknessConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+    <member name="M:Elysium.Converters.NumberPositiveToNegativeConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
       <summary>
-        Конвертирует значение типа <see cref="T:System.Double" /> в значение типа <see cref="T:System.Windows.Thickness" />.
+        Меняет знак числа на противоположный.
       </summary>
       <param name="value">
-        Исходное значение типа <see cref="T:System.Double" />.
+        Число. Должно принадлежать к одному из следующих типов: <see cref="T:System.Byte" />, <see cref="T:System.Int16" />, <see cref="T:System.Int32" />, <see cref="T:System.Int64" />, <see cref="T:System.Single" />, <see cref="T:System.Double" />, <see cref="T:System.Decimal" />.
       </param>
       <param name="targetType">Целевой тип. Значение игнорируется.</param>
-      <param name="parameter">Параметр конвертера. Должен быть строкой и принимать одно из следующих значений: "Left", "Top", "Right", "Bottom" или null. Это значение соответствует краю рамки, который используется в расчётах.</param>
+      <param name="parameter">Параметр конвертера. Значение игнорируется.</param>
       <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
       <returns>
-        Значение типа <see cref="T:System.Windows.Thickness" />. Все стороны рамки, указанные в <paramref name="parameter" /> имеют значение <paramref name="value" />;
-        остальные стороны имеют значение 0. В случае, если <paramref name="parameter" /> равен null, то все края рамки имеют значение <paramref name="value" />.
+        Число, по модулю равное <paramref name="value" />, но с противоположным знаком.
         В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
       </returns>
     </member>
-    <member name="M:Elysium.Converters.DoubleToThicknessConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+    <member name="M:Elysium.Converters.NumberPositiveToNegativeConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
       <summary>
-        Конвертирует значение типа <see cref="T:System.Windows.GridLength" /> в значение типа <see cref="T:System.Double" />.
+        Меняет знак числа на противоположный.
       </summary>
       <param name="value">
-        Исходное значение типа <see cref="T:System.Windows.GridLength" />.
+        Число. Должно принадлежать к одному из следующих типов: <see cref="T:System.Byte" />, <see cref="T:System.Int16" />, <see cref="T:System.Int32" />, <see cref="T:System.Int64" />, <see cref="T:System.Single" />, <see cref="T:System.Double" />, <see cref="T:System.Decimal" />.
+      </param>
+      <param name="targetType">Целевой тип. Значение игнорируется.</param>
+      <param name="parameter">Параметр конвертера. Значение игнорируется.</param>
+      <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
+      <returns>
+        Число, по модулю равное <paramref name="value" />, но с противоположным знаком.
+        В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
+      </returns>
+    </member>
+    <member name="T:Elysium.Converters.PercentToAngleConverter">
+      <summary>
+        Конвертирует процент от полного угла в значение угла.
+      </summary>
+    </member>
+    <member name="M:Elysium.Converters.PercentToAngleConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+      <summary>
+        Конвертирует процент от полного угла в значение угла.
+      </summary>
+      <param name="value">
+        Процент от полного угла. Должен иметь один из следующих типов: <see cref="T:System.Int16" />, <see cref="T:System.Int32" />, <see cref="T:System.Int64" />, <see cref="T:System.Single" />, <see cref="T:System.Double" />, <see cref="T:System.Decimal" />.
+      </param>
+      <param name="targetType">Целевой тип. Значение игнорируется.</param>
+      <param name="parameter">Параметр конвертера. Значение игнорируется.</param>
+      <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
+      <returns>
+        Значение угла, того же типа, что и <paramref name="value" />.
+        В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
+      </returns>
+    </member>
+    <member name="M:Elysium.Converters.PercentToAngleConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+      <summary>
+        Конвертирует значение угла в процент от полного угла.
+      </summary>
+      <param name="value">
+        Значение угла. Должен иметь один из следующих типов: <see cref="T:System.Int16" />, <see cref="T:System.Int32" />, <see cref="T:System.Int64" />, <see cref="T:System.Single" />, <see cref="T:System.Double" />, <see cref="T:System.Decimal" />.
+      </param>
+      <param name="targetType">Целевой тип. Значение игнорируется.</param>
+      <param name="parameter">Параметр конвертера. Значение игнорируется.</param>
+      <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
+      <returns>
+        Процент от полного угла, того же типа, что и <paramref name="value" />.
+        В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
+      </returns>
+    </member>
+    <member name="T:Elysium.Converters.ThicknessConverter">
+      <summary>
+        Обнуляет значения указанных краёв рамки.
+      </summary>
+    </member>
+    <member name="M:Elysium.Converters.ThicknessConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+      <summary>
+        Обнуляет значения указанных краёв рамки.
+      </summary>
+      <param name="value">
+        Исходное значение типа <see cref="T:System.Windows.Thickness" />.
+      </param>
+      <param name="targetType">Целевой тип. Значение игнорируется.</param>
+      <param name="parameter">Параметр конвертера. Должен быть строкой и принимать одно из следующих значений: "Left", "Top", "Right", "Bottom". Это значение соответствует краям рамки, которые должны быть сохранены.</param>
+      <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
+      <returns>
+        Значение типа <see cref="T:System.Windows.Thickness" />, идентичное значению <paramref name="value" />, за исключением обнулённых краёв.
+        В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
+      </returns>
+    </member>
+    <member name="T:Elysium.Converters.ThicknessPositiveToNegativeConverter">
+      <summary>
+        Меняет знак значений указанных краёв рамки на противоположный.
+      </summary>
+    </member>
+    <member name="M:Elysium.Converters.ThicknessPositiveToNegativeConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+      <summary>
+        Меняет знак значений указанных краёв рамки на противоположный.
+      </summary>
+      <param name="value">
+        Исходное значение типа <see cref="T:System.Windows.Thickness" />.
       </param>
       <param name="targetType">Целевой тип. Значение игнорируется.</param>
       <param name="parameter">Параметр конвертера. Должен быть строкой и принимать одно из следующих значений: "Left", "Top", "Right", "Bottom". Это значение соответствует краю рамки, который используется в расчётах.</param>
       <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
       <returns>
-        Усреднённое значение указанных сторон или всех сторон, если <paramref name="parameter" /> равен null.
+        Значение типа <see cref="T:System.Windows.Thickness" />, в котором значение для каждого из краёв рамки равно соответствующему значению <paramref name="value" /> по модулю, но знак изменён на противоположный.
+        В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
+      </returns>
+    </member>
+    <member name="M:Elysium.Converters.ThicknessPositiveToNegativeConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+      <summary>
+        Меняет знак значений указанных краёв рамки на противоположный.
+      </summary>
+      <param name="value">
+        Исходное значение типа <see cref="T:System.Windows.Thickness" />.
+      </param>
+      <param name="targetType">Целевой тип. Значение игнорируется.</param>
+      <param name="parameter">Параметр конвертера. Должен быть строкой и принимать одно из следующих значений: "Left", "Top", "Right", "Bottom". Это значение соответствует краю рамки, который используется в расчётах.</param>
+      <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
+      <returns>
+        Значение типа <see cref="T:System.Windows.Thickness" />, в котором значение для каждого из краёв рамки равно соответствующему значению <paramref name="value" /> по модулю, но знак изменён на противоположный.
         В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
       </returns>
     </member>
@@ -4313,96 +4179,6 @@
         В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
       </returns>
     </member>
-    <member name="T:Elysium.Converters.ThicknessConverter">
-      <summary>
-        Обнуляет значения указанных краёв рамки.
-      </summary>
-    </member>
-    <member name="M:Elysium.Converters.ThicknessConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
-      <summary>
-        Обнуляет значения указанных краёв рамки.
-      </summary>
-      <param name="value">
-        Исходное значение типа <see cref="T:System.Windows.Thickness" />.
-      </param>
-      <param name="targetType">Целевой тип. Значение игнорируется.</param>
-      <param name="parameter">Параметр конвертера. Должен быть строкой и принимать одно из следующих значений: "Left", "Top", "Right", "Bottom". Это значение соответствует краям рамки, которые должны быть сохранены.</param>
-      <param name="culture">Язык и региональные параметры, используемые в конвертере. Значение игнорируется.</param>
-      <returns>
-        Значение типа <see cref="T:System.Windows.Thickness" />, идентичное значению <paramref name="value" />, за исключением обнулённых краёв.
-        В случае неудачного выполнения метода возвращается значение <see cref="F:System.Windows.DependencyProperty.UnsetValue">DependencyProperty.UnsetValue</see>.
-      </returns>
-    </member>
-    <member name="T:Elysium.Controls.ApplicationBarDock">
-      <summary>
-        Определяет положение элемента управления внутри <see cref="T:Elysium.Controls.ApplicationBar" />.
-      </summary>
-    </member>
-    <member name="F:Elysium.Controls.ApplicationBarDock.Left">
-      <summary>
-        Элемент управления выравнивается по левой стороне.
-      </summary>
-    </member>
-    <member name="F:Elysium.Controls.ApplicationBarDock.Right">
-      <summary>
-        Элемент управления выравнивается по правой стороне.
-      </summary>
-    </member>
-    <member name="T:Elysium.Controls.ApplicationBarTransitionMode">
-      <summary>
-        Определяет анимацию появления и исчезания элемента управления <see cref="T:Elysium.Controls.ApplicationBar" />.
-      </summary>
-    </member>
-    <member name="F:Elysium.Controls.ApplicationBarTransitionMode.None">
-      <summary>
-        Анимация отсутствует.
-      </summary>
-    </member>
-    <member name="F:Elysium.Controls.ApplicationBarTransitionMode.Fade">
-      <summary>
-        Элемент управления <see cref="T:Elysium.Controls.ApplicationBar" /> меняет свою прозрачность с 0% до 100%.
-      </summary>
-    </member>
-    <member name="F:Elysium.Controls.ApplicationBarTransitionMode.Slide">
-      <summary>
-        Элемент управления <see cref="T:Elysium.Controls.ApplicationBar" /> постепенно "выезжает" из-за нижнего края окна.
-      </summary>
-    </member>
-    <member name="T:Elysium.Controls.DropDownDirection">
-      <summary>
-        Определяет, с какой стороны элемента управления <see cref="T:Elysium.Controls.DropDownCommandButton" /> находится его выпадающее меню.
-      </summary>
-    </member>
-    <member name="F:Elysium.Controls.DropDownDirection.Up">
-      <summary>
-        Выпадающее меню находится сверху.
-      </summary>
-    </member>
-    <member name="F:Elysium.Controls.DropDownDirection.Down">
-      <summary>
-        Выпадающее меню находится снизу.
-      </summary>
-    </member>
-    <member name="T:Elysium.Controls.ProgressState">
-      <summary>
-        Определяет состояние индикатора выполнения (один из наследников <see cref="T:Elysium.Controls.Primitives.ProgressBase" />).
-      </summary>
-    </member>
-    <member name="F:Elysium.Controls.ProgressState.Normal">
-      <summary>
-        Нормальное состояние.
-      </summary>
-    </member>
-    <member name="F:Elysium.Controls.ProgressState.Indeterminate">
-      <summary>
-        Неопределённое состояние.
-      </summary>
-    </member>
-    <member name="F:Elysium.Controls.ProgressState.Busy">
-      <summary>
-        Состоние занятости.
-      </summary>
-    </member>
     <member name="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer">
       <summary>
         Является провайдером типа <see cref="T:Elysium.Controls.ApplicationBar" /> для технологии UI Automation.
@@ -4433,40 +4209,6 @@
         Значение <see cref="F:System.Windows.Automation.Peers.AutomationControlType.Menu">AutomationControlType.Menu</see>.
       </returns>
       <ensures>Возвращаемое значение всегда является значением AutomationControlType.Menu.</ensures>
-    </member>
-    <member name="T:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer">
-      <summary>
-        Является базовым классом для провайдеров наследников класса <see cref="T:Elysium.Controls.Primitives.CommandButtonBase" /> для технологии UI Automation.
-      </summary>
-      <invariant>Свойство Owner никогда не равно null.</invariant>
-    </member>
-    <member name="M:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer.#ctor(Elysium.Controls.Primitives.CommandButtonBase)">
-      <summary>
-        Создаёт новый экземпляр класса <see cref="T:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer" />.
-      </summary>
-      <param name="owner">
-        Экземпляр наследника класса <see cref="T:Elysium.Controls.Primitives.CommandButtonBase" />, для которого будет использоваться провайдер.
-      </param>
-    </member>
-    <member name="P:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer.Owner">
-      <summary>
-        Экземпляр наследника класса <see cref="T:Elysium.Controls.Primitives.CommandButtonBase" />, для которого используется провайдер.
-      </summary>
-      <getter>
-        <ensures>Значение не может равняться null.</ensures>
-      </getter>
-      <value>
-        Экземпляр наследника класса <see cref="T:Elysium.Controls.Primitives.CommandButtonBase" />, для которого используется провайдер.
-      </value>
-    </member>
-    <member name="M:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer.GetAutomationControlTypeCore">
-      <summary>
-        Возвращает тип элемента управления для объекта-наследника класса <see cref="T:Elysium.Controls.Primitives.CommandButtonBase" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer" />. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType" />.
-      </summary>
-      <returns>
-        Значение <see cref="F:System.Windows.Automation.Peers.AutomationControlType.Button">AutomationControlType.Button</see>.
-      </returns>
-      <ensures>Возвращаемое значение всегда является значением AutomationControlType.Button.</ensures>
     </member>
     <member name="T:Elysium.Controls.Automation.CommandButtonAutomationPeer">
       <summary>
@@ -4507,6 +4249,40 @@
         Направляет запрос на активацию элемента управления и инициирует его единственное, однозначное действие.
       </summary>
       <exception cref="T:System.Windows.Automation.ElementNotEnabledException">Элемент управления отключен.</exception>
+    </member>
+    <member name="T:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer">
+      <summary>
+        Является базовым классом для провайдеров наследников класса <see cref="T:Elysium.Controls.Primitives.CommandButtonBase" /> для технологии UI Automation.
+      </summary>
+      <invariant>Свойство Owner никогда не равно null.</invariant>
+    </member>
+    <member name="M:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer.#ctor(Elysium.Controls.Primitives.CommandButtonBase)">
+      <summary>
+        Создаёт новый экземпляр класса <see cref="T:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer" />.
+      </summary>
+      <param name="owner">
+        Экземпляр наследника класса <see cref="T:Elysium.Controls.Primitives.CommandButtonBase" />, для которого будет использоваться провайдер.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer.Owner">
+      <summary>
+        Экземпляр наследника класса <see cref="T:Elysium.Controls.Primitives.CommandButtonBase" />, для которого используется провайдер.
+      </summary>
+      <getter>
+        <ensures>Значение не может равняться null.</ensures>
+      </getter>
+      <value>
+        Экземпляр наследника класса <see cref="T:Elysium.Controls.Primitives.CommandButtonBase" />, для которого используется провайдер.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer.GetAutomationControlTypeCore">
+      <summary>
+        Возвращает тип элемента управления для объекта-наследника класса <see cref="T:Elysium.Controls.Primitives.CommandButtonBase" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer" />. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType" />.
+      </summary>
+      <returns>
+        Значение <see cref="F:System.Windows.Automation.Peers.AutomationControlType.Button">AutomationControlType.Button</see>.
+      </returns>
+      <ensures>Возвращаемое значение всегда является значением AutomationControlType.Button.</ensures>
     </member>
     <member name="T:Elysium.Controls.Automation.DropDownCommandButtonAutomationPeer">
       <summary>
@@ -4559,115 +4335,6 @@
     <member name="P:Elysium.Controls.Automation.DropDownCommandButtonAutomationPeer.ExpandCollapseState">
       <summary>Возвращает состояние элемента управления — развернут или свернут.</summary>
       <value>Cостояние элемента управления — развернут или свернут.</value>
-    </member>
-    <member name="T:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer">
-      <summary>
-        Является провайдером типа <see cref="T:Elysium.Controls.ToggleCommandButton" /> для технологии UI Automation.
-      </summary>
-    </member>
-    <member name="M:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer.#ctor(Elysium.Controls.ToggleCommandButton)">
-      <summary>
-        Создаёт новый экземпляр класса <see cref="T:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer" />.
-      </summary>
-      <param name="owner">
-        Экземпляр класса <see cref="T:Elysium.Controls.ToggleCommandButton" />, для которого будет использоваться провайдер.
-      </param>
-    </member>
-    <member name="M:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer.GetClassNameCore">
-      <summary>
-        Возвращает имя класса <see cref="T:Elysium.Controls.ToggleCommandButton" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
-      </summary>
-      <returns>
-        Строка со значением "ToggleCommandButton".
-      </returns>
-      <ensures>Возвращаемая строка всегда имеет значение "ToggleCommandButton"</ensures>
-    </member>
-    <member name="M:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer.GetPattern(System.Windows.Automation.Peers.PatternInterface)">
-      <summary>
-        Возвращает шаблон элемента управления для экземпляра элемента управления <see cref="T:Elysium.Controls.ToggleCommandButton" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer" />.
-      </summary>
-      <param name="patternInterface">
-        Одно из значений перечисления <see cref="T:System.Windows.Automation.Peers.PatternInterface" />.
-      </param>
-      <returns>
-        Если параметр <paramref name="patternInterface" /> имеет значение <see cref="F:System.Windows.Automation.Peers.PatternInterface.Toggle" />,
-        то данный метод возвращает указатель this; в противном случае данный метод возвращает значение null.
-      </returns>
-    </member>
-    <member name="M:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer.Toggle">
-      <summary>
-        Выполняет переключение состояния элемента управления.
-      </summary>
-      <exception cref="T:System.Windows.Automation.ElementNotEnabledException">Элемент управления отключен.</exception>
-    </member>
-    <member name="P:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer.ToggleState">
-      <summary>Возвращает состояние элемента управления (из числа тех, в которые он может переключаться).</summary>
-      <value>Одно из значений перечисления <see cref="T:System.Windows.Automation.ToggleState" />.</value>
-    </member>
-    <member name="T:Elysium.Controls.Automation.ToggleSwitchAutomationPeer">
-      <summary>
-        Является провайдером типа <see cref="T:Elysium.Controls.ToggleSwitch" /> для технологии UI Automation.
-      </summary>
-      <invariant>Свойство Owner никогда не равно null.</invariant>
-    </member>
-    <member name="M:Elysium.Controls.Automation.ToggleSwitchAutomationPeer.#ctor(Elysium.Controls.ToggleSwitch)">
-      <summary>
-        Создаёт новый экземпляр класса <see cref="T:Elysium.Controls.Automation.ToggleSwitchAutomationPeer" />.
-      </summary>
-      <param name="owner">
-        Экземпляр класса <see cref="T:Elysium.Controls.ToggleSwitch" />, для которого будет использоваться провайдер.
-      </param>
-    </member>
-    <member name="P:Elysium.Controls.Automation.ToggleSwitchAutomationPeer.Owner">
-      <summary>
-        Экземпляр элемента управления <see cref="T:Elysium.Controls.ToggleSwitch" />, для которого используется провайдер.
-      </summary>
-      <getter>
-        <ensures>Значение не может равняться null.</ensures>
-      </getter>
-      <value>
-        Экземпляр элемента управления <see cref="T:Elysium.Controls.ToggleSwitch" />, для которого используется провайдер.
-      </value>
-    </member>
-    <member name="M:Elysium.Controls.Automation.ToggleSwitchAutomationPeer.GetClassNameCore">
-      <summary>
-        Возвращает имя класса <see cref="T:Elysium.Controls.ToggleSwitch" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
-      </summary>
-      <returns>
-        Строка со значением "ToggleSwitch".
-      </returns>
-      <ensures>Возвращаемая строка всегда имеет значение "ToggleSwitch"</ensures>
-    </member>
-    <member name="M:Elysium.Controls.Automation.ToggleSwitchAutomationPeer.GetAutomationControlTypeCore">
-      <summary>
-        Возвращает тип элемента управления для элемента управления <see cref="T:Elysium.Controls.ToggleSwitch" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer" />. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType" />.
-      </summary>
-      <returns>
-        Значение <see cref="F:System.Windows.Automation.Peers.AutomationControlType.Slider">AutomationControlType.Slider</see>.
-      </returns>
-      <ensures>Возвращаемое значение всегда является значением AutomationControlType.Slider.</ensures>
-    </member>
-    <member name="M:Elysium.Controls.Automation.ToggleSwitchAutomationPeer.GetPattern(System.Windows.Automation.Peers.PatternInterface)">
-      <summary>
-        Возвращает шаблон элемента управления для экземпляра элемента управления <see cref="T:Elysium.Controls.ToggleSwitch" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ToggleSwitchAutomationPeer" />.
-      </summary>
-      <param name="patternInterface">
-        Одно из значений перечисления <see cref="T:System.Windows.Automation.Peers.PatternInterface" />.
-      </param>
-      <returns>
-        Если параметр <paramref name="patternInterface" /> имеет значение <see cref="F:System.Windows.Automation.Peers.PatternInterface.Toggle" />,
-        то данный метод возвращает указатель this; в противном случае данный метод возвращает значение null.
-      </returns>
-    </member>
-    <member name="M:Elysium.Controls.Automation.ToggleSwitchAutomationPeer.Toggle">
-      <summary>
-        Выполняет переключение состояния элемента управления.
-      </summary>
-      <exception cref="T:System.Windows.Automation.ElementNotEnabledException">Элемент управления отключен.</exception>
-    </member>
-    <member name="P:Elysium.Controls.Automation.ToggleSwitchAutomationPeer.ToggleState">
-      <summary>Возвращает состояние элемента управления (из числа тех, в которые он может переключаться).</summary>
-      <value>Одно из значений перечисления <see cref="T:System.Windows.Automation.ToggleState" />.</value>
     </member>
     <member name="T:Elysium.Controls.Automation.ProgressAutomationPeer">
       <summary>
@@ -4783,6 +4450,115 @@
         Значение <see cref="F:System.Windows.Automation.Peers.AutomationControlType.Menu">AutomationControlType.Menu</see>.
       </returns>
       <ensures>Возвращаемое значение всегда является значением AutomationControlType.Menu.</ensures>
+    </member>
+    <member name="T:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer">
+      <summary>
+        Является провайдером типа <see cref="T:Elysium.Controls.ToggleCommandButton" /> для технологии UI Automation.
+      </summary>
+    </member>
+    <member name="M:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer.#ctor(Elysium.Controls.ToggleCommandButton)">
+      <summary>
+        Создаёт новый экземпляр класса <see cref="T:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer" />.
+      </summary>
+      <param name="owner">
+        Экземпляр класса <see cref="T:Elysium.Controls.ToggleCommandButton" />, для которого будет использоваться провайдер.
+      </param>
+    </member>
+    <member name="M:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer.GetClassNameCore">
+      <summary>
+        Возвращает имя класса <see cref="T:Elysium.Controls.ToggleCommandButton" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
+      </summary>
+      <returns>
+        Строка со значением "ToggleCommandButton".
+      </returns>
+      <ensures>Возвращаемая строка всегда имеет значение "ToggleCommandButton"</ensures>
+    </member>
+    <member name="M:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer.GetPattern(System.Windows.Automation.Peers.PatternInterface)">
+      <summary>
+        Возвращает шаблон элемента управления для экземпляра элемента управления <see cref="T:Elysium.Controls.ToggleCommandButton" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer" />.
+      </summary>
+      <param name="patternInterface">
+        Одно из значений перечисления <see cref="T:System.Windows.Automation.Peers.PatternInterface" />.
+      </param>
+      <returns>
+        Если параметр <paramref name="patternInterface" /> имеет значение <see cref="F:System.Windows.Automation.Peers.PatternInterface.Toggle" />,
+        то данный метод возвращает указатель this; в противном случае данный метод возвращает значение null.
+      </returns>
+    </member>
+    <member name="M:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer.Toggle">
+      <summary>
+        Выполняет переключение состояния элемента управления.
+      </summary>
+      <exception cref="T:System.Windows.Automation.ElementNotEnabledException">Элемент управления отключен.</exception>
+    </member>
+    <member name="P:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer.ToggleState">
+      <summary>Возвращает состояние элемента управления (из числа тех, в которые он может переключаться).</summary>
+      <value>Одно из значений перечисления <see cref="T:System.Windows.Automation.ToggleState" />.</value>
+    </member>
+    <member name="T:Elysium.Controls.Automation.ToggleSwitchAutomationPeer">
+      <summary>
+        Является провайдером типа <see cref="T:Elysium.Controls.ToggleSwitch" /> для технологии UI Automation.
+      </summary>
+      <invariant>Свойство Owner никогда не равно null.</invariant>
+    </member>
+    <member name="M:Elysium.Controls.Automation.ToggleSwitchAutomationPeer.#ctor(Elysium.Controls.ToggleSwitch)">
+      <summary>
+        Создаёт новый экземпляр класса <see cref="T:Elysium.Controls.Automation.ToggleSwitchAutomationPeer" />.
+      </summary>
+      <param name="owner">
+        Экземпляр класса <see cref="T:Elysium.Controls.ToggleSwitch" />, для которого будет использоваться провайдер.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.Automation.ToggleSwitchAutomationPeer.Owner">
+      <summary>
+        Экземпляр элемента управления <see cref="T:Elysium.Controls.ToggleSwitch" />, для которого используется провайдер.
+      </summary>
+      <getter>
+        <ensures>Значение не может равняться null.</ensures>
+      </getter>
+      <value>
+        Экземпляр элемента управления <see cref="T:Elysium.Controls.ToggleSwitch" />, для которого используется провайдер.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.Automation.ToggleSwitchAutomationPeer.GetClassNameCore">
+      <summary>
+        Возвращает имя класса <see cref="T:Elysium.Controls.ToggleSwitch" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
+      </summary>
+      <returns>
+        Строка со значением "ToggleSwitch".
+      </returns>
+      <ensures>Возвращаемая строка всегда имеет значение "ToggleSwitch"</ensures>
+    </member>
+    <member name="M:Elysium.Controls.Automation.ToggleSwitchAutomationPeer.GetAutomationControlTypeCore">
+      <summary>
+        Возвращает тип элемента управления для элемента управления <see cref="T:Elysium.Controls.ToggleSwitch" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.CommandButtonBaseAutomationPeer" />. Данный метод вызывается методом <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetAutomationControlType" />.
+      </summary>
+      <returns>
+        Значение <see cref="F:System.Windows.Automation.Peers.AutomationControlType.Slider">AutomationControlType.Slider</see>.
+      </returns>
+      <ensures>Возвращаемое значение всегда является значением AutomationControlType.Slider.</ensures>
+    </member>
+    <member name="M:Elysium.Controls.Automation.ToggleSwitchAutomationPeer.GetPattern(System.Windows.Automation.Peers.PatternInterface)">
+      <summary>
+        Возвращает шаблон элемента управления для экземпляра элемента управления <see cref="T:Elysium.Controls.ToggleSwitch" />, который связан с данным объектом <see cref="T:Elysium.Controls.Automation.ToggleSwitchAutomationPeer" />.
+      </summary>
+      <param name="patternInterface">
+        Одно из значений перечисления <see cref="T:System.Windows.Automation.Peers.PatternInterface" />.
+      </param>
+      <returns>
+        Если параметр <paramref name="patternInterface" /> имеет значение <see cref="F:System.Windows.Automation.Peers.PatternInterface.Toggle" />,
+        то данный метод возвращает указатель this; в противном случае данный метод возвращает значение null.
+      </returns>
+    </member>
+    <member name="M:Elysium.Controls.Automation.ToggleSwitchAutomationPeer.Toggle">
+      <summary>
+        Выполняет переключение состояния элемента управления.
+      </summary>
+      <exception cref="T:System.Windows.Automation.ElementNotEnabledException">Элемент управления отключен.</exception>
+    </member>
+    <member name="P:Elysium.Controls.Automation.ToggleSwitchAutomationPeer.ToggleState">
+      <summary>Возвращает состояние элемента управления (из числа тех, в которые он может переключаться).</summary>
+      <value>Одно из значений перечисления <see cref="T:System.Windows.Automation.ToggleState" />.</value>
     </member>
     <member name="T:Elysium.Controls.ApplicationBar">
       <summary>
@@ -5210,6 +4986,21 @@
     <member name="M:Elysium.Controls.ApplicationBar.ArrangeOverride(System.Windows.Size)">
       <inheritdoc />
     </member>
+    <member name="T:Elysium.Controls.ApplicationBarDock">
+      <summary>
+        Определяет положение элемента управления внутри <see cref="T:Elysium.Controls.ApplicationBar" />.
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.ApplicationBarDock.Left">
+      <summary>
+        Элемент управления выравнивается по левой стороне.
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.ApplicationBarDock.Right">
+      <summary>
+        Элемент управления выравнивается по правой стороне.
+      </summary>
+    </member>
     <member name="T:Elysium.Controls.ApplicationBarPanel">
       <summary>
         Панель, на которой размещаются дочерние элементы класса <see cref="T:Elysium.Controls.ApplicationBar" />.
@@ -5221,231 +5012,25 @@
     <member name="M:Elysium.Controls.ApplicationBarPanel.ArrangeOverride(System.Windows.Size)">
       <inheritdoc />
     </member>
-    <member name="T:Elysium.Controls.Primitives.CommandButtonBase">
+    <member name="T:Elysium.Controls.ApplicationBarTransitionMode">
       <summary>
-        Базовый класс для кнопок управления (command buttons).
+        Определяет анимацию появления и исчезания элемента управления <see cref="T:Elysium.Controls.ApplicationBar" />.
       </summary>
     </member>
-    <member name="P:Elysium.Controls.Primitives.CommandButtonBase.Header">
+    <member name="F:Elysium.Controls.ApplicationBarTransitionMode.None">
       <summary>
-        Возвращает или задаёт данные, используемые для заголовка элемента управления.
+        Анимация отсутствует.
       </summary>
-      <value>Объект заголовка. Значение по умолчанию — null.</value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Идентификатор</term>
-            <description>
-              <see cref="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Метаданные</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
-            </description>
-          </item>
-        </list>
-      </remarks>
-      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.Header" />
     </member>
-    <member name="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderProperty">
+    <member name="F:Elysium.Controls.ApplicationBarTransitionMode.Fade">
       <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" />.
+        Элемент управления <see cref="T:Elysium.Controls.ApplicationBar" /> меняет свою прозрачность с 0% до 100%.
       </summary>
-      <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" />.
-      </value>
     </member>
-    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.OnHeaderChanged(System.Object,System.Object)">
+    <member name="F:Elysium.Controls.ApplicationBarTransitionMode.Slide">
       <summary>
-        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" />.
+        Элемент управления <see cref="T:Elysium.Controls.ApplicationBar" /> постепенно "выезжает" из-за нижнего края окна.
       </summary>
-      <param name="oldHeader">
-        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" />.
-      </param>
-      <param name="newHeader">
-        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" />.
-      </param>
-    </member>
-    <member name="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader">
-      <summary>
-        Возвращает значение, указывающее имеет ли заголовок значение null в данный момент.
-      </summary>
-      <value>
-        True, если значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" /> не равно null, в противном случае False. Значение по умолчанию — False.
-      </value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Идентификатор</term>
-            <description>
-              <see cref="F:Elysium.Controls.Primitives.CommandButtonBase.HasHeaderProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Метаданные</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
-            </description>
-          </item>
-        </list>
-      </remarks>
-      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.HasHeader" />
-    </member>
-    <member name="F:Elysium.Controls.Primitives.CommandButtonBase.HasHeaderProperty">
-      <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" />.
-      </summary>
-      <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" />.
-      </value>
-    </member>
-    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.OnHasHeaderChanged(System.Boolean,System.Boolean)">
-      <summary>
-        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" />.
-      </summary>
-      <param name="oldHasHeader">
-        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" />.
-      </param>
-      <param name="newHasHeader">
-        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" />.
-      </param>
-    </member>
-    <member name="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat">
-      <summary>
-        Возвращает или задаёт составную строку, которая определяет форматирование заголовка, если он отображается как строка.
-      </summary>
-      <value>Составная строка, которая определяет форматирование заголовка, если он отображается как строка. Значение по умолчанию — null.</value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Идентификатор</term>
-            <description>
-              <see cref="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormatProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Метаданные</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
-            </description>
-          </item>
-        </list>
-      </remarks>
-      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.HeaderStringFormat" />
-    </member>
-    <member name="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormatProperty">
-      <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" />.
-      </summary>
-      <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" />.
-      </value>
-    </member>
-    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.OnHeaderStringFormatChanged(System.String,System.String)">
-      <summary>
-        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" />.
-      </summary>
-      <param name="oldHeaderStringFormat">
-        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" />.
-      </param>
-      <param name="newHeaderStringFormat">
-        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" />.
-      </param>
-    </member>
-    <member name="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate">
-      <summary>
-        Возвращает или задаёт шаблон, используемый для отображения содержимого заголовка элемента управления.
-      </summary>
-      <value>Шаблон, используемый для отображения содержимого заголовка элемента управления. Значение по умолчанию — null.</value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Идентификатор</term>
-            <description>
-              <see cref="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Метаданные</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
-            </description>
-          </item>
-        </list>
-      </remarks>
-      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.HeaderTemplate" />
-    </member>
-    <member name="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateProperty">
-      <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" />.
-      </summary>
-      <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" />.
-      </value>
-    </member>
-    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.OnHeaderTemplateChanged(System.Windows.DataTemplate,System.Windows.DataTemplate)">
-      <summary>
-        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" />.
-      </summary>
-      <param name="oldHeaderTemplate">
-        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" />.
-      </param>
-      <param name="newHeaderTemplate">
-        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" />.
-      </param>
-    </member>
-    <member name="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector">
-      <summary>
-        Возвращает или задаёт селектор шаблона данных, предоставляющий пользовательскую логику для выбора шаблона отображения содержимого заголовка элемента управления.
-      </summary>
-      <value>Экземпляр селектора шаблона данных. Значение по умолчанию — null.</value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Идентификатор</term>
-            <description>
-              <see cref="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelectorProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Метаданные</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
-            </description>
-          </item>
-        </list>
-      </remarks>
-      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.HeaderTemplateSelector" />
-    </member>
-    <member name="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelectorProperty">
-      <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector" />.
-      </summary>
-      <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector" />.
-      </value>
-    </member>
-    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.OnHeaderTemplateSelectorChanged(System.Windows.Controls.DataTemplateSelector,System.Windows.Controls.DataTemplateSelector)">
-      <summary>
-        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector" />.
-      </summary>
-      <param name="oldHeaderTemplateSelector">
-        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector" />.
-      </param>
-      <param name="newHeaderTemplateSelector">
-        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector" />.
-      </param>
-    </member>
-    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.MeasureOverride(System.Windows.Size)">
-      <inheritdoc />
-    </member>
-    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.ArrangeOverride(System.Windows.Size)">
-      <inheritdoc />
-    </member>
-    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.OnApplyTemplate">
-      <inheritdoc />
     </member>
     <member name="T:Elysium.Controls.CommandButton">
       <summary>
@@ -5679,6 +5264,21 @@
     <member name="M:Elysium.Controls.DropDownCommandButton.OnClick">
       <inheritdoc />
     </member>
+    <member name="T:Elysium.Controls.DropDownDirection">
+      <summary>
+        Определяет, с какой стороны элемента управления <see cref="T:Elysium.Controls.DropDownCommandButton" /> находится его выпадающее меню.
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.DropDownDirection.Up">
+      <summary>
+        Выпадающее меню находится сверху.
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.DropDownDirection.Down">
+      <summary>
+        Выпадающее меню находится снизу.
+      </summary>
+    </member>
     <member name="T:Elysium.Controls.ToggleCommandButton">
       <summary>
         Кнопка управления, поддерживающая состояния "включено", "выключено" и "неопределено".
@@ -5892,13 +5492,381 @@
     <member name="M:Elysium.Controls.ToggleCommandButton.OnToggle">
       <inheritdoc cref="M:System.Windows.Controls.Primitives.ToggleButton.OnToggle" />
     </member>
-    <member name="T:Elysium.Controls.Submenu">
+    <member name="T:Elysium.Controls.Primitives.CommandButtonBase">
       <summary>
-        Выпадающее меню.
+        Базовый класс для кнопок управления (command buttons).
       </summary>
     </member>
-    <member name="M:Elysium.Controls.Submenu.OnCreateAutomationPeer">
+    <member name="P:Elysium.Controls.Primitives.CommandButtonBase.Header">
+      <summary>
+        Возвращает или задаёт данные, используемые для заголовка элемента управления.
+      </summary>
+      <value>Объект заголовка. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.Header" />
+    </member>
+    <member name="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.OnHeaderChanged(System.Object,System.Object)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" />.
+      </summary>
+      <param name="oldHeader">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" />.
+      </param>
+      <param name="newHeader">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" />.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader">
+      <summary>
+        Возвращает значение, указывающее имеет ли заголовок значение null в данный момент.
+      </summary>
+      <value>
+        True, если значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" /> не равно null, в противном случае False. Значение по умолчанию — False.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.CommandButtonBase.HasHeaderProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.HasHeader" />
+    </member>
+    <member name="F:Elysium.Controls.Primitives.CommandButtonBase.HasHeaderProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.OnHasHeaderChanged(System.Boolean,System.Boolean)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" />.
+      </summary>
+      <param name="oldHasHeader">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" />.
+      </param>
+      <param name="newHasHeader">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" />.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat">
+      <summary>
+        Возвращает или задаёт составную строку, которая определяет форматирование заголовка, если он отображается как строка.
+      </summary>
+      <value>Составная строка, которая определяет форматирование заголовка, если он отображается как строка. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormatProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.HeaderStringFormat" />
+    </member>
+    <member name="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormatProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.OnHeaderStringFormatChanged(System.String,System.String)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" />.
+      </summary>
+      <param name="oldHeaderStringFormat">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" />.
+      </param>
+      <param name="newHeaderStringFormat">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" />.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate">
+      <summary>
+        Возвращает или задаёт шаблон, используемый для отображения содержимого заголовка элемента управления.
+      </summary>
+      <value>Шаблон, используемый для отображения содержимого заголовка элемента управления. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.HeaderTemplate" />
+    </member>
+    <member name="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.OnHeaderTemplateChanged(System.Windows.DataTemplate,System.Windows.DataTemplate)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" />.
+      </summary>
+      <param name="oldHeaderTemplate">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" />.
+      </param>
+      <param name="newHeaderTemplate">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" />.
+      </param>
+    </member>
+    <member name="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector">
+      <summary>
+        Возвращает или задаёт селектор шаблона данных, предоставляющий пользовательскую логику для выбора шаблона отображения содержимого заголовка элемента управления.
+      </summary>
+      <value>Экземпляр селектора шаблона данных. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelectorProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <seealso cref="P:System.Windows.Controls.HeaderedContentControl.HeaderTemplateSelector" />
+    </member>
+    <member name="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelectorProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.OnHeaderTemplateSelectorChanged(System.Windows.Controls.DataTemplateSelector,System.Windows.Controls.DataTemplateSelector)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector" />.
+      </summary>
+      <param name="oldHeaderTemplateSelector">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector" />.
+      </param>
+      <param name="newHeaderTemplateSelector">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector" />.
+      </param>
+    </member>
+    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.MeasureOverride(System.Windows.Size)">
       <inheritdoc />
+    </member>
+    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.ArrangeOverride(System.Windows.Size)">
+      <inheritdoc />
+    </member>
+    <member name="M:Elysium.Controls.Primitives.CommandButtonBase.OnApplyTemplate">
+      <inheritdoc />
+    </member>
+    <member name="T:Elysium.Controls.ProgressBar">
+      <summary>
+        Линейный индикатор выполнения.
+      </summary>
+    </member>
+    <member name="P:Elysium.Controls.ProgressBar.Orientation">
+      <summary>
+        Возвращает или задаёт значение, указывающее ориентацию линейного индикатора выполнения в пространстве.
+      </summary>
+      <value>
+        Одно из значений перечисления <see cref="T:System.Windows.Controls.Orientation" />. Значение по умолчанию — <see cref="F:System.Windows.Controls.Orientation.Horizontal">Orientation.Horizontal</see>.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ProgressBar.OrientationProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+    </member>
+    <member name="F:Elysium.Controls.ProgressBar.OrientationProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ProgressBar.Orientation" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ProgressBar.Orientation" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ProgressBar.OnOrientationChanged(System.Windows.Controls.Orientation,System.Windows.Controls.Orientation)">
+      <summary>
+        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ProgressBar.Orientation" />.
+      </summary>
+      <param name="oldOrientation">
+        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ProgressBar.Orientation" />.
+      </param>
+      <param name="newOrientation">
+        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ProgressBar.Orientation" />.
+      </param>
+    </member>
+    <member name="M:Elysium.Controls.ProgressBar.OnAnimationsUpdating(System.Windows.RoutedEventArgs)">
+      <inheritdoc />
+    </member>
+    <member name="T:Elysium.Controls.ProgressRing">
+      <summary>
+        Кольцевой индикатор выполнения.
+      </summary>
+    </member>
+    <member name="P:Elysium.Controls.ProgressRing.Angle">
+      <summary>
+        Возвращает или задаёт значение угла (так, как если бы индикатор выполнения являлся бы единичной окружностью) для дочерних элементов индикатора.
+      </summary>
+      <value>
+        Значение угла (так, как если бы индикатор выполнения являлся бы единичной окружностью) для дочерних элементов индикатора
+        или -1d, если дочерний элемент расположен вне окружности. Значение по умолчанию — -1d.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.ProgressRing.AngleProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Ellipse();
+          var currentValue = ProgressRing.GetAngle(control);
+          ProgressRing.SetAngle(control, 180d);
+        </code>
+        <code lang="XAML">
+          &lt;Ellipse metro:ProgressRing.Angle="180"/&gt;
+        </code>
+      </example>
+    </member>
+    <member name="F:Elysium.Controls.ProgressRing.AngleProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ProgressRing.Angle" />.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ProgressRing.Angle" />.
+      </value>
+    </member>
+    <member name="M:Elysium.Controls.ProgressRing.GetAngle(System.Windows.UIElement)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Controls.ProgressRing.Angle" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Значение угла для дочернего элемента индикатора выполнения.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="M:Elysium.Controls.ProgressRing.SetAngle(System.Windows.UIElement,System.Double)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Controls.ProgressRing.Angle" /> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Значение угла для дочернего элемента индикатора выполнения.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj" /> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </member>
+    <member name="M:Elysium.Controls.ProgressRing.MeasureOverride(System.Windows.Size)">
+      <inheritdoc />
+    </member>
+    <member name="M:Elysium.Controls.ProgressRing.ArrangeOverride(System.Windows.Size)">
+      <inheritdoc />
+    </member>
+    <member name="M:Elysium.Controls.ProgressRing.OnAnimationsUpdating(System.Windows.RoutedEventArgs)">
+      <inheritdoc />
+    </member>
+    <member name="T:Elysium.Controls.ProgressState">
+      <summary>
+        Определяет состояние индикатора выполнения (один из наследников <see cref="T:Elysium.Controls.Primitives.ProgressBase" />).
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.ProgressState.Normal">
+      <summary>
+        Нормальное состояние.
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.ProgressState.Indeterminate">
+      <summary>
+        Неопределённое состояние.
+      </summary>
+    </member>
+    <member name="F:Elysium.Controls.ProgressState.Busy">
+      <summary>
+        Состоние занятости.
+      </summary>
     </member>
     <member name="T:Elysium.Controls.Primitives.ProgressBase">
       <summary>
@@ -6222,134 +6190,12 @@
     <member name="M:Elysium.Controls.Primitives.ProgressBase.OnCreateAutomationPeer">
       <inheritdoc />
     </member>
-    <member name="T:Elysium.Controls.ProgressBar">
+    <member name="T:Elysium.Controls.Submenu">
       <summary>
-        Линейный индикатор выполнения.
+        Выпадающее меню.
       </summary>
     </member>
-    <member name="P:Elysium.Controls.ProgressBar.Orientation">
-      <summary>
-        Возвращает или задаёт значение, указывающее ориентацию линейного индикатора выполнения в пространстве.
-      </summary>
-      <value>
-        Одно из значений перечисления <see cref="T:System.Windows.Controls.Orientation" />. Значение по умолчанию — <see cref="F:System.Windows.Controls.Orientation.Horizontal">Orientation.Horizontal</see>.
-      </value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Идентификатор</term>
-            <description>
-              <see cref="F:Elysium.Controls.ProgressBar.OrientationProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Метаданные</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
-            </description>
-          </item>
-        </list>
-      </remarks>
-    </member>
-    <member name="F:Elysium.Controls.ProgressBar.OrientationProperty">
-      <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ProgressBar.Orientation" />.
-      </summary>
-      <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ProgressBar.Orientation" />.
-      </value>
-    </member>
-    <member name="M:Elysium.Controls.ProgressBar.OnOrientationChanged(System.Windows.Controls.Orientation,System.Windows.Controls.Orientation)">
-      <summary>
-        Вызывается при изменении свойства зависимостей <see cref="P:Elysium.Controls.ProgressBar.Orientation" />.
-      </summary>
-      <param name="oldOrientation">
-        Старое значение свойства зависимостей <see cref="P:Elysium.Controls.ProgressBar.Orientation" />.
-      </param>
-      <param name="newOrientation">
-        Новое значение свойства зависимостей <see cref="P:Elysium.Controls.ProgressBar.Orientation" />.
-      </param>
-    </member>
-    <member name="M:Elysium.Controls.ProgressBar.OnAnimationsUpdating(System.Windows.RoutedEventArgs)">
-      <inheritdoc />
-    </member>
-    <member name="T:Elysium.Controls.ProgressRing">
-      <summary>
-        Кольцевой индикатор выполнения.
-      </summary>
-    </member>
-    <member name="P:Elysium.Controls.ProgressRing.Angle">
-      <summary>
-        Возвращает или задаёт значение угла (так, как если бы индикатор выполнения являлся бы единичной окружностью) для дочерних элементов индикатора.
-      </summary>
-      <value>
-        Значение угла (так, как если бы индикатор выполнения являлся бы единичной окружностью) для дочерних элементов индикатора
-        или -1d, если дочерний элемент расположен вне окружности. Значение по умолчанию — -1d.
-      </value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Идентификатор</term>
-            <description>
-              <see cref="F:Elysium.Controls.ProgressRing.AngleProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Метаданные</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange" />
-            </description>
-          </item>
-        </list>
-      </remarks>
-      <example>
-        <code lang="C#">
-          var control = new Ellipse();
-          var currentValue = ProgressRing.GetAngle(control);
-          ProgressRing.SetAngle(control, 180d);
-        </code>
-        <code lang="XAML">
-          &lt;Ellipse metro:ProgressRing.Angle="180"/&gt;
-        </code>
-      </example>
-    </member>
-    <member name="F:Elysium.Controls.ProgressRing.AngleProperty">
-      <summary>
-        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.ProgressRing.Angle" />.
-      </summary>
-      <value>
-        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.ProgressRing.Angle" />.
-      </value>
-    </member>
-    <member name="M:Elysium.Controls.ProgressRing.GetAngle(System.Windows.UIElement)">
-      <summary>
-        Возвращает значение свойства зависимостей <see cref="P:Elysium.Controls.ProgressRing.Angle" /> для указанного элемента управления.
-      </summary>
-      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
-      <returns>Значение угла для дочернего элемента индикатора выполнения.</returns>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </member>
-    <member name="M:Elysium.Controls.ProgressRing.SetAngle(System.Windows.UIElement,System.Double)">
-      <summary>
-        Задаёт значение свойства зависимостей <see cref="P:Elysium.Controls.ProgressRing.Angle" /> для указанного элемента управления.
-      </summary>
-      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
-      <param name="value">Значение угла для дочернего элемента индикатора выполнения.</param>
-      <exception cref="T:System.ArgumentNullException">
-        Параметер <paramref name="obj" /> имеет значение null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </member>
-    <member name="M:Elysium.Controls.ProgressRing.MeasureOverride(System.Windows.Size)">
-      <inheritdoc />
-    </member>
-    <member name="M:Elysium.Controls.ProgressRing.ArrangeOverride(System.Windows.Size)">
-      <inheritdoc />
-    </member>
-    <member name="M:Elysium.Controls.ProgressRing.OnAnimationsUpdating(System.Windows.RoutedEventArgs)">
+    <member name="M:Elysium.Controls.Submenu.OnCreateAutomationPeer">
       <inheritdoc />
     </member>
     <member name="T:Elysium.Controls.ToggleSwitch">
@@ -7383,6 +7229,160 @@
         Возвращает значение, содержащее команду закрытия окна.
       </summary>
       <value>Команда закрытия окна.</value>
+    </member>
+    <member name="T:System.Collections.ObjectModel.IObservableDictionary`2">
+      <inheritdoc cref="T:System.Collections.Generic.IDictionary`2" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.IObservableDictionary`2.Item(`0)">
+      <inheritdoc cref="P:System.Collections.Generic.IDictionary`2.Item(`0)" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.IObservableDictionary`2.Keys">
+      <inheritdoc cref="P:System.Collections.Generic.IDictionary`2.Keys" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.IObservableDictionary`2.Values">
+      <inheritdoc cref="P:System.Collections.Generic.IDictionary`2.Values" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.IObservableDictionary`2.ContainsKey(`0)">
+      <inheritdoc cref="M:System.Collections.Generic.IDictionary`2.ContainsKey(`0)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.IObservableDictionary`2.Add(`0,`1)">
+      <inheritdoc cref="M:System.Collections.Generic.IDictionary`2.Add(`0,`1)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.IObservableDictionary`2.Remove(`0)">
+      <inheritdoc cref="M:System.Collections.Generic.IDictionary`2.Remove(`0)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.IObservableDictionary`2.TryGetValue(`0,`1@)">
+      <inheritdoc cref="M:System.Collections.Generic.IDictionary`2.TryGetValue(`0,`1@)" />
+    </member>
+    <member name="T:System.Collections.ObjectModel.ObservableDictionary`2">
+      <inheritdoc cref="T:System.Collections.Generic.Dictionary`2" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1})">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1})" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IEqualityComparer{`0})">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IEqualityComparer{`0})" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IEqualityComparer{`0})">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IEqualityComparer{`0})" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Collections.Generic.IEqualityComparer{`0})">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Collections.Generic.IEqualityComparer{`0})" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Int32)">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Int32)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Int32,System.Collections.Generic.IEqualityComparer{`0})">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Int32,System.Collections.Generic.IEqualityComparer{`0})" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.Add(`0,`1)">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.Add(`0,`1)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.Clear">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.Clear" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.ContainsKey(`0)">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.ContainsKey(`0)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.ContainsValue(`1)">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.ContainsValue(`1)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.Remove(`0)">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.Remove(`0)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.TryGetValue(`0,`1@)">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.TryGetValue(`0,`1@)" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Count">
+      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Count" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Item(`0)">
+      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Item(`0)" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Keys">
+      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Keys" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Values">
+      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Values" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Comparer">
+      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Comparer" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.GetEnumerator">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.GetEnumerator" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <inheritdoc />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.OnDeserialization(System.Object)">
+      <inheritdoc />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.BlockReentrancy">
+      <inheritdoc cref="M:System.Collections.ObjectModel.ObservableCollection`1.BlockReentrancy" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.CheckReentrancy">
+      <inheritdoc cref="M:System.Collections.ObjectModel.ObservableCollection`1.CheckReentrancy" />
+    </member>
+    <member name="E:System.Collections.ObjectModel.ObservableDictionary`2.PropertyChanged">
+      <inheritdoc cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged" />
+    </member>
+    <member name="E:System.Collections.ObjectModel.ObservableDictionary`2.CollectionChanged">
+      <inheritdoc cref="E:System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+      <inheritdoc cref="M:System.Collections.ObjectModel.ObservableCollection`1.OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.OnPropertyChanged(System.String)">
+      <inheritdoc cref="M:System.Collections.ObjectModel.ObservableCollection`1.OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs)" />
+      <param name="propertyName">Имя изменённого свойства.</param>
+    </member>
+    <member name="T:System.Collections.ObjectModel.ObservableDictionary`2.Enumerator">
+      <inheritdoc cref="T:System.Collections.Generic.Dictionary`2.Enumerator" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Enumerator.Current">
+      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Enumerator.Current" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.Enumerator.MoveNext">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.Enumerator.MoveNext" />
+    </member>
+    <member name="T:System.Collections.ObjectModel.ObservableKeyValuePair`2">
+      <inheritdoc cref="T:System.Collections.Generic.KeyValuePair`2" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.#ctor(`0,`1)">
+      <inheritdoc cref="M:System.Collections.Generic.KeyValuePair`2.#ctor(`0,`1)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.#ctor(`0,`1,System.Collections.Generic.IEqualityComparer{`0})">
+      <inheritdoc cref="M:System.Collections.Generic.KeyValuePair`2.#ctor(`0,`1)" />
+      <param name="comparer">
+        Реализация <see cref="T:System.Collections.Generic.IEqualityComparer`1" />, которую следует использовать при сравнении ключей, или null, если для данного типа ключа должна использоваться реализация <see cref="T:System.Collections.Generic.EqualityComparer`1" /> по умолчанию.
+      </param>
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableKeyValuePair`2.Key">
+      <inheritdoc cref="P:System.Collections.Generic.KeyValuePair`2.Key" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableKeyValuePair`2.Value">
+      <summary>
+        Получает или задаёт значение в паре "ключ-значение".
+      </summary>
+      <value>Значение из пары "ключ-значение".</value>
+    </member>
+    <member name="E:System.Collections.ObjectModel.ObservableKeyValuePair`2.PropertyChanging">
+      <inheritdoc cref="E:System.ComponentModel.INotifyPropertyChanging.PropertyChanging" />
+    </member>
+    <member name="E:System.Collections.ObjectModel.ObservableKeyValuePair`2.PropertyChanged">
+      <inheritdoc cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.Equals(System.Object)">
+      <inheritdoc />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.GetHashCode">
+      <inheritdoc />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.ToString">
+      <inheritdoc />
     </member>
   </members>
 </doc>

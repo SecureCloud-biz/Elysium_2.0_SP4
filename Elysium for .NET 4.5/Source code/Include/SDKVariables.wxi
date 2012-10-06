@@ -21,10 +21,10 @@
   <?define ProjectTemplatesFolder = ".\ProjectTemplates" ?>
   <?define ItemTemplatesFolder = ".\ItemTemplates" ?>
   
-  <?define FrameworkName = ".NET Framework 4"?>
+  <?define FrameworkName = ".NET Framework 4.5"?>
   <?define SDKName = "Elysium SDK"?>
   <?define SDKVersion = "1.5"?>
-  <?define SDKBuild = "769"?>
+  <?define SDKBuild = "791"?>
   <?define SDKRevision = "0"?>
   
 </Include>
