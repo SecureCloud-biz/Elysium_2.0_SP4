@@ -11,9 +11,9 @@
     </type>
     <property name="P:Elysium.Controls.ToggleSwitch.IsChecked">
       <summary>
-        Gets or sets the value, which corresponds to whether the toggle switch is enabled.
+        Gets or sets the value, which corresponds to whether the toggle switch is checked.
       </summary>
-      <value>True, if the toggle switch is enabled; False otherwise. The default value is false.</value>
+      <value>True, if the toggle switch is checked; False otherwise. The default value is false.</value>
       <remarks>
         <list type="table">
           <item>
@@ -52,7 +52,7 @@
     </method>
     <event name="E:Elysium.Controls.ToggleSwitch.Checked">
       <summary>
-        An event is fired when the toggle switch changes its state to "enabled".
+        An event is fired when the toggle switch changes its state to "checked".
       </summary>
       <remarks>
         <list type="table">
@@ -91,7 +91,7 @@
     </method>
     <event name="E:Elysium.Controls.ToggleSwitch.Unchecked">
       <summary>
-        An event is fired when the toggle switch changes its state to "disabled".
+        An event is fired when the toggle switch changes its state to "unchecked".
       </summary>
       <remarks>
         <list type="table">
@@ -249,9 +249,9 @@
     </method>
     <property name="P:Elysium.Controls.ToggleSwitch.OnHeader">
       <summary>
-        Gets or sets data used to fill the header of switch when it is in "enabled" state.
+        Gets or sets data used to fill the header of switch when it is in "checked" state.
       </summary>
-      <value>A header's object of the switch in "enabled" state. The default value is null.</value>
+      <value>A header's object of the switch in "checked" state. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -291,7 +291,7 @@
     </method>
     <property name="P:Elysium.Controls.ToggleSwitch.HasOnHeader">
       <summary>
-        Returns a value, which corresponds to whether the header during "enabled" state of the switch is null.
+        Returns a value, which corresponds to whether the header during "checked" state of the switch is null.
       </summary>
       <value>
         True, if the value of the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeader" /> dependency property is not equal null, False otherwise. The default value is False.
@@ -335,9 +335,9 @@
     </method>
     <property name="P:Elysium.Controls.ToggleSwitch.OnHeaderStringFormat">
       <summary>
-        Gets or sets a combined string, which defines formatting of the header when the switch is in "enabled" state, if the header is displayed as a string.
+        Gets or sets a combined string, which defines formatting of the header when the switch is in "checked" state, if the header is displayed as a string.
       </summary>
-      <value>a combined string, which defines formatting of the header when the switch is in "enabled" state, if the header is displayed as a string. The default value is null.</value>
+      <value>a combined string, which defines formatting of the header when the switch is in "checked" state, if the header is displayed as a string. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -377,9 +377,9 @@
     </method>
     <property name="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplate">
       <summary>
-        Gets or sets the template used to displaying the header of the switch when it is in "enabled" state.
+        Gets or sets the template used to displaying the header of the switch when it is in "checked" state.
       </summary>
-      <value>A template used to displaying the header of the switch when it is in "enabled" state. The default value is null.</value>
+      <value>A template used to displaying the header of the switch when it is in "checked" state. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -419,7 +419,7 @@
     </method>
     <property name="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplateSelector">
       <summary>
-        Gets or sets a header template selector, which corresponds to user's way to choose a header template of the control's header if the switch is in "enabled" state.
+        Gets or sets a header template selector, which corresponds to user's way to choose a header template of the control's header if the switch is in "checked" state.
       </summary>
       <value>An instance of the selector template. The default value is null.</value>
       <remarks>
@@ -461,9 +461,9 @@
     </method>
     <property name="P:Elysium.Controls.ToggleSwitch.OffHeader">
       <summary>
-        Gets or sets data used to fill the header of switch when it is in "disabled" state.
+        Gets or sets data used to fill the header of switch when it is in "unchecked" state.
       </summary>
-      <value>A header's object of the switch in "disabled" state. The default value is null.</value>
+      <value>A header's object of the switch in "unchecked" state. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -503,7 +503,7 @@
     </method>
     <property name="P:Elysium.Controls.ToggleSwitch.HasOffHeader">
       <summary>
-        Returns a value, which corresponds to whether the header during "disabled" state of the switch is null.
+        Returns a value, which corresponds to whether the header during "unchecked" state of the switch is null.
       </summary>
       <value>
         True, if the value of the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeader" /> dependency property is not equal null, False otherwise. The default value is False.
@@ -547,9 +547,9 @@
     </method>
     <property name="P:Elysium.Controls.ToggleSwitch.OffHeaderStringFormat">
       <summary>
-        Gets or sets a combined string, which defines formatting of the header when the switch is in "disabled" state, if the header is displayed as a string.
+        Gets or sets a combined string, which defines formatting of the header when the switch is in "unchecked" state, if the header is displayed as a string.
       </summary>
-      <value>a combined string, which defines formatting of the header when the switch is in "disabled" state, if the header is displayed as a string. The default value is null.</value>
+      <value>a combined string, which defines formatting of the header when the switch is in "unchecked" state, if the header is displayed as a string. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -589,9 +589,9 @@
     </method>
     <property name="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplate">
       <summary>
-        Gets or sets the template used to displaying the header of the switch when it is in "disabled" state.
+        Gets or sets the template used to displaying the header of the switch when it is in "unchecked" state.
       </summary>
-      <value>A template used to displaying the header of the switch when it is in "disabled" state. The default value is null.</value>
+      <value>A template used to displaying the header of the switch when it is in "uchecked" state. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -631,7 +631,7 @@
     </method>
     <property name="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplateSelector">
       <summary>
-        Gets or sets a header template selector, which corresponds to user's way to choose a header template of the control's header if the switch is in "disabled" state.
+        Gets or sets a header template selector, which corresponds to user's way to choose a header template of the control's header if the switch is in "unchecked" state.
       </summary>
       <value>An instance of the selector template. The default value is null.</value>
       <remarks>

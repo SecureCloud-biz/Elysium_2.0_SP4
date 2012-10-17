@@ -6,14 +6,14 @@
   <members>
     <type name="T:Elysium.Controls.ToggleCommandButton">
       <summary>
-        A command button with three possible states: "enabled", "disabled", "undefined".
+        A command button with three possible states: "checked", "unchecked", "indeterminate".
       </summary>
     </type>
     <property name="P:Elysium.Controls.ToggleCommandButton.IsChecked">
       <summary>
-        Gets or sets the value, which corresponds to whether the command button is enabled.
+        Gets or sets the value, which corresponds to whether the command button is checked.
       </summary>
-      <value>True, if the button is enabled; False, if the button is disabled; null otherwise. The default value is false.</value>
+      <value>True, if the button is checked; False, if the button is unchecked; null otherwise. The default value is false.</value>
       <remarks>
         <list type="table">
           <item>
@@ -130,7 +130,7 @@
     </method>
     <event name="E:Elysium.Controls.ToggleCommandButton.Indeterminate">
       <summary>
-        An event is fired when the button changes its state to "undefined".
+        An event is fired when the button changes its state to "indeterminate".
       </summary>
       <remarks>
         <list type="table">

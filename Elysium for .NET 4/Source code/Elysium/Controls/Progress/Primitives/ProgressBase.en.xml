@@ -14,7 +14,7 @@
         Returns a value, which corresponds to the percentage of progress bar completion.
       </summary>
       <value>
-        A percentage of the progress bar completion, or <see cref="F:System.Double.NaN">Double.NaN</see>, if the progress bar is in "undefined" state or busy. The default value is 0.
+        A percentage of the progress bar completion, or <see cref="F:System.Double.NaN">Double.NaN</see>, if the progress bar is in "indeterminate" state or busy. The default value is 0.
       </value>
       <remarks>
         <list type="table">
