@@ -83,7 +83,7 @@
                     являются <legacyBold>динамическими</legacyBold>. Для того, чтобы воспользоваться ими, используйте
                     расширение разметки <codeInline>DynamicResource</codeInline>.
                   </para>
-                  <para>Единственные статические ресурсы, предоставляемые Elysium - это иконки.</para>
+                  <para>Единственные статические ресурсы, предоставляемые Elysium - это иконки и конверторы.</para>
                 </alert>
                 <code language="xaml">
                   &lt;metro:Window x:Class="Elysium.Test.MainWindow"

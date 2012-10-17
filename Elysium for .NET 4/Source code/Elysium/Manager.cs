@@ -658,6 +658,7 @@ namespace Elysium
         {
             // Remove previous dictionaries
             var dictionaries = resources.MergedDictionaries.Where(d => d.Source == uri).ToList();
+            var lastIndex = dictionaries.Select(d => resources.MergedDictionaries.IndexOf(d)).Concat(new[] { 0 }).Max();
             foreach (var d in dictionaries)
             {
                 resources.MergedDictionaries.Remove(d);
@@ -666,7 +667,7 @@ namespace Elysium
             // Add new dictionary
             if (dictionary != null)
             {
-                resources.MergedDictionaries.Add(dictionary);
+                resources.MergedDictionaries.Insert(lastIndex, dictionary);
             }
         }
 
