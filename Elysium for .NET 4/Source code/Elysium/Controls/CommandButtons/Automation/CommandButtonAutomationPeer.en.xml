@@ -24,7 +24,7 @@
       <returns>
         A string with a value "CommandButton".
       </returns>
-      <ensures>Being returned string is always =  "CommandButton"</ensures>
+      <ensures>Being returned string is always "CommandButton"</ensures>
     </method>
     <method name="M:Elysium.Controls.Automation.CommandButtonAutomationPeer.GetPattern(System.Windows.Automation.Peers.PatternInterface)">
       <summary>

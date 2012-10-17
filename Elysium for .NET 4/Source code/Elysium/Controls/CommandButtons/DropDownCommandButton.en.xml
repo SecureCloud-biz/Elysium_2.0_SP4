@@ -13,7 +13,7 @@
       <summary>
         Gets or sets the dropdown menu.
       </summary>
-      <value>Menu. Default value  — null.</value>
+      <value>Menu. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -33,21 +33,21 @@
     </property>
     <field name="F:Elysium.Controls.DropDownCommandButton.SubmenuProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.DropDownCommandButton.Submenu" />.
+        Identifies the <see cref="P:Elysium.Controls.DropDownCommandButton.Submenu" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.DropDownCommandButton.Submenu" />.
+        Identifier for the <see cref="P:Elysium.Controls.DropDownCommandButton.Submenu" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.DropDownCommandButton.OnSubmenuChanged(Elysium.Controls.Submenu,Elysium.Controls.Submenu)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.DropDownCommandButton.Submenu" />.
+        Called when the <see cref="P:Elysium.Controls.DropDownCommandButton.Submenu" /> dependency property changes.
       </summary>
       <param name="oldSubmenu">
-        An old value of the dependency property <see cref="P:Elysium.Controls.DropDownCommandButton.Submenu" />.
+        An old value of the <see cref="P:Elysium.Controls.DropDownCommandButton.Submenu" /> dependency property.
       </param>
       <param name="newSubmenu">
-        A new value of the dependency property <see cref="P:Elysium.Controls.DropDownCommandButton.Submenu" />.
+        A new value of the <see cref="P:Elysium.Controls.DropDownCommandButton.Submenu" /> dependency property.
       </param>
     </method>
     <property name="P:Elysium.Controls.DropDownCommandButton.HasSubmenu">
@@ -55,7 +55,7 @@
         Returns a value, which corresponds to whether the dropdown is null.
       </summary>
       <value>
-        True, if the value of the dependency property <see cref="P:Elysium.Controls.DropDownCommandButton.Submenu" /> is not equal null, False otherwise. Default value = False.
+        True, if the value of the <see cref="P:Elysium.Controls.DropDownCommandButton.Submenu" /> dependency property is not equal null, False otherwise. The default value is False.
       </value>
       <remarks>
         <list type="table">
@@ -76,28 +76,28 @@
     </property>
     <field name="F:Elysium.Controls.DropDownCommandButton.HasSubmenuProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.DropDownCommandButton.HasSubmenuProperty" />.
+        Identifies the <see cref="P:Elysium.Controls.DropDownCommandButton.HasSubmenu" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.DropDownCommandButton.HasSubmenuProperty" />.
+        Identifier for the <see cref="P:Elysium.Controls.DropDownCommandButton.HasSubmenu" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.DropDownCommandButton.OnHasSubmenuChanged(System.Boolean,System.Boolean)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.DropDownCommandButton.HasSubmenuProperty" />.
+        Called when the <see cref="P:Elysium.Controls.DropDownCommandButton.HasSubmenu" /> dependency property changes.
       </summary>
       <param name="oldHasSubmenu">
-        An old value of the dependency property <see cref="P:Elysium.Controls.DropDownCommandButton.HasSubmenuProperty" />.
+        An old value of the <see cref="P:Elysium.Controls.DropDownCommandButton.HasSubmenu" /> dependency property.
       </param>
       <param name="newHasSubmenu">
-        A new value of the dependency property <see cref="P:Elysium.Controls.DropDownCommandButton.HasSubmenuProperty" />.
+        A new value of the <see cref="P:Elysium.Controls.DropDownCommandButton.HasSubmenu" /> dependency property.
       </param>
     </method>
     <property name="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen">
       <summary>
         Gets or sets the value, that indicates whether the dropdown menu is opened at the moment.
       </summary>
-      <value>True, if the menu is opened; otherwise False. Default value =  false.</value>
+      <value>True, if the menu is opened; otherwise False. The default value is false.</value>
       <remarks>
         <list type="table">
           <item>
@@ -117,21 +117,21 @@
     </property>
     <field name="F:Elysium.Controls.DropDownCommandButton.IsDropDownOpenProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen" />.
+        Identifies the <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen" />.
+        Identifier for the <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.DropDownCommandButton.OnIsDropDownOpenChanged(System.Boolean,System.Boolean)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen" />.
+        Called when the <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen" /> dependency property changes.
       </summary>
       <param name="oldIsDropDownOpen">
-        An old value of the dependency property <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen" />.
+        An old value of the <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen" /> dependency property.
       </param>
       <param name="newIsDropDownOpen">
-        A new value of the dependency property <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen" />.
+        A new value of the <see cref="P:Elysium.Controls.DropDownCommandButton.IsDropDownOpen" /> dependency property.
       </param>
     </method>
     <event name="E:Elysium.Controls.DropDownCommandButton.DropDownOpened">
@@ -141,7 +141,7 @@
     </event>
     <method name="M:Elysium.Controls.DropDownCommandButton.OnDropDownOpened(System.EventArgs)">
       <summary>
-        Is called when the routed event is generated <see cref="E:Elysium.Controls.DropDownCommandButton.DropDownOpened" />.
+        Called when the <see cref="E:Elysium.Controls.DropDownCommandButton.DropDownOpened" /> routed event raises.
       </summary>
       <param name="e">Event arguments.</param>
     </method>
@@ -152,7 +152,7 @@
     </event>
     <method name="M:Elysium.Controls.DropDownCommandButton.OnDropDownClosed(System.EventArgs)">
       <summary>
-        Is called when the routed event is generated <see cref="E:Elysium.Controls.DropDownCommandButton.DropDownClosed" />.
+        Called when the <see cref="E:Elysium.Controls.DropDownCommandButton.DropDownClosed" /> routed event raises.
       </summary>
       <param name="e">Event arguments.</param>
     </method>
@@ -161,7 +161,7 @@
         Gets or sets the direction of dropdown menu.
       </summary>
       <value>
-        A value of the enumeration  <see cref="T:Elysium.Controls.DropDownDirection" />. Default value — <see cref="F:Elysium.Controls.DropDownDirection.Up">DropDownDirection.Up</see>.
+        A value of the enumeration  <see cref="T:Elysium.Controls.DropDownDirection" />. The default value is <see cref="F:Elysium.Controls.DropDownDirection.Up">DropDownDirection.Up</see>.
       </value>
       <remarks>
         <list type="table">
@@ -182,17 +182,17 @@
     </property>
     <field name="F:Elysium.Controls.DropDownCommandButton.DropDownDirectionProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.DropDownCommandButton.DropDownDirection" />.
+        Identifies the <see cref="P:Elysium.Controls.DropDownCommandButton.DropDownDirection" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.DropDownCommandButton.DropDownDirection" />.
+        Identifier for the <see cref="P:Elysium.Controls.DropDownCommandButton.DropDownDirection" /> dependency property.
       </value>
     </field>
     <property name="P:Elysium.Controls.DropDownCommandButton.MaxDropDownHeight">
       <summary>
         Gets or sets the maximum size of dropdown menu.
       </summary>
-      <value>A maximum size of a dropdown menu. Default value  — 300px.</value>
+      <value>A maximum size of a dropdown menu. The default value is 300px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -212,10 +212,10 @@
     </property>
     <field name="F:Elysium.Controls.DropDownCommandButton.MaxDropDownHeightProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.DropDownCommandButton.MaxDropDownHeight" />.
+        Identifies the <see cref="P:Elysium.Controls.DropDownCommandButton.MaxDropDownHeight" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.DropDownCommandButton.MaxDropDownHeight" />.
+        Identifier for the <see cref="P:Elysium.Controls.DropDownCommandButton.MaxDropDownHeight" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.DropDownCommandButton.OnCreateAutomationPeer">

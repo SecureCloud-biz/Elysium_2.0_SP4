@@ -44,31 +44,31 @@
     </property>
     <field name="F:Elysium.Controls.Window.IsMainWindowProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.Window.IsMainWindow" />.
+        Identifies the <see cref="P:Elysium.Controls.Window.IsMainWindow" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.Window.IsMainWindow" />.
+        Identifier for the <see cref="P:Elysium.Controls.Window.IsMainWindow" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.Window.GetIsMainWindow(System.Windows.Window)">
       <summary>
-        Returns the value of the dependency property <see cref="P:Elysium.Controls.Window.IsMainWindow" /> for the specified control.
+        Returns the value of the <see cref="P:Elysium.Controls.Window.IsMainWindow" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being got.</param>
       <returns>A value, which corresponds to whether the specified window is main.</returns>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
     <method name="M:Elysium.Controls.Window.SetIsMainWindow(System.Windows.Window,System.Boolean)">
       <summary>
-        Sets the value of the dependency property <see cref="P:Elysium.Controls.Window.IsMainWindow" /> for the specified control.
+        Sets the value of the <see cref="P:Elysium.Controls.Window.IsMainWindow" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being set.</param>
       <param name="value">A value which corresponds to whether the specified window is main.</param>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
@@ -76,7 +76,7 @@
       <summary>
         Gets or sets the value that indicates a percentage of task completing by the window.
       </summary>
-      <value>The value that indicates a percentage of task completing by the window. Default value  — 0d.</value>
+      <value>The value that indicates a percentage of task completing by the window. The default value is 0d.</value>
       <remarks>
         <list type="table">
           <item>
@@ -96,28 +96,28 @@
     </property>
     <field name="F:Elysium.Controls.Window.ProgressProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.Window.Progress" />.
+        Identifies the <see cref="P:Elysium.Controls.Window.Progress" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.Window.Progress" />.
+        Identifier for the <see cref="P:Elysium.Controls.Window.Progress" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.Window.OnProgressChanged(System.Double,System.Double)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.Window.Progress" />.
+        Called when the <see cref="P:Elysium.Controls.Window.Progress" /> dependency property changes.
       </summary>
       <param name="oldProgress">
-        An old value of the dependency property <see cref="P:Elysium.Controls.Window.Progress" />.
+        An old value of the <see cref="P:Elysium.Controls.Window.Progress" /> dependency property.
       </param>
       <param name="newProgress">
-        A new value of the dependency property <see cref="P:Elysium.Controls.Window.Progress" />.
+        A new value of the <see cref="P:Elysium.Controls.Window.Progress" /> dependency property.
       </param>
     </method>
     <property name="P:Elysium.Controls.Window.IsBusy">
       <summary>
         Gets or sets the value, that indicates whether the window is in "busy" state at the moment.
       </summary>
-      <value>True, if the window is in "busy" state at the moment; False otherwise. Default value =  false.</value>
+      <value>True, if the window is in "busy" state at the moment; False otherwise. The default value is false.</value>
       <remarks>
         <list type="table">
           <item>
@@ -137,28 +137,28 @@
     </property>
     <field name="F:Elysium.Controls.Window.IsBusyProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.Window.IsBusy" />.
+        Identifies the <see cref="P:Elysium.Controls.Window.IsBusy" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.Window.IsBusy" />.
+        Identifier for the <see cref="P:Elysium.Controls.Window.IsBusy" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.Window.OnIsBusyChanged(System.Boolean,System.Boolean)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.Window.IsBusy" />.
+        Called when the <see cref="P:Elysium.Controls.Window.IsBusy" /> dependency property changes.
       </summary>
       <param name="oldIsBusy">
-        An old value of the dependency property <see cref="P:Elysium.Controls.Window.IsBusy" />.
+        An old value of the <see cref="P:Elysium.Controls.Window.IsBusy" /> dependency property.
       </param>
       <param name="newIsBusy">
-        A new value of the dependency property <see cref="P:Elysium.Controls.Window.IsBusy" />.
+        A new value of the <see cref="P:Elysium.Controls.Window.IsBusy" /> dependency property.
       </param>
     </method>
     <property name="P:Elysium.Controls.Window.HasDropShadow">
       <summary>
         Gets or sets  the value, which corresponds to whether specified window has a shadow.
       </summary>
-      <value>True, if the window has a shadow, False otherwise. Default value =  false.</value>
+      <value>True, if the window has a shadow, False otherwise. The default value is false.</value>
       <remarks>
         <list type="table">
           <item>
@@ -180,28 +180,28 @@
     </property>
     <field name="F:Elysium.Controls.Window.HasDropShadowProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.Window.HasDropShadow" />.
+        Identifies the <see cref="P:Elysium.Controls.Window.HasDropShadow" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.Window.HasDropShadow" />.
+        Identifier for the <see cref="P:Elysium.Controls.Window.HasDropShadow" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.Window.OnHasDropShadowChanged(System.Boolean,System.Boolean)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.Window.HasDropShadow" />.
+        Called when the <see cref="P:Elysium.Controls.Window.HasDropShadow" /> dependency property changes.
       </summary>
       <param name="oldHasDropShadow">
-        An old value of the dependency property <see cref="P:Elysium.Controls.Window.HasDropShadow" />.
+        An old value of the <see cref="P:Elysium.Controls.Window.HasDropShadow" /> dependency property.
       </param>
       <param name="newHasDropShadow">
-        A new value of the dependency property <see cref="P:Elysium.Controls.Window.HasDropShadow" />.
+        A new value of the <see cref="P:Elysium.Controls.Window.HasDropShadow" /> dependency property.
       </param>
     </method>
     <property name="P:Elysium.Controls.Window.ApplicationBar">
       <summary>
         Gets or sets an application bar for the window.
       </summary>
-      <value>An application bar for the window. Default value  — null.</value>
+      <value>An application bar for the window. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -235,31 +235,31 @@
     </property>
     <field name="F:Elysium.Controls.Window.ApplicationBarProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.Window.ApplicationBar" />.
+        Identifies the <see cref="P:Elysium.Controls.Window.ApplicationBar" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.Window.ApplicationBar" />.
+        Identifier for the <see cref="P:Elysium.Controls.Window.ApplicationBar" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.Window.GetApplicationBar(System.Windows.Window)">
       <summary>
-        Returns the value of the dependency property <see cref="P:Elysium.Controls.Window.ApplicationBar" /> for the specified control.
+        Returns the value of the <see cref="P:Elysium.Controls.Window.ApplicationBar" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being got.</param>
       <returns>An application bar for the window.</returns>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
     <method name="M:Elysium.Controls.Window.SetApplicationBar(System.Windows.Window,Elysium.Controls.ApplicationBar)">
       <summary>
-        Sets the value of the dependency property <see cref="P:Elysium.Controls.Window.ApplicationBar" /> for the specified control.
+        Sets the value of the <see cref="P:Elysium.Controls.Window.ApplicationBar" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being set.</param>
       <param name="value">An application bar for the window.</param>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
@@ -267,7 +267,7 @@
       <summary>
         Gets or sets the value, which corresponds to whether the specified control is a host-object for the application bar.
       </summary>
-      <value>Corresponds to whether the specified control is a host-object for the application bar. Default value =  false.</value>
+      <value>Corresponds to whether the specified control is a host-object for the application bar. The default value is false.</value>
       <remarks>
         <list type="table">
           <item>
@@ -297,31 +297,31 @@
     </property>
     <field name="F:Elysium.Controls.Window.IsApplicationBarHostProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.Window.IsApplicationBarHost" />.
+        Identifies the <see cref="P:Elysium.Controls.Window.IsApplicationBarHost" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.Window.IsApplicationBarHost" />.
+        Identifier for the <see cref="P:Elysium.Controls.Window.IsApplicationBarHost" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.Window.GetIsApplicationBarHost(System.Windows.Controls.Decorator)">
       <summary>
-        Returns the value of the dependency property <see cref="P:Elysium.Controls.Window.IsApplicationBarHost" /> for the specified control.
+        Returns the value of the <see cref="P:Elysium.Controls.Window.IsApplicationBarHost" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being got.</param>
       <returns>Corresponds to whether the specified control is a host-object for the application bar.</returns>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
     <method name="M:Elysium.Controls.Window.SetIsApplicationBarHost(System.Windows.Controls.Decorator,System.Boolean)">
       <summary>
-        Sets the value of the dependency property <see cref="P:Elysium.Controls.Window.IsApplicationBarHost" /> for the specified item of the control.
+        Sets the value of the <see cref="P:Elysium.Controls.Window.IsApplicationBarHost" /> dependency property for the specified item of the control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being set.</param>
       <param name="value">Corresponds to whether the specified control is a host-object for the application bar.</param>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>

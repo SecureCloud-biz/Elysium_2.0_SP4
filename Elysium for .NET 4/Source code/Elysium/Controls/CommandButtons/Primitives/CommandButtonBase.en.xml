@@ -13,7 +13,7 @@
       <summary>
         Gets or sets the data for the header of the control.
       </summary>
-      <value>Header's object. Default value  — null.</value>
+      <value>Header's object. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -34,21 +34,21 @@
     </property>
     <field name="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" />.
+        Identifies the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" />.
+        Identifier for the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.Primitives.CommandButtonBase.OnHeaderChanged(System.Object,System.Object)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" />.
+        Called when the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" /> dependency property changes.
       </summary>
       <param name="oldHeader">
-        An old value of the dependency property <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" />.
+        An old value of the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" /> dependency property.
       </param>
       <param name="newHeader">
-        A new value of the dependency property <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" />.
+        A new value of the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" /> dependency property.
       </param>
     </method>
     <property name="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader">
@@ -56,7 +56,7 @@
         Returns a value, which corresponds to whether the header is null.
       </summary>
       <value>
-        True, if the value of the dependency property <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" /> is not equal null, False otherwise. Default value = True.
+        True, if the value of the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.Header" /> dependency property is not equal null, False otherwise. The default value is True.
       </value>
       <remarks>
         <list type="table">
@@ -78,28 +78,28 @@
     </property>
     <field name="F:Elysium.Controls.Primitives.CommandButtonBase.HasHeaderProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" />.
+        Identifies the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" />.
+        Identifier for the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.Primitives.CommandButtonBase.OnHasHeaderChanged(System.Boolean,System.Boolean)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" />.
+        Called when the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" /> dependency property changes.
       </summary>
       <param name="oldHasHeader">
-        An old value of the dependency property <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" />.
+        An old value of the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" /> dependency property.
       </param>
       <param name="newHasHeader">
-        A new value of the dependency property <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" />.
+        A new value of the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HasHeader" /> dependency property.
       </param>
     </method>
     <property name="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat">
       <summary>
         Gets or sets combined string, which defines formatting of the header, if the header is displayed as a string.
       </summary>
-      <value>Combined string, which defines formatting of the header, if the header is displayed as a string. Default value  — null.</value>
+      <value>Combined string, which defines formatting of the header, if the header is displayed as a string. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -120,28 +120,28 @@
     </property>
     <field name="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormatProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" />.
+        Identifies the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" />.
+        Identifier for the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.Primitives.CommandButtonBase.OnHeaderStringFormatChanged(System.String,System.String)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" />.
+        Called when the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" /> dependency property changes.
       </summary>
       <param name="oldHeaderStringFormat">
-        An old value of the dependency property <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" />.
+        An old value of the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" /> dependency property.
       </param>
       <param name="newHeaderStringFormat">
-        A new value of the dependency property <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" />.
+        A new value of the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderStringFormat" /> dependency property.
       </param>
     </method>
     <property name="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate">
       <summary>
         Gets or sets such a template, which is used for displaying the content of the header of the control.
       </summary>
-      <value>A template, which is used for displaying the content of the header of the control. Default value  — null.</value>
+      <value>A template, which is used for displaying the content of the header of the control. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -162,28 +162,28 @@
     </property>
     <field name="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" />.
+        Identifies the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" />.
+        Identifier for the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.Primitives.CommandButtonBase.OnHeaderTemplateChanged(System.Windows.DataTemplate,System.Windows.DataTemplate)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" />.
+        Called when the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" /> dependency property changes.
       </summary>
       <param name="oldHeaderTemplate">
-        An old value of the dependency property <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" />.
+        An old value of the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" /> dependency property.
       </param>
       <param name="newHeaderTemplate">
-        A new value of the dependency property <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" />.
+        A new value of the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplate" /> dependency property.
       </param>
     </method>
     <property name="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector">
       <summary>
         Gets or sets a header template selector, which corresponds to user's way to choose a header template of the control's header.
       </summary>
-      <value>An instance of the selector template. Default value  — null.</value>
+      <value>An instance of the selector template. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -204,21 +204,21 @@
     </property>
     <field name="F:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelectorProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Control.Primitives.CommandButtonBase.HeaderTemplateSelector" />.
+        Identifies the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Control.Primitives.CommandButtonBase.HeaderTemplateSelector" />.
+        Identifier for the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.Primitives.CommandButtonBase.OnHeaderTemplateSelectorChanged(System.Windows.Controls.DataTemplateSelector,System.Windows.Controls.DataTemplateSelector)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Control.Primitives.CommandButtonBase.HeaderTemplateSelector" />.
+        Called when the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector" /> dependency property changes.
       </summary>
       <param name="oldHeaderTemplateSelector">
-        An old value of the dependency property <see cref="P:Elysium.Control.Primitives.CommandButtonBase.HeaderTemplateSelector" />.
+        An old value of the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector" /> dependency property.
       </param>
       <param name="newHeaderTemplateSelector">
-        A new value of the dependency property <see cref="P:Elysium.Control.Primitives.CommandButtonBase.HeaderTemplateSelector" />.
+        A new value of the <see cref="P:Elysium.Controls.Primitives.CommandButtonBase.HeaderTemplateSelector" /> dependency property.
       </param>
     </method>
     <method name="M:Elysium.Controls.Primitives.CommandButtonBase.MeasureOverride(System.Windows.Size)">

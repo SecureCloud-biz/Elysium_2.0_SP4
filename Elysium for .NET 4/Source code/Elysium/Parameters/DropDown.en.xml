@@ -13,7 +13,7 @@
       <summary>
         Gets or sets the value, that indicates whether the dropdown list is opened at the moment.
       </summary>
-      <value>True, if the list is opened; otherwise False. Default value =  false.</value>
+      <value>True, if the list is opened; otherwise False. The default value is false.</value>
       <remarks>
         <list type="table">
           <item>
@@ -45,31 +45,31 @@
     </property>
     <field name="F:Elysium.Parameters.DropDown.IsOpenProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Parameters.DropDown.IsOpen" />.
+        Identifies the <see cref="P:Elysium.Parameters.DropDown.IsOpen" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Parameters.DropDown.IsOpen" />.
+        Identifier for the <see cref="P:Elysium.Parameters.DropDown.IsOpen" /> dependency property.
       </value>
     </field>
-    <method name="M:Elysium.Parameters.DropDown.GetIsOpen(System.Windows.UIElement)">
+    <method name="M:Elysium.Parameters.DropDown.GetIsOpen(System.Windows.Controls.Primitives.Popup)">
       <summary>
-        Returns the value of the dependency property <see cref="P:Elysium.Parameters.DropDown.IsOpen" /> for the specified control.
+        Returns the value of the <see cref="P:Elysium.Parameters.DropDown.IsOpen" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being got.</param>
       <returns>The value, that indicates whether the dropdown list is opened at the moment.</returns>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
-    <method name="M:Elysium.Parameters.DropDown.SetIsOpen(System.Windows.UIElement,System.Boolean)">
+    <method name="M:Elysium.Parameters.DropDown.SetIsOpen(System.Windows.Controls.Primitives.Popup,System.Boolean)">
       <summary>
-        Sets the value of the dependency property <see cref="P:Elysium.Parameters.DropDown.IsOpen" /> for the specified control.
+        Sets the value of the <see cref="P:Elysium.Parameters.DropDown.IsOpen" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being set.</param>
       <param name="value">The value, that indicates whether the dropdown list is opened at the moment.</param>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
@@ -77,7 +77,7 @@
       <summary>
         Returns the value, that indicates whether the current horizontal position of the dropdown list and the default value are equal.
       </summary>
-      <value>True, if the values are equal; otherwise False. Default value =  false.</value>
+      <value>True, if the values are equal; otherwise False. The default value is false.</value>
       <remarks>
         <list type="table">
           <item>
@@ -108,20 +108,20 @@
     </property>
     <field name="F:Elysium.Parameters.DropDown.IsDefaultHorizontalPositionProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Parameters.DropDown.IsDefaultHorizontalPosition" />.
+        Identifies the <see cref="P:Elysium.Parameters.DropDown.IsDefaultHorizontalPosition" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Parameters.DropDown.IsDefaultHorizontalPosition" />.
+        Identifier for the <see cref="P:Elysium.Parameters.DropDown.IsDefaultHorizontalPosition" /> dependency property.
       </value>
     </field>
-    <method name="M:Elysium.Parameters.DropDown.GetIsDefaultHorizontalPosition(System.Windows.UIElement)">
+    <method name="M:Elysium.Parameters.DropDown.GetIsDefaultHorizontalPosition(System.Windows.Controls.Primitives.Popup)">
       <summary>
-        Returns the value of the dependency property <see cref="P:Elysium.Parameters.DropDown.IsDefaultHorizontalPosition" /> for the specified control.
+        Returns the value of the <see cref="P:Elysium.Parameters.DropDown.IsDefaultHorizontalPosition" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being got.</param>
       <returns>Returns the value, that indicates whether the current horizontal position of the dropdown list and the default value are equal.</returns>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
@@ -129,7 +129,7 @@
       <summary>
         Returns the value, that indicates whether the current vertical position of the dropdown list and the default value are equal.
       </summary>
-      <value>True, if the values are equal; otherwise False. Default value =  false.</value>
+      <value>True, if the values are equal; otherwise False. The default value is false.</value>
       <remarks>
         <list type="table">
           <item>
@@ -160,20 +160,20 @@
     </property>
     <field name="F:Elysium.Parameters.DropDown.IsDefaultVerticalPositionProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Parameters.DropDown.IsDefaultVerticalPosition" />.
+        Identifies the <see cref="P:Elysium.Parameters.DropDown.IsDefaultVerticalPosition" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Parameters.DropDown.IsDefaultVerticalPosition" />.
+        Identifier for the <see cref="P:Elysium.Parameters.DropDown.IsDefaultVerticalPosition" /> dependency property.
       </value>
     </field>
-    <method name="M:Elysium.Parameters.DropDown.GetIsDefaultVerticalPosition(System.Windows.UIElement)">
+    <method name="M:Elysium.Parameters.DropDown.GetIsDefaultVerticalPosition(System.Windows.Controls.Primitives.Popup)">
       <summary>
-        Returns the value of the dependency property <see cref="P:Elysium.Parameters.DropDown.IsDefaultVerticalPosition" /> for the specified control.
+        Returns the value of the <see cref="P:Elysium.Parameters.DropDown.IsDefaultVerticalPosition" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being got.</param>
       <returns>Returns the value, that indicates whether the current vertical position of the dropdown list and the default value are equal.</returns>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>

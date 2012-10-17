@@ -6032,7 +6032,7 @@
     </member>
     <member name="P:Elysium.Controls.Primitives.ProgressBase.BusyAnimation">
       <summary>
-        Возвращает или задаёт (доступно только для наследников) значение, являющееся раскадровкой анимации при состоянии "занят".
+        Возвращает или задаёт значение, являющееся раскадровкой анимации при состоянии "занят".
       </summary>
       <value>Раскадровка. Значение по умолчанию — экземпляр раскадровки стандартной анимации.</value>
       <remarks>
@@ -6060,14 +6060,6 @@
         Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBase.BusyAnimation" />.
       </value>
     </member>
-    <member name="F:Elysium.Controls.Primitives.ProgressBase.BusyAnimationPropertyKey">
-      <summary>
-        Идентифицирует свойство зависимостей только для чтения <see cref="P:Elysium.Controls.Primitives.ProgressBase.BusyAnimation" />.
-      </summary>
-      <value>
-        Идентификатор огранниченного доступа на запись для свойства зависимостей <see cref="P:Elysium.Controls.Primitives.ProgressBase.BusyAnimation" />.
-      </value>
-    </member>
     <member name="P:Elysium.Controls.Primitives.ProgressBase.IsBusyAnimationRunning">
       <summary>
         Возвращает или задаёт значение, указывающее запущена ли анимация состояния "занят".
@@ -6084,7 +6076,7 @@
           <item>
             <term>Метаданные</term>
             <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.none" />
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None" />
             </description>
           </item>
         </list>

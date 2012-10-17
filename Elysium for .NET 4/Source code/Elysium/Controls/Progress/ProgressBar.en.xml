@@ -14,7 +14,7 @@
         Gets or sets the value that indicates the orientation of the progress bar.
       </summary>
       <value>
-        A value of the enumeration <see cref="T:System.Windows.Controls.Orientation" />. Default value — <see cref="F:Windows.Controls.Orientation.Horizontal">Orientation.Horizontal</see>.
+        A value of the enumeration <see cref="T:System.Windows.Controls.Orientation" />. The default value is <see cref="F:System.Windows.Controls.Orientation.Horizontal">Orientation.Horizontal</see>.
       </value>
       <remarks>
         <list type="table">
@@ -35,21 +35,21 @@
     </property>
     <field name="F:Elysium.Controls.ProgressBar.OrientationProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.ProgressBar.Orientation" />.
+        Identifies the <see cref="P:Elysium.Controls.ProgressBar.Orientation" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.ProgressBar.Orientation" />.
+        Identifier for the <see cref="P:Elysium.Controls.ProgressBar.Orientation" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.ProgressBar.OnOrientationChanged(System.Windows.Controls.Orientation,System.Windows.Controls.Orientation)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.ProgressBar.Orientation" />.
+        Called when the <see cref="P:Elysium.Controls.ProgressBar.Orientation" /> dependency property changes.
       </summary>
       <param name="oldOrientation">
-        An old value of the dependency property <see cref="P:Elysium.Controls.ProgressBar.Orientation" />.
+        An old value of the <see cref="P:Elysium.Controls.ProgressBar.Orientation" /> dependency property.
       </param>
       <param name="newOrientation">
-        A new value of the dependency property <see cref="P:Elysium.Controls.ProgressBar.Orientation" />.
+        A new value of the <see cref="P:Elysium.Controls.ProgressBar.Orientation" /> dependency property.
       </param>
     </method>
     <method name="M:Elysium.Controls.ProgressBar.OnAnimationsUpdating(System.Windows.RoutedEventArgs)">

@@ -8,7 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{e7b526d2-b5cc-4019-9ac8-f8b91f021a82}</ProjectGuid>
-    <SHFBSchemaVersion>1.9.3.0</SHFBSchemaVersion>
+    <SHFBSchemaVersion>1.9.5.0</SHFBSchemaVersion>
     <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual
          Studio adds them anyway -->
     <AssemblyName>Documentation</AssemblyName>
@@ -24,11 +24,11 @@
     <SelfBranded>True</SelfBranded>
     <SyntaxFilters>CSharp, VisualBasic, XamlUsage</SyntaxFilters>
     <IncludeFavorites>False</IncludeFavorites>
-    <BuildAssemblerVerbosity>OnlyErrors</BuildAssemblerVerbosity>
+    <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
     <BuildLogFile>Elysium.log</BuildLogFile>
     <CopyrightHref>http://elysium.codeplex.com/license</CopyrightHref>
     <FooterText>Copyright %28c%29 2011-2012 Alex F. Sherman</FooterText>
-    <HelpTitle>Elysium for .NET 4 documentation %28English%29</HelpTitle>
+    <HelpTitle>Elysium for .NET 4 documentation</HelpTitle>
     <ComponentConfigurations>
       <ComponentConfig id="IntelliSense Component" enabled="True">
         <component id="IntelliSense Component" type="SandcastleBuilder.Components.IntelliSenseComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
@@ -56,7 +56,7 @@
 			<replace elements="/*//token" item="string(.)" /></component>
       </ComponentConfig>
     </ComponentConfigurations>
-    <VisibleItems>InheritedMembers, Protected, ProtectedInternalAsProtected</VisibleItems>
+    <VisibleItems>InheritedMembers, InheritedFrameworkMembers, Protected, ProtectedInternalAsProtected</VisibleItems>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\..\..\Binary\Debug\AnyCPU\Elysium.dll" />
       <DocumentationSource sourceFile="..\..\..\Binary\Debug\AnyCPU\Elysium.Notifications.dll" />
@@ -65,7 +65,7 @@
     </DocumentationSources>
     <HelpFileFormat>HtmlHelp1</HelpFileFormat>
     <RootNamespaceContainer>True</RootNamespaceContainer>
-    <RootNamespaceTitle>Elysium for .NET 4 documentation %28English%29</RootNamespaceTitle>
+    <RootNamespaceTitle>Elysium for .NET 4 documentation</RootNamespaceTitle>
     <PlugInConfigurations>
       <PlugInConfig id="Additional Content Only" enabled="False">
         <configuration />
@@ -74,6 +74,7 @@
     <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="Elysium" isDocumented="True" />
+      <NamespaceSummaryItem name="JetBrains.Annotations" isDocumented="False" />
     </NamespaceSummaries>
     <ApiFilter />
     <SccProjectName>SAK</SccProjectName>
@@ -84,11 +85,15 @@
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <WorkingPath>..\..\..\Binary\Documentation\en\Working\</WorkingPath>
     <IndentHtml>False</IndentHtml>
-    <FrameworkVersion>.NET 4.0.30319</FrameworkVersion>
-    <KeepLogFile>False</KeepLogFile>
+    <FrameworkVersion>.NET Framework 4.0</FrameworkVersion>
+    <KeepLogFile>True</KeepLogFile>
     <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
     <CppCommentsFixup>False</CppCommentsFixup>
     <CleanIntermediates>True</CleanIntermediates>
+    <HelpAttributes />
+    <HtmlHelp1xCompilerPath />
+    <HtmlHelp2xCompilerPath />
+    <SandcastlePath />
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
        order for Visual Studio to perform the build.  The others are optional

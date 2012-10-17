@@ -13,7 +13,7 @@
       <summary>
         Gets or sets the color of the background of the submenu.
       </summary>
-      <value>The color of the background of the submenu. Default value  — null.</value>
+      <value>The color of the background of the submenu. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -44,31 +44,31 @@
     </property>
     <field name="F:Elysium.Parameters.MenuBase.SubmenuBackgroundProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Parameters.General.SubmenuBackground" />.
+        Identifies the <see cref="P:Elysium.Parameters.MenuBase.SubmenuBackground" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Parameters.MenuBase.SubmenuBackground" />.
+        Identifier for the <see cref="P:Elysium.Parameters.MenuBase.SubmenuBackground" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Parameters.MenuBase.GetSubmenuBackground(System.Windows.Controls.Primitives.MenuBase)">
       <summary>
-        Returns the value of the dependency property <see cref="P:Elysium.Parameters.MenuBase.SubmenuBackground" /> for the specified control.
+        Returns the value of the <see cref="P:Elysium.Parameters.MenuBase.SubmenuBackground" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being got.</param>
       <returns>The size of the background of the submenu.</returns>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
     <method name="M:Elysium.Parameters.MenuBase.SetSubmenuBackground(System.Windows.Controls.Primitives.MenuBase,System.Windows.Media.Brush)">
       <summary>
-        Sets the value of the dependency property <see cref="P:Elysium.Parameters.MenuBase.SubmenuBackground" /> for the specified control.
+        Sets the value of the <see cref="P:Elysium.Parameters.MenuBase.SubmenuBackground" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being set.</param>
       <param name="value">The color of the background of the submenu.</param>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
@@ -77,7 +77,7 @@
         Gets or sets the color of the border of the submenu.
       </summary>
       <value>
-        The color of the border of the submenu. Default value = null.
+        The color of the border of the submenu. The default value is null.
       </value>
       <remarks>
         <list type="table">
@@ -109,31 +109,31 @@
     </property>
     <field name="F:Elysium.Parameters.MenuBase.SubmenuBorderBrushProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderBrush" />.
+        Identifies the <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderBrush" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderBrush" />.
+        Identifier for the <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderBrush" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Parameters.MenuBase.GetSubmenuBorderBrush(System.Windows.Controls.Primitives.MenuBase)">
       <summary>
-        Returns the value of the dependency property <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderBrush" /> for the specified control.
+        Returns the value of the <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderBrush" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being got.</param>
       <returns>The size of the border of the submenu.</returns>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
     <method name="M:Elysium.Parameters.MenuBase.SetSubmenuBorderBrush(System.Windows.Controls.Primitives.MenuBase,System.Windows.Media.Brush)">
       <summary>
-        Sets the value of the dependency property <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderBrush" /> for the specified control.
+        Sets the value of the <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderBrush" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being set.</param>
       <param name="value">The color of the border of the submenu.</param>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
@@ -142,7 +142,7 @@
         Gets or sets the size of the border thickness of the submenu.
       </summary>
       <value>
-        The size of the border thickness of the submenu. Default value = (0,0,0,0).
+        The size of the border thickness of the submenu. The default value is (0,0,0,0).
       </value>
       <remarks>
         <list type="table">
@@ -174,32 +174,32 @@
     </property>
     <field name="F:Elysium.Parameters.MenuBase.SubmenuBorderThicknessProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderThickness" />.
+        Identifies the <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderThickness" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderThickness" />.
+        Identifier for the <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderThickness" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Parameters.MenuBase.GetSubmenuBorderThickness(System.Windows.Controls.Primitives.MenuBase)">
       <summary>
-        Returns the value of the dependency property <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderThickness" /> for the specified control.
+        Returns the value of the <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderThickness" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being got.</param>
       <returns>The size of the border of the submenu.</returns>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>The being returned value is positive.</ensures>
     </method>
     <method name="M:Elysium.Parameters.MenuBase.SetSubmenuBorderThickness(System.Windows.Controls.Primitives.MenuBase,System.Windows.Thickness)">
       <summary>
-        Sets the value of the dependency property <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderThickness" /> for the specified control.
+        Sets the value of the <see cref="P:Elysium.Parameters.MenuBase.SubmenuBorderThickness" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being set.</param>
       <param name="value">The color of the border of the submenu.</param>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>

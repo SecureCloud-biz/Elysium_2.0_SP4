@@ -23,7 +23,7 @@
         An instance of the successor of the class <see cref="T:Elysium.Controls.ToggleSwitch" />, for which the provider will be used.
       </summary>
       <getter>
-        <ensures>Value cant be null.</ensures>
+        <ensures>Value can't be null.</ensures>
       </getter>
       <value>
         An instance of the control <see cref="T:Elysium.Controls.ToggleSwitch" />, for which the provider will be used.
@@ -36,7 +36,7 @@
       <returns>
         A string with a value "ToggleSwitch".
       </returns>
-      <ensures>Being returned string is always =  "ToggleSwitch"</ensures>
+      <ensures>Being returned string is always "ToggleSwitch"</ensures>
     </method>
     <method name="M:Elysium.Controls.Automation.ToggleSwitchAutomationPeer.GetAutomationControlTypeCore">
       <summary>

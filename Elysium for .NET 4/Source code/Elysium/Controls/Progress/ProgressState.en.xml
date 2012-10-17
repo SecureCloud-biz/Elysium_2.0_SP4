@@ -16,7 +16,7 @@
     </field>
     <field name="F:Elysium.Controls.ProgressState.Indeterminate">
       <summary>
-        Unknown state.
+        Indeterminate state.
       </summary>
     </field>
     <field name="F:Elysium.Controls.ProgressState.Busy">

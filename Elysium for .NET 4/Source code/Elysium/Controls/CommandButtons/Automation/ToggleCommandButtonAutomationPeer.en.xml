@@ -24,7 +24,7 @@
       <returns>
         A string with a value "ToggleCommandButton".
       </returns>
-      <ensures>Being returned string is always =  "ToggleCommandButton"</ensures>
+      <ensures>Being returned string is always "ToggleCommandButton"</ensures>
     </method>
     <method name="M:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer.GetPattern(System.Windows.Automation.Peers.PatternInterface)">
       <summary>

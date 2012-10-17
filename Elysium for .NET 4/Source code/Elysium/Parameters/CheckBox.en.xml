@@ -13,7 +13,7 @@
       <summary>
         Gets or sets the size of the marker in the "enabled" state for the control <see cref="T:System.Windows.Controls.CheckBox" />.
       </summary>
-      <value>The size of the marker when state = enabled. Default value = 10 px.</value>
+      <value>The size of the marker when state = enabled. The default value is 10 px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -43,32 +43,32 @@
     </property>
     <field name="F:Elysium.Parameters.CheckBox.CheckSizeProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Parameters.CheckBox.CheckSize" />.
+        Identifies the <see cref="P:Elysium.Parameters.CheckBox.CheckSize" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Parameters.CheckBox.CheckSize" />.
+        Identifier for the <see cref="P:Elysium.Parameters.CheckBox.CheckSize" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Parameters.CheckBox.GetCheckSize(System.Windows.Controls.CheckBox)">
       <summary>
-        Returns the value of the dependency property <see cref="P:Elysium.Parameters.CheckBox.CheckSize" /> for the specified control.
+        Returns the value of the <see cref="P:Elysium.Parameters.CheckBox.CheckSize" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being got.</param>
       <returns>The size of the marker when state = enabled.</returns>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>The being returned value is positive.</ensures>
     </method>
     <method name="M:Elysium.Parameters.CheckBox.SetCheckSize(System.Windows.Controls.CheckBox,System.Double)">
       <summary>
-        Sets the value of the dependency property <see cref="P:Elysium.Parameters.CheckBox.CheckSize" /> for the specified control.
+        Sets the value of the <see cref="P:Elysium.Parameters.CheckBox.CheckSize" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being set.</param>
       <param name="value">The size of the marker when state = enabled.</param>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>

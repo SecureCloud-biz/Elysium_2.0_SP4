@@ -8,7 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{2ed0b9e6-ab08-4358-9f10-8ea35fa37366}</ProjectGuid>
-    <SHFBSchemaVersion>1.9.3.0</SHFBSchemaVersion>
+    <SHFBSchemaVersion>1.9.5.0</SHFBSchemaVersion>
     <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual
          Studio adds them anyway -->
     <AssemblyName>Documentation</AssemblyName>
@@ -74,7 +74,6 @@
     <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="Elysium" isDocumented="True">Предоставляет несколько классов для управления базовыми функциями и параметрами темы.</NamespaceSummaryItem>
-      <NamespaceSummaryItem name="Elysium.Design" isDocumented="True">Предоставляет классы, обеспечивающие правильное отображение элементов управления в режиме конструктора (design-time).</NamespaceSummaryItem>
       <NamespaceSummaryItem name="Elysium.Controls" isDocumented="True">Предоставляет классы элементов управления, а также классы, необходимые для их функционирования.</NamespaceSummaryItem>
       <NamespaceSummaryItem name="Elysium.Controls.Automation" isDocumented="True">Предоставляет классы для работы с технологией UI Automation.</NamespaceSummaryItem>
       <NamespaceSummaryItem name="Elysium.Controls.Primitives" isDocumented="True">Предоставляет базовые классы для других элементов управления.</NamespaceSummaryItem>
@@ -82,7 +81,6 @@
       <NamespaceSummaryItem name="Elysium.Converters" isDocumented="True">Предоставляет конвертеры типов.</NamespaceSummaryItem>
       <NamespaceSummaryItem name="Elysium.Extensions" isDocumented="True">Предоставляет классы, расширяющие функционал стандартных классов WPF.</NamespaceSummaryItem>
       <NamespaceSummaryItem name="Elysium.Parameters" isDocumented="True">Предоставляет набор классов для управления настройками стилей элементов управления.</NamespaceSummaryItem>
-      <NamespaceSummaryItem name="XamlGeneratedNamespace" isDocumented="False" />
       <NamespaceSummaryItem name="JetBrains.Annotations" isDocumented="False" />
       <NamespaceSummaryItem name="System.Collections.ObjectModel" isDocumented="True">Содержит классы, которые могут использоваться в качестве коллекций в объектной модели многократно используемой библиотеки. Эти классы предназначены для использования со свойствами и методами, возвращающими коллекции.</NamespaceSummaryItem>
     </NamespaceSummaries>
@@ -94,11 +92,16 @@
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <WorkingPath>..\..\..\Binary\Documentation\ru\Working\</WorkingPath>
     <IndentHtml>False</IndentHtml>
-    <FrameworkVersion>.NET 4.0.30319</FrameworkVersion>
-    <KeepLogFile>False</KeepLogFile>
+    <FrameworkVersion>.NET Framework 4.0</FrameworkVersion>
+    <KeepLogFile>True</KeepLogFile>
     <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
     <CppCommentsFixup>False</CppCommentsFixup>
     <CleanIntermediates>True</CleanIntermediates>
+    <ApiFilter />
+    <HelpAttributes />
+    <HtmlHelp1xCompilerPath />
+    <HtmlHelp2xCompilerPath />
+    <SandcastlePath />
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
        order for Visual Studio to perform the build.  The others are optional

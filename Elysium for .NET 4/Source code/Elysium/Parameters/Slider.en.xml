@@ -13,7 +13,7 @@
       <summary>
         Gets or sets the width of the track in the control <see cref="T:System.Windows.Controls.Slider" />.
       </summary>
-      <value>Lenght of the track in trackbar. Default value  — 48px.</value>
+      <value>Lenght of the track in trackbar. The default value is 48px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -43,32 +43,32 @@
     </property>
     <field name="F:Elysium.Parameters.Slider.TrackSizeProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Parameters.Slider.TrackSize" />.
+        Identifies the <see cref="P:Elysium.Parameters.Slider.TrackSize" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Parameters.Slider.TrackSize" />.
+        Identifier for the <see cref="P:Elysium.Parameters.Slider.TrackSize" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Parameters.Slider.GetTrackSize(System.Windows.Controls.Slider)">
       <summary>
-        Returns the value of the dependency property <see cref="P:Elysium.Parameters.Slider.TrackSize" /> for the specified control.
+        Returns the value of the <see cref="P:Elysium.Parameters.Slider.TrackSize" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being got.</param>
       <returns>Length of the track of a trackbar.</returns>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>The being returned value is positive.</ensures>
     </method>
     <method name="M:Elysium.Parameters.Slider.SetTrackSize(System.Windows.Controls.Slider,System.Double)">
       <summary>
-        Sets the value of the dependency property <see cref="P:Elysium.Parameters.Slider.TrackSize" /> for the specified control.
+        Sets the value of the <see cref="P:Elysium.Parameters.Slider.TrackSize" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being set.</param>
       <param name="value">Length of the track of a trackbar.</param>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
@@ -76,7 +76,7 @@
       <summary>
         Gets or sets the height of the track in the control <see cref="T:System.Windows.Controls.Slider" />.
       </summary>
-      <value>Height of the track in a trackbar. Default value  — 6px.</value>
+      <value>Height of the track in a trackbar. The default value is 6px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -106,32 +106,32 @@
     </property>
     <field name="F:Elysium.Parameters.Slider.ThumbThicknessProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Parameters.General.ThumbThickness" />.
+        Identifies the <see cref="P:Elysium.Parameters.Slider.ThumbThickness" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Parameters.Slider.ThumbThickness" />.
+        Identifier for the <see cref="P:Elysium.Parameters.Slider.ThumbThickness" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Parameters.Slider.GetThumbThickness(System.Windows.Controls.Slider)">
       <summary>
-        Returns the value of the dependency property <see cref="P:Elysium.Parameters.General.ThumbThickness" /> for the specified control.
+        Returns the value of the <see cref="P:Elysium.Parameters.Slider.ThumbThickness" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being got.</param>
       <returns>Heigth of the track of a trackbar.</returns>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>The being returned value is positive.</ensures>
     </method>
     <method name="M:Elysium.Parameters.Slider.SetThumbThickness(System.Windows.Controls.Slider,System.Double)">
       <summary>
-        Sets the value of the dependency property <see cref="P:Elysium.Parameters.Slider.ThumbThickness" /> for the specified control.
+        Sets the value of the <see cref="P:Elysium.Parameters.Slider.ThumbThickness" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being set.</param>
       <param name="value">Height of the track of a trackbar.</param>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>

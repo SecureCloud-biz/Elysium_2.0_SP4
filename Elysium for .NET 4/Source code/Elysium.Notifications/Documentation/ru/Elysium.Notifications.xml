@@ -39,21 +39,6 @@
         Уведомления выравниваются по правой стороне экрана.
       </summary>
     </member>
-    <member name="T:Elysium.Notifications.VerticalPlacement">
-      <summary>
-        Определяет, по какой стороне экрана выравниваются уведомления.
-      </summary>
-    </member>
-    <member name="F:Elysium.Notifications.VerticalPlacement.Top">
-      <summary>
-        Уведомления выравнивается по верхнему краю экрана.
-      </summary>
-    </member>
-    <member name="F:Elysium.Notifications.VerticalPlacement.Bottom">
-      <summary>
-        Уведомления выравнивается по нижнему краю экрана.
-      </summary>
-    </member>
     <member name="T:Elysium.Notifications.NotificationManager">
       <summary>
         Менеджер уведомлений.
@@ -88,6 +73,21 @@
         Параметер <paramref name="message" /> имеет значение null, является пустой строкой или состоит из пробелов.
       </exception>
       <requires exception="T:System.ArgumentException">message != null</requires>
+    </member>
+    <member name="T:Elysium.Notifications.VerticalPlacement">
+      <summary>
+        Определяет, по какой стороне экрана выравниваются уведомления.
+      </summary>
+    </member>
+    <member name="F:Elysium.Notifications.VerticalPlacement.Top">
+      <summary>
+        Уведомления выравнивается по верхнему краю экрана.
+      </summary>
+    </member>
+    <member name="F:Elysium.Notifications.VerticalPlacement.Bottom">
+      <summary>
+        Уведомления выравнивается по нижнему краю экрана.
+      </summary>
     </member>
     <member name="T:Elysium.Notifications.PushNotificationFailedException">
       <summary>

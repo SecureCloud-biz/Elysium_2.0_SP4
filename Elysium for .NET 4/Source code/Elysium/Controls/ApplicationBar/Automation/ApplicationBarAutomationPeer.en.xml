@@ -13,7 +13,7 @@
       <summary>
         Creates a new instance of the class <see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />.
       </summary>
-      <param name="parameter">
+      <param name="owner">
         An instance of the class <see cref="T:Elysium.Controls.ApplicationBar" />, for which the provider will be used.
       </param>
     </method>
@@ -24,7 +24,7 @@
       <returns>
         A string with a value "ApplicationBar".
       </returns>
-      <ensures>Being returned string is always =  "ApplicationBar"</ensures>
+      <ensures>Being returned string is always "ApplicationBar"</ensures>
     </method>
     <method name="M:Elysium.Controls.Automation.ApplicationBarAutomationPeer.GetAutomationControlTypeCore">
       <summary>
@@ -33,7 +33,7 @@
       <returns>
         A value <see cref="F:System.Windows.Automation.Peers.AutomationControlType.Menu">AutomationControlType.Menu</see>.
       </returns>
-      <ensures>The being returned value is a value of AutomationControlType.Menu .</ensures>
+      <ensures>The being returned value is always AutomationControlType.Menu .</ensures>
     </method>
   </members>
 </doc>

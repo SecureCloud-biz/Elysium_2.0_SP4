@@ -24,7 +24,7 @@
       <returns>
         A string with a value "Submenu".
       </returns>
-      <ensures>Being returned string is always =  "Submenu"</ensures>
+      <ensures>Being returned string is always "Submenu"</ensures>
     </method>
     <method name="M:Elysium.Controls.Automation.SubmenuAutomationPeer.GetAutomationControlTypeCore">
       <summary>

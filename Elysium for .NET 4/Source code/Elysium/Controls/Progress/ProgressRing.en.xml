@@ -14,7 +14,7 @@
         Gets or sets the value of the angle for the child elements of the indicator.
       </summary>
       <value>
-        A value of the angle for the child elements of the indicator or -1d, if the child element is outside the circle. Default value = -1d.
+        A value of the angle for the child elements of the indicator or -1d, if the child element is outside the circle. The default value is -1d.
       </value>
       <remarks>
         <list type="table">
@@ -45,31 +45,31 @@
     </property>
     <field name="F:Elysium.Controls.ProgressRing.AngleProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.ProgressRing.Angle" />.
+        Identifies the <see cref="P:Elysium.Controls.ProgressRing.Angle" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.ProgressRing.Angle" />.
+        Identifier for the <see cref="P:Elysium.Controls.ProgressRing.Angle" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.ProgressRing.GetAngle(System.Windows.UIElement)">
       <summary>
-        Returns the value of the dependency property <see cref="P:Elysium.Controls.ProgressRing.Angle" /> for the specified control.
+        Returns the value of the <see cref="P:Elysium.Controls.ProgressRing.Angle" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being got.</param>
       <returns>The value of the angle for the child element of the control.</returns>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
     <method name="M:Elysium.Controls.ProgressRing.SetAngle(System.Windows.UIElement,System.Double)">
       <summary>
-        Sets the value of the dependency property <see cref="P:Elysium.Controls.ProgressRing.Angle" /> for the specified control.
+        Sets the value of the <see cref="P:Elysium.Controls.ProgressRing.Angle" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being set.</param>
       <param name="value">The value of the angle for the child element of the control.</param>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>

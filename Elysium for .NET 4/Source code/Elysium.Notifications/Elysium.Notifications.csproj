@@ -221,8 +221,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Elysium.Notifications.xml</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Documentation\en\Elysium.Notifications.xml">
       <DependentUpon>Elysium.Notifications.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -235,20 +233,38 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Animation.en.xml">
+      <DependentUpon>Animation.cs</DependentUpon>
+    </None>
     <None Include="Animation.ru.xml">
       <DependentUpon>Animation.cs</DependentUpon>
+    </None>
+    <None Include="HorizontalPlacement.en.xml">
+      <DependentUpon>HorizontalPlacement.cs</DependentUpon>
     </None>
     <None Include="HorizontalPlacement.ru.xml">
       <DependentUpon>HorizontalPlacement.cs</DependentUpon>
     </None>
+    <None Include="VerticalPlacement.en.xml">
+      <DependentUpon>VerticalPlacement.cs</DependentUpon>
+    </None>
     <None Include="VerticalPlacement.ru.xml">
       <DependentUpon>VerticalPlacement.cs</DependentUpon>
+    </None>
+    <None Include="NotificationManager.en.xml">
+      <DependentUpon>NotificationManager.cs</DependentUpon>
     </None>
     <None Include="NotificationManager.ru.xml">
       <DependentUpon>NotificationManager.cs</DependentUpon>
     </None>
+    <None Include="Exceptions\PushNotificationFailedException.en.xml">
+      <DependentUpon>PushNotificationFailedException.cs</DependentUpon>
+    </None>
     <None Include="Exceptions\PushNotificationFailedException.ru.xml">
       <DependentUpon>PushNotificationFailedException.cs</DependentUpon>
+    </None>
+    <None Include="Exceptions\ServerUnavailableException.en.xml">
+      <DependentUpon>ServerUnavailableException.cs</DependentUpon>
     </None>
     <None Include="Exceptions\ServerUnavailableException.ru.xml">
       <DependentUpon>ServerUnavailableException.cs</DependentUpon>

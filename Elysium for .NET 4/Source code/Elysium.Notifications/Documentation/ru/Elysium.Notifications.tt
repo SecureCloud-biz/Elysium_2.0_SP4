@@ -17,9 +17,8 @@
            
     paths.Add(@"Animation.ru.xml");
     paths.Add(@"HorizontalPlacement.ru.xml");
-    paths.Add(@"VerticalPlacement.ru.xml");
-
     paths.Add(@"NotificationManager.ru.xml");
+    paths.Add(@"VerticalPlacement.ru.xml");
 
     paths.Add(@"Exceptions\PushNotificationFailedException.ru.xml");
     paths.Add(@"Exceptions\ServerUnavailableException.ru.xml");

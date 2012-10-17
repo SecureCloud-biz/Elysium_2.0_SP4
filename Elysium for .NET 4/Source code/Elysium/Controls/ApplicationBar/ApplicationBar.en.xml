@@ -14,7 +14,7 @@
         Gets or sets the algorithm of the control positioning inside the control panel of the application.
       </summary>
       <value>
-        A value of the enumeration  <see cref="T:Elysium.Controls.ApplicationBarDock" />. Default value — <see cref="F:Elysium.Controls.ApplicationBarDock.Left" />ApplicationBarDock.Left
+        A value of the enumeration  <see cref="T:Elysium.Controls.ApplicationBarDock" />. The default value is <see cref="F:Elysium.Controls.ApplicationBarDock.Left" />ApplicationBarDock.Left
       </value>
       <remarks>
         <list type="table">
@@ -45,31 +45,31 @@
     </property>
     <field name="F:Elysium.Controls.ApplicationBar.DockProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.ApplicationBar.Dock" />.
+        Identifies the <see cref="P:Elysium.Controls.ApplicationBar.Dock" /> dependency property.
       </summary>
       <value>
-        Identifies a dependency property <see cref="P:Elysium.Controls.ApplicationBar.Dock" />.
+        Identifies the <see cref="P:Elysium.Controls.ApplicationBar.Dock" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.ApplicationBar.GetDock(System.Windows.UIElement)">
       <summary>
-        Returns the value of the dependency property <see cref="P:Elysium.Controls.ApplicationBar.Dock" /> for the specified control.
+        Returns the value of the <see cref="P:Elysium.Controls.ApplicationBar.Dock" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being got.</param>
       <returns>A docking algorithm.</returns>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
     <method name="M:Elysium.Controls.ApplicationBar.SetDock(System.Windows.UIElement,Elysium.Controls.ApplicationBarDock)">
       <summary>
-        Sets the value of the dependency property <see cref="P:Elysium.Controls.ApplicationBar.Dock" /> for the specified control.
+        Sets the value of the <see cref="P:Elysium.Controls.ApplicationBar.Dock" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being set.</param>
       <param name="value">A docking algorithm.</param>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
@@ -77,7 +77,7 @@
       <summary>
         Gets or sets the value, that indicates whether the control panel is opened at the moment. The control panel is opened by mouse right-button click by default.
       </summary>
-      <value>True, if the control panel is opened; otherwise False. Default value =  false.</value>
+      <value>True, if the control panel is opened; otherwise False. The default value is false.</value>
       <remarks>
         <list type="table">
           <item>
@@ -97,21 +97,21 @@
     </property>
     <field name="F:Elysium.Controls.ApplicationBar.IsOpenProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.ApplicationBar.IsOpen" />.
+        Identifies the <see cref="P:Elysium.Controls.ApplicationBar.IsOpen" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.ApplicationBar.IsOpen" />.
+        Identifier for the <see cref="P:Elysium.Controls.ApplicationBar.IsOpen" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.ApplicationBar.OnIsOpenChanged(System.Boolean,System.Boolean)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.ApplicationBar.IsOpen" />.
+        Called when the <see cref="P:Elysium.Controls.ApplicationBar.IsOpen" /> dependency property changes.
       </summary>
       <param name="oldIsOpen">
-        An old value of the dependency property <see cref="P:Elysium.Controls.ApplicationBar.IsOpen" />.
+        An old value of the <see cref="P:Elysium.Controls.ApplicationBar.IsOpen" /> dependency property.
       </param>
       <param name="newIsOpen">
-        A new value of the dependency property <see cref="P:Elysium.Controls.ApplicationBar.IsOpen" />.
+        A new value of the <see cref="P:Elysium.Controls.ApplicationBar.IsOpen" /> dependency property.
       </param>
     </method>
     <event name="E:Elysium.Controls.ApplicationBar.Opening">
@@ -134,7 +134,7 @@
           </item>
           <item>
             <term>Routing strategy</term>
-            <description>A descending routing strategy</description>
+            <description>Tunneling</description>
           </item>
         </list>
       </remarks>
@@ -149,7 +149,7 @@
     </field>
     <method name="M:Elysium.Controls.ApplicationBar.OnOpening(System.Windows.RoutedEventArgs)">
       <summary>
-        Is called when the routed event is generated <see cref="E:Elysium.Controls.ApplicationBar.Opening" />.
+        Called when the <see cref="E:Elysium.Controls.ApplicationBar.Opening" /> routed event raises.
       </summary>
       <param name="e">Routed event.</param>
     </method>
@@ -173,7 +173,7 @@
           </item>
           <item>
             <term>Routing strategy</term>
-            <description>A descending routing strategy</description>
+            <description>Tunneling</description>
           </item>
         </list>
       </remarks>
@@ -186,9 +186,9 @@
         An identifier of the routed event <see cref="E:Elysium.Controls.ApplicationBar.Closing" />.
       </value>
     </field>
-    <method name="M:Elysium.Controls.ApplicationBar.OnCLosing(System.Windows.RoutedEventArgs)">
+    <method name="M:Elysium.Controls.ApplicationBar.OnClosing(System.Windows.RoutedEventArgs)">
       <summary>
-        Is called when the routed event is generated <see cref="E:Elysium.Controls.ApplicationBar.Closing" />.
+        Called when the <see cref="E:Elysium.Controls.ApplicationBar.Closing" /> routed event raises.
       </summary>
       <param name="e">Routed event.</param>
     </method>
@@ -212,7 +212,7 @@
           </item>
           <item>
             <term>Routing strategy</term>
-            <description>An ascending routing strategy</description>
+            <description>Bubbling</description>
           </item>
         </list>
       </remarks>
@@ -227,7 +227,7 @@
     </field>
     <method name="M:Elysium.Controls.ApplicationBar.OnOpened(System.Windows.RoutedEventArgs)">
       <summary>
-        Is called when the routed event is generated <see cref="E:Elysium.Controls.ApplicationBar.Opened" />.
+        Called when the <see cref="E:Elysium.Controls.ApplicationBar.Opened" /> routed event raises.
       </summary>
       <param name="e">Routed event.</param>
     </method>
@@ -251,7 +251,7 @@
           </item>
           <item>
             <term>Routing strategy</term>
-            <description>An ascending routing strategy</description>
+            <description>Bubbling</description>
           </item>
         </list>
       </remarks>
@@ -266,7 +266,7 @@
     </field>
     <method name="M:Elysium.Controls.ApplicationBar.OnClosed(System.Windows.RoutedEventArgs)">
       <summary>
-        Is called when the routed event is generated <see cref="E:Elysium.Controls.ApplicationBar.Closed" />.
+        Called when the <see cref="E:Elysium.Controls.ApplicationBar.Closed" /> routed event raises.
       </summary>
       <param name="e">Routed event.</param>
     </method>
@@ -277,7 +277,7 @@
       <value>
         True, if the control panel is closed when the user presses the right mouse button again;
         False, if the control panel is closed due to the event of the mouse or the keyboard outside the control panel focus.
-        Default value = True.
+        The default value is True.
       </value>
       <remarks>
         <list type="table">
@@ -298,21 +298,21 @@
     </property>
     <field name="F:Elysium.Controls.ApplicationBar.StaysOpenProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.ApplicationBar.StaysOpen" />.
+        Identifies the <see cref="P:Elysium.Controls.ApplicationBar.StaysOpen" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.ApplicationBar.StaysOpen" />.
+        Identifier for the <see cref="P:Elysium.Controls.ApplicationBar.StaysOpen" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.ApplicationBar.OnStaysOpenChanged(System.Boolean,System.Boolean)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.ApplicationBar.StaysOpen" />.
+        Called when the <see cref="P:Elysium.Controls.ApplicationBar.StaysOpen" /> dependency property changes.
       </summary>
       <param name="oldStaysOpen">
-        An old value of the dependency property <see cref="P:Elysium.Controls.ApplicationBar.StaysOpen" />.
+        An old value of the <see cref="P:Elysium.Controls.ApplicationBar.StaysOpen" /> dependency property.
       </param>
       <param name="newStaysOpen">
-        A new value of the dependency property <see cref="P:Elysium.Controls.ApplicationBar.StaysOpen" />.
+        A new value of the <see cref="P:Elysium.Controls.ApplicationBar.StaysOpen" /> dependency property.
       </param>
     </method>
     <property name="P:Elysium.Controls.ApplicationBar.PreventsOpen">
@@ -320,7 +320,7 @@
         Gets or sets the value, which is corresponds to whether the control panel of the application can be opened after click of the right mouse button above the specified control.
       </summary>
       <value>
-        True, if the control panel can be called by right-click on the specified control; False otherwise. Default value = True.
+        True, if the control panel can be called by right-click on the specified control; False otherwise. The default value is True.
       </value>
       <remarks>
         <list type="table">
@@ -351,32 +351,32 @@
     </property>
     <field name="F:Elysium.Controls.ApplicationBar.PreventsOpenProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.ApplicationBar.PreventsOpen" />.
+        Identifies the <see cref="P:Elysium.Controls.ApplicationBar.PreventsOpen" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.ApplicationBar.PreventsOpen" />.
+        Identifier for the <see cref="P:Elysium.Controls.ApplicationBar.PreventsOpen" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.ApplicationBar.GetPreventsOpen(System.Windows.UIElement)">
       <summary>
-        Returns the value of the dependency property <see cref="P:Elysium.Controls.ApplicationBar.PreventsOpen" /> for the specified control.
+        Returns the value of the <see cref="P:Elysium.Controls.ApplicationBar.PreventsOpen" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being got.</param>
       <returns>A docking algorithm.</returns>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
       <ensures>The being returned value is positive.</ensures>
     </method>
     <method name="M:Elysium.Controls.ApplicationBar.SetPreventsOpen(System.Windows.UIElement,System.Boolean)">
       <summary>
-        Sets the value of the dependency property <see cref="P:Elysium.Controls.ApplicationBar.PreventsOpen" /> for the specified control.
+        Sets the value of the <see cref="P:Elysium.Controls.ApplicationBar.PreventsOpen" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being set.</param>
       <param name="value">A docking algorithm.</param>
       <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value = null.
+        The parameter <paramref name="obj" /> has a value null.
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
@@ -385,7 +385,7 @@
         Gets or sets the value, which corresponds to such an animation, which is used when the control panel is closing/opening.
       </summary>
       <value>
-        A value of the enumeration  <see cref="T:Elysium.Controls.ApplicationBarTransitionMode" />. Default value — <see cref="F:Elysium.Controls.ApplicationBarTransitionMode.Slide">ApplicationBarTransitionMode.Slide</see>.
+        A value of the enumeration  <see cref="T:Elysium.Controls.ApplicationBarTransitionMode" />. The default value is <see cref="F:Elysium.Controls.ApplicationBarTransitionMode.Slide">ApplicationBarTransitionMode.Slide</see>.
       </value>
       <remarks>
         <list type="table">
@@ -406,21 +406,21 @@
     </property>
     <field name="F:Elysium.Controls.ApplicationBar.TransitionModeProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.ApplicationBar.TransitionMode" />.
+        Identifies the <see cref="P:Elysium.Controls.ApplicationBar.TransitionMode" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.ApplicationBar.TransitionMode" />.
+        Identifier for the <see cref="P:Elysium.Controls.ApplicationBar.TransitionMode" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.ApplicationBar.OnTransitionModeChanged(Elysium.Controls.ApplicationBarTransitionMode,Elysium.Controls.ApplicationBarTransitionMode)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.ApplicationBar.TransitionMode" />.
+        Called when the <see cref="P:Elysium.Controls.ApplicationBar.TransitionMode" /> dependency property changes.
       </summary>
       <param name="oldTransitionMode">
-        An old value of the dependency property <see cref="P:Elysium.Controls.ApplicationBar.TransitionMode" />.
+        An old value of the <see cref="P:Elysium.Controls.ApplicationBar.TransitionMode" /> dependency property.
       </param>
       <param name="newTransitionMode">
-        A new value of the dependency property <see cref="P:Elysium.Controls.ApplicationBar.TransitionMode" />.
+        A new value of the <see cref="P:Elysium.Controls.ApplicationBar.TransitionMode" /> dependency property.
       </param>
     </method>
     <method name="M:Elysium.Controls.ApplicationBar.IsItemItsOwnContainerOverride(System.Object)">

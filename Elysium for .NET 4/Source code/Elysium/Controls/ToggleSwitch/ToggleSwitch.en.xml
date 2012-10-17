@@ -13,7 +13,7 @@
       <summary>
         Gets or sets the value, which corresponds to whether the toggle switch is enabled.
       </summary>
-      <value>True, if the toggle switch is enabled; False otherwise. Default value =  false.</value>
+      <value>True, if the toggle switch is enabled; False otherwise. The default value is false.</value>
       <remarks>
         <list type="table">
           <item>
@@ -33,21 +33,21 @@
     </property>
     <field name="F:Elysium.Controls.ToggleSwitch.IsCheckedProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.ToggleSwitch.IsChecked" />.
+        Identifies the <see cref="P:Elysium.Controls.ToggleSwitch.IsChecked" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.IsChecked" />.
+        Identifier for the <see cref="P:Elysium.Controls.ToggleSwitch.IsChecked" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.ToggleSwitch.OnIsCheckedChanged(System.Boolean,System.Boolean)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.ToggleSwitch.IsChecked" />.
+        Called when the <see cref="P:Elysium.Controls.ToggleSwitch.IsChecked" /> dependency property changes.
       </summary>
       <param name="oldIsChecked">
-        An old value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.IsChecked" />.
+        An old value of the <see cref="P:Elysium.Controls.ToggleSwitch.IsChecked" /> dependency property.
       </param>
       <param name="newIsChecked">
-        A new value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.IsChecked" />.
+        A new value of the <see cref="P:Elysium.Controls.ToggleSwitch.IsChecked" /> dependency property.
       </param>
     </method>
     <event name="E:Elysium.Controls.ToggleSwitch.Checked">
@@ -70,7 +70,7 @@
           </item>
           <item>
             <term>Routing strategy</term>
-            <description>An ascending routing strategy</description>
+            <description>Bubbling</description>
           </item>
         </list>
       </remarks>
@@ -85,7 +85,7 @@
     </field>
     <method name="M:Elysium.Controls.ToggleSwitch.OnChecked(System.Windows.RoutedEventArgs)">
       <summary>
-        Is called when the routed event is generated <see cref="E:Elysium.Controls.ToggleSwitch.Checked" />.
+        Called when the <see cref="E:Elysium.Controls.ToggleSwitch.Checked" /> routed event raises.
       </summary>
       <param name="e">Routed event.</param>
     </method>
@@ -109,22 +109,22 @@
           </item>
           <item>
             <term>Routing strategy</term>
-            <description>An ascending routing strategy</description>
+            <description>Bubbling</description>
           </item>
         </list>
       </remarks>
     </event>
     <field name="F:Elysium.Controls.ToggleSwitch.UncheckedEvent">
       <summary>
-        Identifies a routed event <see cref="E:Elysium.Controls.ToggleSwitch.UnChecked" />.
+        Identifies a routed event <see cref="E:Elysium.Controls.ToggleSwitch.Unchecked" />.
       </summary>
       <value>
-        An identifier of the routed event <see cref="E:Elysium.Controls.ToggleSwitch.UnChecked" />.
+        An identifier of the routed event <see cref="E:Elysium.Controls.ToggleSwitch.Unchecked" />.
       </value>
     </field>
     <method name="M:Elysium.Controls.ToggleSwitch.OnUnchecked(System.Windows.RoutedEventArgs)">
       <summary>
-        Is called when the routed event is generated <see cref="E:Elysium.Controls.ToggleSwitch.UnChecked" />.
+        Called when the <see cref="E:Elysium.Controls.ToggleSwitch.Unchecked" /> routed event raises.
       </summary>
       <param name="e">Routed event.</param>
     </method>
@@ -132,7 +132,7 @@
       <summary>
         Returns a value, which corresponds to whether the toggle switch is changing it's value at the moment.
       </summary>
-      <value>True,if the toggle switch is changing it's value at the moment; False otherwise. Default value =  false.</value>
+      <value>True, if the toggle switch is changing it's value at the moment; False otherwise. The default value is false.</value>
       <remarks>
         <list type="table">
           <item>
@@ -152,21 +152,21 @@
     </property>
     <field name="F:Elysium.Controls.ToggleSwitch.IsSwitchingProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.ToggleSwitch.IsSwitching" />.
+        Identifies the <see cref="P:Elysium.Controls.ToggleSwitch.IsSwitching" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.IsSwitching" />.
+        Identifier for the <see cref="P:Elysium.Controls.ToggleSwitch.IsSwitching" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.ToggleSwitch.OnIsSwitchingChanged(System.Boolean,System.Boolean)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.ToggleSwitch.IsSwitching" />.
+        Called when the <see cref="P:Elysium.Controls.ToggleSwitch.IsSwitching" /> dependency property changes.
       </summary>
       <param name="oldIsSwitching">
-        An old value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.IsSwitching" />.
+        An old value of the <see cref="P:Elysium.Controls.ToggleSwitch.IsSwitching" /> dependency property.
       </param>
       <param name="newIsSwitching">
-        A new value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.IsSwitching" />.
+        A new value of the <see cref="P:Elysium.Controls.ToggleSwitch.IsSwitching" /> dependency property.
       </param>
     </method>
     <event name="E:Elysium.Controls.ToggleSwitch.SwitchStarted">
@@ -189,7 +189,7 @@
           </item>
           <item>
             <term>Routing strategy</term>
-            <description>An ascending routing strategy</description>
+            <description>Bubbling</description>
           </item>
         </list>
       </remarks>
@@ -204,7 +204,7 @@
     </field>
     <method name="M:Elysium.Controls.ToggleSwitch.OnSwitchStarted(System.Windows.RoutedEventArgs)">
       <summary>
-        Is called when the routed event is generated <see cref="E:Elysium.Controls.ToggleSwitch.SwitchStarted" />.
+        Called when the <see cref="E:Elysium.Controls.ToggleSwitch.SwitchStarted" /> routed event raises.
       </summary>
       <param name="e">Routed event.</param>
     </method>
@@ -228,7 +228,7 @@
           </item>
           <item>
             <term>Routing strategy</term>
-            <description>An ascending routing strategy</description>
+            <description>Bubbling</description>
           </item>
         </list>
       </remarks>
@@ -243,7 +243,7 @@
     </field>
     <method name="M:Elysium.Controls.ToggleSwitch.OnSwitchCompleted(System.Windows.RoutedEventArgs)">
       <summary>
-        Is called when the routed event is generated <see cref="E:Elysium.Controls.ToggleSwitch.SwitchCompleted" />.
+        Called when the <see cref="E:Elysium.Controls.ToggleSwitch.SwitchCompleted" /> routed event raises.
       </summary>
       <param name="e">Routed event.</param>
     </method>
@@ -251,7 +251,7 @@
       <summary>
         Gets or sets data used to fill the header of switch when it is in "enabled" state.
       </summary>
-      <value>A header's object of the switch in "enabled" state. Default value  — null.</value>
+      <value>A header's object of the switch in "enabled" state. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -272,21 +272,21 @@
     </property>
     <field name="F:Elysium.Controls.ToggleSwitch.OnHeaderProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OnHeader" />.
+        Identifies the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeader" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OnHeader" />.
+        Identifier for the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeader" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.ToggleSwitch.OnOnHeaderChanged(System.Object,System.Object)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.ToggleSwitch.OnHeader" />.
+        Called when the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeader" /> dependency property changes.
       </summary>
       <param name="oldOnHeader">
-        An old value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OnHeader" />.
+        An old value of the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeader" /> dependency property.
       </param>
       <param name="newOnHeader">
-        A new value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OnHeader" />.
+        A new value of the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeader" /> dependency property.
       </param>
     </method>
     <property name="P:Elysium.Controls.ToggleSwitch.HasOnHeader">
@@ -294,7 +294,7 @@
         Returns a value, which corresponds to whether the header during "enabled" state of the switch is null.
       </summary>
       <value>
-        True, if the value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OnHeader" /> is not equal null, False otherwise. Default value = False.
+        True, if the value of the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeader" /> dependency property is not equal null, False otherwise. The default value is False.
       </value>
       <remarks>
         <list type="table">
@@ -316,28 +316,28 @@
     </property>
     <field name="F:Elysium.Controls.ToggleSwitch.HasOnHeaderProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OnHeader" />.
+        Identifies the <see cref="P:Elysium.Controls.ToggleSwitch.HasOnHeader" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OnHeader" />.
+        Identifier for the <see cref="P:Elysium.Controls.ToggleSwitch.HasOnHeader" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.ToggleSwitch.OnHasOnHeaderChanged(System.Boolean,System.Boolean)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.ToggleSwitch.HasOnHeader" />.
+        Called when the <see cref="P:Elysium.Controls.ToggleSwitch.HasOnHeader" /> dependency property changes.
       </summary>
       <param name="oldHasOnHeader">
-        An old value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.HasOnHeader" />.
+        An old value of the <see cref="P:Elysium.Controls.ToggleSwitch.HasOnHeader" /> dependency property.
       </param>
       <param name="newHasOnHeader">
-        A new value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.HasOnHeader" />.
+        A new value of the <see cref="P:Elysium.Controls.ToggleSwitch.HasOnHeader" /> dependency property.
       </param>
     </method>
     <property name="P:Elysium.Controls.ToggleSwitch.OnHeaderStringFormat">
       <summary>
         Gets or sets a combined string, which defines formatting of the header when the switch is in "enabled" state, if the header is displayed as a string.
       </summary>
-      <value>a combined string, which defines formatting of the header when the switch is in "enabled" state, if the header is displayed as a string. Default value  — null.</value>
+      <value>a combined string, which defines formatting of the header when the switch is in "enabled" state, if the header is displayed as a string. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -358,28 +358,28 @@
     </property>
     <field name="F:Elysium.Controls.ToggleSwitch.OnHeaderStringFormatProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderStringFormat" />.
+        Identifies the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderStringFormat" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderStringFormat" />.
+        Identifier for the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderStringFormat" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.ToggleSwitch.OnOnHeaderStringFormatChanged(System.String,System.String)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderStringFormat" />.
+        Called when the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderStringFormat" /> dependency property changes.
       </summary>
       <param name="oldOnHeaderStringFormat">
-        An old value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderStringFormat" />.
+        An old value of the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderStringFormat" /> dependency property.
       </param>
       <param name="newOnHeaderStringFormat">
-        A new value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderStringFormat" />.
+        A new value of the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderStringFormat" /> dependency property.
       </param>
     </method>
     <property name="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplate">
       <summary>
         Gets or sets the template used to displaying the header of the switch when it is in "enabled" state.
       </summary>
-      <value>A template used to displaying the header of the switch when it is in "enabled" state. Default value  — null.</value>
+      <value>A template used to displaying the header of the switch when it is in "enabled" state. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -400,28 +400,28 @@
     </property>
     <field name="F:Elysium.Controls.ToggleSwitch.OnHeaderTemplateProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplate" />.
+        Identifies the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplate" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplate" />.
+        Identifier for the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplate" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.ToggleSwitch.OnOnHeaderTemplateChanged(System.Windows.DataTemplate,System.Windows.DataTemplate)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplate" />.
+        Called when the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplate" /> dependency property changes.
       </summary>
       <param name="oldOnHeaderTemplate">
-        An old value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplate" />.
+        An old value of the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplate" /> dependency property.
       </param>
       <param name="newOnHeaderTemplate">
-        A new value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplate" />.
+        A new value of the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplate" /> dependency property.
       </param>
     </method>
     <property name="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplateSelector">
       <summary>
         Gets or sets a header template selector, which corresponds to user's way to choose a header template of the control's header if the switch is in "enabled" state.
       </summary>
-      <value>An instance of the selector template. Default value  — null.</value>
+      <value>An instance of the selector template. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -442,28 +442,28 @@
     </property>
     <field name="F:Elysium.Controls.ToggleSwitch.OnHeaderTemplateSelectorProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplateSelector" />.
+        Identifies the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplateSelector" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplateSelector" />.
+        Identifier for the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplateSelector" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.ToggleSwitch.OnOnHeaderTemplateSelectorChanged(System.Windows.Controls.DataTemplateSelector,System.Windows.Controls.DataTemplateSelector)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplateSelector" />.
+        Called when the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplateSelector" /> dependency property changes.
       </summary>
       <param name="oldOnHeaderTemplateSelector">
-        An old value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplateSelector" />.
+        An old value of the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplateSelector" /> dependency property.
       </param>
       <param name="newOnHeaderTemplateSelector">
-        A new value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplateSelector" />.
+        A new value of the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplateSelector" /> dependency property.
       </param>
     </method>
     <property name="P:Elysium.Controls.ToggleSwitch.OffHeader">
       <summary>
         Gets or sets data used to fill the header of switch when it is in "disabled" state.
       </summary>
-      <value>A header's object of the switch in "disabled" state. Default value  — null.</value>
+      <value>A header's object of the switch in "disabled" state. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -484,21 +484,21 @@
     </property>
     <field name="F:Elysium.Controls.ToggleSwitch.OffHeaderProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OffHeader" />.
+        Identifies the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeader" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OffHeader" />.
+        Identifier for the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeader" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.ToggleSwitch.OnOffHeaderChanged(System.Object,System.Object)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.ToggleSwitch.OffHeader" />.
+        Called when the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeader" /> dependency property changes.
       </summary>
       <param name="oldOffHeader">
-        An old value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OffHeader" />.
+        An old value of the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeader" /> dependency property.
       </param>
       <param name="newOffHeader">
-        A new value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OffHeader" />.
+        A new value of the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeader" /> dependency property.
       </param>
     </method>
     <property name="P:Elysium.Controls.ToggleSwitch.HasOffHeader">
@@ -506,7 +506,7 @@
         Returns a value, which corresponds to whether the header during "disabled" state of the switch is null.
       </summary>
       <value>
-        True, if the value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OffHeader" /> is not equal null, False otherwise. Default value = False.
+        True, if the value of the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeader" /> dependency property is not equal null, False otherwise. The default value is False.
       </value>
       <remarks>
         <list type="table">
@@ -528,28 +528,28 @@
     </property>
     <field name="F:Elysium.Controls.ToggleSwitch.HasOffHeaderProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.ToggleSwitch.HasOffHeader" />.
+        Identifies the <see cref="P:Elysium.Controls.ToggleSwitch.HasOffHeader" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.HasOffHeader" />.
+        Identifier for the <see cref="P:Elysium.Controls.ToggleSwitch.HasOffHeader" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.ToggleSwitch.OnHasOffHeaderChanged(System.Boolean,System.Boolean)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.ToggleSwitch.HasOffHeader" />.
+        Called when the <see cref="P:Elysium.Controls.ToggleSwitch.HasOffHeader" /> dependency property changes.
       </summary>
       <param name="oldHasOffHeader">
-        An old value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.HasOffHeader" />.
+        An old value of the <see cref="P:Elysium.Controls.ToggleSwitch.HasOffHeader" /> dependency property.
       </param>
       <param name="newHasOffHeader">
-        A new value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.HasOffHeader" />.
+        A new value of the <see cref="P:Elysium.Controls.ToggleSwitch.HasOffHeader" /> dependency property.
       </param>
     </method>
     <property name="P:Elysium.Controls.ToggleSwitch.OffHeaderStringFormat">
       <summary>
         Gets or sets a combined string, which defines formatting of the header when the switch is in "disabled" state, if the header is displayed as a string.
       </summary>
-      <value>a combined string, which defines formatting of the header when the switch is in "disabled" state, if the header is displayed as a string. Default value  — null.</value>
+      <value>a combined string, which defines formatting of the header when the switch is in "disabled" state, if the header is displayed as a string. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -570,28 +570,28 @@
     </property>
     <field name="F:Elysium.Controls.ToggleSwitch.OffHeaderStringFormatProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderStringFormat" />.
+        Identifies the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderStringFormat" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderStringFormat" />.
+        Identifier for the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderStringFormat" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.ToggleSwitch.OnOffHeaderStringFormatChanged(System.String,System.String)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderStringFormat" />.
+        Called when the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderStringFormat" /> dependency property changes.
       </summary>
       <param name="oldOffHeaderStringFormat">
-        An old value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderStringFormat" />.
+        An old value of the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderStringFormat" /> dependency property.
       </param>
       <param name="newOffHeaderStringFormat">
-        A new value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderStringFormat" />.
+        A new value of the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderStringFormat" /> dependency property.
       </param>
     </method>
     <property name="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplate">
       <summary>
         Gets or sets the template used to displaying the header of the switch when it is in "disabled" state.
       </summary>
-      <value>A template used to displaying the header of the switch when it is in "disabled" state. Default value  — null.</value>
+      <value>A template used to displaying the header of the switch when it is in "disabled" state. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -612,28 +612,28 @@
     </property>
     <field name="F:Elysium.Controls.ToggleSwitch.OffHeaderTemplateProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplate" />.
+        Identifies the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplate" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplate" />.
+        Identifier for the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplate" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.ToggleSwitch.OnOffHeaderTemplateChanged(System.Windows.DataTemplate,System.Windows.DataTemplate)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplate" />.
+        Called when the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplate" /> dependency property changes.
       </summary>
       <param name="oldOffHeaderTemplate">
-        An old value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplate" />.
+        An old value of the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplate" /> dependency property.
       </param>
       <param name="newOffHeaderTemplate">
-        A new value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplate" />.
+        A new value of the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplate" /> dependency property.
       </param>
     </method>
     <property name="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplateSelector">
       <summary>
         Gets or sets a header template selector, which corresponds to user's way to choose a header template of the control's header if the switch is in "disabled" state.
       </summary>
-      <value>An instance of the selector template. Default value  — null.</value>
+      <value>An instance of the selector template. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -654,21 +654,21 @@
     </property>
     <field name="F:Elysium.Controls.ToggleSwitch.OffHeaderTemplateSelectorProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplateSelector" />.
+        Identifies the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplateSelector" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplateSelector" />.
+        Identifier for the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplateSelector" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.ToggleSwitch.OnOffHeaderTemplateSelectorChanged(System.Windows.Controls.DataTemplateSelector,System.Windows.Controls.DataTemplateSelector)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplateSelector" />.
+        Called when the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplateSelector" /> dependency property changes.
       </summary>
       <param name="oldOffHeaderTemplateSelector">
-        An old value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplateSelector" />.
+        An old value of the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplateSelector" /> dependency property.
       </param>
       <param name="newOffHeaderTemplateSelector">
-        A new value of the dependency property <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplateSelector" />.
+        A new value of the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplateSelector" /> dependency property.
       </param>
     </method>
     <method name="M:Elysium.Controls.ToggleSwitch.OnCreateAutomationPeer">

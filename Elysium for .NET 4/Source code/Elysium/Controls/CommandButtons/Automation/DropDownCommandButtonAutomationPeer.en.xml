@@ -24,7 +24,7 @@
       <returns>
         A string with a value "DropDownCommandButton".
       </returns>
-      <ensures>Being returned string is always =  "DropDownCommandButton"</ensures>
+      <ensures>Being returned string is always "DropDownCommandButton"</ensures>
     </method>
     <method name="M:Elysium.Controls.Automation.DropDownCommandButtonAutomationPeer.GetPattern(System.Windows.Automation.Peers.PatternInterface)">
       <summary>

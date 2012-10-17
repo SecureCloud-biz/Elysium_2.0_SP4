@@ -13,7 +13,7 @@
       <summary>
         Gets or sets the value, which corresponds to whether the command button is enabled.
       </summary>
-      <value>True, if the button is enabled; False, if the button is disabled; null otherwise. Default value =  false.</value>
+      <value>True, if the button is enabled; False, if the button is disabled; null otherwise. The default value is false.</value>
       <remarks>
         <list type="table">
           <item>
@@ -33,21 +33,21 @@
     </property>
     <field name="F:Elysium.Controls.ToggleCommandButton.IsCheckedProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.ToggleCommandButton.IsChecked" />.
+        Identifies the <see cref="P:Elysium.Controls.ToggleCommandButton.IsChecked" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.ToggleCommandButton.IsChecked" />.
+        Identifier for the <see cref="P:Elysium.Controls.ToggleCommandButton.IsChecked" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.ToggleCommandButton.OnIsCheckedChanged(System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.ToggleCommandButton.IsChecked" />.
+        Called when the <see cref="P:Elysium.Controls.ToggleCommandButton.IsChecked" /> dependency property changes.
       </summary>
       <param name="oldIsChecked">
-        An old value of the dependency property <see cref="P:Elysium.Controls.ToggleCommandButton.IsChecked" />.
+        An old value of the <see cref="P:Elysium.Controls.ToggleCommandButton.IsChecked" /> dependency property.
       </param>
       <param name="newIsChecked">
-        A new value of the dependency property <see cref="P:Elysium.Controls.ToggleCommandButton.IsChecked" />.
+        A new value of the <see cref="P:Elysium.Controls.ToggleCommandButton.IsChecked" /> dependency property.
       </param>
     </method>
     <event name="E:Elysium.Controls.ToggleCommandButton.Checked">
@@ -70,7 +70,7 @@
           </item>
           <item>
             <term>Routing strategy</term>
-            <description>An ascending routing strategy</description>
+            <description>Bubbling</description>
           </item>
         </list>
       </remarks>
@@ -85,7 +85,7 @@
     </field>
     <method name="M:Elysium.Controls.ToggleCommandButton.OnChecked(System.Windows.RoutedEventArgs)">
       <summary>
-        Is called when the routed event is generated <see cref="E:Elysium.Controls.ToggleCommandButton.Checked" />.
+        Called when the <see cref="E:Elysium.Controls.ToggleCommandButton.Checked" /> routed event raises.
       </summary>
       <param name="e">Routed event.</param>
     </method>
@@ -109,7 +109,7 @@
           </item>
           <item>
             <term>Routing strategy</term>
-            <description>An ascending routing strategy</description>
+            <description>Bubbling</description>
           </item>
         </list>
       </remarks>
@@ -124,7 +124,7 @@
     </field>
     <method name="M:Elysium.Controls.ToggleCommandButton.OnUnchecked(System.Windows.RoutedEventArgs)">
       <summary>
-        Is called when the routed event is generated <see cref="E:Elysium.Controls.ToggleCommandButton.Unchecked" />.
+        Called when the <see cref="E:Elysium.Controls.ToggleCommandButton.Unchecked" /> routed event raises.
       </summary>
       <param name="e">Routed event.</param>
     </method>
@@ -148,7 +148,7 @@
           </item>
           <item>
             <term>Routing strategy</term>
-            <description>An ascending routing strategy</description>
+            <description>Bubbling</description>
           </item>
         </list>
       </remarks>
@@ -163,7 +163,7 @@
     </field>
     <method name="M:Elysium.Controls.ToggleCommandButton.OnIndeterminate(System.Windows.RoutedEventArgs)">
       <summary>
-        Is called when the routed event is generated <see cref="E:Elysium.Controls.ToggleCommandButton.Indeterminate" />.
+        Called when the <see cref="E:Elysium.Controls.ToggleCommandButton.Indeterminate" /> routed event raises.
       </summary>
       <param name="e">Routed event.</param>
     </method>
@@ -171,7 +171,7 @@
       <summary>
         Gets or sets the value, which corresponds to the number of supported states (2 or 3).
       </summary>
-      <value>True, if the button supports 3 states, False otherwise. Default value =  false.</value>
+      <value>True, if the button supports 3 states, False otherwise. The default value is false.</value>
       <remarks>
         <list type="table">
           <item>
@@ -191,21 +191,21 @@
     </property>
     <field name="F:Elysium.Controls.ToggleCommandButton.IsThreeStateProperty">
       <summary>
-        Identifies a dependency property <see cref="P:Elysium.Controls.ToggleCommandButton.IsThreeState" />.
+        Identifies the <see cref="P:Elysium.Controls.ToggleCommandButton.IsThreeState" /> dependency property.
       </summary>
       <value>
-        Identifier for the dependency property <see cref="P:Elysium.Controls.ToggleCommandButton.IsThreeState" />.
+        Identifier for the <see cref="P:Elysium.Controls.ToggleCommandButton.IsThreeState" /> dependency property.
       </value>
     </field>
     <method name="M:Elysium.Controls.ToggleCommandButton.OnIsThreeStateChanged(System.Boolean,System.Boolean)">
       <summary>
-        Called when the dependency property changes <see cref="P:Elysium.Controls.ToggleCommandButton.IsThreeState" />.
+        Called when the <see cref="P:Elysium.Controls.ToggleCommandButton.IsThreeState" /> dependency property changes.
       </summary>
       <param name="oldIsThreeState">
-        An old value of the dependency property <see cref="P:Elysium.Controls.ToggleCommandButton.IsThreeState" />.
+        An old value of the <see cref="P:Elysium.Controls.ToggleCommandButton.IsThreeState" /> dependency property.
       </param>
       <param name="newIsThreeState">
-        A new value of the dependency property <see cref="P:Elysium.Controls.ToggleCommandButton.IsThreeState" />.
+        A new value of the <see cref="P:Elysium.Controls.ToggleCommandButton.IsThreeState" /> dependency property.
       </param>
     </method>
     <method name="M:Elysium.Controls.ToggleCommandButton.OnCreateAutomationPeer">
