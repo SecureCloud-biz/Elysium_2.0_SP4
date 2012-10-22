@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Controls.WindowCommands">
+      <summary>
+        Contains several basic functions for managint a window of the type <see cref="T:Elysium.Controls.Window" />.
+      </summary>
+    </type>
+    <property name="P:Elysium.Controls.WindowCommands.Minimize">
+      <summary>
+        Returns a value, which contains the command for minimizing the window.
+      </summary>
+      <value>A command for minimizing the window.</value>
+    </property>
+    <property name="P:Elysium.Controls.WindowCommands.Maximize">
+      <summary>
+        Returns a value, which contains the command for maximizing the window.
+      </summary>
+      <value>A command for maximizing the window.</value>
+    </property>
+    <property name="P:Elysium.Controls.WindowCommands.Restore">
+      <summary>
+        Returns a value, which contains the command for returning the window into normal state.
+      </summary>
+      <value>A command for returning the window into normal state.</value>
+    </property>
+    <property name="P:Elysium.Controls.WindowCommands.Close">
+      <summary>
+        Returns a value, which contains the command for closing the window.
+      </summary>
+      <value>A command for closing the window.</value>
+    </property>
+  </members>
+</doc>

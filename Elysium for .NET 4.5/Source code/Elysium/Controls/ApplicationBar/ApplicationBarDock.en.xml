@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Controls.ApplicationBarDock">
+      <summary>
+        Defines the position of the element inside the control <see cref="T:Elysium.Controls.ApplicationBar" />.
+      </summary>
+    </type>
+    <field name="F:Elysium.Controls.ApplicationBarDock.Left">
+      <summary>
+        The control is docked to the left.
+      </summary>
+    </field>
+    <field name="F:Elysium.Controls.ApplicationBarDock.Right">
+      <summary>
+        The control is docked to the right.
+      </summary>
+    </field>
+  </members>
+</doc>

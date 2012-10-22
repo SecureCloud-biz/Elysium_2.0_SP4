@@ -68,7 +68,7 @@ namespace Elysium.Test
 
         private void NotificationClick(object sender, RoutedEventArgs e)
         {
-            NotificationManager.TryPush("Message", "The quick brown fox jumps over the lazy dog");
+            NotificationManager.TryPushAsync("Message", "The quick brown fox jumps over the lazy dog");
         }
 
         private void DonateClick(object sender, RoutedEventArgs e)

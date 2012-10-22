@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.ServiceModel;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
@@ -87,6 +88,14 @@ namespace Elysium.Notifications
         }
 
         [PublicAPI]
+        public static async Task<bool> TryPushAsync([NotNull] string message, [CanBeNull] string remark)
+        {
+            ValidationHelper.NotNullOrWhitespace(message, "message");
+
+            return await Dispatcher.CurrentDispatcher.InvokeAsync(() => TryPush(message, remark), DispatcherPriority.Render);
+        }
+
+        [PublicAPI]
         public static bool TryPush([NotNull] string message, [CanBeNull] string remark)
         {
             ValidationHelper.NotNullOrWhitespace(message, "message");
@@ -107,13 +116,22 @@ namespace Elysium.Notifications
         }
 
         [PublicAPI]
-        private static void Push([NotNull] string message, [CanBeNull] string remark)
+        public static async Task PushAsync([NotNull] string message, [CanBeNull] string remark)
         {
             ValidationHelper.NotNullOrWhitespace(message, "message");
 
+            await Dispatcher.CurrentDispatcher.InvokeAsync(() => Push(message, remark), DispatcherPriority.Render);
+        }
+
+        [PublicAPI]
+        public static void Push([NotNull] string message, [CanBeNull] string remark)
+        {
+            ValidationHelper.NotNullOrWhitespace(message, "message");
+
+            Window window = null;
             try
             {
-                var window = new Window
+                window = new Window
                                  {
                                      Title = message,
                                      Focusable = false,
@@ -139,7 +157,7 @@ namespace Elysium.Notifications
                 var timer = new Timer(delegate
                 {
                     closingSlot = slot;
-                    window.Dispatcher.Invoke(new Action(window.Close), DispatcherPriority.Normal);
+                    window.Dispatcher.Invoke(window.Close, DispatcherPriority.Normal);
                 });
 
                 window.Closing += (s, e) =>
@@ -160,10 +178,18 @@ namespace Elysium.Notifications
             }
             catch (ServerUnavailableException)
             {
+                if (window != null)
+                {
+                    window.Close();
+                }
                 throw;
             }
             catch (Exception exception)
             {
+                if (window != null)
+                {
+                    window.Close();
+                }
                 throw new PushNotificationFailedException("Push notification failed.", exception);
             }
         }

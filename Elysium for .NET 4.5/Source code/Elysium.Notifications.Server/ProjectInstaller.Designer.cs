@@ -33,7 +33,7 @@
             // 
             // NotificationsServiceProcessInstaller
             // 
-            this.NotificationsServiceProcessInstaller.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
+            this.NotificationsServiceProcessInstaller.Account = System.ServiceProcess.ServiceAccount.LocalService;
             this.NotificationsServiceProcessInstaller.Password = null;
             this.NotificationsServiceProcessInstaller.Username = null;
             // 

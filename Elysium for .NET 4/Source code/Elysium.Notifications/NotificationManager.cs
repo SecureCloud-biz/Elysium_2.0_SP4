@@ -111,9 +111,10 @@ namespace Elysium.Notifications
         {
             ValidationHelper.NotNullOrWhitespace(message, "message");
 
+            Window window = null;
             try
             {
-                var window = new Window
+                window = new Window
                                  {
                                      Title = message,
                                      Focusable = false,
@@ -160,10 +161,18 @@ namespace Elysium.Notifications
             }
             catch (ServerUnavailableException)
             {
+                if (window != null)
+                {
+                    window.Close();
+                }
                 throw;
             }
             catch (Exception exception)
             {
+                if (window != null)
+                {
+                    window.Close();
+                }
                 throw new PushNotificationFailedException("Push notification failed.", exception);
             }
         }

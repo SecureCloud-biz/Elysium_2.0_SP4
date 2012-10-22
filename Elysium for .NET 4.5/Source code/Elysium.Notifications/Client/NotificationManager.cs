@@ -11,7 +11,7 @@ namespace Elysium.Notifications.Client
     internal sealed class NotificationManager : ClientBase<INotificationManager>, INotificationManager
     {
         [UsedImplicitly]
-        public NotificationManager() : base(new NetNamedPipeBinding(NetNamedPipeSecurityMode.None)
+        public NotificationManager() : base(new NetNamedPipeBinding(NetNamedPipeSecurityMode.Transport)
                                                 {
                                                     OpenTimeout = TimeSpan.FromMinutes(2d),
                                                     SendTimeout = TimeSpan.FromMinutes(8d),

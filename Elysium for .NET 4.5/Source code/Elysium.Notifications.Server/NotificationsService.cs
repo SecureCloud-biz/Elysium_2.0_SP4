@@ -1,7 +1,9 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Security;
 using System.ServiceModel;
 using System.ServiceProcess;
+using System.Threading;
 
 namespace Elysium.Notifications.Server
 {
@@ -11,10 +13,9 @@ namespace Elysium.Notifications.Server
         private ServiceHost _serviceHost;
 
         [Conditional("DEBUG")]
-        [DebuggerStepThrough]
         private static void Debug()
         {
-            Debugger.Launch();
+            Thread.Sleep(TimeSpan.FromSeconds(15));
         }
 
         internal NotificationsService()

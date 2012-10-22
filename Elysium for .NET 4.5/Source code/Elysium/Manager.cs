@@ -5,6 +5,7 @@ using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Reflection;
 using System.Security;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
@@ -338,13 +339,22 @@ namespace Elysium
 
         #region Application
 
-        private delegate void ApplyThemeToApplicationDelegate(Application application, Theme? theme, SolidColorBrush accentBrush, SolidColorBrush contrastBrush);
+        [PublicAPI]
+        public static async Task ApplyAsync(this Application application)
+        {
+            await ApplyAsync(application, null, null, null);
+        }
 
         [PublicAPI]
-        [SecuritySafeCritical]
         public static void Apply(this Application application)
         {
             Apply(application, null, null, null);
+        }
+
+        [PublicAPI]
+        public static async Task ApplyAsync(this Application application, Theme? theme)
+        {
+            await ApplyAsync(application, theme, null, null);
         }
 
         [PublicAPI]
@@ -355,24 +365,35 @@ namespace Elysium
         }
 
         [PublicAPI]
-        [SecuritySafeCritical]
+        public static async Task ApplyAsync(this Application application, SolidColorBrush accentBrush, SolidColorBrush contrastBrush)
+        {
+            await ApplyAsync(application, null, accentBrush, contrastBrush);
+        }
+
+        [PublicAPI]
         public static void Apply(this Application application, SolidColorBrush accentBrush, SolidColorBrush contrastBrush)
         {
             Apply(application, null, accentBrush, contrastBrush);
         }
 
         [PublicAPI]
-        [SecuritySafeCritical]
+        public static async Task ApplyAsync(this Application application, Theme? theme, SolidColorBrush accentBrush, SolidColorBrush contrastBrush)
+        {
+            ValidationHelper.NotNull(application, "application");
+
+            await application.Dispatcher.InvokeAsync(() => ApplyInternal(application, theme, accentBrush, contrastBrush), DispatcherPriority.Render).Task;
+        }
+
+        [PublicAPI]
         public static void Apply(this Application application, Theme? theme, SolidColorBrush accentBrush, SolidColorBrush contrastBrush)
         {
             ValidationHelper.NotNull(application, "application");
 
-            application.Dispatcher.Invoke(new ApplyThemeToApplicationDelegate(ApplyInternal), DispatcherPriority.Render,
-                                          application, theme, accentBrush, contrastBrush);
+            application.Dispatcher.Invoke(() => ApplyInternal(application, theme, accentBrush, contrastBrush), DispatcherPriority.Render);
         }
 
         [SuppressMessage("Microsoft.Reliability", "CA2001:AvoidCallingProblematicMethods", MessageId = "System.GC.Collect", Justification = "We need to garbage collection for correct use of cache")]
-        [SecurityCritical]
+        [SecuritySafeCritical]
         private static void ApplyInternal(Application application, Theme? theme, SolidColorBrush accentBrush, SolidColorBrush contrastBrush)
         {
             ValidationHelper.NotNull(application, "application");
@@ -396,19 +417,24 @@ namespace Elysium
             }
         }
 
-        private delegate void RemoveThemeFromApplicationDelegate(Application application);
+        [PublicAPI]
+        public static async Task RemoveAsync(this Application application)
+        {
+            ValidationHelper.NotNull(application, "application");
+
+            await application.Dispatcher.InvokeAsync(() => RemoveInternal(application), DispatcherPriority.Render);
+        }
 
         [PublicAPI]
-        [SecuritySafeCritical]
         public static void Remove(this Application application)
         {
             ValidationHelper.NotNull(application, "application");
 
-            application.Dispatcher.Invoke(new RemoveThemeFromApplicationDelegate(RemoveInternal), DispatcherPriority.Render, application);
+            application.Dispatcher.Invoke(() => RemoveInternal(application), DispatcherPriority.Render);
         }
 
         [SuppressMessage("Microsoft.Reliability", "CA2001:AvoidCallingProblematicMethods", MessageId = "System.GC.Collect", Justification = "We need to garbage collection for correct use of cache")]
-        [SecurityCritical]
+        [SecuritySafeCritical]
         private static void RemoveInternal(this Application application)
         {
             ValidationHelper.NotNull(application, "application");
@@ -658,6 +684,7 @@ namespace Elysium
         {
             // Remove previous dictionaries
             var dictionaries = resources.MergedDictionaries.Where(d => d.Source == uri).ToList();
+            var lastIndex = dictionaries.Select(d => resources.MergedDictionaries.IndexOf(d)).Concat(new[] { 0 }).Max();
             foreach (var d in dictionaries)
             {
                 resources.MergedDictionaries.Remove(d);
@@ -666,7 +693,7 @@ namespace Elysium
             // Add new dictionary
             if (dictionary != null)
             {
-                resources.MergedDictionaries.Add(dictionary);
+                resources.MergedDictionaries.Insert(lastIndex, dictionary);
             }
         }
 

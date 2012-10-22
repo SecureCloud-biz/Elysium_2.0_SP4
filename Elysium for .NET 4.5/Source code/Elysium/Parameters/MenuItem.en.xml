@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Parameters.MenuItem">
+      <summary>
+        Represents a class, which manages the settings of the style of the control <see cref="T:System.Windows.Controls.MenuItem" />.
+      </summary>
+    </type>
+    <property name="P:Elysium.Parameters.MenuItem.BulletSize">
+      <summary>
+        Gets or sets the size of the marker of <see cref="T:System.Windows.Controls.MenuItem" />.
+      </summary>
+      <value>The size of the marker. The default value is 12 px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.MenuItem.BulletSizeProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
+            </description>
+          </item>
+        </list>
+        This property influences the element of MenuItem control, which is inserted in any pulldown menu (ContextMenu or SubMenu) and no other pulldown menu is inherited from it.
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new MenuItem();
+          var currentValue = Parameters.MenuItem.GetBulletSize(control);
+          Parameters.MenuItem.SetBulletSize(control, 12d);
+        </code>
+        <code lang="XAML">
+          &lt;MenuItem params:MenuItem.BulletSize="12px"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.MenuItem.BulletSizeProperty">
+      <summary>
+        Identifies the <see cref="P:Elysium.Parameters.MenuItem.BulletSize" /> dependency property.
+      </summary>
+      <value>
+        Identifier for the <see cref="P:Elysium.Parameters.MenuItem.BulletSize" /> dependency property.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.MenuItem.GetBulletSize(System.Windows.Controls.MenuItem)">
+      <summary>
+        Returns the value of the <see cref="P:Elysium.Parameters.MenuItem.BulletSize" /> dependency property for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>The size of the marker.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.MenuItem.SetBulletSize(System.Windows.Controls.MenuItem,System.Double)">
+      <summary>
+        Sets the value of the <see cref="P:Elysium.Parameters.MenuItem.BulletSize" /> dependency property for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">The size of the marker.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.MenuItem.ArrowSize">
+      <summary>
+        Gets or sets the size of the arrow in the <see cref="T:System.Windows.Controls.MenuItem" /> control .
+      </summary>
+      <value>
+        The size of the arrow in the <see cref="T:System.Windows.Controls.MenuItem" /> control . The default value is 8px.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.MenuItem.ArrowSizeProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new MenuItem();
+          var currentValue = Parameters.MenuItem.GetArrowSize(control);
+          Parameters.MenuItem.SetArrowSize(control, 8d);
+        </code>
+        <code lang="XAML">
+          &lt;MenuItem params:MenuItem.ArrowSize="8px"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.MenuItem.ArrowSizeProperty">
+      <summary>
+        Identifies the <see cref="P:Elysium.Parameters.MenuItem.ArrowSize" /> dependency property.
+      </summary>
+      <value>
+        Identifier for the <see cref="P:Elysium.Parameters.MenuItem.ArrowSize" /> dependency property.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.MenuItem.GetArrowSize(System.Windows.Controls.MenuItem)">
+      <summary>
+        Returns the value of the <see cref="P:Elysium.Parameters.MenuItem.ArrowSize" /> dependency property for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>
+        The size of the arrow in the menuItem control <see cref="T:System.Windows.Controls.MenuItem" />.
+      </returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.MenuItem.SetArrowSize(System.Windows.Controls.MenuItem,System.Double)">
+      <summary>
+        Sets the value of the <see cref="P:Elysium.Parameters.MenuItem.ArrowSize" /> dependency property for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">
+        The size of the arrow in the menuItem control <see cref="T:System.Windows.Controls.MenuItem" />.
+      </param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.MenuItem.ArrowMargin">
+      <summary>
+        Gets or sets the size of the arrow margin in the <see cref="T:System.Windows.Controls.MenuItem" /> control .
+      </summary>
+      <value>
+        Gets or sets the size of the arrow margin in the <see cref="T:System.Windows.Controls.MenuItem" /> control . The default value is (3,0,3,0).
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.MenuItem.ArrowMarginProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new MenuItem();
+          var currentValue = Parameters.MenuItem.GetArrowMargin(control);
+          Parameters.MenuItem.SetArrowMargin(control, new Thickness(3d, 0d, 3d, 0d));
+        </code>
+        <code lang="XAML">
+          &lt;MenuItem params:MenuItem.ArrowMargin="3,0,3,0"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.MenuItem.ArrowMarginProperty">
+      <summary>
+        Identifies the <see cref="P:Elysium.Parameters.MenuItem.ArrowMargin" /> dependency property.
+      </summary>
+      <value>
+        Identifier for the <see cref="P:Elysium.Parameters.MenuItem.ArrowMargin" /> dependency property.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.MenuItem.GetArrowMargin(System.Windows.Controls.MenuItem)">
+      <summary>
+        Returns the value of the <see cref="P:Elysium.Parameters.MenuItem.ArrowMargin" /> dependency property for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>
+        The margin of the arrow in the MenuItem control <see cref="T:System.Windows.Controls.MenuItem" />.
+      </returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.MenuItem.SetArrowMargin(System.Windows.Controls.MenuItem,System.Windows.Thickness)">
+      <summary>
+        Sets the value of the <see cref="P:Elysium.Parameters.MenuItem.ArrowMargin" /> dependency property for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">
+        The size of the arrow in the MenuItem control <see cref="T:System.Windows.Controls.MenuItem" />.
+      </param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+  </members>
+</doc>

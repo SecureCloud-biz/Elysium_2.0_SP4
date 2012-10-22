@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Parameters.TabControl">
+      <summary>
+        Represents a class, which manages the settings of the control <see cref="T:System.Windows.Controls.TabControl" />.
+      </summary>
+    </type>
+    <property name="P:Elysium.Parameters.TabControl.IndicatorBrush">
+      <summary>
+        Gets or sets the brush used for filling the current tab indicator <see cref="T:System.Windows.Controls.TabControl" />.
+      </summary>
+      <value>The brush used for filling the current tab indicator. The default value is null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.TabControl.IndicatorBrushProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender" />
+            </description>
+          </item>
+        </list>
+        This property is set at the theme of the control locally and usually has the value, which is equal to the value of the resource AccentBrush for the current tab and HighlightBrush for another part of the indicator.
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new TabControl();
+          var currentValue = Parameters.TabControl.GetIndicatorBrush(control);
+          Parameters.TabControl.SetIndicatorBrush(control, Brushes.LightGray);
+        </code>
+        <code lang="XAML">
+          &lt;CommandButton params:TabControl.IndicatorBrush="LightGray"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.TabControl.IndicatorBrushProperty">
+      <summary>
+        Identifies the <see cref="P:Elysium.Parameters.TabControl.IndicatorBrush" /> dependency property.
+      </summary>
+      <value>
+        Identifier for the <see cref="P:Elysium.Parameters.TabControl.IndicatorBrush" /> dependency property.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.TabControl.GetIndicatorBrush(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the <see cref="P:Elysium.Parameters.TabControl.IndicatorBrush" /> dependency property for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>A brush, used for filling current tab.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value null.
+      </exception>
+      <exception cref="T:System.ArgumentException">
+        The parameter <paramref name="obj" /> is not any from the listed below types: <see cref="T:System.Windows.Controls.TabControl" />, <see cref="T:System.Windows.Controls.TabItem" />.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <requires exception="T:System.ArgumentException">(obj is TabControl) || (obj is TabItem)</requires>
+    </method>
+    <method name="M:Elysium.Parameters.TabControl.SetIndicatorBrush(System.Windows.DependencyObject,System.Windows.Media.SolidColorBrush)">
+      <summary>
+        Sets the value of the <see cref="P:Elysium.Parameters.TabControl.IndicatorBrush" /> dependency property for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">A brush, used for filling the current tab indicator.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value null.
+      </exception>
+      <exception cref="T:System.ArgumentException">
+        The parameter <paramref name="obj" /> is not any from the listed below types: <see cref="T:System.Windows.Controls.TabControl" />, <see cref="T:System.Windows.Controls.TabItem" />.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <requires exception="T:System.ArgumentException">(obj is TabControl) || (obj is TabItem)</requires>
+    </method>
+    <property name="P:Elysium.Parameters.TabControl.IndicatorThickness">
+      <summary>
+        Gets or sets the thickness of the current tab indicator in the control <see cref="T:System.Windows.Controls.TabControl" />.
+      </summary>
+      <value>the thickness of the current tab indicator. The default value is 2px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.TabControl.IndicatorThicknessProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new TabControl();
+          var currentValue = Parameters.TabControl.GetIndicatorThickness(control);
+          Parameters.TabControl.SetIndicatorThickness(control, 2d);
+        </code>
+        <code lang="XAML">
+          &lt;Slider params:TabControl.IndicatorThickness="2px"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.TabControl.IndicatorThicknessProperty">
+      <summary>
+        Identifies the <see cref="P:Elysium.Parameters.TabControl.IndicatorThickness" /> dependency property.
+      </summary>
+      <value>
+        Identifier for the <see cref="P:Elysium.Parameters.TabControl.IndicatorThickness" /> dependency property.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.TabControl.GetIndicatorThickness(System.Windows.Controls.TabControl)">
+      <summary>
+        Returns the value of the <see cref="P:Elysium.Parameters.TabControl.IndicatorThickness" /> dependency property for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>the thickness of the current tab indicator.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.TabControl.SetIndicatorThickness(System.Windows.Controls.TabControl,System.Double)">
+      <summary>
+        Sets the value of the <see cref="P:Elysium.Parameters.TabControl.IndicatorThickness" /> dependency property for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">The thickness of the current tab indicator </param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+  </members>
+</doc>

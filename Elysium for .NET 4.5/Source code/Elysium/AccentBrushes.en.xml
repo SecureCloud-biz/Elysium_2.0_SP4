@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.AccentBrushes">
+      <summary>
+        Contains a set of brushes with a solid filling based on one of the accent colours.
+      </summary>
+    </type>
+    <property name="P:Elysium.AccentBrushes.Blue">
+      <summary>
+        Returns a brush with the solid fill colour of blue (#FF017BCD).
+      </summary>
+      <value>A brush with the solid fill colour of blue (#FF017BCD).</value>
+    </property>
+    <property name="P:Elysium.AccentBrushes.Brown">
+      <summary>
+        Returns a brush with the solid fill colour of brown (#FFA05000).
+      </summary>
+      <value>A brush with the solid fill colour of brown (#FFA05000).</value>
+    </property>
+    <property name="P:Elysium.AccentBrushes.Green">
+      <summary>
+        Returns a brush with the solid fill colour of green (#FF339933).
+      </summary>
+      <value>A brush with the solid fill colour of green (#FF339933).</value>
+    </property>
+    <property name="P:Elysium.AccentBrushes.Lime">
+      <summary>
+        Returns a brush with the solid fill colour of lime (#FF8CBF26).
+      </summary>
+      <value>A brush with the solid fill colour of lime (#FF8CBF26).</value>
+    </property>
+    <property name="P:Elysium.AccentBrushes.Magenta">
+      <summary>
+        Returns a brush with the solid fill colour of magenta (#FFFF0097).
+      </summary>
+      <value>A brush with the solid fill colour of magenta (#FFFF0097).</value>
+    </property>
+    <property name="P:Elysium.AccentBrushes.Mango">
+      <summary>
+        Returns a brush with the solid fill colour of mango (#FFF09609).
+      </summary>
+      <value>A brush with the solid fill colour of mango (#FFF09609).</value>
+    </property>
+    <property name="P:Elysium.AccentBrushes.Orange">
+      <summary>
+        Returns a brush with the solid fill colour of orange (#FFCB5201).
+      </summary>
+      <value>A brush with the solid fill colour of orange (#FFCB5201).</value>
+    </property>
+    <property name="P:Elysium.AccentBrushes.Pink">
+      <summary>
+        Returns a brush with the solid fill colour of pink (#FFE671B8).
+      </summary>
+      <value>A brush with the solid fill colour of pink (#FFE671B8).</value>
+    </property>
+    <property name="P:Elysium.AccentBrushes.Purple">
+      <summary>
+        Returns a brush with the solid fill colour of purple (#FF69227B).
+      </summary>
+      <value>A brush with the solid fill colour of purple (#FF69227B).</value>
+    </property>
+    <property name="P:Elysium.AccentBrushes.Red">
+      <summary>
+        Returns a brush with the solid fill colour of red (#FFE51400).
+      </summary>
+      <value>A brush with the solid fill colour of red (#FFE51400).</value>
+    </property>
+    <property name="P:Elysium.AccentBrushes.Rose">
+      <summary>
+        Returns a brush with the solid fill colour of rose (#FFD80073).
+      </summary>
+      <value>A brush with the solid fill colour of rose (#FFD80073).</value>
+    </property>
+    <property name="P:Elysium.AccentBrushes.Sky">
+      <summary>
+        Returns a brush with the solid fill colour of light blue (#FF1BA1E2).
+      </summary>
+      <value>A brush with the solid fill colour of light blue (#FF1BA1E2).</value>
+    </property>
+    <property name="P:Elysium.AccentBrushes.Viridian">
+      <summary>
+        Returns a brush with the solid fill colour of viridian (#FF00ABA9).
+      </summary>
+      <value>A brush with the solid fill colour of viridian (#FF00ABA9).</value>
+    </property>
+    <property name="P:Elysium.AccentBrushes.Violet">
+      <summary>
+        Returns a brush with the solid fill colour of violet (#FFA200FF).
+      </summary>
+      <value>A brush with the solid fill colour of violet (#FFA200FF).</value>
+    </property>
+  </members>
+</doc>

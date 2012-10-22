@@ -218,9 +218,9 @@
     </member>
     <member name="P:Elysium.Parameters.Bullet.Size">
       <summary>
-        Gets or sets the size of the marker in "undefined" state.
+        Gets or sets the size of the marker in "indeterminate" state.
       </summary>
-      <value>The size of the marker when state = "undefined". The default value is 8px.</value>
+      <value>The size of the marker when state is "indeterminate". The default value is 8px.</value>
       <remarks>
         <list type="table">
           <item>
@@ -261,7 +261,7 @@
         Returns the value of the <see cref="P:Elysium.Parameters.Bullet.Size" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being got.</param>
-      <returns>The size of the marker when state = "undefined".</returns>
+      <returns>The size of the marker when state is "indeterminate".</returns>
       <exception cref="T:System.ArgumentNullException">
         The parameter <paramref name="obj" /> has a value null.
       </exception>
@@ -273,7 +273,7 @@
         Sets the value of the <see cref="P:Elysium.Parameters.Bullet.Size" /> dependency property for the specified control.
       </summary>
       <param name="obj">The  control, for which the value of the property is being set.</param>
-      <param name="value">The size of the marker when state = "undefined".</param>
+      <param name="value">The size of the marker when state is "indeterminate".</param>
       <exception cref="T:System.ArgumentNullException">
         The parameter <paramref name="obj" /> has a value null.
       </exception>
@@ -5063,14 +5063,14 @@
     </member>
     <member name="T:Elysium.Controls.ToggleCommandButton">
       <summary>
-        A command button with three possible states: "enabled", "disabled", "undefined".
+        A command button with three possible states: "checked", "unchecked", "indeterminate".
       </summary>
     </member>
     <member name="P:Elysium.Controls.ToggleCommandButton.IsChecked">
       <summary>
-        Gets or sets the value, which corresponds to whether the command button is enabled.
+        Gets or sets the value, which corresponds to whether the command button is checked.
       </summary>
-      <value>True, if the button is enabled; False, if the button is disabled; null otherwise. The default value is false.</value>
+      <value>True, if the button is checked; False, if the button is unchecked; null otherwise. The default value is false.</value>
       <remarks>
         <list type="table">
           <item>
@@ -5187,7 +5187,7 @@
     </member>
     <member name="E:Elysium.Controls.ToggleCommandButton.Indeterminate">
       <summary>
-        An event is fired when the button changes its state to "undefined".
+        An event is fired when the button changes its state to "indeterminate".
       </summary>
       <remarks>
         <list type="table">
@@ -5659,7 +5659,7 @@
         Returns a value, which corresponds to the percentage of progress bar completion.
       </summary>
       <value>
-        A percentage of the progress bar completion, or <see cref="F:System.Double.NaN">Double.NaN</see>, if the progress bar is in "undefined" state or busy. The default value is 0.
+        A percentage of the progress bar completion, or <see cref="F:System.Double.NaN">Double.NaN</see>, if the progress bar is in "indeterminate" state or busy. The default value is 0.
       </value>
       <remarks>
         <list type="table">
@@ -5978,9 +5978,9 @@
     </member>
     <member name="P:Elysium.Controls.ToggleSwitch.IsChecked">
       <summary>
-        Gets or sets the value, which corresponds to whether the toggle switch is enabled.
+        Gets or sets the value, which corresponds to whether the toggle switch is checked.
       </summary>
-      <value>True, if the toggle switch is enabled; False otherwise. The default value is false.</value>
+      <value>True, if the toggle switch is checked; False otherwise. The default value is false.</value>
       <remarks>
         <list type="table">
           <item>
@@ -6019,7 +6019,7 @@
     </member>
     <member name="E:Elysium.Controls.ToggleSwitch.Checked">
       <summary>
-        An event is fired when the toggle switch changes its state to "enabled".
+        An event is fired when the toggle switch changes its state to "checked".
       </summary>
       <remarks>
         <list type="table">
@@ -6058,7 +6058,7 @@
     </member>
     <member name="E:Elysium.Controls.ToggleSwitch.Unchecked">
       <summary>
-        An event is fired when the toggle switch changes its state to "disabled".
+        An event is fired when the toggle switch changes its state to "unchecked".
       </summary>
       <remarks>
         <list type="table">
@@ -6216,9 +6216,9 @@
     </member>
     <member name="P:Elysium.Controls.ToggleSwitch.OnHeader">
       <summary>
-        Gets or sets data used to fill the header of switch when it is in "enabled" state.
+        Gets or sets data used to fill the header of switch when it is in "checked" state.
       </summary>
-      <value>A header's object of the switch in "enabled" state. The default value is null.</value>
+      <value>A header's object of the switch in "checked" state. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -6258,7 +6258,7 @@
     </member>
     <member name="P:Elysium.Controls.ToggleSwitch.HasOnHeader">
       <summary>
-        Returns a value, which corresponds to whether the header during "enabled" state of the switch is null.
+        Returns a value, which corresponds to whether the header during "checked" state of the switch is null.
       </summary>
       <value>
         True, if the value of the <see cref="P:Elysium.Controls.ToggleSwitch.OnHeader" /> dependency property is not equal null, False otherwise. The default value is False.
@@ -6302,9 +6302,9 @@
     </member>
     <member name="P:Elysium.Controls.ToggleSwitch.OnHeaderStringFormat">
       <summary>
-        Gets or sets a combined string, which defines formatting of the header when the switch is in "enabled" state, if the header is displayed as a string.
+        Gets or sets a combined string, which defines formatting of the header when the switch is in "checked" state, if the header is displayed as a string.
       </summary>
-      <value>a combined string, which defines formatting of the header when the switch is in "enabled" state, if the header is displayed as a string. The default value is null.</value>
+      <value>a combined string, which defines formatting of the header when the switch is in "checked" state, if the header is displayed as a string. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -6344,9 +6344,9 @@
     </member>
     <member name="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplate">
       <summary>
-        Gets or sets the template used to displaying the header of the switch when it is in "enabled" state.
+        Gets or sets the template used to displaying the header of the switch when it is in "checked" state.
       </summary>
-      <value>A template used to displaying the header of the switch when it is in "enabled" state. The default value is null.</value>
+      <value>A template used to displaying the header of the switch when it is in "checked" state. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -6386,7 +6386,7 @@
     </member>
     <member name="P:Elysium.Controls.ToggleSwitch.OnHeaderTemplateSelector">
       <summary>
-        Gets or sets a header template selector, which corresponds to user's way to choose a header template of the control's header if the switch is in "enabled" state.
+        Gets or sets a header template selector, which corresponds to user's way to choose a header template of the control's header if the switch is in "checked" state.
       </summary>
       <value>An instance of the selector template. The default value is null.</value>
       <remarks>
@@ -6428,9 +6428,9 @@
     </member>
     <member name="P:Elysium.Controls.ToggleSwitch.OffHeader">
       <summary>
-        Gets or sets data used to fill the header of switch when it is in "disabled" state.
+        Gets or sets data used to fill the header of switch when it is in "unchecked" state.
       </summary>
-      <value>A header's object of the switch in "disabled" state. The default value is null.</value>
+      <value>A header's object of the switch in "unchecked" state. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -6470,7 +6470,7 @@
     </member>
     <member name="P:Elysium.Controls.ToggleSwitch.HasOffHeader">
       <summary>
-        Returns a value, which corresponds to whether the header during "disabled" state of the switch is null.
+        Returns a value, which corresponds to whether the header during "unchecked" state of the switch is null.
       </summary>
       <value>
         True, if the value of the <see cref="P:Elysium.Controls.ToggleSwitch.OffHeader" /> dependency property is not equal null, False otherwise. The default value is False.
@@ -6514,9 +6514,9 @@
     </member>
     <member name="P:Elysium.Controls.ToggleSwitch.OffHeaderStringFormat">
       <summary>
-        Gets or sets a combined string, which defines formatting of the header when the switch is in "disabled" state, if the header is displayed as a string.
+        Gets or sets a combined string, which defines formatting of the header when the switch is in "unchecked" state, if the header is displayed as a string.
       </summary>
-      <value>a combined string, which defines formatting of the header when the switch is in "disabled" state, if the header is displayed as a string. The default value is null.</value>
+      <value>a combined string, which defines formatting of the header when the switch is in "unchecked" state, if the header is displayed as a string. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -6556,9 +6556,9 @@
     </member>
     <member name="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplate">
       <summary>
-        Gets or sets the template used to displaying the header of the switch when it is in "disabled" state.
+        Gets or sets the template used to displaying the header of the switch when it is in "unchecked" state.
       </summary>
-      <value>A template used to displaying the header of the switch when it is in "disabled" state. The default value is null.</value>
+      <value>A template used to displaying the header of the switch when it is in "uchecked" state. The default value is null.</value>
       <remarks>
         <list type="table">
           <item>
@@ -6598,7 +6598,7 @@
     </member>
     <member name="P:Elysium.Controls.ToggleSwitch.OffHeaderTemplateSelector">
       <summary>
-        Gets or sets a header template selector, which corresponds to user's way to choose a header template of the control's header if the switch is in "disabled" state.
+        Gets or sets a header template selector, which corresponds to user's way to choose a header template of the control's header if the switch is in "unchecked" state.
       </summary>
       <value>An instance of the selector template. The default value is null.</value>
       <remarks>
