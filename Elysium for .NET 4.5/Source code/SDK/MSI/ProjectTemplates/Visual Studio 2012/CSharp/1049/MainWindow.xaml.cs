@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Windows;
+$if$ ($targetframeworkversion$ >= 4.5)using System.Threading.Tasks;
+$endif$using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;

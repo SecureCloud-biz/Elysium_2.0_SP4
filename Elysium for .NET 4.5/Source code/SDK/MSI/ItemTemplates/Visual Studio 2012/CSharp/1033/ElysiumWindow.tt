@@ -20,7 +20,7 @@
     <ProjectType>CSharp</ProjectType>
     <SortOrder>96</SortOrder>
     <RequiredFrameworkVersion>4.0</RequiredFrameworkVersion>
-    <MaxFrameworkVersion>4.0</MaxFrameworkVersion>
+    <MaxFrameworkVersion>4.5</MaxFrameworkVersion>
     <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
     <DefaultName>Window.xaml</DefaultName>
     <TemplateGroupID>WPF</TemplateGroupID>

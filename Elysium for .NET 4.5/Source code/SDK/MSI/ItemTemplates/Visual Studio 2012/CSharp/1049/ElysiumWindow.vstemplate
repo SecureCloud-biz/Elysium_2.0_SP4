@@ -8,7 +8,7 @@
     <ProjectType>CSharp</ProjectType>
     <SortOrder>96</SortOrder>
     <RequiredFrameworkVersion>4.0</RequiredFrameworkVersion>
-    <MaxFrameworkVersion>4.0</MaxFrameworkVersion>
+    <MaxFrameworkVersion>4.5</MaxFrameworkVersion>
     <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
     <DefaultName>Window.xaml</DefaultName>
     <TemplateGroupID>WPF</TemplateGroupID>
@@ -29,7 +29,7 @@
         <Assembly>PresentationFramework</Assembly>
       </Reference>
       <Reference>
-        <Assembly>Elysium, Version=1.5.769.0, Culture=neutral, PublicKeyToken=f8966962afac6b6d, processorArchitecture=MSIL</Assembly>
+        <Assembly>Elysium, Version=1.5.791.0, Culture=neutral, PublicKeyToken=f8966962afac6b6d, processorArchitecture=MSIL</Assembly>
       </Reference>
     </References>
     <ProjectItem ReplaceParameters="true" CustomTool="MSBuild:Compile">Window.xaml</ProjectItem>

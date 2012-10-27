@@ -67,9 +67,9 @@
   <Import Project="$(WixTargetsPath)" />
   <PropertyGroup>
     <PostBuildEvent>"$(WIX)bin\Insignia.exe" /ib "$(TargetPath)" -o "$(TargetDir)Engine.exe"
-"..\..\..\..\..\Tools and Resources\Utilities\signtool\signtool.exe" sign /f "..\..\..\..\..\Source code\SigningKey.pfx" "$(TargetDir)Engine.exe"
+"..\..\..\..\..\Tools and Resources\Utilities\signtool\$(Platform)\signtool.exe" sign /f "..\..\..\..\..\Source code\SigningKey.pfx" "$(TargetDir)Engine.exe"
 "$(WIX)bin\Insignia.exe" /ab "$(TargetDir)Engine.exe" "$(TargetPath)" -o "$(TargetPath)"
-"..\..\..\..\..\Tools and Resources\Utilities\signtool\signtool.exe" sign /f "..\..\..\..\..\Source code\SigningKey.pfx" "$(TargetPath)"
+"..\..\..\..\..\Tools and Resources\Utilities\signtool\$(Platform)\signtool.exe" sign /f "..\..\..\..\..\Source code\SigningKey.pfx" "$(TargetPath)"
 del /f /q "$(TargetDir)Engine.exe"</PostBuildEvent>
   </PropertyGroup>
 </Project>

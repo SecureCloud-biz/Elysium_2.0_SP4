@@ -7,7 +7,7 @@
     <TemplateID>Elysium.CSharp.Application</TemplateID>
     <ProjectType>CSharp</ProjectType>
     <RequiredFrameworkVersion>4.0</RequiredFrameworkVersion>
-    <MaxFrameworkVersion>4.0</MaxFrameworkVersion>
+    <MaxFrameworkVersion>4.5</MaxFrameworkVersion>
     <SortOrder>11</SortOrder>
     <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
     <CreateNewFolder>true</CreateNewFolder>
@@ -28,6 +28,7 @@
       <ProjectItem ReplaceParameters="true" OpenInEditor="true" SubType="Code">MainWindow.xaml.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true">App.xaml</ProjectItem>
       <ProjectItem ReplaceParameters="true" SubType="Code">App.xaml.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true">App.config</ProjectItem>
     </Project>
   </TemplateContent>
 </VSTemplate>

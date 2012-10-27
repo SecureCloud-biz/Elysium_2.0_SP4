@@ -5,9 +5,9 @@
   
   <?include SDKVariables.wxi ?>
   
-  <Product Id="C0866E3A-961B-46FA-884E-415FA7B8BDC6"
+  <Product Id="38435726-4627-4F4A-A330-4C6B8999AA22"
            Name="$(var.SDKName) for $(var.FrameworkName)" Manufacturer="Alex F. Sherman and Codeplex Community" Language="!(loc.Language)"
-           Version="$(var.SDKVersion).$(var.SDKBuild).$(var.SDKRevision)" UpgradeCode="DBFAF4C9-7352-483C-B6A2-34C6C1D0F1E0">
+           Version="$(var.SDKVersion).$(var.SDKBuild).$(var.SDKRevision)" UpgradeCode="90DBE047-293B-4D8D-9F49-BDE9D943C591">
     
     <Package InstallerVersion="200" Platform="$(sys.BUILDARCH)"
              InstallPrivileges="elevated" InstallScope="perMachine"
@@ -22,6 +22,7 @@
     <Feature Id="Elysium" Title="!(loc.FeatureTitle_Elysium)" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install" Absent="disallow">
       <ComponentGroupRef Id="Prerequisites"/>
       <ComponentGroupRef Id="Prerequisites.Resources.En"/>
+      <ComponentGroupRef Id="Prerequisites.Resources.Ru"/>
       <ComponentGroupRef Id="Core"/>
       <ComponentRef Id="VisualStudio.Registration"/>
       <ComponentGroupRef Id="VisualStudio.Templates.Registration"/>
@@ -48,11 +49,15 @@
     <ComponentGroup Id="Prerequisites">
       <ComponentRef Id="Prerequisites.Microsoft.Expression.Drawing"/>
       <ComponentRef Id="Prerequisites.Microsoft.Expression.Drawing.Design"/>
-      <ComponentRef Id="Prerequisites.Microsoft.Windows.Shell"/>
     </ComponentGroup>
     
     <ComponentGroup Id="Prerequisites.Resources.En">
       <ComponentRef Id="Prerequisites.Microsoft.Expression.Drawing.Design.Resources.En"/>
+    </ComponentGroup>
+
+    <ComponentGroup Id="Prerequisites.Resources.Ru">
+      <ComponentRef Id="Prerequisites.Microsoft.Expression.Drawing.Resources.Ru"/>
+      <ComponentRef Id="Prerequisites.Microsoft.Expression.Drawing.Design.Resources.Ru"/>
     </ComponentGroup>
 
     <!-- Elysium components -->
@@ -77,7 +82,6 @@
     <ComponentGroup Id="Documentation.En">
       <ComponentRef Id="Prerequisites.Microsoft.Expression.Drawing.Documentation"/>
       <ComponentRef Id="Prerequisites.Microsoft.Expression.Drawing.Documentation.En"/>
-      <ComponentRef Id="Prerequisites.Microsoft.Windows.Shell.Documentation"/>
       <ComponentRef Id="Core.Documentation.En.CHM"/>
       <ComponentRef Id="Core.Documentation.En.XML"/>
       <ComponentRef Id="Notifications.Documentation.En"/>
@@ -85,6 +89,7 @@
     </ComponentGroup>
     
     <ComponentGroup Id="Documentation.Ru">
+      <ComponentRef Id="Prerequisites.Microsoft.Expression.Drawing.Documentation.Ru"/>
       <ComponentRef Id="Core.Documentation.Ru.CHM"/>
       <ComponentRef Id="Core.Documentation.Ru.XML"/>
       <ComponentRef Id="Notifications.Documentation.Ru"/>
@@ -94,25 +99,20 @@
     <!-- Visual Studio Templates components -->
     
     <ComponentGroup Id="VisualStudio.Templates.Registration">
-      <ComponentRef Id="VisualStudio.2010.ProjectTemplates.Registration.En"/>
-      <ComponentRef Id="VisualStudio.2010.ProjectTemplates.Registration.Ru"/>
-      <ComponentRef Id="VisualStudio.2010.ItemTemplates.Registration.En"/>
-      <ComponentRef Id="VisualStudio.2010.ItemTemplates.Registration.Ru"/>
-      <ComponentRef Id="VisualStudio.2010.Express.CSharp.ProjectTemplates.Registration.En"/>
-      <ComponentRef Id="VisualStudio.2010.Express.CSharp.ProjectTemplates.Registration.Ru"/>
-      <ComponentRef Id="VisualStudio.2010.Express.CSharp.ItemTemplates.Registration.En"/>
-      <ComponentRef Id="VisualStudio.2010.Express.CSharp.ItemTemplates.Registration.Ru"/>
       <ComponentRef Id="VisualStudio.2012.ProjectTemplates.Registration.En"/>
       <ComponentRef Id="VisualStudio.2012.ProjectTemplates.Registration.Ru"/>
       <ComponentRef Id="VisualStudio.2012.ItemTemplates.Registration.En"/>
       <ComponentRef Id="VisualStudio.2012.ItemTemplates.Registration.Ru"/>
+      <ComponentRef Id="VisualStudio.2012.Express.WinDesktop.ProjectTemplates.Registration.En"/>
+      <ComponentRef Id="VisualStudio.2012.Express.WinDesktop.ProjectTemplates.Registration.Ru"/>
+      <ComponentRef Id="VisualStudio.2012.Express.WinDesktop.ItemTemplates.Registration.En"/>
+      <ComponentRef Id="VisualStudio.2012.Express.WinDesktop.ItemTemplates.Registration.Ru"/>
     </ComponentGroup>
 
     <!-- Test app components -->
     
     <ComponentGroup Id="Test">
       <ComponentRef Id="Test.Microsoft.Expression.Drawing"/>
-      <ComponentRef Id="Test.Microsoft.Windows.Shell"/>
       <ComponentRef Id="Test.Elysium"/>
       <ComponentRef Id="Test.Elysium.Notifications"/>
       <ComponentRef Id="Test"/>
@@ -123,54 +123,67 @@
     
     <Media Id="1" Cabinet="Elysium.cab" EmbedCab="yes" CompressionLevel="high"/>
 
-    <!-- Visual Studio properties and actions -->
-    
-    <PropertyRef Id="VS2010DEVENV"/>
-    <PropertyRef Id="VS2010_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED"/>
-    <PropertyRef Id="VS2010_PROJECTTEMPLATES_DIR"/>
-    <PropertyRef Id="VS2010_ITEMTEMPLATES_DIR"/>
-    <Property Id="VS2010_IDE_LCID_1033" Secure="yes">
-      <RegistrySearch Id="VS2010_IDE_LCID_1033_SEARCH" Root="HKLM" Key="Software\Microsoft\VisualStudio\10.0\Setup\VS\BuildNumber" Name="1033" Type="raw" Win64="no"/>
-    </Property>
-    <Property Id="VS2010_IDE_LCID_1049" Secure="yes">
-      <RegistrySearch Id="VS2010_IDE_LCID_1049_SEARCH" Root="HKLM" Key="Software\Microsoft\VisualStudio\10.0\Setup\VS\BuildNumber" Name="1049" Type="raw" Win64="no"/>
-    </Property>
+    <!-- Visual Studio 2012 properties and actions -->
 
-    <CustomActionRef Id="VS2010InstallVSTemplates"/>
-    
-    <PropertyRef Id="VCSHARP2010EXPRESS_IDE"/>
-    <Property Id="VCSHARP2010EXPRESS_PROJECTTEMPLATES_DIR" Secure="yes">
-      <RegistrySearch Id="VCSHARP2010EXPRESS_PROJECTTEMPLATES_SEARCH" Root="HKLM" Key="Software\Microsoft\VCSExpress\10.0\VSTemplate\Project" Name="UserFolder" Type="directory" Win64="no"/>
-    </Property>
-    <Property Id="VCSHARP2010EXPRESS_ITEMTEMPLATES_DIR" Secure="yes">
-      <RegistrySearch Id="VCSHARP2010EXPRESS_ITEMTEMPLATES_SEARCH" Root="HKLM" Key="Software\Microsoft\VCSExpress\10.0\VSTemplate\Item" Name="UserFolder" Type="directory" Win64="no"/>
-    </Property>
-    <Property Id="VCSHARP2010EXPRESS_IDE_LCID_1033" Secure="yes">
-      <RegistrySearch Id="VCSHARP2010EXPRESS_IDE_LCID_1033_SEARCH" Root="HKLM" Key="Software\Microsoft\VCSExpress\10.0\Setup\VS\BuildNumber" Name="1033" Type="raw" Win64="no"/>
-    </Property>
-    <Property Id="VCSHARP2010EXPRESS_IDE_LCID_1049" Secure="yes">
-      <RegistrySearch Id="VCSHARP2010EXPRESS_IDE_LCID_1049_SEARCH" Root="HKLM" Key="Software\Microsoft\VCSExpress\10.0\Setup\VS\BuildNumber" Name="1049" Type="raw" Win64="no"/>
-    </Property>
-    
-    <CustomActionRef Id="VCSHARP2010InstallVSTemplates"/>
-    
     <PropertyRef Id="VS2012DEVENV"/>
     <PropertyRef Id="VS2012_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED"/>
     <PropertyRef Id="VS2012_PROJECTTEMPLATES_DIR"/>
     <PropertyRef Id="VS2012_ITEMTEMPLATES_DIR"/>
-    <Property Id="VS2012_IDE_LCID_1033" Secure="yes">
-      <RegistrySearch Id="VS2012_IDE_LCID_1033_SEARCH" Root="HKLM" Key="Software\Microsoft\VisualStudio\11.0\Setup\VS\BuildNumber" Name="1033" Type="raw" Win64="no"/>
+    <Property Id="VS2012PROFESSIONAL_IDE_LCID_1033" Secure="yes">
+      <RegistrySearch Id="VS2012PROFESSIONAL_IDE_LCID_1033_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\11.0\professional\1033" Type="raw" Win64="no"/>
     </Property>
-    <Property Id="VS2012_IDE_LCID_1049" Secure="yes">
-      <RegistrySearch Id="VS2012_IDE_LCID_1049_SEARCH" Root="HKLM" Key="Software\Microsoft\VisualStudio\11.0\Setup\VS\BuildNumber" Name="1049" Type="raw" Win64="no"/>
+    <Property Id="VS2012PREMIUM_IDE_LCID_1033" Secure="yes">
+      <RegistrySearch Id="VS2012PREMIUM_IDE_LCID_1033_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\11.0\premium\1033" Type="raw" Win64="no"/>
+    </Property>
+    <Property Id="VS2012ULTIMATE_IDE_LCID_1033" Secure="yes">
+      <RegistrySearch Id="VS2012ULTIMATE_IDE_LCID_1033_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\11.0\ultimate\1033" Type="raw" Win64="no"/>
+    </Property>
+    <Property Id="VS2012PROFESSIONAL_IDE_LCID_1049" Secure="yes">
+      <RegistrySearch Id="VS2012PROFESSIONAL_IDE_LCID_1049_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\11.0\professional\1049" Type="raw" Win64="no"/>
+    </Property>
+    <Property Id="VS2012PREMIUM_IDE_LCID_1049" Secure="yes">
+      <RegistrySearch Id="VS2012PREMIUM_IDE_LCID_1049_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\11.0\premium\1049" Type="raw" Win64="no"/>
+    </Property>
+    <Property Id="VS2012ULTIMATE_IDE_LCID_1049" Secure="yes">
+      <RegistrySearch Id="VS2012ULTIMATE_IDE_LCID_1049_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\11.0\ultimate\1049" Type="raw" Win64="no"/>
     </Property>
     
     <CustomActionRef Id="VS2012InstallVSTemplates"/>
 
+    <!-- Visual Studio Express 2012 for Windows Desktop properties and actions -->
+
+    <Property Id="VS2012WINDESKTOPEXPRESS_IDE" Secure="yes">
+        <ComponentSearch Id="SearchForVS2012WinDesktopExpressIdeComponent" Guid="55C6B9D6-A824-4AFC-8D08-20E581B6F42C" Type="file">
+            <FileSearch Id="VS2012WinDesktopExpressIde" Name="wdexpress.exe" />
+        </ComponentSearch>
+    </Property>
+    <Property Id="VS2012WINDESKTOPEXPRESS_PROJECTTEMPLATES_DIR" Secure="yes">
+      <RegistrySearch Id="VS2012WinDesktopExpressDevEnvForProjectTemplatesSearch" Root="HKLM" Key="SOFTWARE\Microsoft\VisualStudio\10.0\Setup\VS" Name="EnvironmentDirectory" Type="raw">
+        <DirectorySearch Id="VS2012WinDesktopExpressForProjectTemplatesSearch" Path="VCSExpress" Depth="1">
+          <DirectorySearch Id="VS2012WinDesktopExpressProjectTemplatesPathSearch" Path="ProjectTemplates" Depth="1" />
+        </DirectorySearch>
+      </RegistrySearch>
+    </Property>
+    <Property Id="VS2012WINDESKTOPEXPRESS_ITEMTEMPLATES_DIR" Secure="yes">
+      <RegistrySearch Id="VS2012WinDesktopExpressDevEnvForItemTemplatesSearch" Root="HKLM" Key="SOFTWARE\Microsoft\VisualStudio\10.0\Setup\VS" Name="EnvironmentDirectory" Type="raw">
+        <DirectorySearch Id="VS2012WinDesktopExpressForItemTemplatesSearch" Path="VCSExpress" Depth="1">
+          <DirectorySearch Id="VS2012WinDesktopExpressItemTemplatesPathSearch" Path="ItemTemplates" Depth="1" />
+        </DirectorySearch>
+      </RegistrySearch>
+    </Property>
+    <Property Id="VS2012WINDESKTOPEXPRESS_IDE_LCID_1033" Secure="yes">
+      <RegistrySearch Id="VS2012WINDESKTOPEXPRESS_IDE_LCID_1033_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\wdexpress\Servicing\11.0\coremsi\1033" Type="raw" Win64="no"/>
+    </Property>
+    <Property Id="VS2012WINDESKTOPEXPRESS_IDE_LCID_1049" Secure="yes">
+      <RegistrySearch Id="VS2012WINDESKTOPEXPRESS_IDE_LCID_1049_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\wdexpress\Servicing\11.0\coremsi\1049" Type="raw" Win64="no"/>
+    </Property>
+
+    <CustomAction Id="VS2012WinDesktopExpressInstallVSTemplates" Property="VS2012WINDESKTOPEXPRESS_IDE" ExeCommand="/InstallVSTemplates" Execute="deferred" Return="ignore" Impersonate="no" />
+    
     <!-- Conditions -->
     
     <Condition Message="!(loc.VisualStudioError)">
-      <![CDATA[Installed OR VS2010DEVENV OR VCSHARP2010EXPRESS_IDE OR VS2012DEVENV]]>
+      <![CDATA[Installed OR VS2012DEVENV OR VS2012WINDESKTOPEXPRESS_IDE]]>
     </Condition>
     
     <!-- Custom actions -->
@@ -179,14 +192,11 @@
       
     <InstallExecuteSequence>
       <Custom Action="OverwriteWixSetDefaultPerMachineFolder" After="WixSetDefaultPerMachineFolder"/>
-      <Custom Action="VS2010InstallVSTemplates" Before="InstallFinalize">
-        <![CDATA[VS2010DEVENV AND VS2010_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND (VS2010_PROJECTTEMPLATES_DIR OR VS2010_ITEMTEMPLATES_DIR)]]>
-      </Custom>
-      <Custom Action="VCSHARP2010InstallVSTemplates" Before="InstallFinalize">
-        <![CDATA[VCSHARP2010EXPRESS_IDE AND (VCSHARP2010EXPRESS_IDE_PROJECTTEMPLATES_DIR OR VCSHARP2010EXPRESS_IDE_ITEMTEMPLATES_DIR)]]>
-      </Custom>
       <Custom Action="VS2012InstallVSTemplates" Before="InstallFinalize">
         <![CDATA[VS2012DEVENV AND VS2012_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND (VS2012_PROJECTTEMPLATES_DIR OR VS2012_ITEMTEMPLATES_DIR)]]>
+      </Custom>
+      <Custom Action="VS2012WinDesktopExpressInstallVSTemplates" Before="InstallFinalize">
+        <![CDATA[VS2012WINDESKTOPEXPRESS_IDE AND (VS2012WINDESKTOPEXPRESS_PROJECTTEMPLATES_DIR OR VS2012WINDESKTOPEXPRESS_ITEMTEMPLATES_DIR)]]>
       </Custom>
     </InstallExecuteSequence>
 
@@ -196,9 +206,8 @@
     <UIRef Id="WixUI_ErrorProgressText"/>
       
     <UI>
-      <ProgressText Action="VS2010InstallVSTemplates" Template="[1]">!(loc.VisualStudioTemplatesRegistration)</ProgressText>
-      <ProgressText Action="VCSHARP2010InstallVSTemplates" Template="[1]">!(loc.VisualStudioTemplatesRegistration)</ProgressText>
       <ProgressText Action="VS2012InstallVSTemplates" Template="[1]">!(loc.VisualStudioTemplatesRegistration)</ProgressText>
+      <ProgressText Action="VS2012WinDesktopExpressInstallVSTemplates" Template="[1]">!(loc.VisualStudioTemplatesRegistration)</ProgressText>
       <ProgressText Action="NetFxScheduleNativeImage" Template="[1]">!(loc.NativeImagesGeneration)</ProgressText>
       <ProgressText Action="NetFxScheduleNativeImage_x64" Template="[1]">!(loc.NativeImagesGeneration)</ProgressText>
       <ProgressText Action="NetFxExecuteNativeImageInstall" Template="[1]">!(loc.NativeImagesInstalling)</ProgressText>
@@ -231,36 +240,6 @@
 
     <Directory Id="TARGETDIR" Name="SourceDir">
       
-      <!-- Visual Studio 2010 Templates -->
-      
-      <Directory Id="VS2010_PROJECTTEMPLATES_DIR">
-        <Directory Id="VS2010ProjectTemplatesCSharpDir" Name="CSharp">
-          <Directory Id="VS2010ProjectTemplatesCSharpWindowsDir" Name="Windows">
-            <Directory Id="VS2010ProjectTemplatesEnDir" Name="1033"/>
-            <Directory Id="VS2010ProjectTemplatesRuDir" Name="1049"/>
-          </Directory>
-        </Directory>
-      </Directory>
-      <Directory Id="VS2010_ITEMTEMPLATES_DIR">
-        <Directory Id="VS2010ItemTemplatesCSharpDir" Name="CSharp">
-          <Directory Id="VS2010ItemTemplatesCSharpWPFDir" Name="WPF">
-            <Directory Id="VS2010ItemTemplatesEnDir" Name="1033"/>
-            <Directory Id="VS2010ItemTemplatesRuDir" Name="1049"/>
-          </Directory>
-        </Directory>
-      </Directory>
-      
-      <!-- Visual Studio 2010 Express Templates -->
-      
-      <Directory Id="VCSHARP2010EXPRESS_PROJECTTEMPLATES_DIR">
-        <Directory Id="VS2010ExpressCSharpProjectTemplatesEnDir" Name="1033"/>
-        <Directory Id="VS2010ExpressCSharpProjectTemplatesRuDir" Name="1049"/>
-      </Directory>
-      <Directory Id="VCSHARP2010EXPRESS_ITEMTEMPLATES_DIR">
-        <Directory Id="VS2010ExpressCSharpItemTemplatesEnDir" Name="1033"/>
-        <Directory Id="VS2010ExpressCSharpItemTemplatesRuDir" Name="1049"/>
-      </Directory>
-      
       <!-- Visual Studio 2012 Templates -->
       
       <Directory Id="VS2012_PROJECTTEMPLATES_DIR">
@@ -280,6 +259,25 @@
         </Directory>
       </Directory>
       
+      <!-- Visual Studio Express 2012 for Windows Desktop Templates -->
+      
+      <Directory Id="VS2012WINDESKTOPEXPRESS_PROJECTTEMPLATES_DIR">
+        <Directory Id="VS2012WinDesktopExpressProjectTemplatesCSharpDir" Name="CSharp">
+          <Directory Id="VS2012WinDesktopExpressProjectTemplatesCSharpWindowsDir" Name="Windows">
+            <Directory Id="VS2012WinDesktopExpressProjectTemplatesEnDir" Name="1033"/>
+            <Directory Id="VS2012WinDesktopExpressProjectTemplatesRuDir" Name="1049"/>
+          </Directory>
+        </Directory>
+      </Directory>
+      <Directory Id="VS2012WINDESKTOPEXPRESS_ITEMTEMPLATES_DIR">
+        <Directory Id="VS2012WinDesktopExpressItemTemplatesCSharpDir" Name="CSharp">
+          <Directory Id="VS2012WinDesktopExpressItemTemplatesCSharpWPFDir" Name="WPF">
+            <Directory Id="VS2012WinDesktopExpressItemTemplatesEnDir" Name="1033"/>
+            <Directory Id="VS2012WinDesktopExpressItemTemplatesRuDir" Name="1049"/>
+          </Directory>
+        </Directory>
+      </Directory>
+      
       <!-- Binaries -->
       
       <Directory Id="$(var.PlatformProgramFilesFolder)">
@@ -289,6 +287,7 @@
               <Directory Id="InstallCodeContractsDir" Name="CodeContracts"/>
               <Directory Id="InstallDesignDir" Name="Design">
                 <Directory Id="InstallDesignResourcesEnDir" Name="en"/>
+                <Directory Id="InstallDesignResourcesRuDir" Name="ru"/>
               </Directory>
               <Directory Id="InstallResourcesEnDir" Name="en"/>
               <Directory Id="InstallResourcesRuDir" Name="ru"/>
@@ -322,40 +321,33 @@
       
       <!-- Prerequisites -->
         
-      <Component Id="Prerequisites.Microsoft.Expression.Drawing" Guid="B0004C94-38E9-4587-AFE0-DF15D40ECD8D">
+      <Component Id="Prerequisites.Microsoft.Expression.Drawing" Guid="FD38090E-8FF9-40BF-B91B-C1B582076E67">
         <File Source="$(var.AssemblyDependenciesFolder)\Microsoft.Expression.Drawing.dll" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
-      <Component Id="Prerequisites.Microsoft.Expression.Drawing.Documentation" Guid="57DCA4BA-8825-4E30-922E-B301124A21FB">
+      <Component Id="Prerequisites.Microsoft.Expression.Drawing.Documentation" Guid="FC720AEF-A2C2-4062-8B67-14DEAA4DB971">
         <File Source="$(var.AssemblyDependenciesFolder)\Microsoft.Expression.Drawing.xml" Checksum="yes" KeyPath="yes" Vital="no"/>
-      </Component>
-      <Component Id="Prerequisites.Microsoft.Windows.Shell" Guid="7435578F-C5D2-4241-9172-870CF87AC33F">
-        <File Source="$(var.AssemblyDependenciesFolder)\Microsoft.Windows.Shell.dll" Checksum="yes" KeyPath="yes" Vital="yes"/>
-        <File Source="$(var.AssemblyDependenciesFolder)\Microsoft.Windows.Shell.pdb" Checksum="yes" KeyPath="no" Vital="no"/>
-      </Component>
-      <Component Id="Prerequisites.Microsoft.Windows.Shell.Documentation" Guid="387A868E-1193-430B-AF2A-78617E7A09B1">
-        <File Source="$(var.AssemblyDependenciesFolder)\Microsoft.Windows.Shell.xml" Checksum="yes" KeyPath="yes" Vital="no"/>
       </Component>
       
       <!-- Core -->
         
-      <Component Id="Core" Guid="31C629CC-D2C5-42BC-858E-BEF09397182D">
+      <Component Id="Core" Guid="2FFFA2FF-5AA7-418F-B752-658D6D894FC5">
         <File Source="$(var.AnyCPUDebugFolder)\Elysium.dll" Checksum="yes" KeyPath="yes" Vital="yes"/>
         <File Source="$(var.AnyCPUDebugFolder)\Elysium.pdb" Checksum="yes" KeyPath="no" Vital="no"/>
       </Component>
-      <Component Id="Core.Documentation" Guid="458FF7A2-2EB2-432A-B4EE-57C1C16DCF06">
+      <Component Id="Core.Documentation" Guid="D502D1EE-20B7-49B9-A2FC-973A49ABBE98">
         <File Source="$(var.DocumentationFolder)\en\Elysium.xml" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
       
       <!-- Notifications -->
         
-      <Component Id="Notifications" Guid="16552642-2FDC-4EF2-B049-0C8C571E8EB5">
+      <Component Id="Notifications" Guid="673EA5AB-5190-415A-AFF8-69D3A1F95E52">
         <File Source="$(var.AnyCPUDebugFolder)\Elysium.Notifications.dll" Checksum="yes" KeyPath="yes" Vital="yes"/>
         <File Source="$(var.AnyCPUDebugFolder)\Elysium.Notifications.pdb" Checksum="yes" KeyPath="no" Vital="no"/>
       </Component>
-      <Component Id="Notifications.Documentation" Guid="CC154CEF-C35D-408A-93D5-5DEEE2078D80">
+      <Component Id="Notifications.Documentation" Guid="686AE6A7-7AA2-4A76-9745-48362FA8AEA5">
         <File Source="$(var.DocumentationFolder)\en\Elysium.Notifications.xml" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
-      <Component Id="Notifications.Server" Guid="8597813A-1C9A-4BD6-942B-FC7D71153BB2">
+      <Component Id="Notifications.Server" Guid="EE69A470-5ED2-4585-8D1E-D1C6B5728648">
         <File Source="$(var.PlatformReleaseFolder)\Elysium.Notifications.Server.exe" Checksum="yes" KeyPath="yes" Vital="yes"/>
         <File Source="$(var.PlatformReleaseFolder)\Elysium.Notifications.Server.exe.config" Checksum="yes" KeyPath="no" Vital="yes"/>
         <ServiceInstall Type="ownProcess"
@@ -371,11 +363,11 @@
       
       <!-- Visual Studio registration -->
         
-      <Component Id="VisualStudio.Registration" Guid="324F04C0-3673-4BC7-AA62-AB3945626545">
+      <Component Id="VisualStudio.Registration" Guid="BBA30D8F-F171-4238-8EB9-EE78379A7AD3">
         <?if $(sys.BUILDARCH) = x64 ?>
-          <RegistryValue Root="HKLM" Key="SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v4.0.30319\AssemblyFoldersEx\Elysium" Type="string" Value="[APPLICATIONFOLDER]" KeyPath="yes"/>
+          <RegistryValue Root="HKLM" Key="SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v4.5.50709\AssemblyFoldersEx\Elysium" Type="string" Value="[APPLICATIONFOLDER]" KeyPath="yes"/>
         <?else ?>
-          <RegistryValue Root="HKLM" Key="SOFTWARE\Microsoft\.NETFramework\v4.0.30319\AssemblyFoldersEx\Elysium" Type="string" Value="[APPLICATIONFOLDER]" KeyPath="yes"/>
+          <RegistryValue Root="HKLM" Key="SOFTWARE\Microsoft\.NETFramework\v4.5.50709\AssemblyFoldersEx\Elysium" Type="string" Value="[APPLICATIONFOLDER]" KeyPath="yes"/>
         <?endif ?>
       </Component>
     
@@ -384,25 +376,31 @@
     <!-- Design -->
       
     <DirectoryRef Id="InstallDesignDir">
-      <Component Id="Prerequisites.Microsoft.Expression.Drawing.Design" Guid="06AAA438-5375-4204-8F25-5AF3CCB9F57A">
+      <Component Id="Prerequisites.Microsoft.Expression.Drawing.Design" Guid="E1697476-324E-4153-9465-959CBD9D4D2C">
         <File Source="$(var.AssemblyDependenciesFolder)\Design\Microsoft.Expression.Drawing.Design.dll" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
     </DirectoryRef>
     
     <DirectoryRef Id="InstallDesignResourcesEnDir">
-      <Component Id="Prerequisites.Microsoft.Expression.Drawing.Design.Resources.En" Guid="04D47C5B-C2A7-4FCF-9AE1-7938915C4EA2">
-        <File Source="$(var.AssemblyDependenciesFolder)\Design\en\Microsoft.Expression.Drawing.Design.resources.dll" Checksum="yes" KeyPath="yes" Vital="yes"/>
+      <Component Id="Prerequisites.Microsoft.Expression.Drawing.Design.Resources.En" Guid="0D733DC5-6F15-4E62-9FA1-DC0C2CA6622B">
+        <File Id="Microsoft.Expression.Drawing.Design.resources.en.dll" Source="$(var.AssemblyDependenciesFolder)\Design\en\Microsoft.Expression.Drawing.Design.resources.dll" Checksum="yes" KeyPath="yes" Vital="yes"/>
+      </Component>
+    </DirectoryRef>
+    
+    <DirectoryRef Id="InstallDesignResourcesRuDir">
+      <Component Id="Prerequisites.Microsoft.Expression.Drawing.Design.Resources.Ru" Guid="C26E1E2E-6D18-421F-9EF2-F09B274F8E8B">
+        <File Id="Microsoft.Expression.Drawing.Design.resources.ru.dll" Source="$(var.AssemblyDependenciesFolder)\Design\ru\Microsoft.Expression.Drawing.Design.resources.dll" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
     </DirectoryRef>
     
     <!-- Code Contracts -->
       
     <DirectoryRef Id="InstallCodeContractsDir">
-      <Component Id="Core.CodeContracts" Guid="E516CF50-6764-420B-96E9-4A1E6ECBECFB">
+      <Component Id="Core.CodeContracts" Guid="0D160F9D-B620-4F7B-A825-34E5C8D60D93">
         <File Source="$(var.AnyCPUDebugFolder)\CodeContracts\Elysium.Contracts.dll" Checksum="yes" KeyPath="yes" Vital="yes"/>
         <File Source="$(var.AnyCPUDebugFolder)\CodeContracts\Elysium.Contracts.pdb" Checksum="yes" KeyPath="no" Vital="no"/>
       </Component>
-      <Component Id="Notifications.CodeContracts" Guid="F13974DB-2B2D-4F3D-B1E7-E21B81DAB707">
+      <Component Id="Notifications.CodeContracts" Guid="98DAAEDF-6DE7-4225-AE61-20BF75F098CA">
         <File Source="$(var.AnyCPUDebugFolder)\CodeContracts\Elysium.Notifications.Contracts.dll" Checksum="yes" KeyPath="yes" Vital="yes"/>
         <File Source="$(var.AnyCPUDebugFolder)\CodeContracts\Elysium.Notifications.Contracts.pdb" Checksum="yes" KeyPath="no" Vital="no"/>
       </Component>
@@ -412,25 +410,25 @@
     <!-- English resources -->
     
     <DirectoryRef Id="InstallResourcesEnDir">
-      <Component Id="Prerequisites.Microsoft.Expression.Drawing.Documentation.En" Guid="EB84204F-61A0-4468-BA95-13544EEF370E">
+      <Component Id="Prerequisites.Microsoft.Expression.Drawing.Documentation.En" Guid="A5FBD29C-73DC-4619-A4F7-A022BB279563">
         <File Id="Microsoft.Expression.Drawing.en.xml" Source="$(var.AssemblyDependenciesFolder)\en\Microsoft.Expression.Drawing.xml" Checksum="yes" KeyPath="yes" Vital="no"/>
       </Component>
-      <Component Id="Core.Documentation.En.CHM" Guid="7A32188C-98AE-47F8-A8FF-B7DE9AA5CB19">
+      <Component Id="Core.Documentation.En.CHM" Guid="B888A2AB-7388-4DDA-B3B0-FA4F48A589E4">
         <File Id="Elysium.en.chm"  Source="$(var.DocumentationFolder)\en\Elysium.chm" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
-      <Component Id="Core.Documentation.En.XML" Guid="EBAE6F86-78F3-465A-ABD5-2BBD03B928ED">
+      <Component Id="Core.Documentation.En.XML" Guid="3546A24B-419F-4E7D-BF00-FAA80C80D880">
         <File Id="Elysium.en.xml" Source="$(var.DocumentationFolder)\en\Elysium.xml" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
-      <Component Id="Notifications.Documentation.En" Guid="699E9C85-C9F0-4269-9C7F-4071D1EB15C3">
+      <Component Id="Notifications.Documentation.En" Guid="5ACDCD1E-DD5A-47D3-9DAE-A698449F3557">
         <File Id="Elysium.Notifications.en.xml" Source="$(var.DocumentationFolder)\en\Elysium.Notifications.xml" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
-      <Component Id="Documentation.En.Shortcut.Registration" Guid="693E82D8-3929-4C3C-B3CE-7C6F0059F077">
+      <Component Id="Documentation.En.Shortcut.Registration" Guid="06784B3F-9A9F-4C67-A041-BD762D24C231">
         <CreateFolder Directory="AllUsersShortcutsDir"/>
         <Shortcut Id="Documentation.En.Shortcut"
                   Name="Elysium English documentation"
                   Directory="AllUsersShortcutsDir"
                   Target="[InstallResourcesEnDir]en\Elysium.chm"/>
-        <RemoveFolder Id="AllUsersShortcutsDir_B1562AFE5EEE418C877046E035331538" Directory="AllUsersShortcutsDir" On="uninstall"/>
+        <RemoveFolder Id="AllUsersShortcutsDir_FD3DE62423744FA09B2FF8A11DD58370" Directory="AllUsersShortcutsDir" On="uninstall"/>
         <RegistryValue Root="HKLM" Key="Software\Elysium" Type="string" Name="Documentation" Value="true" KeyPath="yes"/>
       </Component>
     </DirectoryRef>
@@ -438,116 +436,46 @@
     <!-- Russian resources -->
     
     <DirectoryRef Id="InstallResourcesRuDir">
-      <Component Id="Core.Documentation.Ru.CHM" Guid="FC5792DF-6844-417C-BACA-C7F6BACA9653">
+      <Component Id="Prerequisites.Microsoft.Expression.Drawing.Documentation.Ru" Guid="21278768-8131-4A49-94BA-6AD67394F096">
+        <File Id="Microsoft.Expression.Drawing.ru.xml" Source="$(var.AssemblyDependenciesFolder)\ru\Microsoft.Expression.Drawing.xml" Checksum="yes" KeyPath="yes" Vital="no"/>
+      </Component>
+      <Component Id="Prerequisites.Microsoft.Expression.Drawing.Resources.Ru" Guid="106FC891-60D0-416C-9146-0463FD7AC0CD">
+        <File Id="Microsoft.Expression.Drawing.resources.ru.dll" Source="$(var.AssemblyDependenciesFolder)\ru\Microsoft.Expression.Drawing.resources.dll" Checksum="yes" KeyPath="yes" Vital="yes"/>
+      </Component>
+      <Component Id="Core.Documentation.Ru.CHM" Guid="8344C2B8-7D1A-4282-AA87-2C0404183223">
         <File Id="Elysium.ru.chm"  Source="$(var.DocumentationFolder)\ru\Elysium.chm" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
-      <Component Id="Core.Documentation.Ru.XML" Guid="2B7C28C3-56C0-43DE-B0C8-12ECDC13F905">
+      <Component Id="Core.Documentation.Ru.XML" Guid="61999E6B-DA53-4F70-81E7-221DA07157D8">
         <File Id="Elysium.ru.xml" Source="$(var.DocumentationFolder)\ru\Elysium.xml" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
-      <Component Id="Notifications.Documentation.Ru" Guid="E7D4059D-FC33-470B-A254-1E5A2608C354">
+      <Component Id="Notifications.Documentation.Ru" Guid="31F7F49E-71EE-4D60-A0CB-8166F1EA1D0F">
         <File Id="Elysium.Notifications.ru.xml"  Source="$(var.DocumentationFolder)\ru\Elysium.Notifications.xml" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
-      <Component Id="Documentation.Ru.Shortcut.Registration" Guid="FE4DF21B-8753-4540-90D8-E31E2D26FE2C">
+      <Component Id="Documentation.Ru.Shortcut.Registration" Guid="97B171CC-9F6C-4193-9847-334D05673D49">
         <CreateFolder Directory="AllUsersShortcutsDir"/>
         <Shortcut Id="Documentation.Ru.Shortcut"
                   Name="Elysium Russian documentation"
                   Directory="AllUsersShortcutsDir"
                   Target="[InstallResourcesRuDir]Elysium.chm"/>
-        <RemoveFolder Id="AllUsersShortcutsDir_E6F565541FE34089A199AF2C4A6823A3" Directory="AllUsersShortcutsDir" On="uninstall"/>
+        <RemoveFolder Id="AllUsersShortcutsDir_2D019D8839F24D77AB6FF17BB8F57061" Directory="AllUsersShortcutsDir" On="uninstall"/>
         <RegistryValue Root="HKLM" Key="Software\Elysium" Type="string" Name="Documentation" Value="true" KeyPath="yes"/>
-      </Component>
-    </DirectoryRef>
-    
-    <!-- Visual Studio 2010 Project templates -->
-    
-    <DirectoryRef Id="VS2010ProjectTemplatesEnDir">
-      <Component Id="VisualStudio.2010.ProjectTemplates.Registration.En" Guid="75E63761-7C62-4B83-92F4-E00C44D6E424" Transitive="yes">
-        <Condition>
-          <![CDATA[VS2010DEVENV AND VS2010_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2010_PROJECTTEMPLATES_DIR AND VS2010_IDE_LCID_1033]]>
-        </Condition>
-        <File Id="VisualStudio.2010.ProjectTemplates.CSharp.1033" Name="WPFMetroApplication.zip" Source="$(var.ProjectTemplatesFolder)\Visual Studio 2010\CSharp\1033.zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
-      </Component>
-    </DirectoryRef>
-    <DirectoryRef Id="VS2010ProjectTemplatesRuDir">
-      <Component Id="VisualStudio.2010.ProjectTemplates.Registration.Ru" Guid="BB19AC1D-C7CB-4766-8E5A-D4808062A529" Transitive="yes">
-        <Condition>
-          <![CDATA[VS2010DEVENV AND VS2010_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2010_PROJECTTEMPLATES_DIR AND VS2010_IDE_LCID_1049]]>
-        </Condition>
-        <File Id="VisualStudio.2010.ProjectTemplates.CSharp.1049" Name="WPFMetroApplication.zip" Source="$(var.ProjectTemplatesFolder)\Visual Studio 2010\CSharp\1049.zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
-      </Component>
-    </DirectoryRef>
-    
-    <!-- Visual Studio 2010 Item templates -->
-    
-    <DirectoryRef Id="VS2010ItemTemplatesEnDir">
-      <Component Id="VisualStudio.2010.ItemTemplates.Registration.En" Guid="F9EC916F-71E2-451C-9398-11F69B5F7F57" Transitive="yes">
-        <Condition>
-          <![CDATA[VS2010DEVENV AND VS2010_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2010_ITEMTEMPLATES_DIR AND VS2010_IDE_LCID_1033]]>
-        </Condition>
-        <File Id="VisualStudio.2010.ItemTemplates.CSharp.1033" Name="WPFMetroWindow.zip" Source="$(var.ItemTemplatesFolder)\Visual Studio 2010\CSharp\1033.zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
-      </Component>
-    </DirectoryRef>
-    <DirectoryRef Id="VS2010ItemTemplatesRuDir">
-      <Component Id="VisualStudio.2010.ItemTemplates.Registration.Ru" Guid="DDA72333-C62D-485E-BBDC-91121CC44054" Transitive="yes">
-        <Condition>
-          <![CDATA[VS2010DEVENV AND VS2010_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2010_ITEMTEMPLATES_DIR AND VS2010_IDE_LCID_1049]]>
-        </Condition>
-        <File Id="VisualStudio.2010.ItemTemplates.CSharp.1049" Name="WPFMetroWindow.zip" Source="$(var.ItemTemplatesFolder)\Visual Studio 2010\CSharp\1049.zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
-      </Component>
-    </DirectoryRef>
-    
-    <!-- Visual Studio C# Express 2010 Project templates -->
-    
-    <DirectoryRef Id="VS2010ExpressCSharpProjectTemplatesEnDir">
-      <Component Id="VisualStudio.2010.Express.CSharp.ProjectTemplates.Registration.En" Guid="EB54032D-4412-4D9F-A6DC-6AA03C1B77F9" Transitive="yes">
-        <Condition>
-          <![CDATA[VCSHARP2010EXPRESS_IDE AND VCSHARP2010EXPRESS_PROJECTTEMPLATES_DIR AND VCSHARP2010EXPRESS_IDE_LCID_1033]]>
-        </Condition>
-        <File Id="VisualStudio.2010.Express.CSharp.ProjectTemplates.1033" Name="WPFMetroApplication.zip" Source="$(var.ProjectTemplatesFolder)\Visual Studio 2010\CSharp\1033.zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
-      </Component>
-    </DirectoryRef>
-    <DirectoryRef Id="VS2010ExpressCSharpProjectTemplatesRuDir">
-      <Component Id="VisualStudio.2010.Express.CSharp.ProjectTemplates.Registration.Ru" Guid="A8F0E6C1-D827-4B8F-95A5-CE6F3B86B193" Transitive="yes">
-        <Condition>
-          <![CDATA[VCSHARP2010EXPRESS_IDE AND VCSHARP2010EXPRESS_PROJECTTEMPLATES_DIR AND VCSHARP2010EXPRESS_IDE_LCID_1049]]>
-        </Condition>
-        <File Id="VisualStudio.2010.Express.CSharp.ProjectTemplates.1049" Name="WPFMetroApplication.zip" Source="$(var.ProjectTemplatesFolder)\Visual Studio 2010\CSharp\1049.zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
-      </Component>
-    </DirectoryRef>
-    
-    <!-- Visual Studio C# Express 2010 Item templates -->
-      
-    <DirectoryRef Id="VS2010ExpressCSharpItemTemplatesEnDir">
-      <Component Id="VisualStudio.2010.Express.CSharp.ItemTemplates.Registration.En" Guid="C4AC1A6D-7F02-43C7-9913-D320AE26A227" Transitive="yes">
-        <Condition>
-          <![CDATA[VCSHARP2010EXPRESS_IDE AND VCSHARP2010EXPRESS_ITEMTEMPLATES_DIR AND VCSHARP2010EXPRESS_IDE_LCID_1033]]>
-        </Condition>
-        <File Id="VisualStudio.2010.Express.CSharp.ItemTemplates.1033" Name="WPFMetroWindow.zip" Source="$(var.ItemTemplatesFolder)\Visual Studio 2010\CSharp\1033.zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
-      </Component>
-    </DirectoryRef>
-    <DirectoryRef Id="VS2010ExpressCSharpItemTemplatesRuDir">
-      <Component Id="VisualStudio.2010.Express.CSharp.ItemTemplates.Registration.Ru" Guid="346A5D60-F98F-4404-9B6F-C7E15A97CEA1" Transitive="yes">
-        <Condition>
-          <![CDATA[VCSHARP2010EXPRESS_IDE AND VCSHARP2010EXPRESS_ITEMTEMPLATES_DIR AND VCSHARP2010EXPRESS_IDE_LCID_1049]]>
-        </Condition>
-        <File Id="VisualStudio.2010.Express.CSharp.ItemTemplates.1049" Name="WPFMetroWindow.zip" Source="$(var.ItemTemplatesFolder)\Visual Studio 2010\CSharp\1049.zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
     </DirectoryRef>
     
     <!-- Visual Studio 2012 Project templates -->
     
     <DirectoryRef Id="VS2012ProjectTemplatesEnDir">
-      <Component Id="VisualStudio.2012.ProjectTemplates.Registration.En" Guid="236BDA0C-97D2-4055-9DDB-1AA399E521B4">
+      <Component Id="VisualStudio.2012.ProjectTemplates.Registration.En" Guid="AFD1DB87-D4F2-4BE6-B835-8DF8374C40E0">
         <Condition>
-          <![CDATA[VS2012DEVENV AND VS2012_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2012_PROJECTTEMPLATES_DIR AND VS2012_IDE_LCID_1033]]>
+          <![CDATA[VS2012DEVENV AND VS2012_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2012_PROJECTTEMPLATES_DIR AND (VS2012PROFESSIONAL_IDE_LCID_1033 OR VS2012PREMIUM_IDE_LCID_1033 OR VS2012ULTIMATE_IDE_LCID_1033)]]>
         </Condition>
         <File Id="VisualStudio.2012.ProjectTemplates.CSharp.1033" Name="WPFMetroApplication.zip" Source="$(var.ProjectTemplatesFolder)\Visual Studio 2012\CSharp\1033.zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
     </DirectoryRef>
     <DirectoryRef Id="VS2012ProjectTemplatesRuDir">
-      <Component Id="VisualStudio.2012.ProjectTemplates.Registration.Ru" Guid="D0B1457D-2C12-46BE-BED4-68793FCEAC23" Transitive="yes">
+      <Component Id="VisualStudio.2012.ProjectTemplates.Registration.Ru" Guid="EB57E18E-C092-4B8A-9DD9-67892FCC51B5" Transitive="yes">
         <Condition>
-          <![CDATA[VS2012DEVENV AND VS2012_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2012_PROJECTTEMPLATES_DIR AND VS2012_IDE_LCID_1049]]>
+          <![CDATA[VS2012DEVENV AND VS2012_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2012_PROJECTTEMPLATES_DIR AND (VS2012PROFESSIONAL_IDE_LCID_1049 OR VS2012PREMIUM_IDE_LCID_1049 OR VS2012ULTIMATE_IDE_LCID_1049)]]>
         </Condition>
         <File Id="VisualStudio.2012.ProjectTemplates.CSharp.1049" Name="WPFMetroApplication.zip" Source="$(var.ProjectTemplatesFolder)\Visual Studio 2012\CSharp\1049.zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
@@ -556,26 +484,64 @@
     <!-- Visual Studio 2012 Item templates -->
     
     <DirectoryRef Id="VS2012ItemTemplatesEnDir">
-      <Component Id="VisualStudio.2012.ItemTemplates.Registration.En" Guid="B32932EF-C57D-402A-9596-1384246630B8" Transitive="yes">
+      <Component Id="VisualStudio.2012.ItemTemplates.Registration.En" Guid="E60EECD4-D7EA-4C0F-874E-54413E62F986" Transitive="yes">
         <Condition>
-          <![CDATA[VS2012DEVENV AND VS2012_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2012_ITEMTEMPLATES_DIR AND VS2012_IDE_LCID_1033]]>
+          <![CDATA[VS2012DEVENV AND VS2012_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2012_ITEMTEMPLATES_DIR AND (VS2012PROFESSIONAL_IDE_LCID_1033 OR VS2012PREMIUM_IDE_LCID_1033 OR VS2012ULTIMATE_IDE_LCID_1033)]]>
         </Condition>
         <File Id="VisualStudio.2012.ItemTemplates.CSharp.1033" Name="WPFMetroWindow.zip" Source="$(var.ItemTemplatesFolder)\Visual Studio 2012\CSharp\1033.zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
     </DirectoryRef>
     <DirectoryRef Id="VS2012ItemTemplatesRuDir">
-      <Component Id="VisualStudio.2012.ItemTemplates.Registration.Ru" Guid="0BD07789-F741-4455-93F2-FF35160FA46A" Transitive="yes">
+      <Component Id="VisualStudio.2012.ItemTemplates.Registration.Ru" Guid="04DF139C-9B02-4A74-91AD-07AB0A2B8963" Transitive="yes">
         <Condition>
-          <![CDATA[VS2012DEVENV AND VS2012_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2012_ITEMTEMPLATES_DIR AND VS2012_IDE_LCID_1049]]>
+          <![CDATA[VS2012DEVENV AND VS2012_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2012_ITEMTEMPLATES_DIR AND (VS2012PROFESSIONAL_IDE_LCID_1049 OR VS2012PREMIUM_IDE_LCID_1049 OR VS2012ULTIMATE_IDE_LCID_1049)]]>
         </Condition>
         <File Id="VisualStudio.2012.ItemTemplates.CSharp.1049" Name="WPFMetroWindow.zip" Source="$(var.ItemTemplatesFolder)\Visual Studio 2012\CSharp\1049.zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
     </DirectoryRef>
-    
+
+    <!-- Visual Studio Express 2012 for Windows Desktop Project templates -->
+
+    <DirectoryRef Id="VS2012WinDesktopExpressProjectTemplatesEnDir">
+      <Component Id="VisualStudio.2012.Express.WinDesktop.ProjectTemplates.Registration.En" Guid="08D74CE9-8E0C-448C-95DD-2D8FA8A924C0" Transitive="yes">
+        <Condition>
+          <![CDATA[VS2012WINDESKTOPEXPRESS_IDE AND VS2012WINDESKTOPEXPRESS_PROJECTTEMPLATES_DIR AND VS2012WINDESKTOPEXPRESS_IDE_LCID_1033]]>
+        </Condition>
+        <File Id="VisualStudio.2012.Express.WinDesktop.ProjectTemplates.1033" Name="WPFMetroApplication.zip" Source="$(var.ProjectTemplatesFolder)\Visual Studio 2012\CSharp\1033.zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="VS2012WinDesktopExpressProjectTemplatesRuDir">
+      <Component Id="VisualStudio.2012.Express.WinDesktop.ProjectTemplates.Registration.Ru" Guid="C9A9EE62-0112-42B1-BBE0-07FC4357DCDE" Transitive="yes">
+        <Condition>
+          <![CDATA[VS2012WINDESKTOPEXPRESS_IDE AND VS2012WINDESKTOPEXPRESS_PROJECTTEMPLATES_DIR AND VS2012WINDESKTOPEXPRESS_IDE_LCID_1049]]>
+        </Condition>
+        <File Id="VisualStudio.2012.Express.WinDesktop.ProjectTemplates.1049" Name="WPFMetroApplication.zip" Source="$(var.ProjectTemplatesFolder)\Visual Studio 2012\CSharp\1049.zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
+      </Component>
+    </DirectoryRef>
+
+    <!-- Visual Studio Express 2012 for Windows Desktop Item templates -->
+
+    <DirectoryRef Id="VS2012WinDesktopExpressItemTemplatesEnDir">
+      <Component Id="VisualStudio.2012.Express.WinDesktop.ItemTemplates.Registration.En" Guid="8A412EBE-5FE9-463A-8428-B5FFAEEB19EE" Transitive="yes">
+        <Condition>
+          <![CDATA[VS2012WINDESKTOPEXPRESS_IDE AND VS2012WINDESKTOPEXPRESS_ITEMTEMPLATES_DIR AND VS2012WINDESKTOPEXPRESS_IDE_LCID_1033]]>
+        </Condition>
+        <File Id="VisualStudio.2012.Express.WinDesktop.ItemTemplates.1033" Name="WPFMetroWindow.zip" Source="$(var.ItemTemplatesFolder)\Visual Studio 2012\CSharp\1033.zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="VS2012WinDesktopExpressItemTemplatesRuDir">
+      <Component Id="VisualStudio.2012.Express.WinDesktop.ItemTemplates.Registration.Ru" Guid="D9EF075B-190A-430B-9968-17E2DE84F46A" Transitive="yes">
+        <Condition>
+          <![CDATA[VS2012WINDESKTOPEXPRESS_IDE AND VS2012WINDESKTOPEXPRESS_ITEMTEMPLATES_DIR AND VS2012WINDESKTOPEXPRESS_IDE_LCID_1049]]>
+        </Condition>
+        <File Id="VisualStudio.2012.Express.WinDesktop.ItemTemplates.1049" Name="WPFMetroWindow.zip" Source="$(var.ItemTemplatesFolder)\Visual Studio 2012\CSharp\1049.zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
+      </Component>
+    </DirectoryRef>
+
     <!-- Test app -->
       
     <DirectoryRef Id="InstallTestDir">
-      <Component Id="Test.Microsoft.Expression.Drawing" Guid="E63C5DF6-2E19-4D72-A3DE-250A43AA00FF">
+      <Component Id="Test.Microsoft.Expression.Drawing" Guid="25495F8A-DED2-4E12-B8CF-A9B3B19FC5AB">
         <File Id="Microsoft.Expression.Drawing.Test.dll" Source="$(var.AssemblyDependenciesFolder)\Microsoft.Expression.Drawing.dll" Checksum="yes" KeyPath="yes" Vital="yes">
           <?if $(sys.BUILDARCH) = x64 ?>
             <netfx:NativeImage Id="Microsoft.Expression.Drawing.NativeImage" Platform="64bit" Priority="1" AppBaseDirectory="InstallTestDir"/>
@@ -584,16 +550,7 @@
           <?endif ?>
         </File>
       </Component>
-      <Component Id="Test.Microsoft.Windows.Shell" Guid="73FEC9B5-1705-4581-B206-844641D924A5">
-        <File Id="Microsoft.Windows.Shell.Test.dll" Source="$(var.AssemblyDependenciesFolder)\Microsoft.Windows.Shell.dll" Checksum="yes" KeyPath="yes" Vital="yes">
-          <?if $(sys.BUILDARCH) = x64 ?>
-            <netfx:NativeImage Id="Microsoft.Windows.Shell.NativeImage" Platform="64bit" Priority="1" AppBaseDirectory="InstallTestDir"/>
-          <?else ?>
-            <netfx:NativeImage Id="Microsoft.Windows.Shell.NativeImage" Platform="32bit" Priority="1" AppBaseDirectory="InstallTestDir"/>
-          <?endif ?>
-        </File>
-      </Component>
-      <Component Id="Test.Elysium" Guid="D2734950-A732-46F6-B0EC-D77B749DAD81">
+      <Component Id="Test.Elysium" Guid="D2998D78-3D8E-4EDE-ABF1-1E393B9B4F44">
         <File Id="Elysium.Test.dll" Source="$(var.AnyCPUReleaseFolder)\Elysium.dll" Checksum="yes" KeyPath="yes" Vital="yes">
           <?if $(sys.BUILDARCH) = x64 ?>
             <netfx:NativeImage Id="Elysium.NativeImage" Platform="64bit" Priority="1" AppBaseDirectory="InstallTestDir"/>
@@ -602,7 +559,7 @@
           <?endif ?>
         </File>
       </Component>
-      <Component Id="Test.Elysium.Notifications" Guid="CB2F785F-CA67-4233-B8BD-A0AD14CAB2DC">
+      <Component Id="Test.Elysium.Notifications" Guid="9E952694-DEEE-4757-AAF0-4EB74062A4D2">
         <File Id="Elysium.Notifications.Test.dll" Source="$(var.AnyCPUReleaseFolder)\Elysium.Notifications.dll" Checksum="yes" KeyPath="yes" Vital="yes">
           <?if $(sys.BUILDARCH) = x64 ?>
             <netfx:NativeImage Id="Elysium.Notifications.NativeImage" Platform="64bit" Priority="1" AppBaseDirectory="InstallTestDir"/>
@@ -611,7 +568,7 @@
           <?endif ?>
         </File>
       </Component>
-      <Component Id="Test" Guid="6CD9B6B3-D66A-4C1C-BBAB-3B7C78633E79">
+      <Component Id="Test" Guid="AA626E7F-515E-48E8-AFDE-22F3AC9F19E0">
         <File Source="$(var.PlatformReleaseFolder)\Elysium.Test.exe" Checksum="yes" KeyPath="yes" Vital="yes">
           <?if $(sys.BUILDARCH) = x64 ?>
             <netfx:NativeImage Id="Test.NativeImage" Platform="64bit" Priority="1" AppBaseDirectory="InstallTestDir"/>
@@ -620,13 +577,13 @@
           <?endif ?>
         </File>
       </Component>
-      <Component Id="Test.Shortcut.Registration" Guid="0EA43429-FCFE-451E-8947-E975F3809A2F">
+      <Component Id="Test.Shortcut.Registration" Guid="BE45CA70-98D9-4B19-A1D4-40553DE4B5E0">
         <CreateFolder Directory="AllUsersShortcutsDir"/>
         <Shortcut Id="Test.Shortcut"
                   Name="Elysium Test app"
                   Directory="AllUsersShortcutsDir"
                   Target="[InstallTestDir]Elysium.Test.exe"/>
-        <RemoveFolder Id="AllUsersShortcutsDir_45AFE82DA4174979867CD563755FD94D" Directory="AllUsersShortcutsDir" On="uninstall"/>
+        <RemoveFolder Id="AllUsersShortcutsDir_F933CAE6F9624A7F8821A37960EEFD47" Directory="AllUsersShortcutsDir" On="uninstall"/>
         <RegistryValue Root="HKLM" Key="Software\Elysium" Type="string" Name="Test app" Value="true" KeyPath="yes"/>
       </Component>
     </DirectoryRef>

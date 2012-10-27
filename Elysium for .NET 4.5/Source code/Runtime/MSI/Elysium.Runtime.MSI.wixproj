@@ -64,6 +64,6 @@
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <PropertyGroup>
-    <PostBuildEvent>"..\..\..\..\..\Tools and Resources\Utilities\signtool\signtool.exe" sign /f "..\..\..\..\..\Source code\SigningKey.pfx" "Installer.msi"</PostBuildEvent>
+    <PostBuildEvent>"..\..\..\..\..\Tools and Resources\Utilities\signtool\$(Platform)\signtool.exe" sign /f "..\..\..\..\..\Source code\SigningKey.pfx" "Installer.msi"</PostBuildEvent>
   </PropertyGroup>
 </Project>

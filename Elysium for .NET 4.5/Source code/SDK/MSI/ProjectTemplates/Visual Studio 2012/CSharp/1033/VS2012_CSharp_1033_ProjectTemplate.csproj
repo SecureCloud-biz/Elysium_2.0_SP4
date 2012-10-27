@@ -35,11 +35,12 @@
     <DebugType>pdbonly</DebugType>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="App.xaml"/>
+    <None Include="App.config" />
+    <None Include="App.xaml" />
     <None Include="App.xaml.cs" />
     <None Include="AssemblyInfo.cs" />
     <None Include="ElysiumApplication.vstemplate" />
-    <None Include="MainWindow.xaml"/>
+    <None Include="MainWindow.xaml" />
     <None Include="MainWindow.xaml.cs" />
     <None Include="MetroApplication.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

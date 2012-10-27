@@ -27,7 +27,7 @@ cd "..\Binary\Documentation"
 
 chdir /d %~dp0
 cd "..\Tools and Resources\Assembly dependencies\"
-"..\Utilities\7za\7za.exe" u "..\..\Deploy\SDK\Elysium SDK (x86).zip" "Microsoft.Expression.Drawing.dll" "Microsoft.Expression.Drawing.xml" "Microsoft.Windows.Shell.dll" "Microsoft.Windows.Shell.pdb" "Microsoft.Windows.Shell.xml" "Design\*" "en\*"
+"..\Utilities\7za\7za.exe" u "..\..\Deploy\SDK\Elysium SDK (x86).zip" "Microsoft.Expression.Drawing.dll" "Microsoft.Expression.Drawing.xml" "Design\*" "en\*"
 
 chdir /d %~dp0
 del "..\Deploy\SDK\Elysium SDK (x64).zip"
@@ -38,21 +38,21 @@ cd "..\Binary\Documentation"
 
 chdir /d %~dp0
 cd "..\Tools and Resources\Assembly dependencies\"
-"..\Utilities\7za\7za.exe" u "..\..\Deploy\SDK\Elysium SDK (x64).zip" "Microsoft.Expression.Drawing.dll" "Microsoft.Expression.Drawing.xml" "Microsoft.Windows.Shell.dll" "Microsoft.Windows.Shell.pdb" "Microsoft.Windows.Shell.xml" "Design\*" "en\*"
+"..\Utilities\7za\7za.exe" u "..\..\Deploy\SDK\Elysium SDK (x64).zip" "Microsoft.Expression.Drawing.dll" "Microsoft.Expression.Drawing.xml" "Design\*" "en\*"
 
 chdir /d %~dp0
 del "..\Deploy\Runtime\Elysium Runtime (x86).zip"
 "..\Tools and Resources\Utilities\7za\7za.exe" a "..\Deploy\Runtime\Elysium Runtime (x86).zip" "..\Binary\Release\AnyCPU\Elysium.dll" "..\Binary\Release\AnyCPU\Elysium.Notifications.dll" "..\Binary\Release\x86\Elysium.Notifications.Server.exe" "..\Binary\Release\x86\Elysium.Notifications.Server.exe.config"
 
 cd "..\Tools and Resources\Assembly dependencies\"
-"..\Utilities\7za\7za.exe" u "..\..\Deploy\Runtime\Elysium Runtime (x86).zip" "Microsoft.Expression.Drawing.dll" "Microsoft.Windows.Shell.dll"
+"..\Utilities\7za\7za.exe" u "..\..\Deploy\Runtime\Elysium Runtime (x86).zip" "Microsoft.Expression.Drawing.dll"
 
 chdir /d %~dp0
 del "..\Deploy\Runtime\Elysium Runtime (x64).zip"
 "..\Tools and Resources\Utilities\7za\7za.exe" a "..\Deploy\Runtime\Elysium Runtime (x64).zip" "..\Binary\Release\AnyCPU\Elysium.dll" "..\Binary\Release\AnyCPU\Elysium.Notifications.dll" "..\Binary\Release\x64\Elysium.Notifications.Server.exe" "..\Binary\Release\x64\Elysium.Notifications.Server.exe.config"
 
 cd "..\Tools and Resources\Assembly dependencies\"
-"..\Utilities\7za\7za.exe" u "..\..\Deploy\Runtime\Elysium Runtime (x64).zip" "Microsoft.Expression.Drawing.dll" "Microsoft.Windows.Shell.dll"
+"..\Utilities\7za\7za.exe" u "..\..\Deploy\Runtime\Elysium Runtime (x64).zip" "Microsoft.Expression.Drawing.dll"
 
 chdir /d %~dp0
 del "..\Deploy\SDK\Setup (x86).exe"

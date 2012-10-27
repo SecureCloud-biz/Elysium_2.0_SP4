@@ -2,7 +2,7 @@
 <WixLocalization xmlns="http://schemas.microsoft.com/wix/2006/localization" Culture="ru-ru" Codepage="1251">
 	<String Id="Language">1049</String>
   <String Id="DowngradeError">Другая версия [ProductName] уже установлена.</String>
-  <String Id="VisualStudioError">Visual Studio 2010 (все редакции поддерживаются) или Visual Studio 2012 (Professional или выше) должна быть установлена.</String>
+  <String Id="VisualStudioError">Visual Studio 2012 должна быть установлена.</String>
   <String Id="FeatureTitle_Elysium">Elysium</String>
   <String Id="FeatureTitle_Notifications">Система уведомлений</String>
   <String Id="FeatureTitle_Documentation.En">Документация на английском</String>

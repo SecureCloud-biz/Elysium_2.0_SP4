@@ -130,8 +130,8 @@ namespace Elysium.Controls
 
                 if (WindowStartupLocation == WindowStartupLocation.CenterScreen)
                 {
-                    Left = SystemParameters.VirtualScreenLeft + SystemParameters.VirtualScreenWidth / 2 - ActualWidth / 2;
-                    Top = SystemParameters.VirtualScreenTop + SystemParameters.VirtualScreenHeight / 2 - ActualHeight / 2;
+                    Left = SystemParameters.VirtualScreenLeft + SystemParameters.PrimaryScreenWidth / 2 - ActualWidth / 2;
+                    Top = SystemParameters.VirtualScreenTop + SystemParameters.PrimaryScreenHeight / 2 - ActualHeight / 2;
                 }
                 if (WindowStartupLocation == WindowStartupLocation.CenterOwner)
                 {

@@ -73,8 +73,6 @@ namespace Elysium.Controls
             CommandBindings.Add(new CommandBinding(WindowCommands.Close, (sender, e) => Close()));
         }
 
-        [SuppressMessage("Microsoft.Security", "CA2141:TransparentMethodsMustNotSatisfyLinkDemandsFxCopRule",
-            Justification = "We need to use Microsoft.Windows.Shell.dll version 3.5")]
         [SecurityCritical]
         private void Initialize()
         {
@@ -374,8 +372,6 @@ namespace Elysium.Controls
             OnHasDropShadowChangedInternal(newHasDropShadow);
         }
 
-        [SuppressMessage("Microsoft.Security", "CA2141:TransparentMethodsMustNotSatisfyLinkDemandsFxCopRule",
-            Justification = "We need to use Microsoft.Windows.Shell.dll version 3.5")]
         [SuppressMessage("Microsoft.Contracts", "Nonnull-36-0",
             Justification = "Bug in Code Contracts static checker: We should ignore value of _chrome field because it is overwritten.")]
         [SecurityCritical]
@@ -563,8 +559,6 @@ namespace Elysium.Controls
         }
 
         [SecurityCritical]
-        [SuppressMessage("Microsoft.Security", "CA2141:TransparentMethodsMustNotSatisfyLinkDemandsFxCopRule",
-            Justification = "We need to use Microsoft.Windows.Shell.dll version 3.5")]
         private void OnApplyTemplateInternal()
         {
             if (Template != null)

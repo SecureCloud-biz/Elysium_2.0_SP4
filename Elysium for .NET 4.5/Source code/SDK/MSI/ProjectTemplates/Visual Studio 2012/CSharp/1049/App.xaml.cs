@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-using System.Linq;
-using System.Windows;
+using System.Linq
+$if$ ($targetframeworkversion$ >= 4.5)using System.Threading.Tasks;
+$endifusing System.Windows;
 using System.Windows.Media;
 using Elysium;
 

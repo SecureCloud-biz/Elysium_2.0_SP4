@@ -4,7 +4,7 @@
   <?include SDKVariables.wxi ?>
   
   <Bundle Name="$(var.SDKName) for $(var.FrameworkName)" Manufacturer="Alex F. Sherman and Codeplex Community"
-          Version="$(var.SDKVersion).$(var.SDKBuild).$(var.SDKRevision)" UpgradeCode="ED0F0584-1CE1-45B0-9616-32ECC4DE5CAE"
+          Version="$(var.SDKVersion).$(var.SDKBuild).$(var.SDKRevision)" UpgradeCode="02EF99BB-E737-4B32-96EF-5B8A13C5531E"
           AboutUrl="http://elysium.codeplex.com/" IconSourceFile="Icon.ico" Compressed="yes">
     
     <BootstrapperApplicationRef Id="ManagedBootstrapperApplicationHost">
@@ -13,10 +13,6 @@
       <Payload SourceFile="..\$(var.AssemblyDependenciesFolder)\BootstrapperCore.dll" Compressed="yes"/>
       
       <Payload SourceFile="..\$(var.AssemblyDependenciesFolder)\Microsoft.Expression.Drawing.dll" Compressed="yes"/>
-      <Payload SourceFile="..\$(var.AssemblyDependenciesFolder)\Microsoft.Windows.Shell.dll" Compressed="yes"/>
-      <?if $(var.Configuration) = Debug?>
-      <Payload SourceFile="..\$(var.AssemblyDependenciesFolder)\Microsoft.Windows.Shell.pdb" Compressed="yes"/>
-      <?endif?>
       
       <Payload SourceFile="..\$(var.AnyCPUSourceFolder)\Elysium.dll" Compressed="yes"/>
       <?if $(var.Configuration) = Debug?>
@@ -42,7 +38,7 @@
     <?endif ?>
 
     <Chain>
-      <PackageGroupRef Id="NetFx40ClientWeb"/>
+      <PackageGroupRef Id="NetFx45Web"/>
       <MsiPackage Id="Elysium.SDK.en_us" SourceFile="..\$(var.PlatformSourceFolder)\SDK\MSI\en-us\Installer.msi"
                   InstallCondition="NOT (UserLanguageID = 1049)" EnableFeatureSelection="yes" Visible="no"
                   Vital="yes" Compressed="yes">
