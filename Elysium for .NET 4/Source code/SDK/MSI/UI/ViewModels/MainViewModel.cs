@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -30,11 +31,11 @@ namespace Elysium.SDK.MSI.UI.ViewModels
     {
         private bool _downgrade;
 
-// ReSharper disable InconsistentNaming
+        // ReSharper disable InconsistentNaming
         [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1311:StaticReadonlyFieldsMustBeginWithUpperCaseLetter", Justification = "Suppression is OK here.")]
         private static readonly object _lock = new object();
 
-// ReSharper restore InconsistentNaming
+        // ReSharper restore InconsistentNaming
 
         public MainViewModel()
         {
@@ -71,6 +72,9 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                     case InstallationState.Initializing:
                         CurrentScreen = Screen.Initializing;
                         break;
+                    case InstallationState.Layout:
+                        CurrentScreen = Screen.Layout;
+                        break;
                     case InstallationState.DetectedAbsent:
                         if (!(CurrentScreen == Screen.Primary || CurrentScreen == Screen.Features))
                         {
@@ -92,6 +96,9 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                     case InstallationState.Failed:
                         CurrentScreen = Canceled ? Screen.Canceled : Screen.Fail;
                         break;
+                    case InstallationState.Help:
+                        CurrentScreen = Screen.Help;
+                        break;
                     case InstallationState.RebootRequired:
                         CurrentScreen = Screen.Reboot;
                         break;
@@ -103,6 +110,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                 RaisePropertyChanged("ShowModify");
                 RaisePropertyChanged("ShowRepair");
                 RaisePropertyChanged("ShowUninstall");
+                RaisePropertyChanged("ShowDownload");
             }
         }
 
@@ -119,6 +127,10 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                     RaisePropertyChanged("ShowBack");
                     RaisePropertyChanged("ShowNext");
                     RaisePropertyChanged("ShowInstall");
+                    RaisePropertyChanged("ShowModify");
+                    RaisePropertyChanged("ShowRepair");
+                    RaisePropertyChanged("ShowUninstall");
+                    RaisePropertyChanged("ShowDownload");
                     RaisePropertyChanged("ShowCancel");
                     RaisePropertyChanged("ShowFinish");
                 }
@@ -131,8 +143,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
         {
             get
             {
-                var is64Bit = App.Current.Engine.EvaluateCondition("VersionNT64");
-                var installFolder = (is64Bit
+                var installFolder = (Environment.Is64BitOperatingSystem
                                          ? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)
                                          : Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86)) +
                                     @"\" + Resources.SDKName + @"\" + Resources.NETFrameworkName + @"\" + Resources.SDKVersion + @"\";
@@ -152,24 +163,24 @@ namespace Elysium.SDK.MSI.UI.ViewModels
             }
         }
 
-        private string LayoutFolder
+        public string LayoutFolder
         {
             get
             {
-                var is64Bit = App.Current.Engine.EvaluateCondition("VersionNT64");
                 if (IsInDesignMode)
                 {
-                    return (is64Bit
-                                ? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)
-                                : Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86)) +
-                           @"\" + Resources.SDKName + @"\" + Resources.NETFrameworkName + @"\" + Resources.SDKVersion + @"\Setup\";
+                    return InstallFolder + @"\Setup\";
                 }
                 return App.Current.Engine.StringVariables.Contains("WixBundleLayoutDirectory")
                            ? App.Current.Engine.StringVariables["WixBundleLayoutDirectory"]
-                           : null;
+                           : InstallFolder + @"\Setup\";
             }
 
-            set { App.Current.Engine.StringVariables["WixBundleLayoutDirectory"] = value; }
+            set
+            {
+                App.Current.Engine.StringVariables["WixBundleLayoutDirectory"] = value;
+                RaisePropertyChanged("LayoutFolder");
+            }
         }
 
         public ICommand Browse
@@ -180,30 +191,34 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                 {
                     return null;
                 }
-                Action browse = delegate
+                if (_browse == null)
                 {
-                    var browserDialog = new WinForms.FolderBrowserDialog
-                                            {
-                                                RootFolder = Environment.SpecialFolder.MyComputer,
-                                                SelectedPath = App.Current.Command.Action == LaunchAction.Layout ? InstallFolder : LayoutFolder
-                                            };
-
-                    var result = browserDialog.ShowDialog();
-
-                    if (result == WinForms.DialogResult.OK)
+                    Action browse = delegate
                     {
-                        if (App.Current.Command.Action == LaunchAction.Layout)
+                        var browserDialog = new WinForms.FolderBrowserDialog
                         {
-                            LayoutFolder = browserDialog.SelectedPath;
-                        }
-                        else
+                            RootFolder = Environment.SpecialFolder.MyComputer,
+                            SelectedPath =
+                                App.Current.Command.Action == LaunchAction.Layout ? InstallFolder : LayoutFolder
+                        };
+
+                        var result = browserDialog.ShowDialog();
+
+                        if (result == WinForms.DialogResult.OK)
                         {
-                            InstallFolder = browserDialog.SelectedPath;
+                            if (App.Current.Command.Action == LaunchAction.Layout)
+                            {
+                                LayoutFolder = browserDialog.SelectedPath;
+                            }
+                            else
+                            {
+                                InstallFolder = browserDialog.SelectedPath;
+                            }
                         }
-                    }
-                };
-                return _browse ?? (_browse = new RelayCommand(() => App.Current.Dispatcher.Invoke(DispatcherPriority.Render, browse),
-                                                              () => App.Current.Command.Display == Display.Full));
+                    };
+                    return _browse = new RelayCommand(browse, () => App.Current.Command.Display == Display.Full);
+                }
+                return _browse;
             }
         }
 
@@ -377,7 +392,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                 {
                     return true;
                 }
-                return State == InstallationState.DetectedAbsent && CurrentScreen == Screen.Features;
+                return CurrentScreen == Screen.Features && State == InstallationState.DetectedAbsent;
             }
         }
 
@@ -403,7 +418,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                 {
                     return true;
                 }
-                return State == InstallationState.DetectedAbsent && CurrentScreen == Screen.Primary;
+                return CurrentScreen == Screen.Primary && State == InstallationState.DetectedAbsent;
             }
         }
 
@@ -433,7 +448,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                 {
                     return true;
                 }
-                return State == InstallationState.DetectedAbsent && CurrentScreen == Screen.Features;
+                return CurrentScreen == Screen.Features && State == InstallationState.DetectedAbsent;
             }
         }
 
@@ -463,7 +478,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                 {
                     return true;
                 }
-                return State == InstallationState.DetectedPresent;
+                return CurrentScreen == Screen.Features && State == InstallationState.DetectedPresent;
             }
         }
 
@@ -493,7 +508,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                 {
                     return true;
                 }
-                return State == InstallationState.DetectedPresent;
+                return CurrentScreen == Screen.Features && State == InstallationState.DetectedPresent;
             }
         }
 
@@ -523,7 +538,37 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                 {
                     return true;
                 }
-                return State == InstallationState.DetectedPresent;
+                return CurrentScreen == Screen.Features && State == InstallationState.DetectedPresent;
+            }
+        }
+
+        public ICommand Download
+        {
+            get
+            {
+                if (IsInDesignMode)
+                {
+                    return null;
+                }
+                return _download ?? (_download = new RelayCommand(delegate
+                {
+                    Action = LaunchAction.Layout;
+                    Plan(LaunchAction.Layout);
+                }));
+            }
+        }
+
+        private ICommand _download;
+
+        public bool ShowDownload
+        {
+            get
+            {
+                if (IsInDesignMode)
+                {
+                    return true;
+                }
+                return CurrentScreen == Screen.Layout && State == InstallationState.Layout;
             }
         }
 
@@ -717,37 +762,45 @@ namespace Elysium.SDK.MSI.UI.ViewModels
                     State = InstallationState.DetectedNewer;
                 }
 
-                if (App.Current.Command.Action == LaunchAction.Layout)
+                switch (App.Current.Command.Action)
                 {
-                    if (string.IsNullOrEmpty(App.Current.Command.LayoutDirectory))
-                    {
-                        LayoutFolder = (App.Current.Engine.EvaluateCondition("VersionNT64")
-                                            ? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)
-                                            : Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86)) +
-                                       @"\" + Resources.SDKName + @"\" + Resources.NETFrameworkName + @"\" + Resources.SDKVersion + @"\Setup\";
-
+                    case LaunchAction.Layout:
+                        LayoutFolder = string.IsNullOrEmpty(App.Current.Command.LayoutDirectory)
+                                           ? InstallFolder + @"\Setup\"
+                                           : App.Current.Command.LayoutDirectory;
                         if (App.Current.Command.Display == Display.Full)
                         {
-                            Browse.Execute(null);
+                            State = InstallationState.Layout;
+                        }
+                        break;
+                    case LaunchAction.Help:
+                        State = InstallationState.Help;
+                        break;
+                    default:
+                        if (App.Current.Command.Display != Display.Full)
+                        {
+                            App.Current.Engine.Log(LogLevel.Verbose, "Invoking automatic plan for non-interactive mode.");
                             App.Current.Dispatcher.Invoke(DispatcherPriority.Send, (Action)(() => Plan(App.Current.Command.Action)));
                         }
-                    }
-                    else
-                    {
-                        LayoutFolder = App.Current.Command.LayoutDirectory;
-
-                        App.Current.Dispatcher.Invoke(DispatcherPriority.Send, (Action)(() => Plan(App.Current.Command.Action)));
-                    }
-                }
-                else if (App.Current.Command.Display != Display.Full)
-                {
-                    App.Current.Engine.Log(LogLevel.Verbose, "Invoking automatic plan for non-interactive mode.");
-                    App.Current.Dispatcher.Invoke(DispatcherPriority.Send, (Action)(() => Plan(App.Current.Command.Action)));
+                        break;
                 }
             }
             else
             {
                 State = InstallationState.Failed;
+            }
+        }
+
+        public void ParseCommandLine()
+        {
+            var args = App.Current.Command.GetCommandLineArgs();
+            var lang = args.FirstOrDefault(arg => arg.StartsWith("/lang:", StringComparison.InvariantCultureIgnoreCase));
+            if (!string.IsNullOrWhiteSpace(lang))
+            {
+                // ReSharper disable PossibleNullReferenceException
+                var clsid = lang.Split(new[] { ':' })[1];
+                // ReSharper restore PossibleNullReferenceException
+                Dispatcher.CurrentDispatcher.Thread.CurrentUICulture = CultureInfo.GetCultureInfo(int.Parse(clsid));
             }
         }
 

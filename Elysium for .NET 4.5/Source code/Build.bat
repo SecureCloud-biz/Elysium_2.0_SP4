@@ -76,8 +76,8 @@ chdir /d %~dp0
 
 msbuild "Documentation\ru\Elysium.shfbproj" /target:Build /property:Configuration=Debug;Platform=AnyCPU /verbosity:minimal
 IF ERRORLEVEL 1 goto showerror
-::msbuild "Documentation\en\Elysium.shfbproj" /target:Build /property:Configuration=Debug;Platform=AnyCPU /verbosity:minimal
-::IF ERRORLEVEL 1 goto showerror
+msbuild "Documentation\en\Elysium.shfbproj" /target:Build /property:Configuration=Debug;Platform=AnyCPU /verbosity:minimal
+IF ERRORLEVEL 1 goto showerror
 
 tf checkout "SDK\MSI\UI\Properties\AssemblyInfo.cs" /lock:none
 msbuild "SDK\MSI\UI\Elysium.SDK.MSI.UI.csproj" /target:Build /property:Configuration=Debug;Platform=AnyCPU /property:BuildProjectReferences=false /verbosity:minimal

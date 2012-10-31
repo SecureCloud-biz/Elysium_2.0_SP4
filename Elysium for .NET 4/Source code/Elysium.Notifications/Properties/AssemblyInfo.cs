@@ -19,6 +19,6 @@ using System.Security;
 
 [assembly: NeutralResourcesLanguage("en-us")]
 
-[assembly: AssemblyVersion("1.5.25.0")]
-[assembly: AssemblyFileVersion("1.5.25.0")]
-[assembly: AssemblyInformationalVersion("1.5")]
+[assembly: AssemblyVersion("1.5.28.0")]
+[assembly: AssemblyFileVersion("1.5.28.0")]
+[assembly: AssemblyInformationalVersion("1.5 Beta")]

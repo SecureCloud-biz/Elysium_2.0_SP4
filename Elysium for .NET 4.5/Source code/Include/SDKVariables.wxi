@@ -24,7 +24,7 @@
   <?define FrameworkName = ".NET Framework 4.5"?>
   <?define SDKName = "Elysium SDK"?>
   <?define SDKVersion = "1.5"?>
-  <?define SDKBuild = "791"?>
+  <?define SDKBuild = "817"?>
   <?define SDKRevision = "0"?>
   
 </Include>

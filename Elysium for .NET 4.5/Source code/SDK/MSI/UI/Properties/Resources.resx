@@ -213,4 +213,49 @@
   <data name="Reboot" xml:space="preserve">
     <value>You need to reboot to complete operation.</value>
   </data>
+  <data name="Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="DownloadLocation" xml:space="preserve">
+    <value>Download location:</value>
+  </data>
+  <data name="HelpForceRestart" xml:space="preserve">
+    <value>Always restart the system after installation.</value>
+  </data>
+  <data name="HelpHelp" xml:space="preserve">
+    <value>Display this usage text.</value>
+  </data>
+  <data name="HelpLanguage" xml:space="preserve">
+    <value>Setup language</value>
+  </data>
+  <data name="HelpLayout" xml:space="preserve">
+    <value>Create a copy of the media in specified folder.</value>
+  </data>
+  <data name="HelpLog" xml:space="preserve">
+    <value>Specifies a location for the log file.</value>
+  </data>
+  <data name="HelpModify" xml:space="preserve">
+    <value>Modify the product features configuration.</value>
+  </data>
+  <data name="HelpNoRestart" xml:space="preserve">
+    <value>Do not restart during or after installation.</value>
+  </data>
+  <data name="HelpPassive" xml:space="preserve">
+    <value>Display progress but do not wait for user input.</value>
+  </data>
+  <data name="HelpPromptRestart" xml:space="preserve">
+    <value>Prompt the user before restarting the system.</value>
+  </data>
+  <data name="HelpQuiet" xml:space="preserve">
+    <value>Quiet mode with no display and no user interaction.</value>
+  </data>
+  <data name="HelpRepair" xml:space="preserve">
+    <value>Repair the product.</value>
+  </data>
+  <data name="HelpTitle" xml:space="preserve">
+    <value>This setup supports the following switches:</value>
+  </data>
+  <data name="HelpUninstall" xml:space="preserve">
+    <value>Uninstall the product.</value>
+  </data>
 </root>

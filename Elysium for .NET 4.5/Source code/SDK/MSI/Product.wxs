@@ -352,13 +352,13 @@
         <File Source="$(var.PlatformReleaseFolder)\Elysium.Notifications.Server.exe.config" Checksum="yes" KeyPath="no" Vital="yes"/>
         <ServiceInstall Type="ownProcess"
                         Vital="yes"
-                        Name="ElysiumNotifications-v1.5.19.0-v4.5"
+                        Name="ElysiumNotifications-v1.5.31.0-v4.5"
                         DisplayName="Elysium Notifications"
                         Start="auto"
                         Account="LocalSystem"
                         ErrorControl="normal"
                         Interactive="no"/>
-        <ServiceControl Id="ElysiumNotifications" Name="ElysiumNotifications-v1.5.19.0-v4.5" Start="install" Stop="uninstall" Remove="uninstall" Wait="yes"/>
+        <ServiceControl Id="ElysiumNotifications" Name="ElysiumNotifications-v1.5.31.0-v4.5" Start="install" Stop="uninstall" Remove="uninstall" Wait="yes"/>
       </Component>
       
       <!-- Visual Studio registration -->
@@ -576,6 +576,7 @@
             <netfx:NativeImage Id="Test.NativeImage" Platform="32bit" Priority="1" AppBaseDirectory="InstallTestDir"/>
           <?endif ?>
         </File>
+        <File Source="$(var.PlatformReleaseFolder)\Elysium.Test.exe.config" Checksum="yes" KeyPath="no" Vital="yes"/>
       </Component>
       <Component Id="Test.Shortcut.Registration" Guid="BE45CA70-98D9-4B19-A1D4-40553DE4B5E0">
         <CreateFolder Directory="AllUsersShortcutsDir"/>

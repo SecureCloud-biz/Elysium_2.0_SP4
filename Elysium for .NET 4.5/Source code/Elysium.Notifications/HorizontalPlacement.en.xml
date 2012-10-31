@@ -4,5 +4,20 @@
     <name>Elysium</name>
   </assembly>
   <members>
+    <type name="T:Elysium.Notifications.HorizontalPlacement">
+      <summary>
+        Defines, by which side of the screen notifications are aligned.
+      </summary>
+    </type>
+    <field name="F:Elysium.Notifications.HorizontalPlacement.Left">
+      <summary>
+        Notifications are aligned by the left side of the screen.
+      </summary>
+    </field>
+    <field name="F:Elysium.Notifications.HorizontalPlacement.Right">
+      <summary>
+        Notifications are aligned by the right side of the screen.
+      </summary>
+    </field>
   </members>
 </doc>

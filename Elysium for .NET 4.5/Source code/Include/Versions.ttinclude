@@ -3,10 +3,10 @@ public static class Versions
 {
 	public static readonly string Copyright = "Copyright © Alex F. Sherman & Codeplex community 2011-" + DateTime.Now.Year.ToString();
     public const string Version = "1.5";
-    public const string Elysium = "1.5.791.0";
-	public const string Notifications = "1.5.26.0";
-	public const string NotificationsServer = "1.5.19.0";
-	public const string Test = "1.5.247.0";
-	public const string SDK = "1.5.179.0";
+    public const string Elysium = "1.5.817.0";
+	public const string Notifications = "1.5.29.0";
+	public const string NotificationsServer = "1.5.31.0";
+	public const string Test = "1.5.262.0";
+	public const string SDK = "1.5.199.0";
 }
 #>

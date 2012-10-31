@@ -32,7 +32,7 @@
             // NotificationsService
             // 
             this.AutoLog = false;
-            this.ServiceName = "ElysiumNotifications-v1.5.19.0-v4.5";
+            this.ServiceName = "ElysiumNotifications-v1.5.31.0-v4.5";
 
         }
 

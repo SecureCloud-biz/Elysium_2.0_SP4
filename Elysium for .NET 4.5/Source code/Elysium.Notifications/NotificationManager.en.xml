@@ -4,5 +4,41 @@
     <name>Elysium</name>
   </assembly>
   <members>
+    <type name="T:Elysium.Notifications.NotificationManager">
+      <summary>
+        A notification manager.
+      </summary>
+    </type>
+    <method name="M:Elysium.Notifications.NotificationManager.Push(System.String,System.String)">
+      <summary>
+        Displays a notification with a specified header and a remark and returns a control flow without waiting for notification's closing.
+      </summary>
+      <param name="message">A header of the notification.</param>
+      <param name="remark">A remark.</param>
+      <exception cref="T:System.ArgumentException">
+
+        Parameter <paramref name="message"/> has a value = null or it's an empty string or it consists of spaces.
+      </exception>
+      <exception cref="T:Elysium.Notifications.ServerUnavailableException">
+        Notification's server is inaccessible.
+      </exception>
+      <exception cref="T:Elysium.Notifications.PushNotificationFailedException">
+        While displaying the notification an unknown error happened.
+      </exception>
+      <requires exception="T:System.ArgumentException">message != null</requires>
+    </method>
+    <method name="M:Elysium.Notifications.NotificationManager.TryPush(System.String,System.String)">
+      <summary>
+        Displays a notification with a specified header and a remark and returns a control flow without waiting for notification's closing.
+        Returns a value, which corresponds to whether the operation succeeded.
+      </summary>
+      <param name="message">A header of the notification.</param>
+      <param name="remark">A remark.</param>
+      <returns>True, if the notification was displayed successfully,false otherwise..</returns>
+      <exception cref="T:System.ArgumentException">
+        Parameter <paramref name="message"/>  has a value = null or it's an empty string or it consists of spaces.
+      </exception>
+      <requires exception="T:System.ArgumentException">message != null</requires>
+    </method>
   </members>
 </doc>

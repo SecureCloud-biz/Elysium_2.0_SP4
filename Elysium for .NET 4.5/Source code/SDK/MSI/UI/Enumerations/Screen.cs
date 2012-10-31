@@ -3,6 +3,7 @@
     public enum Screen
     {
         Initializing,
+        Layout,
         Primary,
         Features,
         Progress,
@@ -10,6 +11,7 @@
         Final,
         Canceled,
         Fail,
+        Help,
         Reboot
     }
 }

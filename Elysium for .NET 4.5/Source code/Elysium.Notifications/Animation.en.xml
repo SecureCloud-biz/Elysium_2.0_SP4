@@ -4,5 +4,25 @@
     <name>Elysium</name>
   </assembly>
   <members>
+    <type name="T:Elysium.Notifications.Animation">
+      <summary>
+        Defines an animation of notification's appearing and fading.
+      </summary>
+    </type>
+    <field name="F:Elysium.Notifications.Animation.None">
+      <summary>
+        No animation.
+      </summary>
+    </field>
+    <field name="F:Elysium.Notifications.Animation.Fade">
+      <summary>
+        A notification changes it's transparency from 0% to 100%.
+      </summary>
+    </field>
+    <field name="F:Elysium.Notifications.Animation.Slide">
+      <summary>
+        A notification gradualyy appears from the specified side of the screen.
+      </summary>
+    </field>
   </members>
 </doc>

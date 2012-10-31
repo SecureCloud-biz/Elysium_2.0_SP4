@@ -98,6 +98,199 @@
         Represents the class that controls theme's basic settings.
       </summary>
     </member>
+    <member name="P:Elysium.Manager.DefaultTheme">
+      <summary>
+        Returns default theme type.
+      </summary>
+      <value>
+        One of the values of the enumeration <see cref="T:Elysium.Theme" /></value>
+    </member>
+    <member name="P:Elysium.Manager.DefaultAccentBrush">
+      <summary>
+        Returns a brush with solid filling, which contains a default accent color.
+      </summary>
+      <value>A brush with solid filling.</value>
+    </member>
+    <member name="P:Elysium.Manager.DefaultContrastBrush">
+      <summary>
+        Returns a brush with solid filling, which contains a default contrast color (contrast to accent).
+      </summary>
+      <value>A brush with solid filling.</value>
+    </member>
+    <member name="M:Elysium.Manager.TryGetTheme(System.Windows.FrameworkElement,Elysium.Theme@)">
+      <summary>
+        Returns such a theme type, which is actual for the control, by using safe method without exceptions.
+      </summary>
+      <param name="reference">A control, whose theme type is needed to get.</param>
+      <param name="theme">An actual theme type for the control.</param>
+      <returns>True, if method succeeded, false otherwise.</returns>
+    </member>
+    <member name="M:Elysium.Manager.GetTheme(System.Windows.FrameworkElement)">
+      <summary>
+        Retunrs such a theme type, which is actual for the control.
+      </summary>
+      <param name="reference">A control, whose theme type is needed to get.</param>
+      <returns>A theme type for the control.</returns>
+    </member>
+    <member name="M:Elysium.Manager.TryGetTheme(System.Windows.Application,Elysium.Theme@)">
+      <summary>
+        Returns such a theme type, which is actual for the application, by using safe method without exceptions.
+      </summary>
+      <param name="reference">An instance of the apllication, whose theme type is needed to get.</param>
+      <param name="theme">An actual theme type for the application.</param>
+      <returns>True, if method succeeded, false otherwise.</returns>
+    </member>
+    <member name="M:Elysium.Manager.GetTheme(System.Windows.Application)">
+      <summary>
+        Returns such a theme type, which is actual for the application.
+      </summary>
+      <param name="reference">An instance of the apllication, whose theme type is needed to get.</param>
+      <returns>A theme type for the application.</returns>
+    </member>
+    <member name="M:Elysium.Manager.TryGetAccentBrush(System.Windows.FrameworkElement,System.Windows.Media.SolidColorBrush@)">
+      <summary>
+        Returns a value of the accent color for the control, by using safe method without exceptions.
+      </summary>
+      <param name="reference">A control, whose theme type is needed to get.</param>
+      <param name="accentBrush">An accent color for the control.</param>
+      <returns>True, if method succeeded, false otherwise.</returns>
+    </member>
+    <member name="M:Elysium.Manager.GetAccentBrush(System.Windows.FrameworkElement)">
+      <summary>
+        Returns a value of the accent color for the specified control.
+      </summary>
+      <param name="reference">A control, whose theme type is needed to get.</param>
+      <returns>An accent color for the control.</returns>
+    </member>
+    <member name="M:Elysium.Manager.TryGetAccentBrush(System.Windows.Application,System.Windows.Media.SolidColorBrush@)">
+      <summary>
+        Returns a value of the accent color for the application, by using safe method without exceptions.
+      </summary>
+      <param name="reference">An instance of the application, whose theme type is needed to get.</param>
+      <param name="accentBrush">An accent color for the application.</param>
+      <returns>True, if method succeeded, false otherwise.</returns>
+    </member>
+    <member name="M:Elysium.Manager.GetAccentBrush(System.Windows.Application)">
+      <summary>
+        Returns a value of the accent color for the application.
+      </summary>
+      <param name="reference">An instance of the application, whose theme type is needed to get.</param>
+      <returns>An accent color for the application.</returns>
+    </member>
+    <member name="M:Elysium.Manager.TryGetContrastBrush(System.Windows.FrameworkElement,System.Windows.Media.SolidColorBrush@)">
+      <summary>
+        Returns a value of the contrast color (contrast to accent color) for the control, using safe method without exceptions.
+      </summary>
+      <param name="reference">A control, whose contrast color (contrast to accent color) is needed to get.</param>
+      <param name="contrastBrush">A constrast color (contrast to accent color) for the control.</param>
+      <returns>True, if method succeeded, false otherwise.</returns>
+    </member>
+    <member name="M:Elysium.Manager.GetContrastBrush(System.Windows.FrameworkElement)">
+      <summary>
+        Returns a contrast color (contrast to accent color)  for the control.
+      </summary>
+      <param name="reference">A control, whose contrast color (contrast to accent color) is needed to get.</param>
+      <returns>A contrast color (contrast to accent color) for the specified control.</returns>
+    </member>
+    <member name="M:Elysium.Manager.TryGetContrastBrush(System.Windows.Application,System.Windows.Media.SolidColorBrush@)">
+      <summary>
+        Returns a contrast color (contrast to accent color) for the specified control by calling safe method without exceptions.
+      </summary>
+      <param name="reference">A control, whose contrast color (contrast to accent color) is needed to get.</param>
+      <param name="contrastBrush">A contrast color (contrast to accent color) for the specified control.</param>
+      <returns>True, if method succeeded, false otherwise.</returns>
+    </member>
+    <member name="M:Elysium.Manager.GetContrastBrush(System.Windows.Application)">
+      <summary>
+        Returns a contrast color (contrast to accent color) for the specified control.
+      </summary>
+      <param name="reference">A control, whose contrast color (contrast to accent color) is needed to get.</param>
+      <returns>A contrast color (contrast to accent color) for the specified control.</returns>
+    </member>
+    <member name="M:Elysium.Manager.Apply(System.Windows.Application)">
+      <summary>
+        Sets a theme settings for the whole application.
+      </summary>
+      <param name="application">An instance of the application, whose settings are being set.</param>
+      <remarks>
+        Calling this method is equal to calling base method "Apply" with the value "null" for the parameters "theme","accentBrush" and "contrastBrush"
+      </remarks>
+      <exception cref="T:System.ArgumentNullException">
+        Parameter <paramref name="application" /> is null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">application != null</requires>
+    </member>
+    <member name="M:Elysium.Manager.Apply(System.Windows.Application,System.Nullable{Elysium.Theme})">
+      <summary>
+        Sets a theme settings for the whole application.
+      </summary>
+      <param name="application">An instance of the application, whose settings are being set.</param>
+      <param name="theme">
+        One of the values of the enumeration <see cref="T:Elysium.Theme" />, or null.
+      </param>
+      <remarks>
+        If the parameter is null:
+        <list type="number"><item>If the parameter was set, old value will be used.</item><item>If the parameter was not set, default value will be used.</item></list>
+        Calling this method is equal to calling base method "Apply" with the value "null" for the parameters "theme","accentBrush" and "contrastBrush"
+      </remarks>
+      <exception cref="T:System.ArgumentNullException">
+        Parameter <paramref name="application" /> is null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">application != null</requires>
+    </member>
+    <member name="M:Elysium.Manager.Apply(System.Windows.Application,System.Windows.Media.SolidColorBrush,System.Windows.Media.SolidColorBrush)">
+      <summary>
+        Sets a theme settings for the whole application.
+      </summary>
+      <param name="application">An instance of the application, whose settings are being set.</param>
+      <param name="accentBrush">
+        A brush, which contains an accent colour, or null.
+      </param>
+      <param name="contrastBrush">
+        A brush, which contains a contrast colour, or null.
+      </param>
+      <remarks>
+        If the parameter is null:
+        <list type="number"><item>If the parameter was set, old value will be used.</item><item>If the parameter was not set, default value will be used.</item></list>
+        Calling this method is equal to calling base method "apply" with "theme" parameter = null.
+      </remarks>
+      <exception cref="T:System.ArgumentNullException">
+        Parameter <paramref name="application" /> is null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">application != null</requires>
+    </member>
+    <member name="M:Elysium.Manager.Apply(System.Windows.Application,System.Nullable{Elysium.Theme},System.Windows.Media.SolidColorBrush,System.Windows.Media.SolidColorBrush)">
+      <summary>
+        Sets a theme settings for the whole application.
+      </summary>
+      <param name="application">An instance of the application, whose settings are being set.</param>
+      <param name="theme">
+        One of the values of the enumeration <see cref="T:Elysium.Theme" />, or null.
+      </param>
+      <param name="accentBrush">
+        A brush, which contains an accent colour, or null.
+      </param>
+      <param name="contrastBrush">
+        A brush, which contains a contrast colour, or null.
+      </param>
+      <remarks>
+        If the parameter is null:
+        <list type="number"><item>If the parameter was set, old value will be used.</item><item>If the parameter was not set, default value will be used.</item></list></remarks>
+      <exception cref="T:System.ArgumentNullException">
+        Parameter <paramref name="application" /> is null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">application != null</requires>
+    </member>
+    <member name="M:Elysium.Manager.Remove(System.Windows.Application)">
+      <summary>
+        Disables the theme in the specified application.
+      </summary>
+      <param name="application">An instance of the application, whose theme is being disabled.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Parameter <paramref name="application" /> is null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">application != null</requires>
+    </member>
     <member name="T:Elysium.Theme">
       <summary>
         Defines the theme type.
@@ -112,6 +305,23 @@
       <summary>
         Items of the control use the light coloured theme by default.
       </summary>
+    </member>
+    <member name="T:Elysium.InvalidStyleException">
+      <summary>
+        An exception, which is generated when an unsupported operation with a style is conducted.
+      </summary>
+    </member>
+    <member name="M:Elysium.InvalidStyleException.#ctor">
+      <inheritdoc cref="M:System.Exception.#ctor" />
+    </member>
+    <member name="M:Elysium.InvalidStyleException.#ctor(System.String)">
+      <inheritdoc cref="M:System.Exception.#ctor(System.String)" />
+    </member>
+    <member name="M:Elysium.InvalidStyleException.#ctor(System.String,System.Exception)">
+      <inheritdoc cref="M:System.Exception.#ctor(System.String,System.Exception)" />
+    </member>
+    <member name="M:Elysium.InvalidStyleException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <inheritdoc cref="M:System.Exception.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" />
     </member>
     <member name="T:Elysium.Extensions.LogicalTreeHelperExtensions">
       <summary>
@@ -152,6 +362,12 @@
       </summary>
       <param name="reference">An element, whose root element will be searched.</param>
       <returns>Root element of the visual tree or null, if specified object is a root element.</returns>
+    </member>
+    <member name="T:Elysium.Parameters.Bullet">
+      <summary>
+        Represents a class, which manages the settings of the flag in following controls: <see cref="T:System.Windows.Controls.CheckBox" />
+        and <see cref="T:System.Windows.Controls.RadioButton" />.
+      </summary>
     </member>
     <member name="P:Elysium.Parameters.Bullet.DecoratorSize">
       <summary>
@@ -2354,6 +2570,11 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
+    <member name="T:Elysium.Parameters.Manager">
+      <summary>
+        Represents a class, which grants access to dependency properties of the settings of the control's theme from XAML.
+      </summary>
+    </member>
     <member name="P:Elysium.Parameters.Manager.Theme">
       <summary>
         Gets or sets the value that indicates current theme type.
@@ -2376,6 +2597,7 @@
             </description>
           </item>
         </list>
+        If the parameter is inherithed from application, it's guaranteed that parameter's value will be updated when according value is updated for the application.
       </remarks>
       <example>
         <code lang="C#">
@@ -2440,6 +2662,7 @@
             </description>
           </item>
         </list>
+        If the parameter is inherithed from application, it's guaranteed that parameter's value will be updated when according value is updated for the application.
       </remarks>
       <example>
         <code lang="C#">
@@ -2502,6 +2725,7 @@
             </description>
           </item>
         </list>
+        If the parameter is inherithed from application, it's guaranteed that parameter's value will be updated when according value is updated for the application.
       </remarks>
       <example>
         <code lang="C#">
@@ -7002,6 +7226,163 @@
         Returns a value, which contains the command for closing the window.
       </summary>
       <value>A command for closing the window.</value>
+    </member>
+    <member name="T:System.Collections.ObjectModel.IObservableDictionary`2">
+      <inheritdoc cref="T:System.Collections.Generic.IDictionary`2" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.IObservableDictionary`2.Item(`0)">
+      <inheritdoc cref="P:System.Collections.Generic.IDictionary`2.Item(`0)" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.IObservableDictionary`2.Keys">
+      <inheritdoc cref="P:System.Collections.Generic.IDictionary`2.Keys" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.IObservableDictionary`2.Values">
+      <inheritdoc cref="P:System.Collections.Generic.IDictionary`2.Values" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.IObservableDictionary`2.ContainsKey(`0)">
+      <inheritdoc cref="M:System.Collections.Generic.IDictionary`2.ContainsKey(`0)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.IObservableDictionary`2.Add(`0,`1)">
+      <inheritdoc cref="M:System.Collections.Generic.IDictionary`2.Add(`0,`1)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.IObservableDictionary`2.Remove(`0)">
+      <inheritdoc cref="M:System.Collections.Generic.IDictionary`2.Remove(`0)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.IObservableDictionary`2.TryGetValue(`0,`1@)">
+      <inheritdoc cref="M:System.Collections.Generic.IDictionary`2.TryGetValue(`0,`1@)" />
+    </member>
+    <member name="T:System.Collections.ObjectModel.ObservableDictionary`2">
+      <inheritdoc cref="T:System.Collections.Generic.Dictionary`2" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1})">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1})" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IEqualityComparer{`0})">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IEqualityComparer{`0})" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IEqualityComparer{`0})">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IEqualityComparer{`0})" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Collections.Generic.IEqualityComparer{`0})">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Collections.Generic.IEqualityComparer{`0})" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Int32)">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Int32)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Int32,System.Collections.Generic.IEqualityComparer{`0})">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Int32,System.Collections.Generic.IEqualityComparer{`0})" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.Add(`0,`1)">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.Add(`0,`1)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.Clear">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.Clear" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.ContainsKey(`0)">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.ContainsKey(`0)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.ContainsValue(`1)">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.ContainsValue(`1)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.Remove(`0)">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.Remove(`0)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.TryGetValue(`0,`1@)">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.TryGetValue(`0,`1@)" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Count">
+      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Count" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Item(`0)">
+      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Item(`0)" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Keys">
+      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Keys" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Values">
+      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Values" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Comparer">
+      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Comparer" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.GetEnumerator">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.GetEnumerator" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <inheritdoc />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.OnDeserialization(System.Object)">
+      <inheritdoc />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.BlockReentrancy">
+      <inheritdoc cref="M:System.Collections.ObjectModel.ObservableCollection`1.BlockReentrancy" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.CheckReentrancy">
+      <inheritdoc cref="M:System.Collections.ObjectModel.ObservableCollection`1.CheckReentrancy" />
+    </member>
+    <member name="E:System.Collections.ObjectModel.ObservableDictionary`2.PropertyChanged">
+      <inheritdoc cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged" />
+    </member>
+    <member name="E:System.Collections.ObjectModel.ObservableDictionary`2.CollectionChanged">
+      <inheritdoc cref="E:System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+      <inheritdoc cref="M:System.Collections.ObjectModel.ObservableCollection`1.OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.OnPropertyChanged(System.String)">
+      <inheritdoc cref="M:System.Collections.ObjectModel.ObservableCollection`1.OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs)" />
+      <param name="propertyName">A name of the property, which was changed.</param>
+    </member>
+    <member name="T:System.Collections.ObjectModel.ObservableDictionary`2.Enumerator">
+      <inheritdoc cref="T:System.Collections.Generic.Dictionary`2.Enumerator" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableDictionary`2.Enumerator.Current">
+      <inheritdoc cref="P:System.Collections.Generic.Dictionary`2.Enumerator.Current" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableDictionary`2.Enumerator.MoveNext">
+      <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.Enumerator.MoveNext" />
+    </member>
+    <member name="T:System.Collections.ObjectModel.ObservableKeyValuePair`2">
+      <inheritdoc cref="T:System.Collections.Generic.KeyValuePair`2" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.#ctor(`0,`1)">
+      <inheritdoc cref="M:System.Collections.Generic.KeyValuePair`2.#ctor(`0,`1)" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.#ctor(`0,`1,System.Collections.Generic.IEqualityComparer{`0})">
+      <inheritdoc cref="M:System.Collections.Generic.KeyValuePair`2.#ctor(`0,`1)" />
+      <param name="comparer">
+        An implemetion <see cref="T:System.Collections.Generic.IEqualityComparer`1" />,
+        which should be used while comparing keys, or null,
+        if for the current key type default implemention <see cref="T:System.Collections.Generic.EqualityComparer`1" />
+        has to be used.
+      </param>
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableKeyValuePair`2.Key">
+      <inheritdoc cref="P:System.Collections.Generic.KeyValuePair`2.Key" />
+    </member>
+    <member name="P:System.Collections.ObjectModel.ObservableKeyValuePair`2.Value">
+      <summary>
+        Gets or sets a value in key-value pair.
+      </summary>
+      <value>A value from a key-value pair.</value>
+    </member>
+    <member name="E:System.Collections.ObjectModel.ObservableKeyValuePair`2.PropertyChanging">
+      <inheritdoc cref="E:System.ComponentModel.INotifyPropertyChanging.PropertyChanging" />
+    </member>
+    <member name="E:System.Collections.ObjectModel.ObservableKeyValuePair`2.PropertyChanged">
+      <inheritdoc cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged" />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.Equals(System.Object)">
+      <inheritdoc />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.GetHashCode">
+      <inheritdoc />
+    </member>
+    <member name="M:System.Collections.ObjectModel.ObservableKeyValuePair`2.ToString">
+      <inheritdoc />
     </member>
   </members>
 </doc>

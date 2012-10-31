@@ -4,6 +4,11 @@
     <name>Elysium</name>
   </assembly>
   <members>
+    <type name="T:Elysium.Parameters.Manager">
+      <summary>
+        Represents a class, which grants access to dependency properties of the settings of the control's theme from XAML.
+      </summary>
+    </type>
     <property name="P:Elysium.Parameters.Manager.Theme">
       <summary>
         Gets or sets the value that indicates current theme type.
@@ -26,6 +31,7 @@
             </description>
           </item>
         </list>
+        If the parameter is inherithed from application, it's guaranteed that parameter's value will be updated when according value is updated for the application.
       </remarks>
       <example>
         <code lang="C#">
@@ -90,6 +96,7 @@
             </description>
           </item>
         </list>
+        If the parameter is inherithed from application, it's guaranteed that parameter's value will be updated when according value is updated for the application.
       </remarks>
       <example>
         <code lang="C#">
@@ -152,6 +159,7 @@
             </description>
           </item>
         </list>
+        If the parameter is inherithed from application, it's guaranteed that parameter's value will be updated when according value is updated for the application.
       </remarks>
       <example>
         <code lang="C#">

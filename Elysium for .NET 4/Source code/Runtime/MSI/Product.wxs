@@ -115,7 +115,7 @@
         <File Source="$(var.PlatformSourceFolder)\Elysium.Notifications.Server.exe.config" Checksum="yes" KeyPath="no" Vital="yes"/>
         <ServiceInstall Type="ownProcess"
                         Vital="yes"
-                        Name="ElysiumNotifications-v1.5.17.0-v4.0"
+                        Name="ElysiumNotifications-v1.5.21.0-v4.0"
                         DisplayName="Elysium Notifications"
                         Start="auto"
                         Account="LocalSystem"

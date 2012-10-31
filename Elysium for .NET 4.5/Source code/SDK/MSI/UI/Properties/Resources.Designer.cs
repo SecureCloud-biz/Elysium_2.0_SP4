@@ -151,6 +151,24 @@ namespace Elysium.SDK.MSI.UI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download.
+        /// </summary>
+        public static string Download {
+            get {
+                return ResourceManager.GetString("Download", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Download location:.
+        /// </summary>
+        public static string DownloadLocation {
+            get {
+                return ResourceManager.GetString("DownloadLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operation failed..
         /// </summary>
         public static string Failed {
@@ -165,6 +183,123 @@ namespace Elysium.SDK.MSI.UI.Properties {
         public static string Finish {
             get {
                 return ResourceManager.GetString("Finish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Always restart the system after installation..
+        /// </summary>
+        public static string HelpForceRestart {
+            get {
+                return ResourceManager.GetString("HelpForceRestart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display this usage text..
+        /// </summary>
+        public static string HelpHelp {
+            get {
+                return ResourceManager.GetString("HelpHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setup language.
+        /// </summary>
+        public static string HelpLanguage {
+            get {
+                return ResourceManager.GetString("HelpLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a copy of the media in specified folder..
+        /// </summary>
+        public static string HelpLayout {
+            get {
+                return ResourceManager.GetString("HelpLayout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specifies a location for the log file..
+        /// </summary>
+        public static string HelpLog {
+            get {
+                return ResourceManager.GetString("HelpLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modify the product features configuration..
+        /// </summary>
+        public static string HelpModify {
+            get {
+                return ResourceManager.GetString("HelpModify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do not restart during or after installation..
+        /// </summary>
+        public static string HelpNoRestart {
+            get {
+                return ResourceManager.GetString("HelpNoRestart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display progress but do not wait for user input..
+        /// </summary>
+        public static string HelpPassive {
+            get {
+                return ResourceManager.GetString("HelpPassive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prompt the user before restarting the system..
+        /// </summary>
+        public static string HelpPromptRestart {
+            get {
+                return ResourceManager.GetString("HelpPromptRestart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quiet mode with no display and no user interaction..
+        /// </summary>
+        public static string HelpQuiet {
+            get {
+                return ResourceManager.GetString("HelpQuiet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repair the product..
+        /// </summary>
+        public static string HelpRepair {
+            get {
+                return ResourceManager.GetString("HelpRepair", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This setup supports the following switches:.
+        /// </summary>
+        public static string HelpTitle {
+            get {
+                return ResourceManager.GetString("HelpTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uninstall the product..
+        /// </summary>
+        public static string HelpUninstall {
+            get {
+                return ResourceManager.GetString("HelpUninstall", resourceCulture);
             }
         }
         

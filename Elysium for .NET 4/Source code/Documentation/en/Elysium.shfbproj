@@ -73,9 +73,16 @@
     </PlugInConfigurations>
     <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
     <NamespaceSummaries>
-      <NamespaceSummaryItem name="Elysium" isDocumented="True" />
-      <NamespaceSummaryItem name="JetBrains.Annotations" isDocumented="False" />
-    </NamespaceSummaries>
+      <NamespaceSummaryItem name="Elysium" isDocumented="True">Provides several classes for managing basic functions and parameters of theme.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="JetBrains.Annotations" isDocumented="False" />
+<NamespaceSummaryItem name="Elysium.Controls" isDocumented="True">Provides classes to create controls and classes that are required for their functionality.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="Elysium.Controls.Automation" isDocumented="True">Provides classes for working with the UI Automation technology.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="Elysium.Controls.Primitives" isDocumented="True">Provides a base class for other controls.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="Elysium.Converters" isDocumented="True">Provides a type converters.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="Elysium.Extensions" isDocumented="True">Provides classes that extend the functionality of standard WPF's classes.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="Elysium.Notifications" isDocumented="True">Provides classes for working with the notifications system.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="Elysium.Parameters" isDocumented="True">Provides a set of classes to managing parameters of control styles.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="System.Collections.ObjectModel" isDocumented="True">Contains classes that can be used as collections in the object model of a reusable library. Use these classes when properties or methods return collections.</NamespaceSummaryItem></NamespaceSummaries>
     <ApiFilter />
     <SccProjectName>SAK</SccProjectName>
     <SccProvider>SAK</SccProvider>

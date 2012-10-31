@@ -4,6 +4,12 @@
     <name>Elysium</name>
   </assembly>
   <members>
+    <type name="T:Elysium.Parameters.Bullet">
+      <summary>
+        Represents a class, which manages the settings of the flag in following controls: <see cref="T:System.Windows.Controls.CheckBox"/>
+        and <see cref="T:System.Windows.Controls.RadioButton"/>.
+      </summary>
+    </type>
     <property name="P:Elysium.Parameters.Bullet.DecoratorSize">
       <summary>
         Gets or sets the size of the area where the marker is located.

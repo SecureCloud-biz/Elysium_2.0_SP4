@@ -29,7 +29,7 @@
         <Assembly>PresentationFramework</Assembly>
       </Reference>
       <Reference>
-        <Assembly>Elysium, Version=1.5.791.0, Culture=neutral, PublicKeyToken=f8966962afac6b6d, processorArchitecture=MSIL</Assembly>
+        <Assembly>Elysium, Version=1.5.817.0, Culture=neutral, PublicKeyToken=f8966962afac6b6d, processorArchitecture=MSIL</Assembly>
       </Reference>
     </References>
     <ProjectItem ReplaceParameters="true" CustomTool="MSBuild:Compile">Window.xaml</ProjectItem>

@@ -201,4 +201,49 @@
   <data name="Reboot" xml:space="preserve">
     <value>Вам необходимо перезагрузить компьютер, чтобы завершить операцию.</value>
   </data>
+  <data name="Download" xml:space="preserve">
+    <value>Загрузить</value>
+  </data>
+  <data name="DownloadLocation" xml:space="preserve">
+    <value>Расположение загружаемых файлов:</value>
+  </data>
+  <data name="HelpForceRestart" xml:space="preserve">
+    <value>Обязательная перезагрузка системы после установки.</value>
+  </data>
+  <data name="HelpHelp" xml:space="preserve">
+    <value>Отображение текста об использовании.</value>
+  </data>
+  <data name="HelpLanguage" xml:space="preserve">
+    <value>Язык установки</value>
+  </data>
+  <data name="HelpLayout" xml:space="preserve">
+    <value>Создание копии носителя в указанной папке.</value>
+  </data>
+  <data name="HelpLog" xml:space="preserve">
+    <value>Задание расположения файла журнала.</value>
+  </data>
+  <data name="HelpModify" xml:space="preserve">
+    <value>Изменение конфигурации функциональности продукта.</value>
+  </data>
+  <data name="HelpNoRestart" xml:space="preserve">
+    <value>Без перезагрузки системы в ходе установки и после неё.</value>
+  </data>
+  <data name="HelpPassive" xml:space="preserve">
+    <value>Отображение хода выполнения без ожидания ввода пользователя</value>
+  </data>
+  <data name="HelpPromptRestart" xml:space="preserve">
+    <value>Вывод запроса пользователя перед перезагрузкой системы.</value>
+  </data>
+  <data name="HelpQuiet" xml:space="preserve">
+    <value>Тихий режим: без вывода на экран и без взаимодействия с пользователем.</value>
+  </data>
+  <data name="HelpRepair" xml:space="preserve">
+    <value>Восстановление установки продукта.</value>
+  </data>
+  <data name="HelpTitle" xml:space="preserve">
+    <value>Эта программа установки поддерживает следующие параметры:</value>
+  </data>
+  <data name="HelpUninstall" xml:space="preserve">
+    <value>Удаление продукта.</value>
+  </data>
 </root>

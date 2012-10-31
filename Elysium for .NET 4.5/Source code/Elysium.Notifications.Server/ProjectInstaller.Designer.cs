@@ -40,7 +40,7 @@
             // NotificationsServiceInstaller
             // 
             this.NotificationsServiceInstaller.DisplayName = "Elysium Notifications";
-            this.NotificationsServiceInstaller.ServiceName = "ElysiumNotifications-v1.5.19.0-v4.5";
+            this.NotificationsServiceInstaller.ServiceName = "ElysiumNotifications-v1.5.31.0-v4.5";
             this.NotificationsServiceInstaller.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
             // 
             // ProjectInstaller

@@ -44,6 +44,7 @@ namespace Elysium.SDK.MSI.UI
 
             Locator.MainViewModel = new MainViewModel();
             Locator.MainViewModel.Refresh();
+            Locator.MainViewModel.ParseCommandLine();
 
             if (Command.Display == Display.Passive || Command.Display == Display.Full)
             {
