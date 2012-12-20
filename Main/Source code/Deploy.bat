@@ -14,8 +14,6 @@ IF NOT "%2" == "" goto usage
 call "Load tools.bat" %Framework%
 IF ERRORLEVEL 1 goto showerror
 
-tf checkout "..\Deploy\%FrameworkName%\" /lock:none /recursive
-
 chdir /d %~dp0
 del "..\Deploy\%FrameworkName%\SDK\Elysium SDK (x86).zip"
 "..\Tools and Resources\Utilities\7za\7za.exe" a "..\Deploy\%FrameworkName%\SDK\Elysium SDK (x86).zip" "..\Binary\%FrameworkName%\Debug\AnyCPU\Elysium.dll" "..\Binary\%FrameworkName%\Debug\AnyCPU\Elysium.pdb" "..\Binary\%FrameworkName%\Release\AnyCPU\Elysium.Design.11.0.dll" "..\Binary\%FrameworkName%\Debug\AnyCPU\Elysium.Notifications.dll" "..\Binary\%FrameworkName%\Debug\AnyCPU\Elysium.Notifications.pdb" "..\Binary\%FrameworkName%\Release\x86\Elysium.Notifications.Server.exe" "..\Binary\%FrameworkName%\Release\x86\Elysium.Notifications.Server.exe.config" "..\Binary\%FrameworkName%\Release\x86\Elysium.Test.exe" ".\SDK\ZIP\Tools\%FrameworkName%\Run Elysium Notifications service.bat" ".\SDK\ZIP\Tools\%FrameworkName%\Stop Elysium Notifications service.bat" ".\SDK\ZIP\Tools\%FrameworkName%\x86\Install Elysium Notifications service.bat" ".\SDK\ZIP\Tools\%FrameworkName%\x86\Uninstall Elysium Notifications service.bat"
