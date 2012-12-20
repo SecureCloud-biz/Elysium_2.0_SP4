@@ -127,6 +127,7 @@
                         Account="LocalSystem"
                         ErrorControl="normal"
                         Interactive="no"/>
+        <ServiceControl Id="ElysiumNotifications" Name="ElysiumNotifications-v1.5.30.0-v4.0" Remove="uninstall" Wait="yes"/>
         <?endif ?>
         <?ifdef NETFX45 ?>
         <ServiceInstall Type="ownProcess"
@@ -137,6 +138,7 @@
                         Account="LocalSystem"
                         ErrorControl="normal"
                         Interactive="no"/>
+        <ServiceControl Id="ElysiumNotifications" Name="ElysiumNotifications-v1.5.35.0-v4.5" Remove="uninstall" Wait="yes"/>
         <?endif ?>
       </Component>
     </DirectoryRef>
