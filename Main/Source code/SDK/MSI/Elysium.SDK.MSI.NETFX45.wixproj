@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>3.7</ProductVersion>
+    <ProjectGuid>{fe043f2c-91f3-4aaa-bdf1-9f8bb2815dfd}</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputName>Installer</OutputName>
+    <OutputType>Package</OutputType>
+    <DefineSolutionProperties>False</DefineSolutionProperties>
+    <IncludeSearchPaths>..\..\Include\</IncludeSearchPaths>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <Name>Elysium.SDK.MSI.NETFX45</Name>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DefineConstants>NETFX45;Debug;X86</DefineConstants>
+    <OutputPath>..\..\..\Binary\.NET Framework 4.5\Debug\x86\SDK\MSI\</OutputPath>
+    <IntermediateOutputPath>obj\.NET Framework 4.5\Debug\x86\</IntermediateOutputPath>
+    <SuppressIces>ICE30</SuppressIces>
+    <Cultures>en-US;ru-RU</Cultures>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DefineConstants>NETFX45;Debug;X64</DefineConstants>
+    <OutputPath>..\..\..\Binary\.NET Framework 4.5\Debug\x64\SDK\MSI\</OutputPath>
+    <IntermediateOutputPath>obj\.NET Framework 4.5\Debug\x64\</IntermediateOutputPath>
+    <SuppressIces>ICE30</SuppressIces>
+    <Cultures>en-US;ru-RU</Cultures>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DefineConstants>NETFX45;Release;X86</DefineConstants>
+    <OutputPath>..\..\..\Binary\.NET Framework 4.5\Release\x86\SDK\MSI\</OutputPath>
+    <IntermediateOutputPath>obj\.NET Framework 4.5\Release\x86\</IntermediateOutputPath>
+    <SuppressIces>ICE30</SuppressIces>
+    <Cultures>en-US;ru-RU</Cultures>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <DefineConstants>NETFX45;Release;X64</DefineConstants>
+    <OutputPath>..\..\..\Binary\.NET Framework 4.5\Release\x64\SDK\MSI\</OutputPath>
+    <IntermediateOutputPath>obj\.NET Framework 4.5\Release\x64\</IntermediateOutputPath>
+    <SuppressIces>ICE30</SuppressIces>
+    <Cultures>en-US;ru-RU</Cultures>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Product.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixUtilExtension">
+      <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
+      <Name>WixUtilExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixUIExtension">
+      <HintPath>$(WixExtDir)\WixUIExtension.dll</HintPath>
+      <Name>WixUIExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixVSExtension">
+      <HintPath>$(WixExtDir)\WixVSExtension.dll</HintPath>
+      <Name>WixVSExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixNetFxExtension">
+      <HintPath>$(WixExtDir)\WixNetFxExtension.dll</HintPath>
+      <Name>WixNetFxExtension</Name>
+    </WixExtension>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IDs.wxi" />
+    <Content Include="License.rtf" />
+    <Content Include="WixUIBannerBmp.bmp" />
+    <Content Include="WixUIDialogBmp.bmp" />
+    <Content Include="WixUIInfoIco.ico" />
+    <Content Include="WixUINewIco.ico" />
+    <Content Include="WixUIUpIco.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources_en-us.wxl" />
+    <EmbeddedResource Include="Resources_ru-ru.wxl" />
+  </ItemGroup>
+  <Import Project="$(WixTargetsPath)" />
+  <PropertyGroup>
+    <PostBuildEvent>"..\..\..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4.5\$(Platform)\signtool.exe" sign /f "..\..\..\..\..\..\Source code\SigningKey.pfx" "en-us\Installer.msi"
+"..\..\..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4.5\$(Platform)\signtool.exe" sign /f "..\..\..\..\..\..\Source code\SigningKey.pfx" "ru-ru\Installer.msi"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

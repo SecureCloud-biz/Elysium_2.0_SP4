@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="beb3a93b-e01a-4b19-8966-7cc9738eda11" revisionNumber="1">
+  <developerWalkthroughDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+                                xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <para>
+        <legacyBold>Elysium Runtime</legacyBold> - это набор сборок и сервисов, которые должны распространятся с программой для обеспечения нормальной работы Elysium.
+      </para>
+    </introduction>
+
+    <prerequisites address="Prerequiresites">
+      <content>
+        <list class="ordered">
+          <listItem>
+            <para>
+              <token>WindowsVersion</token>
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <token>FrameworkDependencyName</token>
+            </para>
+          </listItem>
+          <listItem>
+            <para><legacyItalic>Поддерживается</legacyItalic>: Microsoft Code Contracts tools 1.4.50910.0</para>
+          </listItem>
+        </list>
+      </content>
+    </prerequisites>
+
+    <procedure address="Installation">
+      <title>Установка Elysium Runtime с помощью msi-пакета</title>
+      <steps class="ordered">
+        <step>
+          <content>
+            <para>
+              Загрузите msi-пакет, выбрав версию с архитектурой, соотвествующей архитектуре вашей программы - <legacyBold>x86 (32 бита)</legacyBold> или <legacyBold>x64 (64 бита)</legacyBold> и перейдя по
+              <externalLink>
+                <linkText>следующей ссылке.</linkText>
+                <linkUri>http://elysium.codeplex.com/releases</linkUri>
+              </externalLink>
+              Если ваша программа поддерживает обе архитектуры, загрузите оба пакета.
+            </para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              Добавьте msi-пакет Elysium Runtime в вашу программу установки. Во время установки msi-пакет автоматически выполнит все необходимые действия для обеспечения нормальной работы Elysium.
+            </para>
+            <alert class="tip">
+              <para>
+                Вы можете воспользоваться набором инструментов
+                <externalLink>
+                  <linkText>Windows Installer XML</linkText>
+                  <linkUri>http://wixtoolset.org/</linkUri>
+                </externalLink>
+                для создания программы установки.
+              </para>
+            </alert>
+          </content>
+        </step>
+      </steps>
+    </procedure>
+
+    <section address="Distributives">
+      <title>Дополнительные варианты установки</title>
+      <content>
+        <procedure address="ZIP">
+          <title>Установка Elysium Runtime из архива</title>
+          <steps class="ordered">
+            <step>
+              <content>
+                <para>
+                  Загрузите архив, содержащий <legacyBold>Elysium Runtime</legacyBold>, выбрав соответствующую версию для своей
+                  платформы - <legacyBold>x86 (32 бита)</legacyBold> или <legacyBold>x64 (64 бита)</legacyBold> и перейдя по
+                  <externalLink>
+                    <linkText>следующей ссылке.</linkText>
+                    <linkUri>http://elysium.codeplex.com/releases</linkUri>
+                  </externalLink>
+                </para>
+              </content>
+            </step>
+            <step>
+              <content>
+                <para>
+                  Во время установки программы распакуйте архив или скопируйте заранее извлечённые файлы в папку назначения.
+                  При установке для всех пользователей наилучшим выбором будет папка в директории <legacyItalic>[Буква диска Windows]:\Program Files\</legacyItalic>,
+                  при установке для текущего пользователя - <legacyItalic>[Буква диска Windows]:\Users\[Имя пользователя]\AppData\Local\Apps\</legacyItalic>
+                </para>
+                <alert class="warning">
+                  <para>
+                    При использовании файлов из архива для распространения <legacyBold>Elysium Runtime</legacyBold> вместе с программой, вы должны вручную
+                    произвести установку и запуск сервиса ElysiumNotifications (файл Elysium.Notifications.Server.exe). Игнорируйте этот пункт и удалите
+                    соответствующие файлы из установки, если вы не используете <legacyBold>Систему уведомлений Elysium</legacyBold>.
+                  </para>
+                </alert>
+              </content>
+            </step>
+          </steps>
+        </procedure>
+      </content>
+    </section>
+
+    <relatedTopics>
+      <externalLink>
+        <linkText>Windows Installer XML</linkText>
+        <linkUri>http://wixtoolset.org/</linkUri>
+      </externalLink>
+      <link xlink:href="0405d96c-9fcd-487c-b0b3-b7ae711c937b"/>
+      <link xlink:href="ca59c898-ccc9-4f97-a76b-e8005496249c"/>
+    </relatedTopics>
+  </developerWalkthroughDocument>
+</topic>

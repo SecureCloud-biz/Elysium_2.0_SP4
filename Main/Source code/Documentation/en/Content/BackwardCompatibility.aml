@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="6b3dc72b-108a-4cfa-b359-d5367ae55340" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+                               xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+    <introduction>
+      <para>
+        <legacyBold><token>Elysium</token></legacyBold> contains a lot of changes. Major changes and methods for solving problems are described here to make the upgrade for newer version easier.
+      </para>
+    </introduction>
+    
+    <section address="NamingChanges">
+      <title>Changes in names and locations of the assemblies, namespaces and types.</title>
+      <content>
+        <list class="bullet">
+          <listItem>
+            <para>Assembly <legacyBold>Elysium.Theme.dll</legacyBold> is divided into two assemblies <legacyBold>Elysium.dll</legacyBold> and <legacyBold>Elysium.Notifications.dll</legacyBold>.</para>
+          </listItem>
+          <listItem>
+            <para>The namespace <legacyBold>Elysium.Theme</legacyBold> is renamed into <codeEntityReference>N:Elysium</codeEntityReference>.</para>
+          </listItem>
+          <listItem>
+            <para>Enumeration <legacyBold>ThemeType</legacyBold> is renamed into enumeration <codeEntityReference>T:Elysium.Theme</codeEntityReference>.</para>
+          </listItem>
+          <listItem>
+            <para>The class <legacyBold>AccentColors</legacyBold> is replaced by a class <codeEntityReference>T:Elysium.AccentBrushes</codeEntityReference>.</para>
+          </listItem>
+          <listItem>
+            <para>Classes <legacyBold>LightColors</legacyBold> and <legacyBold>DarkColors</legacyBold> are deleted.</para>
+          </listItem>
+          <listItem>
+            <para>The class <legacyBold>Parameters</legacyBold> is divided into several classes, which are situated in the namespace <codeEntityReference>N:Elysium.Parameters</codeEntityReference>.</para>
+          </listItem>
+          <listItem>
+            <para>
+              The functionality of the class <legacyBold>ThemeManager</legacyBold> is replaced by a new functionality, which is provided by classes:
+              <codeEntityReference>N:Elysium</codeEntityReference>.<codeEntityReference>T:Elysium.Manager</codeEntityReference>,
+              <codeEntityReference>N:Elysium.Parameters</codeEntityReference>.<codeEntityReference>T:Elysium.Parameters.Manager</codeEntityReference> and
+              <codeEntityReference>N:Elysium.Parameters</codeEntityReference>.<codeEntityReference>T:Elysium.Parameters.Manager</codeEntityReference>.
+              To read more about it, see a section <link xlink:href="2ac0683a-9c20-4cc9-86e2-48a3e25696ed" />.
+            </para>
+          </listItem>
+          <listItem>
+            <para>Namespaces <legacyBold>Elysium.Theme.Commands</legacyBold> and <legacyBold>Elysium.Theme.ViewModels</legacyBold>, which supported a model <legacyBold>Model-View-ViewModel</legacyBold>, are deleted.</para>
+          </listItem>
+          <listItem>
+            <para>The namespace <legacyBold>Elysium.Theme.Controls</legacyBold> is renamed into <codeEntityReference>N:Elysium.Controls</codeEntityReference>.</para>
+          </listItem>
+          <listItem>
+            <para>
+              Classes <legacyBold>ProgressBarBase</legacyBold>, <legacyBold>LinearProgressBar</legacyBold> and <legacyBold>CircularProgressBar</legacyBold> are renamed into
+              <codeEntityReference>T:Elysium.Controls.ProgressBase</codeEntityReference>, <codeEntityReference>T:Elysium.Controls.ProgressBar</codeEntityReference> and <codeEntityReference>T:Elysium.Controls.ProgressRing</codeEntityReference> accordingly.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Enumerations <codeEntityReference>T:Elysium.Notifications.HorizontalPlacement</codeEntityReference> and <codeEntityReference>T:Elysium.Notifications.VerticalPlacement</codeEntityReference> are
+              moved into the namespace <codeEntityReference>N:Elysium.Notifications</codeEntityReference> in the assembly <legacyBold>Elysium.Notifications.dll</legacyBold>.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              The class <legacyBold>ToastNotification</legacyBold> is deleted. A functionality of the notifications system is supported by the class <codeEntityReference>T:Elysium.Notifications.NotificationManager</codeEntityReference>
+              which is located in assembly <legacyBold>Elysium.Notifications.dll</legacyBold>. To read more about it, see a section <link xlink:href="a0189101-b73b-4662-85b1-0176fdfab7df" />.
+            </para>
+          </listItem>
+          <listItem>
+            <para>The namespace <legacyBold>Elysium.Theme.Controls.Automation</legacyBold> is moved into the namespace <codeEntityReference>N:Elysium.Controls.Automation</codeEntityReference>.</para>
+          </listItem>
+          <listItem>
+            <para>The namespace <legacyBold>Elysium.Theme.Converters</legacyBold> is moved into the namespace <codeEntityReference>N:Elysium.Converters</codeEntityReference>.</para>
+          </listItem>
+          <listItem>
+            <para>The namespace <legacyBold>Elysium.Theme.Extensions</legacyBold> is moved into the namespace <codeEntityReference>N:Elysium.Extensions</codeEntityReference>.</para>
+          </listItem>
+        </list>
+      </content>
+    </section>
+
+    <section address="DistributionChanges">
+      <title>Changes in distributives&apos; structure. </title>
+      <content>
+        <para>
+          <legacyBold><token>Elysium</token></legacyBold> is distributed by several packages:
+        </para>
+        <table>
+          <tableHeader>
+            <row>
+              <entry>
+                <para>A type of a packet</para>
+              </entry>
+              <entry>
+                <para>Accessible during development</para>
+              </entry>
+              <entry>
+                <para>Allowed for distributing with the program</para>
+              </entry>
+            </row>
+          </tableHeader>
+          <row>
+            <entry>
+              <para>ZIP archive</para>
+            </entry>
+            <entry>
+              <para>Yes (needs additional activity)</para>
+            </entry>
+            <entry>
+              <para>Yes (needs additional activity)</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Installer</para>
+            </entry>
+            <entry>
+              <para>As a setup program (.exe) or a msi-package <legacyBold>Elysium SDK</legacyBold></para>
+            </entry>
+            <entry>
+              <para>As a msi-package <legacyBold>Elysum Runtime</legacyBold></para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>NuGet</para>
+            </entry>
+            <entry>
+              <para>Yes (with restrictions)</para>
+            </entry>
+            <entry>
+              <para>Yes (with restrictions)</para>
+            </entry>
+          </row>
+        </table>
+        <para>For additional information look in following sections <link xlink:href="0405d96c-9fcd-487c-b0b3-b7ae711c937b" /> and <link xlink:href="beb3a93b-e01a-4b19-8966-7cc9738eda11" />.</para>
+      </content>
+    </section>
+      
+    <relatedTopics>
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

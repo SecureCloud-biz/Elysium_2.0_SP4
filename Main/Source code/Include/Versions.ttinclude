@@ -1,0 +1,27 @@
+﻿<#+
+public static readonly string Copyright = "Copyright © Alex F. Sherman & Codeplex community 2011-" + DateTime.Now.Year.ToString();
+public const string Version = "1.5 EAP";
+
+public static class Versions
+{
+	public static class NETFX4
+	{
+		public const string Elysium = "1.5.873.0";
+		public const string Design = "1.5.101.0";
+		public const string Notifications = "1.5.41.0";
+		public const string NotificationsServer = "1.5.30.0";
+		public const string Test = "1.5.276.0";
+		public const string SDK = "1.5.348.0";
+	}
+
+	public static class NETFX45
+	{
+		public const string Elysium = "1.5.926.0";
+		public const string Design = "1.5.13.0";
+		public const string Notifications = "1.5.44.0";
+		public const string NotificationsServer = "1.5.35.0";
+		public const string Test = "1.5.290.0";
+		public const string SDK = "1.5.362.0";
+	}
+}
+#>

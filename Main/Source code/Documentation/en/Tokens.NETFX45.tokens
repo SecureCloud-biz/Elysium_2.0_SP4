@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<content xml:space="preserve" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <item id="Elysium">Elysium 1.5 EAP for .NET Framework 4.5</item>
+  <item id="Example">Token content</item>
+  <item id="SHFB"><ddue:externalLink xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5">
+    <ddue:linkText>Sandcastle Help File Builder</ddue:linkText>
+    <ddue:linkUri>http://SHFB.CodePlex.com</ddue:linkUri>
+    </ddue:externalLink></item>
+  <item id="FrameworkDependencyName">Microsoft .NET Framework 4.5</item>
+  <item id="WindowsVersion">Microsoft Windows Vista / 7 / 8</item>
+  <item id="VisualStudioVersion">Microsoft Visual Studio 2012 RTM</item>
+  <item id="BlendVersion">Blend + SketchFlow Preview for Microsoft Visual Studio 2012</item>
+</content>

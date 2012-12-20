@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+  <?include SDKVariables.wxi ?>
+  
+  <Bundle Name="$(var.SDKName) for $(var.FrameworkName)" Manufacturer="Alex F. Sherman and Codeplex Community"
+          Version="$(var.SDKVersion).$(var.SDKBuild).$(var.SDKRevision)" UpgradeCode="$(var.SetupUpgradeCode)"
+          AboutUrl="http://elysium.codeplex.com/" IconSourceFile="Icon.ico" Compressed="yes">
+    
+    <BootstrapperApplicationRef Id="ManagedBootstrapperApplicationHost">
+      
+      <Payload SourceFile="..\$(var.AnyCPUSourceFolder)\SDK\MSI\BootstrapperCore.config" Compressed="yes"/>
+      <Payload SourceFile="..\$(var.SharedAssemblyDependenciesFolder)\BootstrapperCore.dll" Compressed="yes"/>
+      
+      <Payload SourceFile="..\$(var.AssemblyDependenciesFolder)\Microsoft.Expression.Drawing.dll" Compressed="yes"/>
+      <?ifdef NETFX4 ?>
+        <Payload SourceFile="..\$(var.AssemblyDependenciesFolder)\Microsoft.Windows.Shell.dll" Compressed="yes"/>
+        <?ifdef Debug ?>
+          <Payload SourceFile="..\$(var.AssemblyDependenciesFolder)\Microsoft.Windows.Shell.pdb" Compressed="yes"/>
+        <?endif?>
+      <?endif ?>
+      
+      <Payload SourceFile="..\$(var.AnyCPUSourceFolder)\Elysium.dll" Compressed="yes"/>
+      <?ifdef Debug ?>
+        <Payload SourceFile="..\$(var.AnyCPUSourceFolder)\Elysium.pdb" Compressed="yes"/>
+      <?endif?>
+      
+      <Payload SourceFile="..\$(var.SharedAssemblyDependenciesFolder)\GalaSoft.MvvmLight.WPF4.dll" Compressed="yes"/>
+      
+      <Payload SourceFile="..\$(var.AnyCPUSourceFolder)\SDK\MSI\License.rtf" Compressed="yes"/>
+      
+      <Payload SourceFile="..\$(var.AnyCPUSourceFolder)\SDK\MSI\UI.dll" Compressed="yes"/>
+      <Payload SourceFile="..\$(var.AnyCPUSourceFolder)\SDK\MSI\ru-ru\UI.resources.dll" Name="ru-ru\UI.resources.dll" Compressed="yes"/>
+      <?ifdef Debug ?>
+        <Payload SourceFile="..\$(var.AnyCPUSourceFolder)\SDK\MSI\UI.pdb" Compressed="yes"/>
+      <?endif?>
+      
+    </BootstrapperApplicationRef>
+
+    <?ifdef X64 ?>
+      <Variable Name="InstallFolder" Type="string" Value="[ProgramFiles64Folder]$(var.SDKName)\$(var.FrameworkName)\$(var.SDKVersion)" />
+    <?else ?>
+      <Variable Name="InstallFolder" Type="string" Value="[ProgramFilesFolder]$(var.SDKName)\$(var.FrameworkName)\$(var.SDKVersion)" />
+    <?endif ?>
+
+    <Chain>
+      <?ifdef NETFX4 ?>
+        <PackageGroupRef Id="NetFx40ClientWeb"/>
+      <?endif ?>
+      <?ifdef NETFX45 ?>
+        <PackageGroupRef Id="NetFx45Web"/>
+      <?endif ?>
+      <MsiPackage Id="Elysium.SDK.en_us" SourceFile="..\$(var.PlatformSourceFolder)\SDK\MSI\en-us\Installer.msi"
+                  InstallCondition="NOT (UserLanguageID = 1049)" EnableFeatureSelection="yes" Visible="no"
+                  Vital="yes" Compressed="yes">
+        <MsiProperty Name="APPLICATIONFOLDER" Value="[InstallFolder]" />
+      </MsiPackage>
+      <MsiPackage Id="Elysium.SDK.ru_ru" SourceFile="..\$(var.PlatformSourceFolder)\SDK\MSI\ru-ru\Installer.msi"
+                  InstallCondition="UserLanguageID = 1049" EnableFeatureSelection="yes" Visible="no"
+                  Vital="yes" Compressed="yes">
+        <MsiProperty Name="APPLICATIONFOLDER" Value="[InstallFolder]" />
+      </MsiPackage>
+    </Chain>
+    
+  </Bundle>
+  
+</Wix>

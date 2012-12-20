@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F3E63248-7061-4DB8-BF67-ECEF4EA1BE46}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Elysium.Design</RootNamespace>
+    <AssemblyName>Elysium.Design.10.0</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\SigningKey.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>..\..\Binary\.NET Framework 4\Debug\AnyCPU\</OutputPath>
+    <IntermediateOutputPath>obj\.NET Framework 4\Debug\AnyCPU\</IntermediateOutputPath>
+    <DefineConstants>NETFX4;TRACE;DEBUG;VISUALSTUDIO2010</DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <DebugType>full</DebugType>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>..\..\Binary\.NET Framework 4\Release\AnyCPU\</OutputPath>
+    <IntermediateOutputPath>obj\.NET Framework 4\Release\AnyCPU\</IntermediateOutputPath>
+    <DefineConstants>NETFX4;TRACE;RELEASE;VISUALSTUDIO2010</DefineConstants>
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Analysis|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>..\..\Binary\.NET Framework 4\Analysis\AnyCPU\</OutputPath>
+    <IntermediateOutputPath>obj\.NET Framework 4\Analysis\AnyCPU\</IntermediateOutputPath>
+    <DefineConstants>NETFX4;TRACE;DEBUG;CODE_ANALYSIS;VISUALSTUDIO2010</DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <DebugType>full</DebugType>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisLogFile>..\..\Binary\.NET Framework 4\Analysis\AnyCPU\Elysium.Design.10.0.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeContractsAnalysisWarningLevel>2</CodeContractsAnalysisWarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Windows.Design.Extensibility, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Windows.Design.Interaction, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <Target Name="Default">
+    <MSBuild.ExtensionPack.Framework.Assembly TaskAction="GetInfo" NetAssembly="..\..\Binary\.NET Framework 4\$(Configuration)\AnyCPU\Elysium.dll">
+      <Output TaskParameter="OutputItems" ItemName="Elysium" />
+    </MSBuild.ExtensionPack.Framework.Assembly>
+  </Target>
+  <Choose>
+    <When Condition="'$(BuildingInsideVisualStudio)' == 'true'">
+      <ItemGroup>
+        <ProjectReference Include="..\Elysium\Elysium.NETFX4.csproj">
+          <Project>{5a65da67-130d-43d8-9224-4559b523b6d4}</Project>
+          <Name>Elysium.NETFX4</Name>
+          <Private>True</Private>
+        </ProjectReference>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="%(Elysium.FullName)">
+          <HintPath>..\..\Binary\.NET Framework 4\$(Configuration)\AnyCPU\Elysium.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="Manager.cs" />
+    <Compile Include="Metadata.cs" />
+    <None Include="Properties\AssemblyInfo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AssemblyInfo.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AssemblyInfo.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <TransformFile>*.tt</TransformFile>
+    <TransformOnBuild>true</TransformOnBuild>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <TextTemplatingPath>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\TextTemplating\v10.0\Microsoft.TextTemplating.targets</TextTemplatingPath>
+    <TextTemplatingPath Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v11.0\TextTemplating\Microsoft.TextTemplating.targets')">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v11.0\TextTemplating\Microsoft.TextTemplating.targets</TextTemplatingPath>
+    <MSBuildExtensionPackPath>$(MSBuildExtensionsPath32)\ExtensionPack\4.0\MSBuild.ExtensionPack.tasks</MSBuildExtensionPackPath>
+    <MSBuildExtensionPackPath Condition="Exists('$(MSBuildExtensionsPath64)\ExtensionPack\4.0\MSBuild.ExtensionPack.tasks')">$(MSBuildExtensionsPath64)\ExtensionPack\4.0\MSBuild.ExtensionPack.tasks</MSBuildExtensionPackPath>
+  </PropertyGroup>
+  <Import Condition="Exists('$(MSBuildExtensionPackPath)')" Project="$(MSBuildExtensionPackPath)" />
+  <Import Condition="Exists('$(TextTemplatingPath)')" Project="$(TextTemplatingPath)" />
+  <PropertyGroup>
+    <PostBuildEvent>"..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4\signtool.exe" sign /f "..\..\..\..\Source code\SigningKey.pfx" "Elysium.Design.10.0.dll"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Extensions.DispatcherExtensions">
+      <summary>
+        Предоставляет методы-расширения класса <see cref="T:System.Windows.Threading.Dispatcher"/>.
+      </summary>
+    </type>
+    <method name="M:Elysium.Extensions.DispatcherExtensions.BeginInvoke(System.Windows.Threading.Dispatcher,System.Action)">
+      <inheritdoc cref="M:System.Windows.Threading.Dispatcher.BeginInvoke(System.Delegate,System.Object[])"/>
+      <param name="dispatcher">Экземпляр <see cref="T:System.Windows.Threading.Dispatcher"/>.</param>
+      <param name="callback">Обратный вызов.</param>
+    </method>
+    <method name="M:Elysium.Extensions.DispatcherExtensions.BeginInvoke(System.Windows.Threading.Dispatcher,System.Action,System.Windows.Threading.DispatcherPriority)">
+      <inheritdoc cref="M:System.Windows.Threading.Dispatcher.BeginInvoke(System.Delegate,System.Windows.Threading.DispatcherPriority,System.Object[])"/>
+      <param name="dispatcher">Экземпляр <see cref="T:System.Windows.Threading.Dispatcher"/>.</param>
+      <param name="callback">Обратный вызов.</param>
+    </method>
+    <method name="M:Elysium.Extensions.DispatcherExtensions.Invoke(System.Windows.Threading.Dispatcher,System.Action)">
+      <inheritdoc cref="M:System.Windows.Threading.Dispatcher.BeginInvoke(System.Delegate,System.Object[])"/>
+      <param name="dispatcher">Экземпляр <see cref="T:System.Windows.Threading.Dispatcher"/>.</param>
+      <param name="callback">Обратный вызов.</param>
+    </method>
+    <method name="M:Elysium.Extensions.DispatcherExtensions.Invoke(System.Windows.Threading.Dispatcher,System.Action,System.Windows.Threading.DispatcherPriority)">
+      <inheritdoc cref="M:System.Windows.Threading.Dispatcher.BeginInvoke(System.Delegate,System.Windows.Threading.DispatcherPriority,System.Object[])"/>
+      <param name="dispatcher">Экземпляр <see cref="T:System.Windows.Threading.Dispatcher"/>.</param>
+      <param name="callback">Обратный вызов.</param>
+    </method>
+  </members>
+</doc>

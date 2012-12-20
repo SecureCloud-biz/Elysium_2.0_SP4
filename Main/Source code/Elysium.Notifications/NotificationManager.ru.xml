@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium.Notifications</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Notifications.NotificationManager">
+      <summary>
+        Менеджер уведомлений.
+      </summary>
+    </type>
+    <method name="M:Elysium.Notifications.NotificationManager.BeginTryPush(System.String,System.String)">
+      <summary>
+        Инициирует отображение уведомления с заданными заголовком и примечанием асинхронно.
+        Возвращает значение, указывающее успешно ли выполнена операция.
+      </summary>
+      <param name="message">Заголовок уведомления.</param>
+      <param name="remark">Примечание.</param>
+      <returns>
+        Экземпляр <see cref="T:System.Windows.Threading.DispatcherOperation" />, который позволяет управлять потоком выполнения задачи.
+        Значением <see cref="P:System.Windows.Threading.DispatcherOperation.Result" /> является True, в случае успешного отображения уведомления, иначе False.
+      </returns>
+      <exception cref="T:System.ArgumentException">
+        Параметер <paramref name="message"/> имеет значение null, является пустой строкой или состоит из пробелов.
+      </exception>
+      <requires exception="T:System.ArgumentException">message != null</requires>
+    </method>
+    <method name="M:Elysium.Notifications.NotificationManager.TryPushAsync(System.String,System.String)">
+      <summary>
+        Инициирует отображение уведомления с заданными заголовком и примечанием асинхронно.
+        Возвращает значение, указывающее успешно ли выполнена операция.
+      </summary>
+      <param name="message">Заголовок уведомления.</param>
+      <param name="remark">Примечание.</param>
+      <returns>
+        Экземпляр <see cref="T:System.Threading.Tasks.Task" />, который позволяет управлять потоком выполнения задачи.
+        Значением, которое инкапсулирует <see cref="T:System.Threading.Tasks.Task" /> является True, в случае успешного отображения уведомления, иначе False.
+      </returns>
+      <exception cref="T:System.ArgumentException">
+        Параметер <paramref name="message"/> имеет значение null, является пустой строкой или состоит из пробелов.
+      </exception>
+      <requires exception="T:System.ArgumentException">message != null</requires>
+    </method>
+    <method name="M:Elysium.Notifications.NotificationManager.TryPush(System.String,System.String)">
+      <summary>
+        Инициирует отображение уведомления с заданными заголовком и примечанием.
+        Возвращает значение, указывающее успешно ли выполнена операция.
+      </summary>
+      <param name="message">Заголовок уведомления.</param>
+      <param name="remark">Примечание.</param>
+      <returns>True, в случае успешного отображения уведомления, иначе False.</returns>
+      <exception cref="T:System.ArgumentException">
+        Параметер <paramref name="message"/> имеет значение null, является пустой строкой или состоит из пробелов.
+      </exception>
+      <requires exception="T:System.ArgumentException">message != null</requires>
+    </method>
+    <method name="M:Elysium.Notifications.NotificationManager.BeginPush(System.String,System.String)">
+      <summary>
+        Инициирует отображение уведомления с заданными заголовком и примечанием асинхронно.
+      </summary>
+      <param name="message">Заголовок уведомления.</param>
+      <param name="remark">Примечание.</param>
+      <returns>Экземпляр <see cref="T:System.Windows.Threading.DispatcherOperation" />, который позволяет управлять потоком выполнения задачи.</returns>
+      <exception cref="T:System.ArgumentException">
+        Параметер <paramref name="message"/> имеет значение null, является пустой строкой или состоит из пробелов.
+      </exception>
+      <exception cref="T:Elysium.Notifications.ServerUnavailableException">
+        Сервер уведомлений недоступен.
+      </exception>
+      <exception cref="T:Elysium.Notifications.PushNotificationFailedException">
+        Во время попытки отображения уведомления произошла неизвестная ошибка.
+      </exception>
+      <requires exception="T:System.ArgumentException">message != null</requires>
+    </method>
+    <method name="M:Elysium.Notifications.NotificationManager.PushAsync(System.String,System.String)">
+      <summary>
+        Инициирует отображение уведомления с заданными заголовком и примечанием асинхронно.
+      </summary>
+      <param name="message">Заголовок уведомления.</param>
+      <param name="remark">Примечание.</param>
+      <returns>Экземпляр <see cref="T:System.Threading.Tasks.Task" />, который позволяет управлять потоком выполнения задачи.</returns>
+      <exception cref="T:System.ArgumentException">
+        Параметер <paramref name="message"/> имеет значение null, является пустой строкой или состоит из пробелов.
+      </exception>
+      <exception cref="T:Elysium.Notifications.ServerUnavailableException">
+        Сервер уведомлений недоступен.
+      </exception>
+      <exception cref="T:Elysium.Notifications.PushNotificationFailedException">
+        Во время попытки отображения уведомления произошла неизвестная ошибка.
+      </exception>
+      <requires exception="T:System.ArgumentException">message != null</requires>
+    </method>
+    <method name="M:Elysium.Notifications.NotificationManager.Push(System.String,System.String)">
+      <summary>
+        Инициирует отображение уведомления с заданными заголовком и примечанием.
+      </summary>
+      <param name="message">Заголовок уведомления.</param>
+      <param name="remark">Примечание.</param>
+      <exception cref="T:System.ArgumentException">
+        Параметер <paramref name="message"/> имеет значение null, является пустой строкой или состоит из пробелов.
+      </exception>
+      <exception cref="T:Elysium.Notifications.ServerUnavailableException">
+        Сервер уведомлений недоступен.
+      </exception>
+      <exception cref="T:Elysium.Notifications.PushNotificationFailedException">
+        Во время попытки отображения уведомления произошла неизвестная ошибка.
+      </exception>
+      <requires exception="T:System.ArgumentException">message != null</requires>
+    </method>
+  </members>
+</doc>

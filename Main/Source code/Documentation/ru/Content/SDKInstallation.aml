@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="0405d96c-9fcd-487c-b0b3-b7ae711c937b" revisionNumber="1">
+  <developerWalkthroughDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+                                xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <para>
+        <legacyBold>Elysium SDK</legacyBold> - это набор средств разработчика (software development kit), который облегчает создание приложений в стиле <legacyBold>Metro</legacyBold> с помощью Elysium. Он включает в себя:
+      </para>
+      <list class="bullet">
+        <listItem>
+          <para>Сборки, содержащие <legacyBold>Elysium API</legacyBold> и набор стилей для приложений, а также вспомогательные сборки и службы.</para>
+        </listItem>
+        <listItem>
+          <para>Документацию на русском и английском языках.</para>
+        </listItem>
+        <listItem>
+          <para>Приложение, демонстрирующее возможности Elysium.</para>
+        </listItem>
+      </list>
+    </introduction>
+
+    <prerequisites address="Prerequiresites">
+      <content>
+        <list class="ordered">
+          <listItem>
+            <para>
+              <token>WindowsVersion</token>
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <token>FrameworkDependencyName</token>
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <token>VisualStudioVersion</token>
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <legacyItalic>Опционально</legacyItalic>: <token>BlendVersion</token>
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <legacyItalic>Поддерживается</legacyItalic>: Microsoft Code Contracts tools 1.4.50910.0
+            </para>
+          </listItem>
+        </list>
+      </content>
+    </prerequisites>
+      
+    <procedure address="Installation">
+      <title>Установка Elysium SDK с помощью программы установки</title>
+      <steps class="ordered">
+        <step>
+          <content>
+            <para>
+              Загрузите программу установки, выбрав соответствующую версию для своей платформы - <legacyBold>x86 (32 бита)</legacyBold> или <legacyBold>x64 (64 бита)</legacyBold> и перейдя по
+              <externalLink>
+                <linkText>следующей ссылке.</linkText>
+                <linkUri>http://elysium.codeplex.com/releases</linkUri>
+              </externalLink>
+            </para>
+            <alert class="important">
+              <para>
+                Сборки Elysium и вспомогательные сборки являются мультиплатформенными (собраны с параметром <legacyBold>AnyCPU</legacyBold>) и поэтому могут быть использованы в приложении с любой разрядностью.
+                Исполнительные файлы служб собраны под каждую платформу отдельно, однако они поддерживают работу как с <legacyBold>32-х</legacyBold>, так и с <legacyBold>64-х</legacyBold> разрядными приложениями. 
+              </para>
+            </alert>
+            <para>
+              <markup>
+                <style type="text/css">
+                  div.bootstrapper a
+                  {
+                    text-align: center;
+                    vertical-align: top;
+                    width: 125px;
+                  }
+                  div.bootstrapper img
+                  {
+                    display: block;
+                    border : none;
+                    margin: 0 auto;
+                  }
+                </style>
+                <div class="bootstrapper">
+                  <a href="../Media/Bootstrapper - 1.1 Главный экран.png">
+                    <img src="../Media/Bootstrapper - 1.1 Главный экран - Иконка.png" alt="1.1 Главный экран" />
+                    <p>1.1 Главный экран</p>
+                  </a>
+                  <a href="../Media/Bootstrapper - 1.2 Принятие лицензионного соглашения.png">
+                    <img src="../Media/Bootstrapper - 1.2 Принятие лицензионного соглашения - Иконка.png" alt="1.2 Принятие лицензионного соглашения" />
+                    <p>1.2 Принятие лицензионного соглашения</p>
+                  </a>
+                  <a href="../Media/Bootstrapper - 1.3 Выбор компонентов.png">
+                    <img src="../Media/Bootstrapper - 1.3 Выбор компонентов - Иконка.png" alt="1.3 Выбор компонентов" />
+                    <p>1.3 Выбор компонентов</p>
+                  </a>
+                  <a href="../Media/Bootstrapper - 1.4.1 Копирование новых файлов.png">
+                    <img src="../Media/Bootstrapper - 1.4.1 Копирование новых файлов - Иконка.png" alt="1.4.1 Копирование новых файлов" />
+                    <p>1.4.1 Копирование новых файлов</p>
+                  </a>
+                  <a href="../Media/Bootstrapper - 1.4.2 Создание образов в машинном коде.png">
+                    <img src="../Media/Bootstrapper - 1.4.2 Создание образов в машинном коде - Иконка.png" alt="1.4.2 Создание образов в машинном коде" />
+                    <p>1.4.2 Создание образов в машинном коде</p>
+                  </a>
+                  <a href="../Media/Bootstrapper - 1.4.3 Запуск служб.png">
+                    <img src="../Media/Bootstrapper - 1.4.3 Запуск служб - Иконка.png" alt="1.4.3 Запуск служб" />
+                    <p>1.4.3 Запуск служб</p>
+                  </a>
+                  <a href="../Media/Bootstrapper - 1.4.4 Обновление регистрации шаблонов Visual Studio.png">
+                    <img src="../Media/Bootstrapper - 1.4.4 Обновление регистрации шаблонов Visual Studio - Иконка.png" alt="1.4.4 Обновление регистрации шаблонов Visual Studio" />
+                    <p>1.4.4 Обновление регистрации шаблонов Visual Studio</p>
+                  </a>
+                  <a href="../Media/Bootstrapper - 2.1 Изменить Восстановить Удалить.png">
+                    <img src="../Media/Bootstrapper - 2.1 Изменить Восстановить Удалить - Иконка.png" alt="2.1 Изменить, Восстановить, Удалить" />
+                    <p>2.1 Изменить, Восстановить, Удалить</p>
+                  </a>
+                  <a href="../Media/Bootstrapper - 2.2 Проверка установки.png">
+                    <img src="../Media/Bootstrapper - 2.2 Проверка установки - Иконка.png" alt="2.2 Проверка установки" />
+                    <p>2.2 Проверка установки</p>
+                  </a>
+                  <a href="../Media/Bootstrapper - 3 Операция успешно завершена.png">
+                    <img src="../Media/Bootstrapper - 3 Операция успешно завершена - Иконка.png" alt="3 Операция успешно завершена" />
+                    <p>3 Операция успешно завершена</p>
+                  </a>
+                </div>
+              </markup>
+            </para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              После запуска программы установки появится основной экран. На нём вы можете изменить расположение папки установки <legacyItalic>(рис. 1.1)</legacyItalic>.
+              Вы также должны принять лицензионное соглашение, прежде чем сможете продолжить установку <legacyItalic>(рис. 1.2)</legacyItalic>.
+            </para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              Выберите компоненты для установки <legacyItalic>(рис. 1.3)</legacyItalic>. Компонент <legacyBold>Elysium</legacyBold> должен быть установлен обязательно, т.к. он включает
+              в себя основные и вспомогательные сборки.
+            </para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              После этого начнётся установка. Программа установки скопирует необходимые файлы <legacyItalic>(рис. 1.4.1)</legacyItalic>, создаст
+              образы в машинном коде <legacyItalic>(рис. 1.4.2)</legacyItalic> для более быстрой загрузки сборок, запустит необходимые
+              службы <legacyItalic>(рис. 1.4.3)</legacyItalic>, если вы выбрали установку <legacyBold>Системы уведомлений Elysium</legacyBold> и
+              установит <legacyBold>шаблоны Visual Studio</legacyBold> для быстрого создания проектов и элементов управления использующих
+              Elysium <legacyItalic>(рис. 1.4.4)</legacyItalic>.
+            </para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              При наобходимости вы можете изменить состав установленного <legacyBold>Elysium SDK</legacyBold>, восстановить его целостность или
+              удалить <legacyItalic>(рис. 2.1)</legacyItalic>. Программа установки проверит установку <legacyItalic>(рис. 2.2)</legacyItalic> и
+              выполнит указанное действие.
+            </para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              Если возникнет ошибка или операция установки/изменения/восстановления/удаления будет отменена, будет выведено соответствующее сообщение.
+              В противном случае будет выведено сообщение об успешном завершении установки <legacyItalic>(рис. 3)</legacyItalic>.
+            </para>
+          </content>
+        </step>
+      </steps>
+    </procedure>
+
+    <section address="Distributives">
+      <title>Дополнительные варианты установки</title>
+      <content>
+        <procedure address="MSI">
+          <title>Установка Elysium SDK с помощью msi-пакета</title>
+          <steps class="ordered">
+            <step>
+              <content>
+                <para>
+                  Загрузите msi-пакет, выбрав соответствующую версию для своей
+                  платформы - <legacyBold>x86 (32 бита)</legacyBold> или <legacyBold>x64 (64 бита)</legacyBold> и перейдя по
+                  <externalLink>
+                    <linkText>следующей ссылке.</linkText>
+                    <linkUri>http://elysium.codeplex.com/releases</linkUri>
+                  </externalLink>
+                </para>
+                <alert class="important">
+                  <para>
+                    Используйте данный способ установки только если вам необходимо использовать Microsoft Windows Installer (например, для развёртывании на
+                    множество компьютеров через локальную сеть), поскольку в таком случае вы лишаетесь некоторых преимуществ установки через программу установки
+                    (например, программа установки предложит вам установить отсутствующие зависимости).
+                  </para>
+                </alert>
+                <para>
+                  <markup>
+                    <style type="text/css">
+                      div.msi a
+                      {
+                        text-align: center;
+                        vertical-align: top;
+                        width: 150px;
+                      }
+                      div.msi img
+                      {
+                        display: block;
+                        border : none;
+                        margin: 0 auto;
+                      }
+                    </style>
+                    <div class="msi">
+                      <a href="../Media/MSI - 1.1 Главный экран.png">
+                        <img src="../Media/MSI - 1.1 Главный экран - Иконка.png" alt="1.1 Главный экран" />
+                        <p>1.1 Главный экран</p>
+                      </a>
+                      <a href="../Media/MSI - 1.2 Принятие лицензионного соглашения.png">
+                        <img src="../Media/MSI - 1.2 Принятие лицензионного соглашения - Иконка.png" alt="1.2 Принятие лицензионного соглашения" />
+                        <p>1.2 Принятие лицензионного соглашения</p>
+                      </a>
+                      <a href="../Media/MSI - 1.3.1 Выбор папки назначения.png">
+                        <img src="../Media/MSI - 1.3.1 Выбор папки назначения - Иконка.png" alt="1.3.1 Выбор папки назначения" />
+                        <p>1.3.1 Выбор папки назначения</p>
+                      </a>
+                      <a href="../Media/MSI - 1.3.2 Выбор папки назначения.png">
+                        <img src="../Media/MSI - 1.3.2 Выбор папки назначения - Иконка.png" alt="1.3.2 Выбор папки назначения" />
+                        <p>1.3.2 Выбор папки назначения</p>
+                      </a>
+                      <a href="../Media/MSI - 1.4 Выбор компонентов.png">
+                        <img src="../Media/MSI - 1.4 Выбор компонентов - Иконка.png" alt="1.4 Выбор компонентов" />
+                        <p>1.4 Выбор компонентов</p>
+                      </a>
+                      <a href="../Media/MSI - 1.5.1 Копирование новых файлов.png">
+                        <img src="../Media/MSI - 1.5.1 Копирование новых файлов - Иконка.png" alt="1.5.1 Копирование новых файлов" />
+                        <p>1.5.1 Копирование новых файлов</p>
+                      </a>
+                      <a href="../Media/MSI - 1.5.2 Запуск служб.png">
+                        <img src="../Media/MSI - 1.5.2 Запуск служб - Иконка.png" alt="1.5.2 Запуск служб" />
+                        <p>1.5.2 Запуск служб</p>
+                      </a>
+                      <a href="../Media/MSI - 1.5.3 Обновление регистрации шаблонов Visual Studio.png">
+                        <img src="../Media/MSI - 1.5.3 Обновление регистрации шаблонов Visual Studio - Иконка.png" alt="1.5.3 Обновление регистрации шаблонов Visual Studio" />
+                        <p>1.5.3 Обновление регистрации шаблонов Visual Studio</p>
+                      </a>
+                      <a href="../Media/MSI - 2.1 Начальный экран.png">
+                        <img src="../Media/MSI - 2.1 Начальный экран - Иконка.png" alt="2.1 Начальный экран" />
+                        <p>2.1 Начальный экран</p>
+                      </a>
+                      <a href="../Media/MSI - 2.2 Изменить Восстановить Удалить.png">
+                        <img src="../Media/MSI - 2.2 Изменить Восстановить Удалить - Иконка.png" alt="2.2 Изменить, Восстановить, Удалить" />
+                        <p>2.2 Изменить, Восстановить, Удалить</p>
+                      </a>
+                      <a href="../Media/MSI - 3 Операция успешно завершена.png">
+                        <img src="../Media/MSI - 3 Операция успешно завершена - Иконка.png" alt="3 Операция успешно завершена" />
+                        <p>3 Операция успешно завершена</p>
+                      </a>
+                    </div>
+                  </markup>
+                </para>
+              </content>
+            </step>
+            <step>
+              <content>
+                <para>
+                  После запуска программы установки появится основной экран <legacyItalic>(рис. 1.1)</legacyItalic>. Вы должны принять лицензионное
+                  соглашение <legacyItalic>(рис. 1.2)</legacyItalic>, после чего сможете начать установку с параметрами по умолчанию или
+                  изменить некоторые параметры.
+                </para>
+              </content>
+            </step>
+            <step>
+              <content>
+                <para>
+                  Вы можете изменить расположение папки установки <legacyItalic>(рис. 1.3.1 и 1.3.2)</legacyItalic>, а также выбрать компоненты для
+                  установки <legacyItalic>(рис. 1.4)</legacyItalic>. Компонент <legacyBold>Elysium</legacyBold> должен быть установлен
+                  обязательно, т.к. он включает в себя основные и вспомогательные сборки.
+                </para>
+              </content>
+            </step>
+            <step>
+              <content>
+                <para>
+                  После этого начнётся установка. Программа установки скопирует необходимые файлы <legacyItalic>(рис. 1.5.1)</legacyItalic>, запустит необходимые
+                  службы <legacyItalic>(рис. 1.5.2)</legacyItalic>, если вы выбрали установку <legacyBold>Системы уведомлений Elysium</legacyBold> и
+                  установит <legacyBold>шаблоны Visual Studio</legacyBold> для быстрого создания проектов и элементов управления использующих
+                  Elysium <legacyItalic>(рис. 1.5.3)</legacyItalic>.
+                </para>
+              </content>
+            </step>
+            <step>
+              <content>
+                <para>
+                  При наобходимости вы можете изменить состав установленного <legacyBold>Elysium SDK</legacyBold>, восстановить его целостность или
+                  удалить <legacyItalic>(рис. 2.1 и 2.2)</legacyItalic>.
+                </para>
+              </content>
+            </step>
+            <step>
+              <content>
+                <para>
+                  Если возникнет ошибка или операция установки/изменения/восстановления/удаления будет отменена, будет выведено соответствующее сообщение.
+                  В противном случае будет выведено сообщение об успешном завершении установки <legacyItalic>(рис. 3)</legacyItalic>.
+                </para>
+              </content>
+            </step>
+          </steps>
+        </procedure>
+        <procedure address="NuGet">
+          <title>Установка Elysium SDK с помощью NuGet-пакета</title>
+          <steps class="bullet">
+            <step>
+              <content>
+                <para>Войдите в менеджер пакетов <legacyItalic>(рис. 1)</legacyItalic> и выполните поиск <legacyItalic>(рис. 2)</legacyItalic> пакета с именем <legacyBold>Elysium</legacyBold>.
+                </para>
+                <alert class="important">
+                  <para>
+                    При использовании данного способа установки вы <legacyBold>не сможете</legacyBold> использовать <legacyBold>Систему уведомлений Elysium</legacyBold>.
+                    Для того чтобы воспользоваться ею вы должны использовать один из альтернативных методов установки.
+                  </para>
+                </alert>
+                <alert class="warning">
+                  <para>
+                    Шаблоны Visual Studio доступны только при установке <legacyBold>Elysium SDK</legacyBold> через программу установки или msi-пакет.
+                  </para>
+                </alert>
+                <para>
+                  <markup>
+                    <style type="text/css">
+                      div.nuget a
+                      {
+                        text-align: center;
+                        vertical-align: top;
+                        width: 175px;
+                      }
+                      div.nuget img
+                      {
+                        display: block;
+                        border : none;
+                        margin: 0 auto;
+                      }
+                    </style>
+                    <div class="nuget">
+                      <a href="../Media/NuGet - 1 Главный экран.png">
+                        <img src="../Media/NuGet - 1 Главный экран - Иконка.png" alt="1 Главный экран" />
+                        <p>1 Главный экран</p>
+                      </a>
+                      <a href="../Media/NuGet - 2 Установка.png">
+                        <img src="../Media/NuGet - 2 Установка - Иконка.png" alt="2 Установка" />
+                        <p>2 Установка</p>
+                      </a>
+                    </div>
+                  </markup>
+                </para>
+              </content>
+            </step>
+            <step>
+              <content>
+                <para>
+                  После короткого диалога установки NuGet добавит все необходимые файлы в ваш проект и
+                  вы сможете начать использовать <legacyBold>Elysium SDK</legacyBold>.
+                </para>
+              </content>
+            </step>
+          </steps>
+        </procedure>
+        <procedure address="ZIP">
+          <title>Установка Elysium SDK из архива</title>
+          <steps class="ordered">
+            <step>
+              <content>
+                <para>
+                  Загрузите архив, содержащий <legacyBold>Elysium SDK</legacyBold>, выбрав соответствующую версию для своей
+                  платформы - <legacyBold>x86 (32 бита)</legacyBold> или <legacyBold>x64 (64 бита)</legacyBold> и перейдя по
+                  <externalLink>
+                    <linkText>следующей ссылке.</linkText>
+                    <linkUri>http://elysium.codeplex.com/releases</linkUri>
+                  </externalLink>
+                </para>
+                <alert class="warning">
+                  <para>
+                    Шаблоны Visual Studio доступны только при установке <legacyBold>Elysium SDK</legacyBold> через программу установки или msi-пакет.
+                  </para>
+                </alert>
+              </content>
+            </step>
+            <step>
+              <content>
+                <para>
+                  Распакуйте архив в папку назначения. При установке для всех пользователей наилучшим выбором будет папка в директории <legacyItalic>[Буква диска Windows]:\Program Files\</legacyItalic>,
+                  при установке для текущего пользователя - <legacyItalic>[Буква диска Windows]:\Users\[Имя пользователя]\AppData\Local\Apps\</legacyItalic>
+                </para>
+              </content>
+            </step>
+            <step>
+              <content>
+                <para>
+                  Запустите скрипт <legacyItalic>Install Elysium Notifications service.bat</legacyItalic> для установки <legacyBold>Системы уведомлений Elysium</legacyBold>.
+                  Во время отладки программы, для того чтобы иметь доступ к системе уведомлений необходимо запустить сервис ElysiumNotifications.
+                  Для этого запустите скрипт <legacyItalic>Run Elysium Notifications service.bat</legacyItalic>.
+                  Чтобы остановить сервис ElysiumNotifications запустите скрипт <legacyItalic>Stop Elysium Notifications service.bat</legacyItalic>.
+                  Чтобы удалить <legacyBold>Систему уведомлений Elysium</legacyBold> запустите скрипт <legacyItalic>Uninstall Elysium Notifications service.bat</legacyItalic>.
+                </para>
+              </content>
+            </step>
+          </steps>
+        </procedure>
+      </content>
+    </section>
+
+    <relatedTopics>
+      <link xlink:href="beb3a93b-e01a-4b19-8966-7cc9738eda11"/>
+      <link xlink:href="286c4f3c-7317-4a23-b8f4-3ba5bd016cbb"/>
+      <link xlink:href="ca59c898-ccc9-4f97-a76b-e8005496249c"/>
+    </relatedTopics>
+  </developerWalkthroughDocument>
+</topic>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="286c4f3c-7317-4a23-b8f4-3ba5bd016cbb" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+                               xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <para>All necessary information about how to start working with Elysium is written in sub-sections of this document.</para>
+    </introduction>
+    
+    <section>
+      <content>
+        <list class="bullet">
+          <listItem>
+            <para>
+              <link xlink:href="38e98c7d-0495-49a4-9dea-01d0dccd3302" />
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <link xlink:href="2ac0683a-9c20-4cc9-86e2-48a3e25696ed" />
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <link xlink:href="d4e53745-c2f4-457a-a3cd-39494218a6f3" />
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <link xlink:href="a0189101-b73b-4662-85b1-0176fdfab7df" />
+            </para>
+          </listItem>
+        </list>
+      </content>
+    </section>
+
+    <relatedTopics>
+      <link xlink:href="ca59c898-ccc9-4f97-a76b-e8005496249c" />
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

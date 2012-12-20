@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+
+  <?ifdef NETFX4 ?>
+    <?define Framework = "NETFX4" ?>
+    <?define FrameworkName = ".NET Framework 4" ?>
+  <?endif ?>
+  <?ifdef NETFX45 ?>
+    <?define Framework = "NETFX45" ?>
+    <?define FrameworkName = ".NET Framework 4.5" ?>
+  <?endif ?>
+
+  <?ifdef NETFX4 ?>
+    <?define ProductId = "C0866E3A-961B-46FA-884E-415FA7B8BDC6" ?>
+    <?define InstallerUpgradeCode = "DBFAF4C9-7352-483C-B6A2-34C6C1D0F1E0" ?>
+    <?define SetupUpgradeCode = "ED0F0584-1CE1-45B0-9616-32ECC4DE5CAE" ?>
+  <?endif ?>
+  <?ifdef NETFX45 ?>
+    <?define ProductId = "38435726-4627-4F4A-A330-4C6B8999AA22" ?>
+    <?define InstallerUpgradeCode = "90DBE047-293B-4D8D-9F49-BDE9D943C591" ?>
+    <?define SetupUpgradeCode = "02EF99BB-E737-4B32-96EF-5B8A13C5531E" ?>
+  <?endif ?>
+  
+  <?ifdef X64 ?>
+    <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
+    <?define PlatformDebugFolder = "..\..\..\Binary\$(var.FrameworkName)\Debug\x64" ?>
+    <?define PlatformReleaseFolder = "..\..\..\Binary\$(var.FrameworkName)\Release\x64" ?>
+    <?ifdef Debug ?>
+      <?define PlatformSourceFolder = "..\..\..\Binary\$(var.FrameworkName)\Debug\x64" ?>
+    <?endif ?>
+    <?ifdef Release ?>
+      <?define PlatformSourceFolder = "..\..\..\Binary\$(var.FrameworkName)\Release\x64" ?>
+    <?endif ?>
+  <?else ?>
+    <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+    <?define PlatformDebugFolder = "..\..\..\Binary\$(var.FrameworkName)\Debug\x86" ?>
+    <?define PlatformReleaseFolder = "..\..\..\Binary\$(var.FrameworkName)\Release\x86" ?>
+    <?ifdef Debug ?>
+      <?define PlatformSourceFolder = "..\..\..\Binary\$(var.FrameworkName)\Debug\x86" ?>
+    <?endif ?>
+    <?ifdef Release ?>
+      <?define PlatformSourceFolder = "..\..\..\Binary\$(var.FrameworkName)\Release\x86" ?>
+    <?endif ?>
+  <?endif ?>
+
+  <?define AssemblyDependenciesFolder = "..\..\..\Tools and Resources\Assembly dependencies\$(var.FrameworkName)" ?>
+  <?define SharedAssemblyDependenciesFolder = "..\..\..\Tools and Resources\Assembly dependencies" ?>
+  <?define AnyCPUDebugFolder = "..\..\..\Binary\$(var.FrameworkName)\Debug\AnyCPU" ?>
+  <?define AnyCPUReleaseFolder = "..\..\..\Binary\$(var.FrameworkName)\Release\AnyCPU" ?>
+  <?ifdef Debug ?>
+    <?define AnyCPUSourceFolder = "..\..\..\Binary\$(var.FrameworkName)\Debug\AnyCPU" ?>
+  <?endif ?>
+  <?ifdef Release ?>
+    <?define AnyCPUSourceFolder = "..\..\..\Binary\$(var.FrameworkName)\Release\AnyCPU" ?>
+  <?endif ?>
+  <?define DocumentationFolder = "..\..\..\Binary\$(var.FrameworkName)\Documentation" ?>
+  <?define ProjectTemplatesFolder = ".\ProjectTemplates" ?>
+  <?define ItemTemplatesFolder = ".\ItemTemplates" ?>
+
+  <?define SDKName = "Elysium SDK" ?>
+  <?ifdef NETFX4 ?>
+    <?define SDKVersion = "1.5" ?>
+    <?define SDKBuild = "873" ?>
+    <?define SDKRevision = "0" ?>
+  <?endif ?>
+  <?ifdef NETFX45 ?>
+    <?define SDKVersion = "1.5" ?>
+    <?define SDKBuild = "926" ?>
+    <?define SDKRevision = "0" ?>
+  <?endif ?>
+  
+</Include>

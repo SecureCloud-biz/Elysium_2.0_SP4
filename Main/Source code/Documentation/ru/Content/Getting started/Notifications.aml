@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="a0189101-b73b-4662-85b1-0176fdfab7df" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+                               xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <para>
+        Elysium включает в себя <legacyBold>Систему уведомлений</legacyBold>, которая состоит из <legacyItalic>набора API</legacyItalic> и специального <legacyItalic>сервиса Windows</legacyItalic>.
+        Эта система позволяет отображать на экране <legacyItalic>небольшое всплывающее окошко с информацией</legacyItalic>, которое называется <legacyBold>уведомлением</legacyBold>.
+      </para>
+    </introduction>
+
+    <section>
+      <title>Технические аспекты</title>
+      <content>
+        <para>
+          <legacyBold>Система уведомлений Elysium</legacyBold> состоит из двух частей:
+        </para>
+        <list class="ordered">
+          <listItem>
+            <para>набора API, которое является обёрткой над клиентом <legacyBold>сервиса Windows Communication Foundation</legacyBold></para>
+          </listItem>
+          <listItem>
+            <para>сервиса Windows, который является обёрткой над серверной частью сервиса Windows Communication Foundation</para>
+          </listItem>
+        </list>
+        <alert class="important">
+          <para>
+            <legacyBold>Сервис Windows Communication Foundation</legacyBold>, используемый Системой уведомлений Elysium <legacyBold>является локальным</legacyBold>
+            (т.е. и клиентская, и серверная части сервиса WCF располагаются на том же компьютере, на котором запускается программа) и, соответственно, не требует подключения к Интернету или локальной сети.
+          </para>
+        </alert>
+        <para>За отображение окна с уведомлением отвечает клиентское API, контроль слотов осуществляет серверная часть.</para>
+        <para>
+          Система уведомлений <legacyItalic>разделяет экран на множество областей</legacyItalic> с помощью <legacyBold>сетки</legacyBold>. Каждая такая область называется <legacyBold>слотом</legacyBold>.
+          В зависимости от настроек, сетка <legacyItalic>располагается</legacyItalic>&#xa0;<legacyItalic>слева</legacyItalic> или <legacyItalic>справа</legacyItalic> экрана,
+          а <legacyItalic>нумерация областей</legacyItalic> начинается <legacyItalic>сверху</legacyItalic> или <legacyItalic>снизу</legacyItalic>.
+          По умолчанию сетка распологается <legacyItalic>справа</legacyItalic>, нумерация начинается <legacyItalic>сверху</legacyItalic>.
+          Все <legacyBold>слоты имеют одинаковый размер</legacyBold>; между слотами, а также между слотом и границей экрана есть <legacyBold>зазор</legacyBold>.
+          По умолчанию слоты имеют размер <legacyItalic>480х64 пикселя</legacyItalic>, зазор составляет <legacyItalic>10 пикселей</legacyItalic>.
+        </para>
+        <alert class="caution">
+          <para>
+            В данный момент изменение настроек системы уведомлений недоступно. В дальнейшем планируется добавить возможность изменять настройки отображения уведомлений, однако использовать эту возможность
+            сможет только конечный пользователь и только для всех приложений одновременно. Разработчик никогда не будет иметь возможности изменять настройки уведомлений для своего приложения.
+          </para>
+        </alert>
+        <para>
+          Прежде чем отобразить уведомление, система уведомлений должна запросить для него слот. <legacyBold>Первым свободным слотом</legacyBold> называется слот, в котором в данный момент нет уведомления и
+          который имеет минимальный порядковый номер. Уведомление всегда отображается в первом свободном слоте. Таким образом, если заняты слоты 1, 3 и 4, то следующее уведомление отобразится не в слоте 5, а в слоте 2.
+        </para>
+        <para>
+          Технически <legacyBold>запрос слота</legacyBold> осуществляется следующим образом. Клиент сервиса WCF шлёт запрос серверной части сервиса,
+          сообщая ей рабочую область экрана, на котором отображается приложение (Primary Display Monitor). Запрос имеет следующие параметры:
+        </para>
+        <table>
+          <tableHeader>
+            <row>
+              <entry>
+                <para>Название параметра</para>
+              </entry>
+              <entry>
+                <para>Значение параметра</para>
+              </entry>
+            </row>
+          </tableHeader>
+          <row>
+            <entry>
+              <para>Адрес конечной точки сервиса WCF (endpoint address)</para>
+            </entry>
+            <entry>
+              <para>net.pipe://localhost/elysium/v<legacyItalic>Версия_Elysium</legacyItalic>/notifications</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Тип соединения</para>
+            </entry>
+            <entry>
+              <para>Именованные каналы (names pipes)</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Протокол транзакций</para>
+            </entry>
+            <entry>
+              <para>OLE</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Максимальное количество соединений</para>
+            </entry>
+            <entry>
+              <para>128</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Время ожидания</para>
+            </entry>
+            <entry>
+              <para>20 сек (2 сек. на открытие канала передачи данных, 8 сек. - на передачу данных, 8 сек. - на получение данных от сервиса,2 сек. - на закрытие соединения)</para>
+            </entry>
+          </row>
+        </table>
+        <alert class="important">
+          <para>
+            Все <legacyBold>операции работы со слотом</legacyBold> - <legacyBold>асинхронные</legacyBold>. Операция <legacyBold>отображения уведомления</legacyBold>
+            является <legacyBold>синхронной</legacyBold> и <legacyBold>выполняется в главном потоке UI</legacyBold>, из-за чего и необходимо столь большое время ожидания.
+          </para>
+        </alert>
+        <para>
+          В ответ на запрос клиент получает специальным образов сформированную структуру данных, которая содержит сведения о <legacyBold>порядковом номере слота</legacyBold>
+          (он необходим для корректного освобождения слота, об этом см. ниже), <legacyBold>времени жизни слота</legacyBold> (времени отображения уведомления; клиент может игнорировать это значение),
+          <legacyBold>размерах слота</legacyBold>, его <legacyBold>начальной и конечной позициях</legacyBold> и <legacyBold>анимации</legacyBold>, применимой к слоту.
+          По умолчанию время жизни слота составляет <legacyItalic>10 секунд</legacyItalic>, тип анимации - <legacyItalic>выдвижение из-за края экрана</legacyItalic>.
+        </para>
+        <para>
+          После получения слота, клиент отображает уведомление заданное время, с заданной анимацией и настройками темы для всего приложения.
+          После того, как время жизни уведомления истечёт, клиенсткое API скроет его и выполнит <legacyBold>освобождение слота</legacyBold>, используя его порядковый номер, полученный ранее.
+        </para>
+      </content>
+    </section>
+
+    <relatedTopics>
+      <codeEntityReference>N:Elysium.Notifications</codeEntityReference>
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

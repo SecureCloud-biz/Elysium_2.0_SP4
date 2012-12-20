@@ -1,0 +1,50 @@
+﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
+<#@ output extension=".vstemplate" #>
+<#@ Assembly Name="mscorlib.dll" #>
+<#@ Assembly Name="System.Core.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ include file="..\..\..\..\..\..\..\Include\Security.ttinclude" #>
+<#@ include file="..\..\..\..\..\..\..\Include\Versions.ttinclude" #>
+<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name>Metro Window</Name>
+    <Description>Windows Presentation Foundation metro window</Description>
+    <Icon Package="{b3bae735-386c-4030-8329-ef48eeda4036}" ID="4593" />
+    <TemplateID>Elysium.CSharp.Window</TemplateID>
+    <ProjectType>CSharp</ProjectType>
+    <SortOrder>96</SortOrder>
+    <RequiredFrameworkVersion>4.0</RequiredFrameworkVersion>
+    <MaxFrameworkVersion>4.0</MaxFrameworkVersion>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <DefaultName>Window.xaml</DefaultName>
+    <TemplateGroupID>WPF</TemplateGroupID>
+    <ShowByDefault>false</ShowByDefault>
+  </TemplateData>
+  <TemplateContent>
+    <References>
+      <Reference>
+        <Assembly>System</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>WindowsBase</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>PresentationCore</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>PresentationFramework</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>Elysium, Version=<#= Versions.NETFX4.Elysium #>, Culture=neutral, PublicKeyToken=<#= PublicKeyToken #>, processorArchitecture=MSIL</Assembly>
+      </Reference>
+    </References>
+    <ProjectItem ReplaceParameters="true" CustomTool="MSBuild:Compile">Window.xaml</ProjectItem>
+    <ProjectItem ReplaceParameters="true" SubType="Code" TargetFileName="$fileinputname$.xaml.cs">Window.xaml.cs</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

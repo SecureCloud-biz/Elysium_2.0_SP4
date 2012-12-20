@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="38e98c7d-0495-49a4-9dea-01d0dccd3302" revisionNumber="1">
+  <developerWalkthroughDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+                                xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <para>Here you can read how to create the simplest application with Elysium.</para>
+    </introduction>
+
+    <prerequisites>
+      <content>
+        <alert class="warning">
+          <para>Visual Studio Templates are accessible only after the installation of <legacyBold>Elysium SDK</legacyBold> by the setup program or msi-package. Only C# templates are supported at the moment.</para>
+        </alert>
+      </content>
+    </prerequisites>
+    
+    <procedure address="CreatingViaTemplate">
+      <title>Creating an application by Visual Studio Template.</title>
+      <steps class="ordered">
+        <step>
+          <content>
+            <para>In the Visual Studio window choose an item <legacyBold>File - New - Project</legacyBold>.</para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>In the dialog window <legacyBold>New Project</legacyBold> choose a type of a template <legacyBold>Visual C# - Windows</legacyBold> and then <legacyBold>WPF Metro Application</legacyBold> and press <legacyBold>OK</legacyBold>.</para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>Visual Studio will create a new project, add necessary references and create basic structure of the project.</para>
+            <alert class="tip">
+              <para>
+                To create additional windows you can use the template <legacyBold>WPF Metro Window</legacyBold>. To do this, right-click on the project and
+                choose the item <legacyBold>Add - New item</legacyBold>. In the window, which will appear, choose following template type <legacyBold>Visual C# - WPF</legacyBold> and
+                then <legacyBold>WPF Metro Window</legacyBold>, after it click <legacyBold>OK</legacyBold>.
+              </para>
+            </alert>
+          </content>
+        </step>
+      </steps>
+    </procedure>
+
+    <procedure address="CreatingManually">
+      <title>Manual creating of the application</title>
+      <steps class="ordered">
+        <step>
+          <content>
+            <para>In the Visual Studio window choose an item <legacyBold>File - New - Project</legacyBold>.</para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>In the dialog window <legacyBold>New Project</legacyBold> choose a type of a template <legacyBold>Visual C#</legacyBold> and then <legacyBold>WPF Application</legacyBold> and press <legacyBold>OK</legacyBold>.</para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+              When Visual Studio creates new project, add necessary references. Do a right-click on item <legacyBold>References</legacyBold> and choose the item <legacyBold>Add reference...</legacyBold>.
+              In the window, which will appear, choose following item <legacyBold>Assemblies - Extensions</legacyBold> and choose the assembly <legacyBold>Elysium</legacyBold> and press <legacyBold>OK</legacyBold>.
+            </para>
+            <alert class="note">
+              <para>
+                If you use Visual Studio 2010 and you have not installed  <legacyBold>Productivity Power Tools</legacyBold>, then in the dialog <legacyItalic>Add reference</legacyItalic>
+                you need to choose the item <legacyBold>.NET</legacyBold>.
+              </para>
+            </alert>
+          </content>
+        </step>
+      </steps>
+    </procedure>
+
+    <relatedTopics>
+      <link xlink:href="0405d96c-9fcd-487c-b0b3-b7ae711c937b" />
+    </relatedTopics>
+  </developerWalkthroughDocument>
+</topic>
