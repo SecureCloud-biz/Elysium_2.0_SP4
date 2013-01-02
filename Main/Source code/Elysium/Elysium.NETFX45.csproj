@@ -26,6 +26,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>..\SigningKey.pfx</AssemblyOriginatorKeyFile>
+    <DigitalSignatureKeyFile>..\..\..\..\Source code\SigningKey.pfx</DigitalSignatureKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -851,6 +852,6 @@
   </PropertyGroup>
   <Import Project="$(TextTemplatingPath)" />
   <PropertyGroup>
-    <PostBuildEvent>"..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4.5\x86\signtool.exe" sign /f "..\..\..\..\Source code\SigningKey.pfx" "Elysium.dll"</PostBuildEvent>
+    <PostBuildEvent>"..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4.5\x86\signtool.exe" sign /f "$(DigitalSignatureKeyFile)" "Elysium.dll"</PostBuildEvent>
   </PropertyGroup>
 </Project>

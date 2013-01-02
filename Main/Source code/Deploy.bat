@@ -112,6 +112,12 @@ copy "..\Binary\%FrameworkName%\Release\x86\Runtime\MSI\Installer.msi" "..\Deplo
 del "..\Deploy\%FrameworkName%\Runtime\Installer (x64).msi"
 copy "..\Binary\%FrameworkName%\Release\x64\Runtime\MSI\Installer.msi" "..\Deploy\%FrameworkName%\Runtime\Installer (x64).msi"
 
+chdir /d %~dp0
+"..\Tools and Resources\Utilities\7za\7za.exe" a "..\Deploy\Elysium Runtime for %FrameworkName%.zip" "..\Deploy\%FrameworkName%\Runtime\Elysium Runtime (x86).zip" "..\Deploy\%FrameworkName%\Runtime\Elysium Runtime (x64).zip" "..\Deploy\%FrameworkName%\Runtime\Installer (x86).msi" "..\Deploy\%FrameworkName%\Runtime\Installer (x64).msi"
+"..\Tools and Resources\Utilities\7za\7za.exe" a "..\Deploy\Elysium SDK for %FrameworkName% zip archives.zip" "..\Deploy\%FrameworkName%\SDK\Elysium SDK (x86).zip" "..\Deploy\%FrameworkName%\SDK\Elysium SDK (x64).zip"
+"..\Tools and Resources\Utilities\7za\7za.exe" a "..\Deploy\Elysium SDK for %FrameworkName% msi installers.zip" "..\Deploy\%FrameworkName%\SDK\Installer (en-us, x86).msi" "..\Deploy\%FrameworkName%\SDK\Installer (ru-ru, x86).msi" "..\Deploy\%FrameworkName%\SDK\Installer (en-us, x64).msi" "..\Deploy\%FrameworkName%\SDK\Installer (ru-ru, x64).msi"
+"..\Tools and Resources\Utilities\7za\7za.exe" a "..\Deploy\Elysium SDK for %FrameworkName% setup.zip" "..\Deploy\%FrameworkName%\SDK\Setup (x86).exe" "..\Deploy\%FrameworkName%\SDK\Setup (x64).exe"
+
 goto :eof
 
 :usage

@@ -18,6 +18,9 @@
     <SccLocalPath>SAK</SccLocalPath>
     <Name>Elysium.SDK.MSI.NETFX45</Name>
   </PropertyGroup>
+  <PropertyGroup>
+    <DigitalSignatureKeyFile>..\..\..\..\..\..\Source code\SigningKey.pfx</DigitalSignatureKeyFile>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DefineConstants>NETFX45;Debug;X86</DefineConstants>
     <OutputPath>..\..\..\Binary\.NET Framework 4.5\Debug\x86\SDK\MSI\</OutputPath>
@@ -82,7 +85,7 @@
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <PropertyGroup>
-    <PostBuildEvent>"..\..\..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4.5\$(Platform)\signtool.exe" sign /f "..\..\..\..\..\..\Source code\SigningKey.pfx" "en-us\Installer.msi"
-"..\..\..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4.5\$(Platform)\signtool.exe" sign /f "..\..\..\..\..\..\Source code\SigningKey.pfx" "ru-ru\Installer.msi"</PostBuildEvent>
+    <PostBuildEvent>"..\..\..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4.5\$(Platform)\signtool.exe" sign /f "$(DigitalSignatureKeyFile)" "en-us\Installer.msi"
+"..\..\..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4.5\$(Platform)\signtool.exe" sign /f "$(DigitalSignatureKeyFile)" "ru-ru\Installer.msi"</PostBuildEvent>
   </PropertyGroup>
 </Project>

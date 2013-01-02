@@ -26,6 +26,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>..\SigningKey.pfx</AssemblyOriginatorKeyFile>
+    <DigitalSignatureKeyFile>..\..\..\..\Source code\SigningKey.pfx</DigitalSignatureKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <PlatformTarget>x86</PlatformTarget>
@@ -334,6 +335,6 @@
   <Import Condition="Exists('$(MSBuildExtensionPackPath)')" Project="$(MSBuildExtensionPackPath)" />
   <Import Condition="Exists('$(TextTemplatingPath)')" Project="$(TextTemplatingPath)" />
   <PropertyGroup>
-    <PostBuildEvent>"..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4\signtool.exe" sign /f "..\..\..\..\Source code\SigningKey.pfx" "Elysium.Notifications.Server.exe"</PostBuildEvent>
+    <PostBuildEvent>"..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4\signtool.exe" sign /f "$(DigitalSignatureKeyFile)" "Elysium.Notifications.Server.exe"</PostBuildEvent>
   </PropertyGroup>
 </Project>

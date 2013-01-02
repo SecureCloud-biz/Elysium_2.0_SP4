@@ -21,6 +21,9 @@
     <SccProvider>SAK</SccProvider>
     <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
   </PropertyGroup>
+  <PropertyGroup>
+    <DigitalSignatureKeyFile>..\..\..\..\Source code\SigningKey.pfx</DigitalSignatureKeyFile>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <PlatformTarget>x86</PlatformTarget>
     <OutputPath>..\..\Binary\.NET Framework 4.5\Debug\x86\</OutputPath>
@@ -292,6 +295,6 @@
   <Import Condition="Exists('$(MSBuildExtensionPackPath)')" Project="$(MSBuildExtensionPackPath)" />
   <Import Condition="Exists('$(TextTemplatingPath)')" Project="$(TextTemplatingPath)" />
   <PropertyGroup>
-    <PostBuildEvent>"..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4.5\$(Platform)\signtool.exe" sign /f "..\..\..\..\Source code\SigningKey.pfx" "Elysium.Test.exe"</PostBuildEvent>
+    <PostBuildEvent>"..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4.5\$(Platform)\signtool.exe" sign /f "$(DigitalSignatureKeyFile)" "Elysium.Test.exe"</PostBuildEvent>
   </PropertyGroup>
 </Project>

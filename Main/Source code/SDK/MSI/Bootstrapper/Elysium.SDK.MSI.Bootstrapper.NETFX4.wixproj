@@ -18,6 +18,9 @@
     <SccLocalPath>SAK</SccLocalPath>
     <Name>Elysium.SDK.MSI.Bootstrapper.NETFX4</Name>
   </PropertyGroup>
+  <PropertyGroup>
+    <DigitalSignatureKeyFile>..\..\..\..\..\..\Source code\SigningKey.pfx</DigitalSignatureKeyFile>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DefineConstants>NETFX4;Debug;X86</DefineConstants>
     <OutputPath>..\..\..\..\Binary\.NET Framework 4\Debug\x86\SDK\MSI\</OutputPath>
@@ -63,9 +66,9 @@
   <Import Project="$(WixTargetsPath)" />
   <PropertyGroup>
     <PostBuildEvent>"$(WIX)bin\Insignia.exe" /ib "$(TargetPath)" -o "$(TargetDir)Engine.exe"
-"..\..\..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4\signtool.exe" sign /f "..\..\..\..\..\..\Source code\SigningKey.pfx" "$(TargetDir)Engine.exe"
+"..\..\..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4\signtool.exe" sign /f "$(DigitalSignatureKeyFile)" "$(TargetDir)Engine.exe"
 "$(WIX)bin\Insignia.exe" /ab "$(TargetDir)Engine.exe" "$(TargetPath)" -o "$(TargetPath)"
-"..\..\..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4\signtool.exe" sign /f "..\..\..\..\..\..\Source code\SigningKey.pfx" "$(TargetPath)"
+"..\..\..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4\signtool.exe" sign /f "$(DigitalSignatureKeyFile)" "$(TargetPath)"
 del /f /q "$(TargetDir)Engine.exe"</PostBuildEvent>
   </PropertyGroup>
 </Project>
