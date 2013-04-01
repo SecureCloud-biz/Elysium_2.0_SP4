@@ -6,7 +6,7 @@ using System.Security;
 [assembly: AssemblyTitle("Elysium.Notifications.Server.exe")]
 [assembly: AssemblyDescription("Elysium Notifications System Server")]
 [assembly: AssemblyProduct("Elysium Notifications System")]
-[assembly: AssemblyCopyright("Copyright © Alex F. Sherman & Codeplex community 2011-2012")]
+[assembly: AssemblyCopyright("Copyright © Alex F. Sherman & Codeplex community 2011-2013")]
 
 [assembly: SecurityRules(SecurityRuleSet.Level2)]
 

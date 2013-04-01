@@ -8,7 +8,7 @@ using System.Windows;
 [assembly: AssemblyTitle("Elysium.Test.exe")]
 [assembly: AssemblyDescription("Test WPF Metro style application")]
 [assembly: AssemblyProduct("Elysium")]
-[assembly: AssemblyCopyright("Copyright © Alex F. Sherman & Codeplex community 2011-2012")]
+[assembly: AssemblyCopyright("Copyright © Alex F. Sherman & Codeplex community 2011-2013")]
 
 [assembly: SecurityRules(SecurityRuleSet.Level2)]
 
