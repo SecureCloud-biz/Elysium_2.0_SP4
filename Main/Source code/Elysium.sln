@@ -59,9 +59,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{A0A9
 		Clean.bat = Clean.bat
 		Deploy.bat = Deploy.bat
 		Elysium.psm1 = Elysium.psm1
+		Install-Keys.ps1 = Install-Keys.ps1
 		InstallKeys.bat = InstallKeys.bat
-		InstallKeys.ps1 = InstallKeys.ps1
 		Load tools.bat = Load tools.bat
+		Remove-Keys.ps1 = Remove-Keys.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ZIP", "ZIP", "{AB4C292B-2046-4A5F-814F-646687991BBB}"

@@ -14,7 +14,7 @@ IF ERRORLEVEL 1 goto showerror
 
 certmgr.exe -add -c "RootCertificate.cer" -s -r localMachine root 
 IF ERRORLEVEL 1 goto showerror
-sn -i "SigningKey.pfx" VS_KEY_495CE44A959FD928
+sn -d "SigningKey.pfx" VS_KEY_495CE44A959FD928
 IF ERRORLEVEL 1 goto showerror
 
 goto :eof

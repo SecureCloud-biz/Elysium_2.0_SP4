@@ -24,7 +24,7 @@
     <Language>en-US</Language>
     <NamingMethod>Guid</NamingMethod>
     <Preliminary>False</Preliminary>
-    <PresentationStyle>VS2010</PresentationStyle>
+    <PresentationStyle>VS2005</PresentationStyle>
     <SelfBranded>True</SelfBranded>
     <SyntaxFilters>CSharp, VisualBasic, XamlUsage</SyntaxFilters>
     <IncludeFavorites>False</IncludeFavorites>
@@ -36,20 +36,20 @@
     <ComponentConfigurations>
       <ComponentConfig id="Code Block Component" enabled="True">
         <component id="Code Block Component" type="SandcastleBuilder.Components.CodeBlockComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
-<!-- Base path for relative filenames in source attributes (optional) -->
-<basePath value="{@HtmlEncProjectFolder}" />
-<!-- Base output paths for the files (required).  These should match the parent folder of the output path
+          <!-- Base path for relative filenames in source attributes (optional) -->
+          <basePath value="{@HtmlEncProjectFolder}" />
+          <!-- Base output paths for the files (required).  These should match the parent folder of the output path
 					 of the HTML files (see each of the SaveComponent instances in the configuration files). -->
-<outputPaths>
+          <outputPaths>
 				{@HelpFormatOutputPaths}
 			</outputPaths>
-<!-- Allow missing source files (Optional).  If omitted, it will generate errors if referenced source files
+          <!-- Allow missing source files (Optional).  If omitted, it will generate errors if referenced source files
 				 are missing. -->
-<allowMissingSource value="false" />
-<!-- Remove region markers from imported code blocks.  If omitted, region markers in imported code blocks
+          <allowMissingSource value="false" />
+          <!-- Remove region markers from imported code blocks.  If omitted, region markers in imported code blocks
 					 are left alone. -->
-<removeRegionMarkers value="false" />
-<!-- Code colorizer options (required).
+          <removeRegionMarkers value="false" />
+          <!-- Code colorizer options (required).
 					 Attributes:
 							Language syntax configuration file (required)
 							XSLT stylesheet file (required)
@@ -62,25 +62,30 @@
 							Keep XML comment "see" tags within the code (optional)
 							Tab size override (optional, 0 = Use syntax file setting)
 							Use language name as default title (optional) -->
-<colorizer syntaxFile="{@SHFBFolder}Colorizer\highlight.xml" styleFile="{@SHFBFolder}Colorizer\highlight.xsl" stylesheet="{@SHFBFolder}Colorizer\highlight.css" scriptFile="{@SHFBFolder}Colorizer\highlight.js" disabled="{@DisableCodeBlockComponent}" language="cs" numberLines="false" outlining="false" keepSeeTags="false" tabSize="0" defaultTitle="true" />
-</component>
+          <colorizer syntaxFile="{@SHFBFolder}Colorizer\highlight.xml" styleFile="{@SHFBFolder}Colorizer\highlight.xsl" stylesheet="{@SHFBFolder}Colorizer\highlight.css" scriptFile="{@SHFBFolder}Colorizer\highlight.js" disabled="{@DisableCodeBlockComponent}" language="cs" numberLines="false" outlining="false" keepSeeTags="false" tabSize="0" defaultTitle="true" />
+        </component>
       </ComponentConfig>
-<ComponentConfig id="IntelliSense Component" enabled="True"><component id="IntelliSense Component" type="SandcastleBuilder.Components.IntelliSenseComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
-<!-- Output options (optional)
+      <ComponentConfig id="IntelliSense Component" enabled="True">
+        <component id="IntelliSense Component" type="SandcastleBuilder.Components.IntelliSenseComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
+          <!-- Output options (optional)
 					 Attributes:
 							Include Namespaces (false by default)
 							Namespaces filename ("Namespaces" if not specified or empty)
 							Directory (current folder if not specified or empty) -->
-<output includeNamespaces="false" namespacesFile="Namespaces" folder="{@OutputFolder}" />
-</component></ComponentConfig>
-<ComponentConfig id="API Token Resolution" enabled="True"><component id="API Token Resolution" type="Microsoft.Ddue.Tools.SharedContentComponent" assembly="{@SandcastlePath}ProductionTools\BuildComponents.dll">
+          <output includeNamespaces="false" namespacesFile="Namespaces" folder="{@OutputFolder}" />
+        </component>
+      </ComponentConfig>
+      <ComponentConfig id="API Token Resolution" enabled="True">
+        <component id="API Token Resolution" type="Microsoft.Ddue.Tools.SharedContentComponent" assembly="{@SandcastlePath}ProductionTools\BuildComponents.dll">
 
       {@TokenFiles}
-      <replace elements="/*//token" item="string(.)" /></component></ComponentConfig></ComponentConfigurations>
+      <replace elements="/*//token" item="string(.)" /></component>
+      </ComponentConfig>
+    </ComponentConfigurations>
     <VisibleItems>InheritedMembers, InheritedFrameworkMembers, Protected, ProtectedInternalAsProtected</VisibleItems>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\..\..\Binary\.NET Framework 4\Debug\AnyCPU\Elysium.dll" />
-      <DocumentationSource sourceFile="..\..\..\Binary\.NET Framework 4\Debug\AnyCPU\Elysium.Notifications.dll" />
+      <DocumentationSource sourceFile="..\..\..\Binary\.NET Framework 4\$(Configuration)\AnyCPU\Elysium.dll" />
+      <DocumentationSource sourceFile="..\..\..\Binary\.NET Framework 4\$(Configuration)\AnyCPU\Elysium.Notifications.dll" />
       <DocumentationSource sourceFile="..\..\Elysium.Notifications\Documentation\en\Elysium.Notifications.xml" />
       <DocumentationSource sourceFile="..\..\Elysium\Documentation\en\Elysium.xml" />
     </DocumentationSources>

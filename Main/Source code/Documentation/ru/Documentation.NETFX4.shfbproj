@@ -24,7 +24,7 @@
     <Language>ru-RU</Language>
     <NamingMethod>Guid</NamingMethod>
     <Preliminary>False</Preliminary>
-    <PresentationStyle>VS2010</PresentationStyle>
+    <PresentationStyle>VS2005</PresentationStyle>
     <SelfBranded>True</SelfBranded>
     <SyntaxFilters>CSharp, VisualBasic, XamlUsage</SyntaxFilters>
     <IncludeFavorites>False</IncludeFavorites>
@@ -36,29 +36,34 @@
     <ComponentConfigurations>
       <ComponentConfig id="IntelliSense Component" enabled="True">
         <component id="IntelliSense Component" type="SandcastleBuilder.Components.IntelliSenseComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
-<!-- Output options (optional)
+          <!-- Output options (optional)
 					 Attributes:
 							Include Namespaces (false by default)
 							Namespaces filename ("Namespaces" if not specified or empty)
 							Directory (current folder if not specified or empty) -->
-<output includeNamespaces="false" namespacesFile="Namespaces" folder="{@OutputFolder}" />
-</component>
+          <output includeNamespaces="false" namespacesFile="Namespaces" folder="{@OutputFolder}" />
+        </component>
       </ComponentConfig>
-<ComponentConfig id="Code Block Component" enabled="True"><component id="Code Block Component" type="SandcastleBuilder.Components.CodeBlockComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
-  <basePath value="{@HtmlEncProjectFolder}" />
-  <outputPaths>{@HelpFormatOutputPaths}</outputPaths>
-  <allowMissingSource value="false" />
-  <removeRegionMarkers value="false" />
-  <colorizer syntaxFile="{@SHFBFolder}Colorizer\highlight.xml" styleFile="{@SHFBFolder}Colorizer\highlight.xsl" stylesheet="{@SHFBFolder}Colorizer\highlight.css" scriptFile="{@SHFBFolder}Colorizer\highlight.js" language="cs" tabSize="0" numberLines="false" outlining="false" keepSeeTags="false" defaultTitle="true" />
-</component></ComponentConfig>
-<ComponentConfig id="API Token Resolution" enabled="True"><component id="API Token Resolution" type="Microsoft.Ddue.Tools.SharedContentComponent" assembly="{@SandcastlePath}ProductionTools\BuildComponents.dll">
+      <ComponentConfig id="Code Block Component" enabled="True">
+        <component id="Code Block Component" type="SandcastleBuilder.Components.CodeBlockComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
+          <basePath value="{@HtmlEncProjectFolder}" />
+          <outputPaths>{@HelpFormatOutputPaths}</outputPaths>
+          <allowMissingSource value="false" />
+          <removeRegionMarkers value="false" />
+          <colorizer syntaxFile="{@SHFBFolder}Colorizer\highlight.xml" styleFile="{@SHFBFolder}Colorizer\highlight.xsl" stylesheet="{@SHFBFolder}Colorizer\highlight.css" scriptFile="{@SHFBFolder}Colorizer\highlight.js" language="cs" tabSize="0" numberLines="false" outlining="false" keepSeeTags="false" defaultTitle="true" />
+        </component>
+      </ComponentConfig>
+      <ComponentConfig id="API Token Resolution" enabled="True">
+        <component id="API Token Resolution" type="Microsoft.Ddue.Tools.SharedContentComponent" assembly="{@SandcastlePath}ProductionTools\BuildComponents.dll">
 
       {@TokenFiles}
-      <replace elements="/*//token" item="string(.)" /></component></ComponentConfig></ComponentConfigurations>
+      <replace elements="/*//token" item="string(.)" /></component>
+      </ComponentConfig>
+    </ComponentConfigurations>
     <VisibleItems>InheritedMembers, InheritedFrameworkMembers, Protected, ProtectedInternalAsProtected</VisibleItems>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\..\..\Binary\.NET Framework 4\Debug\AnyCPU\Elysium.dll" />
-      <DocumentationSource sourceFile="..\..\..\Binary\.NET Framework 4\Debug\AnyCPU\Elysium.Notifications.dll" />
+      <DocumentationSource sourceFile="..\..\..\Binary\.NET Framework 4\$(Configuration)\AnyCPU\Elysium.dll" />
+      <DocumentationSource sourceFile="..\..\..\Binary\.NET Framework 4\$(Configuration)\AnyCPU\Elysium.Notifications.dll" />
       <DocumentationSource sourceFile="..\..\Elysium.Notifications\Documentation\ru\Elysium.Notifications.xml" />
       <DocumentationSource sourceFile="..\..\Elysium\Documentation\ru\Elysium.xml" />
     </DocumentationSources>

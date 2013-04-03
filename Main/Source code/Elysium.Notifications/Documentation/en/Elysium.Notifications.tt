@@ -1,28 +1,25 @@
 ﻿<#@ template language="C#" hostSpecific="true" #>
 <#@ output extension=".xml" #>
-<#@ assembly name="System.Core.dll" #>
-<#@ assembly name="System.Xml.dll" #>
-<#@ assembly name="System.Xml.Linq.dll" #>
-<#@ import namespace="System" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="System.Xml.Linq" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.IO" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="System.Text" #>
-<#@ import namespace="System.Xml" #>
 <#@ import namespace="System.Xml.Linq" #>
 <#
     var root = Host.ResolvePath(@"..\..\");
     
-    var paths = new List<string>();
-    
-    paths.Add(@"Animation.en.xml");
-    paths.Add(@"HorizontalPlacement.en.xml");
-    paths.Add(@"NotificationManager.en.xml");
-    paths.Add(@"VerticalPlacement.en.xml");
+    var paths = new List<string>
+        {
+            @"Animation.en.xml",
+            @"HorizontalPlacement.en.xml",
+            @"NotificationManager.en.xml",
+            @"VerticalPlacement.en.xml",
 
-    paths.Add(@"Exceptions\PushNotificationFailedException.en.xml");
-    paths.Add(@"Exceptions\ServerUnavailableException.en.xml");
-    
+            @"Exceptions\PushNotificationFailedException.en.xml",
+            @"Exceptions\ServerUnavailableException.en.xml"
+        };
+
     var documentation = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
     
     var doc = new XElement("doc");

@@ -7,6 +7,7 @@
               params:Design.AccentBrush="{x:Static metro:AccentBrushes.Blue}"
               params:Design.ContrastBrush="White"
               Background="{DynamicResource BackgroundBrush}"
+              Title="Window" IsMainWindow="True"
               WindowStartupLocation="CenterScreen"
               Width="1024" Height="640">
     <metro:Window.ApplicationBar>

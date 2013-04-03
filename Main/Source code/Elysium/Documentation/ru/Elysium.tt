@@ -1,91 +1,92 @@
 ﻿<#@ template language="C#" hostSpecific="true" #>
 <#@ output extension=".xml" #>
-<#@ assembly name="System.Core.dll" #>
-<#@ assembly name="System.Xml.dll" #>
-<#@ assembly name="System.Xml.Linq.dll" #>
-<#@ import namespace="System" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="System.Xml.Linq" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.IO" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="System.Text" #>
-<#@ import namespace="System.Xml" #>
 <#@ import namespace="System.Xml.Linq" #>
 <#
     var root = Host.ResolvePath(@"..\..\");
     
-    var paths = new List<string>();
-    
-    paths.Add(@"AccentBrushes.ru.xml");
-    paths.Add(@"Manager.ru.xml");
-    paths.Add(@"Theme.ru.xml");
-    
-    paths.Add(@"Exceptions\InvalidStyleException.ru.xml");
-    
-    paths.Add(@"Extensions\Threading helpers\DispatcherExtensions.ru.xml");
+    var paths = new List<string>
+        {
+            @"AccentBrushes.ru.xml",
+            @"Manager.ru.xml",
+            @"Theme.ru.xml",
 
-    paths.Add(@"Extensions\Tree helpers\LogicalTreeHelperExtensions.ru.xml");
-    paths.Add(@"Extensions\Tree helpers\VisualTreeHelperExtensions.ru.xml");
-    
-    paths.Add(@"Parameters\Bullet.ru.xml");
-    paths.Add(@"Parameters\CheckBox.ru.xml");
-    paths.Add(@"Parameters\ComboBox.ru.xml");
-    paths.Add(@"Parameters\CommandButtons.ru.xml");
-    paths.Add(@"Parameters\Design.ru.xml");
-    paths.Add(@"Parameters\DropDown.ru.xml");
-    paths.Add(@"Parameters\General.ru.xml");
-    paths.Add(@"Parameters\Manager.ru.xml");
-    paths.Add(@"Parameters\MenuBase.ru.xml");
-    paths.Add(@"Parameters\MenuItem.ru.xml");
-    paths.Add(@"Parameters\Progress.ru.xml");
-    paths.Add(@"Parameters\ScrollBar.ru.xml");
-    paths.Add(@"Parameters\Slider.ru.xml");
-    paths.Add(@"Parameters\TabControl.ru.xml");
-    paths.Add(@"Parameters\TabItem.ru.xml");
-    paths.Add(@"Parameters\ToggleSwitch.ru.xml");
-    paths.Add(@"Parameters\Window.ru.xml");
-    
-    paths.Add(@"Converters\AngleToCoordinateConverter.ru.xml");
-    paths.Add(@"Converters\DoubleToGridLengthConverter.ru.xml");
-    paths.Add(@"Converters\DoubleToThicknessConverter.ru.xml");
-    paths.Add(@"Converters\IsGreaterThanConverter.ru.xml");
-    paths.Add(@"Converters\GridLengthToDoubleConverter.ru.xml");
-    paths.Add(@"Converters\NumberPositiveToNegativeConverter.ru.xml");
-    paths.Add(@"Converters\PercentToAngleConverter.ru.xml");
-    paths.Add(@"Converters\ThicknessConverter.ru.xml");
-    paths.Add(@"Converters\ThicknessPositiveToNegativeConverter.ru.xml");
-    paths.Add(@"Converters\ThicknessToDoubleConverter.ru.xml");
-    
-    paths.Add(@"Controls\ApplicationBar\Automation\ApplicationBarAutomationPeer.ru.xml");
-    paths.Add(@"Controls\CommandButtons\Automation\CommandButtonAutomationPeer.ru.xml");
-    paths.Add(@"Controls\CommandButtons\Automation\CommandButtonBaseAutomationPeer.ru.xml");
-    paths.Add(@"Controls\CommandButtons\Automation\DropDownCommandButtonAutomationPeer.ru.xml");
-    paths.Add(@"Controls\Progress\Automation\ProgressAutomationPeer.ru.xml");
-    paths.Add(@"Controls\Menus\Automation\SubmenuAutomationPeer.ru.xml");
-    paths.Add(@"Controls\CommandButtons\Automation\ToggleCommandButtonAutomationPeer.ru.xml");
-    paths.Add(@"Controls\ToggleSwitch\Automation\ToggleSwitchAutomationPeer.ru.xml");
-    
-    paths.Add(@"Controls\ApplicationBar\ApplicationBar.ru.xml");
-    paths.Add(@"Controls\ApplicationBar\ApplicationBarDock.ru.xml");
-    paths.Add(@"Controls\ApplicationBar\ApplicationBarPanel.ru.xml");
-    paths.Add(@"Controls\ApplicationBar\ApplicationBarTransitionMode.ru.xml");
-    paths.Add(@"Controls\CommandButtons\CommandButton.ru.xml");
-    paths.Add(@"Controls\CommandButtons\DropDownCommandButton.ru.xml");
-    paths.Add(@"Controls\CommandButtons\DropDownDirection.ru.xml");
-    paths.Add(@"Controls\CommandButtons\ToggleCommandButton.ru.xml");
-    paths.Add(@"Controls\CommandButtons\Primitives\CommandButtonBase.ru.xml");
-    paths.Add(@"Controls\Progress\ProgressBar.ru.xml");
-    paths.Add(@"Controls\Progress\ProgressRing.ru.xml");
-    paths.Add(@"Controls\Progress\ProgressState.ru.xml");
-    paths.Add(@"Controls\Progress\Primitives\ProgressBase.ru.xml");
-    paths.Add(@"Controls\Menus\Submenu.ru.xml");
-    paths.Add(@"Controls\ToggleSwitch\ToggleSwitch.ru.xml");
-    paths.Add(@"Controls\Window\Window.ru.xml");
-    paths.Add(@"Controls\Window\WindowCommands.ru.xml");
-    
-    paths.Add(@"Extensions\Collections\IObservableDictionary.ru.xml");
-    paths.Add(@"Extensions\Collections\ObservableDictionary.ru.xml");
-    paths.Add(@"Extensions\Collections\ObservableKeyValuePair.ru.xml");
-    
+            @"Exceptions\InvalidStyleException.ru.xml",
+            @"Extensions\Threading helpers\DispatcherExtensions.ru.xml",
+            @"Extensions\Tree helpers\LogicalTreeHelperExtensions.ru.xml",
+            @"Extensions\Tree helpers\VisualTreeHelperExtensions.ru.xml",
+
+            @"Parameters\Bullet.ru.xml",
+            @"Parameters\CheckBox.ru.xml",
+            @"Parameters\ComboBox.ru.xml",
+            @"Parameters\CommandButtons.ru.xml",
+            @"Parameters\Design.ru.xml",
+            @"Parameters\DropDown.ru.xml",
+            @"Parameters\General.ru.xml",
+            @"Parameters\Manager.ru.xml",
+            @"Parameters\MenuBase.ru.xml",
+            @"Parameters\MenuItem.ru.xml",
+            @"Parameters\Progress.ru.xml",
+            @"Parameters\ScrollBar.ru.xml",
+            @"Parameters\Slider.ru.xml",
+            @"Parameters\TabControl.ru.xml",
+            @"Parameters\TabItem.ru.xml",
+            @"Parameters\ToggleSwitch.ru.xml",
+            @"Parameters\Window.ru.xml",
+
+            @"Converters\AngleToCoordinateConverter.ru.xml",
+            @"Converters\DoubleToGridLengthConverter.ru.xml",
+            @"Converters\DoubleToThicknessConverter.ru.xml",
+            @"Converters\IsGreaterThanConverter.ru.xml",
+            @"Converters\GridLengthToDoubleConverter.ru.xml",
+            @"Converters\NumberPositiveToNegativeConverter.ru.xml",
+            @"Converters\PercentToAngleConverter.ru.xml",
+            @"Converters\ThicknessConverter.ru.xml",
+            @"Converters\ThicknessPositiveToNegativeConverter.ru.xml",
+            @"Converters\ThicknessToDoubleConverter.ru.xml",
+
+            @"Controls\ApplicationBar\Automation\ApplicationBarAutomationPeer.ru.xml",
+            @"Controls\CommandButtons\Automation\CommandButtonAutomationPeer.ru.xml",
+            @"Controls\CommandButtons\Automation\CommandButtonBaseAutomationPeer.ru.xml",
+            @"Controls\CommandButtons\Automation\DropDownCommandButtonAutomationPeer.ru.xml",
+
+            @"Controls\Progress\Automation\ProgressAutomationPeer.ru.xml",
+            @"Controls\Menus\Automation\SubmenuAutomationPeer.ru.xml",
+            @"Controls\CommandButtons\Automation\ToggleCommandButtonAutomationPeer.ru.xml",
+            @"Controls\ToggleSwitch\Automation\ToggleSwitchAutomationPeer.ru.xml",
+
+            @"Controls\ApplicationBar\ApplicationBar.ru.xml",
+            @"Controls\ApplicationBar\ApplicationBarDock.ru.xml",
+            @"Controls\ApplicationBar\ApplicationBarPanel.ru.xml",
+            @"Controls\ApplicationBar\ApplicationBarTransitionMode.ru.xml",
+
+            @"Controls\CommandButtons\CommandButton.ru.xml",
+            @"Controls\CommandButtons\DropDownCommandButton.ru.xml",
+            @"Controls\CommandButtons\DropDownDirection.ru.xml",
+            @"Controls\CommandButtons\ToggleCommandButton.ru.xml",
+            @"Controls\CommandButtons\Primitives\CommandButtonBase.ru.xml",
+
+            @"Controls\Progress\ProgressBar.ru.xml",
+            @"Controls\Progress\ProgressRing.ru.xml",
+            @"Controls\Progress\ProgressState.ru.xml",
+            @"Controls\Progress\Primitives\ProgressBase.ru.xml",
+
+            @"Controls\Menus\Submenu.ru.xml",
+
+            @"Controls\ToggleSwitch\ToggleSwitch.ru.xml",
+
+            @"Controls\Window\Window.ru.xml",
+            @"Controls\Window\WindowCommands.ru.xml",
+
+            @"Extensions\Collections\IObservableDictionary.ru.xml",
+            @"Extensions\Collections\ObservableDictionary.ru.xml",
+            @"Extensions\Collections\ObservableKeyValuePair.ru.xml"
+        };
+
     var documentation = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
     
     var doc = new XElement("doc");

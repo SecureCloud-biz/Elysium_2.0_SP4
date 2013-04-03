@@ -69,7 +69,6 @@
                        CustomPopupPlacementCallback="{x:Static params:DropDown.PopupPlacementCallback}">
                     <Border x:Name="PopupRoot"
                             Tag="{DynamicResource {x:Static SystemParameters.DropShadowKey}}"
-                            UseLayoutRounding="False"
                             SnapsToDevicePixels="True">
                         <Grid>
                             <Border Background="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=(params:MenuBase.SubmenuBackground)}"

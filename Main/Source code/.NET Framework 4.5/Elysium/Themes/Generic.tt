@@ -1,15 +1,11 @@
 ﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
 <#@ output extension=".xaml" #>
-<#@ Assembly Name="mscorlib.dll" #>
-<#@ Assembly Name="System.Core.dll" #>
-<#@ Assembly Name="System.Xml.dll" #>
-<#@ Assembly Name="System.Xml.Linq.dll" #>
-<#@ import namespace="System" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Xml" #>
+<#@ Assembly Name="System.Xml.Linq" #>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="System.Linq" #>
-<#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="System.Xml" #>
 <#@ import namespace="System.Xml.Linq" #>
 <#
     var root = Host.ResolvePath(@"..\..\..\Elysium\Themes\");
@@ -31,54 +27,54 @@
           </ResourceDictionary.MergedDictionaries>
       </ResourceDictionary>");
     
-    var dictionarySources = new List<string>();
-    
-    dictionarySources.Add(@"SharedResources.xaml");
-    dictionarySources.Add(@"Icons.xaml");
-    
-    dictionarySources.Add(@"Buttons\ButtonBase.xaml");
-    dictionarySources.Add(@"Buttons\Button.xaml");
-    dictionarySources.Add(@"Buttons\RepeatButton.xaml");
-    dictionarySources.Add(@"Buttons\ToggleButton.xaml");
-    dictionarySources.Add(@"Buttons\CheckBox.xaml");
-    dictionarySources.Add(@"Buttons\RadioButton.xaml");
+    var dictionarySources = new List<string>
+        {
+            @"SharedResources.xaml",
+            @"Icons.xaml",
 
-    dictionarySources.Add(@"Scrolls\ScrollBar.xaml");
-    dictionarySources.Add(@"Scrolls\ScrollViewer.xaml");
+            @"Buttons\ButtonBase.xaml",
+            @"Buttons\Button.xaml",
+            @"Buttons\RepeatButton.xaml",
+            @"Buttons\ToggleButton.xaml",
+            @"Buttons\CheckBox.xaml",
+            @"Buttons\RadioButton.xaml",
 
-    dictionarySources.Add(@"TextBoxes\TextBoxesBase.xaml");
-    dictionarySources.Add(@"TextBoxes\TextBoxBase.xaml");
-    dictionarySources.Add(@"TextBoxes\TextBox.xaml");
-    dictionarySources.Add(@"TextBoxes\RichTextBox.xaml");
-    dictionarySources.Add(@"TextBoxes\PasswordBox.xaml");
+            @"Scrolls\ScrollBar.xaml",
+            @"Scrolls\ScrollViewer.xaml",
 
-    dictionarySources.Add(@"Selectors\SelectorsItemsBase.xaml");
-    dictionarySources.Add(@"Selectors\ListBoxItem.xaml");
-    dictionarySources.Add(@"Selectors\ComboBoxItem.xaml");
-    dictionarySources.Add(@"Selectors\ListBox.xaml");
-    dictionarySources.Add(@"Selectors\ComboBox.xaml");
+            @"TextBoxes\TextBoxesBase.xaml",
+            @"TextBoxes\TextBoxBase.xaml",
+            @"TextBoxes\TextBox.xaml",
+            @"TextBoxes\RichTextBox.xaml",
+            @"TextBoxes\PasswordBox.xaml",
 
-    dictionarySources.Add(@"Ranges\ProgressBar.xaml");
-    dictionarySources.Add(@"Ranges\ProgressRing.xaml");
-    dictionarySources.Add(@"Ranges\Slider.xaml");
-    dictionarySources.Add(@"Ranges\ToggleSwitch.xaml");
+            @"Selectors\SelectorsItemsBase.xaml",
+            @"Selectors\ListBoxItem.xaml",
+            @"Selectors\ComboBoxItem.xaml",
+            @"Selectors\ListBox.xaml",
+            @"Selectors\ComboBox.xaml",
 
-    dictionarySources.Add(@"Tabs\TabItem.xaml");
-    dictionarySources.Add(@"Tabs\TabControl.xaml");
+            @"Ranges\ProgressBar.xaml",
+            @"Ranges\ProgressRing.xaml",
+            @"Ranges\Slider.xaml",
+            @"Ranges\ToggleSwitch.xaml",
 
-    dictionarySources.Add(@"Menus\MenuItem.xaml");
-    dictionarySources.Add(@"Menus\Menu.xaml");
-    dictionarySources.Add(@"Menus\Submenu.xaml");
-    dictionarySources.Add(@"Menus\ContextMenu.xaml");
+            @"Tabs\TabItem.xaml",
+            @"Tabs\TabControl.xaml",
 
-    dictionarySources.Add(@"Buttons\CommandButtonBase.xaml");
-    dictionarySources.Add(@"Buttons\commandButton.xaml");
-    dictionarySources.Add(@"Buttons\ToggleCommandButton.xaml");
-    dictionarySources.Add(@"Buttons\DropDownCommandButton.xaml");
+            @"Menus\MenuItem.xaml",
+            @"Menus\Menu.xaml",
+            @"Menus\Submenu.xaml",
+            @"Menus\ContextMenu.xaml",
 
-    dictionarySources.Add(@"ApplicationBar\ApplicationBar.xaml");
+            @"Buttons\CommandButtonBase.xaml",
+            @"Buttons\commandButton.xaml",
+            @"Buttons\ToggleCommandButton.xaml",
+            @"Buttons\DropDownCommandButton.xaml",
+            @"ApplicationBar\ApplicationBar.xaml",
 
-    dictionarySources.Add(@"..\..\.NET Framework 4.5\Elysium\Themes\Windows\Window.xaml");
+            @"..\..\.NET Framework 4.5\Elysium\Themes\Windows\Window.xaml"
+        };
 
     var mergedDictionaries = XName.Get("ResourceDictionary.MergedDictionaries", @"http://schemas.microsoft.com/winfx/2006/xaml/presentation");
     foreach (var dictionarySource in dictionarySources)

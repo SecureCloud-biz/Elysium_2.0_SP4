@@ -3,20 +3,11 @@
 # Try exit if error occurred
 function Try-Exit
 {
-    param (
-        [Parameter(HelpMessage = "Switch if error occurred.")]
-        [switch] $ThrowError
-    )
-
     if ($LASTEXITCODE -ne 0)
     {
-        if ($ThrowError)
-        {
-            Write-Host "Build error occurred"
-        }
-        
+        Write-Host "Error occurred"
         Read-Host -Prompt "Press any key to continue..."
-        exit $LASTEXITCODE
+        exit $ExitCode
     }
 }
 
@@ -102,7 +93,7 @@ function Build
         [string] $Project,
 
         [Parameter(Position = 1, Mandatory = $False, HelpMessage = "Specifies build action (build or rebuild).")]
-        [ValidateSet("Build", "Rebuild")]
+        [ValidateSet("Build", "Rebuild", "Transform")]
         [string] $Action = "Build",
     
         [Parameter(Position = 2, Mandatory = $True,  HelpMessage = "Specifies build configuration (Debug or Release).")]
@@ -129,9 +120,9 @@ function Build
     if (-not $Parallel -and $Transform) { $TransformArgs = "/property:TransformOnBuild=True;TransformFile=*.tt" }
     else                                { $TransformArgs = "" }
 
-    & msbuild.exe "`"$Project`" /target:$Target /property:Configuration=$Configuration;Platform=$Platform $TramsformArgs /property:BuildProjectReferences=False /maxcpucount:$Threads /verbosity:minimal"
+    & msbuild.exe "`"$Project`" /target:$Target /property:Configuration=$Configuration;Platform=$Platform $TransformArgs /property:BuildProjectReferences=False /maxcpucount:$Threads /verbosity:minimal"
     
-    Try-Exit -ThrowError
+    Try-Exit
 }
 
 # Make relative path absolute
@@ -142,8 +133,8 @@ function Resolve-Path
         [string] $RelativePath
     )
 
-    $Location = "D:\Programming\Elysium\Main\Source code\"#Split-Path -Parent $script:MyInvocation.MyCommand.Path
-    return Join-Path -Path $Location -ChildPath $RelativePath
+    $Location = Split-Path -Parent $script:MyInvocation.MyCommand.Path
+    return [System.IO.Path]::GetFullPath((Join-Path -Path $Location -ChildPath $RelativePath))
 }
 
 # Install keys
@@ -158,10 +149,25 @@ function Install-Keys
     Import-Variables -Version $Version
 
     & certmgr.exe -add -c (Resolve-Path "RootCertificate.cer") -s -r localMachine root
-    Try-Exit -ThrowError
+    Try-Exit
 
     & sn -i (Resolve-Path "SigningKey.pfx") VS_KEY_495CE44A959FD928
-    Try-Exit -ThrowError
+    Try-Exit
+}
+
+# Reinstall keys
+function Remove-Keys
+{
+    param (
+        [Parameter(Mandatory = $True, HelpMessage = "Specifies your Visual Studio version (2010 or 2012). Default is 2012.")]
+        [ValidateSet("2010", "2012")]
+        [string] $Version = "2012"
+    )
+
+    Import-Variables -Version $Version
+
+    & sn -d VS_KEY_495CE44A959FD928
+    Try-Exit
 }
 
 # Build Elysium projects
@@ -242,8 +248,6 @@ function Build-Projects
     Add-TfsPendingChange -Edit (Resolve-Path "Elysium.Test\Properties\AssemblyInfo.cs") -Lock none
     Build-Project -Project (Resolve-Path "Elysium.Test\Elysium.Test.$Framework.csproj") -Platform x86
     Build-Project -Project (Resolve-Path "Elysium.Test\Elysium.Test.$Framework.csproj") -Platform x64
-
-    Try-Exit
 }
 
 # Build project and item templates for Visual Studio
@@ -261,9 +265,6 @@ function Build-Templates
         [Parameter(Position = 2, Mandatory = $True, HelpMessage = "Specifies target language by LCID: English (1033) or Russian (1049). Default is English (1033).")]
         [ValidateSet("1033", "1049")]
         [string] $LCID,
-    
-        [Parameter(Position = 3, Mandatory = $False, HelpMessage = "True, if you use *-All.ps1 script, otherwise False. Default is False.")]
-        [bool]   $Parallel  = $False,
 
         [Parameter(Position = 4, Mandatory = $False, HelpMessage = "Number of working threads (recommended one thread per logical core). Default is 2.")]
         [byte]   $Threads   = 2
@@ -289,9 +290,9 @@ function Build-Templates
             [string] $Version
         )
         
-        Add-TfsPendingChange -Edit (Resolve-Path "SDK\MSI\" + $Type + "Templates\Visual Studio $Version\CSharp\$LCID\$FrameworkName\") -Lock none
-        $Project = Resolve-Path "SDK\MSI\" + $Type + "Templates\Visual Studio $Version\CSharp\$LCID\$FrameworkName\VS" + $Version + "_CSharp_" + $LCID + "_" + $Type + "Template.csproj"
-        Build -Project $Project -Configuration Release -Platform AnyCPU -Transform $True -Parallel $Parallel -Threads $Threads
+        Add-TfsPendingChange -Edit (Resolve-Path ("SDK\MSI\" + $Type + "Templates\Visual Studio $Version\CSharp\$LCID\$FrameworkName\")) -Recurse -Lock none
+        $Project = Resolve-Path ("SDK\MSI\" + $Type + "Templates\Visual Studio $Version\CSharp\$LCID\$FrameworkName\VS" + $Version + "_CSharp_" + $LCID + "_" + $Type + "Template.csproj")
+        Build -Project $Project -Action Transform -Configuration Release -Platform AnyCPU -Transform $True -Parallel $False -Threads $Threads
     }
 
     # Build item templates
@@ -351,45 +352,35 @@ function Zip-Templates
         )
 
         # Resolve paths
-        $Folder  = Resolve-Path "SDK\MSI\" + $Type + "Templates\Visual Studio $Version\CSharp\$LCID\$FrameworkName\"
-        $Archive = Resolve-Path "SDK\MSI\" + $Type + "Templates\Visual Studio $Version\CSharp\$LCID\$FrameworkName.zip"
+        $Folder  = Resolve-Path ("SDK\MSI\" + $Type + "Templates\Visual Studio $Version\CSharp\$LCID\$FrameworkName\")
+        $Archive = Resolve-Path ("SDK\MSI\" + $Type + "Templates\Visual Studio $Version\CSharp\$LCID\$FrameworkName.zip")
         
         # Check-out and zip archive
-        Add-TfsPendingChange -Edit $Folder  -Lock none
-        Add-TfsPendingChange -Edit $Archive -Lock none
+        Add-TfsPendingChange -Edit $Folder -Recurse -Lock none
+        Add-TfsPendingChange -Edit $Archive         -Lock none
         Remove-Item $Archive -Force
-        & (Resolve-Path "..\Tools and Resources\Utilities\7za\7za.exe") "a `"$Archive`" `"$Folder*`" -x!*ProjectTemplate.csproj -x!*.vspscc -x!*\ -x!*.tt"
+        $7za = Resolve-Path "..\Tools and Resources\Utilities\7za\7za.exe"
+        $7zaArgs = "a `"$Archive`" `"$Folder*`" -x!*" + $Type + "Template.csproj -x!*.vspscc -x!*\ -x!*.tt"
+        Start-Process -FilePath $7za -ArgumentList $7zaArgs -Wait
 
         Try-Exit
     }
 
-    # Asynchronously ZIP item templates
+    # Zip item templates
     if ($Framework -eq "NETFX4")
     {
-        $ZIPVS2010ItemTemplate = Start-Job -ScriptBlock { ZIP-Template -Type Item -Version 2010 }
+        ZIP-Template -Type Item -Version 2010
     }
-    $ZIPVS2012ItemTemplate = Start-Job -ScriptBlock { ZIP-Template -Type Item -Version 2012 }
+    ZIP-Template -Type Item -Version 2012
 
-    # Asynchronously ZIP project templates
+    # Zip project templates
     if ($Framework -eq "NETFX4")
     {
-        $ZIP2010ProjectTemplate = Start-Job -ScriptBlock { ZIP-Template -Type Project -Version 2010 }
+        ZIP-Template -Type Project -Version 2010
     }    
-    $ZIP2012ProjectTemplate = Start-Job -ScriptBlock { ZIP-Template -Type Project -Version 2012 }
+    ZIP-Template -Type Project -Version 2012
 
     # Wait background tasks and display results
-
-    Wait-Job $ZIPVS2010ItemTemplate
-    Receive-Job $ZIPVS2010ItemTemplate
-
-    Wait-Job $ZIPVS2012ItemTemplate
-    Receive-Job $ZIPVS2012ItemTemplate
-
-    Wait-Job $ZIP2010ProjectTemplate
-    Receive-Job $ZIP2010ProjectTemplate
-
-    Wait-Job $ZIP2012ProjectTemplate
-    Receive-Job $ZIP2012ProjectTemplate
 }
 
 # Build Elysium documentation
@@ -404,14 +395,14 @@ function Build-Documentation
         [ValidateSet("NETFX4", "NETFX45")]
         [string] $Framework     = "NETFX45",
 
-        [Parameter(Position = 2, Mandatory = $True, HelpMessage = "Specifies target language by short name: English (en) or Russian (ru). Default is English (en).")]
+        [Parameter(Position = 3, Mandatory = $True, HelpMessage = "Specifies target language by short name: English (en) or Russian (ru). Default is English (en).")]
         [ValidateSet("en", "ru")]
         [string] $Language,
     
-        [Parameter(Position = 3, Mandatory = $False, HelpMessage = "True, if you use *-All.ps1 script, otherwise False. Default is False.")]
+        [Parameter(Position = 4, Mandatory = $False, HelpMessage = "True, if you use *-All.ps1 script, otherwise False. Default is False.")]
         [bool]   $Parallel      = $False,
 
-        [Parameter(Position = 4, Mandatory = $False, HelpMessage = "Number of working threads (recommended one thread per logical core). Default is 2.")]
+        [Parameter(Position = 5, Mandatory = $False, HelpMessage = "Number of working threads (recommended one thread per logical core). Default is 2.")]
         [byte]   $Threads       = 2
     )
 
@@ -437,8 +428,6 @@ function Build-Documentation
     }
 
     Build-Documentation-Project -Project (Resolve-Path "Documentation\$Language\Documentation.$Framework.shfbproj")
-
-    Try-Exit
 }
 
 # Build installation projects
@@ -518,6 +507,4 @@ function Build-Installation
     # Build Runtime
     Build-WiX-Project -Project (Resolve-Path "Runtime\MSI\Elysium.Runtime.MSI.$Framework.wixproj") -Platform x86
     Build-WiX-Project -Project (Resolve-Path "Runtime\MSI\Elysium.Runtime.MSI.$Framework.wixproj") -Platform x64
-
-    Try-Exit
 }

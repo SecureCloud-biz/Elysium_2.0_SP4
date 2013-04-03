@@ -12,7 +12,7 @@ using Microsoft.Tools.WindowsInstallerXml.Bootstrapper;
 [assembly: AssemblyTitle("UI.dll")]
 [assembly: AssemblyDescription("Elysium SDK installer UI")]
 [assembly: AssemblyProduct("Elysium SDK")]
-[assembly: AssemblyCopyright("Copyright © Alex F. Sherman & Codeplex community 2011-2012")]
+[assembly: AssemblyCopyright("Copyright © Alex F. Sherman & Codeplex community 2011-2013")]
 
 [assembly: SecurityRules(SecurityRuleSet.Level2, SkipVerificationInFullTrust = true)]
 

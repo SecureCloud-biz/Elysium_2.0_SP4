@@ -10,3 +10,5 @@ $Path = Join-Path -Path $Location -ChildPath Elysium.psm1
 Import-Module $Path
 
 Install-Keys -Version $Version
+
+Read-Host -Prompt "Press any key to continue..."

@@ -22,7 +22,7 @@
     <DigitalSignatureKeyFile>..\..\..\..\..\..\Source code\SigningKey.pfx</DigitalSignatureKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <DefineConstants>NETFX4;Debug;X86</DefineConstants>
+    <DefineConstants>NETFX45;Debug;X86</DefineConstants>
     <OutputPath>..\..\..\Binary\.NET Framework 4.5\Debug\x86\Runtime\MSI\</OutputPath>
     <IntermediateOutputPath>obj\x86\</IntermediateOutputPath>
     <SuppressIces>ICE30</SuppressIces>
@@ -30,7 +30,7 @@
     <WixVariables>Platform=x86</WixVariables>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
-    <DefineConstants>NETFX4;Debug;X64</DefineConstants>
+    <DefineConstants>NETFX45;Debug;X64</DefineConstants>
     <OutputPath>..\..\..\Binary\.NET Framework 4.5\Debug\x64\Runtime\MSI\</OutputPath>
     <IntermediateOutputPath>obj\x64\</IntermediateOutputPath>
     <SuppressIces>ICE30</SuppressIces>
@@ -38,7 +38,7 @@
     <WixVariables>Platform=x64</WixVariables>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <DefineConstants>NETFX4;Release;X86</DefineConstants>
+    <DefineConstants>NETFX45;Release;X86</DefineConstants>
     <OutputPath>..\..\..\Binary\.NET Framework 4.5\Release\x86\Runtime\MSI\</OutputPath>
     <IntermediateOutputPath>obj\x86\</IntermediateOutputPath>
     <SuppressIces>ICE30</SuppressIces>
@@ -46,7 +46,7 @@
     <WixVariables>Platform=x86</WixVariables>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
-    <DefineConstants>NETFX4;Release;X64</DefineConstants>
+    <DefineConstants>NETFX45;Release;X64</DefineConstants>
     <OutputPath>..\..\..\Binary\.NET Framework 4.5\Release\x64\Runtime\MSI\</OutputPath>
     <IntermediateOutputPath>obj\x64\</IntermediateOutputPath>
     <SuppressIces>ICE30</SuppressIces>

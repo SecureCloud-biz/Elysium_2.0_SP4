@@ -1,13 +1,6 @@
 ﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
 <#@ output extension=".cs" #>
-<#@ Assembly Name="mscorlib.dll" #>
-<#@ Assembly Name="System.Core.dll" #>
-<#@ import namespace="System" #>
-<#@ import namespace="System.IO" #>
-<#@ import namespace="System.Diagnostics" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="System.Collections" #>
-<#@ import namespace="System.Collections.Generic" #>
+<#@ assembly Name="System.Core" #>
 <#@ include file="..\..\Include\security.ttinclude" #>
 <#@ include file="..\..\Include\Versions.ttinclude" #>
 using System;
