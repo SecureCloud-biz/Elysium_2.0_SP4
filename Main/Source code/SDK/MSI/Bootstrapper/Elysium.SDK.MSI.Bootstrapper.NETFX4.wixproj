@@ -20,6 +20,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <DigitalSignatureKeyFile>..\..\..\..\..\..\Source code\SigningKey.pfx</DigitalSignatureKeyFile>
+    <DigitalSignatureParams>/t http://timestamp.comodoca.com/authenticode</DigitalSignatureParams>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DefineConstants>NETFX4;Debug;X86</DefineConstants>
@@ -66,9 +67,9 @@
   <Import Project="$(WixTargetsPath)" />
   <PropertyGroup>
     <PostBuildEvent>"$(WIX)bin\Insignia.exe" /ib "$(TargetPath)" -o "$(TargetDir)Engine.exe"
-"..\..\..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4\signtool.exe" sign /f "$(DigitalSignatureKeyFile)" "$(TargetDir)Engine.exe"
+"..\..\..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4\signtool.exe" sign /f "$(DigitalSignatureKeyFile)" $(DigitalSignatureParams) "$(TargetDir)Engine.exe"
 "$(WIX)bin\Insignia.exe" /ab "$(TargetDir)Engine.exe" "$(TargetPath)" -o "$(TargetPath)"
-"..\..\..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4\signtool.exe" sign /f "$(DigitalSignatureKeyFile)" "$(TargetPath)"
+"..\..\..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4\signtool.exe" sign /f "$(DigitalSignatureKeyFile)" $(DigitalSignatureParams) "$(TargetPath)"
 del /f /q "$(TargetDir)Engine.exe"</PostBuildEvent>
   </PropertyGroup>
 </Project>

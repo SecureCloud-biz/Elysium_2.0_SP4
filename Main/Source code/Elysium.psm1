@@ -106,11 +106,20 @@ function Build
 
         [Parameter(Position = 4, Mandatory = $True,  HelpMessage = "True to transform T4 templates, otherwise False.")]
         [bool]   $Transform,
+
+        [Parameter(Position = 5, Mandatory = $False,  HelpMessage = "Key file used to strong name sign assembly.")]
+        [string] $AssemblyKey,
+
+        [Parameter(Position = 6, Mandatory = $False,  HelpMessage = "Key file used to digital signature sign assembly.")]
+        [string] $SignatureKey,
+
+        [Parameter(Position = 7, Mandatory = $False,  HelpMessage = "Assembly digital signature parameters.")]
+        [string] $SignatureParams,
     
-        [Parameter(Position = 5, Mandatory = $True,  HelpMessage = "True, if you use *-All.ps1 script, otherwise False.")]
+        [Parameter(Position = 8, Mandatory = $True,  HelpMessage = "True, if you use *-All.ps1 script, otherwise False.")]
         [bool]   $Parallel,
 
-        [Parameter(Position = 6, Mandatory = $True,  HelpMessage = "Number of working threads (recommended one thread per logical core).")]
+        [Parameter(Position = 9, Mandatory = $True,  HelpMessage = "Number of working threads (recommended one thread per logical core).")]
         [byte]   $Threads
     )
 
@@ -120,7 +129,7 @@ function Build
     if (-not $Parallel -and $Transform) { $TransformArgs = "/property:TransformOnBuild=True;TransformFile=*.tt" }
     else                                { $TransformArgs = "" }
 
-    & msbuild.exe "`"$Project`" /target:$Target /property:Configuration=$Configuration;Platform=$Platform $TransformArgs /property:BuildProjectReferences=False /maxcpucount:$Threads /verbosity:minimal"
+    & msbuild.exe "`"$Project`" /target:$Target /property:Configuration=$Configuration;Platform=$Platform $TransformArgs /property:BuildProjectReferences=False /property:AssemblyOriginatorKeyFile=`"$AssemblyKey`" /property:DigitalSignatureKeyFile=`"$SignatureKey`" /property:DigitalSignatureParams=`"$SignatureParams`" /maxcpucount:$Threads /verbosity:minimal"
     
     Try-Exit
 }
@@ -176,7 +185,7 @@ function Build-Projects
     param (
         [Parameter(Position = 0, Mandatory = $False, HelpMessage = "Specifies your Visual Studio version (2010 or 2012). Default is 2012.")]
         [ValidateSet("2010", "2012")]
-        [string] $Version = "2012",
+        [string] $Version       = "2012",
 
         [Parameter(Position = 1, Mandatory = $False, HelpMessage = "Specifies target framework (NETFX4 or NETFX45). Default is NETFX45.")]
         [ValidateSet("NETFX4", "NETFX45")]
@@ -189,11 +198,23 @@ function Build-Projects
         [Parameter(Position = 3, Mandatory = $False, HelpMessage = "True to transform T4 templates, otherwise False. Default is True.")]
         [bool]   $Transform     = $True,
 
-        [Parameter(Position = 4, Mandatory = $False, HelpMessage = "True, if you use *-All.ps1 script, otherwise False. Default is False.")]
+        [Parameter(Position = 4, Mandatory = $False,  HelpMessage = "Key file used to strong name sign assembly.")]
+        [string] $AssemblyKey = (Resolve-Path "SigningKey.pfx"),
+
+        [Parameter(Position = 5, Mandatory = $False,  HelpMessage = "Key file used to digital signature sign assembly.")]
+        [string] $SignatureKey = (Resolve-Path "SigningKey.pfx"),
+
+        [Parameter(Position = 6, Mandatory = $False,  HelpMessage = "Assembly digital signature parameters.")]
+        [string] $SignatureParams = "/t http://timestamp.comodoca.com/authenticode",
+
+        [Parameter(Position = 7, Mandatory = $False, HelpMessage = "True, if you use *-All.ps1 script, otherwise False. Default is False.")]
         [bool]   $Parallel      = $False,
 
-        [Parameter(Position = 5, Mandatory = $False, HelpMessage = "Number of working threads (recommended one thread per logical core). Default is 2.")]
-        [byte]   $Threads       = 2
+        [Parameter(Position = 8, Mandatory = $False, HelpMessage = "Number of working threads (recommended one thread per logical core). Default is 2.")]
+        [byte]   $Threads       = 2,
+
+        [Parameter(Position = 9, Mandatory = $False, HelpMessage = "Switch, if you try build mapped code.")]
+        [bool]   $Checkout      = $True
     )
 
     switch ($Framework)
@@ -215,18 +236,24 @@ function Build-Projects
             [string] $Platform
         )
 
-        Build -Project $Project -Configuration $Configuration -Platform $Platform -Transform $Transform -Parallel $Parallel -Threads $Threads
+        Build -Project $Project -Configuration $Configuration -Platform $Platform -Transform $Transform -AssemblyKey $AssemblyKey -SignatureKey $SignatureKey -SignatureParams $SignatureParams -Parallel $Parallel -Threads $Threads
     }
 
     # Build Elysium assembly
-    Add-TfsPendingChange -Edit (Resolve-Path "Elysium\Properties\AssemblyInfo.cs") -Lock none
-    Add-TfsPendingChange -Edit (Resolve-Path "Elysium\Documentation\ru\Elysium.xml") -Lock none
-    Add-TfsPendingChange -Edit (Resolve-Path "Elysium\Documentation\en\Elysium.xml") -Lock none
-    Add-TfsPendingChange -Edit (Resolve-Path "$FrameworkName\Elysium\Themes\Generic.xaml") -Lock none
+    if ($Checkout)
+    {
+        Add-TfsPendingChange -Edit (Resolve-Path "Elysium\Properties\AssemblyInfo.cs") -Lock none
+        Add-TfsPendingChange -Edit (Resolve-Path "Elysium\Documentation\ru\Elysium.xml") -Lock none
+        Add-TfsPendingChange -Edit (Resolve-Path "Elysium\Documentation\en\Elysium.xml") -Lock none
+        Add-TfsPendingChange -Edit (Resolve-Path "$FrameworkName\Elysium\Themes\Generic.xaml") -Lock none
+    }
     Build-Project -Project (Resolve-Path "Elysium\Elysium.$Framework.csproj") -Platform AnyCPU
 
     # Build design-time support assemblies
-    Add-TfsPendingChange -Edit (Resolve-Path "Elysium.Design\Properties\AssemblyInfo.cs") -Lock none
+    if ($Checkout)
+    {
+        Add-TfsPendingChange -Edit (Resolve-Path "Elysium.Design\Properties\AssemblyInfo.cs") -Lock none
+    }
     if ($Framework -eq "NETFX4")
     {
         Build-Project -Project (Resolve-Path "Elysium.Design\Elysium.Design.10.0.csproj") -Platform AnyCPU
@@ -234,18 +261,27 @@ function Build-Projects
     Build-Project -Project (Resolve-Path "Elysium.Design\Elysium.Design.11.0.$Framework.csproj") -Platform x86
 
     # Build Notifications core assembly
-    Add-TfsPendingChange -Edit (Resolve-Path "Elysium.Notifications\Properties\AssemblyInfo.cs") -Lock none
-    Add-TfsPendingChange -Edit (Resolve-Path "Elysium.Notifications\Documentation\ru\Elysium.Notifications.xml") -Lock none
-    Add-TfsPendingChange -Edit (Resolve-Path "Elysium.Notifications\Documentation\en\Elysium.Notifications.xml") -Lock none
+    if ($Checkout)
+    {
+        Add-TfsPendingChange -Edit (Resolve-Path "Elysium.Notifications\Properties\AssemblyInfo.cs") -Lock none
+        Add-TfsPendingChange -Edit (Resolve-Path "Elysium.Notifications\Documentation\ru\Elysium.Notifications.xml") -Lock none
+        Add-TfsPendingChange -Edit (Resolve-Path "Elysium.Notifications\Documentation\en\Elysium.Notifications.xml") -Lock none
+    }
     Build-Project -Project (Resolve-Path "Elysium.Notifications\Elysium.Notifications.$Framework.csproj") -Platform AnyCPU
 
     # Build Notifications support service assembly
-    Add-TfsPendingChange -Edit (Resolve-Path "Elysium.Notifications.Server\Properties\AssemblyInfo.cs") -Lock none
+    if ($Checkout)
+    {
+        Add-TfsPendingChange -Edit (Resolve-Path "Elysium.Notifications.Server\Properties\AssemblyInfo.cs") -Lock none
+    }
     Build-Project -Project (Resolve-Path "Elysium.Notifications.Server\Elysium.Notifications.Server.$Framework.csproj") -Platform x86
     Build-Project -Project (Resolve-Path "Elysium.Notifications.Server\Elysium.Notifications.Server.$Framework.csproj") -Platform x64
 
     # Build sample project
-    Add-TfsPendingChange -Edit (Resolve-Path "Elysium.Test\Properties\AssemblyInfo.cs") -Lock none
+    if ($Checkout)
+    {
+        Add-TfsPendingChange -Edit (Resolve-Path "Elysium.Test\Properties\AssemblyInfo.cs") -Lock none
+    }
     Build-Project -Project (Resolve-Path "Elysium.Test\Elysium.Test.$Framework.csproj") -Platform x86
     Build-Project -Project (Resolve-Path "Elysium.Test\Elysium.Test.$Framework.csproj") -Platform x64
 }
@@ -267,7 +303,10 @@ function Build-Templates
         [string] $LCID,
 
         [Parameter(Position = 4, Mandatory = $False, HelpMessage = "Number of working threads (recommended one thread per logical core). Default is 2.")]
-        [byte]   $Threads   = 2
+        [byte]   $Threads   = 2,
+
+        [Parameter(Position = 5, Mandatory = $False, HelpMessage = "Switch, if you try build mapped code.")]
+        [bool]   $Checkout  = $True
     )
 
     switch ($Framework)
@@ -290,7 +329,10 @@ function Build-Templates
             [string] $Version
         )
         
-        Add-TfsPendingChange -Edit (Resolve-Path ("SDK\MSI\" + $Type + "Templates\Visual Studio $Version\CSharp\$LCID\$FrameworkName\")) -Recurse -Lock none
+        if ($Checkout)
+        {
+            Add-TfsPendingChange -Edit (Resolve-Path ("SDK\MSI\" + $Type + "Templates\Visual Studio $Version\CSharp\$LCID\$FrameworkName\")) -Recurse -Lock none
+        }
         $Project = Resolve-Path ("SDK\MSI\" + $Type + "Templates\Visual Studio $Version\CSharp\$LCID\$FrameworkName\VS" + $Version + "_CSharp_" + $LCID + "_" + $Type + "Template.csproj")
         Build -Project $Project -Action Transform -Configuration Release -Platform AnyCPU -Transform $True -Parallel $False -Threads $Threads
     }
@@ -316,7 +358,7 @@ function Zip-Templates
     param (
         [Parameter(Position = 0, Mandatory = $False, HelpMessage = "Specifies your Visual Studio version (2010 or 2012). Default is 2012.")]
         [ValidateSet("2010", "2012")]
-        [string] $Version = "2012",
+        [string] $Version   = "2012",
 
         [Parameter(Position = 1, Mandatory = $False, HelpMessage = "Specifies target framework (NETFX4 or NETFX45). Default is NETFX45.")]
         [ValidateSet("NETFX4", "NETFX45")]
@@ -327,7 +369,10 @@ function Zip-Templates
         [string] $LCID,
 
         [Parameter(Position = 3, Mandatory = $False, HelpMessage = "Number of working threads (recommended one thread per logical core). Default is 2.")]
-        [byte]   $Threads   = 2
+        [byte]   $Threads   = 2,
+
+        [Parameter(Position = 4, Mandatory = $False, HelpMessage = "Switch, if you try build mapped code.")]
+        [bool]   $Checkout  = $True
     )
 
     switch ($Framework)
@@ -356,8 +401,11 @@ function Zip-Templates
         $Archive = Resolve-Path ("SDK\MSI\" + $Type + "Templates\Visual Studio $Version\CSharp\$LCID\$FrameworkName.zip")
         
         # Check-out and zip archive
-        Add-TfsPendingChange -Edit $Folder -Recurse -Lock none
-        Add-TfsPendingChange -Edit $Archive         -Lock none
+        if ($Checkout)
+        {
+            Add-TfsPendingChange -Edit $Folder -Recurse -Lock none
+            Add-TfsPendingChange -Edit $Archive         -Lock none
+        }
         Remove-Item $Archive -Force
         $7za = Resolve-Path "..\Tools and Resources\Utilities\7za\7za.exe"
         $7zaArgs = "a `"$Archive`" `"$Folder*`" -x!*" + $Type + "Template.csproj -x!*.vspscc -x!*\ -x!*.tt"
@@ -449,11 +497,23 @@ function Build-Installation
         [Parameter(Position = 3, Mandatory = $False, HelpMessage = "True to transform T4 templates, otherwise False. Default is True.")]
         [bool]   $Transform     = $True,
 
-        [Parameter(Position = 4, Mandatory = $False, HelpMessage = "True, if you use *-All.ps1 script, otherwise False. Default is False.")]
+        [Parameter(Position = 4, Mandatory = $False,  HelpMessage = "Key file used to strong name sign assembly.")]
+        [string] $AssemblyKey = (Resolve-Path "SigningKey.pfx"),
+
+        [Parameter(Position = 5, Mandatory = $False,  HelpMessage = "Key file used to digital signature sign assembly.")]
+        [string] $SignatureKey = (Resolve-Path "SigningKey.pfx"),
+
+        [Parameter(Position = 6, Mandatory = $False,  HelpMessage = "Assembly digital signature parameters.")]
+        [string] $SignatureParams = "/t http://timestamp.comodoca.com/authenticode",
+
+        [Parameter(Position = 7, Mandatory = $False, HelpMessage = "True, if you use *-All.ps1 script, otherwise False. Default is False.")]
         [bool]   $Parallel      = $False,
 
-        [Parameter(Position = 5, Mandatory = $False, HelpMessage = "Number of working threads (recommended one thread per logical core). Default is 2.")]
-        [byte]   $Threads       = 2
+        [Parameter(Position = 8, Mandatory = $False, HelpMessage = "Number of working threads (recommended one thread per logical core). Default is 2.")]
+        [byte]   $Threads       = 2,
+
+        [Parameter(Position = 9, Mandatory = $False, HelpMessage = "Switch, if you try build mapped code.")]
+        [bool]   $Checkout      = $True
     )
 
     switch ($Framework)
@@ -475,7 +535,7 @@ function Build-Installation
             [string] $Platform
         )
 
-        Build -Project $Project -Action Build   -Configuration $Configuration -Platform $Platform -Transform $Transform -Parallel $Parallel -Threads $Threads
+        Build -Project $Project -Action Build   -Configuration $Configuration -Platform $Platform -Transform $Transform -AssemblyKey $AssemblyKey -SignatureKey $SignatureKey -SignatureParams $SignatureParams -Parallel $Parallel -Threads $Threads
     }
 
     function Build-WiX-Project
@@ -489,11 +549,14 @@ function Build-Installation
             [string] $Platform
         )
 
-        Build -Project $Project -Action Rebuild -Configuration $Configuration -Platform $Platform -Transform $False -Parallel $Parallel -Threads $Threads
+        Build -Project $Project -Action Rebuild -Configuration $Configuration -Platform $Platform -Transform $False -AssemblyKey $AssemblyKey -SignatureKey $SignatureKey -SignatureParams $SignatureParams -Parallel $Parallel -Threads $Threads
     }
 
     # Build SDK bootstrapper UI assembly
-    Add-TfsPendingChange -Edit (Resolve-Path "SDK\MSI\UI\Properties\AssemblyInfo.cs") -Lock none
+    if ($Checkout)
+    {
+        Add-TfsPendingChange -Edit (Resolve-Path "SDK\MSI\UI\Properties\AssemblyInfo.cs") -Lock none
+    }
     Build-Project -Project (Resolve-Path "SDK\MSI\UI\Elysium.SDK.MSI.UI.$Framework.csproj") -Platform AnyCPU
 
     # Build SDK MSI installer
