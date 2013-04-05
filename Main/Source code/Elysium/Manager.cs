@@ -742,7 +742,7 @@ namespace Elysium
             var lastIndex = dictionaries.Select(d => resources.MergedDictionaries.IndexOf(d)).Concat(new[] { 0 }).Max();
 
             // NOTE: lastIndex always greater than or equal to zero
-            Contract.Assume(lastIndex > 0);
+            Contract.Assume(lastIndex >= 0);
 
             // Add new dictionary
             if (dictionary != null)
