@@ -35,38 +35,6 @@ function Invoke-Environment
     Remove-Item -LiteralPath $temp
 }
 
-function Invoke-Parallel
-{
-    param (
-        [Parameter(Position = 0, Mandatory = $True, HelpMessage = "Array of actions.")]
-        [scriptblock[]] $Actions,
-        
-        [Parameter(Position = 1, Mandatory = $True, HelpMessage = "True if parallel, otherwise False.")]
-        [bool]          $Parallel
-    )
-
-    if ($Parallel)
-    {
-        $Handles = @()
-        foreach ($Action in $Actions)
-        {
-            $Handles += Start-Job -ScriptBlock $Action
-        }
-        foreach ($Handle in $Handles)
-        {
-            Wait-Job $Handle
-            Receive-Job $Handle
-        }
-    }
-    else
-    {
-        foreach ($Action in $Actions)
-        {
-            . $Action
-        }
-    }
-}
-
 # Import Visual Studio environment variables
 function Import-Variables
 {
@@ -115,21 +83,15 @@ function Build
 
         [Parameter(Position = 7, Mandatory = $False,  HelpMessage = "Assembly digital signature parameters.")]
         [string] $SignatureParams,
-    
-        [Parameter(Position = 8, Mandatory = $True,  HelpMessage = "True, if you use *-All.ps1 script, otherwise False.")]
-        [bool]   $Parallel,
 
-        [Parameter(Position = 9, Mandatory = $True,  HelpMessage = "Number of working threads (recommended one thread per logical core).")]
+        [Parameter(Position = 8, Mandatory = $True,  HelpMessage = "Number of working threads (recommended one thread per logical core).")]
         [byte]   $Threads
     )
 
-    if ($Parallel -and $Transform)      { $Target = "TransformAll" }
-    else                                { $Target = $Action        }
+    $TransformArgs = "/property:TransformOnBuild=True;TransformFile=*.tt"
+    $SignArgs = "/property:AssemblyOriginatorKeyFile=`"$AssemblyKey`" /property:DigitalSignatureKeyFile=`"$SignatureKey`" /property:DigitalSignatureParams=`"$SignatureParams`""
 
-    if (-not $Parallel -and $Transform) { $TransformArgs = "/property:TransformOnBuild=True;TransformFile=*.tt" }
-    else                                { $TransformArgs = "" }
-
-    & msbuild.exe "`"$Project`" /target:$Target /property:Configuration=$Configuration;Platform=$Platform $TransformArgs /property:BuildProjectReferences=False /property:AssemblyOriginatorKeyFile=`"$AssemblyKey`" /property:DigitalSignatureKeyFile=`"$SignatureKey`" /property:DigitalSignatureParams=`"$SignatureParams`" /maxcpucount:$Threads /verbosity:minimal"
+    & msbuild.exe "`"$Project`" /target:$Action /property:Configuration=$Configuration;Platform=$Platform $TransformArgs /property:BuildProjectReferences=False $SignArgs /maxcpucount:$Threads /verbosity:minimal"
     
     Try-Exit
 }
@@ -207,13 +169,10 @@ function Build-Projects
         [Parameter(Position = 6, Mandatory = $False,  HelpMessage = "Assembly digital signature parameters.")]
         [string] $SignatureParams = "/t http://timestamp.comodoca.com/authenticode",
 
-        [Parameter(Position = 7, Mandatory = $False, HelpMessage = "True, if you use *-All.ps1 script, otherwise False. Default is False.")]
-        [bool]   $Parallel      = $False,
-
-        [Parameter(Position = 8, Mandatory = $False, HelpMessage = "Number of working threads (recommended one thread per logical core). Default is 2.")]
+        [Parameter(Position = 7, Mandatory = $False, HelpMessage = "Number of working threads (recommended one thread per logical core). Default is 2.")]
         [byte]   $Threads       = 2,
 
-        [Parameter(Position = 9, Mandatory = $False, HelpMessage = "Switch, if you try build mapped code.")]
+        [Parameter(Position = 8, Mandatory = $False, HelpMessage = "Switch, if you try build mapped code.")]
         [bool]   $Checkout      = $True
     )
 
@@ -236,7 +195,7 @@ function Build-Projects
             [string] $Platform
         )
 
-        Build -Project $Project -Configuration $Configuration -Platform $Platform -Transform $Transform -AssemblyKey $AssemblyKey -SignatureKey $SignatureKey -SignatureParams $SignatureParams -Parallel $Parallel -Threads $Threads
+        Build -Project $Project -Configuration $Configuration -Platform $Platform -Transform $Transform -AssemblyKey $AssemblyKey -SignatureKey $SignatureKey -SignatureParams $SignatureParams -Threads $Threads
     }
 
     # Build Elysium assembly
@@ -334,7 +293,7 @@ function Build-Templates
             Add-TfsPendingChange -Edit (Resolve-Path ("SDK\MSI\" + $Type + "Templates\Visual Studio $Version\CSharp\$LCID\$FrameworkName\")) -Recurse -Lock none
         }
         $Project = Resolve-Path ("SDK\MSI\" + $Type + "Templates\Visual Studio $Version\CSharp\$LCID\$FrameworkName\VS" + $Version + "_CSharp_" + $LCID + "_" + $Type + "Template.csproj")
-        Build -Project $Project -Action Transform -Configuration Release -Platform AnyCPU -Transform $True -Parallel $False -Threads $Threads
+        Build -Project $Project -Action Transform -Configuration Release -Platform AnyCPU -Transform $True -Threads $Threads
     }
 
     # Build item templates
@@ -446,11 +405,8 @@ function Build-Documentation
         [Parameter(Position = 3, Mandatory = $True, HelpMessage = "Specifies target language by short name: English (en) or Russian (ru). Default is English (en).")]
         [ValidateSet("en", "ru")]
         [string] $Language,
-    
-        [Parameter(Position = 4, Mandatory = $False, HelpMessage = "True, if you use *-All.ps1 script, otherwise False. Default is False.")]
-        [bool]   $Parallel      = $False,
 
-        [Parameter(Position = 5, Mandatory = $False, HelpMessage = "Number of working threads (recommended one thread per logical core). Default is 2.")]
+        [Parameter(Position = 4, Mandatory = $False, HelpMessage = "Number of working threads (recommended one thread per logical core). Default is 2.")]
         [byte]   $Threads       = 2
     )
 
@@ -472,7 +428,7 @@ function Build-Documentation
             [string] $Project
         )
 
-        Build -Project $Project -Configuration Release -Platform AnyCPU -Transform $False -Parallel $Parallel -Threads $Threads
+        Build -Project $Project -Configuration Release -Platform AnyCPU -Transform $False -Threads $Threads
     }
 
     Build-Documentation-Project -Project (Resolve-Path "Documentation\$Language\Documentation.$Framework.shfbproj")
@@ -506,13 +462,10 @@ function Build-Installation
         [Parameter(Position = 6, Mandatory = $False,  HelpMessage = "Assembly digital signature parameters.")]
         [string] $SignatureParams = "/t http://timestamp.comodoca.com/authenticode",
 
-        [Parameter(Position = 7, Mandatory = $False, HelpMessage = "True, if you use *-All.ps1 script, otherwise False. Default is False.")]
-        [bool]   $Parallel      = $False,
-
-        [Parameter(Position = 8, Mandatory = $False, HelpMessage = "Number of working threads (recommended one thread per logical core). Default is 2.")]
+        [Parameter(Position = 7, Mandatory = $False, HelpMessage = "Number of working threads (recommended one thread per logical core). Default is 2.")]
         [byte]   $Threads       = 2,
 
-        [Parameter(Position = 9, Mandatory = $False, HelpMessage = "Switch, if you try build mapped code.")]
+        [Parameter(Position = 8, Mandatory = $False, HelpMessage = "Switch, if you try build mapped code.")]
         [bool]   $Checkout      = $True
     )
 
@@ -535,7 +488,7 @@ function Build-Installation
             [string] $Platform
         )
 
-        Build -Project $Project -Action Build   -Configuration $Configuration -Platform $Platform -Transform $Transform -AssemblyKey $AssemblyKey -SignatureKey $SignatureKey -SignatureParams $SignatureParams -Parallel $Parallel -Threads $Threads
+        Build -Project $Project -Action Build   -Configuration $Configuration -Platform $Platform -Transform $Transform -AssemblyKey $AssemblyKey -SignatureKey $SignatureKey -SignatureParams $SignatureParams -Threads $Threads
     }
 
     function Build-WiX-Project
@@ -549,7 +502,7 @@ function Build-Installation
             [string] $Platform
         )
 
-        Build -Project $Project -Action Rebuild -Configuration $Configuration -Platform $Platform -Transform $False -AssemblyKey $AssemblyKey -SignatureKey $SignatureKey -SignatureParams $SignatureParams -Parallel $Parallel -Threads $Threads
+        Build -Project $Project -Action Rebuild -Configuration $Configuration -Platform $Platform -Transform $False -AssemblyKey $AssemblyKey -SignatureKey $SignatureKey -SignatureParams $SignatureParams -Threads $Threads
     }
 
     # Build SDK bootstrapper UI assembly

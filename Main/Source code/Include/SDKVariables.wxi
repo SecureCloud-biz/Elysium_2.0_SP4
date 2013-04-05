@@ -59,13 +59,13 @@
 
   <?define SDKName = "Elysium SDK" ?>
   <?ifdef NETFX4 ?>
-    <?define SDKVersion = "1.5" ?>
-    <?define SDKBuild = "873" ?>
+    <?define SDKVersion = "2.0" ?>
+    <?define SDKBuild = "877" ?>
     <?define SDKRevision = "0" ?>
   <?endif ?>
   <?ifdef NETFX45 ?>
-    <?define SDKVersion = "1.5" ?>
-    <?define SDKBuild = "926" ?>
+    <?define SDKVersion = "2.0" ?>
+    <?define SDKBuild = "931" ?>
     <?define SDKRevision = "0" ?>
   <?endif ?>
   

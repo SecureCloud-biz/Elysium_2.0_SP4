@@ -1,3 +1,3 @@
 @echo off
-net stop ElysiumNotifications-v1.5.30.0-v4.0
+net stop ElysiumNotifications-v2.0.35.0-v4.0
 pause

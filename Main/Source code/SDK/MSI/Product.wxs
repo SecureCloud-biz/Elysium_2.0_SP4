@@ -514,24 +514,24 @@
         <?ifdef NETFX4 ?>
         <ServiceInstall Type="ownProcess"
                         Vital="yes"
-                        Name="ElysiumNotifications-v1.5.30.0-v4.0"
+                        Name="ElysiumNotifications-v2.0.35.0-v4.0"
                         DisplayName="Elysium Notifications"
                         Start="auto"
                         Account="LocalSystem"
                         ErrorControl="normal"
                         Interactive="no"/>
-        <ServiceControl Id="ElysiumNotifications" Name="ElysiumNotifications-v1.5.30.0-v4.0" Start="install" Stop="uninstall" Remove="uninstall" Wait="yes"/>
+        <ServiceControl Id="ElysiumNotifications" Name="ElysiumNotifications-v2.0.35.0-v4.0" Start="install" Stop="uninstall" Remove="uninstall" Wait="yes"/>
         <?endif ?>
         <?ifdef NETFX45 ?>
         <ServiceInstall Type="ownProcess"
                         Vital="yes"
-                        Name="ElysiumNotifications-v1.5.35.0-v4.5"
+                        Name="ElysiumNotifications-v2.0.40.0-v4.5"
                         DisplayName="Elysium Notifications"
                         Start="auto"
                         Account="LocalSystem"
                         ErrorControl="normal"
                         Interactive="no"/>
-        <ServiceControl Id="ElysiumNotifications" Name="ElysiumNotifications-v1.5.35.0-v4.5" Start="install" Stop="uninstall" Remove="uninstall" Wait="yes"/>
+        <ServiceControl Id="ElysiumNotifications" Name="ElysiumNotifications-v2.0.40.0-v4.5" Start="install" Stop="uninstall" Remove="uninstall" Wait="yes"/>
         <?endif ?>
       </Component>
       

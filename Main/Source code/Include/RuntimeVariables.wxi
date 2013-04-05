@@ -30,13 +30,13 @@
   
   <?define RuntimeName = "Elysium" ?>
   <?ifdef NETFX4 ?>
-    <?define RuntimeVersion = "1.5" ?>
-    <?define RuntimeBuild = "873" ?>
+    <?define RuntimeVersion = "2.0" ?>
+    <?define RuntimeBuild = "877" ?>
     <?define RuntimeRevision = "0" ?>
   <?endif ?>
   <?ifdef NETFX45 ?>
-    <?define RuntimeVersion = "1.5" ?>
-    <?define RuntimeBuild = "926" ?>
+    <?define RuntimeVersion = "2.0" ?>
+    <?define RuntimeBuild = "931" ?>
     <?define RuntimeRevision = "0" ?>
   <?endif ?>
   

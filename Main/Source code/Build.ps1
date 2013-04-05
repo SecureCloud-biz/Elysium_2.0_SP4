@@ -29,8 +29,8 @@ $Path = Join-Path -Path $Location -ChildPath Elysium.psm1
 Import-Module $Path
 
 # Build Elysium projects
-Build-Projects -Version $Version -Framework $Framework -Configuration Debug -Transform $True -AssemblyKey $AssemblyKey -SignatureKey $SignatureKey -SignatureParams $SignatureParams -Parallel $False -Threads $Threads -Checkout $Checkout
-Build-Projects -Version $Version -Framework $Framework -Configuration Release -Transform $True -AssemblyKey $AssemblyKey -SignatureKey $SignatureKey -SignatureParams $SignatureParams -Parallel $False -Threads $Threads -Checkout $Checkout
+Build-Projects -Version $Version -Framework $Framework -Configuration Debug -Transform $True -AssemblyKey $AssemblyKey -SignatureKey $SignatureKey -SignatureParams $SignatureParams -Threads $Threads -Checkout $Checkout
+Build-Projects -Version $Version -Framework $Framework -Configuration Release -Transform $True -AssemblyKey $AssemblyKey -SignatureKey $SignatureKey -SignatureParams $SignatureParams -Threads $Threads -Checkout $Checkout
 
 # Build project and item templates for Visual Studio
 Build-Templates -Version $Version -Framework $Framework -LCID 1033 -Threads $Threads -Checkout $Checkout
@@ -41,11 +41,9 @@ Zip-Templates -Version $Version -Framework $Framework -LCID 1033 -Threads $Threa
 Zip-Templates -Version $Version -Framework $Framework -LCID 1049 -Threads $Threads -Checkout $Checkout
 
 # Build Elysium documentation
-#Build-Documentation -Version $Version -Framework $Framework -Language en -Parallel $False -Threads $Threads
-#Build-Documentation -Version $Version -Framework $Framework -Language ru -Parallel $False -Threads $Threads
+Build-Documentation -Version $Version -Framework $Framework -Language en -Threads $Threads
+Build-Documentation -Version $Version -Framework $Framework -Language ru -Threads $Threads
 
 # Build installation projects
-Build-Installation -Version $Version -Framework $Framework -Configuration Debug -Transform $True -AssemblyKey $AssemblyKey -SignatureKey $SignatureKey -SignatureParams $SignatureParams -Parallel $False -Threads $Threads -Checkout $Checkout
-Build-Installation -Version $Version -Framework $Framework -Configuration Release -Transform $True -AssemblyKey $AssemblyKey -SignatureKey $SignatureKey -SignatureParams $SignatureParams -Parallel $False -Threads $Threads -Checkout $Checkout
-
-Read-Host -Prompt "Press any key to continue..."
+Build-Installation -Version $Version -Framework $Framework -Configuration Debug -Transform $True -AssemblyKey $AssemblyKey -SignatureKey $SignatureKey -SignatureParams $SignatureParams -Threads $Threads -Checkout $Checkout
+Build-Installation -Version $Version -Framework $Framework -Configuration Release -Transform $True -AssemblyKey $AssemblyKey -SignatureKey $SignatureKey -SignatureParams $SignatureParams -Threads $Threads -Checkout $Checkout
