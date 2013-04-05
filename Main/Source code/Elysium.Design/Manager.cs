@@ -15,7 +15,7 @@ namespace Elysium.Design
 
         public override object TranslatePropertyValue(ModelItem item, PropertyIdentifier identifier, object value)
         {
-            if (identifier.DeclaringType.IsAssignableFrom(typeof(FrameworkElement)) && identifier.Name == "Resources")
+            if (item != null && identifier.DeclaringType.IsAssignableFrom(typeof(FrameworkElement)) && identifier.Name == "Resources")
             {
                 var control = (FrameworkElement)item.View.PlatformObject;
                 var resources = (ResourceDictionary)value;

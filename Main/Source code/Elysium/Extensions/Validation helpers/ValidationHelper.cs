@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
+using System.Linq;
 using System.Linq.Expressions;
 
 using JetBrains.Annotations;
@@ -45,6 +47,24 @@ namespace Elysium.Extensions
             if (string.IsNullOrWhiteSpace(argument))
             {
                 throw new ArgumentException(parameterName + " can't be null, empty or contains only whitespaces", parameterName);
+            }
+            Contract.EndContractBlock();
+        }
+
+        [ContractArgumentValidator]
+        internal static void NotNullAll<TEnumerable, TElement>(TEnumerable argument, [NotNull] Expression<Func<TEnumerable>> parameterExpression)
+            where TEnumerable : IEnumerable<TElement>
+        {
+            NotNullAll<TEnumerable, TElement>(argument, ((MemberExpression)parameterExpression.Body).Member.Name);
+        }
+
+        [ContractArgumentValidator]
+        internal static void NotNullAll<TEnumerable, TElement>(TEnumerable argument, [NotNull] string parameterName)
+            where TEnumerable : IEnumerable<TElement>
+        {
+            if (!argument.All(item => item != null))
+            {
+                throw new ArgumentException(parameterName + " contains null element", parameterName);
             }
             Contract.EndContractBlock();
         }

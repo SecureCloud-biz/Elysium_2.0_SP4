@@ -48,10 +48,11 @@ namespace System.Linq
             }
         }
 
-        internal static void SafeSet([NotNull] this IDictionary destinationDictionary, [NotNull] IDictionary sourceDictionary)
+        internal static void SafeSet<TKey, TValue>([NotNull] this IDictionary destinationDictionary, [NotNull] IDictionary<TKey, TValue> sourceDictionary)
         {
             ValidationHelper.NotNull(destinationDictionary, "destinationDictionary");
             ValidationHelper.NotNull(sourceDictionary, "sourceDictionary");
+            ValidationHelper.NotNullAll<IEnumerable<TKey>, TKey>(sourceDictionary.Keys, "sourceDictionary");
 
             foreach (var key in sourceDictionary.Keys)
             {
@@ -70,10 +71,11 @@ namespace System.Linq
             }
         }
 
-        internal static void SafeRemove([NotNull] this IDictionary destinationDictionary, [NotNull] IDictionary sourceDictionary)
+        internal static void SafeRemove<TKey, TValue>([NotNull] this IDictionary destinationDictionary, [NotNull] IDictionary<TKey, TValue> sourceDictionary)
         {
             ValidationHelper.NotNull(destinationDictionary, "destinationDictionary");
             ValidationHelper.NotNull(sourceDictionary, "sourceDictionary");
+            ValidationHelper.NotNullAll<IEnumerable<TKey>, TKey>(sourceDictionary.Keys, "sourceDictionary");
 
             foreach (var key in sourceDictionary.Keys)
             {

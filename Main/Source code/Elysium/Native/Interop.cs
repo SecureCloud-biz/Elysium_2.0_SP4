@@ -164,6 +164,7 @@ namespace Elysium.Native
 
         [SecurityCritical]
         [DllImport("user32.dll", EntryPoint = "FindWindow", ExactSpelling = false, CharSet = CharSet.Unicode, SetLastError = true)]
+        [SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass", Justification = "This native method is a part of interop wrapper")]
         private static extern IntPtr _FindWindow(string lpClassName, string lpWindowName);
 
         [SecurityCritical]
@@ -182,6 +183,7 @@ namespace Elysium.Native
         [SecurityCritical]
         [DllImport("user32.dll", EntryPoint = "GetMonitorInfo", ExactSpelling = false, CharSet = CharSet.Unicode, SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
+        [SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass", Justification = "This native method is a part of interop wrapper")]
         private static extern bool _GetMonitorInfo(IntPtr hMonitor, [In] [Out] ref MONITORINFO lpmi);
 
         [SecurityCritical]
@@ -198,6 +200,7 @@ namespace Elysium.Native
         [SecurityCritical]
         [DllImport("user32.dll", EntryPoint = "GetWindowInfo", ExactSpelling = true, CharSet = CharSet.Auto, SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
+        [SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass", Justification = "This native method is a part of interop wrapper")]
         private static extern bool _GetWindowInfo(IntPtr hwnd, [In] [Out] ref WINDOWINFO pwi);
 
         [SecurityCritical]
@@ -213,6 +216,7 @@ namespace Elysium.Native
 
         [SecurityCritical]
         [DllImport("user32.dll", EntryPoint = "MonitorFromWindow", ExactSpelling = true, CharSet = CharSet.Auto, SetLastError = true)]
+        [SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass", Justification = "This native method is a part of interop wrapper")]
         private static extern IntPtr _MonitorFromWindow(IntPtr hwnd, [MarshalAs(UnmanagedType.U4)] int dwFlags);
 
         [SecurityCritical]
@@ -231,6 +235,7 @@ namespace Elysium.Native
         [SecurityCritical]
         [DllImport("shell32.dll", EntryPoint = "SHAppBarMessage", ExactSpelling = true, CharSet = CharSet.Auto, SetLastError = false)]
         [return: MarshalAs(UnmanagedType.SysUInt)]
+        [SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass", Justification = "This native method is a part of interop wrapper")]
         private static extern IntPtr _SHAppBarMessage([MarshalAs(UnmanagedType.U4)] int dwMessage, [In] [Out] ref APPBARDATA pData);
 
         [SecurityCritical]

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Security;
 
 using JetBrains.Annotations;
@@ -18,6 +19,7 @@ namespace Elysium.Native
         }
 
         [SecuritySafeCritical]
+        [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "This method must be called only after class initialization.")]
         internal void Invalidate()
         {
             _isCacheValid = false;

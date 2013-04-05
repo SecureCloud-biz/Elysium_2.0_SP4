@@ -33,6 +33,7 @@ namespace Elysium
         #region Constractors
 
         [SecurityCritical]
+        [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline", Justification = "Couldn't initialize inline security critical static field.")]
         static Manager()
         {
             Cache = new Collection<WeakReference>();
@@ -733,11 +734,15 @@ namespace Elysium
         {
             // Remove previous dictionaries
             var dictionaries = resources.MergedDictionaries.Where(d => d.Source == uri).ToList();
-            var lastIndex = dictionaries.Select(d => resources.MergedDictionaries.IndexOf(d)).Concat(new[] { 0 }).Max();
             foreach (var d in dictionaries)
             {
                 resources.MergedDictionaries.Remove(d);
             }
+
+            var lastIndex = dictionaries.Select(d => resources.MergedDictionaries.IndexOf(d)).Concat(new[] { 0 }).Max();
+
+            // NOTE: lastIndex always greater than or equal to zero
+            Contract.Assume(lastIndex > 0);
 
             // Add new dictionary
             if (dictionary != null)

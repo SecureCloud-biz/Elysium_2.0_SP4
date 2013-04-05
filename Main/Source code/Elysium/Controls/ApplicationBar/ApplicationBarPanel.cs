@@ -47,6 +47,7 @@ namespace Elysium.Controls
         protected override Size ArrangeOverride(Size finalSize)
         {
             var children = InternalChildren.Cast<UIElement>().ToList();
+            Contract.Assume(Contract.ForAll(children, child => child != null));
             var leftDocked = children.Where(child => ApplicationBar.GetDock(child) == ApplicationBarDock.Left).ToArray();
             var rightDocked = children.Where(child => ApplicationBar.GetDock(child) == ApplicationBarDock.Right).Reverse().ToArray();
 

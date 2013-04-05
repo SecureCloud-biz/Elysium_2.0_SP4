@@ -146,6 +146,7 @@ namespace Elysium.Notifications
 #endif
 
         [PublicAPI]
+        [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling", Justification = "This version contains a minimal code in method.")]
         public static void Push([NotNull] string message, [CanBeNull] string remark)
         {
             ValidationHelper.NotNullOrWhitespace(message, "message");

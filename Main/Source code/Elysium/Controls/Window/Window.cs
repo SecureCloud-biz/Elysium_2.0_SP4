@@ -6,6 +6,7 @@ using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security;
+using System.Security.Permissions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -28,8 +29,7 @@ using Microsoft.Windows.Shell;
 using Monitor = Elysium.Native.Monitor;
 
 namespace Elysium.Controls
-{
-    [PublicAPI]
+{[PublicAPI]
     [TemplatePart(Name = LayoutRootName, Type = typeof(Panel))]
     [TemplatePart(Name = CaptionName, Type = typeof(FrameworkElement))]
     [TemplatePart(Name = TitleName, Type = typeof(FrameworkElement))]
@@ -39,6 +39,7 @@ namespace Elysium.Controls
     [TemplatePart(Name = RestoreName, Type = typeof(FrameworkElement))]
     [TemplatePart(Name = CloseName, Type = typeof(FrameworkElement))]
     [TemplatePart(Name = GripName, Type = typeof(ResizeGrip))]
+    [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling")]
     public class Window : System.Windows.Window
     {
         private const string LayoutRootName = "PART_LayoutRoot";
@@ -560,10 +561,9 @@ namespace Elysium.Controls
         {
             if (Equals(WindowChrome.GetWindowChrome(this), _chrome) && SizeToContent != SizeToContent.Manual)
             {
+                new UIPermission(PermissionState.Unrestricted).Demand();
                 _dispatcherFrame = new DispatcherFrame();
-
                 Show();
-
                 Dispatcher.PushFrame(_dispatcherFrame);
                 _dispatcherFrame = null;
                 return base.ShowDialog();
