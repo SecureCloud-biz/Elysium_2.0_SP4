@@ -54,13 +54,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSharp", "CSharp", "{F7EC7C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{A0A93B97-BCD5-4800-BD9B-56D133F63B8E}"
 	ProjectSection(SolutionItems) = preProject
-		Build.bat = Build.bat
+		Build-All.ps1 = Build-All.ps1
 		Build.ps1 = Build.ps1
-		Clean.bat = Clean.bat
 		Deploy.bat = Deploy.bat
 		Elysium.psm1 = Elysium.psm1
 		Install-Keys.ps1 = Install-Keys.ps1
-		InstallKeys.bat = InstallKeys.bat
 		Load tools.bat = Load tools.bat
 		Remove-Keys.ps1 = Remove-Keys.ps1
 	EndProjectSection
