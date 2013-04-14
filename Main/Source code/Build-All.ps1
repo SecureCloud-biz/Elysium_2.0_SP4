@@ -9,7 +9,7 @@ param (
     [string] $SignatureParams = "/t http://timestamp.comodoca.com/authenticode",
 
     [Parameter(Position = 5, Mandatory = $False, HelpMessage = "Number of working threads (recommended one thread per logical core). Default is 2.")]
-    [byte]   $Threads         = 2,
+    [byte]   $Threads         = 8,
 
     [Parameter(Position = 6, Mandatory = $False, HelpMessage = "Switch, if you try build mapped code.")]
     [bool]   $Checkout        = $True
@@ -18,7 +18,16 @@ param (
 $Location = Split-Path -Parent $MyInvocation.MyCommand.Path
 $Path = Join-Path -Path $Location -ChildPath Build.ps1
 
-& $Path -Version 2012 -Framework NETFX4 -AssemblyKey $AssemblyKey -SignatureKey $SignatureKey -SignatureParams $SignatureParams -Threads $Threads -Checkout $Checkout
-Try-Exit
-& $Path -Version 2012 -Framework NETFX45 -AssemblyKey $AssemblyKey -SignatureKey $SignatureKey -SignatureParams $SignatureParams -Threads $Threads -Checkout $Checkout
-Try-Exit
+$BuildNETFX4 = Start-Job -ScriptBlock {
+    & $args[0] -Version 2012 -Framework NETFX4 -AssemblyKey $args[1] -SignatureKey $args[2] -SignatureParams $args[3] -Threads $args[4] -Checkout $args[5]
+    Try-Exit
+} -ArgumentList @($Path, $AssemblyKey, $SignatureKey, $SignatureParams, $Threads, $Checkout)
+Wait-Job $BuildNETFX4
+Receive-Job $BuildNETFX4
+
+$BuildNETFX45 = Start-Job -ScriptBlock {
+    & $args[0] -Version 2012 -Framework NETFX45 -AssemblyKey $args[1] -SignatureKey $args[2] -SignatureParams $args[3] -Threads $args[4] -Checkout $args[5]
+    Try-Exit
+} -ArgumentList @($Path, $AssemblyKey, $SignatureKey, $SignatureParams, $Threads, $Checkout)
+Wait-Job $BuildNETFX45
+Receive-Job $BuildNETFX45

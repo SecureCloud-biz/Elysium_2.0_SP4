@@ -24,18 +24,33 @@
     <Language>ru-RU</Language>
     <NamingMethod>Guid</NamingMethod>
     <Preliminary>False</Preliminary>
-    <PresentationStyle>VS2005</PresentationStyle>
+    <PresentationStyle>VS2010</PresentationStyle>
     <SelfBranded>True</SelfBranded>
     <SyntaxFilters>CSharp, VisualBasic, XamlUsage</SyntaxFilters>
     <IncludeFavorites>False</IncludeFavorites>
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
     <BuildLogFile>Documentation.NETFX4.log</BuildLogFile>
-    <CopyrightHref>http://elysium.codeplex.com/license</CopyrightHref>
-    <FooterText>Copyright %28c%29 2011-2013 Alex F. Sherman</FooterText>
+    <CopyrightHref>http://elysium.asvishnyakov.com/License.cshtml#header</CopyrightHref>
+    <FooterText>Copyright %28c%29 2011-2013 Александр Вишняков</FooterText>
     <HelpTitle>Документация по Elysium for .NET Framework 4</HelpTitle>
     <ComponentConfigurations>
+      <ComponentConfig id="API Token Resolution" enabled="True">
+        <component id="API Token Resolution" type="Microsoft.Ddue.Tools.SharedContentComponent" assembly="{@SandcastlePath}ProductionTools\BuildComponents.dll">
+
+			{@TokenFiles}
+			<replace elements="/*//token" item="string(.)" /></component>
+      </ComponentConfig>
+      <ComponentConfig id="Code Block Component" enabled="True">
+        <component id="Code Block Component" type="SandcastleBuilder.Components.CodeBlockComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
+          <basePath value="{@HtmlEncProjectFolder}" />
+          <outputPaths>{@HelpFormatOutputPaths}</outputPaths>
+          <allowMissingSource value="false" />
+          <removeRegionMarkers value="false" />
+          <colorizer syntaxFile="{@SHFBFolder}Colorizer\highlight.xml" styleFile="{@SHFBFolder}Colorizer\highlight.xsl" stylesheet="{@SHFBFolder}Colorizer\highlight.css" scriptFile="{@SHFBFolder}Colorizer\highlight.js" language="cs" tabSize="0" numberLines="true" outlining="false" keepSeeTags="false" defaultTitle="true" />
+        </component>
+      </ComponentConfig>
       <ComponentConfig id="IntelliSense Component" enabled="True">
-        <component id="IntelliSense Component" type="SandcastleBuilder.Components.IntelliSenseComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
+        <component id="IntelliSense Component" type="Microsoft.Ddue.Tools.IntelliSenseComponent" assembly="{@SandcastlePath}ProductionTools\BuildComponents.dll">
           <!-- Output options (optional)
 					 Attributes:
 							Include Namespaces (false by default)
@@ -44,23 +59,60 @@
           <output includeNamespaces="false" namespacesFile="Namespaces" folder="{@OutputFolder}" />
         </component>
       </ComponentConfig>
-      <ComponentConfig id="Code Block Component" enabled="True">
-        <component id="Code Block Component" type="SandcastleBuilder.Components.CodeBlockComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
-          <basePath value="{@HtmlEncProjectFolder}" />
-          <outputPaths>{@HelpFormatOutputPaths}</outputPaths>
-          <allowMissingSource value="false" />
-          <removeRegionMarkers value="false" />
-          <colorizer syntaxFile="{@SHFBFolder}Colorizer\highlight.xml" styleFile="{@SHFBFolder}Colorizer\highlight.xsl" stylesheet="{@SHFBFolder}Colorizer\highlight.css" scriptFile="{@SHFBFolder}Colorizer\highlight.js" language="cs" tabSize="0" numberLines="false" outlining="false" keepSeeTags="false" defaultTitle="true" />
+      <ComponentConfig id="Comments Index Data (ESENT Cache)" enabled="True">
+        <component id="Comments Index Data (ESENT Cache)" type="SandcastleBuilder.Components.ESentCopyFromIndexComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
+          <index name="comments" value="/doc/members/member" key="@name" cache="30" localCacheSize="2500" frameworkCachePath="{@LocalDataFolder}Cache\CommentsIndexCache" projectCachePath="">
+				{@FrameworkCommentList}
+				{@CommentFileList}
+			</index>
+          <copy name="comments" source="*" target="/document/comments" />
         </component>
       </ComponentConfig>
-      <ComponentConfig id="API Token Resolution" enabled="True">
-        <component id="API Token Resolution" type="Microsoft.Ddue.Tools.SharedContentComponent" assembly="{@SandcastlePath}ProductionTools\BuildComponents.dll">
-
-      {@TokenFiles}
-      <replace elements="/*//token" item="string(.)" /></component>
+      <ComponentConfig id="Reflection Index Data (ESENT Cache)" enabled="True">
+        <component id="Reflection Index Data (ESENT Cache)" type="SandcastleBuilder.Components.ESentCopyFromIndexComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
+          <index name="reflection" value="/reflection/apis/api" key="@id" cache="15" localCacheSize="2500" frameworkCachePath="{@LocalDataFolder}Cache\ReflectionIndexCache" projectCachePath="">
+            <data base="{@SandcastlePath}Data\Reflection" recurse="true" files="*.xml" duplicateWarning="false" groupId="ReflectionIndexCache">
+					{@ReferenceLinkNamespaceFiles}
+				</data>
+            <data files="reflection.xml" groupId="Project_Ref_{@UniqueID}" />
+          </index>
+          <copy name="reflection" source="*" target="/document/reference" />
+        </component>
+      </ComponentConfig>
+      <ComponentConfig id="Resolve Reference Links (ESENT Cache)" enabled="True">
+        <component id="Resolve Reference Links (ESENT Cache)" type="SandcastleBuilder.Components.ESentResolveReferenceLinksComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll" locale="{@Locale}" linkTarget="{@SdkLinkTarget}">
+          <helpOutput format="HtmlHelp1">
+            <msdnContentIdCache path="{@LocalDataFolder}Cache\MsdnContentId.cache" cachePath="{@LocalDataFolder}Cache\ESentMsdnContentIdCache" localCacheSize="2500" />
+            <targets base="{@SandcastlePath}Data\Reflection" recurse="true" files="*.xml" type="{@HtmlSdkLinkType}" id="FrameworkTargets" cachePath="{@LocalDataFolder}Cache\ESentFrameworkTargetCache" localCacheSize="2500">
+					{@ReferenceLinkNamespaceFiles}
+				</targets>
+            <targets files="reflection.xml" type="Local" id="ProjectTargets" cachePath="" localCacheSize="2500" noReload="true" />
+          </helpOutput>
+          <helpOutput format="MSHelp2">
+            <msdnContentIdCache path="{@LocalDataFolder}Cache\MsdnContentId.cache" cachePath="{@LocalDataFolder}Cache\ESentMsdnContentIdCache" localCacheSize="2500" />
+            <targets base="{@SandcastlePath}Data\Reflection" recurse="true" files="*.xml" type="{@MSHelp2SdkLinkType}" id="FrameworkTargets" cachePath="{@LocalDataFolder}Cache\ESentFrameworkTargetCache" localCacheSize="2500">
+					{@ReferenceLinkNamespaceFiles}
+				</targets>
+            <targets files="reflection.xml" type="Index" id="ProjectTargets" cachePath="" localCacheSize="2500" noReload="true" />
+          </helpOutput>
+          <helpOutput format="MSHelpViewer">
+            <msdnContentIdCache path="{@LocalDataFolder}Cache\MsdnContentId.cache" cachePath="{@LocalDataFolder}Cache\ESentMsdnContentIdCache" localCacheSize="2500" />
+            <targets base="{@SandcastlePath}Data\Reflection" recurse="true" files="*.xml" type="{@MSHelpViewerSdkLinkType}" id="FrameworkTargets" cachePath="{@LocalDataFolder}Cache\ESentFrameworkTargetCache" localCacheSize="2500">
+					{@ReferenceLinkNamespaceFiles}
+				</targets>
+            <targets files="reflection.xml" type="Id" id="ProjectTargets" cachePath="" localCacheSize="2500" noReload="true" />
+          </helpOutput>
+          <helpOutput format="Website">
+            <msdnContentIdCache path="{@LocalDataFolder}Cache\MsdnContentId.cache" cachePath="{@LocalDataFolder}Cache\ESentMsdnContentIdCache" localCacheSize="2500" />
+            <targets base="{@SandcastlePath}Data\Reflection" recurse="true" files="*.xml" type="{@WebsiteSdkLinkType}" id="FrameworkTargets" cachePath="{@LocalDataFolder}Cache\ESentFrameworkTargetCache" localCacheSize="2500">
+					{@ReferenceLinkNamespaceFiles}
+				</targets>
+            <targets files="reflection.xml" type="Local" id="ProjectTargets" cachePath="" localCacheSize="2500" noReload="true" />
+          </helpOutput>
+        </component>
       </ComponentConfig>
     </ComponentConfigurations>
-    <VisibleItems>InheritedMembers, InheritedFrameworkMembers, Protected, ProtectedInternalAsProtected</VisibleItems>
+    <VisibleItems>InheritedMembers, InheritedFrameworkMembers, Protected, ProtectedInternalAsProtected, SealedProtected</VisibleItems>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\..\..\Binary\.NET Framework 4\$(Configuration)\AnyCPU\Elysium.dll" />
       <DocumentationSource sourceFile="..\..\..\Binary\.NET Framework 4\$(Configuration)\AnyCPU\Elysium.Notifications.dll" />
