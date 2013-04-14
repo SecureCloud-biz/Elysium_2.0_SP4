@@ -29,11 +29,13 @@ using Microsoft.Windows.Shell;
 using Monitor = Elysium.Native.Monitor;
 
 namespace Elysium.Controls
-{[PublicAPI]
+{
+    [PublicAPI]
     [TemplatePart(Name = LayoutRootName, Type = typeof(Panel))]
-    [TemplatePart(Name = CaptionName, Type = typeof(FrameworkElement))]
-    [TemplatePart(Name = TitleName, Type = typeof(FrameworkElement))]
     [TemplatePart(Name = ProgressBarName, Type = typeof(ProgressBar))]
+    [TemplatePart(Name = CaptionName, Type = typeof(FrameworkElement))]
+    [TemplatePart(Name = IconName, Type = typeof(Image))]
+    [TemplatePart(Name = TitleName, Type = typeof(FrameworkElement))]
     [TemplatePart(Name = MinimizeName, Type = typeof(FrameworkElement))]
     [TemplatePart(Name = MaximizeName, Type = typeof(FrameworkElement))]
     [TemplatePart(Name = RestoreName, Type = typeof(FrameworkElement))]
@@ -43,9 +45,10 @@ namespace Elysium.Controls
     public class Window : System.Windows.Window
     {
         private const string LayoutRootName = "PART_LayoutRoot";
-        private const string TitleName = "PART_Title";
-        private const string CaptionName = "PART_Caption";
         private const string ProgressBarName = "PART_ProgressBar";
+        private const string CaptionName = "PART_Caption";
+        private const string IconName = "PART_Icon";
+        private const string TitleName = "PART_Title";
         private const string MinimizeName = "PART_Minimize";
         private const string MaximizeName = "PART_Maximize";
         private const string RestoreName = "PART_Restore";

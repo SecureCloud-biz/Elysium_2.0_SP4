@@ -12,6 +12,21 @@
         <ResourceDictionary Source="/Elysium;component/Themes/Icons.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
+    <Style x:Key="MainWindowCaptionButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource SemitransparentContrastBrush}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource SemitransparentContrastBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource ContrastBrush}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource ContrastBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource AccentBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
     <Style x:Key="{x:Type controls:Window}" TargetType="{x:Type controls:Window}">
         <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource HighlightBrush}"/>
@@ -50,6 +65,7 @@
                                   Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Mode=OneWay, Converter={StaticResource ThicknessPositiveToNegativeConverter}}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
@@ -58,26 +74,27 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <controls:ProgressBar x:Name="PART_ProgressBar"
-                                                      Grid.ColumnSpan="3"
+                                                      Grid.ColumnSpan="4"
                                                       Grid.Row="0"
                                                       Background="{DynamicResource TransparentBrush}"
                                                       Value="{TemplateBinding Progress}"
                                                       VerticalAlignment="Top"
                                                       Height="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldThicknessValue), Mode=OneWay}"/>
-                                <Border x:Name="PART_Title"
-                                        Grid.Column="0"
-                                        Grid.Row="1"
-                                        Background="{DynamicResource AccentBrush}"
-                                        BorderThickness="0">
-                                    <TextBlock x:Name="Title"
-                                               Text="{TemplateBinding Title}"
-                                               Foreground="{DynamicResource ContrastBrush}"
-                                               FontSize="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.TitleFontSize), Mode=OneWay}"
-                                               FontWeight="Normal"
-                                               Margin="10,5"/>
-                                </Border>
-                                <Grid Grid.Column="2"
-                                      Grid.Row="1"
+                                <Image x:Name="PART_Icon"
+                                       Grid.Column="0"
+                                       Grid.Row="1"
+                                       Source="{TemplateBinding Icon}"
+                                       Margin="10,5"/>
+                                <TextBlock x:Name="PART_Title"
+                                           Grid.Column="1"
+                                           Grid.Row="1"
+                                           Text="{TemplateBinding Title}"
+                                           FontSize="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.TitleFontSize), Mode=OneWay}"
+                                           FontWeight="Normal"
+                                           Margin="10,5"
+                                           VerticalAlignment="Center"/>
+                                <Grid Grid.Column="3"
+                                      Grid.Row="0" Grid.RowSpan="2"
                                       shell:WindowChrome.IsHitTestVisibleInChrome="True">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
@@ -85,7 +102,7 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.Resources>
-                                        <Style x:Key="{x:Type Button}" TargetType="{x:Type Button}"  BasedOn="{StaticResource {x:Type Button}}">
+                                        <Style x:Key="{x:Type Button}" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
                                             <Setter Property="Background" Value="{DynamicResource TransparentBrush}"/>
                                             <Setter Property="BorderBrush" Value="{DynamicResource TransparentBrush}"/>
                                             <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
@@ -107,8 +124,7 @@
                                             Grid.Column="0"
                                             BorderThickness="0"
                                             Command="{x:Static controls:WindowCommands.Minimize}"
-                                            Width="34" Height="26"
-                                            MinWidth="34">
+                                            Width="34" MinWidth="34">
                                         <Path Data="{StaticResource MinimizeIcon}"
                                               Fill="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}"
                                               Stretch="None"
@@ -118,8 +134,7 @@
                                             Grid.Column="1"
                                             BorderThickness="0"
                                             Command="{x:Static controls:WindowCommands.Maximize}"
-                                            Width="34" Height="26"
-                                            MinWidth="34">
+                                            Width="34" MinWidth="34">
                                         <Path Data="{StaticResource MaximizeIcon}"
                                               Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}"
                                               Stretch="None"
@@ -129,8 +144,7 @@
                                             Grid.Column="1"
                                             BorderThickness="0"
                                             Command="{x:Static controls:WindowCommands.Restore}"
-                                            Width="34" Height="26"
-                                            MinWidth="34"
+                                            Width="34" MinWidth="34"
                                             Visibility="Hidden">
                                         <Path Data="{StaticResource RestoreIcon}"
                                               Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}"
@@ -141,8 +155,7 @@
                                             Grid.Column="2"
                                             BorderThickness="0"
                                             Command="{x:Static controls:WindowCommands.Close}"
-                                            Width="34" Height="26"
-                                            MinWidth="34">
+                                            Width="34" MinWidth="34">
                                         <Path Data="{StaticResource CloseIcon}"
                                               Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}"
                                               Stretch="None"
@@ -170,17 +183,18 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.TitleFontSize), Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
-                            <Setter TargetName="Title" Property="TextOptions.TextFormattingMode" Value="Ideal"/>
+                            <Setter TargetName="PART_Title" Property="TextOptions.TextFormattingMode" Value="Ideal"/>
                         </DataTrigger>
                         <Trigger Property="IsBusy" Value="True">
                             <Setter TargetName="PART_ProgressBar" Property="State" Value="Indeterminate"/>
                         </Trigger>
-                        <Trigger Property="controls:Window.IsMainWindow" Value="False">
-                            <Setter TargetName="PART_Title" Property="Background" Value="{x:Null}"/>
-                            <Setter TargetName="Title" Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
-                        </Trigger>
-                        <Trigger Property="Title" Value="{x:Static system:String.Empty}">
-                            <Setter TargetName="PART_Title" Property="Visibility" Value="Collapsed"/>
+                        <Trigger Property="controls:Window.IsMainWindow" Value="True">
+                            <Setter TargetName="PART_Caption" Property="Background" Value="{DynamicResource AccentBrush}"/>
+                            <Setter TargetName="PART_Title" Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
+                            <Setter TargetName="PART_Minimize" Property="Style" Value="{StaticResource MainWindowCaptionButtonStyle}"/>
+                            <Setter TargetName="PART_Maximize" Property="Style" Value="{StaticResource MainWindowCaptionButtonStyle}"/>
+                            <Setter TargetName="PART_Restore" Property="Style" Value="{StaticResource MainWindowCaptionButtonStyle}"/>
+                            <Setter TargetName="PART_Close" Property="Style" Value="{StaticResource MainWindowCaptionButtonStyle}"/>
                         </Trigger>
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="PART_Maximize" Property="Visibility" Value="Hidden"/>
