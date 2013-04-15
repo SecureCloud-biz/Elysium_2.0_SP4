@@ -599,6 +599,7 @@
     </None>
     <None Include="Parameters\Window.ru.xml">
       <DependentUpon>Window.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Extensions\Collections\IObservableDictionary.en.xml">
       <DependentUpon>IObservableDictionary.cs</DependentUpon>

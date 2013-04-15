@@ -123,6 +123,8 @@
                                             Grid.Column="0"
                                             BorderThickness="0"
                                             Command="{x:Static controls:WindowCommands.Minimize}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.MinimizeButtonToolTip), Mode=OneWay}"
+                                            ToolTipService.ShowOnDisabled="True"
                                             Width="34" MinWidth="34">
                                         <Path Data="{StaticResource MinimizeIcon}"
                                               Fill="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}"
@@ -133,6 +135,8 @@
                                             Grid.Column="1"
                                             BorderThickness="0"
                                             Command="{x:Static controls:WindowCommands.Maximize}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.MaximizeButtonToolTip), Mode=OneWay}"
+                                            ToolTipService.ShowOnDisabled="True"
                                             Width="34" MinWidth="34">
                                         <Path Data="{StaticResource MaximizeIcon}"
                                               Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}"
@@ -143,6 +147,8 @@
                                             Grid.Column="1"
                                             BorderThickness="0"
                                             Command="{x:Static controls:WindowCommands.Restore}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.RestoreButtonToolTip), Mode=OneWay}"
+                                            ToolTipService.ShowOnDisabled="True"
                                             Width="34" MinWidth="34"
                                             Visibility="Hidden">
                                         <Path Data="{StaticResource RestoreIcon}"
@@ -154,6 +160,8 @@
                                             Grid.Column="2"
                                             BorderThickness="0"
                                             Command="{x:Static controls:WindowCommands.Close}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.CloseButtonToolTip), Mode=OneWay}"
+                                            ToolTipService.ShowOnDisabled="True"
                                             Width="34" MinWidth="34">
                                         <Path Data="{StaticResource CloseIcon}"
                                               Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}"
