@@ -81,17 +81,22 @@
                                                       Height="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldThicknessValue), Mode=OneWay}"/>
                                 <Image x:Name="PART_Icon"
                                        Grid.Column="0"
-                                       Grid.Row="1"
+                                       Grid.Row="0" Grid.RowSpan="2"
                                        Source="{TemplateBinding Icon}"
                                        Margin="10,5"/>
                                 <TextBlock x:Name="PART_Title"
                                            Grid.Column="1"
-                                           Grid.Row="1"
+                                           Grid.Row="0" Grid.RowSpan="2"
                                            Text="{TemplateBinding Title}"
                                            FontSize="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.TitleFontSize), Mode=OneWay}"
                                            FontWeight="Normal"
                                            Margin="10,5"
                                            VerticalAlignment="Center"/>
+                                <Decorator x:Name="TitleBarHost"
+                                           Grid.Column="2"
+                                           Grid.Row="0" Grid.RowSpan="2"
+                                           controls:Window.IsTitleBarHost="True"
+                                           WindowChrome.IsHitTestVisibleInChrome="True"/>
                                 <Grid Grid.Column="3"
                                       Grid.Row="0" Grid.RowSpan="2"
                                       WindowChrome.IsHitTestVisibleInChrome="True">
@@ -176,7 +181,7 @@
                                               RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}">
                                 <ContentPresenter Margin="{TemplateBinding Padding}"/>
                             </AdornerDecorator>
-                            <Decorator x:Name="PART_ApplicationBarHost"
+                            <Decorator x:Name="ApplicationBarHost"
                                        Grid.Row="1"
                                        controls:Window.IsApplicationBarHost="True"/>
                             <ResizeGrip x:Name="PART_Grip"

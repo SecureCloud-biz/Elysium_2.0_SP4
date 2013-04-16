@@ -82,12 +82,17 @@ namespace Elysium.Test
 
         private void LicenseClick(object sender, RoutedEventArgs e)
         {
-            Process.Start("http://elysium.codeplex.com/license");
+            Process.Start("http://elysium.asvishnyakov.com/License.cshtml#header");
         }
 
         private void AuthorsClick(object sender, RoutedEventArgs e)
         {
             Process.Start("http://elysium.codeplex.com/team/view");
+        }
+
+        private void HelpClick(object sender, RoutedEventArgs e)
+        {
+            Process.Start("http://elysium.asvishnyakov.com/Documentation.cshtml#header");
         }
     }
 }

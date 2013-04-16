@@ -14,6 +14,17 @@
               params:Window.CloseButtonToolTip="Close"
               WindowStartupLocation="CenterScreen"
               Width="1024" Height="640">
+    <metro:Window.TitleBar>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1"
+                    Content="?"
+                    Click="HelpClick"/>
+        </Grid>
+    </metro:Window.TitleBar>
     <metro:Window.ApplicationBar>
         <metro:ApplicationBar>
             <metro:DropDownCommandButton Header="Theme type"

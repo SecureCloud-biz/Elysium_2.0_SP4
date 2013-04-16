@@ -325,6 +325,134 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
+    <property name="P:Elysium.Controls.Window.TitleBar">
+      <summary>
+        Возвращает или задаёт панель заголовка данного окна.
+      </summary>
+      <value>Панель заголовка окна. Значение по умолчанию — null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Window.TitleBarProperty"/>
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None"/>
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Window();
+          var currentValue = Window.GetTitleBar(control);
+          Window.SetTitleBar(control, new Grid());
+        </code>
+        <code lang="XAML">
+          &lt;metro:Window.TitleBar&gt;
+          &lt;Grid&gt;
+          ...
+          &lt;/Grid&gt;
+          &lt;/metro:Window.TitleBar&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Controls.Window.TitleBarProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Window.TitleBar"/>.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Window.TitleBar"/>.
+      </value>
+    </field>
+    <method name="M:Elysium.Controls.Window.GetTitleBar(System.Windows.Window)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Controls.Window.TitleBar"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Панель заголовка окна.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <method name="M:Elysium.Controls.Window.SetTitleBar(System.Windows.Window,Elysium.Controls.TitleBar)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Controls.Window.TitleBar"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Панель заголовка окна.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Controls.Window.IsTitleBarHost">
+      <summary>
+        Возвращает или задаёт значение, указывающее, является ли указанный элемент управления объектом, на котором будет размещаться панель заголовка окна.
+      </summary>
+      <value>Указывает, является ли указанный элемент управления объектом, на котором будет размещаться панель заголовка окна. Значение по умолчанию — False.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Controls.Window.IsTitleBarHostProperty"/>
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None"/>
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Decorator();
+          var currentValue = Window.GetIsTitleBarHost(control);
+          Window.SetIsTitleBarHost(control, true);
+        </code>
+        <code lang="XAML">
+          &lt;Decorator metro:Window.IsTitleBarHost="True"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Controls.Window.IsTitleBarHostProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Controls.Window.IsTitleBarHost"/>.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Window.IsTitleBarHost"/>.
+      </value>
+    </field>
+    <method name="M:Elysium.Controls.Window.GetIsTitleBarHost(System.Windows.Controls.Decorator)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Controls.Window.IsTitleBarHost"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Указывает, является ли указанный элемент управления объектом, на котором будет размещаться панель заголовка окна.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <method name="M:Elysium.Controls.Window.SetIsTitleBarHost(System.Windows.Controls.Decorator,System.Boolean)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Controls.Window.IsTitleBarHost"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Указывает, является ли указанный элемент управления объектом, на котором будет размещаться панель заголовка окна.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
     <method name="M:Elysium.Controls.Window.OnSourceInitialized(System.EventArgs)">
       <inheritdoc/>
     </method>

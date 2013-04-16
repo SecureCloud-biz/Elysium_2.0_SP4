@@ -2387,8 +2387,9 @@
                   <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <controls:ProgressBar x:Name="PART_ProgressBar" Grid.ColumnSpan="4" Grid.Row="0" Background="{DynamicResource TransparentBrush}" Value="{TemplateBinding Progress}" VerticalAlignment="Top" Height="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldThicknessValue), Mode=OneWay}" />
-                <Image x:Name="PART_Icon" Grid.Column="0" Grid.Row="1" Source="{TemplateBinding Icon}" Margin="10,5" />
-                <TextBlock x:Name="PART_Title" Grid.Column="1" Grid.Row="1" Text="{TemplateBinding Title}" FontSize="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.TitleFontSize), Mode=OneWay}" FontWeight="Normal" Margin="10,5" VerticalAlignment="Center" />
+                <Image x:Name="PART_Icon" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Source="{TemplateBinding Icon}" Margin="10,5" />
+                <TextBlock x:Name="PART_Title" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Text="{TemplateBinding Title}" FontSize="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.TitleFontSize), Mode=OneWay}" FontWeight="Normal" Margin="10,5" VerticalAlignment="Center" />
+                <Decorator x:Name="TitleBarHost" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" controls:Window.IsTitleBarHost="True" shell:WindowChrome.IsHitTestVisibleInChrome="True" />
                 <Grid Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" shell:WindowChrome.IsHitTestVisibleInChrome="True">
                   <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -2431,7 +2432,7 @@
               <AdornerDecorator Grid.Row="1" TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}" TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}" RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}">
                 <ContentPresenter Margin="{TemplateBinding Padding}" />
               </AdornerDecorator>
-              <Decorator x:Name="PART_ApplicationBarHost" Grid.Row="1" controls:Window.IsApplicationBarHost="True" />
+              <Decorator x:Name="ApplicationBarHost" Grid.Row="1" controls:Window.IsApplicationBarHost="True" />
               <ResizeGrip x:Name="PART_Grip" Grid.Row="1" shell:WindowChrome.ResizeGripDirection="BottomRight" IsTabStop="False" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
             </Grid>
           </Border>
