@@ -2386,7 +2386,6 @@
                   <RowDefinition Height="Auto" />
                   <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <controls:ProgressBar x:Name="PART_ProgressBar" Grid.ColumnSpan="4" Grid.Row="0" Background="{DynamicResource TransparentBrush}" Value="{TemplateBinding Progress}" VerticalAlignment="Top" Height="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldThicknessValue), Mode=OneWay}" />
                 <Image x:Name="PART_Icon" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Source="{TemplateBinding Icon}" Margin="10,5" />
                 <TextBlock x:Name="PART_Title" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Text="{TemplateBinding Title}" FontSize="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.TitleFontSize), Mode=OneWay}" FontWeight="Normal" Margin="10,5" VerticalAlignment="Center" />
                 <Decorator x:Name="TitleBarHost" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" controls:Window.IsTitleBarHost="True" shell:WindowChrome.IsHitTestVisibleInChrome="True" />
@@ -2428,6 +2427,7 @@
                     <Path Data="{StaticResource CloseIcon}" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}" Stretch="None" Width="10" Height="10" />
                   </Button>
                 </Grid>
+                <controls:ProgressBar x:Name="PART_ProgressBar" Grid.ColumnSpan="4" Grid.Row="0" Background="{DynamicResource TransparentBrush}" Value="{TemplateBinding Progress}" VerticalAlignment="Top" Height="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldThicknessValue), Mode=OneWay}" />
               </Grid>
               <AdornerDecorator Grid.Row="1" TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}" TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}" RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}">
                 <ContentPresenter Margin="{TemplateBinding Padding}" />
@@ -2445,6 +2445,7 @@
             </Trigger>
             <Trigger Property="controls:Window.IsMainWindow" Value="True">
               <Setter TargetName="PART_Caption" Property="Background" Value="{DynamicResource AccentBrush}" />
+              <Setter TargetName="PART_ProgressBar" Property="Foreground" Value="{DynamicResource ContrastBrush}" />
               <Setter TargetName="PART_Title" Property="Foreground" Value="{DynamicResource ContrastBrush}" />
               <Setter TargetName="PART_Minimize" Property="Style" Value="{StaticResource MainWindowCaptionButtonStyle}" />
               <Setter TargetName="PART_Maximize" Property="Style" Value="{StaticResource MainWindowCaptionButtonStyle}" />
