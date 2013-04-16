@@ -305,7 +305,7 @@ namespace Elysium.Controls
 
         [PublicAPI]
         public static readonly DependencyProperty ProgressProperty = DependencyProperty.Register("Progress", typeof(double), typeof(Window),
-                                                                                                 new FrameworkPropertyMetadata(100d, FrameworkPropertyMetadataOptions.None, OnProgressChanged));
+                                                                                                 new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.None, OnProgressChanged));
 
         [PublicAPI]
         [Category("Appearance")]
