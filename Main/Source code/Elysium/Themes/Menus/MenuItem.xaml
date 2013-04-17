@@ -15,7 +15,8 @@
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.SemiBoldPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Right'}"/>
-        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+        <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
         <Setter Property="SnapsToDevicePixels" Value="True"/>        
         <Setter Property="Template">
             <Setter.Value>
@@ -397,7 +398,8 @@
         <Setter Property="HorizontalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=HorizontalContentAlignment}"/>
         <Setter Property="VerticalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=VerticalContentAlignment}"/>
         <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=Padding, Mode=OneWay}"/>
-        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+        <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Style.Triggers>            
             <Trigger Property="Role" Value="TopLevelHeader">

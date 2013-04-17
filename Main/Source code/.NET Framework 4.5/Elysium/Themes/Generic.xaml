@@ -109,7 +109,8 @@
     </Style.Triggers>
   </Style>
   <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonsBaseStyle}">
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Style.Triggers>
       <Trigger Property="IsDefault" Value="True">
         <Setter Property="FontWeight" Value="Bold" />
@@ -117,10 +118,12 @@
     </Style.Triggers>
   </Style>
   <Style TargetType="{x:Type RepeatButton}" BasedOn="{StaticResource ButtonsBaseStyle}">
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
   </Style>
   <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ButtonsBaseStyle}">
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Style.Triggers>
       <Trigger Property="IsChecked" Value="True">
         <Setter Property="Background" Value="{StaticResource LowlightBrush}" />
@@ -142,7 +145,8 @@
     <Setter Property="HorizontalContentAlignment" Value="Left" />
     <Setter Property="VerticalContentAlignment" Value="Top" />
     <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Left}" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
@@ -223,7 +227,8 @@
     <Setter Property="HorizontalContentAlignment" Value="Left" />
     <Setter Property="VerticalContentAlignment" Value="Top" />
     <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Left}" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
@@ -274,7 +279,8 @@
     <Setter Property="Focusable" Value="False" />
     <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
     <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
@@ -326,7 +332,8 @@
     <Setter Property="Focusable" Value="False" />
     <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
     <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
@@ -345,7 +352,8 @@
     <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
     <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
     <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.DefaultPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter=Left}" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
@@ -456,7 +464,8 @@
     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
     <Setter Property="VerticalContentAlignment" Value="Stretch" />
     <Setter Property="Padding" Value="0" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
@@ -544,7 +553,8 @@
     </Style.Triggers>
   </Style>
   <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource TextBoxBaseStyle}">
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
   </Style>
   <Style TargetType="{x:Type RichTextBox}" BasedOn="{StaticResource TextBoxBaseStyle}">
     <Style.Resources>
@@ -552,13 +562,15 @@
         <Setter Property="OverridesDefaultStyle" Value="True" />
       </Style>
     </Style.Resources>
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
   </Style>
   <Style TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource TextBoxesBaseStyle}">
     <Setter Property="PasswordChar" Value="●" />
     <Setter Property="CaretBrush" Value="{StaticResource ForegroundBrush}" />
     <Setter Property="SelectionBrush" Value="{StaticResource MiddleLightBrush}" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Style.Triggers>
       <Trigger Property="IsKeyboardFocusWithin" Value="True">
         <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}" />
@@ -601,7 +613,8 @@
     </Style.Triggers>
   </Style>
   <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource SelectorsItemsBaseStyle}">
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Style.Triggers>
       <MultiTrigger>
         <MultiTrigger.Conditions>
@@ -627,7 +640,8 @@
   </Style>
   <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource SelectorsItemsBaseStyle}">
     <Setter Property="Background" Value="{StaticResource BackgroundBrush}" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Style.Triggers>
       <MultiTrigger>
         <MultiTrigger.Conditions>
@@ -669,7 +683,8 @@
     <Setter Property="HorizontalContentAlignment" Value="Left" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
     <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Mode=OneWay}" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
@@ -728,7 +743,8 @@
     <Setter Property="FocusVisualStyle" Value="{x:Null}" />
     <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
     <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
@@ -768,7 +784,8 @@
     <Setter Property="HorizontalContentAlignment" Value="Left" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
     <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Mode=OneWay}" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
@@ -1182,7 +1199,8 @@
     <Setter Property="Focusable" Value="False" />
     <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
     <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
@@ -1212,7 +1230,8 @@
     <Setter Property="Focusable" Value="False" />
     <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
     <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
@@ -1291,7 +1310,8 @@
     <Setter Property="FocusVisualStyle" Value="{x:Null}" />
     <Setter Property="Focusable" Value="False" />
     <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Style.Triggers>
       <Trigger Property="IsEnabled" Value="False">
@@ -1317,7 +1337,8 @@
     <Setter Property="Focusable" Value="False" />
     <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
     <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type Button}">
@@ -1332,7 +1353,8 @@
     <Setter Property="Focusable" Value="False" />
     <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
     <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
@@ -1541,7 +1563,8 @@
     <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabControl}}, Path=Padding, Mode=OneWay}" />
     <Setter Property="params:TabItem.HeaderStyle" Value="{StaticResource TabItemHeaderStyle}" />
     <Setter Property="params:TabControl.IndicatorBrush" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabControl}}, Path=(params:TabControl.IndicatorBrush)}" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
@@ -1578,7 +1601,8 @@
     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
     <Setter Property="VerticalContentAlignment" Value="Stretch" />
     <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Converter={StaticResource ThicknessConverter}, ConverterParameter='Top', Mode=OneWay}" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
@@ -1664,7 +1688,8 @@
     <Setter Property="HorizontalContentAlignment" Value="Center" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
     <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.SemiBoldPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Right'}" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
@@ -1865,7 +1890,8 @@
     <Setter Property="HorizontalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=HorizontalContentAlignment}" />
     <Setter Property="VerticalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=VerticalContentAlignment}" />
     <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}, Path=Padding, Mode=OneWay}" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Style.Triggers>
       <Trigger Property="Role" Value="TopLevelHeader">
@@ -1932,7 +1958,8 @@
     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
     <Setter Property="VerticalContentAlignment" Value="Stretch" />
     <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Mode=OneWay}" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
@@ -2022,7 +2049,8 @@
     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
     <Setter Property="VerticalContentAlignment" Value="Stretch" />
     <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Mode=OneWay}" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
@@ -2119,7 +2147,8 @@
     <Setter Property="FontWeight" Value="Normal" />
     <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}" />
     <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.SemiBoldPadding), Mode=OneWay}" />
-    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>

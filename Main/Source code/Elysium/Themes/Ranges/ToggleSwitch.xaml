@@ -13,7 +13,8 @@
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False"/>
-        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+        <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -31,7 +32,8 @@
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False"/>
-        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+        <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>

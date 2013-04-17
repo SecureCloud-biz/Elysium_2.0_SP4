@@ -53,7 +53,8 @@
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+        <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -108,7 +109,8 @@
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Mode=OneWay}"/>
-        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+        <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
         <Setter Property="SnapsToDevicePixels" Value="True"/>        
         <Setter Property="Template">
             <Setter.Value>

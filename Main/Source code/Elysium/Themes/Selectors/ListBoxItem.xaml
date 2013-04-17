@@ -5,8 +5,9 @@
         <ResourceDictionary Source="/Elysium;component/Themes/Selectors/SelectorsItemsBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource SelectorsItemsBaseStyle}">        
-        <Setter Property="OverridesDefaultStyle" Value="True"/>        
+    <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource SelectorsItemsBaseStyle}">
+        <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+        <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->        
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>

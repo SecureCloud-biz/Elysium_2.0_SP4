@@ -107,8 +107,9 @@
         <Setter Property="FontStyle" Value="Normal"/>
         <Setter Property="FontWeight" Value="Normal"/>      
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}"/>
-        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.SemiBoldPadding), Mode=OneWay}"/> 
-        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.SemiBoldPadding), Mode=OneWay}"/>
+        <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+        <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
