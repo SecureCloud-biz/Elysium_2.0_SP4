@@ -31,7 +31,7 @@ using System.Windows.Markup;
 [assembly: XmlnsPrefix("http://schemas.codeplex.com/elysium", "metro")]
 [assembly: XmlnsPrefix("http://schemas.codeplex.com/elysium/params", "params")]
 
-[assembly: ThemeInfo(ResourceDictionaryLocation.SourceAssembly, ResourceDictionaryLocation.SourceAssembly)]
+[assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
 
 [assembly: NeutralResourcesLanguage("en-us")]
 

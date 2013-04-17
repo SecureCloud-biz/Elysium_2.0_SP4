@@ -27,7 +27,7 @@ using Microsoft.Windows.Design.Metadata;
 
 [assembly: ProvideMetadata(typeof(Elysium.Design.Metadata))]
 
-[assembly: ThemeInfo(ResourceDictionaryLocation.SourceAssembly, ResourceDictionaryLocation.None)]
+[assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
 
 [assembly: NeutralResourcesLanguage("en-us")]
 
