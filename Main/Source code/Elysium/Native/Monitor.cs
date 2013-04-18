@@ -12,8 +12,6 @@ namespace Elysium.Native
         [SecurityCritical]
         private static bool _isCacheValid;
 
-        private bool _disposed;
-
         [SecuritySafeCritical]
         internal Monitor(IntPtr hwnd)
         {

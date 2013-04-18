@@ -42,7 +42,7 @@ namespace Elysium.Controls
     [TemplatePart(Name = CloseName, Type = typeof(FrameworkElement))]
     [TemplatePart(Name = GripName, Type = typeof(ResizeGrip))]
     [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling", Justification = "We can't separate this class")]
-    public class Window : System.Windows.Window
+    public class Window : System.Windows.Window, IDisposable
     {
         private const string LayoutRootName = "PART_LayoutRoot";
         private const string ProgressBarName = "PART_ProgressBar";
@@ -63,6 +63,8 @@ namespace Elysium.Controls
 
         [SecurityCritical]
         private WindowChrome _chrome;
+
+        private bool _disposed;
 
         [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline", Justification = "We need to use static constructor for custom actions during dependency properties initialization")]
         static Window()
@@ -93,8 +95,6 @@ namespace Elysium.Controls
             Contract.Assume(SystemParameters2.Current != null);
 #endif
 
-            _chrome = null;
-            GC.Collect();
             _chrome = new WindowChrome
                 {
 #if NETFX4
@@ -732,5 +732,50 @@ namespace Elysium.Controls
                 _layoutRoot.Margin = new Thickness();
             }
         }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            Dispose();
+        }
+
+        #region Implementation of IDisposable
+
+        [SecuritySafeCritical]
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        [SecurityCritical]
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+            {
+                return;
+            }
+
+            if (disposing)
+            {
+                _chrome = null;
+
+                var resizeBorderThicknessPropertyDescriptor = DependencyPropertyDescriptor.FromProperty(Parameters.Window.ResizeBorderThicknessProperty, typeof(Window));
+                if (resizeBorderThicknessPropertyDescriptor != null)
+                {
+                    resizeBorderThicknessPropertyDescriptor.RemoveValueChanged(this, OnResizeBorderThicknessChanged);
+                }
+            }
+
+            _disposed = true;
+        }
+
+        [SecuritySafeCritical]
+        ~Window()
+        {
+            Dispose(false);
+        }
+
+        #endregion
     }
 }
