@@ -7,10 +7,12 @@ using JetBrains.Annotations;
 namespace Elysium.Native
 {
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-    internal class Monitor
+    internal sealed class Monitor
     {
         [SecurityCritical]
         private static bool _isCacheValid;
+
+        private bool _disposed;
 
         [SecuritySafeCritical]
         internal Monitor(IntPtr hwnd)

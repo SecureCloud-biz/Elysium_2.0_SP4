@@ -58,7 +58,7 @@ namespace Elysium.Controls
         private FrameworkElement _caption;
         private Panel _layoutRoot;
 
-        private Monitor _monitor;
+        private IntPtr _handle;
         private Native.Window _window;
 
         [SecurityCritical]
@@ -93,12 +93,14 @@ namespace Elysium.Controls
             Contract.Assume(SystemParameters2.Current != null);
 #endif
 
+            _chrome = null;
+            GC.Collect();
             _chrome = new WindowChrome
                 {
 #if NETFX4
                     CaptionHeight = SystemParameters2.Current.WindowCaptionHeight,
 #elif NETFX45
-                              CaptionHeight = SystemParameters.WindowCaptionHeight,
+                    CaptionHeight = SystemParameters.WindowCaptionHeight,
 #endif
                     CornerRadius = new CornerRadius(0d),
                     GlassFrameThickness = new Thickness(0d),
@@ -197,12 +199,11 @@ namespace Elysium.Controls
         [SecurityCritical]
         private void Hook()
         {
-            var handle = new WindowInteropHelper(this).EnsureHandle();
-            _monitor = new Monitor(handle);
-            _window = new Native.Window(handle);
+            _handle = new WindowInteropHelper(this).EnsureHandle();
+            _window = new Native.Window(_handle);
             UpdateNonClientBorder();
 
-            var source = HwndSource.FromHwnd(handle);
+            var source = HwndSource.FromHwnd(_handle);
             if (source != null)
             {
                 source.AddHook(WndProc);
@@ -231,11 +232,12 @@ namespace Elysium.Controls
         {
             var info = (Interop.MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(Interop.MINMAXINFO));
 
-            _monitor.Invalidate();
+            var monitor = new Monitor(_handle);
+            monitor.Invalidate();
             Taskbar.Invalidate();
 
-            var bounds = _monitor.Bounds;
-            var workArea = _monitor.WorkArea;
+            var bounds = monitor.Bounds;
+            var workArea = monitor.WorkArea;
             info.ptMaxPosition.x = Math.Abs(bounds.left) + Taskbar.Position == TaskbarPosition.Left && Taskbar.AutoHide ? 1 : 0;
             info.ptMaxPosition.y = Math.Abs(bounds.top) + Taskbar.Position == TaskbarPosition.Top && Taskbar.AutoHide ? 1 : 0;
             info.ptMaxSize.x = info.ptMaxTrackSize.x = Math.Abs(workArea.right - workArea.left) - (Taskbar.Position == TaskbarPosition.Right && Taskbar.AutoHide ? 1 : 0);

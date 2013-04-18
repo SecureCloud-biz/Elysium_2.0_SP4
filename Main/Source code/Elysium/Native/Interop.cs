@@ -163,6 +163,22 @@ namespace Elysium.Native
         #region Functions
 
         [SecurityCritical]
+        [DllImport("kernel32.dll", EntryPoint = "CloseHandle", ExactSpelling = true, CharSet = CharSet.Auto, SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        [SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass", Justification = "This native method is a part of interop wrapper")]
+        private static extern bool _CloseHandle(IntPtr hObject);
+
+        [SecurityCritical]
+        internal static void CloseHandle(IntPtr hObject)
+        {
+            var result = _CloseHandle(hObject);
+            if (!result)
+            {
+                throw new Win32Exception(Marshal.GetLastWin32Error());
+            }
+        }
+
+        [SecurityCritical]
         [DllImport("user32.dll", EntryPoint = "FindWindow", ExactSpelling = false, CharSet = CharSet.Unicode, SetLastError = true)]
         [SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass", Justification = "This native method is a part of interop wrapper")]
         private static extern IntPtr _FindWindow(string lpClassName, string lpWindowName);
@@ -175,7 +191,7 @@ namespace Elysium.Native
             var handle = _FindWindow(lpClassName, lpWindowName);
             if (handle == IntPtr.Zero)
             {
-                throw new Win32Exception();
+                throw new Win32Exception(Marshal.GetLastWin32Error());
             }
             return handle;
         }
@@ -193,7 +209,7 @@ namespace Elysium.Native
             var result = _GetMonitorInfo(hMonitor, ref lpmi);
             if (!result)
             {
-                throw new Win32Exception();
+                throw new Win32Exception(Marshal.GetLastWin32Error());
             }
         }
 
@@ -210,7 +226,7 @@ namespace Elysium.Native
             var result = _GetWindowInfo(hwnd, ref pwi);
             if (!result)
             {
-                throw new Win32Exception();
+                throw new Win32Exception(Marshal.GetLastWin32Error());
             }
         }
 
@@ -227,7 +243,7 @@ namespace Elysium.Native
             var handle = _MonitorFromWindow(hwnd, dwFlags);
             if (handle == IntPtr.Zero)
             {
-                throw new Win32Exception();
+                throw new Win32Exception(Marshal.GetLastWin32Error());
             }
             return handle;
         }
