@@ -33,9 +33,9 @@
             // 
             this.AutoLog = false;
 #if NETFX4
-            this.ServiceName = "ElysiumNotifications-v2.0.35.0-v4.0";
+            this.ServiceName = "ElysiumNotifications-v" + typeof(NotificationsService).Assembly.GetName().Version.ToString() + "-v4.0";
 #elif NETFX45
-            this.ServiceName = "ElysiumNotifications-v2.0.40.0-v4.5";
+            this.ServiceName = "ElysiumNotifications-v" + typeof(NotificationsService).Assembly.GetName().Version.ToString() + "-v4.5";
 #endif
         }
 

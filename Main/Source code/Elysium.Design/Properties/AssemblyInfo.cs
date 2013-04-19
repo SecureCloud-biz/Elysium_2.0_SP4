@@ -27,10 +27,10 @@ using Microsoft.Windows.Design.Metadata;
 [assembly: NeutralResourcesLanguage("en-us")]
 
 #if NETFX4
-[assembly: AssemblyVersion("2.0.105.0")]
-[assembly: AssemblyFileVersion("2.0.105.0")]
+[assembly: AssemblyVersion("2.0.106.0")]
+[assembly: AssemblyFileVersion("2.0.106.0")]
 #elif NETFX45
-[assembly: AssemblyVersion("2.0.18.0")]
-[assembly: AssemblyFileVersion("2.0.18.0")]
+[assembly: AssemblyVersion("2.0.19.0")]
+[assembly: AssemblyFileVersion("2.0.19.0")]
 #endif
 [assembly: AssemblyInformationalVersion("2.0 RTM")]

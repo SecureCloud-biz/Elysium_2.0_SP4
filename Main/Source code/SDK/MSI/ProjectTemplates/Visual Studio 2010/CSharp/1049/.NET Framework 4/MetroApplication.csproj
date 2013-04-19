@@ -50,7 +50,7 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="Elysium, Version=2.0.877.0, Culture=neutral, PublicKeyToken=f8966962afac6b6d, processorArchitecture=MSIL" />
+    <Reference Include="Elysium, Version=2.0.901.0, Culture=neutral, PublicKeyToken=f8966962afac6b6d, processorArchitecture=MSIL" />
   </ItemGroup>
 
   <ItemGroup>

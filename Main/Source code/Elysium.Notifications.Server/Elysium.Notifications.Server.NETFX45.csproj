@@ -285,29 +285,93 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\.NET Framework 4.5\Elysium.Notifications.Server\Tools\x86\Install and run Elysium Notifications service (debug).tt">
+      <Link>Tools\x86\Install and run Elysium Notifications service (debug).tt</Link>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Install and run Elysium Notifications service (debug).bat</LastGenOutput>
+    </None>
     <None Include="..\.NET Framework 4.5\Elysium.Notifications.Server\Tools\x86\Install and run Elysium Notifications service (debug).bat">
       <Link>Tools\x86\Install and run Elysium Notifications service (debug).bat</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Install and run Elysium Notifications service (debug).tt</DependentUpon>
+    </None>
+    <None Include="..\.NET Framework 4.5\Elysium.Notifications.Server\Tools\x86\Install and run Elysium Notifications service (release).tt">
+      <Link>Tools\x86\Install and run Elysium Notifications service (release).tt</Link>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Install and run Elysium Notifications service (release).bat</LastGenOutput>
     </None>
     <None Include="..\.NET Framework 4.5\Elysium.Notifications.Server\Tools\x86\Install and run Elysium Notifications service (release).bat">
       <Link>Tools\x86\Install and run Elysium Notifications service (release).bat</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Install and run Elysium Notifications service (release).tt</DependentUpon>
+    </None>
+    <None Include="..\.NET Framework 4.5\Elysium.Notifications.Server\Tools\x86\Stop and uninstall Elysium Notifications service (debug).tt">
+      <Link>Tools\x86\Stop and uninstall Elysium Notifications service (debug).tt</Link>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Stop and uninstall Elysium Notifications service (debug).bat</LastGenOutput>
     </None>
     <None Include="..\.NET Framework 4.5\Elysium.Notifications.Server\Tools\x86\Stop and uninstall Elysium Notifications service (debug).bat">
       <Link>Tools\x86\Stop and uninstall Elysium Notifications service (debug).bat</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Stop and uninstall Elysium Notifications service (debug).tt</DependentUpon>
+    </None>
+    <None Include="..\.NET Framework 4.5\Elysium.Notifications.Server\Tools\x86\Stop and uninstall Elysium Notifications service (release).tt">
+      <Link>Tools\x86\Stop and uninstall Elysium Notifications service (release).tt</Link>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Stop and uninstall Elysium Notifications service (release).bat</LastGenOutput>
     </None>
     <None Include="..\.NET Framework 4.5\Elysium.Notifications.Server\Tools\x86\Stop and uninstall Elysium Notifications service (release).bat">
       <Link>Tools\x86\Stop and uninstall Elysium Notifications service (release).bat</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Stop and uninstall Elysium Notifications service (release).tt</DependentUpon>
+    </None>
+    <None Include="..\.NET Framework 4.5\Elysium.Notifications.Server\Tools\x64\Install and run Elysium Notifications service (debug).tt">
+      <Link>Tools\x64\Install and run Elysium Notifications service (debug).tt</Link>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Install and run Elysium Notifications service (debug).bat</LastGenOutput>
     </None>
     <None Include="..\.NET Framework 4.5\Elysium.Notifications.Server\Tools\x64\Install and run Elysium Notifications service (debug).bat">
       <Link>Tools\x64\Install and run Elysium Notifications service (debug).bat</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Install and run Elysium Notifications service (debug).tt</DependentUpon>
+    </None>
+    <None Include="..\.NET Framework 4.5\Elysium.Notifications.Server\Tools\x64\Install and run Elysium Notifications service (release).tt">
+      <Link>Tools\x64\Install and run Elysium Notifications service (release).tt</Link>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Install and run Elysium Notifications service (release).bat</LastGenOutput>
     </None>
     <None Include="..\.NET Framework 4.5\Elysium.Notifications.Server\Tools\x64\Install and run Elysium Notifications service (release).bat">
       <Link>Tools\x64\Install and run Elysium Notifications service (release).bat</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Install and run Elysium Notifications service (release).tt</DependentUpon>
+    </None>
+    <None Include="..\.NET Framework 4.5\Elysium.Notifications.Server\Tools\x64\Stop and uninstall Elysium Notifications service (debug).tt">
+      <Link>Tools\x64\Stop and uninstall Elysium Notifications service (debug).tt</Link>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Stop and uninstall Elysium Notifications service (debug).bat</LastGenOutput>
     </None>
     <None Include="..\.NET Framework 4.5\Elysium.Notifications.Server\Tools\x64\Stop and uninstall Elysium Notifications service (debug).bat">
       <Link>Tools\x64\Stop and uninstall Elysium Notifications service (debug).bat</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Stop and uninstall Elysium Notifications service (debug).tt</DependentUpon>
+    </None>
+    <None Include="..\.NET Framework 4.5\Elysium.Notifications.Server\Tools\x64\Stop and uninstall Elysium Notifications service (release).tt">
+      <Link>Tools\x64\Stop and uninstall Elysium Notifications service (release).tt</Link>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Stop and uninstall Elysium Notifications service (release).bat</LastGenOutput>
     </None>
     <None Include="..\.NET Framework 4.5\Elysium.Notifications.Server\Tools\x64\Stop and uninstall Elysium Notifications service (release).bat">
       <Link>Tools\x64\Stop and uninstall Elysium Notifications service (release).bat</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Stop and uninstall Elysium Notifications service (release).tt</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
