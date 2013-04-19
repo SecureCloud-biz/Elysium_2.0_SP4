@@ -72,7 +72,8 @@
             @"Buttons\ToggleCommandButton.xaml",
             @"Buttons\DropDownCommandButton.xaml",
             @"ApplicationBar\ApplicationBar.xaml",
-
+            
+            @"Windows\ToolTip.xaml",
             @"..\..\.NET Framework 4.5\Elysium\Themes\Windows\Window.xaml"
         };
 

@@ -2360,6 +2360,56 @@
       </DataTrigger>
     </Style.Triggers>
   </Style>
+  <Style TargetType="{x:Type ToolTip}">
+    <Setter Property="Background" Value="{StaticResource BackgroundBrush}" />
+    <Setter Property="BorderBrush" Value="{StaticResource MiddleLightBrush}" />
+    <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.DefaultThickness), Mode=OneWay}" />
+    <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}" />
+    <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.TextFontSize), Mode=OneWay}" />
+    <Setter Property="FontStretch" Value="Medium" />
+    <Setter Property="FontStyle" Value="Normal" />
+    <Setter Property="FontWeight" Value="Normal" />
+    <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+    <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+    <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled" />
+    <Setter Property="HasDropShadow" Value="{DynamicResource {x:Static SystemParameters.DropShadowKey}}" />
+    <Setter Property="params:General.ShadowBrush" Value="{StaticResource ForegroundBrush}" />
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+    <Setter Property="HorizontalContentAlignment" Value="Left" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Mode=OneWay}" />
+    <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
+    <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type ToolTip}">
+          <Border x:Name="LayoutRoot">
+            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" TextBlock.Foreground="{TemplateBinding Foreground}" TextBlock.FontFamily="{TemplateBinding FontFamily}" TextBlock.FontSize="{TemplateBinding FontSize}" TextBlock.FontStretch="{TemplateBinding FontStretch}" TextBlock.FontStyle="{TemplateBinding FontStyle}" TextBlock.FontWeight="{TemplateBinding FontWeight}" TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}" TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}" RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+              <ContentPresenter HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+            </Border>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="HasDropShadow" Value="True">
+              <Setter TargetName="LayoutRoot" Property="Effect">
+                <Setter.Value>
+                  <DropShadowEffect Color="{Binding RelativeSource={RelativeSource AncestorType={x:Type ToolTip}}, Path=(params:General.ShadowBrush).(SolidColorBrush.Color)}" BlurRadius="5" ShadowDepth="2" Direction="315" Opacity="0.1" />
+                </Setter.Value>
+              </Setter>
+              <Setter TargetName="LayoutRoot" Property="Background" Value="{StaticResource TransparentBrush}" />
+              <Setter TargetName="LayoutRoot" Property="Padding" Value="0,0,6,6" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    <Style.Triggers>
+      <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
+        <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+      </DataTrigger>
+    </Style.Triggers>
+  </Style>
   <Style x:Key="MainWindowCaptionButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
     <Style.Triggers>
       <Trigger Property="IsMouseOver" Value="True">
