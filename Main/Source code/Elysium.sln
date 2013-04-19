@@ -174,16 +174,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SDK", "SDK", "{7882582D-3DA7-4AFF-8FD4-E8378EA2EBA3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSI", "MSI", "{05CE34B2-FEFF-4E81-A3CC-F4EC928B6520}"
-	ProjectSection(SolutionItems) = preProject
-		SDK\MSI\Zip .NET Framework 4 templates.bat = SDK\MSI\Zip .NET Framework 4 templates.bat
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SDK", "SDK", "{B2E7B761-3FF4-4E63-B01D-695AA5FB5EDD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSI", "MSI", "{05AF0E37-3DB2-4DA3-B331-C9D603E535CE}"
-	ProjectSection(SolutionItems) = preProject
-		SDK\MSI\Zip .NET Framework 4.5 templates.bat = SDK\MSI\Zip .NET Framework 4.5 templates.bat
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elysium.SDK.MSI.UI.NETFX45", "SDK\MSI\UI\Elysium.SDK.MSI.UI.NETFX45.csproj", "{9DE75232-8656-4AA2-8604-2F1C204E93D5}"
 EndProject
