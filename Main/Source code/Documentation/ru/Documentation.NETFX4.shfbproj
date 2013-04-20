@@ -197,7 +197,6 @@
     <Folder Include="Media" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\BackwardCompatibility.aml" />
     <None Include="Content\Getting started\Notifications.aml" />
     <None Include="Content\Getting started\Parameters.aml" />
     <None Include="Content\Getting started\Theme.aml" />

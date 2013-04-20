@@ -30,6 +30,11 @@
           </listItem>
           <listItem>
             <para>
+              <token>WCFActivation</token>
+            </para>
+          </listItem>
+          <listItem>
+            <para>
               <token>FrameworkDependencyName</token>
             </para>
           </listItem>
@@ -45,7 +50,7 @@
           </listItem>
           <listItem>
             <para>
-              <legacyItalic>Поддерживается</legacyItalic>: Microsoft Code Contracts tools 1.4.50910.0
+              <legacyItalic>Поддерживается</legacyItalic>: <token>CodeContractsVersion</token>
             </para>
           </listItem>
         </list>
@@ -61,7 +66,7 @@
               Загрузите программу установки, выбрав соответствующую версию для своей платформы - <legacyBold>x86 (32 бита)</legacyBold> или <legacyBold>x64 (64 бита)</legacyBold> и перейдя по
               <externalLink>
                 <linkText>следующей ссылке.</linkText>
-                <linkUri>http://elysium.codeplex.com/releases</linkUri>
+                <linkUri>http://elysium.asvishnyakov.com/Downloads.cshtml#sdk</linkUri>
               </externalLink>
             </para>
             <alert class="important">
@@ -192,7 +197,7 @@
                   платформы - <legacyBold>x86 (32 бита)</legacyBold> или <legacyBold>x64 (64 бита)</legacyBold> и перейдя по
                   <externalLink>
                     <linkText>следующей ссылке.</linkText>
-                    <linkUri>http://elysium.codeplex.com/releases</linkUri>
+                    <linkUri>http://elysium.asvishnyakov.com/Downloads.cshtml#sdk</linkUri>
                   </externalLink>
                 </para>
                 <alert class="important">
@@ -382,7 +387,7 @@
                   платформы - <legacyBold>x86 (32 бита)</legacyBold> или <legacyBold>x64 (64 бита)</legacyBold> и перейдя по
                   <externalLink>
                     <linkText>следующей ссылке.</linkText>
-                    <linkUri>http://elysium.codeplex.com/releases</linkUri>
+                    <linkUri>http://elysium.asvishnyakov.com/Downloads.cshtml#sdk</linkUri>
                   </externalLink>
                 </para>
                 <alert class="warning">
@@ -417,6 +422,10 @@
     </section>
 
     <relatedTopics>
+      <externalLink>
+        <linkText>Страница загрузок</linkText>
+        <linkUri>http://elysium.asvishnyakov.com/Downloads.cshtml#sdk</linkUri>
+      </externalLink>
       <link xlink:href="beb3a93b-e01a-4b19-8966-7cc9738eda11"/>
       <link xlink:href="286c4f3c-7317-4a23-b8f4-3ba5bd016cbb"/>
       <link xlink:href="ca59c898-ccc9-4f97-a76b-e8005496249c"/>

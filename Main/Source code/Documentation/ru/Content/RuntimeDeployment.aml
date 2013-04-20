@@ -23,7 +23,7 @@
             </para>
           </listItem>
           <listItem>
-            <para><legacyItalic>Поддерживается</legacyItalic>: Microsoft Code Contracts tools 1.4.50910.0</para>
+            <para><legacyItalic>Поддерживается</legacyItalic>: <token>CodeContractsVersion</token></para>
           </listItem>
         </list>
       </content>
@@ -38,7 +38,7 @@
               Загрузите msi-пакет, выбрав версию с архитектурой, соотвествующей архитектуре вашей программы - <legacyBold>x86 (32 бита)</legacyBold> или <legacyBold>x64 (64 бита)</legacyBold> и перейдя по
               <externalLink>
                 <linkText>следующей ссылке.</linkText>
-                <linkUri>http://elysium.codeplex.com/releases</linkUri>
+                <linkUri>http://elysium.asvishnyakov.com/Downloads.cshtml#runtime</linkUri>
               </externalLink>
               Если ваша программа поддерживает обе архитектуры, загрузите оба пакета.
             </para>
@@ -77,7 +77,7 @@
                   платформы - <legacyBold>x86 (32 бита)</legacyBold> или <legacyBold>x64 (64 бита)</legacyBold> и перейдя по
                   <externalLink>
                     <linkText>следующей ссылке.</linkText>
-                    <linkUri>http://elysium.codeplex.com/releases</linkUri>
+                    <linkUri>http://elysium.asvishnyakov.com/Downloads.cshtml#runtime</linkUri>
                   </externalLink>
                 </para>
               </content>

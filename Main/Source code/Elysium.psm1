@@ -232,6 +232,16 @@ function Build-Projects
     if ($Checkout)
     {
         Add-TfsPendingChange -Edit (Resolve-Path "Elysium.Notifications.Server\Properties\AssemblyInfo.cs") -Lock none
+        $InstallAndRunScript = "$FrameworkName\Elysium.Notifications.Server\Tools\{0}\Install and run Elysium Notifications service ({1}).bat"
+        $StopAndUninstallScript = "$FrameworkName\Elysium.Notifications.Server\Tools\{0}\Stop and uninstall Elysium Notifications service ({1}).bat"
+        Add-TfsPendingChange -Edit (Resolve-Path ([string]::Format($InstallAndRunScript, "x86", "debug"))) -Lock none
+        Add-TfsPendingChange -Edit (Resolve-Path ([string]::Format($InstallAndRunScript, "x86", "release"))) -Lock none
+        Add-TfsPendingChange -Edit (Resolve-Path ([string]::Format($StopAndUninstallScript, "x86", "debug"))) -Lock none
+        Add-TfsPendingChange -Edit (Resolve-Path ([string]::Format($StopAndUninstallScript, "x86", "release"))) -Lock none
+        Add-TfsPendingChange -Edit (Resolve-Path ([string]::Format($InstallAndRunScript, "x64", "debug"))) -Lock none
+        Add-TfsPendingChange -Edit (Resolve-Path ([string]::Format($InstallAndRunScript, "x64", "release"))) -Lock none
+        Add-TfsPendingChange -Edit (Resolve-Path ([string]::Format($StopAndUninstallScript, "x64", "debug"))) -Lock none
+        Add-TfsPendingChange -Edit (Resolve-Path ([string]::Format($StopAndUninstallScript, "x64", "release"))) -Lock none
     }
     Build-Project -Project (Resolve-Path "Elysium.Notifications.Server\Elysium.Notifications.Server.$Framework.csproj") -Platform x86
     Build-Project -Project (Resolve-Path "Elysium.Notifications.Server\Elysium.Notifications.Server.$Framework.csproj") -Platform x64
