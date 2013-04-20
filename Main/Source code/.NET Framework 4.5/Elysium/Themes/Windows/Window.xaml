@@ -29,7 +29,7 @@
     <Style x:Key="{x:Type controls:Window}" TargetType="{x:Type controls:Window}">
         <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource HighlightBrush}"/>
-        <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.SemiBoldThickness), Mode=OneWay}"/>
+        <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.DefaultThickness), Mode=OneWay}"/>
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.TextFontSize), Mode=OneWay}"/>
@@ -53,6 +53,7 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
+                            UseLayoutRounding="True"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <Grid x:Name="PART_LayoutRoot">
                             <Grid.RowDefinitions>
@@ -75,15 +76,14 @@
                                 <Image x:Name="PART_Icon"
                                        Grid.Column="0"
                                        Grid.Row="0" Grid.RowSpan="2"
-                                       Source="{TemplateBinding Icon}"
-                                       Margin="10,5"/>
+                                       Source="{TemplateBinding Icon}"/>
                                 <TextBlock x:Name="PART_Title"
                                            Grid.Column="1"
                                            Grid.Row="0" Grid.RowSpan="2"
                                            Text="{TemplateBinding Title}"
                                            FontSize="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.TitleFontSize), Mode=OneWay}"
                                            FontWeight="Normal"
-                                           Margin="10,5"
+                                           Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.BoldPadding), Mode=OneWay}"
                                            VerticalAlignment="Center"/>
                                 <Decorator x:Name="TitleBarHost"
                                            Grid.Column="2"
@@ -123,7 +123,7 @@
                                             Command="{x:Static controls:WindowCommands.Minimize}"
                                             ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.MinimizeButtonToolTip), Mode=OneWay}"
                                             ToolTipService.ShowOnDisabled="True"
-                                            Width="34" MinWidth="34">
+                                            MinWidth="34" MinHeight="34">
                                         <Path Data="{StaticResource MinimizeIcon}"
                                               Fill="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}"
                                               Stretch="None"
@@ -135,7 +135,7 @@
                                             Command="{x:Static controls:WindowCommands.Maximize}"
                                             ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.MaximizeButtonToolTip), Mode=OneWay}"
                                             ToolTipService.ShowOnDisabled="True"
-                                            Width="34" MinWidth="34">
+                                            MinWidth="34" MinHeight="34">
                                         <Path Data="{StaticResource MaximizeIcon}"
                                               Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}"
                                               Stretch="None"
@@ -147,7 +147,7 @@
                                             Command="{x:Static controls:WindowCommands.Restore}"
                                             ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.RestoreButtonToolTip), Mode=OneWay}"
                                             ToolTipService.ShowOnDisabled="True"
-                                            Width="34" MinWidth="34"
+                                            MinWidth="34" MinHeight="34"
                                             Visibility="Hidden">
                                         <Path Data="{StaticResource RestoreIcon}"
                                               Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}"
@@ -160,7 +160,7 @@
                                             Command="{x:Static controls:WindowCommands.Close}"
                                             ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.CloseButtonToolTip), Mode=OneWay}"
                                             ToolTipService.ShowOnDisabled="True"
-                                            Width="34" MinWidth="34">
+                                            MinWidth="34" MinHeight="34">
                                         <Path Data="{StaticResource CloseIcon}"
                                               Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}"
                                               Stretch="None"
