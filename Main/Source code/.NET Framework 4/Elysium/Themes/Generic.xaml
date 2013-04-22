@@ -2410,7 +2410,24 @@
       </DataTrigger>
     </Style.Triggers>
   </Style>
-  <Style x:Key="MainWindowCaptionButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+  <Style x:Key="{x:Static controls:Window.DefaultCaptionButtonStyleKey}" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+    <Setter Property="Background" Value="{DynamicResource TransparentBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource TransparentBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+    <Style.Triggers>
+      <Trigger Property="IsMouseOver" Value="True">
+        <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource HighlightBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+      </Trigger>
+      <Trigger Property="IsPressed" Value="True">
+        <Setter Property="Background" Value="{DynamicResource AccentBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}" />
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+  <Style x:Key="{x:Static controls:Window.MainWindowCaptionButtonStyleKey}" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
     <Style.Triggers>
       <Trigger Property="IsMouseOver" Value="True">
         <Setter Property="Background" Value="{DynamicResource SemitransparentContrastBrush}" />
@@ -2426,8 +2443,8 @@
   </Style>
   <Style x:Key="{x:Type controls:Window}" TargetType="{x:Type controls:Window}">
     <Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
-    <Setter Property="BorderBrush" Value="{DynamicResource HighlightBrush}" />
-    <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.DefaultThickness), Mode=OneWay}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
+    <Setter Property="BorderThickness" Value="0" />
     <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
     <Setter Property="FontFamily" Value="Segoe UI" />
     <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.TextFontSize), Mode=OneWay}" />
@@ -2454,7 +2471,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
               </Grid.RowDefinitions>
-              <Grid x:Name="PART_Caption" Grid.Row="0" Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Mode=OneWay, Converter={StaticResource ThicknessPositiveToNegativeConverter}}">
+              <Grid x:Name="PART_Caption" Grid.Row="0">
                 <Grid.ColumnDefinitions>
                   <ColumnDefinition Width="Auto" />
                   <ColumnDefinition Width="Auto" />
@@ -2474,35 +2491,16 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                   </Grid.ColumnDefinitions>
-                  <Grid.Resources>
-                    <Style x:Key="{x:Type Button}" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
-                      <Setter Property="Background" Value="{DynamicResource TransparentBrush}" />
-                      <Setter Property="BorderBrush" Value="{DynamicResource TransparentBrush}" />
-                      <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
-                      <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                          <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
-                          <Setter Property="BorderBrush" Value="{DynamicResource HighlightBrush}" />
-                          <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                          <Setter Property="Background" Value="{DynamicResource AccentBrush}" />
-                          <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
-                          <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}" />
-                        </Trigger>
-                      </Style.Triggers>
-                    </Style>
-                  </Grid.Resources>
-                  <Button x:Name="PART_Minimize" Grid.Column="0" BorderThickness="0" Command="{x:Static controls:WindowCommands.Minimize}" ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.MinimizeButtonToolTip), Mode=OneWay}" ToolTipService.ShowOnDisabled="True" MinWidth="32" MinHeight="32">
+                  <Button x:Name="PART_Minimize" Grid.Column="0" BorderThickness="0" Command="{x:Static controls:WindowCommands.Minimize}" ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.MinimizeButtonToolTip), Mode=OneWay}" ToolTipService.ShowOnDisabled="True" Style="{DynamicResource {x:Static controls:Window.DefaultCaptionButtonStyleKey}}" MinWidth="32" MinHeight="32">
                     <Path Data="{StaticResource MinimizeIcon}" Fill="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}" Stretch="None" Width="10" Height="10" />
                   </Button>
-                  <Button x:Name="PART_Maximize" Grid.Column="1" BorderThickness="0" Command="{x:Static controls:WindowCommands.Maximize}" ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.MaximizeButtonToolTip), Mode=OneWay}" ToolTipService.ShowOnDisabled="True" MinWidth="32" MinHeight="32">
+                  <Button x:Name="PART_Maximize" Grid.Column="1" BorderThickness="0" Command="{x:Static controls:WindowCommands.Maximize}" ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.MaximizeButtonToolTip), Mode=OneWay}" ToolTipService.ShowOnDisabled="True" Style="{DynamicResource {x:Static controls:Window.DefaultCaptionButtonStyleKey}}" MinWidth="32" MinHeight="32">
                     <Path Data="{StaticResource MaximizeIcon}" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}" Stretch="None" Width="10" Height="10" />
                   </Button>
-                  <Button x:Name="PART_Restore" Grid.Column="1" BorderThickness="0" Command="{x:Static controls:WindowCommands.Restore}" ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.RestoreButtonToolTip), Mode=OneWay}" ToolTipService.ShowOnDisabled="True" MinWidth="32" MinHeight="32" Visibility="Hidden">
+                  <Button x:Name="PART_Restore" Grid.Column="1" BorderThickness="0" Command="{x:Static controls:WindowCommands.Restore}" ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.RestoreButtonToolTip), Mode=OneWay}" ToolTipService.ShowOnDisabled="True" Style="{DynamicResource {x:Static controls:Window.DefaultCaptionButtonStyleKey}}" MinWidth="32" MinHeight="32" Visibility="Hidden">
                     <Path Data="{StaticResource RestoreIcon}" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}" Stretch="None" Width="10" Height="10" />
                   </Button>
-                  <Button x:Name="PART_Close" Grid.Column="2" BorderThickness="0" Command="{x:Static controls:WindowCommands.Close}" ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.CloseButtonToolTip), Mode=OneWay}" ToolTipService.ShowOnDisabled="True" MinWidth="32" MinHeight="32">
+                  <Button x:Name="PART_Close" Grid.Column="2" BorderThickness="0" Command="{x:Static controls:WindowCommands.Close}" ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.CloseButtonToolTip), Mode=OneWay}" ToolTipService.ShowOnDisabled="True" Style="{DynamicResource {x:Static controls:Window.DefaultCaptionButtonStyleKey}}" MinWidth="32" MinHeight="32">
                     <Path Data="{StaticResource CloseIcon}" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}" Stretch="None" Width="10" Height="10" />
                   </Button>
                 </Grid>
@@ -2526,10 +2524,10 @@
               <Setter TargetName="PART_Caption" Property="Background" Value="{DynamicResource AccentBrush}" />
               <Setter TargetName="PART_ProgressBar" Property="Foreground" Value="{DynamicResource ContrastBrush}" />
               <Setter TargetName="PART_Title" Property="Foreground" Value="{DynamicResource ContrastBrush}" />
-              <Setter TargetName="PART_Minimize" Property="Style" Value="{StaticResource MainWindowCaptionButtonStyle}" />
-              <Setter TargetName="PART_Maximize" Property="Style" Value="{StaticResource MainWindowCaptionButtonStyle}" />
-              <Setter TargetName="PART_Restore" Property="Style" Value="{StaticResource MainWindowCaptionButtonStyle}" />
-              <Setter TargetName="PART_Close" Property="Style" Value="{StaticResource MainWindowCaptionButtonStyle}" />
+              <Setter TargetName="PART_Minimize" Property="Style" Value="{DynamicResource {x:Static controls:Window.MainWindowCaptionButtonStyleKey}}" />
+              <Setter TargetName="PART_Maximize" Property="Style" Value="{DynamicResource {x:Static controls:Window.MainWindowCaptionButtonStyleKey}}" />
+              <Setter TargetName="PART_Restore" Property="Style" Value="{DynamicResource {x:Static controls:Window.MainWindowCaptionButtonStyleKey}}" />
+              <Setter TargetName="PART_Close" Property="Style" Value="{DynamicResource {x:Static controls:Window.MainWindowCaptionButtonStyleKey}}" />
             </Trigger>
             <Trigger Property="WindowState" Value="Maximized">
               <Setter TargetName="PART_Maximize" Property="Visibility" Value="Hidden" />
@@ -2577,6 +2575,9 @@
       <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
       </DataTrigger>
+      <Trigger Property="HasDropShadow" Value="True">
+        <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.DefaultThickness), Mode=OneWay}" />
+      </Trigger>
       <Trigger Property="WindowStyle" Value="{x:Static WindowStyle.None}">
         <Setter Property="ResizeMode" Value="NoResize" />
       </Trigger>

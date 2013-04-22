@@ -44,6 +44,8 @@ namespace Elysium.Controls
     [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling", Justification = "We can't separate this class")]
     public class Window : System.Windows.Window, IDisposable
     {
+        #region Private consts
+
         private const string LayoutRootName = "PART_LayoutRoot";
         private const string ProgressBarName = "PART_ProgressBar";
         private const string CaptionName = "PART_Caption";
@@ -55,6 +57,10 @@ namespace Elysium.Controls
         private const string CloseName = "PART_Close";
         private const string GripName = "PART_Grip";
 
+        #endregion
+
+        #region Private fields
+
         private FrameworkElement _caption;
         private Panel _layoutRoot;
 
@@ -65,6 +71,10 @@ namespace Elysium.Controls
         private WindowChrome _chrome;
 
         private bool _disposed;
+
+        #endregion
+
+        #region Constructors
 
         [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline", Justification = "We need to use static constructor for custom actions during dependency properties initialization")]
         static Window()
@@ -83,6 +93,10 @@ namespace Elysium.Controls
             CommandBindings.Add(new CommandBinding(WindowCommands.Restore, (sender, e) => WindowState = WindowState.Normal));
             CommandBindings.Add(new CommandBinding(WindowCommands.Close, (sender, e) => Close()));
         }
+
+        #endregion
+
+        #region Initializers
 
 #if NETFX4
         [SuppressMessage("Microsoft.Security", "CA2141:TransparentMethodsMustNotSatisfyLinkDemandsFxCopRule", Justification = "We need to use Microsoft.Windows.Shell.dll version 3.5")]
@@ -196,6 +210,10 @@ namespace Elysium.Controls
             base.OnSourceInitialized(e);
         }
 
+        #endregion
+
+        #region Interop
+
         [SecurityCritical]
         private void Hook()
         {
@@ -266,6 +284,10 @@ namespace Elysium.Controls
 
             Marshal.StructureToPtr(info, lParam, true);
         }
+
+        #endregion
+
+        #region Base properties
 
         [PublicAPI]
         public static readonly DependencyProperty IsMainWindowProperty = DependencyProperty.RegisterAttached("IsMainWindow", typeof(bool), typeof(Window),
@@ -426,6 +448,10 @@ namespace Elysium.Controls
             }
         }
 
+        #endregion
+
+        #region ApplicationBar
+
         [PublicAPI]
         public static readonly DependencyProperty ApplicationBarProperty = DependencyProperty.RegisterAttached("ApplicationBar", typeof(ApplicationBar), typeof(Window),
                                                                                                                new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.None, OnApplicationBarChanged));
@@ -545,6 +571,10 @@ namespace Elysium.Controls
             }
         }
 
+        #endregion
+
+        #region TitleBar
+
         [PublicAPI]
         public static readonly DependencyProperty TitleBarProperty = DependencyProperty.RegisterAttached("TitleBar", typeof(FrameworkElement), typeof(Window),
                                                                                                          new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.None));
@@ -601,6 +631,10 @@ namespace Elysium.Controls
                 }
             }
         }
+
+        #endregion
+
+        #region Overridden methods
 
         [PublicAPI]
         [SecurityCritical]
@@ -676,6 +710,16 @@ namespace Elysium.Controls
             }
         }
 
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            Dispose();
+        }
+
+        #endregion
+
+        #region Handlers
+
         [SuppressMessage("Microsoft.Contracts", "Nonnull-36-0", Justification = "Bug in Code Contracts static checker: We should ignore value of _chrome field because it is overwritten.")]
         [SecurityCritical]
         private void OnResizeBorderThicknessChanged(object sender, EventArgs e)
@@ -733,11 +777,28 @@ namespace Elysium.Controls
             }
         }
 
-        protected override void OnClosed(EventArgs e)
+        #endregion
+
+        #region Global static properties
+
+        public static ResourceKey DefaultCaptionButtonStyleKey
         {
-            base.OnClosed(e);
-            Dispose();
+            get
+            {
+                return _defaultCaptionButtonStyleKey ?? (_defaultCaptionButtonStyleKey = new ComponentResourceKey(typeof(Window), "DefaultCaptionButtonStyleKey"));
+            }
         }
+
+        private static ResourceKey _defaultCaptionButtonStyleKey;
+
+        public static ResourceKey MainWindowCaptionButtonStyleKey
+        {
+            get { return _mainWindowCaptionButtonStyleKey ?? (_mainWindowCaptionButtonStyleKey = new ComponentResourceKey(typeof(Window), "MainWindowCaptionButtonStyleKey")); }
+        }
+
+        private static ResourceKey _mainWindowCaptionButtonStyleKey;
+
+        #endregion
 
         #region Implementation of IDisposable
 
