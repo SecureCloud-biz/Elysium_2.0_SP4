@@ -257,6 +257,29 @@ Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Documentation.NETFX45.Web",
 EndProject
 Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Documentation.NETFX45.Web", "Documentation\ru\Documentation.NETFX45.Web.shfbproj", "{B14FB739-D74D-4CFE-B1C1-D1F0ED2B685B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graphics", "Graphics", "{45BCFD84-CFC2-46FD-B885-11AC5C8802C1}"
+	ProjectSection(SolutionItems) = preProject
+		Graphics\Installation logo.png = Graphics\Installation logo.png
+		Graphics\Logo.psd = Graphics\Logo.psd
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Icons", "Icons", "{C9FE3354-8048-4699-82B8-5A381A4A28CA}"
+	ProjectSection(SolutionItems) = preProject
+		Graphics\Icons\128x128.png = Graphics\Icons\128x128.png
+		Graphics\Icons\128x128.psd = Graphics\Icons\128x128.psd
+		Graphics\Icons\16x16.png = Graphics\Icons\16x16.png
+		Graphics\Icons\16x16.psd = Graphics\Icons\16x16.psd
+		Graphics\Icons\24x24.png = Graphics\Icons\24x24.png
+		Graphics\Icons\24x24.psd = Graphics\Icons\24x24.psd
+		Graphics\Icons\256x256.png = Graphics\Icons\256x256.png
+		Graphics\Icons\256x256.psd = Graphics\Icons\256x256.psd
+		Graphics\Icons\32x32.png = Graphics\Icons\32x32.png
+		Graphics\Icons\32x32.psd = Graphics\Icons\32x32.psd
+		Graphics\Icons\48x48.png = Graphics\Icons\48x48.png
+		Graphics\Icons\48x48.psd = Graphics\Icons\48x48.psd
+		Graphics\Icons\Icon.ico = Graphics\Icons\Icon.ico
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 40
@@ -1223,5 +1246,6 @@ Global
 		{BB685163-1DA1-42AC-AC85-1EF61CF2F2D6} = {67F27319-9FEC-4F13-950F-0B4CADFE8F8F}
 		{457C30D6-FA14-4B93-922A-BA062C437826} = {F8F8E7F1-EFBB-4479-8407-733D6510F57E}
 		{B14FB739-D74D-4CFE-B1C1-D1F0ED2B685B} = {F8F8E7F1-EFBB-4479-8407-733D6510F57E}
+		{C9FE3354-8048-4699-82B8-5A381A4A28CA} = {45BCFD84-CFC2-46FD-B885-11AC5C8802C1}
 	EndGlobalSection
 EndGlobal
