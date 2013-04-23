@@ -18,16 +18,20 @@ param (
 $Location = Split-Path -Parent $MyInvocation.MyCommand.Path
 $Path = Join-Path -Path $Location -ChildPath Build.ps1
 
+"Started building in background..."
 $BuildNETFX4 = Start-Job -ScriptBlock {
     & $args[0] -Version 2012 -Framework NETFX4 -AssemblyKey $args[1] -SignatureKey $args[2] -SignatureParams $args[3] -Threads $args[4] -Checkout $args[5]
     Try-Exit
 } -ArgumentList @($Path, $AssemblyKey, $SignatureKey, $SignatureParams, $Threads, $Checkout)
 Wait-Job $BuildNETFX4
 Receive-Job $BuildNETFX4
+"Completed building in background..."
 
+"Started building in background..."
 $BuildNETFX45 = Start-Job -ScriptBlock {
     & $args[0] -Version 2012 -Framework NETFX45 -AssemblyKey $args[1] -SignatureKey $args[2] -SignatureParams $args[3] -Threads $args[4] -Checkout $args[5]
     Try-Exit
 } -ArgumentList @($Path, $AssemblyKey, $SignatureKey, $SignatureParams, $Threads, $Checkout)
 Wait-Job $BuildNETFX45
 Receive-Job $BuildNETFX45
+"Completed building in background..."

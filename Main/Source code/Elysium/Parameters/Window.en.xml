@@ -127,7 +127,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
-    <method name="M:Elysium.Parameters.Window.SetMinimizeButtonToolTip(Elysium.Controls.Window,System.Windows.Thickness)">
+    <method name="M:Elysium.Parameters.Window.SetMinimizeButtonToolTip(Elysium.Controls.Window,System.Object)">
       <summary>
         Sets the value of the <see cref="P:Elysium.Parameters.Window.MinimizeButtonToolTip" /> dependency property for the specified control.
       </summary>
@@ -191,7 +191,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
-    <method name="M:Elysium.Parameters.Window.SetMaximizeButtonToolTip(Elysium.Controls.Window,System.Windows.Thickness)">
+    <method name="M:Elysium.Parameters.Window.SetMaximizeButtonToolTip(Elysium.Controls.Window,System.Object)">
       <summary>
         Sets the value of the <see cref="P:Elysium.Parameters.Window.MaximizeButtonToolTip" /> dependency property for the specified control.
       </summary>
@@ -255,7 +255,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
-    <method name="M:Elysium.Parameters.Window.SetRestoreButtonToolTip(Elysium.Controls.Window,System.Windows.Thickness)">
+    <method name="M:Elysium.Parameters.Window.SetRestoreButtonToolTip(Elysium.Controls.Window,System.Object)">
       <summary>
         Sets the value of the <see cref="P:Elysium.Parameters.Window.RestoreButtonToolTip" /> dependency property for the specified control.
       </summary>
@@ -319,7 +319,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
-    <method name="M:Elysium.Parameters.Window.SetCloseButtonToolTip(Elysium.Controls.Window,System.Windows.Thickness)">
+    <method name="M:Elysium.Parameters.Window.SetCloseButtonToolTip(Elysium.Controls.Window,System.Object)">
       <summary>
         Sets the value of the <see cref="P:Elysium.Parameters.Window.CloseButtonToolTip" /> dependency property for the specified control.
       </summary>

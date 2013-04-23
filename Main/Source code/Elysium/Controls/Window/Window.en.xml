@@ -369,7 +369,7 @@
         Identifier for the <see cref="P:Elysium.Controls.Window.TitleBar" /> dependency property.
       </value>
     </field>
-    <method name="M:Elysium.Controls.Window.GetTitleBar(System.Windows.Window)">
+    <method name="M:Elysium.Controls.Window.GetTitleBar(Elysium.Controls.Window)">
       <summary>
         Returns the value of the <see cref="P:Elysium.Controls.Window.TitleBar" /> dependency property for the specified control.
       </summary>
@@ -380,7 +380,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
-    <method name="M:Elysium.Controls.Window.SetTitleBar(System.Windows.Window,Elysium.Controls.TitleBar)">
+    <method name="M:Elysium.Controls.Window.SetTitleBar(Elysium.Controls.Window,System.Windows.FrameworkElement)">
       <summary>
         Sets the value of the <see cref="P:Elysium.Controls.Window.TitleBar" /> dependency property for the specified control.
       </summary>
@@ -453,6 +453,36 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
+    <property name="P:Elysium.Controls.Window.DefaultCaptionButtonStyleKey">
+      <summary>
+        Gets the resource key for a style applied to a buttons in a main window caption by default.
+      </summary>
+      <value>Key for a style applied to a buttons in a main window caption by default.</value>
+      <example>
+        <code lang="XAML">
+          &lt;metro:Window.TitleBar&gt;
+          ...
+          &lt;Button Style="{DynamicResource {x:Static metro:Window.DefaultCaptionButtonStyleKey}}"/&gt;
+          ...
+          &lt;/metro:Window.TitleBar&gt;
+        </code>
+      </example>
+    </property>
+    <property name="P:Elysium.Controls.Window.MainWindowCaptionButtonStyleKey">
+      <summary>
+        Gets the resource key for a style applied to a buttons in the main window caption.
+      </summary>
+      <value>Key for a style applied to a buttons in the main window caption.</value>
+      <example>
+        <code lang="XAML">
+          &lt;metro:Window.TitleBar&gt;
+          ...
+          &lt;Button Style="{DynamicResource {x:Static metro:Window.MainWindowCaptionButtonStyleKey}}"/&gt;
+          ...
+          &lt;/metro:Window.TitleBar&gt;
+        </code>
+      </example>
+    </property>
     <method name="M:Elysium.Controls.Window.OnSourceInitialized(System.EventArgs)">
       <inheritdoc />
     </method>
@@ -461,6 +491,12 @@
     </method>
     <method name="M:Elysium.Controls.Window.ShowDialog">
       <inheritdoc cref="M:System.Windows.Window.ShowDialog" />
+    </method>
+    <method name="M:Elysium.Controls.Window.OnClosed(System.EventArgs)">
+      <inheritdoc />
+    </method>
+    <method name="M:Elysium.Controls.Window.Finalize">
+      <inheritdoc />
     </method>
   </members>
 </doc>

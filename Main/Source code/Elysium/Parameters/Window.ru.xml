@@ -127,7 +127,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
-    <method name="M:Elysium.Parameters.Window.SetMinimizeButtonToolTip(Elysium.Controls.Window,System.Windows.Thickness)">
+    <method name="M:Elysium.Parameters.Window.SetMinimizeButtonToolTip(Elysium.Controls.Window,System.Object)">
       <summary>
         Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Window.MinimizeButtonToolTip"/> для указанного элемента управления.
       </summary>
@@ -191,7 +191,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
-    <method name="M:Elysium.Parameters.Window.SetMaximizeButtonToolTip(Elysium.Controls.Window,System.Windows.Thickness)">
+    <method name="M:Elysium.Parameters.Window.SetMaximizeButtonToolTip(Elysium.Controls.Window,System.Object)">
       <summary>
         Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Window.MaximizeButtonToolTip"/> для указанного элемента управления.
       </summary>
@@ -255,7 +255,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
-    <method name="M:Elysium.Parameters.Window.SetRestoreButtonToolTip(Elysium.Controls.Window,System.Windows.Thickness)">
+    <method name="M:Elysium.Parameters.Window.SetRestoreButtonToolTip(Elysium.Controls.Window,System.Object)">
       <summary>
         Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Window.RestoreButtonToolTip"/> для указанного элемента управления.
       </summary>
@@ -319,7 +319,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
-    <method name="M:Elysium.Parameters.Window.SetCloseButtonToolTip(Elysium.Controls.Window,System.Windows.Thickness)">
+    <method name="M:Elysium.Parameters.Window.SetCloseButtonToolTip(Elysium.Controls.Window,System.Object)">
       <summary>
         Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Window.CloseButtonToolTip"/> для указанного элемента управления.
       </summary>

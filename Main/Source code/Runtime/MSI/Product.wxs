@@ -121,24 +121,24 @@
         <?ifdef NETFX4 ?>
         <ServiceInstall Type="ownProcess"
                         Vital="yes"
-                        Name="ElysiumNotifications-v$(NotificationsServerVersion)-v4.0"
+                        Name="ElysiumNotifications-v$(var.NotificationsServerVersion)-v4.0"
                         DisplayName="Elysium Notifications"
                         Start="auto"
                         Account="LocalSystem"
                         ErrorControl="normal"
                         Interactive="no"/>
-        <ServiceControl Id="ElysiumNotifications" Name="ElysiumNotifications-v$(NotificationsServerVersion)-v4.0" Remove="uninstall" Wait="yes"/>
+        <ServiceControl Id="ElysiumNotifications" Name="ElysiumNotifications-v$(var.NotificationsServerVersion)-v4.0" Remove="uninstall" Wait="yes"/>
         <?endif ?>
         <?ifdef NETFX45 ?>
         <ServiceInstall Type="ownProcess"
                         Vital="yes"
-                        Name="ElysiumNotifications-v$(NotificationsServerVersion)-v4.5"
+                        Name="ElysiumNotifications-v$(var.NotificationsServerVersion)-v4.5"
                         DisplayName="Elysium Notifications"
                         Start="auto"
                         Account="LocalSystem"
                         ErrorControl="normal"
                         Interactive="no"/>
-        <ServiceControl Id="ElysiumNotifications" Name="ElysiumNotifications-v$(NotificationsServerVersion)-v4.5" Remove="uninstall" Wait="yes"/>
+        <ServiceControl Id="ElysiumNotifications" Name="ElysiumNotifications-v$(var.NotificationsServerVersion)-v4.5" Remove="uninstall" Wait="yes"/>
         <?endif ?>
       </Component>
     </DirectoryRef>

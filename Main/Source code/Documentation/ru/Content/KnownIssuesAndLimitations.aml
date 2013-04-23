@@ -18,6 +18,11 @@
           </listItem>
           <listItem>
             <para>
+              <legacyBold>Шаблоны Visual Studio</legacyBold> доступны только в английской и русской версиях Visual Studio.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
               <legacyBold>Шаблоны Visual Studio</legacyBold> отсутствуют в zip-архиве Elysium SDK.
             </para>
           </listItem>

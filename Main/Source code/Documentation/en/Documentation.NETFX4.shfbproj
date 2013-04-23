@@ -24,7 +24,7 @@
     <Language>en-US</Language>
     <NamingMethod>Guid</NamingMethod>
     <Preliminary>False</Preliminary>
-    <PresentationStyle>VS2010</PresentationStyle>
+    <PresentationStyle>VS2005</PresentationStyle>
     <SelfBranded>True</SelfBranded>
     <SyntaxFilters>CSharp, VisualBasic, XamlUsage</SyntaxFilters>
     <IncludeFavorites>False</IncludeFavorites>
@@ -46,16 +46,16 @@
       <ComponentConfig id="API Token Resolution" enabled="True">
         <component id="API Token Resolution" type="Microsoft.Ddue.Tools.SharedContentComponent" assembly="{@SandcastlePath}ProductionTools\BuildComponents.dll">
 
-			{@TokenFiles}
-			<replace elements="/*//token" item="string(.)" /></component>
+      {@TokenFiles}
+      <replace elements="/*//token" item="string(.)" /></component>
       </ComponentConfig>
       <ComponentConfig id="IntelliSense Component" enabled="True">
         <component id="IntelliSense Component" type="Microsoft.Ddue.Tools.IntelliSenseComponent" assembly="{@SandcastlePath}ProductionTools\BuildComponents.dll">
           <!-- Output options (optional)
-					 Attributes:
-							Include Namespaces (false by default)
-							Namespaces filename ("Namespaces" if not specified or empty)
-							Directory (current folder if not specified or empty) -->
+           Attributes:
+              Include Namespaces (false by default)
+              Namespaces filename ("Namespaces" if not specified or empty)
+              Directory (current folder if not specified or empty) -->
           <output includeNamespaces="false" namespacesFile="Namespaces" folder="{@OutputFolder}" />
         </component>
       </ComponentConfig>
@@ -63,8 +63,8 @@
         <component id="Reflection Index Data (ESENT Cache)" type="SandcastleBuilder.Components.ESentCopyFromIndexComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
           <index name="reflection" value="/reflection/apis/api" key="@id" cache="15" localCacheSize="2500" frameworkCachePath="{@LocalDataFolder}Cache\ReflectionIndexCache" projectCachePath="">
             <data base="{@SandcastlePath}Data\Reflection" recurse="true" files="*.xml" duplicateWarning="false" groupId="ReflectionIndexCache">
-					{@ReferenceLinkNamespaceFiles}
-				</data>
+          {@ReferenceLinkNamespaceFiles}
+        </data>
             <data files="reflection.xml" groupId="Project_Ref_{@UniqueID}" />
           </index>
           <copy name="reflection" source="*" target="/document/reference" />
@@ -75,29 +75,29 @@
           <helpOutput format="HtmlHelp1">
             <msdnContentIdCache path="{@LocalDataFolder}Cache\MsdnContentId.cache" cachePath="{@LocalDataFolder}Cache\ESentMsdnContentIdCache" localCacheSize="2500" />
             <targets base="{@SandcastlePath}Data\Reflection" recurse="true" files="*.xml" type="{@HtmlSdkLinkType}" id="FrameworkTargets" cachePath="{@LocalDataFolder}Cache\ESentFrameworkTargetCache" localCacheSize="2500">
-					{@ReferenceLinkNamespaceFiles}
-				</targets>
+          {@ReferenceLinkNamespaceFiles}
+        </targets>
             <targets files="reflection.xml" type="Local" id="ProjectTargets" cachePath="" localCacheSize="2500" noReload="true" />
           </helpOutput>
           <helpOutput format="MSHelp2">
             <msdnContentIdCache path="{@LocalDataFolder}Cache\MsdnContentId.cache" cachePath="{@LocalDataFolder}Cache\ESentMsdnContentIdCache" localCacheSize="2500" />
             <targets base="{@SandcastlePath}Data\Reflection" recurse="true" files="*.xml" type="{@MSHelp2SdkLinkType}" id="FrameworkTargets" cachePath="{@LocalDataFolder}Cache\ESentFrameworkTargetCache" localCacheSize="2500">
-					{@ReferenceLinkNamespaceFiles}
-				</targets>
+          {@ReferenceLinkNamespaceFiles}
+        </targets>
             <targets files="reflection.xml" type="Index" id="ProjectTargets" cachePath="" localCacheSize="2500" noReload="true" />
           </helpOutput>
           <helpOutput format="MSHelpViewer">
             <msdnContentIdCache path="{@LocalDataFolder}Cache\MsdnContentId.cache" cachePath="{@LocalDataFolder}Cache\ESentMsdnContentIdCache" localCacheSize="2500" />
             <targets base="{@SandcastlePath}Data\Reflection" recurse="true" files="*.xml" type="{@MSHelpViewerSdkLinkType}" id="FrameworkTargets" cachePath="{@LocalDataFolder}Cache\ESentFrameworkTargetCache" localCacheSize="2500">
-					{@ReferenceLinkNamespaceFiles}
-				</targets>
+          {@ReferenceLinkNamespaceFiles}
+        </targets>
             <targets files="reflection.xml" type="Id" id="ProjectTargets" cachePath="" localCacheSize="2500" noReload="true" />
           </helpOutput>
           <helpOutput format="Website">
             <msdnContentIdCache path="{@LocalDataFolder}Cache\MsdnContentId.cache" cachePath="{@LocalDataFolder}Cache\ESentMsdnContentIdCache" localCacheSize="2500" />
             <targets base="{@SandcastlePath}Data\Reflection" recurse="true" files="*.xml" type="{@WebsiteSdkLinkType}" id="FrameworkTargets" cachePath="{@LocalDataFolder}Cache\ESentFrameworkTargetCache" localCacheSize="2500">
-					{@ReferenceLinkNamespaceFiles}
-				</targets>
+          {@ReferenceLinkNamespaceFiles}
+        </targets>
             <targets files="reflection.xml" type="Local" id="ProjectTargets" cachePath="" localCacheSize="2500" noReload="true" />
           </helpOutput>
         </component>
@@ -105,9 +105,9 @@
       <ComponentConfig id="Comments Index Data (ESENT Cache)" enabled="True">
         <component id="Comments Index Data (ESENT Cache)" type="SandcastleBuilder.Components.ESentCopyFromIndexComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
           <index name="comments" value="/doc/members/member" key="@name" cache="30" localCacheSize="2500" frameworkCachePath="{@LocalDataFolder}Cache\CommentsIndexCache" projectCachePath="">
-				{@FrameworkCommentList}
-				{@CommentFileList}
-			</index>
+        {@FrameworkCommentList}
+        {@CommentFileList}
+      </index>
           <copy name="comments" source="*" target="/document/comments" />
         </component>
       </ComponentConfig>
@@ -202,6 +202,7 @@
     <None Include="Content\Getting started\Notifications.aml" />
     <None Include="Content\Getting started\Parameters.aml" />
     <None Include="Content\Getting started\Theme.aml" />
+    <None Include="Content\Getting started\WindowAndWindowsElements.aml" />
     <None Include="Content\KnownIssuesAndLimitations.aml" />
     <None Include="Content\RuntimeDeployment.aml" />
     <None Include="Content\SDKInstallation.aml" />
@@ -458,6 +459,11 @@
     <Image Include="Media\NuGet - 2 Setup.png">
       <ImageId>NuGet - 2 Setup</ImageId>
       <AlternateText>2 Setup</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\Window layout.png">
+      <ImageId>Window layout</ImageId>
+      <AlternateText>Window layout</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
   </ItemGroup>

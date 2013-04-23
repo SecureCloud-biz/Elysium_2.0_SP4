@@ -33,13 +33,13 @@
     <?define RuntimeVersion = "2.0" ?>
     <?define RuntimeBuild = "901" ?>
     <?define RuntimeRevision = "0" ?>
-  <?define NotificationsServerVersion = "2.0.43.0" ?>
+    <?define NotificationsServerVersion = "2.0.43.0" ?>
   <?endif ?>
   <?ifdef NETFX45 ?>
     <?define RuntimeVersion = "2.0" ?>
     <?define RuntimeBuild = "975" ?>
     <?define RuntimeRevision = "0" ?>
-  <?define NotificationsServerVersion = "2.0.56.0" ?>
+    <?define NotificationsServerVersion = "2.0.56.0" ?>
   <?endif ?>
   
 </Include>

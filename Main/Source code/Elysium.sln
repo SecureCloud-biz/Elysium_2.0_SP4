@@ -56,10 +56,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{A0A9
 	ProjectSection(SolutionItems) = preProject
 		Build-All.ps1 = Build-All.ps1
 		Build.ps1 = Build.ps1
-		Deploy.bat = Deploy.bat
+		Deploy-All.ps1 = Deploy-All.ps1
+		Deploy.ps1 = Deploy.ps1
 		Elysium.psm1 = Elysium.psm1
 		Install-Keys.ps1 = Install-Keys.ps1
-		Load tools.bat = Load tools.bat
 		Remove-Keys.ps1 = Remove-Keys.ps1
 	EndProjectSection
 EndProject

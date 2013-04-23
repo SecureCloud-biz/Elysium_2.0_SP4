@@ -202,6 +202,7 @@
     <None Include="Content\Getting started\Notifications.aml" />
     <None Include="Content\Getting started\Parameters.aml" />
     <None Include="Content\Getting started\Theme.aml" />
+    <None Include="Content\Getting started\WindowAndWindowsElements.aml" />
     <None Include="Content\KnownIssuesAndLimitations.aml" />
     <None Include="Content\RuntimeDeployment.aml" />
     <None Include="Content\SDKInstallation.aml" />
@@ -458,6 +459,11 @@
     <Image Include="Media\NuGet - 2 Setup.png">
       <ImageId>NuGet - 2 Setup</ImageId>
       <AlternateText>2 Setup</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\Window layout.png">
+      <ImageId>Window layout</ImageId>
+      <AlternateText>Window layout</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
   </ItemGroup>

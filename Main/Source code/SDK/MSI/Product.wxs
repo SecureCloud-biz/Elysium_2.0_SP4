@@ -151,7 +151,7 @@
 
     <!-- Files and folders -->
     
-    <Media Id="1" Cabinet="Elysium.cab" EmbedCab="yes" CompressionLevel="high"/>
+    <Media Id="1" Cabinet="Elysium.cab" EmbedCab="no" CompressionLevel="high"/>
 
     <?ifdef NETFX4 ?>
     
@@ -162,23 +162,29 @@
     <PropertyRef Id="VS2010_PROJECTTEMPLATES_DIR"/>
     <PropertyRef Id="VS2010_ITEMTEMPLATES_DIR"/>
     <Property Id="VS2010PROFESSIONAL_IDE_LCID_1033" Secure="yes">
-      <RegistrySearch Id="VS2010PROFESSIONAL_IDE_LCID_1033_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\10.0\PROCore\1033" Type="raw" Win64="no"/>
+      <RegistrySearch Id="VS2010PROFESSIONAL_IDE_LCID_1033_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\10.0\PROCore\1033" Name="Install" Type="raw" Win64="no"/>
     </Property>
+    <PropertyRef Id="VS2010PROFESSIONAL_IDE_LCID_1033"/>
     <Property Id="VS2010PREMIUM_IDE_LCID_1033" Secure="yes">
-      <RegistrySearch Id="VS2010PREMIUM_IDE_LCID_1033_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\10.0\VSTDCore\1033" Type="raw" Win64="no"/>
+      <RegistrySearch Id="VS2010PREMIUM_IDE_LCID_1033_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\10.0\VSTDCore\1033" Name="Install" Type="raw" Win64="no"/>
     </Property>
+    <PropertyRef Id="VS2010PREMIUM_IDE_LCID_1033"/>
     <Property Id="VS2010ULTIMATE_IDE_LCID_1033" Secure="yes">
-      <RegistrySearch Id="VS2010ULTIMATE_IDE_LCID_1033_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\10.0\VSTSCore\1033" Type="raw" Win64="no"/>
+      <RegistrySearch Id="VS2010ULTIMATE_IDE_LCID_1033_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\10.0\VSTSCore\1033" Name="Install" Type="raw" Win64="no"/>
     </Property>
+    <PropertyRef Id="VS2010ULTIMATE_IDE_LCID_1033"/>
     <Property Id="VS2010PROFESSIONAL_IDE_LCID_1049" Secure="yes">
-      <RegistrySearch Id="VS2010PROFESSIONAL_IDE_LCID_1049_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\10.0\PROCore\1049" Type="raw" Win64="no"/>
+      <RegistrySearch Id="VS2010PROFESSIONAL_IDE_LCID_1049_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\10.0\PROCore\1049" Name="Install" Type="raw" Win64="no"/>
     </Property>
+    <PropertyRef Id="VS2010PROFESSIONAL_IDE_LCID_1049"/>
     <Property Id="VS2010PREMIUM_IDE_LCID_1049" Secure="yes">
-      <RegistrySearch Id="VS2010PREMIUM_IDE_LCID_1049_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\10.0\VSTDCore\1049" Type="raw" Win64="no"/>
+      <RegistrySearch Id="VS2010PREMIUM_IDE_LCID_1049_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\10.0\VSTDCore\1049" Name="Install" Type="raw" Win64="no"/>
     </Property>
+    <PropertyRef Id="VS2010PREMIUM_IDE_LCID_1049"/>
     <Property Id="VS2010ULTIMATE_IDE_LCID_1049" Secure="yes">
-      <RegistrySearch Id="VS2010ULTIMATE_IDE_LCID_1049_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\10.0\VSTSCore\1049" Type="raw" Win64="no"/>
+      <RegistrySearch Id="VS2010ULTIMATE_IDE_LCID_1049_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\10.0\VSTSCore\1049" Name="Install" Type="raw" Win64="no"/>
     </Property>
+    <PropertyRef Id="VS2010PREMIUM_IDE_LCID_1049"/>
 
     <CustomActionRef Id="VS2010InstallVSTemplates"/>
 
@@ -192,6 +198,7 @@
         </DirectorySearch>
       </RegistrySearch>
     </Property>
+    <PropertyRef Id="VCSHARP2010EXPRESS_PROJECTTEMPLATES_DIR"/>
     <Property Id="VCSHARP2010EXPRESS_ITEMTEMPLATES_DIR" Secure="yes">
       <RegistrySearch Id="VCSharp2010ExpressDevEnvForItemTemplatesSearch" Root="HKLM" Key="SOFTWARE\Microsoft\VisualStudio\10.0\Setup\VS" Name="EnvironmentDirectory" Type="raw">
         <DirectorySearch Id="VCSharp2010ExpressForItemTemplatesSearch" Path="VCSExpress" Depth="1">
@@ -199,12 +206,15 @@
         </DirectorySearch>
       </RegistrySearch>
     </Property>
+    <PropertyRef Id="VCSHARP2010EXPRESS_ITEMTEMPLATES_DIR"/>
     <Property Id="VCSHARP2010EXPRESS_IDE_LCID_1033" Secure="yes">
-      <RegistrySearch Id="VCSHARP2010EXPRESS_IDE_LCID_1033_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vcs\Servicing\10.0\xcor\1033" Type="raw" Win64="no"/>
+      <RegistrySearch Id="VCSHARP2010EXPRESS_IDE_LCID_1033_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vcs\Servicing\10.0\xcor\1033" Name="Install" Type="raw" Win64="no"/>
     </Property>
+    <PropertyRef Id="VCSHARP2010EXPRESS_IDE_LCID_1033"/>
     <Property Id="VCSHARP2010EXPRESS_IDE_LCID_1049" Secure="yes">
-      <RegistrySearch Id="VCSHARP2010EXPRESS_IDE_LCID_1049_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vcs\Servicing\10.0\xcor\1049" Type="raw" Win64="no"/>
+      <RegistrySearch Id="VCSHARP2010EXPRESS_IDE_LCID_1049_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vcs\Servicing\10.0\xcor\1049" Name="Install" Type="raw" Win64="no"/>
     </Property>
+    <PropertyRef Id="VCSHARP2010EXPRESS_IDE_LCID_1049"/>
     
     <CustomActionRef Id="VCSHARP2010InstallVSTemplates"/>
     
@@ -217,23 +227,29 @@
     <PropertyRef Id="VS2012_PROJECTTEMPLATES_DIR"/>
     <PropertyRef Id="VS2012_ITEMTEMPLATES_DIR"/>
     <Property Id="VS2012PROFESSIONAL_IDE_LCID_1033" Secure="yes">
-      <RegistrySearch Id="VS2012PROFESSIONAL_IDE_LCID_1033_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\11.0\professional\1033" Type="raw" Win64="no"/>
+      <RegistrySearch Id="VS2012PROFESSIONAL_IDE_LCID_1033_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\11.0\professional\1033" Name="Install" Type="raw" Win64="no"/>
     </Property>
+    <PropertyRef Id="VS2012PROFESSIONAL_IDE_LCID_1033"/>
     <Property Id="VS2012PREMIUM_IDE_LCID_1033" Secure="yes">
-      <RegistrySearch Id="VS2012PREMIUM_IDE_LCID_1033_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\11.0\premium\1033" Type="raw" Win64="no"/>
+      <RegistrySearch Id="VS2012PREMIUM_IDE_LCID_1033_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\11.0\premium\1033" Name="Install" Type="raw" Win64="no"/>
     </Property>
+    <PropertyRef Id="VS2012PREMIUM_IDE_LCID_1033"/>
     <Property Id="VS2012ULTIMATE_IDE_LCID_1033" Secure="yes">
-      <RegistrySearch Id="VS2012ULTIMATE_IDE_LCID_1033_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\11.0\ultimate\1033" Type="raw" Win64="no"/>
+      <RegistrySearch Id="VS2012ULTIMATE_IDE_LCID_1033_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\11.0\ultimate\1033" Name="Install" Type="raw" Win64="no"/>
     </Property>
+    <PropertyRef Id="VS2012ULTIMATE_IDE_LCID_1033"/>
     <Property Id="VS2012PROFESSIONAL_IDE_LCID_1049" Secure="yes">
-      <RegistrySearch Id="VS2012PROFESSIONAL_IDE_LCID_1049_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\11.0\professional\1049" Type="raw" Win64="no"/>
+      <RegistrySearch Id="VS2012PROFESSIONAL_IDE_LCID_1049_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\11.0\professional\1049" Name="Install" Type="raw" Win64="no"/>
     </Property>
+    <PropertyRef Id="VS2012PROFESSIONAL_IDE_LCID_1049"/>
     <Property Id="VS2012PREMIUM_IDE_LCID_1049" Secure="yes">
-      <RegistrySearch Id="VS2012PREMIUM_IDE_LCID_1049_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\11.0\premium\1049" Type="raw" Win64="no"/>
+      <RegistrySearch Id="VS2012PREMIUM_IDE_LCID_1049_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\11.0\premium\1049" Name="Install" Type="raw" Win64="no"/>
     </Property>
+    <PropertyRef Id="VS2012PREMIUM_IDE_LCID_1049"/>
     <Property Id="VS2012ULTIMATE_IDE_LCID_1049" Secure="yes">
-      <RegistrySearch Id="VS2012ULTIMATE_IDE_LCID_1049_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\11.0\ultimate\1049" Type="raw" Win64="no"/>
+      <RegistrySearch Id="VS2012ULTIMATE_IDE_LCID_1049_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\11.0\ultimate\1049" Name="Install" Type="raw" Win64="no"/>
     </Property>
+    <PropertyRef Id="VS2012ULTIMATE_IDE_LCID_1049"/>
     
     <CustomActionRef Id="VS2012InstallVSTemplates"/>
 
@@ -244,6 +260,7 @@
             <FileSearch Id="VS2012WinDesktopExpressIde" Name="wdexpress.exe" />
         </ComponentSearch>
     </Property>
+    <PropertyRef Id="VS2012WINDESKTOPEXPRESS_IDE"/>
     <Property Id="VS2012WINDESKTOPEXPRESS_PROJECTTEMPLATES_DIR" Secure="yes">
       <RegistrySearch Id="VS2012WinDesktopExpressDevEnvForProjectTemplatesSearch" Root="HKLM" Key="SOFTWARE\Microsoft\VisualStudio\10.0\Setup\VS" Name="EnvironmentDirectory" Type="raw">
         <DirectorySearch Id="VS2012WinDesktopExpressForProjectTemplatesSearch" Path="VCSExpress" Depth="1">
@@ -251,6 +268,7 @@
         </DirectorySearch>
       </RegistrySearch>
     </Property>
+    <PropertyRef Id="VS2012WINDESKTOPEXPRESS_PROJECTTEMPLATES_DIR"/>
     <Property Id="VS2012WINDESKTOPEXPRESS_ITEMTEMPLATES_DIR" Secure="yes">
       <RegistrySearch Id="VS2012WinDesktopExpressDevEnvForItemTemplatesSearch" Root="HKLM" Key="SOFTWARE\Microsoft\VisualStudio\10.0\Setup\VS" Name="EnvironmentDirectory" Type="raw">
         <DirectorySearch Id="VS2012WinDesktopExpressForItemTemplatesSearch" Path="VCSExpress" Depth="1">
@@ -258,12 +276,15 @@
         </DirectorySearch>
       </RegistrySearch>
     </Property>
+    <PropertyRef Id="VS2012WINDESKTOPEXPRESS_ITEMTEMPLATES_DIR"/>
     <Property Id="VS2012WINDESKTOPEXPRESS_IDE_LCID_1033" Secure="yes">
-      <RegistrySearch Id="VS2012WINDESKTOPEXPRESS_IDE_LCID_1033_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\wdexpress\Servicing\11.0\coremsi\1033" Type="raw" Win64="no"/>
+      <RegistrySearch Id="VS2012WINDESKTOPEXPRESS_IDE_LCID_1033_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\wdexpress\Servicing\11.0\coremsi\1033" Name="Install" Type="raw" Win64="no"/>
     </Property>
+    <PropertyRef Id="VS2012WINDESKTOPEXPRESS_IDE_LCID_1033"/>
     <Property Id="VS2012WINDESKTOPEXPRESS_IDE_LCID_1049" Secure="yes">
-      <RegistrySearch Id="VS2012WINDESKTOPEXPRESS_IDE_LCID_1049_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\wdexpress\Servicing\11.0\coremsi\1049" Type="raw" Win64="no"/>
+      <RegistrySearch Id="VS2012WINDESKTOPEXPRESS_IDE_LCID_1049_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\wdexpress\Servicing\11.0\coremsi\1049" Name="Install" Type="raw" Win64="no"/>
     </Property>
+    <PropertyRef Id="VS2012WINDESKTOPEXPRESS_IDE_LCID_1049"/>
 
     <CustomAction Id="VS2012WinDesktopExpressInstallVSTemplates" Property="VS2012WINDESKTOPEXPRESS_IDE" ExeCommand="/InstallVSTemplates" Execute="deferred" Return="ignore" Impersonate="no" />
 
@@ -514,24 +535,24 @@
         <?ifdef NETFX4 ?>
         <ServiceInstall Type="ownProcess"
                         Vital="yes"
-                        Name="ElysiumNotifications-v$(NotificationsServerVersion)-v4.0"
+                        Name="ElysiumNotifications-v$(var.NotificationsServerVersion)-v4.0"
                         DisplayName="Elysium Notifications"
                         Start="auto"
                         Account="LocalSystem"
                         ErrorControl="normal"
                         Interactive="no"/>
-        <ServiceControl Id="ElysiumNotifications" Name="ElysiumNotifications-v$(NotificationsServerVersion)-v4.0" Start="install" Stop="uninstall" Remove="uninstall" Wait="yes"/>
+        <ServiceControl Id="ElysiumNotifications" Name="ElysiumNotifications-v$(var.NotificationsServerVersion)-v4.0" Start="install" Stop="uninstall" Remove="uninstall" Wait="yes"/>
         <?endif ?>
         <?ifdef NETFX45 ?>
         <ServiceInstall Type="ownProcess"
                         Vital="yes"
-                        Name="ElysiumNotifications-v$(NotificationsServerVersion)-v4.5"
+                        Name="ElysiumNotifications-v$(var.NotificationsServerVersion)-v4.5"
                         DisplayName="Elysium Notifications"
                         Start="auto"
                         Account="LocalSystem"
                         ErrorControl="normal"
                         Interactive="no"/>
-        <ServiceControl Id="ElysiumNotifications" Name="ElysiumNotifications-v$(NotificationsServerVersion)-v4.5" Start="install" Stop="uninstall" Remove="uninstall" Wait="yes"/>
+        <ServiceControl Id="ElysiumNotifications" Name="ElysiumNotifications-v$(var.NotificationsServerVersion)-v4.5" Start="install" Stop="uninstall" Remove="uninstall" Wait="yes"/>
         <?endif ?>
       </Component>
       
@@ -666,7 +687,7 @@
     <DirectoryRef Id="VS2010ProjectTemplatesEnDir">
       <Component Id="VisualStudio.2010.ProjectTemplates.Registration.En" Guid="75E63761-7C62-4B83-92F4-E00C44D6E424" Transitive="yes">
         <Condition>
-          <![CDATA[VS2010DEVENV AND VS2010_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2010_PROJECTTEMPLATES_DIR AND (VS2010PROFESSIONAL_IDE_LCID_1033 OR VS2010PREMIUM_IDE_LCID_1033 OR VS2010ULTIMATE_IDE_LCID_1033)]]>
+          <![CDATA[VS2010DEVENV AND VS2010_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2010_PROJECTTEMPLATES_DIR AND (VS2010PROFESSIONAL_IDE_LCID_1033 = "#1" OR VS2010PREMIUM_IDE_LCID_1033 = "#1" OR VS2010ULTIMATE_IDE_LCID_1033 = "#1")]]>
         </Condition>
         <File Id="VisualStudio.2010.ProjectTemplates.CSharp.1033" Name="$(var.Framework)WPFMetroApplication.zip" Source="$(var.ProjectTemplatesFolder)\Visual Studio 2010\CSharp\1033\$(var.FrameworkName).zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
@@ -674,7 +695,7 @@
     <DirectoryRef Id="VS2010ProjectTemplatesRuDir">
       <Component Id="VisualStudio.2010.ProjectTemplates.Registration.Ru" Guid="BB19AC1D-C7CB-4766-8E5A-D4808062A529" Transitive="yes">
         <Condition>
-          <![CDATA[VS2010DEVENV AND VS2010_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2010_PROJECTTEMPLATES_DIR AND (VS2010PROFESSIONAL_IDE_LCID_1049 OR VS2010PREMIUM_IDE_LCID_1049 OR VS2010ULTIMATE_IDE_LCID_1049)]]>
+          <![CDATA[VS2010DEVENV AND VS2010_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2010_PROJECTTEMPLATES_DIR AND (VS2010PROFESSIONAL_IDE_LCID_1049 = "#1" OR VS2010PREMIUM_IDE_LCID_1049 = "#1" OR VS2010ULTIMATE_IDE_LCID_1049 = "#1")]]>
         </Condition>
         <File Id="VisualStudio.2010.ProjectTemplates.CSharp.1049" Name="$(var.Framework)WPFMetroApplication.zip" Source="$(var.ProjectTemplatesFolder)\Visual Studio 2010\CSharp\1049\$(var.FrameworkName).zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
@@ -685,7 +706,7 @@
     <DirectoryRef Id="VS2010ItemTemplatesEnDir">
       <Component Id="VisualStudio.2010.ItemTemplates.Registration.En" Guid="F9EC916F-71E2-451C-9398-11F69B5F7F57" Transitive="yes">
         <Condition>
-          <![CDATA[VS2010DEVENV AND VS2010_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2010_ITEMTEMPLATES_DIR AND (VS2010PROFESSIONAL_IDE_LCID_1033 OR VS2010PREMIUM_IDE_LCID_1033 OR VS2010ULTIMATE_IDE_LCID_1033)]]>
+          <![CDATA[VS2010DEVENV AND VS2010_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2010_ITEMTEMPLATES_DIR AND (VS2010PROFESSIONAL_IDE_LCID_1033 = "#1" OR VS2010PREMIUM_IDE_LCID_1033 = "#1" OR VS2010ULTIMATE_IDE_LCID_1033 = "#1")]]>
         </Condition>
         <File Id="VisualStudio.2010.ItemTemplates.CSharp.1033" Name="$(var.Framework)WPFMetroWindow.zip" Source="$(var.ItemTemplatesFolder)\Visual Studio 2010\CSharp\1033\$(var.FrameworkName).zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
@@ -693,7 +714,7 @@
     <DirectoryRef Id="VS2010ItemTemplatesRuDir">
       <Component Id="VisualStudio.2010.ItemTemplates.Registration.Ru" Guid="DDA72333-C62D-485E-BBDC-91121CC44054" Transitive="yes">
         <Condition>
-          <![CDATA[VS2010DEVENV AND VS2010_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2010_ITEMTEMPLATES_DIR AND (VS2010PROFESSIONAL_IDE_LCID_1049 OR VS2010PREMIUM_IDE_LCID_1049 OR VS2010ULTIMATE_IDE_LCID_1049)]]>
+          <![CDATA[VS2010DEVENV AND VS2010_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2010_ITEMTEMPLATES_DIR AND (VS2010PROFESSIONAL_IDE_LCID_1049 = "#1" OR VS2010PREMIUM_IDE_LCID_1049 = "#1" OR VS2010ULTIMATE_IDE_LCID_1049 = "#1")]]>
         </Condition>
         <File Id="VisualStudio.2010.ItemTemplates.CSharp.1049" Name="$(var.Framework)WPFMetroWindow.zip" Source="$(var.ItemTemplatesFolder)\Visual Studio 2010\CSharp\1049\$(var.FrameworkName).zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
@@ -704,7 +725,7 @@
     <DirectoryRef Id="VS2010ExpressCSharpProjectTemplatesEnDir">
       <Component Id="VisualStudio.2010.Express.CSharp.ProjectTemplates.Registration.En" Guid="EB54032D-4412-4D9F-A6DC-6AA03C1B77F9" Transitive="yes">
         <Condition>
-          <![CDATA[VCSHARP2010EXPRESS_IDE AND VCSHARP2010EXPRESS_PROJECTTEMPLATES_DIR AND VCSHARP2010EXPRESS_IDE_LCID_1033]]>
+          <![CDATA[VCSHARP2010EXPRESS_IDE AND VCSHARP2010EXPRESS_PROJECTTEMPLATES_DIR AND VCSHARP2010EXPRESS_IDE_LCID_1033 = "#1"]]>
         </Condition>
         <File Id="VisualStudio.2010.Express.CSharp.ProjectTemplates.1033" Name="$(var.Framework)WPFMetroApplication.zip" Source="$(var.ProjectTemplatesFolder)\Visual Studio 2010\CSharp\1033\$(var.FrameworkName).zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
@@ -712,7 +733,7 @@
     <DirectoryRef Id="VS2010ExpressCSharpProjectTemplatesRuDir">
       <Component Id="VisualStudio.2010.Express.CSharp.ProjectTemplates.Registration.Ru" Guid="A8F0E6C1-D827-4B8F-95A5-CE6F3B86B193" Transitive="yes">
         <Condition>
-          <![CDATA[VCSHARP2010EXPRESS_IDE AND VCSHARP2010EXPRESS_PROJECTTEMPLATES_DIR AND VCSHARP2010EXPRESS_IDE_LCID_1049]]>
+          <![CDATA[VCSHARP2010EXPRESS_IDE AND VCSHARP2010EXPRESS_PROJECTTEMPLATES_DIR AND VCSHARP2010EXPRESS_IDE_LCID_1049 = "#1"]]>
         </Condition>
         <File Id="VisualStudio.2010.Express.CSharp.ProjectTemplates.1049" Name="$(var.Framework)WPFMetroApplication.zip" Source="$(var.ProjectTemplatesFolder)\Visual Studio 2010\CSharp\1049\$(var.FrameworkName).zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
@@ -723,7 +744,7 @@
     <DirectoryRef Id="VS2010ExpressCSharpItemTemplatesEnDir">
       <Component Id="VisualStudio.2010.Express.CSharp.ItemTemplates.Registration.En" Guid="C4AC1A6D-7F02-43C7-9913-D320AE26A227" Transitive="yes">
         <Condition>
-          <![CDATA[VCSHARP2010EXPRESS_IDE AND VCSHARP2010EXPRESS_ITEMTEMPLATES_DIR AND VCSHARP2010EXPRESS_IDE_LCID_1033]]>
+          <![CDATA[VCSHARP2010EXPRESS_IDE AND VCSHARP2010EXPRESS_ITEMTEMPLATES_DIR AND VCSHARP2010EXPRESS_IDE_LCID_1033 = "#1"]]>
         </Condition>
         <File Id="VisualStudio.2010.Express.CSharp.ItemTemplates.1033" Name="$(var.Framework)WPFMetroWindow.zip" Source="$(var.ItemTemplatesFolder)\Visual Studio 2010\CSharp\1033\$(var.FrameworkName).zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
@@ -731,7 +752,7 @@
     <DirectoryRef Id="VS2010ExpressCSharpItemTemplatesRuDir">
       <Component Id="VisualStudio.2010.Express.CSharp.ItemTemplates.Registration.Ru" Guid="346A5D60-F98F-4404-9B6F-C7E15A97CEA1" Transitive="yes">
         <Condition>
-          <![CDATA[VCSHARP2010EXPRESS_IDE AND VCSHARP2010EXPRESS_ITEMTEMPLATES_DIR AND VCSHARP2010EXPRESS_IDE_LCID_1049]]>
+          <![CDATA[VCSHARP2010EXPRESS_IDE AND VCSHARP2010EXPRESS_ITEMTEMPLATES_DIR AND VCSHARP2010EXPRESS_IDE_LCID_1049 = "#1"]]>
         </Condition>
         <File Id="VisualStudio.2010.Express.CSharp.ItemTemplates.1049" Name="$(var.Framework)WPFMetroWindow.zip" Source="$(var.ItemTemplatesFolder)\Visual Studio 2010\CSharp\1049\$(var.FrameworkName).zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
@@ -744,7 +765,7 @@
     <DirectoryRef Id="VS2012ProjectTemplatesEnDir">
       <Component Id="VisualStudio.2012.ProjectTemplates.Registration.En" Guid="$(var.VisualStudio.2012.ProjectTemplates.Registration.En.Id)">
         <Condition>
-          <![CDATA[VS2012DEVENV AND VS2012_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2012_PROJECTTEMPLATES_DIR AND (VS2012PROFESSIONAL_IDE_LCID_1033 OR VS2012PREMIUM_IDE_LCID_1033 OR VS2012ULTIMATE_IDE_LCID_1033)]]>
+          <![CDATA[VS2012DEVENV AND VS2012_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2012_PROJECTTEMPLATES_DIR AND (VS2012PROFESSIONAL_IDE_LCID_1033 = "#1" OR VS2012PREMIUM_IDE_LCID_1033 = "#1" OR VS2012ULTIMATE_IDE_LCID_1033 = "#1")]]>
         </Condition>
         <File Id="VisualStudio.2012.ProjectTemplates.CSharp.1033" Name="$(var.Framework)WPFMetroApplication.zip" Source="$(var.ProjectTemplatesFolder)\Visual Studio 2012\CSharp\1033\$(var.FrameworkName).zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
@@ -752,7 +773,7 @@
     <DirectoryRef Id="VS2012ProjectTemplatesRuDir">
       <Component Id="VisualStudio.2012.ProjectTemplates.Registration.Ru" Guid="$(var.VisualStudio.2012.ProjectTemplates.Registration.Ru.Id)" Transitive="yes">
         <Condition>
-          <![CDATA[VS2012DEVENV AND VS2012_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2012_PROJECTTEMPLATES_DIR AND (VS2012PROFESSIONAL_IDE_LCID_1049 OR VS2012PREMIUM_IDE_LCID_1049 OR VS2012ULTIMATE_IDE_LCID_1049)]]>
+          <![CDATA[VS2012DEVENV AND VS2012_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2012_PROJECTTEMPLATES_DIR AND (VS2012PROFESSIONAL_IDE_LCID_1049 = "#1" OR VS2012PREMIUM_IDE_LCID_1049 = "#1" OR VS2012ULTIMATE_IDE_LCID_1049 = "#1")]]>
         </Condition>
         <File Id="VisualStudio.2012.ProjectTemplates.CSharp.1049" Name="$(var.Framework)WPFMetroApplication.zip" Source="$(var.ProjectTemplatesFolder)\Visual Studio 2012\CSharp\1049\$(var.FrameworkName).zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
@@ -763,7 +784,7 @@
     <DirectoryRef Id="VS2012ItemTemplatesEnDir">
       <Component Id="VisualStudio.2012.ItemTemplates.Registration.En" Guid="$(var.VisualStudio.2012.ItemTemplates.Registration.En.Id)" Transitive="yes">
         <Condition>
-          <![CDATA[VS2012DEVENV AND VS2012_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2012_ITEMTEMPLATES_DIR AND (VS2012PROFESSIONAL_IDE_LCID_1033 OR VS2012PREMIUM_IDE_LCID_1033 OR VS2012ULTIMATE_IDE_LCID_1033)]]>
+          <![CDATA[VS2012DEVENV AND VS2012_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2012_ITEMTEMPLATES_DIR AND (VS2012PROFESSIONAL_IDE_LCID_1033 = "#1" OR VS2012PREMIUM_IDE_LCID_1033 = "#1" OR VS2012ULTIMATE_IDE_LCID_1033 = "#1")]]>
         </Condition>
         <File Id="VisualStudio.2012.ItemTemplates.CSharp.1033" Name="$(var.Framework)WPFMetroWindow.zip" Source="$(var.ItemTemplatesFolder)\Visual Studio 2012\CSharp\1033\$(var.FrameworkName).zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
@@ -771,7 +792,7 @@
     <DirectoryRef Id="VS2012ItemTemplatesRuDir">
       <Component Id="VisualStudio.2012.ItemTemplates.Registration.Ru" Guid="$(var.VisualStudio.2012.ItemTemplates.Registration.Ru.Id)" Transitive="yes">
         <Condition>
-          <![CDATA[VS2012DEVENV AND VS2012_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2012_ITEMTEMPLATES_DIR AND (VS2012PROFESSIONAL_IDE_LCID_1049 OR VS2012PREMIUM_IDE_LCID_1049 OR VS2012ULTIMATE_IDE_LCID_1049)]]>
+          <![CDATA[VS2012DEVENV AND VS2012_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED AND VS2012_ITEMTEMPLATES_DIR AND (VS2012PROFESSIONAL_IDE_LCID_1049 = "#1" OR VS2012PREMIUM_IDE_LCID_1049 = "#1" OR VS2012ULTIMATE_IDE_LCID_1049 = "#1")]]>
         </Condition>
         <File Id="VisualStudio.2012.ItemTemplates.CSharp.1049" Name="$(var.Framework)WPFMetroWindow.zip" Source="$(var.ItemTemplatesFolder)\Visual Studio 2012\CSharp\1049\$(var.FrameworkName).zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
@@ -782,7 +803,7 @@
     <DirectoryRef Id="VS2012WinDesktopExpressProjectTemplatesEnDir">
       <Component Id="VisualStudio.2012.Express.WinDesktop.ProjectTemplates.Registration.En" Guid="$(var.VisualStudio.2012.Express.WinDesktop.ProjectTemplates.Registration.En.Id)" Transitive="yes">
         <Condition>
-          <![CDATA[VS2012WINDESKTOPEXPRESS_IDE AND VS2012WINDESKTOPEXPRESS_PROJECTTEMPLATES_DIR AND VS2012WINDESKTOPEXPRESS_IDE_LCID_1033]]>
+          <![CDATA[VS2012WINDESKTOPEXPRESS_IDE AND VS2012WINDESKTOPEXPRESS_PROJECTTEMPLATES_DIR AND VS2012WINDESKTOPEXPRESS_IDE_LCID_1033 = "#1"]]>
         </Condition>
         <File Id="VisualStudio.2012.Express.WinDesktop.ProjectTemplates.1033" Name="$(var.Framework)WPFMetroApplication.zip" Source="$(var.ProjectTemplatesFolder)\Visual Studio 2012\CSharp\1033\$(var.FrameworkName).zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
@@ -790,7 +811,7 @@
     <DirectoryRef Id="VS2012WinDesktopExpressProjectTemplatesRuDir">
       <Component Id="VisualStudio.2012.Express.WinDesktop.ProjectTemplates.Registration.Ru" Guid="$(var.VisualStudio.2012.Express.WinDesktop.ProjectTemplates.Registration.Ru.Id)" Transitive="yes">
         <Condition>
-          <![CDATA[VS2012WINDESKTOPEXPRESS_IDE AND VS2012WINDESKTOPEXPRESS_PROJECTTEMPLATES_DIR AND VS2012WINDESKTOPEXPRESS_IDE_LCID_1049]]>
+          <![CDATA[VS2012WINDESKTOPEXPRESS_IDE AND VS2012WINDESKTOPEXPRESS_PROJECTTEMPLATES_DIR AND VS2012WINDESKTOPEXPRESS_IDE_LCID_1049 = "#1"]]>
         </Condition>
         <File Id="VisualStudio.2012.Express.WinDesktop.ProjectTemplates.1049" Name="$(var.Framework)WPFMetroApplication.zip" Source="$(var.ProjectTemplatesFolder)\Visual Studio 2012\CSharp\1049\$(var.FrameworkName).zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
@@ -801,7 +822,7 @@
     <DirectoryRef Id="VS2012WinDesktopExpressItemTemplatesEnDir">
       <Component Id="VisualStudio.2012.Express.WinDesktop.ItemTemplates.Registration.En" Guid="$(var.VisualStudio.2012.Express.WinDesktop.ItemTemplates.Registration.En.Id)" Transitive="yes">
         <Condition>
-          <![CDATA[VS2012WINDESKTOPEXPRESS_IDE AND VS2012WINDESKTOPEXPRESS_ITEMTEMPLATES_DIR AND VS2012WINDESKTOPEXPRESS_IDE_LCID_1033]]>
+          <![CDATA[VS2012WINDESKTOPEXPRESS_IDE AND VS2012WINDESKTOPEXPRESS_ITEMTEMPLATES_DIR AND VS2012WINDESKTOPEXPRESS_IDE_LCID_1033 = "#1"]]>
         </Condition>
         <File Id="VisualStudio.2012.Express.WinDesktop.ItemTemplates.1033" Name="$(var.Framework)WPFMetroWindow.zip" Source="$(var.ItemTemplatesFolder)\Visual Studio 2012\CSharp\1033\$(var.FrameworkName).zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>
@@ -809,7 +830,7 @@
     <DirectoryRef Id="VS2012WinDesktopExpressItemTemplatesRuDir">
       <Component Id="VisualStudio.2012.Express.WinDesktop.ItemTemplates.Registration.Ru" Guid="$(var.VisualStudio.2012.Express.WinDesktop.ItemTemplates.Registration.Ru.Id)" Transitive="yes">
         <Condition>
-          <![CDATA[VS2012WINDESKTOPEXPRESS_IDE AND VS2012WINDESKTOPEXPRESS_ITEMTEMPLATES_DIR AND VS2012WINDESKTOPEXPRESS_IDE_LCID_1049]]>
+          <![CDATA[VS2012WINDESKTOPEXPRESS_IDE AND VS2012WINDESKTOPEXPRESS_ITEMTEMPLATES_DIR AND VS2012WINDESKTOPEXPRESS_IDE_LCID_1049 = "#1"]]>
         </Condition>
         <File Id="VisualStudio.2012.Express.WinDesktop.ItemTemplates.1049" Name="$(var.Framework)WPFMetroWindow.zip" Source="$(var.ItemTemplatesFolder)\Visual Studio 2012\CSharp\1049\$(var.FrameworkName).zip" Checksum="yes" KeyPath="yes" Vital="yes"/>
       </Component>

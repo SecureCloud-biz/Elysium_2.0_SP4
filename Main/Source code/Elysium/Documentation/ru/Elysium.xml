@@ -4113,7 +4113,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="M:Elysium.Parameters.Window.SetMinimizeButtonToolTip(Elysium.Controls.Window,System.Windows.Thickness)">
+    <member name="M:Elysium.Parameters.Window.SetMinimizeButtonToolTip(Elysium.Controls.Window,System.Object)">
       <summary>
         Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Window.MinimizeButtonToolTip" /> для указанного элемента управления.
       </summary>
@@ -4177,7 +4177,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="M:Elysium.Parameters.Window.SetMaximizeButtonToolTip(Elysium.Controls.Window,System.Windows.Thickness)">
+    <member name="M:Elysium.Parameters.Window.SetMaximizeButtonToolTip(Elysium.Controls.Window,System.Object)">
       <summary>
         Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Window.MaximizeButtonToolTip" /> для указанного элемента управления.
       </summary>
@@ -4241,7 +4241,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="M:Elysium.Parameters.Window.SetRestoreButtonToolTip(Elysium.Controls.Window,System.Windows.Thickness)">
+    <member name="M:Elysium.Parameters.Window.SetRestoreButtonToolTip(Elysium.Controls.Window,System.Object)">
       <summary>
         Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Window.RestoreButtonToolTip" /> для указанного элемента управления.
       </summary>
@@ -4305,7 +4305,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="M:Elysium.Parameters.Window.SetCloseButtonToolTip(Elysium.Controls.Window,System.Windows.Thickness)">
+    <member name="M:Elysium.Parameters.Window.SetCloseButtonToolTip(Elysium.Controls.Window,System.Object)">
       <summary>
         Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Window.CloseButtonToolTip" /> для указанного элемента управления.
       </summary>
@@ -7687,7 +7687,7 @@
         Идентификатор для свойства зависимостей <see cref="P:Elysium.Controls.Window.TitleBar" />.
       </value>
     </member>
-    <member name="M:Elysium.Controls.Window.GetTitleBar(System.Windows.Window)">
+    <member name="M:Elysium.Controls.Window.GetTitleBar(Elysium.Controls.Window)">
       <summary>
         Возвращает значение свойства зависимостей <see cref="P:Elysium.Controls.Window.TitleBar" /> для указанного элемента управления.
       </summary>
@@ -7698,7 +7698,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
-    <member name="M:Elysium.Controls.Window.SetTitleBar(System.Windows.Window,Elysium.Controls.TitleBar)">
+    <member name="M:Elysium.Controls.Window.SetTitleBar(Elysium.Controls.Window,System.Windows.FrameworkElement)">
       <summary>
         Задаёт значение свойства зависимостей <see cref="P:Elysium.Controls.Window.TitleBar" /> для указанного элемента управления.
       </summary>
@@ -7771,6 +7771,36 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </member>
+    <member name="P:Elysium.Controls.Window.DefaultCaptionButtonStyleKey">
+      <summary>
+        Возвращает ключ ресурса для стиля, применяемого к кнопкам в заголовке окна по-умолчанию.
+      </summary>
+      <value>Ключ ресурса для стиля, применяемого к кнопкам в заголовке окна по-умолчанию.</value>
+      <example>
+        <code lang="XAML">
+          &lt;metro:Window.TitleBar&gt;
+          ...
+          &lt;Button Style="{DynamicResource {x:Static metro:Window.DefaultCaptionButtonStyleKey}}"/&gt;
+          ...
+          &lt;/metro:Window.TitleBar&gt;
+        </code>
+      </example>
+    </member>
+    <member name="P:Elysium.Controls.Window.MainWindowCaptionButtonStyleKey">
+      <summary>
+        Возвращает ключ ресурса для стиля, применяемого к кнопкам в заголовке главного окна.
+      </summary>
+      <value>Ключ ресурса для стиля, применяемого к кнопкам в заголовке главного окна.</value>
+      <example>
+        <code lang="XAML">
+          &lt;metro:Window.TitleBar&gt;
+          ...
+          &lt;Button Style="{DynamicResource {x:Static metro:Window.MainWindowCaptionButtonStyleKey}}"/&gt;
+          ...
+          &lt;/metro:Window.TitleBar&gt;
+        </code>
+      </example>
+    </member>
     <member name="M:Elysium.Controls.Window.OnSourceInitialized(System.EventArgs)">
       <inheritdoc />
     </member>
@@ -7779,6 +7809,12 @@
     </member>
     <member name="M:Elysium.Controls.Window.ShowDialog">
       <inheritdoc cref="M:System.Windows.Window.ShowDialog" />
+    </member>
+    <member name="M:Elysium.Controls.Window.OnClosed(System.EventArgs)">
+      <inheritdoc />
+    </member>
+    <member name="M:Elysium.Controls.Window.Finalize">
+      <inheritdoc />
     </member>
     <member name="T:Elysium.Controls.WindowCommands">
       <summary>

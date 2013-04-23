@@ -18,6 +18,11 @@
           </listItem>
           <listItem>
             <para>
+              <legacyBold>Visual Studio templates</legacyBold> available only for English and Russian versions of Visual Studio
+            </para>
+          </listItem>
+          <listItem>
+            <para>
               <legacyBold>Visual Studio templates</legacyBold> are absent in Elysium SDK zip-archive.
             </para>
           </listItem>

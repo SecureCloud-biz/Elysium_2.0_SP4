@@ -68,7 +68,7 @@
     <?define SDKVersion = "2.0" ?>
     <?define SDKBuild = "975" ?>
     <?define SDKRevision = "0" ?>
-  <?define NotificationsServerVersion = "2.0.56.0" ?>
+    <?define NotificationsServerVersion = "2.0.56.0" ?>
   <?endif ?>
   
 </Include>

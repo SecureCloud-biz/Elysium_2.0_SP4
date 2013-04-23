@@ -43,6 +43,10 @@
       <Variable Name="InstallFolder" Type="string" Value="[ProgramFilesFolder]$(var.SDKName)\$(var.FrameworkName)\$(var.SDKVersion)" />
     <?endif ?>
 
+    <PayloadGroup Id="Cabs">
+      <Payload SourceFile="..\$(var.PlatformSourceFolder)\SDK\MSI\Elysium.cab" Compressed="yes"/>
+    </PayloadGroup>
+    
     <Chain>
       <?ifdef NETFX4 ?>
         <PackageGroupRef Id="NetFx40ClientWeb"/>
@@ -53,11 +57,13 @@
       <MsiPackage Id="Elysium.SDK.en_us" SourceFile="..\$(var.PlatformSourceFolder)\SDK\MSI\en-us\Installer.msi"
                   InstallCondition="NOT (UserLanguageID = 1049)" EnableFeatureSelection="yes" Visible="no"
                   Vital="yes" Compressed="yes">
+        <PayloadGroupRef Id="Cabs"/>
         <MsiProperty Name="APPLICATIONFOLDER" Value="[InstallFolder]" />
       </MsiPackage>
       <MsiPackage Id="Elysium.SDK.ru_ru" SourceFile="..\$(var.PlatformSourceFolder)\SDK\MSI\ru-ru\Installer.msi"
                   InstallCondition="UserLanguageID = 1049" EnableFeatureSelection="yes" Visible="no"
                   Vital="yes" Compressed="yes">
+        <PayloadGroupRef Id="Cabs"/>
         <MsiProperty Name="APPLICATIONFOLDER" Value="[InstallFolder]" />
       </MsiPackage>
     </Chain>

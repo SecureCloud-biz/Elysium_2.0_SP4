@@ -26,6 +26,8 @@
     <DefineConstants>NETFX4;Debug;X86</DefineConstants>
     <OutputPath>..\..\..\Binary\.NET Framework 4\Debug\x86\SDK\MSI\</OutputPath>
     <IntermediateOutputPath>obj\.NET Framework 4\Debug\x86\</IntermediateOutputPath>
+    <CabinetCachePath>..\..\..\Binary\.NET Framework 4\Debug\x86\SDK\MSI\</CabinetCachePath>
+    <ReuseCabinetCache>True</ReuseCabinetCache>
     <SuppressIces>ICE30</SuppressIces>
     <Cultures>en-US;ru-RU</Cultures>
   </PropertyGroup>
@@ -33,6 +35,8 @@
     <DefineConstants>NETFX4;Debug;X64</DefineConstants>
     <OutputPath>..\..\..\Binary\.NET Framework 4\Debug\x64\SDK\MSI\</OutputPath>
     <IntermediateOutputPath>obj\.NET Framework 4\Debug\x64\</IntermediateOutputPath>
+    <CabinetCachePath>..\..\..\Binary\.NET Framework 4\Debug\x64\SDK\MSI\</CabinetCachePath>
+    <ReuseCabinetCache>True</ReuseCabinetCache>
     <SuppressIces>ICE30</SuppressIces>
     <Cultures>en-US;ru-RU</Cultures>
   </PropertyGroup>
@@ -40,6 +44,8 @@
     <DefineConstants>NETFX4;Release;X86</DefineConstants>
     <OutputPath>..\..\..\Binary\.NET Framework 4\Release\x86\SDK\MSI\</OutputPath>
     <IntermediateOutputPath>obj\.NET Framework 4\Release\x86\</IntermediateOutputPath>
+    <CabinetCachePath>..\..\..\Binary\.NET Framework 4\Release\x86\SDK\MSI\</CabinetCachePath>
+    <ReuseCabinetCache>True</ReuseCabinetCache>
     <SuppressIces>ICE30</SuppressIces>
     <Cultures>en-US;ru-RU</Cultures>
   </PropertyGroup>
@@ -47,6 +53,8 @@
     <DefineConstants>NETFX4;Release;X64</DefineConstants>
     <OutputPath>..\..\..\Binary\.NET Framework 4\Release\x64\SDK\MSI\</OutputPath>
     <IntermediateOutputPath>obj\.NET Framework 4\Release\x64\</IntermediateOutputPath>
+    <CabinetCachePath>..\..\..\Binary\.NET Framework 4\Release\x64\SDK\MSI\</CabinetCachePath>
+    <ReuseCabinetCache>True</ReuseCabinetCache>
     <SuppressIces>ICE30</SuppressIces>
     <Cultures>en-US;ru-RU</Cultures>
   </PropertyGroup>

@@ -22,7 +22,8 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column="1"
                     Content="?"
-                    Click="HelpClick"/>
+                    Click="HelpClick"
+                    Style="{DynamicResource {x:Static metro:Window.MainWindowCaptionButtonStyleKey}}"/>
         </Grid>
     </metro:Window.TitleBar>
     <metro:Window.ApplicationBar>

@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="63788c88-04b6-4a34-b844-323290dc2523" revisionNumber="1">
+  <developerUIReferenceDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+                                xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <para>В данном топике описываются особенности работы с окном в стиле Metro и его элементами, такими как панель заголовка и панель управления приложением.</para>
+    </introduction>
+
+    <taskList address="Usage">
+      <content>
+        <para>
+          Окно в стиле Metro включает в себя несколько основных элементов, таких как иконка, заголовок, панель заголовка (необязательно); кнопки Свернуть, Развернуть/Восстановить, Закрыть;
+          панель управления приложением (необязательно) и ползунок изменения размера окна (доступен только если свойство <codeEntityReference>P:System.Windows.Window.ResizeMode</codeEntityReference> установлено в значение
+          <codeEntityReference>F:System.Windows.ResizeMode.CanResizeWithGrip</codeEntityReference> [по-умолчанию]).
+        </para>
+        <mediaLink>
+          <image xlink:href="Макет окна" placement="center"/>
+        </mediaLink>
+      </content>
+      <sections>
+        <section address="TitleBar">
+          <title>Панель заголовка</title>
+          <content>
+            <para>
+              Вы можете использовать панель заголовка чтобы разместить собственные элементы управления в заголовке окна. Например, кнопку, вызывающую справку.
+            </para>
+            <code>
+              &lt;metro:Window.TitleBar&gt;
+                &lt;Grid&gt;
+                  &lt;Grid.ColumnDefinitions&gt;
+                    &lt;ColumnDefinition Width="*"/&gt;
+                    &lt;ColumnDefinition Width="Auto"/&gt;
+                  &lt;/Grid.ColumnDefinitions&gt;
+                  &lt;Button Grid.Column="1"
+                          Content="?"
+                          Click="HelpClick"
+                          Style="{DynamicResource {x:Static metro:Window.DefaultCaptionButtonStyleKey}}"/&gt;
+                &lt;/Grid&gt;
+              &lt;/metro:Window.TitleBar&gt;
+            </code>
+            <para>
+              Чтобы кнопки выглядели в панели заголовка также, как кнопки Свернуть, Развернуть/Восстановить, Закрыть, нужно задать им стиль с помощью
+              ключа ресурса <codeEntityReference>P:Elysium.Controls.Window.DefaultCaptionButtonStyleKey</codeEntityReference> или <codeEntityReference>P:Elysium.Controls.Window.MainWindowCaptionButtonStyleKey</codeEntityReference>
+              для обычного окна и главного окна соответственно.
+            </para>
+          </content>
+        </section>
+        <section address="ApplicationBar">
+          <title>Панель управления приложением</title>
+          <content>
+            <para>
+              Панель управления приложением - это специальная всплывающая панель с кнопками управления, которая используется в Metro как одна из альтернатив традиционному меню и в которой располагаются
+              наиболее общие, доступные во всём приложении команды.
+            </para>
+            <para>
+              Чтобы начать использовать панель управления приложением, нужно установить подключаемое свойство зависимостей <codeEntityReference>P:Elysium.Controls.Window.IsApplicationBarHost</codeEntityReference> в True в элементе управления
+              типа <codeEntityReference>T:System.Windows.Controls.Decorator</codeEntityReference>. Для окна типа Elysium.Controls.<codeEntityReference>T:Elysium.Controls.Window</codeEntityReference> такой элемент управления
+              уже присутствует в стиле по-умолчанию.
+            </para>
+            <code>
+              &lt;Decorator metro:Window.IsApplicationBarHost="True"/&gt;
+            </code>
+            <para>
+              Чтобы создать панель управления приложением, расположите элемент управления <codeEntityReference>T:Elysium.Controls.ApplicationBar</codeEntityReference> внутри
+              свойства зависимостей <codeEntityReference>P:Elysium.Controls.Window.ApplicationBar</codeEntityReference>. Затем расположите кнопки управления внутри панели.
+            </para>
+            <code>
+              &lt;metro:Window.ApplicationBar&gt;
+                  &lt;metro:ApplicationBar&gt;
+                      &lt;metro:CommandButton Header="Notification"
+                                           Click="NotificationClick"&gt;
+                          &lt;Rectangle Fill="Black" Stroke="Black" Width="24" Height="12"/&gt;
+                      &lt;/metro:CommandButton&gt;
+                  &lt;/metro:ApplicationBar&gt;
+              &lt;/metro:Window.ApplicationBar&gt;
+            </code>
+            <para>
+              Вы также можете выровнять элемент управления внутри панели управления приложением по левому или правому краю.
+            </para>
+            <code>              
+              &lt;metro:Window.ApplicationBar&gt;
+                  &lt;metro:ApplicationBar&gt;
+                      &lt;metro:CommandButton Header="Notification"
+                                           Click="NotificationClick"&gt;
+                          &lt;Rectangle Fill="Black" Stroke="Black" Width="24" Height="12"/&gt;
+                      &lt;/metro:CommandButton&gt;
+                      &lt;metro:CommandButton metro:ApplicationBar.Dock="Right"&gt;
+                          ...
+                      &lt;/metro:CommandButton&gt;
+                  &lt;/metro:ApplicationBar&gt;
+              &lt;/metro:Window.ApplicationBar&gt;
+            </code>
+          </content>
+        </section>
+      </sections>
+    </taskList>
+
+    <relatedTopics>
+      <codeEntityReference>T:Elysium.Controls.Window</codeEntityReference>
+      <codeEntityReference>P:Elysium.Controls.Window.TitleBar</codeEntityReference>
+      <codeEntityReference>P:Elysium.Controls.Window.ApplicationBar</codeEntityReference>
+      <codeEntityReference>T:Elysium.Controls.ApplicationBar</codeEntityReference>
+      <codeEntityReference>P:Elysium.Controls.ApplicationBar.Dock</codeEntityReference>
+      <codeEntityReference>T:Elysium.Controls.ApplicationBarDock</codeEntityReference>
+    </relatedTopics>
+  </developerUIReferenceDocument>
+</topic>
