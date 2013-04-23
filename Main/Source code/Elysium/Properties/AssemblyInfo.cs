@@ -10,7 +10,7 @@ using System.Windows.Markup;
 [assembly: AssemblyTitle("Elysium.dll")]
 [assembly: AssemblyDescription("Metro style theme for WPF")]
 [assembly: AssemblyProduct("Elysium")]
-[assembly: AssemblyCopyright("Copyright © Alex F. Sherman & Codeplex community 2011-2013")]
+[assembly: AssemblyCopyright("Copyright © Aleksandr Vishnyakov & Codeplex community 2011-2013")]
 
 [assembly: SecurityRules(SecurityRuleSet.Level2, SkipVerificationInFullTrust = true)]
 [assembly: AllowPartiallyTrustedCallers]

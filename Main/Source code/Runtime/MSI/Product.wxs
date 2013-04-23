@@ -7,7 +7,7 @@
   <?include IDs.wxi ?>
 
   <Product Id="$(var.ProductId)"
-           Name="$(var.RuntimeName) for $(var.FrameworkName)" Manufacturer="Alex F. Sherman and Codeplex Community" Language="0"
+           Name="$(var.RuntimeName) for $(var.FrameworkName)" Manufacturer="Aleksandr Vishnyakov and Codeplex Community" Language="0"
            Version="$(var.RuntimeVersion).$(var.RuntimeBuild).$(var.RuntimeRevision)" UpgradeCode="$(var.UpgradeCode)">
 
     <Package InstallerVersion="200" Platform="$(sys.BUILDARCH)"

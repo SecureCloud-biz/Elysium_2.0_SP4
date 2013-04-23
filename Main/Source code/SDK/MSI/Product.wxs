@@ -7,7 +7,7 @@
   <?include IDs.wxi ?>
   
   <Product Id="$(var.ProductId)"
-           Name="$(var.SDKName) for $(var.FrameworkName)" Manufacturer="Alex F. Sherman and Codeplex Community" Language="!(loc.Language)"
+           Name="$(var.SDKName) for $(var.FrameworkName)" Manufacturer="Aleksandr Vishnyakov and Codeplex Community" Language="!(loc.Language)"
            Version="$(var.SDKVersion).$(var.SDKBuild).$(var.SDKRevision)" UpgradeCode="$(var.InstallerUpgradeCode)">
     
     <Package InstallerVersion="200" Platform="$(sys.BUILDARCH)"

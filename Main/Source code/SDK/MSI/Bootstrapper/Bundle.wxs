@@ -3,7 +3,7 @@
 
   <?include SDKVariables.wxi ?>
   
-  <Bundle Name="$(var.SDKName) for $(var.FrameworkName)" Manufacturer="Alex F. Sherman and Codeplex Community"
+  <Bundle Name="$(var.SDKName) for $(var.FrameworkName)" Manufacturer="Aleksandr Vishnyakov and Codeplex Community"
           Version="$(var.SDKVersion).$(var.SDKBuild).$(var.SDKRevision)" UpgradeCode="$(var.SetupUpgradeCode)"
           AboutUrl="http://elysium.codeplex.com/" IconSourceFile="Icon.ico" Compressed="yes">
     

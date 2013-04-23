@@ -1,5 +1,5 @@
 ﻿<#+
-public static readonly string Copyright = "Copyright © Alex F. Sherman & Codeplex community 2011-" + DateTime.Now.Year.ToString();
+public static readonly string Copyright = "Copyright © Aleksandr Vishnyakov & Codeplex community 2011-" + DateTime.Now.Year.ToString();
 public const string Version = "2.0 RTM";
 
 public static class Versions

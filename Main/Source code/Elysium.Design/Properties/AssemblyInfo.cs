@@ -13,7 +13,7 @@ using Microsoft.Windows.Design.Metadata;
 #endif
 [assembly: AssemblyDescription("Design-time resources for Elysium")]
 [assembly: AssemblyProduct("Elysium")]
-[assembly: AssemblyCopyright("Copyright © Alex F. Sherman & Codeplex community 2011-2013")]
+[assembly: AssemblyCopyright("Copyright © Aleksandr Vishnyakov & Codeplex community 2011-2013")]
 
 [assembly: SecurityRules(SecurityRuleSet.Level2)]
 

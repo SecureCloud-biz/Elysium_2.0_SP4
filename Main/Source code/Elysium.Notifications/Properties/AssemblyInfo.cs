@@ -8,7 +8,7 @@ using System.Security;
 [assembly: AssemblyTitle("Elysium.Notifications.dll")]
 [assembly: AssemblyDescription("Metro style popup notifications for WPF")]
 [assembly: AssemblyProduct("Elysium Notifications System")]
-[assembly: AssemblyCopyright("Copyright © Alex F. Sherman & Codeplex community 2011-2013")]
+[assembly: AssemblyCopyright("Copyright © Aleksandr Vishnyakov & Codeplex community 2011-2013")]
 
 [assembly: SecurityRules(SecurityRuleSet.Level2)]
 [assembly: AllowPartiallyTrustedCallers]
