@@ -635,13 +635,33 @@ function Deploy
 
     $Dependencies = "..\Tools and Resources\Assembly dependencies\$FrameworkName";
     
+
+    ############################################################################
+    #                             Folders                                      #
+    ############################################################################
+
+    cd $Root
+    
+    New-Item "..\Deploy\" -ItemType Directory -ErrorAction Ignore
+    New-Item "..\Deploy\$FrameworkName\" -ItemType Directory -ErrorAction Ignore
+    New-Item "..\Deploy\$FrameworkName\SDK" -ItemType Directory -ErrorAction Ignore
+    New-Item "..\Deploy\$FrameworkName\SDK\x86" -ItemType Directory -ErrorAction Ignore
+    New-Item "..\Deploy\$FrameworkName\SDK\x86\en-us" -ItemType Directory -ErrorAction Ignore
+    New-Item "..\Deploy\$FrameworkName\SDK\x86\ru-ru" -ItemType Directory -ErrorAction Ignore
+    New-Item "..\Deploy\$FrameworkName\SDK\x64" -ItemType Directory -ErrorAction Ignore
+    New-Item "..\Deploy\$FrameworkName\SDK\x64\en-us" -ItemType Directory -ErrorAction Ignore
+    New-Item "..\Deploy\$FrameworkName\SDK\x64\ru-ru" -ItemType Directory -ErrorAction Ignore
+    New-Item "..\Deploy\$FrameworkName\Runtime" -ItemType Directory -ErrorAction Ignore
+    New-Item "..\Deploy\$FrameworkName\Runtime\x86" -ItemType Directory -ErrorAction Ignore
+    New-Item "..\Deploy\$FrameworkName\Runtime\x64" -ItemType Directory -ErrorAction Ignore
+
     ############################################################################
     #                          SDK - ZIP - 32-bit                              #
     ############################################################################
 
     cd $Root
 
-    $ArchivePath = Resolve-Path "..\Deploy\$FrameworkName\SDK\Elysium SDK (x86).zip";
+    $ArchivePath = Resolve-Path "..\Deploy\$FrameworkName\SDK\x86\Elysium SDK.zip";
     Remove-Item $ArchivePath -ErrorAction Ignore
     $Assemblies = "`"$ElysiumDebug`" `"$ElysiumDebugPDB`" `"$Design11`" `"$NotificationsDebug`" `"$NotificationsDebugPDB`" `"$NotificationsServer32`" `"$NotificationsServer32Config`" `"$Test32`""
     $Scripts = "`"$RunNotificationsService`" `"$StopNotificationsService`" `"$InstallNotificationsService32`" `"$UninstallNotificationsService32`""
@@ -683,7 +703,7 @@ function Deploy
 
     cd $Root
 
-    $ArchivePath = Resolve-Path "..\Deploy\$FrameworkName\SDK\Elysium SDK (x64).zip";
+    $ArchivePath = Resolve-Path "..\Deploy\$FrameworkName\SDK\x64\Elysium SDK.zip";
     Remove-Item $ArchivePath -ErrorAction Ignore
     $Assemblies = "`"$ElysiumDebug`" `"$ElysiumDebugPDB`" `"$Design11`" `"$NotificationsDebug`" `"$NotificationsDebugPDB`" `"$NotificationsServer64`" `"$NotificationsServer64Config`" `"$Test64`""
     $Scripts = "`"$RunNotificationsService`" `"$StopNotificationsService`" `"$InstallNotificationsService64`" `"$UninstallNotificationsService64`""
@@ -725,7 +745,7 @@ function Deploy
 
     cd $Root
 
-    $ArchivePath = Resolve-Path "..\Deploy\$FrameworkName\Runtime\Elysium Runtime (x86).zip";
+    $ArchivePath = Resolve-Path "..\Deploy\$FrameworkName\Runtime\x86\Elysium Runtime.zip";
     Remove-Item $ArchivePath -ErrorAction Ignore
     Zip-Files -Args "a `"$ArchivePath`" `"$ElysiumRelease`" `"$NotificationsRelease`" `"$NotificationsServer32`" `"$NotificationsServer32Config`""
 
@@ -747,7 +767,7 @@ function Deploy
 
     cd $Root
 
-    $ArchivePath = Resolve-Path "..\Deploy\$FrameworkName\Runtime\Elysium Runtime (x64).zip";
+    $ArchivePath = Resolve-Path "..\Deploy\$FrameworkName\Runtime\x64\Elysium Runtime.zip";
     Remove-Item $ArchivePath -ErrorAction Ignore
     Zip-Files -Args "a `"$ArchivePath`" `"$ElysiumRelease`" `"$NotificationsRelease`" `"$NotificationsServer64`" `"$NotificationsServer64Config`""
 
@@ -768,20 +788,24 @@ function Deploy
 
     cd $Root
 
-    Remove-Item "..\Deploy\$FrameworkName\SDK\Setup (x86).exe" -ErrorAction Ignore
-    Copy-Item "..\Binary\$FrameworkName\Release\x86\SDK\MSI\Setup.exe" "..\Deploy\$FrameworkName\SDK\Setup (x86).exe"
-    Remove-Item "..\Deploy\$FrameworkName\SDK\Installer (en-us, x86).msi" -ErrorAction Ignore
-    Copy-Item "..\Binary\$FrameworkName\Release\x86\SDK\MSI\en-us\Installer.msi" "..\Deploy\$FrameworkName\SDK\Installer (en-us, x86).msi"
-    Remove-Item "..\Deploy\$FrameworkName\SDK\Installer (ru-ru, x86).msi" -ErrorAction Ignore
-    Copy-Item "..\Binary\$FrameworkName\Release\x86\SDK\MSI\ru-ru\Installer.msi" "..\Deploy\$FrameworkName\SDK\Installer (ru-ru, x86).msi"
-    Remove-Item "..\Deploy\$FrameworkName\SDK\Setup (x64).exe" -ErrorAction Ignore
-    Copy-Item "..\Binary\$FrameworkName\Release\x64\SDK\MSI\Setup.exe" "..\Deploy\$FrameworkName\SDK\Setup (x64).exe"
-    Remove-Item "..\Deploy\$FrameworkName\SDK\Installer (en-us, x64).msi" -ErrorAction Ignore
-    Copy-Item "..\Binary\$FrameworkName\Release\x64\SDK\MSI\en-us\Installer.msi" "..\Deploy\$FrameworkName\SDK\Installer (en-us, x64).msi"
-    Remove-Item "..\Deploy\$FrameworkName\SDK\Installer (ru-ru, x64).msi" -ErrorAction Ignore
-    Copy-Item "..\Binary\$FrameworkName\Release\x64\SDK\MSI\ru-ru\Installer.msi" "..\Deploy\$FrameworkName\SDK\Installer (ru-ru, x64).msi"
-    Remove-Item "..\Deploy\$FrameworkName\Runtime\Installer (x86).msi" -ErrorAction Ignore
-    Copy-Item "..\Binary\$FrameworkName\Release\x86\Runtime\MSI\Installer.msi" "..\Deploy\$FrameworkName\Runtime\Installer (x86).msi"
-    Remove-Item "..\Deploy\$FrameworkName\Runtime\Installer (x64).msi" -ErrorAction Ignore
-    Copy-Item "..\Binary\$FrameworkName\Release\x64\Runtime\MSI\Installer.msi" "..\Deploy\$FrameworkName\Runtime\Installer (x64).msi"
+    Remove-Item "..\Deploy\$FrameworkName\SDK\x86\Setup.exe" -ErrorAction Ignore
+    Copy-Item "..\Binary\$FrameworkName\Release\x86\SDK\MSI\Setup.exe" "..\Deploy\$FrameworkName\SDK\x86\Elysium SDK.exe"
+    Remove-Item "..\Deploy\$FrameworkName\SDK\x86\Elysium.cab" -ErrorAction Ignore
+    Copy-Item "..\Binary\$FrameworkName\Release\x86\SDK\MSI\Elysium.cab" "..\Deploy\$FrameworkName\SDK\x86\Elysium.cab"
+    Remove-Item "..\Deploy\$FrameworkName\SDK\x86\en-us\Installer.msi" -ErrorAction Ignore
+    Copy-Item "..\Binary\$FrameworkName\Release\x86\SDK\MSI\en-us\Installer.msi" "..\Deploy\$FrameworkName\SDK\x86\en-us\Elysium SDK.msi"
+    Remove-Item "..\Deploy\$FrameworkName\SDK\x86\ru-ru\Installer.msi" -ErrorAction Ignore
+    Copy-Item "..\Binary\$FrameworkName\Release\x86\SDK\MSI\ru-ru\Installer.msi" "..\Deploy\$FrameworkName\SDK\x86\ru-ru\Elysium SDK.msi"
+    Remove-Item "..\Deploy\$FrameworkName\SDK\x64\Setup.exe" -ErrorAction Ignore
+    Copy-Item "..\Binary\$FrameworkName\Release\x64\SDK\MSI\Setup.exe" "..\Deploy\$FrameworkName\SDK\x64\Elysium SDK.exe"
+    Remove-Item "..\Deploy\$FrameworkName\SDK\x64\Elysium.cab" -ErrorAction Ignore
+    Copy-Item "..\Binary\$FrameworkName\Release\x64\SDK\MSI\Elysium.cab" "..\Deploy\$FrameworkName\SDK\x64\Elysium.cab"
+    Remove-Item "..\Deploy\$FrameworkName\SDK\x64\en-us\Installer.msi.msi" -ErrorAction Ignore
+    Copy-Item "..\Binary\$FrameworkName\Release\x64\SDK\MSI\en-us\Installer.msi" "..\Deploy\$FrameworkName\SDK\x64\en-us\Elysium SDK.msi"
+    Remove-Item "..\Deploy\$FrameworkName\SDK\x64\ru-ru\Installer.msi.msi" -ErrorAction Ignore
+    Copy-Item "..\Binary\$FrameworkName\Release\x64\SDK\MSI\ru-ru\Installer.msi" "..\Deploy\$FrameworkName\SDK\x64\ru-ru\Elysium SDK.msi"
+    Remove-Item "..\Deploy\$FrameworkName\Runtime\x86\Installer.msi" -ErrorAction Ignore
+    Copy-Item "..\Binary\$FrameworkName\Release\x86\Runtime\MSI\Installer.msi" "..\Deploy\$FrameworkName\Runtime\x86\Elysium Runtime.msi"
+    Remove-Item "..\Deploy\$FrameworkName\Runtime\x64\Installer.msi" -ErrorAction Ignore
+    Copy-Item "..\Binary\$FrameworkName\Release\x64\Runtime\MSI\Installer.msi" "..\Deploy\$FrameworkName\Runtime\x64\Elysium Runtime.msi"
 }
