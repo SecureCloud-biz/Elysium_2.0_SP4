@@ -5,7 +5,7 @@
   
   <Bundle Name="$(var.SDKName) for $(var.FrameworkName)" Manufacturer="Aleksandr Vishnyakov and Codeplex Community"
           Version="$(var.SDKVersion).$(var.SDKBuild).$(var.SDKRevision)" UpgradeCode="$(var.SetupUpgradeCode)"
-          AboutUrl="http://elysium.codeplex.com/" IconSourceFile="Icon.ico" Compressed="yes">
+          AboutUrl="http://elysiumproject.net/" IconSourceFile="Icon.ico" Compressed="yes">
     
     <BootstrapperApplicationRef Id="ManagedBootstrapperApplicationHost">
       

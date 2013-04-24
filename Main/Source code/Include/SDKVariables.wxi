@@ -60,15 +60,15 @@
   <?define SDKName = "Elysium SDK" ?>
   <?ifdef NETFX4 ?>
     <?define SDKVersion = "2.0" ?>
-    <?define SDKBuild = "901" ?>
+    <?define SDKBuild = "976" ?>
     <?define SDKRevision = "0" ?>
-    <?define NotificationsServerVersion = "2.0.43.0" ?>
+    <?define NotificationsServerVersion = "2.0.58.0" ?>
   <?endif ?>
   <?ifdef NETFX45 ?>
     <?define SDKVersion = "2.0" ?>
-    <?define SDKBuild = "975" ?>
+    <?define SDKBuild = "1042" ?>
     <?define SDKRevision = "0" ?>
-    <?define NotificationsServerVersion = "2.0.56.0" ?>
+    <?define NotificationsServerVersion = "2.0.71.0" ?>
   <?endif ?>
   
 </Include>

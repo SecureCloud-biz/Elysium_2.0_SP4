@@ -31,15 +31,15 @@
   <?define RuntimeName = "Elysium" ?>
   <?ifdef NETFX4 ?>
     <?define RuntimeVersion = "2.0" ?>
-    <?define RuntimeBuild = "901" ?>
+    <?define RuntimeBuild = "976" ?>
     <?define RuntimeRevision = "0" ?>
-    <?define NotificationsServerVersion = "2.0.43.0" ?>
+    <?define NotificationsServerVersion = "2.0.58.0" ?>
   <?endif ?>
   <?ifdef NETFX45 ?>
     <?define RuntimeVersion = "2.0" ?>
-    <?define RuntimeBuild = "975" ?>
+    <?define RuntimeBuild = "1042" ?>
     <?define RuntimeRevision = "0" ?>
-    <?define NotificationsServerVersion = "2.0.56.0" ?>
+    <?define NotificationsServerVersion = "2.0.71.0" ?>
   <?endif ?>
   
 </Include>

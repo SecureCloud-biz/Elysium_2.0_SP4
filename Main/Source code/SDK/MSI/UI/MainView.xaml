@@ -208,7 +208,7 @@
                        Foreground="{DynamicResource ForegroundBrush}"
                        Margin="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding)}">
                 <Run Text="{x:Static properties:Resources.LicenseTextBeforeLink}"/>
-                <Hyperlink NavigateUri="http://elysium.codeplex.com/license"
+                <Hyperlink NavigateUri="http://elysium.asvishnyakov.com/License.cshtml#header"
                            Command="{Binding License}">
                     <Run Text="{x:Static properties:Resources.LicenseLink}"/>
                 </Hyperlink>
