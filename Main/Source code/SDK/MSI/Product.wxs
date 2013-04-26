@@ -31,19 +31,19 @@
       <ComponentGroupRef Id="VisualStudio.Templates.Registration"/>
     </Feature>
     
-    <Feature Id="Notifications" Title="!(loc.FeatureTitle_Notifications)" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install" Level="2">
+    <Feature Id="Notifications" Title="!(loc.FeatureTitle_Notifications)" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install">
       <ComponentGroupRef Id="Notifications"/>
     </Feature>
     
-    <Feature Id="Documentation.En" Title="!(loc.FeatureTitle_Documentation.En)" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install" Level="2">
+    <Feature Id="Documentation.En" Title="!(loc.FeatureTitle_Documentation.En)" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install">
       <ComponentGroupRef Id="Documentation.En"/>
     </Feature>
     
-    <Feature Id="Documentation.Ru" Title="!(loc.FeatureTitle_Documentation.Ru)" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install" Level="2">
+    <Feature Id="Documentation.Ru" Title="!(loc.FeatureTitle_Documentation.Ru)" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install">
       <ComponentGroupRef Id="Documentation.Ru"/>
     </Feature>
     
-    <Feature Id="Test" Title="!(loc.FeatureTitle_Test)" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install" Level="2">
+    <Feature Id="Test" Title="!(loc.FeatureTitle_Test)" AllowAdvertise="no" InstallDefault="local" TypicalDefault="install">
       <ComponentGroupRef Id="Test"/>
     </Feature>
 

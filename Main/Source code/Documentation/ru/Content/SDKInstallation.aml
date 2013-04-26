@@ -80,6 +80,7 @@
                 <style type="text/css">
                   div.bootstrapper a
                   {
+                    display: inline-block;
                     text-align: center;
                     vertical-align: top;
                     width: 125px;
@@ -212,6 +213,7 @@
                     <style type="text/css">
                       div.msi a
                       {
+                        display: inline-block;
                         text-align: center;
                         vertical-align: top;
                         width: 150px;
@@ -342,6 +344,7 @@
                     <style type="text/css">
                       div.nuget a
                       {
+                        display: inline-block;
                         text-align: center;
                         vertical-align: top;
                         width: 175px;
