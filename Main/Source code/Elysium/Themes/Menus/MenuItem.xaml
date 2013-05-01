@@ -361,6 +361,7 @@
                                   VerticalAlignment="Center"/>
                 <TextBlock Grid.Column="2"
                            Text="{TemplateBinding InputGestureText}"
+                           Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.BoldPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Right'}"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Center"/>
             </Grid>

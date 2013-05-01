@@ -30,6 +30,9 @@
     </Style>
 
     <Style x:Key="{x:Static controls:Window.MainWindowCaptionButtonStyleKey}" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{DynamicResource SemitransparentContrastBrush}"/>
@@ -257,7 +260,7 @@
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
                 <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
             </DataTrigger>
-            <Trigger Property="HasDropShadow" Value="True">
+            <Trigger Property="HasDropShadow" Value="False">
                 <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.DefaultThickness), Mode=OneWay}"/>
             </Trigger>
             <Trigger Property="WindowStyle" Value="{x:Static WindowStyle.None}">

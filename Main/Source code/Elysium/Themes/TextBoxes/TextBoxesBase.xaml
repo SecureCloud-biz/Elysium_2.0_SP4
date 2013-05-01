@@ -24,6 +24,15 @@
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.DefaultPadding), Mode=OneWay}"/>
+        <Setter Property="ContextMenu">
+            <Setter.Value>
+                <ContextMenu Style="{StaticResource {x:Type ContextMenu}}">
+                    <MenuItem Header="Cut" Command="ApplicationCommands.Cut"/>
+                    <MenuItem Header="Copy" Command="ApplicationCommands.Copy"/>
+                    <MenuItem Header="Paste" Command="ApplicationCommands.Paste"/>
+                </ContextMenu>
+            </Setter.Value>
+        </Setter>
         <Setter Property="SnapsToDevicePixels" Value="True"/>        
         <Setter Property="Template">
             <Setter.Value>

@@ -512,6 +512,15 @@
     <Setter Property="HorizontalContentAlignment" Value="Left" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
     <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.DefaultPadding), Mode=OneWay}" />
+    <Setter Property="ContextMenu">
+      <Setter.Value>
+        <ContextMenu Style="{StaticResource {x:Type ContextMenu}}">
+          <MenuItem Header="Cut" Command="ApplicationCommands.Cut" />
+          <MenuItem Header="Copy" Command="ApplicationCommands.Copy" />
+          <MenuItem Header="Paste" Command="ApplicationCommands.Paste" />
+        </ContextMenu>
+      </Setter.Value>
+    </Setter>
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
@@ -1855,7 +1864,7 @@
         </Path>
         <ContentPresenter x:Name="IconHost" Grid.Column="0" ContentSource="Icon" HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="16" MinHeight="16" />
         <ContentPresenter x:Name="HeaderHost" Grid.Column="1" ContentSource="Header" RecognizesAccessKey="True" Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.BoldPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Right'}" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <TextBlock Grid.Column="2" Text="{TemplateBinding InputGestureText}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <TextBlock Grid.Column="2" Text="{TemplateBinding InputGestureText}" Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.BoldPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Right'}" HorizontalAlignment="Left" VerticalAlignment="Center" />
       </Grid>
     </Border>
     <ControlTemplate.Triggers>
@@ -2428,6 +2437,9 @@
     </Style.Triggers>
   </Style>
   <Style x:Key="{x:Static controls:Window.MainWindowCaptionButtonStyleKey}" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+    <Setter Property="Background" Value="{DynamicResource AccentBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}" />
     <Style.Triggers>
       <Trigger Property="IsMouseOver" Value="True">
         <Setter Property="Background" Value="{DynamicResource SemitransparentContrastBrush}" />
@@ -2575,7 +2587,7 @@
       <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
       </DataTrigger>
-      <Trigger Property="HasDropShadow" Value="True">
+      <Trigger Property="HasDropShadow" Value="False">
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.DefaultThickness), Mode=OneWay}" />
       </Trigger>
       <Trigger Property="WindowStyle" Value="{x:Static WindowStyle.None}">
