@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="d4e53745-c2f4-457a-a3cd-39494218a6f3" revisionNumber="1">
+  <developerUIReferenceDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+                                xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <para>
+        Elysium has a special API set, designed to work with additional preferences of the control&apos;s style.
+        Using them you can change parameters like font size of the header of the controls <codeEntityReference>T:System.Windows.Window</codeEntityReference>
+        and <codeEntityReference>T:System.Windows.Controls.TabControl</codeEntityReference> or the size of the flag in controls <codeEntityReference>T:System.Windows.Controls.CheckBox</codeEntityReference>
+        and <codeEntityReference>T:System.Windows.Controls.RadioButton</codeEntityReference>.
+      </para>
+    </introduction>
+
+    <taskList address="Usage">
+      <content>
+        <para>All parameters (except <codeEntityReference>F:Elysium.Parameters.DropDown.PopupPlacementCallback</codeEntityReference>, which is a field with a delegate type) are usual attached dependency properties.</para>
+      </content>
+      <sections>
+        <section>
+          <title>Parameters&apos; usage.</title>
+          <content>
+            <code language="xaml">
+              &lt;CheckBox Content="CheckBox"
+                        IsChecked="True"
+                        params:Checkbox.CheckSize="10px"&gt;
+                  ...
+              &lt;/CheckBox&gt;
+            </code>
+            <code language="csharp">
+              var control = new System.Windows.Controls.CheckBox();
+              var currentValue = Elysium.Parameters.CheckBox.GetCheckSize(control);
+              Elysium.Parameters.CheckBox.SetCheckSize(control, 10d);
+            </code>
+          </content>
+        </section>
+      </sections>
+    </taskList>
+
+    <uiElementList address="List">
+      <content>
+        <table>
+          <title>List of available parameters.</title>
+          <tableHeader>
+            <row>
+              <entry>
+                <para>A class, which pesent API functions to access parameters</para>
+              </entry>
+              <entry>
+                <para>Parameters&apos; description</para>
+              </entry>
+            </row>
+          </tableHeader>
+          <row>
+            <entry>
+              <para>
+                <codeEntityReference>T:Elysium.Parameters.Manager</codeEntityReference>
+              </para>
+            </entry>
+            <entry>
+              <list class="bullet">
+                <listItem>
+                  <para>Theme&apos;s preferences of the control. To read more, take a look at <link xlink:href="2ac0683a-9c20-4cc9-86e2-48a3e25696ed#ControlTheme" />.</para>
+                </listItem>
+              </list>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>
+                <codeEntityReference>T:Elysium.Parameters.Manager</codeEntityReference>
+              </para>
+            </entry>
+            <entry>
+              <list class="bullet">
+                <listItem>
+                  <para>Theme&apos;s preferences in constructor mode. To read more, take a look at <link xlink:href="2ac0683a-9c20-4cc9-86e2-48a3e25696ed#DesignTime" />.</para>
+                </listItem>
+              </list>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>
+                <codeEntityReference>T:Elysium.Parameters.General</codeEntityReference>
+              </para>
+            </entry>
+            <entry>
+              <list class="bullet">
+                <listItem>
+                  <para>The size of the header&apos;s font, content and text.</para>
+                </listItem>
+                <listItem>
+                  <para>Thickness of main lines.</para>
+                </listItem>
+                <listItem>
+                  <para>Size of the offsets.</para>
+                </listItem>
+                <listItem>
+                  <para>Animation time.</para>
+                </listItem>
+                <listItem>
+                  <para>A color of the shadows.</para>
+                </listItem>
+              </list>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>
+                <codeEntityReference>T:Elysium.Parameters.Window</codeEntityReference>
+              </para>
+            </entry>
+            <entry>
+              <para>Parameters of the control <codeEntityReference>T:System.Windows.Window</codeEntityReference>:</para>
+              <list class="bullet">
+                <listItem>
+                  <para>Thickness of the frame, which is used to change window&apos;s size.</para>
+                </listItem>
+              </list>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>
+                <codeEntityReference>T:Elysium.Parameters.Bullet</codeEntityReference>
+              </para>
+            </entry>
+            <entry>
+              <para>Parameters of the controls <codeEntityReference>T:System.Windows.Controls.CheckBox</codeEntityReference> and <codeEntityReference>T:System.Windows.Controls.RadioButton</codeEntityReference>:</para>
+              <list class="bullet">
+                <listItem>
+                  <para>The size of the region where the marker is situated.</para>
+                </listItem>
+                <listItem>
+                  <para>The size of the marker.</para>
+                </listItem>
+              </list>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>
+                <codeEntityReference>T:Elysium.Parameters.CheckBox</codeEntityReference>
+              </para>
+            </entry>
+            <entry>
+              <para>Parameters of the control <codeEntityReference>T:System.Windows.Controls.CheckBox</codeEntityReference>:</para>
+              <list class="bullet">
+                <listItem>
+                  <para>The size of the marker during &quot;checked&quot; state.</para>
+                </listItem>
+              </list>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>
+                <codeEntityReference>T:Elysium.Parameters.ComboBox</codeEntityReference>
+              </para>
+            </entry>
+            <entry>
+              <para>Parameters of the control <codeEntityReference>T:System.Windows.Controls.ComboBox</codeEntityReference>:</para>
+              <list class="bullet">
+                <listItem>
+                  <para>Width of the button.</para>
+                </listItem>
+                <listItem>
+                  <para>Size of the arrow in the combox.</para>
+                </listItem>
+                <listItem>
+                  <para>Offset of the arrow in the combox, measured from the button&apos;s sides.</para>
+                </listItem>
+              </list>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>
+                <codeEntityReference>T:Elysium.Parameters.CommandButtons</codeEntityReference>
+              </para>
+            </entry>
+            <entry>
+              <para>Parameters of the control, which are inherited from <codeEntityReference>T:Elysium.Controls.Primitives.CommandButtonBase</codeEntityReference>:</para>
+              <list class="bullet">
+                <listItem>
+                  <para>A brush, which is used to fill the content of the buttons.</para>
+                </listItem>
+              </list>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>
+                <codeEntityReference>T:Elysium.Parameters.DropDown</codeEntityReference>
+              </para>
+            </entry>
+            <entry>
+              <para>
+                Parameters of the style of the drop-down list (it&apos;s a control  <codeEntityReference>T:System.Windows.Controls.Primitives.Popup</codeEntityReference> in
+                templates of some controls, such as <codeEntityReference>T:System.Windows.Controls.ComboBox</codeEntityReference> or <codeEntityReference>T:Elysium.Controls.Submenu</codeEntityReference>):
+              </para>
+              <list class="bullet">
+                <listItem>
+                  <para>Current state of the drop-down list (is it opened or not)</para>
+                </listItem>
+                <listItem>
+                  <para>A read-only value, which indicates whether the horizontal position of the drop-down list is equal to the corresponding default value.</para>
+                </listItem>
+                <listItem>
+                  <para>A read-only value, which indicates whether the vertical position of the drop-down list is equal to the corresponding default value.</para>
+                </listItem>
+                <listItem>
+                  <para>A delegate, which is used to calculate a position of the drop-down list.</para>
+                </listItem>
+              </list>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>
+                <codeEntityReference>T:Elysium.Parameters.MenuBase</codeEntityReference>
+              </para>
+            </entry>
+            <entry>
+              <para>Parameters of the control, which are inherited from <codeEntityReference>T:System.Windows.Controls.Primitives.MenuBase</codeEntityReference>:</para>
+              <list class="bullet">
+                <listItem>
+                  <para>A background color of a submenu.</para>
+                </listItem>
+                <listItem>
+                  <para>A color of the border of a submenu.</para>
+                </listItem>
+                <listItem>
+                  <para>A size of the border of a submenu.</para>
+                </listItem>
+              </list>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>
+                <codeEntityReference>T:Elysium.Parameters.MenuItem</codeEntityReference>
+              </para>
+            </entry>
+            <entry>
+              <para>Parameters of the control <codeEntityReference>T:System.Windows.Controls.MenuItem</codeEntityReference>:</para>
+              <list class="bullet">
+                <listItem>
+                  <para>The size of the marker.</para>
+                </listItem>
+                <listItem>
+                  <para>The size of the arrow in the menu item.</para>
+                </listItem>
+                <listItem>
+                  <para>Offset of the arrow in the menu item, measured from the item&apos;s sides.</para>
+                </listItem>
+              </list>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>
+                <codeEntityReference>T:Elysium.Parameters.Progress</codeEntityReference>
+              </para>
+            </entry>
+            <entry>
+              <para>Parameters of the control, which are inherited from <codeEntityReference>T:Elysium.Controls.Primitives.ProgressBase</codeEntityReference>:</para>
+              <list class="bullet">
+                <listItem>
+                  <para>A size of the element, which indicates the progress (default shape is circle).</para>
+                </listItem>
+              </list>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>
+                <codeEntityReference>T:Elysium.Parameters.ScrollBar</codeEntityReference>
+              </para>
+            </entry>
+            <entry>
+              <para>Parameters of the control <codeEntityReference>T:System.Windows.Controls.Primitives.ScrollBar</codeEntityReference>:</para>
+              <list class="bullet">
+                <listItem>
+                  <para>Size of the arrow.</para>
+                </listItem>
+              </list>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>
+                <codeEntityReference>T:Elysium.Parameters.Slider</codeEntityReference>
+              </para>
+            </entry>
+            <entry>
+              <para>Parameters of the control <codeEntityReference>T:System.Windows.Controls.Slider</codeEntityReference>:</para>
+              <list class="bullet">
+                <listItem>
+                  <para>Length of the track.</para>
+                </listItem>
+                <listItem>
+                  <para>Width of the slider.</para>
+                </listItem>
+              </list>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>
+                <codeEntityReference>T:Elysium.Parameters.TabControl</codeEntityReference>
+              </para>
+            </entry>
+            <entry>
+              <para>Parameters of the control <codeEntityReference>T:System.Windows.Controls.TabControl</codeEntityReference>and <codeEntityReference>T:System.Windows.Controls.TabItem</codeEntityReference>:</para>
+              <list class="bullet">
+                <listItem>
+                  <para>A brush, which is used to fill the current tab&apos;s indicator.</para>
+                </listItem>
+              </list>
+              <para>Parameters of the control. <codeEntityReference>T:System.Windows.Controls.TabControl</codeEntityReference>:</para>
+              <list class="bullet">
+                <listItem>
+                  <para>Thickness of the current tab&apos;s indicator.</para>
+                </listItem>
+              </list>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>
+                <codeEntityReference>T:Elysium.Parameters.TabItem</codeEntityReference>
+              </para>
+            </entry>
+            <entry>
+              <para>Parameters of the control&apos;s style <codeEntityReference>T:System.Windows.Controls.TabItem</codeEntityReference>:</para>
+              <list class="bullet">
+                <listItem>
+                  <para>Style of the header (this property is usually set locally corresponding to the style of the control)</para>
+                </listItem>
+              </list>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>
+                <codeEntityReference>T:Elysium.Parameters.ToggleSwitch</codeEntityReference>
+              </para>
+            </entry>
+            <entry>
+              <para>Parameters of the control <codeEntityReference>T:Elysium.Controls.ToggleSwitch</codeEntityReference>:</para>
+              <list class="bullet">
+                <listItem>
+                  <para>Width of the switch.</para>
+                </listItem>
+                <listItem>
+                  <para>Thickness of the switch.</para>
+                </listItem>
+              </list>
+            </entry>
+          </row>
+        </table>
+      </content>
+    </uiElementList>
+
+    <relatedTopics>
+      <codeEntityReference>N:Elysium</codeEntityReference>
+      <codeEntityReference>N:Elysium.Parameters</codeEntityReference>
+      <codeEntityReference>T:Elysium.Parameters.Manager</codeEntityReference>
+      <codeEntityReference>T:Elysium.Parameters.Design</codeEntityReference>
+    </relatedTopics>
+  </developerUIReferenceDocument>
+</topic>

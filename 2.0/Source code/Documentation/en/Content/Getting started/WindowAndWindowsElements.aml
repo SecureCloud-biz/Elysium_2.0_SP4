@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="63788c88-04b6-4a34-b844-323290dc2523" revisionNumber="1">
+  <developerUIReferenceDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+                                xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <para>In this topic described how to work with Metro window and it's elements like title bar and application bar.</para>
+    </introduction>
+
+    <taskList address="Usage">
+      <content>
+        <para>
+          Metro window has some base elements like icon, title, title bar (optionallly), Minimize, Maximize/Restore and Close buttons, application bar (optionally) and resize grip (available only
+          if <codeEntityReference>P:System.Windows.Window.ResizeMode</codeEntityReference> set to <codeEntityReference>F:System.Windows.ResizeMode.CanResizeWithGrip</codeEntityReference> [by default]).
+        </para>
+        <mediaLink>
+          <image xlink:href="Window layout" placement="center"/>
+        </mediaLink>
+      </content>
+      <sections>
+        <section address="TitleBar">
+          <title>Title bar</title>
+          <content>
+            <para>
+              You can use title bar to place your controls in window's caption. For example, help button.
+            </para>
+            <code>
+              &lt;metro:Window.TitleBar&gt;
+                &lt;Grid&gt;
+                  &lt;Grid.ColumnDefinitions&gt;
+                    &lt;ColumnDefinition Width="*"/&gt;
+                    &lt;ColumnDefinition Width="Auto"/&gt;
+                  &lt;/Grid.ColumnDefinitions&gt;
+                  &lt;Button Grid.Column="1"
+                          Content="?"
+                          Click="HelpClick"
+                          Style="{DynamicResource {x:Static metro:Window.DefaultCaptionButtonStyleKey}}"/&gt;
+                &lt;/Grid&gt;
+              &lt;/metro:Window.TitleBar&gt;
+            </code>
+            <para>
+              If you want to your buttons looks like Minimize, Maximize/Restore or Close buttons, then you need to set button style to resource with
+              resource key <codeEntityReference>P:Elysium.Controls.Window.DefaultCaptionButtonStyleKey</codeEntityReference> or <codeEntityReference>P:Elysium.Controls.Window.MainWindowCaptionButtonStyleKey</codeEntityReference>
+              for simple window and main window respectively.
+            </para>
+          </content>
+        </section>
+        <section address="ApplicationBar">
+          <title>Application bar</title>
+          <content>
+            <para>
+              Application bar is a special popup panel with command buttons, which uses in Metro application as an alternative traditional menu and which contains the most common, accessible throughout the application commands.
+            </para>
+            <para>
+              To start use application bar, you need to set <codeEntityReference>P:Elysium.Controls.Window.IsApplicationBarHost</codeEntityReference> attached dependency property to True
+              in control with type <codeEntityReference>T:System.Windows.Controls.Decorator</codeEntityReference>. For window with type Elysium.Controls.<codeEntityReference>T:Elysium.Controls.Window</codeEntityReference> this control
+              already included in default style.
+            </para>
+            <code>
+              &lt;Decorator metro:Window.IsApplicationBarHost="True"/&gt;
+            </code>
+            <para>
+              To create application bar instance, place the <codeEntityReference>T:Elysium.Controls.ApplicationBar</codeEntityReference> control to
+              the <codeEntityReference>P:Elysium.Controls.Window.ApplicationBar</codeEntityReference> dependency property. Then place the command buttons in the application bar.
+            </para>
+            <code>
+              &lt;metro:Window.ApplicationBar&gt;
+                  &lt;metro:ApplicationBar&gt;
+                      &lt;metro:CommandButton Header="Notification"
+                                           Click="NotificationClick"&gt;
+                          &lt;Rectangle Fill="Black" Stroke="Black" Width="24" Height="12"/&gt;
+                      &lt;/metro:CommandButton&gt;
+                  &lt;/metro:ApplicationBar&gt;
+              &lt;/metro:Window.ApplicationBar&gt;
+            </code>
+            <para>
+              You can dock control inside application bar to left or right.
+            </para>
+            <code>              
+              &lt;metro:Window.ApplicationBar&gt;
+                  &lt;metro:ApplicationBar&gt;
+                      &lt;metro:CommandButton Header="Notification"
+                                           Click="NotificationClick"&gt;
+                          &lt;Rectangle Fill="Black" Stroke="Black" Width="24" Height="12"/&gt;
+                      &lt;/metro:CommandButton&gt;
+                      &lt;metro:CommandButton metro:ApplicationBar.Dock="Right"&gt;
+                          ...
+                      &lt;/metro:CommandButton&gt;
+                  &lt;/metro:ApplicationBar&gt;
+              &lt;/metro:Window.ApplicationBar&gt;
+            </code>
+          </content>
+        </section>
+      </sections>
+    </taskList>
+
+    <relatedTopics>
+      <codeEntityReference>T:Elysium.Controls.Window</codeEntityReference>
+      <codeEntityReference>P:Elysium.Controls.Window.TitleBar</codeEntityReference>
+      <codeEntityReference>P:Elysium.Controls.Window.ApplicationBar</codeEntityReference>
+      <codeEntityReference>T:Elysium.Controls.ApplicationBar</codeEntityReference>
+      <codeEntityReference>P:Elysium.Controls.ApplicationBar.Dock</codeEntityReference>
+      <codeEntityReference>T:Elysium.Controls.ApplicationBarDock</codeEntityReference>
+    </relatedTopics>
+  </developerUIReferenceDocument>
+</topic>

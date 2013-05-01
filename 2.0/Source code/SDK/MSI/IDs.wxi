@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+
+  <?ifdef NETFX4 ?>
+    <?define Prerequisites.Microsoft.Expression.Drawing.Id = "B0004C94-38E9-4587-AFE0-DF15D40ECD8D" ?>
+    <?define Prerequisites.Microsoft.Expression.Drawing.Documentation.Id = "57DCA4BA-8825-4E30-922E-B301124A21FB" ?>
+    <?define Core.Id = "31C629CC-D2C5-42BC-858E-BEF09397182D" ?>
+    <?define Core.Design.11.0.Id = "EE335872-CF61-490D-891B-5B95510A0015" ?>
+    <?define Core.Documentation.Id = "458FF7A2-2EB2-432A-B4EE-57C1C16DCF06" ?>
+    <?define Notifications.Id = "16552642-2FDC-4EF2-B049-0C8C571E8EB5" ?>
+    <?define Notifications.Documentation.Id = "CC154CEF-C35D-408A-93D5-5DEEE2078D80" ?>
+    <?define Notifications.Server.Id = "8597813A-1C9A-4BD6-942B-FC7D71153BB2" ?>
+    <?define VisualStudio.Registration.Id = "324F04C0-3673-4BC7-AA62-AB3945626545" ?>
+    <?define Prerequisites.Microsoft.Expression.Drawing.Design.Id = "06AAA438-5375-4204-8F25-5AF3CCB9F57A" ?>
+    <?define Prerequisites.Microsoft.Expression.Drawing.Design.Resources.En.Id = "04D47C5B-C2A7-4FCF-9AE1-7938915C4EA2" ?>
+    <?define Core.CodeContracts.Id = "E516CF50-6764-420B-96E9-4A1E6ECBECFB" ?>
+    <?define Notifications.CodeContracts.Id = "F13974DB-2B2D-4F3D-B1E7-E21B81DAB707" ?>
+    <?define Prerequisites.Microsoft.Expression.Drawing.Documentation.En.Id = "EB84204F-61A0-4468-BA95-13544EEF370E" ?>
+    <?define Core.Documentation.En.CHM.Id = "7A32188C-98AE-47F8-A8FF-B7DE9AA5CB19" ?>
+    <?define Core.Documentation.En.XML.Id = "EBAE6F86-78F3-465A-ABD5-2BBD03B928ED" ?>
+    <?define Notifications.Documentation.En.Id = "699E9C85-C9F0-4269-9C7F-4071D1EB15C3" ?>
+    <?define Documentation.En.Shortcut.Registration.Id = "693E82D8-3929-4C3C-B3CE-7C6F0059F077" ?>
+    <?define Core.Documentation.Ru.CHM.Id = "FC5792DF-6844-417C-BACA-C7F6BACA9653" ?>
+    <?define Core.Documentation.Ru.XML.Id = "2B7C28C3-56C0-43DE-B0C8-12ECDC13F905" ?>
+    <?define Notifications.Documentation.Ru.Id = "E7D4059D-FC33-470B-A254-1E5A2608C354" ?>
+    <?define Documentation.Ru.Shortcut.Registration.Id = "FE4DF21B-8753-4540-90D8-E31E2D26FE2C" ?>
+    <?define VisualStudio.2012.ProjectTemplates.Registration.En.Id = "236BDA0C-97D2-4055-9DDB-1AA399E521B4" ?>
+    <?define VisualStudio.2012.ProjectTemplates.Registration.Ru.Id = "D0B1457D-2C12-46BE-BED4-68793FCEAC23" ?>
+    <?define VisualStudio.2012.ItemTemplates.Registration.En.Id = "B32932EF-C57D-402A-9596-1384246630B8" ?>
+    <?define VisualStudio.2012.ItemTemplates.Registration.Ru.Id = "0BD07789-F741-4455-93F2-FF35160FA46A" ?>
+    <?define VisualStudio.2012.Express.WinDesktop.ProjectTemplates.Registration.En.Id = "D1EFD311-2C6C-48FE-A279-046C3E9E7592" ?>
+    <?define VisualStudio.2012.Express.WinDesktop.ProjectTemplates.Registration.Ru.Id = "3210845F-90C4-4AA7-A13E-EA85B0665F74" ?>
+    <?define VisualStudio.2012.Express.WinDesktop.ItemTemplates.Registration.En.Id = "4CEF8F24-93D7-457B-9201-A3BC33100CAD" ?>
+    <?define VisualStudio.2012.Express.WinDesktop.ItemTemplates.Registration.Ru.Id = "AD198CD9-DB4D-4012-97EE-812622538520" ?>
+    <?define Test.Microsoft.Expression.Drawing.Id = "E63C5DF6-2E19-4D72-A3DE-250A43AA00FF" ?>
+    <?define Test.Elysium.Id = "D2734950-A732-46F6-B0EC-D77B749DAD81" ?>
+    <?define Test.Elysium.Notifications.Id = "CB2F785F-CA67-4233-B8BD-A0AD14CAB2DC" ?>
+    <?define Test.Id = "6CD9B6B3-D66A-4C1C-BBAB-3B7C78633E79" ?>
+    <?define Test.Shortcut.Registration.Id = "0EA43429-FCFE-451E-8947-E975F3809A2F" ?>
+  <?endif ?>
+  <?ifdef NETFX45 ?>
+    <?define Prerequisites.Microsoft.Expression.Drawing.Id = "FD38090E-8FF9-40BF-B91B-C1B582076E67" ?>
+    <?define Prerequisites.Microsoft.Expression.Drawing.Documentation.Id = "FC720AEF-A2C2-4062-8B67-14DEAA4DB971" ?>
+    <?define Core.Id = "2FFFA2FF-5AA7-418F-B752-658D6D894FC5" ?>
+    <?define Core.Design.11.0.Id = "CE08DD72-6FCB-435E-B8EC-03466041B81E" ?>
+    <?define Core.Documentation.Id = "D502D1EE-20B7-49B9-A2FC-973A49ABBE98" ?>
+    <?define Notifications.Id = "673EA5AB-5190-415A-AFF8-69D3A1F95E52" ?>
+    <?define Notifications.Documentation.Id = "686AE6A7-7AA2-4A76-9745-48362FA8AEA5" ?>
+    <?define Notifications.Server.Id = "EE69A470-5ED2-4585-8D1E-D1C6B5728648" ?>
+    <?define VisualStudio.Registration.Id = "BBA30D8F-F171-4238-8EB9-EE78379A7AD3" ?>
+    <?define Prerequisites.Microsoft.Expression.Drawing.Design.Id = "E1697476-324E-4153-9465-959CBD9D4D2C" ?>
+    <?define Prerequisites.Microsoft.Expression.Drawing.Design.Resources.En.Id = "0D733DC5-6F15-4E62-9FA1-DC0C2CA6622B" ?>
+    <?define Core.CodeContracts.Id = "0D160F9D-B620-4F7B-A825-34E5C8D60D93" ?>
+    <?define Notifications.CodeContracts.Id = "98DAAEDF-6DE7-4225-AE61-20BF75F098CA" ?>
+    <?define Prerequisites.Microsoft.Expression.Drawing.Documentation.En.Id = "A5FBD29C-73DC-4619-A4F7-A022BB279563" ?>
+    <?define Core.Documentation.En.CHM.Id = "B888A2AB-7388-4DDA-B3B0-FA4F48A589E4" ?>
+    <?define Core.Documentation.En.XML.Id = "3546A24B-419F-4E7D-BF00-FAA80C80D880" ?>
+    <?define Notifications.Documentation.En.Id = "5ACDCD1E-DD5A-47D3-9DAE-A698449F3557" ?>
+    <?define Documentation.En.Shortcut.Registration.Id = "06784B3F-9A9F-4C67-A041-BD762D24C231" ?>
+    <?define Core.Documentation.Ru.CHM.Id = "8344C2B8-7D1A-4282-AA87-2C0404183223" ?>
+    <?define Core.Documentation.Ru.XML.Id = "61999E6B-DA53-4F70-81E7-221DA07157D8" ?>
+    <?define Notifications.Documentation.Ru.Id = "31F7F49E-71EE-4D60-A0CB-8166F1EA1D0F" ?>
+    <?define Documentation.Ru.Shortcut.Registration.Id = "97B171CC-9F6C-4193-9847-334D05673D49" ?>
+    <?define VisualStudio.2012.ProjectTemplates.Registration.En.Id = "AFD1DB87-D4F2-4BE6-B835-8DF8374C40E0" ?>
+    <?define VisualStudio.2012.ProjectTemplates.Registration.Ru.Id = "EB57E18E-C092-4B8A-9DD9-67892FCC51B5" ?>
+    <?define VisualStudio.2012.ItemTemplates.Registration.En.Id = "E60EECD4-D7EA-4C0F-874E-54413E62F986" ?>
+    <?define VisualStudio.2012.ItemTemplates.Registration.Ru.Id = "04DF139C-9B02-4A74-91AD-07AB0A2B8963" ?>
+    <?define VisualStudio.2012.Express.WinDesktop.ProjectTemplates.Registration.En.Id = "08D74CE9-8E0C-448C-95DD-2D8FA8A924C0" ?>
+    <?define VisualStudio.2012.Express.WinDesktop.ProjectTemplates.Registration.Ru.Id = "C9A9EE62-0112-42B1-BBE0-07FC4357DCDE" ?>
+    <?define VisualStudio.2012.Express.WinDesktop.ItemTemplates.Registration.En.Id = "8A412EBE-5FE9-463A-8428-B5FFAEEB19EE" ?>
+    <?define VisualStudio.2012.Express.WinDesktop.ItemTemplates.Registration.Ru.Id = "D9EF075B-190A-430B-9968-17E2DE84F46A" ?>
+    <?define Test.Microsoft.Expression.Drawing.Id = "25495F8A-DED2-4E12-B8CF-A9B3B19FC5AB" ?>
+    <?define Test.Elysium.Id = "D2998D78-3D8E-4EDE-ABF1-1E393B9B4F44" ?>
+    <?define Test.Elysium.Notifications.Id = "9E952694-DEEE-4757-AAF0-4EB74062A4D2" ?>
+    <?define Test.Id = "AA626E7F-515E-48E8-AFDE-22F3AC9F19E0" ?>
+    <?define Test.Shortcut.Registration.Id = "BE45CA70-98D9-4B19-A1D4-40553DE4B5E0" ?>
+  <?endif ?>
+
+</Include>

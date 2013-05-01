@@ -1,0 +1,858 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C61E1435-AB54-4C63-BAEC-1583C31099DB}</ProjectGuid>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Elysium</RootNamespace>
+    <AssemblyName>Elysium</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\SigningKey.pfx</AssemblyOriginatorKeyFile>
+    <DigitalSignatureKeyFile>..\..\..\..\Source code\SigningKey.pfx</DigitalSignatureKeyFile>
+    <DigitalSignatureParams>/t http://timestamp.comodoca.com/authenticode</DigitalSignatureParams>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>..\..\Binary\.NET Framework 4.5\Debug\AnyCPU\</OutputPath>
+    <IntermediateOutputPath>obj\.NET Framework 4.5\Debug\AnyCPU\</IntermediateOutputPath>
+    <DefineConstants>NETFX45;TRACE;DEBUG;CONTRACTS_FULL</DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <DebugType>full</DebugType>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>False</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsInferRequires>False</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
+    <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
+    <CodeContractsSuggestRequires>True</CodeContractsSuggestRequires>
+    <CodeContractsSuggestEnsures>False</CodeContractsSuggestEnsures>
+    <CodeContractsSuggestObjectInvariants>False</CodeContractsSuggestObjectInvariants>
+    <CodeContractsDisjunctiveRequires>False</CodeContractsDisjunctiveRequires>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsBaseLineFile />
+    <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
+    <NoWarn>
+    </NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>..\..\Binary\.NET Framework 4.5\Release\AnyCPU\</OutputPath>
+    <IntermediateOutputPath>obj\.NET Framework 4.5\Release\AnyCPU\</IntermediateOutputPath>
+    <DefineConstants>NETFX45;TRACE;RELEASE</DefineConstants>
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>False</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsInferRequires>False</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
+    <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
+    <CodeContractsSuggestRequires>True</CodeContractsSuggestRequires>
+    <CodeContractsSuggestEnsures>False</CodeContractsSuggestEnsures>
+    <CodeContractsSuggestObjectInvariants>False</CodeContractsSuggestObjectInvariants>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsBaseLineFile />
+    <CodeContractsCacheAnalysisResults>True</CodeContractsCacheAnalysisResults>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Analysis|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>..\..\Binary\.NET Framework 4.5\Analysis\AnyCPU\</OutputPath>
+    <IntermediateOutputPath>obj\.NET Framework 4.5\Analysis\AnyCPU\</IntermediateOutputPath>
+    <DefineConstants>NETFX45;TRACE;DEBUG;CONTRACTS_FULL;CODE_ANALYSIS</DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <DebugType>full</DebugType>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisLogFile>..\..\Binary\.NET Framework 4.5\Analysis\AnyCPU\Elysium.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>True</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>True</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>True</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>True</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>True</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>True</CodeContractsRedundantAssumptions>
+    <CodeContractsInferRequires>True</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>True</CodeContractsInferEnsures>
+    <CodeContractsInferObjectInvariants>True</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
+    <CodeContractsSuggestRequires>True</CodeContractsSuggestRequires>
+    <CodeContractsSuggestEnsures>True</CodeContractsSuggestEnsures>
+    <CodeContractsSuggestObjectInvariants>True</CodeContractsSuggestObjectInvariants>
+    <CodeContractsDisjunctiveRequires>True</CodeContractsDisjunctiveRequires>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions>-outputwarnmasks -maxWarnings 2147483647</CodeContractsExtraAnalysisOptions>
+    <CodeContractsBaseLineFile />
+    <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>DoNotBuild</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>2</CodeContractsAnalysisWarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\Tools and Resources\Assembly dependencies\.NET Framework 4.5\Microsoft.Expression.Drawing.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System.XML" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\.NET Framework 4.5\Elysium\Themes\Generic.xaml">
+      <Link>Themes\Generic.xaml</Link>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Generic.tt</DependentUpon>
+    </Page>
+    <None Include="..\.NET Framework 4.5\Elysium\Themes\Generic.tt">
+      <Link>Themes\Generic.tt</Link>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Generic.xaml</LastGenOutput>
+    </None>
+    <None Include="Properties\AssemblyInfo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AssemblyInfo.cs</LastGenOutput>
+    </None>
+    <None Include="Themes\ApplicationBar\ApplicationBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\Buttons\Button.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\Buttons\ButtonBase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\Buttons\CheckBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\Buttons\CommandButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\Buttons\CommandButtonBase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\Buttons\DropDownCommandButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Themes\Buttons\ToggleCommandButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Themes\Buttons\RadioButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Themes\Buttons\RepeatButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\Buttons\ToggleButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <Page Include="Themes\Brushes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\DarkBrushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <None Include="Themes\Icons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <Page Include="Themes\LightBrushes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <None Include="Themes\Menus\ContextMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\Menus\Menu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Themes\Menus\Submenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Themes\Menus\MenuItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\Ranges\ProgressRing.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Themes\Ranges\ProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\Ranges\Slider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\Ranges\ToggleSwitch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\Scrolls\ScrollBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\Scrolls\ScrollViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\Selectors\ComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\Selectors\ComboBoxItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\Selectors\ListBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\Selectors\ListBoxItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\Selectors\SelectorsItemsBase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\SharedResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Themes\Tabs\TabControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\Tabs\TabItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\TextBoxes\TextBoxesBase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\TextBoxes\PasswordBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\TextBoxes\RichTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\TextBoxes\TextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Themes\TextBoxes\TextBoxBase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="..\.NET Framework 4.5\Elysium\Themes\Windows\Window.xaml">
+      <Link>Themes\Windows\Window.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Themes\Windows\ToolTip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccentBrushes.cs" />
+    <Compile Include="Controls\CommandButtons\Automation\CommandButtonBaseAutomationPeer.cs" />
+    <Compile Include="Controls\Window\WindowCommands.cs" />
+    <Compile Include="Converters\ThicknessConverter.cs" />
+    <Compile Include="Converters\IsGreaterThanConverter.cs" />
+    <Compile Include="Native\Interop.cs" />
+    <Compile Include="Native\Monitor.cs" />
+    <Compile Include="Native\Taskbar.cs" />
+    <Compile Include="Native\TaskbarPosition.cs" />
+    <Compile Include="Native\Window.cs" />
+    <Compile Include="Native\Windows.cs" />
+    <Compile Include="Parameters\Bullet.cs" />
+    <Compile Include="Parameters\Design.cs" />
+    <Compile Include="Extensions\Boxing helpers\NullableBoxingHelper.cs" />
+    <Compile Include="Extensions\Collections\Extensions.cs" />
+    <Compile Include="Extensions\Collections\IObservableDictionary.cs" />
+    <Compile Include="Extensions\Collections\ObservableDictionary.cs" />
+    <Compile Include="Extensions\Collections\ObservableKeyValuePair.cs" />
+    <Compile Include="Extensions\TryHelpers\FreezableExtensions.cs" />
+    <Compile Include="Extensions\Validation helpers\CodeAnalysisExtensions.cs" />
+    <Compile Include="Extensions\Validation helpers\DoubleUtil.cs" />
+    <Compile Include="Extensions\Validation helpers\ThicknessUtil.cs" />
+    <Compile Include="Extensions\Validation helpers\ValidationHelper.cs" />
+    <Compile Include="Controls\ApplicationBar\ApplicationBar.cs" />
+    <Compile Include="Controls\ApplicationBar\ApplicationBarTransitionMode.cs" />
+    <Compile Include="Controls\ApplicationBar\ApplicationBarDock.cs" />
+    <Compile Include="Controls\ApplicationBar\ApplicationBarPanel.cs" />
+    <Compile Include="Controls\ApplicationBar\Automation\ApplicationBarAutomationPeer.cs" />
+    <Compile Include="Controls\CommandButtons\Automation\CommandButtonAutomationPeer.cs" />
+    <Compile Include="Controls\CommandButtons\Automation\DropDownCommandButtonAutomationPeer.cs" />
+    <Compile Include="Controls\CommandButtons\Automation\ToggleCommandButtonAutomationPeer.cs" />
+    <Compile Include="Controls\CommandButtons\CommandButton.cs" />
+    <Compile Include="Controls\CommandButtons\DropDownDirection.cs" />
+    <Compile Include="Controls\CommandButtons\Primitives\CommandButtonBase.cs" />
+    <Compile Include="Controls\CommandButtons\DropDownCommandButton.cs" />
+    <Compile Include="Controls\CommandButtons\ToggleCommandButton.cs" />
+    <Compile Include="Controls\Menus\Automation\SubmenuAutomationPeer.cs" />
+    <Compile Include="Controls\Menus\Submenu.cs" />
+    <Compile Include="Controls\Progress\Automation\ProgressAutomationPeer.cs" />
+    <Compile Include="Controls\Progress\ProgressRing.cs" />
+    <Compile Include="Controls\Progress\ProgressBar.cs" />
+    <Compile Include="Controls\Progress\Primitives\ProgressBase.cs" />
+    <Compile Include="Controls\Progress\ProgressState.cs" />
+    <Compile Include="Controls\ToggleSwitch\Automation\ToggleSwitchAutomationPeer.cs" />
+    <Compile Include="Controls\ToggleSwitch\ToggleSwitch.cs" />
+    <Compile Include="Controls\Window\Window.cs" />
+    <Compile Include="Converters\AngleToCoordinateConverter.cs" />
+    <Compile Include="Converters\DoubleToGridLengthConverter.cs" />
+    <Compile Include="Converters\DoubleToThicknessConverter.cs" />
+    <Compile Include="Converters\GridLengthToDoubleConverter.cs" />
+    <Compile Include="Converters\PercentToAngleConverter.cs" />
+    <Compile Include="Converters\NumberPositiveToNegativeConverter.cs" />
+    <Compile Include="Converters\ThicknessPositiveToNegativeConverter.cs" />
+    <Compile Include="Converters\ThicknessToDoubleConverter.cs" />
+    <Compile Include="Extensions\ReSharper\JetBrains.Annotations.cs" />
+    <Compile Include="Extensions\Boxing helpers\BooleanBoxingHelper.cs" />
+    <Compile Include="Extensions\Boxing helpers\BoxingHelper.cs" />
+    <Compile Include="Extensions\Boxing helpers\NullableBooleanBoxingHelper.cs" />
+    <Compile Include="Extensions\Tree helpers\VisualTreeHelperExtensions.cs" />
+    <Compile Include="Extensions\Tree helpers\LogicalTreeHelperExtensions.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Parameters\CheckBox.cs" />
+    <Compile Include="Parameters\ComboBox.cs" />
+    <Compile Include="Parameters\CommandButtons.cs" />
+    <Compile Include="Parameters\DropDown.cs" />
+    <Compile Include="Parameters\General.cs" />
+    <Compile Include="Parameters\MenuBase.cs" />
+    <Compile Include="Parameters\Progress.cs" />
+    <Compile Include="Parameters\ScrollBar.cs" />
+    <Compile Include="Parameters\Slider.cs" />
+    <Compile Include="Parameters\MenuItem.cs" />
+    <Compile Include="Parameters\TabControl.cs" />
+    <Compile Include="Parameters\TabItem.cs" />
+    <Compile Include="Parameters\ToggleSwitch.cs" />
+    <Compile Include="Parameters\Window.cs" />
+    <Compile Include="Parameters\Manager.cs" />
+    <Compile Include="Manager.cs" />
+    <Compile Include="Exceptions\InvalidStyleException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AssemblyInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Theme.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Documentation\en\Elysium.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Elysium.xml</LastGenOutput>
+    </None>
+    <None Include="Documentation\en\Elysium.xml">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Elysium.tt</DependentUpon>
+    </None>
+    <None Include="Documentation\ru\Elysium.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Elysium.xml</LastGenOutput>
+    </None>
+    <None Include="Documentation\ru\Elysium.xml">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Elysium.tt</DependentUpon>
+    </None>
+    <None Include="Exceptions\InvalidStyleException.en.xml">
+      <DependentUpon>InvalidStyleException.cs</DependentUpon>
+    </None>
+    <None Include="Exceptions\InvalidStyleException.ru.xml">
+      <DependentUpon>InvalidStyleException.cs</DependentUpon>
+    </None>
+    <None Include="AccentBrushes.en.xml">
+      <DependentUpon>AccentBrushes.cs</DependentUpon>
+    </None>
+    <None Include="AccentBrushes.ru.xml">
+      <DependentUpon>AccentBrushes.cs</DependentUpon>
+    </None>
+    <None Include="Theme.en.xml">
+      <DependentUpon>Theme.cs</DependentUpon>
+    </None>
+    <None Include="Theme.ru.xml">
+      <DependentUpon>Theme.cs</DependentUpon>
+    </None>
+    <None Include="Manager.en.xml">
+      <DependentUpon>Manager.cs</DependentUpon>
+    </None>
+    <None Include="Manager.ru.xml">
+      <DependentUpon>Manager.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\Design.en.xml">
+      <DependentUpon>Design.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\Design.ru.xml">
+      <DependentUpon>Design.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\Manager.en.xml">
+      <DependentUpon>Manager.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\Manager.ru.xml">
+      <DependentUpon>Manager.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\General.en.xml">
+      <DependentUpon>General.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\General.ru.xml">
+      <DependentUpon>General.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\Bullet.en.xml">
+      <DependentUpon>Bullet.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\Bullet.ru.xml">
+      <DependentUpon>Bullet.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\CheckBox.en.xml">
+      <DependentUpon>CheckBox.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\CheckBox.ru.xml">
+      <DependentUpon>CheckBox.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\ComboBox.en.xml">
+      <DependentUpon>ComboBox.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\ComboBox.ru.xml">
+      <DependentUpon>ComboBox.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\CommandButtons.en.xml">
+      <DependentUpon>CommandButtons.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\CommandButtons.ru.xml">
+      <DependentUpon>CommandButtons.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\DropDown.en.xml">
+      <DependentUpon>DropDown.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\DropDown.ru.xml">
+      <DependentUpon>DropDown.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\MenuBase.en.xml">
+      <DependentUpon>MenuBase.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\MenuBase.ru.xml">
+      <DependentUpon>MenuBase.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\MenuItem.en.xml">
+      <DependentUpon>MenuItem.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\MenuItem.ru.xml">
+      <DependentUpon>MenuItem.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\Progress.en.xml">
+      <DependentUpon>Progress.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\Progress.ru.xml">
+      <DependentUpon>Progress.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\ScrollBar.en.xml">
+      <DependentUpon>ScrollBar.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\ScrollBar.ru.xml">
+      <DependentUpon>ScrollBar.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\Slider.en.xml">
+      <DependentUpon>Slider.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\Slider.ru.xml">
+      <DependentUpon>Slider.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\TabControl.en.xml">
+      <DependentUpon>TabControl.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\TabControl.ru.xml">
+      <DependentUpon>TabControl.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\TabItem.en.xml">
+      <DependentUpon>TabItem.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\TabItem.ru.xml">
+      <DependentUpon>TabItem.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\ToggleSwitch.en.xml">
+      <DependentUpon>ToggleSwitch.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\ToggleSwitch.ru.xml">
+      <DependentUpon>ToggleSwitch.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\Window.en.xml">
+      <DependentUpon>Window.cs</DependentUpon>
+    </None>
+    <None Include="Parameters\Window.ru.xml">
+      <DependentUpon>Window.cs</DependentUpon>
+    </None>
+    <None Include="Extensions\Collections\IObservableDictionary.en.xml">
+      <DependentUpon>IObservableDictionary.cs</DependentUpon>
+    </None>
+    <None Include="Extensions\Collections\IObservableDictionary.ru.xml">
+      <DependentUpon>IObservableDictionary.cs</DependentUpon>
+    </None>
+    <None Include="Extensions\Collections\ObservableKeyValuePair.en.xml">
+      <DependentUpon>ObservableKeyValuePair.cs</DependentUpon>
+    </None>
+    <None Include="Extensions\Collections\ObservableKeyValuePair.ru.xml">
+      <DependentUpon>ObservableKeyValuePair.cs</DependentUpon>
+    </None>
+    <None Include="Extensions\Collections\ObservableDictionary.en.xml">
+      <DependentUpon>ObservableDictionary.cs</DependentUpon>
+    </None>
+    <None Include="Extensions\Collections\ObservableDictionary.ru.xml">
+      <DependentUpon>ObservableDictionary.cs</DependentUpon>
+    </None>
+    <None Include="Extensions\Threading helpers\DispatcherExtensions.en.xml">
+      <DependentUpon>DispatcherExtensions.cs</DependentUpon>
+    </None>
+    <None Include="Extensions\Threading helpers\DispatcherExtensions.ru.xml">
+      <DependentUpon>DispatcherExtensions.cs</DependentUpon>
+    </None>
+    <None Include="Extensions\Tree helpers\LogicalTreeHelperExtensions.en.xml">
+      <DependentUpon>LogicalTreeHelperExtensions.cs</DependentUpon>
+    </None>
+    <None Include="Extensions\Tree helpers\LogicalTreeHelperExtensions.ru.xml">
+      <DependentUpon>LogicalTreeHelperExtensions.cs</DependentUpon>
+    </None>
+    <None Include="Extensions\Tree helpers\VisualTreeHelperExtensions.en.xml">
+      <DependentUpon>VisualTreeHelperExtensions.cs</DependentUpon>
+    </None>
+    <None Include="Extensions\Tree helpers\VisualTreeHelperExtensions.ru.xml">
+      <DependentUpon>VisualTreeHelperExtensions.cs</DependentUpon>
+    </None>
+    <None Include="Converters\AngleToCoordinateConverter.en.xml">
+      <DependentUpon>AngleToCoordinateConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\AngleToCoordinateConverter.ru.xml">
+      <DependentUpon>AngleToCoordinateConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\PercentToAngleConverter.en.xml">
+      <DependentUpon>PercentToAngleConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\PercentToAngleConverter.ru.xml">
+      <DependentUpon>PercentToAngleConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\IsGreaterThanConverter.en.xml">
+      <DependentUpon>IsGreaterThanConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\IsGreaterThanConverter.ru.xml">
+      <DependentUpon>IsGreaterThanConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\NumberPositiveToNegativeConverter.en.xml">
+      <DependentUpon>NumberPositiveToNegativeConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\NumberPositiveToNegativeConverter.ru.xml">
+      <DependentUpon>NumberPositiveToNegativeConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\ThicknessPositiveToNegativeConverter.en.xml">
+      <DependentUpon>ThicknessPositiveToNegativeConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\ThicknessPositiveToNegativeConverter.ru.xml">
+      <DependentUpon>ThicknessPositiveToNegativeConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\ThicknessConverter.en.xml">
+      <DependentUpon>ThicknessConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\ThicknessConverter.ru.xml">
+      <DependentUpon>ThicknessConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\DoubleToGridLengthConverter.en.xml">
+      <DependentUpon>DoubleToGridLengthConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\DoubleToGridLengthConverter.ru.xml">
+      <DependentUpon>DoubleToGridLengthConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\GridLengthToDoubleConverter.en.xml">
+      <DependentUpon>GridLengthToDoubleConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\GridLengthToDoubleConverter.ru.xml">
+      <DependentUpon>GridLengthToDoubleConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\DoubleToThicknessConverter.en.xml">
+      <DependentUpon>DoubleToThicknessConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\DoubleToThicknessConverter.ru.xml">
+      <DependentUpon>DoubleToThicknessConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\ThicknessToDoubleConverter.en.xml">
+      <DependentUpon>ThicknessToDoubleConverter.cs</DependentUpon>
+    </None>
+    <None Include="Converters\ThicknessToDoubleConverter.ru.xml">
+      <DependentUpon>ThicknessToDoubleConverter.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ApplicationBar\ApplicationBarDock.en.xml">
+      <DependentUpon>ApplicationBarDock.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ApplicationBar\ApplicationBarDock.ru.xml">
+      <DependentUpon>ApplicationBarDock.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ApplicationBar\ApplicationBarTransitionMode.en.xml">
+      <DependentUpon>ApplicationBarTransitionMode.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ApplicationBar\ApplicationBarTransitionMode.ru.xml">
+      <DependentUpon>ApplicationBarTransitionMode.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\DropDownDirection.en.xml">
+      <DependentUpon>DropDownDirection.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\DropDownDirection.ru.xml">
+      <DependentUpon>DropDownDirection.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Progress\ProgressState.en.xml">
+      <DependentUpon>ProgressState.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Progress\ProgressState.ru.xml">
+      <DependentUpon>ProgressState.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ApplicationBar\Automation\ApplicationBarAutomationPeer.en.xml">
+      <DependentUpon>ApplicationBarAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ApplicationBar\Automation\ApplicationBarAutomationPeer.ru.xml">
+      <DependentUpon>ApplicationBarAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\Automation\CommandButtonBaseAutomationPeer.en.xml">
+      <DependentUpon>CommandButtonBaseAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\Automation\CommandButtonBaseAutomationPeer.ru.xml">
+      <DependentUpon>CommandButtonBaseAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\Automation\CommandButtonAutomationPeer.en.xml">
+      <DependentUpon>CommandButtonAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\Automation\CommandButtonAutomationPeer.ru.xml">
+      <DependentUpon>CommandButtonAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\Automation\DropDownCommandButtonAutomationPeer.en.xml">
+      <DependentUpon>DropDownCommandButtonAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\Automation\DropDownCommandButtonAutomationPeer.ru.xml">
+      <DependentUpon>DropDownCommandButtonAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\Automation\ToggleCommandButtonAutomationPeer.en.xml">
+      <DependentUpon>ToggleCommandButtonAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\Automation\ToggleCommandButtonAutomationPeer.ru.xml">
+      <DependentUpon>ToggleCommandButtonAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ToggleSwitch\Automation\ToggleSwitchAutomationPeer.en.xml">
+      <DependentUpon>ToggleSwitchAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ToggleSwitch\Automation\ToggleSwitchAutomationPeer.ru.xml">
+      <DependentUpon>ToggleSwitchAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Progress\Automation\ProgressAutomationPeer.en.xml">
+      <DependentUpon>ProgressAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Progress\Automation\ProgressAutomationPeer.ru.xml">
+      <DependentUpon>ProgressAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Menus\Automation\SubmenuAutomationPeer.en.xml">
+      <DependentUpon>SubmenuAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Menus\Automation\SubmenuAutomationPeer.ru.xml">
+      <DependentUpon>SubmenuAutomationPeer.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ApplicationBar\ApplicationBar.en.xml">
+      <DependentUpon>ApplicationBar.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ApplicationBar\ApplicationBar.ru.xml">
+      <DependentUpon>ApplicationBar.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ApplicationBar\ApplicationBarPanel.en.xml">
+      <DependentUpon>ApplicationBarPanel.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ApplicationBar\ApplicationBarPanel.ru.xml">
+      <DependentUpon>ApplicationBarPanel.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\Primitives\CommandButtonBase.en.xml">
+      <DependentUpon>CommandButtonBase.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\Primitives\CommandButtonBase.ru.xml">
+      <DependentUpon>CommandButtonBase.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\CommandButton.en.xml">
+      <DependentUpon>CommandButton.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\CommandButton.ru.xml">
+      <DependentUpon>CommandButton.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\DropDownCommandButton.en.xml">
+      <DependentUpon>DropDownCommandButton.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\DropDownCommandButton.ru.xml">
+      <DependentUpon>DropDownCommandButton.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\ToggleCommandButton.en.xml">
+      <DependentUpon>ToggleCommandButton.cs</DependentUpon>
+    </None>
+    <None Include="Controls\CommandButtons\ToggleCommandButton.ru.xml">
+      <DependentUpon>ToggleCommandButton.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Menus\Submenu.en.xml">
+      <DependentUpon>Submenu.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Menus\Submenu.ru.xml">
+      <DependentUpon>Submenu.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Progress\Primitives\ProgressBase.en.xml">
+      <DependentUpon>ProgressBase.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Progress\Primitives\ProgressBase.ru.xml">
+      <DependentUpon>ProgressBase.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Progress\ProgressBar.en.xml">
+      <DependentUpon>ProgressBar.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Progress\ProgressBar.ru.xml">
+      <DependentUpon>ProgressBar.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Progress\ProgressRing.en.xml">
+      <DependentUpon>ProgressRing.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Progress\ProgressRing.ru.xml">
+      <DependentUpon>ProgressRing.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ToggleSwitch\ToggleSwitch.en.xml">
+      <DependentUpon>ToggleSwitch.cs</DependentUpon>
+    </None>
+    <None Include="Controls\ToggleSwitch\ToggleSwitch.ru.xml">
+      <DependentUpon>ToggleSwitch.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Window\Window.en.xml">
+      <DependentUpon>Window.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Window\Window.ru.xml">
+      <DependentUpon>Window.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Window\WindowCommands.en.xml">
+      <DependentUpon>WindowCommands.cs</DependentUpon>
+    </None>
+    <None Include="Controls\Window\WindowCommands.ru.xml">
+      <DependentUpon>WindowCommands.cs</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <TextTemplatingPath>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v11.0\TextTemplating\Microsoft.TextTemplating.targets</TextTemplatingPath>
+  </PropertyGroup>
+  <Import Project="$(TextTemplatingPath)" />
+  <PropertyGroup>
+    <PostBuildEvent>"..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4.5\x86\signtool.exe" sign /f "$(DigitalSignatureKeyFile)" $(DigitalSignatureParams) "$(AssemblyName).dll"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

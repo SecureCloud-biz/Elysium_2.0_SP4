@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Parameters.CommandButtons">
+      <summary>
+        Represents a class that manages the settings of the styles of the command buttons.
+      </summary>
+    </type>
+    <property name="P:Elysium.Parameters.CommandButtons.Mask">
+      <summary>
+        Gets or sets the brush which is used for filling the command buttons (such classes, which are inherited from the class <see cref="T:Elysium.Controls.Primitives.CommandButtonBase" />.
+      </summary>
+      <value>A brush, used for filling the command buttons. The default value is null.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.CommandButtons.MaskProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender" />
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender" />
+            </description>
+          </item>
+        </list>
+        This property is set at the theme of the control locally and usually has the value, which is equal to the value of the resource MiddleLightBrush.
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new CommandButton();
+          var currentValue = Parameters.CommandButtons.GetMask(control);
+          Parameters.CommandButtons.SetMask(control, Brushes.Black);
+        </code>
+        <code lang="XAML">
+          &lt;CommandButton params:CommandButtons.Mask="Black"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.CommandButtons.MaskProperty">
+      <summary>
+        Identifies the <see cref="P:Elysium.Parameters.CommandButtons.Mask" /> dependency property.
+      </summary>
+      <value>
+        Identifier for the <see cref="P:Elysium.Parameters.CommandButtons.Mask" /> dependency property.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.CommandButtons.GetMask(Elysium.Controls.Primitives.CommandButtonBase)">
+      <summary>
+        Returns the value of the <see cref="P:Elysium.Parameters.CommandButtons.Mask" /> dependency property for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>A brush, used for filling the command buttons.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <method name="M:Elysium.Parameters.CommandButtons.SetMask(Elysium.Controls.Primitives.CommandButtonBase,System.Windows.Media.SolidColorBrush)">
+      <summary>
+        Sets the value of the <see cref="P:Elysium.Parameters.CommandButtons.Mask" /> dependency property for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">A brush, used for filling the command buttons.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+  </members>
+</doc>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<content xml:space="preserve" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <item id="BlendVersion">Blend для Visual Studio 2012 с Обновление 2</item>
+  <item id="Elysium">Elysium 2.0 RTM for .NET Framework 4.5</item>
+  <item id="Example">Token content</item>
+  <item id="FrameworkDependencyName">.NET Framework 4.5</item>
+  <item id="SHFB"><ddue:externalLink xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5">
+    <ddue:linkText>Sandcastle Help File Builder</ddue:linkText>
+    <ddue:linkUri>http://SHFB.CodePlex.com</ddue:linkUri>
+    </ddue:externalLink></item>
+  <item id="VisualStudioVersion">Visual Studio 2012 RTM</item>
+  <item id="WindowsVersion">Windows Vista SP2 / 7 / 8 или Windows 2008 SP2 / 2008 R2 / 2012</item>
+  <item id="WCFActivation">Windows Communication Foundation Non-HTTP Activation или WCF Services - Named Pipe Activation</item>
+  <item id="CodeContractsVersion">Microsoft Code Contracts tools 1.5.60409.11</item>
+</content>

@@ -1,0 +1,112 @@
+﻿<#@ template language="C#" hostSpecific="true" #>
+<#@ output extension=".xml" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="System.Xml.Linq" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Xml.Linq" #>
+<#
+    var root = Host.ResolvePath(@"..\..\");
+    
+    var paths = new List<string>
+        {
+            @"AccentBrushes.ru.xml",
+            @"Manager.ru.xml",
+            @"Theme.ru.xml",
+
+            @"Exceptions\InvalidStyleException.ru.xml",
+            @"Extensions\Threading helpers\DispatcherExtensions.ru.xml",
+            @"Extensions\Tree helpers\LogicalTreeHelperExtensions.ru.xml",
+            @"Extensions\Tree helpers\VisualTreeHelperExtensions.ru.xml",
+
+            @"Parameters\Bullet.ru.xml",
+            @"Parameters\CheckBox.ru.xml",
+            @"Parameters\ComboBox.ru.xml",
+            @"Parameters\CommandButtons.ru.xml",
+            @"Parameters\Design.ru.xml",
+            @"Parameters\DropDown.ru.xml",
+            @"Parameters\General.ru.xml",
+            @"Parameters\Manager.ru.xml",
+            @"Parameters\MenuBase.ru.xml",
+            @"Parameters\MenuItem.ru.xml",
+            @"Parameters\Progress.ru.xml",
+            @"Parameters\ScrollBar.ru.xml",
+            @"Parameters\Slider.ru.xml",
+            @"Parameters\TabControl.ru.xml",
+            @"Parameters\TabItem.ru.xml",
+            @"Parameters\ToggleSwitch.ru.xml",
+            @"Parameters\Window.ru.xml",
+
+            @"Converters\AngleToCoordinateConverter.ru.xml",
+            @"Converters\DoubleToGridLengthConverter.ru.xml",
+            @"Converters\DoubleToThicknessConverter.ru.xml",
+            @"Converters\IsGreaterThanConverter.ru.xml",
+            @"Converters\GridLengthToDoubleConverter.ru.xml",
+            @"Converters\NumberPositiveToNegativeConverter.ru.xml",
+            @"Converters\PercentToAngleConverter.ru.xml",
+            @"Converters\ThicknessConverter.ru.xml",
+            @"Converters\ThicknessPositiveToNegativeConverter.ru.xml",
+            @"Converters\ThicknessToDoubleConverter.ru.xml",
+
+            @"Controls\ApplicationBar\Automation\ApplicationBarAutomationPeer.ru.xml",
+            @"Controls\CommandButtons\Automation\CommandButtonAutomationPeer.ru.xml",
+            @"Controls\CommandButtons\Automation\CommandButtonBaseAutomationPeer.ru.xml",
+            @"Controls\CommandButtons\Automation\DropDownCommandButtonAutomationPeer.ru.xml",
+
+            @"Controls\Progress\Automation\ProgressAutomationPeer.ru.xml",
+            @"Controls\Menus\Automation\SubmenuAutomationPeer.ru.xml",
+            @"Controls\CommandButtons\Automation\ToggleCommandButtonAutomationPeer.ru.xml",
+            @"Controls\ToggleSwitch\Automation\ToggleSwitchAutomationPeer.ru.xml",
+
+            @"Controls\ApplicationBar\ApplicationBar.ru.xml",
+            @"Controls\ApplicationBar\ApplicationBarDock.ru.xml",
+            @"Controls\ApplicationBar\ApplicationBarPanel.ru.xml",
+            @"Controls\ApplicationBar\ApplicationBarTransitionMode.ru.xml",
+
+            @"Controls\CommandButtons\CommandButton.ru.xml",
+            @"Controls\CommandButtons\DropDownCommandButton.ru.xml",
+            @"Controls\CommandButtons\DropDownDirection.ru.xml",
+            @"Controls\CommandButtons\ToggleCommandButton.ru.xml",
+            @"Controls\CommandButtons\Primitives\CommandButtonBase.ru.xml",
+
+            @"Controls\Progress\ProgressBar.ru.xml",
+            @"Controls\Progress\ProgressRing.ru.xml",
+            @"Controls\Progress\ProgressState.ru.xml",
+            @"Controls\Progress\Primitives\ProgressBase.ru.xml",
+
+            @"Controls\Menus\Submenu.ru.xml",
+
+            @"Controls\ToggleSwitch\ToggleSwitch.ru.xml",
+
+            @"Controls\Window\Window.ru.xml",
+            @"Controls\Window\WindowCommands.ru.xml",
+
+            @"Extensions\Collections\IObservableDictionary.ru.xml",
+            @"Extensions\Collections\ObservableDictionary.ru.xml",
+            @"Extensions\Collections\ObservableKeyValuePair.ru.xml"
+        };
+
+    var documentation = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
+    
+    var doc = new XElement("doc");
+    doc.Add(new XElement("assembly", new XElement("name", "Elysium")));
+    
+    var members = new XElement("members");
+    
+    foreach (var path in paths)
+    {
+        var partOfDocumentation = XDocument.Load(Path.Combine(root, path)).Root.Element("members").Elements();
+        foreach (var declaration in partOfDocumentation)
+        {
+            declaration.Name = "member";
+            members.Add(declaration);
+        }
+    }
+    
+    doc.Add(members);
+    
+    documentation.Add(doc);
+#>
+<#= documentation.Declaration #>
+<#= documentation #>

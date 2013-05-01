@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:System.Collections.ObjectModel.IObservableDictionary`2">
+      <inheritdoc cref="T:System.Collections.Generic.IDictionary`2"/>
+    </type>
+    <property name="P:System.Collections.ObjectModel.IObservableDictionary`2.Item(`0)">
+      <inheritdoc cref="P:System.Collections.Generic.IDictionary`2.Item(`0)"/>
+    </property>
+    <property name="P:System.Collections.ObjectModel.IObservableDictionary`2.Keys">
+      <inheritdoc cref="P:System.Collections.Generic.IDictionary`2.Keys"/>
+    </property>
+    <property name="P:System.Collections.ObjectModel.IObservableDictionary`2.Values">
+      <inheritdoc cref="P:System.Collections.Generic.IDictionary`2.Values"/>
+    </property>
+    <method name="M:System.Collections.ObjectModel.IObservableDictionary`2.ContainsKey(`0)">
+      <inheritdoc cref="M:System.Collections.Generic.IDictionary`2.ContainsKey(`0)"/>
+    </method>
+    <method name="M:System.Collections.ObjectModel.IObservableDictionary`2.Add(`0,`1)">
+      <inheritdoc cref="M:System.Collections.Generic.IDictionary`2.Add(`0,`1)"/>
+    </method>
+    <method name="M:System.Collections.ObjectModel.IObservableDictionary`2.Remove(`0)">
+      <inheritdoc cref="M:System.Collections.Generic.IDictionary`2.Remove(`0)"/>
+    </method>
+    <method name="M:System.Collections.ObjectModel.IObservableDictionary`2.TryGetValue(`0,`1@)">
+      <inheritdoc cref="M:System.Collections.Generic.IDictionary`2.TryGetValue(`0,`1@)"/>
+    </method>
+  </members>
+</doc>

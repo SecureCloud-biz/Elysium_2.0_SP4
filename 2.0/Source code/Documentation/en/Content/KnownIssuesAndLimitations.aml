@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="ca59c898-ccc9-4f97-a76b-e8005496249c" revisionNumber="1">
+  <developerTroubleshootingDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <para>There are several known issues and lemitations of Elysium.</para>
+    </introduction>
+
+    <section address="SDK">
+      <title>Installation Elysium SDK and distribution Elysium with the program</title>
+      <content>
+        <list class="bullet">
+          <listItem>
+            <para>
+              <legacyBold>Elysium Notification System</legacyBold> and <legacyBold>Visual Studio templates</legacyBold> are absent in NuGet package.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <legacyBold>Visual Studio templates</legacyBold> available only for English and Russian versions of Visual Studio
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <legacyBold>Visual Studio templates</legacyBold> are absent in Elysium SDK zip-archive.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              Elysium&apos;s control elements are absent in the toolbox. To add them, go to <legacyBold>Toolbox</legacyBold>, do a right-click and choose a menu item <legacyBold>Choose items...</legacyBold>.
+              Proceed to the tab <legacyBold>.NET Framework components</legacyBold> or to the tab <legacyBold>WPF components</legacyBold> and choose the assembly <legacyBold>Elysium.dll</legacyBold>.
+            </para>
+          </listItem>
+        </list>
+      </content>
+    </section>
+
+    <section address="UI">
+      <title>Control elements</title>
+      <content>
+        <list class="bullet">
+          <listItem>
+            <para>Window&apos;s header can be displayed incorrectly when the mouse&apos;s cursor is on the several upper pixels of the window and following conditions are true:</para>
+            <list class="ordered">
+              <listItem>
+                <para>Classic or contrast theme is used in Windows.</para>
+              </listItem>
+              <listItem>
+                <para>Taskbar hides automatically.</para>
+              </listItem>
+              <listItem>
+                <para>The window is maximized.</para>
+              </listItem>
+            </list>
+          </listItem>
+          <listItem>
+            <para>
+              Control&apos;s styles: <codeEntityReference>T:System.Windows.Controls.TabControl</codeEntityReference> and
+              <codeEntityReference>T:System.Windows.Controls.TabItem</codeEntityReference> work differently in Elysium.
+            </para>
+            <list class="bullet">
+              <listItem>
+                <para>Settings of the style, which are set for the TabControl element, are set for any content of its tabs too.</para>
+              </listItem>
+              <listItem>
+                <para>Settings of the style, which are set fot the TabItem element, are set only for it.</para>
+              </listItem>
+              <listItem>
+                <para>
+                  The style of tab&apos;s header is set by the parameter <codeEntityReference>P:Elysium.Parameters.TabItem.HeaderStyle</codeEntityReference> and
+                  can be changed either for several tabs at once, or for any specified tab (which is strongly not recommended to do). Usually this parameter is set
+                  inside control&apos;s styles TabControl and/or TabItem.
+                </para>
+              </listItem>
+            </list>
+          </listItem>
+        </list>
+      </content>
+    </section>
+
+    <relatedTopics>
+      <link xlink:href="0405d96c-9fcd-487c-b0b3-b7ae711c937b" />
+      <link xlink:href="beb3a93b-e01a-4b19-8966-7cc9738eda11" />
+      <externalLink>
+        <linkText>Choose Toolbox Items Dialog Box (Visual Studio)</linkText>
+        <linkUri>http://msdn.microsoft.com/en-us/library/dyca0t6t.aspx</linkUri>
+      </externalLink>
+      <codeEntityReference>T:Elysium.Controls.Window</codeEntityReference>
+      <codeEntityReference>P:Elysium.Parameters.TabItem.HeaderStyle</codeEntityReference>
+    </relatedTopics>
+  </developerTroubleshootingDocument>
+</topic>

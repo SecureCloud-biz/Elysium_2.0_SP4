@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<doc>
+  <assembly>
+    <name>Elysium.Notifications</name>
+  </assembly>
+  <members>
+    <member name="T:Elysium.Notifications.Animation">
+      <summary>
+        Defines an animation of notification's appearing and fading.
+      </summary>
+    </member>
+    <member name="F:Elysium.Notifications.Animation.None">
+      <summary>
+        No animation.
+      </summary>
+    </member>
+    <member name="F:Elysium.Notifications.Animation.Fade">
+      <summary>
+        A notification changes it's transparency from 0% to 100%.
+      </summary>
+    </member>
+    <member name="F:Elysium.Notifications.Animation.Slide">
+      <summary>
+        A notification gradualyy appears from the specified side of the screen.
+      </summary>
+    </member>
+    <member name="T:Elysium.Notifications.HorizontalPlacement">
+      <summary>
+        Defines, by which side of the screen notifications are aligned.
+      </summary>
+    </member>
+    <member name="F:Elysium.Notifications.HorizontalPlacement.Left">
+      <summary>
+        Notifications are aligned by the left side of the screen.
+      </summary>
+    </member>
+    <member name="F:Elysium.Notifications.HorizontalPlacement.Right">
+      <summary>
+        Notifications are aligned by the right side of the screen.
+      </summary>
+    </member>
+    <member name="T:Elysium.Notifications.NotificationManager">
+      <summary>
+        A notification manager.
+      </summary>
+    </member>
+    <member name="M:Elysium.Notifications.NotificationManager.BeginTryPush(System.String,System.String)">
+      <summary>
+        Displays a notification with a specified header and a remark and returns a control flow without waiting for notification's closing.
+        Returns a value, which corresponds to whether the operation succeeded.
+      </summary>
+      <param name="message">A header of the notification.</param>
+      <param name="remark">A remark.</param>
+      <returns>
+        <see cref="T:System.Windows.Threading.DispatcherOperation" /> instance, which allows you manage execution task thread.
+        <see cref="P:System.Windows.Threading.DispatcherOperation.Result" /> is True, if the notification was displayed successfully, otherwise false.
+      </returns>
+      <exception cref="T:System.ArgumentException">
+        Parameter <paramref name="message" />  has a value = null or it's an empty string or it consists of spaces.
+      </exception>
+      <requires exception="T:System.ArgumentException">message != null</requires>
+    </member>
+    <member name="M:Elysium.Notifications.NotificationManager.TryPushAsync(System.String,System.String)">
+      <summary>
+        Displays a notification with a specified header and a remark and returns a control flow without waiting for notification's closing.
+        Returns a value, which corresponds to whether the operation succeeded.
+      </summary>
+      <param name="message">A header of the notification.</param>
+      <param name="remark">A remark.</param>
+      <returns>
+        <see cref="T:System.Threading.Tasks.Task" /> instance, which allows you manage execution task thread.
+        <see cref="T:System.Threading.Tasks.Task" /> incapsulated value is True, if the notification was displayed successfully, otherwise false.
+      </returns>
+      <exception cref="T:System.ArgumentException">
+        Parameter <paramref name="message" />  has a value = null or it's an empty string or it consists of spaces.
+      </exception>
+      <requires exception="T:System.ArgumentException">message != null</requires>
+    </member>
+    <member name="M:Elysium.Notifications.NotificationManager.TryPush(System.String,System.String)">
+      <summary>
+        Displays a notification with a specified header and a remark and returns a control flow without waiting for notification's closing.
+        Returns a value, which corresponds to whether the operation succeeded.
+      </summary>
+      <param name="message">A header of the notification.</param>
+      <param name="remark">A remark.</param>
+      <returns>True, if the notification was displayed successfully, otherwise false.</returns>
+      <exception cref="T:System.ArgumentException">
+        Parameter <paramref name="message" />  has a value = null or it's an empty string or it consists of spaces.
+      </exception>
+      <requires exception="T:System.ArgumentException">message != null</requires>
+    </member>
+    <member name="M:Elysium.Notifications.NotificationManager.BeginPush(System.String,System.String)">
+      <summary>
+        Displays a notification with a specified header and a remark and returns a control flow without waiting for notification's closing.
+      </summary>
+      <param name="message">A header of the notification.</param>
+      <param name="remark">A remark.</param>
+      <returns>
+        <see cref="T:System.Windows.Threading.DispatcherOperation" /> instance, which allows you manage execution task thread.</returns>
+      <exception cref="T:System.ArgumentException">
+        Parameter <paramref name="message" /> has a value = null or it's an empty string or it consists of spaces.
+      </exception>
+      <exception cref="T:Elysium.Notifications.ServerUnavailableException">
+        Notification's server is inaccessible.
+      </exception>
+      <exception cref="T:Elysium.Notifications.PushNotificationFailedException">
+        While displaying the notification an unknown error happened.
+      </exception>
+      <requires exception="T:System.ArgumentException">message != null</requires>
+    </member>
+    <member name="M:Elysium.Notifications.NotificationManager.PushAsync(System.String,System.String)">
+      <summary>
+        Displays a notification with a specified header and a remark and returns a control flow without waiting for notification's closing.
+      </summary>
+      <param name="message">A header of the notification.</param>
+      <param name="remark">A remark.</param>
+      <returns>
+        <see cref="T:System.Threading.Tasks.Task" /> instance, which allows you manage execution task thread.</returns>
+      <exception cref="T:System.ArgumentException">
+        Parameter <paramref name="message" /> has a value = null or it's an empty string or it consists of spaces.
+      </exception>
+      <exception cref="T:Elysium.Notifications.ServerUnavailableException">
+        Notification's server is inaccessible.
+      </exception>
+      <exception cref="T:Elysium.Notifications.PushNotificationFailedException">
+        While displaying the notification an unknown error happened.
+      </exception>
+      <requires exception="T:System.ArgumentException">message != null</requires>
+    </member>
+    <member name="M:Elysium.Notifications.NotificationManager.Push(System.String,System.String)">
+      <summary>
+        Displays a notification with a specified header and a remark and returns a control flow without waiting for notification's closing.
+      </summary>
+      <param name="message">A header of the notification.</param>
+      <param name="remark">A remark.</param>
+      <exception cref="T:System.ArgumentException">
+        Parameter <paramref name="message" /> has a value = null or it's an empty string or it consists of spaces.
+      </exception>
+      <exception cref="T:Elysium.Notifications.ServerUnavailableException">
+        Notification's server is inaccessible.
+      </exception>
+      <exception cref="T:Elysium.Notifications.PushNotificationFailedException">
+        While displaying the notification an unknown error happened.
+      </exception>
+      <requires exception="T:System.ArgumentException">message != null</requires>
+    </member>
+    <member name="T:Elysium.Notifications.VerticalPlacement">
+      <summary>
+        Defines, by which side of the screen notifications are aligned.
+      </summary>
+    </member>
+    <member name="F:Elysium.Notifications.VerticalPlacement.Top">
+      <summary>
+        Notifications are aligned by the top side of the screen.
+      </summary>
+    </member>
+    <member name="F:Elysium.Notifications.VerticalPlacement.Bottom">
+      <summary>
+        Notifications are aligned by the bottom side of the screen.
+      </summary>
+    </member>
+    <member name="T:Elysium.Notifications.PushNotificationFailedException">
+      <summary>
+        An exception, which is generated when there is a fault due to displaying a notification.
+      </summary>
+    </member>
+    <member name="M:Elysium.Notifications.PushNotificationFailedException.#ctor">
+      <inheritdoc cref="M:System.Exception.#ctor" />
+    </member>
+    <member name="M:Elysium.Notifications.PushNotificationFailedException.#ctor(System.String)">
+      <inheritdoc cref="M:System.Exception.#ctor(System.String)" />
+    </member>
+    <member name="M:Elysium.Notifications.PushNotificationFailedException.#ctor(System.String,System.Exception)">
+      <inheritdoc cref="M:System.Exception.#ctor(System.String,System.Exception)" />
+    </member>
+    <member name="M:Elysium.Notifications.PushNotificationFailedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <inheritdoc cref="M:System.Exception.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" />
+    </member>
+    <member name="T:Elysium.Notifications.ServerUnavailableException">
+      <summary>
+        An exception, which is generated when there is a fault due to attempt of connection to notification server.
+      </summary>
+    </member>
+    <member name="M:Elysium.Notifications.ServerUnavailableException.#ctor">
+      <inheritdoc cref="M:System.Exception.#ctor" />
+    </member>
+    <member name="M:Elysium.Notifications.ServerUnavailableException.#ctor(System.String)">
+      <inheritdoc cref="M:System.Exception.#ctor(System.String)" />
+    </member>
+    <member name="M:Elysium.Notifications.ServerUnavailableException.#ctor(System.String,System.Exception)">
+      <inheritdoc cref="M:System.Exception.#ctor(System.String,System.Exception)" />
+    </member>
+    <member name="M:Elysium.Notifications.ServerUnavailableException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <inheritdoc cref="M:System.Exception.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" />
+    </member>
+  </members>
+</doc>

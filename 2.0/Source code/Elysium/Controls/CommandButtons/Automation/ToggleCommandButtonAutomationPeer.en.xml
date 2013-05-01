@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer">
+      <summary>
+        Comes as a provider of the type <see cref="T:Elysium.Controls.ToggleCommandButton" /> for the UI Automation technology.
+      </summary>
+    </type>
+    <method name="M:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer.#ctor(Elysium.Controls.ToggleCommandButton)">
+      <summary>
+        Creates a new instance of the class <see cref="T:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer" />.
+      </summary>
+      <param name="owner">
+        An instance of the class <see cref="T:Elysium.Controls.ToggleCommandButton" />, for which the provider will be used.
+      </param>
+    </method>
+    <method name="M:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer.GetClassNameCore">
+      <summary>
+        Returns such a class name <see cref="T:Elysium.Controls.ToggleCommandButton" />, which is connected with current object<see cref="T:Elysium.Controls.Automation.ApplicationBarAutomationPeer" />. This method is called by <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetClassName" />.
+      </summary>
+      <returns>
+        A string with a value "ToggleCommandButton".
+      </returns>
+      <ensures>Being returned string is always "ToggleCommandButton"</ensures>
+    </method>
+    <method name="M:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer.GetPattern(System.Windows.Automation.Peers.PatternInterface)">
+      <summary>
+        Returns a template of the control for an instance of the control <see cref="T:Elysium.Controls.ToggleCommandButton" />, which is connected with current object <see cref="T:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer" />.
+      </summary>
+      <param name="patternInterface">
+        A value of the enumeration <see cref="T:System.Windows.Automation.Peers.PatternInterface" />.
+      </param>
+      <returns>
+        If the parameter <paramref name="patternInterface" /> has a value <see cref="F:System.Windows.Automation.Peers.PatternInterface.Toggle" />,
+        the method will return "this", otherwise "null" will be returned.
+      </returns>
+    </method>
+    <method name="M:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer.Toggle">
+      <summary>
+        Toggles the state of the control.
+      </summary>
+      <exception cref="T:System.Windows.Automation.ElementNotEnabledException">The control is disabled.</exception>
+    </method>
+    <property name="P:Elysium.Controls.Automation.ToggleCommandButtonAutomationPeer.ToggleState">
+      <summary>Returns a state of the control (from the number of states, in which the control can toggle)</summary>
+      <value>
+        One from the values of the enumeration <see cref="T:System.Windows.Automation.ToggleState" />.
+      </value>
+    </property>
+  </members>
+</doc>

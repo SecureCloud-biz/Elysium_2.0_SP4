@@ -1,0 +1,90 @@
+﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
+<#@ output extension=".xaml" #>
+<#@ assembly Name="System.Core" #>
+<#@ assembly Name="System.Xml" #>
+<#@ assembly Name="System.Xml.Linq" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Xml.Linq" #>
+<#
+    var root = Host.ResolvePath(@"..\..\..\Elysium\Themes\");
+
+    var output = string.Empty;
+
+    var genericDictionary = XDocument.Parse(
+    @"<ResourceDictionary xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation""
+                          xmlns:x=""http://schemas.microsoft.com/winfx/2006/xaml""
+                          xmlns:ed=""http://schemas.microsoft.com/expression/2010/drawing""
+                          xmlns:shell=""http://schemas.microsoft.com/winfx/2006/xaml/presentation/shell""
+                          xmlns:system=""clr-namespace:System;assembly=mscorlib""
+                          xmlns:params=""clr-namespace:Elysium.Parameters""
+                          xmlns:primitives=""clr-namespace:Elysium.Controls.Primitives""
+                          xmlns:controls=""clr-namespace:Elysium.Controls""
+                          xmlns:converters=""clr-namespace:Elysium.Converters"">
+          <ResourceDictionary.MergedDictionaries>
+              <ResourceDictionary Source=""/Elysium;component/Themes/Brushes.xaml""/>
+              <ResourceDictionary Source=""/Elysium;component/Themes/LightBrushes.xaml""/>
+          </ResourceDictionary.MergedDictionaries>
+      </ResourceDictionary>");
+
+    var dictionarySources = new List<string>
+        {
+            @"SharedResources.xaml",
+            @"Icons.xaml",
+
+            @"Buttons\ButtonBase.xaml",
+            @"Buttons\Button.xaml",
+            @"Buttons\RepeatButton.xaml",
+            @"Buttons\ToggleButton.xaml",
+            @"Buttons\CheckBox.xaml",
+            @"Buttons\RadioButton.xaml",
+
+            @"Scrolls\ScrollBar.xaml",
+            @"Scrolls\ScrollViewer.xaml",
+
+            @"TextBoxes\TextBoxesBase.xaml",
+            @"TextBoxes\TextBoxBase.xaml",
+            @"TextBoxes\TextBox.xaml",
+            @"TextBoxes\RichTextBox.xaml",
+            @"TextBoxes\PasswordBox.xaml",
+
+            @"Selectors\SelectorsItemsBase.xaml",
+            @"Selectors\ListBoxItem.xaml",
+            @"Selectors\ComboBoxItem.xaml",
+            @"Selectors\ListBox.xaml",
+            @"Selectors\ComboBox.xaml",
+
+            @"Ranges\ProgressBar.xaml",
+            @"Ranges\ProgressRing.xaml",
+            @"Ranges\Slider.xaml",
+            @"Ranges\ToggleSwitch.xaml",
+
+            @"Tabs\TabItem.xaml",
+            @"Tabs\TabControl.xaml",
+
+            @"Menus\MenuItem.xaml",
+            @"Menus\Menu.xaml",
+            @"Menus\Submenu.xaml",
+            @"Menus\ContextMenu.xaml",
+
+            @"Buttons\CommandButtonBase.xaml",
+            @"Buttons\commandButton.xaml",
+            @"Buttons\ToggleCommandButton.xaml",
+            @"Buttons\DropDownCommandButton.xaml",
+            @"ApplicationBar\ApplicationBar.xaml",
+            
+            @"Windows\ToolTip.xaml",
+            @"..\..\.NET Framework 4\Elysium\Themes\Windows\Window.xaml"
+        };
+
+    var mergedDictionaries = XName.Get("ResourceDictionary.MergedDictionaries", @"http://schemas.microsoft.com/winfx/2006/xaml/presentation");
+    foreach (var dictionarySource in dictionarySources)
+    {
+        var dictionary = XDocument.Load(Path.Combine(root, dictionarySource));
+        genericDictionary.Root.Add(dictionary.Root.Elements().Where(element => element.Name != mergedDictionaries));
+    }
+
+    output = genericDictionary.ToString(SaveOptions.None);
+#>
+<#= output #>

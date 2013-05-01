@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="a0189101-b73b-4662-85b1-0176fdfab7df" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+                               xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <para>
+        Elysium contains <legacyBold>Notification system</legacyBold> which consists of <legacyItalic>API set </legacyItalic> and special <legacyItalic>Windows service</legacyItalic>.
+        This system allows to display on the screen <legacyItalic>a little pop-up window with some information</legacyItalic>, which is called <legacyBold>notification</legacyBold>.
+      </para>
+    </introduction>
+
+    <section>
+      <title>Technical aspects</title>
+      <content>
+        <para>
+          <legacyBold>Elysium Notification System</legacyBold> consists of two parts:
+        </para>
+        <list class="ordered">
+          <listItem>
+            <para>API set, which is a wrapper of the client of the <legacyBold>service Windows Communication Foundation</legacyBold></para>
+          </listItem>
+          <listItem>
+            <para>and a Windows service, which is a wrapper of the server&apos;s part of the Windows Communication Foundation service.</para>
+          </listItem>
+        </list>
+        <alert class="important">
+          <para>
+            <legacyBold>Windows Communication Foundation Service</legacyBold> used by Elysium Notification System <legacyBold>is local</legacyBold>
+            (both client and server parts of the WCF service are on the same computer, where the program starts) and therefore there is no need in connection to the Internet or some local network.
+          </para>
+        </alert>
+        <para>Client&apos;s API is responsible for displaying windows with notifications, slot&apos;s control is under server&apos;s supervision.</para>
+        <para>
+          Notifications system <legacyItalic>divides the screen into many parts</legacyItalic> by <legacyBold>grid</legacyBold>. Any such part is called <legacyBold>a slot</legacyBold>.
+          According to the preferences, the grid <legacyItalic>is placed either</legacyItalic>&#xa0;<legacyItalic>on the left side</legacyItalic> or <legacyItalic>on the right side</legacyItalic> of the screen,
+          and <legacyItalic>enumeration of the parts</legacyItalic> starts <legacyItalic>from the top of the screen</legacyItalic> or <legacyItalic>from the bottom</legacyItalic>.
+          By default the grid is placed <legacyItalic>on the right side</legacyItalic>, enumeration starts <legacyItalic>from the top of the screen</legacyItalic>.
+          All <legacyBold>slots have same size</legacyBold>; between slots, between slot and the side of the screen there is <legacyBold>a gap</legacyBold>.
+          By default slots sized as <legacyItalic>480х64 pixels</legacyItalic>, the gap is <legacyItalic>10 pixels.</legacyItalic>.
+        </para>
+        <alert class="caution">
+          <para>
+            At the moment you can not change this preferences. It&apos;s planned to add such a feature, which will allow user to change the preferences of notification&apos;s displaying, but only end
+            user will be able to change preferences and they will be changed for all application simultaneously.  Developer will never be able to change notification&apos;s preferences for his application.
+          </para>
+        </alert>
+        <para>
+          Before displaying of the notification, the system has to request a slot for it. <legacyBold>First available slot</legacyBold> is a slot, which does not have a notification at the moment and
+          has the lowest sequence number. A notification is always displayed in the first available slot. So, if slots #1, #3 and #4 are occupied, next notification will be displayed in the slot with number 2, not in the #5.
+        </para>
+        <para>
+          Technically, <legacyBold>a request for the slot</legacyBold> is executed by the following pattern. A client of the WCF service sends a request to the server part of the service,
+          telling it the parameters of the working part of the screen, where the application is displayed (Primary Display Monitor). A request has following parameters:
+        </para>
+        <table>
+          <tableHeader>
+            <row>
+              <entry>
+                <para>A name of the parameter</para>
+              </entry>
+              <entry>
+                <para>A value of the parameter</para>
+              </entry>
+            </row>
+          </tableHeader>
+          <row>
+            <entry>
+              <para>An address of the endpoint of the WCF service</para>
+            </entry>
+            <entry>
+              <para>net.pipe://localhost/elysium/v<legacyItalic>Elysium_Version</legacyItalic>/notifications</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Connection type</para>
+            </entry>
+            <entry>
+              <para>Named channels (names pipes)</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Transaction protocol</para>
+            </entry>
+            <entry>
+              <para>OLE</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Maximum amount of the connection</para>
+            </entry>
+            <entry>
+              <para>128</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>Timeout time</para>
+            </entry>
+            <entry>
+              <para>20 seconds (2 seconds for the opening of the channel, 8 seconds for the trasmitting, 8 seconds  for the receiving data from the service, 2 seconds for the closing of the channel)</para>
+            </entry>
+          </row>
+        </table>
+        <alert class="important">
+          <para>
+            All <legacyBold>operations with the slot</legacyBold> - <legacyBold>are asynchronous.</legacyBold>. An operation <legacyBold>of the displaying of the notification</legacyBold>
+            is <legacyBold>synchronous</legacyBold> and <legacyBold>is run in the main thread of the UI</legacyBold>, so such big amount of time for the time-out is needed.
+          </para>
+        </alert>
+        <para>
+          The client receives an answer for the request, which contains a structured data about  <legacyBold>slot&apos;s number</legacyBold>
+          (it&apos;s needed for the proper release of the slot, it will be described further) <legacyBold>lifespan of the slot</legacyBold> (the amount of time, when the notification is displayed; the client can ignore this value),
+          <legacyBold>slot&apos;s dimensions</legacyBold>, it&apos;s <legacyBold>start and finish positions</legacyBold> and <legacyBold>animation,</legacyBold> which can be applied to the slot.
+          By default, lifespan time of the slot is <legacyItalic>10 seconds,</legacyItalic>animation type - <legacyItalic>rolling from the side of the screen.</legacyItalic>.
+        </para>
+        <para>
+          After getting the slot, the client displays the notification for the given period of time with the set animation and theme settings (theme settings were set for the whole application).
+          When the lifespan time is finished, client&apos;s API will hide it and execute <legacyBold>slot&apos;s freeing</legacyBold>, using it&apos;s sequence number, which has been got previously.
+        </para>
+      </content>
+    </section>
+
+    <relatedTopics>
+      <codeEntityReference>N:Elysium.Notifications</codeEntityReference>
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

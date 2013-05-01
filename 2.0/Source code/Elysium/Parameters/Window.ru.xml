@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Parameters.Window">
+      <summary>
+        Представляет класс, управляющий основными настройками стилей элементов управления.
+      </summary>
+    </type>
+    <property name="P:Elysium.Parameters.Window.ResizeBorderThickness">
+      <summary>
+        Возвращает или задаёт толщину рамки изменения размера элемента управления <see cref="T:Elysium.Controls.Window"/>.
+      </summary>
+      <value>
+        Толщина рамки изменения размера окна. Значение по умолчанию — 3px.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Window.ResizeBorderThicknessProperty"/>
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange"/>
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Elysium.Controls.Window();
+          var currentValue = Parameters.Window.GetResizeBorderThickness(control);
+          Parameters.Window.SetResizeBorderThickness(control, new Thickness(3d));
+        </code>
+        <code lang="XAML">
+          &lt;metro:Window params:Window.ResizeBorderThickness="3"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.Window.ResizeBorderThicknessProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Window.ResizeBorderThickness"/>.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Window.ResizeBorderThickness"/>.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.Window.GetResizeBorderThickness(Elysium.Controls.Window)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Window.ResizeBorderThickness"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Толщина рамки изменения размера окна.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>Возвращаемое значение всегда является положительным.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.Window.SetResizeBorderThickness(Elysium.Controls.Window,System.Windows.Thickness)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Window.ResizeBorderThickness"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Толщина рамки изменения размера окна.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.Window.MinimizeButtonToolTip">
+      <summary>
+        Возвращает или задаёт всплывающую подсказку кнопки "Свернуть" элемента управления <see cref="T:Elysium.Controls.Window"/>.
+      </summary>
+      <value>
+        Всплывающая подсказка. Значение по умолчанию — null.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Window.MinimizeButtonToolTipProperty"/>
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None"/>
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Elysium.Controls.Window();
+          var currentValue = Parameters.Window.GetMinimizeButtonToolTip(control);
+          Parameters.Window.SetMinimizeButtonToolTip(control, new Tooltip { Content = "Minimize" });
+        </code>
+        <code lang="XAML">
+          &lt;metro:Window params:Window.MinimizeButtonToolTip="Minimize"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.Window.MinimizeButtonToolTipProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Window.MinimizeButtonToolTip"/>.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Window.MinimizeButtonToolTip"/>.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.Window.GetMinimizeButtonToolTip(Elysium.Controls.Window)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Window.MinimizeButtonToolTip"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Всплывающая подсказка кнопки "Свернуть".</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <method name="M:Elysium.Parameters.Window.SetMinimizeButtonToolTip(Elysium.Controls.Window,System.Object)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Window.MinimizeButtonToolTip"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Всплывающая подсказка кнопки "Свернуть".</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.Window.MaximizeButtonToolTip">
+      <summary>
+        Возвращает или задаёт всплывающую подсказку кнопки "Развернуть" элемента управления <see cref="T:Elysium.Controls.Window"/>.
+      </summary>
+      <value>
+        Всплывающая подсказка. Значение по умолчанию — null.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Window.MaximizeButtonToolTipProperty"/>
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None"/>
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Elysium.Controls.Window();
+          var currentValue = Parameters.Window.GetMaximizeButtonToolTip(control);
+          Parameters.Window.SetMaximizeButtonToolTip(control, new Tooltip { Content = "Maximize" });
+        </code>
+        <code lang="XAML">
+          &lt;metro:Window params:Window.MaximizeButtonToolTip="Maximize"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.Window.MaximizeButtonToolTipProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Window.MaximizeButtonToolTip"/>.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Window.MaximizeButtonToolTip"/>.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.Window.GetMaximizeButtonToolTip(Elysium.Controls.Window)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Window.MaximizeButtonToolTip"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Всплывающая подсказка кнопки "Развернуть".</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <method name="M:Elysium.Parameters.Window.SetMaximizeButtonToolTip(Elysium.Controls.Window,System.Object)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Window.MaximizeButtonToolTip"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Всплывающая подсказка кнопки "Развернуть".</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.Window.RestoreButtonToolTip">
+      <summary>
+        Возвращает или задаёт всплывающую подсказку кнопки "Восстановить" элемента управления <see cref="T:Elysium.Controls.Window"/>.
+      </summary>
+      <value>
+        Всплывающая подсказка. Значение по умолчанию — null.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Window.RestoreButtonToolTipProperty"/>
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None"/>
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Elysium.Controls.Window();
+          var currentValue = Parameters.Window.GetRestoreButtonToolTip(control);
+          Parameters.Window.SetRestoreButtonToolTip(control, new Tooltip { Content = "Restore" });
+        </code>
+        <code lang="XAML">
+          &lt;metro:Window params:Window.RestoreButtonToolTip="Restore"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.Window.RestoreButtonToolTipProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Window.RestoreButtonToolTip"/>.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Window.RestoreButtonToolTip"/>.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.Window.GetRestoreButtonToolTip(Elysium.Controls.Window)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Window.RestoreButtonToolTip"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Всплывающая подсказка кнопки "Восстановить".</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <method name="M:Elysium.Parameters.Window.SetRestoreButtonToolTip(Elysium.Controls.Window,System.Object)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Window.RestoreButtonToolTip"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Всплывающая подсказка кнопки "Восстановить".</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.Window.CloseButtonToolTip">
+      <summary>
+        Возвращает или задаёт всплывающую подсказку кнопки "Закрыть" элемента управления <see cref="T:Elysium.Controls.Window"/>.
+      </summary>
+      <value>
+        Всплывающая подсказка. Значение по умолчанию — null.
+      </value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Window.CloseButtonToolTipProperty"/>
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.None"/>
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Elysium.Controls.Window();
+          var currentValue = Parameters.Window.GetCloseButtonToolTip(control);
+          Parameters.Window.SetCloseButtonToolTip(control, new Tooltip { Content = "Close" });
+        </code>
+        <code lang="XAML">
+          &lt;metro:Window params:Window.CloseButtonToolTip="Close"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.Window.CloseButtonToolTipProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Window.CloseButtonToolTip"/>.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Window.CloseButtonToolTip"/>.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.Window.GetCloseButtonToolTip(Elysium.Controls.Window)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Window.CloseButtonToolTip"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Всплывающая подсказка кнопки "Закрыть".</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <method name="M:Elysium.Parameters.Window.SetCloseButtonToolTip(Elysium.Controls.Window,System.Object)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Window.CloseButtonToolTip"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Всплывающая подсказка кнопки "Закрыть".</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+  </members>
+</doc>

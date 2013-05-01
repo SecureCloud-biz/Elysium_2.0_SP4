@@ -1,0 +1,50 @@
+﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
+<#@ output extension=".cs" #>
+<#@ assembly Name="System.Core" #>
+<#@ include file="..\..\Include\security.ttinclude" #>
+<#@ include file="..\..\Include\Versions.ttinclude" #>
+using System;
+using System.Reflection;
+using System.Resources;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Security;
+using System.Windows;
+using System.Windows.Markup;
+
+[assembly: AssemblyTitle("Elysium.dll")]
+[assembly: AssemblyDescription("Metro style theme for WPF")]
+[assembly: AssemblyProduct("Elysium")]
+[assembly: AssemblyCopyright("<#= Copyright #>")]
+
+[assembly: SecurityRules(SecurityRuleSet.Level2, SkipVerificationInFullTrust = true)]
+[assembly: AllowPartiallyTrustedCallers]
+#if NETFX4
+[assembly: InternalsVisibleTo("Elysium.Design.10.0, PublicKey=<#= PublicKey #>")]
+#endif
+[assembly: InternalsVisibleTo("Elysium.Design.11.0, PublicKey=<#= PublicKey #>")]
+[assembly: InternalsVisibleTo("Elysium.Notifications, PublicKey=<#= PublicKey #>")]
+[assembly: InternalsVisibleTo("Elysium.Notifications.Server, PublicKey=<#= PublicKey #>")]
+
+[assembly: ComVisible(false)]
+[assembly: CLSCompliant(true)]
+
+[assembly: XmlnsDefinition("http://schemas.codeplex.com/elysium", "Elysium")]
+[assembly: XmlnsDefinition("http://schemas.codeplex.com/elysium", "Elysium.Controls")]
+[assembly: XmlnsDefinition("http://schemas.codeplex.com/elysium", "Elysium.Converters")]
+[assembly: XmlnsDefinition("http://schemas.codeplex.com/elysium/params", "Elysium.Parameters")]
+[assembly: XmlnsPrefix("http://schemas.codeplex.com/elysium", "metro")]
+[assembly: XmlnsPrefix("http://schemas.codeplex.com/elysium/params", "params")]
+
+[assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
+
+[assembly: NeutralResourcesLanguage("en-us")]
+
+#if NETFX4
+[assembly: AssemblyVersion("<#= Versions.NETFX4.Elysium #>")]
+[assembly: AssemblyFileVersion("<#= Versions.NETFX4.Elysium #>")]
+#elif NETFX45
+[assembly: AssemblyVersion("<#= Versions.NETFX45.Elysium #>")]
+[assembly: AssemblyFileVersion("<#= Versions.NETFX45.Elysium #>")]
+#endif
+[assembly: AssemblyInformationalVersion("<#= Version #>")]

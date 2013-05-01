@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+
+  <?ifdef NETFX4 ?>
+    <?define Prerequisites.Microsoft.Expression.Drawing.Id = "25B65C82-5476-437E-8886-8F0DDFFC7FE8" ?>
+    <?define Core.Id = "DE45289E-19F2-414F-AAAC-953F928D8233" ?>
+    <?define Notifications.Id = "6C8AF080-7695-4543-92CA-4A1AE67DD781" ?>
+    <?define Notifications.Server.Id = "E04137B6-DE75-4520-AB29-21407B099EB9" ?>
+  <?endif ?>
+  <?ifdef NETFX45 ?>
+    <?define Prerequisites.Microsoft.Expression.Drawing.Id = "64AD657A-8E1E-4016-94D0-AD68516C2E31" ?>
+    <?define Core.Id = "62F5CE3D-38C9-4EC2-BA65-FDD4F9F6F385" ?>
+    <?define Notifications.Id = "4BCEFF6F-764D-4B6C-A32D-4A8362AEC923" ?>
+    <?define Notifications.Server.Id = "16B0947A-2C87-440A-B1A8-392C4275A610" ?>
+  <?endif ?>
+  
+</Include>

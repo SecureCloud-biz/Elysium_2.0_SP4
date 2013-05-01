@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Parameters.Bullet">
+      <summary>
+        Represents a class, which manages the settings of the flag in following controls: <see cref="T:System.Windows.Controls.CheckBox"/>
+        and <see cref="T:System.Windows.Controls.RadioButton"/>.
+      </summary>
+    </type>
+    <property name="P:Elysium.Parameters.Bullet.DecoratorSize">
+      <summary>
+        Gets or sets the size of the area where the marker is located.
+      </summary>
+      <value>The size of the area where the marker is located. The default value is 16 px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Bullet.DecoratorSizeProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new CheckBox();
+          var currentValue = Parameters.GetDecoratorSize(control);
+          Parameters.SetDecoratorSize(control, 16d);
+        </code>
+        <code lang="XAML">
+          &lt;CheckBox params:Bullet.DecoratorSize="16px"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.Bullet.DecoratorSizeProperty">
+      <summary>
+        Identifies the <see cref="P:Elysium.Parameters.Bullet.DecoratorSize" /> dependency property.
+      </summary>
+      <value>
+        Identifier for the <see cref="P:Elysium.Parameters.Bullet.DecoratorSize" /> dependency property.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.Bullet.GetDecoratorSize(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the <see cref="P:Elysium.Parameters.Bullet.DecoratorSize" /> dependency property for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>The size of the area where the marker is located.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.Bullet.SetDecoratorSize(System.Windows.DependencyObject,System.Double)">
+      <summary>
+        Sets the value of the <see cref="P:Elysium.Parameters.Bullet.DecoratorSize" /> dependency property for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">The size of the area, where the marker is located.</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.Bullet.Size">
+      <summary>
+        Gets or sets the size of the marker in "indeterminate" state.
+      </summary>
+      <value>The size of the marker when state is "indeterminate". The default value is 8px.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Identifier field</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Bullet.SizeProperty" />
+            </description>
+          </item>
+          <item>
+            <term>Metadata</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure" />
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new CheckBox();
+          var currentValue = Parameters.GetSize(control);
+          Parameters.SetSize(control, 8d);
+        </code>
+        <code lang="XAML">
+          &lt;CheckBox params:Bullet.Size="8px"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.Bullet.SizeProperty">
+      <summary>
+        Identifies the <see cref="P:Elysium.Parameters.Bullet.Size" /> dependency property.
+      </summary>
+      <value>
+        Identifier for the <see cref="P:Elysium.Parameters.Bullet.Size" /> dependency property.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.Bullet.GetSize(System.Windows.DependencyObject)">
+      <summary>
+        Returns the value of the <see cref="P:Elysium.Parameters.Bullet.Size" /> dependency property for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being got.</param>
+      <returns>The size of the marker when state is "indeterminate".</returns>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+      <ensures>The being returned value is positive.</ensures>
+    </method>
+    <method name="M:Elysium.Parameters.Bullet.SetSize(System.Windows.DependencyObject,System.Double)">
+      <summary>
+        Sets the value of the <see cref="P:Elysium.Parameters.Bullet.Size" /> dependency property for the specified control.
+      </summary>
+      <param name="obj">The  control, for which the value of the property is being set.</param>
+      <param name="value">The size of the marker when state is "indeterminate".</param>
+      <exception cref="T:System.ArgumentNullException">
+        The parameter <paramref name="obj" /> has a value null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+  </members>
+</doc>

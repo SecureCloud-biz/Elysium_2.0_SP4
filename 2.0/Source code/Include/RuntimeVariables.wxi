@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  
+  <?ifdef NETFX4 ?>
+    <?define FrameworkName = ".NET Framework 4" ?>
+  <?endif ?>
+  <?ifdef NETFX45 ?>
+    <?define FrameworkName = ".NET Framework 4.5" ?>
+  <?endif ?>
+
+  <?ifdef NETFX4 ?>
+    <?define ProductId = "C5179433-9F82-4EDC-B56B-7A774C81A21F" ?>
+    <?define UpgradeCode = "9F4F83D0-9D44-4130-A578-1E46F8765922" ?>
+  <?endif ?>
+  <?ifdef NETFX45 ?>
+    <?define ProductId = "9107D6A4-0E2F-479F-8E43-36E1A1D485EA" ?>
+    <?define UpgradeCode = "EDED61A2-8351-4C88-8A2A-79E6000E6A9E" ?>
+  <?endif ?>
+  
+  <?ifdef X64 ?>
+    <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
+    <?define PlatformSourceFolder = "..\..\..\Binary\$(var.FrameworkName)\Release\x64" ?>
+  <?else ?>
+    <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+    <?define PlatformSourceFolder = "..\..\..\Binary\$(var.FrameworkName)\Release\x86" ?>
+  <?endif ?>
+  
+  <?define AssemblyDependenciesFolder = "..\..\..\Tools and Resources\Assembly dependencies\$(var.FrameworkName)" ?>
+  <?define SourceFolder = "..\..\..\Binary\$(var.FrameworkName)\Release\AnyCPU" ?>
+  
+  <?define RuntimeName = "Elysium" ?>
+  <?ifdef NETFX4 ?>
+    <?define RuntimeVersion = "2.0" ?>
+    <?define RuntimeBuild = "976" ?>
+    <?define RuntimeRevision = "0" ?>
+    <?define NotificationsServerVersion = "2.0.58.0" ?>
+  <?endif ?>
+  <?ifdef NETFX45 ?>
+    <?define RuntimeVersion = "2.0" ?>
+    <?define RuntimeBuild = "1042" ?>
+    <?define RuntimeRevision = "0" ?>
+    <?define NotificationsServerVersion = "2.0.71.0" ?>
+  <?endif ?>
+  
+</Include>

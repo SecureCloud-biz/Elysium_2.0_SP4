@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name>Окно в стиле Metro (WPF)</Name>
+    <Description>Окно приложения Windows Presentation Foundation в стиле Metro</Description>
+    <Icon Package="{b3bae735-386c-4030-8329-ef48eeda4036}" ID="4593" />
+    <TemplateID>Elysium.CSharp.Window</TemplateID>
+    <ProjectType>CSharp</ProjectType>
+    <SortOrder>96</SortOrder>
+    <RequiredFrameworkVersion>4.5</RequiredFrameworkVersion>
+    <MaxFrameworkVersion>4.5</MaxFrameworkVersion>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <DefaultName>Window.xaml</DefaultName>
+    <TemplateGroupID>WPF</TemplateGroupID>
+    <ShowByDefault>false</ShowByDefault>
+  </TemplateData>
+  <TemplateContent>
+    <References>
+      <Reference>
+        <Assembly>System</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>WindowsBase</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>PresentationCore</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>PresentationFramework</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>Elysium, Version=2.0.1042.0, Culture=neutral, PublicKeyToken=f8966962afac6b6d, processorArchitecture=MSIL</Assembly>
+      </Reference>
+    </References>
+    <ProjectItem ReplaceParameters="true" CustomTool="MSBuild:Compile">Window.xaml</ProjectItem>
+    <ProjectItem ReplaceParameters="true" SubType="Code" TargetFileName="$fileinputname$.xaml.cs">Window.xaml.cs</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

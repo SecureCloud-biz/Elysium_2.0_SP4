@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.InvalidStyleException">
+      <summary>
+        Исключение, которое генерируется при проведении недопустимой операции связанной со стилем.
+      </summary>
+    </type>
+    <method name="M:Elysium.InvalidStyleException.#ctor">
+      <inheritdoc cref="M:System.Exception.#ctor"/>
+    </method>
+    <method name="M:Elysium.InvalidStyleException.#ctor(System.String)">
+      <inheritdoc cref="M:System.Exception.#ctor(System.String)"/>
+    </method>
+    <method name="M:Elysium.InvalidStyleException.#ctor(System.String,System.Exception)">
+      <inheritdoc cref="M:System.Exception.#ctor(System.String,System.Exception)"/>
+    </method>
+    <method name="M:Elysium.InvalidStyleException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <inheritdoc cref="M:System.Exception.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)"/>
+    </method>
+  </members>
+</doc>

@@ -1,0 +1,40 @@
+﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
+<#@ output extension=".cs" #>
+<#@ assembly Name="System.Core" #>
+<#@ include file="..\..\..\..\Include\security.ttinclude" #>
+<#@ include file="..\..\..\..\Include\Versions.ttinclude" #>
+using System;
+using System.Reflection;
+using System.Resources;
+using System.Runtime.InteropServices;
+using System.Security;
+using System.Windows;
+
+using Elysium.SDK.MSI.UI;
+
+using Microsoft.Tools.WindowsInstallerXml.Bootstrapper;
+
+[assembly: AssemblyTitle("UI.dll")]
+[assembly: AssemblyDescription("Elysium SDK installer UI")]
+[assembly: AssemblyProduct("Elysium SDK")]
+[assembly: AssemblyCopyright("<#= Copyright #>")]
+
+[assembly: SecurityRules(SecurityRuleSet.Level2, SkipVerificationInFullTrust = true)]
+
+[assembly: ComVisible(false)]
+[assembly: CLSCompliant(false)]
+
+[assembly: BootstrapperApplication(typeof(App))]
+
+[assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
+
+[assembly: NeutralResourcesLanguage("en-us", UltimateResourceFallbackLocation.MainAssembly)]
+
+#if NETFX4
+[assembly: AssemblyVersion("<#= Versions.NETFX4.SDK #>")]
+[assembly: AssemblyFileVersion("<#= Versions.NETFX4.SDK #>")]
+#elif NETFX45
+[assembly: AssemblyVersion("<#= Versions.NETFX45.SDK #>")]
+[assembly: AssemblyFileVersion("<#= Versions.NETFX45.SDK #>")]
+#endif
+[assembly: AssemblyInformationalVersion("<#= Version #>")]
