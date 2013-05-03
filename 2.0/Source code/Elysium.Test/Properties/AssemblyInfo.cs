@@ -20,10 +20,10 @@ using System.Windows;
 [assembly: NeutralResourcesLanguage("en-us")]
 
 #if NETFX4
-[assembly: AssemblyVersion("2.0.357.0")]
-[assembly: AssemblyFileVersion("2.0.357.0")]
+[assembly: AssemblyVersion("2.0.357.1")]
+[assembly: AssemblyFileVersion("2.0.357.1")]
 #elif NETFX45
-[assembly: AssemblyVersion("2.0.333.0")]
-[assembly: AssemblyFileVersion("2.0.333.0")]
+[assembly: AssemblyVersion("2.0.333.1")]
+[assembly: AssemblyFileVersion("2.0.333.1")]
 #endif
-[assembly: AssemblyInformationalVersion("2.0 RTM")]
+[assembly: AssemblyInformationalVersion("2.0 SP1")]

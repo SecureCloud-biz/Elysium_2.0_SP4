@@ -14,10 +14,10 @@ using System.Security;
 [assembly: CLSCompliant(false)]
 
 #if NETFX4
-[assembly: AssemblyVersion("2.0.58.0")]
-[assembly: AssemblyFileVersion("2.0.58.0")]
+[assembly: AssemblyVersion("2.0.58.1")]
+[assembly: AssemblyFileVersion("2.0.58.1")]
 #elif NETFX45
-[assembly: AssemblyVersion("2.0.71.0")]
-[assembly: AssemblyFileVersion("2.0.71.0")]
+[assembly: AssemblyVersion("2.0.71.1")]
+[assembly: AssemblyFileVersion("2.0.71.1")]
 #endif
-[assembly: AssemblyInformationalVersion("2.0 RTM")]
+[assembly: AssemblyInformationalVersion("2.0 SP1")]

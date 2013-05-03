@@ -9,12 +9,12 @@
   <?endif ?>
 
   <?ifdef NETFX4 ?>
-    <?define ProductId = "C5179433-9F82-4EDC-B56B-7A774C81A21F" ?>
-    <?define UpgradeCode = "9F4F83D0-9D44-4130-A578-1E46F8765922" ?>
+    <?define ProductId = "9BF0A7CF-5A29-49FB-9164-16980C329AA6" ?>
+    <?define UpgradeCode = "70453E6A-7118-4B6C-A457-8C4D266DE59F" ?>
   <?endif ?>
   <?ifdef NETFX45 ?>
-    <?define ProductId = "9107D6A4-0E2F-479F-8E43-36E1A1D485EA" ?>
-    <?define UpgradeCode = "EDED61A2-8351-4C88-8A2A-79E6000E6A9E" ?>
+    <?define ProductId = "D94461EC-2A53-49CD-8B8A-4B3ED8B37578" ?>
+    <?define UpgradeCode = "FB2AF5C0-91D8-4CBE-9D35-AFE5D3D2D1EF" ?>
   <?endif ?>
   
   <?ifdef X64 ?>
@@ -30,16 +30,16 @@
   
   <?define RuntimeName = "Elysium" ?>
   <?ifdef NETFX4 ?>
-    <?define RuntimeVersion = "2.0" ?>
-    <?define RuntimeBuild = "976" ?>
+    <?define RuntimeVersion = "2.1" ?>
+    <?define RuntimeBuild = "978" ?>
     <?define RuntimeRevision = "0" ?>
-    <?define NotificationsServerVersion = "2.0.58.0" ?>
+    <?define NotificationsServerVersion = "2.1.60.0" ?>
   <?endif ?>
   <?ifdef NETFX45 ?>
-    <?define RuntimeVersion = "2.0" ?>
-    <?define RuntimeBuild = "1042" ?>
+    <?define RuntimeVersion = "2.1" ?>
+    <?define RuntimeBuild = "1044" ?>
     <?define RuntimeRevision = "0" ?>
-    <?define NotificationsServerVersion = "2.0.71.0" ?>
+    <?define NotificationsServerVersion = "2.1.73.0" ?>
   <?endif ?>
   
 </Include>

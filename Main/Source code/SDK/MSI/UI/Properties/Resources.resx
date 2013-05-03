@@ -199,7 +199,7 @@
     <value>Elysium SDK</value>
   </data>
   <data name="SDKVersion" xml:space="preserve">
-    <value>2.0</value>
+    <value>2.1</value>
   </data>
   <data name="Downgrade" xml:space="preserve">
     <value>A newer version of Elysium SDK is already installed.</value>

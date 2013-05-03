@@ -20,10 +20,10 @@ using System.Security;
 [assembly: NeutralResourcesLanguage("en-us")]
 
 #if NETFX4
-[assembly: AssemblyVersion("2.0.62.0")]
-[assembly: AssemblyFileVersion("2.0.62.0")]
+[assembly: AssemblyVersion("2.1.64.0")]
+[assembly: AssemblyFileVersion("2.1.64.0")]
 #elif NETFX45
-[assembly: AssemblyVersion("2.0.65.0")]
-[assembly: AssemblyFileVersion("2.0.65.0")]
+[assembly: AssemblyVersion("2.1.67.0")]
+[assembly: AssemblyFileVersion("2.1.67.0")]
 #endif
-[assembly: AssemblyInformationalVersion("2.0 RTM")]
+[assembly: AssemblyInformationalVersion("2.1 EAP")]

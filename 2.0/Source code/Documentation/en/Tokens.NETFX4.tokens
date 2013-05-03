@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <content xml:space="preserve" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
   <item id="BlendVersion">Expression Blend 4 with SP1 or Blend for Visual Studio 2012 with Update 2</item>
-  <item id="Elysium">Elysium 2.0 RTM for .NET Framework 4</item>
+  <item id="Elysium">Elysium 2.0 SP1 for .NET Framework 4</item>
   <item id="Example">Token content</item>
   <item id="FrameworkDependencyName">.NET Framework 4 Client Profile / 4.5</item>
   <item id="SHFB"><ddue:externalLink xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5">

@@ -27,9 +27,9 @@ namespace Elysium.Notifications.Client
                                                     MaxReceivedMessageSize = 16777215
                                                 },
 #if NETFX4
-                                            new EndpointAddress("net.pipe://localhost/elysium/v2.0/v4.0/notifications"))
+                                            new EndpointAddress("net.pipe://localhost/elysium/v2.1/v4.0/notifications"))
 #elif NETFX45
-                                            new EndpointAddress("net.pipe://localhost/elysium/v2.0/v4.5/notifications"))
+                                            new EndpointAddress("net.pipe://localhost/elysium/v2.1/v4.5/notifications"))
 #endif
         {
         }

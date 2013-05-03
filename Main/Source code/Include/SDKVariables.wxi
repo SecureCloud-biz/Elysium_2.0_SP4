@@ -11,14 +11,14 @@
   <?endif ?>
 
   <?ifdef NETFX4 ?>
-    <?define ProductId = "C0866E3A-961B-46FA-884E-415FA7B8BDC6" ?>
-    <?define InstallerUpgradeCode = "DBFAF4C9-7352-483C-B6A2-34C6C1D0F1E0" ?>
-    <?define SetupUpgradeCode = "ED0F0584-1CE1-45B0-9616-32ECC4DE5CAE" ?>
+    <?define ProductId = "C18F6F1B-86B0-47C3-820A-5E5D4F221029" ?>
+    <?define InstallerUpgradeCode = "86AE4A4F-8D19-4029-A2D2-CF367BBBBEBA" ?>
+    <?define SetupUpgradeCode = "C3392AD3-EBAB-4C24-9787-5A69D10C50D4" ?>
   <?endif ?>
   <?ifdef NETFX45 ?>
-    <?define ProductId = "38435726-4627-4F4A-A330-4C6B8999AA22" ?>
-    <?define InstallerUpgradeCode = "90DBE047-293B-4D8D-9F49-BDE9D943C591" ?>
-    <?define SetupUpgradeCode = "02EF99BB-E737-4B32-96EF-5B8A13C5531E" ?>
+    <?define ProductId = "6E82AB61-AB5E-413D-92E8-2FF088162380" ?>
+    <?define InstallerUpgradeCode = "0DC11F5E-8626-4001-8AFE-8F2DC27E67BC" ?>
+    <?define SetupUpgradeCode = "80EF5C0E-9E1F-412A-A201-C2B6463AF7D9" ?>
   <?endif ?>
   
   <?ifdef X64 ?>
@@ -59,16 +59,16 @@
 
   <?define SDKName = "Elysium SDK" ?>
   <?ifdef NETFX4 ?>
-    <?define SDKVersion = "2.0" ?>
-    <?define SDKBuild = "976" ?>
+    <?define SDKVersion = "2.1" ?>
+    <?define SDKBuild = "978" ?>
     <?define SDKRevision = "0" ?>
-    <?define NotificationsServerVersion = "2.0.58.0" ?>
+    <?define NotificationsServerVersion = "2.1.50.0" ?>
   <?endif ?>
   <?ifdef NETFX45 ?>
-    <?define SDKVersion = "2.0" ?>
-    <?define SDKBuild = "1042" ?>
+    <?define SDKVersion = "2.1" ?>
+    <?define SDKBuild = "1044" ?>
     <?define SDKRevision = "0" ?>
-    <?define NotificationsServerVersion = "2.0.71.0" ?>
+    <?define NotificationsServerVersion = "2.1.73.0" ?>
   <?endif ?>
   
 </Include>
