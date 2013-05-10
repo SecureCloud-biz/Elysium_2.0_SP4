@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 
 using Elysium.Extensions;
@@ -12,105 +11,52 @@ namespace System.Linq
     [DebuggerStepThrough]
     internal static class Extensions
     {
-        internal static bool SafeGet<TKey, TValue>([NotNull] this IDictionary dictionary, [NotNull] TKey key, out TValue value)
+        internal static bool SafeGet<TKey, TValue>([NotNull] this IDictionary<TKey, WeakReference> dictionary, [NotNull] TKey key, out TValue value)
         {
             ValidationHelper.NotNull(dictionary, "dictionary");
             ValidationHelper.NotNull(key, "key");
 
             value = default(TValue);
-            if (!dictionary.Contains(key))
+            if (!dictionary.ContainsKey(key))
             {
                 return false;
             }
             var temp = dictionary[key];
-            if (!(temp is TValue))
+            if (!(temp.IsAlive && temp.Target is TValue))
             {
                 return false;
             }
-            value = (TValue)temp;
+            value = (TValue)temp.Target;
             return true;
         }
 
-        internal static void SafeSet<TKey, TValue>([NotNull] this IDictionary dictionary, [NotNull] TKey key, TValue value)
+        internal static void SafeSet<TKey, TValue>([NotNull] this IDictionary<TKey, WeakReference> dictionary, [NotNull] TKey key, TValue value)
         {
             ValidationHelper.NotNull(dictionary, "dictionary");
             ValidationHelper.NotNull(key, "key");
 
-            if (dictionary.Contains(key))
+            if (dictionary.ContainsKey(key))
             {
-                // Set value, if key exist
-                dictionary[key] = value;
+                if (!dictionary[key].IsAlive)
+                {
+                    // Set value, if key exist
+                    dictionary[key] = new WeakReference(value);
+                }
             }
             else
             {
                 // Add key and value, if key doesn't exist
-                dictionary.Add(key, value);
+                dictionary.Add(key, new WeakReference(value));
             }
         }
 
-        internal static void SafeSet<TKey, TValue>([NotNull] this IDictionary destinationDictionary, [NotNull] IDictionary<TKey, TValue> sourceDictionary)
-        {
-            ValidationHelper.NotNull(destinationDictionary, "destinationDictionary");
-            ValidationHelper.NotNull(sourceDictionary, "sourceDictionary");
-            ValidationHelper.NotNullAll<IEnumerable<TKey>, TKey>(sourceDictionary.Keys, "sourceDictionary");
-
-            foreach (var key in sourceDictionary.Keys)
-            {
-                destinationDictionary.SafeSet(key, sourceDictionary[key]);
-            }
-        }
-
-        internal static void SafeRemove<TKey>([NotNull] this IDictionary dictionary, [NotNull] TKey key)
+        internal static void Collect<TKey>([NotNull] this IDictionary<TKey, WeakReference> dictionary)
         {
             ValidationHelper.NotNull(dictionary, "dictionary");
-            ValidationHelper.NotNull(key, "key");
 
-            if (dictionary.Contains(key))
+            foreach (var pair in dictionary.Where(pair => !pair.Value.IsAlive))
             {
-                dictionary.Remove(key);
-            }
-        }
-
-        internal static void SafeRemove<TKey, TValue>([NotNull] this IDictionary destinationDictionary, [NotNull] IDictionary<TKey, TValue> sourceDictionary)
-        {
-            ValidationHelper.NotNull(destinationDictionary, "destinationDictionary");
-            ValidationHelper.NotNull(sourceDictionary, "sourceDictionary");
-            ValidationHelper.NotNullAll<IEnumerable<TKey>, TKey>(sourceDictionary.Keys, "sourceDictionary");
-
-            foreach (var key in sourceDictionary.Keys)
-            {
-                destinationDictionary.SafeRemove(key);
-            }
-        }
-
-        internal static void SafeSet<T>([NotNull] this ICollection<WeakReference> collection, T value)
-        {
-            ValidationHelper.NotNull(collection, "collection");
-
-            if (!collection.Any(reference => Equals(reference.Target, value)))
-            {
-                collection.Add(new WeakReference(value));
-            }
-        }
-
-        internal static void SafeRemove<T>([NotNull] this ICollection<WeakReference> collection, T value)
-        {
-            ValidationHelper.NotNull(collection, "collection");
-
-            var values = collection.Where(reference => Equals(reference.Target, value));
-            foreach (var reference in values)
-            {
-                collection.Remove(reference);
-            }
-        }
-
-        internal static void Collect([NotNull] this ICollection<WeakReference> collection)
-        {
-            ValidationHelper.NotNull(collection, "collection");
-
-            foreach (var reference in collection.Where(reference => reference.Target == null))
-            {
-                collection.Remove(reference);
+                dictionary.Remove(pair.Key);
             }
         }
     }

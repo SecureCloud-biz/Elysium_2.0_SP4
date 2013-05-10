@@ -36,14 +36,24 @@ namespace Elysium.Test
             ContrastGlyph.FontUri = new Uri(File.Exists(SegoeUI) ? SegoeUI : Verdana);
         }
 
+        private static readonly ResourceDictionary LightBrushes = new ResourceDictionary { Source = new Uri("/Elysium;component/Themes/LightBrushes.xaml", UriKind.Relative) };
+
         private void LightClick(object sender, RoutedEventArgs e)
         {
-            Application.Current.Apply(Theme.Light);
+            foreach (var brushKey in LightBrushes.Keys)
+            {
+                SafeSet(Application.Current.Resources, brushKey, LightBrushes[brushKey]);
+            }
         }
+
+        private static readonly ResourceDictionary DarkBrushes = new ResourceDictionary { Source = new Uri("/Elysium;component/Themes/DarkBrushes.xaml", UriKind.Relative) };
 
         private void DarkClick(object sender, RoutedEventArgs e)
         {
-            Application.Current.Apply(Theme.Dark);
+            foreach (var brushKey in DarkBrushes.Keys)
+            {
+                SafeSet(Application.Current.Resources, brushKey, DarkBrushes[brushKey]);
+            }
         }
 
         private void AccentClick(object sender, RoutedEventArgs e)
@@ -52,18 +62,36 @@ namespace Elysium.Test
             if (item != null)
             {
                 var accentBrush = (SolidColorBrush)((Rectangle)item.Icon).Fill;
-                Application.Current.Apply(accentBrush, null);
+                SafeSet(Application.Current.Resources, Elysium.Resources.AccentBrushKey, accentBrush);
             }
         }
 
+        private static readonly SolidColorBrush WhiteSemitransparentContrastBrush = new SolidColorBrush(Color.FromArgb(0x1F, 0xFF, 0xFF, 0xFF));
+
         private void WhiteClick(object sender, RoutedEventArgs e)
         {
-            Application.Current.Apply(null, Brushes.White);
+            SafeSet(Application.Current.Resources, Elysium.Resources.ContrastBrushKey, Brushes.White);
+            SafeSet(Application.Current.Resources, Elysium.Resources.SemitransparentContrastBrushKey, WhiteSemitransparentContrastBrush);
         }
+        
+        private static readonly SolidColorBrush BlackSemitransparentContrastBrush = new SolidColorBrush(Color.FromArgb(0x1F, 0x00, 0x00, 0x00));
 
         private void BlackClick(object sender, RoutedEventArgs e)
         {
-            Application.Current.Apply(null, Brushes.Black);
+            SafeSet(Application.Current.Resources, Elysium.Resources.ContrastBrushKey, Brushes.Black);
+            SafeSet(Application.Current.Resources, Elysium.Resources.SemitransparentContrastBrushKey, BlackSemitransparentContrastBrush);
+        }
+
+        private static void SafeSet(ResourceDictionary resources, object key, object value)
+        {
+            if (!resources.Contains(key))
+            {
+                resources.Add(key, value);
+            }
+            else
+            {
+                resources[key] = value;
+            }
         }
 
         private void NotificationClick(object sender, RoutedEventArgs e)

@@ -454,5 +454,33 @@ namespace Elysium.Controls
                 }
             }
         }
+
+        public static ResourceKey CommandButtonBaseStyleKey
+        {
+            get { return _commandButtonBaseStyleKey ?? (_commandButtonBaseStyleKey = new ComponentResourceKey(typeof(ApplicationBar), "CommandButtonBaseStyle")); }
+        }
+
+        private static ResourceKey _commandButtonBaseStyleKey;
+
+        public static ResourceKey CommandButtonStyleKey
+        {
+            get { return _commandButtonStyleKey ?? (_commandButtonStyleKey = new ComponentResourceKey(typeof(ApplicationBar), "CommandButtonStyle")); }
+        }
+
+        private static ResourceKey _commandButtonStyleKey;
+
+        public static ResourceKey ToggleCommandButtonStyleKey
+        {
+            get { return _toggleCommandButtonStyleKey ?? (_toggleCommandButtonStyleKey = new ComponentResourceKey(typeof(ApplicationBar), "ToggleCommandButtonStyle")); }
+        }
+
+        private static ResourceKey _toggleCommandButtonStyleKey;
+
+        public static ResourceKey DropDownCommandButtonStyleKey
+        {
+            get { return _dropDownCommandButtonStyleKey ?? (_dropDownCommandButtonStyleKey = new ComponentResourceKey(typeof(ApplicationBar), "DropDownCommandButtonStyle")); }
+        }
+
+        private static ResourceKey _dropDownCommandButtonStyleKey;
     }
 }

@@ -1,20 +1,22 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sw="clr-namespace:System.Windows"
+                    xmlns:root="clr-namespace:Elysium"
                     xmlns:params="clr-namespace:Elysium.Parameters">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Elysium;component/Themes/Scrolls/ScrollBar.xaml"/>
-        <ResourceDictionary Source="/Elysium;component/Themes/Scrolls/ScrollViewer.xaml"/>
+        <sw:CachedResourceDictionary Source="/Elysium;component/Themes/Scrolls/ScrollBar.xaml"/>
+        <sw:CachedResourceDictionary Source="/Elysium;component/Themes/Scrolls/ScrollViewer.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type Menu}">        
-        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource LowlightBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource {x:Static root:Resources.BackgroundBrushKey}}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static root:Resources.LowLightBrushKey}}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="params:MenuBase.SubmenuBackground" Value="{StaticResource BackgroundBrush}"/>
-        <Setter Property="params:MenuBase.SubmenuBorderBrush" Value="{StaticResource LowlightBrush}"/>
+        <Setter Property="params:MenuBase.SubmenuBackground" Value="{DynamicResource {x:Static root:Resources.BackgroundBrushKey}}"/>
+        <Setter Property="params:MenuBase.SubmenuBorderBrush" Value="{DynamicResource {x:Static root:Resources.LowLightBrushKey}}"/>
         <Setter Property="params:MenuBase.SubmenuBorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.DefaultThickness), Mode=OneWay}"/>
-        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static root:Resources.ForegroundBrushKey}}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.ContentFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
         <Setter Property="FontStyle" Value="Normal"/>
@@ -22,7 +24,7 @@
         <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
         <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
-        <Setter Property="params:General.ShadowBrush" Value="{StaticResource ForegroundBrush}"/>
+        <Setter Property="params:General.ShadowBrush" Value="{DynamicResource {x:Static root:Resources.ForegroundBrushKey}}"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -53,7 +55,7 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=IsGreaterThanConverter}}, ConverterParameter=18}">
                 <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
             </DataTrigger>
         </Style.Triggers>        

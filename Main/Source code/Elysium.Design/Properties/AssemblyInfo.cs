@@ -4,6 +4,7 @@ using System.Resources;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Windows;
+using Elysium.Design;
 using Microsoft.Windows.Design.Metadata;
 
 #if VISUALSTUDIO2010
@@ -20,7 +21,7 @@ using Microsoft.Windows.Design.Metadata;
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
 
-[assembly: ProvideMetadata(typeof(Elysium.Design.Metadata))]
+[assembly: ProvideMetadata(typeof(Metadata))]
 
 [assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
 

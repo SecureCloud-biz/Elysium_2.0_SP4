@@ -1,16 +1,19 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sw="clr-namespace:System.Windows"
+                    xmlns:root="clr-namespace:Elysium"
                     xmlns:params="clr-namespace:Elysium.Parameters">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
+        <sw:CachedResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
+        <sw:CachedResourceDictionary Source="/Elysium;component/Themes/Menus/ContextMenu.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="TextBoxesBaseStyle" TargetType="{x:Type Control}">
-        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource MiddleLightBrush}"/>
+    <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type TextBoxBase}, ResourceId=TextBoxesBaseStyle}" TargetType="{x:Type Control}">
+        <Setter Property="Background" Value="{DynamicResource {x:Static root:Resources.BackgroundBrushKey}}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static root:Resources.MiddleLightBrushKey}}"/>
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.SemiBoldThickness), Mode=OneWay}"/>
-        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static root:Resources.ForegroundBrushKey}}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.TextFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
         <Setter Property="FontStyle" Value="Normal"/>
@@ -57,16 +60,16 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=IsGreaterThanConverter}}, ConverterParameter=18}">
                 <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
             </DataTrigger>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
-                <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static root:Resources.AccentBrushKey}}"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static root:Resources.ForegroundBrushKey}}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="BorderBrush" Value="{StaticResource DisabledBrush}"/>
-                <Setter Property="Foreground" Value="{StaticResource DisabledBrush}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static root:Resources.DisabledBrushKey}}"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static root:Resources.DisabledBrushKey}}"/>
             </Trigger>
         </Style.Triggers>
     </Style>

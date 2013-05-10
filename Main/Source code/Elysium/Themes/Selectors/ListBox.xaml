@@ -1,17 +1,19 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sw="clr-namespace:System.Windows"
+                    xmlns:root="clr-namespace:Elysium"
                     xmlns:params="clr-namespace:Elysium.Parameters">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
-        <ResourceDictionary Source="/Elysium;component/Themes/Scrolls/ScrollViewer.xaml"/>
+        <sw:CachedResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
+        <sw:CachedResourceDictionary Source="/Elysium;component/Themes/Scrolls/ScrollViewer.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type ListBox}">
-        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource MiddleLightBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource {x:Static root:Resources.BackgroundBrushKey}}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static root:Resources.MiddleLightBrushKey}}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static root:Resources.ForegroundBrushKey}}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.ContentFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
         <Setter Property="FontStyle" Value="Normal"/>
@@ -56,12 +58,12 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=IsGreaterThanConverter}}, ConverterParameter=18}">
                 <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
             </DataTrigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="BorderBrush" Value="{StaticResource DisabledBrush}"/>
-                <Setter Property="Foreground" Value="{StaticResource DisabledBrush}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static root:Resources.DisabledBrushKey}}"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static root:Resources.DisabledBrushKey}}"/>
             </Trigger>            
             <Trigger Property="IsGrouping" Value="True">
                 <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>

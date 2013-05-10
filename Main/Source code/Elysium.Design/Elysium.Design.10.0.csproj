@@ -105,7 +105,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Manager.cs" />
     <Compile Include="Metadata.cs" />
     <None Include="Properties\AssemblyInfo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

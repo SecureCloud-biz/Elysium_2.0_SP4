@@ -1,18 +1,20 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
-                    xmlns:params="clr-namespace:Elysium.Parameters"
-                    xmlns:controls="clr-namespace:Elysium.Controls">
+                    xmlns:sw="clr-namespace:System.Windows"
+                    xmlns:root="clr-namespace:Elysium"
+                    xmlns:controls="clr-namespace:Elysium.Controls"
+                    xmlns:params="clr-namespace:Elysium.Parameters">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
+        <sw:CachedResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{x:Type controls:ProgressRing}" TargetType="{x:Type controls:ProgressRing}">
-        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource HighlightBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource {x:Static root:Resources.BackgroundBrushKey}}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static root:Resources.HighLightBrushKey}}"/>
         <Setter Property="BorderThickness" Value="3"/>
-        <Setter Property="Foreground" Value="{StaticResource AccentBrush}"/>        
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static root:Resources.AccentBrushKey}}"/>        
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
@@ -29,7 +31,7 @@
                             <ed:Arc x:Name="BackgroundArc"
                                     Fill="{TemplateBinding Background}"
                                     Stroke="{TemplateBinding BorderBrush}"
-                                    StrokeThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessToDoubleConverter}}"
+                                    StrokeThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=ThicknessToDoubleConverter}}}"
                                     StartAngle="0"
                                     EndAngle="360"
                                     Stretch="None"
@@ -43,9 +45,9 @@
                             </ed:Arc>
                             <ed:Arc x:Name="PART_Arc"
                                     Stroke="{TemplateBinding Foreground}"
-                                    StrokeThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessToDoubleConverter}}"
+                                    StrokeThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=ThicknessToDoubleConverter}}}"
                                     StartAngle="0"
-                                    EndAngle="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Percent, Converter={StaticResource PercentToAngleConverter}}"
+                                    EndAngle="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Percent, Converter={StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=PercentToAngleConverter}}}"
                                     Stretch="None"
                                     RenderTransformOrigin="0.5,0.5"
                                     Canvas.Left="0" Canvas.Top="0"
@@ -63,9 +65,9 @@
                                          Width="{TemplateBinding params:Progress.BusyElementSize}"
                                          Height="{TemplateBinding params:Progress.BusyElementSize}">
                                     <Canvas.Left>
-                                        <MultiBinding Converter="{StaticResource AngleToCoordinateConverter}"
+                                        <MultiBinding Converter="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=AngleToCoordinateConverter}}"
                                                       ConverterParameter="X">
-                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(params:Progress.BusyElementSize)" Converter="{StaticResource NumberPositiveToNegativeConverter}"/>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(params:Progress.BusyElementSize)" Converter="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=NumberPositiveToNegativeConverter}}"/>
                                             <Binding RelativeSource="{RelativeSource Self}" Path="(controls:ProgressRing.Angle)"/>
                                             <Binding ElementName="PART_Track" Path="ActualWidth"/>
                                             <Binding ElementName="PART_Track" Path="ActualHeight"/>
@@ -74,9 +76,9 @@
                                         </MultiBinding>
                                     </Canvas.Left>
                                     <Canvas.Top>
-                                        <MultiBinding Converter="{StaticResource AngleToCoordinateConverter}"
+                                        <MultiBinding Converter="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=AngleToCoordinateConverter}}"
                                                       ConverterParameter="Y">
-                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(params:Progress.BusyElementSize)" Converter="{StaticResource NumberPositiveToNegativeConverter}"/>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(params:Progress.BusyElementSize)" Converter="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=NumberPositiveToNegativeConverter}}"/>
                                             <Binding RelativeSource="{RelativeSource Self}" Path="(controls:ProgressRing.Angle)"/>
                                             <Binding ElementName="PART_Track" Path="ActualWidth"/>
                                             <Binding ElementName="PART_Track" Path="ActualHeight"/>
@@ -90,9 +92,9 @@
                                          Width="{TemplateBinding params:Progress.BusyElementSize}"
                                          Height="{TemplateBinding params:Progress.BusyElementSize}">
                                     <Canvas.Left>
-                                        <MultiBinding Converter="{StaticResource AngleToCoordinateConverter}"
+                                        <MultiBinding Converter="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=AngleToCoordinateConverter}}"
                                                       ConverterParameter="X">
-                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(params:Progress.BusyElementSize)" Converter="{StaticResource NumberPositiveToNegativeConverter}"/>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(params:Progress.BusyElementSize)" Converter="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=NumberPositiveToNegativeConverter}}"/>
                                             <Binding RelativeSource="{RelativeSource Self}" Path="(controls:ProgressRing.Angle)"/>
                                             <Binding ElementName="PART_Track" Path="ActualWidth"/>
                                             <Binding ElementName="PART_Track" Path="ActualHeight"/>
@@ -101,9 +103,9 @@
                                         </MultiBinding>
                                     </Canvas.Left>
                                     <Canvas.Top>
-                                        <MultiBinding Converter="{StaticResource AngleToCoordinateConverter}"
+                                        <MultiBinding Converter="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=AngleToCoordinateConverter}}"
                                                       ConverterParameter="Y">
-                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(params:Progress.BusyElementSize)" Converter="{StaticResource NumberPositiveToNegativeConverter}"/>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(params:Progress.BusyElementSize)" Converter="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=NumberPositiveToNegativeConverter}}"/>
                                             <Binding RelativeSource="{RelativeSource Self}" Path="(controls:ProgressRing.Angle)"/>
                                             <Binding ElementName="PART_Track" Path="ActualWidth"/>
                                             <Binding ElementName="PART_Track" Path="ActualHeight"/>
@@ -117,9 +119,9 @@
                                          Width="{TemplateBinding params:Progress.BusyElementSize}"
                                          Height="{TemplateBinding params:Progress.BusyElementSize}">
                                     <Canvas.Left>
-                                        <MultiBinding Converter="{StaticResource AngleToCoordinateConverter}"
+                                        <MultiBinding Converter="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=AngleToCoordinateConverter}}"
                                                       ConverterParameter="X">
-                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(params:Progress.BusyElementSize)" Converter="{StaticResource NumberPositiveToNegativeConverter}"/>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(params:Progress.BusyElementSize)" Converter="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=NumberPositiveToNegativeConverter}}"/>
                                             <Binding RelativeSource="{RelativeSource Self}" Path="(controls:ProgressRing.Angle)"/>
                                             <Binding ElementName="PART_Track" Path="ActualWidth"/>
                                             <Binding ElementName="PART_Track" Path="ActualHeight"/>
@@ -128,9 +130,9 @@
                                         </MultiBinding>
                                     </Canvas.Left>
                                     <Canvas.Top>
-                                        <MultiBinding Converter="{StaticResource AngleToCoordinateConverter}"
+                                        <MultiBinding Converter="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=AngleToCoordinateConverter}}"
                                                       ConverterParameter="Y">
-                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(params:Progress.BusyElementSize)" Converter="{StaticResource NumberPositiveToNegativeConverter}"/>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(params:Progress.BusyElementSize)" Converter="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=NumberPositiveToNegativeConverter}}"/>
                                             <Binding RelativeSource="{RelativeSource Self}" Path="(controls:ProgressRing.Angle)"/>
                                             <Binding ElementName="PART_Track" Path="ActualWidth"/>
                                             <Binding ElementName="PART_Track" Path="ActualHeight"/>
@@ -144,9 +146,9 @@
                                          Width="{TemplateBinding params:Progress.BusyElementSize}"
                                          Height="{TemplateBinding params:Progress.BusyElementSize}">
                                     <Canvas.Left>
-                                        <MultiBinding Converter="{StaticResource AngleToCoordinateConverter}"
+                                        <MultiBinding Converter="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=AngleToCoordinateConverter}}"
                                                       ConverterParameter="X">
-                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(params:Progress.BusyElementSize)" Converter="{StaticResource NumberPositiveToNegativeConverter}"/>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(params:Progress.BusyElementSize)" Converter="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=NumberPositiveToNegativeConverter}}"/>
                                             <Binding RelativeSource="{RelativeSource Self}" Path="(controls:ProgressRing.Angle)"/>
                                             <Binding ElementName="PART_Track" Path="ActualWidth"/>
                                             <Binding ElementName="PART_Track" Path="ActualHeight"/>
@@ -155,9 +157,9 @@
                                         </MultiBinding>
                                     </Canvas.Left>
                                     <Canvas.Top>
-                                        <MultiBinding Converter="{StaticResource AngleToCoordinateConverter}"
+                                        <MultiBinding Converter="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=AngleToCoordinateConverter}}"
                                                       ConverterParameter="Y">
-                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(params:Progress.BusyElementSize)" Converter="{StaticResource NumberPositiveToNegativeConverter}"/>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(params:Progress.BusyElementSize)" Converter="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=NumberPositiveToNegativeConverter}}"/>
                                             <Binding RelativeSource="{RelativeSource Self}" Path="(controls:ProgressRing.Angle)"/>
                                             <Binding ElementName="PART_Track" Path="ActualWidth"/>
                                             <Binding ElementName="PART_Track" Path="ActualHeight"/>
@@ -171,9 +173,9 @@
                                          Width="{TemplateBinding params:Progress.BusyElementSize}"
                                          Height="{TemplateBinding params:Progress.BusyElementSize}">
                                     <Canvas.Left>
-                                        <MultiBinding Converter="{StaticResource AngleToCoordinateConverter}"
+                                        <MultiBinding Converter="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=AngleToCoordinateConverter}}"
                                                       ConverterParameter="X">
-                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(params:Progress.BusyElementSize)" Converter="{StaticResource NumberPositiveToNegativeConverter}"/>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(params:Progress.BusyElementSize)" Converter="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=NumberPositiveToNegativeConverter}}"/>
                                             <Binding RelativeSource="{RelativeSource Self}" Path="(controls:ProgressRing.Angle)"/>
                                             <Binding ElementName="PART_Track" Path="ActualWidth"/>
                                             <Binding ElementName="PART_Track" Path="ActualHeight"/>
@@ -182,9 +184,9 @@
                                         </MultiBinding>
                                     </Canvas.Left>
                                     <Canvas.Top>
-                                        <MultiBinding Converter="{StaticResource AngleToCoordinateConverter}"
+                                        <MultiBinding Converter="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=AngleToCoordinateConverter}}"
                                                       ConverterParameter="Y">
-                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(params:Progress.BusyElementSize)" Converter="{StaticResource NumberPositiveToNegativeConverter}"/>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="(params:Progress.BusyElementSize)" Converter="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=NumberPositiveToNegativeConverter}}"/>
                                             <Binding RelativeSource="{RelativeSource Self}" Path="(controls:ProgressRing.Angle)"/>
                                             <Binding ElementName="PART_Track" Path="ActualWidth"/>
                                             <Binding ElementName="PART_Track" Path="ActualHeight"/>
@@ -220,7 +222,7 @@
                 <Setter Property="BorderBrush" Value="{x:Null}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Foreground" Value="{StaticResource DisabledBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static root:Resources.DisabledBrushKey}}"/>
             </Trigger>
         </Style.Triggers>
     </Style>

@@ -367,5 +367,12 @@ namespace Elysium.Controls
             }
             return null;
         }
+        
+        public static ResourceKey SubmenuStyleKey
+        {
+            get { return _submenuStyleKey ?? (_submenuStyleKey = new ComponentResourceKey(typeof(DropDownCommandButton), "SubmenuStyle")); }
+        }
+
+        private static ResourceKey _submenuStyleKey;
     }
 }
