@@ -1,20 +1,9 @@
 ﻿Add-PSSnapin Microsoft.TeamFoundation.PowerShell
 
-# Try exit if error occurred
-function Try-Exit
-{
-    param (
-        [Parameter(Position = 0, Mandatory = $False)]
-        [int]$ExitCode = $LASTEXITCODE
-    )
-    
-    if ($ExitCode -ne 0)
-    {
-        Write-Host "Error occurred"
-        Read-Host -Prompt "Press any key to continue..."
-        exit $ExitCode
-    }
-}
+$Location = Split-Path -Parent $MyInvocation.MyCommand.Path
+$Path = Join-Path -Path $Location -ChildPath "..\..\Helpers.psm1"
+
+Import-Module $Path
 
 # Run program and capture stdout and stderr
 function Invoke-Program
@@ -47,47 +36,15 @@ function Invoke-Program
     return $process.ExitCode
 }
 
-# Import environment variables from specified environment
-function Invoke-Environment
+# Make relative path absolute
+function Resolve-Path
 {
     param (
-        [Parameter(Position = 0, Mandatory = $True)]
-        [string]$Command,
-
-        [Parameter(Position = 1, Mandatory = $False)]
-        [switch]$Force
+        [Parameter(Mandatory = $True, HelpMessage = "Specifies the relative path.")]
+        [string] $RelativePath
     )
     
-    $stream = ($temp = [IO.Path]::GetTempFileName())
-    $operator = if ($Force) {"'&'"} else {"'&&'"}
-    
-    
-    Invoke-Expression -Command "$env:ComSpec /c $Command > `"$stream`" 2>&1 $operator set"
-    foreach($_ in Get-Content -LiteralPath $temp) {
-        if ($_ -match '^([^=]+)=(.*)') {
-            [System.Environment]::SetEnvironmentVariable($matches[1], $matches[2])
-        }
-    }
-    
-    Remove-Item -LiteralPath $temp
-}
-
-# Import Visual Studio environment variables
-function Import-Variables
-{
-    param (
-        [Parameter(Mandatory = $True, HelpMessage = "Specifies your Visual Studio version (2010 or 2012). Default is 2012.")]
-        [ValidateSet("2010", "2012")]
-        [string] $Version
-    )
-
-    switch ($Version)
-    {
-        "2010"  { $Variables = Join-Path $env:VS100COMNTOOLS -ChildPath "..\..\VC\vcvarsall.bat" -Resolve }
-        "2012" { $Variables = Join-Path $env:VS110COMNTOOLS -ChildPath "..\..\VC\vcvarsall.bat" -Resolve }
-    }
-
-    Invoke-Environment -Command "`"$Variables`" $env:PROCESSOR_ARCHITECTURE"
+    return [System.IO.Path]::GetFullPath((Join-Path -Path $Location -ChildPath $RelativePath))
 }
 
 # Run MSBuild.exe with specified arguments
@@ -133,51 +90,6 @@ function Build
     Try-Exit
 }
 
-# Make relative path absolute
-function Resolve-Path
-{
-    param (
-        [Parameter(Mandatory = $True, HelpMessage = "Specifies the relative path.")]
-        [string] $RelativePath
-    )
-
-    $Location = Split-Path -Parent $script:MyInvocation.MyCommand.Path
-    return [System.IO.Path]::GetFullPath((Join-Path -Path $Location -ChildPath $RelativePath))
-}
-
-# Install keys
-function Install-Keys
-{
-    param (
-        [Parameter(Mandatory = $True, HelpMessage = "Specifies your Visual Studio version (2010 or 2012). Default is 2012.")]
-        [ValidateSet("2010", "2012")]
-        [string] $Version = "2012"
-    )
-
-    Import-Variables -Version $Version
-
-    & certmgr.exe -add -c (Resolve-Path "RootCertificate.cer") -s -r localMachine root
-    Try-Exit
-
-    & sn -i (Resolve-Path "SigningKey.pfx") VS_KEY_495CE44A959FD928
-    Try-Exit
-}
-
-# Reinstall keys
-function Remove-Keys
-{
-    param (
-        [Parameter(Mandatory = $True, HelpMessage = "Specifies your Visual Studio version (2010 or 2012). Default is 2012.")]
-        [ValidateSet("2010", "2012")]
-        [string] $Version = "2012"
-    )
-
-    Import-Variables -Version $Version
-
-    & sn -d VS_KEY_495CE44A959FD928
-    Try-Exit
-}
-
 # Build Elysium projects
 function Build-Projects
 {
@@ -198,10 +110,10 @@ function Build-Projects
         [bool]   $Transform     = $True,
 
         [Parameter(Position = 4, Mandatory = $False,  HelpMessage = "Key file used to strong name sign assembly.")]
-        [string] $AssemblyKey = (Resolve-Path "SigningKey.pfx"),
+        [string] $AssemblyKey = (Resolve-Path "..\..\SigningKey.pfx"),
 
         [Parameter(Position = 5, Mandatory = $False,  HelpMessage = "Key file used to digital signature sign assembly.")]
-        [string] $SignatureKey = (Resolve-Path "SigningKey.pfx"),
+        [string] $SignatureKey = (Resolve-Path "..\..\SigningKey.pfx"),
 
         [Parameter(Position = 6, Mandatory = $False,  HelpMessage = "Assembly digital signature parameters.")]
         [string] $SignatureParams = "/t http://timestamp.comodoca.com/authenticode",
@@ -241,7 +153,6 @@ function Build-Projects
         Add-TfsPendingChange -Edit (Resolve-Path "Elysium\Properties\AssemblyInfo.cs") -Lock none
         Add-TfsPendingChange -Edit (Resolve-Path "Elysium\Documentation\ru\Elysium.xml") -Lock none
         Add-TfsPendingChange -Edit (Resolve-Path "Elysium\Documentation\en\Elysium.xml") -Lock none
-        Add-TfsPendingChange -Edit (Resolve-Path "$FrameworkName\Elysium\Themes\Generic.xaml") -Lock none
     }
     Build-Project -Project (Resolve-Path "Elysium\Elysium.$Framework.csproj") -Platform AnyCPU
 
@@ -499,10 +410,10 @@ function Build-Installation
         [bool]   $Transform     = $True,
 
         [Parameter(Position = 4, Mandatory = $False,  HelpMessage = "Key file used to strong name sign assembly.")]
-        [string] $AssemblyKey = (Resolve-Path "SigningKey.pfx"),
+        [string] $AssemblyKey = (Resolve-Path "..\..\SigningKey.pfx"),
 
         [Parameter(Position = 5, Mandatory = $False,  HelpMessage = "Key file used to digital signature sign assembly.")]
-        [string] $SignatureKey = (Resolve-Path "SigningKey.pfx"),
+        [string] $SignatureKey = (Resolve-Path "..\..\SigningKey.pfx"),
 
         [Parameter(Position = 6, Mandatory = $False,  HelpMessage = "Assembly digital signature parameters.")]
         [string] $SignatureParams = "/t http://timestamp.comodoca.com/authenticode",

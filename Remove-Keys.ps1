@@ -5,10 +5,13 @@ param (
 )
 
 $Location = Split-Path -Parent $MyInvocation.MyCommand.Path
-$Path = Join-Path -Path $Location -ChildPath Elysium.psm1
+$Path = Join-Path -Path $Location -ChildPath Helpers.psm1
 
 Import-Module $Path
 
-Install-Keys -Version $Version
+Import-Variables -Version $Version
+
+& sn -d VS_KEY_495CE44A959FD928
+Try-Exit
 
 Read-Host -Prompt "Press any key to continue..."

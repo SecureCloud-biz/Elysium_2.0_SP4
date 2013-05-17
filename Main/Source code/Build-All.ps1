@@ -1,9 +1,9 @@
 param (
     [Parameter(Position = 2, Mandatory = $False,  HelpMessage = "Key file used to strong name sign assembly.")]
-    [string] $AssemblyKey     = (Resolve-Path "SigningKey.pfx"),
+    [string] $AssemblyKey     = (Resolve-Path "..\..\SigningKey.pfx"),
 
     [Parameter(Position = 3, Mandatory = $False,  HelpMessage = "Key file used to digital signature sign assembly.")]
-    [string] $SignatureKey    = (Resolve-Path "SigningKey.pfx"),
+    [string] $SignatureKey    = (Resolve-Path "..\..\SigningKey.pfx"),
 
     [Parameter(Position = 4, Mandatory = $False,  HelpMessage = "Assembly digital signature parameters.")]
     [string] $SignatureParams = "/t http://timestamp.comodoca.com/authenticode",

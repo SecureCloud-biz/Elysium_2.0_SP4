@@ -19,7 +19,7 @@
     <Name>Elysium.SDK.MSI.NETFX4</Name>
   </PropertyGroup>
   <PropertyGroup>
-    <DigitalSignatureKeyFile>..\..\..\..\..\..\Source code\SigningKey.pfx</DigitalSignatureKeyFile>
+    <DigitalSignatureKeyFile>..\..\..\..\..\..\..\..\Source code\SigningKey.pfx</DigitalSignatureKeyFile>
     <DigitalSignatureParams>/t http://timestamp.comodoca.com/authenticode</DigitalSignatureParams>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
