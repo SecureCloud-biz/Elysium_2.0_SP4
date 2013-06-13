@@ -3,6 +3,10 @@
               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
               xmlns:metro="http://schemas.codeplex.com/elysium"
               xmlns:params="http://schemas.codeplex.com/elysium/params"
+              params:Design.Theme="Dark"
+              params:Design.AccentBrush="{x:Static metro:AccentBrushes.Blue}"
+              params:Design.ContrastBrush="White"
+              Background="{DynamicResource BackgroundBrush}"
               Title="Window" IsMainWindow="True"
               params:Window.MinimizeButtonToolTip="Minimize"
               params:Window.MaximizeButtonToolTip="Maximize"
@@ -182,7 +186,7 @@
             <metro:DropDownCommandButton Header="More"
                                          metro:ApplicationBar.Dock="Right"
                                          Margin="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Mode=OneWay}">
-                <Path Data="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type metro:Resources}, ResourceId=AdvancedIcon}}"
+                <Path Data="{StaticResource AdvancedIcon}"
                       Fill="Black"
                       Stroke="Black"
                       Width="24" Height="24"/>
@@ -472,8 +476,8 @@
                         <MenuItem Header="Copy">
                             <MenuItem.Icon>
                                 <Path Data="{StaticResource SampleIcon16px}"
-                                      Fill="{DynamicResource {x:Static metro:Resources.AccentBrushKey}}"
-                                      Stroke="{DynamicResource {x:Static metro:Resources.AccentBrushKey}}"
+                                      Fill="{DynamicResource AccentBrush}"
+                                      Stroke="{DynamicResource AccentBrush}"
                                       Width="16" Height="16"/>
                             </MenuItem.Icon>
                         </MenuItem>
@@ -541,7 +545,7 @@
                       Grid.RowSpan="5"
                       Background="Transparent"
                       metro:ApplicationBar.PreventsOpen="true">
-                    <TextBlock Foreground="{DynamicResource {x:Static metro:Resources.MiddleLightBrushKey}}"
+                    <TextBlock Foreground="{DynamicResource MiddleLightBrush}"
                                FontSize="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.HeaderFontSize)}"
                                Text="Click here to see ContextMenu"
                                TextOptions.TextFormattingMode="Ideal"
@@ -556,8 +560,8 @@
                             <MenuItem Header="Copy">
                                 <MenuItem.Icon>
                                     <Path Data="{StaticResource SampleIcon16px}"
-                                          Fill="{DynamicResource {x:Static metro:Resources.AccentBrushKey}}"
-                                          Stroke="{DynamicResource {x:Static metro:Resources.AccentBrushKey}}"
+                                          Fill="{DynamicResource AccentBrush}"
+                                          Stroke="{DynamicResource AccentBrush}"
                                           Width="16" Height="16"/>
                                 </MenuItem.Icon>
                             </MenuItem>

@@ -798,34 +798,6 @@ namespace Elysium.Controls
 
         private static ResourceKey _mainWindowCaptionButtonStyleKey;
 
-        public static ResourceKey MinimizeIconKey
-        {
-            get { return _minimizeIconKey ?? (_minimizeIconKey = new ComponentResourceKey(typeof(Window), "MinimizeIcon")); }
-        }
-
-        private static ResourceKey _minimizeIconKey;
-
-        public static ResourceKey MaximizeIconKey
-        {
-            get { return _maximizeIconKey ?? (_maximizeIconKey = new ComponentResourceKey(typeof(Window), "MaximizeIcon")); }
-        }
-
-        private static ResourceKey _maximizeIconKey;
-
-        public static ResourceKey RestoreIconKey
-        {
-            get { return _restoreIconKey ?? (_restoreIconKey = new ComponentResourceKey(typeof(Window), "RestoreIcon")); }
-        }
-
-        private static ResourceKey _restoreIconKey;
-
-        public static ResourceKey CloseIconKey
-        {
-            get { return _closeIconKey ?? (_closeIconKey = new ComponentResourceKey(typeof(Window), "CloseIcon")); }
-        }
-
-        private static ResourceKey _closeIconKey;
-
         #endregion
 
         #region Implementation of IDisposable

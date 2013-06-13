@@ -1,58 +1,57 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:sw="clr-namespace:System.Windows"
-                    xmlns:root="clr-namespace:Elysium"
-                    xmlns:controls="clr-namespace:Elysium.Controls"
-                    xmlns:params="clr-namespace:Elysium.Parameters">
+                    xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:params="clr-namespace:Elysium.Parameters"
+                    xmlns:controls="clr-namespace:Elysium.Controls">
 
     <ResourceDictionary.MergedDictionaries>
-        <sw:CachedResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
-        <sw:CachedResourceDictionary Source="/Elysium;component/Themes/Ranges/ProgressBar.xaml"/>
-        <sw:CachedResourceDictionary Source="/Elysium;component/Themes/Buttons/Button.xaml"/>
-        <sw:CachedResourceDictionary Source="/Elysium;component/Themes/Icons.xaml"/>
+        <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
+        <ResourceDictionary Source="/Elysium;component/Themes/Ranges/ProgressBar.xaml"/>
+        <ResourceDictionary Source="/Elysium;component/Themes/Buttons/Button.xaml"/>
+        <ResourceDictionary Source="/Elysium;component/Themes/Icons.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{x:Static controls:Window.DefaultCaptionButtonStyleKey}" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
-        <Setter Property="Background" Value="{DynamicResource {x:Static root:Resources.TransparentBrushKey}}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static root:Resources.TransparentBrushKey}}"/>
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static root:Resources.ForegroundBrushKey}}"/>
+        <Setter Property="Background" Value="{DynamicResource TransparentBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource TransparentBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource {x:Static root:Resources.HighLightBrushKey}}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static root:Resources.HighLightBrushKey}}"/>
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static root:Resources.ForegroundBrushKey}}"/>
+                <Setter Property="Background" Value="{DynamicResource HighlightBrush}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource HighlightBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{DynamicResource {x:Static root:Resources.AccentBrushKey}}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static root:Resources.AccentBrushKey}}"/>
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static root:Resources.ContrastBrushKey}}"/>
+                <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
 
     <Style x:Key="{x:Static controls:Window.MainWindowCaptionButtonStyleKey}" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
-        <Setter Property="Background" Value="{DynamicResource {x:Static root:Resources.AccentBrushKey}}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static root:Resources.AccentBrushKey}}"/>
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static root:Resources.ContrastBrushKey}}"/>
+        <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource {x:Static root:Resources.SemitransparentContrastBrushKey}}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static root:Resources.SemitransparentContrastBrushKey}}"/>
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static root:Resources.ContrastBrushKey}}"/>
+                <Setter Property="Background" Value="{DynamicResource SemitransparentContrastBrush}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource SemitransparentContrastBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{DynamicResource {x:Static root:Resources.ContrastBrushKey}}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static root:Resources.ContrastBrushKey}}"/>
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static root:Resources.AccentBrushKey}}"/>
+                <Setter Property="Background" Value="{DynamicResource ContrastBrush}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource ContrastBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource AccentBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
 
     <Style x:Key="{x:Type controls:Window}" TargetType="{x:Type controls:Window}">
-        <Setter Property="Background" Value="{DynamicResource {x:Static root:Resources.BackgroundBrushKey}}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static root:Resources.AccentBrushKey}}"/>
+        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static root:Resources.ForegroundBrushKey}}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.TextFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
@@ -125,9 +124,9 @@
                                             Command="{x:Static controls:WindowCommands.Minimize}"
                                             ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.MinimizeButtonToolTip), Mode=OneWay}"
                                             ToolTipService.ShowOnDisabled="True"
-                                            Style="{StaticResource {x:Static controls:Window.DefaultCaptionButtonStyleKey}}"
+                                            Style="{DynamicResource {x:Static controls:Window.DefaultCaptionButtonStyleKey}}"
                                             MinWidth="32" MinHeight="32">
-                                        <Path Data="{StaticResource {x:Static controls:Window.MinimizeIconKey}}"
+                                        <Path Data="{StaticResource MinimizeIcon}"
                                               Fill="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}"
                                               Stretch="None"
                                               Width="10" Height="10"/>
@@ -138,9 +137,9 @@
                                             Command="{x:Static controls:WindowCommands.Maximize}"
                                             ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.MaximizeButtonToolTip), Mode=OneWay}"
                                             ToolTipService.ShowOnDisabled="True"
-                                            Style="{StaticResource {x:Static controls:Window.DefaultCaptionButtonStyleKey}}"
+                                            Style="{DynamicResource {x:Static controls:Window.DefaultCaptionButtonStyleKey}}"
                                             MinWidth="32" MinHeight="32">
-                                        <Path Data="{StaticResource {x:Static controls:Window.MaximizeIconKey}}"
+                                        <Path Data="{StaticResource MaximizeIcon}"
                                               Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}"
                                               Stretch="None"
                                               Width="10" Height="10"/>
@@ -151,10 +150,10 @@
                                             Command="{x:Static controls:WindowCommands.Restore}"
                                             ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.RestoreButtonToolTip), Mode=OneWay}"
                                             ToolTipService.ShowOnDisabled="True"
-                                            Style="{StaticResource {x:Static controls:Window.DefaultCaptionButtonStyleKey}}"
+                                            Style="{DynamicResource {x:Static controls:Window.DefaultCaptionButtonStyleKey}}"
                                             MinWidth="32" MinHeight="32"
                                             Visibility="Hidden">
-                                        <Path Data="{StaticResource {x:Static controls:Window.RestoreIconKey}}"
+                                        <Path Data="{StaticResource RestoreIcon}"
                                               Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}"
                                               Stretch="None"
                                               Width="10" Height="10"/>
@@ -165,9 +164,9 @@
                                             Command="{x:Static controls:WindowCommands.Close}"
                                             ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.CloseButtonToolTip), Mode=OneWay}"
                                             ToolTipService.ShowOnDisabled="True"
-                                            Style="{StaticResource {x:Static controls:Window.DefaultCaptionButtonStyleKey}}"
+                                            Style="{DynamicResource {x:Static controls:Window.DefaultCaptionButtonStyleKey}}"
                                             MinWidth="32" MinHeight="32">
-                                        <Path Data="{StaticResource {x:Static controls:Window.CloseIconKey}}"
+                                        <Path Data="{StaticResource CloseIcon}"
                                               Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}"
                                               Stretch="None"
                                               Width="10" Height="10"/>
@@ -176,7 +175,7 @@
                                 <controls:ProgressBar x:Name="PART_ProgressBar"
                                                       Grid.ColumnSpan="4"
                                                       Grid.Row="0"
-                                                      Background="{DynamicResource {x:Static root:Resources.TransparentBrushKey}}"
+                                                      Background="{DynamicResource TransparentBrush}"
                                                       Value="{TemplateBinding Progress}"
                                                       VerticalAlignment="Top"
                                                       Height="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldThicknessValue), Mode=OneWay}"/>
@@ -200,16 +199,16 @@
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.TitleFontSize), Mode=OneWay, Converter={StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=IsGreaterThanConverter}}, ConverterParameter=18}">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.TitleFontSize), Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
                             <Setter TargetName="PART_Title" Property="TextOptions.TextFormattingMode" Value="Ideal"/>
                         </DataTrigger>
                         <Trigger Property="IsBusy" Value="True">
                             <Setter TargetName="PART_ProgressBar" Property="State" Value="Indeterminate"/>
                         </Trigger>
                         <Trigger Property="controls:Window.IsMainWindow" Value="True">
-                            <Setter TargetName="PART_Caption" Property="Background" Value="{DynamicResource {x:Static root:Resources.AccentBrushKey}}"/>
-                            <Setter TargetName="PART_ProgressBar" Property="Foreground" Value="{DynamicResource {x:Static root:Resources.ContrastBrushKey}}"/>
-                            <Setter TargetName="PART_Title" Property="Foreground" Value="{DynamicResource {x:Static root:Resources.ContrastBrushKey}}"/>
+                            <Setter TargetName="PART_Caption" Property="Background" Value="{DynamicResource AccentBrush}"/>
+                            <Setter TargetName="PART_ProgressBar" Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
+                            <Setter TargetName="PART_Title" Property="Foreground" Value="{DynamicResource ContrastBrush}"/>
                             <Setter TargetName="PART_Minimize" Property="Style" Value="{StaticResource {x:Static controls:Window.MainWindowCaptionButtonStyleKey}}"/>
                             <Setter TargetName="PART_Maximize" Property="Style" Value="{StaticResource {x:Static controls:Window.MainWindowCaptionButtonStyleKey}}"/>
                             <Setter TargetName="PART_Restore" Property="Style" Value="{StaticResource {x:Static controls:Window.MainWindowCaptionButtonStyleKey}}"/>
@@ -258,7 +257,7 @@
             </Setter.Value>
         </Setter>        
         <Style.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type root:Resources}, ResourceId=IsGreaterThanConverter}}, ConverterParameter=18}">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
                 <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
             </DataTrigger>
             <Trigger Property="HasDropShadow" Value="False">

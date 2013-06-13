@@ -1,5 +1,5 @@
 ﻿<#+
-public static readonly string Copyright = "Copyright © Aleksandr Vishnyakov & Codeplex community 2011-" + DateTime.Now.Year.ToString(System.Globalization.CultureInfo.InvariantCulture);
+public static readonly string Copyright = "Copyright © Aleksandr Vishnyakov & Codeplex community 2011-" + DateTime.Now.Year.ToString();
 public const string Version = "2.1 EAP";
 
 public static class Versions
@@ -7,9 +7,6 @@ public static class Versions
 	public static class NETFX4
 	{
 		public const string Elysium = "2.1.978.0";
-		public const string Dynamic = "2.1.197.0";
-		public const string Light = "2.1.75.0";
-		public const string Dark = "2.1.21.0";
 		public const string Design = "2.1.123.0";
 		public const string Notifications = "2.1.64.0";
 		public const string NotificationsServer = "2.1.60.0";
@@ -20,9 +17,6 @@ public static class Versions
 	public static class NETFX45
 	{
 		public const string Elysium = "2.1.1044.0";
-		public const string Dynamic = "2.1.34.0";
-		public const string Light = "2.1.23.0";
-		public const string Dark = "2.1.7.0";
 		public const string Design = "2.1.36.0";
 		public const string Notifications = "2.1.67.0";
 		public const string NotificationsServer = "2.1.73.0";

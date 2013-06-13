@@ -12,7 +12,10 @@
     var paths = new List<string>
         {
             @"AccentBrushes.ru.xml",
+            @"Manager.ru.xml",
+            @"Theme.ru.xml",
 
+            @"Exceptions\InvalidStyleException.ru.xml",
             @"Extensions\Threading helpers\DispatcherExtensions.ru.xml",
             @"Extensions\Tree helpers\LogicalTreeHelperExtensions.ru.xml",
             @"Extensions\Tree helpers\VisualTreeHelperExtensions.ru.xml",
@@ -21,8 +24,10 @@
             @"Parameters\CheckBox.ru.xml",
             @"Parameters\ComboBox.ru.xml",
             @"Parameters\CommandButtons.ru.xml",
+            @"Parameters\Design.ru.xml",
             @"Parameters\DropDown.ru.xml",
             @"Parameters\General.ru.xml",
+            @"Parameters\Manager.ru.xml",
             @"Parameters\MenuBase.ru.xml",
             @"Parameters\MenuItem.ru.xml",
             @"Parameters\Progress.ru.xml",

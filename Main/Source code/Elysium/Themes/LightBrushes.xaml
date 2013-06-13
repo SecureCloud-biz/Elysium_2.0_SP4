@@ -1,31 +1,30 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:root="clr-namespace:Elysium"
-                    xmlns:presentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
-
-    <SolidColorBrush x:Key="{x:Static root:Resources.TransparentBrushKey}"
+                    xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+    
+    <SolidColorBrush x:Key="TransparentBrush"
                      Color="#00FFFFFF"
-                     presentationOptions:Freeze="True"/>
-    <SolidColorBrush x:Key="{x:Static root:Resources.SemitransparentBrushKey}"
+                     PresentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="SemitransparentBrush"
                      Color="#20FFFFFF"
-                     presentationOptions:Freeze="True"/>
-    <SolidColorBrush x:Key="{x:Static root:Resources.BackgroundBrushKey}"
+                     PresentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="BackgroundBrush"
                      Color="#FFFFFFFF"
-                     presentationOptions:Freeze="True"/>
-    <SolidColorBrush x:Key="{x:Static root:Resources.ForegroundBrushKey}"
+                     PresentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="ForegroundBrush"
                      Color="#FF000000"
-                     presentationOptions:Freeze="True"/>
-    <SolidColorBrush x:Key="{x:Static root:Resources.HighLightBrushKey}"
+                     PresentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="HighlightBrush"
                      Color="#FFDEDEDE"
-                     presentationOptions:Freeze="True"/>
-    <SolidColorBrush x:Key="{x:Static root:Resources.MiddleLightBrushKey}"
+                     PresentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="MiddleLightBrush"
                      Color="#FF777777"
-                     presentationOptions:Freeze="True"/>
-    <SolidColorBrush x:Key="{x:Static root:Resources.LowLightBrushKey}"
+                     PresentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="LowlightBrush"
                      Color="#FF4D4D4D"
-                     presentationOptions:Freeze="True"/>
-    <SolidColorBrush x:Key="{x:Static root:Resources.DisabledBrushKey}"
+                     PresentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="DisabledBrush"
                      Color="#FFB8B5B2"
-                     presentationOptions:Freeze="True"/>
-
+                     PresentationOptions:Freeze="True"/>
+    
 </ResourceDictionary>
