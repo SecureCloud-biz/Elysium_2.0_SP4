@@ -70,7 +70,7 @@ namespace Elysium.Parameters
             if (control != null)
             {
                 var accentBrush = (SolidColorBrush)e.NewValue;
-                control.Apply(GetTheme(control), accentBrush, GetAccentBrush(control));
+                control.Apply(GetTheme(control), accentBrush, GetContrastBrush(control));
                 TryRemove(control);
             }
         }
