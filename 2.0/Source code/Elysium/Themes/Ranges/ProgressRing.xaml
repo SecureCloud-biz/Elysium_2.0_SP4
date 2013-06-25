@@ -35,7 +35,6 @@
                                     Stretch="None"
                                     RenderTransformOrigin="0.5,0.5"
                                     Canvas.Left="0" Canvas.Top="0"
-                                    Panel.ZIndex="0"
                                     Width="{Binding ElementName=PART_Track, Path=ActualWidth}" Height="{Binding ElementName=PART_Track, Path=ActualHeight}">
                                 <ed:Arc.RenderTransform>
                                     <RotateTransform Angle="-90"/>
@@ -49,7 +48,6 @@
                                     Stretch="None"
                                     RenderTransformOrigin="0.5,0.5"
                                     Canvas.Left="0" Canvas.Top="0"
-                                    Panel.ZIndex="1"
                                     Width="{Binding ElementName=PART_Track, Path=ActualWidth}" Height="{Binding ElementName=PART_Track, Path=ActualHeight}">
                                 <ed:Arc.RenderTransform>
                                     <RotateTransform Angle="-90"/>

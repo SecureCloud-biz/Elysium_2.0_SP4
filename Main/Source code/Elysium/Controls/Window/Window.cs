@@ -502,7 +502,9 @@ namespace Elysium.Controls
                         {
                             applicationBar.Opened += ChangeVisibilityAfterOpened;
                         }
+// ReSharper disable ConditionIsAlwaysTrueOrFalse
                         else if (applicationBar.IsClosing)
+// ReSharper restore ConditionIsAlwaysTrueOrFalse
                         {
                             applicationBar.Closed += ChangeVisibilityAfterClosed;
                         }

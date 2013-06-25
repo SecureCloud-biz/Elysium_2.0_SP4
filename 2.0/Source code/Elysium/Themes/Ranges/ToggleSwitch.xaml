@@ -127,7 +127,6 @@
                                            DockPanel.Dock="Left"
                                            Fill="{StaticResource AccentBrush}"
                                            Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.DefaultThicknessValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Top, Bottom'}"
-                                           Panel.ZIndex="0"
                                            Width="0"/>
                                 <Thumb x:Name="PART_Thumb"
                                        DockPanel.Dock="Left"
@@ -136,11 +135,9 @@
                                        IsEnabled="{TemplateBinding IsEnabled}"
                                        Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Mode=OneWay, Converter={StaticResource ThicknessPositiveToNegativeConverter}}"
                                        Width="{TemplateBinding params:ToggleSwitch.ThumbThickness}"
-                                       Panel.ZIndex="1"
                                        Style="{StaticResource ToggleSwitchThumbStyle}"/>
                                 <Button x:Name="PART_Switch"
                                         Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:General.DefaultThicknessValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Right, Top, Bottom'}"
-                                        Panel.ZIndex="0"
                                         Style="{StaticResource ToggleSwitchSwitchStyle}"/>
                             </DockPanel>
                         </Border>

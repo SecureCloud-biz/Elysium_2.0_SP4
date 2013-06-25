@@ -12,7 +12,9 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
 
+#if NETFX4
 using Elysium.Extensions;
+#endif
 using Elysium.SDK.MSI.UI.Enumerations;
 using Elysium.SDK.MSI.UI.Models;
 using Elysium.SDK.MSI.UI.Native;

@@ -502,7 +502,9 @@ namespace Elysium.Controls
                         {
                             applicationBar.Opened += ChangeVisibilityAfterOpened;
                         }
+// ReSharper disable ConditionIsAlwaysTrueOrFalse
                         else if (applicationBar.IsClosing)
+// ReSharper restore ConditionIsAlwaysTrueOrFalse
                         {
                             applicationBar.Closed += ChangeVisibilityAfterClosed;
                         }
@@ -810,7 +812,9 @@ namespace Elysium.Controls
         }
 
         [SecurityCritical]
+// ReSharper disable VirtualMemberNeverOverriden.Global
         protected virtual void Dispose(bool disposing)
+// ReSharper restore VirtualMemberNeverOverriden.Global
         {
             if (_disposed)
             {

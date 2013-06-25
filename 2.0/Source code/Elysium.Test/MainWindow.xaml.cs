@@ -66,12 +66,16 @@ namespace Elysium.Test
             Application.Current.Apply(null, Brushes.Black);
         }
 
+#if NETFX4
         private void NotificationClick(object sender, RoutedEventArgs e)
+#elif NETFX45
+        private async void NotificationClick(object sender, RoutedEventArgs e)
+#endif
         {
 #if NETFX4
             NotificationManager.BeginTryPush("Message", "The quick brown fox jumps over the lazy dog");
 #elif NETFX45
-            NotificationManager.TryPushAsync("Message", "The quick brown fox jumps over the lazy dog");
+            await NotificationManager.TryPushAsync("Message", "The quick brown fox jumps over the lazy dog");
 #endif
         }
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Threading;
 using System.Windows.Interop;
 using System.Windows.Threading;
 

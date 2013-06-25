@@ -17,7 +17,6 @@
                           xmlns:x=""http://schemas.microsoft.com/winfx/2006/xaml""
                           xmlns:ed=""http://schemas.microsoft.com/expression/2010/drawing""
                           xmlns:shell=""http://schemas.microsoft.com/winfx/2006/xaml/presentation/shell""
-                          xmlns:system=""clr-namespace:System;assembly=mscorlib""
                           xmlns:params=""clr-namespace:Elysium.Parameters""
                           xmlns:primitives=""clr-namespace:Elysium.Controls.Primitives""
                           xmlns:controls=""clr-namespace:Elysium.Controls""
@@ -43,6 +42,11 @@
             @"Scrolls\ScrollBar.xaml",
             @"Scrolls\ScrollViewer.xaml",
 
+            @"Menus\MenuItem.xaml",
+            @"Menus\Menu.xaml",
+            @"Menus\Submenu.xaml",
+            @"Menus\ContextMenu.xaml",
+
             @"TextBoxes\TextBoxesBase.xaml",
             @"TextBoxes\TextBoxBase.xaml",
             @"TextBoxes\TextBox.xaml",
@@ -62,11 +66,6 @@
 
             @"Tabs\TabItem.xaml",
             @"Tabs\TabControl.xaml",
-
-            @"Menus\MenuItem.xaml",
-            @"Menus\Menu.xaml",
-            @"Menus\Submenu.xaml",
-            @"Menus\ContextMenu.xaml",
 
             @"Buttons\CommandButtonBase.xaml",
             @"Buttons\commandButton.xaml",

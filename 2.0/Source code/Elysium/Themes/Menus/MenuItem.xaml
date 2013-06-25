@@ -247,7 +247,7 @@
                     </Polygon.Points>
                 </Polygon>
                 <Popup x:Name="PART_Popup"
-                       Grid.IsSharedSizeScope="True"
+                       Grid.Column="0" Grid.IsSharedSizeScope="True"
                        AllowsTransparency="True"
                        Focusable="False"
                        Placement="Right"

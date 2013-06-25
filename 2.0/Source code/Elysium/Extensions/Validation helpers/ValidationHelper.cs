@@ -26,7 +26,9 @@ namespace Elysium.Extensions
         [ContractArgumentValidator]
         internal static void NotNull<T>([ValidatedNotNull] T argument, [NotNull] string parameterName)
         {
+// ReSharper disable CompareNonConstrainedGenericWithNull
             if (argument == null)
+// ReSharper restore CompareNonConstrainedGenericWithNull
             {
                 throw new ArgumentNullException(parameterName);
             }
@@ -62,7 +64,11 @@ namespace Elysium.Extensions
         internal static void NotNullAll<TEnumerable, TElement>(TEnumerable argument, [NotNull] string parameterName)
             where TEnumerable : IEnumerable<TElement>
         {
+// ReSharper disable CompareNonConstrainedGenericWithNull
+// ReSharper disable SimplifyLinqExpression
             if (!argument.All(item => item != null))
+// ReSharper restore SimplifyLinqExpression
+// ReSharper restore CompareNonConstrainedGenericWithNull
             {
                 throw new ArgumentException(parameterName + " contains null element", parameterName);
             }

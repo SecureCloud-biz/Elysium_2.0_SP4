@@ -70,8 +70,7 @@
                                       Grid.Column="0"
                                       Grid.Row="0"
                                       IsItemsHost="True"
-                                      KeyboardNavigation.TabIndex="1"
-                                      Panel.ZIndex="1"/>
+                                      KeyboardNavigation.TabIndex="1" />
                             <Border x:Name="ContentPanel"
                                     Grid.Column="0"
                                     Grid.Row="1"

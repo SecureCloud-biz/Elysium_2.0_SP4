@@ -26,7 +26,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>..\..\..\SigningKey.pfx</AssemblyOriginatorKeyFile>
-    <DigitalSignatureKeyFile>..\..\..\..\..\..\Source code\SigningKey.pfx</DigitalSignatureKeyFile>
+    <DigitalSignatureKeyFile>..\..\..\..\..\SigningKey.pfx</DigitalSignatureKeyFile>
     <DigitalSignatureParams>/t http://timestamp.comodoca.com/authenticode</DigitalSignatureParams>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
@@ -204,50 +204,50 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>AssemblyInfo.cs</LastGenOutput>
     </None>
-    <None Include="Themes\ApplicationBar\ApplicationBar.xaml">
+    <Page Include="Themes\ApplicationBar\ApplicationBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\Buttons\Button.xaml">
+    </Page>
+    <Page Include="Themes\Buttons\Button.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\Buttons\ButtonBase.xaml">
+    </Page>
+    <Page Include="Themes\Buttons\ButtonBase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\Buttons\CheckBox.xaml">
+    </Page>
+    <Page Include="Themes\Buttons\CheckBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\Buttons\CommandButton.xaml">
+    </Page>
+    <Page Include="Themes\Buttons\CommandButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\Buttons\CommandButtonBase.xaml">
+    </Page>
+    <Page Include="Themes\Buttons\CommandButtonBase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\Buttons\DropDownCommandButton.xaml">
+    </Page>
+    <Page Include="Themes\Buttons\DropDownCommandButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Themes\Buttons\ToggleCommandButton.xaml">
+    </Page>
+    <Page Include="Themes\Buttons\ToggleCommandButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Themes\Buttons\RadioButton.xaml">
+    </Page>
+    <Page Include="Themes\Buttons\RadioButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Themes\Buttons\RepeatButton.xaml">
+    </Page>
+    <Page Include="Themes\Buttons\RepeatButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\Buttons\ToggleButton.xaml">
+    </Page>
+    <Page Include="Themes\Buttons\ToggleButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
+    </Page>
     <Page Include="Themes\Brushes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -256,115 +256,115 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <None Include="Themes\Icons.xaml">
+    <Page Include="Themes\Icons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
+    </Page>
     <Page Include="Themes\LightBrushes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <None Include="Themes\Menus\ContextMenu.xaml">
+    <Page Include="Themes\Menus\ContextMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\Menus\Menu.xaml">
+    </Page>
+    <Page Include="Themes\Menus\Menu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Themes\Menus\Submenu.xaml">
+    </Page>
+    <Page Include="Themes\Menus\Submenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Themes\Menus\MenuItem.xaml">
+    </Page>
+    <Page Include="Themes\Menus\MenuItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\Ranges\ProgressRing.xaml">
+    </Page>
+    <Page Include="Themes\Ranges\ProgressRing.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Themes\Ranges\ProgressBar.xaml">
+    </Page>
+    <Page Include="Themes\Ranges\ProgressBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\Ranges\Slider.xaml">
+    </Page>
+    <Page Include="Themes\Ranges\Slider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\Ranges\ToggleSwitch.xaml">
+    </Page>
+    <Page Include="Themes\Ranges\ToggleSwitch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\Scrolls\ScrollBar.xaml">
+    </Page>
+    <Page Include="Themes\Scrolls\ScrollBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\Scrolls\ScrollViewer.xaml">
+    </Page>
+    <Page Include="Themes\Scrolls\ScrollViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\Selectors\ComboBox.xaml">
+    </Page>
+    <Page Include="Themes\Selectors\ComboBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\Selectors\ComboBoxItem.xaml">
+    </Page>
+    <Page Include="Themes\Selectors\ComboBoxItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\Selectors\ListBox.xaml">
+    </Page>
+    <Page Include="Themes\Selectors\ListBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\Selectors\ListBoxItem.xaml">
+    </Page>
+    <Page Include="Themes\Selectors\ListBoxItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\Selectors\SelectorsItemsBase.xaml">
+    </Page>
+    <Page Include="Themes\Selectors\SelectorsItemsBase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\SharedResources.xaml">
+    </Page>
+    <Page Include="Themes\SharedResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Themes\Tabs\TabControl.xaml">
+    </Page>
+    <Page Include="Themes\Tabs\TabControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\Tabs\TabItem.xaml">
+    </Page>
+    <Page Include="Themes\Tabs\TabItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\TextBoxes\TextBoxesBase.xaml">
+    </Page>
+    <Page Include="Themes\TextBoxes\TextBoxesBase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\TextBoxes\PasswordBox.xaml">
+    </Page>
+    <Page Include="Themes\TextBoxes\PasswordBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\TextBoxes\RichTextBox.xaml">
+    </Page>
+    <Page Include="Themes\TextBoxes\RichTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\TextBoxes\TextBox.xaml">
+    </Page>
+    <Page Include="Themes\TextBoxes\TextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="Themes\TextBoxes\TextBoxBase.xaml">
+    </Page>
+    <Page Include="Themes\TextBoxes\TextBoxBase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Include="..\.NET Framework 4.5\Elysium\Themes\Windows\Window.xaml">
+    </Page>
+    <Page Include="..\.NET Framework 4.5\Elysium\Themes\Windows\Window.xaml">
       <Link>Themes\Windows\Window.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Themes\Windows\ToolTip.xaml">
+    </Page>
+    <Page Include="Themes\Windows\ToolTip.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </None>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccentBrushes.cs" />

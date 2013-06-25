@@ -1,4 +1,5 @@
-﻿namespace System.Diagnostics.CodeAnalysis
+﻿// ReSharper disable CheckNamespace
+namespace System.Diagnostics.CodeAnalysis
 {
     [ConditionalAttribute("CODE_ANALYSIS")]
     [AttributeUsageAttribute(AttributeTargets.Parameter, Inherited = false, AllowMultiple = false)]
@@ -6,3 +7,4 @@
     {
     }
 }
+// ReSharper restore CheckNamespace
