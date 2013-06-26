@@ -9,11 +9,11 @@
   <?endif ?>
 
   <?ifdef NETFX4 ?>
-    <?define ProductId = "5793B67A-511B-403C-8EBF-66FF06FF57AA" ?>
+    <?define ProductId = "E7E194D9-5D96-4971-87D0-C19606B642C3" ?>
     <?define UpgradeCode = "9F4F83D0-9D44-4130-A578-1E46F8765922" ?>
   <?endif ?>
   <?ifdef NETFX45 ?>
-    <?define ProductId = "6DE14E09-A751-4769-9A9F-2ED0CA3BE9F3" ?>
+    <?define ProductId = "009DCC9E-6604-4769-8D88-BD27B01068F8" ?>
     <?define UpgradeCode = "EDED61A2-8351-4C88-8A2A-79E6000E6A9E" ?>
   <?endif ?>
   

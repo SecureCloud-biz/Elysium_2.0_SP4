@@ -11,12 +11,12 @@
   <?endif ?>
 
   <?ifdef NETFX4 ?>
-    <?define ProductId = "FE2932C2-6B10-4D70-84FB-F1A17ADD9BE4" ?>
+    <?define ProductId = "217A2D91-2230-408E-A8EE-2A455868155F" ?>
     <?define InstallerUpgradeCode = "DBFAF4C9-7352-483C-B6A2-34C6C1D0F1E0" ?>
     <?define SetupUpgradeCode = "ED0F0584-1CE1-45B0-9616-32ECC4DE5CAE" ?>
   <?endif ?>
   <?ifdef NETFX45 ?>
-    <?define ProductId = "AC4FA8DC-1DE8-41F9-8308-E1A67941E0C9" ?>
+    <?define ProductId = "489FE9DD-5CD0-4255-B2F3-7DFC98954593" ?>
     <?define InstallerUpgradeCode = "90DBE047-293B-4D8D-9F49-BDE9D943C591" ?>
     <?define SetupUpgradeCode = "02EF99BB-E737-4B32-96EF-5B8A13C5531E" ?>
   <?endif ?>
