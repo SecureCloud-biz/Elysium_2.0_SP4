@@ -32,14 +32,14 @@
   <?ifdef NETFX4 ?>
     <?define RuntimeVersion = "2.0" ?>
     <?define RuntimeBuild = "976" ?>
-    <?define RuntimeRevision = "1" ?>
-    <?define NotificationsServerVersion = "2.0.58.1" ?>
+    <?define RuntimeRevision = "2" ?>
+    <?define NotificationsServerVersion = "2.0.58.2" ?>
   <?endif ?>
   <?ifdef NETFX45 ?>
     <?define RuntimeVersion = "2.0" ?>
     <?define RuntimeBuild = "1042" ?>
-    <?define RuntimeRevision = "1" ?>
-    <?define NotificationsServerVersion = "2.0.71.1" ?>
+    <?define RuntimeRevision = "2" ?>
+    <?define NotificationsServerVersion = "2.0.71.2" ?>
   <?endif ?>
   
 </Include>

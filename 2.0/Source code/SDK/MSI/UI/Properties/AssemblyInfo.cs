@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
@@ -26,10 +27,10 @@ using Microsoft.Tools.WindowsInstallerXml.Bootstrapper;
 [assembly: NeutralResourcesLanguage("en-us", UltimateResourceFallbackLocation.MainAssembly)]
 
 #if NETFX4
-[assembly: AssemblyVersion("2.0.374.1")]
-[assembly: AssemblyFileVersion("2.0.374.1")]
+[assembly: AssemblyVersion("2.0.374.2")]
+[assembly: AssemblyFileVersion("2.0.374.2")]
 #elif NETFX45
-[assembly: AssemblyVersion("2.0.383.1")]
-[assembly: AssemblyFileVersion("2.0.383.1")]
+[assembly: AssemblyVersion("2.0.383.2")]
+[assembly: AssemblyFileVersion("2.0.383.2")]
 #endif
-[assembly: AssemblyInformationalVersion("2.0 SP1")]
+[assembly: AssemblyInformationalVersion("2.0 SP2")]

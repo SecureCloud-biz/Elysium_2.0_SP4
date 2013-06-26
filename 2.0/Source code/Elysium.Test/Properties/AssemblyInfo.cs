@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
@@ -20,10 +21,10 @@ using System.Windows;
 [assembly: NeutralResourcesLanguage("en-us")]
 
 #if NETFX4
-[assembly: AssemblyVersion("2.0.357.1")]
-[assembly: AssemblyFileVersion("2.0.357.1")]
+[assembly: AssemblyVersion("2.0.357.2")]
+[assembly: AssemblyFileVersion("2.0.357.2")]
 #elif NETFX45
-[assembly: AssemblyVersion("2.0.333.1")]
-[assembly: AssemblyFileVersion("2.0.333.1")]
+[assembly: AssemblyVersion("2.0.333.2")]
+[assembly: AssemblyFileVersion("2.0.333.2")]
 #endif
-[assembly: AssemblyInformationalVersion("2.0 SP1")]
+[assembly: AssemblyInformationalVersion("2.0 SP2")]

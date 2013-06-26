@@ -61,14 +61,14 @@
   <?ifdef NETFX4 ?>
     <?define SDKVersion = "2.0" ?>
     <?define SDKBuild = "976" ?>
-    <?define SDKRevision = "1" ?>
-    <?define NotificationsServerVersion = "2.0.58.1" ?>
+    <?define SDKRevision = "2" ?>
+    <?define NotificationsServerVersion = "2.0.58.2" ?>
   <?endif ?>
   <?ifdef NETFX45 ?>
     <?define SDKVersion = "2.0" ?>
     <?define SDKBuild = "1042" ?>
-    <?define SDKRevision = "1" ?>
-    <?define NotificationsServerVersion = "2.0.71.1" ?>
+    <?define SDKRevision = "2" ?>
+    <?define NotificationsServerVersion = "2.0.71.2" ?>
   <?endif ?>
   
 </Include>

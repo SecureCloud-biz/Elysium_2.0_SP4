@@ -1,4 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -48,7 +49,7 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="Elysium, Version=2.0.976.1, Culture=neutral, PublicKeyToken=f8966962afac6b6d, processorArchitecture=MSIL" />
+    <Reference Include="Elysium, Version=2.0.976.2, Culture=neutral, PublicKeyToken=f8966962afac6b6d, processorArchitecture=MSIL" />
   </ItemGroup>
 
   <ItemGroup>

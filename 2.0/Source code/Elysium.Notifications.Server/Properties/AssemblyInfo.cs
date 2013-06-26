@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security;
@@ -14,10 +15,10 @@ using System.Security;
 [assembly: CLSCompliant(false)]
 
 #if NETFX4
-[assembly: AssemblyVersion("2.0.58.1")]
-[assembly: AssemblyFileVersion("2.0.58.1")]
+[assembly: AssemblyVersion("2.0.58.2")]
+[assembly: AssemblyFileVersion("2.0.58.2")]
 #elif NETFX45
-[assembly: AssemblyVersion("2.0.71.1")]
-[assembly: AssemblyFileVersion("2.0.71.1")]
+[assembly: AssemblyVersion("2.0.71.2")]
+[assembly: AssemblyFileVersion("2.0.71.2")]
 #endif
-[assembly: AssemblyInformationalVersion("2.0 SP1")]
+[assembly: AssemblyInformationalVersion("2.0 SP2")]

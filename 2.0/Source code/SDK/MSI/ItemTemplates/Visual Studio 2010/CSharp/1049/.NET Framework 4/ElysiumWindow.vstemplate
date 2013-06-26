@@ -1,4 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿
+<?xml version="1.0" encoding="utf-8"?>
 <VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/developer/vstemplate/2005">
   <TemplateData>
     <Name>Окно в стиле Metro (WPF)</Name>
@@ -28,7 +29,7 @@
         <Assembly>PresentationFramework</Assembly>
       </Reference>
       <Reference>
-        <Assembly>Elysium, Version=2.0.976.1, Culture=neutral, PublicKeyToken=f8966962afac6b6d, processorArchitecture=MSIL</Assembly>
+        <Assembly>Elysium, Version=2.0.976.2, Culture=neutral, PublicKeyToken=f8966962afac6b6d, processorArchitecture=MSIL</Assembly>
       </Reference>
     </References>
     <ProjectItem ReplaceParameters="true" CustomTool="MSBuild:Compile">Window.xaml</ProjectItem>
