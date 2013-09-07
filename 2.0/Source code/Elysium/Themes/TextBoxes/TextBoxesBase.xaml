@@ -33,7 +33,7 @@
                 </ContextMenu>
             </Setter.Value>
         </Setter>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>        
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Control}">
@@ -42,7 +42,7 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <ScrollViewer x:Name="PART_ContentHost"
-                                      Background="{x:Null}"
+                                      Background="{StaticResource TransparentBrush}"
                                       Foreground="{TemplateBinding Foreground}"
                                       FontSize="{TemplateBinding FontSize}"
                                       FontStretch="{TemplateBinding FontStretch}"

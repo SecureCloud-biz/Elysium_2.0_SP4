@@ -56,9 +56,7 @@
                                                     CanContentScroll="{TemplateBinding CanContentScroll}"
                                                     CanHorizontallyScroll="False"
                                                     CanVerticallyScroll="False"
-                                                    Margin="{TemplateBinding Padding}"
-                                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                                    Margin="{TemplateBinding Padding}"/>
                             <ScrollBar x:Name="PART_HorizontalScrollBar"
                                        Grid.Column="0"
                                        Grid.Row="1"
