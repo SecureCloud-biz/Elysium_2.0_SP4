@@ -11,10 +11,10 @@
         <Setter Property="BorderBrush" Value="{StaticResource HighlightBrush}"/>
         <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.DefaultThickness), Mode=OneWay}"/>        
         <Setter Property="Focusable" Value="False"/>
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>        
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.SemiBoldPaddingValue), Mode=OneWay, Converter={StaticResource DoubleToThicknessConverter}, ConverterParameter='Left, Right'}"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPaddingValue), Mode=OneWay}"/>
         <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
         <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
         <Setter Property="SnapsToDevicePixels" Value="True"/>        

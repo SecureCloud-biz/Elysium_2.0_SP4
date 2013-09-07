@@ -557,6 +557,7 @@
                             <MenuItem Header="Always use Elysium"
                                       IsCheckable="True"
                                       IsChecked="True"/>
+                            <Separator/>
                             <MenuItem Header="Copy">
                                 <MenuItem.Icon>
                                     <Path Data="{StaticResource SampleIcon16px}"
