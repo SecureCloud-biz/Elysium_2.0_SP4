@@ -2423,6 +2423,8 @@
     <Setter Property="Background" Value="{DynamicResource TransparentBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource TransparentBrush}" />
     <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+    <Setter Property="IsTabStop" Value="False" />
     <Setter Property="MinWidth" Value="32" />
     <Setter Property="MinHeight" Value="32" />
     <Setter Property="ToolTipService.ShowOnDisabled" Value="True" />
@@ -2443,6 +2445,8 @@
     <Setter Property="Background" Value="{DynamicResource AccentBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
     <Setter Property="Foreground" Value="{DynamicResource ContrastBrush}" />
+    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+    <Setter Property="IsTabStop" Value="False" />
     <Setter Property="MinWidth" Value="32" />
     <Setter Property="MinHeight" Value="32" />
     <Setter Property="ToolTipService.ShowOnDisabled" Value="True" />
