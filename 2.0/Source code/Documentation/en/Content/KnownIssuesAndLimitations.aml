@@ -41,6 +41,9 @@
       <content>
         <list class="bullet">
           <listItem>
+            <para>If you want to use window icon of specific size, you need to declare icon as resource and manipulate it to reduce this size to specified.</para>
+          </listItem>
+          <listItem>
             <para>Window&apos;s header can be displayed incorrectly when the mouse&apos;s cursor is on the several upper pixels of the window and following conditions are true:</para>
             <list class="ordered">
               <listItem>
