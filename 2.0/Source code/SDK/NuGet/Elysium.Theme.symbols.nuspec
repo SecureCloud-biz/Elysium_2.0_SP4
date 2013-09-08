@@ -27,33 +27,19 @@
   </metadata>
   <files>
     <file src="..\..\..\Binary\.NET Framework 4\Documentation\en\Elysium.xml" target="lib\net40-client\en\Elysium.xml" />
-    <file src="..\..\..\Tools and Resources\Assembly dependencies\.NET Framework 4\en\Microsoft.Expression.Drawing.xml" target="lib\net40-client\en\Microsoft.Expression.Drawing.xml" />
     <file src="..\..\..\Binary\.NET Framework 4\Documentation\ru\Elysium.xml" target="lib\net40-client\ru\Elysium.xml" />
-    <file src="..\..\..\Tools and Resources\Assembly dependencies\.NET Framework 4\Microsoft.Expression.Drawing.xml" target="lib\net40-client\Microsoft.Expression.Drawing.xml" />
-    <file src="..\..\..\Tools and Resources\Assembly dependencies\.NET Framework 4\Microsoft.Windows.Shell.xml" target="lib\net40-client\Microsoft.Windows.Shell.xml" />
-    <file src="..\..\..\Tools and Resources\Assembly dependencies\.NET Framework 4\Design\en\Microsoft.Expression.Drawing.Design.resources.dll" target="lib\net40-client\Design\en\Microsoft.Expression.Drawing.Design.resources.dll" />
-    <file src="..\..\..\Tools and Resources\Assembly dependencies\.NET Framework 4\Design\Microsoft.Expression.Drawing.Design.dll" target="lib\net40-client\Design\Microsoft.Expression.Drawing.Design.dll" />
     <file src="..\..\..\Binary\.NET Framework 4\Debug\AnyCPU\Elysium.dll" target="lib\net40-client\Elysium.dll" />
     <file src="..\..\..\Binary\.NET Framework 4\Debug\AnyCPU\Elysium.pdb" target="lib\net40-client\Elysium.pdb" />
     <file src="..\..\..\Binary\.NET Framework 4\Release\AnyCPU\Elysium.Design.10.0.dll" target="lib\net40-client\Elysium.Design.10.0.dll" />
     <file src="..\..\..\Binary\.NET Framework 4\Release\AnyCPU\Elysium.Design.11.0.dll" target="lib\net40-client\Elysium.Design.11.0.dll" />
-    <file src="..\..\..\Tools and Resources\Assembly dependencies\.NET Framework 4\Microsoft.Expression.Drawing.dll" target="lib\net40-client\Microsoft.Expression.Drawing.dll" />
-    <file src="..\..\..\Tools and Resources\Assembly dependencies\.NET Framework 4\Microsoft.Windows.Shell.dll" target="lib\net40-client\Microsoft.Windows.Shell.dll" />
-    <file src="..\..\..\Tools and Resources\Assembly dependencies\.NET Framework 4\Microsoft.Windows.Shell.pdb" target="lib\net40-client\Microsoft.Windows.Shell.pdb" />
 
     <file src="..\..\..\Binary\.NET Framework 4.5\Documentation\en\Elysium.xml" target="lib\net45\en\Elysium.xml" />
-    <file src="..\..\..\Tools and Resources\Assembly dependencies\.NET Framework 4.5\en\Microsoft.Expression.Drawing.xml" target="lib\net45\en\Microsoft.Expression.Drawing.xml" />
     <file src="..\..\..\Binary\.NET Framework 4.5\Documentation\ru\Elysium.xml" target="lib\net45\ru\Elysium.xml" />
-    <file src="..\..\..\Tools and Resources\Assembly dependencies\.NET Framework 4.5\ru\Microsoft.Expression.Drawing.xml" target="lib\net45\ru\Microsoft.Expression.Drawing.xml" />
-    <file src="..\..\..\Tools and Resources\Assembly dependencies\.NET Framework 4.5\Microsoft.Expression.Drawing.xml" target="lib\net45\Microsoft.Expression.Drawing.xml" />
-    <file src="..\..\..\Tools and Resources\Assembly dependencies\.NET Framework 4.5\Design\en\Microsoft.Expression.Drawing.Design.resources.dll" target="lib\net45\Design\en\Microsoft.Expression.Drawing.Design.resources.dll" />
-    <file src="..\..\..\Tools and Resources\Assembly dependencies\.NET Framework 4.5\Design\ru\Microsoft.Expression.Drawing.Design.resources.dll" target="lib\net45\Design\ru\Microsoft.Expression.Drawing.Design.resources.dll" />
-    <file src="..\..\..\Tools and Resources\Assembly dependencies\.NET Framework 4.5\Design\Microsoft.Expression.Drawing.Design.dll" target="lib\net45\Design\Microsoft.Expression.Drawing.Design.dll" />
     <file src="..\..\..\Binary\.NET Framework 4.5\Debug\AnyCPU\Elysium.dll" target="lib\net45\Elysium.dll" />
     <file src="..\..\..\Binary\.NET Framework 4.5\Debug\AnyCPU\Elysium.pdb" target="lib\net45\Elysium.pdb" />
     <file src="..\..\..\Binary\.NET Framework 4.5\Release\AnyCPU\Elysium.Design.11.0.dll" target="lib\net45\Elysium.Design.11.0.dll" />
-    <file src="..\..\..\Tools and Resources\Assembly dependencies\.NET Framework 4.5\Microsoft.Expression.Drawing.dll" target="lib\net45\Microsoft.Expression.Drawing.dll" />
 
-    <file src="..\..\**\*.cs" target="src" />
+    <file src="..\..\Elysium\**\*.cs" target="src\Elysium" />
+    <file src="..\..\Elysium.Design\**\*.cs" target="src\Elysium.Design" />
   </files>
 </package>
