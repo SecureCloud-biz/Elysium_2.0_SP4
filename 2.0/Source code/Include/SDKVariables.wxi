@@ -11,12 +11,12 @@
   <?endif ?>
 
   <?ifdef NETFX4 ?>
-    <?define ProductId = "217A2D91-2230-408E-A8EE-2A455868155F" ?>
+    <?define ProductId = "0D6DB85A-5CF7-42EA-BB32-5DA4F60CE2BB" ?>
     <?define InstallerUpgradeCode = "DBFAF4C9-7352-483C-B6A2-34C6C1D0F1E0" ?>
     <?define SetupUpgradeCode = "ED0F0584-1CE1-45B0-9616-32ECC4DE5CAE" ?>
   <?endif ?>
   <?ifdef NETFX45 ?>
-    <?define ProductId = "489FE9DD-5CD0-4255-B2F3-7DFC98954593" ?>
+    <?define ProductId = "BAE0707E-5C69-4F97-8FCB-ACA780E6BC16" ?>
     <?define InstallerUpgradeCode = "90DBE047-293B-4D8D-9F49-BDE9D943C591" ?>
     <?define SetupUpgradeCode = "02EF99BB-E737-4B32-96EF-5B8A13C5531E" ?>
   <?endif ?>
@@ -61,14 +61,14 @@
   <?ifdef NETFX4 ?>
     <?define SDKVersion = "2.0" ?>
     <?define SDKBuild = "976" ?>
-    <?define SDKRevision = "2" ?>
-    <?define NotificationsServerVersion = "2.0.58.2" ?>
+    <?define SDKRevision = "3" ?>
+    <?define NotificationsServerVersion = "2.0.58.3" ?>
   <?endif ?>
   <?ifdef NETFX45 ?>
     <?define SDKVersion = "2.0" ?>
     <?define SDKBuild = "1042" ?>
-    <?define SDKRevision = "2" ?>
-    <?define NotificationsServerVersion = "2.0.71.2" ?>
+    <?define SDKRevision = "3" ?>
+    <?define NotificationsServerVersion = "2.0.71.3" ?>
   <?endif ?>
   
 </Include>

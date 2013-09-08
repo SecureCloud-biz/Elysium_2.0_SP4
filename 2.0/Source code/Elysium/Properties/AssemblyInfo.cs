@@ -36,10 +36,10 @@ using System.Windows.Markup;
 [assembly: NeutralResourcesLanguage("en-us")]
 
 #if NETFX4
-[assembly: AssemblyVersion("2.0.976.2")]
-[assembly: AssemblyFileVersion("2.0.976.2")]
+[assembly: AssemblyVersion("2.0.976.3")]
+[assembly: AssemblyFileVersion("2.0.976.3")]
 #elif NETFX45
-[assembly: AssemblyVersion("2.0.1042.2")]
-[assembly: AssemblyFileVersion("2.0.1042.2")]
+[assembly: AssemblyVersion("2.0.1042.3")]
+[assembly: AssemblyFileVersion("2.0.1042.3")]
 #endif
-[assembly: AssemblyInformationalVersion("2.0 SP2")]
+[assembly: AssemblyInformationalVersion("2.0 SP3")]

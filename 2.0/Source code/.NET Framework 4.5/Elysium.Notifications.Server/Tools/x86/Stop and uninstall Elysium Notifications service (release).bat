@@ -5,6 +5,6 @@ set PATH=%OriginalPATH%;%windir%\Microsoft.NET\Framework\v4.0.30319
 chdir /d %~dp0
 cd ..\..\..\..\
 @echo on
-net stop ElysiumNotifications-v2.0.71.2-v4.5
+net stop ElysiumNotifications-v2.0.71.3-v4.5
 installutil /u "%CD%\Binary\.NET Framework 4.5\Release\x86\Elysium.Notifications.Server.exe"
 pause

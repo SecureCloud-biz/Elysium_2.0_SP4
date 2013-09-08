@@ -9,11 +9,11 @@
   <?endif ?>
 
   <?ifdef NETFX4 ?>
-    <?define ProductId = "E7E194D9-5D96-4971-87D0-C19606B642C3" ?>
+    <?define ProductId = "734F748F-CFF9-4044-BFB4-3EEE817FFE34" ?>
     <?define UpgradeCode = "9F4F83D0-9D44-4130-A578-1E46F8765922" ?>
   <?endif ?>
   <?ifdef NETFX45 ?>
-    <?define ProductId = "009DCC9E-6604-4769-8D88-BD27B01068F8" ?>
+    <?define ProductId = "D349FCDC-24C3-4793-99BC-FD7AC9C86291" ?>
     <?define UpgradeCode = "EDED61A2-8351-4C88-8A2A-79E6000E6A9E" ?>
   <?endif ?>
   
@@ -32,14 +32,14 @@
   <?ifdef NETFX4 ?>
     <?define RuntimeVersion = "2.0" ?>
     <?define RuntimeBuild = "976" ?>
-    <?define RuntimeRevision = "2" ?>
-    <?define NotificationsServerVersion = "2.0.58.2" ?>
+    <?define RuntimeRevision = "3" ?>
+    <?define NotificationsServerVersion = "2.0.58.3" ?>
   <?endif ?>
   <?ifdef NETFX45 ?>
     <?define RuntimeVersion = "2.0" ?>
     <?define RuntimeBuild = "1042" ?>
-    <?define RuntimeRevision = "2" ?>
-    <?define NotificationsServerVersion = "2.0.71.2" ?>
+    <?define RuntimeRevision = "3" ?>
+    <?define NotificationsServerVersion = "2.0.71.3" ?>
   <?endif ?>
   
 </Include>

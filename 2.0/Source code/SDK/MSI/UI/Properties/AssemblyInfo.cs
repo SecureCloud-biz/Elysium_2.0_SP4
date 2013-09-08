@@ -26,10 +26,10 @@ using Microsoft.Tools.WindowsInstallerXml.Bootstrapper;
 [assembly: NeutralResourcesLanguage("en-us", UltimateResourceFallbackLocation.MainAssembly)]
 
 #if NETFX4
-[assembly: AssemblyVersion("2.0.374.2")]
-[assembly: AssemblyFileVersion("2.0.374.2")]
+[assembly: AssemblyVersion("2.0.374.3")]
+[assembly: AssemblyFileVersion("2.0.374.3")]
 #elif NETFX45
-[assembly: AssemblyVersion("2.0.383.2")]
-[assembly: AssemblyFileVersion("2.0.383.2")]
+[assembly: AssemblyVersion("2.0.383.3")]
+[assembly: AssemblyFileVersion("2.0.383.3")]
 #endif
-[assembly: AssemblyInformationalVersion("2.0 SP2")]
+[assembly: AssemblyInformationalVersion("2.0 SP3")]
