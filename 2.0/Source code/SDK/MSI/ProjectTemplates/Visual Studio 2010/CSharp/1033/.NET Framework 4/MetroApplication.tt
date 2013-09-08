@@ -1,9 +1,7 @@
 ﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
 <#@ output extension=".csproj" #>
-<#@ assembly Name="System.Core" #>
 <#@ include file="..\..\..\..\..\..\..\Include\Security.ttinclude" #>
-<#@ include file="..\..\..\..\..\..\..\Include\Versions.ttinclude" #>
-<?xml version="1.0" encoding="utf-8"?>
+<#@ include file="..\..\..\..\..\..\..\Include\Versions.ttinclude" #><?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>

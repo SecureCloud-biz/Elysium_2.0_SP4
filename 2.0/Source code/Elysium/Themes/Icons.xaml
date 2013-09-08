@@ -39,12 +39,12 @@
     </GeometryGroup>
 
     <GeometryGroup x:Key="CloseIcon">
-        <LineGeometry StartPoint="1.5,0.5" EndPoint="9.5,8.5"/>
-        <LineGeometry StartPoint="0.5,1.5" EndPoint="8.5,9.5"/>
-        <LineGeometry StartPoint="1.5,1.5" EndPoint="8.5,8.5"/>
-        <LineGeometry StartPoint="8.5,0.5" EndPoint="0.5,8.5"/>
-        <LineGeometry StartPoint="9.5,1.5" EndPoint="1.5,9.5"/>
-        <LineGeometry StartPoint="8.5,1.5" EndPoint="1.5,8.5"/>
+        <LineGeometry StartPoint="1,0" EndPoint="10,9"/>
+        <LineGeometry StartPoint="0,1" EndPoint="9,10"/>
+        <LineGeometry StartPoint="1,1" EndPoint="9,9"/>
+        <LineGeometry StartPoint="9,0" EndPoint="0,9"/>
+        <LineGeometry StartPoint="10,1" EndPoint="1,10"/>
+        <LineGeometry StartPoint="9,1" EndPoint="1,9"/>
     </GeometryGroup>
     
 </ResourceDictionary>

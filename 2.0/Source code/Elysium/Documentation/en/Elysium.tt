@@ -5,6 +5,7 @@
 <#@ assembly name="System.Xml.Linq" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Xml.Linq" #>
 <#
     var root = Host.ResolvePath(@"..\..\");
@@ -94,14 +95,10 @@
     
     var members = new XElement("members");
     
-    foreach (var path in paths)
+    foreach (var declaration in paths.Select(path => XDocument.Load(Path.Combine(root, path)).Root.Element("members").Elements()).SelectMany(partOfDocumentation => partOfDocumentation))
     {
-        var partOfDocumentation = XDocument.Load(Path.Combine(root, path)).Root.Element("members").Elements();
-        foreach (var declaration in partOfDocumentation)
-        {
-            declaration.Name = "member";
-            members.Add(declaration);
-        }
+        declaration.Name = "member";
+        members.Add(declaration);
     }
     
     doc.Add(members);

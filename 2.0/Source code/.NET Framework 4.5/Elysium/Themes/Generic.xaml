@@ -52,12 +52,12 @@
     <LineGeometry StartPoint="1,9.5" EndPoint="6,9.5" />
   </GeometryGroup>
   <GeometryGroup x:Key="CloseIcon">
-    <LineGeometry StartPoint="1.5,0.5" EndPoint="9.5,8.5" />
-    <LineGeometry StartPoint="0.5,1.5" EndPoint="8.5,9.5" />
-    <LineGeometry StartPoint="1.5,1.5" EndPoint="8.5,8.5" />
-    <LineGeometry StartPoint="8.5,0.5" EndPoint="0.5,8.5" />
-    <LineGeometry StartPoint="9.5,1.5" EndPoint="1.5,9.5" />
-    <LineGeometry StartPoint="8.5,1.5" EndPoint="1.5,8.5" />
+    <LineGeometry StartPoint="1,0" EndPoint="10,9" />
+    <LineGeometry StartPoint="0,1" EndPoint="9,10" />
+    <LineGeometry StartPoint="1,1" EndPoint="9,9" />
+    <LineGeometry StartPoint="9,0" EndPoint="0,9" />
+    <LineGeometry StartPoint="10,1" EndPoint="1,10" />
+    <LineGeometry StartPoint="9,1" EndPoint="1,9" />
   </GeometryGroup>
   <Style x:Key="ButtonsBaseStyle" TargetType="{x:Type ButtonBase}">
     <Setter Property="Background" Value="{StaticResource AccentBrush}" />
@@ -2514,16 +2514,16 @@
                     <ColumnDefinition Width="Auto" />
                   </Grid.ColumnDefinitions>
                   <Button x:Name="PART_Minimize" Grid.Column="0" BorderThickness="0" Command="{x:Static controls:WindowCommands.Minimize}" ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.MinimizeButtonToolTip), Mode=OneWay}" Style="{DynamicResource {x:Static controls:Window.DefaultCaptionButtonStyleKey}}">
-                    <Path Data="{StaticResource MinimizeIcon}" Fill="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}" Stretch="None" Width="10" Height="10" />
+                    <Path Data="{StaticResource MinimizeIcon}" Fill="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}" Stretch="None" RenderOptions.EdgeMode="Aliased" Width="10" Height="10" />
                   </Button>
                   <Button x:Name="PART_Maximize" Grid.Column="1" BorderThickness="0" Command="{x:Static controls:WindowCommands.Maximize}" ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.MaximizeButtonToolTip), Mode=OneWay}" Style="{DynamicResource {x:Static controls:Window.DefaultCaptionButtonStyleKey}}">
-                    <Path Data="{StaticResource MaximizeIcon}" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}" Stretch="None" Width="10" Height="10" />
+                    <Path Data="{StaticResource MaximizeIcon}" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}" Stretch="None" RenderOptions.EdgeMode="Aliased" Width="10" Height="10" />
                   </Button>
                   <Button x:Name="PART_Restore" Grid.Column="1" BorderThickness="0" Command="{x:Static controls:WindowCommands.Restore}" ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.RestoreButtonToolTip), Mode=OneWay}" Style="{DynamicResource {x:Static controls:Window.DefaultCaptionButtonStyleKey}}" Visibility="Hidden">
-                    <Path Data="{StaticResource RestoreIcon}" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}" Stretch="None" Width="10" Height="10" />
+                    <Path Data="{StaticResource RestoreIcon}" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}" Stretch="None" RenderOptions.EdgeMode="Aliased" Width="10" Height="10" />
                   </Button>
                   <Button x:Name="PART_Close" Grid.Column="2" BorderThickness="0" Command="{x:Static controls:WindowCommands.Close}" ToolTip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(params:Window.CloseButtonToolTip), Mode=OneWay}" Style="{DynamicResource {x:Static controls:Window.DefaultCaptionButtonStyleKey}}">
-                    <Path Data="{StaticResource CloseIcon}" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}" Stretch="None" Width="10" Height="10" />
+                    <Path Data="{StaticResource CloseIcon}" Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}" Stretch="None" RenderOptions.EdgeMode="Aliased" Width="10" Height="10" />
                   </Button>
                 </Grid>
                 <controls:ProgressBar x:Name="PART_ProgressBar" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" Background="{DynamicResource TransparentBrush}" Value="{TemplateBinding Progress}" VerticalAlignment="Top" Height="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldThicknessValue), Mode=OneWay}" />

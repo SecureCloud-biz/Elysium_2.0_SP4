@@ -77,9 +77,8 @@
         };
 
     var mergedDictionaries = XName.Get("ResourceDictionary.MergedDictionaries", @"http://schemas.microsoft.com/winfx/2006/xaml/presentation");
-    foreach (var dictionarySource in dictionarySources)
+    foreach (var dictionary in dictionarySources.Select(dictionarySource => XDocument.Load(Path.Combine(root, dictionarySource))))
     {
-        var dictionary = XDocument.Load(Path.Combine(root, dictionarySource));
         genericDictionary.Root.Add(dictionary.Root.Elements().Where(element => element.Name != mergedDictionaries));
     }
 

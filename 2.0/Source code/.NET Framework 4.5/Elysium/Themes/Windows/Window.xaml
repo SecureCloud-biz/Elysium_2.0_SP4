@@ -136,6 +136,7 @@
                                         <Path Data="{StaticResource MinimizeIcon}"
                                               Fill="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}"
                                               Stretch="None"
+                                              RenderOptions.EdgeMode="Aliased"
                                               Width="10" Height="10"/>
                                     </Button>
                                     <Button x:Name="PART_Maximize"
@@ -147,6 +148,7 @@
                                         <Path Data="{StaticResource MaximizeIcon}"
                                               Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}"
                                               Stretch="None"
+                                              RenderOptions.EdgeMode="Aliased"
                                               Width="10" Height="10"/>
                                     </Button>
                                     <Button x:Name="PART_Restore"
@@ -159,6 +161,7 @@
                                         <Path Data="{StaticResource RestoreIcon}"
                                               Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}"
                                               Stretch="None"
+                                              RenderOptions.EdgeMode="Aliased"
                                               Width="10" Height="10"/>
                                     </Button>
                                     <Button x:Name="PART_Close"
@@ -170,6 +173,7 @@
                                         <Path Data="{StaticResource CloseIcon}"
                                               Stroke="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=Foreground, Mode=OneWay}"
                                               Stretch="None"
+                                              RenderOptions.EdgeMode="Aliased"
                                               Width="10" Height="10"/>
                                     </Button>
                                 </Grid>

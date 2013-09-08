@@ -1,9 +1,7 @@
 ﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
 <#@ output extension=".cs" #>
-<#@ assembly Name="System.Core" #>
 <#@ include file="..\..\..\..\Include\security.ttinclude" #>
-<#@ include file="..\..\..\..\Include\Versions.ttinclude" #>
-using System;
+<#@ include file="..\..\..\..\Include\Versions.ttinclude" #>using System;
 using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
