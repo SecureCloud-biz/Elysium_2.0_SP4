@@ -5,6 +5,8 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Windows;
 
+using Elysium;
+
 [assembly: AssemblyTitle("Elysium.Test.exe")]
 [assembly: AssemblyDescription("Test WPF Metro style application")]
 [assembly: AssemblyProduct("Elysium")]
@@ -16,6 +18,7 @@ using System.Windows;
 [assembly: CLSCompliant(false)]
 
 [assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
+[assembly: ResourceInfo(ResourceMode.Static)]
 
 [assembly: NeutralResourcesLanguage("en-us")]
 

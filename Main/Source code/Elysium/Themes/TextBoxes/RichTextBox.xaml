@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Elysium;component/Themes/TextBoxes/TextBoxBase.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Themes/TextBoxes/TextBoxBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type RichTextBox}" BasedOn="{StaticResource TextBoxBaseStyle}">        
@@ -11,8 +11,7 @@
                 <Setter Property="OverridesDefaultStyle" Value="True"/>
             </Style>
         </Style.Resources>
-        <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
-        <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->        
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
     </Style>
     
 </ResourceDictionary>

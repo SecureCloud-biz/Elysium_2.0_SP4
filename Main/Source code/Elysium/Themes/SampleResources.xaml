@@ -1,0 +1,81 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:options="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+                    xmlns:markup="clr-namespace:Elysium.Markup">
+
+    <Color x:Key="{x:Static markup:ThemeResource.TransparentColor}">#00FFFFFF</Color>
+    <SolidColorBrush x:Key="{x:Static markup:ThemeResource.TransparentBrush}"
+                     Color="{StaticResource {x:Static markup:ThemeResource.TransparentColor}}"
+                     options:Freeze="True"/>
+    <Color x:Key="{x:Static markup:ThemeResource.SemitransparentColor}">#20FFFFFF</Color>
+    <SolidColorBrush x:Key="{x:Static markup:ThemeResource.SemitransparentBrush}"
+                     Color="{StaticResource {x:Static markup:ThemeResource.SemitransparentColor}}"
+                     options:Freeze="True"/>
+    
+    <Color x:Key="{x:Static markup:ThemeResource.AccentColor}">#FF017BCD</Color>
+    <SolidColorBrush x:Key="{x:Static markup:ThemeResource.AccentBrush}"
+                     Color="{StaticResource {x:Static markup:ThemeResource.AccentColor}}"
+                     options:Freeze="True"/>
+    <Color x:Key="{x:Static markup:ThemeResource.ContrastColor}">#FFFFFFFF</Color>
+    <SolidColorBrush x:Key="{x:Static markup:ThemeResource.ContrastBrush}"
+                     Color="{StaticResource {x:Static markup:ThemeResource.ContrastColor}}"
+                     options:Freeze="True"/>
+    <Color x:Key="{x:Static markup:ThemeResource.SemitransparentContrastColor}">#1FFFFFFF</Color>
+    <SolidColorBrush x:Key="{x:Static markup:ThemeResource.SemitransparentContrastBrush}"
+                     Color="{StaticResource {x:Static markup:ThemeResource.SemitransparentContrastColor}}"
+                     options:Freeze="True"/>
+
+    <Color x:Key="{x:Static markup:ThemeResource.BackgroundColor}">#FFFFFFFF</Color>
+    <SolidColorBrush x:Key="{x:Static markup:ThemeResource.BackgroundBrush}"
+                     Color="{StaticResource {x:Static markup:ThemeResource.BackgroundColor}}"
+                     options:Freeze="True"/>
+    <Color x:Key="{x:Static markup:ThemeResource.BackgroundContrastColor}">#FF000000</Color>
+    <SolidColorBrush x:Key="{x:Static markup:ThemeResource.BackgroundContrastBrush}"
+                     Color="{StaticResource {x:Static markup:ThemeResource.BackgroundContrastColor}}"
+                     options:Freeze="True"/>
+    <Color x:Key="{x:Static markup:ThemeResource.SemitransparentBackgroundContrastColor}">#1F000000</Color>
+    <SolidColorBrush x:Key="{x:Static markup:ThemeResource.SemitransparentBackgroundContrastBrush}"
+                     Color="{StaticResource {x:Static markup:ThemeResource.SemitransparentBackgroundContrastColor}}"
+                     options:Freeze="True"/>
+
+    <Color x:Key="{x:Static markup:ThemeResource.ForegroundColor}">#FF000000</Color>
+    <SolidColorBrush x:Key="{x:Static markup:ThemeResource.ForegroundBrush}"
+                     Color="{StaticResource {x:Static markup:ThemeResource.ForegroundColor}}"
+                     options:Freeze="True"/>
+    <Color x:Key="{x:Static markup:ThemeResource.ForegroundContrastColor}">#FFFFFFFF</Color>
+    <SolidColorBrush x:Key="{x:Static markup:ThemeResource.ForegroundContrastBrush}"
+                     Color="{StaticResource {x:Static markup:ThemeResource.ForegroundContrastColor}}"
+                     options:Freeze="True"/>
+    <Color x:Key="{x:Static markup:ThemeResource.SemitransparentForegroundContrastColor}">#1FFFFFFF</Color>
+    <SolidColorBrush x:Key="{x:Static markup:ThemeResource.SemitransparentForegroundContrastBrush}"
+                     Color="{StaticResource {x:Static markup:ThemeResource.SemitransparentForegroundContrastColor}}"
+                     options:Freeze="True"/>
+
+    <Color x:Key="{x:Static markup:ThemeResource.HighlightColor}">#FF4D4D4D</Color>
+    <SolidColorBrush x:Key="{x:Static markup:ThemeResource.HighlightBrush}"
+                     Color="{StaticResource {x:Static markup:ThemeResource.HighlightColor}}"
+                     options:Freeze="True"/>
+    <Color x:Key="{x:Static markup:ThemeResource.NormalColor}">#FF777777</Color>
+    <SolidColorBrush x:Key="{x:Static markup:ThemeResource.NormalBrush}"
+                     Color="{StaticResource {x:Static markup:ThemeResource.NormalColor}}"
+                     options:Freeze="True"/>
+    <Color x:Key="{x:Static markup:ThemeResource.PaleColor}">#FFDEDEDE</Color>
+    <SolidColorBrush x:Key="{x:Static markup:ThemeResource.PaleBrush}"
+                     Color="{StaticResource {x:Static markup:ThemeResource.PaleColor}}"
+                     options:Freeze="True"/>
+
+    <Color x:Key="{x:Static markup:ThemeResource.ValidationColor}">#FFE51400</Color>
+    <SolidColorBrush x:Key="{x:Static markup:ThemeResource.ValidationBrush}"
+                     Color="{StaticResource {x:Static markup:ThemeResource.ValidationColor}}"
+                     options:Freeze="True"/>
+    <Color x:Key="{x:Static markup:ThemeResource.DisabledColor}">#FFB8B5B2</Color>
+    <SolidColorBrush x:Key="{x:Static markup:ThemeResource.DisabledBrush}"
+                     Color="{StaticResource {x:Static markup:ThemeResource.DisabledColor}}"
+                     options:Freeze="True"/>
+
+    <Duration x:Key="{x:Static markup:ThemeResource.DefaultDuration}">00:00:00.0</Duration>
+    <Duration x:Key="{x:Static markup:ThemeResource.MinimumDuration}">00:00:00.2</Duration>
+    <Duration x:Key="{x:Static markup:ThemeResource.OptimumDuration}">00:00:00.5</Duration>
+    <Duration x:Key="{x:Static markup:ThemeResource.MaximumDuration}">00:00:01.0</Duration>
+
+</ResourceDictionary>

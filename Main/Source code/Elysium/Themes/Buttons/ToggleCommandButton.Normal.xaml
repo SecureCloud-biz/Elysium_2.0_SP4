@@ -1,0 +1,45 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:markup="clr-namespace:Elysium.Markup"
+                    xmlns:params="clr-namespace:Elysium.Parameters"
+                    xmlns:primitives="clr-namespace:Elysium.Controls.Primitives"
+                    xmlns:controls="clr-namespace:Elysium.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Themes/Buttons/CommandButtonBase.Normal.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{x:Type controls:ToggleCommandButton}" TargetType="{x:Type controls:ToggleCommandButton}" BasedOn="{StaticResource {x:Type primitives:CommandButtonBase}}">
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsChecked" Value="True"/>
+                    <Condition Property="params:Animation.Type" Value="None"/>
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter Property="BorderBrush" Value="{markup:ThemeResource NormalBrush}"/>
+                    <Setter Property="params:CommandButtons.Mask" Value="{markup:ThemeResource NormalBrush}"/>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsChecked" Value="True"/>
+                    <Condition Property="params:Animation.Type" Value="Fade"/>
+                </MultiTrigger.Conditions>
+                <MultiTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetProperty="BorderBrush.(SolidColorBrush.Color)"
+                                            Duration="{markup:ThemeResource OptimumDuration}"
+                                            To="{markup:ThemeResource NormalColor}"/>
+                            <ColorAnimation Storyboard.TargetProperty="(params:CommandButtons.Mask).(SolidColorBrush.Color)"
+                                            Duration="{markup:ThemeResource OptimumDuration}"
+                                            To="{markup:ThemeResource NormalColor}"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </MultiTrigger.EnterActions>
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

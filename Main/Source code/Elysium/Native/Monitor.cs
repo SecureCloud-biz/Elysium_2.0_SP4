@@ -1,26 +1,28 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Security;
+using System.Security.Permissions;
 
 using JetBrains.Annotations;
 
 namespace Elysium.Native
 {
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
+    [SecurityPermission(SecurityAction.Demand, UnmanagedCode = true)]
     internal sealed class Monitor
     {
         [SecurityCritical]
         private static bool _isCacheValid;
 
         [SecuritySafeCritical]
-        internal Monitor(IntPtr hwnd)
+        public Monitor(IntPtr hwnd)
         {
-            _handle = Interop.MonitorFromWindow(hwnd, Interop.MONITOR_DEFAULTTONEAREST);
+            _handle = Interop.MonitorFromWindow(hwnd, NativeMethods.MonitorDefaults.MONITOR_DEFAULTTONEAREST);
         }
 
         [SecuritySafeCritical]
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "This method must be called only after class initialization.")]
-        internal void Invalidate()
+        public void Invalidate()
         {
             _isCacheValid = false;
         }
@@ -28,7 +30,7 @@ namespace Elysium.Native
         [SecurityCritical]
         private void InvalidateInternal()
         {
-            Interop.MONITORINFO monitorInfo;
+            NativeMethods.MONITORINFO monitorInfo;
             Interop.GetMonitorInfo(_handle, out monitorInfo);
 
             _bounds = monitorInfo.rcMonitor;
@@ -37,7 +39,7 @@ namespace Elysium.Native
             _isCacheValid = true;
         }
 
-        internal IntPtr Handle
+        public IntPtr Handle
         {
             [SecurityCritical]
             get { return _handle; }
@@ -45,7 +47,7 @@ namespace Elysium.Native
 
         private readonly IntPtr _handle;
 
-        internal Interop.RECT Bounds
+        public NativeMethods.RECT Bounds
         {
             [SecuritySafeCritical]
             get
@@ -58,9 +60,9 @@ namespace Elysium.Native
             }
         }
 
-        private Interop.RECT _bounds;
+        private NativeMethods.RECT _bounds;
 
-        internal Interop.RECT WorkArea
+        public NativeMethods.RECT WorkArea
         {
             [SecuritySafeCritical]
             get
@@ -73,6 +75,6 @@ namespace Elysium.Native
             }
         }
 
-        private Interop.RECT _workArea;
+        private NativeMethods.RECT _workArea;
     }
 }

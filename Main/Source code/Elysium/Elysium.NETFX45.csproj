@@ -212,9 +212,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Themes\Buttons\ButtonBase.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Themes\Buttons\ButtonBase.Filled.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Buttons\ButtonBase.Normal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Themes\Buttons\CheckBox.xaml">
       <SubType>Designer</SubType>
@@ -224,15 +228,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Themes\Buttons\CommandButtonBase.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Buttons\DropDownCommandButton.xaml">
+    <Page Include="Themes\Buttons\CommandButtonBase.ApplicationBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Themes\Buttons\ToggleCommandButton.xaml">
+    <Page Include="Themes\Buttons\CommandButtonBase.Normal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Buttons\DropDownCommandButton.ApplicationBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Buttons\DropDownCommandButton.Normal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Buttons\DropDownCommandButton.Submenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -248,11 +260,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Themes\Brushes.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Themes\Buttons\ToggleCommandButton.ApplicationBar.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Buttons\ToggleCommandButton.Normal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Themes\DarkBrushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\DarkGrayBrushes.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -264,11 +284,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\LightGrayBrushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\Menus\ContextMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Menus\Menu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Menus\MenuItem.Separator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Menus\MenuItem.SubmenuHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Menus\MenuItem.SubmenuItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Menus\MenuItem.TopLevelHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Menus\MenuItem.TopLevelItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -280,6 +324,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\Ranges\ProgressBar.HorizontalTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Ranges\ProgressBar.VerticalTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Ranges\ProgressBase.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\Ranges\ProgressRing.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -288,13 +344,53 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\Ranges\Slider.HorizontalTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Ranges\Slider.Resources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Ranges\Slider.VerticalTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\Ranges\Slider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\Ranges\ToggleSwitch.Resources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\Ranges\ToggleSwitch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Resources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\SampleResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Scrolls\ScrollBar.Buttons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Scrolls\ScrollBar.HorizontalTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Scrolls\ScrollBar.Thumb.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Scrolls\ScrollBar.VerticalTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Themes\Scrolls\ScrollBar.xaml">
       <SubType>Designer</SubType>
@@ -368,41 +464,56 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccentBrushes.cs" />
+    <Compile Include="AccentColors.cs" />
+    <Compile Include="Animation.cs" />
+    <Compile Include="Application.cs" />
+    <Compile Include="AppThemeDictionary.cs" />
+    <Compile Include="Controls\CommandButtons\Automation\CommandButtonAutomationPeer.cs" />
     <Compile Include="Controls\CommandButtons\Automation\CommandButtonBaseAutomationPeer.cs" />
+    <Compile Include="Controls\CommandButtons\Automation\DropDownCommandButtonAutomationPeer.cs" />
+    <Compile Include="Controls\CommandButtons\Automation\ToggleCommandButtonAutomationPeer.cs" />
+    <Compile Include="Controls\CommandButtons\CommandButton.cs" />
+    <Compile Include="Controls\CommandButtons\DropDownCommandButton.cs" />
+    <Compile Include="Controls\CommandButtons\DropDownDirection.cs" />
+    <Compile Include="Controls\CommandButtons\Primitives\CommandButtonBase.cs" />
+    <Compile Include="Controls\CommandButtons\ToggleCommandButton.cs" />
     <Compile Include="Controls\Window\WindowCommands.cs" />
     <Compile Include="Converters\ThicknessConverter.cs" />
     <Compile Include="Converters\IsGreaterThanConverter.cs" />
+    <Compile Include="Extensions\Collections\Util.cs" />
+    <Compile Include="Extensions\Collections\WeakCache.cs" />
+    <Compile Include="Extensions\Validation helpers\AnimationUtil.cs" />
+    <Compile Include="Extensions\Visual helpers\DispatcherExtensions.cs" />
+    <Compile Include="Extensions\Visual helpers\FreezableExtensions.cs" />
+    <Compile Include="Extensions\Visual helpers\LogicalTreeHelperExtensions.cs" />
+    <Compile Include="Extensions\Visual helpers\VisualTreeHelperExtensions.cs" />
+    <Compile Include="Markup\ThemeResourceExtension.cs" />
+    <Compile Include="Markup\ThemeResourceExtensionConverter.cs" />
+    <Compile Include="Markup\ThemeResources.cs" />
+    <Compile Include="Native\DPI.cs" />
     <Compile Include="Native\Interop.cs" />
     <Compile Include="Native\Monitor.cs" />
     <Compile Include="Native\Taskbar.cs" />
     <Compile Include="Native\TaskbarPosition.cs" />
     <Compile Include="Native\Window.cs" />
     <Compile Include="Native\Windows.cs" />
-    <Compile Include="Parameters\Bullet.cs" />
-    <Compile Include="Parameters\Design.cs" />
     <Compile Include="Extensions\Boxing helpers\NullableBoxingHelper.cs" />
     <Compile Include="Extensions\Collections\Extensions.cs" />
     <Compile Include="Extensions\Collections\IObservableDictionary.cs" />
     <Compile Include="Extensions\Collections\ObservableDictionary.cs" />
     <Compile Include="Extensions\Collections\ObservableKeyValuePair.cs" />
-    <Compile Include="Extensions\TryHelpers\FreezableExtensions.cs" />
     <Compile Include="Extensions\Validation helpers\CodeAnalysisExtensions.cs" />
     <Compile Include="Extensions\Validation helpers\DoubleUtil.cs" />
     <Compile Include="Extensions\Validation helpers\ThicknessUtil.cs" />
     <Compile Include="Extensions\Validation helpers\ValidationHelper.cs" />
+    <Compile Include="Extensions\ReSharper\JetBrains.Annotations.cs" />
+    <Compile Include="Extensions\Boxing helpers\BooleanBoxingHelper.cs" />
+    <Compile Include="Extensions\Boxing helpers\BoxingHelper.cs" />
+    <Compile Include="Extensions\Boxing helpers\NullableBooleanBoxingHelper.cs" />
     <Compile Include="Controls\ApplicationBar\ApplicationBar.cs" />
-    <Compile Include="Controls\ApplicationBar\ApplicationBarTransitionMode.cs" />
     <Compile Include="Controls\ApplicationBar\ApplicationBarDock.cs" />
     <Compile Include="Controls\ApplicationBar\ApplicationBarPanel.cs" />
     <Compile Include="Controls\ApplicationBar\Automation\ApplicationBarAutomationPeer.cs" />
-    <Compile Include="Controls\CommandButtons\Automation\CommandButtonAutomationPeer.cs" />
-    <Compile Include="Controls\CommandButtons\Automation\DropDownCommandButtonAutomationPeer.cs" />
-    <Compile Include="Controls\CommandButtons\Automation\ToggleCommandButtonAutomationPeer.cs" />
-    <Compile Include="Controls\CommandButtons\CommandButton.cs" />
-    <Compile Include="Controls\CommandButtons\DropDownDirection.cs" />
-    <Compile Include="Controls\CommandButtons\Primitives\CommandButtonBase.cs" />
-    <Compile Include="Controls\CommandButtons\DropDownCommandButton.cs" />
-    <Compile Include="Controls\CommandButtons\ToggleCommandButton.cs" />
     <Compile Include="Controls\Menus\Automation\SubmenuAutomationPeer.cs" />
     <Compile Include="Controls\Menus\Submenu.cs" />
     <Compile Include="Controls\Progress\Automation\ProgressAutomationPeer.cs" />
@@ -421,13 +532,9 @@
     <Compile Include="Converters\NumberPositiveToNegativeConverter.cs" />
     <Compile Include="Converters\ThicknessPositiveToNegativeConverter.cs" />
     <Compile Include="Converters\ThicknessToDoubleConverter.cs" />
-    <Compile Include="Extensions\ReSharper\JetBrains.Annotations.cs" />
-    <Compile Include="Extensions\Boxing helpers\BooleanBoxingHelper.cs" />
-    <Compile Include="Extensions\Boxing helpers\BoxingHelper.cs" />
-    <Compile Include="Extensions\Boxing helpers\NullableBooleanBoxingHelper.cs" />
-    <Compile Include="Extensions\Tree helpers\VisualTreeHelperExtensions.cs" />
-    <Compile Include="Extensions\Tree helpers\LogicalTreeHelperExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Parameters\Animation.cs" />
+    <Compile Include="Parameters\Bullet.cs" />
     <Compile Include="Parameters\CheckBox.cs" />
     <Compile Include="Parameters\ComboBox.cs" />
     <Compile Include="Parameters\CommandButtons.cs" />
@@ -442,7 +549,7 @@
     <Compile Include="Parameters\TabItem.cs" />
     <Compile Include="Parameters\ToggleSwitch.cs" />
     <Compile Include="Parameters\Window.cs" />
-    <Compile Include="Parameters\Manager.cs" />
+    <Compile Include="Markup\ThemeResource.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="Exceptions\InvalidStyleException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -450,7 +557,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AssemblyInfo.tt</DependentUpon>
     </Compile>
-    <Compile Include="Theme.cs" />
+    <Compile Include="ResourceDictionary.cs" />
+    <Compile Include="ResourceMode.cs" />
+    <Compile Include="ResourceInfoAttribute.cs" />
+    <Compile Include="ThemeDictionary.cs" />
+    <Compile Include="ThemeDictionaryBase.cs" />
+    <Compile Include="ThemeDictionaryConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Documentation\en\Elysium.tt">
@@ -477,17 +589,17 @@
     <None Include="Exceptions\InvalidStyleException.ru.xml">
       <DependentUpon>InvalidStyleException.cs</DependentUpon>
     </None>
+    <None Include="Animation.en.xml">
+      <DependentUpon>Animation.cs</DependentUpon>
+    </None>
+    <None Include="Animation.ru.xml">
+      <DependentUpon>Animation.cs</DependentUpon>
+    </None>
     <None Include="AccentBrushes.en.xml">
       <DependentUpon>AccentBrushes.cs</DependentUpon>
     </None>
     <None Include="AccentBrushes.ru.xml">
       <DependentUpon>AccentBrushes.cs</DependentUpon>
-    </None>
-    <None Include="Theme.en.xml">
-      <DependentUpon>Theme.cs</DependentUpon>
-    </None>
-    <None Include="Theme.ru.xml">
-      <DependentUpon>Theme.cs</DependentUpon>
     </None>
     <None Include="Manager.en.xml">
       <DependentUpon>Manager.cs</DependentUpon>
@@ -495,17 +607,11 @@
     <None Include="Manager.ru.xml">
       <DependentUpon>Manager.cs</DependentUpon>
     </None>
-    <None Include="Parameters\Design.en.xml">
-      <DependentUpon>Design.cs</DependentUpon>
+    <None Include="Parameters\Animation.en.xml">
+      <DependentUpon>Animation.cs</DependentUpon>
     </None>
-    <None Include="Parameters\Design.ru.xml">
-      <DependentUpon>Design.cs</DependentUpon>
-    </None>
-    <None Include="Parameters\Manager.en.xml">
-      <DependentUpon>Manager.cs</DependentUpon>
-    </None>
-    <None Include="Parameters\Manager.ru.xml">
-      <DependentUpon>Manager.cs</DependentUpon>
+    <None Include="Parameters\Animation.ru.xml">
+      <DependentUpon>Animation.cs</DependentUpon>
     </None>
     <None Include="Parameters\General.en.xml">
       <DependentUpon>General.cs</DependentUpon>
@@ -615,22 +721,22 @@
     <None Include="Extensions\Collections\ObservableDictionary.ru.xml">
       <DependentUpon>ObservableDictionary.cs</DependentUpon>
     </None>
-    <None Include="Extensions\Threading helpers\DispatcherExtensions.en.xml">
+    <None Include="Extensions\Visual helpers\DispatcherExtensions.en.xml">
       <DependentUpon>DispatcherExtensions.cs</DependentUpon>
     </None>
-    <None Include="Extensions\Threading helpers\DispatcherExtensions.ru.xml">
+    <None Include="Extensions\Visual helpers\DispatcherExtensions.ru.xml">
       <DependentUpon>DispatcherExtensions.cs</DependentUpon>
     </None>
-    <None Include="Extensions\Tree helpers\LogicalTreeHelperExtensions.en.xml">
+    <None Include="Extensions\Visual helpers\LogicalTreeHelperExtensions.en.xml">
       <DependentUpon>LogicalTreeHelperExtensions.cs</DependentUpon>
     </None>
-    <None Include="Extensions\Tree helpers\LogicalTreeHelperExtensions.ru.xml">
+    <None Include="Extensions\Visual helpers\LogicalTreeHelperExtensions.ru.xml">
       <DependentUpon>LogicalTreeHelperExtensions.cs</DependentUpon>
     </None>
-    <None Include="Extensions\Tree helpers\VisualTreeHelperExtensions.en.xml">
+    <None Include="Extensions\Visual helpers\VisualTreeHelperExtensions.en.xml">
       <DependentUpon>VisualTreeHelperExtensions.cs</DependentUpon>
     </None>
-    <None Include="Extensions\Tree helpers\VisualTreeHelperExtensions.ru.xml">
+    <None Include="Extensions\Visual helpers\VisualTreeHelperExtensions.ru.xml">
       <DependentUpon>VisualTreeHelperExtensions.cs</DependentUpon>
     </None>
     <None Include="Converters\AngleToCoordinateConverter.en.xml">
@@ -699,18 +805,6 @@
     <None Include="Controls\ApplicationBar\ApplicationBarDock.ru.xml">
       <DependentUpon>ApplicationBarDock.cs</DependentUpon>
     </None>
-    <None Include="Controls\ApplicationBar\ApplicationBarTransitionMode.en.xml">
-      <DependentUpon>ApplicationBarTransitionMode.cs</DependentUpon>
-    </None>
-    <None Include="Controls\ApplicationBar\ApplicationBarTransitionMode.ru.xml">
-      <DependentUpon>ApplicationBarTransitionMode.cs</DependentUpon>
-    </None>
-    <None Include="Controls\CommandButtons\DropDownDirection.en.xml">
-      <DependentUpon>DropDownDirection.cs</DependentUpon>
-    </None>
-    <None Include="Controls\CommandButtons\DropDownDirection.ru.xml">
-      <DependentUpon>DropDownDirection.cs</DependentUpon>
-    </None>
     <None Include="Controls\Progress\ProgressState.en.xml">
       <DependentUpon>ProgressState.cs</DependentUpon>
     </None>
@@ -722,30 +816,6 @@
     </None>
     <None Include="Controls\ApplicationBar\Automation\ApplicationBarAutomationPeer.ru.xml">
       <DependentUpon>ApplicationBarAutomationPeer.cs</DependentUpon>
-    </None>
-    <None Include="Controls\CommandButtons\Automation\CommandButtonBaseAutomationPeer.en.xml">
-      <DependentUpon>CommandButtonBaseAutomationPeer.cs</DependentUpon>
-    </None>
-    <None Include="Controls\CommandButtons\Automation\CommandButtonBaseAutomationPeer.ru.xml">
-      <DependentUpon>CommandButtonBaseAutomationPeer.cs</DependentUpon>
-    </None>
-    <None Include="Controls\CommandButtons\Automation\CommandButtonAutomationPeer.en.xml">
-      <DependentUpon>CommandButtonAutomationPeer.cs</DependentUpon>
-    </None>
-    <None Include="Controls\CommandButtons\Automation\CommandButtonAutomationPeer.ru.xml">
-      <DependentUpon>CommandButtonAutomationPeer.cs</DependentUpon>
-    </None>
-    <None Include="Controls\CommandButtons\Automation\DropDownCommandButtonAutomationPeer.en.xml">
-      <DependentUpon>DropDownCommandButtonAutomationPeer.cs</DependentUpon>
-    </None>
-    <None Include="Controls\CommandButtons\Automation\DropDownCommandButtonAutomationPeer.ru.xml">
-      <DependentUpon>DropDownCommandButtonAutomationPeer.cs</DependentUpon>
-    </None>
-    <None Include="Controls\CommandButtons\Automation\ToggleCommandButtonAutomationPeer.en.xml">
-      <DependentUpon>ToggleCommandButtonAutomationPeer.cs</DependentUpon>
-    </None>
-    <None Include="Controls\CommandButtons\Automation\ToggleCommandButtonAutomationPeer.ru.xml">
-      <DependentUpon>ToggleCommandButtonAutomationPeer.cs</DependentUpon>
     </None>
     <None Include="Controls\ToggleSwitch\Automation\ToggleSwitchAutomationPeer.en.xml">
       <DependentUpon>ToggleSwitchAutomationPeer.cs</DependentUpon>
@@ -776,30 +846,6 @@
     </None>
     <None Include="Controls\ApplicationBar\ApplicationBarPanel.ru.xml">
       <DependentUpon>ApplicationBarPanel.cs</DependentUpon>
-    </None>
-    <None Include="Controls\CommandButtons\Primitives\CommandButtonBase.en.xml">
-      <DependentUpon>CommandButtonBase.cs</DependentUpon>
-    </None>
-    <None Include="Controls\CommandButtons\Primitives\CommandButtonBase.ru.xml">
-      <DependentUpon>CommandButtonBase.cs</DependentUpon>
-    </None>
-    <None Include="Controls\CommandButtons\CommandButton.en.xml">
-      <DependentUpon>CommandButton.cs</DependentUpon>
-    </None>
-    <None Include="Controls\CommandButtons\CommandButton.ru.xml">
-      <DependentUpon>CommandButton.cs</DependentUpon>
-    </None>
-    <None Include="Controls\CommandButtons\DropDownCommandButton.en.xml">
-      <DependentUpon>DropDownCommandButton.cs</DependentUpon>
-    </None>
-    <None Include="Controls\CommandButtons\DropDownCommandButton.ru.xml">
-      <DependentUpon>DropDownCommandButton.cs</DependentUpon>
-    </None>
-    <None Include="Controls\CommandButtons\ToggleCommandButton.en.xml">
-      <DependentUpon>ToggleCommandButton.cs</DependentUpon>
-    </None>
-    <None Include="Controls\CommandButtons\ToggleCommandButton.ru.xml">
-      <DependentUpon>ToggleCommandButton.cs</DependentUpon>
     </None>
     <None Include="Controls\Menus\Submenu.en.xml">
       <DependentUpon>Submenu.cs</DependentUpon>

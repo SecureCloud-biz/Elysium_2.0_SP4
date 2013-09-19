@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<doc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Documentation\Documentation.xsd">
+  <assembly>
+    <name>Elysium</name>
+  </assembly>
+  <members>
+    <type name="T:Elysium.Parameters.Animation">
+      <summary>
+        Представляет класс, управляющий основными настройками анимации.
+      </summary>
+    </type>
+    <property name="P:Elysium.Parameters.Animation.DefaultDuration">
+      <summary>
+        Возвращает или задаёт продолжительность анимации по умолчанию.
+      </summary>
+      <value>Продолжительность анимации по умолчанию. Значение по умолчанию — 0 сек.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Animation.DefaultDurationProperty"/>
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits"/>
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Button();
+          var currentValue = Parameters.GetDefaultDuration(control);
+          Parameters.SetDefaultDuration(control, new Duration(TimeSpan.FromSeconds(0d)));
+        </code>
+        <code lang="XAML">
+          &lt;Button params:Animation.DefaultDuration="00:00:00.0"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.Animation.DefaultDurationProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Animation.DefaultDuration"/>.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Animation.DefaultDuration"/>.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.Animation.GetDefaultDuration(System.Windows.DependencyObject)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Animation.DefaultDuration"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Продолжительность анимации по умолчанию.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <method name="M:Elysium.Parameters.Animation.SetDefaultDuration(System.Windows.DependencyObject,System.Windows.Duration)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Animation.DefaultDuration"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Продолжительность анимации по умолчанию.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.Animation.MinimumDuration">
+      <summary>
+        Возвращает или задаёт минимальную продолжительность анимации.
+      </summary>
+      <value>Минимальная продолжительность анимации. Значение по умолчанию — 0.2 сек.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Animation.MinimumDurationProperty"/>
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits"/>
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Button();
+          var currentValue = Parameters.GetMinimumDuration(control);
+          Parameters.SetMinimumDuration(control, new Duration(TimeSpan.FromSeconds(0.2d)));
+        </code>
+        <code lang="XAML">
+          &lt;Button params:Animation.MinimumDuration="00:00:00.2"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.Animation.MinimumDurationProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Animation.MinimumDuration"/>.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Animation.MinimumDuration"/>.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.Animation.GetMinimumDuration(System.Windows.DependencyObject)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Animation.MinimumDuration"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Минимальная продолжительность анимации.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <method name="M:Elysium.Parameters.Animation.SetMinimumDuration(System.Windows.DependencyObject,System.Windows.Duration)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Animation.MinimumDuration"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Минимальная продолжительность анимации.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.Animation.OptimumDuration">
+      <summary>
+        Возвращает или задаёт оптимальную продолжительность анимации.
+      </summary>
+      <value>Оптимальная продолжительность анимации. Значение по умолчанию — 0.5 сек.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Animation.OptimumDurationProperty"/>
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits"/>
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Button();
+          var currentValue = Parameters.GetOptimumDuration(control);
+          Parameters.SetOptimumDuration(control, new Duration(TimeSpan.FromSeconds(0.5d)));
+        </code>
+        <code lang="XAML">
+          &lt;Button params:Animation.OptimumDuration="00:00:00.5"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.Animation.OptimumDurationProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Animation.OptimumDuration"/>.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Animation.OptimumDuration"/>.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.Animation.GetOptimumDuration(System.Windows.DependencyObject)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Animation.OptimumDuration"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Оптимальная продолжительность анимации.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <method name="M:Elysium.Parameters.Animation.SetOptimumDuration(System.Windows.DependencyObject,System.Windows.Duration)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Animation.OptimumDuration"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Оптимальная продолжительность анимации.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <property name="P:Elysium.Parameters.Animation.MaximumDuration">
+      <summary>
+        Возвращает или задаёт максимальную продолжительность анимации.
+      </summary>
+      <value>Максимальная продолжительность анимации. Значение по умолчанию — 1 сек.</value>
+      <remarks>
+        <list type="table">
+          <item>
+            <term>Идентификатор</term>
+            <description>
+              <see cref="F:Elysium.Parameters.Animation.MaximumDurationProperty"/>
+            </description>
+          </item>
+          <item>
+            <term>Метаданные</term>
+            <description>
+              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits"/>
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <example>
+        <code lang="C#">
+          var control = new Button();
+          var currentValue = Parameters.GetMaximumDuration(control);
+          Parameters.SetMaximumDuration(control, new Duration(TimeSpan.FromSeconds(1d)));
+        </code>
+        <code lang="XAML">
+          &lt;Button params:Animation.MaximumDuration="00:00:01"/&gt;
+        </code>
+      </example>
+    </property>
+    <field name="F:Elysium.Parameters.Animation.MaximumDurationProperty">
+      <summary>
+        Идентифицирует свойство зависимостей <see cref="P:Elysium.Parameters.Animation.MaximumDuration"/>.
+      </summary>
+      <value>
+        Идентификатор для свойства зависимостей <see cref="P:Elysium.Parameters.Animation.MaximumDuration"/>.
+      </value>
+    </field>
+    <method name="M:Elysium.Parameters.Animation.GetMaximumDuration(System.Windows.DependencyObject)">
+      <summary>
+        Возвращает значение свойства зависимостей <see cref="P:Elysium.Parameters.Animation.MaximumDuration"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого считывается значение свойства.</param>
+      <returns>Максимальная продолжительность анимации.</returns>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+    <method name="M:Elysium.Parameters.Animation.SetMaximumDuration(System.Windows.DependencyObject,System.Windows.Duration)">
+      <summary>
+        Задаёт значение свойства зависимостей <see cref="P:Elysium.Parameters.Animation.MaximumDuration"/> для указанного элемента управления.
+      </summary>
+      <param name="obj">Элемент управления, для которого устанавливается значение свойства.</param>
+      <param name="value">Максимальная продолжительность анимации.</param>
+      <exception cref="T:System.ArgumentNullException">
+        Параметер <paramref name="obj"/> имеет значение null.
+      </exception>
+      <requires exception="T:System.ArgumentNullException">obj != null</requires>
+    </method>
+  </members>
+</doc>

@@ -17,7 +17,7 @@
     <Setting Name="VerticalPlacement" Type="Elysium.Notifications.VerticalPlacement" Scope="User">
       <Value Profile="(Default)">Top</Value>
     </Setting>
-    <Setting Name="Animation" Type="Elysium.Notifications.Animation" Scope="User">
+    <Setting Name="Animation" Type="Elysium.Animation" Scope="User">
       <Value Profile="(Default)">Slide</Value>
     </Setting>
   </Settings>

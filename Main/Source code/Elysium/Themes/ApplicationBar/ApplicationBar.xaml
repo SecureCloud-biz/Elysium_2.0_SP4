@@ -1,13 +1,14 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:markup="clr-namespace:Elysium.Markup"
                     xmlns:params="clr-namespace:Elysium.Parameters"
                     xmlns:controls="clr-namespace:Elysium.Controls">
     
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
-        <ResourceDictionary Source="/Elysium;component/Themes/Buttons/CommandButton.xaml"/>
-        <ResourceDictionary Source="/Elysium;component/Themes/Buttons/ToggleCommandButton.xaml"/>
-        <ResourceDictionary Source="/Elysium;component/Themes/Buttons/DropDownCommandButton.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Themes/SharedResources.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Themes/Buttons/CommandButton.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Themes/Buttons/ToggleCommandButton.ApplicationBar.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Themes/Buttons/DropDownCommandButton.ApplicationBar.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
     <Style x:Key="{x:Type controls:ApplicationBar}" TargetType="{x:Type controls:ApplicationBar}">
@@ -16,10 +17,10 @@
             <Style TargetType="{x:Type controls:ToggleCommandButton}" BasedOn="{StaticResource ToggleCommandButtonApplicationBarStyle}"/>
             <Style TargetType="{x:Type controls:DropDownCommandButton}" BasedOn="{StaticResource DropDownCommandButtonApplicationBarStyle}"/>
         </Style.Resources>        
-        <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource LowlightBrush}"/>
+        <Setter Property="Background" Value="{markup:ThemeResource AccentBrush}"/>
+        <Setter Property="BorderBrush" Value="{markup:ThemeResource BackgroundContrastBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{markup:ThemeResource ForegroundBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.ContentFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
         <Setter Property="FontStyle" Value="Normal"/>
@@ -27,6 +28,8 @@
         <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
         <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
+        <Setter Property="params:Animation.Type" Value="Slide"/>
+        <Setter Property="params:Animation.Supported" Value="None,Fade,Slide"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Mode=OneWay}"/>

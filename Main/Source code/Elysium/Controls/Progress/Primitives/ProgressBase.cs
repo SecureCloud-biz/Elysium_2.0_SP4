@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Security;
@@ -21,17 +22,18 @@ namespace Elysium.Controls.Primitives
     {
         private const string TrackName = "PART_Track";
 
-        internal FrameworkElement Track;
+        internal FrameworkElement Track { get; private set; }
 
         [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline", Justification = "We need to use static constructor for custom actions during dependency properties initialization")]
         static ProgressBase()
         {
             MaximumProperty.OverrideMetadata(typeof(ProgressBase), new FrameworkPropertyMetadata(100d));
+            Parameters.Animation.IsEnabledProperty.OverrideMetadata(typeof(ProgressBase), new FrameworkPropertyMetadata(OnAnimationIsEnabledChanged));
+            Parameters.Animation.TypeProperty.OverrideMetadata(typeof(ProgressBase), new FrameworkPropertyMetadata(OnAnimationTypeChanged));
         }
 
         private static readonly DependencyPropertyKey PercentPropertyKey =
-            DependencyProperty.RegisterReadOnly("Percent", typeof(double), typeof(ProgressBase),
-                                                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.None, OnPercentChanged));
+            DependencyProperty.RegisterReadOnly("Percent", typeof(double), typeof(ProgressBase), new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.None, OnPercentChanged));
 
         [PublicAPI]
         public static readonly DependencyProperty PercentProperty = PercentPropertyKey.DependencyProperty;
@@ -66,9 +68,7 @@ namespace Elysium.Controls.Primitives
 
         [PublicAPI]
         public static readonly DependencyProperty StateProperty =
-            DependencyProperty.Register("State", typeof(ProgressState), typeof(ProgressBase),
-                                        new FrameworkPropertyMetadata(ProgressState.Normal, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
-                                                                      OnStateChanged));
+            DependencyProperty.Register("State", typeof(ProgressState), typeof(ProgressBase), new FrameworkPropertyMetadata(ProgressState.Normal, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnStateChanged));
 
         [PublicAPI]
         [Bindable(true)]
@@ -98,74 +98,100 @@ namespace Elysium.Controls.Primitives
                 peer.InvalidatePeer();
             }
 
-            if (IsEnabled)
+            OnAnimatedStateChanged(newState);
+        }
+
+        private static void OnAnimationTypeChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            ValidationHelper.NotNull(obj, "obj");
+            var instance = obj as ProgressBase;
+            if (instance != null)
             {
-                switch (newState)
-                {
-                    case ProgressState.Busy:
-                        VisualStateManager.GoToState(this, "Busy", true);
-                        if (IndeterminateAnimation != null && IsIndeterminateAnimationRunning)
-                        {
-                            IsIndeterminateAnimationRunning = false;
-                            IndeterminateAnimation.Stop(this);
-                        }
-                        if (BusyAnimation != null)
-                        {
-                            BusyAnimation.Begin(this, Template, true);
-                            IsBusyAnimationRunning = true;
-                        }
-                        break;
-                    case ProgressState.Indeterminate:
-                        VisualStateManager.GoToState(this, "Indeterminate", true);
-                        if (BusyAnimation != null && IsBusyAnimationRunning)
-                        {
-                            IsBusyAnimationRunning = false;
-                            BusyAnimation.Stop(this);
-                        }
-                        if (IndeterminateAnimation != null)
-                        {
-                            IndeterminateAnimation.Begin(this, Template, true);
-                            IsIndeterminateAnimationRunning = true;
-                        }
-                        break;
-                    case ProgressState.Normal:
-                        VisualStateManager.GoToState(this, "Normal", true);
-                        if (IndeterminateAnimation != null && IsIndeterminateAnimationRunning)
-                        {
-                            IsIndeterminateAnimationRunning = false;
-                            IndeterminateAnimation.Stop(this);
-                        }
-                        if (BusyAnimation != null && IsBusyAnimationRunning)
-                        {
-                            IsBusyAnimationRunning = false;
-                            BusyAnimation.Stop(this);
-                        }
-                        break;
-                }
+                instance.OnAnimatedStateChanged(instance.State);
+            }
+        }
+
+        private static void OnAnimationIsEnabledChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            ValidationHelper.NotNull(obj, "obj");
+            var instance = obj as ProgressBase;
+            if (instance != null)
+            {
+                instance.OnAnimatedStateChanged(instance.State);
+            }
+        }
+
+        private void OnAnimatedStateChanged(ProgressState state)
+        {
+            switch (state)
+            {
+                case ProgressState.Busy:
+                    VisualStateManager.GoToState(this, "Busy", true);
+                    TryStopIndeterminateAnimation();
+                    TryStartAnimation(BusyAnimation, value => IsBusyAnimationRunning = value);
+                    break;
+                case ProgressState.Indeterminate:
+                    VisualStateManager.GoToState(this, "Indeterminate", true);
+                    TryStopBusyAnimation();
+                    TryStartAnimation(IndeterminateAnimation, value => IsIndeterminateAnimationRunning = value);
+                    break;
+                case ProgressState.Normal:
+                    VisualStateManager.GoToState(this, "Normal", true);
+                    TryStopIndeterminateAnimation();
+                    TryStopBusyAnimation();
+                    break;
+            }
+        }
+
+        private void TryStartAnimation(Storyboard animation, Action<bool> setIsRunning)
+        {
+            if (animation != null && Parameters.Animation.GetIsEnabled(this) && Parameters.Animation.GetType(this) == Animation.Slide)
+            {
+                animation.Begin(this, Template, true);
+                setIsRunning(true);
+            }
+        }
+
+        private void TryStopIndeterminateAnimation()
+        {
+            TryStopAnimation(IndeterminateAnimation, () => IsIndeterminateAnimationRunning, value => IsIndeterminateAnimationRunning = value);
+        }
+
+        private void TryStopBusyAnimation()
+        {
+            TryStopAnimation(BusyAnimation, () => IsBusyAnimationRunning, value => IsBusyAnimationRunning = value);
+        }
+
+        private void TryStopAnimation(Storyboard animation, Func<bool> getIsRunning, Action<bool> setIsRunning)
+        {
+            if (animation != null && getIsRunning())
+            {
+                setIsRunning(false);
+                animation.Stop(this);
             }
         }
 
         internal const string DefaultIndeterminateAnimationName = "CF98B9E7AB2F4CBD9EA654552441CD6A";
 
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification = "DependencyPropertyKey is immutable type")]
         [PublicAPI]
-        public static readonly DependencyProperty IndeterminateAnimationProperty =
-            DependencyProperty.Register("IndeterminateAnimation", typeof(Storyboard), typeof(ProgressBase),
-                                        new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender));
+        protected static readonly DependencyPropertyKey IndeterminateAnimationPropertyKey =
+            DependencyProperty.RegisterReadOnly("IndeterminateAnimation", typeof(Storyboard), typeof(ProgressBase), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender));
 
         [PublicAPI]
-        [Category("Appearance")]
-        [Description("Determines the animation that playing in Indeterminate state.")]
+        public static readonly DependencyProperty IndeterminateAnimationProperty = IndeterminateAnimationPropertyKey.DependencyProperty;
+
+        [PublicAPI]
         public Storyboard IndeterminateAnimation
         {
             get { return (Storyboard)GetValue(IndeterminateAnimationProperty); }
-            set { SetValue(IndeterminateAnimationProperty, value); }
+            protected set { SetValue(IndeterminateAnimationPropertyKey, value); }
         }
 
         [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification = "DependencyPropertyKey is immutable type")]
         [PublicAPI]
         protected static readonly DependencyPropertyKey IsIndeterminateAnimationRunningPropertyKey =
-            DependencyProperty.RegisterReadOnly("IsIndeterminateAnimationRunning", typeof(bool), typeof(ProgressBase),
-                                                new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, FrameworkPropertyMetadataOptions.None));
+            DependencyProperty.RegisterReadOnly("IsIndeterminateAnimationRunning", typeof(bool), typeof(ProgressBase), new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, FrameworkPropertyMetadataOptions.None));
 
         [PublicAPI]
         public static readonly DependencyProperty IsIndeterminateAnimationRunningProperty = IsIndeterminateAnimationRunningPropertyKey.DependencyProperty;
@@ -180,25 +206,25 @@ namespace Elysium.Controls.Primitives
 
         internal const string DefaultBusyAnimationName = "B45C62BF28AC49FDB8F172249BF56E5B";
 
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification = "DependencyPropertyKey is immutable type")]
         [PublicAPI]
-        public static readonly DependencyProperty BusyAnimationProperty =
-            DependencyProperty.Register("BusyAnimation", typeof(Storyboard), typeof(ProgressBase),
-                                        new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender));
+        protected static readonly DependencyPropertyKey BusyAnimationPropertyKey =
+            DependencyProperty.RegisterReadOnly("BusyAnimation", typeof(Storyboard), typeof(ProgressBase), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender));
 
         [PublicAPI]
-        [Category("Appearance")]
-        [Description("Determines the animation that playing in Busy state.")]
+        public static readonly DependencyProperty BusyAnimationProperty = BusyAnimationPropertyKey.DependencyProperty;
+
+        [PublicAPI]
         public Storyboard BusyAnimation
         {
             get { return (Storyboard)GetValue(BusyAnimationProperty); }
-            set { SetValue(BusyAnimationProperty, value); }
+            protected set { SetValue(BusyAnimationPropertyKey, value); }
         }
 
         [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification = "DependencyPropertyKey is immutable type")]
         [PublicAPI]
         protected static readonly DependencyPropertyKey IsBusyAnimationRunningPropertyKey =
-            DependencyProperty.RegisterReadOnly("IsBusyAnimationRunning", typeof(bool), typeof(ProgressBase),
-                                                new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, FrameworkPropertyMetadataOptions.None));
+            DependencyProperty.RegisterReadOnly("IsBusyAnimationRunning", typeof(bool), typeof(ProgressBase), new FrameworkPropertyMetadata(BooleanBoxingHelper.FalseBox, FrameworkPropertyMetadataOptions.None));
 
         [PublicAPI]
         public static readonly DependencyProperty IsBusyAnimationRunningProperty = IsBusyAnimationRunningPropertyKey.DependencyProperty;
@@ -211,44 +237,26 @@ namespace Elysium.Controls.Primitives
             protected set { SetValue(IsBusyAnimationRunningPropertyKey, BooleanBoxingHelper.Box(value)); }
         }
 
-        [PublicAPI]
-        public static readonly RoutedEvent AnimationsUpdatingEvent = EventManager.RegisterRoutedEvent("AnimationsUpdating", RoutingStrategy.Tunnel,
-                                                                                                      typeof(RoutedEventHandler), typeof(ProgressBase));
+        internal const double Magic = 11d;
+        private const double Time = 0.25d;
+        internal const double DurationTime = Time * 2;
+        internal const double BeginTimeIncrement = Time / 2;
+        internal const double ShortPauseTime = Time;
+        internal const double LongPauseTime = Time * 1.5;
+        internal const double Turn = 360d;
 
         [PublicAPI]
-        [Category("Appearance")]
-        [Description("Occurs when a state's animations updating.")]
-        public event RoutedEventHandler AnimationsUpdating
-        {
-            add { AddHandler(AnimationsUpdatingEvent, value); }
-            remove { RemoveHandler(AnimationsUpdatingEvent, value); }
-        }
-
-        [PublicAPI]
-// ReSharper disable VirtualMemberNeverOverriden.Global
+        // ReSharper disable VirtualMemberNeverOverriden.Global
         protected virtual void OnAnimationsUpdating(RoutedEventArgs e)
-// ReSharper restore VirtualMemberNeverOverriden.Global
+        // ReSharper restore VirtualMemberNeverOverriden.Global
         {
             RaiseEvent(e);
         }
 
         [PublicAPI]
-        public static readonly RoutedEvent AnimationsUpdatedEvent = EventManager.RegisterRoutedEvent("AnimationsUpdated", RoutingStrategy.Bubble,
-                                                                                                     typeof(RoutedEventHandler), typeof(ProgressBase));
-
-        [PublicAPI]
-        [Category("Appearance")]
-        [Description("Occurs when a state's animations updated.")]
-        public event RoutedEventHandler AnimationsUpdated
-        {
-            add { AddHandler(AnimationsUpdatedEvent, value); }
-            remove { RemoveHandler(AnimationsUpdatedEvent, value); }
-        }
-
-        [PublicAPI]
-// ReSharper disable VirtualMemberNeverOverriden.Global
+        // ReSharper disable VirtualMemberNeverOverriden.Global
         protected virtual void OnAnimationsUpdated(RoutedEventArgs e)
-// ReSharper restore VirtualMemberNeverOverriden.Global
+        // ReSharper restore VirtualMemberNeverOverriden.Global
         {
             RaiseEvent(e);
         }
@@ -276,8 +284,8 @@ namespace Elysium.Controls.Primitives
                 {
                     Track.SizeChanged += (sender, e) =>
                     {
-                        OnAnimationsUpdating(new RoutedEventArgs(AnimationsUpdatingEvent));
-                        OnAnimationsUpdated(new RoutedEventArgs(AnimationsUpdatedEvent));
+                        OnAnimationsUpdating(new RoutedEventArgs(Parameters.Animation.AnimationsUpdatingEvent));
+                        OnAnimationsUpdated(new RoutedEventArgs(Parameters.Animation.AnimationsUpdatedEvent));
                     };
                 }
             }

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="287e0615-9702-48ae-9128-d0b38d737b46" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+                               xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <para>This topic provides information about color scheme compatibility between Elysium and Windows Phone versions.</para>
+    </introduction>
+
+    <section>
+      <title>Elysium and Windows Phone color schemes comparasion by name</title>
+      <content>
+        <mediaLink>
+          <image xlink:href="Color comparasion by name" placement="center"/>
+        </mediaLink>
+      </content>
+    </section>
+
+    <section>
+      <title>Elysium and Windows Phone color schemes comparasion by value</title>
+      <content>
+        <mediaLink>
+          <image xlink:href="Color comparasion by value" placement="center"/>
+        </mediaLink>
+      </content>
+    </section>
+
+    <relatedTopics>
+      <codeEntityReference>T:Elysium.AccentColors</codeEntityReference>
+      <codeEntityReference>T:Elysium.AccentBrushes</codeEntityReference>
+      <externalLink>
+        <linkText>Themes for Windows Phone</linkText>
+        <linkUri>http://msdn.microsoft.com/en-us/library/windowsphone/develop/ff402557(v=vs.105).aspx</linkUri>
+      </externalLink>
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

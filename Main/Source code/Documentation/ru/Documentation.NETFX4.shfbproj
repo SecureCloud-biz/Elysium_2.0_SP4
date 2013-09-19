@@ -197,6 +197,7 @@
     <Folder Include="Media" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\Getting started\ColorSchemeCompatibility.aml" />
     <None Include="Content\Getting started\Notifications.aml" />
     <None Include="Content\Getting started\Parameters.aml" />
     <None Include="Content\Getting started\Theme.aml" />
@@ -441,6 +442,16 @@
     <Image Include="Media\Макет окна.png">
       <ImageId>Макет окна</ImageId>
       <AlternateText>Макет окна</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\Сводная таблица цветов по значению.png">
+      <ImageId>Сводная таблица цветов по значению</ImageId>
+      <AlternateText>Сводная таблица цветов по значению</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\Сводная таблица цветов по названию.png">
+      <ImageId>Сводная таблица цветов по названию</ImageId>
+      <AlternateText>Сводная таблица цветов по названию</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
   </ItemGroup>

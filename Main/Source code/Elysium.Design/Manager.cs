@@ -1,5 +1,8 @@
-﻿using System.Windows;
-using System.Windows.Media;
+﻿using System;
+using System.Windows;
+
+using Elysium.Markup;
+using Elysium.Parameters;
 
 using Microsoft.Windows.Design.Metadata;
 using Microsoft.Windows.Design.Model;
@@ -18,27 +21,21 @@ namespace Elysium.Design
             if (item != null && identifier.DeclaringType.IsAssignableFrom(typeof(FrameworkElement)) && identifier.Name == "Resources")
             {
                 var control = (FrameworkElement)item.View.PlatformObject;
-                var resources = (ResourceDictionary)value;
+                var resources = (System.Windows.ResourceDictionary)value;
 
-                var theme = Parameters.Manager.GetTheme(control);
-                var accentBrush = Parameters.Manager.GetAccentBrush(control);
-                var contrastBrush = Parameters.Manager.GetContrastBrush(control);
+                var themeResources = General.GetThemeResources(control);
 
-                if (theme == null && accentBrush == null && contrastBrush == null)
+                if (themeResources == null)
                 {
                     Elysium.Manager.RemoveCore(resources);
                 }
                 else
                 {
-                    Theme controlTheme;
-                    SolidColorBrush controlAcentBrush;
-                    SolidColorBrush controlContrastBrush;
-
-                    Elysium.Manager.ApplyCore(
-                        resources,
-                        theme ?? (control.TryGetTheme(out controlTheme) ? (Theme?)controlTheme : Elysium.Manager.DefaultTheme),
-                        accentBrush ?? (control.TryGetAccentBrush(out controlAcentBrush) ? controlAcentBrush : Elysium.Manager.DefaultAccentBrush),
-                        contrastBrush ?? (control.TryGetContrastBrush(out controlContrastBrush) ? controlContrastBrush : Elysium.Manager.DefaultContrastBrush));
+                    if (themeResources.Source == ThemeResources.Inherited)
+                    {
+                        themeResources.Control = new WeakReference(control);
+                    }
+                    Elysium.Manager.ApplyCore(resources, themeResources);
                 }
                 return resources;
             }

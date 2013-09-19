@@ -4,7 +4,8 @@
                     xmlns:controls="clr-namespace:Elysium.Controls">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Elysium;component/Themes/Buttons/CommandButtonBase.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Themes/Buttons/CommandButtonBase.Normal.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Themes/Buttons/CommandButtonBase.ApplicationBar.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{x:Type controls:CommandButton}" TargetType="{x:Type controls:CommandButton}" BasedOn="{StaticResource {x:Type primitives:CommandButtonBase}}"/>

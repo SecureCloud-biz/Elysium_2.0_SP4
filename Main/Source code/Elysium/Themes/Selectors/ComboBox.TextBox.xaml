@@ -1,0 +1,52 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:markup="clr-namespace:Elysium.Markup">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Themes/SharedResources.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Themes/Scrolls/ScrollBar.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Themes/Scrolls/ScrollViewer.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+        <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>
+        <Setter Property="CaretBrush" Value="{markup:ThemeResource ForegroundBrush}"/>
+        <Setter Property="SelectionBrush" Value="{markup:ThemeResource NormalBrush}"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border Background="{markup:ThemeResource TransparentBrush}"
+                            BorderBrush="{markup:ThemeResource TransparentBrush}"
+                            BorderThickness="0"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <ScrollViewer x:Name="PART_ContentHost"
+                                      Background="{x:Null}"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      FontFamily="{TemplateBinding FontFamily}"
+                                      FontSize="{TemplateBinding FontSize}"
+                                      FontStretch="{TemplateBinding FontStretch}"
+                                      FontStyle="{TemplateBinding FontStyle}"
+                                      FontWeight="{TemplateBinding FontWeight}"
+                                      TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                                      TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                                      RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
+                                      Margin="{TemplateBinding Padding}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=FontSize, Mode=OneWay, Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=18}">
+                <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    
+</ResourceDictionary>

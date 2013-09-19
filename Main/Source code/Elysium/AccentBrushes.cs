@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.Contracts;
+﻿using System;
+using System.Diagnostics.Contracts;
 using System.Windows.Media;
 
 using Elysium.Extensions;
@@ -11,12 +12,24 @@ namespace Elysium
     public static class AccentBrushes
     {
         [PublicAPI]
+        public static SolidColorBrush Amber
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
+                return _amber ?? (_amber = new SolidColorBrush(AccentColors.Amber).AsFrozen());
+            }
+        }
+
+        private static SolidColorBrush _amber;
+
+        [PublicAPI]
         public static SolidColorBrush Blue
         {
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                return _blue ?? (_blue = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0x01, 0x7B, 0xCD))));
+                return _blue ?? (_blue = new SolidColorBrush(AccentColors.Blue).AsFrozen());
             }
         }
 
@@ -28,11 +41,59 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                return _brown ?? (_brown = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0xA0, 0x50, 0x00))));
+                return _brown ?? (_brown = new SolidColorBrush(AccentColors.Brown).AsFrozen());
             }
         }
 
         private static SolidColorBrush _brown;
+
+        [PublicAPI]
+        public static SolidColorBrush Citron
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
+                return _citron ?? (_citron = new SolidColorBrush(AccentColors.Citron).AsFrozen());
+            }
+        }
+
+        private static SolidColorBrush _citron;
+
+        [PublicAPI]
+        public static SolidColorBrush Cobalt
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
+                return _cobalt ?? (_cobalt = new SolidColorBrush(AccentColors.Cobalt).AsFrozen());
+            }
+        }
+
+        private static SolidColorBrush _cobalt;
+
+        [PublicAPI]
+        public static SolidColorBrush Crimson
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
+                return _crimson ?? (_crimson = new SolidColorBrush(AccentColors.Crimson).AsFrozen());
+            }
+        }
+
+        private static SolidColorBrush _crimson;
+
+        [PublicAPI]
+        public static SolidColorBrush Emerald
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
+                return _emerald ?? (_emerald = new SolidColorBrush(AccentColors.Emerald).AsFrozen());
+            }
+        }
+
+        private static SolidColorBrush _emerald;
 
         [PublicAPI]
         public static SolidColorBrush Green
@@ -40,11 +101,35 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                return _green ?? (_green = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0x33, 0x99, 0x33))));
+                return _green ?? (_green = new SolidColorBrush(AccentColors.Green).AsFrozen());
             }
         }
 
         private static SolidColorBrush _green;
+
+        [PublicAPI]
+        public static SolidColorBrush Indigo
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
+                return _indigo ?? (_indigo = new SolidColorBrush(AccentColors.Indigo).AsFrozen());
+            }
+        }
+
+        private static SolidColorBrush _indigo;
+
+        [PublicAPI]
+        public static SolidColorBrush Jade
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
+                return _jade ?? (_jade = new SolidColorBrush(AccentColors.Jade).AsFrozen());
+            }
+        }
+
+        private static SolidColorBrush _jade;
 
         [PublicAPI]
         public static SolidColorBrush Lime
@@ -52,7 +137,7 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                return _lime ?? (_lime = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0x8C, 0xBF, 0x26))));
+                return _lime ?? (_lime = new SolidColorBrush(AccentColors.Lime).AsFrozen());
             }
         }
 
@@ -64,7 +149,7 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                return _magenta ?? (_magenta = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0xFF, 0x00, 0x97))));
+                return _magenta ?? (_magenta = new SolidColorBrush(AccentColors.Magenta).AsFrozen());
             }
         }
 
@@ -76,11 +161,35 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                return _mango ?? (_mango = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0xF0, 0x96, 0x09))));
+                return _mango ?? (_mango = new SolidColorBrush(AccentColors.Mango).AsFrozen());
             }
         }
 
         private static SolidColorBrush _mango;
+
+        [PublicAPI]
+        public static SolidColorBrush Mauve
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
+                return _mauve ?? (_mauve = new SolidColorBrush(AccentColors.Mauve).AsFrozen());
+            }
+        }
+
+        private static SolidColorBrush _mauve;
+
+        [PublicAPI]
+        public static SolidColorBrush Olive
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
+                return _olive ?? (_olive = new SolidColorBrush(AccentColors.Olive).AsFrozen());
+            }
+        }
+
+        private static SolidColorBrush _olive;
 
         [PublicAPI]
         public static SolidColorBrush Orange
@@ -88,7 +197,7 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                return _orange ?? (_orange = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0xCB, 0x52, 0x01))));
+                return _orange ?? (_orange = new SolidColorBrush(AccentColors.Orange).AsFrozen());
             }
         }
 
@@ -100,7 +209,7 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                return _pink ?? (_pink = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0xE6, 0x71, 0xB8))));
+                return _pink ?? (_pink = new SolidColorBrush(AccentColors.Pink).AsFrozen());
             }
         }
 
@@ -112,7 +221,7 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                return _purple ?? (_purple = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0x69, 0x22, 0x7B))));
+                return _purple ?? (_purple = new SolidColorBrush(AccentColors.Purple).AsFrozen());
             }
         }
 
@@ -124,7 +233,7 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                return _red ?? (_red = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0xE5, 0x14, 0x00))));
+                return _red ?? (_red = new SolidColorBrush(AccentColors.Red).AsFrozen());
             }
         }
 
@@ -136,11 +245,35 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                return _rose ?? (_rose = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0xD8, 0x00, 0x73))));
+                return _rose ?? (_rose = new SolidColorBrush(AccentColors.Rose).AsFrozen());
             }
         }
 
         private static SolidColorBrush _rose;
+
+        [PublicAPI]
+        public static SolidColorBrush Rust
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
+                return _rust ?? (_rust = new SolidColorBrush(AccentColors.Rust).AsFrozen());
+            }
+        }
+
+        private static SolidColorBrush _rust;
+
+        [PublicAPI]
+        public static SolidColorBrush Sienna
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
+                return _sienna ?? (_sienna = new SolidColorBrush(AccentColors.Sienna).AsFrozen());
+            }
+        }
+
+        private static SolidColorBrush _sienna;
 
         [PublicAPI]
         public static SolidColorBrush Sky
@@ -148,23 +281,46 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                return _sky ?? (_sky = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0x1B, 0xA1, 0xE2))));
+                return _sky ?? (_sky = new SolidColorBrush(AccentColors.Sky).AsFrozen());
             }
         }
 
         private static SolidColorBrush _sky;
 
         [PublicAPI]
+        public static SolidColorBrush Steel
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
+                return _steel ?? (_steel = new SolidColorBrush(AccentColors.Steel).AsFrozen());
+            }
+        }
+
+        private static SolidColorBrush _steel;
+
+        [PublicAPI]
+        public static SolidColorBrush Teal
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
+                return _teal ?? (_teal = new SolidColorBrush(AccentColors.Teal).AsFrozen());
+            }
+        }
+
+        private static SolidColorBrush _teal;
+
+        [PublicAPI]
+        [Obsolete("Use Teal brush and color instead of Viridian.")]
         public static SolidColorBrush Viridian
         {
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                return _viridian ?? (_viridian = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0x00, 0xAB, 0xA9))));
+                return _teal ?? (_teal = new SolidColorBrush(AccentColors.Teal).AsFrozen());
             }
         }
-
-        private static SolidColorBrush _viridian;
 
         [PublicAPI]
         public static SolidColorBrush Violet
@@ -172,10 +328,34 @@ namespace Elysium
             get
             {
                 Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
-                return _violet ?? (_violet = FreezableExtensions.TryFreeze(new SolidColorBrush(Color.FromArgb(0xFF, 0xA2, 0x00, 0xFF))));
+                return _violet ?? (_violet = new SolidColorBrush(AccentColors.Violet).AsFrozen());
             }
         }
 
         private static SolidColorBrush _violet;
+
+        [PublicAPI]
+        public static SolidColorBrush Walnut
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
+                return _walnut ?? (_walnut = new SolidColorBrush(AccentColors.Walnut).AsFrozen());
+            }
+        }
+
+        private static SolidColorBrush _walnut;
+
+        [PublicAPI]
+        public static SolidColorBrush Yellow
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<SolidColorBrush>() != null);
+                return _yellow ?? (_yellow = new SolidColorBrush(AccentColors.Yellow).AsFrozen());
+            }
+        }
+
+        private static SolidColorBrush _yellow;
     }
 }

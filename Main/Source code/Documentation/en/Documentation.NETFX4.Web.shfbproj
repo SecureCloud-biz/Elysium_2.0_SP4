@@ -197,6 +197,7 @@
     <Folder Include="Media" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\Getting started\ColorSchemeCompatibility.aml" />
     <None Include="Content\Getting started\CreatingYourFirstProject.aml" />
     <None Include="Content\Getting started\GettingStarted.aml" />
     <None Include="Content\Getting started\Notifications.aml" />
@@ -329,6 +330,16 @@
     <Image Include="Media\Bootstrapper - 5 Command line parameters.png">
       <ImageId>Bootstrapper - 5 Command line parameters</ImageId>
       <AlternateText>5 Command line parameters</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\Color comparasion by name.png">
+      <ImageId>Color comparasion by name</ImageId>
+      <AlternateText>Color comparasion by name</AlternateText>
+      <CopyToMedia>True</CopyToMedia>
+    </Image>
+    <Image Include="Media\Color comparasion by value.png">
+      <ImageId>Color comparasion by value</ImageId>
+      <AlternateText>Color comparasion by value</AlternateText>
       <CopyToMedia>True</CopyToMedia>
     </Image>
     <Image Include="Media\MSI - 1.1 Start screen - Icon.png">

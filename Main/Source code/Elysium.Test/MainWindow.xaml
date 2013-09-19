@@ -3,10 +3,8 @@
               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
               xmlns:metro="http://schemas.codeplex.com/elysium"
               xmlns:params="http://schemas.codeplex.com/elysium/params"
-              params:Design.Theme="Dark"
-              params:Design.AccentBrush="{x:Static metro:AccentBrushes.Blue}"
-              params:Design.ContrastBrush="White"
-              Background="{DynamicResource BackgroundBrush}"
+              xmlns:options="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+              Background="{metro:ThemeResource BackgroundBrush}"
               Title="Window" IsMainWindow="True"
               params:Window.MinimizeButtonToolTip="Minimize"
               params:Window.MaximizeButtonToolTip="Maximize"
@@ -14,6 +12,26 @@
               params:Window.CloseButtonToolTip="Close"
               WindowStartupLocation="CenterScreen"
               Width="1024" Height="640">
+    <params:General.ThemeResources>
+        <metro:ThemeDictionary IsDesignTime="True" Source="Light">
+            <Color x:Key="{x:Static metro:ThemeResource.AccentColor}">#FF017BCD</Color>
+            <SolidColorBrush x:Key="{x:Static metro:ThemeResource.AccentBrush}"
+                             Color="#FF017BCD"
+                             options:Freeze="True"/>
+            <Color x:Key="{x:Static metro:ThemeResource.ContrastColor}">#FFFFFFFF</Color>
+            <SolidColorBrush x:Key="{x:Static metro:ThemeResource.ContrastBrush}"
+                             Color="#FFFFFFFF"
+                             options:Freeze="True"/>
+            <Color x:Key="{x:Static metro:ThemeResource.SemitransparentContrastColor}">#1FFFFFFF</Color>
+            <SolidColorBrush x:Key="{x:Static metro:ThemeResource.SemitransparentContrastBrush}"
+                             Color="#1FFFFFFF"
+                             options:Freeze="True"/>
+            <Duration x:Key="{x:Static metro:ThemeResource.DefaultDuration}">00:00:00.0</Duration>
+            <Duration x:Key="{x:Static metro:ThemeResource.MinimumDuration}">00:00:00.2</Duration>
+            <Duration x:Key="{x:Static metro:ThemeResource.OptimumDuration}">00:00:00.5</Duration>
+            <Duration x:Key="{x:Static metro:ThemeResource.MaximumDuration}">00:00:01.0</Duration>
+        </metro:ThemeDictionary>
+    </params:General.ThemeResources>
     <metro:Window.TitleBar>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -23,7 +41,7 @@
             <Button Grid.Column="1"
                     Content="?"
                     Click="HelpClick"
-                    Style="{DynamicResource {x:Static metro:Window.MainWindowCaptionButtonStyleKey}}"/>
+                    Style="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type metro:Window}, ResourceId=MainWindowCaptionButtonStyle}}"/>
         </Grid>
     </metro:Window.TitleBar>
     <metro:Window.ApplicationBar>
@@ -57,52 +75,17 @@
                         OriginX="0" OriginY="0"/>
                 <metro:DropDownCommandButton.Submenu>
                     <metro:Submenu>
-                        <MenuItem Header="Blue"
+                        <MenuItem Header="Steel"
                                   Click="AccentClick">
                             <MenuItem.Icon>
-                                <Rectangle Fill="{x:Static metro:AccentBrushes.Blue}"
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Steel}"
                                            Width="16" Height="16"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="Brown"
+                        <MenuItem Header="Mauve"
                                   Click="AccentClick">
                             <MenuItem.Icon>
-                                <Rectangle Fill="{x:Static metro:AccentBrushes.Brown}"
-                                           Width="16" Height="16"/>
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem Header="Green"
-                                  Click="AccentClick">
-                            <MenuItem.Icon>
-                                <Rectangle Fill="{x:Static metro:AccentBrushes.Green}"
-                                           Width="16" Height="16"/>
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem Header="Lime"
-                                  Click="AccentClick">
-                            <MenuItem.Icon>
-                                <Rectangle Fill="{x:Static metro:AccentBrushes.Lime}"
-                                           Width="16" Height="16"/>
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem Header="Magenta"
-                                  Click="AccentClick">
-                            <MenuItem.Icon>
-                                <Rectangle Fill="{x:Static metro:AccentBrushes.Magenta}"
-                                           Width="16" Height="16"/>
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem Header="Mango"
-                                  Click="AccentClick">
-                            <MenuItem.Icon>
-                                <Rectangle Fill="{x:Static metro:AccentBrushes.Mango}"
-                                           Width="16" Height="16"/>
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem Header="Orange"
-                                  Click="AccentClick">
-                            <MenuItem.Icon>
-                                <Rectangle Fill="{x:Static metro:AccentBrushes.Orange}"
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Mauve}"
                                            Width="16" Height="16"/>
                             </MenuItem.Icon>
                         </MenuItem>
@@ -113,10 +96,17 @@
                                            Width="16" Height="16"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="Purple"
+                        <MenuItem Header="Rose"
                                   Click="AccentClick">
                             <MenuItem.Icon>
-                                <Rectangle Fill="{x:Static metro:AccentBrushes.Purple}"
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Rose}"
+                                           Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Magenta"
+                                  Click="AccentClick">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Magenta}"
                                            Width="16" Height="16"/>
                             </MenuItem.Icon>
                         </MenuItem>
@@ -127,10 +117,115 @@
                                            Width="16" Height="16"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="Rose"
+                        <MenuItem Header="Crimson"
                                   Click="AccentClick">
                             <MenuItem.Icon>
-                                <Rectangle Fill="{x:Static metro:AccentBrushes.Rose}"
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Crimson}"
+                                           Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Sienna"
+                                  Click="AccentClick">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Sienna}"
+                                           Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Brown"
+                                  Click="AccentClick">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Brown}"
+                                           Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Walnut"
+                                  Click="AccentClick">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Walnut}"
+                                           Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Rust"
+                                  Click="AccentClick">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Rust}"
+                                           Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Orange"
+                                  Click="AccentClick">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Orange}"
+                                           Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Mango"
+                                  Click="AccentClick">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Mango}"
+                                           Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Amber"
+                                  Click="AccentClick">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Amber}"
+                                           Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Yellow"
+                                  Click="AccentClick">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Yellow}"
+                                           Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Lime"
+                                  Click="AccentClick">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Lime}"
+                                           Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Citron"
+                                  Click="AccentClick">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Citron}"
+                                           Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Green"
+                                  Click="AccentClick">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Green}"
+                                           Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Jade"
+                                  Click="AccentClick">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Jade}"
+                                           Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Emerald"
+                                  Click="AccentClick">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Emerald}"
+                                           Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Olive"
+                                  Click="AccentClick">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Olive}"
+                                           Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Teal"
+                                  Click="AccentClick">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Teal}"
                                            Width="16" Height="16"/>
                             </MenuItem.Icon>
                         </MenuItem>
@@ -141,10 +236,24 @@
                                            Width="16" Height="16"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="Viridian"
+                        <MenuItem Header="Blue"
                                   Click="AccentClick">
                             <MenuItem.Icon>
-                                <Rectangle Fill="{x:Static metro:AccentBrushes.Viridian}"
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Blue}"
+                                           Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Cobalt"
+                                  Click="AccentClick">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Cobalt}"
+                                           Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Indigo"
+                                  Click="AccentClick">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Indigo}"
                                            Width="16" Height="16"/>
                             </MenuItem.Icon>
                         </MenuItem>
@@ -152,6 +261,13 @@
                                   Click="AccentClick">
                             <MenuItem.Icon>
                                 <Rectangle Fill="{x:Static metro:AccentBrushes.Violet}"
+                                           Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Purple"
+                                  Click="AccentClick">
+                            <MenuItem.Icon>
+                                <Rectangle Fill="{x:Static metro:AccentBrushes.Purple}"
                                            Width="16" Height="16"/>
                             </MenuItem.Icon>
                         </MenuItem>
@@ -186,7 +302,7 @@
             <metro:DropDownCommandButton Header="More"
                                          metro:ApplicationBar.Dock="Right"
                                          Margin="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Mode=OneWay}">
-                <Path Data="{StaticResource AdvancedIcon}"
+                <Path Data="{DynamicResource AdvancedIcon}"
                       Fill="Black"
                       Stroke="Black"
                       Width="24" Height="24"/>

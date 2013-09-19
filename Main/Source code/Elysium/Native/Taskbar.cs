@@ -7,24 +7,25 @@ using JetBrains.Annotations;
 namespace Elysium.Native
 {
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-    internal static class Taskbar
+    public static class Taskbar
     {
         [SecurityCritical]
         private static bool _isCacheValid;
 
         [SecuritySafeCritical]
-        internal static void Invalidate()
+        public static void Invalidate()
         {
             _isCacheValid = false;
         }
 
+        // TODO: WM_SETTINGCHANGE
         [SecurityCritical]
         private static void InvalidateInternal()
         {
             _handle = Interop.FindWindow("Shell_TrayWnd", null);
 
-            var data = new Interop.APPBARDATA { hWnd = _handle, cbSize = Marshal.SizeOf(typeof(Interop.APPBARDATA)) };
-            Interop.SHAppBarMessage(Interop.ABM_GETTASKBARPOS, ref data);
+            var data = new NativeMethods.APPBARDATA(_handle);
+            Interop.SHAppBarMessage(NativeMethods.ShellMessages.ABM_GETTASKBARPOS, ref data);
 
             _position = (TaskbarPosition)data.uEdge;
             _left = data.rc.left;
@@ -32,18 +33,17 @@ namespace Elysium.Native
             _right = data.rc.right;
             _bottom = data.rc.bottom;
 
-            data = new Interop.APPBARDATA { hWnd = _handle, cbSize = Marshal.SizeOf(typeof(Interop.APPBARDATA)) };
+            data = new NativeMethods.APPBARDATA(_handle);
 
-            var state = Interop.SHAppBarMessage(Interop.ABM_GETSTATE, ref data).ToInt32();
+            var state = (NativeMethods.TaskbarState)Interop.SHAppBarMessage(NativeMethods.ShellMessages.ABM_GETSTATE, ref data).ToInt32();
 
-            // See http://msdn.microsoft.com/en-us/library/bb787947(v=vs.85).aspx
-            _alwaysOnTop = (state & Interop.ABS_ALWAYSONTOP) == Interop.ABS_ALWAYSONTOP || Windows.IsWindows7OrHigher;
-            _autoHide = (state & Interop.ABS_AUTOHIDE) == Interop.ABS_AUTOHIDE;
+            _alwaysOnTop = state == NativeMethods.TaskbarState.ABS_ALWAYSONTOP || Windows.IsWindows7OrHigher;
+            _autoHide = state == NativeMethods.TaskbarState.ABS_AUTOHIDE;
 
             _isCacheValid = true;
         }
 
-        internal static IntPtr Handle
+        public static IntPtr Handle
         {
             [SecurityCritical]
             get
@@ -58,7 +58,7 @@ namespace Elysium.Native
 
         private static IntPtr _handle;
 
-        internal static TaskbarPosition Position
+        public static TaskbarPosition Position
         {
             [SecuritySafeCritical]
             get
@@ -73,7 +73,7 @@ namespace Elysium.Native
 
         private static TaskbarPosition _position;
 
-        internal static int Left
+        public static int Left
         {
             [SecuritySafeCritical]
             get
@@ -88,7 +88,7 @@ namespace Elysium.Native
 
         private static int _left;
 
-        internal static int Top
+        public static int Top
         {
             [SecuritySafeCritical]
             get
@@ -103,7 +103,7 @@ namespace Elysium.Native
 
         private static int _top;
 
-        internal static int Right
+        public static int Right
         {
             [SecuritySafeCritical]
             get
@@ -118,7 +118,7 @@ namespace Elysium.Native
 
         private static int _right;
 
-        internal static int Bottom
+        public static int Bottom
         {
             [SecuritySafeCritical]
             get
@@ -133,19 +133,25 @@ namespace Elysium.Native
 
         private static int _bottom;
 
-        internal static int Width
+        public static int Width
         {
             [SecuritySafeCritical]
-            get { return Right - Left; }
+            get
+            {
+                return Right - Left;
+            }
         }
 
-        internal static int Height
+        public static int Height
         {
             [SecuritySafeCritical]
-            get { return Bottom - Top; }
+            get
+            {
+                return Bottom - Top;
+            }
         }
 
-        internal static bool AlwaysOnTop
+        public static bool AlwaysOnTop
         {
             [SecuritySafeCritical]
             get
@@ -160,7 +166,7 @@ namespace Elysium.Native
 
         private static bool _alwaysOnTop;
 
-        internal static bool AutoHide
+        public static bool AutoHide
         {
             [SecuritySafeCritical]
             get

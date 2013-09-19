@@ -3,7 +3,7 @@
 namespace Elysium.Native
 {
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-    internal enum TaskbarPosition
+    public enum TaskbarPosition
     {
         Left = 0,
         Top,

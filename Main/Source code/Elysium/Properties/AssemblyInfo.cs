@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Reflection;
 using System.Resources;
 using System.Runtime.CompilerServices;
@@ -27,6 +28,7 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("http://schemas.codeplex.com/elysium", "Elysium")]
 [assembly: XmlnsDefinition("http://schemas.codeplex.com/elysium", "Elysium.Controls")]
 [assembly: XmlnsDefinition("http://schemas.codeplex.com/elysium", "Elysium.Converters")]
+[assembly: XmlnsDefinition("http://schemas.codeplex.com/elysium", "Elysium.Markup")]
 [assembly: XmlnsDefinition("http://schemas.codeplex.com/elysium/params", "Elysium.Parameters")]
 [assembly: XmlnsPrefix("http://schemas.codeplex.com/elysium", "metro")]
 [assembly: XmlnsPrefix("http://schemas.codeplex.com/elysium/params", "params")]

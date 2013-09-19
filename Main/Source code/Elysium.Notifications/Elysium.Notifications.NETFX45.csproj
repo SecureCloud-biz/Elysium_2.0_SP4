@@ -203,7 +203,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AssemblyInfo.tt</DependentUpon>
     </Compile>
-    <Compile Include="Animation.cs" />
     <Compile Include="Client\NotificationManager.cs" />
     <Compile Include="Exceptions\PushNotificationFailedException.cs" />
     <Compile Include="Exceptions\ServerUnavailableException.cs" />
@@ -240,12 +239,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Animation.en.xml">
-      <DependentUpon>Animation.cs</DependentUpon>
-    </None>
-    <None Include="Animation.ru.xml">
-      <DependentUpon>Animation.cs</DependentUpon>
-    </None>
     <None Include="HorizontalPlacement.en.xml">
       <DependentUpon>HorizontalPlacement.cs</DependentUpon>
     </None>

@@ -122,7 +122,7 @@ namespace Elysium.Controls
                     ResizeBorderThickness = Parameters.Window.GetResizeBorderThickness(this),
                     UseAeroCaptionButtons = false
                 };
-            _chrome.TryFreeze();
+            _chrome.Freeze();
             if (WindowChrome.GetWindowChrome(this) == null)
             {
                 WindowChrome.SetWindowChrome(this, _chrome);
@@ -318,12 +318,12 @@ namespace Elysium.Controls
                 Action setMainWindow =
                     () =>
                     {
-                        foreach (var window in Application.Current.Windows.AsParallel().Cast<System.Windows.Window>().Where(window => !Equals(window, instance)))
+                        foreach (var window in System.Windows.Application.Current.Windows.AsParallel().Cast<System.Windows.Window>().Where(window => !Equals(window, instance)))
                         {
                             SetIsMainWindow(window, false);
                         }
                     };
-                Application.Current.Dispatcher.BeginInvoke(setMainWindow, DispatcherPriority.Render);
+                System.Windows.Application.Current.Dispatcher.BeginInvoke(setMainWindow, DispatcherPriority.Render);
             }
         }
 
@@ -426,25 +426,24 @@ namespace Elysium.Controls
                         ResizeBorderThickness = _chrome.ResizeBorderThickness,
                         UseAeroCaptionButtons = _chrome.UseAeroCaptionButtons
                     };
-                _chrome.TryFreeze();
-                WindowChrome.SetWindowChrome(this, _chrome);
+                WindowChrome.SetWindowChrome(this, _chrome.AsFrozen());
             }
         }
 
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "Coerce- methods shouldn't throw exceptions")]
         [SuppressMessage("Microsoft.Contracts", "Nonnull-29-0", Justification = "Lack of contracts")]
-        private static object CoerceHasDropShadow(DependencyObject obj, object basevalue)
+        private static object CoerceHasDropShadow(DependencyObject obj, object baseValue)
         {
             ValidationHelper.NotNull(obj, "obj");
 
             try
             {
                 // NOTE: Ignore Code Contracts warnings
-                return BooleanBoxingHelper.Unbox(basevalue) && SystemParameters.DropShadow && Windows.IsWindowsVistaOrHigher;
+                return BooleanBoxingHelper.Unbox(baseValue) && SystemParameters.DropShadow && Windows.IsWindowsVistaOrHigher;
             }
             catch
             {
-                return basevalue;
+                return baseValue;
             }
         }
 
@@ -707,8 +706,7 @@ namespace Elysium.Controls
                         ResizeBorderThickness = _chrome.ResizeBorderThickness,
                         UseAeroCaptionButtons = _chrome.UseAeroCaptionButtons
                     };
-                _chrome.TryFreeze();
-                WindowChrome.SetWindowChrome(this, _chrome);
+                WindowChrome.SetWindowChrome(this, _chrome.AsFrozen());
             }
         }
 
@@ -737,8 +735,7 @@ namespace Elysium.Controls
                         ResizeBorderThickness = Parameters.Window.GetResizeBorderThickness(this),
                         UseAeroCaptionButtons = _chrome.UseAeroCaptionButtons
                     };
-                _chrome.TryFreeze();
-                WindowChrome.SetWindowChrome(this, _chrome);
+                WindowChrome.SetWindowChrome(this, _chrome.AsFrozen());
             }
         }
 
@@ -778,27 +775,6 @@ namespace Elysium.Controls
                 _layoutRoot.Margin = new Thickness();
             }
         }
-
-        #endregion
-
-        #region Global static properties
-
-        public static ResourceKey DefaultCaptionButtonStyleKey
-        {
-            get
-            {
-                return _defaultCaptionButtonStyleKey ?? (_defaultCaptionButtonStyleKey = new ComponentResourceKey(typeof(Window), "DefaultCaptionButtonStyleKey"));
-            }
-        }
-
-        private static ResourceKey _defaultCaptionButtonStyleKey;
-
-        public static ResourceKey MainWindowCaptionButtonStyleKey
-        {
-            get { return _mainWindowCaptionButtonStyleKey ?? (_mainWindowCaptionButtonStyleKey = new ComponentResourceKey(typeof(Window), "MainWindowCaptionButtonStyleKey")); }
-        }
-
-        private static ResourceKey _mainWindowCaptionButtonStyleKey;
 
         #endregion
 

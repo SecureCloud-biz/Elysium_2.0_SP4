@@ -9,6 +9,7 @@
         Represents a class that manages the settings of the styles of the controls.
       </summary>
     </type>
+    <!-- Font size -->
     <property name="P:Elysium.Parameters.General.TitleFontSize">
       <summary>
         Gets or sets the size of the font of the window's title.
@@ -404,6 +405,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
+    <!-- Thickness -->
     <property name="P:Elysium.Parameters.General.DefaultThickness">
       <summary>
         Gets or sets default thickness of the line.
@@ -788,6 +790,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
+    <!-- Padding -->
     <property name="P:Elysium.Parameters.General.DefaultPadding">
       <summary>
         Gets or sets the default value of padding.
@@ -1172,254 +1175,7 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
-    <property name="P:Elysium.Parameters.General.DefaultDuration">
-      <summary>
-        Gets or sets the default duration of the animation.
-      </summary>
-      <value>Default duration of the animation. The default value is 0 sec.</value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Identifier field</term>
-            <description>
-              <see cref="F:Elysium.Parameters.General.DefaultDurationProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Metadata</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
-            </description>
-          </item>
-        </list>
-      </remarks>
-      <example>
-        <code lang="C#">
-          var control = new Button();
-          var currentValue = Parameters.GetDefaultDuration(control);
-          Parameters.SetDefaultDuration(control, new Duration(TimeSpan.FromSeconds(0d)));
-        </code>
-        <code lang="XAML">
-          &lt;Button params:General.DefaultDuration="00:00:00.0"/&gt;
-        </code>
-      </example>
-    </property>
-    <field name="F:Elysium.Parameters.General.DefaultDurationProperty">
-      <summary>
-        Identifies the <see cref="P:Elysium.Parameters.General.DefaultDuration" /> dependency property.
-      </summary>
-      <value>
-        Identifier for the <see cref="P:Elysium.Parameters.General.DefaultDuration" /> dependency property.
-      </value>
-    </field>
-    <method name="M:Elysium.Parameters.General.GetDefaultDuration(System.Windows.DependencyObject)">
-      <summary>
-        Returns the value of the <see cref="P:Elysium.Parameters.General.DefaultDuration" /> dependency property for the specified control.
-      </summary>
-      <param name="obj">The  control, for which the value of the property is being got.</param>
-      <returns>Default duration of the animation.</returns>
-      <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </method>
-    <method name="M:Elysium.Parameters.General.SetDefaultDuration(System.Windows.DependencyObject,System.Windows.Duration)">
-      <summary>
-        Sets the value of the <see cref="P:Elysium.Parameters.General.DefaultDuration" /> dependency property for the specified control.
-      </summary>
-      <param name="obj">The  control, for which the value of the property is being set.</param>
-      <param name="value">Default duration of the animation.</param>
-      <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </method>
-    <property name="P:Elysium.Parameters.General.MinimumDuration">
-      <summary>
-        Gets or sets the minimum duration of the animation.
-      </summary>
-      <value>Minimum duration of the animation. The default value is 0.2 sec.</value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Identifier field</term>
-            <description>
-              <see cref="F:Elysium.Parameters.General.MinimumDurationProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Metadata</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
-            </description>
-          </item>
-        </list>
-      </remarks>
-      <example>
-        <code lang="C#">
-          var control = new Button();
-          var currentValue = Parameters.GetMinimumDuration(control);
-          Parameters.SetMinimumDuration(control, new Duration(TimeSpan.FromSeconds(0.2d)));
-        </code>
-        <code lang="XAML">
-          &lt;Button params:General.MinimumDuration="00:00:00.2"/&gt;
-        </code>
-      </example>
-    </property>
-    <field name="F:Elysium.Parameters.General.MinimumDurationProperty">
-      <summary>
-        Identifies the <see cref="P:Elysium.Parameters.General.MinimumDuration" /> dependency property.
-      </summary>
-      <value>
-        Identifier for the <see cref="P:Elysium.Parameters.General.MinimumDuration" /> dependency property.
-      </value>
-    </field>
-    <method name="M:Elysium.Parameters.General.GetMinimumDuration(System.Windows.DependencyObject)">
-      <summary>
-        Returns the value of the <see cref="P:Elysium.Parameters.General.MinimumDuration" /> dependency property for the specified control.
-      </summary>
-      <param name="obj">The  control, for which the value of the property is being got.</param>
-      <returns>Minimum duration of the animation.</returns>
-      <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </method>
-    <method name="M:Elysium.Parameters.General.SetMinimumDuration(System.Windows.DependencyObject,System.Windows.Duration)">
-      <summary>
-        Sets the value of the <see cref="P:Elysium.Parameters.General.MinimumDuration" /> dependency property for the specified control.
-      </summary>
-      <param name="obj">The  control, for which the value of the property is being set.</param>
-      <param name="value">Minimum duration of the animation.</param>
-      <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </method>
-    <property name="P:Elysium.Parameters.General.OptimumDuration">
-      <summary>
-        Gets or sets the optimum duration of the animation.
-      </summary>
-      <value>Optimum duration of the animation. The default value is 0.5 sec.</value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Identifier field</term>
-            <description>
-              <see cref="F:Elysium.Parameters.General.OptimumDurationProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Metadata</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
-            </description>
-          </item>
-        </list>
-      </remarks>
-      <example>
-        <code lang="C#">
-          var control = new Button();
-          var currentValue = Parameters.GetOptimumDuration(control);
-          Parameters.SetOptimumDuration(control, new Duration(TimeSpan.FromSeconds(0.5d)));
-        </code>
-        <code lang="XAML">
-          &lt;Button params:General.OptimumDuration="00:00:00.5"/&gt;
-        </code>
-      </example>
-    </property>
-    <field name="F:Elysium.Parameters.General.OptimumDurationProperty">
-      <summary>
-        Identifies the <see cref="P:Elysium.Parameters.General.OptimumDuration" /> dependency property.
-      </summary>
-      <value>
-        Identifier for the <see cref="P:Elysium.Parameters.General.OptimumDuration" /> dependency property.
-      </value>
-    </field>
-    <method name="M:Elysium.Parameters.General.GetOptimumDuration(System.Windows.DependencyObject)">
-      <summary>
-        Returns the value of the <see cref="P:Elysium.Parameters.General.OptimumDuration" /> dependency property for the specified control.
-      </summary>
-      <param name="obj">The  control, for which the value of the property is being got.</param>
-      <returns>Optimum duration of the animation.</returns>
-      <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </method>
-    <method name="M:Elysium.Parameters.General.SetOptimumDuration(System.Windows.DependencyObject,System.Windows.Duration)">
-      <summary>
-        Sets the value of the <see cref="P:Elysium.Parameters.General.OptimumDuration" /> dependency property for the specified control.
-      </summary>
-      <param name="obj">The  control, for which the value of the property is being set.</param>
-      <param name="value">Optimum duration of the animation.</param>
-      <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </method>
-    <property name="P:Elysium.Parameters.General.MaximumDuration">
-      <summary>
-        Gets or sets the maximum duration of the animation.
-      </summary>
-      <value>Maximum duration of the animation. The default value is 1 sec.</value>
-      <remarks>
-        <list type="table">
-          <item>
-            <term>Identifier field</term>
-            <description>
-              <see cref="F:Elysium.Parameters.General.MaximumDurationProperty" />
-            </description>
-          </item>
-          <item>
-            <term>Metadata</term>
-            <description>
-              <see cref="F:System.Windows.FrameworkPropertyMetadataOptions.Inherits" />
-            </description>
-          </item>
-        </list>
-      </remarks>
-      <example>
-        <code lang="C#">
-          var control = new Button();
-          var currentValue = Parameters.GetMaximumDuration(control);
-          Parameters.SetMaximumDuration(control, new Duration(TimeSpan.FromSeconds(1d)));
-        </code>
-        <code lang="XAML">
-          &lt;Button params:General.MaximumDuration="00:00:01"/&gt;
-        </code>
-      </example>
-    </property>
-    <field name="F:Elysium.Parameters.General.MaximumDurationProperty">
-      <summary>
-        Identifies the <see cref="P:Elysium.Parameters.General.MaximumDuration" /> dependency property.
-      </summary>
-      <value>
-        Identifier for the <see cref="P:Elysium.Parameters.General.MaximumDuration" /> dependency property.
-      </value>
-    </field>
-    <method name="M:Elysium.Parameters.General.GetMaximumDuration(System.Windows.DependencyObject)">
-      <summary>
-        Returns the value of the <see cref="P:Elysium.Parameters.General.MaximumDuration" /> dependency property for the specified control.
-      </summary>
-      <param name="obj">The  control, for which the value of the property is being got.</param>
-      <returns>Maximum duration of the animation.</returns>
-      <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </method>
-    <method name="M:Elysium.Parameters.General.SetMaximumDuration(System.Windows.DependencyObject,System.Windows.Duration)">
-      <summary>
-        Sets the value of the <see cref="P:Elysium.Parameters.General.MaximumDuration" /> dependency property for the specified control.
-      </summary>
-      <param name="obj">The  control, for which the value of the property is being set.</param>
-      <param name="value">Maximum duration of the animation.</param>
-      <exception cref="T:System.ArgumentNullException">
-        The parameter <paramref name="obj" /> has a value null.
-      </exception>
-      <requires exception="T:System.ArgumentNullException">obj != null</requires>
-    </method>
+    <!-- System resources -->
     <property name="P:Elysium.Parameters.General.ShadowBrush">
       <summary>
         Gets or sets the brush used for shadow creation.

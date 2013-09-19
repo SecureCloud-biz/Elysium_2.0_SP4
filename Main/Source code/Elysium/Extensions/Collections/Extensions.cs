@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.Contracts;
 
 using Elysium.Extensions;
 
@@ -52,11 +53,42 @@ namespace System.Linq
         {
             ValidationHelper.NotNull(destinationDictionary, "destinationDictionary");
             ValidationHelper.NotNull(sourceDictionary, "sourceDictionary");
-            ValidationHelper.NotNullAll<IEnumerable<TKey>, TKey>(sourceDictionary.Keys, "sourceDictionary");
 
             foreach (var key in sourceDictionary.Keys)
             {
                 destinationDictionary.SafeSet(key, sourceDictionary[key]);
+            }
+        }
+
+        internal static void SafeSet([NotNull] this IDictionary destinationDictionary, [NotNull] IDictionary sourceDictionary)
+        {
+            ValidationHelper.NotNull(destinationDictionary, "destinationDictionary");
+            ValidationHelper.NotNull(sourceDictionary, "sourceDictionary");
+
+            foreach (var key in sourceDictionary.Keys)
+            {
+                destinationDictionary.SafeSet(key, sourceDictionary[key]);
+            }
+        }
+
+        internal static void SafeInject(this System.Windows.ResourceDictionary resources, System.Windows.ResourceDictionary dictionary)
+        {
+            var dictionaries = resources.MergedDictionaries.Where(d => d.Source == dictionary.Source).ToList();
+            var lastIndex = dictionaries.Select(d => resources.MergedDictionaries.IndexOf(d)).Concat(new[] { 0 }).Max();
+
+            // NOTE: lastIndex always greater than or equal to zero
+            Contract.Assume(lastIndex >= 0);
+
+            // Remove previous dictionaries
+            foreach (var d in dictionaries)
+            {
+                resources.MergedDictionaries.Remove(d);
+            }
+
+            // Add new dictionary
+            if (dictionary != null)
+            {
+                resources.MergedDictionaries.Insert(lastIndex, dictionary);
             }
         }
 
@@ -75,42 +107,10 @@ namespace System.Linq
         {
             ValidationHelper.NotNull(destinationDictionary, "destinationDictionary");
             ValidationHelper.NotNull(sourceDictionary, "sourceDictionary");
-            ValidationHelper.NotNullAll<IEnumerable<TKey>, TKey>(sourceDictionary.Keys, "sourceDictionary");
 
             foreach (var key in sourceDictionary.Keys)
             {
                 destinationDictionary.SafeRemove(key);
-            }
-        }
-
-        internal static void SafeSet<T>([NotNull] this ICollection<WeakReference> collection, T value)
-        {
-            ValidationHelper.NotNull(collection, "collection");
-
-            if (!collection.Any(reference => Equals(reference.Target, value)))
-            {
-                collection.Add(new WeakReference(value));
-            }
-        }
-
-        internal static void SafeRemove<T>([NotNull] this ICollection<WeakReference> collection, T value)
-        {
-            ValidationHelper.NotNull(collection, "collection");
-
-            var values = collection.Where(reference => Equals(reference.Target, value));
-            foreach (var reference in values)
-            {
-                collection.Remove(reference);
-            }
-        }
-
-        internal static void Collect([NotNull] this ICollection<WeakReference> collection)
-        {
-            ValidationHelper.NotNull(collection, "collection");
-
-            foreach (var reference in collection.Where(reference => reference.Target == null))
-            {
-                collection.Remove(reference);
             }
         }
     }

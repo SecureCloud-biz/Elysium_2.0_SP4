@@ -1,0 +1,62 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:markup="clr-namespace:Elysium.Markup"
+                    xmlns:params="clr-namespace:Elysium.Parameters"
+                    xmlns:controls="clr-namespace:Elysium.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Themes/SharedResources.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Themes/Menus/Submenu.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="DropDownCommandButtonSubmenuStyle" TargetType="{x:Type controls:Submenu}" BasedOn="{StaticResource {x:Type controls:Submenu}}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Submenu}">
+                    <Border x:Name="LayoutRoot"
+                            Tag="{DynamicResource {x:Static SystemParameters.DropShadowKey}}">
+                        <ScrollViewer Background="{TemplateBinding Background}"
+                                      BorderBrush="{TemplateBinding BorderBrush}"
+                                      BorderThickness="{TemplateBinding BorderThickness}"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      FontFamily="{TemplateBinding FontFamily}"
+                                      FontSize="{TemplateBinding FontSize}"
+                                      FontStretch="{TemplateBinding FontStretch}"
+                                      FontStyle="{TemplateBinding FontStyle}"
+                                      FontWeight="{TemplateBinding FontWeight}"
+                                      TextOptions.TextFormattingMode="{TemplateBinding TextOptions.TextFormattingMode}"
+                                      TextOptions.TextRenderingMode="{TemplateBinding TextOptions.TextRenderingMode}"
+                                      RenderOptions.ClearTypeHint="{TemplateBinding RenderOptions.ClearTypeHint}"
+                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                            <ScrollViewer.Resources>
+                                <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource {x:Type ScrollBar}}">
+                                    <Style.Triggers>
+                                        <Trigger Property="Orientation" Value="Vertical">
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ScrollViewer.Resources>
+                            <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Cycle"/>
+                        </ScrollViewer>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=LayoutRoot, Path=Tag}" Value="True">
+                            <Setter TargetName="LayoutRoot" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Submenu}}, Path=(params:General.ShadowBrush).(SolidColorBrush.Color)}"
+                                                      BlurRadius="4" ShadowDepth="0"
+                                                      Direction="90"
+                                                      Opacity="0.7"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="LayoutRoot" Property="Background" Value="{markup:ThemeResource TransparentBrush}"/>
+                            <Setter TargetName="LayoutRoot" Property="Padding" Value="4"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

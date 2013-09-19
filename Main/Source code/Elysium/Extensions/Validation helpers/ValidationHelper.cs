@@ -76,33 +76,49 @@ namespace Elysium.Extensions
         }
 
         [ContractArgumentValidator]
-        internal static void OfType<T>(T argument, [NotNull] Expression<Func<T>> parameterExpression, [NotNull] Type type)
+        internal static void NotOfType<T>(T argument, [NotNull] Expression<Func<T>> parameterExpression, [NotNull] Type type, string reason = null)
         {
-            OfType(argument, ((MemberExpression)parameterExpression.Body).Member.Name, type);
+            NotOfType(argument, ((MemberExpression)parameterExpression.Body).Member.Name, type, reason);
         }
 
         [ContractArgumentValidator]
-        internal static void OfType<T>(T argument, [NotNull] string parameterName, [NotNull] Type type)
+        internal static void NotOfType<T>(T argument, [NotNull] string parameterName, [NotNull] Type type, string reason = null)
         {
-            if (!type.IsInstanceOfType(argument))
+            if (type.IsInstanceOfType(argument))
             {
-                throw new ArgumentException(parameterName + " must be of type: " + type.Name, parameterName);
+                throw new ArgumentException(reason ?? parameterName + " must not be of type: " + type.Name, parameterName);
             }
             Contract.EndContractBlock();
         }
 
         [ContractArgumentValidator]
-        internal static void OfTypes<T>(T argument, [NotNull] Expression<Func<T>> parameterExpression, [NotNull] Type firstType, [NotNull] Type secondType)
+        internal static void OfType<T>(T argument, [NotNull] Expression<Func<T>> parameterExpression, [NotNull] Type type, string reason = null)
         {
-            OfTypes(argument, ((MemberExpression)parameterExpression.Body).Member.Name, firstType, secondType);
+            OfType(argument, ((MemberExpression)parameterExpression.Body).Member.Name, type, reason);
         }
 
         [ContractArgumentValidator]
-        internal static void OfTypes<T>(T argument, [NotNull] string parameterName, [NotNull] Type firstType, [NotNull] Type secondType)
+        internal static void OfType<T>(T argument, [NotNull] string parameterName, [NotNull] Type type, string reason = null)
+        {
+            if (!type.IsInstanceOfType(argument))
+            {
+                throw new ArgumentException(reason ?? parameterName + " must be of type: " + type.Name, parameterName);
+            }
+            Contract.EndContractBlock();
+        }
+
+        [ContractArgumentValidator]
+        internal static void OfTypes<T>(T argument, [NotNull] Expression<Func<T>> parameterExpression, [NotNull] Type firstType, [NotNull] Type secondType, string reason = null)
+        {
+            OfTypes(argument, ((MemberExpression)parameterExpression.Body).Member.Name, firstType, secondType, reason);
+        }
+
+        [ContractArgumentValidator]
+        internal static void OfTypes<T>(T argument, [NotNull] string parameterName, [NotNull] Type firstType, [NotNull] Type secondType, string reason = null)
         {
             if (!(firstType.IsInstanceOfType(argument) || secondType.IsInstanceOfType(argument)))
             {
-                throw new ArgumentException(parameterName + " must belong to one of the types: " + firstType.Name + ", " + secondType.Name, parameterName);
+                throw new ArgumentException(reason ?? parameterName + " must belong to one of the types: " + firstType.Name + ", " + secondType.Name, parameterName);
             }
             Contract.EndContractBlock();
         }

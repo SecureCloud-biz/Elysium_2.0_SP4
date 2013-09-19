@@ -28,7 +28,7 @@ namespace Elysium.Controls
     {
         private const string PopupName = "PART_Popup";
 
-        private Popup _popup;
+        internal Popup Popup { get; set; }
 
         [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline", Justification = "We need to use static constructor for custom actions during dependency properties initialization")]
         static DropDownCommandButton()
@@ -257,9 +257,9 @@ namespace Elysium.Controls
         {
             if (Template != null)
             {
-                if (_popup != null)
+                if (Popup != null)
                 {
-                    _popup.Child = null;
+                    Popup.Child = null;
                     if (Submenu != null)
                     {
                         var popupRootInstance = VisualTreeHelperExtensions.FindTopLevelParent(Submenu);
@@ -281,26 +281,26 @@ namespace Elysium.Controls
                             }
                         }
                     }
-                    _popup.Closed -= OnDropDownClosed;
-                    _popup.Opened -= OnDropDownOpened;
-                    _popup.CustomPopupPlacementCallback = null;
+                    Popup.Closed -= OnDropDownClosed;
+                    Popup.Opened -= OnDropDownOpened;
+                    Popup.CustomPopupPlacementCallback = null;
                 }
 
                 // Bug in Code Contracts static checker: Template is already checked to null
                 Contract.Assume(Template != null);
-                _popup = Template.FindName(PopupName, this) as Popup;
-                if (_popup == null)
+                Popup = Template.FindName(PopupName, this) as Popup;
+                if (Popup == null)
                 {
                     Trace.TraceError(PopupName + " not found.");
                 }
                 else
                 {
-                    _popup.CustomPopupPlacementCallback = PlacePopup;
-                    _popup.Opened += OnDropDownOpened;
-                    _popup.Closed += OnDropDownClosed;
+                    Popup.CustomPopupPlacementCallback = PlacePopup;
+                    Popup.Opened += OnDropDownOpened;
+                    Popup.Closed += OnDropDownClosed;
                     if (Submenu != null)
                     {
-                        _popup.Child = Submenu;
+                        Popup.Child = Submenu;
                     }
                 }
             }

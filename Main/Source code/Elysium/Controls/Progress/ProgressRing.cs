@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
@@ -37,8 +37,7 @@ namespace Elysium.Controls
 
         [PublicAPI]
         public static readonly DependencyProperty AngleProperty =
-            DependencyProperty.RegisterAttached("Angle", typeof(double), typeof(ProgressRing),
-                                                new FrameworkPropertyMetadata(-1d, FrameworkPropertyMetadataOptions.AffectsArrange));
+            DependencyProperty.RegisterAttached("Angle", typeof(double), typeof(ProgressRing), new FrameworkPropertyMetadata(-1d, FrameworkPropertyMetadataOptions.AffectsArrange));
 
         [PublicAPI]
         [JetBrains.Annotations.Pure]
@@ -141,14 +140,14 @@ namespace Elysium.Controls
 
                 var trackSize = Math.Min(Track.ActualWidth, Track.ActualHeight);
 
-                var time = Math.Sqrt(trackSize * Math.PI) / 10;
+                var time = Math.Sqrt(trackSize * Math.PI) / Magic;
 
-                var startAngleSetValueAnimation = new DoubleAnimation(0, new Duration(TimeSpan.FromSeconds(0d)));
+                var startAngleSetValueAnimation = new DoubleAnimation(Turn * 0, new Duration(TimeSpan.Zero));
 
                 Storyboard.SetTarget(startAngleSetValueAnimation, _arc);
                 Storyboard.SetTargetProperty(startAngleSetValueAnimation, new PropertyPath(Arc.StartAngleProperty));
 
-                var endAngleSetValueAnimation = new DoubleAnimation(-270, new Duration(TimeSpan.FromSeconds(0d)));
+                var endAngleSetValueAnimation = new DoubleAnimation(-Turn * 3 / 4, new Duration(TimeSpan.Zero));
 
                 Storyboard.SetTarget(endAngleSetValueAnimation, _arc);
                 Storyboard.SetTargetProperty(endAngleSetValueAnimation, new PropertyPath(Arc.EndAngleProperty));
@@ -157,7 +156,7 @@ namespace Elysium.Controls
 
                 // NOTE: Lack of contracts: DoubleAnimationUsingKeyFrames.KeyFrames is always have collection instance
                 Contract.Assume(startAngleAnimation.KeyFrames != null);
-                startAngleAnimation.KeyFrames.Add(new EasingDoubleKeyFrame(360, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
+                startAngleAnimation.KeyFrames.Add(new EasingDoubleKeyFrame(Turn, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
 
                 Storyboard.SetTarget(startAngleAnimation, _arc);
                 Storyboard.SetTargetProperty(startAngleAnimation, new PropertyPath(Arc.StartAngleProperty));
@@ -166,7 +165,7 @@ namespace Elysium.Controls
 
                 // NOTE: Lack of contracts: DoubleAnimationUsingKeyFrames.KeyFrames is always have collection instance
                 Contract.Assume(endAngleAnimation.KeyFrames != null);
-                endAngleAnimation.KeyFrames.Add(new EasingDoubleKeyFrame(90, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
+                endAngleAnimation.KeyFrames.Add(new EasingDoubleKeyFrame(Turn / 4, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
 
                 Storyboard.SetTarget(endAngleAnimation, _arc);
                 Storyboard.SetTargetProperty(endAngleAnimation, new PropertyPath(Arc.EndAngleProperty));
@@ -181,10 +180,7 @@ namespace Elysium.Controls
                 IndeterminateAnimation.Children.Add(startAngleAnimation);
                 IndeterminateAnimation.Children.Add(endAngleAnimation);
 
-                if (IndeterminateAnimation.CanFreeze)
-                {
-                    IndeterminateAnimation.Freeze();
-                }
+                IndeterminateAnimation.Freeze();
 
                 if (State == ProgressState.Indeterminate && IsEnabled)
                 {
@@ -211,15 +207,10 @@ namespace Elysium.Controls
 
                 BusyAnimation = new Storyboard { Name = DefaultBusyAnimationName, RepeatBehavior = RepeatBehavior.Forever };
 
-                var firstCycleAnimations = new Collection<DoubleAnimation>();
-                var secondCycleAnimations = new Collection<DoubleAnimation>();
+                var firstCycleAnimations = new LinkedList<DoubleAnimation>();
+                var secondCycleAnimations = new LinkedList<DoubleAnimation>();
 
-                const double time = 0.25;
-                const double durationTime = time * 2;
-                const double beginTimeIncrement = time / 2;
-                const double shortPauseTime = time;
-                const double longPauseTime = time * 1.5;
-                var partMotionTime = (_busyBar.Children.Count - 1) * beginTimeIncrement + durationTime + shortPauseTime;
+                var partMotionTime = (_busyBar.Children.Count - 1) * BeginTimeIncrement + DurationTime + ShortPauseTime;
 
                 var length = Math.Min(Track.ActualWidth, Track.ActualHeight) * Math.PI;
 
@@ -233,23 +224,20 @@ namespace Elysium.Controls
                         var index = (_busyBar.Children.Count - 1) / 2 - i;
 
                         var endPosition = length / 2 + index * (elementLength * 2);
-                        var endAngle = endPosition / length * 360d;
+                        var endAngle = endPosition / length * Turn;
 
-                        var duration = new Duration(TimeSpan.FromSeconds(durationTime));
+                        var duration = new Duration(TimeSpan.FromSeconds(DurationTime));
 
-                        var firstCycleAnimation =
-                            new DoubleAnimation(0d, endAngle, duration) { BeginTime = TimeSpan.FromSeconds(i * beginTimeIncrement) };
+                        var firstCycleAnimation = new DoubleAnimation(0d, endAngle, duration) { BeginTime = TimeSpan.FromSeconds(i * BeginTimeIncrement) };
                         Storyboard.SetTarget(firstCycleAnimation, element);
                         Storyboard.SetTargetProperty(firstCycleAnimation, new PropertyPath(AngleProperty));
 
-                        var secondCycleAnimation =
-                            new DoubleAnimation(0d, endAngle, duration)
-                                { BeginTime = TimeSpan.FromSeconds(partMotionTime + durationTime + i * beginTimeIncrement) };
+                        var secondCycleAnimation = new DoubleAnimation(0d, endAngle, duration) { BeginTime = TimeSpan.FromSeconds(partMotionTime + DurationTime + i * BeginTimeIncrement) };
                         Storyboard.SetTarget(secondCycleAnimation, element);
                         Storyboard.SetTargetProperty(secondCycleAnimation, new PropertyPath(AngleProperty));
 
-                        firstCycleAnimations.Add(firstCycleAnimation);
-                        secondCycleAnimations.Add(secondCycleAnimation);
+                        firstCycleAnimations.AddLast(firstCycleAnimation);
+                        secondCycleAnimations.AddLast(secondCycleAnimation);
                     }
                 }
 
@@ -258,32 +246,27 @@ namespace Elysium.Controls
                     var element = (FrameworkElement)_busyBar.Children[_busyBar.Children.Count - i - 1];
                     if (element != null)
                     {
-                        var duration = new Duration(TimeSpan.FromSeconds(durationTime));
+                        var duration = new Duration(TimeSpan.FromSeconds(DurationTime));
 
-                        var firstCycleAnimation =
-                            new DoubleAnimation(360d, duration) { BeginTime = TimeSpan.FromSeconds(partMotionTime + i * beginTimeIncrement) };
+                        var firstCycleAnimation = new DoubleAnimation(Turn, duration) { BeginTime = TimeSpan.FromSeconds(partMotionTime + i * BeginTimeIncrement) };
                         Storyboard.SetTarget(firstCycleAnimation, element);
                         Storyboard.SetTargetProperty(firstCycleAnimation, new PropertyPath(AngleProperty));
 
-                        var secondCycleAnimation =
-                            new DoubleAnimation(360d, duration)
-                                { BeginTime = TimeSpan.FromSeconds(partMotionTime * 2 + durationTime + i * beginTimeIncrement) };
+                        var secondCycleAnimation = new DoubleAnimation(Turn, duration) { BeginTime = TimeSpan.FromSeconds(partMotionTime * 2 + DurationTime + i * BeginTimeIncrement) };
                         Storyboard.SetTarget(secondCycleAnimation, element);
                         Storyboard.SetTargetProperty(secondCycleAnimation, new PropertyPath(AngleProperty));
 
-                        var moveAnimation =
-                            new DoubleAnimation(-1.0, new Duration(TimeSpan.FromSeconds(0)))
-                                { BeginTime = TimeSpan.FromSeconds(partMotionTime * 2 + durationTime * 2 + i * beginTimeIncrement) };
+                        var moveAnimation = new DoubleAnimation(-1.0, new Duration(TimeSpan.Zero)) { BeginTime = TimeSpan.FromSeconds(partMotionTime * 2 + DurationTime * 2 + i * BeginTimeIncrement) };
                         Storyboard.SetTarget(moveAnimation, element);
                         Storyboard.SetTargetProperty(moveAnimation, new PropertyPath(AngleProperty));
 
-                        firstCycleAnimations.Add(firstCycleAnimation);
-                        secondCycleAnimations.Add(secondCycleAnimation);
-                        secondCycleAnimations.Add(moveAnimation);
+                        firstCycleAnimations.AddLast(firstCycleAnimation);
+                        secondCycleAnimations.AddLast(secondCycleAnimation);
+                        secondCycleAnimations.AddLast(moveAnimation);
                     }
                 }
 
-                BusyAnimation.Duration = new Duration(TimeSpan.FromSeconds(longPauseTime + partMotionTime * 3 + shortPauseTime * 2 + durationTime));
+                BusyAnimation.Duration = new Duration(TimeSpan.FromSeconds(LongPauseTime + partMotionTime * 3 + ShortPauseTime * 2 + DurationTime));
 
                 // NOTE: Lack of contracts: Children always have collection instance
                 Contract.Assume(BusyAnimation.Children != null);
@@ -291,16 +274,12 @@ namespace Elysium.Controls
                 {
                     BusyAnimation.Children.Add(animation);
                 }
-
                 foreach (var animation in secondCycleAnimations)
                 {
                     BusyAnimation.Children.Add(animation);
                 }
 
-                if (BusyAnimation.CanFreeze)
-                {
-                    BusyAnimation.Freeze();
-                }
+                BusyAnimation.Freeze();
 
                 if (State == ProgressState.Busy && IsEnabled)
                 {

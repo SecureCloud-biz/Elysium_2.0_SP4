@@ -4,8 +4,10 @@
   <Topic id="beb3a93b-e01a-4b19-8966-7cc9738eda11" visible="True" title="Распространение Elysium вместе с программой" />
   <Topic id="286c4f3c-7317-4a23-b8f4-3ba5bd016cbb" visible="True" isExpanded="true" title="Начало работы с Elysium">
     <Topic id="38e98c7d-0495-49a4-9dea-01d0dccd3302" visible="True" title="Создание первого проекта" />
-    <Topic id="2ac0683a-9c20-4cc9-86e2-48a3e25696ed" visible="True" title="Настройка темы" />
-    <Topic id="63788c88-04b6-4a34-b844-323290dc2523" visible="True" isSelected="true" title="Окно и элементы окна" />
+    <Topic id="2ac0683a-9c20-4cc9-86e2-48a3e25696ed" visible="True" isExpanded="true" title="Настройка темы">
+      <Topic id="287e0615-9702-48ae-9128-d0b38d737b46" visible="True" isSelected="true" title="Обратная совместимость цветовых схем" />
+    </Topic>
+    <Topic id="63788c88-04b6-4a34-b844-323290dc2523" visible="True" title="Окно и элементы окна" />
     <Topic id="d4e53745-c2f4-457a-a3cd-39494218a6f3" visible="True" title="Параметры" />
     <Topic id="a0189101-b73b-4662-85b1-0176fdfab7df" visible="True" title="Система уведомлений" />
   </Topic>

@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
+using Elysium.Markup;
 using Elysium.Notifications;
 
 namespace Elysium.Test
@@ -38,12 +39,12 @@ namespace Elysium.Test
 
         private void LightClick(object sender, RoutedEventArgs e)
         {
-            Application.Current.Apply(Theme.Light);
+            Application.Current.ThemeResources.Source = ThemeResources.Light;
         }
 
         private void DarkClick(object sender, RoutedEventArgs e)
         {
-            Application.Current.Apply(Theme.Dark);
+            Application.Current.ThemeResources.Source = ThemeResources.Dark;
         }
 
         private void AccentClick(object sender, RoutedEventArgs e)
@@ -52,18 +53,31 @@ namespace Elysium.Test
             if (item != null)
             {
                 var accentBrush = (SolidColorBrush)((Rectangle)item.Icon).Fill;
-                Application.Current.Apply(accentBrush, null);
+                Application.Current.ThemeResources[ThemeResource.AccentColor] = accentBrush.Color;
+                Application.Current.ThemeResources[ThemeResource.AccentBrush] = accentBrush.AsFrozen();
             }
         }
 
+        private static readonly Color SemitrasparentWhite = Color.FromArgb(0x1F, 0xFF, 0xFF, 0xFF);
+        private static readonly SolidColorBrush SemitrasparentWhiteBrush = new SolidColorBrush(SemitrasparentWhite).AsFrozen();
+
         private void WhiteClick(object sender, RoutedEventArgs e)
         {
-            Application.Current.Apply(null, Brushes.White);
+            Application.Current.ThemeResources[ThemeResource.ContrastColor] = Colors.White;
+            Application.Current.ThemeResources[ThemeResource.ContrastBrush] = Brushes.White;
+            Application.Current.ThemeResources[ThemeResource.SemitransparentContrastColor] = SemitrasparentWhite;
+            Application.Current.ThemeResources[ThemeResource.SemitransparentContrastBrush] = SemitrasparentWhiteBrush;
         }
+
+        private static readonly Color SemitrasparentBlack = Color.FromArgb(0x1F, 0x00, 0x00, 0x00);
+        private static readonly SolidColorBrush SemitrasparentBlackBrush = new SolidColorBrush(SemitrasparentBlack).AsFrozen();
 
         private void BlackClick(object sender, RoutedEventArgs e)
         {
-            Application.Current.Apply(null, Brushes.Black);
+            Application.Current.ThemeResources[ThemeResource.ContrastColor] = Colors.Black;
+            Application.Current.ThemeResources[ThemeResource.ContrastBrush] = Brushes.Black;
+            Application.Current.ThemeResources[ThemeResource.SemitransparentContrastColor] = SemitrasparentBlack;
+            Application.Current.ThemeResources[ThemeResource.SemitransparentContrastBrush] = SemitrasparentBlackBrush;
         }
 
 #if NETFX4

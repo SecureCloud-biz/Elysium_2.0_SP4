@@ -7,20 +7,20 @@ using JetBrains.Annotations;
 namespace Elysium.Native
 {
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-    internal class Window
+    public class Window
     {
         [SecurityCritical]
         private static bool _isCacheValid;
 
         [SecuritySafeCritical]
-        internal Window(IntPtr hwnd)
+        public Window(IntPtr hwnd)
         {
             _handle = hwnd;
         }
 
         [SecuritySafeCritical]
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "This method must be called only after class initialization.")]
-        internal void Invalidate()
+        public void Invalidate()
         {
             _isCacheValid = false;
         }
@@ -41,7 +41,7 @@ namespace Elysium.Native
             _isCacheValid = true;
         }
 
-        internal IntPtr Handle
+        public IntPtr Handle
         {
             [SecurityCritical]
             get { return _handle; }
@@ -49,7 +49,7 @@ namespace Elysium.Native
 
         private readonly IntPtr _handle;
 
-        internal int WindowStyle
+        public int WindowStyle
         {
             [SecuritySafeCritical]
             get
@@ -64,7 +64,7 @@ namespace Elysium.Native
 
         private int _windowStyle;
 
-        internal int WindowExStyle
+        public int WindowExStyle
         {
             [SecuritySafeCritical]
             get
@@ -79,7 +79,7 @@ namespace Elysium.Native
 
         private int _windowExStyle;
 
-        internal Interop.RECT Bounds
+        public Interop.RECT Bounds
         {
             [SecuritySafeCritical]
             get
@@ -94,7 +94,7 @@ namespace Elysium.Native
 
         private Interop.RECT _bounds;
 
-        internal Interop.RECT ClientArea
+        public Interop.RECT ClientArea
         {
             [SecuritySafeCritical]
             get
@@ -109,7 +109,7 @@ namespace Elysium.Native
 
         private Interop.RECT _clientArea;
 
-        internal int NonClientBorderWidth
+        public int NonClientBorderWidth
         {
             [SecuritySafeCritical]
             get
@@ -124,7 +124,7 @@ namespace Elysium.Native
 
         private int _nonClientBorderWidth;
 
-        internal int NonClientBorderHeight
+        public int NonClientBorderHeight
         {
             [SecuritySafeCritical]
             get

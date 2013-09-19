@@ -1,5 +1,6 @@
-﻿<#+
-public static readonly string Copyright = "Copyright © Aleksandr Vishnyakov & Codeplex community 2011-" + DateTime.Now.Year.ToString();
+﻿<#@ import namespace="System.Globalization" #>
+<#+
+public static readonly string Copyright = "Copyright © Aleksandr Vishnyakov & Codeplex community 2011-" + DateTime.Now.Year.ToString(CultureInfo.InvariantCulture);
 public const string Version = "2.1 EAP";
 
 public static class Versions

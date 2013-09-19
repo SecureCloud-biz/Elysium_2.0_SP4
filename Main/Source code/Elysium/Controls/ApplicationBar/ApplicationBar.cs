@@ -37,20 +37,15 @@ namespace Elysium.Controls
             IsTabStopProperty.OverrideMetadata(typeof(ApplicationBar), new FrameworkPropertyMetadata(false));
             FocusableProperty.OverrideMetadata(typeof(ApplicationBar), new FrameworkPropertyMetadata(false));
             FocusManager.IsFocusScopeProperty.OverrideMetadata(typeof(ApplicationBar), new FrameworkPropertyMetadata(true));
-            KeyboardNavigation.DirectionalNavigationProperty.OverrideMetadata(
-                typeof(ApplicationBar), new FrameworkPropertyMetadata(KeyboardNavigationMode.Cycle));
-            KeyboardNavigation.TabNavigationProperty.OverrideMetadata(
-                typeof(ApplicationBar), new FrameworkPropertyMetadata(KeyboardNavigationMode.Cycle));
-            KeyboardNavigation.ControlTabNavigationProperty.OverrideMetadata(
-                typeof(ApplicationBar), new FrameworkPropertyMetadata(KeyboardNavigationMode.Once));
+            KeyboardNavigation.DirectionalNavigationProperty.OverrideMetadata(typeof(ApplicationBar), new FrameworkPropertyMetadata(KeyboardNavigationMode.Cycle));
+            KeyboardNavigation.TabNavigationProperty.OverrideMetadata(typeof(ApplicationBar), new FrameworkPropertyMetadata(KeyboardNavigationMode.Cycle));
+            KeyboardNavigation.ControlTabNavigationProperty.OverrideMetadata(typeof(ApplicationBar), new FrameworkPropertyMetadata(KeyboardNavigationMode.Once));
 
             HorizontalAlignmentProperty.OverrideMetadata(typeof(ApplicationBar), new FrameworkPropertyMetadata(HorizontalAlignment.Stretch));
             VerticalAlignmentProperty.OverrideMetadata(typeof(ApplicationBar), new FrameworkPropertyMetadata(VerticalAlignment.Bottom));
 
-            EventManager.RegisterClassHandler(typeof(ApplicationBar), Mouse.LostMouseCaptureEvent,
-                                              new MouseEventHandler(OnLostMouseCapture));
-            EventManager.RegisterClassHandler(typeof(ApplicationBar), Mouse.PreviewMouseUpOutsideCapturedElementEvent,
-                                              new MouseButtonEventHandler(OnPreviewMouseButtonOutsideCapturedElement));
+            EventManager.RegisterClassHandler(typeof(ApplicationBar), Mouse.LostMouseCaptureEvent, new MouseEventHandler(OnLostMouseCapture));
+            EventManager.RegisterClassHandler(typeof(ApplicationBar), Mouse.PreviewMouseUpOutsideCapturedElementEvent, new MouseButtonEventHandler(OnPreviewMouseButtonOutsideCapturedElement));
         }
 
         [PublicAPI]
@@ -109,13 +104,15 @@ namespace Elysium.Controls
         [PublicAPI]
         protected virtual void OnIsOpenChanged(bool oldIsOpen, bool newIsOpen)
         {
+            var animationType = Parameters.Animation.GetType(this);
+
             if (newIsOpen && !oldIsOpen)
             {
                 IsOpening = true;
 
                 OnOpening(new RoutedEventArgs(OpeningEvent, this));
 
-                if (TransitionMode == ApplicationBarTransitionMode.None)
+                if (animationType == Animation.None)
                 {
                     Mouse.Capture(this, CaptureMode.SubTree);
 
@@ -134,10 +131,10 @@ namespace Elysium.Controls
                         };
 
                     Timeline animation;
-                    switch (TransitionMode)
+                    switch (animationType)
                     {
-                        case ApplicationBarTransitionMode.Fade:
-                            animation = new DoubleAnimation(0d, 1d, General.GetMinimumDuration(this));
+                        case Animation.Fade:
+                            animation = new DoubleAnimation(0d, 1d, Parameters.Animation.GetMinimumDuration(this));
 
                             Storyboard.SetTarget(animation, this);
                             Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
@@ -146,8 +143,8 @@ namespace Elysium.Controls
                             Contract.Assume(storyboard.Children != null);
                             storyboard.Children.Add(animation);
                             break;
-                        case ApplicationBarTransitionMode.Slide:
-                            animation = new DoubleAnimation(0d, DesiredSize.Height, General.GetMinimumDuration(this));
+                        case Animation.Slide:
+                            animation = new DoubleAnimation(0d, DesiredSize.Height, Parameters.Animation.GetMinimumDuration(this));
 
                             Storyboard.SetTarget(animation, this);
                             Storyboard.SetTargetProperty(animation, new PropertyPath("Height"));
@@ -173,8 +170,7 @@ namespace Elysium.Controls
                         Mouse.Capture(this, CaptureMode.SubTree);
                     }
 
-                    storyboard.TryFreeze();
-                    storyboard.Begin(this, true);
+                    storyboard.AsFrozen().Begin(this, true);
 
                     _isOpen = true;
                     InvalidateArrange();
@@ -186,7 +182,7 @@ namespace Elysium.Controls
 
                 OnClosing(new RoutedEventArgs(ClosingEvent, this));
 
-                if (TransitionMode == ApplicationBarTransitionMode.None)
+                if (animationType == Animation.None)
                 {
                     Mouse.Capture(null);
 
@@ -205,10 +201,10 @@ namespace Elysium.Controls
                         };
 
                     Timeline animation;
-                    switch (TransitionMode)
+                    switch (animationType)
                     {
-                        case ApplicationBarTransitionMode.Fade:
-                            animation = new DoubleAnimation(1d, 0d, General.GetMinimumDuration(this));
+                        case Animation.Fade:
+                            animation = new DoubleAnimation(1d, 0d, Parameters.Animation.GetMinimumDuration(this));
 
                             Storyboard.SetTarget(animation, this);
                             Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
@@ -217,8 +213,8 @@ namespace Elysium.Controls
                             Contract.Assume(storyboard.Children != null);
                             storyboard.Children.Add(animation);
                             break;
-                        case ApplicationBarTransitionMode.Slide:
-                            animation = new DoubleAnimation(DesiredSize.Height, 0d, General.GetMinimumDuration(this));
+                        case Animation.Slide:
+                            animation = new DoubleAnimation(DesiredSize.Height, 0d, Parameters.Animation.GetMinimumDuration(this));
 
                             Storyboard.SetTarget(animation, this);
                             Storyboard.SetTargetProperty(animation, new PropertyPath("Height"));
@@ -247,8 +243,7 @@ namespace Elysium.Controls
                         IsClosing = false;
                     };
 
-                    storyboard.TryFreeze();
-                    storyboard.Begin(this, true);
+                    storyboard.AsFrozen().Begin(this, true);
                 }
             }
         }
@@ -377,31 +372,19 @@ namespace Elysium.Controls
         }
 
         [PublicAPI]
-        public static readonly DependencyProperty TransitionModeProperty =
-            DependencyProperty.Register("TransitionMode", typeof(ApplicationBarTransitionMode), typeof(ApplicationBar),
-                                        new FrameworkPropertyMetadata(ApplicationBarTransitionMode.Slide, FrameworkPropertyMetadataOptions.None,
-                                                                      OnTransitionModeChanged));
-
-        [PublicAPI]
-        [Category("Appearance")]
-        [Description("Animation for the opening and closing of a ApplicationBar.")]
-        public ApplicationBarTransitionMode TransitionMode
+// ReSharper disable VirtualMemberNeverOverriden.Global
+        protected virtual void OnAnimationsUpdating(RoutedEventArgs e)
+// ReSharper restore VirtualMemberNeverOverriden.Global
         {
-            get { return BoxingHelper<ApplicationBarTransitionMode>.Unbox(GetValue(TransitionModeProperty)); }
-            set { SetValue(TransitionModeProperty, value); }
-        }
-
-        private static void OnTransitionModeChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
-        {
-            ValidationHelper.NotNull(obj, "obj");
-            var instance = (ApplicationBar)obj;
-            instance.OnTransitionModeChanged(BoxingHelper<ApplicationBarTransitionMode>.Unbox(e.OldValue),
-                                             BoxingHelper<ApplicationBarTransitionMode>.Unbox(e.NewValue));
+            RaiseEvent(e);
         }
 
         [PublicAPI]
-        protected virtual void OnTransitionModeChanged(ApplicationBarTransitionMode oldTransitionMode, ApplicationBarTransitionMode newTransitionMode)
+// ReSharper disable VirtualMemberNeverOverriden.Global
+        protected virtual void OnAnimationsUpdated(RoutedEventArgs e)
+// ReSharper restore VirtualMemberNeverOverriden.Global
         {
+            RaiseEvent(e);
         }
 
         protected override bool IsItemItsOwnContainerOverride(object item)
@@ -421,7 +404,7 @@ namespace Elysium.Controls
 
         protected override Size ArrangeOverride(Size arrangeBounds)
         {
-            return _isOpen ? base.ArrangeOverride(arrangeBounds) : new Size(0, 0);
+            return Parameters.Animation.GetType(this) == Animation.Custom || _isOpen ? base.ArrangeOverride(arrangeBounds) : new Size(0, 0);
         }
 
         private static void OnLostMouseCapture(object sender, MouseEventArgs e)

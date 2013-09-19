@@ -1,17 +1,18 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:markup="clr-namespace:Elysium.Markup"
                     xmlns:params="clr-namespace:Elysium.Parameters">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Elysium;component/Themes/SharedResources.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Themes/SharedResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type TabControl}">
-        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource LowlightBrush}"/>
+        <Setter Property="Background" Value="{markup:ThemeResource BackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{markup:ThemeResource HighlightBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="params:TabControl.IndicatorBrush" Value="{StaticResource HighlightBrush}"/>
-        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
+        <Setter Property="params:TabControl.IndicatorBrush" Value="{markup:ThemeResource PaleBrush}"/>
+        <Setter Property="Foreground" Value="{markup:ThemeResource ForegroundBrush}"/>
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.TextFontSize), Mode=OneWay}"/>
         <Setter Property="FontStretch" Value="Medium"/>
         <Setter Property="FontStyle" Value="Normal"/>
@@ -25,8 +26,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Converter={StaticResource ThicknessConverter}, ConverterParameter='Top', Mode=OneWay}"/>
-        <!-- Temporary removed to fix bugs 1144, 1174, 1216 -->
-        <!--<Setter Property="OverridesDefaultStyle" Value="True"/>-->
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>        
         <Setter Property="Template">
             <Setter.Value>
@@ -147,8 +147,8 @@
                 <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
             </DataTrigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="BorderBrush" Value="{StaticResource DisabledBrush}"/>
-                <Setter Property="Foreground" Value="{StaticResource DisabledBrush}"/>
+                <Setter Property="BorderBrush" Value="{markup:ThemeResource DisabledBrush}"/>
+                <Setter Property="Foreground" Value="{markup:ThemeResource DisabledBrush}"/>
             </Trigger>            
         </Style.Triggers>        
     </Style>

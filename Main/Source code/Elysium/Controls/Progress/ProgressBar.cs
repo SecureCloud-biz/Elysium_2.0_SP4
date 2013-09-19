@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
@@ -39,23 +38,15 @@ namespace Elysium.Controls
         [PublicAPI]
         public static readonly DependencyProperty OrientationProperty =
             DependencyProperty.Register("Orientation", typeof(Orientation), typeof(ProgressBar),
-                                        new FrameworkPropertyMetadata(Orientation.Horizontal, FrameworkPropertyMetadataOptions.AffectsMeasure,
-                                                                      OnOrientationChanged),
-                                        IsValidOrientation);
+                                        new FrameworkPropertyMetadata(Orientation.Horizontal, FrameworkPropertyMetadataOptions.AffectsMeasure, OnOrientationChanged), IsValidOrientation);
 
         [PublicAPI]
         [Category("Appearance")]
         [Description("Determines orientation of control.")]
         public Orientation Orientation
         {
-            get
-            {
-                return BoxingHelper<Orientation>.Unbox(GetValue(OrientationProperty));
-            }
-            set
-            {
-                SetValue(OrientationProperty, value);
-            }
+            get { return BoxingHelper<Orientation>.Unbox(GetValue(OrientationProperty)); }
+            set { SetValue(OrientationProperty, value); }
         }
 
         private static void OnOrientationChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
@@ -112,8 +103,7 @@ namespace Elysium.Controls
 
         private void UpdateIndeterminateAnimation()
         {
-            if ((IndeterminateAnimation == null || (IndeterminateAnimation != null && IndeterminateAnimation.Name == DefaultIndeterminateAnimationName)) &&
-                Track != null && _indicator != null)
+            if ((IndeterminateAnimation == null || (IndeterminateAnimation != null && IndeterminateAnimation.Name == DefaultIndeterminateAnimationName)) && Track != null && _indicator != null)
             {
                 if (IndeterminateAnimation != null && IsIndeterminateAnimationRunning)
                 {
@@ -125,21 +115,19 @@ namespace Elysium.Controls
                 IndeterminateAnimation = new Storyboard { Name = DefaultIndeterminateAnimationName, RepeatBehavior = RepeatBehavior.Forever };
 
                 var indicatorSize = Orientation == Orientation.Horizontal ? _indicator.Width : _indicator.Height;
-
                 var trackSize = Orientation == Orientation.Horizontal ? Track.ActualWidth : Track.ActualHeight;
 
-                var time = Math.Sqrt(trackSize) / 11;
+                var time = Math.Sqrt(trackSize) / Magic;
 
                 var animation = new DoubleAnimationUsingKeyFrames { Duration = new Duration(TimeSpan.FromSeconds(time + 0.5)) };
 
                 // NOTE: Lack of contracts: DoubleAnimationUsingKeyFrames.KeyFrames is always have collection instance
                 Contract.Assume(animation.KeyFrames != null);
-                animation.KeyFrames.Add(new DiscreteDoubleKeyFrame(-indicatorSize - 1, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0))));
+                animation.KeyFrames.Add(new DiscreteDoubleKeyFrame(-indicatorSize - 1, KeyTime.FromTimeSpan(TimeSpan.Zero)));
                 animation.KeyFrames.Add(new LinearDoubleKeyFrame(trackSize + 1, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
 
                 Storyboard.SetTarget(animation, _indicator);
-                Storyboard.SetTargetProperty(animation,
-                                             new PropertyPath(Orientation == Orientation.Horizontal ? Canvas.LeftProperty : Canvas.TopProperty));
+                Storyboard.SetTargetProperty(animation, new PropertyPath(Orientation == Orientation.Horizontal ? Canvas.LeftProperty : Canvas.TopProperty));
 
                 // NOTE: Bug in Code Contracts static checker: IndeterminateAnimation can't be null
                 // NOTE: Lack of contracts: Children is always have collection instance
@@ -147,7 +135,7 @@ namespace Elysium.Controls
                 Contract.Assume(IndeterminateAnimation.Children != null);
                 IndeterminateAnimation.Children.Add(animation);
 
-                IndeterminateAnimation.TryFreeze();
+                IndeterminateAnimation.Freeze();
 
                 if (State == ProgressState.Indeterminate && IsEnabled)
                 {
@@ -173,15 +161,7 @@ namespace Elysium.Controls
 
                 BusyAnimation = new Storyboard { Name = DefaultBusyAnimationName, RepeatBehavior = RepeatBehavior.Forever };
 
-                const double time = 0.25;
-                const double durationTime = time * 2;
-                const double beginTimeIncrement = time / 2;
-                const double shortPauseTime = time;
-                const double longPauseTime = time * 1.5;
-
-                var partMotionTime = (_busyBar.Children.Count - 1) * beginTimeIncrement + durationTime;
-
-                var busyAnimations = new Collection<DoubleAnimation>();
+                var partMotionTime = (_busyBar.Children.Count - 1) * BeginTimeIncrement + DurationTime;
 
                 var width = Track.ActualWidth;
                 var height = Track.ActualHeight;
@@ -189,7 +169,6 @@ namespace Elysium.Controls
                 for (var i = 0; i < _busyBar.Children.Count; i++)
                 {
                     var element = (FrameworkElement)_busyBar.Children[_busyBar.Children.Count - i - 1];
-
                     if (element != null)
                     {
                         var elementWidth = element.Width;
@@ -203,52 +182,37 @@ namespace Elysium.Controls
                         var startPosition = -(Orientation == Orientation.Horizontal ? elementWidth : elementHeight) - 1;
                         var endPosition = center + index * ((Orientation == Orientation.Horizontal ? elementWidth : elementHeight) + margin);
 
-                        var duration = new Duration(TimeSpan.FromSeconds(durationTime));
-                        var animation = new DoubleAnimation(startPosition, endPosition, duration) { BeginTime = TimeSpan.FromSeconds(i * beginTimeIncrement) };
+                        var duration = new Duration(TimeSpan.FromSeconds(DurationTime));
+                        var animation = new DoubleAnimation(startPosition, endPosition, duration) { BeginTime = TimeSpan.FromSeconds(i * BeginTimeIncrement) };
                         Storyboard.SetTarget(animation, element);
-                        Storyboard.SetTargetProperty(animation,
-                                                     new PropertyPath(Orientation == Orientation.Horizontal ? Canvas.LeftProperty : Canvas.TopProperty));
+                        Storyboard.SetTargetProperty(animation, new PropertyPath(Orientation == Orientation.Horizontal ? Canvas.LeftProperty : Canvas.TopProperty));
 
-                        busyAnimations.Add(animation);
+                        BusyAnimation.Children.Add(animation);
                     }
                 }
 
                 for (var i = 0; i < _busyBar.Children.Count; i++)
                 {
                     var element = (FrameworkElement)_busyBar.Children[_busyBar.Children.Count - i - 1];
-
                     if (element != null)
                     {
                         var elementWidth = element.Width;
                         var elementHeight = element.Height;
 
-                        var endPosition = (Orientation == Orientation.Horizontal ? width : height) +
-                                          (Orientation == Orientation.Horizontal ? elementWidth : elementHeight) + 1;
+                        var endPosition = (Orientation == Orientation.Horizontal ? width : height) + (Orientation == Orientation.Horizontal ? elementWidth : elementHeight) + 1;
 
-                        var duration = new Duration(TimeSpan.FromSeconds(durationTime));
-                        var animation = new DoubleAnimation(endPosition, duration)
-                            { BeginTime = TimeSpan.FromSeconds(partMotionTime + shortPauseTime + i * beginTimeIncrement) };
+                        var duration = new Duration(TimeSpan.FromSeconds(DurationTime));
+                        var animation = new DoubleAnimation(endPosition, duration) { BeginTime = TimeSpan.FromSeconds(partMotionTime + ShortPauseTime + i * BeginTimeIncrement) };
                         Storyboard.SetTarget(animation, element);
-                        Storyboard.SetTargetProperty(animation,
-                                                     new PropertyPath(Orientation == Orientation.Horizontal ? Canvas.LeftProperty : Canvas.TopProperty));
+                        Storyboard.SetTargetProperty(animation, new PropertyPath(Orientation == Orientation.Horizontal ? Canvas.LeftProperty : Canvas.TopProperty));
 
-                        busyAnimations.Add(animation);
+                        BusyAnimation.Children.Add(animation);
                     }
                 }
 
-                BusyAnimation.Duration = new Duration(TimeSpan.FromSeconds(partMotionTime * 2 + shortPauseTime + longPauseTime));
+                BusyAnimation.Duration = new Duration(TimeSpan.FromSeconds(partMotionTime * 2 + ShortPauseTime + LongPauseTime));
 
-                // NOTE: Lack of contracts: Children always have collection instance
-                Contract.Assume(BusyAnimation.Children != null);
-                foreach (var animation in busyAnimations)
-                {
-                    BusyAnimation.Children.Add(animation);
-                }
-
-                if (BusyAnimation.CanFreeze)
-                {
-                    BusyAnimation.Freeze();
-                }
+                BusyAnimation.Freeze();
 
                 if (State == ProgressState.Busy && IsEnabled)
                 {

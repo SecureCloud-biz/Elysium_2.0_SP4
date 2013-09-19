@@ -453,36 +453,6 @@
       </exception>
       <requires exception="T:System.ArgumentNullException">obj != null</requires>
     </method>
-    <property name="P:Elysium.Controls.Window.DefaultCaptionButtonStyleKey">
-      <summary>
-        Gets the resource key for a style applied to a buttons in a main window caption by default.
-      </summary>
-      <value>Key for a style applied to a buttons in a main window caption by default.</value>
-      <example>
-        <code lang="XAML">
-          &lt;metro:Window.TitleBar&gt;
-          ...
-          &lt;Button Style="{DynamicResource {x:Static metro:Window.DefaultCaptionButtonStyleKey}}"/&gt;
-          ...
-          &lt;/metro:Window.TitleBar&gt;
-        </code>
-      </example>
-    </property>
-    <property name="P:Elysium.Controls.Window.MainWindowCaptionButtonStyleKey">
-      <summary>
-        Gets the resource key for a style applied to a buttons in the main window caption.
-      </summary>
-      <value>Key for a style applied to a buttons in the main window caption.</value>
-      <example>
-        <code lang="XAML">
-          &lt;metro:Window.TitleBar&gt;
-          ...
-          &lt;Button Style="{DynamicResource {x:Static metro:Window.MainWindowCaptionButtonStyleKey}}"/&gt;
-          ...
-          &lt;/metro:Window.TitleBar&gt;
-        </code>
-      </example>
-    </property>
     <method name="M:Elysium.Controls.Window.OnSourceInitialized(System.EventArgs)">
       <inheritdoc />
     </method>
