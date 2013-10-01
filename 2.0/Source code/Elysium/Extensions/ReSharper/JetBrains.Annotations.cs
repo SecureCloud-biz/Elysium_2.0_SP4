@@ -28,7 +28,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Property, Inherited = true)]
-    public sealed class AspDataFieldAttribute : Attribute
+    internal sealed class AspDataFieldAttribute : Attribute
     {
     }
 
@@ -38,7 +38,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Property, Inherited = true)]
-    public sealed class AspMethodPropertyAttribute : Attribute
+    internal sealed class AspMethodPropertyAttribute : Attribute
     {
     }
 
@@ -47,7 +47,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Parameter)]
-    public sealed class AspMvcActionAttribute : Attribute
+    internal sealed class AspMvcActionAttribute : Attribute
     {
         [UsedImplicitly]
         public string AnonymousProperty { get; private set; }
@@ -67,7 +67,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Parameter)]
-    public sealed class AspMvcActionSelectorAttribute : Attribute
+    internal sealed class AspMvcActionSelectorAttribute : Attribute
     {
     }
 
@@ -76,7 +76,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Parameter)]
-    public sealed class AspMvcAreaAttribute : PathReferenceAttribute
+    internal sealed class AspMvcAreaAttribute : PathReferenceAttribute
     {
         [UsedImplicitly]
         public string AnonymousProperty { get; private set; }
@@ -97,7 +97,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Parameter)]
-    public sealed class AspMvcControllerAttribute : Attribute
+    internal sealed class AspMvcControllerAttribute : Attribute
     {
         [UsedImplicitly]
         public string AnonymousProperty { get; private set; }
@@ -117,7 +117,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Parameter)]
-    public sealed class AspMvcDisplayTemplateAttribute : Attribute
+    internal sealed class AspMvcDisplayTemplateAttribute : Attribute
     {
     }
 
@@ -126,7 +126,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Parameter)]
-    public sealed class AspMvcEditorTemplateAttribute : Attribute
+    internal sealed class AspMvcEditorTemplateAttribute : Attribute
     {
     }
 
@@ -135,7 +135,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Parameter)]
-    public sealed class AspMvcMasterAttribute : Attribute
+    internal sealed class AspMvcMasterAttribute : Attribute
     {
     }
 
@@ -144,7 +144,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Parameter)]
-    public sealed class AspMvcModelTypeAttribute : Attribute
+    internal sealed class AspMvcModelTypeAttribute : Attribute
     {
     }
 
@@ -153,7 +153,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Parameter)]
-    public sealed class AspMvcPartialViewAttribute : PathReferenceAttribute
+    internal sealed class AspMvcPartialViewAttribute : PathReferenceAttribute
     {
     }
 
@@ -162,7 +162,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
-    public sealed class AspMvcSupressViewErrorAttribute : Attribute
+    internal sealed class AspMvcSupressViewErrorAttribute : Attribute
     {
     }
 
@@ -171,7 +171,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Parameter)]
-    public sealed class AspMvcViewAttribute : PathReferenceAttribute
+    internal sealed class AspMvcViewAttribute : PathReferenceAttribute
     {
     }
 
@@ -180,7 +180,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Property, Inherited = true)]
-    public sealed class AspTypePropertyAttribute : Attribute
+    internal sealed class AspTypePropertyAttribute : Attribute
     {
         [PublicAPI]
         public bool CreateConstructorReferences { get; private set; }
@@ -203,7 +203,7 @@ namespace JetBrains.Annotations
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [Obsolete("Use ContractAnnotationAttribute instead")]
     [AttributeUsage(AttributeTargets.Parameter, AllowMultiple = false, Inherited = true)]
-    public sealed class AssertionConditionAttribute : Attribute
+    internal sealed class AssertionConditionAttribute : Attribute
     {
         /// <summary>
         /// Gets condition type
@@ -226,7 +226,7 @@ namespace JetBrains.Annotations
     /// </summary>
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     [GeneratedCode("ReSharper", "7.0.97.60")]
-    public enum AssertionConditionType
+    internal enum AssertionConditionType
     {
 // ReSharper disable InconsistentNaming
         IS_TRUE,
@@ -248,7 +248,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
-    public sealed class AssertionMethodAttribute : Attribute
+    internal sealed class AssertionMethodAttribute : Attribute
     {
     }
 
@@ -274,7 +274,7 @@ namespace JetBrains.Annotations
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = true)]
     [BaseTypeRequired(typeof(Attribute))]
-    public sealed class BaseTypeRequiredAttribute : Attribute
+    internal sealed class BaseTypeRequiredAttribute : Attribute
     {
         /// <summary>
         /// Gets enumerations of specified base types
@@ -303,7 +303,7 @@ namespace JetBrains.Annotations
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter | AttributeTargets.Delegate,
         AllowMultiple = false, Inherited = true)]
-    public sealed class CanBeNullAttribute : Attribute
+    internal sealed class CanBeNullAttribute : Attribute
     {
     }
 
@@ -316,7 +316,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Interface, AllowMultiple = false, Inherited = true)]
-    public sealed class CannotApplyEqualityOperatorAttribute : Attribute
+    internal sealed class CannotApplyEqualityOperatorAttribute : Attribute
     {
     }
 
@@ -368,7 +368,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
-    public sealed class ContractAnnotationAttribute : Attribute
+    internal sealed class ContractAnnotationAttribute : Attribute
     {
         public string FDT { get; private set; }
 
@@ -388,7 +388,7 @@ namespace JetBrains.Annotations
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [Flags]
-    public enum ImplicitUseKindFlags
+    internal enum ImplicitUseKindFlags
     {
         Default = 7,
         Access = 1,
@@ -403,7 +403,7 @@ namespace JetBrains.Annotations
     [UsedImplicitly(WithMembers)]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [Flags]
-    public enum ImplicitUseTargetFlags
+    internal enum ImplicitUseTargetFlags
     {
         Default = 1,
         Itself = Default,
@@ -421,7 +421,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Parameter, Inherited = true)]
-    public sealed class InstantHandleAttribute : Attribute
+    internal sealed class InstantHandleAttribute : Attribute
     {
     }
 
@@ -434,7 +434,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Parameter, AllowMultiple = false, Inherited = true)]
-    public sealed class InvokerParameterNameAttribute : Attribute
+    internal sealed class InvokerParameterNameAttribute : Attribute
     {
     }
 
@@ -447,7 +447,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Method)]
-    public sealed class LinqTunnelAttribute : Attribute
+    internal sealed class LinqTunnelAttribute : Attribute
     {
     }
 
@@ -459,7 +459,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.All, AllowMultiple = false, Inherited = true)]
-    public sealed class LocalizationRequiredAttribute : Attribute
+    internal sealed class LocalizationRequiredAttribute : Attribute
     {
         /// <summary>
         /// Gets a value indicating whether a element should be localized.
@@ -525,7 +525,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
-    public sealed class MeansImplicitUseAttribute : Attribute
+    internal sealed class MeansImplicitUseAttribute : Attribute
     {
         [UsedImplicitly]
         public ImplicitUseKindFlags UseKindFlags { get; private set; }
@@ -570,7 +570,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Parameter)]
-    public sealed class NoEnumerationAttribute : Attribute
+    internal sealed class NoEnumerationAttribute : Attribute
     {
     }
 
@@ -582,7 +582,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
-    public sealed class NotifyPropertyChangedInvocatorAttribute : Attribute
+    internal sealed class NotifyPropertyChangedInvocatorAttribute : Attribute
     {
         [UsedImplicitly]
         public string ParameterName { get; private set; }
@@ -605,7 +605,7 @@ namespace JetBrains.Annotations
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter | AttributeTargets.Delegate,
         AllowMultiple = false, Inherited = true)]
-    public sealed class NotNullAttribute : Attribute
+    internal sealed class NotNullAttribute : Attribute
     {
     }
 
@@ -614,7 +614,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Parameter)]
-    public class PathReferenceAttribute : Attribute
+    internal class PathReferenceAttribute : Attribute
     {
         [UsedImplicitly]
         public string BasePath { get; private set; }
@@ -632,7 +632,7 @@ namespace JetBrains.Annotations
 
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     [GeneratedCode("ReSharper", "7.0.97.60")]
-    public enum PointKinds
+    internal enum PointKinds
     {
         This,
         Ret,
@@ -643,7 +643,7 @@ namespace JetBrains.Annotations
 
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     [GeneratedCode("ReSharper", "7.0.97.60")]
-    public enum PointPlurality
+    internal enum PointPlurality
     {
         El,
         Col,
@@ -657,7 +657,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [MeansImplicitUse]
-    public sealed class PublicAPIAttribute : Attribute
+    internal sealed class PublicAPIAttribute : Attribute
     {
         public PublicAPIAttribute()
         {
@@ -677,7 +677,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Method, Inherited = true)]
-    public sealed class PureAttribute : Attribute
+    internal sealed class PureAttribute : Attribute
     {
     }
 
@@ -686,7 +686,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Method, Inherited = true)]
-    public sealed class RazorHelperCommonAttribute : Attribute
+    internal sealed class RazorHelperCommonAttribute : Attribute
     {
     }
 
@@ -695,7 +695,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Assembly)]
-    public sealed class RazorImportNamespaceAttribute : Attribute
+    internal sealed class RazorImportNamespaceAttribute : Attribute
     {
         [PublicAPI]
         public string Name { get; private set; }
@@ -711,7 +711,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Property, Inherited = true)]
-    public sealed class RazorLayoutAttribute : Attribute
+    internal sealed class RazorLayoutAttribute : Attribute
     {
     }
 
@@ -720,7 +720,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Parameter, Inherited = true)]
-    public sealed class RazorSectionAttribute : Attribute
+    internal sealed class RazorSectionAttribute : Attribute
     {
     }
 
@@ -729,7 +729,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Method, Inherited = true)]
-    public sealed class RazorWriteLiteralMethodAttribute : Attribute
+    internal sealed class RazorWriteLiteralMethodAttribute : Attribute
     {
     }
 
@@ -738,7 +738,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Method, Inherited = true)]
-    public sealed class RazorWriteMethodAttribute : Attribute
+    internal sealed class RazorWriteMethodAttribute : Attribute
     {
     }
 
@@ -747,7 +747,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Parameter, Inherited = true)]
-    public sealed class RazorWriteMethodParameterAttribute : Attribute
+    internal sealed class RazorWriteMethodParameterAttribute : Attribute
     {
     }
 
@@ -761,7 +761,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Constructor | AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
-    public sealed class StringFormatMethodAttribute : Attribute
+    internal sealed class StringFormatMethodAttribute : Attribute
     {
         /// <summary>
         /// Gets format parameter name
@@ -789,7 +789,7 @@ namespace JetBrains.Annotations
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [Obsolete("Use ContractAnnotationAttribute instead")]
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
-    public sealed class TerminatesProgramAttribute : Attribute
+    internal sealed class TerminatesProgramAttribute : Attribute
     {
     }
 
@@ -802,7 +802,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.All, AllowMultiple = false, Inherited = true)]
-    public sealed class UsedImplicitlyAttribute : Attribute
+    internal sealed class UsedImplicitlyAttribute : Attribute
     {
         [UsedImplicitly]
         public ImplicitUseKindFlags UseKindFlags { get; private set; }
@@ -841,7 +841,7 @@ namespace JetBrains.Annotations
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     [DebuggerNonUserCode]
     [GeneratedCode("ReSharper", "7.0.97.60")]
-    public sealed class ValueFlowAttribute
+    internal sealed class ValueFlowAttribute
     {
         public PointPlurality FromPlurality { get; private set; }
 
@@ -887,7 +887,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Property, Inherited = true)]
-    public sealed class XamlItemBindingOfItemsControlAttribute : Attribute
+    internal sealed class XamlItemBindingOfItemsControlAttribute : Attribute
     {
     }
 
@@ -900,7 +900,7 @@ namespace JetBrains.Annotations
     [Conditional("DEBUG")]
     [GeneratedCode("ReSharper", "7.0.97.60")]
     [AttributeUsage(AttributeTargets.Class, Inherited = true)]
-    public sealed class XamlItemsControlAttribute : Attribute
+    internal sealed class XamlItemsControlAttribute : Attribute
     {
     }
 }
