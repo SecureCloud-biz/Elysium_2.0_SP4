@@ -179,10 +179,12 @@
             <Trigger Property="Orientation" Value="Horizontal">
                 <Setter Property="MinHeight" Value="2"/>
                 <Setter Property="Height" Value="4"/>
-                <Setter Property="MaxHeight" Value="8"/>                
+                <Setter Property="MaxHeight" Value="8"/>
+                <Setter Property="MinWidth" Value="2"/>
                 <Setter Property="Template" Value="{StaticResource HorizontalProgressBarTemplate}"/>
             </Trigger>
-            <Trigger Property="Orientation" Value="Vertical">                
+            <Trigger Property="Orientation" Value="Vertical">
+                <Setter Property="MinHeight" Value="2"/>
                 <Setter Property="MinWidth" Value="2"/>
                 <Setter Property="Width" Value="4"/>
                 <Setter Property="MaxWidth" Value="8"/>

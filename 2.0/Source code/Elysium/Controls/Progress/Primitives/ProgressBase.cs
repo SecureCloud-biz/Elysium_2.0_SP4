@@ -266,20 +266,28 @@ namespace Elysium.Controls.Primitives
         {
             if (Template != null)
             {
+                if (Track != null)
+                {
+                    Track.SizeChanged -= OnAnimationUpdate;
+                }
                 Track = Template.FindName(TrackName, this) as FrameworkElement;
-
                 if (Track == null)
                 {
                     Trace.TraceWarning(TrackName + " not found.");
                 }
                 else
                 {
-                    Track.SizeChanged += (sender, e) =>
-                    {
-                        OnAnimationsUpdating(new RoutedEventArgs(AnimationsUpdatingEvent));
-                        OnAnimationsUpdated(new RoutedEventArgs(AnimationsUpdatedEvent));
-                    };
+                    Track.SizeChanged += OnAnimationUpdate;
                 }
+            }
+        }
+
+        private void OnAnimationUpdate(object sender, SizeChangedEventArgs e)
+        {
+            if (DoubleUtil.IsNonNegative(e.NewSize.Width) && DoubleUtil.IsNonNegative(e.NewSize.Height))
+            {
+                OnAnimationsUpdating(new RoutedEventArgs(AnimationsUpdatingEvent));
+                OnAnimationsUpdated(new RoutedEventArgs(AnimationsUpdatedEvent));
             }
         }
 
