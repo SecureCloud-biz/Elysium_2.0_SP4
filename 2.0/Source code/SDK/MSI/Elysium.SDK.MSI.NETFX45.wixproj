@@ -29,7 +29,7 @@
     <CabinetCachePath>..\..\..\Binary\.NET Framework 4.5\Debug\x86\SDK\MSI\</CabinetCachePath>
     <ReuseCabinetCache>True</ReuseCabinetCache>
     <SuppressIces>ICE30</SuppressIces>
-    <Cultures>en;ru</Cultures>
+    <Cultures>en-us;ru-ru</Cultures>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <DefineConstants>NETFX45;Debug;X64</DefineConstants>
@@ -38,7 +38,7 @@
     <CabinetCachePath>..\..\..\Binary\.NET Framework 4.5\Debug\x64\SDK\MSI\</CabinetCachePath>
     <ReuseCabinetCache>True</ReuseCabinetCache>
     <SuppressIces>ICE30</SuppressIces>
-    <Cultures>en;ru</Cultures>
+    <Cultures>en-us;ru-ru</Cultures>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DefineConstants>NETFX45;Release;X86</DefineConstants>
@@ -47,7 +47,7 @@
     <CabinetCachePath>..\..\..\Binary\.NET Framework 4.5\Release\x86\SDK\MSI\</CabinetCachePath>
     <ReuseCabinetCache>True</ReuseCabinetCache>
     <SuppressIces>ICE30</SuppressIces>
-    <Cultures>en;ru</Cultures>
+    <Cultures>en-us;ru-ru</Cultures>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
     <DefineConstants>NETFX45;Release;X64</DefineConstants>
@@ -56,7 +56,7 @@
     <CabinetCachePath>..\..\..\Binary\.NET Framework 4.5\Release\x64\SDK\MSI\</CabinetCachePath>
     <ReuseCabinetCache>True</ReuseCabinetCache>
     <SuppressIces>ICE30</SuppressIces>
-    <Cultures>en;ru</Cultures>
+    <Cultures>en-us;ru-ru</Cultures>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Product.wxs" />
@@ -89,12 +89,12 @@
     <Content Include="WixUIUpIco.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources_en.wxl" />
-    <EmbeddedResource Include="Resources_ru.wxl" />
+    <EmbeddedResource Include="Resources_en-us.wxl" />
+    <EmbeddedResource Include="Resources_ru-ru.wxl" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <PropertyGroup>
-    <PostBuildEvent>"..\..\..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4.5\$(Platform)\signtool.exe" sign /f "$(DigitalSignatureKeyFile)" $(DigitalSignatureParams) "en\$(OutputName).msi"
-"..\..\..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4.5\$(Platform)\signtool.exe" sign /f "$(DigitalSignatureKeyFile)" $(DigitalSignatureParams) "ru\$(OutputName).msi"</PostBuildEvent>
+    <PostBuildEvent>"..\..\..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4.5\$(Platform)\signtool.exe" sign /f "$(DigitalSignatureKeyFile)" $(DigitalSignatureParams) "en-us\$(OutputName).msi"
+"..\..\..\..\..\..\Tools and Resources\Utilities\signtool\.NET Framework 4.5\$(Platform)\signtool.exe" sign /f "$(DigitalSignatureKeyFile)" $(DigitalSignatureParams) "ru-ru\$(OutputName).msi"</PostBuildEvent>
   </PropertyGroup>
 </Project>

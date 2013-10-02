@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WixLocalization xmlns="http://schemas.microsoft.com/wix/2006/localization" Culture="en" Codepage="1252">
+<WixLocalization xmlns="http://schemas.microsoft.com/wix/2006/localization" Culture="en-us" Codepage="1252">
   <String Id="Language">1033</String>
   <String Id="DowngradeError">A newer version of [ProductName] is already installed.</String>
   <String Id="VisualStudioError">Visual Studio 2010 (C# Express, Professional, Premium or Ultimate) or Visual Studio 2012 (Express for Windows Desktop, Professional, Premium or Ultimate) must be installed.</String>

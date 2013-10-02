@@ -54,13 +54,13 @@
       <?ifdef NETFX45 ?>
         <PackageGroupRef Id="NetFx45Web"/>
       <?endif ?>
-      <MsiPackage Id="Elysium.SDK.en" SourceFile="..\$(var.PlatformSourceFolder)\SDK\MSI\en\Installer.msi"
+      <MsiPackage Id="Elysium.SDK.en" SourceFile="..\$(var.PlatformSourceFolder)\SDK\MSI\en-us\Installer.msi"
                   InstallCondition="NOT (UserLanguageID = 1049)" EnableFeatureSelection="yes" Visible="no"
                   Vital="yes" Compressed="yes">
         <PayloadGroupRef Id="Cabs"/>
         <MsiProperty Name="APPLICATIONFOLDER" Value="[InstallFolder]" />
       </MsiPackage>
-      <MsiPackage Id="Elysium.SDK.ru" SourceFile="..\$(var.PlatformSourceFolder)\SDK\MSI\ru\Installer.msi"
+      <MsiPackage Id="Elysium.SDK.ru" SourceFile="..\$(var.PlatformSourceFolder)\SDK\MSI\ru-ru\Installer.msi"
                   InstallCondition="UserLanguageID = 1049" EnableFeatureSelection="yes" Visible="no"
                   Vital="yes" Compressed="yes">
         <PayloadGroupRef Id="Cabs"/>
