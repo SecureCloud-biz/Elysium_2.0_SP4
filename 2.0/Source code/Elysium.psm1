@@ -558,11 +558,7 @@ function Deploy
     New-Item "..\Deploy\$FrameworkName\" -ItemType Directory -ErrorAction Ignore
     New-Item "..\Deploy\$FrameworkName\SDK" -ItemType Directory -ErrorAction Ignore
     New-Item "..\Deploy\$FrameworkName\SDK\x86" -ItemType Directory -ErrorAction Ignore
-    New-Item "..\Deploy\$FrameworkName\SDK\x86\en" -ItemType Directory -ErrorAction Ignore
-    New-Item "..\Deploy\$FrameworkName\SDK\x86\ru" -ItemType Directory -ErrorAction Ignore
     New-Item "..\Deploy\$FrameworkName\SDK\x64" -ItemType Directory -ErrorAction Ignore
-    New-Item "..\Deploy\$FrameworkName\SDK\x64\en" -ItemType Directory -ErrorAction Ignore
-    New-Item "..\Deploy\$FrameworkName\SDK\x64\ru" -ItemType Directory -ErrorAction Ignore
     New-Item "..\Deploy\$FrameworkName\Runtime" -ItemType Directory -ErrorAction Ignore
     New-Item "..\Deploy\$FrameworkName\Runtime\x86" -ItemType Directory -ErrorAction Ignore
     New-Item "..\Deploy\$FrameworkName\Runtime\x64" -ItemType Directory -ErrorAction Ignore
@@ -702,20 +698,8 @@ function Deploy
 
     Remove-Item "..\Deploy\$FrameworkName\SDK\x86\Setup.exe" -ErrorAction Ignore
     Copy-Item "..\Binary\$FrameworkName\Release\x86\SDK\MSI\Setup.exe" "..\Deploy\$FrameworkName\SDK\x86\Elysium SDK.exe"
-    Remove-Item "..\Deploy\$FrameworkName\SDK\x86\Elysium.cab" -ErrorAction Ignore
-    Copy-Item "..\Binary\$FrameworkName\Release\x86\SDK\MSI\Elysium.cab" "..\Deploy\$FrameworkName\SDK\x86\Elysium.cab"
-    Remove-Item "..\Deploy\$FrameworkName\SDK\x86\en\Installer.msi" -ErrorAction Ignore
-    Copy-Item "..\Binary\$FrameworkName\Release\x86\SDK\MSI\en\Installer.msi" "..\Deploy\$FrameworkName\SDK\x86\en\Elysium SDK.msi"
-    Remove-Item "..\Deploy\$FrameworkName\SDK\x86\ru\Installer.msi" -ErrorAction Ignore
-    Copy-Item "..\Binary\$FrameworkName\Release\x86\SDK\MSI\ru\Installer.msi" "..\Deploy\$FrameworkName\SDK\x86\ru\Elysium SDK.msi"
     Remove-Item "..\Deploy\$FrameworkName\SDK\x64\Setup.exe" -ErrorAction Ignore
     Copy-Item "..\Binary\$FrameworkName\Release\x64\SDK\MSI\Setup.exe" "..\Deploy\$FrameworkName\SDK\x64\Elysium SDK.exe"
-    Remove-Item "..\Deploy\$FrameworkName\SDK\x64\Elysium.cab" -ErrorAction Ignore
-    Copy-Item "..\Binary\$FrameworkName\Release\x64\SDK\MSI\Elysium.cab" "..\Deploy\$FrameworkName\SDK\x64\Elysium.cab"
-    Remove-Item "..\Deploy\$FrameworkName\SDK\x64\en\Installer.msi.msi" -ErrorAction Ignore
-    Copy-Item "..\Binary\$FrameworkName\Release\x64\SDK\MSI\en\Installer.msi" "..\Deploy\$FrameworkName\SDK\x64\en\Elysium SDK.msi"
-    Remove-Item "..\Deploy\$FrameworkName\SDK\x64\ru\Installer.msi.msi" -ErrorAction Ignore
-    Copy-Item "..\Binary\$FrameworkName\Release\x64\SDK\MSI\ru\Installer.msi" "..\Deploy\$FrameworkName\SDK\x64\ru\Elysium SDK.msi"
     Remove-Item "..\Deploy\$FrameworkName\Runtime\x86\Installer.msi" -ErrorAction Ignore
     Copy-Item "..\Binary\$FrameworkName\Release\x86\Runtime\MSI\Installer.msi" "..\Deploy\$FrameworkName\Runtime\x86\Elysium Runtime.msi"
     Remove-Item "..\Deploy\$FrameworkName\Runtime\x64\Installer.msi" -ErrorAction Ignore
@@ -724,8 +708,8 @@ function Deploy
 # SIG # Begin signature block
 # MIIM6AYJKoZIhvcNAQcCoIIM2TCCDNUCAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
-# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUOHO8rWZqfoO+y/1FxcjfmgoX
-# 7yigggokMIIENjCCAx6gAwIBAgIDBHpTMA0GCSqGSIb3DQEBBQUAMD4xCzAJBgNV
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUfaPP1w+eH2JHZlTFVLSIRqcf
+# flOgggokMIIENjCCAx6gAwIBAgIDBHpTMA0GCSqGSIb3DQEBBQUAMD4xCzAJBgNV
 # BAYTAlBMMRswGQYDVQQKExJVbml6ZXRvIFNwLiB6IG8uby4xEjAQBgNVBAMTCUNl
 # cnR1bSBDQTAeFw0wOTAzMDMxMjUzNTZaFw0yNDAzMDMxMjUzNTZaMHgxCzAJBgNV
 # BAYTAlBMMSIwIAYDVQQKExlVbml6ZXRvIFRlY2hub2xvZ2llcyBTLkEuMScwJQYD
@@ -784,11 +768,11 @@ function Deploy
 # dGlmaWNhdGlvbiBBdXRob3JpdHkxHDAaBgNVBAMTE0NlcnR1bSBMZXZlbCBJSUkg
 # Q0ECEHI2z5vM4PyWrf55EQJ0krIwCQYFKw4DAhoFAKB4MBgGCisGAQQBgjcCAQwx
 # CjAIoAKAAKECgAAwGQYJKoZIhvcNAQkDMQwGCisGAQQBgjcCAQQwHAYKKwYBBAGC
-# NwIBCzEOMAwGCisGAQQBgjcCARUwIwYJKoZIhvcNAQkEMRYEFNbfbNet2H0UUEiM
-# sY0Q7rvrDlcxMA0GCSqGSIb3DQEBAQUABIIBAAcxInv2771cC7ZPW5jYiIPV0k/o
-# XG34fZ4dYRf7KOjITLJsVsnoP3Kxke2tjSVDHCuvCP8J8OQdm5TQ/B2e4JxxWcGN
-# 1cxK5FtbF3B2VqCVNOMmFpucF5L18NLnAegyXNjNzWSVXdMOVdb2wI3I+Bsi5QgX
-# 4FLyZPpCdcjip4XPioEK59VhAOsvM08JkbAA+BjrnN9Rqm2mpIISiMbzK7YD7MDB
-# J94TxGd3P+Pzmdt+5YssNnyLzUIvMz0x6mHI6f8wI7YdvO9MUhIsAat9Ca0Xxzpp
-# dcKN6ILxZa98g/xWMzu+/a4JcbEIR1amRHW94UcgBTBW824uTmQz/H5WRP0=
+# NwIBCzEOMAwGCisGAQQBgjcCARUwIwYJKoZIhvcNAQkEMRYEFDTp2aLqrmGuYsag
+# iNsj6f4JUv3yMA0GCSqGSIb3DQEBAQUABIIBALBBoVhaTlzd1svdkJiug7zZAsg/
+# mIJWiW9yB2j2Ytaw4voZDBspwjEKq9xY9oCsTqNJCj+2qWrpGBvGb7jTYgS598tr
+# tVw/8c3gt1otoJVJzrMa+AJPndMPb8fnL5QLvZeQyT6BLWc2z20+KO68BkaEB9mN
+# oS2K3fYm0wdIZtr/DQqeNLwg6H5MaRblmg15UAxZ0IKGnifUvB/QfR5BXWbfkMI+
+# AFXbG+WVr9xlGS6XEQLvqgeIH8k0HflF3MNdx0ZYbH4ZoN8uKyTdEpcpPlqol5l2
+# xTZoB0RyRkPSXK7/i9BhncItTdsQn1XnmlLHFuSrfuneroteHuMr3uvz8I4=
 # SIG # End signature block
