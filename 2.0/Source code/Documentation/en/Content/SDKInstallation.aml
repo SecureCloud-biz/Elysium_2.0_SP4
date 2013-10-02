@@ -66,7 +66,7 @@
               Choose and download the installer, according to your system <legacyBold>x86 (32 bits)</legacyBold> or <legacyBold>x64 (64 bits)</legacyBold> using
               <externalLink>
                 <linkText>the following URL</linkText>
-                <linkUri>http://elysium.asvishnyakov.com/Downloads.cshtml#header</linkUri>
+                <linkUri>http://elysium.asvishnyakov.com/en/Downloads.cshtml</linkUri>
               </externalLink>.
             </para>
             <alert class="important">
@@ -191,7 +191,7 @@
                   Choose and download the msi-package, according to your system <legacyBold>x86 (32 bits)</legacyBold> or <legacyBold>x64 (64 bits)</legacyBold> using
                   <externalLink>
                     <linkText>the following URL</linkText>
-                    <linkUri>http://elysium.asvishnyakov.com/Downloads.cshtml#header</linkUri>
+                    <linkUri>http://elysium.asvishnyakov.com/en/Downloads.cshtml</linkUri>
                   </externalLink>.
                 </para>
                 <alert class="important">
@@ -369,7 +369,7 @@
                   Download the archive, which contains <legacyBold>Elysium SDK</legacyBold>, according to your system <legacyBold>x86 (32 bits)</legacyBold> or <legacyBold>x64 (64 bits)</legacyBold> using
                   <externalLink>
                     <linkText>the following URL</linkText>
-                    <linkUri>http://elysium.asvishnyakov.com/Downloads.cshtml#header</linkUri>
+                    <linkUri>http://elysium.asvishnyakov.com/en/Downloads.cshtml</linkUri>
                   </externalLink>.
                 </para>
                 <alert class="warning">
@@ -405,7 +405,7 @@
     <relatedTopics>
       <externalLink>
         <linkText>Downloads page</linkText>
-        <linkUri>http://elysium.asvishnyakov.com/Downloads.cshtml#header</linkUri>
+        <linkUri>http://elysium.asvishnyakov.com/en/Downloads.cshtml</linkUri>
       </externalLink>
       <link xlink:href="beb3a93b-e01a-4b19-8966-7cc9738eda11" />
       <link xlink:href="286c4f3c-7317-4a23-b8f4-3ba5bd016cbb" />

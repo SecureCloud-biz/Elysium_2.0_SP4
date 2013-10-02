@@ -148,6 +148,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{1D02835C
 	ProjectSection(SolutionItems) = preProject
 		SDK\NuGet\Elysium.Theme.nuspec = SDK\NuGet\Elysium.Theme.nuspec
 		SDK\NuGet\Elysium.Theme.symbols.nuspec = SDK\NuGet\Elysium.Theme.symbols.nuspec
+		SDK\NuGet\readme.txt = SDK\NuGet\readme.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".NET Framework 4", ".NET Framework 4", "{E4836F38-F28C-45C5-8B5E-08B2609A0492}"

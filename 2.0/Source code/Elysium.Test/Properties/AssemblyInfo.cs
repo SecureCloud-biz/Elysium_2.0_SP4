@@ -17,13 +17,13 @@ using System.Windows;
 
 [assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
 
-[assembly: NeutralResourcesLanguage("en-us")]
+[assembly: NeutralResourcesLanguage("en", UltimateResourceFallbackLocation.MainAssembly)]
 
 #if NETFX4
-[assembly: AssemblyVersion("2.0.357.3")]
-[assembly: AssemblyFileVersion("2.0.357.3")]
+[assembly: AssemblyVersion("2.0.357.4")]
+[assembly: AssemblyFileVersion("2.0.357.4")]
 #elif NETFX45
-[assembly: AssemblyVersion("2.0.333.3")]
-[assembly: AssemblyFileVersion("2.0.333.3")]
+[assembly: AssemblyVersion("2.0.333.4")]
+[assembly: AssemblyFileVersion("2.0.333.4")]
 #endif
-[assembly: AssemblyInformationalVersion("2.0 SP3")]
+[assembly: AssemblyInformationalVersion("2.0 SP4")]

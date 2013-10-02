@@ -36,7 +36,7 @@ using System.Windows.Markup;
 
 [assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
 
-[assembly: NeutralResourcesLanguage("en-us")]
+[assembly: NeutralResourcesLanguage("en", UltimateResourceFallbackLocation.MainAssembly)]
 
 #if NETFX4
 [assembly: AssemblyVersion("<#= Versions.NETFX4.Elysium #>")]

@@ -558,11 +558,11 @@ function Deploy
     New-Item "..\Deploy\$FrameworkName\" -ItemType Directory -ErrorAction Ignore
     New-Item "..\Deploy\$FrameworkName\SDK" -ItemType Directory -ErrorAction Ignore
     New-Item "..\Deploy\$FrameworkName\SDK\x86" -ItemType Directory -ErrorAction Ignore
-    New-Item "..\Deploy\$FrameworkName\SDK\x86\en-us" -ItemType Directory -ErrorAction Ignore
-    New-Item "..\Deploy\$FrameworkName\SDK\x86\ru-ru" -ItemType Directory -ErrorAction Ignore
+    New-Item "..\Deploy\$FrameworkName\SDK\x86\en" -ItemType Directory -ErrorAction Ignore
+    New-Item "..\Deploy\$FrameworkName\SDK\x86\ru" -ItemType Directory -ErrorAction Ignore
     New-Item "..\Deploy\$FrameworkName\SDK\x64" -ItemType Directory -ErrorAction Ignore
-    New-Item "..\Deploy\$FrameworkName\SDK\x64\en-us" -ItemType Directory -ErrorAction Ignore
-    New-Item "..\Deploy\$FrameworkName\SDK\x64\ru-ru" -ItemType Directory -ErrorAction Ignore
+    New-Item "..\Deploy\$FrameworkName\SDK\x64\en" -ItemType Directory -ErrorAction Ignore
+    New-Item "..\Deploy\$FrameworkName\SDK\x64\ru" -ItemType Directory -ErrorAction Ignore
     New-Item "..\Deploy\$FrameworkName\Runtime" -ItemType Directory -ErrorAction Ignore
     New-Item "..\Deploy\$FrameworkName\Runtime\x86" -ItemType Directory -ErrorAction Ignore
     New-Item "..\Deploy\$FrameworkName\Runtime\x64" -ItemType Directory -ErrorAction Ignore
@@ -704,18 +704,18 @@ function Deploy
     Copy-Item "..\Binary\$FrameworkName\Release\x86\SDK\MSI\Setup.exe" "..\Deploy\$FrameworkName\SDK\x86\Elysium SDK.exe"
     Remove-Item "..\Deploy\$FrameworkName\SDK\x86\Elysium.cab" -ErrorAction Ignore
     Copy-Item "..\Binary\$FrameworkName\Release\x86\SDK\MSI\Elysium.cab" "..\Deploy\$FrameworkName\SDK\x86\Elysium.cab"
-    Remove-Item "..\Deploy\$FrameworkName\SDK\x86\en-us\Installer.msi" -ErrorAction Ignore
-    Copy-Item "..\Binary\$FrameworkName\Release\x86\SDK\MSI\en-us\Installer.msi" "..\Deploy\$FrameworkName\SDK\x86\en-us\Elysium SDK.msi"
-    Remove-Item "..\Deploy\$FrameworkName\SDK\x86\ru-ru\Installer.msi" -ErrorAction Ignore
-    Copy-Item "..\Binary\$FrameworkName\Release\x86\SDK\MSI\ru-ru\Installer.msi" "..\Deploy\$FrameworkName\SDK\x86\ru-ru\Elysium SDK.msi"
+    Remove-Item "..\Deploy\$FrameworkName\SDK\x86\en\Installer.msi" -ErrorAction Ignore
+    Copy-Item "..\Binary\$FrameworkName\Release\x86\SDK\MSI\en\Installer.msi" "..\Deploy\$FrameworkName\SDK\x86\en\Elysium SDK.msi"
+    Remove-Item "..\Deploy\$FrameworkName\SDK\x86\ru\Installer.msi" -ErrorAction Ignore
+    Copy-Item "..\Binary\$FrameworkName\Release\x86\SDK\MSI\ru\Installer.msi" "..\Deploy\$FrameworkName\SDK\x86\ru\Elysium SDK.msi"
     Remove-Item "..\Deploy\$FrameworkName\SDK\x64\Setup.exe" -ErrorAction Ignore
     Copy-Item "..\Binary\$FrameworkName\Release\x64\SDK\MSI\Setup.exe" "..\Deploy\$FrameworkName\SDK\x64\Elysium SDK.exe"
     Remove-Item "..\Deploy\$FrameworkName\SDK\x64\Elysium.cab" -ErrorAction Ignore
     Copy-Item "..\Binary\$FrameworkName\Release\x64\SDK\MSI\Elysium.cab" "..\Deploy\$FrameworkName\SDK\x64\Elysium.cab"
-    Remove-Item "..\Deploy\$FrameworkName\SDK\x64\en-us\Installer.msi.msi" -ErrorAction Ignore
-    Copy-Item "..\Binary\$FrameworkName\Release\x64\SDK\MSI\en-us\Installer.msi" "..\Deploy\$FrameworkName\SDK\x64\en-us\Elysium SDK.msi"
-    Remove-Item "..\Deploy\$FrameworkName\SDK\x64\ru-ru\Installer.msi.msi" -ErrorAction Ignore
-    Copy-Item "..\Binary\$FrameworkName\Release\x64\SDK\MSI\ru-ru\Installer.msi" "..\Deploy\$FrameworkName\SDK\x64\ru-ru\Elysium SDK.msi"
+    Remove-Item "..\Deploy\$FrameworkName\SDK\x64\en\Installer.msi.msi" -ErrorAction Ignore
+    Copy-Item "..\Binary\$FrameworkName\Release\x64\SDK\MSI\en\Installer.msi" "..\Deploy\$FrameworkName\SDK\x64\en\Elysium SDK.msi"
+    Remove-Item "..\Deploy\$FrameworkName\SDK\x64\ru\Installer.msi.msi" -ErrorAction Ignore
+    Copy-Item "..\Binary\$FrameworkName\Release\x64\SDK\MSI\ru\Installer.msi" "..\Deploy\$FrameworkName\SDK\x64\ru\Elysium SDK.msi"
     Remove-Item "..\Deploy\$FrameworkName\Runtime\x86\Installer.msi" -ErrorAction Ignore
     Copy-Item "..\Binary\$FrameworkName\Release\x86\Runtime\MSI\Installer.msi" "..\Deploy\$FrameworkName\Runtime\x86\Elysium Runtime.msi"
     Remove-Item "..\Deploy\$FrameworkName\Runtime\x64\Installer.msi" -ErrorAction Ignore

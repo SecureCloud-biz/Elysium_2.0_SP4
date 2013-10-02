@@ -26,7 +26,7 @@ using Microsoft.Tools.WindowsInstallerXml.Bootstrapper;
 
 [assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
 
-[assembly: NeutralResourcesLanguage("en-us", UltimateResourceFallbackLocation.MainAssembly)]
+[assembly: NeutralResourcesLanguage("en", UltimateResourceFallbackLocation.MainAssembly)]
 
 #if NETFX4
 [assembly: AssemblyVersion("<#= Versions.NETFX4.SDK #>")]

@@ -25,7 +25,7 @@ using System.Windows;
 // <UICulture>CultureYouAreCodingWith</UICulture> в файле .csproj
 // внутри <PropertyGroup>.  Например, если используется английский США
 // в своих исходных файлах установите <UICulture> в en-US.  Затем отмените преобразование в комментарий
-// атрибута NeutralResourceLanguage ниже.  Обновите "en-US" в
+// атрибута NeutralResourcesLanguage ниже.  Обновите "en-US" в
 // строка внизу для обеспечения соответствия настройки UICulture в файле проекта.
 
 //[assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.Satellite)]

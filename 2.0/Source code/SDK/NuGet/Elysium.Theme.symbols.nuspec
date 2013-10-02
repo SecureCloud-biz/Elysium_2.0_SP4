@@ -2,12 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Elysium.Theme</id>
-    <version>2.0.3</version>
+    <version>2.0.4</version>
     <title>Elysium</title>
     <authors>Aleksandr Vishnyakov &amp; Codeplex Community</authors>
     <owners>Aleksandr Vishnyakov</owners>
     <licenseUrl>http://elysium.asvishnyakov.com/License.cshtml#header</licenseUrl>
-    <projectUrl>http://elysiumproject.net/</projectUrl>
+    <projectUrl>http://elysium.asvishnyakov.com/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Elysium is library that implements Metro style for Windows Presentation Foundation applications.</description>
     <summary />

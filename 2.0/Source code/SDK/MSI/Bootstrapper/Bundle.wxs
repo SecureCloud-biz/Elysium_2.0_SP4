@@ -5,7 +5,7 @@
   
   <Bundle Name="$(var.SDKName) for $(var.FrameworkName)" Manufacturer="Aleksandr Vishnyakov and Codeplex Community"
           Version="$(var.SDKVersion).$(var.SDKBuild).$(var.SDKRevision)" UpgradeCode="$(var.SetupUpgradeCode)"
-          AboutUrl="http://elysiumproject.net/" IconSourceFile="Icon.ico" Compressed="yes">
+          AboutUrl="http://elysium.asvishnyakov.com" IconSourceFile="Icon.ico" Compressed="yes">
     
     <BootstrapperApplicationRef Id="ManagedBootstrapperApplicationHost">
       
@@ -30,7 +30,7 @@
       <Payload SourceFile="..\$(var.AnyCPUSourceFolder)\SDK\MSI\License.rtf" Compressed="yes"/>
       
       <Payload SourceFile="..\$(var.AnyCPUSourceFolder)\SDK\MSI\UI.dll" Compressed="yes"/>
-      <Payload SourceFile="..\$(var.AnyCPUSourceFolder)\SDK\MSI\ru-ru\UI.resources.dll" Name="ru-ru\UI.resources.dll" Compressed="yes"/>
+      <Payload SourceFile="..\$(var.AnyCPUSourceFolder)\SDK\MSI\ru\UI.resources.dll" Name="ru\UI.resources.dll" Compressed="yes"/>
       <?ifdef Debug ?>
         <Payload SourceFile="..\$(var.AnyCPUSourceFolder)\SDK\MSI\UI.pdb" Compressed="yes"/>
       <?endif?>
@@ -54,13 +54,13 @@
       <?ifdef NETFX45 ?>
         <PackageGroupRef Id="NetFx45Web"/>
       <?endif ?>
-      <MsiPackage Id="Elysium.SDK.en_us" SourceFile="..\$(var.PlatformSourceFolder)\SDK\MSI\en-us\Installer.msi"
+      <MsiPackage Id="Elysium.SDK.en" SourceFile="..\$(var.PlatformSourceFolder)\SDK\MSI\en\Installer.msi"
                   InstallCondition="NOT (UserLanguageID = 1049)" EnableFeatureSelection="yes" Visible="no"
                   Vital="yes" Compressed="yes">
         <PayloadGroupRef Id="Cabs"/>
         <MsiProperty Name="APPLICATIONFOLDER" Value="[InstallFolder]" />
       </MsiPackage>
-      <MsiPackage Id="Elysium.SDK.ru_ru" SourceFile="..\$(var.PlatformSourceFolder)\SDK\MSI\ru-ru\Installer.msi"
+      <MsiPackage Id="Elysium.SDK.ru" SourceFile="..\$(var.PlatformSourceFolder)\SDK\MSI\ru\Installer.msi"
                   InstallCondition="UserLanguageID = 1049" EnableFeatureSelection="yes" Visible="no"
                   Vital="yes" Compressed="yes">
         <PayloadGroupRef Id="Cabs"/>

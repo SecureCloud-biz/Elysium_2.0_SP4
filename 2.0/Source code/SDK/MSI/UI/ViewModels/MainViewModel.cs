@@ -725,7 +725,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
 
         private void DetectMsiFeature(object sender, DetectMsiFeatureEventArgs e)
         {
-            if (e.PackageId.Equals("Elysium.SDK." + (App.Current.Dispatcher.Thread.CurrentCulture.LCID == 1049 ? "ru_ru" : "en_us"), StringComparison.Ordinal))
+            if (e.PackageId.Equals("Elysium.SDK." + (App.Current.Dispatcher.Thread.CurrentCulture.LCID == 1049 ? "ru" : "en"), StringComparison.Ordinal))
             {
                 App.Current.Dispatcher.Invoke(
                     DispatcherPriority.Render,
@@ -744,7 +744,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
 
         private void DetectPackageComplete(object sender, DetectPackageCompleteEventArgs e)
         {
-            if (e.PackageId.Equals("Elysium.SDK." + (App.Current.Dispatcher.Thread.CurrentCulture.LCID == 1049 ? "ru_ru" : "en_us"), StringComparison.Ordinal))
+            if (e.PackageId.Equals("Elysium.SDK." + (App.Current.Dispatcher.Thread.CurrentCulture.LCID == 1049 ? "ru" : "en"), StringComparison.Ordinal))
             {
                 State = e.State == PackageState.Present ? InstallationState.DetectedPresent : InstallationState.DetectedAbsent;
             }
@@ -819,7 +819,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
             {
                 e.State = RequestState.None;
             }
-            else if (e.PackageId.Equals("Elysium.SDK." + (App.Current.Dispatcher.Thread.CurrentCulture.LCID != 1049 ? "ru_ru" : "en_us"),
+            else if (e.PackageId.Equals("Elysium.SDK." + (App.Current.Dispatcher.Thread.CurrentCulture.LCID != 1049 ? "ru" : "en"),
                                         StringComparison.Ordinal))
             {
                 e.State = RequestState.None;
@@ -828,7 +828,7 @@ namespace Elysium.SDK.MSI.UI.ViewModels
 
         private void PlanMsiFeature(object sender, PlanMsiFeatureEventArgs e)
         {
-            if (e.PackageId.Equals("Elysium.SDK." + (App.Current.Dispatcher.Thread.CurrentCulture.LCID == 1049 ? "ru_ru" : "en_us"), StringComparison.Ordinal))
+            if (e.PackageId.Equals("Elysium.SDK." + (App.Current.Dispatcher.Thread.CurrentCulture.LCID == 1049 ? "ru" : "en"), StringComparison.Ordinal))
             {
                 var @checked = Features.First<KeyValuePair<Feature, bool>>(feature => feature.Key.Name == e.FeatureId).Value;
                 var action = Action == LaunchAction.Unknown ? App.Current.Command.Action : Action;

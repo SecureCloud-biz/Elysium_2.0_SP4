@@ -30,7 +30,7 @@
     <IncludeFavorites>False</IncludeFavorites>
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
     <BuildLogFile>Documentation.NETFX4.log</BuildLogFile>
-    <CopyrightHref>http://elysium.asvishnyakov.com/License.cshtml#header</CopyrightHref>
+    <CopyrightHref>http://elysium.asvishnyakov.com/ru/License.cshtml#header</CopyrightHref>
     <FooterText>Copyright %28c%29 2011-2013 Александр Вишняков</FooterText>
     <HelpTitle>Документация по Elysium for .NET Framework 4</HelpTitle>
     <ComponentConfigurations>
