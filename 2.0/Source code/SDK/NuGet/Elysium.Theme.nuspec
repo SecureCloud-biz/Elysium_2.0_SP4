@@ -13,7 +13,7 @@
     <summary />
     <releaseNotes></releaseNotes>
     <copyright>Copyright © Aleksandr Vishnyakov &amp; Codeplex Community 2011-2013</copyright>
-    <language>en-US</language>
+    <language></language>
     <tags>Elysium WPF UI Theme Theming Metro Modern Windows Phone 8</tags>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="PresentationCore" targetFramework="net40-client, net45" />
