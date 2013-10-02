@@ -18,7 +18,7 @@ namespace Elysium.Parameters
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(Controls.Window))]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static Thickness GetResizeBorderThickness([NotNull] Controls.Window obj)
+        public static Thickness GetResizeBorderThickness(Controls.Window obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             ThicknessUtil.EnsureNonNegative();
@@ -26,7 +26,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetResizeBorderThickness([NotNull] Controls.Window obj, Thickness value)
+        public static void SetResizeBorderThickness(Controls.Window obj, Thickness value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(ResizeBorderThicknessProperty, value);
@@ -38,14 +38,14 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(Controls.Window))]
-        public static void SetMinimizeButtonToolTip([NotNull] Controls.Window obj, object value)
+        public static void SetMinimizeButtonToolTip(Controls.Window obj, object value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(MinimizeButtonToolTipProperty, value);
         }
 
         [PublicAPI]
-        public static object GetMinimizeButtonToolTip([NotNull] Controls.Window obj)
+        public static object GetMinimizeButtonToolTip(Controls.Window obj)
         {
             return obj.GetValue(MinimizeButtonToolTipProperty);
         }
@@ -56,14 +56,14 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(Controls.Window))]
-        public static void SetMaximizeButtonToolTip([NotNull] Controls.Window obj, object value)
+        public static void SetMaximizeButtonToolTip(Controls.Window obj, object value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(MaximizeButtonToolTipProperty, value);
         }
 
         [PublicAPI]
-        public static object GetMaximizeButtonToolTip([NotNull] Controls.Window obj)
+        public static object GetMaximizeButtonToolTip(Controls.Window obj)
         {
             return obj.GetValue(MaximizeButtonToolTipProperty);
         }
@@ -74,14 +74,14 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(Controls.Window))]
-        public static void SetRestoreButtonToolTip([NotNull] Controls.Window obj, object value)
+        public static void SetRestoreButtonToolTip(Controls.Window obj, object value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(RestoreButtonToolTipProperty, value);
         }
 
         [PublicAPI]
-        public static object GetRestoreButtonToolTip([NotNull] Controls.Window obj)
+        public static object GetRestoreButtonToolTip(Controls.Window obj)
         {
             return obj.GetValue(RestoreButtonToolTipProperty);
         }
@@ -92,14 +92,14 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(Controls.Window))]
-        public static void SetCloseButtonToolTip([NotNull] Controls.Window obj, object value)
+        public static void SetCloseButtonToolTip(Controls.Window obj, object value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(CloseButtonToolTipProperty, value);
         }
 
         [PublicAPI]
-        public static object GetCloseButtonToolTip([NotNull] Controls.Window obj)
+        public static object GetCloseButtonToolTip(Controls.Window obj)
         {
             return obj.GetValue(CloseButtonToolTipProperty);
         }

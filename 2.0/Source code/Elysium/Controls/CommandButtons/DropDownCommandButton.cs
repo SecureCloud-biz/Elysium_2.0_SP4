@@ -53,7 +53,7 @@ namespace Elysium.Controls
             set { SetValue(SubmenuProperty, value); }
         }
 
-        private static void OnSubmenuChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnSubmenuChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (DropDownCommandButton)obj;
@@ -84,7 +84,7 @@ namespace Elysium.Controls
             private set { SetValue(HasSubmenuPropertyKey, BooleanBoxingHelper.Box(value)); }
         }
 
-        private static void OnHasSubmenuChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnHasSubmenuChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (DropDownCommandButton)obj;
@@ -119,7 +119,7 @@ namespace Elysium.Controls
             set { SetValue(IsDropDownOpenProperty, BooleanBoxingHelper.Box(value)); }
         }
 
-        private static void OnIsDropDownOpenChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnIsDropDownOpenChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (DropDownCommandButton)obj;
@@ -150,7 +150,7 @@ namespace Elysium.Controls
             }
         }
 
-        private static object CoerceIsDropDownOpen([NotNull] DependencyObject obj, object baseValue)
+        private static object CoerceIsDropDownOpen(DependencyObject obj, object baseValue)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (DropDownCommandButton)obj;

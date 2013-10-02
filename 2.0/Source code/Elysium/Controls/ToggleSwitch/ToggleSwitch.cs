@@ -57,7 +57,7 @@ namespace Elysium.Controls
             set { SetValue(IsCheckedProperty, BooleanBoxingHelper.Box(value)); }
         }
 
-        private static void OnIsCheckedChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnIsCheckedChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
@@ -140,7 +140,7 @@ namespace Elysium.Controls
             private set { SetValue(IsSwitchingPropertyKey, BooleanBoxingHelper.Box(value)); }
         }
 
-        private static void OnIsSwitchingChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnIsSwitchingChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
@@ -215,7 +215,7 @@ namespace Elysium.Controls
             set { SetValue(OnHeaderProperty, value); }
         }
 
-        private static void OnOnHeaderChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnOnHeaderChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
@@ -248,7 +248,7 @@ namespace Elysium.Controls
             private set { SetValue(HasOnHeaderPropertyKey, BooleanBoxingHelper.Box(value)); }
         }
 
-        private static void OnHasOnHeaderChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnHasOnHeaderChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
@@ -277,7 +277,7 @@ namespace Elysium.Controls
             set { SetValue(OnHeaderStringFormatProperty, value); }
         }
 
-        private static void OnOnHeaderStringFormatChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnOnHeaderStringFormatChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
@@ -307,7 +307,7 @@ namespace Elysium.Controls
             set { SetValue(OnHeaderTemplateProperty, value); }
         }
 
-        private static void OnOnHeaderTemplateChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnOnHeaderTemplateChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
@@ -340,7 +340,7 @@ namespace Elysium.Controls
             set { SetValue(OnHeaderTemplateSelectorProperty, value); }
         }
 
-        private static void OnOnHeaderTemplateSelectorChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnOnHeaderTemplateSelectorChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
@@ -375,7 +375,7 @@ namespace Elysium.Controls
             set { SetValue(OffHeaderProperty, value); }
         }
 
-        private static void OnOffHeaderChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnOffHeaderChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
@@ -408,7 +408,7 @@ namespace Elysium.Controls
             private set { SetValue(HasOffHeaderPropertyKey, BooleanBoxingHelper.Box(value)); }
         }
 
-        private static void OnHasOffHeaderChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnHasOffHeaderChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
@@ -437,7 +437,7 @@ namespace Elysium.Controls
             set { SetValue(OffHeaderStringFormatProperty, value); }
         }
 
-        private static void OnOffHeaderStringFormatChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnOffHeaderStringFormatChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
@@ -467,7 +467,7 @@ namespace Elysium.Controls
             set { SetValue(OffHeaderTemplateProperty, value); }
         }
 
-        private static void OnOffHeaderTemplateChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnOffHeaderTemplateChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;
@@ -500,7 +500,7 @@ namespace Elysium.Controls
             set { SetValue(OffHeaderTemplateSelectorProperty, value); }
         }
 
-        private static void OnOffHeaderTemplateSelectorChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnOffHeaderTemplateSelectorChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleSwitch)obj;

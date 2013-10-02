@@ -19,7 +19,7 @@ namespace Elysium.Parameters
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.CheckBox))]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.RadioButton))]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetDecoratorSize([NotNull] DependencyObject obj)
+        public static double GetDecoratorSize(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             ValidationHelper.OfTypes(obj, "obj", typeof(System.Windows.Controls.CheckBox), typeof(System.Windows.Controls.RadioButton));
@@ -28,7 +28,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetDecoratorSize([NotNull] DependencyObject obj, double value)
+        public static void SetDecoratorSize(DependencyObject obj, double value)
         {
             ValidationHelper.NotNull(obj, "obj");
             ValidationHelper.OfTypes(obj, "obj", typeof(System.Windows.Controls.CheckBox), typeof(System.Windows.Controls.RadioButton));
@@ -45,7 +45,7 @@ namespace Elysium.Parameters
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.CheckBox))]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.RadioButton))]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetSize([NotNull] DependencyObject obj)
+        public static double GetSize(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             ValidationHelper.OfTypes(obj, "obj", typeof(System.Windows.Controls.CheckBox), typeof(System.Windows.Controls.RadioButton));
@@ -54,7 +54,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetSize([NotNull] DependencyObject obj, double value)
+        public static void SetSize(DependencyObject obj, double value)
         {
             ValidationHelper.NotNull(obj, "obj");
             ValidationHelper.OfTypes(obj, "obj", typeof(System.Windows.Controls.CheckBox), typeof(System.Windows.Controls.RadioButton));

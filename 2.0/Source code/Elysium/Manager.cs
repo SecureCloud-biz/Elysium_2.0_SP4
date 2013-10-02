@@ -68,7 +68,7 @@ namespace Elysium
         #region Control
 
         [PublicAPI]
-        public static bool TryGetTheme([NotNull] this FrameworkElement reference, out Theme theme)
+        public static bool TryGetTheme(this FrameworkElement reference, out Theme theme)
         {
             ValidationHelper.NotNull(reference, "reference");
 
@@ -76,7 +76,7 @@ namespace Elysium
         }
 
         [PublicAPI]
-        public static Theme GetTheme([NotNull] this FrameworkElement reference)
+        public static Theme GetTheme(this FrameworkElement reference)
         {
             Theme result;
             if (!GetThemeCore(reference, out result))
@@ -86,7 +86,7 @@ namespace Elysium
             return result;
         }
 
-        private static bool GetThemeCore([NotNull] FrameworkElement reference, out Theme theme)
+        private static bool GetThemeCore(FrameworkElement reference, out Theme theme)
         {
             ValidationHelper.NotNull(reference, "reference");
 
@@ -114,7 +114,7 @@ namespace Elysium
         #region Application
 
         [PublicAPI]
-        public static bool TryGetTheme([NotNull] this Application reference, out Theme theme)
+        public static bool TryGetTheme(this Application reference, out Theme theme)
         {
             ValidationHelper.NotNull(reference, "reference");
 
@@ -122,7 +122,7 @@ namespace Elysium
         }
 
         [PublicAPI]
-        public static Theme GetTheme([NotNull] this Application reference)
+        public static Theme GetTheme(this Application reference)
         {
             ValidationHelper.NotNull(reference, "reference");
 
@@ -134,7 +134,7 @@ namespace Elysium
             return result;
         }
 
-        private static bool GetThemeCore([NotNull] Application reference, out Theme theme)
+        private static bool GetThemeCore(Application reference, out Theme theme)
         {
             ValidationHelper.NotNull(reference, "reference");
 
@@ -175,7 +175,7 @@ namespace Elysium
         #region Control
 
         [PublicAPI]
-        public static bool TryGetAccentBrush([NotNull] this FrameworkElement reference, out SolidColorBrush accentBrush)
+        public static bool TryGetAccentBrush(this FrameworkElement reference, out SolidColorBrush accentBrush)
         {
             ValidationHelper.NotNull(reference, "reference");
             Contract.Ensures(!Contract.Result<bool>() || !Equals(Contract.ValueAtReturn(out accentBrush), default(SolidColorBrush)));
@@ -184,7 +184,7 @@ namespace Elysium
         }
 
         [PublicAPI]
-        public static SolidColorBrush GetAccentBrush([NotNull] this FrameworkElement reference)
+        public static SolidColorBrush GetAccentBrush(this FrameworkElement reference)
         {
             ValidationHelper.NotNull(reference, "reference");
             Contract.Ensures(!Equals(Contract.Result<SolidColorBrush>(), default(SolidColorBrush)));
@@ -198,7 +198,7 @@ namespace Elysium
         }
 
         [PublicAPI]
-        private static bool GetAccentBrushCore([NotNull] FrameworkElement reference, out SolidColorBrush accentBrush)
+        private static bool GetAccentBrushCore(FrameworkElement reference, out SolidColorBrush accentBrush)
         {
             ValidationHelper.NotNull(reference, "reference");
             Contract.Ensures(!Contract.Result<bool>() || !Equals(Contract.ValueAtReturn(out accentBrush), default(SolidColorBrush)));
@@ -211,7 +211,7 @@ namespace Elysium
         #region Application
 
         [PublicAPI]
-        public static bool TryGetAccentBrush([NotNull] this Application reference, out SolidColorBrush accentBrush)
+        public static bool TryGetAccentBrush(this Application reference, out SolidColorBrush accentBrush)
         {
             ValidationHelper.NotNull(reference, "reference");
             Contract.Ensures(!Contract.Result<bool>() || !Equals(Contract.ValueAtReturn(out accentBrush), default(SolidColorBrush)));
@@ -220,7 +220,7 @@ namespace Elysium
         }
 
         [PublicAPI]
-        public static SolidColorBrush GetAccentBrush([NotNull] this Application reference)
+        public static SolidColorBrush GetAccentBrush(this Application reference)
         {
             ValidationHelper.NotNull(reference, "reference");
             Contract.Ensures(!Equals(Contract.Result<SolidColorBrush>(), default(SolidColorBrush)));
@@ -233,7 +233,7 @@ namespace Elysium
             return result;
         }
 
-        private static bool GetAccentBrushCore([NotNull] Application reference, out SolidColorBrush accentBrush)
+        private static bool GetAccentBrushCore(Application reference, out SolidColorBrush accentBrush)
         {
             ValidationHelper.NotNull(reference, "reference");
             Contract.Ensures(!Contract.Result<bool>() || Contract.ValueAtReturn(out accentBrush) != null);
@@ -263,7 +263,7 @@ namespace Elysium
         #region Control
 
         [PublicAPI]
-        public static bool TryGetContrastBrush([NotNull] this FrameworkElement reference, out SolidColorBrush contrastBrush)
+        public static bool TryGetContrastBrush(this FrameworkElement reference, out SolidColorBrush contrastBrush)
         {
             ValidationHelper.NotNull(reference, "reference");
             Contract.Ensures(!Contract.Result<bool>() || !Equals(Contract.ValueAtReturn(out contrastBrush), default(SolidColorBrush)));
@@ -272,7 +272,7 @@ namespace Elysium
         }
 
         [PublicAPI]
-        public static SolidColorBrush GetContrastBrush([NotNull] this FrameworkElement reference)
+        public static SolidColorBrush GetContrastBrush(this FrameworkElement reference)
         {
             ValidationHelper.NotNull(reference, "reference");
             Contract.Ensures(!Equals(Contract.Result<SolidColorBrush>(), default(SolidColorBrush)));
@@ -286,7 +286,7 @@ namespace Elysium
         }
 
         [PublicAPI]
-        private static bool GetContrastBrushCore([NotNull] FrameworkElement reference, out SolidColorBrush contrastBrush)
+        private static bool GetContrastBrushCore(FrameworkElement reference, out SolidColorBrush contrastBrush)
         {
             ValidationHelper.NotNull(reference, "reference");
             Contract.Ensures(!Contract.Result<bool>() || !Equals(Contract.ValueAtReturn(out contrastBrush), default(SolidColorBrush)));
@@ -299,7 +299,7 @@ namespace Elysium
         #region Application
 
         [PublicAPI]
-        public static bool TryGetContrastBrush([NotNull] this Application reference, out SolidColorBrush contrastBrush)
+        public static bool TryGetContrastBrush(this Application reference, out SolidColorBrush contrastBrush)
         {
             ValidationHelper.NotNull(reference, "reference");
             Contract.Ensures(!Contract.Result<bool>() || !Equals(Contract.ValueAtReturn(out contrastBrush), default(SolidColorBrush)));
@@ -308,7 +308,7 @@ namespace Elysium
         }
 
         [PublicAPI]
-        public static SolidColorBrush GetContrastBrush([NotNull] this Application reference)
+        public static SolidColorBrush GetContrastBrush(this Application reference)
         {
             ValidationHelper.NotNull(reference, "reference");
             Contract.Ensures(!Equals(Contract.Result<SolidColorBrush>(), default(SolidColorBrush)));
@@ -321,7 +321,7 @@ namespace Elysium
             return result;
         }
 
-        private static bool GetContrastBrushCore([NotNull] Application reference, out SolidColorBrush contrastBrush)
+        private static bool GetContrastBrushCore(Application reference, out SolidColorBrush contrastBrush)
         {
             ValidationHelper.NotNull(reference, "reference");
             Contract.Ensures(!Contract.Result<bool>() || Contract.ValueAtReturn(out contrastBrush) != null);

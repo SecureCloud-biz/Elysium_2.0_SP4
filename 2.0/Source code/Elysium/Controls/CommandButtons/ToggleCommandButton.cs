@@ -41,7 +41,7 @@ namespace Elysium.Controls
             set { SetValue(IsCheckedProperty, NullableBooleanBoxingHelper.Box(value)); }
         }
 
-        private static void OnIsCheckedChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnIsCheckedChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (ToggleCommandButton)obj;

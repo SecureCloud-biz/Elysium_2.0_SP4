@@ -20,7 +20,7 @@ namespace Elysium.Parameters
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.TabControl))]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.TabItem))]
-        public static SolidColorBrush GetIndicatorBrush([NotNull] DependencyObject obj)
+        public static SolidColorBrush GetIndicatorBrush(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             ValidationHelper.OfTypes(obj, "obj", typeof(System.Windows.Controls.TabControl), typeof(System.Windows.Controls.TabItem));
@@ -28,7 +28,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetIndicatorBrush([NotNull] DependencyObject obj, SolidColorBrush value)
+        public static void SetIndicatorBrush(DependencyObject obj, SolidColorBrush value)
         {
             ValidationHelper.NotNull(obj, "obj");
             ValidationHelper.OfTypes(obj, "obj", typeof(System.Windows.Controls.TabControl), typeof(System.Windows.Controls.TabItem));
@@ -44,7 +44,7 @@ namespace Elysium.Parameters
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.TabControl))]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetIndicatorThickness([NotNull] System.Windows.Controls.TabControl obj)
+        public static double GetIndicatorThickness(System.Windows.Controls.TabControl obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
@@ -52,7 +52,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetIndicatorThickness([NotNull] System.Windows.Controls.TabControl obj, double value)
+        public static void SetIndicatorThickness(System.Windows.Controls.TabControl obj, double value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(IndicatorThicknessProperty, value);

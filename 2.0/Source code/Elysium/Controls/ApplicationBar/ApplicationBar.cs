@@ -62,14 +62,14 @@ namespace Elysium.Controls
         [JetBrains.Annotations.Pure]
         [System.Diagnostics.Contracts.Pure]
         [AttachedPropertyBrowsableForChildren]
-        public static ApplicationBarDock GetDock([NotNull] UIElement obj)
+        public static ApplicationBarDock GetDock(UIElement obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             return BoxingHelper<ApplicationBarDock>.Unbox(obj.GetValue(DockProperty));
         }
 
         [PublicAPI]
-        public static void SetDock([NotNull] UIElement obj, ApplicationBarDock value)
+        public static void SetDock(UIElement obj, ApplicationBarDock value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(DockProperty, value);
@@ -93,7 +93,7 @@ namespace Elysium.Controls
 
         private bool _isOpen;
 
-        private static void OnIsOpenChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnIsOpenChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (ApplicationBar)obj;
@@ -343,7 +343,7 @@ namespace Elysium.Controls
             set { SetValue(StaysOpenProperty, BooleanBoxingHelper.Box(value)); }
         }
 
-        private static void OnStaysOpenChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnStaysOpenChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (ApplicationBar)obj;
@@ -363,14 +363,14 @@ namespace Elysium.Controls
         [PublicAPI]
         [JetBrains.Annotations.Pure]
         [System.Diagnostics.Contracts.Pure]
-        public static bool GetPreventsOpen([NotNull] UIElement obj)
+        public static bool GetPreventsOpen(UIElement obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             return BooleanBoxingHelper.Unbox(obj.GetValue(PreventsOpenProperty));
         }
 
         [PublicAPI]
-        public static void SetPreventsOpen([NotNull] UIElement obj, bool value)
+        public static void SetPreventsOpen(UIElement obj, bool value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(PreventsOpenProperty, BooleanBoxingHelper.Box(value));
@@ -391,7 +391,7 @@ namespace Elysium.Controls
             set { SetValue(TransitionModeProperty, value); }
         }
 
-        private static void OnTransitionModeChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnTransitionModeChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (ApplicationBar)obj;

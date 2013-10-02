@@ -19,14 +19,14 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(CommandButtonBase))]
-        public static SolidColorBrush GetMask([NotNull] CommandButtonBase obj)
+        public static SolidColorBrush GetMask(CommandButtonBase obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             return (SolidColorBrush)obj.GetValue(MaskProperty);
         }
 
         [PublicAPI]
-        public static void SetMask([NotNull] CommandButtonBase obj, SolidColorBrush value)
+        public static void SetMask(CommandButtonBase obj, SolidColorBrush value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(MaskProperty, value);

@@ -108,7 +108,7 @@ namespace Elysium.Notifications
 #endif
 
         [PublicAPI]
-        public static bool TryPush([NotNull] string message, [CanBeNull] string remark)
+        public static bool TryPush(string message, [CanBeNull] string remark)
         {
             ValidationHelper.NotNullOrWhitespace(message, "message");
 
@@ -129,7 +129,7 @@ namespace Elysium.Notifications
 
 #if NETFX4
         [PublicAPI]
-        public static DispatcherOperation BeginPush([NotNull] string message, [CanBeNull] string remark)
+        public static DispatcherOperation BeginPush(string message, [CanBeNull] string remark)
         {
             ValidationHelper.NotNullOrWhitespace(message, "message");
 
@@ -147,7 +147,7 @@ namespace Elysium.Notifications
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling", Justification = "This version contains a minimal code in method.")]
-        public static void Push([NotNull] string message, [CanBeNull] string remark)
+        public static void Push(string message, [CanBeNull] string remark)
         {
             ValidationHelper.NotNullOrWhitespace(message, "message");
 

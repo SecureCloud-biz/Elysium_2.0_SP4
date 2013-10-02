@@ -19,7 +19,7 @@ namespace Elysium.Parameters
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(Controls.ToggleSwitch))]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetTrackSize([NotNull] Controls.ToggleSwitch obj)
+        public static double GetTrackSize(Controls.ToggleSwitch obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
@@ -27,7 +27,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetTrackSize([NotNull] Controls.ToggleSwitch obj, double value)
+        public static void SetTrackSize(Controls.ToggleSwitch obj, double value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(TrackSizeProperty, value);
@@ -42,7 +42,7 @@ namespace Elysium.Parameters
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(Controls.ToggleSwitch))]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetThumbThickness([NotNull] Controls.ToggleSwitch obj)
+        public static double GetThumbThickness(Controls.ToggleSwitch obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
@@ -50,7 +50,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetThumbThickness([NotNull] Controls.ToggleSwitch obj, double value)
+        public static void SetThumbThickness(Controls.ToggleSwitch obj, double value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(ThumbThicknessProperty, value);

@@ -17,14 +17,14 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(FrameworkElement))]
-        public static Theme? GetTheme([NotNull] FrameworkElement obj)
+        public static Theme? GetTheme(FrameworkElement obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             return NullableBoxingHelper<Theme>.Unbox(obj.GetValue(ThemeProperty));
         }
 
         [PublicAPI]
-        public static void SetTheme([NotNull] FrameworkElement obj, Theme? value)
+        public static void SetTheme(FrameworkElement obj, Theme? value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(ThemeProperty, NullableBoxingHelper<Theme>.Box(value));
@@ -51,14 +51,14 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(FrameworkElement))]
-        public static SolidColorBrush GetAccentBrush([NotNull] FrameworkElement obj)
+        public static SolidColorBrush GetAccentBrush(FrameworkElement obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             return (SolidColorBrush)obj.GetValue(AccentBrushProperty);
         }
 
         [PublicAPI]
-        public static void SetAccentBrush([NotNull] FrameworkElement obj, SolidColorBrush value)
+        public static void SetAccentBrush(FrameworkElement obj, SolidColorBrush value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(AccentBrushProperty, value);
@@ -85,14 +85,14 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(FrameworkElement))]
-        public static SolidColorBrush GetContrastBrush([NotNull] FrameworkElement obj)
+        public static SolidColorBrush GetContrastBrush(FrameworkElement obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             return (SolidColorBrush)obj.GetValue(ContrastBrushProperty);
         }
 
         [PublicAPI]
-        public static void SetContrastBrush([NotNull] FrameworkElement obj, SolidColorBrush value)
+        public static void SetContrastBrush(FrameworkElement obj, SolidColorBrush value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(ContrastBrushProperty, value);

@@ -50,7 +50,7 @@ namespace Elysium.Controls.Primitives
             set { SetValue(HeaderProperty, value); }
         }
 
-        private static void OnHeaderChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnHeaderChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (CommandButtonBase)obj;
@@ -84,7 +84,7 @@ namespace Elysium.Controls.Primitives
             private set { SetValue(HasHeaderPropertyKey, BooleanBoxingHelper.Box(value)); }
         }
 
-        private static void OnHasHeaderChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnHasHeaderChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (CommandButtonBase)obj;
@@ -114,7 +114,7 @@ namespace Elysium.Controls.Primitives
             set { SetValue(HeaderStringFormatProperty, value); }
         }
 
-        private static void OnHeaderStringFormatChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnHeaderStringFormatChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (CommandButtonBase)obj;
@@ -145,7 +145,7 @@ namespace Elysium.Controls.Primitives
             set { SetValue(HeaderTemplateProperty, value); }
         }
 
-        private static void OnHeaderTemplateChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnHeaderTemplateChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (CommandButtonBase)obj;
@@ -179,7 +179,7 @@ namespace Elysium.Controls.Primitives
             set { SetValue(HeaderTemplateSelectorProperty, value); }
         }
 
-        private static void OnHeaderTemplateSelectorChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnHeaderTemplateSelectorChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = (CommandButtonBase)obj;

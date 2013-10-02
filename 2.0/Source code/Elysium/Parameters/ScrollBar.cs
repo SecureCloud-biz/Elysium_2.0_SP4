@@ -19,7 +19,7 @@ namespace Elysium.Parameters
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.Primitives.ScrollBar))]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetArrowSize([NotNull] System.Windows.Controls.Primitives.ScrollBar obj)
+        public static double GetArrowSize(System.Windows.Controls.Primitives.ScrollBar obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
@@ -27,7 +27,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetArrowSize([NotNull] System.Windows.Controls.Primitives.ScrollBar obj, double value)
+        public static void SetArrowSize(System.Windows.Controls.Primitives.ScrollBar obj, double value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(ArrowSizeProperty, value);

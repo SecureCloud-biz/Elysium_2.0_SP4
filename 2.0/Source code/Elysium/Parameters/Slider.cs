@@ -19,7 +19,7 @@ namespace Elysium.Parameters
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.Slider))]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetTrackSize([NotNull] System.Windows.Controls.Slider obj)
+        public static double GetTrackSize(System.Windows.Controls.Slider obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
@@ -27,7 +27,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetTrackSize([NotNull] System.Windows.Controls.Slider obj, double value)
+        public static void SetTrackSize(System.Windows.Controls.Slider obj, double value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(TrackSizeProperty, value);
@@ -42,7 +42,7 @@ namespace Elysium.Parameters
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.Slider))]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetThumbThickness([NotNull] System.Windows.Controls.Slider obj)
+        public static double GetThumbThickness(System.Windows.Controls.Slider obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
@@ -50,7 +50,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetThumbThickness([NotNull] System.Windows.Controls.Slider obj, double value)
+        public static void SetThumbThickness(System.Windows.Controls.Slider obj, double value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(ThumbThicknessProperty, value);

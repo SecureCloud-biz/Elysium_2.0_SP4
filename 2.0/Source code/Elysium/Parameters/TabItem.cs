@@ -16,14 +16,14 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.TabItem))]
-        public static Style GetHeaderStyle([NotNull] System.Windows.Controls.TabItem obj)
+        public static Style GetHeaderStyle(System.Windows.Controls.TabItem obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             return (Style)obj.GetValue(HeaderStyleProperty);
         }
 
         [PublicAPI]
-        public static void SetHeaderStyle([NotNull] System.Windows.Controls.TabItem obj, Style value)
+        public static void SetHeaderStyle(System.Windows.Controls.TabItem obj, Style value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(HeaderStyleProperty, value);

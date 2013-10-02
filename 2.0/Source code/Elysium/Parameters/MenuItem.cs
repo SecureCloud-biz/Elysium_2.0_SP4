@@ -19,7 +19,7 @@ namespace Elysium.Parameters
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.MenuItem))]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetBulletSize([NotNull] System.Windows.Controls.MenuItem obj)
+        public static double GetBulletSize(System.Windows.Controls.MenuItem obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
@@ -27,7 +27,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetBulletSize([NotNull] System.Windows.Controls.MenuItem obj, double value)
+        public static void SetBulletSize(System.Windows.Controls.MenuItem obj, double value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(BulletSizeProperty, value);
@@ -42,7 +42,7 @@ namespace Elysium.Parameters
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.MenuItem))]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetArrowSize([NotNull] System.Windows.Controls.MenuItem obj)
+        public static double GetArrowSize(System.Windows.Controls.MenuItem obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
@@ -50,7 +50,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetArrowSize([NotNull] System.Windows.Controls.MenuItem obj, double value)
+        public static void SetArrowSize(System.Windows.Controls.MenuItem obj, double value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(ArrowSizeProperty, value);
@@ -65,7 +65,7 @@ namespace Elysium.Parameters
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.MenuItem))]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static Thickness GetArrowMargin([NotNull] System.Windows.Controls.MenuItem obj)
+        public static Thickness GetArrowMargin(System.Windows.Controls.MenuItem obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             ThicknessUtil.EnsureNonNegative();
@@ -73,7 +73,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetArrowMargin([NotNull] System.Windows.Controls.MenuItem obj, Thickness value)
+        public static void SetArrowMargin(System.Windows.Controls.MenuItem obj, Thickness value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(ArrowMarginProperty, value);

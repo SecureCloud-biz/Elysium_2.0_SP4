@@ -20,7 +20,7 @@ namespace Elysium.Parameters
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(ProgressBase))]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetBusyElementSize([NotNull] ProgressBase obj)
+        public static double GetBusyElementSize(ProgressBase obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
@@ -28,7 +28,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetBusyElementSize([NotNull] ProgressBase obj, double value)
+        public static void SetBusyElementSize(ProgressBase obj, double value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(BusyElementSizeProperty, value);

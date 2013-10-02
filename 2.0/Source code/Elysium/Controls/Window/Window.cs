@@ -297,14 +297,14 @@ namespace Elysium.Controls
         [JetBrains.Annotations.Pure]
         [System.Diagnostics.Contracts.Pure]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Window))]
-        public static bool GetIsMainWindow([NotNull] System.Windows.Window obj)
+        public static bool GetIsMainWindow(System.Windows.Window obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             return BooleanBoxingHelper.Unbox(obj.GetValue(IsMainWindowProperty));
         }
 
         [PublicAPI]
-        public static void SetIsMainWindow([NotNull] System.Windows.Window obj, bool value)
+        public static void SetIsMainWindow(System.Windows.Window obj, bool value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(IsMainWindowProperty, BooleanBoxingHelper.Box(value));
@@ -460,20 +460,20 @@ namespace Elysium.Controls
         [JetBrains.Annotations.Pure]
         [System.Diagnostics.Contracts.Pure]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Window))]
-        public static ApplicationBar GetApplicationBar([NotNull] System.Windows.Window obj)
+        public static ApplicationBar GetApplicationBar(System.Windows.Window obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             return (ApplicationBar)obj.GetValue(ApplicationBarProperty);
         }
 
         [PublicAPI]
-        public static void SetApplicationBar([NotNull] System.Windows.Window obj, ApplicationBar value)
+        public static void SetApplicationBar(System.Windows.Window obj, ApplicationBar value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(ApplicationBarProperty, value);
         }
 
-        private static void OnApplicationBarChanged([NotNull] DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static void OnApplicationBarChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             ValidationHelper.NotNull(obj, "obj");
             var instance = obj as System.Windows.Window;
@@ -585,14 +585,14 @@ namespace Elysium.Controls
         [JetBrains.Annotations.Pure]
         [System.Diagnostics.Contracts.Pure]
         [AttachedPropertyBrowsableForType(typeof(Window))]
-        public static FrameworkElement GetTitleBar([NotNull] Window obj)
+        public static FrameworkElement GetTitleBar(Window obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             return (FrameworkElement)obj.GetValue(TitleBarProperty);
         }
 
         [PublicAPI]
-        public static void SetTitleBar([NotNull] Window obj, FrameworkElement value)
+        public static void SetTitleBar(Window obj, FrameworkElement value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(TitleBarProperty, value);

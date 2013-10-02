@@ -19,7 +19,7 @@ namespace Elysium.Parameters
         [PublicAPI]
         [AttachedPropertyBrowsableForType(typeof(System.Windows.Controls.CheckBox))]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetCheckSize([NotNull] System.Windows.Controls.CheckBox obj)
+        public static double GetCheckSize(System.Windows.Controls.CheckBox obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
@@ -27,7 +27,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetCheckSize([NotNull] System.Windows.Controls.CheckBox obj, double value)
+        public static void SetCheckSize(System.Windows.Controls.CheckBox obj, double value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(CheckSizeProperty, value);

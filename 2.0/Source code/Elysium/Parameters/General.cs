@@ -26,7 +26,7 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetTitleFontSize([NotNull] DependencyObject obj)
+        public static double GetTitleFontSize(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
@@ -34,7 +34,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetTitleFontSize([NotNull] DependencyObject obj, double value)
+        public static void SetTitleFontSize(DependencyObject obj, double value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(TitleFontSizeProperty, value);
@@ -52,7 +52,7 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetHeaderFontSize([NotNull] DependencyObject obj)
+        public static double GetHeaderFontSize(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
@@ -60,7 +60,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetHeaderFontSize([NotNull] DependencyObject obj, double value)
+        public static void SetHeaderFontSize(DependencyObject obj, double value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(HeaderFontSizeProperty, value);
@@ -78,7 +78,7 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetContentFontSize([NotNull] DependencyObject obj)
+        public static double GetContentFontSize(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
@@ -86,7 +86,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetContentFontSize([NotNull] DependencyObject obj, double value)
+        public static void SetContentFontSize(DependencyObject obj, double value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(ContentFontSizeProperty, value);
@@ -104,7 +104,7 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetTextFontSize([NotNull] DependencyObject obj)
+        public static double GetTextFontSize(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
@@ -112,7 +112,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetTextFontSize([NotNull] DependencyObject obj, double value)
+        public static void SetTextFontSize(DependencyObject obj, double value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(TextFontSizeProperty, value);
@@ -132,7 +132,7 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static Thickness GetDefaultThickness([NotNull] DependencyObject obj)
+        public static Thickness GetDefaultThickness(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             ThicknessUtil.EnsureNonNegative();
@@ -140,7 +140,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetDefaultThickness([NotNull] DependencyObject obj, Thickness value)
+        public static void SetDefaultThickness(DependencyObject obj, Thickness value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(DefaultThicknessProperty, value);
@@ -156,7 +156,7 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static Thickness GetSemiBoldThickness([NotNull] DependencyObject obj)
+        public static Thickness GetSemiBoldThickness(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             ThicknessUtil.EnsureNonNegative();
@@ -164,7 +164,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetSemiBoldThickness([NotNull] DependencyObject obj, Thickness value)
+        public static void SetSemiBoldThickness(DependencyObject obj, Thickness value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(SemiBoldThicknessProperty, value);
@@ -180,7 +180,7 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static Thickness GetBoldThickness([NotNull] DependencyObject obj)
+        public static Thickness GetBoldThickness(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             ThicknessUtil.EnsureNonNegative();
@@ -188,7 +188,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetBoldThickness([NotNull] DependencyObject obj, Thickness value)
+        public static void SetBoldThickness(DependencyObject obj, Thickness value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(BoldThicknessProperty, value);
@@ -204,7 +204,7 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetDefaultThicknessValue([NotNull] DependencyObject obj)
+        public static double GetDefaultThicknessValue(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
@@ -212,7 +212,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetDefaultThicknessValue([NotNull] DependencyObject obj, double value)
+        public static void SetDefaultThicknessValue(DependencyObject obj, double value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(DefaultThicknessValueProperty, value);
@@ -228,7 +228,7 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetSemiBoldThicknessValue([NotNull] DependencyObject obj)
+        public static double GetSemiBoldThicknessValue(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
@@ -236,7 +236,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetSemiBoldThicknessValue([NotNull] DependencyObject obj, double value)
+        public static void SetSemiBoldThicknessValue(DependencyObject obj, double value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(SemiBoldThicknessValueProperty, value);
@@ -252,7 +252,7 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetBoldThicknessValue([NotNull] DependencyObject obj)
+        public static double GetBoldThicknessValue(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
@@ -260,7 +260,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetBoldThicknessValue([NotNull] DependencyObject obj, double value)
+        public static void SetBoldThicknessValue(DependencyObject obj, double value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(BoldThicknessValueProperty, value);
@@ -280,7 +280,7 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static Thickness GetDefaultPadding([NotNull] DependencyObject obj)
+        public static Thickness GetDefaultPadding(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             ThicknessUtil.EnsureNonNegative();
@@ -288,7 +288,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetDefaultPadding([NotNull] DependencyObject obj, Thickness value)
+        public static void SetDefaultPadding(DependencyObject obj, Thickness value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(DefaultPaddingProperty, value);
@@ -304,7 +304,7 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static Thickness GetSemiBoldPadding([NotNull] DependencyObject obj)
+        public static Thickness GetSemiBoldPadding(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             ThicknessUtil.EnsureNonNegative();
@@ -312,7 +312,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetSemiBoldPadding([NotNull] DependencyObject obj, Thickness value)
+        public static void SetSemiBoldPadding(DependencyObject obj, Thickness value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(SemiBoldPaddingProperty, value);
@@ -328,7 +328,7 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static Thickness GetBoldPadding([NotNull] DependencyObject obj)
+        public static Thickness GetBoldPadding(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             ThicknessUtil.EnsureNonNegative();
@@ -336,7 +336,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetBoldPadding([NotNull] DependencyObject obj, Thickness value)
+        public static void SetBoldPadding(DependencyObject obj, Thickness value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(BoldPaddingProperty, value);
@@ -352,7 +352,7 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetDefaultPaddingValue([NotNull] DependencyObject obj)
+        public static double GetDefaultPaddingValue(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
@@ -360,7 +360,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetDefaultPaddingValue([NotNull] DependencyObject obj, double value)
+        public static void SetDefaultPaddingValue(DependencyObject obj, double value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(DefaultPaddingValueProperty, value);
@@ -376,7 +376,7 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetSemiBoldPaddingValue([NotNull] DependencyObject obj)
+        public static double GetSemiBoldPaddingValue(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
@@ -384,7 +384,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetSemiBoldPaddingValue([NotNull] DependencyObject obj, double value)
+        public static void SetSemiBoldPaddingValue(DependencyObject obj, double value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(SemiBoldPaddingValueProperty, value);
@@ -400,7 +400,7 @@ namespace Elysium.Parameters
 
         [PublicAPI]
         [SuppressMessage("Microsoft.Contracts", "Ensures", Justification = "Can't be proven.")]
-        public static double GetBoldPaddingValue([NotNull] DependencyObject obj)
+        public static double GetBoldPaddingValue(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             DoubleUtil.EnsureNonNegative();
@@ -408,7 +408,7 @@ namespace Elysium.Parameters
         }
 
         [PublicAPI]
-        public static void SetBoldPaddingValue([NotNull] DependencyObject obj, double value)
+        public static void SetBoldPaddingValue(DependencyObject obj, double value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(BoldPaddingValueProperty, value);
@@ -424,14 +424,14 @@ namespace Elysium.Parameters
                                                 new FrameworkPropertyMetadata(new Duration(TimeSpan.FromSeconds(0d)), FrameworkPropertyMetadataOptions.Inherits));
 
         [PublicAPI]
-        public static Duration GetDefaultDuration([NotNull] DependencyObject obj)
+        public static Duration GetDefaultDuration(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             return BoxingHelper<Duration>.Unbox(obj.GetValue(DefaultDurationProperty));
         }
 
         [PublicAPI]
-        public static void SetDefaultDuration([NotNull] DependencyObject obj, Duration value)
+        public static void SetDefaultDuration(DependencyObject obj, Duration value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(DefaultDurationProperty, value);
@@ -444,14 +444,14 @@ namespace Elysium.Parameters
                                                                               FrameworkPropertyMetadataOptions.Inherits));
 
         [PublicAPI]
-        public static Duration GetMinimumDuration([NotNull] DependencyObject obj)
+        public static Duration GetMinimumDuration(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             return BoxingHelper<Duration>.Unbox(obj.GetValue(MinimumDurationProperty));
         }
 
         [PublicAPI]
-        public static void SetMinimumDuration([NotNull] DependencyObject obj, Duration value)
+        public static void SetMinimumDuration(DependencyObject obj, Duration value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(MinimumDurationProperty, value);
@@ -464,14 +464,14 @@ namespace Elysium.Parameters
                                                                               FrameworkPropertyMetadataOptions.Inherits));
 
         [PublicAPI]
-        public static Duration GetOptimumDuration([NotNull] DependencyObject obj)
+        public static Duration GetOptimumDuration(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             return BoxingHelper<Duration>.Unbox(obj.GetValue(OptimumDurationProperty));
         }
 
         [PublicAPI]
-        public static void SetOptimumDuration([NotNull] DependencyObject obj, Duration value)
+        public static void SetOptimumDuration(DependencyObject obj, Duration value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(OptimumDurationProperty, value);
@@ -484,14 +484,14 @@ namespace Elysium.Parameters
                                                                               FrameworkPropertyMetadataOptions.Inherits));
 
         [PublicAPI]
-        public static Duration GetMaximumDuration([NotNull] DependencyObject obj)
+        public static Duration GetMaximumDuration(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             return BoxingHelper<Duration>.Unbox(obj.GetValue(MaximumDurationProperty));
         }
 
         [PublicAPI]
-        public static void SetMaximumDuration([NotNull] DependencyObject obj, Duration value)
+        public static void SetMaximumDuration(DependencyObject obj, Duration value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(MaximumDurationProperty, value);
@@ -509,14 +509,14 @@ namespace Elysium.Parameters
                                                                               FrameworkPropertyMetadataOptions.Inherits));
 
         [PublicAPI]
-        public static SolidColorBrush GetShadowBrush([NotNull] DependencyObject obj)
+        public static SolidColorBrush GetShadowBrush(DependencyObject obj)
         {
             ValidationHelper.NotNull(obj, "obj");
             return (SolidColorBrush)obj.GetValue(ShadowBrushProperty);
         }
 
         [PublicAPI]
-        public static void SetShadowBrush([NotNull] DependencyObject obj, SolidColorBrush value)
+        public static void SetShadowBrush(DependencyObject obj, SolidColorBrush value)
         {
             ValidationHelper.NotNull(obj, "obj");
             obj.SetValue(ShadowBrushProperty, value);
