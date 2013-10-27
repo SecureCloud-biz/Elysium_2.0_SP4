@@ -184,7 +184,7 @@
     <Property Id="VS2010ULTIMATE_IDE_LCID_1049" Secure="yes">
       <RegistrySearch Id="VS2010ULTIMATE_IDE_LCID_1049_SEARCH" Root="HKLM" Key="SOFTWARE\Microsoft\DevDiv\vs\Servicing\10.0\VSTSCore\1049" Name="Install" Type="raw" Win64="no"/>
     </Property>
-    <PropertyRef Id="VS2010PREMIUM_IDE_LCID_1049"/>
+    <PropertyRef Id="VS2010ULTIMATE_IDE_LCID_1049"/>
 
     <CustomActionRef Id="VS2010InstallVSTemplates"/>
 
@@ -254,6 +254,7 @@
     <CustomActionRef Id="VS2012InstallVSTemplates"/>
 
     <!-- Visual Studio Express 2012 for Windows Desktop properties and actions -->
+    <!-- TODO: Use VS2012WDEXPRESS_* -->
 
     <Property Id="VS2012WINDESKTOPEXPRESS_IDE" Secure="yes">
         <ComponentSearch Id="SearchForVS2012WinDesktopExpressIdeComponent" Guid="55C6B9D6-A824-4AFC-8D08-20E581B6F42C" Type="file">
